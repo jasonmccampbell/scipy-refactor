@@ -1,8 +1,10 @@
+## Automatically adapted for scipy Oct 18, 2005 by 
+
 #
 # linalg - Linear algebra routines
 #
 
-from info_linalg import __doc__
+from info import __doc__
 from linalg_version import linalg_version as __version__
 
 from basic import *

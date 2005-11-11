@@ -1,21 +1,24 @@
+## Automatically adapted for scipy Oct 18, 2005 by 
+
 #
 # Author: Pearu Peterson, March 2002
 #
 
 __all__ = ['get_flinalg_funcs']
 
-from scipy_distutils.misc_util import PostponedException
-
 # The following ensures that possibly missing flavor (C or Fortran) is
 # replaced with the available one. If none is available, exception
 # is raised at the first attempt to use the resources.
 try:
     import _flinalg
-    has_column_major_storage = _flinalg.has_column_major_storage
 except ImportError:
+    from scipy.distutils.misc_util import PostponedException
     _flinalg = PostponedException()
     print _flinalg.__doc__
     has_column_major_storage = lambda a:0
+
+def has_column_major_storage(arr):
+    return arr.flags['FORTRAN']
 
 _type_conv = {'f':'s', 'd':'d', 'F':'c', 'D':'z'} # 'd' will be default for 'i',..
 
@@ -24,7 +27,7 @@ def get_flinalg_funcs(names,arrays=(),debug=0):
     names. arrays are used to determine optimal prefix."""
     ordering = []
     for i in range(len(arrays)):
-        t = arrays[i].typecode()
+        t = arrays[i].dtypechar
         if not _type_conv.has_key(t): t = 'd'
         ordering.append((t,i))
     if ordering:

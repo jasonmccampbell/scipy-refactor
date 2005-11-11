@@ -22,7 +22,7 @@
  */
 
 #include "Python.h"             /* Python header files */
-#include "Numeric/arrayobject.h"
+#include "scipy/arrayobject.h"
 /* #include <math.h> */
 #include <stdio.h>
 
@@ -42,8 +42,6 @@ static PyObject *ErrorObject;     /* locally-raised exception */
 #define BASEOBJ(arr) ((PyArrayObject *)((arr)->base))
 #define RANK(arr) ((arr)->nd)
 #define ISCONTIGUOUS(m) ((m)->flags & CONTIGUOUS)
-#define MIN(a,b) (((a) > (b)) ? (b) : (a))
-#define MAX(a,b) (((a) > (b)) ? (a) : (b))
 
 #define PYSETERROR(message) \
 { PyErr_SetString(ErrorObject, message); goto fail; }
@@ -113,6 +111,11 @@ static PyObject *
   else {                    /* Alocate a storage buffer for data read in */
     indescr = PyArray_DescrFromType((int ) read_type);
     if (indescr == NULL) goto fail;
+    if (PyTypeNum_ISEXTENDED(indescr->type_num)) {
+	    PyErr_SetString(PyExc_ValueError, 
+			    "Does not support extended types.");
+	    goto fail;
+    }
     myelsize = indescr -> elsize;
     ibuff = malloc(myelsize*n);
     if (ibuff == NULL)
@@ -142,7 +145,8 @@ static PyObject *
   }
   
   if (out_type != read_type) {    /* We need to type_cast it */
-    (indescr->cast[arr->descr->type_num])(ibuff, 1, arr->data, 1, nread );
+    (indescr->cast[arr->descr->type_num])(ibuff, arr->data, nread, 
+					  NULL, NULL);
     free(ibuff);
     ibuff_cleared = 1;
   }
@@ -186,7 +190,7 @@ static int write_buffered_output(FILE *fp, PyArrayObject *arr, PyArray_Descr* ou
 
       if (outdescr->type != arr->descr->type) {  /* Cast to new type before writing */
 	output_ptr = buffer + buffer_size_bytes;
-        (arr->descr->cast[outdescr->type_num])(buffer, 1, output_ptr, 1, buffer_size);
+        (arr->descr->cast[outdescr->type_num])(buffer,output_ptr,buffer_size,NULL, NULL);
 	elsize = outdescr->elsize;
       }
       else {
@@ -226,7 +230,7 @@ static PyObject *
   FILE     *fp;
   char     *buffer = NULL;
   char     dobyteswap = 0;
-  int      swap_factor;
+  int      swap_factor = 1;
   char     ownalloc = 0;
   char     write_type = 124;
 
@@ -241,6 +245,10 @@ static PyObject *
 
   if (!PyArray_Check(obj)) {
     PYSETERROR("Third argument must be a NumPy array.");
+  }
+
+  if (PyArray_ISEXTENDED(obj)) {
+    PYSETERROR("Does not support extended types.");
   }
 
   maxN = PyArray_SIZE((PyArrayObject *)obj);
@@ -271,7 +279,7 @@ static PyObject *
       k = 0;
       do {
 	k++;
-	buffer_size = _PyArray_multiply_list(arr->dimensions + k, arr->nd - k);
+	buffer_size = PyArray_MultiplyList(arr->dimensions + k, arr->nd - k);
 	buffer = (char *)malloc(elsize_bytes*buffer_size);
       }
       while ((NULL == buffer) && (k < arr->nd - 1));
@@ -313,7 +321,7 @@ static PyObject *
       if (obuff == NULL)
 	PYSETERROR("Could not allocate memory for type-casting");
       ownalloc = 1;
-      (arr->descr->cast[(int)outdescr->type_num])(arr->data,1,obuff,1,n);
+      (arr->descr->cast[(int)outdescr->type_num])(arr->data,obuff,n,NULL,NULL);
     }      
     /* Write the data from the array to the file */
     if (dobyteswap) {
@@ -716,7 +724,8 @@ static PyObject *
   }
 
   int_type = PyTypeFromChar(out_type);
-  if ((int_type == PyArray_NOTYPE) || (int_type == PyArray_OBJECT))
+  if ((int_type == PyArray_NOTYPE) || (int_type == PyArray_OBJECT) || \
+      PyTypeNum_ISEXTENDED(int_type))
     PYERR("Invalid output type.");
 
   missing_arr = (PyArrayObject *)PyArray_ContiguousFromObject(missing_val, 
@@ -731,7 +740,7 @@ static PyObject *
 						      0, 0);
   if (arr == NULL) goto fail;
 
-  out = (PyArrayObject *)PyArray_FromDims(RANK(arr), DIMS(arr), int_type);
+  out = (PyArrayObject *)PyArray_SimpleNew(RANK(arr), DIMS(arr), int_type);
   if (out == NULL) goto fail;
 
   /* Get the builtin_functions from the builtin module */
@@ -780,7 +789,7 @@ static PyObject *
 	}
     }
     /* Place numc into the array */
-    funcptr((void *)&(numc.real), 1, (void *)outptr, 1, 1);
+    funcptr((void *)&(numc.real), (void *)outptr, 1, NULL, NULL);
   }
 
   Py_DECREF(missing_arr);

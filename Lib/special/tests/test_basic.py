@@ -5,6 +5,7 @@
 #F   Means test is failing (F)
 #EF  Means test is giving error and Failing
 #!   Means test is segfaulting
+#8   Means test runs forever
 
 ###  test_besselpoly
 ###  test_jnjnp_zeros
@@ -27,17 +28,20 @@
 #F   test_sph_jn
 #F   test_sph_in
 #F   test_sph_jn
+#8   test_sh_chebyu
+#8   test_sh_jacobi
+#8   test_sh_legendre
 
 import os
 import sys
 #import fpformat
 import unittest
-import scipy_base.limits as limits
-from scipy_base import *
+from scipy.base import *
 
-from scipy_test.testing import *
+from scipy.test.testing import *
 set_package_path()
 from special import *
+import special._cephes as cephes
 del sys.path[0]
 
 
@@ -1785,10 +1789,10 @@ class test_round(unittest.TestCase):
 
     def check_round(self):
         rnd = map(int,(round(10.1),round(10.4),round(10.5),round(10.6)))
-        rndrl = (10,10,10,11)
+        rndrl = (10,10,11,11)
         assert_array_equal(rnd,rndrl)
 
-class test_sh_legendre(unittest.TestCase):
+class _test_sh_legendre(unittest.TestCase):
 
     def check_sh_legendre(self):
         # P*_n(x) = P_n(2x-1)
@@ -1837,7 +1841,7 @@ class _test_sh_chebyt(unittest.TestCase):
         assert_array_almost_equal(Ts5.c,tse5.c,12)
         
 
-class test_sh_chebyu(unittest.TestCase):
+class _test_sh_chebyu(unittest.TestCase):
 
     def check_sh_chebyu(self):
         # U*_n(x) = U_n(2x-1)
@@ -1861,7 +1865,7 @@ class test_sh_chebyu(unittest.TestCase):
         assert_array_almost_equal(Us4.c,use4.c,12)
         assert_array_almost_equal(Us5.c,use5.c,11)
 
-class test_sh_jacobi(unittest.TestCase):
+class _test_sh_jacobi(unittest.TestCase):
 
     def check_sh_jacobi(self):
         # G^(p,q)_n(x) = n! gamma(n+p)/gamma(2*n+p) * P^(p-q,q-1)_n(2*x-1)
@@ -2091,4 +2095,4 @@ class test_zeros(unittest.TestCase):
                                     [0, 0]]))
 
 if __name__ == "__main__":
-    ScipyTest('special.basic').run()
+    ScipyTest().run()

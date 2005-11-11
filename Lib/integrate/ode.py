@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 21, 2005 by 
+
 #!/usr/bin/env python
 #Author: Pearu Peterson
 #Date:   3 Feb 2002
@@ -89,7 +91,7 @@ if myodeint.runner:
 __all__ = ['ode']
 __version__ = "$Id$"
 
-from scipy_base import asarray, array, zeros, sin
+from scipy.base import asarray, array, zeros, sin
 import re,types,sys
 
 class ode:

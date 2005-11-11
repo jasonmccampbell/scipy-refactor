@@ -13,7 +13,7 @@ Run tests if interpolate is not installed:
 #import libwadpy
 
 import sys
-from scipy_test.testing import *
+from scipy.test.testing import *
 set_package_path()
 from interpolate.fitpack2 import UnivariateSpline,LSQUnivariateSpline,\
      InterpolatedUnivariateSpline
@@ -76,4 +76,4 @@ class test_SmoothBivariateSpline(ScipyTestCase):
         assert_array_almost_equal(lut([1,1.5,2],[1,1.5]),[[0,0],[1,1],[2,2]])
 
 if __name__ == "__main__":
-    ScipyTest('interpolate.fitpack').run()
+    ScipyTest().run()

@@ -8,11 +8,11 @@
 
 import unittest
 import sys
-from scipy_test.testing import *
-from scipy_base import *
-from scipy_test.testing import ScipyTestCase as TestCase
+from scipy.test.testing import *
+from scipy.base import *
+from scipy.test.testing import ScipyTestCase as TestCase
 import scipy
-import scipy_base as Numeric
+import scipy.base as Numeric
 N = Numeric
 
 set_package_path()
@@ -84,7 +84,7 @@ class test_round(unittest.TestCase):
         """
  
         for i in range(0,9):
-            y = scipy.round(ROUND[i])
+            y = scipy.round_(ROUND[i])
             assert_equal(y,i+1)
         
     def check_rounding1(self):

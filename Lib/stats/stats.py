@@ -19,8 +19,6 @@
 """
 stats.py module
 
-(Requires pstat.py modules.)
-
 #################################################
 #######  Written by:  Gary Strangman  ###########
 #######  Last modified:  Apr 13, 2000 ###########
@@ -192,23 +190,22 @@ from types import *
 
 __version__ = 0.8
 
-from scipy_base import *
-import scipy_base as sb
-import scipy_base.fastumath as math
-from scipy_base.fastumath import *
-import Numeric
-N = Numeric
+from scipy.base import *
+import scipy.base as sb
+import scipy.base.umath as math
+from scipy.base.umath import *
+N = sb  # alias
 import scipy.special as special
 import scipy.linalg as linalg
 import scipy
 
-SequenceType = [ListType, TupleType, ArrayType]
+SequenceType = (ListType, TupleType, ArrayType)
 
 
 # These two functions replace letting axis be a sequence and the
 #  keepdims features used throughout.  These ideas
 #  did not match the rest of Scipy.
-from scipy_base import expand_dims, apply_over_axes
+from scipy.base import expand_dims, apply_over_axes
 
 def _chk_asarray(a, axis):
     if axis is None:
@@ -241,6 +238,8 @@ def nanmean(x,axis=-1):
     x = x.copy()
     Norig = x.shape[axis]
     factor = 1.0-sum(isnan(x),axis)*1.0/Norig
+    
+    # XXX: this line is quite clearly wrong
     n = N-sum(isnan(x),axis)
     N.putmask(x,isnan(x),0)
     return stats.mean(x,axis)/factor
@@ -253,6 +252,8 @@ def nanstd(x,axis=-1,bias=0):
     Norig = x.shape[axis]
     n = Norig - sum(isnan(x),axis)*1.0
     factor = n/Norig
+    
+    # XXX: this line is quite clearly wrong
     n = N-sum(isnan(x),axis)
     N.putmask(x,isnan(x),0)
     m1 = stats.mean(x,axis)
@@ -1004,7 +1005,7 @@ of the compare array.
 
 def threshold(a,threshmin=None,threshmax=None,newval=0):
     """
-Like Numeric.clip() except that values <threshmid or >threshmax are replaced
+Like scipy.clip() except that values <threshmid or >threshmax are replaced
 by newval instead of by threshmin/threshmax (respectively).
 
 Returns: a, with values <threshmin or >threshmax replaced with newval
@@ -1514,10 +1515,10 @@ def kstest(rvs,cdf,args=(),N=20):
     distribution.
     """
     if type(rvs) is StringType:
-        cdf = eval("scipy.stats."+rvs+".cdf")    
-        rvs = eval("scipy.stats."+rvs+".rvs")
+        cdf = getattr(scipy.stats, rvs).cdf
+        rvs = getattr(scipy.stats, rvs).rvs
     if type(cdf) is StringType:
-        cdf = eval("scipy.stats."+cdf+".cdf")        
+        cdf = getattr(scipy.stats, cdf).cdf
     if callable(rvs):
         kwds = {'size':N}
         vals = sb.sort(rvs(*args,**kwds))

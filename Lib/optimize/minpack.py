@@ -1,6 +1,8 @@
+## Automatically adapted for scipy Oct 07, 2005 by convertcode.py
+
 import _minpack
 from common_routines import *
-from scipy_base import atleast_1d, dot, take
+from scipy.base import atleast_1d, dot, take, triu
 
 error = _minpack.error
 
@@ -250,7 +252,7 @@ def leastsq(func,x0,args=(),Dfun=None,full_output=0,col_deriv=0,ftol=1.49012e-8,
     if full_output:
         import scipy.linalg as sl
         perm = take(eye(n),retval[1]['ipvt']-1)
-        r = sl.triu(transpose(retval[1]['fjac'])[:n,:])
+        r = triu(transpose(retval[1]['fjac'])[:n,:])
         R = dot(r, perm)
         cov_x = sl.inv(dot(transpose(R),R))
         return (retval[0], cov_x) + retval[1:] + (mesg,)
@@ -264,13 +266,13 @@ def check_gradient(fcn,Dfcn,x0,args=(),col_deriv=0):
 
     x = atleast_1d(x0)
     n = len(x)
-    x.shape = (n,)
+    x=x.reshape((n,))
     fvec = atleast_1d(fcn(x,*args))
     m = len(fvec)
-    fvec.shape = (m,)
+    fvec=fvec.reshape((m,))
     ldfjac = m
     fjac = atleast_1d(Dfcn(x,*args))
-    fjac.shape = (m,n)
+    fjac=fjac.reshape((m,n))
     if col_deriv == 0:
         fjac = transpose(fjac)
 
@@ -280,7 +282,7 @@ def check_gradient(fcn,Dfcn,x0,args=(),col_deriv=0):
     _minpack._chkder(m,n,x,fvec,fjac,ldfjac,xp,fvecp,1,err)
     
     fvecp = atleast_1d(fcn(xp,*args))
-    fvecp.shape = (m,)
+    fvecp=fvecp.reshape((m,))
     _minpack._chkder(m,n,x,fvec,fjac,ldfjac,xp,fvecp,2,err)
     
     good = (product(greater(err,0.5)))
@@ -318,7 +320,7 @@ def newton(func, x0, fprime=None, args=(), tol=1.48e-8, maxiter=50):
         for iter in range(maxiter):
             if q1 == q0:
                 if p1 != p0:
-                    print "Tolerance of %g reached" % (p1-p0)
+                    print "Tolerance of %s reached" % (p1-p0)
                 return (p1+p0)/2.0
             else:
                 p = p1 - q1*(p1-p0)/(q1-q0)
@@ -328,7 +330,7 @@ def newton(func, x0, fprime=None, args=(), tol=1.48e-8, maxiter=50):
             q0 = q1
             p1 = p
             q1 = apply(func,(p1,)+args)
-    raise RuntimeError, "Failed to converge after %d iterations, value is %f" % (maxiter,p)
+    raise RuntimeError, "Failed to converge after %d iterations, value is %s" % (maxiter,p)
 
 
 # Steffensen's Method using Aitken's Del^2 convergence acceleration.

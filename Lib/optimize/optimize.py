@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 07, 2005 by convertcode.py
+
 from __future__ import nested_scopes
 # ******NOTICE***************
 # optimize.py module by Travis E. Oliphant
@@ -53,29 +55,42 @@ __all__ = ['fmin', 'fmin_powell','fmin_bfgs', 'fmin_ncg', 'fmin_cg',
            'rosen_hess', 'rosen_hess_prod', 'brute', 'approx_fprime',
            'line_search', 'check_grad']
 
-import Numeric
-import MLab
-from scipy_base import atleast_1d, eye, mgrid, argmin, zeros, shape, \
+import scipy as Numeric
+from scipy.base import atleast_1d, eye, mgrid, argmin, zeros, shape, \
      squeeze, isscalar, vectorize, asarray, absolute, sqrt, Inf, asfarray
-import scipy_base
+import scipy.base
 import linesearch
 Num = Numeric
-max = MLab.max
-min = MLab.min
+MLab = Numeric
+
+# These have been copied from Numeric's MLab.py
+# I don't think they made the transition to scipy_core
+def max(m,axis=0):
+    """max(m,axis=0) returns the maximum of m along dimension axis.
+    """
+    m = asarray(m)
+    return Numeric.maximum.reduce(m,axis)
+
+def min(m,axis=0):
+    """min(m,axis=0) returns the minimum of m along dimension axis.
+    """
+    m = asarray(m)
+    return Numeric.minimum.reduce(m,axis)
+
 abs = absolute
 import __builtin__
 pymin = __builtin__.min
 pymax = __builtin__.max
 __version__="0.7"
-_epsilon = sqrt(scipy_base.limits.double_epsilon)
+_epsilon = sqrt(scipy.base.finfo(float).eps)
 
 def vecnorm(x, ord=2):
     if ord == Inf:
-        return scipy_base.amax(abs(x))
+        return scipy.base.amax(abs(x))
     elif ord == -Inf:
-        return scipy_base.amin(abs(x))
+        return scipy.base.amin(abs(x))
     else:
-        return scipy_base.sum(abs(x)**ord)**(1.0/ord)
+        return scipy.base.sum(abs(x)**ord)**(1.0/ord)
         
 def rosen(x):  # The Rosenbrock function
     x = asarray(x)
@@ -86,7 +101,7 @@ def rosen_der(x):
     xm = x[1:-1]
     xm_m1 = x[:-2]
     xm_p1 = x[2:]
-    der = MLab.zeros(x.shape,x.typecode())
+    der = MLab.zeros(x.shape,x.dtypechar)
     der[1:-1] = 200*(xm-xm_m1**2) - 400*(xm_p1 - xm**2)*xm - 2*(1-xm)
     der[0] = -400*x[0]*(x[1]-x[0]**2) - 2*(1-x[0])
     der[-1] = 200*(x[-1]-x[-2]**2)
@@ -95,7 +110,7 @@ def rosen_der(x):
 def rosen_hess(x):
     x = atleast_1d(x)
     H = MLab.diag(-400*x[:-1],1) - MLab.diag(400*x[:-1],-1)
-    diagonal = Num.zeros(len(x),x.typecode())
+    diagonal = Num.zeros(len(x),x.dtypechar)
     diagonal[0] = 1200*x[0]-400*x[1]+2
     diagonal[-1] = 200
     diagonal[1:-1] = 202 + 1200*x[1:-1]**2 - 400*x[2:]
@@ -104,7 +119,7 @@ def rosen_hess(x):
 
 def rosen_hess_prod(x,p):
     x = atleast_1d(x)
-    Hp = Num.zeros(len(x),x.typecode())
+    Hp = Num.zeros(len(x),x.dtypechar)
     Hp[0] = (1200*x[0]**2 - 400*x[1] + 2)*p[0] - 400*x[0]*p[1]
     Hp[1:-1] = -400*x[:-2]*p[:-2]+(202+1200*x[1:-1]**2-400*x[2:])*p[1:-1] \
                -400*x[1:-1]*p[2:]
@@ -171,9 +186,9 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
     one2np1 = range(1,N+1)
 
     if rank == 0:
-        sim = Num.zeros((N+1,),x0.typecode())
+        sim = Num.zeros((N+1,),x0.dtypechar)
     else:        
-        sim = Num.zeros((N+1,N),x0.typecode())
+        sim = Num.zeros((N+1,N),x0.dtypechar)
     fsim = Num.zeros((N+1,),'d')
     sim[0] = x0
     if retall:
@@ -182,7 +197,7 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
     nonzdelt = 0.05
     zdelt = 0.00025
     for k in range(0,N):
-        y = Num.array(x0,copy=1)
+        y = Num.array(x0,copy=True)
         if y[k] != 0:
             y[k] = (1+nonzdelt)*y[k]
         else:
@@ -911,7 +926,7 @@ def fmin_ncg(f, x0, fprime, fhess_p=None, fhess=None, args=(), avextol=1e-5,
         maggrad = Num.add.reduce(abs(b))
         eta = min([0.5,Num.sqrt(maggrad)])
         termcond = eta * maggrad
-        xsupi = zeros(len(x0), x0.typecode())
+        xsupi = zeros(len(x0), x0.dtypechar)
         ri = -b
         psupi = -ri
         i = 0
@@ -1426,7 +1441,7 @@ def fmin_powell(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None,
     if maxfun is None:
         maxfun = N * 1000
 
-    direc = eye(N,typecode='d')
+    direc = eye(N,dtype='d')
     fval = squeeze(func(x))
     x1 = x.copy()
     iter = 0;
@@ -1555,7 +1570,7 @@ def brute(func, ranges, args=(), Ns=20, full_output=0, finish=fmin):
         grid = (grid,)
     Jout = vecfunc(*grid)
     Nshape = shape(Jout)
-    indx = argmin(Jout.flat)
+    indx = argmin(Jout.ravel())
     Nindx = zeros(N)
     xmin = zeros(N,'d')
     for k in range(N-1,-1,-1):

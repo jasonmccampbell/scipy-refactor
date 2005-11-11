@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 19, 2005 by convertcode.py
+
 """
   Matrix Market I/O in Python.
 """
@@ -12,7 +14,7 @@
 
 import os
 from types import ListType, TupleType
-from scipy_base import asarray, ArrayType, real,imag,conj,zeros
+from scipy.base import asarray, ArrayType, real,imag,conj,zeros
 
 __all__ = ['mminfo','mmread','mmwrite']
 
@@ -108,11 +110,11 @@ def mmread(source):
         coo_matrix = None
 
     if field=='integer':
-        typecode='i'
+        dtype='i'
     elif field=='real':
-        typecode='d'
+        dtype='d'
     elif field=='complex':
-        typecode='D'
+        dtype='D'
     elif field=='pattern':
         raise NotImplementedError,`field`
     else:
@@ -124,7 +126,7 @@ def mmread(source):
     is_herm = symm=='hermitian'
 
     if rep == 'array':
-        a = zeros((rows,cols),typecode=typecode)
+        a = zeros((rows,cols),dtype=dtype)
         line = 1
         i,j = 0,0
         while line:
@@ -155,7 +157,7 @@ def mmread(source):
 
     elif rep=='coordinate' and coo_matrix is None:
         # Read sparse matrix to dense when coo_matrix is not available.
-        a = zeros((rows,cols),typecode=typecode)
+        a = zeros((rows,cols), dtype=dtype)
         line = 1
         k = 0
         while line:
@@ -210,7 +212,7 @@ def mmread(source):
                 k += 1
             line = source.readline()
         assert k==entries,`k,entries`
-        a = coo_matrix(data,(row,col),M=rows,N=cols,typecode=typecode)
+        a = coo_matrix(data, (row, col), dims=(rows, cols), dtype=dtype)
     else:
         raise NotImplementedError,`rep`
 
@@ -243,7 +245,7 @@ def mmwrite(target,a,comment='',field=None,precision=None):
             raise ValueError, 'expected matrix'
         rows,cols = a.shape
         entries = rows*cols        
-        typecode = a.typecode()
+        typecode = a.dtypechar
         if field is not None:
             if field=='integer':
                 a = a.astype('i')
@@ -257,7 +259,7 @@ def mmwrite(target,a,comment='',field=None,precision=None):
                 pass
             else:
                 raise ValueError,'unknown field '+field
-        typecode = a.typecode()
+        typecode = a.dtypechar
     else:
         rep = 'coordinate'
         from scipy.sparse import spmatrix
@@ -354,7 +356,7 @@ def _get_symmetry(a):
         return 'general'
     issymm = 1
     isskew = 1
-    isherm = a.typecode() in 'FD'
+    isherm = a.dtypechar in 'FD'
     for j in range(n):
         for i in range(j+1,n):
             aij,aji = a[i][j],a[j][i]

@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 19, 2005 by convertcode.py
+
 #!/usr/bin/env python
 
 # This python script tests the numpyio module.
@@ -6,14 +8,14 @@
 import os,sys
 import unittest
 from unittest import TestCase
-from scipy_test.testing import *
+from scipy.test.testing import *
 set_package_path()
 import io
 from io import numpyio
 del sys.path[0]
 
 
-import Numeric
+import scipy.base as Numeric
 N = Numeric
 import tempfile
 
@@ -57,11 +59,9 @@ class test_read_array(TestCase):
         a = stats.randint.rvs(1,20,size=(3,4))
         fname = tempfile.mktemp('.dat')
         io.write_array(fname,a)
-        b = io.read_array(fname,atype=N.Int)
+        b = io.read_array(fname,atype=a.dtypechar)
         assert_array_equal(a,b)
         os.remove(fname)
 
 if __name__ == "__main__":
-    ScipyTest('io.array_import').run()
-
-
+    ScipyTest().run()

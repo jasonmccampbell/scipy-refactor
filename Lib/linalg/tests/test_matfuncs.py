@@ -14,13 +14,13 @@ Run tests if linalg is not installed:
   python tests/test_matfuncs.py [<level>]
 """
 
-from Numeric import array, identity
+from scipy.base import array, identity
 
 import sys
-from scipy_test.testing import *
+from scipy.test.testing import *
 set_package_path()
-import scipy_base
-from scipy_base import dot,sqrt
+import scipy.base
+from scipy.base import dot,sqrt
 import linalg
 from linalg import signm,logm,funm, sqrtm, expm, expm2, expm3
 del sys.path[0]

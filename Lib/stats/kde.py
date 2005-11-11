@@ -9,7 +9,9 @@
 #  Date: 2004-08-09
 #
 #  Modified: 2005-02-10 by Robert Kern.
-#            Contributed to Scipy.
+#              Contributed to Scipy
+#            2005-10-07 by Robert Kern.
+#              Some fixes to match the new scipy_core
 #
 #  Copyright 2004-2005 by Enthought, Inc.
 #
@@ -22,12 +24,14 @@
 import warnings
 
 from scipy import dot, linalg, special
-from scipy_base import *
+from scipy.base import *
+from scipy.lib.mtrand import randint, multivariate_normal
 
-from distributions import randint
 import stats
-from rv import multivariate_normal
 import mvn
+
+__all__ = ['gaussian_kde', 
+          ]
 
 #-------------------------------------------------------------------------------
 # 'gaussian_kde' class:
@@ -94,21 +98,15 @@ class gaussian_kde(object):
             else:
                 msg = "points have dimension %s, dataset has dimension %s" % (d,
                     self.d)
-                raise ValueError, msg
+                raise ValueError(msg)
 
-        result = zeros((m,), points.typecode())
+        result = zeros((m,), points.dtype)
     
-        try:
-            inv_cov = linalg.inv(self.covariance)
-        except linalg.LinAlgError:
-            warnings.warn('dataset is degenerate; cannot evaluate; returning zeros')
-            return zeros(m, Float)
-
         if m >= self.n:
             # there are more points than data, so loop over data
             for i in range(self.n):
                 diff = self.dataset[:,i,NewAxis] - points
-                tdiff = dot(inv_cov, diff)
+                tdiff = dot(self.inv_cov, diff)
                 energy = sum(diff*tdiff)/2.0
                 result += exp(-energy)
         else:
@@ -148,18 +146,17 @@ class gaussian_kde(object):
         cov = atleast_2d(cov)
         
         if mean.shape != (self.d,):
-            raise ValueError, "mean does not have dimension %s" % self.d
+            raise ValueError("mean does not have dimension %s" % self.d)
         if cov.shape != (self.d, self.d):
-            raise ValueError, "covariance does not have dimension %s" % self.d
+            raise ValueError("covariance does not have dimension %s" % self.d)
 
         # make mean a column vector
         mean = mean[:,NewAxis]
 
         sum_cov = self.covariance + cov
-        sum_cov_inv = linalg.inv(sum_cov)
 
         diff = self.dataset - mean
-        tdiff = dot(sum_cov_inv, diff)
+        tdiff = dot(linalg.inv(sum_cov), diff)
 
         energies = sum(diff*tdiff)/2.0
         result = sum(exp(-energies))/sqrt(linalg.det(2*pi*sum_cov))/self.n
@@ -284,7 +281,7 @@ class gaussian_kde(object):
 
         norm = transpose(multivariate_normal(zeros((self.d,), Float),
             self.covariance, size=size))
-        indices = randint.rvs(0, self.n, size=size)
+        indices = randint(0, self.n, size=size)
         means = take(self.dataset, indices, axis=1)
 
         return means + norm
@@ -305,3 +302,4 @@ class gaussian_kde(object):
         self.factor = self.covariance_factor()
         self.covariance = atleast_2d(stats.cov(self.dataset, rowvar=1) * 
             self.factor * self.factor)
+        self.inv_cov = linalg.inv(self.covariance)

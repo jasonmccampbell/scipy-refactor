@@ -2,8 +2,8 @@
 
 import sys
 from tempfile import mktemp
-from scipy_test.testing import *
-from scipy_base import array,transpose
+from scipy.test.testing import *
+from scipy.base import array,transpose
 
 set_package_path()
 from io.mmio import mminfo,mmread,mmwrite
@@ -153,5 +153,4 @@ class test_mmio_coordinate(ScipyTestCase):
         assert_array_almost_equal(a,b)
         
 if __name__ == "__main__":
-    ScipyTest('io.mmio').run()
-
+    ScipyTest().run()

@@ -8,15 +8,15 @@ import statlib
 import stats
 import distributions
 import inspect
-from scipy_base import isscalar, r_, log, sum, around, unique, asarray
-from scipy_base import zeros, arange, sort, amin, amax, any, where, \
+from scipy.base import isscalar, r_, log, sum, around, unique, asarray
+from scipy.base import zeros, arange, sort, amin, amax, any, where, \
      array, atleast_1d, sqrt, ceil, floor, array, poly1d, compress, not_equal, \
      pi, exp, ravel
 import scipy
 import types
 import scipy.optimize as optimize
 import futil
-import scipy_base as sb
+import scipy.base as sb
 
 
 def find_repeats(arr):
@@ -735,7 +735,7 @@ def binom_test(x,n=None,p=0.5):
     Returns pval -- Probability that null test is rejected for this set
                     of x and n even though it is true.
     """
-    x = atleast_1d(x)
+    x = atleast_1d(x).astype(scipy.integer)
     if len(x) == 2:
         n = x[1]+x[0]
         x = x[0]
@@ -743,6 +743,7 @@ def binom_test(x,n=None,p=0.5):
         x = x[0]
         if n is None or n < x:
             raise ValueError, "n must be >= x"
+        n = scipy.int_(n)
     else:
         raise ValueError, "Incorrect length for x."
 
@@ -751,7 +752,7 @@ def binom_test(x,n=None,p=0.5):
 
     d = distributions.binom.pmf(x,n,p)
     rerr = 1+1e-7
-    if (x*1.0/n < p):
+    if (x < p*n):
         i = arange(x+1,n+1)
         y = sum(distributions.binom.pmf(i,n,p) <= d*rerr)
         pval = distributions.binom.cdf(x,n,p) + distributions.binom.sf(n-y,n,p)

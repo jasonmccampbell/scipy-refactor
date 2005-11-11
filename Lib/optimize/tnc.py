@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 07, 2005 by convertcode.py
+
 # TNC Python interface
 # @(#) $Jeannot: tnc.py,v 1.7 2004/04/02 20:40:21 js Exp $
 
@@ -33,7 +35,7 @@ value of the function, and whose second argument is the gradient of the function
 """
 
 import moduleTNC
-from scipy_base import asarray
+from scipy.base import asarray
 
 MSG_NONE = 0 # No messages
 MSG_ITER = 1 # One line per iteration

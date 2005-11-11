@@ -2,7 +2,7 @@
 # LAPACK wrappers
 #
 
-from info_lapack import __doc__
+from info import __doc__
 
 __all__ = ['get_lapack_funcs','calc_lwork','flapack','clapack']
 
@@ -39,7 +39,7 @@ def get_lapack_funcs(names,arrays=(),debug=0,force_clapack=1):
 
     ordering = []
     for i in range(len(arrays)):
-        t = arrays[i].typecode()
+        t = arrays[i].dtypechar
         if not _type_conv.has_key(t): t = 'd'
         ordering.append((t,i))
     if ordering:
@@ -47,9 +47,9 @@ def get_lapack_funcs(names,arrays=(),debug=0,force_clapack=1):
         required_prefix = _type_conv[ordering[0][0]]
     else:
         required_prefix = 'd'
-    typecode = _inv_type_conv[required_prefix]
+    dtypechar = _inv_type_conv[required_prefix]
     # Default lookup:
-    if ordering and flapack.has_column_major_storage(arrays[ordering[0][1]]):
+    if ordering and arrays[ordering[0][1]].flags['FORTRAN']:
         # prefer Fortran code for leading array with column major order
         m1,m2 = flapack,clapack
     else:
@@ -77,7 +77,7 @@ def get_lapack_funcs(names,arrays=(),debug=0,force_clapack=1):
                     func.module_name = m2_name
                     func.__doc__ = func2.__doc__
         func.prefix = required_prefix
-        func.typecode = typecode
+        func.dtypechar = dtypechar
         funcs.append(func)
     return tuple(funcs)
 

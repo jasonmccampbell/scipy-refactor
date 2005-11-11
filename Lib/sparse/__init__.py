@@ -1,5 +1,5 @@
-"Rudimentary Sparse matrix Class"
+"Rudimentary sparse matrix class"
 
-from info_sparse import __doc__
+from info import __doc__
 
-from Sparse import *
+from sparse import *

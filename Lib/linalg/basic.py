@@ -1,3 +1,7 @@
+## Automatically adapted for scipy Oct 18, 2005 by 
+
+## Automatically adapted for scipy Oct 18, 2005 by 
+
 #
 # Author: Pearu Peterson, March 2002
 #
@@ -9,13 +13,14 @@ __all__ = ['solve','inv','det','lstsq','norm','pinv','pinv2',
            'all_mat']
 
 #from blas import get_blas_funcs
-from lapack import get_lapack_funcs
+#from lapack import get_lapack_funcs
 from flinalg import get_flinalg_funcs
-from scipy_base import asarray,zeros,sum,NewAxis,greater_equal,subtract,arange,\
+from scipy.lib.lapack import get_lapack_funcs
+from scipy.base import asarray,zeros,sum,NewAxis,greater_equal,subtract,arange,\
      conjugate,ravel,r_,mgrid,take,ones,dot,transpose,diag,sqrt,add,real
-import scipy_base
-from scipy_base import asarray_chkfinite, outerproduct, concatenate, reshape, \
-     Matrix
+import scipy.base
+from scipy.base import asarray_chkfinite, outerproduct, concatenate, reshape, single
+from scipy.base import matrix as Matrix
 import calc_lwork
 
 class LinAlgError(Exception):
@@ -154,7 +159,7 @@ def solve_banded((l,u), ab, b, overwrite_ab=0, overwrite_b=0,
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
 
     gbsv, = get_lapack_funcs(('gbsv',),(a1,b1))
-    a2 = zeros((2*l+u+1,a1.shape[1]),gbsv.typecode)
+    a2 = zeros((2*l+u+1,a1.shape[1]),gbsv.dtypechar)
     a2[l:,:] = a1 
     lu,piv,x,info = gbsv(l,u,a2,b1,
                          overwrite_ab=1,
@@ -249,29 +254,29 @@ def norm(x, ord=2):
     """
     x = asarray_chkfinite(x)
     nd = len(x.shape)
-    Inf = scipy_base.Inf
+    Inf = scipy.base.Inf
     if nd == 1:
         if ord == Inf:
-            return scipy_base.amax(abs(x))
+            return scipy.base.amax(abs(x))
         elif ord == -Inf:
-            return scipy_base.amin(abs(x))
+            return scipy.base.amin(abs(x))
         else:
-            return scipy_base.sum(abs(x)**ord)**(1.0/ord)
+            return scipy.base.sum(abs(x)**ord)**(1.0/ord)
     elif nd == 2:
         if ord == 2:
-            return scipy_base.amax(decomp.svd(x,compute_uv=0))
+            return scipy.base.amax(decomp.svd(x,compute_uv=0))
         elif ord == -2:
-            return scipy_base.amin(decomp.svd(x,compute_uv=0))
+            return scipy.base.amin(decomp.svd(x,compute_uv=0))
         elif ord == 1:
-            return scipy_base.amax(scipy_base.sum(abs(x)))
+            return scipy.base.amax(scipy.base.sum(abs(x)))
         elif ord == Inf:
-            return scipy_base.amax(scipy_base.sum(abs(x),axis=1))
+            return scipy.base.amax(scipy.base.sum(abs(x),axis=1))
         elif ord == -1:
-            return scipy_base.amin(scipy_base.sum(abs(x)))
+            return scipy.base.amin(scipy.base.sum(abs(x)))
         elif ord == -Inf:
-            return scipy_base.amin(scipy_base.sum(abs(x),axis=1))
+            return scipy.base.amin(scipy.base.sum(abs(x),axis=1))
         elif ord in ['fro','f']:
-            val = real((conjugate(x)*x).flat)
+            val = real((conjugate(x)*x).ravel())
             return sqrt(add.reduce(val))
         else:
             raise ValueError, "Invalid norm order for matrices."
@@ -330,7 +335,7 @@ def lstsq(a, b, cond=None, overwrite_a=0, overwrite_b=0):
     if n>m:
         # need to extend b matrix as it will be filled with
         # a larger solution matrix
-        b2 = zeros((n,nrhs),gelss.typecode)
+        b2 = zeros((n,nrhs),gelss.dtypechar)
         if len(b1.shape)==2: b2[:m,:] = b1
         else: b2[:m,0] = b1
         b1 = b2
@@ -347,7 +352,7 @@ def lstsq(a, b, cond=None, overwrite_a=0, overwrite_b=0):
     if info>0: raise LinAlgError, "SVD did not converge in Linear Least Squares"
     if info<0: raise ValueError,\
        'illegal value in %-th argument of internal gelss'%(-info)
-    resids = asarray([],x.typecode())
+    resids = asarray([],x.dtypechar)
     if n<m:
         x1 = x[:n]
         if rank==n: resids = sum(x[n:]**2)
@@ -361,13 +366,14 @@ def pinv(a, cond=None):
     Compute generalized inverse of A using least-squares solver.
     """
     a = asarray_chkfinite(a)
-    t = a.typecode()
-    b = scipy_base.identity(a.shape[0],t)
+    t = a.dtypechar
+    b = scipy.base.identity(a.shape[0],t)
     return lstsq(a, b, cond=cond)[0]
 
 
-eps = scipy_base.limits.double_epsilon
-feps = scipy_base.limits.float_epsilon
+eps = scipy.base.finfo(float).eps.toscalar()
+feps = scipy.base.finfo(single).eps.toscalar()
+
 _array_precision = {'f': 0, 'd': 1, 'F': 0, 'D': 1}
 def pinv2(a, cond=None):
     """ pinv2(a, cond=None) -> a_pinv
@@ -376,11 +382,11 @@ def pinv2(a, cond=None):
     """
     a = asarray_chkfinite(a)
     u, s, vh = decomp.svd(a)
-    t = u.typecode()
+    t = u.dtypechar
     if cond in [None,-1]:
         cond = {0: feps*1e3, 1: eps*1e6}[_array_precision[t]]
     m,n = a.shape
-    cutoff = cond*scipy_base.maximum.reduce(s)
+    cutoff = cond*scipy.base.maximum.reduce(s)
     psigma = zeros((m,n),t)
     for i in range(len(s)):
         if s[i] > cutoff:
@@ -392,30 +398,30 @@ def pinv2(a, cond=None):
 # matrix construction functions
 #-----------------------------------------------------------------------------
 
-def tri(N, M=None, k=0, typecode=None):
+def tri(N, M=None, k=0, dtype=None):
     """ returns a N-by-M matrix where all the diagonals starting from 
         lower left corner up to the k-th are all ones.
     """
     if M is None: M = N
     if type(M) == type('d'):
         #pearu: any objections to remove this feature?
-        #       As tri(N,'d') is equivalent to tri(N,typecode='d')
-        typecode = M
+        #       As tri(N,'d') is equivalent to tri(N,dtype='d')
+        dtype = M
         M = N
     m = greater_equal(subtract.outer(arange(N), arange(M)),-k)
-    if typecode is None:
+    if dtype is None:
         return m
     else:
-        return m.astype(typecode)
+        return m.astype(dtype)
 
 def tril(m, k=0):
     """ returns the elements on and below the k-th diagonal of m.  k=0 is the
         main diagonal, k > 0 is above and k < 0 is below the main diagonal.
     """
     svsp = getattr(m,'spacesaver',lambda:0)()
-    m = asarray(m,savespace=1)
-    out = tri(m.shape[0], m.shape[1], k=k, typecode=m.typecode())*m
-    out.savespace(svsp)
+    m = asarray(m)
+    out = tri(m.shape[0], m.shape[1], k=k, dtype=m.dtypechar)*m
+    pass  ## pass  ## out.savespace(svsp)
     return out
 
 def triu(m, k=0):
@@ -423,9 +429,9 @@ def triu(m, k=0):
         main diagonal, k > 0 is above and k < 0 is below the main diagonal.
     """
     svsp = getattr(m,'spacesaver',lambda:0)()
-    m = asarray(m,savespace=1)
-    out = (1-tri(m.shape[0], m.shape[1], k-1, m.typecode()))*m
-    out.savespace(svsp)
+    m = asarray(m)
+    out = (1-tri(m.shape[0], m.shape[1], k-1, m.dtypechar))*m
+    pass  ## pass  ## out.savespace(svsp)
     return out
 
 def toeplitz(c,r=None):
@@ -440,7 +446,7 @@ def toeplitz(c,r=None):
     
         See also: hankel
     """
-    isscalar = scipy_base.isscalar
+    isscalar = scipy.base.isscalar
     if isscalar(c) or isscalar(r):
         return c   
     if r is None:
@@ -473,7 +479,7 @@ def hankel(c,r=None):
     
         See also:  toeplitz
     """
-    isscalar = scipy_base.isscalar
+    isscalar = scipy.base.isscalar
     if isscalar(c) or isscalar(r):
         return c   
     if r is None:
@@ -501,10 +507,10 @@ def kron(a,b):
      [ ...                                   ...   ],
      [ a[m-1,0]*b, a[m-1,1]*b, ... , a[m-1,n-1]*b  ]]
     """
-    if not a.iscontiguous():
+    if not a.flags['CONTIGUOUS']:
         a = reshape(a, a.shape)
-    if not b.iscontiguous():
+    if not b.flags['CONTIGUOUS']:
         b = reshape(b, b.shape)
     o = outerproduct(a,b)
-    o.shape = a.shape + b.shape
+    o=o.reshape(a.shape + b.shape)
     return concatenate(concatenate(o, axis=1), axis=1)

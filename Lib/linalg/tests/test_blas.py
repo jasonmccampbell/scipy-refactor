@@ -13,11 +13,11 @@ Run tests if linalg is not installed:
 """
 
 
-from Numeric import arange, add, array
+from scipy.base import arange, add, array
 import math
 
 import sys
-from scipy_test.testing import *
+from scipy.test.testing import *
 set_package_path()
 from linalg import fblas
 from linalg import cblas
@@ -175,12 +175,12 @@ class test_fblas3_simple(ScipyTestCase):
         for p in 'sd':
             f = getattr(fblas,p+'gemm',None)
             if f is None: continue
-            assert_array_almost_equal(f(3,[3],[-4]),[-36])
+            assert_array_almost_equal(f(3,[3],[-4]),[[-36]])
             assert_array_almost_equal(f(3,[3],[-4],3,[5]),[-21])
         for p in 'cz':
             f = getattr(fblas,p+'gemm',None)
             if f is None: continue
-            assert_array_almost_equal(f(3j,[3-4j],[-4]),[-48-36j])
+            assert_array_almost_equal(f(3j,[3-4j],[-4]),[[-48-36j]])
             assert_array_almost_equal(f(3j,[3-4j],[-4],3,[5j]),[-48-21j])
 
 class test_blas(ScipyTestCase):
@@ -208,4 +208,4 @@ Notes:
 """
 
 if __name__ == "__main__":
-    ScipyTest('linalg.blas').run()
+    ScipyTest().run()

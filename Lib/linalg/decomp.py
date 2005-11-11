@@ -1,3 +1,5 @@
+## Automatically adapted for scipy Oct 18, 2005 by 
+
 #
 # Author: Pearu Peterson, March 2002
 #
@@ -16,31 +18,38 @@ from lapack import get_lapack_funcs
 from blas import get_blas_funcs
 from flinalg import get_flinalg_funcs
 import calc_lwork
-import scipy_base
-from scipy_base import asarray_chkfinite, asarray, diag, zeros, ones, \
-     dot, transpose
-cast = scipy_base.cast
-r_ = scipy_base.r_
-c_ = scipy_base.c_
+import scipy.base
+from scipy.base import asarray_chkfinite, asarray, diag, zeros, ones, \
+     dot, transpose, single
+cast = scipy.base.cast
+r_ = scipy.base.r_
+c_ = scipy.base.c_
 
 _I = cast['F'](1j)
 def _make_complex_eigvecs(w,vin,cmplx_tcode):
-    v = scipy_base.array(vin,typecode=cmplx_tcode)
-    ind = scipy_base.nonzero(scipy_base.not_equal(w.imag,0.0))
-    vnew = scipy_base.zeros((v.shape[0],len(ind)>>1),cmplx_tcode)
-    vnew.real = scipy_base.take(vin,ind[::2],1)
-    vnew.imag = scipy_base.take(vin,ind[1::2],1)
+    v = scipy.base.array(vin,dtype=cmplx_tcode)
+    ind = scipy.base.nonzero(scipy.base.not_equal(w.imag,0.0))
+    vnew = scipy.base.zeros((v.shape[0],len(ind)>>1),cmplx_tcode)
+    vnew.real = scipy.base.take(vin,ind[::2],1)
+    vnew.imag = scipy.base.take(vin,ind[1::2],1)
     count = 0
-    conj = scipy_base.conjugate
+    conj = scipy.base.conjugate
     for i in range(len(ind)/2):
         v[:,ind[2*i]] = vnew[:,count]
         v[:,ind[2*i+1]] = conj(vnew[:,count])
         count += 1
     return v
 
+def _datanotshared(a1,a):
+    if a1 is a:
+        return 0
+    if hasattr(a,"__array_data__"):
+        return a1.__array_data__[0] != a.__array_data__[0]
+    return 1
+
 def _geneig(a1,b,left,right,overwrite_a,overwrite_b):
     b1 = asarray(b)
-    overwrite_b = overwrite_b or (b1 is not b and not hasattry(b,'__array__'))
+    overwrite_b = overwrite_b or _datanotshared(b1,b)
     if len(b1.shape) != 2 or b1.shape[0] != b1.shape[1]:
         raise ValueError, 'expected square matrix'
     ggev, = get_lapack_funcs(('ggev',),(a1,b1))
@@ -61,9 +70,9 @@ def _geneig(a1,b,left,right,overwrite_a,overwrite_b):
        'illegal value in %-th argument of internal ggev'%(-info)
     if info>0: raise LinAlgError,"generalized eig algorithm did not converge"
 
-    only_real = scipy_base.logical_and.reduce(scipy_base.equal(w.imag,0.0))
+    only_real = scipy.base.logical_and.reduce(scipy.base.equal(w.imag,0.0))
     if not (ggev.prefix in 'cz' or only_real):
-        t = w.typecode()
+        t = w.dtypechar
         if left:
             vl = _make_complex_eigvecs(w, vl, t)
         if right:
@@ -105,7 +114,7 @@ def eig(a,b=None,left=0,right=1,overwrite_a=0,overwrite_b=0):
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError, 'expected square matrix'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     if b is not None:
         b = asarray_chkfinite(b)
         return _geneig(a1,b,left,right,overwrite_a,overwrite_b)
@@ -124,7 +133,7 @@ def eig(a,b=None,left=0,right=1,overwrite_a=0,overwrite_b=0):
                                     compute_vl=compute_vl,
                                     compute_vr=compute_vr,
                                     overwrite_a=overwrite_a)
-            t = {'f':'F','d':'D'}[wr.typecode()]
+            t = {'f':'F','d':'D'}[wr.dtypechar]
             w = wr+_I*wi
     else: # 'clapack'
         if geev.prefix in 'cz':
@@ -137,15 +146,15 @@ def eig(a,b=None,left=0,right=1,overwrite_a=0,overwrite_b=0):
                                     compute_vl=compute_vl,
                                     compute_vr=compute_vr,
                                     overwrite_a=overwrite_a)
-            t = {'f':'F','d':'D'}[wr.typecode()]
+            t = {'f':'F','d':'D'}[wr.dtypechar]
             w = wr+_I*wi
     if info<0: raise ValueError,\
        'illegal value in %-th argument of internal geev'%(-info)
     if info>0: raise LinAlgError,"eig algorithm did not converge"
 
-    only_real = scipy_base.logical_and.reduce(scipy_base.equal(w.imag,0.0))
+    only_real = scipy.base.logical_and.reduce(scipy.base.equal(w.imag,0.0))
     if not (geev.prefix in 'cz' or only_real):
-        t = w.typecode()
+        t = w.dtypechar
         if left:
             vl = _make_complex_eigvecs(w, vl, t)
         if right:
@@ -178,7 +187,7 @@ def lu_factor(a, overwrite_a=0):
     a1 = asarray(a)
     if len(a1.shape) != 2 or (a1.shape[0] != a1.shape[1]):
         raise ValueError, 'expected square matrix'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     getrf, = get_lapack_funcs(('getrf',),(a1,))
     lu, piv, info = getrf(a,overwrite_a=overwrite_a)
     if info<0: raise ValueError,\
@@ -236,7 +245,7 @@ def lu(a,permute_l=0,overwrite_a=0):
     if len(a1.shape) != 2:
         raise ValueError, 'expected matrix'
     m,n = a1.shape
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     flu, = get_flinalg_funcs(('lu',),(a1,))
     p,l,u,info = flu(a1,permute_l=permute_l,overwrite_a = overwrite_a)
     if info<0: raise ValueError,\
@@ -274,7 +283,7 @@ def svd(a,compute_uv=1,overwrite_a=0):
     if len(a1.shape) != 2:
         raise ValueError, 'expected matrix'
     m,n = a1.shape
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     gesdd, = get_lapack_funcs(('gesdd',),(a1,))
     if gesdd.module_name[:7] == 'flapack':
         lwork = calc_lwork.gesdd(gesdd.prefix,m,n,compute_uv)[1]
@@ -297,7 +306,7 @@ def svdvals(a,overwrite_a=0):
 def diagsvd(s,M,N):
     """Return sigma from singular values and original size M,N."""
     part = diag(s)
-    typ = part.typecode()
+    typ = part.dtypechar
     MorN = len(s)
     if MorN == M:
         return c_[part,zeros((M,N-M),typ)]
@@ -319,7 +328,7 @@ def cholesky(a,lower=0,overwrite_a=0):
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError, 'expected square matrix'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or _datanotshared(a1,a)
     potrf, = get_lapack_funcs(('potrf',),(a1,))
     c,info = potrf(a1,lower=lower,overwrite_a=overwrite_a,clean=1)
     if info>0: raise LinAlgError, "matrix not positive definite"
@@ -334,7 +343,7 @@ def cho_factor(a, lower=0, overwrite_a=0):
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError, 'expected square matrix'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     potrf, = get_lapack_funcs(('potrf',),(a1,))
     c,info = potrf(a1,lower=lower,overwrite_a=overwrite_a,clean=0)
     if info>0: raise LinAlgError, "matrix not positive definite"
@@ -388,7 +397,7 @@ def qr(a,overwrite_a=0,lwork=None):
     if len(a1.shape) != 2:
         raise ValueError, 'expected matrix'
     M,N = a1.shape
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     geqrf, = get_lapack_funcs(('geqrf',),(a1,))
     if lwork is None or lwork == -1:
         # get optimal work array
@@ -398,11 +407,11 @@ def qr(a,overwrite_a=0,lwork=None):
     if info<0: raise ValueError,\
        'illegal value in %-th argument of internal geqrf'%(-info)
     gemm, = get_blas_funcs(('gemm',),(qr,))
-    t = qr.typecode()
+    t = qr.dtypechar
     R = basic.triu(qr)
-    Q = scipy_base.identity(M,typecode=t)
-    ident = scipy_base.identity(M,typecode=t)
-    zeros = scipy_base.zeros
+    Q = scipy.base.identity(M,dtype=t)
+    ident = scipy.base.identity(M,dtype=t)
+    zeros = scipy.base.zeros
     for i in range(min(M,N)):
         v = zeros((M,),t)
         v[i] = 1
@@ -428,7 +437,7 @@ def schur(a,output='real',lwork=None,overwrite_a=0):
     if len(a1.shape) != 2 or (a1.shape[0] != a1.shape[1]):
         raise ValueError, 'expected square matrix'
     N = a1.shape[0]
-    typ = a1.typecode()
+    typ = a1.dtypechar
     if output in ['complex','c'] and typ not in ['F','D']:
         if typ in _double_precision:
             a1 = a1.astype('D')
@@ -436,7 +445,7 @@ def schur(a,output='real',lwork=None,overwrite_a=0):
         else:
             a1 = a1.astype('F')
             typ = 'F'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     gees, = get_lapack_funcs(('gees',),(a1,))
     if lwork is None or lwork == -1:
         # get optimal work array
@@ -449,17 +458,17 @@ def schur(a,output='real',lwork=None,overwrite_a=0):
     elif info>0: raise LinAlgError, "Schur form not found.  Possibly ill-conditioned."
     return result[0], result[-3]
 
-eps = scipy_base.limits.double_epsilon
-feps = scipy_base.limits.float_epsilon
+eps = scipy.base.finfo(float).eps.toscalar()
+feps = scipy.base.finfo(single).eps.toscalar()
 
-_array_kind = {'1':0, 's':0, 'b': 0, 'i':0, 'l': 0, 'f': 0, 'd': 0, 'F': 1, 'D': 1}
+_array_kind = {'b':0, 'h':0, 'B': 0, 'i':0, 'l': 0, 'f': 0, 'd': 0, 'F': 1, 'D': 1}
 _array_precision = {'i': 1, 'l': 1, 'f': 0, 'd': 1, 'F': 0, 'D': 1}
 _array_type = [['f', 'd'], ['F', 'D']]
 def _commonType(*arrays):
     kind = 0
     precision = 0
     for a in arrays:
-        t = a.typecode()
+        t = a.dtypechar
         kind = max(kind, _array_kind[t])
         precision = max(precision, _array_precision[t])
     return _array_type[kind][precision]
@@ -467,7 +476,7 @@ def _commonType(*arrays):
 def _castCopy(type, *arrays):
     cast_arrays = ()
     for a in arrays:
-        if a.typecode() == type:
+        if a.dtypechar == type:
             cast_arrays = cast_arrays + (a.copy(),)
         else:
             cast_arrays = cast_arrays + (a.astype(type),)
@@ -501,13 +510,13 @@ def rsf2csf(T, Z):
     if T.shape[0] != Z.shape[0]:
         raise ValueError, "matrices must be same dimension."
     N = T.shape[0]
-    arr = scipy_base.array    
+    arr = scipy.base.array    
     t = _commonType(Z, T, arr([3.0],'F'))
     Z, T = _castCopy(t, Z, T)
-    conj = scipy_base.conj
-    dot = scipy_base.dot
-    r_ = scipy_base.r_
-    transp = scipy_base.transpose
+    conj = scipy.base.conj
+    dot = scipy.base.dot
+    r_ = scipy.base.r_
+    transp = scipy.base.transpose
     for m in range(N-1,0,-1):
         if abs(T[m,m-1]) > eps*(abs(T[m-1,m-1]) + abs(T[m,m])):
             k = slice(m-1,m+1)
@@ -515,7 +524,7 @@ def rsf2csf(T, Z):
             r = basic.norm([mu[0], T[m,m-1]])
             c = mu[0] / r
             s = T[m,m-1] / r
-            G = r_[arr([[conj(c),s]],typecode=t),arr([[-s,c]],typecode=t)]
+            G = r_[arr([[conj(c),s]],dtype=t),arr([[-s,c]],dtype=t)]
             Gc = conj(transp(G))
             j = slice(m-1,N)
             T[k,j] = dot(G,T[k,j])
@@ -533,8 +542,8 @@ def orth(A):
     """Return an orthonormal basis for the range of A using svd"""
     u,s,vh = svd(A)
     M,N = A.shape
-    tol = max(M,N)*scipy_base.amax(s)*eps
-    num = scipy_base.sum(s > tol)
+    tol = max(M,N)*scipy.base.amax(s)*eps
+    num = scipy.base.sum(s > tol,rtype=int)
     Q = u[:,:num]
     return Q
 
@@ -558,7 +567,7 @@ def hessenberg(a,calc_q=0,overwrite_a=0):
     a1 = asarray(a)
     if len(a1.shape) != 2 or (a1.shape[0] != a1.shape[1]):
         raise ValueError, 'expected square matrix'
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or (_datanotshared(a1,a))
     gehrd,gebal = get_lapack_funcs(('gehrd','gebal'),(a1,))
     ba,lo,hi,pivscale,info = gebal(a,permute=1,overwrite_a = overwrite_a)
     if info<0: raise ValueError,\
@@ -576,20 +585,20 @@ def hessenberg(a,calc_q=0,overwrite_a=0):
 
     # XXX: Use ORGHR routines to compute q.
     ger,gemm = get_blas_funcs(('ger','gemm'),(hq,))
-    typecode = hq.typecode()
+    typecode = hq.dtypechar
     q = None
     for i in range(lo,hi):
         if tau[i]==0.0:
             continue
-        v = zeros(n,typecode=typecode)
+        v = zeros(n,dtype=typecode)
         v[i+1] = 1.0
         v[i+2:hi+1] = hq[i+2:hi+1,i]
         hq[i+2:hi+1,i] = 0.0
-        h = ger(-tau[i],v,v,a=diag(ones(n,typecode=typecode)),overwrite_a=1)
+        h = ger(-tau[i],v,v,a=diag(ones(n,dtype=typecode)),overwrite_a=1)
         if q is None:
             q = h
         else:
             q = gemm(1.0,q,h)
     if q is None:
-        q = diag(ones(n,typecode=typecode))
+        q = diag(ones(n,dtype=typecode))
     return hq,q
