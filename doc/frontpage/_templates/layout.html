@@ -1,0 +1,14 @@
+{% extends "!layout.html" %}
+
+{% block rootrellink %}
+<li><a href="http://www.scipy.org"><img class="related-logo" src="_static/scipy_thumb.png"/>SciPy.org</a>{{ reldelim1 }}</li>
+<li><a href="{{ pathto('index') }}">{{ shorttitle }}</a>{{ reldelim1 }}</li>
+{% endblock %}
+
+{%- block sidebarlogo %}
+{%- if logo %}
+<p class="logo"><a href="/">
+    <img class="logo" src="{{ pathto('_static/' + logo, 1) }}" alt="Logo"/>
+</a></p>
+{%- endif %}
+{%- endblock %}
