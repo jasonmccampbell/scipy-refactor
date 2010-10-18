@@ -14,14 +14,14 @@ is granted under the SciPy License.
 
 #define PYERR(message) {PyErr_SetString(PyExc_ValueError, message); goto fail;}
 
-#define DATA(arr) ((arr)->data)
-#define DIMS(arr) ((arr)->dimensions)
-#define STRIDES(arr) ((arr)->strides)
-#define ELSIZE(arr) ((arr)->descr->elsize)
-#define OBJECTTYPE(arr) ((arr)->descr->type_num)
-#define BASEOBJ(arr) ((PyArrayObject *)((arr)->base))
-#define RANK(arr) ((arr)->nd)
-#define ISCONTIGUOUS(m) ((m)->flags & CONTIGUOUS)
+#define DATA(arr) (PyArray_DATA(arr))
+#define DIMS(arr) (PyArray_DIMS(arr))
+#define STRIDES(arr) (PyArray_STRIDES(arr))
+#define ELSIZE(arr) (NpyDataType_ELSIZE(PyArray_DESCR(arr)))
+#define OBJECTTYPE(arr) (PyArray_DESCR(arr)->type_num)
+#define BASEOBJ(arr) (PyArray_BASE(arr))
+#define RANK(arr) (PyArray_NDIM(arr))
+#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & CONTIGUOUS)
 
 
 jmp_buf MALLOC_FAIL;

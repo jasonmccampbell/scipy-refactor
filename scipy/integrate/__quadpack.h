@@ -143,11 +143,11 @@ static PyObject *quadpack_qagse(PyObject *dummy, PyObject *args) {
   ap_rlist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_elist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -222,11 +222,11 @@ static PyObject *quadpack_qagie(PyObject *dummy, PyObject *args) {
   ap_rlist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_elist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -302,8 +302,8 @@ static PyObject *quadpack_qagpe(PyObject *dummy, PyObject *args) {
 
   ap_points = (PyArrayObject *)PyArray_ContiguousFromObject(o_points, PyArray_DOUBLE, 1, 1);
   if (ap_points == NULL) goto fail;
-  npts2 = ap_points->dimensions[0];
-  points = (double *)ap_points->data;
+  npts2 = PyArray_DIMS(ap_points)[0];
+  points = (double *)PyArray_DATA(ap_points);
 
   /* Setup iwork and work arrays */
   ap_iord = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_INT);
@@ -315,14 +315,14 @@ static PyObject *quadpack_qagpe(PyObject *dummy, PyObject *args) {
   ap_level = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_ndin = (PyArrayObject *)PyArray_SimpleNew(1,&npts2,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL || ap_pts == NULL || ap_level == NULL || ap_ndin == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
-  pts = (double *)ap_pts->data;
-  level = (int *)ap_level->data;
-  ndin = (int *)ap_level->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
+  pts = (double *)PyArray_DATA(ap_pts);
+  level = (int *)PyArray_DATA(ap_level);
+  ndin = (int *)PyArray_DATA(ap_level);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -405,7 +405,7 @@ static PyObject *quadpack_qawoe(PyObject *dummy, PyObject *args) {
   if (o_chebmo != NULL) {
     ap_chebmo = (PyArrayObject *)PyArray_ContiguousFromObject(o_chebmo, PyArray_DOUBLE, 2, 2);
     if (ap_chebmo == NULL) goto fail;
-    if (ap_chebmo->dimensions[1] != maxp1 || ap_chebmo->dimensions[0] != 25)
+    if (PyArray_DIMS(ap_chebmo)[1] != maxp1 || PyArray_DIMS(ap_chebmo)[0] != 25)
       PYERR(quadpack_error,"Chebyshev moment array has the wrong size.");
   }
   else {
@@ -414,7 +414,7 @@ static PyObject *quadpack_qawoe(PyObject *dummy, PyObject *args) {
     ap_chebmo = (PyArrayObject *)PyArray_SimpleNew(2,sz,PyArray_DOUBLE);
     if (ap_chebmo == NULL) goto fail;
   }
-  chebmo = (double *) ap_chebmo->data;
+  chebmo = (double *) PyArray_DATA(ap_chebmo);
 
   /* Setup iwork and work arrays */
   ap_iord = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_INT);
@@ -424,12 +424,12 @@ static PyObject *quadpack_qawoe(PyObject *dummy, PyObject *args) {
   ap_rlist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_elist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_nnlog == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  nnlog = (int *)ap_nnlog->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  nnlog = (int *)PyArray_DATA(ap_nnlog);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -510,7 +510,7 @@ static PyObject *quadpack_qawfe(PyObject *dummy, PyObject *args) {
   sz[1] = maxp1;
   ap_chebmo = (PyArrayObject *)PyArray_SimpleNew(2,sz,PyArray_DOUBLE);
   if (ap_chebmo == NULL) goto fail;
-  chebmo = (double *) ap_chebmo->data;
+  chebmo = (double *) PyArray_DATA(ap_chebmo);
 
   /* Setup iwork and work arrays */
   ap_iord = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_INT);
@@ -523,15 +523,15 @@ static PyObject *quadpack_qawfe(PyObject *dummy, PyObject *args) {
   ap_erlst = (PyArrayObject *)PyArray_SimpleNew(1,&limlst,PyArray_DOUBLE);
   ap_ierlst = (PyArrayObject *)PyArray_SimpleNew(1,&limlst,PyArray_INT);
   if (ap_iord == NULL || ap_nnlog == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL || ap_rslst == NULL || ap_erlst == NULL || ap_ierlst == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  nnlog = (int *)ap_nnlog->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
-  rslst = (double *)ap_rslst->data;
-  erlst = (double *)ap_erlst->data;
-  ierlst = (int *)ap_ierlst->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  nnlog = (int *)PyArray_DATA(ap_nnlog);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
+  rslst = (double *)PyArray_DATA(ap_rslst);
+  erlst = (double *)PyArray_DATA(ap_erlst);
+  ierlst = (int *)PyArray_DATA(ap_ierlst);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -617,11 +617,11 @@ static PyObject *quadpack_qawce(PyObject *dummy, PyObject *args) {
   ap_rlist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_elist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;
@@ -698,11 +698,11 @@ static PyObject *quadpack_qawse(PyObject *dummy, PyObject *args) {
   ap_rlist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   ap_elist = (PyArrayObject *)PyArray_SimpleNew(1,&limit,PyArray_DOUBLE);
   if (ap_iord == NULL || ap_alist == NULL || ap_blist == NULL || ap_rlist == NULL || ap_elist == NULL) goto fail;
-  iord = (int *)ap_iord->data;
-  alist = (double *)ap_alist->data;
-  blist = (double *)ap_blist->data;
-  rlist = (double *)ap_rlist->data;
-  elist = (double *)ap_elist->data;
+  iord = (int *)PyArray_DATA(ap_iord);
+  alist = (double *)PyArray_DATA(ap_alist);
+  blist = (double *)PyArray_DATA(ap_blist);
+  rlist = (double *)PyArray_DATA(ap_rlist);
+  elist = (double *)PyArray_DATA(ap_elist);
 
   if (setjmp(quadpack_jmpbuf)) {
     goto fail;

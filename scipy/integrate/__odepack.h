@@ -73,7 +73,7 @@ void ode_function(int *n, double *t, double *y, double *ydot)
     Py_DECREF(arglist);
     return;
   }
-  memcpy(ydot, result_array->data, (*n)*sizeof(double));
+  memcpy(ydot, PyArray_DATA(result_array), (*n)*sizeof(double));
   Py_DECREF(result_array);
   Py_DECREF(arglist);
   return;
@@ -114,9 +114,9 @@ int ode_jacobian_function(int *n, double *t, double *y, int *ml, int *mu, double
     return -1;
   }
   if (multipack_jac_transpose == 1) 
-    MATRIXC2F(pd, result_array->data, *n, *nrowpd)
+    MATRIXC2F(pd, PyArray_DATA(result_array), *n, *nrowpd)
   else
-    memcpy(pd, result_array->data, (*n)*(*nrowpd)*sizeof(double));
+    memcpy(pd, PyArray_DATA(result_array), (*n)*(*nrowpd)*sizeof(double));
 
   Py_DECREF(arglist);
   Py_DECREF(result_array);
@@ -134,13 +134,13 @@ int setup_extra_inputs(PyArrayObject **ap_rtol, PyObject *o_rtol, PyArrayObject 
   if (o_rtol == NULL) {
     *ap_rtol = (PyArrayObject *)PyArray_SimpleNew(1, &one, PyArray_DOUBLE);
     if (*ap_rtol == NULL) PYERR2(odepack_error,"Error constructing relative tolerance.");
-    *(double *)(*ap_rtol)->data = tol;                /* Default */
+    *(double *)PyArray_DATA(*ap_rtol) = tol;                /* Default */
   }
   else {
     *ap_rtol = (PyArrayObject *)PyArray_ContiguousFromObject(o_rtol,PyArray_DOUBLE,0,1);
     if (*ap_rtol == NULL) PYERR2(odepack_error,"Error converting relative tolerance.");
-    if ((*ap_rtol)->nd == 0); /* rtol is scalar */
-    else if ((*ap_rtol)->dimensions[0] == neq)
+    if (PyArray_NDIM(*ap_rtol) == 0); /* rtol is scalar */
+    else if (PyArray_DIMS(*ap_rtol)[0] == neq)
       itol |= 2;      /* Set rtol array flag */
     else
       PYERR(odepack_error,"Tolerances must be an array of the same length as the\n     number of equations or a scalar.");
@@ -149,13 +149,13 @@ int setup_extra_inputs(PyArrayObject **ap_rtol, PyObject *o_rtol, PyArrayObject 
   if (o_atol == NULL) {
     *ap_atol = (PyArrayObject *)PyArray_SimpleNew(1,&one,PyArray_DOUBLE);
     if (*ap_atol == NULL) PYERR2(odepack_error,"Error constructing absolute tolerance");
-    *(double *)(*ap_atol)->data = tol;
+    *(double *)PyArray_DATA(*ap_atol) = tol;
   }
   else {
     *ap_atol = (PyArrayObject *)PyArray_ContiguousFromObject(o_atol,PyArray_DOUBLE,0,1);
     if (*ap_atol == NULL) PYERR2(odepack_error,"Error converting absolute tolerance.");
-    if ((*ap_atol)->nd == 0); /* atol is scalar */
-    else if ((*ap_atol)->dimensions[0] == neq) 
+    if (PyArray_NDIM(*ap_atol) == 0); /* atol is scalar */
+    else if (PyArray_DIMS(*ap_atol)[0] == neq) 
       itol |= 1;        /* Set atol array flag */
     else
       PYERR(odepack_error,"Tolerances must be an array of the same length as the\n     number of equations or a scalar.");
@@ -224,7 +224,7 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
   int      k, ntimes, crit_ind=0;
   int      allocated = 0, full_output = 0, numcrit=0;
   double   *yout, *yout_ptr, *tout_ptr, *tcrit;
-  double   *wa;
+  double   *wa=NULL;
   static char *kwlist[] = {"fun","y0","t","args","Dfun","col_deriv","ml","mu","full_output","rtol","atol","tcrit","h0","hmax","hmin","ixpr","mxstep","mxhnil","mxordn","mxords",NULL};
 
   STORE_VARS();
@@ -254,14 +254,14 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
   /* Initial input vector */
   ap_y = (PyArrayObject *)PyArray_ContiguousFromObject(y0, PyArray_DOUBLE, 0, 1);
   if (ap_y == NULL) goto fail;
-  y = (double *) ap_y->data;
+  y = (double *) PyArray_DATA(ap_y);
   neq = PyArray_Size((PyObject *)ap_y);
   dims[1] = neq;
 
   /* Set of output times for integration */
   ap_tout = (PyArrayObject *)PyArray_ContiguousFromObject(p_tout, PyArray_DOUBLE, 0, 1);
   if (ap_tout == NULL) goto fail;
-  tout = (double *)ap_tout->data;
+  tout = (double *)PyArray_DATA(ap_tout);
   ntimes = PyArray_Size((PyObject *)ap_tout);
   dims[0] = ntimes;
   t = tout[0];
@@ -269,16 +269,16 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
   /* Setup array to hold the output evaluations*/
   ap_yout= (PyArrayObject *)PyArray_SimpleNew(2,dims,PyArray_DOUBLE);
   if (ap_yout== NULL) goto fail;
-  yout = (double *) ap_yout->data;
+  yout = (double *) PyArray_DATA(ap_yout);
   /* Copy initial vector into first row of output */
   memcpy(yout, y, neq*sizeof(double));  /* copy intial value to output */
   yout_ptr = yout + neq;    /* set output pointer to next position */
 
   itol = setup_extra_inputs(&ap_rtol, o_rtol, &ap_atol, o_atol, &ap_tcrit, o_tcrit, &numcrit, neq);
   if (itol < 0 ) goto fail;  /* Something didn't work */
-  rtol = (double *) ap_rtol->data;
-  atol = (double *) ap_atol->data;
-  if (o_tcrit != NULL) tcrit = (double *)(ap_tcrit->data);
+  rtol = (double *) PyArray_DATA(ap_rtol);
+  atol = (double *) PyArray_DATA(ap_atol);
+  if (o_tcrit != NULL) tcrit = (double *)PyArray_DATA(ap_tcrit);
 
   /* Find size of working arrays*/
   if (compute_lrw_liw(&lrw, &liw, neq, jt, ml, mu, mxordn, mxords) < 0) goto fail;
@@ -327,14 +327,14 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
 
     LSODA(ode_function, &neq, y, &t, tout_ptr, &itol, rtol, atol, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, ode_jacobian_function, &jt);
     if (full_output) {
-      *((double *)ap_hu->data + (k-1)) = rwork[10];
-      *((double *)ap_tcur->data + (k-1)) = rwork[12];
-      *((double *)ap_tolsf->data + (k-1)) = rwork[13];
-      *((double *)ap_tsw->data + (k-1)) = rwork[14];
-      *((int *)ap_nst->data + (k-1)) = iwork[10];
-      *((int *)ap_nfe->data + (k-1)) = iwork[11];
-      *((int *)ap_nje->data + (k-1)) = iwork[12];
-      *((int *)ap_nqu->data + (k-1)) = iwork[13];
+      *((double *)PyArray_DATA(ap_hu) + (k-1)) = rwork[10];
+      *((double *)PyArray_DATA(ap_tcur) + (k-1)) = rwork[12];
+      *((double *)PyArray_DATA(ap_tolsf) + (k-1)) = rwork[13];
+      *((double *)PyArray_DATA(ap_tsw) + (k-1)) = rwork[14];
+      *((int *)PyArray_DATA(ap_nst) + (k-1)) = iwork[10];
+      *((int *)PyArray_DATA(ap_nfe) + (k-1)) = iwork[11];
+      *((int *)PyArray_DATA(ap_nje) + (k-1)) = iwork[12];
+      *((int *)PyArray_DATA(ap_nqu) + (k-1)) = iwork[13];
       if (istate == -5 || istate == -4) {
         imxer = iwork[15];
       } else {
@@ -342,7 +342,7 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
       }
       lenrw = iwork[16];
       leniw = iwork[17];
-      *((int *)ap_mused->data + (k-1)) = iwork[18];
+      *((int *)PyArray_DATA(ap_mused) + (k-1)) = iwork[18];
     }
     if (PyErr_Occurred()) goto fail;
     memcpy(yout_ptr, y, neq*sizeof(double));  /* copy integration result to output*/

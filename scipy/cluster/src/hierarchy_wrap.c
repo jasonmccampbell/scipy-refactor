@@ -69,7 +69,7 @@ extern PyObject *linkage_wrap(PyObject *self, PyObject *args) {
       df = 0;
       break;
     }
-    linkage((double*)dm->data, (double*)Z->data, 0, 0, n, 0, 0, df, method);
+    linkage((double*)PyArray_DATA(dm), (double*)PyArray_DATA(Z), 0, 0, n, 0, 0, df, method);
   }
   return Py_BuildValue("d", 0.0);
 }
@@ -106,7 +106,7 @@ extern PyObject *linkage_euclid_wrap(PyObject *self, PyObject *args) {
       df = 0;
       break;
     }
-    linkage((double*)dm->data, (double*)Z->data, (double*)X->data,
+    linkage((double*)PyArray_DATA(dm), (double*)PyArray_DATA(Z), (double*)PyArray_DATA(X),
 	    m, n, 1, 1, df, method);
   }
   return Py_BuildValue("d", 0.0);
@@ -121,7 +121,7 @@ extern PyObject *calculate_cluster_sizes_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  calculate_cluster_sizes((const double*)Z->data, (double*)cs_->data, n);
+  calculate_cluster_sizes((const double*)PyArray_DATA(Z), (double*)PyArray_DATA(cs_), n);
   return Py_BuildValue("");
 }
 
@@ -135,7 +135,7 @@ extern PyObject *get_max_dist_for_each_cluster_wrap(PyObject *self,
 			&n)) {
     return 0;
   }
-  get_max_dist_for_each_cluster((const double*)Z->data, (double*)md->data, n);
+  get_max_dist_for_each_cluster((const double*)PyArray_DATA(Z), (double*)PyArray_DATA(md), n);
   return Py_BuildValue("");
 }
 
@@ -150,9 +150,9 @@ extern PyObject *get_max_Rfield_for_each_cluster_wrap(PyObject *self,
 			&n, &rf)) {
     return 0;
   }
-  get_max_Rfield_for_each_cluster((const double *)Z->data,
-				  (const double *)R->data,
-				  (double *)max_rfs->data, n, rf);
+  get_max_Rfield_for_each_cluster((const double *)PyArray_DATA(Z),
+				  (const double *)PyArray_DATA(R),
+				  (double *)PyArray_DATA(max_rfs), n, rf);
   return Py_BuildValue("");
 }
 
@@ -165,7 +165,7 @@ extern PyObject *prelist_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  form_member_list((const double *)Z->data, (int *)ML->data, n);
+  form_member_list((const double *)PyArray_DATA(Z), (int *)PyArray_DATA(ML), n);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -181,8 +181,8 @@ extern PyObject *cluster_in_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  form_flat_clusters_from_in((const double *)Z->data, (const double *)R->data,
-			     (int *)T->data, cutoff, n);
+  form_flat_clusters_from_in((const double *)PyArray_DATA(Z), (const double *)PyArray_DATA(R),
+			     (int *)PyArray_DATA(T), cutoff, n);
 
   return Py_BuildValue("d", 0.0);
 }
@@ -198,8 +198,8 @@ extern PyObject *cluster_dist_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  form_flat_clusters_from_dist((const double *)Z->data,
-			       (int *)T->data, cutoff, n);
+  form_flat_clusters_from_dist((const double *)PyArray_DATA(Z),
+			       (int *)PyArray_DATA(T), cutoff, n);
 
   return Py_BuildValue("d", 0.0);
 }
@@ -216,14 +216,14 @@ extern PyObject *cluster_monocrit_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  form_flat_clusters_from_monotonic_criterion((const double *)Z->data,
-					      (const double *)MV->data,
-					      (int *)T->data,
+  form_flat_clusters_from_monotonic_criterion((const double *)PyArray_DATA(Z),
+					      (const double *)PyArray_DATA(MV),
+					      (int *)PyArray_DATA(T),
 					      cutoff,
 					      n);
 
-  form_flat_clusters_from_dist((const double *)Z->data,
-			       (int *)T->data, cutoff, n);
+  form_flat_clusters_from_dist((const double *)PyArray_DATA(Z),
+			       (int *)PyArray_DATA(T), cutoff, n);
 
   return Py_BuildValue("d", 0.0);
 }
@@ -239,7 +239,7 @@ extern PyObject *cluster_maxclust_dist_wrap(PyObject *self, PyObject *args) {
 			&n, &mc)) {
     return 0;
   }
-  form_flat_clusters_maxclust_dist((const double*)Z->data, (int *)T->data,
+  form_flat_clusters_maxclust_dist((const double*)PyArray_DATA(Z), (int *)PyArray_DATA(T),
 				   n, mc);
 
   return Py_BuildValue("");
@@ -256,9 +256,9 @@ extern PyObject *cluster_maxclust_monocrit_wrap(PyObject *self, PyObject *args) 
 			&n, &mc)) {
     return 0;
   }
-  form_flat_clusters_maxclust_monocrit((const double *)Z->data,
-				       (const double *)MC->data,
-				       (int *)T->data, n, mc);
+  form_flat_clusters_maxclust_monocrit((const double *)PyArray_DATA(Z),
+				       (const double *)PyArray_DATA(MC),
+				       (int *)PyArray_DATA(T), n, mc);
 
   return Py_BuildValue("");
 }
@@ -273,7 +273,7 @@ extern PyObject *inconsistent_wrap(PyObject *self, PyObject *args) {
 			&n, &d)) {
     return 0;
   }
-  inconsistency_calculation_alt((const double*)Z->data, (double*)R->data, n, d);
+  inconsistency_calculation_alt((const double*)PyArray_DATA(Z), (double*)PyArray_DATA(R), n, d);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -286,7 +286,7 @@ extern PyObject *cophenetic_distances_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  cophenetic_distances((const double*)Z->data, (double*)d->data, n);
+  cophenetic_distances((const double*)PyArray_DATA(Z), (double*)PyArray_DATA(d), n);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -300,7 +300,7 @@ extern PyObject *chopmin_ns_ij_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  chopmins_ns_ij((double*)row->data, mini, minj, n);
+  chopmins_ns_ij((double*)PyArray_DATA(row), mini, minj, n);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -313,7 +313,7 @@ extern PyObject *chopmin_ns_i_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  chopmins_ns_i((double*)row->data, mini, n);
+  chopmins_ns_i((double*)PyArray_DATA(row), mini, n);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -327,7 +327,7 @@ extern PyObject *chopmins_wrap(PyObject *self, PyObject *args) {
 			&n)) {
     return 0;
   }
-  chopmins((int*)row->data, mini, minj, n);
+  chopmins((int*)PyArray_DATA(row), mini, minj, n);
   return Py_BuildValue("d", 0.0);
 }
 
@@ -344,8 +344,8 @@ extern PyObject *leaders_wrap(PyObject *self, PyObject *args) {
     return 0;
   }
   else {
-    res = leaders((double*)Z_->data, (int*)T_->data,
-		  (int*)L_->data, (int*)M_->data, kk, n);
+    res = leaders((double*)PyArray_DATA(Z_), (int*)PyArray_DATA(T_),
+		  (int*)PyArray_DATA(L_), (int*)PyArray_DATA(M_), kk, n);
   }
   return Py_BuildValue("i", res);
 }

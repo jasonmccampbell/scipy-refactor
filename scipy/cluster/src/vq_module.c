@@ -85,13 +85,13 @@ PyObject* compute_vq(PyObject* self, PyObject* args)
         goto clean_obs_a;
     }
 
-    if( !(obs_a->nd == code_a->nd)) {
+    if( !(PyArray_NDIM(obs_a) == PyArray_NDIM(code_a))) {
 		PyErr_Format(PyExc_ValueError,
 			     "observation and code should have same shape");
         goto clean_code_a;
     }
 
-    switch (obs_a->nd) {
+    switch (PyArray_NDIM(obs_a)) {
         case 1:
             nd = 1;
             d = 1;
@@ -126,8 +126,8 @@ PyObject* compute_vq(PyObject* self, PyObject* args)
             if (index_a == NULL) {
                 goto clean_dist_a;
             }
-            float_tvq((float*)obs_a->data, (float*)code_a->data, n, nc, d,
-                    (npy_intp*)index_a->data, (float*)dist_a->data);
+            float_tvq((float*)PyArray_DATA(obs_a), (float*)PyArray_DATA(code_a), n, nc, d,
+                    (npy_intp*)PyArray_DATA(index_a), (float*)PyArray_DATA(dist_a));
             break;
         case NPY_DOUBLE:
             dist_a = (PyArrayObject*)PyArray_EMPTY(1, &n, typenum1, 0);
@@ -138,8 +138,8 @@ PyObject* compute_vq(PyObject* self, PyObject* args)
             if (index_a == NULL) {
                 goto clean_dist_a;
             }
-            double_tvq((double*)obs_a->data, (double*)code_a->data, n, nc, d,
-                    (npy_intp*)index_a->data, (double*)dist_a->data);
+            double_tvq((double*)PyArray_DATA(obs_a), (double*)PyArray_DATA(code_a), n, nc, d,
+                    (npy_intp*)PyArray_DATA(index_a), (double*)PyArray_DATA(dist_a));
             break;
         default:
             PyErr_Format(PyExc_ValueError,

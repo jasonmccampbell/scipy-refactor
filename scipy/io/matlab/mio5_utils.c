@@ -3050,11 +3050,11 @@ static CYTHON_INLINE PyArrayObject *__pyx_f_5scipy_2io_6matlab_10mio5_utils_10Va
  *         cdef int flags = 0
  *         if copy:
  */
-  if (unlikely(__pyx_v_dt->elsize == 0)) {
+  if (unlikely(PyDataType_ELSIZE(__pyx_v_dt) == 0)) {
     PyErr_Format(PyExc_ZeroDivisionError, "integer division or modulo by zero");
     {__pyx_filename = __pyx_f[0]; __pyx_lineno = 400; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
-  __pyx_v_el_count = (__pyx_v_byte_count / __pyx_v_dt->elsize);
+  __pyx_v_el_count = (__pyx_v_byte_count / PyDataType_ELSIZE(__pyx_v_dt));
 
   /* "/home/pauli/wrk/scipy/scipy/scipy/io/matlab/mio5_utils.pyx":401
  *         cdef cnp.dtype dt = <cnp.dtype>self.dtypes[mdtype]
@@ -7731,8 +7731,8 @@ static CYTHON_UNUSED int __pyx_pf_5numpy_7ndarray___getbuffer__(PyObject *__pyx_
  *             cdef list stack
  *             cdef int offset
  */
-  __Pyx_INCREF(((PyObject *)((PyArrayObject *)__pyx_v_self)->descr));
-  __pyx_v_descr = ((PyArrayObject *)__pyx_v_self)->descr;
+  __Pyx_INCREF((PyObject *)Npy_INTERFACE(PyArray_DESCR(__pyx_v_self)));
+  __pyx_v_descr = (PyArray_Descr *)Npy_INTERFACE(PyArray_DESCR(__pyx_v_self));
 
   /* "/usr/local/lib/python2.6/dist-packages/Cython-0.13-py2.6-linux-i686.egg/Cython/Includes/numpy.pxd":235
  *             cdef int offset
@@ -7807,7 +7807,7 @@ static CYTHON_UNUSED int __pyx_pf_5numpy_7ndarray___getbuffer__(PyObject *__pyx_
  *                 if ((descr.byteorder == '>' and little_endian) or
  *                     (descr.byteorder == '<' and not little_endian)):
  */
-    __pyx_v_t = __pyx_v_descr->type_num;
+    __pyx_v_t = PyDataType_TYPE_NUM(__pyx_v_descr);
 
     /* "/usr/local/lib/python2.6/dist-packages/Cython-0.13-py2.6-linux-i686.egg/Cython/Includes/numpy.pxd":246
  *             if not hasfields:
@@ -7816,7 +7816,7 @@ static CYTHON_UNUSED int __pyx_pf_5numpy_7ndarray___getbuffer__(PyObject *__pyx_
  *                     (descr.byteorder == '<' and not little_endian)):
  *                     raise ValueError(u"Non-native byte order not supported")
  */
-    __pyx_t_1 = (__pyx_v_descr->byteorder == '>');
+    __pyx_t_1 = (PyDataType_BYTEORDER(__pyx_v_descr) == '>');
     if (__pyx_t_1) {
       __pyx_t_2 = __pyx_v_little_endian;
     } else {
@@ -7831,7 +7831,7 @@ static CYTHON_UNUSED int __pyx_pf_5numpy_7ndarray___getbuffer__(PyObject *__pyx_
  *                     raise ValueError(u"Non-native byte order not supported")
  *                 if   t == NPY_BYTE:        f = "b"
  */
-      __pyx_t_1 = (__pyx_v_descr->byteorder == '<');
+      __pyx_t_1 = (PyDataType_BYTEORDER(__pyx_v_descr) == '<');
       if (__pyx_t_1) {
         __pyx_t_3 = (!__pyx_v_little_endian);
         __pyx_t_8 = __pyx_t_3;
@@ -8519,8 +8519,8 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         fields = descr.fields[childname]
  *         child, new_offset = fields
  */
-  if (likely(((PyObject *)__pyx_v_descr->names) != Py_None)) {
-    __pyx_t_1 = 0; __pyx_t_2 = ((PyObject *)__pyx_v_descr->names); __Pyx_INCREF(__pyx_t_2);
+  if (likely(((PyObject *)PyDataType_NAMES(__pyx_v_descr)) != Py_None)) {
+    __pyx_t_1 = 0; __pyx_t_2 = ((PyObject *)PyDataType_NAMES(__pyx_v_descr)); __Pyx_INCREF(__pyx_t_2);
   } else {
     PyErr_SetString(PyExc_TypeError, "'NoneType' object is not iterable"); {__pyx_filename = __pyx_f[1]; __pyx_lineno = 782; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
   }
@@ -8538,7 +8538,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *         child, new_offset = fields
  * 
  */
-    __pyx_t_3 = PyObject_GetItem(__pyx_v_descr->fields, __pyx_v_childname); if (!__pyx_t_3) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+    __pyx_t_3 = PyObject_GetItem(PyDataType_FIELDS(__pyx_v_descr), __pyx_v_childname); if (!__pyx_t_3) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_GOTREF(__pyx_t_3);
     if (!(likely(PyTuple_CheckExact(__pyx_t_3))||((__pyx_t_3) == Py_None)||(PyErr_Format(PyExc_TypeError, "Expected tuple, got %.200s", Py_TYPE(__pyx_t_3)->tp_name), 0))) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 783; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
     __Pyx_DECREF(((PyObject *)__pyx_v_fields));
@@ -8622,7 +8622,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             (child.byteorder == '<' and not little_endian)):
  *             raise ValueError(u"Non-native byte order not supported")
  */
-    __pyx_t_6 = (__pyx_v_child->byteorder == '>');
+    __pyx_t_6 = (PyDataType_BYTEORDER(__pyx_v_child) == '>');
     if (__pyx_t_6) {
       __pyx_t_7 = __pyx_v_little_endian;
     } else {
@@ -8637,7 +8637,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             raise ValueError(u"Non-native byte order not supported")
  *             # One could encode it in the format string and have Cython
  */
-      __pyx_t_6 = (__pyx_v_child->byteorder == '<');
+      __pyx_t_6 = (PyDataType_BYTEORDER(__pyx_v_child) == '<');
       if (__pyx_t_6) {
         __pyx_t_8 = (!__pyx_v_little_endian);
         __pyx_t_9 = __pyx_t_8;
@@ -8724,7 +8724,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  * 
  *         if not PyDataType_HASFIELDS(child):
  */
-    (__pyx_v_offset[0]) += __pyx_v_child->elsize;
+    (__pyx_v_offset[0]) += PyDataType_ELSIZE(__pyx_v_child);
 
     /* "/usr/local/lib/python2.6/dist-packages/Cython-0.13-py2.6-linux-i686.egg/Cython/Includes/numpy.pxd":808
  *         offset[0] += child.itemsize
@@ -8743,7 +8743,7 @@ static CYTHON_INLINE char *__pyx_f_5numpy__util_dtypestring(PyArray_Descr *__pyx
  *             if end - f < 5:
  *                 raise RuntimeError(u"Format string allocated too short.")
  */
-      __pyx_t_3 = PyInt_FromLong(__pyx_v_child->type_num); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
+      __pyx_t_3 = PyInt_FromLong(PyDataType_TYPE_NUM(__pyx_v_child)); if (unlikely(!__pyx_t_3)) {__pyx_filename = __pyx_f[1]; __pyx_lineno = 809; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
       __Pyx_GOTREF(__pyx_t_3);
       __Pyx_DECREF(__pyx_v_t);
       __pyx_v_t = __pyx_t_3;
@@ -9251,7 +9251,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  *      arr.base = baseptr
  * 
  */
-  Py_XDECREF(__pyx_v_arr->base);
+  Py_XDECREF(PyArray_BASE(__pyx_v_arr));
 
   /* "/usr/local/lib/python2.6/dist-packages/Cython-0.13-py2.6-linux-i686.egg/Cython/Includes/numpy.pxd":961
  *          baseptr = <PyObject*>base
@@ -9260,7 +9260,7 @@ static CYTHON_INLINE void __pyx_f_5numpy_set_array_base(PyArrayObject *__pyx_v_a
  * 
  * cdef inline object get_array_base(ndarray arr):
  */
-  __pyx_v_arr->base = __pyx_v_baseptr;
+  PyArray_BASE(__pyx_v_arr) = __pyx_v_baseptr;
 
   __Pyx_RefNannyFinishContext();
 }
@@ -9285,7 +9285,7 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  *         return None
  *     else:
  */
-  __pyx_t_1 = (__pyx_v_arr->base == NULL);
+  __pyx_t_1 = (PyArray_BASE(__pyx_v_arr) == NULL);
   if (__pyx_t_1) {
 
     /* "/usr/local/lib/python2.6/dist-packages/Cython-0.13-py2.6-linux-i686.egg/Cython/Includes/numpy.pxd":965
@@ -9309,8 +9309,8 @@ static CYTHON_INLINE PyObject *__pyx_f_5numpy_get_array_base(PyArrayObject *__py
  *         return <object>arr.base             # <<<<<<<<<<<<<<
  */
     __Pyx_XDECREF(__pyx_r);
-    __Pyx_INCREF(((PyObject *)__pyx_v_arr->base));
-    __pyx_r = ((PyObject *)__pyx_v_arr->base);
+    __Pyx_INCREF(((PyObject *)PyArray_BASE(__pyx_v_arr)));
+    __pyx_r = ((PyObject *)PyArray_BASE(__pyx_v_arr));
     goto __pyx_L0;
   }
   __pyx_L3:;
