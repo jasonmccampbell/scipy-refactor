@@ -1,6 +1,14 @@
 #cython: ccomplex=True
+
+# Fwrap configuration:
+# Fwrap: version 0.2.0dev_3d6e890
+# Fwrap: git-head b51fddcff1c0269f54ad84990151420ba5e2417e
+# Fwrap: wraps specfun.pyf
+# Fwrap:     sha1 4c6fa948555907dcac9df3944b27f272f40ee224
+# Fwrap: f77binding True
+
 """
-The specfun module was generated with Fwrap v0.2.0dev_a9021ff.
+The specfun module was generated with Fwrap v0.2.0dev_3d6e890.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -102,7 +110,7 @@ cpdef api object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, ob
     fw_copyshape(cqm_shape_, np.PyArray_DIMS(cqm_), 2)
     cqd_ = fw_getoutarray(cqd, fwc_complex_x16_t_enum, 2, [((mm) - (0) + 1), ((n) - (0) + 1)])
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 2)
-    clqmn_c(&mm, &m, &n, &z, cqm_shape_, <fwc_complex_x16_t*>cqm_.data, cqd_shape_, <fwc_complex_x16_t*>cqd_.data, &fw_iserr__, fw_errstr__)
+    clqmn_c(&mm, &m, &n, &z, cqm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqm_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqmn' wrapper.")
     return (cqm_, cqd_,)
@@ -140,7 +148,7 @@ cpdef api object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=N
     fw_copyshape(qm_shape_, np.PyArray_DIMS(qm_), 2)
     qd_ = fw_getoutarray(qd, fwr_dbl_t_enum, 2, [((mm) - (0) + 1), ((n) - (0) + 1)])
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 2)
-    lqmn_c(&mm, &m, &n, &x, qm_shape_, <fwr_dbl_t*>qm_.data, qd_shape_, <fwr_dbl_t*>qd_.data, &fw_iserr__, fw_errstr__)
+    lqmn_c(&mm, &m, &n, &x, qm_shape_, <fwr_dbl_t*>np.PyArray_DATA(qm_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqmn' wrapper.")
     return (qm_, qd_,)
@@ -179,7 +187,7 @@ cpdef api object clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t 
     fw_copyshape(cpm_shape_, np.PyArray_DIMS(cpm_), 2)
     cpd_ = fw_getoutarray(cpd, fwc_complex_x16_t_enum, 2, [((m) - (0) + 1), ((n) - (0) + 1)])
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 2)
-    clpmn_c(&mm, &m, &n, &x, &y, cpm_shape_, <fwc_complex_x16_t*>cpm_.data, cpd_shape_, <fwc_complex_x16_t*>cpd_.data, &fw_iserr__, fw_errstr__)
+    clpmn_c(&mm, &m, &n, &x, &y, cpm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpm_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clpmn' wrapper.")
     return (cpm_, cpd_,)
@@ -223,7 +231,7 @@ cpdef api object jdzo(fwi_integer_t nt, object n=None, object m=None, object pco
     fw_copyshape(pcode_shape_, np.PyArray_DIMS(pcode_), 1)
     zo_ = fw_getoutarray(zo, fwr_dbl_t_enum, 1, [((1400) - (0) + 1)])
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    jdzo_c(&nt, n_shape_, <fwi_integer_t*>n_.data, m_shape_, <fwi_integer_t*>m_.data, pcode_shape_, <fwi_integer_t*>pcode_.data, zo_shape_, <fwr_dbl_t*>zo_.data, &fw_iserr__, fw_errstr__)
+    jdzo_c(&nt, n_shape_, <fwi_integer_t*>np.PyArray_DATA(n_), m_shape_, <fwi_integer_t*>np.PyArray_DATA(m_), pcode_shape_, <fwi_integer_t*>np.PyArray_DATA(pcode_), zo_shape_, <fwr_dbl_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'jdzo' wrapper.")
     return (n_, m_, pcode_, zo_,)
@@ -249,7 +257,7 @@ cpdef api object bernob(fwi_integer_t n, object bn=None):
         raise ValueError('Condition on arguments not satisfied: n >= 2')
     bn_ = fw_getoutarray(bn, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(bn_shape_, np.PyArray_DIMS(bn_), 1)
-    bernob_c(&n, bn_shape_, <fwr_dbl_t*>bn_.data, &fw_iserr__, fw_errstr__)
+    bernob_c(&n, bn_shape_, <fwr_dbl_t*>np.PyArray_DATA(bn_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'bernob' wrapper.")
     return bn_
@@ -275,7 +283,7 @@ cpdef api object bernoa(fwi_integer_t n, object bn=None):
         raise ValueError('Condition on arguments not satisfied: n >= 0')
     bn_ = fw_getoutarray(bn, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(bn_shape_, np.PyArray_DIMS(bn_), 1)
-    bernoa_c(&n, bn_shape_, <fwr_dbl_t*>bn_.data, &fw_iserr__, fw_errstr__)
+    bernoa_c(&n, bn_shape_, <fwr_dbl_t*>np.PyArray_DATA(bn_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'bernoa' wrapper.")
     return bn_
@@ -322,7 +330,7 @@ cpdef api object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, o
     fw_copyshape(csy_shape_, np.PyArray_DIMS(csy_), 1)
     cdy_ = fw_getoutarray(cdy, fwc_complex_x16_t_enum, 1, [(n + 1)])
     fw_copyshape(cdy_shape_, np.PyArray_DIMS(cdy_), 1)
-    csphjy_c(&n, &z, &nm, csj_shape_, <fwc_complex_x16_t*>csj_.data, cdj_shape_, <fwc_complex_x16_t*>cdj_.data, csy_shape_, <fwc_complex_x16_t*>csy_.data, cdy_shape_, <fwc_complex_x16_t*>cdy_.data, &fw_iserr__, fw_errstr__)
+    csphjy_c(&n, &z, &nm, csj_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csj_), cdj_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdj_), csy_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csy_), cdy_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'csphjy' wrapper.")
     return (nm, csj_, cdj_, csy_, cdy_,)
@@ -358,7 +366,7 @@ cpdef api object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=
     fw_copyshape(pm_shape_, np.PyArray_DIMS(pm_), 1)
     pd_ = fw_getoutarray(pd, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
-    lpmns_c(&m, &n, &x, pm_shape_, <fwr_dbl_t*>pm_.data, pd_shape_, <fwr_dbl_t*>pd_.data, &fw_iserr__, fw_errstr__)
+    lpmns_c(&m, &n, &x, pm_shape_, <fwr_dbl_t*>np.PyArray_DATA(pm_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpmns' wrapper.")
     return (pm_, pd_,)
@@ -384,7 +392,7 @@ cpdef api object eulera(fwi_integer_t n, object en=None):
         raise ValueError('Condition on arguments not satisfied: n >= 0')
     en_ = fw_getoutarray(en, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(en_shape_, np.PyArray_DIMS(en_), 1)
-    eulera_c(&n, en_shape_, <fwr_dbl_t*>en_.data, &fw_iserr__, fw_errstr__)
+    eulera_c(&n, en_shape_, <fwr_dbl_t*>np.PyArray_DATA(en_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'eulera' wrapper.")
     return en_
@@ -417,7 +425,7 @@ cpdef api object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, obj
     fw_copyshape(cqn_shape_, np.PyArray_DIMS(cqn_), 1)
     cqd_ = fw_getoutarray(cqd, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 1)
-    clqn_c(&n, &z, cqn_shape_, <fwc_complex_x16_t*>cqn_.data, cqd_shape_, <fwc_complex_x16_t*>cqd_.data, &fw_iserr__, fw_errstr__)
+    clqn_c(&n, &z, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqn' wrapper.")
     return (cqn_, cqd_,)
@@ -462,7 +470,7 @@ cpdef api object airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, ob
     fw_copyshape(xc_shape_, np.PyArray_DIMS(xc_), 1)
     xd_ = fw_getoutarray(xd, fwr_dbl_t_enum, 1, [(nt)])
     fw_copyshape(xd_shape_, np.PyArray_DIMS(xd_), 1)
-    airyzo_c(&nt, &kf, xa_shape_, <fwr_dbl_t*>xa_.data, xb_shape_, <fwr_dbl_t*>xb_.data, xc_shape_, <fwr_dbl_t*>xc_.data, xd_shape_, <fwr_dbl_t*>xd_.data, &fw_iserr__, fw_errstr__)
+    airyzo_c(&nt, &kf, xa_shape_, <fwr_dbl_t*>np.PyArray_DATA(xa_), xb_shape_, <fwr_dbl_t*>np.PyArray_DATA(xb_), xc_shape_, <fwr_dbl_t*>np.PyArray_DATA(xc_), xd_shape_, <fwr_dbl_t*>np.PyArray_DATA(xd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'airyzo' wrapper.")
     return (xa_, xb_, xc_, xd_,)
@@ -488,7 +496,7 @@ cpdef api object eulerb(fwi_integer_t n, object en=None):
         raise ValueError('Condition on arguments not satisfied: n >= 2')
     en_ = fw_getoutarray(en, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(en_shape_, np.PyArray_DIMS(en_), 1)
-    eulerb_c(&n, en_shape_, <fwr_dbl_t*>en_.data, &fw_iserr__, fw_errstr__)
+    eulerb_c(&n, en_shape_, <fwr_dbl_t*>np.PyArray_DATA(en_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'eulerb' wrapper.")
     return en_
@@ -518,7 +526,7 @@ cpdef api object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=
         raise ValueError('Condition on arguments not satisfied: q >= 0')
     cv_ = fw_getoutarray(cv, fwr_dbl_t_enum, 1, [(m)])
     fw_copyshape(cv_shape_, np.PyArray_DIMS(cv_), 1)
-    cva1_c(&kd, &m, &q, cv_shape_, <fwr_dbl_t*>cv_.data, &fw_iserr__, fw_errstr__)
+    cva1_c(&kd, &m, &q, cv_shape_, <fwr_dbl_t*>np.PyArray_DATA(cv_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cva1' wrapper.")
     return cv_
@@ -551,7 +559,7 @@ cpdef api object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=No
     fw_copyshape(qn_shape_, np.PyArray_DIMS(qn_), 1)
     qd_ = fw_getoutarray(qd, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
-    lqnb_c(&n, &x, qn_shape_, <fwr_dbl_t*>qn_.data, qd_shape_, <fwr_dbl_t*>qd_.data, &fw_iserr__, fw_errstr__)
+    lqnb_c(&n, &x, qn_shape_, <fwr_dbl_t*>np.PyArray_DATA(qn_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqnb' wrapper.")
     return (qn_, qd_,)
@@ -586,7 +594,7 @@ cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     fw_copyshape(vl_shape_, np.PyArray_DIMS(vl_), 1)
     dl_ = fw_getoutarray(dl, fwr_dbl_t_enum, 1, [(<int>v+1)])
     fw_copyshape(dl_shape_, np.PyArray_DIMS(dl_), 1)
-    lamv_c(&v, &x, &vm, vl_shape_, <fwr_dbl_t*>vl_.data, dl_shape_, <fwr_dbl_t*>dl_.data, &fw_iserr__, fw_errstr__)
+    lamv_c(&v, &x, &vm, vl_shape_, <fwr_dbl_t*>np.PyArray_DATA(vl_), dl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lamv' wrapper.")
     return (vm, vl_, dl_,)
@@ -618,7 +626,7 @@ cpdef api object lagzo(fwi_integer_t n, object x=None, object w=None):
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     w_ = fw_getoutarray(w, fwr_dbl_t_enum, 1, [(n)])
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
-    lagzo_c(&n, x_shape_, <fwr_dbl_t*>x_.data, w_shape_, <fwr_dbl_t*>w_.data, &fw_iserr__, fw_errstr__)
+    lagzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lagzo' wrapper.")
     return (x_, w_,)
@@ -650,7 +658,7 @@ cpdef api object legzo(fwi_integer_t n, object x=None, object w=None):
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     w_ = fw_getoutarray(w, fwr_dbl_t_enum, 1, [(n)])
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
-    legzo_c(&n, x_shape_, <fwr_dbl_t*>x_.data, w_shape_, <fwr_dbl_t*>w_.data, &fw_iserr__, fw_errstr__)
+    legzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'legzo' wrapper.")
     return (x_, w_,)
@@ -687,7 +695,7 @@ cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     fw_copyshape(dv_shape_, np.PyArray_DIMS(dv_), 1)
     dp_ = fw_getoutarray(dp, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(dp_shape_, np.PyArray_DIMS(dp_), 1)
-    pbdv_c(&v, &x, dv_shape_, <fwr_dbl_t*>dv_.data, dp_shape_, <fwr_dbl_t*>dp_.data, &pdf, &pdd, &fw_iserr__, fw_errstr__)
+    pbdv_c(&v, &x, dv_shape_, <fwr_dbl_t*>np.PyArray_DATA(dv_), dp_shape_, <fwr_dbl_t*>np.PyArray_DATA(dp_), &pdf, &pdd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'pbdv' wrapper.")
     return (dv_, dp_, pdf, pdd,)
@@ -713,7 +721,7 @@ cpdef api object cerzo(fwi_integer_t nt, object zo=None):
         raise ValueError('Condition on arguments not satisfied: nt > 0')
     zo_ = fw_getoutarray(zo, fwc_complex_x16_t_enum, 1, [(nt)])
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    cerzo_c(&nt, zo_shape_, <fwc_complex_x16_t*>zo_.data, &fw_iserr__, fw_errstr__)
+    cerzo_c(&nt, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cerzo' wrapper.")
     return zo_
@@ -748,7 +756,7 @@ cpdef api object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=No
     fw_copyshape(bl_shape_, np.PyArray_DIMS(bl_), 1)
     dl_ = fw_getoutarray(dl, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dl_shape_, np.PyArray_DIMS(dl_), 1)
-    lamn_c(&n, &x, &nm, bl_shape_, <fwr_dbl_t*>bl_.data, dl_shape_, <fwr_dbl_t*>dl_.data, &fw_iserr__, fw_errstr__)
+    lamn_c(&n, &x, &nm, bl_shape_, <fwr_dbl_t*>np.PyArray_DATA(bl_), dl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lamn' wrapper.")
     return (nm, bl_, dl_,)
@@ -781,7 +789,7 @@ cpdef api object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, obj
     fw_copyshape(cpn_shape_, np.PyArray_DIMS(cpn_), 1)
     cpd_ = fw_getoutarray(cpd, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
-    clpn_c(&n, &z, cpn_shape_, <fwc_complex_x16_t*>cpn_.data, cpd_shape_, <fwc_complex_x16_t*>cpd_.data, &fw_iserr__, fw_errstr__)
+    clpn_c(&n, &z, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clpn' wrapper.")
     return (cpn_, cpd_,)
@@ -817,7 +825,7 @@ cpdef api object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=
     fw_copyshape(qm_shape_, np.PyArray_DIMS(qm_), 1)
     qd_ = fw_getoutarray(qd, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
-    lqmns_c(&m, &n, &x, qm_shape_, <fwr_dbl_t*>qm_.data, qd_shape_, <fwr_dbl_t*>qd_.data, &fw_iserr__, fw_errstr__)
+    lqmns_c(&m, &n, &x, qm_shape_, <fwr_dbl_t*>np.PyArray_DATA(qm_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqmns' wrapper.")
     return (qm_, qd_,)
@@ -877,7 +885,7 @@ cpdef api object lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=N
     fw_copyshape(pm_shape_, np.PyArray_DIMS(pm_), 2)
     pd_ = fw_getoutarray(pd, fwr_dbl_t_enum, 2, [(m+1), (n+1)])
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 2)
-    lpmn_c(&mm, &m, &n, &x, pm_shape_, <fwr_dbl_t*>pm_.data, pd_shape_, <fwr_dbl_t*>pd_.data, &fw_iserr__, fw_errstr__)
+    lpmn_c(&mm, &m, &n, &x, pm_shape_, <fwr_dbl_t*>np.PyArray_DATA(pm_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpmn' wrapper.")
     return (pm_, pd_,)
@@ -906,7 +914,7 @@ cpdef api object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
         raise ValueError('Condition on arguments not satisfied: nt > 0')
     zo_ = fw_getoutarray(zo, fwc_complex_x16_t_enum, 1, [(nt)])
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    fcszo_c(&kf, &nt, zo_shape_, <fwc_complex_x16_t*>zo_.data, &fw_iserr__, fw_errstr__)
+    fcszo_c(&kf, &nt, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'fcszo' wrapper.")
     return zo_
@@ -976,7 +984,7 @@ cpdef api object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=No
     fw_copyshape(qn_shape_, np.PyArray_DIMS(qn_), 1)
     qd_ = fw_getoutarray(qd, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
-    lqna_c(&n, &x, qn_shape_, <fwr_dbl_t*>qn_.data, qd_shape_, <fwr_dbl_t*>qd_.data, &fw_iserr__, fw_errstr__)
+    lqna_c(&n, &x, qn_shape_, <fwr_dbl_t*>np.PyArray_DATA(qn_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqna' wrapper.")
     return (qn_, qd_,)
@@ -1009,7 +1017,7 @@ cpdef api object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, ob
     fw_copyshape(cpb_shape_, np.PyArray_DIMS(cpb_), 1)
     cpd_ = fw_getoutarray(cpd, fwc_complex_x16_t_enum, 1, [(abs(n)+2)])
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
-    cpbdn_c(&n, &z, cpb_shape_, <fwc_complex_x16_t*>cpb_.data, cpd_shape_, <fwc_complex_x16_t*>cpd_.data, &fw_iserr__, fw_errstr__)
+    cpbdn_c(&n, &z, cpb_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpb_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cpbdn' wrapper.")
     return (cpb_, cpd_,)
@@ -1042,7 +1050,7 @@ cpdef api object lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=Non
     fw_copyshape(pn_shape_, np.PyArray_DIMS(pn_), 1)
     pd_ = fw_getoutarray(pd, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
-    lpn_c(&n, &x, pn_shape_, <fwr_dbl_t*>pn_.data, pd_shape_, <fwr_dbl_t*>pd_.data, &fw_iserr__, fw_errstr__)
+    lpn_c(&n, &x, pn_shape_, <fwr_dbl_t*>np.PyArray_DATA(pn_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpn' wrapper.")
     return (pn_, pd_,)
@@ -1073,7 +1081,7 @@ cpdef api object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t
         raise ValueError('Condition on arguments not satisfied: q >= 0')
     fc_ = fw_getoutarray(fc, fwr_dbl_t_enum, 1, [(251)])
     fw_copyshape(fc_shape_, np.PyArray_DIMS(fc_), 1)
-    fcoef_c(&kd, &m, &q, &a, fc_shape_, <fwr_dbl_t*>fc_.data, &fw_iserr__, fw_errstr__)
+    fcoef_c(&kd, &m, &q, &a, fc_shape_, <fwr_dbl_t*>np.PyArray_DATA(fc_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'fcoef' wrapper.")
     return fc_
@@ -1108,7 +1116,7 @@ cpdef api object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=No
     fw_copyshape(si_shape_, np.PyArray_DIMS(si_), 1)
     di_ = fw_getoutarray(di, fwr_dbl_t_enum, 1, [(n + 1)])
     fw_copyshape(di_shape_, np.PyArray_DIMS(di_), 1)
-    sphi_c(&n, &x, &nm, si_shape_, <fwr_dbl_t*>si_.data, di_shape_, <fwr_dbl_t*>di_.data, &fw_iserr__, fw_errstr__)
+    sphi_c(&n, &x, &nm, si_shape_, <fwr_dbl_t*>np.PyArray_DATA(si_), di_shape_, <fwr_dbl_t*>np.PyArray_DATA(di_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphi' wrapper.")
     return (nm, si_, di_,)
@@ -1143,7 +1151,7 @@ cpdef api object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=No
     fw_copyshape(ry_shape_, np.PyArray_DIMS(ry_), 1)
     dy_ = fw_getoutarray(dy, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dy_shape_, np.PyArray_DIMS(dy_), 1)
-    rcty_c(&n, &x, &nm, ry_shape_, <fwr_dbl_t*>ry_.data, dy_shape_, <fwr_dbl_t*>dy_.data, &fw_iserr__, fw_errstr__)
+    rcty_c(&n, &x, &nm, ry_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry_), dy_shape_, <fwr_dbl_t*>np.PyArray_DATA(dy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'rcty' wrapper.")
     return (nm, ry_, dy_,)
@@ -1182,7 +1190,7 @@ cpdef api object lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=No
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
     pl_ = fw_getoutarray(pl, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(pl_shape_, np.PyArray_DIMS(pl_), 1)
-    lpni_c(&n, &x, pn_shape_, <fwr_dbl_t*>pn_.data, pd_shape_, <fwr_dbl_t*>pd_.data, pl_shape_, <fwr_dbl_t*>pl_.data, &fw_iserr__, fw_errstr__)
+    lpni_c(&n, &x, pn_shape_, <fwr_dbl_t*>np.PyArray_DATA(pn_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), pl_shape_, <fwr_dbl_t*>np.PyArray_DATA(pl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpni' wrapper.")
     return (pn_, pd_, pl_,)
@@ -1220,7 +1228,7 @@ cpdef api object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, obje
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
     zv_ = fw_getoutarray(zv, fwc_complex_x16_t_enum, 1, [(nt)])
     fw_copyshape(zv_shape_, np.PyArray_DIMS(zv_), 1)
-    cyzo_c(&nt, &kf, &kc, zo_shape_, <fwc_complex_x16_t*>zo_.data, zv_shape_, <fwc_complex_x16_t*>zv_.data, &fw_iserr__, fw_errstr__)
+    cyzo_c(&nt, &kf, &kc, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), zv_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zv_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cyzo' wrapper.")
     return (zo_, zv_,)
@@ -1267,7 +1275,7 @@ cpdef api object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, o
     fw_copyshape(csk_shape_, np.PyArray_DIMS(csk_), 1)
     cdk_ = fw_getoutarray(cdk, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cdk_shape_, np.PyArray_DIMS(cdk_), 1)
-    csphik_c(&n, &z, &nm, csi_shape_, <fwc_complex_x16_t*>csi_.data, cdi_shape_, <fwc_complex_x16_t*>cdi_.data, csk_shape_, <fwc_complex_x16_t*>csk_.data, cdk_shape_, <fwc_complex_x16_t*>cdk_.data, &fw_iserr__, fw_errstr__)
+    csphik_c(&n, &z, &nm, csi_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csi_), cdi_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdi_), csk_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csk_), cdk_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdk_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'csphik' wrapper.")
     return (nm, csi_, cdi_, csk_, cdk_,)
@@ -1302,7 +1310,7 @@ cpdef api object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=No
     fw_copyshape(sj_shape_, np.PyArray_DIMS(sj_), 1)
     dj_ = fw_getoutarray(dj, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dj_shape_, np.PyArray_DIMS(dj_), 1)
-    sphj_c(&n, &x, &nm, sj_shape_, <fwr_dbl_t*>sj_.data, dj_shape_, <fwr_dbl_t*>dj_.data, &fw_iserr__, fw_errstr__)
+    sphj_c(&n, &x, &nm, sj_shape_, <fwr_dbl_t*>np.PyArray_DATA(sj_), dj_shape_, <fwr_dbl_t*>np.PyArray_DATA(dj_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphj' wrapper.")
     return (nm, sj_, dj_,)
@@ -1338,7 +1346,7 @@ cpdef api object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl
     fw_copyshape(pl_shape_, np.PyArray_DIMS(pl_), 1)
     dpl_ = fw_getoutarray(dpl, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dpl_shape_, np.PyArray_DIMS(dpl_), 1)
-    othpl_c(&kf, &n, &x, pl_shape_, <fwr_dbl_t*>pl_.data, dpl_shape_, <fwr_dbl_t*>dpl_.data, &fw_iserr__, fw_errstr__)
+    othpl_c(&kf, &n, &x, pl_shape_, <fwr_dbl_t*>np.PyArray_DATA(pl_), dpl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dpl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'othpl' wrapper.")
     return (pl_, dpl_,)
@@ -1367,7 +1375,7 @@ cpdef api object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
         raise ValueError('Condition on arguments not satisfied: kd >= 1 or kd <= 8')
     zo_ = fw_getoutarray(zo, fwr_dbl_t_enum, 1, [(nt)])
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    klvnzo_c(&nt, &kd, zo_shape_, <fwr_dbl_t*>zo_.data, &fw_iserr__, fw_errstr__)
+    klvnzo_c(&nt, &kd, zo_shape_, <fwr_dbl_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'klvnzo' wrapper.")
     return zo_
@@ -1414,7 +1422,7 @@ cpdef api object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object
     fw_copyshape(ry0_shape_, np.PyArray_DIMS(ry0_), 1)
     ry1_ = fw_getoutarray(ry1, fwr_dbl_t_enum, 1, [(nt)])
     fw_copyshape(ry1_shape_, np.PyArray_DIMS(ry1_), 1)
-    jyzo_c(&n, &nt, rj0_shape_, <fwr_dbl_t*>rj0_.data, rj1_shape_, <fwr_dbl_t*>rj1_.data, ry0_shape_, <fwr_dbl_t*>ry0_.data, ry1_shape_, <fwr_dbl_t*>ry1_.data, &fw_iserr__, fw_errstr__)
+    jyzo_c(&n, &nt, rj0_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj0_), rj1_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj1_), ry0_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry0_), ry1_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry1_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'jyzo' wrapper.")
     return (rj0_, rj1_, ry0_, ry1_,)
@@ -1449,7 +1457,7 @@ cpdef api object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=No
     fw_copyshape(rj_shape_, np.PyArray_DIMS(rj_), 1)
     dj_ = fw_getoutarray(dj, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dj_shape_, np.PyArray_DIMS(dj_), 1)
-    rctj_c(&n, &x, &nm, rj_shape_, <fwr_dbl_t*>rj_.data, dj_shape_, <fwr_dbl_t*>dj_.data, &fw_iserr__, fw_errstr__)
+    rctj_c(&n, &x, &nm, rj_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj_), dj_shape_, <fwr_dbl_t*>np.PyArray_DATA(dj_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'rctj' wrapper.")
     return (nm, rj_, dj_,)
@@ -1481,7 +1489,7 @@ cpdef api object herzo(fwi_integer_t n, object x=None, object w=None):
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     w_ = fw_getoutarray(w, fwr_dbl_t_enum, 1, [(n)])
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
-    herzo_c(&n, x_shape_, <fwr_dbl_t*>x_.data, w_shape_, <fwr_dbl_t*>w_.data, &fw_iserr__, fw_errstr__)
+    herzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'herzo' wrapper.")
     return (x_, w_,)
@@ -1518,7 +1526,7 @@ cpdef api object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=No
     fw_copyshape(sk_shape_, np.PyArray_DIMS(sk_), 1)
     dk_ = fw_getoutarray(dk, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dk_shape_, np.PyArray_DIMS(dk_), 1)
-    sphk_c(&n, &x, &nm, sk_shape_, <fwr_dbl_t*>sk_.data, dk_shape_, <fwr_dbl_t*>dk_.data, &fw_iserr__, fw_errstr__)
+    sphk_c(&n, &x, &nm, sk_shape_, <fwr_dbl_t*>np.PyArray_DATA(sk_), dk_shape_, <fwr_dbl_t*>np.PyArray_DATA(dk_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphk' wrapper.")
     return (nm, sk_, dk_,)
@@ -1555,7 +1563,7 @@ cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     fw_copyshape(vv_shape_, np.PyArray_DIMS(vv_), 1)
     vp_ = fw_getoutarray(vp, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(vp_shape_, np.PyArray_DIMS(vp_), 1)
-    pbvv_c(&v, &x, vv_shape_, <fwr_dbl_t*>vv_.data, vp_shape_, <fwr_dbl_t*>vp_.data, &pvf, &pvd, &fw_iserr__, fw_errstr__)
+    pbvv_c(&v, &x, vv_shape_, <fwr_dbl_t*>np.PyArray_DATA(vv_), vp_shape_, <fwr_dbl_t*>np.PyArray_DATA(vp_), &pvf, &pvd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'pbvv' wrapper.")
     return (vv_, vp_, pvf, pvd,)
@@ -1588,7 +1596,7 @@ cpdef api object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer
         raise ValueError('Condition on arguments not satisfied: (kd == -1) or (kd == 1)')
     eg_ = fw_getoutarray(eg, fwr_dbl_t_enum, 1, [(n-m+2)])
     fw_copyshape(eg_shape_, np.PyArray_DIMS(eg_), 1)
-    segv_c(&m, &n, &c, &kd, &cv, eg_shape_, <fwr_dbl_t*>eg_.data, &fw_iserr__, fw_errstr__)
+    segv_c(&m, &n, &c, &kd, &cv, eg_shape_, <fwr_dbl_t*>np.PyArray_DATA(eg_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'segv' wrapper.")
     return (cv, eg_,)
@@ -1625,7 +1633,7 @@ cpdef api object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=No
     fw_copyshape(sy_shape_, np.PyArray_DIMS(sy_), 1)
     dy_ = fw_getoutarray(dy, fwr_dbl_t_enum, 1, [(n+1)])
     fw_copyshape(dy_shape_, np.PyArray_DIMS(dy_), 1)
-    sphy_c(&n, &x, &nm, sy_shape_, <fwr_dbl_t*>sy_.data, dy_shape_, <fwr_dbl_t*>dy_.data, &fw_iserr__, fw_errstr__)
+    sphy_c(&n, &x, &nm, sy_shape_, <fwr_dbl_t*>np.PyArray_DATA(sy_), dy_shape_, <fwr_dbl_t*>np.PyArray_DATA(dy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphy' wrapper.")
     return (nm, sy_, dy_,)
