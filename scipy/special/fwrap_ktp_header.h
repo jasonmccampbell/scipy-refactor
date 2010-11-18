@@ -1,5 +1,11 @@
 #ifndef FWRAP_KTP_HEADER_H
 #define FWRAP_KTP_HEADER_H
+#if defined(__cplusplus)
+   #include <complex>
+   #define fw_complex(x) std::complex<x>
+#else
+   #define fw_complex(x) x _Complex
+#endif
 #define FW_ARR_DIM__ 2
 #define FW_CHAR_SIZE__ 1
 #define FW_INIT_ERR__ -1
@@ -21,12 +27,12 @@ typedef npy_float32 fwr_real_4_t;
 typedef npy_float64 fwr_real_x8_t;
 typedef npy_float64 fwr_real_8_t;
 typedef double fwr_dbl_t;
-typedef float _Complex fwc_complex_t;
-typedef float _Complex fwc_complex_x8_t;
-typedef float _Complex fwc_complex_4_t;
-typedef double _Complex fwc_complex_x16_t;
-typedef double _Complex fwc_complex_8_t;
-typedef double _Complex fwc_dbl_complex_t;
+typedef fw_complex(float) fwc_complex_t;
+typedef fw_complex(float) fwc_complex_x8_t;
+typedef fw_complex(float) fwc_complex_4_t;
+typedef fw_complex(double) fwc_complex_x16_t;
+typedef fw_complex(double) fwc_complex_8_t;
+typedef fw_complex(double) fwc_dbl_complex_t;
 typedef char fw_character_t;
 typedef int fwl_logical_t;
 typedef npy_int8 fwl_logical_x1_t;
