@@ -43,6 +43,9 @@
     #endif
 #endif
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
 FORTRAN_CALLSPEC void F_FUNC(clqmn_c,CLQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lqmn_c,LQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(clpmn_c,CLPMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
@@ -88,6 +91,9 @@ FORTRAN_CALLSPEC void F_FUNC(sphk_c,SPHK_C)(fwi_integer_t *, fwr_dbl_t *, fwi_in
 FORTRAN_CALLSPEC void F_FUNC(pbvv_c,PBVV_C)(fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(segv_c,SEGV_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(sphy_c,SPHY_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
+#if defined(__cplusplus)
+} /* extern "C" */
+#endif
 
 #if !defined(NO_FORTRAN_MANGLING)
 #define clqmn_c F_FUNC(clqmn_c,CLQMN_C)

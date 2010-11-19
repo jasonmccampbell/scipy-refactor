@@ -1,14 +1,16 @@
 #cython: ccomplex=True
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_3d6e890
-# Fwrap: git-head b51fddcff1c0269f54ad84990151420ba5e2417e
-# Fwrap: wraps specfun.pyf
-# Fwrap:     sha1 4c6fa948555907dcac9df3944b27f272f40ee224
+# Fwrap: version 
+# Fwrap: vcs none
 # Fwrap: f77binding True
+# Fwrap: auxiliary specfun.pxd
+# Fwrap: auxiliary specfun_fc.f
+# Fwrap: auxiliary specfun_fc.h
+# Fwrap: auxiliary specfun_fc.pxd
 
 """
-The specfun module was generated with Fwrap v0.2.0dev_3d6e890.
+The specfun module was generated with Fwrap v0.2.0dev_0ad527c.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
