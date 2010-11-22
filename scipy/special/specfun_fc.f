@@ -630,14 +630,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lamv
         fw_iserr__ = -1
-        if (((int)v+1) .ne. (vl_shape__(1))) then
+        if ((int(v)+1) .ne. (vl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("vl                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((int)v+1) .ne. (dl_shape__(1))) then
+        if ((int(v)+1) .ne. (dl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dl                                  
      &                           ", fw_errstr__)
@@ -756,14 +756,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external pbdv
         fw_iserr__ = -1
-        if ((abs((int)v)+2) .ne. (dv_shape__(1))) then
+        if ((abs(int(v))+2) .ne. (dv_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dv                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if ((abs((int)v)+2) .ne. (dp_shape__(1))) then
+        if ((abs(int(v))+2) .ne. (dp_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dp                                  
      &                           ", fw_errstr__)
@@ -1803,14 +1803,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external pbvv
         fw_iserr__ = -1
-        if ((abs((int)v)+2) .ne. (vv_shape__(1))) then
+        if ((abs(int(v))+2) .ne. (vv_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("vv                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if ((abs((int)v)+2) .ne. (vp_shape__(1))) then
+        if ((abs(int(v))+2) .ne. (vp_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("vp                                  
      &                           ", fw_errstr__)

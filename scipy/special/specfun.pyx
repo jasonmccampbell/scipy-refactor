@@ -696,14 +696,14 @@ cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     ----------
     v : fwr_dbl, intent in
     x : fwr_dbl, intent in
-    vl : fwr_dbl, 1D array, dimension((int)v+1), intent out
-    dl : fwr_dbl, 1D array, dimension((int)v+1), intent out
+    vl : fwr_dbl, 1D array, dimension(<int>v+1), intent out
+    dl : fwr_dbl, 1D array, dimension(<int>v+1), intent out
 
     Returns
     -------
     vm : fwr_dbl, intent out
-    vl : fwr_dbl, 1D array, dimension((int)v+1), intent out
-    dl : fwr_dbl, 1D array, dimension((int)v+1), intent out
+    vl : fwr_dbl, 1D array, dimension(<int>v+1), intent out
+    dl : fwr_dbl, 1D array, dimension(<int>v+1), intent out
 
     """
     cdef fwr_dbl_t vm
@@ -715,9 +715,9 @@ cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     if not (v >= 1):
         raise ValueError('Condition on arguments not satisfied: v >= 1')
-    vl_ = fw_getoutarray(vl, fwr_dbl_t_enum, 1, [((int)v+1)])
+    vl_ = fw_getoutarray(vl, fwr_dbl_t_enum, 1, [(<int>v+1)])
     fw_copyshape(vl_shape_, np.PyArray_DIMS(vl_), 1)
-    dl_ = fw_getoutarray(dl, fwr_dbl_t_enum, 1, [((int)v+1)])
+    dl_ = fw_getoutarray(dl, fwr_dbl_t_enum, 1, [(<int>v+1)])
     fw_copyshape(dl_shape_, np.PyArray_DIMS(dl_), 1)
     lamv_c(&v, &x, &vm, vl_shape_, <fwr_dbl_t*>np.PyArray_DATA(vl_), dl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
@@ -795,13 +795,13 @@ cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     ----------
     v : fwr_dbl, intent in
     x : fwr_dbl, intent in
-    dv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
-    dp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    dv : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
+    dp : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
 
     Returns
     -------
-    dv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
-    dp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    dv : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
+    dp : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
     pdf : fwr_dbl, intent out
     pdd : fwr_dbl, intent out
 
@@ -816,9 +816,9 @@ cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     if not ((abs(<int>v)+2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v)+2) >= 2')
-    dv_ = fw_getoutarray(dv, fwr_dbl_t_enum, 1, [(abs((int)v)+2)])
+    dv_ = fw_getoutarray(dv, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(dv_shape_, np.PyArray_DIMS(dv_), 1)
-    dp_ = fw_getoutarray(dp, fwr_dbl_t_enum, 1, [(abs((int)v)+2)])
+    dp_ = fw_getoutarray(dp, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(dp_shape_, np.PyArray_DIMS(dp_), 1)
     pbdv_c(&v, &x, dv_shape_, <fwr_dbl_t*>np.PyArray_DATA(dv_), dp_shape_, <fwr_dbl_t*>np.PyArray_DATA(dp_), &pdf, &pdd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
@@ -1663,13 +1663,13 @@ cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     ----------
     v : fwr_dbl, intent in
     x : fwr_dbl, intent in
-    vv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
-    vp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    vv : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
+    vp : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
 
     Returns
     -------
-    vv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
-    vp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    vv : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
+    vp : fwr_dbl, 1D array, dimension(abs(<int>v)+2), intent out
     pvf : fwr_dbl, intent out
     pvd : fwr_dbl, intent out
 
@@ -1684,9 +1684,9 @@ cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     if not ((abs(<int>v)+2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v)+2) >= 2')
-    vv_ = fw_getoutarray(vv, fwr_dbl_t_enum, 1, [(abs((int)v)+2)])
+    vv_ = fw_getoutarray(vv, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(vv_shape_, np.PyArray_DIMS(vv_), 1)
-    vp_ = fw_getoutarray(vp, fwr_dbl_t_enum, 1, [(abs((int)v)+2)])
+    vp_ = fw_getoutarray(vp, fwr_dbl_t_enum, 1, [(abs(<int>v)+2)])
     fw_copyshape(vp_shape_, np.PyArray_DIMS(vp_), 1)
     pbvv_c(&v, &x, vv_shape_, <fwr_dbl_t*>np.PyArray_DATA(vv_), vp_shape_, <fwr_dbl_t*>np.PyArray_DATA(vp_), &pvf, &pvd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
