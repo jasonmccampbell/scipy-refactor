@@ -201,6 +201,8 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
+cdef extern from "math.h":
+    double fabs(double x)
 cpdef api object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
     """
     clqmn(m, n, z, cqm, cqd) -> (cqm, cqd)
