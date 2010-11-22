@@ -3,7 +3,7 @@
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_37a14f7
 # Fwrap: vcs git
-# Fwrap:     head 7ef8d67e6fbe51d4ee5d45ee83aab8926d581868
+# Fwrap:     head e0e1bb52f70af762280036653fb4229446d7753d
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 f9d6976b6f8026600b0d4586fa15ad628b2fc87c
 # Fwrap: f77binding True
