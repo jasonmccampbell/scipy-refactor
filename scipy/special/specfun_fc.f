@@ -1,3 +1,49 @@
+      subroutine clqmn_c(mm, m, n, z, cqm_shape__, cqm, cqd_shape__, cqd
+     &, fw_iserr__, fw_errstr__)
+        implicit none
+        integer FW_ARR_DIM__
+        parameter (FW_ARR_DIM__ = 2)
+        integer FW_CHAR_SIZE__
+        parameter (FW_CHAR_SIZE__ = 1)
+        integer FW_INIT_ERR__
+        parameter (FW_INIT_ERR__ = -1)
+        integer FW_NO_ERR__
+        parameter (FW_NO_ERR__ = 0)
+        integer fw_errstr_len
+        parameter (fw_errstr_len = 63)
+        character C_NULL_CHAR
+        parameter (C_NULL_CHAR = '\0')
+        integer :: mm
+        integer :: m
+        integer :: n
+        complex*16 :: z
+        integer, dimension(2) :: cqm_shape__
+        complex*16, dimension(cqm_shape__(1), cqm_shape__(2)) :: cqm
+        integer, dimension(2) :: cqd_shape__
+        complex*16, dimension(cqd_shape__(1), cqd_shape__(2)) :: cqd
+        integer :: fw_iserr__
+        character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
+        external clqmn
+        fw_iserr__ = -1
+        if (((mm) - (0) + 1) .ne. (cqm_shape__(1)) .or. ((n) - (0) + 1) 
+     &.ne. (cqm_shape__(2))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("cqm                                 
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        if (((mm) - (0) + 1) .ne. (cqd_shape__(1)) .or. ((n) - (0) + 1) 
+     &.ne. (cqd_shape__(2))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("cqd                                 
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        call clqmn(mm, m, n, z, cqm, cqd)
+        fw_iserr__ = 0
+      end subroutine clqmn_c
       subroutine lqmn_c(mm, m, n, x, qm_shape__, qm, qd_shape__, qd, fw_
      &iserr__, fw_errstr__)
         implicit none
@@ -74,16 +120,16 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external clpmn
         fw_iserr__ = -1
-        if (((mm) - (0) + 1) .ne. (cpm_shape__(1)) .or. ((n) - (0) + 1) 
-     &.ne. (cpm_shape__(2))) then
+        if (((m) - (0) + 1) .ne. (cpm_shape__(1)) .or. ((n) - (0) + 1) .
+     &ne. (cpm_shape__(2))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cpm                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((mm) - (0) + 1) .ne. (cpd_shape__(1)) .or. ((n) - (0) + 1) 
-     &.ne. (cpd_shape__(2))) then
+        if (((m) - (0) + 1) .ne. (cpd_shape__(1)) .or. ((n) - (0) + 1) .
+     &ne. (cpd_shape__(2))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cpd                                 
      &                           ", fw_errstr__)
@@ -93,8 +139,8 @@
         call clpmn(mm, m, n, x, y, cpm, cpd)
         fw_iserr__ = 0
       end subroutine clpmn_c
-      subroutine jdzo_c(nt, n_shape__, n, m_shape__, m, p_shape__, p, zo
-     &_shape__, zo, fw_iserr__, fw_errstr__)
+      subroutine jdzo_c(nt, n_shape__, n, m_shape__, m, pcode_shape__, p
+     &code, zo_shape__, zo, fw_iserr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -113,8 +159,8 @@
         integer, dimension(n_shape__(1)) :: n
         integer, dimension(1) :: m_shape__
         integer, dimension(m_shape__(1)) :: m
-        integer, dimension(1) :: p_shape__
-        integer, dimension(p_shape__(1)) :: p
+        integer, dimension(1) :: pcode_shape__
+        integer, dimension(pcode_shape__(1)) :: pcode
         integer, dimension(1) :: zo_shape__
         real(kind=kind(0.0D0)), dimension(zo_shape__(1)) :: zo
         integer :: fw_iserr__
@@ -135,9 +181,9 @@
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if ((1400) .ne. (p_shape__(1))) then
+        if ((1400) .ne. (pcode_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
-            fw_errstr__ = transfer("p                                   
+            fw_errstr__ = transfer("pcode                               
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
@@ -149,7 +195,7 @@
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call jdzo(nt, n, m, p, zo)
+        call jdzo(nt, n, m, pcode, zo)
         fw_iserr__ = 0
       end subroutine jdzo_c
       subroutine bernob_c(n, bn_shape__, bn, fw_iserr__, fw_errstr__)
@@ -173,7 +219,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external bernob
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (bn_shape__(1))) then
+        if ((n+1) .ne. (bn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("bn                                  
      &                           ", fw_errstr__)
@@ -204,7 +250,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external bernoa
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (bn_shape__(1))) then
+        if ((n+1) .ne. (bn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("bn                                  
      &                           ", fw_errstr__)
@@ -244,28 +290,28 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external csphjy
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (csj_shape__(1))) then
+        if ((n + 1) .ne. (csj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("csj                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cdj_shape__(1))) then
+        if ((n + 1) .ne. (cdj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cdj                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (csy_shape__(1))) then
+        if ((n + 1) .ne. (csy_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("csy                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cdy_shape__(1))) then
+        if ((n + 1) .ne. (cdy_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cdy                                 
      &                           ", fw_errstr__)
@@ -301,14 +347,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lpmns
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (pm_shape__(1))) then
+        if ((n+1) .ne. (pm_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pm                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (pd_shape__(1))) then
+        if ((n+1) .ne. (pd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pd                                  
      &                           ", fw_errstr__)
@@ -339,7 +385,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external eulera
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (en_shape__(1))) then
+        if ((n+1) .ne. (en_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("en                                  
      &                           ", fw_errstr__)
@@ -349,8 +395,8 @@
         call eulera(n, en)
         fw_iserr__ = 0
       end subroutine eulera_c
-      subroutine clqn_c(n, x, y, cqn_shape__, cqn, cqd_shape__, cqd, fw_
-     &iserr__, fw_errstr__)
+      subroutine clqn_c(n, z, cqn_shape__, cqn, cqd_shape__, cqd, fw_ise
+     &rr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -365,8 +411,7 @@
         character C_NULL_CHAR
         parameter (C_NULL_CHAR = '\0')
         integer :: n
-        real(kind=kind(0.0D0)) :: x
-        real(kind=kind(0.0D0)) :: y
+        complex*16 :: z
         integer, dimension(1) :: cqn_shape__
         complex*16, dimension(cqn_shape__(1)) :: cqn
         integer, dimension(1) :: cqd_shape__
@@ -375,21 +420,21 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external clqn
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (cqn_shape__(1))) then
+        if ((n+1) .ne. (cqn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cqn                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cqd_shape__(1))) then
+        if ((n+1) .ne. (cqd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cqd                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call clqn(n, x, y, cqn, cqd)
+        call clqn(n, z, cqn, cqd)
         fw_iserr__ = 0
       end subroutine clqn_c
       subroutine airyzo_c(nt, kf, xa_shape__, xa, xb_shape__, xb, xc_sha
@@ -473,7 +518,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external eulerb
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (en_shape__(1))) then
+        if ((n+1) .ne. (en_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("en                                  
      &                           ", fw_errstr__)
@@ -507,7 +552,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external cva1
         fw_iserr__ = -1
-        if ((200) .ne. (cv_shape__(1))) then
+        if ((m) .ne. (cv_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cv                                  
      &                           ", fw_errstr__)
@@ -542,14 +587,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lqnb
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (qn_shape__(1))) then
+        if ((n+1) .ne. (qn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qn                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (qd_shape__(1))) then
+        if ((n+1) .ne. (qd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qd                                  
      &                           ", fw_errstr__)
@@ -585,6 +630,20 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lamv
         fw_iserr__ = -1
+        if (((int)v+1) .ne. (vl_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("vl                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        if (((int)v+1) .ne. (dl_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("dl                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
         call lamv(v, x, vm, vl, dl)
         fw_iserr__ = 0
       end subroutine lamv_c
@@ -697,6 +756,20 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external pbdv
         fw_iserr__ = -1
+        if ((abs((int)v)+2) .ne. (dv_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("dv                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        if ((abs((int)v)+2) .ne. (dp_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("dp                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
         call pbdv(v, x, dv, dp, pdf, pdd)
         fw_iserr__ = 0
       end subroutine pbdv_c
@@ -757,14 +830,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lamn
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (bl_shape__(1))) then
+        if ((n+1) .ne. (bl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("bl                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dl_shape__(1))) then
+        if ((n+1) .ne. (dl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dl                                  
      &                           ", fw_errstr__)
@@ -774,8 +847,8 @@
         call lamn(n, x, nm, bl, dl)
         fw_iserr__ = 0
       end subroutine lamn_c
-      subroutine clpn_c(n, x, y, cpn_shape__, cpn, cpd_shape__, cpd, fw_
-     &iserr__, fw_errstr__)
+      subroutine clpn_c(n, z, cpn_shape__, cpn, cpd_shape__, cpd, fw_ise
+     &rr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -790,8 +863,7 @@
         character C_NULL_CHAR
         parameter (C_NULL_CHAR = '\0')
         integer :: n
-        real(kind=kind(0.0D0)) :: x
-        real(kind=kind(0.0D0)) :: y
+        complex*16 :: z
         integer, dimension(1) :: cpn_shape__
         complex*16, dimension(cpn_shape__(1)) :: cpn
         integer, dimension(1) :: cpd_shape__
@@ -800,21 +872,21 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external clpn
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (cpn_shape__(1))) then
+        if ((n+1) .ne. (cpn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cpn                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cpd_shape__(1))) then
+        if ((n+1) .ne. (cpd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cpd                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call clpn(n, x, y, cpn, cpd)
+        call clpn(n, z, cpn, cpd)
         fw_iserr__ = 0
       end subroutine clpn_c
       subroutine lqmns_c(m, n, x, qm_shape__, qm, qd_shape__, qd, fw_ise
@@ -843,14 +915,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lqmns
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (qm_shape__(1))) then
+        if ((n+1) .ne. (qm_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qm                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (qd_shape__(1))) then
+        if ((n+1) .ne. (qd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qd                                  
      &                           ", fw_errstr__)
@@ -914,16 +986,16 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lpmn
         fw_iserr__ = -1
-        if (((mm) - (0) + 1) .ne. (pm_shape__(1)) .or. ((n) - (0) + 1) .
-     &ne. (pm_shape__(2))) then
+        if ((m+1) .ne. (pm_shape__(1)) .or. (n+1) .ne. (pm_shape__(2))) 
+     &then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pm                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((mm) - (0) + 1) .ne. (pd_shape__(1)) .or. ((n) - (0) + 1) .
-     &ne. (pd_shape__(2))) then
+        if ((m+1) .ne. (pd_shape__(1)) .or. (n+1) .ne. (pd_shape__(2))) 
+     &then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pd                                  
      &                           ", fw_errstr__)
@@ -1021,14 +1093,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lqna
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (qn_shape__(1))) then
+        if ((n+1) .ne. (qn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qn                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (qd_shape__(1))) then
+        if ((n+1) .ne. (qd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("qd                                  
      &                           ", fw_errstr__)
@@ -1063,6 +1135,20 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external cpbdn
         fw_iserr__ = -1
+        if ((abs(n)+2) .ne. (cpb_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("cpb                                 
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        if ((abs(n)+2) .ne. (cpd_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("cpd                                 
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
         call cpbdn(n, z, cpb, cpd)
         fw_iserr__ = 0
       end subroutine cpbdn_c
@@ -1091,14 +1177,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lpn
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (pn_shape__(1))) then
+        if ((n+1) .ne. (pn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pn                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (pd_shape__(1))) then
+        if ((n+1) .ne. (pd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pd                                  
      &                           ", fw_errstr__)
@@ -1169,14 +1255,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external sphi
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (si_shape__(1))) then
+        if ((n + 1) .ne. (si_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("si                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (di_shape__(1))) then
+        if ((n + 1) .ne. (di_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("di                                  
      &                           ", fw_errstr__)
@@ -1212,14 +1298,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external rcty
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (ry_shape__(1))) then
+        if ((n+1) .ne. (ry_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("ry                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dy_shape__(1))) then
+        if ((n+1) .ne. (dy_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dy                                  
      &                           ", fw_errstr__)
@@ -1256,21 +1342,21 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external lpni
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (pn_shape__(1))) then
+        if ((n+1) .ne. (pn_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pn                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (pd_shape__(1))) then
+        if ((n+1) .ne. (pd_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pd                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (pl_shape__(1))) then
+        if ((n+1) .ne. (pl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pl                                  
      &                           ", fw_errstr__)
@@ -1353,28 +1439,28 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external csphik
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (csi_shape__(1))) then
+        if ((n+1) .ne. (csi_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("csi                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cdi_shape__(1))) then
+        if ((n+1) .ne. (cdi_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cdi                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (csk_shape__(1))) then
+        if ((n+1) .ne. (csk_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("csk                                 
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (cdk_shape__(1))) then
+        if ((n+1) .ne. (cdk_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("cdk                                 
      &                           ", fw_errstr__)
@@ -1410,14 +1496,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external sphj
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (sj_shape__(1))) then
+        if ((n+1) .ne. (sj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("sj                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dj_shape__(1))) then
+        if ((n+1) .ne. (dj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dj                                  
      &                           ", fw_errstr__)
@@ -1453,14 +1539,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external othpl
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (pl_shape__(1))) then
+        if ((n+1) .ne. (pl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("pl                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dpl_shape__(1))) then
+        if ((n+1) .ne. (dpl_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dpl                                 
      &                           ", fw_errstr__)
@@ -1589,14 +1675,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external rctj
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (rj_shape__(1))) then
+        if ((n+1) .ne. (rj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("rj                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dj_shape__(1))) then
+        if ((n+1) .ne. (dj_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dj                                  
      &                           ", fw_errstr__)
@@ -1673,14 +1759,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external sphk
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (sk_shape__(1))) then
+        if ((n+1) .ne. (sk_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("sk                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dk_shape__(1))) then
+        if ((n+1) .ne. (dk_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dk                                  
      &                           ", fw_errstr__)
@@ -1717,56 +1803,23 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external pbvv
         fw_iserr__ = -1
+        if ((abs((int)v)+2) .ne. (vv_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("vv                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
+        if ((abs((int)v)+2) .ne. (vp_shape__(1))) then
+            fw_iserr__ = FW_ARR_DIM__
+            fw_errstr__ = transfer("vp                                  
+     &                           ", fw_errstr__)
+            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
+            return
+        endif
         call pbvv(v, x, vv, vp, pvf, pvd)
         fw_iserr__ = 0
       end subroutine pbvv_c
-      subroutine clqmn_c(mm, m, n, x, y, cqm_shape__, cqm, cqd_shape__, 
-     &cqd, fw_iserr__, fw_errstr__)
-        implicit none
-        integer FW_ARR_DIM__
-        parameter (FW_ARR_DIM__ = 2)
-        integer FW_CHAR_SIZE__
-        parameter (FW_CHAR_SIZE__ = 1)
-        integer FW_INIT_ERR__
-        parameter (FW_INIT_ERR__ = -1)
-        integer FW_NO_ERR__
-        parameter (FW_NO_ERR__ = 0)
-        integer fw_errstr_len
-        parameter (fw_errstr_len = 63)
-        character C_NULL_CHAR
-        parameter (C_NULL_CHAR = '\0')
-        integer :: mm
-        integer :: m
-        integer :: n
-        real(kind=kind(0.0D0)) :: x
-        real(kind=kind(0.0D0)) :: y
-        integer, dimension(2) :: cqm_shape__
-        complex*16, dimension(cqm_shape__(1), cqm_shape__(2)) :: cqm
-        integer, dimension(2) :: cqd_shape__
-        complex*16, dimension(cqd_shape__(1), cqd_shape__(2)) :: cqd
-        integer :: fw_iserr__
-        character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
-        external clqmn
-        fw_iserr__ = -1
-        if (((mm) - (0) + 1) .ne. (cqm_shape__(1)) .or. ((n) - (0) + 1) 
-     &.ne. (cqm_shape__(2))) then
-            fw_iserr__ = FW_ARR_DIM__
-            fw_errstr__ = transfer("cqm                                 
-     &                           ", fw_errstr__)
-            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
-            return
-        endif
-        if (((mm) - (0) + 1) .ne. (cqd_shape__(1)) .or. ((n) - (0) + 1) 
-     &.ne. (cqd_shape__(2))) then
-            fw_iserr__ = FW_ARR_DIM__
-            fw_errstr__ = transfer("cqd                                 
-     &                           ", fw_errstr__)
-            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
-            return
-        endif
-        call clqmn(mm, m, n, x, y, cqm, cqd)
-        fw_iserr__ = 0
-      end subroutine clqmn_c
       subroutine segv_c(m, n, c, kd, cv, eg_shape__, eg, fw_iserr__, fw_
      &errstr__)
         implicit none
@@ -1793,7 +1846,7 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external segv
         fw_iserr__ = -1
-        if ((200) .ne. (eg_shape__(1))) then
+        if ((n-m+2) .ne. (eg_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("eg                                  
      &                           ", fw_errstr__)
@@ -1829,14 +1882,14 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external sphy
         fw_iserr__ = -1
-        if (((n) - (0) + 1) .ne. (sy_shape__(1))) then
+        if ((n+1) .ne. (sy_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("sy                                  
      &                           ", fw_errstr__)
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        if (((n) - (0) + 1) .ne. (dy_shape__(1))) then
+        if ((n+1) .ne. (dy_shape__(1))) then
             fw_iserr__ = FW_ARR_DIM__
             fw_errstr__ = transfer("dy                                  
      &                           ", fw_errstr__)
