@@ -1,5 +1,5 @@
-      subroutine clqmn_c(mm, m, n, z, cqm_shape__, cqm, cqd_shape__, cqd
-     &, fw_iserr__, fw_errstr__)
+      subroutine clqmn_c(mm, m, n, x, y, cqm_shape__, cqm, cqd_shape__,
+     & cqd, fw_iserr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -16,7 +16,7 @@
         integer :: mm
         integer :: m
         integer :: n
-        complex*16 :: z
+        double precision x, y
         integer, dimension(2) :: cqm_shape__
         complex*16, dimension(cqm_shape__(1), cqm_shape__(2)) :: cqm
         integer, dimension(2) :: cqd_shape__
@@ -41,7 +41,7 @@
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call clqmn(mm, m, n, z, cqm, cqd)
+        call clqmn(mm, m, n, x, y, cqm, cqd)
         fw_iserr__ = 0
       end subroutine clqmn_c
       subroutine lqmn_c(mm, m, n, x, qm_shape__, qm, qd_shape__, qd, fw_
@@ -395,8 +395,8 @@
         call eulera(n, en)
         fw_iserr__ = 0
       end subroutine eulera_c
-      subroutine clqn_c(n, z, cqn_shape__, cqn, cqd_shape__, cqd, fw_ise
-     &rr__, fw_errstr__)
+      subroutine clqn_c(n, x, y, cqn_shape__, cqn, cqd_shape__, cqd, fw_
+     &iserr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -411,7 +411,7 @@
         character C_NULL_CHAR
         parameter (C_NULL_CHAR = '\0')
         integer :: n
-        complex*16 :: z
+        double precision x, y
         integer, dimension(1) :: cqn_shape__
         complex*16, dimension(cqn_shape__(1)) :: cqn
         integer, dimension(1) :: cqd_shape__
@@ -434,7 +434,7 @@
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call clqn(n, z, cqn, cqd)
+        call clqn(n, x, y, cqn, cqd)
         fw_iserr__ = 0
       end subroutine clqn_c
       subroutine airyzo_c(nt, kf, xa_shape__, xa, xb_shape__, xb, xc_sha
@@ -847,8 +847,8 @@
         call lamn(n, x, nm, bl, dl)
         fw_iserr__ = 0
       end subroutine lamn_c
-      subroutine clpn_c(n, z, cpn_shape__, cpn, cpd_shape__, cpd, fw_ise
-     &rr__, fw_errstr__)
+      subroutine clpn_c(n, x, y, cpn_shape__, cpn, cpd_shape__, cpd, fw_
+     &iserr__, fw_errstr__)
         implicit none
         integer FW_ARR_DIM__
         parameter (FW_ARR_DIM__ = 2)
@@ -863,7 +863,7 @@
         character C_NULL_CHAR
         parameter (C_NULL_CHAR = '\0')
         integer :: n
-        complex*16 :: z
+        double precision x, y
         integer, dimension(1) :: cpn_shape__
         complex*16, dimension(cpn_shape__(1)) :: cpn
         integer, dimension(1) :: cpd_shape__
@@ -886,7 +886,7 @@
             fw_errstr__(fw_errstr_len) = C_NULL_CHAR
             return
         endif
-        call clpn(n, z, cpn, cpd)
+        call clpn(n, x, y, cpn, cpd)
         fw_iserr__ = 0
       end subroutine clpn_c
       subroutine lqmns_c(m, n, x, qm_shape__, qm, qd_shape__, qd, fw_ise

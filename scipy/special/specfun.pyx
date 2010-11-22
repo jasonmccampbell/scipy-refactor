@@ -228,16 +228,19 @@ cpdef api object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, ob
     cdef fw_shape_t cqd_shape_[2]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef fwr_dbl_t x, y
     mm = m
     if not (m >= 1):
         raise ValueError('Condition on arguments not satisfied: m >= 1')
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
+    x = z.real
+    y = z.imag
     cqm_ = fw_getoutarray(cqm, fwc_complex_x16_t_enum, 2, [((mm) - (0) + 1), ((n) - (0) + 1)])
     fw_copyshape(cqm_shape_, np.PyArray_DIMS(cqm_), 2)
     cqd_ = fw_getoutarray(cqd, fwc_complex_x16_t_enum, 2, [((mm) - (0) + 1), ((n) - (0) + 1)])
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 2)
-    clqmn_c(&mm, &m, &n, &z, cqm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqm_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
+    clqmn_c(&mm, &m, &n, &x, &y, cqm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqm_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqmn' wrapper.")
     return (cqm_, cqd_,)
@@ -546,13 +549,16 @@ cpdef api object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, obj
     cdef fw_shape_t cqd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef fwr_dbl_t x, y
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
+    x = z.real
+    y = z.imag
     cqn_ = fw_getoutarray(cqn, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cqn_shape_, np.PyArray_DIMS(cqn_), 1)
     cqd_ = fw_getoutarray(cqd, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 1)
-    clqn_c(&n, &z, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
+    clqn_c(&n, &x, &y, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqn' wrapper.")
     return (cqn_, cqd_,)
@@ -910,13 +916,16 @@ cpdef api object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, obj
     cdef fw_shape_t cpd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef fwr_dbl_t x, y
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
+    x = z.real
+    y = z.imag
     cpn_ = fw_getoutarray(cpn, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cpn_shape_, np.PyArray_DIMS(cpn_), 1)
     cpd_ = fw_getoutarray(cpd, fwc_complex_x16_t_enum, 1, [(n+1)])
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
-    clpn_c(&n, &z, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
+    clpn_c(&n, &x, &y, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clpn' wrapper.")
     return (cpn_, cpd_,)

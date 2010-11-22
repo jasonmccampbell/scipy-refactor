@@ -46,7 +46,7 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(clqmn_c,CLQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(clqmn_c,CLQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t*, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lqmn_c,LQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(clpmn_c,CLPMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(jdzo_c,JDZO_C)(fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
@@ -55,7 +55,7 @@ FORTRAN_CALLSPEC void F_FUNC(bernoa_c,BERNOA_C)(fwi_integer_t *, fw_shape_t *, f
 FORTRAN_CALLSPEC void F_FUNC(csphjy_c,CSPHJY_C)(fwi_integer_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lpmns_c,LPMNS_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(eulera_c,EULERA_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clqn_c,CLQN_C)(fwi_integer_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(clqn_c,CLQN_C)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(airyzo_c,AIRYZO_C)(fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(eulerb_c,EULERB_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(cva1_c,CVA1_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
@@ -66,7 +66,7 @@ FORTRAN_CALLSPEC void F_FUNC(legzo_c,LEGZO_C)(fwi_integer_t *, fw_shape_t *, fwr
 FORTRAN_CALLSPEC void F_FUNC(pbdv_c,PBDV_C)(fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(cerzo_c,CERZO_C)(fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lamn_c,LAMN_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clpn_c,CLPN_C)(fwi_integer_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(clpn_c,CLPN_C)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lqmns_c,LQMNS_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(chgm_c,CHGM_C)(fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(lpmn_c,LPMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
