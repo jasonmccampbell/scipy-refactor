@@ -13,9 +13,16 @@ from numpy import array, isnan, r_, arange, finfo, pi, sin, cos, tan, exp, log, 
 
 from numpy.testing import assert_equal, assert_almost_equal, assert_array_equal, \
         assert_array_almost_equal, assert_approx_equal, assert_, \
-        rand, dec, TestCase, run_module_suite
+        rand, dec, TestCase, run_module_suite, assert_raises
 from scipy.special import specfun
 from testutils import assert_tol_equal, with_special_errors
+
+def assert_not_raises(func, *args, **kw):
+    # since test failure and test error is not the same
+    try:
+        func(*args, **kw)
+    except:
+        assert_(False)
 
 class TestSpecfun(TestCase):
     def test_clqmn(self):
@@ -65,6 +72,15 @@ class TestSpecfun(TestCase):
         a, b = specfun.clpn(2, 1+2j)
         assert_tol_equal(a, [(1+0j), (1+2j), (-5+6j)])
         assert_tol_equal(b, [0j, (1+0j), (3+6j)])
+
+    def test_check(self):
+        assert_raises(Exception, specfun.lamn, -1, 1.2)
+        assert_raises(Exception, specfun.lamn, 0, 1.2)
+        assert_not_raises(specfun.lamn, 1, 1.2)
+
+        assert_raises(Exception, specfun.fcszo, 0, 3)
+        assert_raises(Exception, specfun.fcszo, 1, 0)
+        assert_not_raises(specfun.fcszo, 1, 1)
 
 if __name__ == "__main__":
     run_module_suite()
