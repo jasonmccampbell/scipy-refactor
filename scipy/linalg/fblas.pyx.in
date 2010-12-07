@@ -878,7 +878,12 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     x_ = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
-    ly = ##TODO: (y_capi==Py_None?1+offy+(rows-1)*abs(incy):-1)
+    rows = n if trans else m
+    cols = m if trans else n
+    if y is None:
+        ly = 1 + offy + (rows - 1) * abs(incy)
+    else:
+        ly = -1
     y_ = fw_explicitshapearray(y, {{npy_enum}}, 1, [ly], not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
@@ -898,8 +903,6 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     m = np.PyArray_DIMS(a_)[0]
     n = np.PyArray_DIMS(a_)[1]
     n = np.PyArray_DIMS(a_)[1]
-    rows = n if trans else m
-    cols = m if trans else n
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((incy > 0) or (incy < 0)):
