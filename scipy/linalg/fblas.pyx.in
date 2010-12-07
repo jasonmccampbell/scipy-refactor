@@ -1142,10 +1142,11 @@ cpdef api object {{name}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=Non
 {{py:
 fc_name_values = ['srotg_c', 'drotg_c', 'crotg_c', 'zrotg_c']
 ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
+c_ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t']
 name_values = ['srotg', 'drotg', 'crotg', 'zrotg']
 }}
-{{for fc_name, ktp, name
-       in zip(fc_name_values, ktp_values, name_values)}}
+{{for fc_name, ktp, c_ktp, name
+       in zip(fc_name_values, ktp_values, c_ktp_values, name_values)}}
 cpdef api object {{name}}({{ktp}} a, {{ktp}} b):
     """
     {{name}}(a, b) -> (c, s)
@@ -1162,13 +1163,13 @@ cpdef api object {{name}}({{ktp}} a, {{ktp}} b):
 
     """
     cdef fwi_integer_t fw_iserr__
-    cdef {{ktp}} c
+    cdef {{c_ktp}} c
     cdef {{ktp}} s
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{fc_name}}(&a, &b, &c, &s, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (c, s,)
+    return (<{{ktp}}>c, s,)
 {{endfor}}
 
 
