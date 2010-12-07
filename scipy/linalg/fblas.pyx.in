@@ -1773,7 +1773,7 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_23c9ad4
 # Fwrap: vcs git
-# Fwrap:     head 7f3dc2a9d70bc02fce6c945b9653ced6b9b06158
+# Fwrap:     head fcee5c70a5279e04724c3fe67656d3515c01dba9
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: exclude cgbmv
