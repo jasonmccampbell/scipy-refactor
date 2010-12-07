@@ -3635,4 +3635,5 @@ cdef char fw_aschar(object s):
 # Fwrap: auxiliary fblas_fc.f
 # Fwrap: auxiliary fblas_fc.h
 # Fwrap: auxiliary fblas_fc.pxd
+# Fwrap: template isamax,idamax,icamax,izamax
 
