@@ -3625,7 +3625,7 @@ cdef char fw_aschar(object s):
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_ddc2cb8
 # Fwrap: vcs git
-# Fwrap:     head 9a17c174a69ea713f6dfb405d30bfb462166d430
+# Fwrap:     head 6bd979c7bac08a94404c80f0e2ce4aba4db82878
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: f77binding True
