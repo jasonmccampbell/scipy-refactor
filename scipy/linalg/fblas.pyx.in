@@ -23,10 +23,7 @@ csscal(...)
 dsdot(...)
 dzasum(...)
 dznrm2(...)
-icamax(...)
-idamax(...)
-isamax(...)
-izamax(...)
+isamax, idamax, icamax, izamax(...)
 sasum, dasum(...)
 saxpy, daxpy, caxpy, zaxpy(...)
 scabs1, dcabs1(...)
@@ -998,128 +995,49 @@ cpdef api object dznrm2(fwi_integer_t n, object x, fwi_integer_t incx):
     return (fw_ret_arg, n, x_, incx,)
 
 
-cpdef api object icamax(fwi_integer_t n, object cx, fwi_integer_t incx):
+{{py:
+fc_name_values = ['isamax_c', 'idamax_c', 'icamax_c', 'izamax_c']
+ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
+name_values = ['isamax', 'idamax', 'icamax', 'izamax']
+name2_values = ['sx', 'dx', 'cx', 'zx']
+npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
+}}
+{{for fc_name, ktp, name, name2, npy_enum
+       in zip(fc_name_values, ktp_values, name_values, name2_values, npy_enum_values)}}
+cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx):
     """
-    icamax(n, cx, incx) -> (fw_ret_arg, n, cx, incx)
+    {{name}}(n, {{name2}}, incx) -> (fw_ret_arg, n, {{name2}}, incx)
 
     Parameters
     ----------
     n : fwi_integer, intent inout
-    cx : fwc_complex, 1D array, dimension(*), intent inout
+    {{name2}} : {{ktp}}_, 1D array, dimension(*), intent inout
     incx : fwi_integer, intent inout
 
     Returns
     -------
     fw_ret_arg : fwi_integer, intent out
     n : fwi_integer, intent inout
-    cx : fwc_complex, 1D array, dimension(*), intent inout
+    {{name2}} : {{ktp}}_, 1D array, dimension(*), intent inout
     incx : fwi_integer, intent inout
 
     """
-    cdef np.ndarray[fwc_complex_t, ndim=1, mode='fortran'] cx_
-    cdef fw_shape_t cx_shape_[1]
+    cdef np.ndarray[{{ktp}}, ndim=1, mode='fortran'] {{name2}}_
+    cdef fw_shape_t {{name2}}_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t fw_ret_arg
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cx_ = fw_asfortranarray(cx, fwc_complex_t_enum, 1, False)
-    fw_copyshape(cx_shape_, np.PyArray_DIMS(cx_), 1)
-    icamax_c(&fw_ret_arg, &n, cx_shape_, <fwc_complex_t*>np.PyArray_DATA(cx_), &incx, &fw_iserr__, fw_errstr__)
+    {{name2}}_ = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
+    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
+    {{name2}}_ = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
+    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
+    {{name2}}_ = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
+    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
+    {{fc_name}}(&fw_ret_arg, &n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'icamax' wrapper.")
-    return (fw_ret_arg, n, cx_, incx,)
-
-
-cpdef api object idamax(fwi_integer_t n, object dx, fwi_integer_t incx):
-    """
-    idamax(n, dx, incx) -> (fw_ret_arg, n, dx, incx)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    dx : fwr_dbl, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwi_integer, intent out
-    n : fwi_integer, intent inout
-    dx : fwr_dbl, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray[fwr_dbl_t, ndim=1, mode='fortran'] dx_
-    cdef fw_shape_t dx_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwi_integer_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    dx_ = fw_asfortranarray(dx, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(dx_shape_, np.PyArray_DIMS(dx_), 1)
-    idamax_c(&fw_ret_arg, &n, dx_shape_, <fwr_dbl_t*>np.PyArray_DATA(dx_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'idamax' wrapper.")
-    return (fw_ret_arg, n, dx_, incx,)
-
-
-cpdef api object isamax(fwi_integer_t n, object sx, fwi_integer_t incx):
-    """
-    isamax(n, sx, incx) -> (fw_ret_arg, n, sx, incx)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwi_integer, intent out
-    n : fwi_integer, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray[fwr_real_t, ndim=1, mode='fortran'] sx_
-    cdef fw_shape_t sx_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwi_integer_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sx_ = fw_asfortranarray(sx, fwr_real_t_enum, 1, False)
-    fw_copyshape(sx_shape_, np.PyArray_DIMS(sx_), 1)
-    isamax_c(&fw_ret_arg, &n, sx_shape_, <fwr_real_t*>np.PyArray_DATA(sx_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'isamax' wrapper.")
-    return (fw_ret_arg, n, sx_, incx,)
-
-
-cpdef api object izamax(fwi_integer_t n, object zx, fwi_integer_t incx):
-    """
-    izamax(n, zx, incx) -> (fw_ret_arg, n, zx, incx)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    zx : fwc_dbl_complex, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwi_integer, intent out
-    n : fwi_integer, intent inout
-    zx : fwc_dbl_complex, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray[fwc_dbl_complex_t, ndim=1, mode='fortran'] zx_
-    cdef fw_shape_t zx_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwi_integer_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    zx_ = fw_asfortranarray(zx, fwc_dbl_complex_t_enum, 1, False)
-    fw_copyshape(zx_shape_, np.PyArray_DIMS(zx_), 1)
-    izamax_c(&fw_ret_arg, &n, zx_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(zx_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'izamax' wrapper.")
-    return (fw_ret_arg, n, zx_, incx,)
+        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
+    return (fw_ret_arg, n, {{name2}}_, incx,)
+{{endfor}}
 
 
 {{py:
@@ -3630,6 +3548,7 @@ cdef char fw_aschar(object s):
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
+# Fwrap: template isamax,idamax,icamax,izamax
 # Fwrap: auxiliary fblas.pxd
 # Fwrap: auxiliary fblas.pyx.in
 # Fwrap: auxiliary fblas_fc.f
