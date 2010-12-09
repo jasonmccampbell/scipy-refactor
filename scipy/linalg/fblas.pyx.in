@@ -747,7 +747,12 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
-    ly = ##TODO (watch any dependencies that may be further down!) (y_capi==Py_None?1+offy+(rows-1)*abs(incy):-1)
+    rows = n if trans else m
+    cols = m if trans else n
+    if y is None:
+        ly = 1 + offy + (rows - 1) * abs(incy)
+    else:
+        ly = -1
     y_, y = fw_explicitshapearray(y, {{npy_enum}}, 1, [ly], not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
@@ -756,8 +761,6 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     m = np.PyArray_DIMS(a_)[0]
     n = np.PyArray_DIMS(a_)[1]
-    rows = n if trans else m
-    cols = m if trans else n
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((incy > 0) or (incy < 0)):
@@ -937,9 +940,10 @@ cpdef api object {{name}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=Non
 {{endfor}}
 
 
-{{for fc_name, ktp, name
+{{for fc_name, ktp, ktp_real, name
       in zip(['srotg_c', 'drotg_c', 'crotg_c', 'zrotg_c'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['srotg', 'drotg', 'crotg', 'zrotg'])}}
 cpdef api object {{name}}({{ktp}} a, {{ktp}} b):
     """
@@ -957,13 +961,13 @@ cpdef api object {{name}}({{ktp}} a, {{ktp}} b):
 
     """
     cdef fwi_integer_t fw_iserr__
-    cdef {{ktp}} c
+    cdef {{ktp_real}} c
     cdef {{ktp}} s
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{fc_name}}(&a, &b, &c, &s, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (c, s,)
+    return (<{{ktp}}>c, s,)
 {{endfor}}
 
 
