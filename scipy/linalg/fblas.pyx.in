@@ -1,38 +1,25 @@
 #cython: ccomplex=True
 
 """
-The fblas module was generated with Fwrap v0.2.0dev_b290328.
+The fblas module was generated with Fwrap v0.2.0dev_2a63538.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
 
 Functions
 ---------
-chbmv, zhbmv(...)
-chemm, zhemm(...)
 chemv, zhemv(...)
-cher, zher(...)
-cher2, zher2(...)
-cher2k, zher2k(...)
-cherk, zherk(...)
-chpmv, zhpmv(...)
-chpr, zhpr(...)
-chpr2, zhpr2(...)
 csrot(...)
 csscal(...)
-dsdot(...)
 dzasum(...)
 dznrm2(...)
 isamax, idamax, icamax, izamax(...)
 sasum, dasum(...)
 saxpy, daxpy, caxpy, zaxpy(...)
-scabs1, dcabs1(...)
 scasum(...)
 scnrm2(...)
 scopy, dcopy, ccopy, zcopy(...)
 sdot, ddot, cdotc, cdotu, zdotc, zdotu(...)
-sdsdot(...)
-sgbmv, dgbmv, cgbmv, zgbmv(...)
 sgemm, dgemm, cgemm, zgemm(...)
 sgemv, dgemv, cgemv, zgemv(...)
 sger, dger, cgerc, cgeru, zgerc, zgeru(...)
@@ -41,34 +28,16 @@ srot, drot(...)
 srotg, drotg, crotg, zrotg(...)
 srotm, drotm(...)
 srotmg, drotmg(...)
-ssbmv, dsbmv(...)
 sscal, dscal, cscal, zscal(...)
-sspmv, dspmv(...)
-sspr, dspr(...)
-sspr2, dspr2(...)
 sswap, dswap, cswap, zswap(...)
-ssymm, dsymm, csymm, zsymm(...)
 ssymv, dsymv(...)
-ssyr, dsyr(...)
-ssyr2, dsyr2(...)
-ssyr2k, dsyr2k, csyr2k, zsyr2k(...)
-ssyrk, dsyrk, csyrk, zsyrk(...)
-stbmv, dtbmv, ctbmv, ztbmv(...)
-stbsv, dtbsv, ctbsv, ztbsv(...)
-stpmv, dtpmv, ctpmv, ztpmv(...)
-stpsv, dtpsv, ctpsv, ztpsv(...)
-strmm, dtrmm, ctrmm, ztrmm(...)
 strmv, dtrmv, ctrmv, ztrmv(...)
-strsm, dtrsm, ctrsm, ztrsm(...)
-strsv, dtrsv, ctrsv, ztrsv(...)
-xerbla(...)
 zdrot(...)
 zdscal(...)
 
 Data Types
 ----------
 fw_character
-fw_character_x6
 fw_shape
 fwc_complex
 fwc_complex_x16
@@ -82,176 +51,11 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-{{py:
-fc_name_values = ['chbmv_c', 'zhbmv_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chbmv', 'zhbmv']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
-    """
-    {{name}}(uplo, n, k, alpha, a, lda, x, incx, beta, y, incy) -> (uplo, n, k, alpha, a, lda, x, incx, beta, y, incy)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &k, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &beta, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, k, alpha, a, lda, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['chemm_c', 'zhemm_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chemm', 'zhemm']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object side, object uplo, fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb, {{ktp}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc) -> (side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-
-    Parameters
-    ----------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_side = [0, 0]
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_side[0] = fw_aschar(side)
-    if fw_side[0] == 0:
-        raise ValueError("len(side) != 1")
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_side, fw_uplo, &m, &n, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, c_shape_, <{{ktp}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_side, fw_uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['chemv_c', 'zhemv_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chemv', 'zhemv']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['chemv_c', 'zhemv_c'],
+             ['fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['chemv', 'zhemv'],
+             ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
     """
     {{name}}(uplo, n, alpha, a, lda, x, incx, beta, y, incy) -> (uplo, n, alpha, a, lda, x, incx, beta, y, incy)
@@ -294,20 +98,8 @@ cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     fw_uplo[0] = fw_aschar(uplo)
@@ -317,508 +109,6 @@ cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a,
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
     return (fw_uplo, n, alpha, a, lda, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['cher_c', 'zher_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-ktp2_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['cher', 'zher']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, ktp2, name, npy_enum
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object a, fwi_integer_t lda):
-    """
-    {{name}}(uplo, n, alpha, x, incx, a, lda) -> (uplo, n, alpha, x, incx, a, lda)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp2}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    a : {{ktp2}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp2}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    a : {{ktp2}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp2}}*>np.PyArray_DATA(x_), &incx, a_shape_, <{{ktp2}}*>np.PyArray_DATA(a_), &lda, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, a, lda,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['cher2_c', 'zher2_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['cher2', 'zher2']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object y, fwi_integer_t incy, object a, fwi_integer_t lda):
-    """
-    {{name}}(uplo, n, alpha, x, incx, y, incy, a, lda) -> (uplo, n, alpha, x, incx, y, incy, a, lda)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, y, incy, a, lda,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['cher2k_c', 'zher2k_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-ktp2_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['cher2k', 'zher2k']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, ktp2, name, npy_enum
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb, {{ktp2}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc) -> (uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp2}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp2}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, &n, &k, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, c_shape_, <{{ktp}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['cherk_c', 'zherk_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-ktp2_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['cherk', 'zherk']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, ktp2, name, npy_enum
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, {{ktp}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(uplo, trans, n, k, alpha, a, lda, beta, c, ldc) -> (uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp2}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp2}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp2}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp2}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, &n, &k, &alpha, a_shape_, <{{ktp2}}*>np.PyArray_DATA(a_), &lda, &beta, c_shape_, <{{ktp2}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, n, k, alpha, a, lda, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['chpmv_c', 'zhpmv_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chpmv', 'zhpmv']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object ap, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
-    """
-    {{name}}(uplo, n, alpha, ap, x, incx, beta, y, incy) -> (uplo, n, alpha, ap, x, incx, beta, y, incy)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &beta, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, ap, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['chpr_c', 'zhpr_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-ktp2_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chpr', 'zhpr']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, ktp2, name, npy_enum
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object ap):
-    """
-    {{name}}(uplo, n, alpha, x, incx, ap) -> (uplo, n, alpha, x, incx, ap)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp2}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    ap : {{ktp2}}_, 1D array, dimension(*), intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp2}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    ap : {{ktp2}}_, 1D array, dimension(*), intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp2}}*>np.PyArray_DATA(x_), &incx, ap_shape_, <{{ktp2}}*>np.PyArray_DATA(ap_), &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, ap,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['chpr2_c', 'zhpr2_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['chpr2', 'zhpr2']
-npy_enum_values = ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object y, fwi_integer_t incy, object ap):
-    """
-    {{name}}(uplo, n, alpha, x, incx, y, incy, ap) -> (uplo, n, alpha, x, incx, y, incy, ap)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, y, incy, ap,)
 {{endfor}}
 
 
@@ -894,45 +184,6 @@ cpdef api object csscal(fwi_integer_t n, fwr_real_t sa, object cx, fwi_integer_t
     return (n, sa, cx, incx,)
 
 
-cpdef api object dsdot(fwi_integer_t n, object sx, fwi_integer_t incx, object sy, fwi_integer_t incy):
-    """
-    dsdot(n, sx, incx, sy, incy) -> (fw_ret_arg, n, sx, incx, sy, incy)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    sy : fwr_real, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_dbl, intent out
-    n : fwi_integer, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    sy : fwr_real, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray sx_
-    cdef fw_shape_t sx_shape_[1]
-    cdef np.ndarray sy_
-    cdef fw_shape_t sy_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_dbl_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sx_, sx = fw_asfortranarray(sx, fwr_real_t_enum, 1, False)
-    fw_copyshape(sx_shape_, np.PyArray_DIMS(sx_), 1)
-    sy_, sy = fw_asfortranarray(sy, fwr_real_t_enum, 1, False)
-    fw_copyshape(sy_shape_, np.PyArray_DIMS(sy_), 1)
-    dsdot_c(&fw_ret_arg, &n, sx_shape_, <fwr_real_t*>np.PyArray_DATA(sx_), &incx, sy_shape_, <fwr_real_t*>np.PyArray_DATA(sy_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'dsdot' wrapper.")
-    return (fw_ret_arg, n, sx, incx, sy, incy,)
-
-
 cpdef api object dzasum(fwi_integer_t n, object zx, fwi_integer_t incx):
     """
     dzasum(n, zx, incx) -> (fw_ret_arg, n, zx, incx)
@@ -995,15 +246,12 @@ cpdef api object dznrm2(fwi_integer_t n, object x, fwi_integer_t incx):
     return (fw_ret_arg, n, x, incx,)
 
 
-{{py:
-fc_name_values = ['isamax_c', 'idamax_c', 'icamax_c', 'izamax_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['isamax', 'idamax', 'icamax', 'izamax']
-name2_values = ['sx', 'dx', 'cx', 'zx']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, npy_enum_values)}}
+      in zip(['isamax_c', 'idamax_c', 'icamax_c', 'izamax_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['isamax', 'idamax', 'icamax', 'izamax'],
+             ['sx', 'dx', 'cx', 'zx'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx):
     """
     {{name}}(n, {{name2}}, incx) -> (fw_ret_arg, n, {{name2}}, incx)
@@ -1029,10 +277,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx)
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
     {{fc_name}}(&fw_ret_arg, &n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -1040,15 +284,12 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx)
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['sasum_c', 'dasum_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['sasum', 'dasum']
-name2_values = ['sx', 'dx']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, name2, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, npy_enum_values)}}
+      in zip(['sasum_c', 'dasum_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['sasum', 'dasum'],
+             ['sx', 'dx'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx):
     """
     {{name}}(n, {{name2}}, incx) -> (fw_ret_arg, n, {{name2}}, incx)
@@ -1074,10 +315,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx)
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
     {{fc_name}}(&fw_ret_arg, &n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -1085,17 +322,14 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx)
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['saxpy_c', 'daxpy_c', 'caxpy_c', 'zaxpy_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['saxpy', 'daxpy', 'caxpy', 'zaxpy']
-name2_values = ['sa', 'da', 'ca', 'za']
-name3_values = ['sx', 'dx', 'cx', 'zx']
-name4_values = ['sy', 'dy', 'cy', 'zy']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, name4, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, name4_values, npy_enum_values)}}
+      in zip(['saxpy_c', 'daxpy_c', 'caxpy_c', 'zaxpy_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['saxpy', 'daxpy', 'caxpy', 'zaxpy'],
+             ['sa', 'da', 'ca', 'za'],
+             ['sx', 'dx', 'cx', 'zx'],
+             ['sy', 'dy', 'cy', 'zy'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, {{ktp}} {{name2}}, object {{name3}}, fwi_integer_t incx, object {{name4}}, fwi_integer_t incy):
     """
     {{name}}(n, {{name2}}, {{name3}}, incx, {{name4}}, incy) -> (n, {{name2}}, {{name3}}, incx, {{name4}}, incy)
@@ -1127,52 +361,12 @@ cpdef api object {{name}}(fwi_integer_t n, {{ktp}} {{name2}}, object {{name3}}, 
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
-    {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
     {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
     {{fc_name}}(&n, &{{name2}}, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incx, {{name4}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name4}}_), &incy, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
     return (n, {{name2}}, {{name3}}, incx, {{name4}}, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['scabs1_c', 'dcabs1_c']
-ktp_values = ['fwc_complex_t', 'fwc_dbl_complex_t']
-ktp2_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['scabs1', 'dcabs1']
-}}
-{{for fc_name, ktp, ktp2, name
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values)}}
-cpdef api object {{name}}({{ktp}} z):
-    """
-    {{name}}(z) -> (fw_ret_arg, z)
-
-    Parameters
-    ----------
-    z : {{ktp}}_, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : {{ktp2}}_, intent out
-    z : {{ktp}}_, intent inout
-
-    """
-    cdef fwi_integer_t fw_iserr__
-    cdef {{ktp2}} fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    {{fc_name}}(&fw_ret_arg, &z, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_ret_arg, z,)
 {{endfor}}
 
 
@@ -1238,16 +432,13 @@ cpdef api object scnrm2(fwi_integer_t n, object x, fwi_integer_t incx):
     return (fw_ret_arg, n, x, incx,)
 
 
-{{py:
-fc_name_values = ['scopy_c', 'dcopy_c', 'ccopy_c', 'zcopy_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['scopy', 'dcopy', 'ccopy', 'zcopy']
-name2_values = ['sx', 'dx', 'cx', 'zx']
-name3_values = ['sy', 'dy', 'cy', 'zy']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, npy_enum_values)}}
+      in zip(['scopy_c', 'dcopy_c', 'ccopy_c', 'zcopy_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['scopy', 'dcopy', 'ccopy', 'zcopy'],
+             ['sx', 'dx', 'cx', 'zx'],
+             ['sy', 'dy', 'cy', 'zy'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx, object {{name3}}, fwi_integer_t incy):
     """
     {{name}}(n, {{name2}}, incx, {{name3}}, incy) -> (n, {{name2}}, incx, {{name3}}, incy)
@@ -1277,14 +468,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{fc_name}}(&n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incy, &fw_iserr__, fw_errstr__)
@@ -1294,16 +477,13 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['sdot_c', 'ddot_c', 'cdotc_c', 'cdotu_c', 'zdotc_c', 'zdotu_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sdot', 'ddot', 'cdotc', 'cdotu', 'zdotc', 'zdotu']
-name2_values = ['sx', 'dx', 'cx', 'cx', 'zx', 'zx']
-name3_values = ['sy', 'dy', 'cy', 'cy', 'zy', 'zy']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, npy_enum_values)}}
+      in zip(['sdot_c', 'ddot_c', 'cdotc_c', 'cdotu_c', 'zdotc_c', 'zdotu_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
+             ['sdot', 'ddot', 'cdotc', 'cdotu', 'zdotc', 'zdotu'],
+             ['sx', 'dx', 'cx', 'cx', 'zx', 'zx'],
+             ['sy', 'dy', 'cy', 'cy', 'zy', 'zy'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx, object {{name3}}, fwi_integer_t incy):
     """
     {{name}}(n, {{name2}}, incx, {{name3}}, incy) -> (fw_ret_arg, n, {{name2}}, incx, {{name3}}, incy)
@@ -1335,14 +515,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{fc_name}}(&fw_ret_arg, &n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incy, &fw_iserr__, fw_errstr__)
@@ -1352,137 +524,11 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
 {{endfor}}
 
 
-cpdef api object sdsdot(fwi_integer_t n, fwr_real_t sb, object sx, fwi_integer_t incx, object sy, fwi_integer_t incy):
-    """
-    sdsdot(n, sb, sx, incx, sy, incy) -> (fw_ret_arg, n, sb, sx, incx, sy, incy)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    sb : fwr_real, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    sy : fwr_real, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_real, intent out
-    n : fwi_integer, intent inout
-    sb : fwr_real, intent inout
-    sx : fwr_real, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    sy : fwr_real, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray sx_
-    cdef fw_shape_t sx_shape_[1]
-    cdef np.ndarray sy_
-    cdef fw_shape_t sy_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_real_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sx_, sx = fw_asfortranarray(sx, fwr_real_t_enum, 1, False)
-    fw_copyshape(sx_shape_, np.PyArray_DIMS(sx_), 1)
-    sy_, sy = fw_asfortranarray(sy, fwr_real_t_enum, 1, False)
-    fw_copyshape(sy_shape_, np.PyArray_DIMS(sy_), 1)
-    sdsdot_c(&fw_ret_arg, &n, &sb, sx_shape_, <fwr_real_t*>np.PyArray_DATA(sx_), &incx, sy_shape_, <fwr_real_t*>np.PyArray_DATA(sy_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'sdsdot' wrapper.")
-    return (fw_ret_arg, n, sb, sx, incx, sy, incy,)
-
-
-{{py:
-fc_name_values = ['sgbmv_c', 'dgbmv_c', 'cgbmv_c', 'zgbmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sgbmv', 'dgbmv', 'cgbmv', 'zgbmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object trans, fwi_integer_t m, fwi_integer_t n, fwi_integer_t kl, fwi_integer_t ku, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
-    """
-    {{name}}(trans, m, n, kl, ku, alpha, a, lda, x, incx, beta, y, incy) -> (trans, m, n, kl, ku, alpha, a, lda, x, incx, beta, y, incy)
-
-    Parameters
-    ----------
-    trans : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    kl : fwi_integer, intent inout
-    ku : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    trans : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    kl : fwi_integer, intent inout
-    ku : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef char *fw_trans = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    {{fc_name}}(fw_trans, &m, &n, &kl, &ku, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &beta, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_trans, m, n, kl, ku, alpha, a, lda, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['sgemm_c', 'dgemm_c', 'cgemm_c', 'zgemm_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sgemm', 'dgemm', 'cgemm', 'zgemm']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['sgemm_c', 'dgemm_c', 'cgemm_c', 'zgemm_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['sgemm', 'dgemm', 'cgemm', 'zgemm'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(object transa, object transb, fwi_integer_t m, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb, {{ktp}} beta, object c, fwi_integer_t ldc):
     """
     {{name}}(transa, transb, m, n, k, alpha, a, lda, b, ldb, beta, c, ldc) -> (transa, transb, m, n, k, alpha, a, lda, b, ldb, beta, c, ldc)
@@ -1532,20 +578,8 @@ cpdef api object {{name}}(object transa, object transb, fwi_integer_t m, fwi_int
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
     c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
     fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
     fw_transa[0] = fw_aschar(transa)
@@ -1561,14 +595,11 @@ cpdef api object {{name}}(object transa, object transb, fwi_integer_t m, fwi_int
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['sgemv_c', 'dgemv_c', 'cgemv_c', 'zgemv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sgemv', 'dgemv', 'cgemv', 'zgemv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['sgemv_c', 'dgemv_c', 'cgemv_c', 'zgemv_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['sgemv', 'dgemv', 'cgemv', 'zgemv'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(object trans, fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
     """
     {{name}}(trans, m, n, alpha, a, lda, x, incx, beta, y, incy) -> (trans, m, n, alpha, a, lda, x, incx, beta, y, incy)
@@ -1613,20 +644,8 @@ cpdef api object {{name}}(object trans, fwi_integer_t m, fwi_integer_t n, {{ktp}
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     fw_trans[0] = fw_aschar(trans)
@@ -1639,14 +658,11 @@ cpdef api object {{name}}(object trans, fwi_integer_t m, fwi_integer_t n, {{ktp}
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['sger_c', 'dger_c', 'cgerc_c', 'cgeru_c', 'zgerc_c', 'zgeru_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sger', 'dger', 'cgerc', 'cgeru', 'zgerc', 'zgeru']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['sger_c', 'dger_c', 'cgerc_c', 'cgeru_c', 'zgerc_c', 'zgeru_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
+             ['sger', 'dger', 'cgerc', 'cgeru', 'zgerc', 'zgeru'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object y, fwi_integer_t incy, object a, fwi_integer_t lda):
     """
     {{name}}(m, n, alpha, x, incx, y, incy, a, lda) -> (m, n, alpha, x, incx, y, incy, a, lda)
@@ -1686,20 +702,8 @@ cpdef api object {{name}}(fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, objec
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     {{fc_name}}(&m, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, &fw_iserr__, fw_errstr__)
@@ -1709,14 +713,11 @@ cpdef api object {{name}}(fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, objec
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['snrm2_c', 'dnrm2_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['snrm2', 'dnrm2']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['snrm2_c', 'dnrm2_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['snrm2', 'dnrm2'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object x, fwi_integer_t incx):
     """
     {{name}}(n, x, incx) -> (fw_ret_arg, n, x, incx)
@@ -1742,10 +743,6 @@ cpdef api object {{name}}(fwi_integer_t n, object x, fwi_integer_t incx):
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     {{fc_name}}(&fw_ret_arg, &n, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -1753,16 +750,13 @@ cpdef api object {{name}}(fwi_integer_t n, object x, fwi_integer_t incx):
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['srot_c', 'drot_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['srot', 'drot']
-name2_values = ['sx', 'dx']
-name3_values = ['sy', 'dy']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, npy_enum_values)}}
+      in zip(['srot_c', 'drot_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['srot', 'drot'],
+             ['sx', 'dx'],
+             ['sy', 'dy'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx, object {{name3}}, fwi_integer_t incy, {{ktp}} c, {{ktp}} s):
     """
     {{name}}(n, {{name2}}, incx, {{name3}}, incy, c, s) -> (n, {{name2}}, incx, {{name3}}, incy, c, s)
@@ -1796,14 +790,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{fc_name}}(&n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incy, &c, &s, &fw_iserr__, fw_errstr__)
@@ -1813,16 +799,13 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['srotg_c', 'drotg_c', 'crotg_c', 'zrotg_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-ktp2_values = ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t']
-name_values = ['srotg', 'drotg', 'crotg', 'zrotg']
-name2_values = ['sa', 'da', 'ca', 'ca']
-name3_values = ['sb', 'db', 'cb', 'cb']
-}}
 {{for fc_name, ktp, ktp2, name, name2, name3
-       in zip(fc_name_values, ktp_values, ktp2_values, name_values, name2_values, name3_values)}}
+      in zip(['srotg_c', 'drotg_c', 'crotg_c', 'zrotg_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
+             ['srotg', 'drotg', 'crotg', 'zrotg'],
+             ['sa', 'da', 'ca', 'ca'],
+             ['sb', 'db', 'cb', 'cb'])}}
 cpdef api object {{name}}({{ktp}} {{name2}}, {{ktp}} {{name3}}, {{ktp2}} c, {{ktp}} s):
     """
     {{name}}({{name2}}, {{name3}}, c, s) -> ({{name2}}, {{name3}}, c, s)
@@ -1851,17 +834,14 @@ cpdef api object {{name}}({{ktp}} {{name2}}, {{ktp}} {{name3}}, {{ktp2}} c, {{kt
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['srotm_c', 'drotm_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['srotm', 'drotm']
-name2_values = ['sx', 'dx']
-name3_values = ['sy', 'dy']
-name4_values = ['sparam', 'dparam']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, name4, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, name4_values, npy_enum_values)}}
+      in zip(['srotm_c', 'drotm_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['srotm', 'drotm'],
+             ['sx', 'dx'],
+             ['sy', 'dy'],
+             ['sparam', 'dparam'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx, object {{name3}}, fwi_integer_t incy, object {{name4}}):
     """
     {{name}}(n, {{name2}}, incx, {{name3}}, incy, {{name4}}) -> (n, {{name2}}, incx, {{name3}}, incy, {{name4}})
@@ -1895,20 +875,8 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
-    {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
     {{name4}}_, {{name4}} = fw_asfortranarray({{name4}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name4}}_shape_, np.PyArray_DIMS({{name4}}_), 1)
     {{fc_name}}(&n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incy, {{name4}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name4}}_), &fw_iserr__, fw_errstr__)
@@ -1918,19 +886,16 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['srotmg_c', 'drotmg_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['srotmg', 'drotmg']
-name2_values = ['sd1', 'dd1']
-name3_values = ['sd2', 'dd2']
-name4_values = ['sx1', 'dx1']
-name5_values = ['sy1', 'dy1']
-name6_values = ['sparam', 'dparam']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, name4, name5, name6, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, name4_values, name5_values, name6_values, npy_enum_values)}}
+      in zip(['srotmg_c', 'drotmg_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['srotmg', 'drotmg'],
+             ['sd1', 'dd1'],
+             ['sd2', 'dd2'],
+             ['sx1', 'dx1'],
+             ['sy1', 'dy1'],
+             ['sparam', 'dparam'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}({{ktp}} {{name2}}, {{ktp}} {{name3}}, {{ktp}} {{name4}}, {{ktp}} {{name5}}, object {{name6}}):
     """
     {{name}}({{name2}}, {{name3}}, {{name4}}, {{name5}}, {{name6}}) -> ({{name2}}, {{name3}}, {{name4}}, {{name5}}, {{name6}})
@@ -1958,10 +923,6 @@ cpdef api object {{name}}({{ktp}} {{name2}}, {{ktp}} {{name3}}, {{ktp}} {{name4}
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name6}}_, {{name6}} = fw_asfortranarray({{name6}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name6}}_shape_, np.PyArray_DIMS({{name6}}_), 1)
-    {{name6}}_, {{name6}} = fw_asfortranarray({{name6}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name6}}_shape_, np.PyArray_DIMS({{name6}}_), 1)
-    {{name6}}_, {{name6}} = fw_asfortranarray({{name6}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name6}}_shape_, np.PyArray_DIMS({{name6}}_), 1)
     {{fc_name}}(&{{name2}}, &{{name3}}, &{{name4}}, &{{name5}}, {{name6}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name6}}_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -1969,94 +930,13 @@ cpdef api object {{name}}({{ktp}} {{name2}}, {{ktp}} {{name3}}, {{ktp}} {{name4}
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['ssbmv_c', 'dsbmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['ssbmv', 'dsbmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
-    """
-    {{name}}(uplo, n, k, alpha, a, lda, x, incx, beta, y, incy) -> (uplo, n, k, alpha, a, lda, x, incx, beta, y, incy)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &k, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &beta, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, k, alpha, a, lda, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['sscal_c', 'dscal_c', 'cscal_c', 'zscal_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sscal', 'dscal', 'cscal', 'zscal']
-name2_values = ['sa', 'da', 'ca', 'za']
-name3_values = ['sx', 'dx', 'cx', 'zx']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, npy_enum_values)}}
+      in zip(['sscal_c', 'dscal_c', 'cscal_c', 'zscal_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['sscal', 'dscal', 'cscal', 'zscal'],
+             ['sa', 'da', 'ca', 'za'],
+             ['sx', 'dx', 'cx', 'zx'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, {{ktp}} {{name2}}, object {{name3}}, fwi_integer_t incx):
     """
     {{name}}(n, {{name2}}, {{name3}}, incx) -> (n, {{name2}}, {{name3}}, incx)
@@ -2082,10 +962,6 @@ cpdef api object {{name}}(fwi_integer_t n, {{ktp}} {{name2}}, object {{name3}}, 
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{fc_name}}(&n, &{{name2}}, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incx, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -2093,222 +969,13 @@ cpdef api object {{name}}(fwi_integer_t n, {{ktp}} {{name2}}, object {{name3}}, 
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['sspmv_c', 'dspmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['sspmv', 'dspmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object ap, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
-    """
-    {{name}}(uplo, n, alpha, ap, x, incx, beta, y, incy) -> (uplo, n, alpha, ap, x, incx, beta, y, incy)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &beta, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, ap, x, incx, beta, y, incy,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['sspr_c', 'dspr_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['sspr', 'dspr']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object ap):
-    """
-    {{name}}(uplo, n, alpha, x, incx, ap) -> (uplo, n, alpha, x, incx, ap)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, ap,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['sspr2_c', 'dspr2_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['sspr2', 'dspr2']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object y, fwi_integer_t incy, object ap):
-    """
-    {{name}}(uplo, n, alpha, x, incx, y, incy, ap) -> (uplo, n, alpha, x, incx, y, incy, ap)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, y, incy, ap,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['sswap_c', 'dswap_c', 'cswap_c', 'zswap_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['sswap', 'dswap', 'cswap', 'zswap']
-name2_values = ['sx', 'dx', 'cx', 'zx']
-name3_values = ['sy', 'dy', 'cy', 'zy']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, name2, name3, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, name2_values, name3_values, npy_enum_values)}}
+      in zip(['sswap_c', 'dswap_c', 'cswap_c', 'zswap_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['sswap', 'dswap', 'cswap', 'zswap'],
+             ['sx', 'dx', 'cx', 'zx'],
+             ['sy', 'dy', 'cy', 'zy'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx, object {{name3}}, fwi_integer_t incy):
     """
     {{name}}(n, {{name2}}, incx, {{name3}}, incy) -> (n, {{name2}}, incx, {{name3}}, incy)
@@ -2338,14 +1005,6 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name2}}_, {{name2}} = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name2}}_shape_, np.PyArray_DIMS({{name2}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
-    {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
-    fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{name3}}_, {{name3}} = fw_asfortranarray({{name3}}, {{npy_enum}}, 1, False)
     fw_copyshape({{name3}}_shape_, np.PyArray_DIMS({{name3}}_), 1)
     {{fc_name}}(&n, {{name2}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx, {{name3}}_shape_, <{{ktp}}*>np.PyArray_DATA({{name3}}_), &incy, &fw_iserr__, fw_errstr__)
@@ -2355,98 +1014,11 @@ cpdef api object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx,
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['ssymm_c', 'dsymm_c', 'csymm_c', 'zsymm_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['ssymm', 'dsymm', 'csymm', 'zsymm']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object side, object uplo, fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb, {{ktp}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc) -> (side, uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc)
-
-    Parameters
-    ----------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_side = [0, 0]
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_side[0] = fw_aschar(side)
-    if fw_side[0] == 0:
-        raise ValueError("len(side) != 1")
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_side, fw_uplo, &m, &n, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, c_shape_, <{{ktp}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_side, fw_uplo, m, n, alpha, a, lda, b, ldb, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['ssymv_c', 'dsymv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['ssymv', 'dsymv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['ssymv_c', 'dsymv_c'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['ssymv', 'dsymv'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
 cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object x, fwi_integer_t incx, {{ktp}} beta, object y, fwi_integer_t incy):
     """
     {{name}}(uplo, n, alpha, a, lda, x, incx, beta, y, incy) -> (uplo, n, alpha, a, lda, x, incx, beta, y, incy)
@@ -2489,20 +1061,8 @@ cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a,
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     fw_uplo[0] = fw_aschar(uplo)
@@ -2515,676 +1075,11 @@ cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object a,
 {{endfor}}
 
 
-{{py:
-fc_name_values = ['ssyr_c', 'dsyr_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['ssyr', 'dsyr']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
 {{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object a, fwi_integer_t lda):
-    """
-    {{name}}(uplo, n, alpha, x, incx, a, lda) -> (uplo, n, alpha, x, incx, a, lda)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, a, lda,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['ssyr2_c', 'dsyr2_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t']
-name_values = ['ssyr2', 'dsyr2']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, fwi_integer_t n, {{ktp}} alpha, object x, fwi_integer_t incx, object y, fwi_integer_t incy, object a, fwi_integer_t lda):
-    """
-    {{name}}(uplo, n, alpha, x, incx, y, incy, a, lda) -> (uplo, n, alpha, x, incx, y, incy, a, lda)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-    y : {{ktp}}_, 1D array, dimension(*), intent inout
-    incy : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef np.ndarray y_
-    cdef fw_shape_t y_shape_[1]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, False)
-    fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    {{fc_name}}(fw_uplo, &n, &alpha, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_), &incy, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, n, alpha, x, incx, y, incy, a, lda,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['ssyr2k_c', 'dsyr2k_c', 'csyr2k_c', 'zsyr2k_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['ssyr2k', 'dsyr2k', 'csyr2k', 'zsyr2k']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb, {{ktp}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc) -> (uplo, trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, &n, &k, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, c_shape_, <{{ktp}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, n, k, alpha, a, lda, b, ldb, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['ssyrk_c', 'dsyrk_c', 'csyrk_c', 'zsyrk_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['ssyrk', 'dsyrk', 'csyrk', 'zsyrk']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, fwi_integer_t n, fwi_integer_t k, {{ktp}} alpha, object a, fwi_integer_t lda, {{ktp}} beta, object c, fwi_integer_t ldc):
-    """
-    {{name}}(uplo, trans, n, k, alpha, a, lda, beta, c, ldc) -> (uplo, trans, n, k, alpha, a, lda, beta, c, ldc)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    beta : {{ktp}}_, intent inout
-    c : {{ktp}}_, 2D array, dimension(ldc, *), intent inout
-    ldc : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    c_, c = fw_asfortranarray(c, {{npy_enum}}, 2, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, &n, &k, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, &beta, c_shape_, <{{ktp}}*>np.PyArray_DATA(c_), &ldc, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, n, k, alpha, a, lda, beta, c, ldc,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['stbmv_c', 'dtbmv_c', 'ctbmv_c', 'ztbmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['stbmv', 'dtbmv', 'ctbmv', 'ztbmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, fwi_integer_t k, object a, fwi_integer_t lda, object x, fwi_integer_t incx):
-    """
-    {{name}}(uplo, trans, diag, n, k, a, lda, x, incx) -> (uplo, trans, diag, n, k, a, lda, x, incx)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, fw_diag, &n, &k, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, fw_diag, n, k, a, lda, x, incx,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['stbsv_c', 'dtbsv_c', 'ctbsv_c', 'ztbsv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['stbsv', 'dtbsv', 'ctbsv', 'ztbsv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, fwi_integer_t k, object a, fwi_integer_t lda, object x, fwi_integer_t incx):
-    """
-    {{name}}(uplo, trans, diag, n, k, a, lda, x, incx) -> (uplo, trans, diag, n, k, a, lda, x, incx)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, fw_diag, &n, &k, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, fw_diag, n, k, a, lda, x, incx,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['stpmv_c', 'dtpmv_c', 'ctpmv_c', 'ztpmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['stpmv', 'dtpmv', 'ctpmv', 'ztpmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, object ap, object x, fwi_integer_t incx):
-    """
-    {{name}}(uplo, trans, diag, n, ap, x, incx) -> (uplo, trans, diag, n, ap, x, incx)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, fw_diag, &n, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, fw_diag, n, ap, x, incx,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['stpsv_c', 'dtpsv_c', 'ctpsv_c', 'ztpsv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['stpsv', 'dtpsv', 'ctpsv', 'ztpsv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, object ap, object x, fwi_integer_t incx):
-    """
-    {{name}}(uplo, trans, diag, n, ap, x, incx) -> (uplo, trans, diag, n, ap, x, incx)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    ap : {{ktp}}_, 1D array, dimension(*), intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray ap_
-    cdef fw_shape_t ap_shape_[1]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    ap_, ap = fw_asfortranarray(ap, {{npy_enum}}, 1, False)
-    fw_copyshape(ap_shape_, np.PyArray_DIMS(ap_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, fw_diag, &n, ap_shape_, <{{ktp}}*>np.PyArray_DATA(ap_), x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, fw_diag, n, ap, x, incx,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['strmm_c', 'dtrmm_c', 'ctrmm_c', 'ztrmm_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['strmm', 'dtrmm', 'ctrmm', 'ztrmm']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object side, object uplo, object transa, object diag, fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb):
-    """
-    {{name}}(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb) -> (side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-
-    Parameters
-    ----------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    transa : object_, intent inout
-    diag : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-
-    Returns
-    -------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    transa : object_, intent inout
-    diag : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-
-    """
-    cdef char *fw_side = [0, 0]
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_transa = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    fw_side[0] = fw_aschar(side)
-    if fw_side[0] == 0:
-        raise ValueError("len(side) != 1")
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_transa[0] = fw_aschar(transa)
-    if fw_transa[0] == 0:
-        raise ValueError("len(transa) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_side, fw_uplo, fw_transa, fw_diag, &m, &n, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_side, fw_uplo, fw_transa, fw_diag, m, n, alpha, a, lda, b, ldb,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['strmv_c', 'dtrmv_c', 'ctrmv_c', 'ztrmv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['strmv', 'dtrmv', 'ctrmv', 'ztrmv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
+      in zip(['strmv_c', 'dtrmv_c', 'ctrmv_c', 'ztrmv_c'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['strmv', 'dtrmv', 'ctrmv', 'ztrmv'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, object a, fwi_integer_t lda, object x, fwi_integer_t incx):
     """
     {{name}}(uplo, trans, diag, n, a, lda, x, incx) -> (uplo, trans, diag, n, a, lda, x, incx)
@@ -3223,14 +1118,6 @@ cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t 
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     fw_uplo[0] = fw_aschar(uplo)
@@ -3247,190 +1134,6 @@ cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t 
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
     return (fw_uplo, fw_trans, fw_diag, n, a, lda, x, incx,)
 {{endfor}}
-
-
-{{py:
-fc_name_values = ['strsm_c', 'dtrsm_c', 'ctrsm_c', 'ztrsm_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['strsm', 'dtrsm', 'ctrsm', 'ztrsm']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object side, object uplo, object transa, object diag, fwi_integer_t m, fwi_integer_t n, {{ktp}} alpha, object a, fwi_integer_t lda, object b, fwi_integer_t ldb):
-    """
-    {{name}}(side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb) -> (side, uplo, transa, diag, m, n, alpha, a, lda, b, ldb)
-
-    Parameters
-    ----------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    transa : object_, intent inout
-    diag : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-
-    Returns
-    -------
-    side : object_, intent inout
-    uplo : object_, intent inout
-    transa : object_, intent inout
-    diag : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    alpha : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    b : {{ktp}}_, 2D array, dimension(ldb, *), intent inout
-    ldb : fwi_integer, intent inout
-
-    """
-    cdef char *fw_side = [0, 0]
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_transa = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray b_
-    cdef fw_shape_t b_shape_[2]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, False)
-    fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
-    fw_side[0] = fw_aschar(side)
-    if fw_side[0] == 0:
-        raise ValueError("len(side) != 1")
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_transa[0] = fw_aschar(transa)
-    if fw_transa[0] == 0:
-        raise ValueError("len(transa) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_side, fw_uplo, fw_transa, fw_diag, &m, &n, &alpha, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_side, fw_uplo, fw_transa, fw_diag, m, n, alpha, a, lda, b, ldb,)
-{{endfor}}
-
-
-{{py:
-fc_name_values = ['strsv_c', 'dtrsv_c', 'ctrsv_c', 'ztrsv_c']
-ktp_values = ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t']
-name_values = ['strsv', 'dtrsv', 'ctrsv', 'ztrsv']
-npy_enum_values = ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum']
-}}
-{{for fc_name, ktp, name, npy_enum
-       in zip(fc_name_values, ktp_values, name_values, npy_enum_values)}}
-cpdef api object {{name}}(object uplo, object trans, object diag, fwi_integer_t n, object a, fwi_integer_t lda, object x, fwi_integer_t incx):
-    """
-    {{name}}(uplo, trans, diag, n, a, lda, x, incx) -> (uplo, trans, diag, n, a, lda, x, incx)
-
-    Parameters
-    ----------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    Returns
-    -------
-    uplo : object_, intent inout
-    trans : object_, intent inout
-    diag : object_, intent inout
-    n : fwi_integer, intent inout
-    a : {{ktp}}_, 2D array, dimension(lda, *), intent inout
-    lda : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    incx : fwi_integer, intent inout
-
-    """
-    cdef char *fw_uplo = [0, 0]
-    cdef char *fw_trans = [0, 0]
-    cdef char *fw_diag = [0, 0]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray x_
-    cdef fw_shape_t x_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
-    fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    fw_uplo[0] = fw_aschar(uplo)
-    if fw_uplo[0] == 0:
-        raise ValueError("len(uplo) != 1")
-    fw_trans[0] = fw_aschar(trans)
-    if fw_trans[0] == 0:
-        raise ValueError("len(trans) != 1")
-    fw_diag[0] = fw_aschar(diag)
-    if fw_diag[0] == 0:
-        raise ValueError("len(diag) != 1")
-    {{fc_name}}(fw_uplo, fw_trans, fw_diag, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &lda, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_), &incx, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (fw_uplo, fw_trans, fw_diag, n, a, lda, x, incx,)
-{{endfor}}
-
-
-cpdef api object xerbla(fw_bytes srname, fwi_integer_t info):
-    """
-    xerbla(srname, info) -> (fw_srname, info)
-
-    Parameters
-    ----------
-    srname : fw_character_x6, len 6, intent inout
-    info : fwi_integer, intent inout
-
-    Returns
-    -------
-    srname : fw_character_x6, len 6, intent inout
-    info : fwi_integer, intent inout
-
-    """
-    cdef fw_bytes fw_srname
-    cdef fw_shape_t fw_srname_len
-    cdef char *fw_srname_buf
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    fw_srname_len = 6
-    fw_srname = PyBytes_FromStringAndSize(NULL, fw_srname_len)
-    fw_srname_buf = <char*>fw_srname
-    memcpy(fw_srname_buf, <char*>srname, fw_srname_len+1)
-    xerbla_c(&fw_srname_len, fw_srname_buf, &info, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'xerbla' wrapper.")
-    return (fw_srname, info,)
 
 
 cpdef api object zdrot(fwi_integer_t n, object cx, fwi_integer_t incx, object cy, fwi_integer_t incy, fwr_dbl_t c, fwr_dbl_t s):
@@ -3586,10 +1289,89 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d    
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_b290328
-# Fwrap: self-sha1 862fa2aeb5b575aa2bbd3e7fcb6cf35d12330338
+# Fwrap: version 0.2.0dev_2a63538
+# Fwrap: self-sha1 c2676dffda7114d90f24a1f01b932de010724d64
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
+# Fwrap: exclude cgbmv
+# Fwrap: exclude chbmv
+# Fwrap: exclude chemm
+# Fwrap: exclude cher
+# Fwrap: exclude cher2
+# Fwrap: exclude cher2k
+# Fwrap: exclude cherk
+# Fwrap: exclude chpmv
+# Fwrap: exclude chpr
+# Fwrap: exclude chpr2
+# Fwrap: exclude csymm
+# Fwrap: exclude csyr2k
+# Fwrap: exclude csyrk
+# Fwrap: exclude ctbmv
+# Fwrap: exclude ctbsv
+# Fwrap: exclude ctpmv
+# Fwrap: exclude ctpsv
+# Fwrap: exclude ctrmm
+# Fwrap: exclude ctrsm
+# Fwrap: exclude ctrsv
+# Fwrap: exclude dcabs1
+# Fwrap: exclude dgbmv
+# Fwrap: exclude dsbmv
+# Fwrap: exclude dsdot
+# Fwrap: exclude dspmv
+# Fwrap: exclude dspr
+# Fwrap: exclude dspr2
+# Fwrap: exclude dsymm
+# Fwrap: exclude dsyr
+# Fwrap: exclude dsyr2
+# Fwrap: exclude dsyr2k
+# Fwrap: exclude dsyrk
+# Fwrap: exclude dtbmv
+# Fwrap: exclude dtbsv
+# Fwrap: exclude dtpmv
+# Fwrap: exclude dtpsv
+# Fwrap: exclude dtrmm
+# Fwrap: exclude dtrsm
+# Fwrap: exclude dtrsv
+# Fwrap: exclude scabs1
+# Fwrap: exclude sdsdot
+# Fwrap: exclude sgbmv
+# Fwrap: exclude ssbmv
+# Fwrap: exclude sspmv
+# Fwrap: exclude sspr
+# Fwrap: exclude sspr2
+# Fwrap: exclude ssymm
+# Fwrap: exclude ssyr
+# Fwrap: exclude ssyr2
+# Fwrap: exclude ssyr2k
+# Fwrap: exclude ssyrk
+# Fwrap: exclude stbmv
+# Fwrap: exclude stbsv
+# Fwrap: exclude stpmv
+# Fwrap: exclude stpsv
+# Fwrap: exclude strmm
+# Fwrap: exclude strsm
+# Fwrap: exclude strsv
+# Fwrap: exclude xerbla
+# Fwrap: exclude zgbmv
+# Fwrap: exclude zhbmv
+# Fwrap: exclude zhemm
+# Fwrap: exclude zher
+# Fwrap: exclude zher2
+# Fwrap: exclude zher2k
+# Fwrap: exclude zherk
+# Fwrap: exclude zhpmv
+# Fwrap: exclude zhpr
+# Fwrap: exclude zhpr2
+# Fwrap: exclude zsymm
+# Fwrap: exclude zsyr2k
+# Fwrap: exclude zsyrk
+# Fwrap: exclude ztbmv
+# Fwrap: exclude ztbsv
+# Fwrap: exclude ztpmv
+# Fwrap: exclude ztpsv
+# Fwrap: exclude ztrmm
+# Fwrap: exclude ztrsm
+# Fwrap: exclude ztrsv
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: template isamax,idamax,icamax,izamax
