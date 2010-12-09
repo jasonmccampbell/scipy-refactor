@@ -758,6 +758,11 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
+    trans_f = ("C" if (trans == 2) else "T") if trans else "N"
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
+    m = np.PyArray_DIMS(a_)[0]
+    n = np.PyArray_DIMS(a_)[1]
     rows = n if trans else m
     cols = m if trans else n
     if y is None:
@@ -767,11 +772,6 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     y_, y = fw_explicitshapearray(y, {{npy_enum}}, 1, [ly], not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
-    trans_f = ("C" if (trans == 2) else "T") if trans else "N"
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
-    m = np.PyArray_DIMS(a_)[0]
-    n = np.PyArray_DIMS(a_)[1]
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((incy > 0) or (incy < 0)):
