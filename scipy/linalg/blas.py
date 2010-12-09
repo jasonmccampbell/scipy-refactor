@@ -15,6 +15,7 @@ if hasattr(cblas,'empty_module'):
     cblas = fblas
 elif hasattr(fblas,'empty_module'):
     fblas = cblas
+from funcinfo import register_func_info
 
 _type_conv = {'f':'s', 'd':'d', 'F':'c', 'D':'z'} # 'd' will be default for 'i',..
 _inv_type_conv = {'s':'f','d':'d','c':'F','z':'D'}
@@ -56,10 +57,9 @@ def get_blas_funcs(names,arrays=(),debug=0):
         func = getattr(m1,func_name,None)
         if func is None:
             func = getattr(m2,func_name)
-            func.module_name = m2.__name__.split('.')[-1]
+            module_name = m2.__name__.split('.')[-1]
         else:
-            func.module_name = m1.__name__.split('.')[-1]
-        func.prefix = required_prefix
-        func.typecode = typecode
+            module_name = m1.__name__.split('.')[-1]
+        register_func_info(func, module_name, required_prefix, typecode, None)
         funcs.append(func)
     return tuple(funcs)

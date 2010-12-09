@@ -16,6 +16,7 @@ from flinalg import get_flinalg_funcs
 from lapack import get_lapack_funcs
 from misc import LinAlgError
 from scipy.linalg import calc_lwork
+from funcinfo import get_func_info
 import decomp_svd
 
 
@@ -119,7 +120,7 @@ def solve_banded((l, u), ab, b, overwrite_ab=False, overwrite_b=False,
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
 
     gbsv, = get_lapack_funcs(('gbsv',), (a1, b1))
-    a2 = zeros((2*l+u+1, a1.shape[1]), dtype=gbsv.dtype)
+    a2 = zeros((2*l+u+1, a1.shape[1]), dtype=get_func_info(gbsv).dtype)
     a2[l:,:] = a1
     lu, piv, x, info = gbsv(l, u, a2, b1, overwrite_ab=True,
                                                 overwrite_b=overwrite_b)
@@ -241,11 +242,14 @@ def inv(a, overwrite_a=False):
 ##         if info<0: raise ValueError,\
 ##            'illegal value in %d-th argument of internal inv.getrf|getri'%(-info)
     getrf, getri = get_lapack_funcs(('getrf','getri'), (a1,))
+    getrf_info = get_func_info(getrf)
+    getri_info = get_func_info(getri)
     #XXX: C ATLAS versions of getrf/i have rowmajor=1, this could be
     #     exploited for further optimization. But it will be probably
     #     a mess. So, a good testing site is required before trying
     #     to do that.
-    if getrf.module_name[:7] == 'clapack' != getri.module_name[:7]:
+    if (getrf_info.module_name[:7] == 'clapack' !=
+        getri_info.module_name[:7]):
         # ATLAS 3.2.1 has getrf but not getri.
         lu, piv, info = getrf(transpose(a1), rowmajor=0,
                                                 overwrite_a=overwrite_a)
@@ -253,8 +257,8 @@ def inv(a, overwrite_a=False):
     else:
         lu, piv, info = getrf(a1, overwrite_a=overwrite_a)
     if info == 0:
-        if getri.module_name[:7] == 'flapack':
-            lwork = calc_lwork.getri(getri.prefix, a1.shape[0])
+        if getri_info.module_name[:7] == 'flapack':
+            lwork = calc_lwork.getri(getri_info.prefix, a1.shape[0])
             lwork = lwork[1]
             # XXX: the following line fixes curious SEGFAULT when
             # benchmarking 500x500 matrix inverse. This seems to
@@ -362,10 +366,11 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
     if m != b1.shape[0]:
         raise ValueError('incompatible dimensions')
     gelss, = get_lapack_funcs(('gelss',), (a1, b1))
+    gelss_info = get_func_info(gelss)
     if n > m:
         # need to extend b matrix as it will be filled with
         # a larger solution matrix
-        b2 = zeros((n, nrhs), dtype=gelss.dtype)
+        b2 = zeros((n, nrhs), dtype=gelss_info.dtype)
         if len(b1.shape) == 2:
             b2[:m,:] = b1
         else:
@@ -373,13 +378,13 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
         b1 = b2
     overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
-    if gelss.module_name[:7] == 'flapack':
-        lwork = calc_lwork.gelss(gelss.prefix, m, n, nrhs)[1]
+    if gelss_info.module_name[:7] == 'flapack':
+        lwork = calc_lwork.gelss(gelss_info.prefix, m, n, nrhs)[1]
         v, x, s, rank, info = gelss(a1, b1, cond=cond, lwork=lwork,
                                                 overwrite_a=overwrite_a,
                                                 overwrite_b=overwrite_b)
     else:
-        raise NotImplementedError('calling gelss from %s' % gelss.module_name)
+        raise NotImplementedError('calling gelss from %s' % get_func_info(gelss).module_name)
     if info > 0:
         raise LinAlgError("SVD did not converge in Linear Least Squares")
     if info < 0:
