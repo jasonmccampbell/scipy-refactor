@@ -396,8 +396,8 @@ cpdef api object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, obj
     fw_copyshape(cqn_shape_, np.PyArray_DIMS(cqn_), 1)
     cqd_, cqd = fw_explicitshapearray(cqd, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 1)
-    x_f = ##TODO: &(z.r)
-    y_f = ##TODO: &(z.i)
+    x_f = z.real
+    y_f = z.imag
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     clqn_c(&n, &x_f, &y_f, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
@@ -786,8 +786,8 @@ cpdef api object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, obj
     fw_copyshape(cpn_shape_, np.PyArray_DIMS(cpn_), 1)
     cpd_, cpd = fw_explicitshapearray(cpd, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
-    x_f = ##TODO: &(z.r)
-    y_f = ##TODO: &(z.i)
+    x_f = z.real
+    y_f = z.imag
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     clpn_c(&n, &x_f, &y_f, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
@@ -1646,8 +1646,8 @@ cpdef api object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, ob
     fw_copyshape(cqm_shape_, np.PyArray_DIMS(cqm_), 2)
     cqd_, cqd = fw_explicitshapearray(cqd, fwc_complex_x16_t_enum, 2, [mm - 0 + 1, n - 0 + 1], False)
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 2)
-    x_f = ##TODO: &(z.r)
-    y_f = ##TODO: &(z.i)
+    x_f = z.real
+    y_f = z.imag
     if not (m >= 1):
         raise ValueError('Condition on arguments not satisfied: m >= 1')
     if not (n >= 1):
