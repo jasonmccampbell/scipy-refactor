@@ -67,6 +67,8 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
+cdef extern from "math.h":
+    double fabs(double)
 cpdef api object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """
     lqmn(m, n, x, [qm, qd]) -> (qm, qd)
@@ -954,8 +956,8 @@ cpdef api object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t 
         raise ValueError('Condition on arguments not satisfied: m >= 0')
     if not (n >= m):
         raise ValueError('Condition on arguments not satisfied: n >= m')
-    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
-        raise ValueError('Condition on arguments not satisfied: ##TODO (watch any dependencies that may be further down!) fabs(x)<1')
+    if not (fabs(x)<1):
+        raise ValueError('Condition on arguments not satisfied: fabs(x)<1')
     if not ((kd == -1) or (kd == 1)):
         raise ValueError('Condition on arguments not satisfied: (kd == -1) or (kd == 1)')
     aswfb_c(&m, &n, &c, &x, &kd, &cv, &s1f, &s1d, &fw_iserr__, fw_errstr__)
@@ -993,8 +995,8 @@ cpdef api object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=No
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
-    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
-        raise ValueError('Condition on arguments not satisfied: ##TODO (watch any dependencies that may be further down!) fabs(x)<1')
+    if not (fabs(x)<1):
+        raise ValueError('Condition on arguments not satisfied: fabs(x)<1')
     lqna_c(&n, &x, qn_shape_, <fwr_dbl_t*>np.PyArray_DATA(qn_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqna' wrapper.")
