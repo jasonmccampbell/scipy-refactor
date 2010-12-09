@@ -67,208 +67,209 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object lqmn(fwi_integer_t mm, fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm, object qd):
+cpdef api object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """
-    lqmn(mm, m, n, x, qm, qd) -> (mm, m, n, x, qm, qd)
+    lqmn(m, n, x, [qm, qd]) -> (qm, qd)
 
     Parameters
     ----------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
-    qd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    qm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent out
+    qd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent out
 
     Returns
     -------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
-    qd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
+    qm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent out
+    qd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent out
 
     """
     cdef np.ndarray qm_
     cdef fw_shape_t qm_shape_[2]
     cdef np.ndarray qd_
     cdef fw_shape_t qd_shape_[2]
+    cdef fwi_integer_t mm
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    qm_, qm = fw_asfortranarray(qm, fwr_dbl_t_enum, 2, False)
+    mm = m
+    qm_, qm = fw_explicitshapearray(qm, fwr_dbl_t_enum, 2, [mm - 0 + 1, n - 0 + 1], False)
     fw_copyshape(qm_shape_, np.PyArray_DIMS(qm_), 2)
-    qd_, qd = fw_asfortranarray(qd, fwr_dbl_t_enum, 2, False)
+    qd_, qd = fw_explicitshapearray(qd, fwr_dbl_t_enum, 2, [mm - 0 + 1, n - 0 + 1], False)
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 2)
+    if not (m >= 1):
+        raise ValueError('Condition on arguments not satisfied: m >= 1')
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lqmn_c(&mm, &m, &n, &x, qm_shape_, <fwr_dbl_t*>np.PyArray_DATA(qm_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqmn' wrapper.")
-    return (mm, m, n, x, qm, qd,)
+    return (qm, qd,)
 
 
-cpdef api object clpmn(fwi_integer_t mm, fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm, object cpd):
+cpdef api object clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm=None, object cpd=None):
     """
-    clpmn(mm, m, n, x, y, cpm, cpd) -> (mm, m, n, x, y, cpm, cpd)
+    clpmn(m, n, x, y, [cpm, cpd]) -> (cpm, cpd)
 
     Parameters
     ----------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cpm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
-    cpd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    y : fwr_dbl, intent in
+    cpm : fwc_complex_x16, 2D array, dimension(0:m, 0:n), intent out
+    cpd : fwc_complex_x16, 2D array, dimension(0:m, 0:n), intent out
 
     Returns
     -------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cpm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
-    cpd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
+    cpm : fwc_complex_x16, 2D array, dimension(0:m, 0:n), intent out
+    cpd : fwc_complex_x16, 2D array, dimension(0:m, 0:n), intent out
 
     """
     cdef np.ndarray cpm_
     cdef fw_shape_t cpm_shape_[2]
     cdef np.ndarray cpd_
     cdef fw_shape_t cpd_shape_[2]
+    cdef fwi_integer_t mm
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cpm_, cpm = fw_asfortranarray(cpm, fwc_complex_x16_t_enum, 2, False)
+    cpm_, cpm = fw_explicitshapearray(cpm, fwc_complex_x16_t_enum, 2, [m - 0 + 1, n - 0 + 1], False)
     fw_copyshape(cpm_shape_, np.PyArray_DIMS(cpm_), 2)
-    cpd_, cpd = fw_asfortranarray(cpd, fwc_complex_x16_t_enum, 2, False)
+    cpd_, cpd = fw_explicitshapearray(cpd, fwc_complex_x16_t_enum, 2, [m - 0 + 1, n - 0 + 1], False)
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 2)
+    mm = m
+    if not (m >= 0):
+        raise ValueError('Condition on arguments not satisfied: m >= 0')
+    if not (n >= 0):
+        raise ValueError('Condition on arguments not satisfied: n >= 0')
     clpmn_c(&mm, &m, &n, &x, &y, cpm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpm_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clpmn' wrapper.")
-    return (mm, m, n, x, y, cpm, cpd,)
+    return (cpm, cpd,)
 
 
-cpdef api object jdzo(fwi_integer_t nt, object n, object m, object p, object zo):
+cpdef api object jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, object zo=None):
     """
-    jdzo(nt, n, m, p, zo) -> (nt, n, m, p, zo)
+    jdzo(nt, [n, m, pcode, zo]) -> (n, m, pcode, zo)
 
     Parameters
     ----------
-    nt : fwi_integer, intent inout
-    n : fwi_integer, 1D array, dimension(1400), intent inout
-    m : fwi_integer, 1D array, dimension(1400), intent inout
-    p : fwi_integer, 1D array, dimension(1400), intent inout
-    zo : fwr_dbl, 1D array, dimension(0:1400), intent inout
+    nt : fwi_integer, intent in
+    n : fwi_integer, 1D array, dimension(1400), intent out
+    m : fwi_integer, 1D array, dimension(1400), intent out
+    pcode : fwi_integer, 1D array, dimension(1400), intent out
+    zo : fwr_dbl, 1D array, dimension(0:1400), intent out
 
     Returns
     -------
-    nt : fwi_integer, intent inout
-    n : fwi_integer, 1D array, dimension(1400), intent inout
-    m : fwi_integer, 1D array, dimension(1400), intent inout
-    p : fwi_integer, 1D array, dimension(1400), intent inout
-    zo : fwr_dbl, 1D array, dimension(0:1400), intent inout
+    n : fwi_integer, 1D array, dimension(1400), intent out
+    m : fwi_integer, 1D array, dimension(1400), intent out
+    pcode : fwi_integer, 1D array, dimension(1400), intent out
+    zo : fwr_dbl, 1D array, dimension(0:1400), intent out
 
     """
     cdef np.ndarray n_
     cdef fw_shape_t n_shape_[1]
     cdef np.ndarray m_
     cdef fw_shape_t m_shape_[1]
-    cdef np.ndarray p_
-    cdef fw_shape_t p_shape_[1]
+    cdef np.ndarray pcode_
+    cdef fw_shape_t pcode_shape_[1]
     cdef np.ndarray zo_
     cdef fw_shape_t zo_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    n_, n = fw_asfortranarray(n, fwi_integer_t_enum, 1, False)
+    n_, n = fw_explicitshapearray(n, fwi_integer_t_enum, 1, [1400], False)
     fw_copyshape(n_shape_, np.PyArray_DIMS(n_), 1)
-    m_, m = fw_asfortranarray(m, fwi_integer_t_enum, 1, False)
+    m_, m = fw_explicitshapearray(m, fwi_integer_t_enum, 1, [1400], False)
     fw_copyshape(m_shape_, np.PyArray_DIMS(m_), 1)
-    p_, p = fw_asfortranarray(p, fwi_integer_t_enum, 1, False)
-    fw_copyshape(p_shape_, np.PyArray_DIMS(p_), 1)
-    zo_, zo = fw_asfortranarray(zo, fwr_dbl_t_enum, 1, False)
+    pcode_, pcode = fw_explicitshapearray(pcode, fwi_integer_t_enum, 1, [1400], False)
+    fw_copyshape(pcode_shape_, np.PyArray_DIMS(pcode_), 1)
+    zo_, zo = fw_explicitshapearray(zo, fwr_dbl_t_enum, 1, [1400 - 0 + 1], False)
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    jdzo_c(&nt, n_shape_, <fwi_integer_t*>np.PyArray_DATA(n_), m_shape_, <fwi_integer_t*>np.PyArray_DATA(m_), p_shape_, <fwi_integer_t*>np.PyArray_DATA(p_), zo_shape_, <fwr_dbl_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
+    if not ((nt > 0) and (nt <= 1200)):
+        raise ValueError('Condition on arguments not satisfied: (nt > 0) and (nt <= 1200)')
+    jdzo_c(&nt, n_shape_, <fwi_integer_t*>np.PyArray_DATA(n_), m_shape_, <fwi_integer_t*>np.PyArray_DATA(m_), pcode_shape_, <fwi_integer_t*>np.PyArray_DATA(pcode_), zo_shape_, <fwr_dbl_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'jdzo' wrapper.")
-    return (nt, n, m, p, zo,)
+    return (n, m, pcode, zo,)
 
 
-cpdef api object bernob(fwi_integer_t n, object bn):
+cpdef api object bernob(fwi_integer_t n, object bn=None):
     """
-    bernob(n, bn) -> (n, bn)
+    bernob(n, [bn]) -> bn
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    bn : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    bn : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    bn : fwr_dbl, 1D array, dimension(0:n), intent inout
+    bn : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray bn_
     cdef fw_shape_t bn_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    bn_, bn = fw_asfortranarray(bn, fwr_dbl_t_enum, 1, False)
+    bn_, bn = fw_explicitshapearray(bn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(bn_shape_, np.PyArray_DIMS(bn_), 1)
+    if not (n >= 2):
+        raise ValueError('Condition on arguments not satisfied: n >= 2')
     bernob_c(&n, bn_shape_, <fwr_dbl_t*>np.PyArray_DATA(bn_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'bernob' wrapper.")
-    return (n, bn,)
+    return bn
 
 
-cpdef api object bernoa(fwi_integer_t n, object bn):
+cpdef api object bernoa(fwi_integer_t n, object bn=None):
     """
-    bernoa(n, bn) -> (n, bn)
+    bernoa(n, [bn]) -> bn
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    bn : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    bn : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    bn : fwr_dbl, 1D array, dimension(0:n), intent inout
+    bn : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray bn_
     cdef fw_shape_t bn_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    bn_, bn = fw_asfortranarray(bn, fwr_dbl_t_enum, 1, False)
+    bn_, bn = fw_explicitshapearray(bn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(bn_shape_, np.PyArray_DIMS(bn_), 1)
+    if not (n >= 0):
+        raise ValueError('Condition on arguments not satisfied: n >= 0')
     bernoa_c(&n, bn_shape_, <fwr_dbl_t*>np.PyArray_DATA(bn_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'bernoa' wrapper.")
-    return (n, bn,)
+    return bn
 
 
-cpdef api object csphjy(fwi_integer_t n, fwc_complex_x16_t z, fwi_integer_t nm, object csj, object cdj, object csy, object cdy):
+cpdef api object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=None, object csy=None, object cdy=None):
     """
-    csphjy(n, z, nm, csj, cdj, csy, cdy) -> (n, z, nm, csj, cdj, csy, cdy)
+    csphjy(n, z, [csj, cdj, csy, cdy]) -> (nm, csj, cdj, csy, cdy)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    nm : fwi_integer, intent inout
-    csj : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdj : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    csy : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdy : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    csj : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    cdj : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    csy : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    cdy : fwc_complex_x16, 1D array, dimension(n + 1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    nm : fwi_integer, intent inout
-    csj : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdj : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    csy : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdy : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    csj : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    cdj : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    csy : fwc_complex_x16, 1D array, dimension(n + 1), intent out
+    cdy : fwc_complex_x16, 1D array, dimension(n + 1), intent out
 
     """
     cdef np.ndarray csj_
@@ -280,40 +281,40 @@ cpdef api object csphjy(fwi_integer_t n, fwc_complex_x16_t z, fwi_integer_t nm, 
     cdef np.ndarray cdy_
     cdef fw_shape_t cdy_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    csj_, csj = fw_asfortranarray(csj, fwc_complex_x16_t_enum, 1, False)
+    csj_, csj = fw_explicitshapearray(csj, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(csj_shape_, np.PyArray_DIMS(csj_), 1)
-    cdj_, cdj = fw_asfortranarray(cdj, fwc_complex_x16_t_enum, 1, False)
+    cdj_, cdj = fw_explicitshapearray(cdj, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cdj_shape_, np.PyArray_DIMS(cdj_), 1)
-    csy_, csy = fw_asfortranarray(csy, fwc_complex_x16_t_enum, 1, False)
+    csy_, csy = fw_explicitshapearray(csy, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(csy_shape_, np.PyArray_DIMS(csy_), 1)
-    cdy_, cdy = fw_asfortranarray(cdy, fwc_complex_x16_t_enum, 1, False)
+    cdy_, cdy = fw_explicitshapearray(cdy, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cdy_shape_, np.PyArray_DIMS(cdy_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     csphjy_c(&n, &z, &nm, csj_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csj_), cdj_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdj_), csy_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csy_), cdy_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'csphjy' wrapper.")
-    return (n, z, nm, csj, cdj, csy, cdy,)
+    return (nm, csj, cdj, csy, cdy,)
 
 
-cpdef api object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm, object pd):
+cpdef api object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """
-    lpmns(m, n, x, pm, pd) -> (m, n, x, pm, pd)
+    lpmns(m, n, x, [pm, pd]) -> (pm, pd)
 
     Parameters
     ----------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pm : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    pm : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pm : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    pm : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray pm_
@@ -322,62 +323,63 @@ cpdef api object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm,
     cdef fw_shape_t pd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    pm_, pm = fw_asfortranarray(pm, fwr_dbl_t_enum, 1, False)
+    pm_, pm = fw_explicitshapearray(pm, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pm_shape_, np.PyArray_DIMS(pm_), 1)
-    pd_, pd = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, False)
+    pd_, pd = fw_explicitshapearray(pd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
+    if not ((m >= 0) and (m <= n)):
+        raise ValueError('Condition on arguments not satisfied: (m >= 0) and (m <= n)')
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lpmns_c(&m, &n, &x, pm_shape_, <fwr_dbl_t*>np.PyArray_DATA(pm_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpmns' wrapper.")
-    return (m, n, x, pm, pd,)
+    return (pm, pd,)
 
 
-cpdef api object eulera(fwi_integer_t n, object en):
+cpdef api object eulera(fwi_integer_t n, object en=None):
     """
-    eulera(n, en) -> (n, en)
+    eulera(n, [en]) -> en
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    en : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    en : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    en : fwr_dbl, 1D array, dimension(0:n), intent inout
+    en : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray en_
     cdef fw_shape_t en_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    en_, en = fw_asfortranarray(en, fwr_dbl_t_enum, 1, False)
+    en_, en = fw_explicitshapearray(en, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(en_shape_, np.PyArray_DIMS(en_), 1)
+    if not (n >= 0):
+        raise ValueError('Condition on arguments not satisfied: n >= 0')
     eulera_c(&n, en_shape_, <fwr_dbl_t*>np.PyArray_DATA(en_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'eulera' wrapper.")
-    return (n, en,)
+    return en
 
 
-cpdef api object clqn(fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cqn, object cqd):
+cpdef api object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None):
     """
-    clqn(n, x, y, cqn, cqd) -> (n, x, y, cqn, cqd)
+    clqn(n, z, [cqn, cqd]) -> (cqn, cqd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cqn : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cqd : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    cqn : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cqd : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cqn : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cqd : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    cqn : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cqd : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray cqn_
@@ -385,38 +387,42 @@ cpdef api object clqn(fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cqn, obj
     cdef np.ndarray cqd_
     cdef fw_shape_t cqd_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t x_f
+    cdef fwr_dbl_t y_f
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cqn_, cqn = fw_asfortranarray(cqn, fwc_complex_x16_t_enum, 1, False)
+    cqn_, cqn = fw_explicitshapearray(cqn, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cqn_shape_, np.PyArray_DIMS(cqn_), 1)
-    cqd_, cqd = fw_asfortranarray(cqd, fwc_complex_x16_t_enum, 1, False)
+    cqd_, cqd = fw_explicitshapearray(cqd, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 1)
-    clqn_c(&n, &x, &y, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
+    x_f = ##TODO: &(z.r)
+    y_f = ##TODO: &(z.i)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    clqn_c(&n, &x_f, &y_f, cqn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqn' wrapper.")
-    return (n, x, y, cqn, cqd,)
+    return (cqn, cqd,)
 
 
-cpdef api object airyzo(fwi_integer_t nt, fwi_integer_t kf, object xa, object xb, object xc, object xd):
+cpdef api object airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None, object xc=None, object xd=None):
     """
-    airyzo(nt, kf, xa, xb, xc, xd) -> (nt, kf, xa, xb, xc, xd)
+    airyzo(nt, kf, [xa, xb, xc, xd]) -> (xa, xb, xc, xd)
 
     Parameters
     ----------
-    nt : fwi_integer, intent inout
-    kf : fwi_integer, intent inout
-    xa : fwr_dbl, 1D array, dimension(nt), intent inout
-    xb : fwr_dbl, 1D array, dimension(nt), intent inout
-    xc : fwr_dbl, 1D array, dimension(nt), intent inout
-    xd : fwr_dbl, 1D array, dimension(nt), intent inout
+    nt : fwi_integer, intent in
+    kf : fwi_integer, intent in
+    xa : fwr_dbl, 1D array, dimension(nt), intent out
+    xb : fwr_dbl, 1D array, dimension(nt), intent out
+    xc : fwr_dbl, 1D array, dimension(nt), intent out
+    xd : fwr_dbl, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    nt : fwi_integer, intent inout
-    kf : fwi_integer, intent inout
-    xa : fwr_dbl, 1D array, dimension(nt), intent inout
-    xb : fwr_dbl, 1D array, dimension(nt), intent inout
-    xc : fwr_dbl, 1D array, dimension(nt), intent inout
-    xd : fwr_dbl, 1D array, dimension(nt), intent inout
+    xa : fwr_dbl, 1D array, dimension(nt), intent out
+    xb : fwr_dbl, 1D array, dimension(nt), intent out
+    xc : fwr_dbl, 1D array, dimension(nt), intent out
+    xd : fwr_dbl, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray xa_
@@ -429,95 +435,97 @@ cpdef api object airyzo(fwi_integer_t nt, fwi_integer_t kf, object xa, object xb
     cdef fw_shape_t xd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    xa_, xa = fw_asfortranarray(xa, fwr_dbl_t_enum, 1, False)
+    xa_, xa = fw_explicitshapearray(xa, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(xa_shape_, np.PyArray_DIMS(xa_), 1)
-    xb_, xb = fw_asfortranarray(xb, fwr_dbl_t_enum, 1, False)
+    xb_, xb = fw_explicitshapearray(xb, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(xb_shape_, np.PyArray_DIMS(xb_), 1)
-    xc_, xc = fw_asfortranarray(xc, fwr_dbl_t_enum, 1, False)
+    xc_, xc = fw_explicitshapearray(xc, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(xc_shape_, np.PyArray_DIMS(xc_), 1)
-    xd_, xd = fw_asfortranarray(xd, fwr_dbl_t_enum, 1, False)
+    xd_, xd = fw_explicitshapearray(xd, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(xd_shape_, np.PyArray_DIMS(xd_), 1)
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
     airyzo_c(&nt, &kf, xa_shape_, <fwr_dbl_t*>np.PyArray_DATA(xa_), xb_shape_, <fwr_dbl_t*>np.PyArray_DATA(xb_), xc_shape_, <fwr_dbl_t*>np.PyArray_DATA(xc_), xd_shape_, <fwr_dbl_t*>np.PyArray_DATA(xd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'airyzo' wrapper.")
-    return (nt, kf, xa, xb, xc, xd,)
+    return (xa, xb, xc, xd,)
 
 
-cpdef api object eulerb(fwi_integer_t n, object en):
+cpdef api object eulerb(fwi_integer_t n, object en=None):
     """
-    eulerb(n, en) -> (n, en)
+    eulerb(n, [en]) -> en
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    en : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    en : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    en : fwr_dbl, 1D array, dimension(0:n), intent inout
+    en : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray en_
     cdef fw_shape_t en_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    en_, en = fw_asfortranarray(en, fwr_dbl_t_enum, 1, False)
+    en_, en = fw_explicitshapearray(en, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(en_shape_, np.PyArray_DIMS(en_), 1)
+    if not (n >= 2):
+        raise ValueError('Condition on arguments not satisfied: n >= 2')
     eulerb_c(&n, en_shape_, <fwr_dbl_t*>np.PyArray_DATA(en_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'eulerb' wrapper.")
-    return (n, en,)
+    return en
 
 
-cpdef api object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv):
+cpdef api object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
     """
-    cva1(kd, m, q, cv) -> (kd, m, q, cv)
+    cva1(kd, m, q, [cv]) -> cv
 
     Parameters
     ----------
-    kd : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    q : fwr_dbl, intent inout
-    cv : fwr_dbl, 1D array, dimension(200), intent inout
+    kd : fwi_integer, intent in
+    m : fwi_integer, intent in
+    q : fwr_dbl, intent in
+    cv : fwr_dbl, 1D array, dimension(m), intent out
 
     Returns
     -------
-    kd : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    q : fwr_dbl, intent inout
-    cv : fwr_dbl, 1D array, dimension(200), intent inout
+    cv : fwr_dbl, 1D array, dimension(m), intent out
 
     """
     cdef np.ndarray cv_
     cdef fw_shape_t cv_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cv_, cv = fw_asfortranarray(cv, fwr_dbl_t_enum, 1, False)
+    cv_, cv = fw_explicitshapearray(cv, fwr_dbl_t_enum, 1, [m], False)
     fw_copyshape(cv_shape_, np.PyArray_DIMS(cv_), 1)
+    if not (m <= 200):
+        raise ValueError('Condition on arguments not satisfied: m <= 200')
+    if not (q >= 0):
+        raise ValueError('Condition on arguments not satisfied: q >= 0')
     cva1_c(&kd, &m, &q, cv_shape_, <fwr_dbl_t*>np.PyArray_DATA(cv_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cva1' wrapper.")
-    return (kd, m, q, cv,)
+    return cv
 
 
-cpdef api object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn, object qd):
+cpdef api object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """
-    lqnb(n, x, qn, qd) -> (n, x, qn, qd)
+    lqnb(n, x, [qn, qd]) -> (qn, qd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    qn : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    qn : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray qn_
@@ -526,35 +534,34 @@ cpdef api object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn, object qd):
     cdef fw_shape_t qd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    qn_, qn = fw_asfortranarray(qn, fwr_dbl_t_enum, 1, False)
+    qn_, qn = fw_explicitshapearray(qn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qn_shape_, np.PyArray_DIMS(qn_), 1)
-    qd_, qd = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, False)
+    qd_, qd = fw_explicitshapearray(qd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lqnb_c(&n, &x, qn_shape_, <fwr_dbl_t*>np.PyArray_DATA(qn_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqnb' wrapper.")
-    return (n, x, qn, qd,)
+    return (qn, qd,)
 
 
-cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, fwr_dbl_t vm, object vl, object dl):
+cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     """
-    lamv(v, x, vm, vl, dl) -> (v, x, vm, vl, dl)
+    lamv(v, x, [vl, dl]) -> (vm, vl, dl)
 
     Parameters
     ----------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    vm : fwr_dbl, intent inout
-    vl : fwr_dbl, 1D array, dimension(0:*), intent inout
-    dl : fwr_dbl, 1D array, dimension(0:*), intent inout
+    v : fwr_dbl, intent in
+    x : fwr_dbl, intent in
+    vl : fwr_dbl, 1D array, dimension((int)v+1), intent out
+    dl : fwr_dbl, 1D array, dimension((int)v+1), intent out
 
     Returns
     -------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    vm : fwr_dbl, intent inout
-    vl : fwr_dbl, 1D array, dimension(0:*), intent inout
-    dl : fwr_dbl, 1D array, dimension(0:*), intent inout
+    vm : fwr_dbl, intent out
+    vl : fwr_dbl, 1D array, dimension((int)v+1), intent out
+    dl : fwr_dbl, 1D array, dimension((int)v+1), intent out
 
     """
     cdef np.ndarray vl_
@@ -562,32 +569,34 @@ cpdef api object lamv(fwr_dbl_t v, fwr_dbl_t x, fwr_dbl_t vm, object vl, object 
     cdef np.ndarray dl_
     cdef fw_shape_t dl_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t vm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    vl_, vl = fw_asfortranarray(vl, fwr_dbl_t_enum, 1, False)
+    vl_, vl = fw_explicitshapearray(vl, fwr_dbl_t_enum, 1, [<int>v + 1], False)
     fw_copyshape(vl_shape_, np.PyArray_DIMS(vl_), 1)
-    dl_, dl = fw_asfortranarray(dl, fwr_dbl_t_enum, 1, False)
+    dl_, dl = fw_explicitshapearray(dl, fwr_dbl_t_enum, 1, [<int>v + 1], False)
     fw_copyshape(dl_shape_, np.PyArray_DIMS(dl_), 1)
+    if not (v >= 1):
+        raise ValueError('Condition on arguments not satisfied: v >= 1')
     lamv_c(&v, &x, &vm, vl_shape_, <fwr_dbl_t*>np.PyArray_DATA(vl_), dl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lamv' wrapper.")
-    return (v, x, vm, vl, dl,)
+    return (vm, vl, dl,)
 
 
-cpdef api object lagzo(fwi_integer_t n, object x, object w):
+cpdef api object lagzo(fwi_integer_t n, object x=None, object w=None):
     """
-    lagzo(n, x, w) -> (n, x, w)
+    lagzo(n, [x, w]) -> (x, w)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     """
     cdef np.ndarray x_
@@ -596,31 +605,32 @@ cpdef api object lagzo(fwi_integer_t n, object x, object w):
     cdef fw_shape_t w_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, fwr_dbl_t_enum, 1, False)
+    x_, x = fw_explicitshapearray(x, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    w_, w = fw_asfortranarray(w, fwr_dbl_t_enum, 1, False)
+    w_, w = fw_explicitshapearray(w, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     lagzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lagzo' wrapper.")
-    return (n, x, w,)
+    return (x, w,)
 
 
-cpdef api object legzo(fwi_integer_t n, object x, object w):
+cpdef api object legzo(fwi_integer_t n, object x=None, object w=None):
     """
-    legzo(n, x, w) -> (n, x, w)
+    legzo(n, [x, w]) -> (x, w)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     """
     cdef np.ndarray x_
@@ -629,37 +639,35 @@ cpdef api object legzo(fwi_integer_t n, object x, object w):
     cdef fw_shape_t w_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, fwr_dbl_t_enum, 1, False)
+    x_, x = fw_explicitshapearray(x, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    w_, w = fw_asfortranarray(w, fwr_dbl_t_enum, 1, False)
+    w_, w = fw_explicitshapearray(w, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     legzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'legzo' wrapper.")
-    return (n, x, w,)
+    return (x, w,)
 
 
-cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv, object dp, fwr_dbl_t pdf, fwr_dbl_t pdd):
+cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     """
-    pbdv(v, x, dv, dp, pdf, pdd) -> (v, x, dv, dp, pdf, pdd)
+    pbdv(v, x, [dv, dp]) -> (dv, dp, pdf, pdd)
 
     Parameters
     ----------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    dv : fwr_dbl, 1D array, dimension(0:*), intent inout
-    dp : fwr_dbl, 1D array, dimension(0:*), intent inout
-    pdf : fwr_dbl, intent inout
-    pdd : fwr_dbl, intent inout
+    v : fwr_dbl, intent in
+    x : fwr_dbl, intent in
+    dv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    dp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
 
     Returns
     -------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    dv : fwr_dbl, 1D array, dimension(0:*), intent inout
-    dp : fwr_dbl, 1D array, dimension(0:*), intent inout
-    pdf : fwr_dbl, intent inout
-    pdd : fwr_dbl, intent inout
+    dv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    dp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    pdf : fwr_dbl, intent out
+    pdd : fwr_dbl, intent out
 
     """
     cdef np.ndarray dv_
@@ -667,63 +675,65 @@ cpdef api object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv, object dp, fwr_dbl_t 
     cdef np.ndarray dp_
     cdef fw_shape_t dp_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t pdf
+    cdef fwr_dbl_t pdd
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    dv_, dv = fw_asfortranarray(dv, fwr_dbl_t_enum, 1, False)
+    dv_, dv = fw_explicitshapearray(dv, fwr_dbl_t_enum, 1, [abs(<int>v) + 2], False)
     fw_copyshape(dv_shape_, np.PyArray_DIMS(dv_), 1)
-    dp_, dp = fw_asfortranarray(dp, fwr_dbl_t_enum, 1, False)
+    dp_, dp = fw_explicitshapearray(dp, fwr_dbl_t_enum, 1, [abs(<int>v) + 2], False)
     fw_copyshape(dp_shape_, np.PyArray_DIMS(dp_), 1)
+    if not ((abs(<int>v) + 2) >= 2):
+        raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     pbdv_c(&v, &x, dv_shape_, <fwr_dbl_t*>np.PyArray_DATA(dv_), dp_shape_, <fwr_dbl_t*>np.PyArray_DATA(dp_), &pdf, &pdd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'pbdv' wrapper.")
-    return (v, x, dv, dp, pdf, pdd,)
+    return (dv, dp, pdf, pdd,)
 
 
-cpdef api object cerzo(fwi_integer_t nt, object zo):
+cpdef api object cerzo(fwi_integer_t nt, object zo=None):
     """
-    cerzo(nt, zo) -> (nt, zo)
+    cerzo(nt, [zo]) -> zo
 
     Parameters
     ----------
-    nt : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    nt : fwi_integer, intent in
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    nt : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray zo_
     cdef fw_shape_t zo_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    zo_, zo = fw_asfortranarray(zo, fwc_complex_x16_t_enum, 1, False)
+    zo_, zo = fw_explicitshapearray(zo, fwc_complex_x16_t_enum, 1, [nt], False)
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
     cerzo_c(&nt, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cerzo' wrapper.")
-    return (nt, zo,)
+    return zo
 
 
-cpdef api object lamn(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object bl, object dl):
+cpdef api object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     """
-    lamn(n, x, nm, bl, dl) -> (n, x, nm, bl, dl)
+    lamn(n, x, [bl, dl]) -> (nm, bl, dl)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    bl : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    bl : fwr_dbl, 1D array, dimension(n+1), intent out
+    dl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    bl : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    bl : fwr_dbl, 1D array, dimension(n+1), intent out
+    dl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray bl_
@@ -731,36 +741,35 @@ cpdef api object lamn(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object bl,
     cdef np.ndarray dl_
     cdef fw_shape_t dl_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    bl_, bl = fw_asfortranarray(bl, fwr_dbl_t_enum, 1, False)
+    bl_, bl = fw_explicitshapearray(bl, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(bl_shape_, np.PyArray_DIMS(bl_), 1)
-    dl_, dl = fw_asfortranarray(dl, fwr_dbl_t_enum, 1, False)
+    dl_, dl = fw_explicitshapearray(dl, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dl_shape_, np.PyArray_DIMS(dl_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lamn_c(&n, &x, &nm, bl_shape_, <fwr_dbl_t*>np.PyArray_DATA(bl_), dl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lamn' wrapper.")
-    return (n, x, nm, bl, dl,)
+    return (nm, bl, dl,)
 
 
-cpdef api object clpn(fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpn, object cpd):
+cpdef api object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None):
     """
-    clpn(n, x, y, cpn, cpd) -> (n, x, y, cpn, cpd)
+    clpn(n, z, [cpn, cpd]) -> (cpn, cpd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cpn : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cpd : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    cpn : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cpd : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cpn : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cpd : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    cpn : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cpd : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray cpn_
@@ -768,36 +777,39 @@ cpdef api object clpn(fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpn, obj
     cdef np.ndarray cpd_
     cdef fw_shape_t cpd_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t x_f
+    cdef fwr_dbl_t y_f
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cpn_, cpn = fw_asfortranarray(cpn, fwc_complex_x16_t_enum, 1, False)
+    cpn_, cpn = fw_explicitshapearray(cpn, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cpn_shape_, np.PyArray_DIMS(cpn_), 1)
-    cpd_, cpd = fw_asfortranarray(cpd, fwc_complex_x16_t_enum, 1, False)
+    cpd_, cpd = fw_explicitshapearray(cpd, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
-    clpn_c(&n, &x, &y, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
+    x_f = ##TODO: &(z.r)
+    y_f = ##TODO: &(z.i)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    clpn_c(&n, &x_f, &y_f, cpn_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clpn' wrapper.")
-    return (n, x, y, cpn, cpd,)
+    return (cpn, cpd,)
 
 
-cpdef api object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm, object qd):
+cpdef api object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """
-    lqmns(m, n, x, qm, qd) -> (m, n, x, qm, qd)
+    lqmns(m, n, x, [qm, qd]) -> (qm, qd)
 
     Parameters
     ----------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qm : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    qm : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qm : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    qm : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray qm_
@@ -806,163 +818,167 @@ cpdef api object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm,
     cdef fw_shape_t qd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    qm_, qm = fw_asfortranarray(qm, fwr_dbl_t_enum, 1, False)
+    qm_, qm = fw_explicitshapearray(qm, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qm_shape_, np.PyArray_DIMS(qm_), 1)
-    qd_, qd = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, False)
+    qd_, qd = fw_explicitshapearray(qd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
+    if not (m >= 0):
+        raise ValueError('Condition on arguments not satisfied: m >= 0')
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lqmns_c(&m, &n, &x, qm_shape_, <fwr_dbl_t*>np.PyArray_DATA(qm_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqmns' wrapper.")
-    return (m, n, x, qm, qd,)
+    return (qm, qd,)
 
 
-cpdef api object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x, fwr_dbl_t hg):
+cpdef api object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
     """
-    chgm(a, b, x, hg) -> (a, b, x, hg)
+    chgm(a, b, x) -> hg
 
     Parameters
     ----------
-    a : fwr_dbl, intent inout
-    b : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    hg : fwr_dbl, intent inout
+    a : fwr_dbl, intent in
+    b : fwr_dbl, intent in
+    x : fwr_dbl, intent in
 
     Returns
     -------
-    a : fwr_dbl, intent inout
-    b : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    hg : fwr_dbl, intent inout
+    hg : fwr_dbl, intent out
 
     """
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t hg
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     chgm_c(&a, &b, &x, &hg, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'chgm' wrapper.")
-    return (a, b, x, hg,)
+    return hg
 
 
-cpdef api object lpmn(fwi_integer_t mm, fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm, object pd):
+cpdef api object lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """
-    lpmn(mm, m, n, x, pm, pd) -> (mm, m, n, x, pm, pd)
+    lpmn(m, n, x, [pm, pd]) -> (pm, pd)
 
     Parameters
     ----------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
-    pd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    pm : fwr_dbl, 2D array, dimension(m+1, n+1), intent out
+    pd : fwr_dbl, 2D array, dimension(m+1, n+1), intent out
 
     Returns
     -------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pm : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
-    pd : fwr_dbl, 2D array, dimension(0:mm, 0:n), intent inout
+    pm : fwr_dbl, 2D array, dimension(m+1, n+1), intent out
+    pd : fwr_dbl, 2D array, dimension(m+1, n+1), intent out
 
     """
     cdef np.ndarray pm_
     cdef fw_shape_t pm_shape_[2]
     cdef np.ndarray pd_
     cdef fw_shape_t pd_shape_[2]
+    cdef fwi_integer_t mm
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    pm_, pm = fw_asfortranarray(pm, fwr_dbl_t_enum, 2, False)
+    pm_, pm = fw_explicitshapearray(pm, fwr_dbl_t_enum, 2, [m + 1, n + 1], False)
     fw_copyshape(pm_shape_, np.PyArray_DIMS(pm_), 2)
-    pd_, pd = fw_asfortranarray(pd, fwr_dbl_t_enum, 2, False)
+    pd_, pd = fw_explicitshapearray(pd, fwr_dbl_t_enum, 2, [m + 1, n + 1], False)
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 2)
+    mm = m
+    if not ((m >= 0) and (m <= n)):
+        raise ValueError('Condition on arguments not satisfied: (m >= 0) and (m <= n)')
+    if not (n >= 0):
+        raise ValueError('Condition on arguments not satisfied: n >= 0')
     lpmn_c(&mm, &m, &n, &x, pm_shape_, <fwr_dbl_t*>np.PyArray_DATA(pm_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpmn' wrapper.")
-    return (mm, m, n, x, pm, pd,)
+    return (pm, pd,)
 
 
-cpdef api object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo):
+cpdef api object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
     """
-    fcszo(kf, nt, zo) -> (kf, nt, zo)
+    fcszo(kf, nt, [zo]) -> zo
 
     Parameters
     ----------
-    kf : fwi_integer, intent inout
-    nt : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    kf : fwi_integer, intent in
+    nt : fwi_integer, intent in
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    kf : fwi_integer, intent inout
-    nt : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray zo_
     cdef fw_shape_t zo_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    zo_, zo = fw_asfortranarray(zo, fwc_complex_x16_t_enum, 1, False)
+    zo_, zo = fw_explicitshapearray(zo, fwc_complex_x16_t_enum, 1, [nt], False)
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
+    if not ((kf == 1) or (kf == 2)):
+        raise ValueError('Condition on arguments not satisfied: (kf == 1) or (kf == 2)')
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
     fcszo_c(&kf, &nt, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'fcszo' wrapper.")
-    return (kf, nt, zo,)
+    return zo
 
 
-cpdef api object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv, fwr_dbl_t s1f, fwr_dbl_t s1d):
+cpdef api object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv):
     """
-    aswfb(m, n, c, x, kd, cv, s1f, s1d) -> (m, n, c, x, kd, cv, s1f, s1d)
+    aswfb(m, n, c, x, kd, cv) -> (s1f, s1d)
 
     Parameters
     ----------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    c : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    kd : fwi_integer, intent inout
-    cv : fwr_dbl, intent inout
-    s1f : fwr_dbl, intent inout
-    s1d : fwr_dbl, intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    c : fwr_dbl, intent in
+    x : fwr_dbl, intent in
+    kd : fwi_integer, intent in
+    cv : fwr_dbl, intent in
 
     Returns
     -------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    c : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    kd : fwi_integer, intent inout
-    cv : fwr_dbl, intent inout
-    s1f : fwr_dbl, intent inout
-    s1d : fwr_dbl, intent inout
+    s1f : fwr_dbl, intent out
+    s1d : fwr_dbl, intent out
 
     """
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t s1f
+    cdef fwr_dbl_t s1d
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    if not (m >= 0):
+        raise ValueError('Condition on arguments not satisfied: m >= 0')
+    if not (n >= m):
+        raise ValueError('Condition on arguments not satisfied: n >= m')
+    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
+        raise ValueError('Condition on arguments not satisfied: ##TODO (watch any dependencies that may be further down!) fabs(x)<1')
+    if not ((kd == -1) or (kd == 1)):
+        raise ValueError('Condition on arguments not satisfied: (kd == -1) or (kd == 1)')
     aswfb_c(&m, &n, &c, &x, &kd, &cv, &s1f, &s1d, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'aswfb' wrapper.")
-    return (m, n, c, x, kd, cv, s1f, s1d,)
+    return (s1f, s1d,)
 
 
-cpdef api object lqna(fwi_integer_t n, fwr_dbl_t x, object qn, object qd):
+cpdef api object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """
-    lqna(n, x, qn, qd) -> (n, x, qn, qd)
+    lqna(n, x, [qn, qd]) -> (qn, qd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    qn : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    qn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    qd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    qn : fwr_dbl, 1D array, dimension(n+1), intent out
+    qd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray qn_
@@ -971,33 +987,35 @@ cpdef api object lqna(fwi_integer_t n, fwr_dbl_t x, object qn, object qd):
     cdef fw_shape_t qd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    qn_, qn = fw_asfortranarray(qn, fwr_dbl_t_enum, 1, False)
+    qn_, qn = fw_explicitshapearray(qn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qn_shape_, np.PyArray_DIMS(qn_), 1)
-    qd_, qd = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, False)
+    qd_, qd = fw_explicitshapearray(qd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(qd_shape_, np.PyArray_DIMS(qd_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
+        raise ValueError('Condition on arguments not satisfied: ##TODO (watch any dependencies that may be further down!) fabs(x)<1')
     lqna_c(&n, &x, qn_shape_, <fwr_dbl_t*>np.PyArray_DATA(qn_), qd_shape_, <fwr_dbl_t*>np.PyArray_DATA(qd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lqna' wrapper.")
-    return (n, x, qn, qd,)
+    return (qn, qd,)
 
 
-cpdef api object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb, object cpd):
+cpdef api object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None):
     """
-    cpbdn(n, z, cpb, cpd) -> (n, z, cpb, cpd)
+    cpbdn(n, z, [cpb, cpd]) -> (cpb, cpd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    cpb : fwc_complex_x16, 1D array, dimension(0:*), intent inout
-    cpd : fwc_complex_x16, 1D array, dimension(0:*), intent inout
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    cpb : fwc_complex_x16, 1D array, dimension(abs(n)+2), intent out
+    cpd : fwc_complex_x16, 1D array, dimension(abs(n)+2), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    cpb : fwc_complex_x16, 1D array, dimension(0:*), intent inout
-    cpd : fwc_complex_x16, 1D array, dimension(0:*), intent inout
+    cpb : fwc_complex_x16, 1D array, dimension(abs(n)+2), intent out
+    cpd : fwc_complex_x16, 1D array, dimension(abs(n)+2), intent out
 
     """
     cdef np.ndarray cpb_
@@ -1006,33 +1024,33 @@ cpdef api object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb, object 
     cdef fw_shape_t cpd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cpb_, cpb = fw_asfortranarray(cpb, fwc_complex_x16_t_enum, 1, False)
+    cpb_, cpb = fw_explicitshapearray(cpb, fwc_complex_x16_t_enum, 1, [abs(n) + 2], False)
     fw_copyshape(cpb_shape_, np.PyArray_DIMS(cpb_), 1)
-    cpd_, cpd = fw_asfortranarray(cpd, fwc_complex_x16_t_enum, 1, False)
+    cpd_, cpd = fw_explicitshapearray(cpd, fwc_complex_x16_t_enum, 1, [abs(n) + 2], False)
     fw_copyshape(cpd_shape_, np.PyArray_DIMS(cpd_), 1)
+    if not (abs(n) >= 1):
+        raise ValueError('Condition on arguments not satisfied: abs(n) >= 1')
     cpbdn_c(&n, &z, cpb_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpb_), cpd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cpd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cpbdn' wrapper.")
-    return (n, z, cpb, cpd,)
+    return (cpb, cpd,)
 
 
-cpdef api object lpn(fwi_integer_t n, fwr_dbl_t x, object pn, object pd):
+cpdef api object lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
     """
-    lpn(n, x, pn, pd) -> (n, x, pn, pd)
+    lpn(n, x, [pn, pd]) -> (pn, pd)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    pn : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
+    pn : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray pn_
@@ -1041,68 +1059,67 @@ cpdef api object lpn(fwi_integer_t n, fwr_dbl_t x, object pn, object pd):
     cdef fw_shape_t pd_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    pn_, pn = fw_asfortranarray(pn, fwr_dbl_t_enum, 1, False)
+    pn_, pn = fw_explicitshapearray(pn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pn_shape_, np.PyArray_DIMS(pn_), 1)
-    pd_, pd = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, False)
+    pd_, pd = fw_explicitshapearray(pd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     lpn_c(&n, &x, pn_shape_, <fwr_dbl_t*>np.PyArray_DATA(pn_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpn' wrapper.")
-    return (n, x, pn, pd,)
+    return (pn, pd,)
 
 
-cpdef api object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc):
+cpdef api object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc=None):
     """
-    fcoef(kd, m, q, a, fc) -> (kd, m, q, a, fc)
+    fcoef(kd, m, q, a, [fc]) -> fc
 
     Parameters
     ----------
-    kd : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    q : fwr_dbl, intent inout
-    a : fwr_dbl, intent inout
-    fc : fwr_dbl, 1D array, dimension(251), intent inout
+    kd : fwi_integer, intent in
+    m : fwi_integer, intent in
+    q : fwr_dbl, intent in
+    a : fwr_dbl, intent in
+    fc : fwr_dbl, 1D array, dimension(251), intent out
 
     Returns
     -------
-    kd : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    q : fwr_dbl, intent inout
-    a : fwr_dbl, intent inout
-    fc : fwr_dbl, 1D array, dimension(251), intent inout
+    fc : fwr_dbl, 1D array, dimension(251), intent out
 
     """
     cdef np.ndarray fc_
     cdef fw_shape_t fc_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    fc_, fc = fw_asfortranarray(fc, fwr_dbl_t_enum, 1, False)
+    fc_, fc = fw_explicitshapearray(fc, fwr_dbl_t_enum, 1, [251], False)
     fw_copyshape(fc_shape_, np.PyArray_DIMS(fc_), 1)
+    if not ((kd > 0) and (kd < 5)):
+        raise ValueError('Condition on arguments not satisfied: (kd > 0) and (kd < 5)')
+    if not (q >= 0):
+        raise ValueError('Condition on arguments not satisfied: q >= 0')
     fcoef_c(&kd, &m, &q, &a, fc_shape_, <fwr_dbl_t*>np.PyArray_DATA(fc_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'fcoef' wrapper.")
-    return (kd, m, q, a, fc,)
+    return fc
 
 
-cpdef api object sphi(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object si, object di):
+cpdef api object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     """
-    sphi(n, x, nm, si, di) -> (n, x, nm, si, di)
+    sphi(n, x, [si, di]) -> (nm, si, di)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    si : fwr_dbl, 1D array, dimension(0:n), intent inout
-    di : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    si : fwr_dbl, 1D array, dimension(n + 1), intent out
+    di : fwr_dbl, 1D array, dimension(n + 1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    si : fwr_dbl, 1D array, dimension(0:n), intent inout
-    di : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    si : fwr_dbl, 1D array, dimension(n + 1), intent out
+    di : fwr_dbl, 1D array, dimension(n + 1), intent out
 
     """
     cdef np.ndarray si_
@@ -1110,36 +1127,36 @@ cpdef api object sphi(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object si,
     cdef np.ndarray di_
     cdef fw_shape_t di_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    si_, si = fw_asfortranarray(si, fwr_dbl_t_enum, 1, False)
+    si_, si = fw_explicitshapearray(si, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(si_shape_, np.PyArray_DIMS(si_), 1)
-    di_, di = fw_asfortranarray(di, fwr_dbl_t_enum, 1, False)
+    di_, di = fw_explicitshapearray(di, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(di_shape_, np.PyArray_DIMS(di_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     sphi_c(&n, &x, &nm, si_shape_, <fwr_dbl_t*>np.PyArray_DATA(si_), di_shape_, <fwr_dbl_t*>np.PyArray_DATA(di_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphi' wrapper.")
-    return (n, x, nm, si, di,)
+    return (nm, si, di,)
 
 
-cpdef api object rcty(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object ry, object dy):
+cpdef api object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     """
-    rcty(n, x, nm, ry, dy) -> (n, x, nm, ry, dy)
+    rcty(n, x, [ry, dy]) -> (nm, ry, dy)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    ry : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dy : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    ry : fwr_dbl, 1D array, dimension(n+1), intent out
+    dy : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    ry : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dy : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    ry : fwr_dbl, 1D array, dimension(n+1), intent out
+    dy : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray ry_
@@ -1147,36 +1164,37 @@ cpdef api object rcty(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object ry,
     cdef np.ndarray dy_
     cdef fw_shape_t dy_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ry_, ry = fw_asfortranarray(ry, fwr_dbl_t_enum, 1, False)
+    ry_, ry = fw_explicitshapearray(ry, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(ry_shape_, np.PyArray_DIMS(ry_), 1)
-    dy_, dy = fw_asfortranarray(dy, fwr_dbl_t_enum, 1, False)
+    dy_, dy = fw_explicitshapearray(dy, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dy_shape_, np.PyArray_DIMS(dy_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     rcty_c(&n, &x, &nm, ry_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry_), dy_shape_, <fwr_dbl_t*>np.PyArray_DATA(dy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'rcty' wrapper.")
-    return (n, x, nm, ry, dy,)
+    return (nm, ry, dy,)
 
 
-cpdef api object lpni(fwi_integer_t n, fwr_dbl_t x, object pn, object pd, object pl):
+cpdef api object lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl=None):
     """
-    lpni(n, x, pn, pd, pl) -> (n, x, pn, pd, pl)
+    lpni(n, x, [pn, pd, pl]) -> (pn, pd, pl)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    pn : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
+    pl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pn : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pd : fwr_dbl, 1D array, dimension(0:n), intent inout
-    pl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    pn : fwr_dbl, 1D array, dimension(n+1), intent out
+    pd : fwr_dbl, 1D array, dimension(n+1), intent out
+    pl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray pn_
@@ -1187,37 +1205,36 @@ cpdef api object lpni(fwi_integer_t n, fwr_dbl_t x, object pn, object pd, object
     cdef fw_shape_t pl_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    pn_, pn = fw_asfortranarray(pn, fwr_dbl_t_enum, 1, False)
+    pn_, pn = fw_explicitshapearray(pn, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pn_shape_, np.PyArray_DIMS(pn_), 1)
-    pd_, pd = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, False)
+    pd_, pd = fw_explicitshapearray(pd, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pd_shape_, np.PyArray_DIMS(pd_), 1)
-    pl_, pl = fw_asfortranarray(pl, fwr_dbl_t_enum, 1, False)
+    pl_, pl = fw_explicitshapearray(pl, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pl_shape_, np.PyArray_DIMS(pl_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     lpni_c(&n, &x, pn_shape_, <fwr_dbl_t*>np.PyArray_DATA(pn_), pd_shape_, <fwr_dbl_t*>np.PyArray_DATA(pd_), pl_shape_, <fwr_dbl_t*>np.PyArray_DATA(pl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'lpni' wrapper.")
-    return (n, x, pn, pd, pl,)
+    return (pn, pd, pl,)
 
 
-cpdef api object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo, object zv):
+cpdef api object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, object zv=None):
     """
-    cyzo(nt, kf, kc, zo, zv) -> (nt, kf, kc, zo, zv)
+    cyzo(nt, kf, kc, [zo, zv]) -> (zo, zv)
 
     Parameters
     ----------
-    nt : fwi_integer, intent inout
-    kf : fwi_integer, intent inout
-    kc : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
-    zv : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    nt : fwi_integer, intent in
+    kf : fwi_integer, intent in
+    kc : fwi_integer, intent in
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
+    zv : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    nt : fwi_integer, intent inout
-    kf : fwi_integer, intent inout
-    kc : fwi_integer, intent inout
-    zo : fwc_complex_x16, 1D array, dimension(nt), intent inout
-    zv : fwc_complex_x16, 1D array, dimension(nt), intent inout
+    zo : fwc_complex_x16, 1D array, dimension(nt), intent out
+    zv : fwc_complex_x16, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray zo_
@@ -1226,39 +1243,42 @@ cpdef api object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, obje
     cdef fw_shape_t zv_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    zo_, zo = fw_asfortranarray(zo, fwc_complex_x16_t_enum, 1, False)
+    zo_, zo = fw_explicitshapearray(zo, fwc_complex_x16_t_enum, 1, [nt], False)
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
-    zv_, zv = fw_asfortranarray(zv, fwc_complex_x16_t_enum, 1, False)
+    zv_, zv = fw_explicitshapearray(zv, fwc_complex_x16_t_enum, 1, [nt], False)
     fw_copyshape(zv_shape_, np.PyArray_DIMS(zv_), 1)
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
+    if not ((kf >= 0) and (kf <= 2)):
+        raise ValueError('Condition on arguments not satisfied: (kf >= 0) and (kf <= 2)')
+    if not ((kc == 0) or (kc == 1)):
+        raise ValueError('Condition on arguments not satisfied: (kc == 0) or (kc == 1)')
     cyzo_c(&nt, &kf, &kc, zo_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zo_), zv_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(zv_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'cyzo' wrapper.")
-    return (nt, kf, kc, zo, zv,)
+    return (zo, zv,)
 
 
-cpdef api object csphik(fwi_integer_t n, fwc_complex_x16_t z, fwi_integer_t nm, object csi, object cdi, object csk, object cdk):
+cpdef api object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=None, object csk=None, object cdk=None):
     """
-    csphik(n, z, nm, csi, cdi, csk, cdk) -> (n, z, nm, csi, cdi, csk, cdk)
+    csphik(n, z, [csi, cdi, csk, cdk]) -> (nm, csi, cdi, csk, cdk)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    nm : fwi_integer, intent inout
-    csi : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdi : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    csk : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdk : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    csi : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cdi : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    csk : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cdk : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    z : fwc_complex_x16, intent inout
-    nm : fwi_integer, intent inout
-    csi : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdi : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    csk : fwc_complex_x16, 1D array, dimension(0:n), intent inout
-    cdk : fwc_complex_x16, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    csi : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cdi : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    csk : fwc_complex_x16, 1D array, dimension(n+1), intent out
+    cdk : fwc_complex_x16, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray csi_
@@ -1270,40 +1290,40 @@ cpdef api object csphik(fwi_integer_t n, fwc_complex_x16_t z, fwi_integer_t nm, 
     cdef np.ndarray cdk_
     cdef fw_shape_t cdk_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    csi_, csi = fw_asfortranarray(csi, fwc_complex_x16_t_enum, 1, False)
+    csi_, csi = fw_explicitshapearray(csi, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(csi_shape_, np.PyArray_DIMS(csi_), 1)
-    cdi_, cdi = fw_asfortranarray(cdi, fwc_complex_x16_t_enum, 1, False)
+    cdi_, cdi = fw_explicitshapearray(cdi, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cdi_shape_, np.PyArray_DIMS(cdi_), 1)
-    csk_, csk = fw_asfortranarray(csk, fwc_complex_x16_t_enum, 1, False)
+    csk_, csk = fw_explicitshapearray(csk, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(csk_shape_, np.PyArray_DIMS(csk_), 1)
-    cdk_, cdk = fw_asfortranarray(cdk, fwc_complex_x16_t_enum, 1, False)
+    cdk_, cdk = fw_explicitshapearray(cdk, fwc_complex_x16_t_enum, 1, [n + 1], False)
     fw_copyshape(cdk_shape_, np.PyArray_DIMS(cdk_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     csphik_c(&n, &z, &nm, csi_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csi_), cdi_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdi_), csk_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(csk_), cdk_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cdk_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'csphik' wrapper.")
-    return (n, z, nm, csi, cdi, csk, cdk,)
+    return (nm, csi, cdi, csk, cdk,)
 
 
-cpdef api object sphj(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sj, object dj):
+cpdef api object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     """
-    sphj(n, x, nm, sj, dj) -> (n, x, nm, sj, dj)
+    sphj(n, x, [sj, dj]) -> (nm, sj, dj)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sj : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dj : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    sj : fwr_dbl, 1D array, dimension(n+1), intent out
+    dj : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sj : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dj : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    sj : fwr_dbl, 1D array, dimension(n+1), intent out
+    dj : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray sj_
@@ -1311,36 +1331,36 @@ cpdef api object sphj(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sj,
     cdef np.ndarray dj_
     cdef fw_shape_t dj_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sj_, sj = fw_asfortranarray(sj, fwr_dbl_t_enum, 1, False)
+    sj_, sj = fw_explicitshapearray(sj, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(sj_shape_, np.PyArray_DIMS(sj_), 1)
-    dj_, dj = fw_asfortranarray(dj, fwr_dbl_t_enum, 1, False)
+    dj_, dj = fw_explicitshapearray(dj, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dj_shape_, np.PyArray_DIMS(dj_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
     sphj_c(&n, &x, &nm, sj_shape_, <fwr_dbl_t*>np.PyArray_DATA(sj_), dj_shape_, <fwr_dbl_t*>np.PyArray_DATA(dj_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphj' wrapper.")
-    return (n, x, nm, sj, dj,)
+    return (nm, sj, dj,)
 
 
-cpdef api object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl, object dpl):
+cpdef api object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object dpl=None):
     """
-    othpl(kf, n, x, pl, dpl) -> (kf, n, x, pl, dpl)
+    othpl(kf, n, x, [pl, dpl]) -> (pl, dpl)
 
     Parameters
     ----------
-    kf : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pl : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dpl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    kf : fwi_integer, intent in
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    pl : fwr_dbl, 1D array, dimension(n+1), intent out
+    dpl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    kf : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    pl : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dpl : fwr_dbl, 1D array, dimension(0:n), intent inout
+    pl : fwr_dbl, 1D array, dimension(n+1), intent out
+    dpl : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray pl_
@@ -1349,66 +1369,70 @@ cpdef api object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl
     cdef fw_shape_t dpl_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    pl_, pl = fw_asfortranarray(pl, fwr_dbl_t_enum, 1, False)
+    pl_, pl = fw_explicitshapearray(pl, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(pl_shape_, np.PyArray_DIMS(pl_), 1)
-    dpl_, dpl = fw_asfortranarray(dpl, fwr_dbl_t_enum, 1, False)
+    dpl_, dpl = fw_explicitshapearray(dpl, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dpl_shape_, np.PyArray_DIMS(dpl_), 1)
+    if not ((kf > 0) and (kf < 5)):
+        raise ValueError('Condition on arguments not satisfied: (kf > 0) and (kf < 5)')
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     othpl_c(&kf, &n, &x, pl_shape_, <fwr_dbl_t*>np.PyArray_DATA(pl_), dpl_shape_, <fwr_dbl_t*>np.PyArray_DATA(dpl_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'othpl' wrapper.")
-    return (kf, n, x, pl, dpl,)
+    return (pl, dpl,)
 
 
-cpdef api object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo):
+cpdef api object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
     """
-    klvnzo(nt, kd, zo) -> (nt, kd, zo)
+    klvnzo(nt, kd, [zo]) -> zo
 
     Parameters
     ----------
-    nt : fwi_integer, intent inout
-    kd : fwi_integer, intent inout
-    zo : fwr_dbl, 1D array, dimension(nt), intent inout
+    nt : fwi_integer, intent in
+    kd : fwi_integer, intent in
+    zo : fwr_dbl, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    nt : fwi_integer, intent inout
-    kd : fwi_integer, intent inout
-    zo : fwr_dbl, 1D array, dimension(nt), intent inout
+    zo : fwr_dbl, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray zo_
     cdef fw_shape_t zo_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    zo_, zo = fw_asfortranarray(zo, fwr_dbl_t_enum, 1, False)
+    zo_, zo = fw_explicitshapearray(zo, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(zo_shape_, np.PyArray_DIMS(zo_), 1)
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
+    if not ((kd >= 1) or (kd <= 8)):
+        raise ValueError('Condition on arguments not satisfied: (kd >= 1) or (kd <= 8)')
     klvnzo_c(&nt, &kd, zo_shape_, <fwr_dbl_t*>np.PyArray_DATA(zo_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'klvnzo' wrapper.")
-    return (nt, kd, zo,)
+    return zo
 
 
-cpdef api object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0, object rj1, object ry0, object ry1):
+cpdef api object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, object ry0=None, object ry1=None):
     """
-    jyzo(n, nt, rj0, rj1, ry0, ry1) -> (n, nt, rj0, rj1, ry0, ry1)
+    jyzo(n, nt, [rj0, rj1, ry0, ry1]) -> (rj0, rj1, ry0, ry1)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    nt : fwi_integer, intent inout
-    rj0 : fwr_dbl, 1D array, dimension(nt), intent inout
-    rj1 : fwr_dbl, 1D array, dimension(nt), intent inout
-    ry0 : fwr_dbl, 1D array, dimension(nt), intent inout
-    ry1 : fwr_dbl, 1D array, dimension(nt), intent inout
+    n : fwi_integer, intent in
+    nt : fwi_integer, intent in
+    rj0 : fwr_dbl, 1D array, dimension(nt), intent out
+    rj1 : fwr_dbl, 1D array, dimension(nt), intent out
+    ry0 : fwr_dbl, 1D array, dimension(nt), intent out
+    ry1 : fwr_dbl, 1D array, dimension(nt), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    nt : fwi_integer, intent inout
-    rj0 : fwr_dbl, 1D array, dimension(nt), intent inout
-    rj1 : fwr_dbl, 1D array, dimension(nt), intent inout
-    ry0 : fwr_dbl, 1D array, dimension(nt), intent inout
-    ry1 : fwr_dbl, 1D array, dimension(nt), intent inout
+    rj0 : fwr_dbl, 1D array, dimension(nt), intent out
+    rj1 : fwr_dbl, 1D array, dimension(nt), intent out
+    ry0 : fwr_dbl, 1D array, dimension(nt), intent out
+    ry1 : fwr_dbl, 1D array, dimension(nt), intent out
 
     """
     cdef np.ndarray rj0_
@@ -1421,39 +1445,40 @@ cpdef api object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0, object rj1,
     cdef fw_shape_t ry1_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    rj0_, rj0 = fw_asfortranarray(rj0, fwr_dbl_t_enum, 1, False)
+    rj0_, rj0 = fw_explicitshapearray(rj0, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(rj0_shape_, np.PyArray_DIMS(rj0_), 1)
-    rj1_, rj1 = fw_asfortranarray(rj1, fwr_dbl_t_enum, 1, False)
+    rj1_, rj1 = fw_explicitshapearray(rj1, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(rj1_shape_, np.PyArray_DIMS(rj1_), 1)
-    ry0_, ry0 = fw_asfortranarray(ry0, fwr_dbl_t_enum, 1, False)
+    ry0_, ry0 = fw_explicitshapearray(ry0, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(ry0_shape_, np.PyArray_DIMS(ry0_), 1)
-    ry1_, ry1 = fw_asfortranarray(ry1, fwr_dbl_t_enum, 1, False)
+    ry1_, ry1 = fw_explicitshapearray(ry1, fwr_dbl_t_enum, 1, [nt], False)
     fw_copyshape(ry1_shape_, np.PyArray_DIMS(ry1_), 1)
+    if not (n >= 0):
+        raise ValueError('Condition on arguments not satisfied: n >= 0')
+    if not (nt > 0):
+        raise ValueError('Condition on arguments not satisfied: nt > 0')
     jyzo_c(&n, &nt, rj0_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj0_), rj1_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj1_), ry0_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry0_), ry1_shape_, <fwr_dbl_t*>np.PyArray_DATA(ry1_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'jyzo' wrapper.")
-    return (n, nt, rj0, rj1, ry0, ry1,)
+    return (rj0, rj1, ry0, ry1,)
 
 
-cpdef api object rctj(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object rj, object dj):
+cpdef api object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     """
-    rctj(n, x, nm, rj, dj) -> (n, x, nm, rj, dj)
+    rctj(n, x, [rj, dj]) -> (nm, rj, dj)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    rj : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dj : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    rj : fwr_dbl, 1D array, dimension(n+1), intent out
+    dj : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    rj : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dj : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    rj : fwr_dbl, 1D array, dimension(n+1), intent out
+    dj : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray rj_
@@ -1461,32 +1486,34 @@ cpdef api object rctj(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object rj,
     cdef np.ndarray dj_
     cdef fw_shape_t dj_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    rj_, rj = fw_asfortranarray(rj, fwr_dbl_t_enum, 1, False)
+    rj_, rj = fw_explicitshapearray(rj, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(rj_shape_, np.PyArray_DIMS(rj_), 1)
-    dj_, dj = fw_asfortranarray(dj, fwr_dbl_t_enum, 1, False)
+    dj_, dj = fw_explicitshapearray(dj, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dj_shape_, np.PyArray_DIMS(dj_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     rctj_c(&n, &x, &nm, rj_shape_, <fwr_dbl_t*>np.PyArray_DATA(rj_), dj_shape_, <fwr_dbl_t*>np.PyArray_DATA(dj_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'rctj' wrapper.")
-    return (n, x, nm, rj, dj,)
+    return (nm, rj, dj,)
 
 
-cpdef api object herzo(fwi_integer_t n, object x, object w):
+cpdef api object herzo(fwi_integer_t n, object x=None, object w=None):
     """
-    herzo(n, x, w) -> (n, x, w)
+    herzo(n, [x, w]) -> (x, w)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, 1D array, dimension(n), intent inout
-    w : fwr_dbl, 1D array, dimension(n), intent inout
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    w : fwr_dbl, 1D array, dimension(n), intent out
 
     """
     cdef np.ndarray x_
@@ -1495,35 +1522,34 @@ cpdef api object herzo(fwi_integer_t n, object x, object w):
     cdef fw_shape_t w_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    x_, x = fw_asfortranarray(x, fwr_dbl_t_enum, 1, False)
+    x_, x = fw_explicitshapearray(x, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
-    w_, w = fw_asfortranarray(w, fwr_dbl_t_enum, 1, False)
+    w_, w = fw_explicitshapearray(w, fwr_dbl_t_enum, 1, [n], False)
     fw_copyshape(w_shape_, np.PyArray_DIMS(w_), 1)
+    if not (n > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
     herzo_c(&n, x_shape_, <fwr_dbl_t*>np.PyArray_DATA(x_), w_shape_, <fwr_dbl_t*>np.PyArray_DATA(w_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'herzo' wrapper.")
-    return (n, x, w,)
+    return (x, w,)
 
 
-cpdef api object sphk(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sk, object dk):
+cpdef api object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     """
-    sphk(n, x, nm, sk, dk) -> (n, x, nm, sk, dk)
+    sphk(n, x, [sk, dk]) -> (nm, sk, dk)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sk : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dk : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    sk : fwr_dbl, 1D array, dimension(n+1), intent out
+    dk : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sk : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dk : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    sk : fwr_dbl, 1D array, dimension(n+1), intent out
+    dk : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray sk_
@@ -1531,38 +1557,39 @@ cpdef api object sphk(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sk,
     cdef np.ndarray dk_
     cdef fw_shape_t dk_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sk_, sk = fw_asfortranarray(sk, fwr_dbl_t_enum, 1, False)
+    sk_, sk = fw_explicitshapearray(sk, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(sk_shape_, np.PyArray_DIMS(sk_), 1)
-    dk_, dk = fw_asfortranarray(dk, fwr_dbl_t_enum, 1, False)
+    dk_, dk = fw_explicitshapearray(dk, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dk_shape_, np.PyArray_DIMS(dk_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    if not (x >= 0):
+        raise ValueError('Condition on arguments not satisfied: x >= 0')
     sphk_c(&n, &x, &nm, sk_shape_, <fwr_dbl_t*>np.PyArray_DATA(sk_), dk_shape_, <fwr_dbl_t*>np.PyArray_DATA(dk_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphk' wrapper.")
-    return (n, x, nm, sk, dk,)
+    return (nm, sk, dk,)
 
 
-cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv, object vp, fwr_dbl_t pvf, fwr_dbl_t pvd):
+cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     """
-    pbvv(v, x, vv, vp, pvf, pvd) -> (v, x, vv, vp, pvf, pvd)
+    pbvv(v, x, [vv, vp]) -> (vv, vp, pvf, pvd)
 
     Parameters
     ----------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    vv : fwr_dbl, 1D array, dimension(0:*), intent inout
-    vp : fwr_dbl, 1D array, dimension(0:*), intent inout
-    pvf : fwr_dbl, intent inout
-    pvd : fwr_dbl, intent inout
+    v : fwr_dbl, intent in
+    x : fwr_dbl, intent in
+    vv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    vp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
 
     Returns
     -------
-    v : fwr_dbl, intent inout
-    x : fwr_dbl, intent inout
-    vv : fwr_dbl, 1D array, dimension(0:*), intent inout
-    vp : fwr_dbl, 1D array, dimension(0:*), intent inout
-    pvf : fwr_dbl, intent inout
-    pvd : fwr_dbl, intent inout
+    vv : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    vp : fwr_dbl, 1D array, dimension(abs((int)v)+2), intent out
+    pvf : fwr_dbl, intent out
+    pvd : fwr_dbl, intent out
 
     """
     cdef np.ndarray vv_
@@ -1570,112 +1597,116 @@ cpdef api object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv, object vp, fwr_dbl_t 
     cdef np.ndarray vp_
     cdef fw_shape_t vp_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t pvf
+    cdef fwr_dbl_t pvd
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    vv_, vv = fw_asfortranarray(vv, fwr_dbl_t_enum, 1, False)
+    vv_, vv = fw_explicitshapearray(vv, fwr_dbl_t_enum, 1, [abs(<int>v) + 2], False)
     fw_copyshape(vv_shape_, np.PyArray_DIMS(vv_), 1)
-    vp_, vp = fw_asfortranarray(vp, fwr_dbl_t_enum, 1, False)
+    vp_, vp = fw_explicitshapearray(vp, fwr_dbl_t_enum, 1, [abs(<int>v) + 2], False)
     fw_copyshape(vp_shape_, np.PyArray_DIMS(vp_), 1)
+    if not ((abs(<int>v) + 2) >= 2):
+        raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     pbvv_c(&v, &x, vv_shape_, <fwr_dbl_t*>np.PyArray_DATA(vv_), vp_shape_, <fwr_dbl_t*>np.PyArray_DATA(vp_), &pvf, &pvd, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'pbvv' wrapper.")
-    return (v, x, vv, vp, pvf, pvd,)
+    return (vv, vp, pvf, pvd,)
 
 
-cpdef api object clqmn(fwi_integer_t mm, fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cqm, object cqd):
+cpdef api object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
     """
-    clqmn(mm, m, n, x, y, cqm, cqd) -> (mm, m, n, x, y, cqm, cqd)
+    clqmn(m, n, z, [cqm, cqd]) -> (cqm, cqd)
 
     Parameters
     ----------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cqm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
-    cqd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    z : fwc_complex_x16, intent in
+    cqm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent out
+    cqd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent out
 
     Returns
     -------
-    mm : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-    cqm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
-    cqd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent inout
+    cqm : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent out
+    cqd : fwc_complex_x16, 2D array, dimension(0:mm, 0:n), intent out
 
     """
     cdef np.ndarray cqm_
     cdef fw_shape_t cqm_shape_[2]
     cdef np.ndarray cqd_
     cdef fw_shape_t cqd_shape_[2]
+    cdef fwi_integer_t mm
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t x_f
+    cdef fwr_dbl_t y_f
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    cqm_, cqm = fw_asfortranarray(cqm, fwc_complex_x16_t_enum, 2, False)
+    mm = m
+    cqm_, cqm = fw_explicitshapearray(cqm, fwc_complex_x16_t_enum, 2, [mm - 0 + 1, n - 0 + 1], False)
     fw_copyshape(cqm_shape_, np.PyArray_DIMS(cqm_), 2)
-    cqd_, cqd = fw_asfortranarray(cqd, fwc_complex_x16_t_enum, 2, False)
+    cqd_, cqd = fw_explicitshapearray(cqd, fwc_complex_x16_t_enum, 2, [mm - 0 + 1, n - 0 + 1], False)
     fw_copyshape(cqd_shape_, np.PyArray_DIMS(cqd_), 2)
-    clqmn_c(&mm, &m, &n, &x, &y, cqm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqm_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
+    x_f = ##TODO: &(z.r)
+    y_f = ##TODO: &(z.i)
+    if not (m >= 1):
+        raise ValueError('Condition on arguments not satisfied: m >= 1')
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    clqmn_c(&mm, &m, &n, &x_f, &y_f, cqm_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqm_), cqd_shape_, <fwc_complex_x16_t*>np.PyArray_DATA(cqd_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'clqmn' wrapper.")
-    return (mm, m, n, x, y, cqm, cqd,)
+    return (cqm, cqd,)
 
 
-cpdef api object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, fwr_dbl_t cv, object eg):
+cpdef api object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object eg=None):
     """
-    segv(m, n, c, kd, cv, eg) -> (m, n, c, kd, cv, eg)
+    segv(m, n, c, kd, [eg]) -> (cv, eg)
 
     Parameters
     ----------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    c : fwr_dbl, intent inout
-    kd : fwi_integer, intent inout
-    cv : fwr_dbl, intent inout
-    eg : fwr_dbl, 1D array, dimension(200), intent inout
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    c : fwr_dbl, intent in
+    kd : fwi_integer, intent in
+    eg : fwr_dbl, 1D array, dimension(n-m+2), intent out
 
     Returns
     -------
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    c : fwr_dbl, intent inout
-    kd : fwi_integer, intent inout
-    cv : fwr_dbl, intent inout
-    eg : fwr_dbl, 1D array, dimension(200), intent inout
+    cv : fwr_dbl, intent out
+    eg : fwr_dbl, 1D array, dimension(n-m+2), intent out
 
     """
     cdef np.ndarray eg_
     cdef fw_shape_t eg_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t cv
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    eg_, eg = fw_asfortranarray(eg, fwr_dbl_t_enum, 1, False)
+    eg_, eg = fw_explicitshapearray(eg, fwr_dbl_t_enum, 1, [n - m + 2], False)
     fw_copyshape(eg_shape_, np.PyArray_DIMS(eg_), 1)
+    if not ((n >= m) and ((n - m) < 199)):
+        raise ValueError('Condition on arguments not satisfied: (n >= m) and ((n - m) < 199)')
+    if not ((kd == -1) or (kd == 1)):
+        raise ValueError('Condition on arguments not satisfied: (kd == -1) or (kd == 1)')
     segv_c(&m, &n, &c, &kd, &cv, eg_shape_, <fwr_dbl_t*>np.PyArray_DATA(eg_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'segv' wrapper.")
-    return (m, n, c, kd, cv, eg,)
+    return (cv, eg,)
 
 
-cpdef api object sphy(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sy, object dy):
+cpdef api object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
     """
-    sphy(n, x, nm, sy, dy) -> (n, x, nm, sy, dy)
+    sphy(n, x, [sy, dy]) -> (nm, sy, dy)
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sy : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dy : fwr_dbl, 1D array, dimension(0:n), intent inout
+    n : fwi_integer, intent in
+    x : fwr_dbl, intent in
+    sy : fwr_dbl, 1D array, dimension(n+1), intent out
+    dy : fwr_dbl, 1D array, dimension(n+1), intent out
 
     Returns
     -------
-    n : fwi_integer, intent inout
-    x : fwr_dbl, intent inout
-    nm : fwi_integer, intent inout
-    sy : fwr_dbl, 1D array, dimension(0:n), intent inout
-    dy : fwr_dbl, 1D array, dimension(0:n), intent inout
+    nm : fwi_integer, intent out
+    sy : fwr_dbl, 1D array, dimension(n+1), intent out
+    dy : fwr_dbl, 1D array, dimension(n+1), intent out
 
     """
     cdef np.ndarray sy_
@@ -1683,15 +1714,20 @@ cpdef api object sphy(fwi_integer_t n, fwr_dbl_t x, fwi_integer_t nm, object sy,
     cdef np.ndarray dy_
     cdef fw_shape_t dy_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nm
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    sy_, sy = fw_asfortranarray(sy, fwr_dbl_t_enum, 1, False)
+    sy_, sy = fw_explicitshapearray(sy, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(sy_shape_, np.PyArray_DIMS(sy_), 1)
-    dy_, dy = fw_asfortranarray(dy, fwr_dbl_t_enum, 1, False)
+    dy_, dy = fw_explicitshapearray(dy, fwr_dbl_t_enum, 1, [n + 1], False)
     fw_copyshape(dy_shape_, np.PyArray_DIMS(dy_), 1)
+    if not (n >= 1):
+        raise ValueError('Condition on arguments not satisfied: n >= 1')
+    if not (x >= 0):
+        raise ValueError('Condition on arguments not satisfied: x >= 0')
     sphy_c(&n, &x, &nm, sy_shape_, <fwr_dbl_t*>np.PyArray_DATA(sy_), dy_shape_, <fwr_dbl_t*>np.PyArray_DATA(dy_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'sphy' wrapper.")
-    return (n, x, nm, sy, dy,)
+    return (nm, sy, dy,)
 
 
 
@@ -1755,6 +1791,14 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[i] = d
             else:
                 to_shape[to_ndim - 1] *= d    
+
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy)
 
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_2a63538
