@@ -1,7 +1,7 @@
 #cython: ccomplex=True
 
 """
-The specfun module was generated with Fwrap v0.2.0dev_2a63538.
+The specfun module was generated with Fwrap v0.2.0dev_1755336.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -1803,8 +1803,8 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
         return fw_asfortranarray(value, typenum, ndim, copy)
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_2a63538
-# Fwrap: self-sha1 df364bb88062d673b42b68f8ed9cec6b610b855d
+# Fwrap: version 0.2.0dev_1755336
+# Fwrap: self-sha1 60cdc83501d57b92f2a7d790b1f9612b72933aad
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 975d5e3c152da9ce29774e9c581efe5511a6dba5
 # Fwrap: exclude airya

@@ -1837,13 +1837,6 @@
         character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
         external segv
         fw_iserr__ = -1
-        if ((200) .lt. 0 .or. (200) .gt. (eg_shape__(1))) then
-            fw_iserr__ = FW_ARR_DIM__
-            fw_errstr__ = transfer("eg                                  
-     &                           ", fw_errstr__)
-            fw_errstr__(fw_errstr_len) = C_NULL_CHAR
-            return
-        endif
         call segv(m, n, c, kd, cv, eg)
         fw_iserr__ = 0
       end subroutine segv_c
