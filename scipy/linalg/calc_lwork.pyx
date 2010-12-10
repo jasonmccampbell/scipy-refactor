@@ -30,31 +30,27 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object gehrd(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):
+cpdef api object gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):
     """
-    gehrd(min_lwork, max_lwork, prefix, n, lo, hi) -> (min_lwork, max_lwork, prefix, n, lo, hi)
+    gehrd(prefix, n, lo, hi) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lo : fwi_integer, intent inout
-    hi : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
+    lo : fwi_integer, intent in
+    hi : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lo : fwi_integer, intent inout
-    hi : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -62,34 +58,30 @@ cpdef api object gehrd(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object 
     gehrd_c(&min_lwork, &max_lwork, fw_prefix, &n, &lo, &hi, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'gehrd' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n, lo, hi,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object gesdd(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute_uv):
+cpdef api object gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute_uv):
     """
-    gesdd(min_lwork, max_lwork, prefix, m, n, compute_uv) -> (min_lwork, max_lwork, prefix, m, n, compute_uv)
+    gesdd(prefix, m, n, compute_uv) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    compute_uv : fwi_integer, intent inout
+    prefix : object_, intent in
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    compute_uv : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    compute_uv : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -97,34 +89,30 @@ cpdef api object gesdd(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object 
     gesdd_c(&min_lwork, &max_lwork, fw_prefix, &m, &n, &compute_uv, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'gesdd' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, m, n, compute_uv,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object gelss(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):
+cpdef api object gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):
     """
-    gelss(min_lwork, max_lwork, prefix, m, n, nrhs) -> (min_lwork, max_lwork, prefix, m, n, nrhs)
+    gelss(prefix, m, n, nrhs) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    nrhs : fwi_integer, intent inout
+    prefix : object_, intent in
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    nrhs : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    nrhs : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -132,30 +120,28 @@ cpdef api object gelss(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object 
     gelss_c(&min_lwork, &max_lwork, fw_prefix, &m, &n, &nrhs, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'gelss' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, m, n, nrhs,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object getri(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n):
+cpdef api object getri(object prefix, fwi_integer_t n):
     """
-    getri(min_lwork, max_lwork, prefix, n) -> (min_lwork, max_lwork, prefix, n)
+    getri(prefix, n) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -163,34 +149,30 @@ cpdef api object getri(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object 
     getri_c(&min_lwork, &max_lwork, fw_prefix, &n, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'getri' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object geev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n, fwi_integer_t compute_vl, fwi_integer_t compute_vr):
+cpdef api object geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1):
     """
-    geev(min_lwork, max_lwork, prefix, n, compute_vl, compute_vr) -> (min_lwork, max_lwork, prefix, n, compute_vl, compute_vr)
+    geev(prefix, n, compute_vl, compute_vr) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    compute_vl : fwi_integer, intent inout
-    compute_vr : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
+    compute_vl : fwi_integer, intent in
+    compute_vr : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    compute_vl : fwi_integer, intent inout
-    compute_vr : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -198,32 +180,29 @@ cpdef api object geev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object p
     geev_c(&min_lwork, &max_lwork, fw_prefix, &n, &compute_vl, &compute_vr, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'geev' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n, compute_vl, compute_vr,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object heev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n, fwi_integer_t lower):
+cpdef api object heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """
-    heev(min_lwork, max_lwork, prefix, n, lower) -> (min_lwork, max_lwork, prefix, n, lower)
+    heev(prefix, n, lower) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lower : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
+    lower : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lower : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -231,32 +210,29 @@ cpdef api object heev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object p
     heev_c(&min_lwork, &max_lwork, fw_prefix, &n, &lower, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'heev' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n, lower,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object syev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n, fwi_integer_t lower):
+cpdef api object syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """
-    syev(min_lwork, max_lwork, prefix, n, lower) -> (min_lwork, max_lwork, prefix, n, lower)
+    syev(prefix, n, lower) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lower : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
+    lower : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    lower : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -264,32 +240,29 @@ cpdef api object syev(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object p
     syev_c(&min_lwork, &max_lwork, fw_prefix, &n, &lower, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'syev' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n, lower,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object gees(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t n, fwi_integer_t compute_v):
+cpdef api object gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):
     """
-    gees(min_lwork, max_lwork, prefix, n, compute_v) -> (min_lwork, max_lwork, prefix, n, compute_v)
+    gees(prefix, n, compute_v) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    compute_v : fwi_integer, intent inout
+    prefix : object_, intent in
+    n : fwi_integer, intent in
+    compute_v : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    n : fwi_integer, intent inout
-    compute_v : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -297,32 +270,29 @@ cpdef api object gees(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object p
     gees_c(&min_lwork, &max_lwork, fw_prefix, &n, &compute_v, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'gees' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, n, compute_v,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object geqrf(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t m, fwi_integer_t n):
+cpdef api object geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):
     """
-    geqrf(min_lwork, max_lwork, prefix, m, n) -> (min_lwork, max_lwork, prefix, m, n)
+    geqrf(prefix, m, n) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
+    prefix : object_, intent in
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -330,32 +300,29 @@ cpdef api object geqrf(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object 
     geqrf_c(&min_lwork, &max_lwork, fw_prefix, &m, &n, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'geqrf' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, m, n,)
+    return (min_lwork, max_lwork,)
 
 
-cpdef api object gqr(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object prefix, fwi_integer_t m, fwi_integer_t n):
+cpdef api object gqr(object prefix, fwi_integer_t m, fwi_integer_t n):
     """
-    gqr(min_lwork, max_lwork, prefix, m, n) -> (min_lwork, max_lwork, prefix, m, n)
+    gqr(prefix, m, n) -> (min_lwork, max_lwork)
 
     Parameters
     ----------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
+    prefix : object_, intent in
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
 
     Returns
     -------
-    min_lwork : fwi_integer, intent inout
-    max_lwork : fwi_integer, intent inout
-    prefix : object_, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
+    min_lwork : fwi_integer, intent out
+    max_lwork : fwi_integer, intent out
 
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t min_lwork
+    cdef fwi_integer_t max_lwork
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
@@ -363,7 +330,7 @@ cpdef api object gqr(fwi_integer_t min_lwork, fwi_integer_t max_lwork, object pr
     gqr_c(&min_lwork, &max_lwork, fw_prefix, &m, &n, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'gqr' wrapper.")
-    return (min_lwork, max_lwork, fw_prefix, m, n,)
+    return (min_lwork, max_lwork,)
 
 
 
