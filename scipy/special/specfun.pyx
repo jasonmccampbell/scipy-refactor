@@ -1,7 +1,7 @@
 #cython: ccomplex=True
 
 """
-The specfun module was generated with Fwrap v0.2.0dev_2a63538.
+The specfun module was generated with Fwrap v0.2.0dev_1755336.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -1633,7 +1633,7 @@ cpdef api object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer
     c : fwr_dbl, intent inout
     kd : fwi_integer, intent inout
     cv : fwr_dbl, intent inout
-    eg : fwr_dbl, 1D array, dimension(200), intent inout
+    eg : fwr_dbl, 1D array, dimension(*), intent inout
 
     Returns
     -------
@@ -1642,7 +1642,7 @@ cpdef api object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer
     c : fwr_dbl, intent inout
     kd : fwi_integer, intent inout
     cv : fwr_dbl, intent inout
-    eg : fwr_dbl, 1D array, dimension(200), intent inout
+    eg : fwr_dbl, 1D array, dimension(*), intent inout
 
     """
     cdef np.ndarray eg_
@@ -1757,10 +1757,132 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d    
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_2a63538
-# Fwrap: self-sha1 df364bb88062d673b42b68f8ed9cec6b610b855d
+# Fwrap: version 0.2.0dev_1755336
+# Fwrap: self-sha1 60cdc83501d57b92f2a7d790b1f9612b72933aad
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 975d5e3c152da9ce29774e9c581efe5511a6dba5
+# Fwrap: exclude airya
+# Fwrap: exclude airyb
+# Fwrap: exclude ajyik
+# Fwrap: exclude aswfa
+# Fwrap: exclude beta
+# Fwrap: exclude bjndd
+# Fwrap: exclude cbk
+# Fwrap: exclude cchg
+# Fwrap: exclude cerf
+# Fwrap: exclude cerror
+# Fwrap: exclude cfc
+# Fwrap: exclude cfs
+# Fwrap: exclude cgama
+# Fwrap: exclude ch12n
+# Fwrap: exclude chgu
+# Fwrap: exclude chgubi
+# Fwrap: exclude chguit
+# Fwrap: exclude chgul
+# Fwrap: exclude chgus
+# Fwrap: exclude cik01
+# Fwrap: exclude ciklv
+# Fwrap: exclude cikna
+# Fwrap: exclude ciknb
+# Fwrap: exclude cikva
+# Fwrap: exclude cikvb
+# Fwrap: exclude cisia
+# Fwrap: exclude cisib
+# Fwrap: exclude cjk
+# Fwrap: exclude cjy01
+# Fwrap: exclude cjylv
+# Fwrap: exclude cjyna
+# Fwrap: exclude cjynb
+# Fwrap: exclude cjyva
+# Fwrap: exclude cjyvb
+# Fwrap: exclude comelp
+# Fwrap: exclude cpdla
+# Fwrap: exclude cpdsa
+# Fwrap: exclude cpsi
+# Fwrap: exclude cv0
+# Fwrap: exclude cva2
+# Fwrap: exclude cvf
+# Fwrap: exclude cvql
+# Fwrap: exclude cvqm
+# Fwrap: exclude cy01
+# Fwrap: exclude dvla
+# Fwrap: exclude dvsa
+# Fwrap: exclude e1xa
+# Fwrap: exclude e1xb
+# Fwrap: exclude e1z
+# Fwrap: exclude eix
+# Fwrap: exclude eixz
+# Fwrap: exclude elit
+# Fwrap: exclude elit3
+# Fwrap: exclude envj
+# Fwrap: exclude enxa
+# Fwrap: exclude enxb
+# Fwrap: exclude error
+# Fwrap: exclude fcs
+# Fwrap: exclude ffk
+# Fwrap: exclude gaih
+# Fwrap: exclude gam0
+# Fwrap: exclude gamma2
+# Fwrap: exclude gmn
+# Fwrap: exclude hygfx
+# Fwrap: exclude hygfz
+# Fwrap: exclude ik01a
+# Fwrap: exclude ik01b
+# Fwrap: exclude ikna
+# Fwrap: exclude iknb
+# Fwrap: exclude ikv
+# Fwrap: exclude incob
+# Fwrap: exclude incog
+# Fwrap: exclude itairy
+# Fwrap: exclude itika
+# Fwrap: exclude itikb
+# Fwrap: exclude itjya
+# Fwrap: exclude itjyb
+# Fwrap: exclude itsh0
+# Fwrap: exclude itsl0
+# Fwrap: exclude itth0
+# Fwrap: exclude ittika
+# Fwrap: exclude ittikb
+# Fwrap: exclude ittjya
+# Fwrap: exclude ittjyb
+# Fwrap: exclude jelp
+# Fwrap: exclude jy01a
+# Fwrap: exclude jy01b
+# Fwrap: exclude jyna
+# Fwrap: exclude jynb
+# Fwrap: exclude jynbh
+# Fwrap: exclude jyndd
+# Fwrap: exclude jyv
+# Fwrap: exclude klvna
+# Fwrap: exclude klvnb
+# Fwrap: exclude kmn
+# Fwrap: exclude lgama
+# Fwrap: exclude lpmv
+# Fwrap: exclude msta1
+# Fwrap: exclude msta2
+# Fwrap: exclude mtu0
+# Fwrap: exclude mtu12
+# Fwrap: exclude pbwa
+# Fwrap: exclude psi_spec
+# Fwrap: exclude qstar
+# Fwrap: exclude refine
+# Fwrap: exclude rmn1
+# Fwrap: exclude rmn2l
+# Fwrap: exclude rmn2so
+# Fwrap: exclude rmn2sp
+# Fwrap: exclude rswfo
+# Fwrap: exclude rswfp
+# Fwrap: exclude scka
+# Fwrap: exclude sckb
+# Fwrap: exclude sdmn
+# Fwrap: exclude stvh0
+# Fwrap: exclude stvh1
+# Fwrap: exclude stvhv
+# Fwrap: exclude stvl0
+# Fwrap: exclude stvl1
+# Fwrap: exclude stvlv
+# Fwrap: exclude vvla
+# Fwrap: exclude vvsa
 # Fwrap: exclude airya
 # Fwrap: exclude airyb
 # Fwrap: exclude ajyik
