@@ -1,7 +1,7 @@
 #cython: ccomplex=True
 
 """
-The fblas module was generated with Fwrap v0.2.0dev_2a63538.
+The fblas module was generated with Fwrap v0.2.0dev_b7db3aa.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -90,29 +90,35 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, objec
     cdef char *fw_uplo_f = [0, 0]
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     uplo_f = "L" if lower else "U"
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
+    if not (np.PyArray_DIMS(a_)[0] == np.PyArray_DIMS(a_)[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     if not ((lower == 0) or (lower == 1)):
         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
     if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
-        raise ValueError('Condition on arguments not satisfied: np.PyArray_DIMS(x)[0] > (offx + ((n - 1) * abs(incx)))')
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
     if not (np.PyArray_DIMS(y_)[0] > (offy + ((n - 1) * abs(incy)))):
-        raise ValueError('Condition on arguments not satisfied: np.PyArray_DIMS(y)[0] > (offy + ((n - 1) * abs(incy)))')
+        raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
+    if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
+    if not (np.PyArray_DIMS(y_)[0] > (offy + ((n - 1) * abs(incy)))):
+        raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
     fw_uplo_f[0] = fw_aschar(uplo_f)
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
@@ -162,15 +168,15 @@ cpdef api object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     csrot_c(&n_, x_shape_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s, &fw_iserr__, fw_errstr__)
@@ -207,9 +213,9 @@ cpdef api object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t off
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     csscal_c(&n_, &a, x_shape_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -245,9 +251,9 @@ cpdef api object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integ
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     dzasum_c(&fw_ret_arg, &n_, x_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -283,9 +289,9 @@ cpdef api object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integ
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     dznrm2_c(&fw_ret_arg, &n_, x_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -364,9 +370,9 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_int
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     {{fc_name}}(&fw_ret_arg, &n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -416,15 +422,15 @@ cpdef api object {{name}}(object x, object y, object n=None, {{ktp}} a=1., fwi_i
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&n_, &a, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &fw_iserr__, fw_errstr__)
@@ -461,9 +467,9 @@ cpdef api object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integ
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     scasum_c(&fw_ret_arg, &n_, x_shape_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -499,9 +505,9 @@ cpdef api object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integ
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     scnrm2_c(&fw_ret_arg, &n_, x_shape_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -549,15 +555,15 @@ cpdef api object {{name}}(object x, object y, object n=None, fwi_integer_t offx=
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &fw_iserr__, fw_errstr__)
@@ -608,15 +614,15 @@ cpdef api object {{name}}(object x, object y, object n=None, fwi_integer_t offx=
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&{{name2}}, &n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &fw_iserr__, fw_errstr__)
@@ -668,6 +674,8 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, o
     cdef char *fw_transa_f = [0, 0]
     cdef char *fw_transb_f = [0, 0]
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
+    transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     lda = np.PyArray_DIMS(a_)[0]
@@ -680,9 +688,9 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, o
     n = ldb if trans_b else kb
     c_, c = fw_explicitshapearray(c, {{npy_enum}}, 2, [m, n], not overwrite_c)
     fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 2)
-    transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
-    transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
     k = lda if trans_a else ka
+    if not ((np.PyArray_DIMS(c_)[0] == m) and (np.PyArray_DIMS(c_)[1] == n)):
+        raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
     if not ((trans_a >= 0) and (trans_a <= 2)):
         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
     if not ((trans_b >= 0) and (trans_b <= 2)):
@@ -744,6 +752,7 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     cdef fwi_integer_t fw_iserr__
     cdef char *fw_trans_f = [0, 0]
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
@@ -751,13 +760,20 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, o
     y_, y = fw_explicitshapearray(y, {{npy_enum}}, 1, [ly], not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
-    trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     m = np.PyArray_DIMS(a_)[0]
     n = np.PyArray_DIMS(a_)[1]
     rows = n if trans else m
     cols = m if trans else n
+    if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
+    if not (np.PyArray_DIMS(x_)[0] > (offx + ((cols - 1) * abs(incx)))):
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
+    if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
+    if not (np.PyArray_DIMS(y_)[0] > (offy + ((rows - 1) * abs(incy)))):
+        raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((incy > 0) or (incy < 0)):
@@ -863,9 +879,9 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_int
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     {{fc_name}}(&fw_ret_arg, &n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -919,15 +935,15 @@ cpdef api object {{name}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=Non
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &c, &s, &fw_iserr__, fw_errstr__)
@@ -1014,15 +1030,15 @@ cpdef api object {{name}}(object x, object y, object param, object n=None, fwi_i
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, param_shape_, <{{ktp}}*>np.PyArray_DATA(param_), &fw_iserr__, fw_errstr__)
@@ -1099,9 +1115,9 @@ cpdef api object {{name}}({{ktp}} a, object x, object n=None, fwi_integer_t offx
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     {{fc_name}}(&n_, &a, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -1151,15 +1167,15 @@ cpdef api object {{name}}(object x, object y, object n=None, fwi_integer_t offx=
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     {{fc_name}}(&n_, x_shape_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &fw_iserr__, fw_errstr__)
@@ -1208,29 +1224,35 @@ cpdef api object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, objec
     cdef char *fw_uplo_f = [0, 0]
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     uplo_f = "L" if lower else "U"
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, False)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
     y_, y = fw_asfortranarray(y, {{npy_enum}}, 1, not overwrite_y)
     fw_copyshape(y_shape_, np.PyArray_DIMS(y_), 1)
     y_shape_[0] -= offy
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
+    if not (np.PyArray_DIMS(a_)[0] == np.PyArray_DIMS(a_)[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     if not ((lower == 0) or (lower == 1)):
         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
     if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
-        raise ValueError('Condition on arguments not satisfied: np.PyArray_DIMS(x)[0] > (offx + ((n - 1) * abs(incx)))')
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
     if not (np.PyArray_DIMS(y_)[0] > (offy + ((n - 1) * abs(incy)))):
-        raise ValueError('Condition on arguments not satisfied: np.PyArray_DIMS(y)[0] > (offy + ((n - 1) * abs(incy)))')
+        raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
+    if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
+    if not (np.PyArray_DIMS(y_)[0] > (offy + ((n - 1) * abs(incy)))):
+        raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
     fw_uplo_f[0] = fw_aschar(uplo_f)
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
@@ -1279,14 +1301,16 @@ cpdef api object {{name}}(object a, object x, fwi_integer_t offx=0, fwi_integer_
     uplo_f = "L" if lower else "U"
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     diag_f = "U" if unitdiag else "N"
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
     fw_copyshape(x_shape_, np.PyArray_DIMS(x_), 1)
     x_shape_[0] -= offx
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
-    fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
+    if not (np.PyArray_DIMS(a_)[0] == np.PyArray_DIMS(a_)[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((lower == 0) or (lower == 1)):
@@ -1296,7 +1320,9 @@ cpdef api object {{name}}(object a, object x, fwi_integer_t offx=0, fwi_integer_
     if not ((unitdiag == 0) or (unitdiag == 1)):
         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
     if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
-        raise ValueError('Condition on arguments not satisfied: np.PyArray_DIMS(x)[0] > (offx + ((n - 1) * abs(incx)))')
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
+    if not (np.PyArray_DIMS(x_)[0] > (offx + ((n - 1) * abs(incx)))):
+        raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
     fw_uplo_f[0] = fw_aschar(uplo_f)
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
@@ -1352,15 +1378,15 @@ cpdef api object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=No
     y_shape_[0] -= offy
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((np.PyArray_DIMS(y_)[0] - offy) > ((n_ - 1) * abs(incy))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(y)[0] - offy) > ((n - 1) * abs(incy))')
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     if not ((offy >= 0) and (offy < np.PyArray_DIMS(y_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < np.PyArray_DIMS(y)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     zdrot_c(&n_, x_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, y_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s, &fw_iserr__, fw_errstr__)
@@ -1397,9 +1423,9 @@ cpdef api object zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx
     x_shape_[0] -= offx
     n_ = n if (n is not None) else (np.PyArray_DIMS(x_)[0] - offx) // abs(incx)
     if not ((np.PyArray_DIMS(x_)[0] - offx) > ((n_ - 1) * abs(incx))):
-        raise ValueError('Condition on arguments not satisfied: (np.PyArray_DIMS(x)[0] - offx) > ((n - 1) * abs(incx))')
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
     if not ((offx >= 0) and (offx < np.PyArray_DIMS(x_)[0])):
-        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < np.PyArray_DIMS(x)[0])')
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     zdscal_c(&n_, &a, x_shape_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &fw_iserr__, fw_errstr__)
@@ -1497,8 +1523,8 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
         return fw_asfortranarray(value, typenum, ndim, copy)
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_2a63538
-# Fwrap: self-sha1 c2676dffda7114d90f24a1f01b932de010724d64
+# Fwrap: version 0.2.0dev_b7db3aa
+# Fwrap: self-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: exclude cgbmv
