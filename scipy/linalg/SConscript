@@ -97,13 +97,7 @@ write_info(fenv)
 #------------
 #   fblas
 #------------
-fenv.haha('fblas', 'generic_fblas.pyf')
-source = ['fblas.pyf']
-if IsVeclib(fenv, 'blas') or IsAccelerate(fenv, 'blas'):
-    source.append(pjoin('src', 'fblaswrap_veclib_c.c'))
-else:
-    source.append(pjoin('src', 'fblaswrap.f'))
-fenv.NumpyPythonExtension('fblas', source)
+fenv.NumpyPythonExtension('fblas', ['fblas.c', 'fblas_fc.f'])
 
 #------------
 #   cblas
