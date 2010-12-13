@@ -1,22 +1,15 @@
 #cython: ccomplex=True
 
 """
-The statlib module was generated with Fwrap v0.2.0dev_eae6cea.
+The statlib module was generated with Fwrap v0.2.0dev_b9c96b3.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
 
 Functions
 ---------
-alnorm(...)
-frqadd(...)
 gscale(...)
-imply(...)
-poly(...)
-ppnd(...)
 prho(...)
-start1(...)
-start2(...)
 swilk(...)
 wprob(...)
 
@@ -128,150 +121,6 @@ cpdef api object gscale(fwi_integer_t test, fwi_integer_t other, fwr_real_t asta
     return (test, other, astart, a1, l1, a2, a3, ifault,)
 
 
-cpdef api object start1(fwi_integer_t n, object f, fwi_integer_t l, fwi_integer_t lout):
-    """
-    start1(n, f, l, lout) -> (n, f, l, lout)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    f : fwr_real, 1D array, dimension(l), intent inout
-    l : fwi_integer, intent inout
-    lout : fwi_integer, intent inout
-
-    Returns
-    -------
-    n : fwi_integer, intent inout
-    f : fwr_real, 1D array, dimension(l), intent inout
-    l : fwi_integer, intent inout
-    lout : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray f_
-    cdef fw_shape_t f_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    f_, f = fw_asfortranarray(f, fwr_real_t_enum, 1, False)
-    fw_copyshape(f_shape_, np.PyArray_DIMS(f_), 1)
-    start1_c(&n, f_shape_, <fwr_real_t*>np.PyArray_DATA(f_), &l, &lout, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'start1' wrapper.")
-    return (n, f, l, lout,)
-
-
-cpdef api object start2(fwi_integer_t n, object f, fwi_integer_t l, fwi_integer_t lout):
-    """
-    start2(n, f, l, lout) -> (n, f, l, lout)
-
-    Parameters
-    ----------
-    n : fwi_integer, intent inout
-    f : fwr_real, 1D array, dimension(l), intent inout
-    l : fwi_integer, intent inout
-    lout : fwi_integer, intent inout
-
-    Returns
-    -------
-    n : fwi_integer, intent inout
-    f : fwr_real, 1D array, dimension(l), intent inout
-    l : fwi_integer, intent inout
-    lout : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray f_
-    cdef fw_shape_t f_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    f_, f = fw_asfortranarray(f, fwr_real_t_enum, 1, False)
-    fw_copyshape(f_shape_, np.PyArray_DIMS(f_), 1)
-    start2_c(&n, f_shape_, <fwr_real_t*>np.PyArray_DATA(f_), &l, &lout, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'start2' wrapper.")
-    return (n, f, l, lout,)
-
-
-cpdef api object frqadd(object f1, fwi_integer_t l1in, fwi_integer_t l1out, fwi_integer_t l1, object f2, fwi_integer_t l2, fwi_integer_t nstart):
-    """
-    frqadd(f1, l1in, l1out, l1, f2, l2, nstart) -> (f1, l1in, l1out, l1, f2, l2, nstart)
-
-    Parameters
-    ----------
-    f1 : fwr_real, 1D array, dimension(l1), intent inout
-    l1in : fwi_integer, intent inout
-    l1out : fwi_integer, intent inout
-    l1 : fwi_integer, intent inout
-    f2 : fwr_real, 1D array, dimension(l2), intent inout
-    l2 : fwi_integer, intent inout
-    nstart : fwi_integer, intent inout
-
-    Returns
-    -------
-    f1 : fwr_real, 1D array, dimension(l1), intent inout
-    l1in : fwi_integer, intent inout
-    l1out : fwi_integer, intent inout
-    l1 : fwi_integer, intent inout
-    f2 : fwr_real, 1D array, dimension(l2), intent inout
-    l2 : fwi_integer, intent inout
-    nstart : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray f1_
-    cdef fw_shape_t f1_shape_[1]
-    cdef np.ndarray f2_
-    cdef fw_shape_t f2_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    f1_, f1 = fw_asfortranarray(f1, fwr_real_t_enum, 1, False)
-    fw_copyshape(f1_shape_, np.PyArray_DIMS(f1_), 1)
-    f2_, f2 = fw_asfortranarray(f2, fwr_real_t_enum, 1, False)
-    fw_copyshape(f2_shape_, np.PyArray_DIMS(f2_), 1)
-    frqadd_c(f1_shape_, <fwr_real_t*>np.PyArray_DATA(f1_), &l1in, &l1out, &l1, f2_shape_, <fwr_real_t*>np.PyArray_DATA(f2_), &l2, &nstart, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'frqadd' wrapper.")
-    return (f1, l1in, l1out, l1, f2, l2, nstart,)
-
-
-cpdef api object imply(object f1, fwi_integer_t l1in, fwi_integer_t l1out, object f2, fwi_integer_t l2, fwi_integer_t l2max, fwi_integer_t noff):
-    """
-    imply(f1, l1in, l1out, f2, l2, l2max, noff) -> (f1, l1in, l1out, f2, l2, l2max, noff)
-
-    Parameters
-    ----------
-    f1 : fwr_real, 1D array, dimension(l1out), intent inout
-    l1in : fwi_integer, intent inout
-    l1out : fwi_integer, intent inout
-    f2 : fwr_real, 1D array, dimension(l2max), intent inout
-    l2 : fwi_integer, intent inout
-    l2max : fwi_integer, intent inout
-    noff : fwi_integer, intent inout
-
-    Returns
-    -------
-    f1 : fwr_real, 1D array, dimension(l1out), intent inout
-    l1in : fwi_integer, intent inout
-    l1out : fwi_integer, intent inout
-    f2 : fwr_real, 1D array, dimension(l2max), intent inout
-    l2 : fwi_integer, intent inout
-    l2max : fwi_integer, intent inout
-    noff : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray f1_
-    cdef fw_shape_t f1_shape_[1]
-    cdef np.ndarray f2_
-    cdef fw_shape_t f2_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    f1_, f1 = fw_asfortranarray(f1, fwr_real_t_enum, 1, False)
-    fw_copyshape(f1_shape_, np.PyArray_DIMS(f1_), 1)
-    f2_, f2 = fw_asfortranarray(f2, fwr_real_t_enum, 1, False)
-    fw_copyshape(f2_shape_, np.PyArray_DIMS(f2_), 1)
-    imply_c(f1_shape_, <fwr_real_t*>np.PyArray_DATA(f1_), &l1in, &l1out, f2_shape_, <fwr_real_t*>np.PyArray_DATA(f2_), &l2, &l2max, &noff, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'imply' wrapper.")
-    return (f1, l1in, l1out, f2, l2, l2max, noff,)
-
-
 cpdef api object prho(fwi_integer_t n, fwi_integer_t is__, fwi_integer_t ifault):
     """
     prho(n, is__, ifault) -> (fw_ret_arg, n, is__, ifault)
@@ -346,89 +195,6 @@ cpdef api object swilk(bint init, object x, fwi_integer_t n, fwi_integer_t n1, f
     return (init_, x, n, n1, n2, a, w, pw, ifault,)
 
 
-cpdef api object alnorm(fwr_dbl_t x, bint upper):
-    """
-    alnorm(x, upper) -> (fw_ret_arg, x, upper_)
-
-    Parameters
-    ----------
-    x : fwr_dbl, intent inout
-    upper : fwl_logical, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_dbl, intent out
-    x : fwr_dbl, intent inout
-    upper : fwl_logical, intent inout
-
-    """
-    cdef fwl_logical_t upper_
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_dbl_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    upper_ = 1 if upper else 0
-    alnorm_c(&fw_ret_arg, &x, &upper_, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'alnorm' wrapper.")
-    return (fw_ret_arg, x, upper_,)
-
-
-cpdef api object ppnd(fwr_real_t p, fwi_integer_t ifault):
-    """
-    ppnd(p, ifault) -> (fw_ret_arg, p, ifault)
-
-    Parameters
-    ----------
-    p : fwr_real, intent inout
-    ifault : fwi_integer, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_real, intent out
-    p : fwr_real, intent inout
-    ifault : fwi_integer, intent inout
-
-    """
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_real_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ppnd_c(&fw_ret_arg, &p, &ifault, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'ppnd' wrapper.")
-    return (fw_ret_arg, p, ifault,)
-
-
-cpdef api object poly(object c, fwi_integer_t nord, fwr_real_t x):
-    """
-    poly(c, nord, x) -> (fw_ret_arg, c, nord, x)
-
-    Parameters
-    ----------
-    c : fwr_real, 1D array, dimension(nord), intent inout
-    nord : fwi_integer, intent inout
-    x : fwr_real, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_real, intent out
-    c : fwr_real, 1D array, dimension(nord), intent inout
-    nord : fwi_integer, intent inout
-    x : fwr_real, intent inout
-
-    """
-    cdef np.ndarray c_
-    cdef fw_shape_t c_shape_[1]
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_real_t fw_ret_arg
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    c_, c = fw_asfortranarray(c, fwr_real_t_enum, 1, False)
-    fw_copyshape(c_shape_, np.PyArray_DIMS(c_), 1)
-    poly_c(&fw_ret_arg, c_shape_, <fwr_real_t*>np.PyArray_DATA(c_), &nord, &x, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'poly' wrapper.")
-    return (fw_ret_arg, c, nord, x,)
-
-
 
 cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
     # In f77binding mode, we do not always have fw_shape_t and np.npy_intp
@@ -492,10 +258,17 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d    
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_eae6cea
-# Fwrap: self-sha1 0f2dbc36949ed0e112be3c662d517a4c2cbe7ac0
+# Fwrap: version 0.2.0dev_b9c96b3
+# Fwrap: self-sha1 0ff006c1ae5e8d77511a99502334d391ba122ad8
 # Fwrap: wraps statlib/*.f
 # Fwrap:     sha1 fdacc5bbd4afbc5c3867c04dad74d9ea6d64b3bd
+# Fwrap: exclude alnorm
+# Fwrap: exclude frqadd
+# Fwrap: exclude imply
+# Fwrap: exclude poly
+# Fwrap: exclude ppnd
+# Fwrap: exclude start1
+# Fwrap: exclude start2
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
