@@ -30,23 +30,24 @@
  */
 
 #include "ni_support.h"
+#include "numpy/ndarraytypes.h"
 
 /* initialize iterations over single array elements: */
 int NI_InitPointIterator(PyArrayObject *array, NI_Iterator *iterator)
 {
     int ii;
 
-    iterator->rank_m1 = array->nd - 1;
-    for(ii = 0; ii < array->nd; ii++) {
+    iterator->rank_m1 = PyArray_NDIM(array) - 1;
+    for(ii = 0; ii < PyArray_NDIM(array); ii++) {
         /* adapt dimensions for use in the macros: */
-        iterator->dimensions[ii] = array->dimensions[ii] - 1;
+        iterator->dimensions[ii] = PyArray_DIM(array, ii) - 1;
         /* initialize coordinates: */
         iterator->coordinates[ii] = 0;
         /* initialize strides: */
-        iterator->strides[ii] = array->strides[ii];
+        iterator->strides[ii] = PyArray_STRIDES(array)[ii];
         /* calculate the strides to move back at the end of an axis: */
         iterator->backstrides[ii] =
-                array->strides[ii] * iterator->dimensions[ii];
+                PyArray_STRIDES(array)[ii] * iterator->dimensions[ii];
     }
     return 1;
 }
@@ -93,13 +94,13 @@ int NI_AllocateLineBuffer(PyArrayObject* array, int axis, npy_intp size1,
     /* the number of lines of the array is an upper limit for the
          number of lines in the buffer: */
     max_lines = 1;
-    for(ii = 0; ii < array->nd; ii++)
-        max_lines *= array->dimensions[ii];
-    if (array->nd > 0 && array->dimensions[axis] > 0)
-        max_lines /= array->dimensions[axis];
+    for(ii = 0; ii < PyArray_NDIM(array); ii++)
+        max_lines *= PyArray_DIM(array, ii);
+    if (PyArray_NDIM(array) > 0 && PyArray_DIM(array, axis) > 0)
+        max_lines /= PyArray_DIM(array,axis);
     /* calculate the space needed for one line, including space to
          support the boundary conditions: */
-    line_size = sizeof(double) * (array->dimensions[axis] + size1 + size2);
+    line_size = sizeof(double) * (PyArray_DIM(array, axis) + size1 + size2);
     /* if *lines < 1, no number of lines is proposed, so we calculate it
          from the maximum size allowed: */
     if (*lines < 1) {
@@ -128,8 +129,8 @@ int NI_InitLineBuffer(PyArrayObject *array, int axis, npy_intp size1,
     int ii;
 
     size = 1;
-    for(ii = 0; ii < array->nd; ii++)
-        size *= array->dimensions[ii];
+    for(ii = 0; ii < PyArray_NDIM(array); ii++)
+        size *= PyArray_DIM(array, ii);
     /* check if the buffer is big enough: */
     if (size > 0 && buffer_lines < 1) {
         PyErr_SetString(PyExc_RuntimeError, "buffer too small");
@@ -140,20 +141,20 @@ int NI_InitLineBuffer(PyArrayObject *array, int axis, npy_intp size1,
         return 0;
     if (!NI_LineIterator(&(buffer->iterator), axis))
         return 0;
-    line_length = array->nd > 0 ? array->dimensions[axis] : 1;
+    line_length = PyArray_NDIM(array) > 0 ? PyArray_DIM(array, axis) : 1;
     if (line_length > 0)
         array_lines = line_length > 0 ? size / line_length : 1;
     /* initialize the buffer structure: */
     buffer->array_data = (void *)PyArray_DATA(array);
     buffer->buffer_data = buffer_data;
     buffer->buffer_lines = buffer_lines;
-    buffer->array_type = array->descr->type_num;
+    buffer->array_type = PyArray_TYPE(array);
     buffer->array_lines = array_lines;
     buffer->next_line = 0;
     buffer->size1 = size1;
     buffer->size2 = size2;
     buffer->line_length = line_length;
-    buffer->line_stride = array->nd > 0 ? array->strides[axis] : 0;
+    buffer->line_stride = PyArray_NDIM(array) > 0 ? PyArray_STRIDES(array)[axis] : 0;
     buffer->extend_mode = extend_mode;
     buffer->extend_value = extend_value;
     return 1;
@@ -456,9 +457,9 @@ int NI_InitFilterOffsets(PyArrayObject *array, Bool *footprint,
     npy_intp footprint_size = 0, coordinates[MAXDIM], position[MAXDIM];
     npy_intp fshape[MAXDIM], forigins[MAXDIM], *po, *pc = NULL;
 
-    rank = array->nd;
-    ashape = array->dimensions;
-    astrides = array->strides;
+    rank = PyArray_NDIM(array);
+    ashape = PyArray_DIMS(array);
+    astrides = PyArray_STRIDES(array);
     for(ii = 0; ii < rank; ii++) {
         fshape[ii] = *filter_shape++;
         forigins[ii] = origins ? *origins++ : 0;

@@ -365,9 +365,9 @@ static PyObject *Py_GenericFilter1D(PyObject *obj, PyObject *args)
                                         "extra_keywords must be a dictionary");
         goto exit;
     }
-    if (NpyCapsule_Check(fnc)) {
-        func = NpyCapsule_AsVoidPtr(fnc);
-        data = NpyCapsule_GetDesc(fnc);
+    if (PyCapsule_Check(fnc)) {
+        func = PyCapsule_AsVoidPtr(fnc);
+        data = PyCapsule_GetDesc(fnc);
     } else if (PyCallable_Check(fnc)) {
         cbdata.function = fnc;
         cbdata.extra_arguments = extra_arguments;
@@ -443,9 +443,9 @@ static PyObject *Py_GenericFilter(PyObject *obj, PyObject *args)
                                         "extra_keywords must be a dictionary");
         goto exit;
     }
-    if (NpyCapsule_Check(fnc)) {
-        func = NpyCapsule_AsVoidPtr(fnc);
-        data = NpyCapsule_GetDesc(fnc);
+    if (PyCapsule_Check(fnc)) {
+        func = PyCapsule_AsVoidPtr(fnc);
+        data = PyCapsule_GetDesc(fnc);
     } else if (PyCallable_Check(fnc)) {
         cbdata.function = fnc;
         cbdata.extra_arguments = extra_arguments;
@@ -623,9 +623,9 @@ static PyObject *Py_GeometricTransform(PyObject *obj, PyObject *args)
                                             "extra_keywords must be a dictionary");
             goto exit;
         }
-        if (NpyCapsule_Check(fnc)) {
-            func = NpyCapsule_AsVoidPtr(fnc);
-            data = NpyCapsule_GetDesc(fnc);
+        if (PyCapsule_Check(fnc)) {
+            func = PyCapsule_AsVoidPtr(fnc);
+            data = PyCapsule_GetDesc(fnc);
         } else if (PyCallable_Check(fnc)) {
             func = Py_Map;
             cbdata.function = fnc;
@@ -727,8 +727,8 @@ static PyObject *Py_FindObjects(PyObject *obj, PyObject *args)
     if (max_label < 0)
         max_label = 0;
     if (max_label > 0) {
-        if (input->nd > 0) {
-            regions = (npy_intp*)malloc(2 * max_label * input->nd *
+        if (PyArray_NDIM(input) > 0) {
+            regions = (npy_intp*)malloc(2 * max_label * PyArray_NDIM(input) *
                                                              sizeof(npy_intp));
         } else {
             regions = (npy_intp*)malloc(max_label * sizeof(npy_intp));
@@ -749,20 +749,20 @@ static PyObject *Py_FindObjects(PyObject *obj, PyObject *args)
     }
 
     for(ii = 0; ii < max_label; ii++) {
-        npy_intp idx = input->nd > 0 ? 2 * input->nd * ii : ii;
+        npy_intp idx = PyArray_NDIM(input) > 0 ? 2 * PyArray_NDIM(input) * ii : ii;
         if (regions[idx] >= 0) {
-            PyObject *tuple = PyTuple_New(input->nd);
+            PyObject *tuple = PyTuple_New(PyArray_NDIM(input));
             if (!tuple) {
                 PyErr_NoMemory();
                 goto exit;
             }
-            for(jj = 0; jj < input->nd; jj++) {
+            for(jj = 0; jj < PyArray_NDIM(input); jj++) {
 #if PY_VERSION_HEX < 0x02060000
                 start = PyLong_FromLong(regions[idx + jj]);
-                end = PyLong_FromLong(regions[idx + jj + input->nd]);
+                end = PyLong_FromLong(regions[idx + jj + PyArray_NDIM(input)]);
 #else
                 start = PyLong_FromSsize_t(regions[idx + jj]);
-                end = PyLong_FromSsize_t(regions[idx + jj + input->nd]);
+                end = PyLong_FromSsize_t(regions[idx + jj + PyArray_NDIM(input)]);
 #endif
                 if (!start || !end) {
                     PyErr_NoMemory();
@@ -925,7 +925,7 @@ static PyObject *Py_BinaryErosion(PyObject *obj, PyObject *args)
                                                 return_coordinates ? &coordinate_list : NULL))
         goto exit;
     if (return_coordinates) {
-        cobj = NpyCapsule_FromVoidPtr(coordinate_list, _FreeCoordinateList);
+        cobj = PyCapsule_FromVoidPtr(coordinate_list, _FreeCoordinateList);
     }
 exit:
     Py_XDECREF(input);
@@ -962,8 +962,8 @@ static PyObject *Py_BinaryErosion2(PyObject *obj, PyObject *args)
                           &invert, &cobj))
         goto exit;
 
-    if (NpyCapsule_Check(cobj)) {
-        NI_CoordinateList *cobj_data = NpyCapsule_AsVoidPtr(cobj);
+    if (PyCapsule_Check(cobj)) {
+        NI_CoordinateList *cobj_data = PyCapsule_AsVoidPtr(cobj);
         if (!NI_BinaryErosion2(array, strct, mask, niter, origins, invert,
                                                      &cobj_data))
             goto exit;

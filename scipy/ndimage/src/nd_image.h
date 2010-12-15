@@ -95,7 +95,7 @@ the specified type.
 static int
 satisfies(PyArrayObject *a, int requirements, NumarrayType t)
 {
-        int type_ok = (a->descr->type_num == t) || (t == tAny);
+        int type_ok = (PyArray_TYPE(a) == t) || (t == tAny);
 
         if (PyArray_ISCARRAY(a))
                 return type_ok;
@@ -129,7 +129,7 @@ NA_OutputArray(PyObject *a, NumarrayType t, int requires)
                 return (PyArrayObject *)a;
         }
         if (t == tAny) {
-                dtype = PyArray_DESCR(a);
+                dtype = (PyArray_Descr *)Npy_INTERFACE(PyArray_DESCR(a));
                 Py_INCREF(dtype);
         }
         else {
@@ -137,8 +137,8 @@ NA_OutputArray(PyObject *a, NumarrayType t, int requires)
         }
         ret = (PyArrayObject *)PyArray_Empty(PyArray_NDIM(a), PyArray_DIMS(a),
                                                                                  dtype, 0);
-        ret->flags |= NPY_UPDATEIFCOPY;
-        ret->base = a;
+        PyArray_FLAGS(ret) |= NPY_UPDATEIFCOPY;
+        PyArray_BASE(ret) = a;
         PyArray_FLAGS(a) &= ~NPY_WRITEABLE;
         Py_INCREF(a);
         return ret;
@@ -253,9 +253,9 @@ NA_NewAll(int ndim, npy_intp *shape, NumarrayType type,
                         result = NULL;
                 } else {
                         if (buffer) {
-                                memcpy(result->data, buffer, PyArray_NBYTES(result));
+                                memcpy(PyArray_DATA(result), buffer, PyArray_NBYTES(result));
                         } else {
-                                memset(result->data, 0, PyArray_NBYTES(result));
+                                memset(PyArray_DATA(result), 0, PyArray_NBYTES(result));
                         }
                 }
         }
