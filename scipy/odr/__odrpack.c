@@ -44,7 +44,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
                   double *fjacb, double *fjacd, int *istop)
 {
   PyObject *arg01, *arglist;
-  PyObject *result;
+  PyObject *result = NULL;
   PyArrayObject *result_array = NULL;
   PyArrayObject *pyXplusD;
 
@@ -56,14 +56,14 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
       dim2[0] = *m;
       dim2[1] = *n;
       pyXplusD = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_DOUBLE);
-      memcpy(pyXplusD->data, (void *)xplusd, (*m) * (*n) * sizeof(double));
+      memcpy(PyArray_DATA(pyXplusD), (void *)xplusd, (*m) * (*n) * sizeof(double));
     }
   else
     {
       npy_intp dim1[1];
       dim1[0] = *n;
       pyXplusD = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-      memcpy(pyXplusD->data, (void *)xplusd, (*n) * sizeof(double));
+      memcpy(PyArray_DATA(pyXplusD), (void *)xplusd, (*n) * sizeof(double));
     }
 
   PyTuple_SetItem(arg01, 0, odr_global.pyBeta);
@@ -83,7 +83,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
   Py_DECREF(arg01);
   *istop = 0;
 
-  memcpy(((PyArrayObject *) (odr_global.pyBeta))->data, (void *)beta,
+  memcpy(PyArray_DATA((PyArrayObject *) (odr_global.pyBeta)), (void *)beta,
          (*np) * sizeof(double));
 
   if ((*ideval % 10) >= 1)
@@ -137,7 +137,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
                  "Result from function call is not a proper array of floats.");
         }
 
-      memcpy((void *)f, result_array->data, (*n) * (*nq) * sizeof(double));
+      memcpy((void *)f, PyArray_DATA(result_array), (*n) * (*nq) * sizeof(double));
       Py_DECREF(result_array);
     }
 
@@ -196,7 +196,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
         {
           /* result_array should be rank-3 */
 
-          if (result_array->nd != 3)
+          if (PyArray_NDIM(result_array) != 3)
             {
               Py_DECREF(result_array);
               PYERR2(odr_error, "Beta Jacobian is not rank-3");
@@ -206,14 +206,14 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
         {
           /* result_array should be rank-2 */
 
-          if (result_array->nd != 2)
+          if (PyArray_NDIM(result_array) != 2)
             {
               Py_DECREF(result_array);
               PYERR2(odr_error, "Beta Jacobian is not rank-2");
             }
         }
 
-      memcpy((void *)fjacb, result_array->data,
+      memcpy((void *)fjacb, PyArray_DATA(result_array),
              (*n) * (*nq) * (*np) * sizeof(double));
       Py_DECREF(result_array);
 
@@ -274,7 +274,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
         {
           /* result_array should be rank-3 */
 
-          if (result_array->nd != 3)
+          if (PyArray_NDIM(result_array) != 3)
             {
               Py_DECREF(result_array);
               PYERR2(odr_error, "xplusd Jacobian is not rank-3");
@@ -284,7 +284,7 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
         {
           /* result_array should be rank-2 */
 
-          if (result_array->nd != 2)
+          if (PyArray_NDIM(result_array) != 2)
             {
               Py_DECREF(result_array);
               PYERR2(odr_error, "xplusd Jacobian is not rank-2");
@@ -294,14 +294,14 @@ void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
         {
           /* result_array should be rank-1 */
 
-          if (result_array->nd != 1)
+          if (PyArray_NDIM(result_array) != 1)
             {
               Py_DECREF(result_array);
               PYERR2(odr_error, "xplusd Jacobian is not rank-1");
             }
         }
 
-      memcpy((void *)fjacd, result_array->data,
+      memcpy((void *)fjacd, PyArray_DATA(result_array),
              (*n) * (*nq) * (*m) * sizeof(double));
       Py_DECREF(result_array);
     }
@@ -345,7 +345,7 @@ PyObject *gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
       return NULL;
   }
 
-  lwkmn = work->dimensions[0];
+  lwkmn = PyArray_DIM(work, 0);
 
   F_FUNC(dwinf,DWINF)(&n, &m, &np, &nq, &ldwe, &ld2we, &isodr,
         &delta, &eps, &xplus, &fn, &sd, &vcv, &rvar, &wss, &wssde,
@@ -406,15 +406,15 @@ PyObject *gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
   wrk6--;
   wrk7--;
 
-  dim1[0] = beta->dimensions[0];
+  dim1[0] = PyArray_DIM(beta, 0);
   sd_beta = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-  dim2[0] = beta->dimensions[0];
-  dim2[1] = beta->dimensions[0];
+  dim2[0] = PyArray_DIM(beta, 0);
+  dim2[1] = PyArray_DIM(beta, 0);
   cov_beta = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_DOUBLE);
 
-  memcpy(sd_beta->data, (void *)((double *)(work->data) + sd),
+  memcpy(PyArray_DATA(sd_beta), (void *)((double *)PyArray_DATA(work) + sd),
          np * sizeof(double));
-  memcpy(cov_beta->data, (void *)((double *)(work->data) + vcv),
+  memcpy(PyArray_DATA(cov_beta), (void *)((double *)PyArray_DATA(work) + vcv),
          np * np * sizeof(double));
 
   if (!full_output)
@@ -481,21 +481,21 @@ PyObject *gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
           fnA = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_DOUBLE);
         }
 
-      memcpy(deltaA->data, (void *)((double *)(work->data) + delta),
+      memcpy(PyArray_DATA(deltaA), (void *)((double *)PyArray_DATA(work) + delta),
              m * n * sizeof(double));
-      memcpy(epsA->data, (void *)((double *)(work->data) + eps),
+      memcpy(PyArray_DATA(epsA), (void *)((double *)PyArray_DATA(work) + eps),
              nq * n * sizeof(double));
-      memcpy(xplusA->data, (void *)((double *)(work->data) + xplus),
+      memcpy(PyArray_DATA(xplusA), (void *)((double *)PyArray_DATA(work) + xplus),
              m * n * sizeof(double));
-      memcpy(fnA->data, (void *)((double *)(work->data) + fn),
+      memcpy(PyArray_DATA(fnA), (void *)((double *)PyArray_DATA(work) + fn),
              nq * n * sizeof(double));
 
-      res_var = *((double *)(work->data) + rvar);
-      sum_square = *((double *)(work->data) + wss);
-      sum_square_delta = *((double *)(work->data) + wssde);
-      sum_square_eps = *((double *)(work->data) + wssep);
-      inv_condnum = *((double *)(work->data) + rcond);
-      rel_error = *((double *)(work->data) + eta);
+      res_var = *((double *)PyArray_DATA(work) + rvar);
+      sum_square = *((double *)PyArray_DATA(work) + wss);
+      sum_square_delta = *((double *)PyArray_DATA(work) + wssde);
+      sum_square_eps = *((double *)PyArray_DATA(work) + wssep);
+      inv_condnum = *((double *)PyArray_DATA(work) + rcond);
+      rel_error = *((double *)PyArray_DATA(work) + eta);
 
       retobj =
         Py_BuildValue
@@ -677,7 +677,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           PYERR(PyExc_ValueError,
                 "y could not be made into a suitable array");
         }
-      n = y->dimensions[y->nd - 1];     /* pick the last dimension */
+      n = PyArray_DIM(y, PyArray_NDIM(y) - 1);     /* pick the last dimension */
       if ((x =
            (PyArrayObject *) PyArray_CopyFromObject(px, PyArray_DOUBLE, 1,
                                                     2)) == NULL)
@@ -685,18 +685,18 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           PYERR(PyExc_ValueError,
                 "x could not be made into a suitable array");
         }
-      if (n != x->dimensions[x->nd - 1])
+      if (n != PyArray_DIM(x, PyArray_NDIM(x) - 1))
         {
           PYERR(PyExc_ValueError,
                 "x and y don't have matching numbers of observations");
         }
-      if (y->nd == 1)
+      if (PyArray_NDIM(y) == 1)
         {
           nq = 1;
         }
       else
         {
-          nq = y->dimensions[0];
+          nq = PyArray_DIM(y, 0);
         }
 
       ldx = ldy = n;
@@ -718,17 +718,17 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "x could not be made into a suitable array");
         }
 
-      n = x->dimensions[x->nd - 1];
+      n = PyArray_DIM(x, PyArray_NDIM(x) - 1);
       ldx = n;
     }
 
-  if (x->nd == 1)
+  if (PyArray_NDIM(x) == 1)
     {
       m = 1;
     }
   else
     {
-      m = x->dimensions[0];
+      m = PyArray_DIM(x, 0);
     }                           /* x, y */
 
   if ((beta =
@@ -738,14 +738,14 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       PYERR(PyExc_ValueError,
             "initbeta could not be made into a suitable array");
     }
-  np = beta->dimensions[0];
+  np = PyArray_DIM(beta, 0);
 
   if (pwe == NULL)
     {
       ldwe = ld2we = 1;
       dim1[0] = n;
       we = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-      ((double *)(we->data))[0] = -1.0;
+      ((double *)PyArray_DATA(we))[0] = -1.0;
     }
   else if (PyNumber_Check(pwe) && !PyArray_Check(pwe))
     {
@@ -765,11 +765,11 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       we = (PyArrayObject *) PyArray_SimpleNew(3, dim3, PyArray_DOUBLE);
       if (implicit)
         {
-          ((double *)(we->data))[0] = val;
+          ((double *)PyArray_DATA(we))[0] = val;
         }
       else
         {
-          ((double *)(we->data))[0] = -val;
+          ((double *)PyArray_DATA(we))[0] = -val;
         }
       ldwe = ld2we = 1;
     }
@@ -784,29 +784,29 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           PYERR(PyExc_ValueError, "could not convert we to a suitable array");
         }
 
-      if (we->nd == 1 && nq == 1)
+      if (PyArray_NDIM(we) == 1 && nq == 1)
         {
 
           ldwe = n;
           ld2we = 1;
         }
-      else if (we->nd == 1 && we->dimensions[0] == nq)
+      else if (PyArray_NDIM(we) == 1 && PyArray_DIM(we, 0) == nq)
         {
           /* we is a rank-1 array with diagonal weightings to be broadcast 
            * to all observations */
           ldwe = 1;
           ld2we = 1;
         }
-      else if (we->nd == 3 && we->dimensions[0] == nq
-               && we->dimensions[1] == nq && we->dimensions[2] == 1)
+      else if (PyArray_NDIM(we) == 3 && PyArray_DIM(we, 0) == nq
+               && PyArray_DIM(we, 1) == nq && PyArray_DIM(we, 2) == 1)
         {
           /* we is a rank-3 array with the covariant weightings 
              to be broadcast to all observations */
           ldwe = 1;
           ld2we = nq;
         }
-      else if (we->nd == 2 && we->dimensions[0] == nq
-               && we->dimensions[1] == nq)
+      else if (PyArray_NDIM(we) == 2 && PyArray_DIM(we, 0) == nq
+               && PyArray_DIM(we, 1) == nq)
         {
           /* we is a rank-2 array with the full covariant weightings 
              to be broadcast to all observations */
@@ -814,16 +814,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           ld2we = nq;
         }
 
-      else if (we->nd == 2 && we->dimensions[0] == nq
-               && we->dimensions[1] == n)
+      else if (PyArray_NDIM(we) == 2 && PyArray_DIM(we, 0) == nq
+               && PyArray_DIM(we, 1) == n)
         {
           /* we is a rank-2 array with the diagonal elements of the 
              covariant weightings for each observation */
           ldwe = n;
           ld2we = 1;
         }
-      else if (we->nd == 3 && we->dimensions[0] == nq
-               && we->dimensions[1] == nq && we->dimensions[2] == n)
+      else if (PyArray_NDIM(we) == 3 && PyArray_DIM(we, 0) == nq
+               && PyArray_DIM(we, 1) == nq && PyArray_DIM(we, 2) == n)
         {
           /* we is the full specification of the covariant weights
              for each observation */
@@ -842,7 +842,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
 
       dim1[0] = m;
       wd = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-      ((double *)(wd->data))[0] = -1.0;
+      ((double *)PyArray_DATA(wd))[0] = -1.0;
     }
   else if (PyNumber_Check(pwd) && !PyArray_Check(pwd))
     {
@@ -860,7 +860,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       dim3[1] = 1;
       dim3[2] = m;
       wd = (PyArrayObject *) PyArray_SimpleNew(3, dim3, PyArray_DOUBLE);
-      ((double *)(wd->data))[0] = -val;
+      ((double *)PyArray_DATA(wd))[0] = -val;
       ldwd = ld2wd = 1;
     }
   else if (PySequence_Check(pwd))
@@ -874,12 +874,12 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           PYERR(PyExc_ValueError, "could not convert wd to a suitable array");
         }
 
-      if (wd->nd == 1 && m == 1)
+      if (PyArray_NDIM(wd) == 1 && m == 1)
         {
           ldwd = n;
           ld2wd = 1;
         }
-      else if (wd->nd == 1 && wd->dimensions[0] == m)
+      else if (PyArray_NDIM(wd) == 1 && PyArray_DIM(wd, 0) == m)
         {
           /* wd is a rank-1 array with diagonal weightings to be broadcast 
            * to all observations */
@@ -887,16 +887,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           ld2wd = 1;
         }
 
-      else if (wd->nd == 3 && wd->dimensions[0] == m
-               && wd->dimensions[1] == m && wd->dimensions[2] == 1)
+      else if (PyArray_NDIM(wd) == 3 && PyArray_DIM(wd, 0) == m
+               && PyArray_DIM(wd, 1) == m && PyArray_DIM(wd, 2) == 1)
         {
           /* wd is a rank-3 array with the covariant wdightings 
              to be broadcast to all observations */
           ldwd = 1;
           ld2wd = m;
         }
-      else if (wd->nd == 2 && wd->dimensions[0] == m
-               && wd->dimensions[1] == m)
+      else if (PyArray_NDIM(wd) == 2 && PyArray_DIM(wd, 0) == m
+               && PyArray_DIM(wd, 1) == m)
         {
           /* wd is a rank-2 array with the full covariant weightings 
              to be broadcast to all observations */
@@ -904,16 +904,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           ld2wd = m;
         }
 
-      else if (wd->nd == 2 && wd->dimensions[0] == m
-               && wd->dimensions[1] == n)
+      else if (PyArray_NDIM(wd) == 2 && PyArray_DIM(wd, 0) == m
+               && PyArray_DIM(wd, 1) == n)
         {
           /* wd is a rank-2 array with the diagonal elements of the 
              covariant weightings for each observation */
           ldwd = n;
           ld2wd = 1;
         }
-      else if (wd->nd == 3 && wd->dimensions[0] == m
-               && wd->dimensions[1] == m && wd->dimensions[2] == n)
+      else if (PyArray_NDIM(wd) == 3 && PyArray_DIM(wd, 0) == m
+               && PyArray_DIM(wd, 1) == m && PyArray_DIM(wd, 2) == n)
         {
           /* wd is the full specification of the covariant weights
              for each observation */
@@ -932,7 +932,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
     {
       dim1[0] = np;
       ifixb = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_INT);
-      *(int *)(ifixb->data) = -1;      /* set first element negative */
+      *(int *)PyArray_DATA(ifixb) = -1;      /* set first element negative */
     }
   else
     {
@@ -946,7 +946,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "could not convert ifixb to a suitable array");
         }
 
-      if (ifixb->dimensions[0] != np)
+      if (PyArray_DIM(ifixb, 0) != np)
         {
           PYERR(PyExc_ValueError,
                 "could not convert ifixb to a suitable array");
@@ -958,7 +958,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       dim2[0] = m;
       dim2[1] = 1;
       ifixx = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_INT);
-      *(int *)(ifixx->data) = -1;      /* set first element negative */
+      *(int *)PyArray_DATA(ifixx) = -1;      /* set first element negative */
       ldifx = 1;
     }
   else
@@ -973,16 +973,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "could not convert ifixx to a suitable array");
         }
 
-      if (ifixx->nd == 1 && ifixx->dimensions[0] == m)
+      if (PyArray_NDIM(ifixx) == 1 && PyArray_DIM(ifixx, 0) == m)
         {
           ldifx = 1;
         }
-      else if (ifixx->nd == 1 && ifixx->dimensions[0] == n && m == 1)
+      else if (PyArray_NDIM(ifixx) == 1 && PyArray_DIM(ifixx, 0) == n && m == 1)
         {
           ldifx = n;
         }
-      else if (ifixx->nd == 2 && ifixx->dimensions[0] == m
-               && ifixx->dimensions[1] == n)
+      else if (PyArray_NDIM(ifixx) == 2 && PyArray_DIM(ifixx, 0) == m
+               && PyArray_DIM(ifixx, 1) == n)
         {
           ldifx = n;
         }
@@ -1011,14 +1011,14 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
     {
       dim1[0] = np;
       stpb = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-      *(double *)(stpb->data) = 0.0;
+      *(double *)PyArray_DATA(stpb) = 0.0;
     }
   else                          /* pstpb is a sequence */
     {
       if ((stpb =
            (PyArrayObject *) PyArray_CopyFromObject(pstpb, PyArray_DOUBLE, 1,
                                                     1)) == NULL
-          || stpb->dimensions[0] != np)
+          || PyArray_DIM(stpb, 0) != np)
         {
           PYERR(PyExc_ValueError,
                 "could not convert stpb to a suitable array");
@@ -1030,7 +1030,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       dim2[0] = 1;
       dim2[1] = m;
       stpd = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_DOUBLE);
-      *(double *)(stpd->data) = 0.0;
+      *(double *)PyArray_DATA(stpd) = 0.0;
       ldstpd = 1;
     }
   else
@@ -1043,16 +1043,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "could not convert stpb to a suitable array");
         }
 
-      if (stpd->nd == 1 && stpd->dimensions[0] == m)
+      if (PyArray_NDIM(stpd) == 1 && PyArray_DIM(stpd, 0) == m)
         {
           ldstpd = 1;
         }
-      else if (stpd->nd == 1 && stpd->dimensions[0] == n && m == 1)
+      else if (PyArray_NDIM(stpd) == 1 && PyArray_DIM(stpd, 0) == n && m == 1)
         {
           ldstpd = n;
         }
-      else if (stpd->nd == 2 && stpd->dimensions[0] == n &&
-               stpd->dimensions[1] == m)
+      else if (PyArray_NDIM(stpd) == 2 && PyArray_DIM(stpd, 0) == n &&
+               PyArray_DIM(stpd, 1) == m)
         {
           ldstpd = n;
         }
@@ -1062,14 +1062,14 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
     {
       dim1[0] = np;
       sclb = (PyArrayObject *) PyArray_SimpleNew(1, dim1, PyArray_DOUBLE);
-      *(double *)(sclb->data) = 0.0;
+      *(double *)PyArray_DATA(sclb) = 0.0;
     }
   else                          /* psclb is a sequence */
     {
       if ((sclb =
            (PyArrayObject *) PyArray_CopyFromObject(psclb, PyArray_DOUBLE, 1,
                                                     1)) == NULL
-          || sclb->dimensions[0] != np)
+          || PyArray_DIM(sclb, 0) != np)
         {
           PYERR(PyExc_ValueError,
                 "could not convert sclb to a suitable array");
@@ -1081,7 +1081,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
       dim2[0] = 1;
       dim2[1] = n;
       scld = (PyArrayObject *) PyArray_SimpleNew(2, dim2, PyArray_DOUBLE);
-      *(double *)(scld->data) = 0.0;
+      *(double *)PyArray_DATA(scld) = 0.0;
       ldscld = 1;
     }
   else
@@ -1094,16 +1094,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "could not convert stpb to a suitable array");
         }
 
-      if (scld->nd == 1 && scld->dimensions[0] == m)
+      if (PyArray_NDIM(scld) == 1 && PyArray_DIM(scld, 0) == m)
         {
           ldscld = 1;
         }
-      else if (scld->nd == 1 && scld->dimensions[0] == n && m == 1)
+      else if (PyArray_NDIM(scld) == 1 && PyArray_DIM(scld, 0) == n && m == 1)
         {
           ldscld = n;
         }
-      else if (scld->nd == 2 && scld->dimensions[0] == n &&
-               scld->dimensions[1] == m)
+      else if (PyArray_NDIM(scld) == 2 && PyArray_DIM(scld, 0) == n &&
+               PyArray_DIM(scld, 1) == m)
         {
           ldscld = n;
         }
@@ -1164,9 +1164,9 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
           PYERR(PyExc_ValueError,
                 "could not convert work to a suitable array");
         }
-      if (work->dimensions[0] < lwork)
+      if (PyArray_DIM(work, 0) < lwork)
         {
-            printf("%d %d\n", work->dimensions[0], lwork);
+            printf("%d %d\n", PyArray_DIM(work, 0), lwork);
           PYERR(PyExc_ValueError, "work is too small");
         }
     }
@@ -1187,7 +1187,7 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
                 "could not convert iwork to a suitable array");
         }
 
-      if (iwork->dimensions[0] < liwork)
+      if (PyArray_DIM(iwork, 0) < liwork)
         {
           PYERR(PyExc_ValueError, "iwork is too small");
         }
@@ -1226,16 +1226,16 @@ PyObject *odr(PyObject * self, PyObject * args, PyObject * kwds)
   Py_XINCREF(extra_args);
 
   /* now call DODRC */
-  F_FUNC(dodrc,DODRC)(fcn_callback, &n, &m, &np, &nq, (double *)(beta->data),
-        (double *)(y->data), &ldy, (double *)(x->data), &ldx,
-        (double *)(we->data), &ldwe, &ld2we,
-        (double *)(wd->data), &ldwd, &ld2wd,
-        (int *)(ifixb->data), (int *)(ifixx->data), &ldifx,
+  F_FUNC(dodrc,DODRC)(fcn_callback, &n, &m, &np, &nq, (double *)PyArray_DATA(beta),
+        (double *)PyArray_DATA(y), &ldy, (double *)PyArray_DATA(x), &ldx,
+        (double *)PyArray_DATA(we), &ldwe, &ld2we,
+        (double *)PyArray_DATA(wd), &ldwd, &ld2wd,
+        (int *)PyArray_DATA(ifixb), (int *)PyArray_DATA(ifixx), &ldifx,
         &job, &ndigit, &taufac, &sstol, &partol, &maxit,
         &iprint, &lunerr, &lunrpt,
-        (double *)(stpb->data), (double *)(stpd->data), &ldstpd,
-        (double *)(sclb->data), (double *)(scld->data), &ldscld,
-        (double *)(work->data), &lwork, (int *)(iwork->data), &liwork,
+        (double *)PyArray_DATA(stpb), (double *)PyArray_DATA(stpd), &ldstpd,
+        (double *)PyArray_DATA(sclb), (double *)PyArray_DATA(scld), &ldscld,
+        (double *)PyArray_DATA(work), &lwork, (int *)PyArray_DATA(iwork), &liwork,
         &info);
 
   result = gen_output(n, m, np, nq, ldwe, ld2we,
