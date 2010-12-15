@@ -49,13 +49,13 @@ scipy_signal_sigtools_correlateND(PyObject *NPY_UNUSED(dummy), PyObject *args)
         goto clean_ay;
     }
 
-    if (ax->nd != ay->nd) {
+    if (PyArray_NDIM(ax) != PyArray_NDIM(ay)) {
         PyErr_SetString(PyExc_ValueError,
                 "Arrays must have the same number of dimensions.");
         goto clean_aout;
     }
 
-    if (ax->nd == 0) {
+    if (PyArray_NDIM(ax) == 0) {
         PyErr_SetString(PyExc_ValueError, "Cannot convolve zero-dimensional arrays.");
         goto clean_aout;
     }
@@ -120,18 +120,18 @@ static int _imp_correlate_nd_@fsuf@(PyArrayNeighborhoodIterObject *curx,
     npy_intp i, j;
     @type@ acc;
 
-    for(i = 0; i < curx->size; ++i) {
+    for(i = 0; i < PyIter_SIZE(curx); ++i) {
         acc = 0;
         PyArrayNeighborhoodIter_Reset(curneighx);
-        for(j = 0; j < curneighx->size; ++j) {
-            acc += *((@type@*)(curneighx->dataptr)) * *((@type@*)(ity->dataptr));
+        for(j = 0; j < PyIter_SIZE(curneighx); ++j) {
+            acc += *((@type@*)PyIter_DATA(curneighx)) * *((@type@*)PyIter_DATA(ity));
 
             PyArrayNeighborhoodIter_Next(curneighx);
             PyArray_ITER_NEXT(ity);
         }
         PyArrayNeighborhoodIter_Next(curx);
 
-        *((@type@*)(itz->dataptr)) = acc;
+        *((@type@*)PyIter_DATA(itz)) = acc;
         PyArray_ITER_NEXT(itz);
 
         PyArray_ITER_RESET(ity);
@@ -155,13 +155,13 @@ static int _imp_correlate_nd_c@fsuf@(PyArrayNeighborhoodIterObject *curx,
     @type@ racc, iacc;
     @type@ *ptr1, *ptr2;
 
-    for(i = 0; i < curx->size; ++i) {
+    for(i = 0; i < PyIter_SIZE(curx); ++i) {
         racc = 0;
         iacc = 0;
         PyArrayNeighborhoodIter_Reset(curneighx);
-        for(j = 0; j < curneighx->size; ++j) {
-            ptr1 = ((@type@*)(curneighx->dataptr));
-            ptr2 = ((@type@*)(ity->dataptr));
+        for(j = 0; j < PyIter_SIZE(curneighx); ++j) {
+            ptr1 = ((@type@*)PyIter_DATA(curneighx));
+            ptr2 = ((@type@*)PyIter_DATA(ity));
             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1];
             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1];
 
@@ -170,8 +170,8 @@ static int _imp_correlate_nd_c@fsuf@(PyArrayNeighborhoodIterObject *curx,
         }
         PyArrayNeighborhoodIter_Next(curx);
 
-        ((@type@*)(itz->dataptr))[0] = racc;
-        ((@type@*)(itz->dataptr))[1] = iacc;
+        ((@type@*)PyIter_DATA(itz))[0] = racc;
+        ((@type@*)PyIter_DATA(itz))[1] = iacc;
         PyArray_ITER_NEXT(itz);
 
         PyArray_ITER_RESET(ity);
@@ -189,28 +189,28 @@ static int _imp_correlate_nd_object(PyArrayNeighborhoodIterObject *curx,
     int i, j;
     PyObject *tmp, *tmp2;
     char *zero;
-    PyArray_CopySwapFunc *copyswap = curx->ao->descr->f->copyswap;
+    PyArray_CopySwapFunc *copyswap = PyIter_ARRAY(curx)->descr->f->copyswap;
 
-    zero = PyArray_Zero(curx->ao);
+    zero = PyArray_Zero(Npy_INTERFACE( PyIter_ARRAY(curx) )) ;
 
-    for(i = 0; i < curx->size; ++i) {
+    for(i = 0; i < PyIter_SIZE(curx); ++i) {
         PyArrayNeighborhoodIter_Reset(curneighx);
-        copyswap(itz->dataptr, zero, 0, NULL);
+        copyswap(PyIter_DATA(itz), zero, 0, NULL);
 
-        for(j = 0; j < curneighx->size; ++j) {
+        for(j = 0; j < PyIter_SIZE(curneighx); ++j) {
             /*
              * compute tmp2 = acc + x * y. Not all objects supporting the
              * number protocol support inplace operations, so we do it the most
              * straightfoward way.
              */
-            tmp = PyNumber_Multiply(*((PyObject**)curneighx->dataptr),
-                                    *((PyObject**)ity->dataptr));
-            tmp2 = PyNumber_Add(*((PyObject**)itz->dataptr), tmp);
+            tmp = PyNumber_Multiply(*((PyObject**)PyIter_DATA(curneighx)),
+                                    *((PyObject**)PyIter_DATA(ity)));
+            tmp2 = PyNumber_Add(*((PyObject**)PyIter_DATA(itz)), tmp);
             Py_DECREF(tmp);
 
             /* Update current output item (acc) */
-            Py_DECREF(*((PyObject**)itz->dataptr));
-            *((PyObject**)itz->dataptr) = tmp2;
+            Py_DECREF(*((PyObject**)PyIter_DATA(itz)));
+            *((PyObject**)PyIter_DATA(itz)) = tmp2;
 
             PyArrayNeighborhoodIter_Next(curneighx);
             PyArray_ITER_NEXT(ity);
@@ -242,18 +242,18 @@ static int _correlate_nd_imp(PyArrayIterObject* itx, PyArrayIterObject *ity,
         case CORR_MODE_VALID:
             /* Only walk through the input points such as the correponding
              * output will not depend on 0 padding */
-            for(i = 0; i < itx->ao->nd; ++i) {
-                bounds[2*i] = ity->ao->dimensions[i] - 1;
-                bounds[2*i+1] = itx->ao->dimensions[i] - 1;
+            for(i = 0; i < PyIter_ARRAY(itx)->nd; ++i) {
+                bounds[2*i] = PyIter_ARRAY(ity)->dimensions[i] - 1;
+                bounds[2*i+1] = PyIter_ARRAY(itx)->dimensions[i] - 1;
             }
             break;
         case CORR_MODE_SAME:
             /* Only walk through the input such as the output will be centered
                relatively to the output as computed in the full mode */
-            for(i = 0; i < itx->ao->nd; ++i) {
-                nz = itx->ao->dimensions[i];
+            for(i = 0; i < PyIter_ARRAY(itx)->nd; ++i) {
+                nz = PyIter_ARRAY(itx)->dimensions[i];
                 /* Recover 'original' nx, before it was zero-padded */
-                nx = nz - ity->ao->dimensions[i] + 1;
+                nx = nz - PyIter_ARRAY(ity)->dimensions[i] + 1;
                 if ((nz - nx) % 2 == 0) {
                     bounds[2*i] = (nz - nx) / 2;
                 } else {
@@ -263,9 +263,9 @@ static int _correlate_nd_imp(PyArrayIterObject* itx, PyArrayIterObject *ity,
             }
             break;
         case CORR_MODE_FULL:
-            for(i = 0; i < itx->ao->nd; ++i) {
+            for(i = 0; i < PyIter_ARRAY(itx)->nd; ++i) {
                 bounds[2*i] = 0;
-                bounds[2*i+1] = itx->ao->dimensions[i] - 1;
+                bounds[2*i+1] = PyIter_ARRAY(itx)->dimensions[i] - 1;
             }
             break;
         default:
@@ -282,8 +282,8 @@ static int _correlate_nd_imp(PyArrayIterObject* itx, PyArrayIterObject *ity,
 
     /* Compute boundaries for the neighborhood iterator: the neighborhood for x
        should have the same dimensions as y */
-    for(i = 0; i < ity->ao->nd; ++i) {
-        bounds[2*i] = -ity->ao->dimensions[i] + 1;
+    for(i = 0; i < PyIter_ARRAY(ity)->nd; ++i) {
+        bounds[2*i] = -PyIter_ARRAY(ity)->dimensions[i] + 1;
         bounds[2*i+1] = 0;
     }
 
