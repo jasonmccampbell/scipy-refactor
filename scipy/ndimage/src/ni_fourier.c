@@ -33,6 +33,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <assert.h>
+#include "numpy/ndarraytypes.h"
 
 #if !defined(M_PI)
 #define M_PI 3.14159265358979323846
@@ -192,17 +193,17 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
     int ll;
 
     /* precalculate the parameters: */
-    parameters = (double*)malloc(input->nd * sizeof(double));
+    parameters = (double*)malloc(PyArray_NDIM(input) * sizeof(double));
     if (!parameters) {
         PyErr_NoMemory();
         goto exit;
     }
-    for(kk = 0; kk < input->nd; kk++) {
+    for(kk = 0; kk < PyArray_NDIM(input); kk++) {
         /* along the direction of the real transform we must use the given
              length of that dimensons, unless a complex transform is assumed
              (n < 0): */
         int shape = kk == axis ?
-                        (n < 0 ? input->dimensions[kk] : n) : input->dimensions[kk];
+                        (n < 0 ? PyArray_DIM(input, kk) : n) : PyArray_DIM(input, kk);
         switch (filter_type) {
             case _NI_GAUSSIAN:
                 parameters[kk] = *iparameters++ * M_PI / (double)shape;
@@ -215,16 +216,16 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
         }
     }
     /* allocate memory for tables: */
-    params = (double**) malloc(input->nd * sizeof(double*));
+    params = (double**) malloc(PyArray_NDIM(input) * sizeof(double*));
     if (!params) {
         PyErr_NoMemory();
         goto exit;
     }
-    for(kk = 0; kk < input->nd; kk++)
+    for(kk = 0; kk < PyArray_NDIM(input); kk++)
         params[kk] = NULL;
-    for(kk = 0; kk < input->nd; kk++) {
-        if (input->dimensions[kk] > 1) {
-            params[kk] = (double*)malloc(input->dimensions[kk] * sizeof(double));
+    for(kk = 0; kk < PyArray_NDIM(input); kk++) {
+        if (PyArray_DIM(input, kk) > 1) {
+            params[kk] = (double*)malloc(PyArray_DIM(input, kk) * sizeof(double));
             if (!params[kk]) {
                 PyErr_NoMemory();
                 goto exit;
@@ -234,20 +235,20 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
     switch (filter_type) {
         case _NI_GAUSSIAN:
             /* calculate the tables of exponentials: */
-            for (hh = 0; hh < input->nd; hh++) {
+            for (hh = 0; hh < PyArray_NDIM(input); hh++) {
                 if (params[hh]) {
                     if (hh == axis && n >= 0) {
-                        for(kk = 0; kk < input->dimensions[hh]; kk++) {
+                        for(kk = 0; kk < PyArray_DIM(input, hh); kk++) {
                             double tmp = parameters[hh] * kk * kk;
                             params[hh][kk] = fabs(tmp) > 50.0 ? 0.0 : exp(tmp);
                         }
                     } else {
                         int jj = 0;
-                        for(kk = 0; kk < (input->dimensions[hh] + 1) / 2; kk++) {
+                        for(kk = 0; kk < (PyArray_DIM(input, hh) + 1) / 2; kk++) {
                             double tmp = parameters[hh] * kk * kk;
                             params[hh][jj++] = fabs(tmp) > 50.0 ? 0.0 : exp(tmp);
                         }
-                        for(kk = -(input->dimensions[hh] / 2); kk < 0; kk++) {
+                        for(kk = -(PyArray_DIM(input, hh) / 2); kk < 0; kk++) {
                             double tmp = parameters[hh] * kk * kk;
                             params[hh][jj++] = fabs(tmp) > 50.0 ? 0.0 : exp(tmp);
                         }
@@ -257,21 +258,21 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
             break;
         case _NI_UNIFORM:
             /* calculate the tables of parameters: */
-            for (hh = 0; hh < input->nd; hh++) {
+            for (hh = 0; hh < PyArray_NDIM(input); hh++) {
                 if (params[hh]) {
                     params[hh][0] = 1.0;
                     if (hh == axis && n >= 0) {
                         double tmp = M_PI * parameters[hh] / n;
-                        for(kk = 1; kk < input->dimensions[hh]; kk++)
+                        for(kk = 1; kk < PyArray_DIM(input,hh); kk++)
                             params[hh][kk] = tmp > 0.0 ?
                                                                             sin(tmp * kk) / (tmp * kk) : 0.0;
                     } else {
-                        double tmp = M_PI * parameters[hh] / input->dimensions[hh];
+                        double tmp = M_PI * parameters[hh] / PyArray_DIM(input,hh);
                         int jj = 1;
-                        for(kk = 1; kk < (input->dimensions[hh] + 1) / 2; kk++)
+                        for(kk = 1; kk < (PyArray_DIM(input, hh) + 1) / 2; kk++)
                             params[hh][jj++] = tmp > 0.0 ?
                                                                             sin(tmp * kk) / (tmp * kk) : 0.0;
-                        for(kk = -(input->dimensions[hh] / 2); kk < 0; kk++)
+                        for(kk = -(PyArray_DIM(input, hh) / 2); kk < 0; kk++)
                             params[hh][jj++] = tmp > 0.0 ?
                                                                             sin(tmp * kk) / (tmp * kk) : 0.0;
                     }
@@ -280,28 +281,28 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
             break;
         case _NI_ELLIPSOID:
             /* calculate the tables of parameters: */
-            for (hh = 0; hh < input->nd; hh++) {
+            for (hh = 0; hh < PyArray_NDIM(input); hh++) {
                 if (params[hh]) {
                     params[hh][0] = 1.0;
                     if (hh == axis && n >= 0) {
                         double tmp = M_PI * parameters[hh] / n;
-                        for(kk = 0; kk < input->dimensions[hh]; kk++)
+                        for(kk = 0; kk < PyArray_DIM(input, hh); kk++)
                             params[hh][kk] = (double)kk * tmp;
                     } else {
-                        double tmp = M_PI * parameters[hh] / input->dimensions[hh];
+                        double tmp = M_PI * parameters[hh] / PyArray_DIM(input, hh);
                         int jj = 0;
-                        for(kk = 0; kk < (input->dimensions[hh] + 1) / 2; kk++)
+                        for(kk = 0; kk < (PyArray_DIM(input,hh) + 1) / 2; kk++)
                             params[hh][jj++] = (double)kk * tmp;
-                        for(kk = -(input->dimensions[hh] / 2); kk < 0; kk++)
+                        for(kk = -(PyArray_DIM(input, hh) / 2); kk < 0; kk++)
                             params[hh][jj++] = (double)kk * tmp;
                     }
-                } else if (input->dimensions[hh] > 0) {
+                } else if (PyArray_DIM(input, hh) > 0) {
                     params[hh][0] = 1.0;
                 }
             }
-            if (input->nd > 1)
-                for(hh = 0; hh < input->nd; hh++)
-                    for(kk = 0; kk < input->dimensions[hh]; kk++)
+            if (PyArray_NDIM(input) > 1)
+                for(hh = 0; hh < PyArray_NDIM(input); hh++)
+                    for(kk = 0; kk < PyArray_DIM(input, hh); kk++)
                         params[hh][kk] = params[hh][kk] * params[hh][kk];
             break;
         default:
@@ -316,20 +317,20 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* iterator over the elements: */
     for(hh = 0; hh < size; hh++) {
         double tmp = 1.0;
         switch (filter_type) {
         case _NI_GAUSSIAN:
         case _NI_UNIFORM:
-            for(kk = 0; kk < input->nd; kk++)
+            for(kk = 0; kk < PyArray_NDIM(input); kk++)
                 if (params[kk])
                     tmp *= params[kk][ii.coordinates[kk]];
             break;
         case _NI_ELLIPSOID:
-            switch (input->nd) {
+            switch (PyArray_NDIM(input)) {
             case 1:
                 tmp = params[0][ii.coordinates[0]];
                 tmp = tmp > 0.0 ? sin(tmp) / (tmp) : 1.0;
@@ -360,17 +361,17 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
         default:
             break;
         }
-        if (input->descr->type_num == tComplex64 ||
-                input->descr->type_num == tComplex128) {
+        if (PyArray_TYPE(input) == tComplex64 ||
+                PyArray_TYPE(input) == tComplex128) {
             double tmp_r = 0.0, tmp_i = 0.0;
-            switch (input->descr->type_num) {
+            switch (PyArray_TYPE(input)) {
                 CASE_FOURIER_FILTER_RC(pi, tmp, tmp_r, tmp_i, Complex64);
                 CASE_FOURIER_FILTER_RC(pi, tmp, tmp_r, tmp_i, Complex128);
             default:
                 PyErr_SetString(PyExc_RuntimeError, "data type not supported");
                 goto exit;
             }
-            switch (output->descr->type_num) {
+            switch (PyArray_TYPE(output)) {
                 CASE_FOURIER_OUT_CC(po, tmp_r, tmp_i, Complex64);
                 CASE_FOURIER_OUT_CC(po, tmp_r, tmp_i, Complex128);
             default:
@@ -378,7 +379,7 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
                 goto exit;
             }
         } else {
-            switch (input->descr->type_num) {
+            switch (PyArray_TYPE(input)) {
                 CASE_FOURIER_FILTER_RR(pi, tmp, Bool)
                 CASE_FOURIER_FILTER_RR(pi, tmp, UInt8)
                 CASE_FOURIER_FILTER_RR(pi, tmp, UInt16)
@@ -396,7 +397,7 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
                 PyErr_SetString(PyExc_RuntimeError, "data type not supported");
                 goto exit;
             }
-            switch (output->descr->type_num) {
+            switch (PyArray_TYPE(output)) {
                 CASE_FOURIER_OUT_RR(po, tmp, Float32);
                 CASE_FOURIER_OUT_RR(po, tmp, Float64);
                 CASE_FOURIER_OUT_RC(po, tmp, Complex64);
@@ -412,7 +413,7 @@ int NI_FourierFilter(PyArrayObject *input, PyArrayObject* parameter_array,
  exit:
     if (parameters) free(parameters);
     if (params) {
-        for(kk = 0; kk < input->nd; kk++)
+        for(kk = 0; kk < PyArray_NDIM(input); kk++)
             if (params[kk]) free(params[kk]);
         free(params);
     }
@@ -443,47 +444,47 @@ int NI_FourierShift(PyArrayObject *input, PyArrayObject* shift_array,
     int ll;
 
     /* precalculate the shifts: */
-    shifts = (double*)malloc(input->nd * sizeof(double));
+    shifts = (double*)malloc(PyArray_NDIM(input) * sizeof(double));
     if (!shifts) {
         PyErr_NoMemory();
         goto exit;
     }
-    for(kk = 0; kk < input->nd; kk++) {
+    for(kk = 0; kk < PyArray_NDIM(input); kk++) {
         /* along the direction of the real transform we must use the given
              length of that dimensons, unless a complex transform is assumed
              (n < 0): */
         int shape = kk == axis ?
-                        (n < 0 ? input->dimensions[kk] : n) : input->dimensions[kk];
+                        (n < 0 ? PyArray_DIM(input, kk) : n) : PyArray_DIM(input, kk);
         shifts[kk] = -2.0 * M_PI * *ishifts++ / (double)shape;
     }
     /* allocate memory for tables: */
-    params = (double**) malloc(input->nd * sizeof(double*));
+    params = (double**) malloc(PyArray_NDIM(input) * sizeof(double*));
     if (!params) {
         PyErr_NoMemory();
         goto exit;
     }
-    for(kk = 0; kk < input->nd; kk++)
+    for(kk = 0; kk < PyArray_NDIM(input); kk++)
         params[kk] = NULL;
-    for(kk = 0; kk < input->nd; kk++) {
-        if (input->dimensions[kk] > 1) {
-            params[kk] = (double*)malloc(input->dimensions[kk] * sizeof(double));
+    for(kk = 0; kk < PyArray_NDIM(input); kk++) {
+        if (PyArray_DIM(input, kk) > 1) {
+            params[kk] = (double*)malloc(PyArray_DIM(input, kk) * sizeof(double));
             if (!params[kk]) {
                 PyErr_NoMemory();
                 goto exit;
             }
         }
     }
-    for (hh = 0; hh < input->nd; hh++) {
+    for (hh = 0; hh < PyArray_NDIM(input); hh++) {
         if (params[hh]) {
             if (hh == axis && n >= 0) {
-                for(kk = 0; kk < input->dimensions[hh]; kk++)
+                for(kk = 0; kk < PyArray_DIM(input, hh); kk++)
                     params[hh][kk] = shifts[hh] * kk;
             } else {
                 int jj = 0;
-                for(kk = 0; kk < (input->dimensions[hh] + 1) / 2; kk++) {
+                for(kk = 0; kk < (PyArray_DIM(input, hh) + 1) / 2; kk++) {
                     params[hh][jj++] = shifts[hh] * kk;
                 }
-                for(kk = -(input->dimensions[hh] / 2); kk < 0; kk++) {
+                for(kk = -(PyArray_DIM(input, hh) / 2); kk < 0; kk++) {
                     params[hh][jj++] = shifts[hh] * kk;
                 }
             }
@@ -498,17 +499,17 @@ int NI_FourierShift(PyArrayObject *input, PyArrayObject* shift_array,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* iterator over the elements: */
     for(hh = 0; hh < size; hh++) {
         double tmp = 0.0, sint, cost, r = 0.0, i = 0.0;
-        for(kk = 0; kk < input->nd; kk++)
+        for(kk = 0; kk < PyArray_NDIM(input); kk++)
             if (params[kk])
                 tmp += params[kk][ii.coordinates[kk]];
         sint = sin(tmp);
         cost = cos(tmp);
-        switch (input->descr->type_num) {
+        switch (PyArray_TYPE(input)) {
             CASE_FOURIER_SHIFT_R(pi, tmp, r, i, cost, sint, Bool)
             CASE_FOURIER_SHIFT_R(pi, tmp, r, i, cost, sint, UInt8)
             CASE_FOURIER_SHIFT_R(pi, tmp, r, i, cost, sint, UInt16)
@@ -528,7 +529,7 @@ int NI_FourierShift(PyArrayObject *input, PyArrayObject* shift_array,
             PyErr_SetString(PyExc_RuntimeError, "data type not supported");
             goto exit;
         }
-        switch (output->descr->type_num) {
+        switch (PyArray_TYPE(output)) {
             CASE_FOURIER_OUT_CC(po, r, i, Complex64);
             CASE_FOURIER_OUT_CC(po, r, i, Complex128);
         default:
@@ -541,7 +542,7 @@ int NI_FourierShift(PyArrayObject *input, PyArrayObject* shift_array,
  exit:
     if (shifts) free(shifts);
     if (params) {
-        for(kk = 0; kk < input->nd; kk++)
+        for(kk = 0; kk < PyArray_NDIM(input); kk++)
             if (params[kk]) free(params[kk]);
         free(params);
     }

@@ -47,7 +47,7 @@ int NI_Correlate1D(PyArrayObject *input, PyArrayObject *weights,
     NI_LineBuffer iline_buffer, oline_buffer;
 
     /* test for symmetry or anti-symmetry: */
-    filter_size = weights->dimensions[0];
+    filter_size = PyArray_DIM(weights, 0);
     size1 = filter_size / 2;
     size2 = filter_size - size1 - 1;
     fw = (void *)PyArray_DATA(weights);
@@ -83,7 +83,7 @@ int NI_Correlate1D(PyArrayObject *input, PyArrayObject *weights,
     if (!NI_InitLineBuffer(output, axis, 0, 0, lines, obuffer, mode, 0.0,
                                                  &oline_buffer))
         goto exit;
-    length = input->nd > 0 ? input->dimensions[axis] : 1;
+    length = PyArray_NDIM(input) > 0 ? PyArray_DIM(input, axis) : 1;
     fw += size1;
     /* iterate over all the array lines: */
     do {
@@ -165,8 +165,8 @@ int NI_Correlate(PyArrayObject* input, PyArrayObject* weights,
 
     /* get the the footprint: */
     fsize = 1;
-    for(ll = 0; ll < weights->nd; ll++)
-        fsize *= weights->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(weights); ll++)
+        fsize *= PyArray_DIM(weights, ll);
     pw = (Float64*)PyArray_DATA(weights);
     pf = (Bool*)malloc(fsize * sizeof(Bool));
     if (!pf) {
@@ -194,12 +194,12 @@ int NI_Correlate(PyArrayObject* input, PyArrayObject* weights,
         }
     }
     /* initialize filter offsets: */
-    if (!NI_InitFilterOffsets(input, pf, weights->dimensions, origins,
+    if (!NI_InitFilterOffsets(input, pf, PyArray_DIMS(weights), origins,
                                                         mode, &offsets, &border_flag_value, NULL))
         goto exit;
     /* initialize filter iterator: */
-    if (!NI_InitFilterIterator(input->nd, weights->dimensions, filter_size,
-                                                         input->dimensions, origins, &fi))
+    if (!NI_InitFilterIterator(PyArray_NDIM(input), PyArray_DIMS(weights), filter_size,
+                               PyArray_DIMS(input), origins, &fi))
         goto exit;
     /* initialize input element iterator: */
     if (!NI_InitPointIterator(input, &ii))
@@ -211,13 +211,13 @@ int NI_Correlate(PyArrayObject* input, PyArrayObject* weights,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* iterator over the elements: */
     oo = offsets;
     for(jj = 0; jj < size; jj++) {
         double tmp = 0.0;
-        switch (input->descr->type_num) {
+        switch (PyArray_TYPE(input)) {
             CASE_CORRELATE_POINT(pi, ww, oo, filter_size, cvalue, Bool,
                                                      tmp, border_flag_value);
             CASE_CORRELATE_POINT(pi, ww, oo, filter_size, cvalue, UInt8,
@@ -246,7 +246,7 @@ int NI_Correlate(PyArrayObject* input, PyArrayObject* weights,
             PyErr_SetString(PyExc_RuntimeError, "array type not supported");
             goto exit;
         }
-        switch (output->descr->type_num) {
+        switch (PyArray_TYPE(output)) {
             CASE_FILTER_OUT(po, tmp, Bool);
             CASE_FILTER_OUT(po, tmp, UInt8);
             CASE_FILTER_OUT(po, tmp, UInt16);
@@ -299,7 +299,7 @@ NI_UniformFilter1D(PyArrayObject *input, npy_intp filter_size,
     if (!NI_InitLineBuffer(output, axis, 0, 0, lines, obuffer, mode, 0.0,
                                                  &oline_buffer))
         goto exit;
-    length = input->nd > 0 ? input->dimensions[axis] : 1;
+    length = PyArray_NDIM(input) > 0 ? PyArray_DIM(input, axis) : 1;
 
     /* iterate over all the array lines: */
     do {
@@ -361,7 +361,7 @@ NI_MinOrMaxFilter1D(PyArrayObject *input, npy_intp filter_size,
     if (!NI_InitLineBuffer(output, axis, 0, 0, lines, obuffer, mode, 0.0,
                                                  &oline_buffer))
         goto exit;
-    length = input->nd > 0 ? input->dimensions[axis] : 1;
+    length = PyArray_NDIM(input) > 0 ? PyArray_DIM(input, axis) : 1;
 
     /* iterate over all the array lines: */
     do {
@@ -443,8 +443,8 @@ int NI_MinOrMaxFilter(PyArrayObject* input, PyArrayObject* footprint,
 
     /* get the the footprint: */
     fsize = 1;
-    for(ll = 0; ll < footprint->nd; ll++)
-        fsize *= footprint->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(footprint); ll++)
+        fsize *= PyArray_DIM(footprint, ll);
     pf = (Bool*)PyArray_DATA(footprint);
     for(jj = 0; jj < fsize; jj++) {
         if (pf[jj]) {
@@ -466,12 +466,12 @@ int NI_MinOrMaxFilter(PyArrayObject* input, PyArrayObject* footprint,
                 ss[jj++] = minimum ? -ps[kk] : ps[kk];
     }
     /* initialize filter offsets: */
-    if (!NI_InitFilterOffsets(input, pf, footprint->dimensions, origins,
+    if (!NI_InitFilterOffsets(input, pf, PyArray_DIMS(footprint), origins,
                                                         mode, &offsets, &border_flag_value, NULL))
         goto exit;
     /* initialize filter iterator: */
-    if (!NI_InitFilterIterator(input->nd, footprint->dimensions,
-                                                         filter_size, input->dimensions, origins, &fi))
+    if (!NI_InitFilterIterator(PyArray_NDIM(input), PyArray_DIMS(footprint),
+                                                         filter_size, PyArray_DIMS(input), origins, &fi))
         goto exit;
     /* initialize input element iterator: */
     if (!NI_InitPointIterator(input, &ii))
@@ -483,13 +483,13 @@ int NI_MinOrMaxFilter(PyArrayObject* input, PyArrayObject* footprint,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* iterator over the elements: */
     oo = offsets;
     for(jj = 0; jj < size; jj++) {
         double tmp = 0.0;
-        switch (input->descr->type_num) {
+        switch (PyArray_TYPE(input)) {
             CASE_MIN_OR_MAX_POINT(pi, oo, filter_size, cvalue, Bool,
                                                         minimum, tmp, border_flag_value, ss);
             CASE_MIN_OR_MAX_POINT(pi, oo, filter_size, cvalue, UInt8,
@@ -518,7 +518,7 @@ int NI_MinOrMaxFilter(PyArrayObject* input, PyArrayObject* footprint,
             PyErr_SetString(PyExc_RuntimeError, "array type not supported");
             goto exit;
         }
-        switch (output->descr->type_num) {
+        switch (PyArray_TYPE(output)) {
             CASE_FILTER_OUT(po, tmp, Bool);
             CASE_FILTER_OUT(po, tmp, UInt8);
             CASE_FILTER_OUT(po, tmp, UInt16);
@@ -609,8 +609,8 @@ int NI_RankFilter(PyArrayObject* input, int rank,
 
     /* get the the footprint: */
     fsize = 1;
-    for(ll = 0; ll < footprint->nd; ll++)
-        fsize *= footprint->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(footprint); ll++)
+        fsize *= PyArray_DIM(footprint, ll);
     pf = (Bool*)PyArray_DATA(footprint);
     for(jj = 0; jj < fsize; jj++) {
         if (pf[jj]) {
@@ -626,12 +626,12 @@ int NI_RankFilter(PyArrayObject* input, int rank,
     /* iterator over the elements: */
     oo = offsets;
     /* initialize filter offsets: */
-    if (!NI_InitFilterOffsets(input, pf, footprint->dimensions, origins,
-                                                        mode, &offsets, &border_flag_value, NULL))
+    if (!NI_InitFilterOffsets(input, pf, PyArray_DIMS(footprint), origins,
+                              mode, &offsets, &border_flag_value, NULL))
         goto exit;
     /* initialize filter iterator: */
-    if (!NI_InitFilterIterator(input->nd, footprint->dimensions,
-                                                         filter_size, input->dimensions, origins, &fi))
+    if (!NI_InitFilterIterator(PyArray_NDIM(input), PyArray_DIMS(footprint),
+                               filter_size, PyArray_DIMS(input), origins, &fi))
         goto exit;
     /* initialize input element iterator: */
     if (!NI_InitPointIterator(input, &ii))
@@ -643,13 +643,13 @@ int NI_RankFilter(PyArrayObject* input, int rank,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* iterator over the elements: */
     oo = offsets;
     for(jj = 0; jj < size; jj++) {
         double tmp = 0.0;
-        switch (input->descr->type_num) {
+        switch (PyArray_TYPE(input)) {
             CASE_RANK_POINT(pi, oo, filter_size, cvalue, Bool,
                                             rank, buffer, tmp, border_flag_value);
             CASE_RANK_POINT(pi, oo, filter_size, cvalue, UInt8,
@@ -678,7 +678,7 @@ int NI_RankFilter(PyArrayObject* input, int rank,
             PyErr_SetString(PyExc_RuntimeError, "array type not supported");
             goto exit;
         }
-        switch (output->descr->type_num) {
+        switch (PyArray_TYPE(output)) {
             CASE_FILTER_OUT(po, tmp, Bool);
             CASE_FILTER_OUT(po, tmp, UInt8);
             CASE_FILTER_OUT(po, tmp, UInt16);
@@ -730,7 +730,7 @@ int NI_GenericFilter1D(PyArrayObject *input,
     if (!NI_InitLineBuffer(output, axis, 0, 0, lines, obuffer, mode, 0.0,
                                                  &oline_buffer))
         goto exit;
-    length = input->nd > 0 ? input->dimensions[axis] : 1;
+    length = PyArray_NDIM(input) > 0 ? PyArray_DIM(input, axis) : 1;
     /* iterate over all the array lines: */
     do {
         /* copy lines from array to buffer: */
@@ -796,20 +796,20 @@ int NI_GenericFilter(PyArrayObject* input,
 
     /* get the the footprint: */
     fsize = 1;
-    for(ll = 0; ll < footprint->nd; ll++)
-        fsize *= footprint->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(footprint); ll++)
+        fsize *= PyArray_DIM(footprint, ll);
     pf = (Bool*)PyArray_DATA(footprint);
     for(jj = 0; jj < fsize; jj++) {
         if (pf[jj])
             ++filter_size;
     }
     /* initialize filter offsets: */
-    if (!NI_InitFilterOffsets(input, pf, footprint->dimensions, origins,
-                                                        mode, &offsets, &border_flag_value, NULL))
+    if (!NI_InitFilterOffsets(input, pf, PyArray_DIMS(footprint), origins,
+                              mode, &offsets, &border_flag_value, NULL))
         goto exit;
     /* initialize filter iterator: */
-    if (!NI_InitFilterIterator(input->nd, footprint->dimensions,
-                                                         filter_size, input->dimensions, origins, &fi))
+    if (!NI_InitFilterIterator(PyArray_NDIM(input), PyArray_DIMS(footprint),
+                               filter_size, PyArray_DIMS(input), origins, &fi))
         goto exit;
     /* initialize input element iterator: */
     if (!NI_InitPointIterator(input, &ii))
@@ -821,8 +821,8 @@ int NI_GenericFilter(PyArrayObject* input,
     pi = (void *)PyArray_DATA(input);
     po = (void *)PyArray_DATA(output);
     size = 1;
-    for(ll = 0; ll < input->nd; ll++)
-        size *= input->dimensions[ll];
+    for(ll = 0; ll < PyArray_NDIM(input); ll++)
+        size *= PyArray_DIM(input, ll);
     /* buffer for filter calculation: */
     buffer = (double*)malloc(filter_size * sizeof(double));
     if (!buffer) {
@@ -833,7 +833,7 @@ int NI_GenericFilter(PyArrayObject* input,
     oo = offsets;
     for(jj = 0; jj < size; jj++) {
         double tmp = 0.0;
-        switch (input->descr->type_num) {
+        switch (PyArray_TYPE(input)) {
             CASE_FILTER_POINT(pi, oo, filter_size, cvalue, Bool,
                                                 tmp, border_flag_value, function, data, buffer);
             CASE_FILTER_POINT(pi, oo, filter_size, cvalue, UInt8,
@@ -862,7 +862,7 @@ int NI_GenericFilter(PyArrayObject* input,
             PyErr_SetString(PyExc_RuntimeError, "array type not supported");
             goto exit;
         }
-        switch (output->descr->type_num) {
+        switch (PyArray_TYPE(output)) {
             CASE_FILTER_OUT(po, tmp, Bool);
             CASE_FILTER_OUT(po, tmp, UInt8);
             CASE_FILTER_OUT(po, tmp, UInt16);
