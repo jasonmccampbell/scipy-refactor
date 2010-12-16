@@ -21,8 +21,7 @@ env.DistutilsStaticExtLibrary('statlibimp', source = src)
 env.AppendUnique(LIBPATH = '.')
 
 # Statlib extension
-env.NumpyPythonExtension('statlib', source = 'statlib.pyf', 
-                         F2PYOPTIONS = ["--no-wrap-functions"],
+env.NumpyPythonExtension('statlib', source = ['statlib.c', 'statlib_fc.f'],
                          LIBS = 'statlibimp')
 
 # futil extension
