@@ -1,7 +1,7 @@
 #cython: ccomplex=True
 
 """
-The mvn module was generated with Fwrap v0.2.0dev_470490d.
+The mvn module was generated with Fwrap v0.2.0dev_68e5b26.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -23,7 +23,7 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=##TODO (watch any dependencies that may be further down!) 1e-6, fwr_dbl_t releps=##TODO (watch any dependencies that may be further down!) 1e-6):
+cpdef api object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """
     mvnun(lower, upper, means, covar, maxpts, abseps, releps) -> (value, inform)
 
@@ -87,7 +87,7 @@ cpdef api object mvnun(object lower, object upper, object means, object covar, o
     return (value, inform,)
 
 
-cpdef api object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=##TODO (watch any dependencies that may be further down!) 1e-6, fwr_dbl_t releps=##TODO (watch any dependencies that may be further down!) 1e-6):
+cpdef api object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """
     mvndst(lower, upper, infin, correl, maxpts, abseps, releps) -> (error, value, inform)
 
@@ -207,11 +207,23 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_470490d
+# Fwrap: version 0.2.0dev_68e5b26
 # Fwrap: self-sha1 ae9426402166d8ba0c07ab8f65716a064bddb136
-# Fwrap: pyf-sha1 0f63f3c026a0fa64323de22db7535c0efe95e151
+# Fwrap: pyf-sha1 144d90bbc6b6b8a76971eed4b5c8a136206db00e
 # Fwrap: wraps src/mvndst.f
 # Fwrap:     sha1 3048e094d20be8b3e25e2882c1c93934a6e5881b
+# Fwrap: exclude bvnmvn
+# Fwrap: exclude bvu
+# Fwrap: exclude covsrt
+# Fwrap: exclude dkbvrc
+# Fwrap: exclude dksmrc
+# Fwrap: exclude dkswap
+# Fwrap: exclude mvndfn
+# Fwrap: exclude mvnlms
+# Fwrap: exclude mvnphi
+# Fwrap: exclude mvnuni
+# Fwrap: exclude phinvs
+# Fwrap: exclude rcswp
 # Fwrap: exclude bvnmvn
 # Fwrap: exclude bvu
 # Fwrap: exclude covsrt
