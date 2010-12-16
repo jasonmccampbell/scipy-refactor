@@ -172,7 +172,7 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap: version 0.2.0dev_470490d
 # Fwrap: self-sha1 5bfe1322e0df68842e5d85095b7f3308d908faa2
 # Fwrap: pyf-sha1 c8e8ba8392cd59bd928f2efd19d0cc281e093ff6
-# Fwrap: wraps futil.f
+# Fwrap: wraps src/futil.f
 # Fwrap:     sha1 3fb8012931d62222f0e2559e579c3d4f965b57ee
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
