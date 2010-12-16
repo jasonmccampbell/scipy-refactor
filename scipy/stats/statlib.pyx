@@ -255,6 +255,7 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_b9c96b3
 # Fwrap: self-sha1 0ff006c1ae5e8d77511a99502334d391ba122ad8
+# Fwrap: pyf-sha1 46d044808ea156865bf7ab29ff3f204d85cc1cfa
 # Fwrap: wraps statlib/*.f
 # Fwrap:     sha1 fdacc5bbd4afbc5c3867c04dad74d9ea6d64b3bd
 # Fwrap: exclude alnorm
