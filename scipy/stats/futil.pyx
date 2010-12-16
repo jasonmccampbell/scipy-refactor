@@ -23,54 +23,51 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object dqsort(fwi_integer_t n, object arr):
+cpdef api object dqsort(object arr, bint overwrite_arr=False):
     """
-    dqsort(n, arr) -> (n, arr)
+    dqsort(arr, overwrite_arr) -> arr
 
     Parameters
     ----------
-    n : fwi_integer, intent inout
     arr : fwr_real_x8, 1D array, dimension(n), intent inout
+    overwrite_arr : bint_, intent in
 
     Returns
     -------
-    n : fwi_integer, intent inout
     arr : fwr_real_x8, 1D array, dimension(n), intent inout
 
     """
     cdef np.ndarray arr_
     cdef fw_shape_t arr_shape_[1]
+    cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    arr_, arr = fw_asfortranarray(arr, fwr_real_x8_t_enum, 1, False)
+    arr_, arr = fw_asfortranarray(arr, fwr_real_x8_t_enum, 1, not overwrite_arr)
     fw_copyshape(arr_shape_, np.PyArray_DIMS(arr_), 1)
+    n = np.PyArray_DIMS(arr_)[0]
     if not (0 <= n <= arr_shape_[0]):
         raise ValueError("(0 <= n <= arr.shape[0]) not satisifed")
     dqsort_c(&n, arr_shape_, <fwr_real_x8_t*>np.PyArray_DATA(arr_), &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'dqsort' wrapper.")
-    return (n, arr,)
+    return arr
 
 
-cpdef api object dfreps(object arr, fwi_integer_t n, object replist, object repnum, fwi_integer_t nlist):
+cpdef api object dfreps(object arr, object replist=None, object repnum=None):
     """
-    dfreps(arr, n, replist, repnum, nlist) -> (arr, n, replist, repnum, nlist)
+    dfreps(arr, [replist, repnum]) -> (replist, repnum, nlist)
 
     Parameters
     ----------
-    arr : fwr_real_x8, 1D array, dimension(n), intent inout
-    n : fwi_integer, intent inout
-    replist : fwr_real_x8, 1D array, dimension(n), intent inout
-    repnum : fwi_integer, 1D array, dimension(n), intent inout
-    nlist : fwi_integer, intent inout
+    arr : fwr_real_x8, 1D array, dimension(n), intent in
+    replist : fwr_real_x8, 1D array, dimension(n), intent out
+    repnum : fwi_integer, 1D array, dimension(n), intent out
 
     Returns
     -------
-    arr : fwr_real_x8, 1D array, dimension(n), intent inout
-    n : fwi_integer, intent inout
-    replist : fwr_real_x8, 1D array, dimension(n), intent inout
-    repnum : fwi_integer, 1D array, dimension(n), intent inout
-    nlist : fwi_integer, intent inout
+    replist : fwr_real_x8, 1D array, dimension(n), intent out
+    repnum : fwi_integer, 1D array, dimension(n), intent out
+    nlist : fwi_integer, intent out
 
     """
     cdef np.ndarray arr_
@@ -79,24 +76,27 @@ cpdef api object dfreps(object arr, fwi_integer_t n, object replist, object repn
     cdef fw_shape_t replist_shape_[1]
     cdef np.ndarray repnum_
     cdef fw_shape_t repnum_shape_[1]
+    cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t nlist
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     arr_, arr = fw_asfortranarray(arr, fwr_real_x8_t_enum, 1, False)
     fw_copyshape(arr_shape_, np.PyArray_DIMS(arr_), 1)
+    n = np.PyArray_DIMS(arr_)[0]
     if not (0 <= n <= arr_shape_[0]):
         raise ValueError("(0 <= n <= arr.shape[0]) not satisifed")
-    replist_, replist = fw_asfortranarray(replist, fwr_real_x8_t_enum, 1, False)
+    replist_, replist = fw_explicitshapearray(replist, fwr_real_x8_t_enum, 1, [n], False)
     fw_copyshape(replist_shape_, np.PyArray_DIMS(replist_), 1)
-    if not (0 <= n <= replist_shape_[0]):
-        raise ValueError("(0 <= n <= replist.shape[0]) not satisifed")
-    repnum_, repnum = fw_asfortranarray(repnum, fwi_integer_t_enum, 1, False)
+    if n != replist_shape_[0]:
+        raise ValueError("(n == replist.shape[0]) not satisifed")
+    repnum_, repnum = fw_explicitshapearray(repnum, fwi_integer_t_enum, 1, [n], False)
     fw_copyshape(repnum_shape_, np.PyArray_DIMS(repnum_), 1)
-    if not (0 <= n <= repnum_shape_[0]):
-        raise ValueError("(0 <= n <= repnum.shape[0]) not satisifed")
+    if n != repnum_shape_[0]:
+        raise ValueError("(n == repnum.shape[0]) not satisifed")
     dfreps_c(arr_shape_, <fwr_real_x8_t*>np.PyArray_DATA(arr_), &n, replist_shape_, <fwr_real_x8_t*>np.PyArray_DATA(replist_), repnum_shape_, <fwi_integer_t*>np.PyArray_DATA(repnum_), &nlist, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'dfreps' wrapper.")
-    return (arr, n, replist, repnum, nlist,)
+    return (replist, repnum, nlist,)
 
 
 
@@ -106,6 +106,14 @@ cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
     cdef int i
     for i in range(ndim):
         target[i] = source[i]
+
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy)
 
 cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy):
     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
@@ -163,7 +171,7 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_470490d
 # Fwrap: self-sha1 5bfe1322e0df68842e5d85095b7f3308d908faa2
-# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: pyf-sha1 c8e8ba8392cd59bd928f2efd19d0cc281e093ff6
 # Fwrap: wraps futil.f
 # Fwrap:     sha1 3fb8012931d62222f0e2559e579c3d4f965b57ee
 # Fwrap: f77binding True
