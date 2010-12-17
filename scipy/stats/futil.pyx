@@ -1,7 +1,6 @@
 #cython: ccomplex=True
 
-"""
-The futil module was generated with Fwrap v0.2.0dev_470490d.
+"""The futil module was generated with Fwrap v0.2.0dev_2886444.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -24,8 +23,7 @@ include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 cpdef api object dqsort(object arr, bint overwrite_arr=False):
-    """
-    dqsort(arr, overwrite_arr) -> arr
+    """dqsort(arr[, overwrite_arr]) -> arr
 
     Parameters
     ----------
@@ -54,8 +52,7 @@ cpdef api object dqsort(object arr, bint overwrite_arr=False):
 
 
 cpdef api object dfreps(object arr, object replist=None, object repnum=None):
-    """
-    dfreps(arr, [replist, repnum]) -> (replist, repnum, nlist)
+    """dfreps(arr[, replist, repnum]) -> (replist, repnum, nlist)
 
     Parameters
     ----------
@@ -169,9 +166,9 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_470490d
+# Fwrap: version 0.2.0dev_2886444
 # Fwrap: self-sha1 5bfe1322e0df68842e5d85095b7f3308d908faa2
-# Fwrap: pyf-sha1 c8e8ba8392cd59bd928f2efd19d0cc281e093ff6
+# Fwrap: pyf-sha1 b56515c97cb2edd75a256779522878322df5083f
 # Fwrap: wraps src/futil.f
 # Fwrap:     sha1 3fb8012931d62222f0e2559e579c3d4f965b57ee
 # Fwrap: f77binding True
