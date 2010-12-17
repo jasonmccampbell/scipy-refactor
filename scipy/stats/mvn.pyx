@@ -1,7 +1,6 @@
 #cython: ccomplex=True
 
-"""
-The mvn module was generated with Fwrap v0.2.0dev_68e5b26.
+"""The mvn module was generated with Fwrap v0.2.0dev_2886444.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -24,8 +23,7 @@ include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 cpdef api object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
-    """
-    mvnun(lower, upper, means, covar, maxpts, abseps, releps) -> (value, inform)
+    """mvnun(lower, upper, means, covar[, maxpts, abseps, releps]) -> (value, inform)
 
     Parameters
     ----------
@@ -88,8 +86,7 @@ cpdef api object mvnun(object lower, object upper, object means, object covar, o
 
 
 cpdef api object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
-    """
-    mvndst(lower, upper, infin, correl, maxpts, abseps, releps) -> (error, value, inform)
+    """mvndst(lower, upper, infin, correl[, maxpts, abseps, releps]) -> (error, value, inform)
 
     Parameters
     ----------
@@ -207,9 +204,9 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_68e5b26
+# Fwrap: version 0.2.0dev_2886444
 # Fwrap: self-sha1 ae9426402166d8ba0c07ab8f65716a064bddb136
-# Fwrap: pyf-sha1 144d90bbc6b6b8a76971eed4b5c8a136206db00e
+# Fwrap: pyf-sha1 53b430ec2eed245a5b0f0d2e8dd68c8e01429eae
 # Fwrap: wraps src/mvndst.f
 # Fwrap:     sha1 3048e094d20be8b3e25e2882c1c93934a6e5881b
 # Fwrap: exclude bvnmvn
