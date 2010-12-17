@@ -1,7 +1,6 @@
 #cython: ccomplex=True
 
-"""
-The statlib module was generated with Fwrap v0.2.0dev_470490d.
+"""The statlib module was generated with Fwrap v0.2.0dev_2886444.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -28,8 +27,7 @@ include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 cpdef api object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
-    """
-    wprob(test, other, [a1]) -> (astart, a1, ifault)
+    """wprob(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
     ----------
@@ -75,8 +73,7 @@ cpdef api object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
 
 
 cpdef api object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
-    """
-    gscale(test, other, [a1]) -> (astart, a1, ifault)
+    """gscale(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
     ----------
@@ -122,8 +119,7 @@ cpdef api object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None)
 
 
 cpdef api object prho(fwi_integer_t n, fwi_integer_t is__):
-    """
-    prho(n, is__) -> (fw_ret_arg, ifault)
+    """prho(n, is__[, n, is__]) -> (fw_ret_arg, ifault)
 
     Parameters
     ----------
@@ -147,8 +143,7 @@ cpdef api object prho(fwi_integer_t n, fwi_integer_t is__):
 
 
 cpdef api object swilk(object x, object a, bint init=0, object n1=None):
-    """
-    swilk(x, a, init, n1) -> (a, w, pw, ifault)
+    """swilk(x, a[, init, n1]) -> (a, w, pw, ifault)
 
     Parameters
     ----------
@@ -268,9 +263,9 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_470490d
+# Fwrap: version 0.2.0dev_2886444
 # Fwrap: self-sha1 0ff006c1ae5e8d77511a99502334d391ba122ad8
-# Fwrap: pyf-sha1 d8bc63084810f03728b2682b1c32903e988002ac
+# Fwrap: pyf-sha1 b89499f63273992895f5bccd36ffb640ceb51707
 # Fwrap: wraps statlib/*.f
 # Fwrap:     sha1 fdacc5bbd4afbc5c3867c04dad74d9ea6d64b3bd
 # Fwrap: exclude alnorm
