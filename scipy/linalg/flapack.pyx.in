@@ -2164,7 +2164,7 @@ cpdef api object {{name}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object 
     cdef fw_shape_t ab_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t n
     cdef fwi_integer_t nrhs
@@ -2172,7 +2172,7 @@ cpdef api object {{name}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object 
     cdef fwi_integer_t ldab_f
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    ldab_f = ##TODO (watch any dependencies that may be further down!) &i
+    cdef Py_ssize_t i
     ab_, ab = fw_asfortranarray(ab, {{npy_enum}}, 2, not overwrite_ab)
     fw_copyshape(ab_shape_, np.PyArray_DIMS(ab_), 2)
     b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
@@ -2195,11 +2195,12 @@ cpdef api object {{name}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object 
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
     if n != piv_shape_[0]:
         raise ValueError("(n == piv.shape[0]) not satisifed")
-    #TODO: int i=2*kl+ku+1;
+    ldab_f = 2*kl+ku+1
     {{fc_name}}(&n, &kl, &ku, &nrhs, ab_shape_, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_f, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &n, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<n;--piv[i++])
+    for i in range(0, piv_shape_[0]):
+        piv_[i] -= 1
     return (ab, piv, b, info,)
 {{endfor}}
 
@@ -2235,11 +2236,12 @@ cpdef api object {{name}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object 
     cdef fwi_integer_t m_
     cdef fwi_integer_t n_
     cdef fwi_integer_t ldab_
-    cdef np.ndarray ipiv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] ipiv_
     cdef fw_shape_t ipiv_shape_[1]
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     ab_, ab = fw_asfortranarray(ab, {{npy_enum}}, 2, not overwrite_ab)
     fw_copyshape(ab_shape_, np.PyArray_DIMS(ab_), 2)
     ldab_ = ldab if (ldab is not None) else np.PyArray_DIMS(ab_)[0]
@@ -2253,11 +2255,11 @@ cpdef api object {{name}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object 
     fw_copyshape(ipiv_shape_, np.PyArray_DIMS(ipiv_), 1)
     if min(m_, n_) != ipiv_shape_[0]:
         raise ValueError("(min(m, n) == ipiv.shape[0]) not satisifed")
-    #TODO: int i;
     {{fc_name}}(&m_, &n_, &kl, &ku, ab_shape_, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_, ipiv_shape_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0,n=MIN(m,n);i<n;--ipiv[i++])
+    for i in range(ipiv_shape_[0]):
+        ipiv_[i] -= 1
     return (ab, ipiv, info,)
 {{endfor}}
 
@@ -2293,7 +2295,7 @@ cpdef api object {{name}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object 
     cdef fw_shape_t ab_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray ipiv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] ipiv_
     cdef fw_shape_t ipiv_shape_[1]
     cdef fwi_integer_t n_
     cdef fwi_integer_t ldab_
@@ -2303,6 +2305,7 @@ cpdef api object {{name}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object 
     cdef char *fw_trans_f = [0, 0]
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     trans_f = ("T" if (trans == 1) else "C") if (trans > 0) else "N"
     b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
@@ -2329,11 +2332,13 @@ cpdef api object {{name}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object 
     fw_trans_f[0] = fw_aschar(trans_f)
     if fw_trans_f[0] == 0:
         raise ValueError("len(trans_f) != 1")
-    #TODO: int i;for(i=0;i<n;++ipiv[i++]);
+    for i in range(ipiv_shape_[0]):
+        ipiv_[i] += 1
     {{fc_name}}(fw_trans_f, &n_, &kl, &ku, &nrhs, ab_shape_, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_, ipiv_shape_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb_, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<n;--ipiv[i++])
+    for i in range(ipiv_shape_[0]):
+        ipiv_[i] -= 1
     return (b, info,)
 {{endfor}}
 
@@ -2398,7 +2403,8 @@ cpdef api object {{name}}(object a, fwi_integer_t scale=0, fwi_integer_t permute
     {{fc_name}}(fw_job_f, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &m, &lo, &hi, pivscale_shape_, <{{ktp2}}*>np.PyArray_DATA(pivscale_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: hi--; lo--
+    hi -= 1
+    lo -= 1
     return (a, lo, hi, pivscale, info,)
 {{endfor}}
 
@@ -2768,7 +2774,8 @@ cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object t
     fw_copyshape(work_shape_, np.PyArray_DIMS(work_), 1)
     if lwork_ != work_shape_[0]:
         raise ValueError("(lwork == work.shape[0]) not satisifed")
-    #TODO: hi++; lo++;
+    lo += 1
+    hi_ += 1
     {{fc_name}}(&n, &lo, &hi_, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &n, tau_shape_, <{{ktp}}*>np.PyArray_DATA(tau_), work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
@@ -3095,13 +3102,14 @@ cpdef api object {{name}}(object a, object b, object piv=None, bint overwrite_a=
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t n
     cdef fwi_integer_t nrhs
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
@@ -3124,11 +3132,11 @@ cpdef api object {{name}}(object a, object b, object piv=None, bint overwrite_a=
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
     if n != piv_shape_[0]:
         raise ValueError("(n == piv.shape[0]) not satisifed")
-    #TODO: int i;
     {{fc_name}}(&n, &nrhs, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &n, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &n, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<n;--piv[i++])
+    for i in range(piv_shape_[0]):
+        piv_[i] -= 1
     return (a, piv, b, info,)
 {{endfor}}
 
@@ -3156,13 +3164,14 @@ cpdef api object {{name}}(object a, object piv=None, bint overwrite_a=False):
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     m = np.PyArray_DIMS(a_)[0]
@@ -3175,11 +3184,11 @@ cpdef api object {{name}}(object a, object piv=None, bint overwrite_a=False):
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
     if min(m, n) != piv_shape_[0]:
         raise ValueError("(min(m, n) == piv.shape[0]) not satisifed")
-    #TODO: int i;
     {{fc_name}}(&m, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &m, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0,n=MIN(m,n);i<n;--piv[i++])
+    for i in range(piv_shape_[0]):
+        piv_[i] -= 1
     return (a, piv, info,)
 {{endfor}}
 
@@ -3207,7 +3216,7 @@ cpdef api object {{name}}(object lu, object piv, object lwork=None, bint overwri
     """
     cdef np.ndarray lu_
     cdef fw_shape_t lu_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
@@ -3236,11 +3245,13 @@ cpdef api object {{name}}(object lu, object piv, object lwork=None, bint overwri
     fw_copyshape(work_shape_, np.PyArray_DIMS(work_), 1)
     if lwork_ != work_shape_[0]:
         raise ValueError("(lwork == work.shape[0]) not satisifed")
-    #TODO: int i;for(i=0;i<n;++piv[i++]);
+    for i in range(piv_shape_[0]):
+        piv_[i] += 1
     {{fc_name}}(&n, lu_shape_, <{{ktp}}*>np.PyArray_DATA(lu_), &n, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<n;--piv[i++])
+    for i in range(piv_shape_[0]):
+        piv_[i] -= 1
     return (lu, info,)
 {{endfor}}
 
@@ -3269,7 +3280,7 @@ cpdef api object {{name}}(object lu, object piv, object b, fwi_integer_t trans=0
     """
     cdef np.ndarray lu_
     cdef fw_shape_t lu_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
@@ -3279,6 +3290,7 @@ cpdef api object {{name}}(object lu, object piv, object b, fwi_integer_t trans=0
     cdef char *fw_trans_f = [0, 0]
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     lu_, lu = fw_asfortranarray(lu, {{npy_enum}}, 2, False)
     fw_copyshape(lu_shape_, np.PyArray_DIMS(lu_), 2)
@@ -3307,11 +3319,13 @@ cpdef api object {{name}}(object lu, object piv, object b, fwi_integer_t trans=0
     fw_trans_f[0] = fw_aschar(trans_f)
     if fw_trans_f[0] == 0:
         raise ValueError("len(trans_f) != 1")
-    #TODO: int i;for(i=0;i<n;++piv[i++]);
+    for i in range(piv_shape_[0]):
+        piv_[i] += 1
     {{fc_name}}(fw_trans_f, &n, &nrhs, lu_shape_, <{{ktp}}*>np.PyArray_DATA(lu_), &n, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), b_shape_, <{{ktp}}*>np.PyArray_DATA(b_), &n, &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<n;--piv[i++])
+    for i in range(piv_shape_[0]):
+        piv_[i] -= 1
     return (b, info,)
 {{endfor}}
 
@@ -3464,7 +3478,7 @@ cpdef api object {{name}}(object a, object piv, fwi_integer_t k1=0, object k2=No
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
-    cdef np.ndarray piv_
+    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t k2_
     cdef fwi_integer_t n
@@ -3472,6 +3486,7 @@ cpdef api object {{name}}(object a, object piv, fwi_integer_t k1=0, object k2=No
     cdef fwi_integer_t m
     cdef fwi_integer_t fw_iserr__
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i
     piv_, piv = fw_asfortranarray(piv, fwi_integer_t_enum, 1, False)
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
     piv_shape_[0] -= off
@@ -3497,11 +3512,15 @@ cpdef api object {{name}}(object a, object piv, fwi_integer_t k1=0, object k2=No
         raise ValueError("(nrows == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    #TODO: int i;m=len(piv);for(i=0;i<m;++piv[i++]);++k1;++k2;
+    for i in range(piv_shape_[0]):
+        piv_[i] += 1
+    k1 += 1
+    k2_ += 1
     {{fc_name}}(&n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: for(i=0;i<m;--piv[i++])
+    for i in range(piv_shape_[0]):
+        piv_[i] -= 1
     return a
 {{endfor}}
 
@@ -3872,12 +3891,11 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t lower=0, bint overwr
 {{endfor}}
 
 
-{{for fc_name, ktp, name, npy_enum, pyf_post_call_code
+{{for fc_name, ktp, name, npy_enum
       in zip(['spotrf_c', 'dpotrf_c', 'cpotrf_c', 'zpotrf_c'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['spotrf', 'dpotrf', 'cpotrf', 'zpotrf'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
-             ['if(clean){int i,j;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+j*n+i)=0.0;} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+i*n+j)=0.0', 'if(clean){int i,j;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+j*n+i)=0.0;} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+i*n+j)=0.0', 'if(clean){int i,j,k;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=j*n+i;(a+k)->r=(a+k)->i=0.0;}} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=i*n+j;(a+k)->r=(a+k)->i=0.0', 'if(clean){int i,j,k;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=j*n+i;(a+k)->r=(a+k)->i=0.0;}} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=i*n+j;(a+k)->r=(a+k)->i=0.0'])}}
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
 cpdef api object {{name}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
     """{{name}}(a[, lower, clean, overwrite_a]) -> (a, info)
 
@@ -3894,13 +3912,14 @@ cpdef api object {{name}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1
     info : fwi_integer, intent out
 
     """
-    cdef np.ndarray a_
+    cdef np.ndarray[{{ktp}}, ndim=2, mode='fortran'] a_
     cdef fw_shape_t a_shape_[2]
     cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
     cdef char *fw_uplo_f = [0, 0]
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
+    cdef Py_ssize_t i, j
     uplo_f = "L" if lower else "U"
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
@@ -3919,9 +3938,17 @@ cpdef api object {{name}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
     {{fc_name}}(fw_uplo_f, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &n, &info, &fw_iserr__, fw_errstr__)
+    if clean != 0:
+        if lower != 0:
+            for j in range(n):
+                for i in range(j):
+                    a[i, j] = 0
+        else:
+            for j in range(n):
+                for i in range(j + 1, n):
+                    a[i, j] = 0
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    #TODO: {{pyf_post_call_code}}
     return (a, info,)
 {{endfor}}
 
