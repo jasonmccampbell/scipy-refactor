@@ -5697,8 +5697,10 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap: version 0.2.0dev_8fb474d
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
 # Fwrap: pyf-sha1 c6e9d97f1e175680725f40282881b888b55b6db4
-# Fwrap: wraps $REFERENCE_LAPACK/*.f
+# Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
+# Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
+# Fwrap:     sha1 0
 # Fwrap: exclude cbbcsd
 # Fwrap: exclude cbdsqr
 # Fwrap: exclude cgbbrd
