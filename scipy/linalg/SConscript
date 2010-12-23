@@ -111,10 +111,7 @@ env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
 #------------
 #   flapack
 #------------
-yop = fenv.haha('flapack', 'generic_flapack.pyf')
-# XXX: automatically scan dependency on flapack_user_routines.pyf ?
-fenv.Depends(yop, 'flapack_user_routines.pyf')
-fenv.NumpyPythonExtension('flapack', 'flapack.pyf')
+fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
 
 #------------
 #   clapack
