@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The flapack module was generated with Fwrap v0.2.0dev_8da0ef3.
+"""The flapack module was generated with Fwrap v0.2.0dev_8fb474d.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -173,18 +173,18 @@ cpdef api object cgees(object jobvs, object sort, bint select, fwi_integer_t n, 
     return (fw_jobvs, fw_sort, select_, n, a, lda, sdim, w, vs, ldvs, work, lwork, rwork, bwork, info,)
 
 
-cpdef api object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object w=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False):
-    """cgeev(a[, compute_vl, compute_vr, w, vl, vr, lwork, overwrite_a]) -> (w, vl, vr, info)
+cpdef api object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object w=None, object vl=None, object vr=None, bint overwrite_a=False):
+    """cgeev(a[, compute_vl, compute_vr, lwork, w, vl, vr, overwrite_a]) -> (w, vl, vr, info)
 
     Parameters
     ----------
     a : fwc_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : fwc_complex, 1D array, dimension(n), intent out
     vl : fwc_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_complex, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -197,13 +197,13 @@ cpdef api object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray vl_
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -272,8 +272,8 @@ cpdef api object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     return (w, vl, vr, info,)
 
 
-cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alpha=None, object beta=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """cgegv(a, b[, compute_vl, compute_vr, alpha, beta, vl, vr, lwork, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, info)
+cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alpha=None, object beta=None, object vl=None, object vr=None, bint overwrite_a=False, bint overwrite_b=False):
+    """cgegv(a, b[, compute_vl, compute_vr, lwork, alpha, beta, vl, vr, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, info)
 
     Parameters
     ----------
@@ -281,11 +281,11 @@ cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwc_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alpha : fwc_complex, 1D array, dimension(n), intent out
     beta : fwc_complex, 1D array, dimension(n), intent out
     vl : fwc_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_complex, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -302,6 +302,7 @@ cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alpha_
     cdef fw_shape_t alpha_shape_[1]
     cdef np.ndarray beta_
@@ -310,7 +311,6 @@ cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -391,16 +391,16 @@ cpdef api object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     return (alpha, beta, vl, vr, info,)
 
 
-cpdef api object cgelss(object a, object b, object s=None, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """cgelss(a, b[, s, cond, lwork, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
+cpdef api object cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, object s=None, bint overwrite_a=False, bint overwrite_b=False):
+    """cgelss(a, b[, cond, lwork, s, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
 
     Parameters
     ----------
     a : fwc_complex, 2D array, dimension(m, n), intent inout
     b : fwc_complex, 2D array, dimension(maxmn, nrhs), intent inout
-    s : fwr_real, 1D array, dimension(minmn), intent out
     cond : fwr_real, intent in
     lwork : fwi_integer, intent in
+    s : fwr_real, 1D array, dimension(minmn), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -417,9 +417,9 @@ cpdef api object cgelss(object a, object b, object s=None, fwr_real_t cond=-1.0,
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -473,17 +473,17 @@ cpdef api object cgelss(object a, object b, object s=None, fwr_real_t cond=-1.0,
     return (a, b, s, r, info,)
 
 
-cpdef api object cgesdd(object a, fwi_integer_t compute_uv=1, object u=None, object s=None, object vt=None, object lwork=None, bint overwrite_a=False):
-    """cgesdd(a[, compute_uv, u, s, vt, lwork, overwrite_a]) -> (u, s, vt, info)
+cpdef api object cgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, object u=None, object s=None, object vt=None, bint overwrite_a=False):
+    """cgesdd(a[, compute_uv, lwork, u, s, vt, overwrite_a]) -> (u, s, vt, info)
 
     Parameters
     ----------
     a : fwc_complex, 2D array, dimension(m, n), intent in
     compute_uv : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     u : fwc_complex, 2D array, dimension(du, du), intent out
     s : fwr_real, 1D array, dimension(minmn), intent out
     vt : fwc_complex, 2D array, dimension(dvt, dvt), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -496,13 +496,13 @@ cpdef api object cgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray u_
     cdef fw_shape_t u_shape_[2]
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
     cdef np.ndarray vt_
     cdef fw_shape_t vt_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -574,8 +574,8 @@ cpdef api object cgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     return (u, s, vt, info,)
 
 
-cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """cggev(a, b[, compute_vl, compute_vr, alpha, beta, vl, vr, work, lwork, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, work, info)
+cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None, bint overwrite_a=False, bint overwrite_b=False):
+    """cggev(a, b[, compute_vl, compute_vr, lwork, alpha, beta, vl, vr, work, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, work, info)
 
     Parameters
     ----------
@@ -583,12 +583,12 @@ cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwc_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alpha : fwc_complex, 1D array, dimension(n), intent out
     beta : fwc_complex, 1D array, dimension(n), intent out
     vl : fwc_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_complex, 2D array, dimension(ldvr, n), intent out
     work : fwc_complex, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -606,6 +606,7 @@ cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alpha_
     cdef fw_shape_t alpha_shape_[1]
     cdef np.ndarray beta_
@@ -616,7 +617,6 @@ cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vr_shape_[2]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -702,8 +702,8 @@ cpdef api object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
              ['chbevd', 'zhbevd'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object w=None, object z=None, object lrwork=None, object liwork=None, bint overwrite_ab=True):
-    """{{name}}(ab[, compute_v, lower, ldab, w, z, lrwork, liwork, overwrite_ab]) -> (w, z, info)
+cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object lrwork=None, object liwork=None, object w=None, object z=None, bint overwrite_ab=True):
+    """{{name}}(ab[, compute_v, lower, ldab, lrwork, liwork, w, z, overwrite_ab]) -> (w, z, info)
 
     Parameters
     ----------
@@ -711,10 +711,10 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
     compute_v : fwi_integer, intent in
     lower : fwi_integer, intent in
     ldab : fwi_integer, intent in
-    w : {{ktp2}}_, 1D array, dimension(n), intent out
-    z : {{ktp}}_, 2D array, dimension(ldz, ldz), intent out
     lrwork : fwi_integer, intent in
     liwork : fwi_integer, intent in
+    w : {{ktp2}}_, 1D array, dimension(n), intent out
+    z : {{ktp}}_, 2D array, dimension(ldz, ldz), intent out
     overwrite_ab : bint_, intent in
 
     Returns
@@ -727,12 +727,12 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
     cdef np.ndarray ab_
     cdef fw_shape_t ab_shape_[2]
     cdef fwi_integer_t ldab_
+    cdef fwi_integer_t lrwork_
+    cdef fwi_integer_t liwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t lrwork_
-    cdef fwi_integer_t liwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t kd
     cdef fwi_integer_t ldz
@@ -815,8 +815,8 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
              ['chbevx', 'zhbevx'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp2}} abstol=0.0, object w=None, object z=None, object mmax=None, object ifail=None, bint overwrite_ab=True):
-    """{{name}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, w, z, mmax, ifail, overwrite_ab]) -> (w, z, m, ifail, info)
+cpdef api object {{name}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp2}} abstol=0.0, object mmax=None, object w=None, object z=None, object ifail=None, bint overwrite_ab=True):
+    """{{name}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, w, z, ifail, overwrite_ab]) -> (w, z, m, ifail, info)
 
     Parameters
     ----------
@@ -830,9 +830,9 @@ cpdef api object {{name}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il,
     range : fwi_integer, intent in
     lower : fwi_integer, intent in
     abstol : {{ktp2}}_, intent in
+    mmax : fwi_integer, intent in
     w : {{ktp2}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(ldz, mmax), intent out
-    mmax : fwi_integer, intent in
     ifail : fwi_integer, 1D array, dimension(ifail_len), intent out
     overwrite_ab : bint_, intent in
 
@@ -848,11 +848,11 @@ cpdef api object {{name}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il,
     cdef np.ndarray ab_
     cdef fw_shape_t ab_shape_[2]
     cdef fwi_integer_t ldab_
+    cdef fwi_integer_t mmax_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t mmax_
     cdef np.ndarray ifail_
     cdef fw_shape_t ifail_shape_[1]
     cdef fwi_integer_t n
@@ -956,16 +956,16 @@ cpdef api object {{name}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il,
              ['cheev', 'zheev'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object w=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, compute_v, lower, w, lwork, overwrite_a]) -> (w, a, info)
+cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, object w=None, bint overwrite_a=False):
+    """{{name}}(a[, compute_v, lower, lwork, w, overwrite_a]) -> (w, a, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     lower : fwi_integer, intent in
-    w : {{ktp2}}_, 1D array, dimension(n), intent out
     lwork : fwi_integer, intent in
+    w : {{ktp2}}_, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
 
     Returns
@@ -977,9 +977,9 @@ cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t low
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
@@ -1040,8 +1040,8 @@ cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t low
              ['cheevr', 'zheevr'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object w=None, object z=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, jobz, range, uplo, il, iu, w, z, lwork, overwrite_a]) -> (w, z, info)
+cpdef api object {{name}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, object w=None, object z=None, bint overwrite_a=False):
+    """{{name}}(a[, jobz, range, uplo, il, iu, lwork, w, z, overwrite_a]) -> (w, z, info)
 
     Parameters
     ----------
@@ -1051,9 +1051,9 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     uplo : object_, intent in
     il : fwi_integer, intent in
     iu : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : {{ktp2}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(n, m), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -1069,11 +1069,11 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     cdef char *fw_range = [0, 0]
     cdef char *fw_uplo = [0, 0]
     cdef fwi_integer_t iu_
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t lda
     cdef {{ktp2}} vl
@@ -1250,8 +1250,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
              ['chegvd', 'zhegvd'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object w=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """{{name}}(a, b[, itype, jobz, uplo, w, lwork, overwrite_a, overwrite_b]) -> (a, w, info)
+cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, object w=None, bint overwrite_a=False, bint overwrite_b=False):
+    """{{name}}(a, b[, itype, jobz, uplo, lwork, w, overwrite_a, overwrite_b]) -> (a, w, info)
 
     Parameters
     ----------
@@ -1260,8 +1260,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     itype : fwi_integer, intent in
     jobz : object_, intent in
     uplo : object_, intent in
-    w : {{ktp2}}_, 1D array, dimension(n), intent out
     lwork : fwi_integer, intent in
+    w : {{ktp2}}_, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -1278,9 +1278,9 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fw_shape_t b_shape_[2]
     cdef char *fw_jobz = [0, 0]
     cdef char *fw_uplo = [0, 0]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t lda
     cdef fwi_integer_t ldb
@@ -1349,8 +1349,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
              ['chegvx', 'zhegvx'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object w=None, object z=None, object lwork=None, object ifail=None, bint overwrite_a=False, bint overwrite_b=False):
-    """{{name}}(a, b, iu[, itype, jobz, uplo, il, w, z, lwork, ifail, overwrite_a, overwrite_b]) -> (w, z, ifail, info)
+cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, object w=None, object z=None, object ifail=None, bint overwrite_a=False, bint overwrite_b=False):
+    """{{name}}(a, b, iu[, itype, jobz, uplo, il, lwork, w, z, ifail, overwrite_a, overwrite_b]) -> (w, z, ifail, info)
 
     Parameters
     ----------
@@ -1361,9 +1361,9 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     jobz : object_, intent in
     uplo : object_, intent in
     il : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : {{ktp2}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(n, m), intent out
-    lwork : fwi_integer, intent in
     ifail : fwi_integer, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
@@ -1382,11 +1382,11 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     cdef fw_shape_t b_shape_[2]
     cdef char *fw_jobz = [0, 0]
     cdef char *fw_uplo = [0, 0]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef np.ndarray ifail_
     cdef fw_shape_t ifail_shape_[1]
     cdef char *fw_range = [0, 0]
@@ -1478,15 +1478,15 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
              ['fwc_complex_t', 'fwc_dbl_complex_t'],
              ['cungqr', 'zungqr'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef api object {{name}}(object a, object tau, object work=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a, tau[, work, lwork, overwrite_a]) -> (a, work, info)
+cpdef api object {{name}}(object a, object tau, object lwork=None, object work=None, bint overwrite_a=False):
+    """{{name}}(a, tau[, lwork, work, overwrite_a]) -> (a, work, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(m, n), intent inout
     tau : {{ktp}}_, 1D array, dimension(k), intent in
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
     lwork : fwi_integer, intent in
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
     overwrite_a : bint_, intent in
 
     Returns
@@ -1500,9 +1500,9 @@ cpdef api object {{name}}(object a, object tau, object work=None, object lwork=N
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray tau_
     cdef fw_shape_t tau_shape_[1]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t k
@@ -1622,19 +1622,19 @@ cpdef api object dgees(object jobvs, object sort, bint select, fwi_integer_t n, 
     return (fw_jobvs, fw_sort, select_, n, a, lda, sdim, wr, wi, vs, ldvs, work, lwork, bwork, info,)
 
 
-cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object wr=None, object wi=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False):
-    """dgeev(a[, compute_vl, compute_vr, wr, wi, vl, vr, lwork, overwrite_a]) -> (wr, wi, vl, vr, info)
+cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object wr=None, object wi=None, object vl=None, object vr=None, bint overwrite_a=False):
+    """dgeev(a[, compute_vl, compute_vr, lwork, wr, wi, vl, vr, overwrite_a]) -> (wr, wi, vl, vr, info)
 
     Parameters
     ----------
     a : fwr_dbl, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     wr : fwr_dbl, 1D array, dimension(n), intent out
     wi : fwr_dbl, 1D array, dimension(n), intent out
     vl : fwr_dbl, 2D array, dimension(ldvl, n), intent out
     vr : fwr_dbl, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -1648,6 +1648,7 @@ cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray wr_
     cdef fw_shape_t wr_shape_[1]
     cdef np.ndarray wi_
@@ -1656,7 +1657,6 @@ cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -1723,8 +1723,8 @@ cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     return (wr, wi, vl, vr, info,)
 
 
-cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """dgegv(a, b[, compute_vl, compute_vr, alphar, alphai, beta, vl, vr, lwork, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, info)
+cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, bint overwrite_a=False, bint overwrite_b=False):
+    """dgegv(a, b[, compute_vl, compute_vr, lwork, alphar, alphai, beta, vl, vr, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, info)
 
     Parameters
     ----------
@@ -1732,12 +1732,12 @@ cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwr_dbl, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alphar : fwr_dbl, 1D array, dimension(n), intent out
     alphai : fwr_dbl, 1D array, dimension(n), intent out
     beta : fwr_dbl, 1D array, dimension(n), intent out
     vl : fwr_dbl, 2D array, dimension(ldvl, n), intent out
     vr : fwr_dbl, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -1755,6 +1755,7 @@ cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alphar_
     cdef fw_shape_t alphar_shape_[1]
     cdef np.ndarray alphai_
@@ -1765,7 +1766,6 @@ cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -1844,16 +1844,16 @@ cpdef api object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     return (alphar, alphai, beta, vl, vr, info,)
 
 
-cpdef api object dgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """dgelss(a, b[, s, cond, lwork, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
+cpdef api object dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, object s=None, bint overwrite_a=False, bint overwrite_b=False):
+    """dgelss(a, b[, cond, lwork, s, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
 
     Parameters
     ----------
     a : fwr_dbl, 2D array, dimension(m, n), intent inout
     b : fwr_dbl, 2D array, dimension(maxmn, nrhs), intent inout
-    s : fwr_dbl, 1D array, dimension(minmn), intent out
     cond : fwr_dbl, intent in
     lwork : fwi_integer, intent in
+    s : fwr_dbl, 1D array, dimension(minmn), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -1870,9 +1870,9 @@ cpdef api object dgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, 
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -1920,17 +1920,17 @@ cpdef api object dgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, 
     return (a, b, s, r, info,)
 
 
-cpdef api object dgesdd(object a, fwi_integer_t compute_uv=1, object u=None, object s=None, object vt=None, object lwork=None, bint overwrite_a=False):
-    """dgesdd(a[, compute_uv, u, s, vt, lwork, overwrite_a]) -> (u, s, vt, info)
+cpdef api object dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, object u=None, object s=None, object vt=None, bint overwrite_a=False):
+    """dgesdd(a[, compute_uv, lwork, u, s, vt, overwrite_a]) -> (u, s, vt, info)
 
     Parameters
     ----------
     a : fwr_dbl, 2D array, dimension(m, n), intent in
     compute_uv : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     u : fwr_dbl, 2D array, dimension(du, du), intent out
     s : fwr_dbl, 1D array, dimension(minmn), intent out
     vt : fwr_dbl, 2D array, dimension(dvt, dvt), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -1943,13 +1943,13 @@ cpdef api object dgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray u_
     cdef fw_shape_t u_shape_[2]
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
     cdef np.ndarray vt_
     cdef fw_shape_t vt_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -2011,8 +2011,8 @@ cpdef api object dgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     return (u, s, vt, info,)
 
 
-cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """dggev(a, b[, compute_vl, compute_vr, alphar, alphai, beta, vl, vr, work, lwork, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, work, info)
+cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None, bint overwrite_a=False, bint overwrite_b=False):
+    """dggev(a, b[, compute_vl, compute_vr, lwork, alphar, alphai, beta, vl, vr, work, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, work, info)
 
     Parameters
     ----------
@@ -2020,13 +2020,13 @@ cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwr_dbl, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alphar : fwr_dbl, 1D array, dimension(n), intent out
     alphai : fwr_dbl, 1D array, dimension(n), intent out
     beta : fwr_dbl, 1D array, dimension(n), intent out
     vl : fwr_dbl, 2D array, dimension(ldvl, n), intent out
     vr : fwr_dbl, 2D array, dimension(ldvr, n), intent out
     work : fwr_dbl, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -2045,6 +2045,7 @@ cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alphar_
     cdef fw_shape_t alphar_shape_[1]
     cdef np.ndarray alphai_
@@ -2057,7 +2058,6 @@ cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vr_shape_[2]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -2495,19 +2495,19 @@ cpdef api object sgees(object jobvs, object sort, bint select, fwi_integer_t n, 
     return (fw_jobvs, fw_sort, select_, n, a, lda, sdim, wr, wi, vs, ldvs, work, lwork, bwork, info,)
 
 
-cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object wr=None, object wi=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False):
-    """sgeev(a[, compute_vl, compute_vr, wr, wi, vl, vr, lwork, overwrite_a]) -> (wr, wi, vl, vr, info)
+cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object wr=None, object wi=None, object vl=None, object vr=None, bint overwrite_a=False):
+    """sgeev(a[, compute_vl, compute_vr, lwork, wr, wi, vl, vr, overwrite_a]) -> (wr, wi, vl, vr, info)
 
     Parameters
     ----------
     a : fwr_real, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     wr : fwr_real, 1D array, dimension(n), intent out
     wi : fwr_real, 1D array, dimension(n), intent out
     vl : fwr_real, 2D array, dimension(ldvl, n), intent out
     vr : fwr_real, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -2521,6 +2521,7 @@ cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray wr_
     cdef fw_shape_t wr_shape_[1]
     cdef np.ndarray wi_
@@ -2529,7 +2530,6 @@ cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -2596,8 +2596,8 @@ cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     return (wr, wi, vl, vr, info,)
 
 
-cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """sgegv(a, b[, compute_vl, compute_vr, alphar, alphai, beta, vl, vr, lwork, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, info)
+cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, bint overwrite_a=False, bint overwrite_b=False):
+    """sgegv(a, b[, compute_vl, compute_vr, lwork, alphar, alphai, beta, vl, vr, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, info)
 
     Parameters
     ----------
@@ -2605,12 +2605,12 @@ cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwr_real, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alphar : fwr_real, 1D array, dimension(n), intent out
     alphai : fwr_real, 1D array, dimension(n), intent out
     beta : fwr_real, 1D array, dimension(n), intent out
     vl : fwr_real, 2D array, dimension(ldvl, n), intent out
     vr : fwr_real, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -2628,6 +2628,7 @@ cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alphar_
     cdef fw_shape_t alphar_shape_[1]
     cdef np.ndarray alphai_
@@ -2638,7 +2639,6 @@ cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -2722,16 +2722,16 @@ cpdef api object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['sgehrd', 'dgehrd', 'cgehrd', 'zgehrd'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object tau=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, lo, hi, tau, lwork, overwrite_a]) -> (a, tau, info)
+cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object lwork=None, object tau=None, bint overwrite_a=False):
+    """{{name}}(a[, lo, hi, lwork, tau, overwrite_a]) -> (a, tau, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(n, n), intent inout
     lo : fwi_integer, intent in
     hi : fwi_integer, intent in
-    tau : {{ktp}}_, 1D array, dimension(n-1), intent out
     lwork : fwi_integer, intent in
+    tau : {{ktp}}_, 1D array, dimension(n-1), intent out
     overwrite_a : bint_, intent in
 
     Returns
@@ -2744,9 +2744,9 @@ cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object t
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
     cdef fwi_integer_t hi_
+    cdef fwi_integer_t lwork_
     cdef np.ndarray tau_
     cdef fw_shape_t tau_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
@@ -2783,16 +2783,16 @@ cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object t
 {{endfor}}
 
 
-cpdef api object sgelss(object a, object b, object s=None, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """sgelss(a, b[, s, cond, lwork, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
+cpdef api object sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, object s=None, bint overwrite_a=False, bint overwrite_b=False):
+    """sgelss(a, b[, cond, lwork, s, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
 
     Parameters
     ----------
     a : fwr_real, 2D array, dimension(m, n), intent inout
     b : fwr_real, 2D array, dimension(maxmn, nrhs), intent inout
-    s : fwr_real, 1D array, dimension(minmn), intent out
     cond : fwr_real, intent in
     lwork : fwi_integer, intent in
+    s : fwr_real, 1D array, dimension(minmn), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -2809,9 +2809,9 @@ cpdef api object sgelss(object a, object b, object s=None, fwr_real_t cond=-1.0,
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -2864,15 +2864,15 @@ cpdef api object sgelss(object a, object b, object s=None, fwr_real_t cond=-1.0,
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['sgeqrf', 'dgeqrf', 'cgeqrf', 'zgeqrf'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef api object {{name}}(object a, object tau=None, object work=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, tau, work, lwork, overwrite_a]) -> (a, tau, work, info)
+cpdef api object {{name}}(object a, object lwork=None, object tau=None, object work=None, bint overwrite_a=False):
+    """{{name}}(a[, lwork, tau, work, overwrite_a]) -> (a, tau, work, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    lwork : fwi_integer, intent in
     tau : {{ktp}}_, 1D array, dimension(min(m,n)), intent out
     work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -2885,11 +2885,11 @@ cpdef api object {{name}}(object a, object tau=None, object work=None, object lw
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray tau_
     cdef fw_shape_t tau_shape_[1]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
@@ -2926,15 +2926,15 @@ cpdef api object {{name}}(object a, object tau=None, object work=None, object lw
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['sgerqf', 'dgerqf', 'cgerqf', 'zgerqf'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef api object {{name}}(object a, object tau=None, object work=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, tau, work, lwork, overwrite_a]) -> (a, tau, work, info)
+cpdef api object {{name}}(object a, object lwork=None, object tau=None, object work=None, bint overwrite_a=False):
+    """{{name}}(a[, lwork, tau, work, overwrite_a]) -> (a, tau, work, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    lwork : fwi_integer, intent in
     tau : {{ktp}}_, 1D array, dimension(min(m,n)), intent out
     work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -2947,11 +2947,11 @@ cpdef api object {{name}}(object a, object tau=None, object work=None, object lw
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray tau_
     cdef fw_shape_t tau_shape_[1]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t fw_iserr__
@@ -2983,17 +2983,17 @@ cpdef api object {{name}}(object a, object tau=None, object work=None, object lw
 {{endfor}}
 
 
-cpdef api object sgesdd(object a, fwi_integer_t compute_uv=1, object u=None, object s=None, object vt=None, object lwork=None, bint overwrite_a=False):
-    """sgesdd(a[, compute_uv, u, s, vt, lwork, overwrite_a]) -> (u, s, vt, info)
+cpdef api object sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, object u=None, object s=None, object vt=None, bint overwrite_a=False):
+    """sgesdd(a[, compute_uv, lwork, u, s, vt, overwrite_a]) -> (u, s, vt, info)
 
     Parameters
     ----------
     a : fwr_real, 2D array, dimension(m, n), intent in
     compute_uv : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     u : fwr_real, 2D array, dimension(du, du), intent out
     s : fwr_real, 1D array, dimension(minmn), intent out
     vt : fwr_real, 2D array, dimension(dvt, dvt), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -3006,13 +3006,13 @@ cpdef api object sgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray u_
     cdef fw_shape_t u_shape_[2]
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
     cdef np.ndarray vt_
     cdef fw_shape_t vt_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -3330,8 +3330,8 @@ cpdef api object {{name}}(object lu, object piv, object b, fwi_integer_t trans=0
 {{endfor}}
 
 
-cpdef api object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """sggev(a, b[, compute_vl, compute_vr, alphar, alphai, beta, vl, vr, work, lwork, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, work, info)
+cpdef api object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None, bint overwrite_a=False, bint overwrite_b=False):
+    """sggev(a, b[, compute_vl, compute_vr, lwork, alphar, alphai, beta, vl, vr, work, overwrite_a, overwrite_b]) -> (alphar, alphai, beta, vl, vr, work, info)
 
     Parameters
     ----------
@@ -3339,13 +3339,13 @@ cpdef api object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwr_real, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alphar : fwr_real, 1D array, dimension(n), intent out
     alphai : fwr_real, 1D array, dimension(n), intent out
     beta : fwr_real, 1D array, dimension(n), intent out
     vl : fwr_real, 2D array, dimension(ldvl, n), intent out
     vr : fwr_real, 2D array, dimension(ldvr, n), intent out
     work : fwr_real, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -3364,6 +3364,7 @@ cpdef api object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alphar_
     cdef fw_shape_t alphar_shape_[1]
     cdef np.ndarray alphai_
@@ -3376,7 +3377,6 @@ cpdef api object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vr_shape_[2]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -3579,15 +3579,15 @@ cpdef api object {{name}}(object c, fwi_integer_t lower=0, bint overwrite_c=Fals
              ['fwr_real_t', 'fwr_dbl_t'],
              ['sorgqr', 'dorgqr'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object tau, object work=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a, tau[, work, lwork, overwrite_a]) -> (a, work, info)
+cpdef api object {{name}}(object a, object tau, object lwork=None, object work=None, bint overwrite_a=False):
+    """{{name}}(a, tau[, lwork, work, overwrite_a]) -> (a, work, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(m, n), intent inout
     tau : {{ktp}}_, 1D array, dimension(k), intent in
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
     lwork : fwi_integer, intent in
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
     overwrite_a : bint_, intent in
 
     Returns
@@ -3601,9 +3601,9 @@ cpdef api object {{name}}(object a, object tau, object work=None, object lwork=N
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray tau_
     cdef fw_shape_t tau_shape_[1]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t k
@@ -4154,8 +4154,8 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssbevd', 'dsbevd'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object w=None, object z=None, object liwork=None, bint overwrite_ab=True):
-    """{{name}}(ab[, compute_v, lower, ldab, w, z, liwork, overwrite_ab]) -> (w, z, info)
+cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object liwork=None, object w=None, object z=None, bint overwrite_ab=True):
+    """{{name}}(ab[, compute_v, lower, ldab, liwork, w, z, overwrite_ab]) -> (w, z, info)
 
     Parameters
     ----------
@@ -4163,9 +4163,9 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
     compute_v : fwi_integer, intent in
     lower : fwi_integer, intent in
     ldab : fwi_integer, intent in
+    liwork : fwi_integer, intent in
     w : {{ktp}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(ldz, ldz), intent out
-    liwork : fwi_integer, intent in
     overwrite_ab : bint_, intent in
 
     Returns
@@ -4178,11 +4178,11 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
     cdef np.ndarray ab_
     cdef fw_shape_t ab_shape_[2]
     cdef fwi_integer_t ldab_
+    cdef fwi_integer_t liwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t liwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t kd
     cdef fwi_integer_t ldz
@@ -4252,8 +4252,8 @@ cpdef api object {{name}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lo
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssbevx', 'dsbevx'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp}} abstol=0.0, object w=None, object z=None, object mmax=None, object ifail=None, bint overwrite_ab=True):
-    """{{name}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, w, z, mmax, ifail, overwrite_ab]) -> (w, z, m, ifail, info)
+cpdef api object {{name}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp}} abstol=0.0, object mmax=None, object w=None, object z=None, object ifail=None, bint overwrite_ab=True):
+    """{{name}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, w, z, ifail, overwrite_ab]) -> (w, z, m, ifail, info)
 
     Parameters
     ----------
@@ -4267,9 +4267,9 @@ cpdef api object {{name}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, f
     range : fwi_integer, intent in
     lower : fwi_integer, intent in
     abstol : {{ktp}}_, intent in
+    mmax : fwi_integer, intent in
     w : {{ktp}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(ldz, mmax), intent out
-    mmax : fwi_integer, intent in
     ifail : fwi_integer, 1D array, dimension(ifail_len), intent out
     overwrite_ab : bint_, intent in
 
@@ -4285,11 +4285,11 @@ cpdef api object {{name}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, f
     cdef np.ndarray ab_
     cdef fw_shape_t ab_shape_[2]
     cdef fwi_integer_t ldab_
+    cdef fwi_integer_t mmax_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t mmax_
     cdef np.ndarray ifail_
     cdef fw_shape_t ifail_shape_[1]
     cdef fwi_integer_t n
@@ -4385,16 +4385,16 @@ cpdef api object {{name}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, f
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssyev', 'dsyev'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object w=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, compute_v, lower, w, lwork, overwrite_a]) -> (w, a, info)
+cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, object w=None, bint overwrite_a=False):
+    """{{name}}(a[, compute_v, lower, lwork, w, overwrite_a]) -> (w, a, info)
 
     Parameters
     ----------
     a : {{ktp}}_, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     lower : fwi_integer, intent in
-    w : {{ktp}}_, 1D array, dimension(n), intent out
     lwork : fwi_integer, intent in
+    w : {{ktp}}_, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
 
     Returns
@@ -4406,9 +4406,9 @@ cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t low
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
@@ -4461,8 +4461,8 @@ cpdef api object {{name}}(object a, fwi_integer_t compute_v=1, fwi_integer_t low
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssyevr', 'dsyevr'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object w=None, object z=None, object lwork=None, bint overwrite_a=False):
-    """{{name}}(a[, jobz, range, uplo, il, iu, w, z, lwork, overwrite_a]) -> (w, z, info)
+cpdef api object {{name}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, object w=None, object z=None, bint overwrite_a=False):
+    """{{name}}(a[, jobz, range, uplo, il, iu, lwork, w, z, overwrite_a]) -> (w, z, info)
 
     Parameters
     ----------
@@ -4472,9 +4472,9 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     uplo : object_, intent in
     il : fwi_integer, intent in
     iu : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : {{ktp}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(n, m), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -4490,11 +4490,11 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     cdef char *fw_range = [0, 0]
     cdef char *fw_uplo = [0, 0]
     cdef fwi_integer_t iu_
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t lda
     cdef {{ktp}} vl
@@ -4653,8 +4653,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssygvd', 'dsygvd'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object w=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """{{name}}(a, b[, itype, jobz, uplo, w, lwork, overwrite_a, overwrite_b]) -> (a, w, info)
+cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, object w=None, bint overwrite_a=False, bint overwrite_b=False):
+    """{{name}}(a, b[, itype, jobz, uplo, lwork, w, overwrite_a, overwrite_b]) -> (a, w, info)
 
     Parameters
     ----------
@@ -4663,8 +4663,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     itype : fwi_integer, intent in
     jobz : object_, intent in
     uplo : object_, intent in
-    w : {{ktp}}_, 1D array, dimension(n), intent out
     lwork : fwi_integer, intent in
+    w : {{ktp}}_, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -4681,9 +4681,9 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fw_shape_t b_shape_[2]
     cdef char *fw_jobz = [0, 0]
     cdef char *fw_uplo = [0, 0]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t lda
     cdef fwi_integer_t ldb
@@ -4742,8 +4742,8 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
              ['fwr_real_t', 'fwr_dbl_t'],
              ['ssygvx', 'dsygvx'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object w=None, object z=None, object lwork=None, object ifail=None, bint overwrite_a=False, bint overwrite_b=False):
-    """{{name}}(a, b, iu[, itype, jobz, uplo, il, w, z, lwork, ifail, overwrite_a, overwrite_b]) -> (w, z, ifail, info)
+cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, object w=None, object z=None, object ifail=None, bint overwrite_a=False, bint overwrite_b=False):
+    """{{name}}(a, b, iu[, itype, jobz, uplo, il, lwork, w, z, ifail, overwrite_a, overwrite_b]) -> (w, z, ifail, info)
 
     Parameters
     ----------
@@ -4754,9 +4754,9 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     jobz : object_, intent in
     uplo : object_, intent in
     il : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : {{ktp}}_, 1D array, dimension(n), intent out
     z : {{ktp}}_, 2D array, dimension(n, m), intent out
-    lwork : fwi_integer, intent in
     ifail : fwi_integer, 1D array, dimension(n), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
@@ -4775,11 +4775,11 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     cdef fw_shape_t b_shape_[2]
     cdef char *fw_jobz = [0, 0]
     cdef char *fw_uplo = [0, 0]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray z_
     cdef fw_shape_t z_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef np.ndarray ifail_
     cdef fw_shape_t ifail_shape_[1]
     cdef char *fw_range = [0, 0]
@@ -5084,18 +5084,18 @@ cpdef api object zgees(object jobvs, object sort, bint select, fwi_integer_t n, 
     return (fw_jobvs, fw_sort, select_, n, a, lda, sdim, w, vs, ldvs, work, lwork, rwork, bwork, info,)
 
 
-cpdef api object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object w=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False):
-    """zgeev(a[, compute_vl, compute_vr, w, vl, vr, lwork, overwrite_a]) -> (w, vl, vr, info)
+cpdef api object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object w=None, object vl=None, object vr=None, bint overwrite_a=False):
+    """zgeev(a[, compute_vl, compute_vr, lwork, w, vl, vr, overwrite_a]) -> (w, vl, vr, info)
 
     Parameters
     ----------
     a : fwc_dbl_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     w : fwc_dbl_complex, 1D array, dimension(n), intent out
     vl : fwc_dbl_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_dbl_complex, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -5108,13 +5108,13 @@ cpdef api object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray w_
     cdef fw_shape_t w_shape_[1]
     cdef np.ndarray vl_
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -5183,8 +5183,8 @@ cpdef api object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     return (w, vl, vr, info,)
 
 
-cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alpha=None, object beta=None, object vl=None, object vr=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """zgegv(a, b[, compute_vl, compute_vr, alpha, beta, vl, vr, lwork, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, info)
+cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alpha=None, object beta=None, object vl=None, object vr=None, bint overwrite_a=False, bint overwrite_b=False):
+    """zgegv(a, b[, compute_vl, compute_vr, lwork, alpha, beta, vl, vr, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, info)
 
     Parameters
     ----------
@@ -5192,11 +5192,11 @@ cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwc_dbl_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alpha : fwc_dbl_complex, 1D array, dimension(n), intent out
     beta : fwc_dbl_complex, 1D array, dimension(n), intent out
     vl : fwc_dbl_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_dbl_complex, 2D array, dimension(ldvr, n), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -5213,6 +5213,7 @@ cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alpha_
     cdef fw_shape_t alpha_shape_[1]
     cdef np.ndarray beta_
@@ -5221,7 +5222,6 @@ cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vl_shape_[2]
     cdef np.ndarray vr_
     cdef fw_shape_t vr_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -5302,16 +5302,16 @@ cpdef api object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     return (alpha, beta, vl, vr, info,)
 
 
-cpdef api object zgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """zgelss(a, b[, s, cond, lwork, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
+cpdef api object zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, object s=None, bint overwrite_a=False, bint overwrite_b=False):
+    """zgelss(a, b[, cond, lwork, s, overwrite_a, overwrite_b]) -> (a, b, s, r, info)
 
     Parameters
     ----------
     a : fwc_dbl_complex, 2D array, dimension(m, n), intent inout
     b : fwc_dbl_complex, 2D array, dimension(maxmn, nrhs), intent inout
-    s : fwr_dbl, 1D array, dimension(minmn), intent out
     cond : fwr_dbl, intent in
     lwork : fwi_integer, intent in
+    s : fwr_dbl, 1D array, dimension(minmn), intent out
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -5328,9 +5328,9 @@ cpdef api object zgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, 
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -5384,17 +5384,17 @@ cpdef api object zgelss(object a, object b, object s=None, fwr_dbl_t cond=-1.0, 
     return (a, b, s, r, info,)
 
 
-cpdef api object zgesdd(object a, fwi_integer_t compute_uv=1, object u=None, object s=None, object vt=None, object lwork=None, bint overwrite_a=False):
-    """zgesdd(a[, compute_uv, u, s, vt, lwork, overwrite_a]) -> (u, s, vt, info)
+cpdef api object zgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, object u=None, object s=None, object vt=None, bint overwrite_a=False):
+    """zgesdd(a[, compute_uv, lwork, u, s, vt, overwrite_a]) -> (u, s, vt, info)
 
     Parameters
     ----------
     a : fwc_dbl_complex, 2D array, dimension(m, n), intent in
     compute_uv : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     u : fwc_dbl_complex, 2D array, dimension(du, du), intent out
     s : fwr_dbl, 1D array, dimension(minmn), intent out
     vt : fwc_dbl_complex, 2D array, dimension(dvt, dvt), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
 
     Returns
@@ -5407,13 +5407,13 @@ cpdef api object zgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray u_
     cdef fw_shape_t u_shape_[2]
     cdef np.ndarray s_
     cdef fw_shape_t s_shape_[1]
     cdef np.ndarray vt_
     cdef fw_shape_t vt_shape_[2]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t m
     cdef fwi_integer_t n
     cdef fwi_integer_t minmn
@@ -5485,8 +5485,8 @@ cpdef api object zgesdd(object a, fwi_integer_t compute_uv=1, object u=None, obj
     return (u, s, vt, info,)
 
 
-cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False):
-    """zggev(a, b[, compute_vl, compute_vr, alpha, beta, vl, vr, work, lwork, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, work, info)
+cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None, bint overwrite_a=False, bint overwrite_b=False):
+    """zggev(a, b[, compute_vl, compute_vr, lwork, alpha, beta, vl, vr, work, overwrite_a, overwrite_b]) -> (alpha, beta, vl, vr, work, info)
 
     Parameters
     ----------
@@ -5494,12 +5494,12 @@ cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     b : fwc_dbl_complex, 2D array, dimension(n, n), intent in
     compute_vl : fwi_integer, intent in
     compute_vr : fwi_integer, intent in
+    lwork : fwi_integer, intent in
     alpha : fwc_dbl_complex, 1D array, dimension(n), intent out
     beta : fwc_dbl_complex, 1D array, dimension(n), intent out
     vl : fwc_dbl_complex, 2D array, dimension(ldvl, n), intent out
     vr : fwc_dbl_complex, 2D array, dimension(ldvr, n), intent out
     work : fwc_dbl_complex, 1D array, dimension(max(lwork,1)), intent out
-    lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
     overwrite_b : bint_, intent in
 
@@ -5517,6 +5517,7 @@ cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t a_shape_[2]
     cdef np.ndarray b_
     cdef fw_shape_t b_shape_[2]
+    cdef fwi_integer_t lwork_
     cdef np.ndarray alpha_
     cdef fw_shape_t alpha_shape_[1]
     cdef np.ndarray beta_
@@ -5527,7 +5528,6 @@ cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     cdef fw_shape_t vr_shape_[2]
     cdef np.ndarray work_
     cdef fw_shape_t work_shape_[1]
-    cdef fwi_integer_t lwork_
     cdef fwi_integer_t n
     cdef fwi_integer_t ldvl
     cdef fwi_integer_t ldvr
@@ -5694,9 +5694,9 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
                 to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_8da0ef3
+# Fwrap: version 0.2.0dev_8fb474d
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 8e9a1ad07d6b5b8f9940d627a0bcfa3c3bdcb938
+# Fwrap: pyf-sha1 c6e9d97f1e175680725f40282881b888b55b6db4
 # Fwrap: wraps $REFERENCE_LAPACK/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: exclude cbbcsd
