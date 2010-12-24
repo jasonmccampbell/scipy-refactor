@@ -99,6 +99,7 @@ FORTRAN_CALLSPEC void F_FUNC(dgetrf_c,DGETRF_C)(fwi_integer_t *, fwi_integer_t *
 FORTRAN_CALLSPEC void F_FUNC(dgetri_c,DGETRI_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(dgetrs_c,DGETRS_C)(fw_character_t *, fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(dggev_c,DGGEV_C)(fw_character_t *, fw_character_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(dlamch_c,DLAMCH_C)(fwr_dbl_t *, fw_character_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(dlaswp_c,DLASWP_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(dlauum_c,DLAUUM_C)(fw_character_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
 FORTRAN_CALLSPEC void F_FUNC(dorgqr_c,DORGQR_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
@@ -250,6 +251,7 @@ FORTRAN_CALLSPEC void F_FUNC(zungqr_c,ZUNGQR_C)(fwi_integer_t *, fwi_integer_t *
 #define dgetri_c F_FUNC(dgetri_c,DGETRI_C)
 #define dgetrs_c F_FUNC(dgetrs_c,DGETRS_C)
 #define dggev_c F_FUNC(dggev_c,DGGEV_C)
+#define dlamch_c F_FUNC(dlamch_c,DLAMCH_C)
 #define dlaswp_c F_FUNC(dlaswp_c,DLASWP_C)
 #define dlauum_c F_FUNC(dlauum_c,DLAUUM_C)
 #define dorgqr_c F_FUNC(dorgqr_c,DORGQR_C)
