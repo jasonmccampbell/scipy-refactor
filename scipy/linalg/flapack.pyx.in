@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The flapack module was generated with Fwrap v0.2.0dev_6e71521.
+"""The flapack module was generated with Fwrap v0.2.0dev_c657038.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -1095,7 +1095,7 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -1203,7 +1203,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -1212,7 +1212,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -1296,7 +1296,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -1305,7 +1305,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -1409,7 +1409,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     range = 'I'
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -1427,7 +1427,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -1670,7 +1670,7 @@ cpdef api object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     jobvl_f = "V" if compute_vl else "N"
     jobvr_f = "V" if compute_vr else "N"
-    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lwork_ = lwork if (lwork is not None) else 4 * n
@@ -1967,7 +1967,7 @@ cpdef api object dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None,
     jobz_f = "A" if compute_uv else "N"
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
-    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     m = np.PyArray_DIMS(a_)[0]
     n = np.PyArray_DIMS(a_)[1]
@@ -2562,7 +2562,7 @@ cpdef api object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compu
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     jobvl_f = "V" if compute_vl else "N"
     jobvr_f = "V" if compute_vr else "N"
-    a_, a = fw_asfortranarray(a, fwr_real_t_enum, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, fwr_real_t_enum, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lwork_ = lwork if (lwork is not None) else 4 * n
@@ -2773,7 +2773,7 @@ cpdef api object {{name}}(object a, fwi_integer_t lo=0, object hi=None, object l
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     hi_ = hi if (hi is not None) else n - 1
@@ -2914,7 +2914,7 @@ cpdef api object {{name}}(object a, object lwork=None, bint overwrite_a=False, o
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -2976,7 +2976,7 @@ cpdef api object {{name}}(object a, object lwork=None, bint overwrite_a=False, o
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -3048,7 +3048,7 @@ cpdef api object sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None,
     jobz_f = "A" if compute_uv else "N"
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
-    a_, a = fw_asfortranarray(a, fwr_real_t_enum, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, fwr_real_t_enum, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     m = np.PyArray_DIMS(a_)[0]
     n = np.PyArray_DIMS(a_)[1]
@@ -4511,7 +4511,7 @@ cpdef api object {{name}}(object a, object jobz='V', object range='A', object up
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -4610,7 +4610,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -4619,7 +4619,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -4694,7 +4694,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
     cdef fwi_integer_t fw_iserr__
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -4703,7 +4703,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t itype=1, object jobz
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -4798,7 +4798,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     range = 'I'
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     n = np.PyArray_DIMS(a_)[0]
     lda = n
@@ -4816,7 +4816,7 @@ cpdef api object {{name}}(object a, object b, fwi_integer_t iu, fwi_integer_t it
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b)
+    b_, b = fw_asfortranarray(b, {{npy_enum}}, 2, not overwrite_b, 8)
     fw_copyshape(b_shape_, np.PyArray_DIMS(b_), 2)
     if n != b_shape_[0]:
         raise ValueError("(n == b.shape[0]) not satisifed")
@@ -5606,44 +5606,16 @@ cpdef api object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
 
 
 
-cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
-    # In f77binding mode, we do not always have fw_shape_t and np.npy_intp
-    # as the same type, so must make a copy
-    cdef int i
-    for i in range(ndim):
-        target[i] = source[i]
-
-cdef char fw_aschar(object s):
-    cdef char* buf
-    try:
-        return <char>s # int
-    except TypeError:
-        pass
-    try:
-        buf = <char*>s # bytes
-    except TypeError:
-        s = s.encode('ASCII')
-        buf = <char*>s # unicode
-    if buf[0] == 0:
-        return 0
-    elif buf[1] != 0:
-        return 0
-    else:
-        return buf[0]
-
-cdef object fw_explicitshapearray(object value, int typenum, int ndim,
-                                  np.intp_t *shape, bint copy):
-    if value is None:
-        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
-        return result, result
-    else:
-        return fw_asfortranarray(value, typenum, ndim, copy)
-
-cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy):
+cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,
+                              int alignment=1):
     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
     if ndim <= 1:
         # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
         flags |= np.NPY_C_CONTIGUOUS
+    if (not copy and alignment > 1 and np.PyArray_Check(value) and
+        (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
+        # mis-aligned array
+        copy = True
     if copy:
         flags |= np.NPY_ENSURECOPY
     result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
@@ -5692,10 +5664,43 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
             else:
                 to_shape[to_ndim - 1] *= d
 
+cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
+    # In f77binding mode, we do not always have fw_shape_t and np.npy_intp
+    # as the same type, so must make a copy
+    cdef int i
+    for i in range(ndim):
+        target[i] = source[i]
+
+cdef char fw_aschar(object s):
+    cdef char* buf
+    try:
+        return <char>s # int
+    except TypeError:
+        pass
+    try:
+        buf = <char*>s # bytes
+    except TypeError:
+        s = s.encode('ASCII')
+        buf = <char*>s # unicode
+    if buf[0] == 0:
+        return 0
+    elif buf[1] != 0:
+        return 0
+    else:
+        return buf[0]
+
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy, int alignment=1):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result 
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy, alignment)
+
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_6e71521
+# Fwrap: version 0.2.0dev_c657038
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 a3fde6491802269cc259ee3a0763de587df3225b
+# Fwrap: pyf-sha1 2f0bcfd44e0cf4a39520831b441741811b03d3d6
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
