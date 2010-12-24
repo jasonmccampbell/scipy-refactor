@@ -27,6 +27,7 @@ dgegv(...)
 dgelss(...)
 dgesdd(...)
 dggev(...)
+dlamch(...)
 sgbsv, dgbsv, cgbsv, zgbsv(...)
 sgbtrf, dgbtrf, cgbtrf, zgbtrf(...)
 sgbtrs, dgbtrs, cgbtrs, zgbtrs(...)
@@ -2132,6 +2133,31 @@ cpdef api object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integ
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the 'dggev' wrapper.")
     return (alphar, alphai, beta, vl, vr, work, info,)
+
+
+cpdef api object dlamch(object cmach):
+    """dlamch(cmach[, cmach]) -> fw_ret_arg
+
+    Parameters
+    ----------
+    cmach : object_, intent in
+
+    Returns
+    -------
+    fw_ret_arg : fwr_dbl, intent out
+
+    """
+    cdef char *fw_cmach = [0, 0]
+    cdef fwi_integer_t fw_iserr__
+    cdef fwr_dbl_t fw_ret_arg
+    cdef fw_character_t fw_errstr__[fw_errstr_len]
+    fw_cmach[0] = fw_aschar(cmach)
+    if fw_cmach[0] == 0:
+        raise ValueError("len(cmach) != 1")
+    dlamch_c(&fw_ret_arg, fw_cmach, &fw_iserr__, fw_errstr__)
+    if fw_iserr__ != FW_NO_ERR__:
+        raise RuntimeError("an error was encountered when calling the 'dlamch' wrapper.")
+    return fw_ret_arg
 
 
 {{for fc_name, ktp, name, npy_enum
@@ -5696,7 +5722,7 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_8fb474d
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 c6e9d97f1e175680725f40282881b888b55b6db4
+# Fwrap: pyf-sha1 565bdfd24d03e8af4a9e7d6c495edc9d1294db9b
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
@@ -7185,6 +7211,7 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap: exclude zunmtr
 # Fwrap: exclude zupgtr
 # Fwrap: exclude zupmtr
+# Fwrap: exclude dlamc3
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: emulate-f2py True

@@ -2806,6 +2806,30 @@
      &, vl, ldvl, vr, ldvr, work, lwork, info)
         fw_iserr__ = 0
       end subroutine dggev_c
+      subroutine dlamch_c(fw_ret_arg, cmach, fw_iserr__, fw_errstr__)
+        implicit none
+        integer FW_ARR_DIM__
+        parameter (FW_ARR_DIM__ = 2)
+        integer FW_CHAR_SIZE__
+        parameter (FW_CHAR_SIZE__ = 1)
+        integer FW_INIT_ERR__
+        parameter (FW_INIT_ERR__ = -1)
+        integer FW_NO_ERR__
+        parameter (FW_NO_ERR__ = 0)
+        integer fw_errstr_len
+        parameter (fw_errstr_len = 63)
+        character C_NULL_CHAR
+        parameter (C_NULL_CHAR = '\0')
+        real(kind=kind(0.0D0)) :: fw_ret_arg
+        character(len=1, kind=kind('a')) :: cmach
+        integer :: fw_iserr__
+        character(len=1, kind=kind('a')), dimension(63) :: fw_errstr__
+        real(kind=kind(0.0D0)) :: dlamch
+        external dlamch
+        fw_iserr__ = -1
+        fw_ret_arg = dlamch(cmach)
+        fw_iserr__ = 0
+      end subroutine dlamch_c
       subroutine dlaswp_c(n, a_shape__, a, lda, k1, k2, ipiv_shape__, ip
      &iv, incx, fw_iserr__, fw_errstr__)
         implicit none
