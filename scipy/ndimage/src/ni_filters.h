@@ -32,23 +32,23 @@
 #ifndef NI_FILTERS_H
 #define NI_FILTERS_H
 
-int NI_Correlate1D(PyArrayObject*, PyArrayObject*, int, PyArrayObject*,
+int NI_Correlate1D(NpyArray*, NpyArray*, int, NpyArray*,
                    NI_ExtendMode, double, npy_intp);
-int NI_Correlate(PyArrayObject*, PyArrayObject*, PyArrayObject*,
+int NI_Correlate(NpyArray*, NpyArray*, NpyArray*,
                  NI_ExtendMode, double, npy_intp*);
-int NI_UniformFilter1D(PyArrayObject*, npy_intp, int, PyArrayObject*,
+int NI_UniformFilter1D(NpyArray*, npy_intp, int, NpyArray*,
                        NI_ExtendMode, double, npy_intp);
-int NI_MinOrMaxFilter1D(PyArrayObject*, npy_intp, int, PyArrayObject*,
+int NI_MinOrMaxFilter1D(NpyArray*, npy_intp, int, NpyArray*,
                         NI_ExtendMode, double, npy_intp, int);
-int NI_MinOrMaxFilter(PyArrayObject*, PyArrayObject*, PyArrayObject*,
-                      PyArrayObject*, NI_ExtendMode, double, npy_intp*,
+int NI_MinOrMaxFilter(NpyArray*, NpyArray*, NpyArray*,
+                      NpyArray*, NI_ExtendMode, double, npy_intp*,
                                             int);
-int NI_RankFilter(PyArrayObject*, int, PyArrayObject*, PyArrayObject*,
+int NI_RankFilter(NpyArray*, int, NpyArray*, NpyArray*,
                                     NI_ExtendMode, double, npy_intp*);
-int NI_GenericFilter1D(PyArrayObject*, int (*)(double*, npy_intp,
+int NI_GenericFilter1D(NpyArray*, int (*)(double*, npy_intp,
                        double*, npy_intp, void*), void*, npy_intp, int,
-                       PyArrayObject*, NI_ExtendMode, double, npy_intp);
-int NI_GenericFilter(PyArrayObject*, int (*)(double*, npy_intp, double*,
-                                         void*), void*, PyArrayObject*, PyArrayObject*,
+                       NpyArray*, NI_ExtendMode, double, npy_intp);
+int NI_GenericFilter(NpyArray*, int (*)(double*, npy_intp, double*,
+                                         void*), void*, NpyArray*, NpyArray*,
                      NI_ExtendMode, double, npy_intp*);
 #endif

@@ -40,19 +40,219 @@
 
 #include "numpy/npy_3kcompat.h"
 
+#define RETURN_PYARRAY(arr)                     \
+    do {                                        \
+        NpyArray* a_ = (arr);                    \
+        PyArrayObject* ret_;                     \
+        if (a_ == NULL) return NULL;             \
+        ret_ = Npy_INTERFACE(a_);                 \
+        Py_INCREF(ret_);                         \
+        Npy_DECREF(a_);                         \
+        return (PyObject*) ret_;                 \
+    } while (0)
+
+#define ASSIGN_TO_PYARRAY(pya, arr)             \
+    do {                                        \
+        NpyArray* a_ = (arr);                   \
+        if (a_ == NULL) {                       \
+            pya = NULL;                         \
+        } else {                                \
+            pya = Npy_INTERFACE(a_);            \
+            Py_INCREF(pya);                     \
+            Npy_DECREF(a_);                    \
+        }                                       \
+    } while (0)
+
+
 typedef struct {
     PyObject *function;
     PyObject *extra_arguments;
     PyObject *extra_keywords;
 } NI_PythonCallbackData;
 
+static PyArrayObject*
+NA_InputArray(PyObject *a, NumarrayType t, int requires)
+{
+    PyArray_Descr *descr;
+    if (t == tAny) descr = NULL;
+    else descr = PyArray_DescrFromType(t);
+    return (PyArrayObject *)                                            \
+    PyArray_CheckFromAny(a, descr, 0, 0, requires, NULL);
+}
+
+/* satisfies ensures that 'a' meets a set of requirements and matches
+ the specified type.
+ */
+static int
+satisfies(NpyArray *a, int requirements, NumarrayType t)
+{
+    int type_ok = (NpyArray_TYPE(a) == t) || (t == tAny);
+    
+    if (NpyArray_ISCARRAY(a))
+        return type_ok;
+    if (NpyArray_ISBYTESWAPPED(a) && (requirements & NPY_NOTSWAPPED))
+        return 0;
+    if (!NpyArray_ISALIGNED(a) && (requirements & NPY_ALIGNED))
+        return 0;
+    if (!NpyArray_ISCONTIGUOUS(a) && (requirements & NPY_CONTIGUOUS))
+        return 0;
+    if (!NpyArray_ISWRITEABLE(a) && (requirements & NPY_WRITEABLE))
+        return 0;
+    if (requirements & NPY_ENSURECOPY)
+        return 0;
+    return type_ok;
+}
+
+static PyArrayObject *
+NA_OutputArray(PyArrayObject *a, NumarrayType t, int requires)
+{
+    PyArray_Descr *dtype;
+    PyArrayObject *ret;
+    
+    if (!PyArray_ISWRITEABLE(a)) {
+        PyErr_SetString(PyExc_TypeError,
+                         "NA_OutputArray: only writeable arrays work for output.");
+        return NULL;
+    }
+    
+    if (satisfies(PyArray_ARRAY(a), requires, t)) {
+        Py_INCREF(a);
+        return a;
+    }
+    if (t == tAny) {
+        dtype = Npy_INTERFACE(PyArray_DESCR(a));
+        Py_INCREF(dtype);
+    }
+    else {
+        dtype = PyArray_DescrFromType(t);
+    }
+    ret = (PyArrayObject *)PyArray_Empty(PyArray_NDIM(a), PyArray_DIMS(a), dtype, 0);
+    PyArray_FLAGS(ret) |= NPY_UPDATEIFCOPY;
+    PyArray_BASE(ret) = a;
+    PyArray_FLAGS(a) &= ~NPY_WRITEABLE;
+    Py_INCREF(a);
+    return ret;
+}
+
+/* NA_IoArray is a combination of NA_InputArray and NA_OutputArray.
+ 
+ Unlike NA_OutputArray, if a temporary is required it is initialized to a copy
+ of the input array.
+ 
+ Unlike NA_InputArray, deallocating any resulting temporary array results in a
+ copy from the temporary back to the original.
+ */
+static PyArrayObject *
+NA_IoArray(PyObject *a, NumarrayType t, int requires)
+{
+    PyArrayObject *shadow = NA_InputArray(a, t, requires | NPY_UPDATEIFCOPY );
+    
+    if (!shadow) return NULL;
+    
+    /* Guard against non-writable, but otherwise satisfying requires.
+     In this case,  shadow == a.
+     */
+    if (!PyArray_ISWRITEABLE(shadow)) {
+        PyErr_Format(PyExc_TypeError,
+                      "NA_IoArray: I/O array must be writable array");
+        PyArray_XDECREF_ERR(shadow);
+        return NULL;
+    }
+    return shadow;
+}
+
+
+/* ignores bytestride */
+static PyArrayObject *
+NA_NewAllFromBuffer(int ndim, npy_intp *shape, NumarrayType type,
+                    PyObject *bufferObject, npy_intp byteoffset,
+                    npy_intp bytestride, int byteorder, int aligned,
+                    int writeable)
+{
+    PyArrayObject *self = NULL;
+    PyArray_Descr *dtype;
+    
+    if (type == tAny)
+        type = tDefault;
+    
+    dtype = PyArray_DescrFromType(type);
+    if (dtype == NULL) return NULL;
+    
+    if (byteorder != NA_ByteOrder()) {
+        PyArray_Descr *temp;
+        temp = PyArray_DescrNewByteorder(dtype, PyArray_SWAP);
+        Py_DECREF(dtype);
+        if (temp == NULL) return NULL;
+        dtype = temp;
+    }
+    
+    if (bufferObject == Py_None || bufferObject == NULL) {
+        self = (PyArrayObject *)                                        \
+        PyArray_NewFromDescr(&PyArray_Type, dtype,
+                             ndim, shape, NULL, NULL,
+                             0, NULL);
+    }
+    else {
+        npy_intp size = 1;
+        int i;
+        PyArrayObject *newself;
+        PyArray_Dims newdims;
+        for(i=0; i<ndim; i++) {
+            size *= shape[i];
+        }
+        self = (PyArrayObject *)                                \
+        PyArray_FromBuffer(bufferObject, dtype,
+                           size, byteoffset);
+        if (self == NULL) return self;
+        newdims.len = ndim;
+        newdims.ptr = shape;
+        newself = (PyArrayObject *)                                     \
+        PyArray_Newshape(self, &newdims, PyArray_CORDER);
+        Py_DECREF(self);
+        self = newself;
+    }
+    
+    return self;
+}
+
+static PyArrayObject *
+NA_NewAll(int ndim, npy_intp *shape, NumarrayType type,
+          void *buffer, npy_intp byteoffset, npy_intp bytestride,
+          int byteorder, int aligned, int writeable)
+{
+    PyArrayObject *result = NA_NewAllFromBuffer(ndim, shape, type, Py_None,
+                                                byteoffset, bytestride,
+                                                byteorder, aligned, writeable);
+    if (result) {
+        if (buffer) {
+            memcpy(PyArray_DATA(result), buffer, PyArray_NBYTES(result));
+        } else {
+            memset(PyArray_DATA(result), 0, PyArray_NBYTES(result));
+        }
+    }
+    return result;
+}
+
+/* Create a new numarray which is initially a C_array, or which
+ references a C_array: aligned, !byteswapped, contiguous, ...
+ Call with buffer==NULL to allocate storage.
+ */
+static PyArrayObject *
+NA_NewArray(void *buffer, NumarrayType type, int ndim, npy_intp *shape)
+{
+    
+    return NA_NewAll(ndim, shape, type, buffer, 0, 0,
+                     NA_ByteOrder(), 1, 1);
+}
+
 /* Convert an input array of any type, not necessarily contiguous */
 static int
 NI_ObjectToInputArray(PyObject *object, PyArrayObject **array)
 {
     *array = NA_InputArray(object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
-    return *array ? 1 : 0;
+    return (NULL != *array) ? 1 : 0;
 }
+
 
 /* Convert an input array of any type, not necessarily contiguous */
 static int
@@ -63,7 +263,7 @@ NI_ObjectToOptionalInputArray(PyObject *object, PyArrayObject **array)
         return 1;
     } else {
         *array = NA_InputArray(object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
-        return *array ? 1 : 0;
+        return (NULL != *array) ? 1 : 0;
     }
 }
 
@@ -71,8 +271,8 @@ NI_ObjectToOptionalInputArray(PyObject *object, PyArrayObject **array)
 static int
 NI_ObjectToOutputArray(PyObject *object, PyArrayObject **array)
 {
-    *array = NA_OutputArray(object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
-    return *array ? 1 : 0;
+    *array = NA_OutputArray((PyArrayObject *)object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
+    return (NULL != *array) ? 1 : 0;
 }
 
 /* Convert an output array of any type, not necessarily contiguous */
@@ -83,8 +283,8 @@ NI_ObjectToOptionalOutputArray(PyObject *object, PyArrayObject **array)
         *array = NULL;
         return 1;
     } else {
-        *array = NA_OutputArray(object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
-        return *array ? 1 : 0;
+        *array = NA_OutputArray((PyArrayObject *)object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
+        return (NULL != *array) ? 1 : 0;
     }
 }
 
@@ -93,7 +293,7 @@ static int
 NI_ObjectToIoArray(PyObject *object, PyArrayObject **array)
 {
     *array = NA_IoArray(object, tAny, NPY_ALIGNED|NPY_NOTSWAPPED);
-    return *array ? 1 : 0;
+    return (NULL != *array) ? 1 : 0;
 }
 
 /* Convert an Long sequence */
@@ -149,8 +349,10 @@ static PyObject *Py_Correlate1D(PyObject *obj, PyObject *args)
 
 #undef FMT
 
-    if (!NI_Correlate1D(input, weights, axis, output,
-                                            (NI_ExtendMode)mode, cval, origin))
+    if (!NI_Correlate1D(PyArray_ARRAY(input), 
+                        PyArray_ARRAY(weights), 
+                        axis, PyArray_ARRAY(output),
+                        (NI_ExtendMode)mode, cval, origin))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -172,8 +374,11 @@ static PyObject *Py_Correlate(PyObject *obj, PyObject *args)
                          &mode, &cval,
                          NI_ObjectToLongSequence, &origin))
         goto exit;
-    if (!NI_Correlate(input, weights, output, (NI_ExtendMode)mode, cval,
-                                        origin))
+    if (!NI_Correlate(PyArray_ARRAY(input), 
+                      PyArray_ARRAY(weights), 
+                      PyArray_ARRAY(output), 
+                      (NI_ExtendMode)mode, cval,
+                      origin))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -203,7 +408,8 @@ static PyObject *Py_UniformFilter1D(PyObject *obj, PyObject *args)
                           NI_ObjectToOutputArray, &output,
                           &mode, &cval, &origin))
         goto exit;
-    if (!NI_UniformFilter1D(input, filter_size, axis, output,
+    if (!NI_UniformFilter1D(PyArray_ARRAY(input), filter_size, axis, 
+                            PyArray_ARRAY(output),
                             (NI_ExtendMode)mode, cval, origin))
         goto exit;
 exit:
@@ -232,8 +438,9 @@ static PyObject *Py_MinOrMaxFilter1D(PyObject *obj, PyObject *args)
                           &mode, &cval, &origin, &minimum))
         goto exit;
 #undef FMT
-    if (!NI_MinOrMaxFilter1D(input, filter_size, axis, output,
-                                                            (NI_ExtendMode)mode, cval, origin, minimum))
+    if (!NI_MinOrMaxFilter1D(PyArray_ARRAY(input), filter_size, axis, 
+                             PyArray_ARRAY(output),
+                             (NI_ExtendMode)mode, cval, origin, minimum))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -258,8 +465,9 @@ static PyObject *Py_MinOrMaxFilter(PyObject *obj, PyObject *args)
                           NI_ObjectToLongSequence, &origin,
                           &minimum))
         goto exit;
-    if (!NI_MinOrMaxFilter(input, footprint, structure, output,
-                                                (NI_ExtendMode)mode, cval, origin, minimum))
+    if (!NI_MinOrMaxFilter(PyArray_ARRAY(input), PyArray_ARRAY(footprint), 
+                           PyArray_ARRAY(structure), PyArray_ARRAY(output),
+                           (NI_ExtendMode)mode, cval, origin, minimum))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -285,8 +493,9 @@ static PyObject *Py_RankFilter(PyObject *obj, PyObject *args)
                           &mode, &cval,
                                         NI_ObjectToLongSequence, &origin))
         goto exit;
-    if (!NI_RankFilter(input, rank, footprint, output, (NI_ExtendMode)mode,
-                                         cval, origin))
+    if (!NI_RankFilter(PyArray_ARRAY(input), rank, PyArray_ARRAY(footprint), 
+                       PyArray_ARRAY(output), (NI_ExtendMode)mode,
+                       cval, origin))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -378,7 +587,8 @@ static PyObject *Py_GenericFilter1D(PyObject *obj, PyObject *args)
                                         "function parameter is not callable");
         goto exit;
     }
-    if (!NI_GenericFilter1D(input, func, data, filter_size, axis, output,
+    if (!NI_GenericFilter1D(PyArray_ARRAY(input), func, data, filter_size, axis, 
+                            PyArray_ARRAY(output),
                             (NI_ExtendMode)mode, cval, origin))
         goto exit;
 exit:
@@ -456,8 +666,10 @@ static PyObject *Py_GenericFilter(PyObject *obj, PyObject *args)
                                         "function parameter is not callable");
         goto exit;
     }
-    if (!NI_GenericFilter(input, func, data, footprint, output,
-                                                (NI_ExtendMode)mode, cval, origin))
+    if (!NI_GenericFilter(PyArray_ARRAY(input), func, data, 
+                          PyArray_ARRAY(footprint), 
+                          PyArray_ARRAY(output),
+                          (NI_ExtendMode)mode, cval, origin))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -489,7 +701,8 @@ static PyObject *Py_FourierFilter(PyObject *obj, PyObject *args)
         goto exit;
 #undef FMT
 
-    if (!NI_FourierFilter(input, parameters, n, axis, output, filter_type))
+    if (!NI_FourierFilter(PyArray_ARRAY(input), PyArray_ARRAY(parameters), n, axis, 
+                          PyArray_ARRAY(output), filter_type))
         goto exit;
 
 exit:
@@ -519,7 +732,9 @@ static PyObject *Py_FourierShift(PyObject *obj, PyObject *args)
         goto exit;
 #undef FMT
 
-    if (!NI_FourierShift(input, shifts, n, axis, output))
+    if (!NI_FourierShift(PyArray_ARRAY(input), 
+                         PyArray_ARRAY(shifts), n, axis, 
+                         PyArray_ARRAY(output)))
         goto exit;
 
 exit:
@@ -540,7 +755,8 @@ static PyObject *Py_SplineFilter1D(PyObject *obj, PyObject *args)
                           NI_ObjectToOutputArray, &output))
         goto exit;
 
-    if (!NI_SplineFilter1D(input, order, axis, output))
+    if (!NI_SplineFilter1D(PyArray_ARRAY(input), order, axis, 
+                           PyArray_ARRAY(output)))
         goto exit;
 
 exit:
@@ -639,8 +855,10 @@ static PyObject *Py_GeometricTransform(PyObject *obj, PyObject *args)
         }
     }
 
-    if (!NI_GeometricTransform(input, func, data, matrix, shift, coordinates,
-                                                    output, order, (NI_ExtendMode)mode, cval))
+    if (!NI_GeometricTransform(PyArray_ARRAY(input), func, data, 
+                               PyArray_ARRAY(matrix), PyArray_ARRAY(shift), 
+                               PyArray_ARRAY(coordinates), PyArray_ARRAY(output), 
+                               order, (NI_ExtendMode)mode, cval))
         goto exit;
 
 exit:
@@ -667,8 +885,9 @@ static PyObject *Py_ZoomShift(PyObject *obj, PyObject *args)
                           &order, &mode, &cval))
         goto exit;
 
-    if (!NI_ZoomShift(input, zoom, shift, output, order, (NI_ExtendMode)mode,
-                                        cval))
+    if (!NI_ZoomShift(PyArray_ARRAY(input), PyArray_ARRAY(zoom), 
+                      PyArray_ARRAY(shift), PyArray_ARRAY(output), 
+                      order, (NI_ExtendMode)mode, cval))
         goto exit;
 
 exit:
@@ -690,7 +909,8 @@ static PyObject *Py_Label(PyObject *obj, PyObject *args)
                           NI_ObjectToOutputArray, &output))
         goto exit;
 
-    if (!NI_Label(input, strct, &max_label, output))
+    if (!NI_Label(PyArray_ARRAY(input), PyArray_ARRAY(strct), &max_label, 
+                  PyArray_ARRAY(output)))
         goto exit;
 
 exit:
@@ -739,7 +959,7 @@ static PyObject *Py_FindObjects(PyObject *obj, PyObject *args)
         }
     }
 
-    if (!NI_FindObjects(input, max_label, regions))
+    if (!NI_FindObjects(PyArray_ARRAY(input), max_label, regions))
         goto exit;
 
     result = PyList_New(max_label);
@@ -816,7 +1036,8 @@ static PyObject *Py_WatershedIFT(PyObject *obj, PyObject *args)
                     &strct, NI_ObjectToOutputArray, &output))
         goto exit;
 
-    if (!NI_WatershedIFT(input, markers, strct, output))
+    if (!NI_WatershedIFT(PyArray_ARRAY(input), PyArray_ARRAY(markers), 
+                         PyArray_ARRAY(strct), PyArray_ARRAY(output)))
         goto exit;
 
 exit:
@@ -841,8 +1062,8 @@ static PyObject *Py_DistanceTransformBruteForce(PyObject *obj,
                                                 NI_ObjectToOptionalOutputArray, &output,
                                                 NI_ObjectToOptionalOutputArray, &features))
         goto exit;
-    if (!NI_DistanceTransformBruteForce(input, metric, sampling,
-                                                                            output, features))
+    if (!NI_DistanceTransformBruteForce(PyArray_ARRAY(input), metric, PyArray_ARRAY(sampling),
+                                        PyArray_ARRAY(output), PyArray_ARRAY(features)))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -858,10 +1079,11 @@ static PyObject *Py_DistanceTransformOnePass(PyObject *obj, PyObject *args)
 
     if (!PyArg_ParseTuple(args, "O&O&O&",
                           NI_ObjectToInputArray, &strct,
-                                                NI_ObjectToIoArray, &distances,
-                                                NI_ObjectToOptionalOutputArray, &features))
+                          NI_ObjectToIoArray, &distances,
+                          NI_ObjectToOptionalOutputArray, &features))
         goto exit;
-    if (!NI_DistanceTransformOnePass(strct, distances, features))
+    if (!NI_DistanceTransformOnePass(PyArray_ARRAY(strct), PyArray_ARRAY(distances), 
+                                     PyArray_ARRAY(features)))
         goto exit;
 exit:
     Py_XDECREF(strct);
@@ -880,7 +1102,8 @@ static PyObject *Py_EuclideanFeatureTransform(PyObject *obj,
                                                 NI_ObjectToOptionalInputArray, &sampling,
                                                 NI_ObjectToOutputArray, &features))
         goto exit;
-    if (!NI_EuclideanFeatureTransform(input, sampling, features))
+    if (!NI_EuclideanFeatureTransform(PyArray_ARRAY(input), PyArray_ARRAY(sampling), 
+                                      PyArray_ARRAY(features)))
         goto exit;
 exit:
     Py_XDECREF(input);
@@ -920,9 +1143,10 @@ static PyObject *Py_BinaryErosion(PyObject *obj, PyObject *args)
                           NI_ObjectToLongSequence, &origins,
                           &invert, &center_is_true, &return_coordinates))
         goto exit;
-    if (!NI_BinaryErosion(input, strct, mask, output, border_value,
-                                                origins, invert, center_is_true, &changed,
-                                                return_coordinates ? &coordinate_list : NULL))
+    if (!NI_BinaryErosion(PyArray_ARRAY(input), PyArray_ARRAY(strct), 
+                          PyArray_ARRAY(mask), PyArray_ARRAY(output), 
+                          border_value, origins, invert, center_is_true, &changed,
+                          return_coordinates ? &coordinate_list : NULL))
         goto exit;
     if (return_coordinates) {
         cobj = PyCapsule_FromVoidPtr(coordinate_list, _FreeCoordinateList);
@@ -964,8 +1188,9 @@ static PyObject *Py_BinaryErosion2(PyObject *obj, PyObject *args)
 
     if (PyCapsule_Check(cobj)) {
         NI_CoordinateList *cobj_data = PyCapsule_AsVoidPtr(cobj);
-        if (!NI_BinaryErosion2(array, strct, mask, niter, origins, invert,
-                                                     &cobj_data))
+        if (!NI_BinaryErosion2(PyArray_ARRAY(array), PyArray_ARRAY(strct), 
+                               PyArray_ARRAY(mask), niter, origins, invert,
+                               &cobj_data))
             goto exit;
     } else {
         PyErr_SetString(PyExc_RuntimeError, "cannot convert CObject");

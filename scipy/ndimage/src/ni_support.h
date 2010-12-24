@@ -70,10 +70,10 @@ typedef struct {
 } NI_Iterator;
 
 /* initialize iterations over single array elements: */
-int NI_InitPointIterator(PyArrayObject*, NI_Iterator*);
+int NI_InitPointIterator(NpyArray*, NI_Iterator*);
 
 /* initialize iterations over an arbritrary sub-space: */
-int NI_SubspaceIterator(NI_Iterator*, UInt32);
+int NI_SubspaceIterator(NI_Iterator*, npy_uint32);
 
 /* initialize iteration over array lines: */
 int NI_LineIterator(NI_Iterator*, int);
@@ -170,11 +170,11 @@ typedef struct {
     ((_buffer).buffer_data + (_line) * ((_buffer).line_length +            \
                                                                             (_buffer).size1 + (_buffer).size2))
 /* Allocate line buffer data */
-int NI_AllocateLineBuffer(PyArrayObject*, int, npy_intp, npy_intp,
+int NI_AllocateLineBuffer(NpyArray*, int, npy_intp, npy_intp,
                            npy_intp*, npy_intp, double**);
 
 /* Initialize a line buffer */
-int NI_InitLineBuffer(PyArrayObject*, int, npy_intp, npy_intp, npy_intp,
+int NI_InitLineBuffer(NpyArray*, int, npy_intp, npy_intp, npy_intp,
                                             double*, NI_ExtendMode, double, NI_LineBuffer*);
 
 /* Extend a line in memory to implement boundary conditions: */
@@ -196,13 +196,15 @@ typedef struct {
     npy_intp bound1[MAXDIM], bound2[MAXDIM];
 } NI_FilterIterator;
 
+
+
 /* Initialize a filter iterator: */
 int NI_InitFilterIterator(int, npy_intp*, npy_intp, npy_intp*,
                           npy_intp*, NI_FilterIterator*);
 
 /* Calculate the offsets to the filter points, for all border regions and
      the interior of the array: */
-int NI_InitFilterOffsets(PyArrayObject*, Bool*, npy_intp*,
+int NI_InitFilterOffsets(NpyArray*, npy_bool*, npy_intp*,
                          npy_intp*, NI_ExtendMode, npy_intp**, 
                          npy_intp*, npy_intp**);
 
