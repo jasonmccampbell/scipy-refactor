@@ -39,22 +39,22 @@ typedef struct {
     int start[NI_MAXDIM], end[NI_MAXDIM];
 } NI_ObjectRegion;
 
-int NI_Label(PyArrayObject*, PyArrayObject*, npy_intp*, PyArrayObject*);
+int NI_Label(NpyArray*, NpyArray*, npy_intp*, NpyArray*);
 
-int NI_FindObjects(PyArrayObject*, npy_intp, npy_intp*);
+int NI_FindObjects(NpyArray*, npy_intp, npy_intp*);
 
-int NI_CenterOfMass(PyArrayObject*, PyArrayObject*, npy_intp, npy_intp,
+int NI_CenterOfMass(NpyArray*, NpyArray*, npy_intp, npy_intp,
                     npy_intp*, npy_intp, double*);
 
-int NI_Histogram(PyArrayObject*, PyArrayObject*, npy_intp, npy_intp,
-                 npy_intp*, npy_intp, PyArrayObject**, double, double,
+int NI_Histogram(NpyArray*, NpyArray*, npy_intp, npy_intp,
+                 npy_intp*, npy_intp, NpyArray**, double, double,
                  npy_intp);
 
-int NI_Statistics(PyArrayObject*, PyArrayObject*, npy_intp, npy_intp,
+int NI_Statistics(NpyArray*, NpyArray*, npy_intp, npy_intp,
                   npy_intp*, npy_intp, double*, npy_intp*, double*,
                   double*, double*, npy_intp*, npy_intp*);
 
-int NI_WatershedIFT(PyArrayObject*, PyArrayObject*, PyArrayObject*, 
-                                        PyArrayObject*);
+int NI_WatershedIFT(NpyArray*, NpyArray*, NpyArray*, 
+                                        NpyArray*);
 
 #endif

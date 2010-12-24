@@ -32,39 +32,38 @@
 #ifndef ND_IMAGE_H
 #define ND_IMAGE_H
 
-#include "Python.h"
-
 #ifndef ND_IMPORT_ARRAY
 #define NO_IMPORT_ARRAY
 #endif
 
-#include <numpy/noprefix.h>
+#include <npy_api.h>
+#include <npy_arrayobject.h>
+
 #undef NO_IMPORT_ARRAY
 
-#include "numpy/npy_3kcompat.h"
 
 /* Eventually get rid of everything below this line */
 
 typedef enum
 {
          tAny=-1,
-         tBool=PyArray_BOOL,
-         tInt8=PyArray_INT8,
-         tUInt8=PyArray_UINT8,
-         tInt16=PyArray_INT16,
-         tUInt16=PyArray_UINT16,
-         tInt32=PyArray_INT32,
-         tUInt32=PyArray_UINT32,
-         tInt64=PyArray_INT64,
-         tUInt64=PyArray_UINT64,
-         tFloat32=PyArray_FLOAT32,
-         tFloat64=PyArray_FLOAT64,
-         tComplex64=PyArray_COMPLEX64,
-         tComplex128=PyArray_COMPLEX128,
-         tObject=PyArray_OBJECT,        /* placeholder... does nothing */
-         tMaxType=PyArray_NTYPES,
-         tDefault=PyArray_FLOAT64,
-         tLong=PyArray_LONG,
+         tnpy_bool=NPY_BOOL,
+         tnpy_int8=NPY_INT8,
+         tnpy_uint8=NPY_UINT8,
+         tnpy_int16=NPY_INT16,
+         tnpy_uint16=NPY_UINT16,
+         tnpy_int32=NPY_INT32,
+         tnpy_uint32=NPY_UINT32,
+         tnpy_int64=NPY_INT64,
+         tnpy_uint64=NPY_UINT64,
+         tnpy_float32=NPY_FLOAT32,
+         tnpy_float64=NPY_FLOAT64,
+         tnpy_complex64=NPY_COMPLEX64,
+         tnpy_complex128=NPY_COMPLEX128,
+         tnpy_object=NPY_OBJECT,        /* placeholder... does nothing */
+         tMaxType=NPY_NTYPES,
+         tDefault=NPY_FLOAT64,
+         tnpy_ong=NPY_LONG,
 } NumarrayType;
 
 #define NI_MAXDIM NPY_MAXDIMS
@@ -79,98 +78,6 @@ typedef enum
 
 /* Numarray Helper Functions */
 
-static PyArrayObject*
-NA_InputArray(PyObject *a, NumarrayType t, int requires)
-{
-        PyArray_Descr *descr;
-        if (t == tAny) descr = NULL;
-        else descr = PyArray_DescrFromType(t);
-        return (PyArrayObject *)                                            \
-                PyArray_CheckFromAny(a, descr, 0, 0, requires, NULL);
-}
-
-/* satisfies ensures that 'a' meets a set of requirements and matches
-the specified type.
-*/
-static int
-satisfies(PyArrayObject *a, int requirements, NumarrayType t)
-{
-        int type_ok = (PyArray_TYPE(a) == t) || (t == tAny);
-
-        if (PyArray_ISCARRAY(a))
-                return type_ok;
-        if (PyArray_ISBYTESWAPPED(a) && (requirements & NPY_NOTSWAPPED))
-                return 0;
-        if (!PyArray_ISALIGNED(a) && (requirements & NPY_ALIGNED))
-                return 0;
-        if (!PyArray_ISCONTIGUOUS(a) && (requirements & NPY_CONTIGUOUS))
-                return 0;
-        if (!PyArray_ISWRITEABLE(a) && (requirements & NPY_WRITEABLE))
-                return 0;
-        if (requirements & NPY_ENSURECOPY)
-                return 0;
-        return type_ok;
-}
-
-static PyArrayObject *
-NA_OutputArray(PyObject *a, NumarrayType t, int requires)
-{
-        PyArray_Descr *dtype;
-        PyArrayObject *ret;
-
-        if (!PyArray_Check(a) || !PyArray_ISWRITEABLE(a)) {
-                PyErr_Format(PyExc_TypeError,
-                                         "NA_OutputArray: only writeable arrays work for output.");
-                return NULL;
-        }
-
-        if (satisfies((PyArrayObject *)a, requires, t)) {
-                Py_INCREF(a);
-                return (PyArrayObject *)a;
-        }
-        if (t == tAny) {
-                dtype = (PyArray_Descr *)Npy_INTERFACE(PyArray_DESCR(a));
-                Py_INCREF(dtype);
-        }
-        else {
-                dtype = PyArray_DescrFromType(t);
-        }
-        ret = (PyArrayObject *)PyArray_Empty(PyArray_NDIM(a), PyArray_DIMS(a),
-                                                                                 dtype, 0);
-        PyArray_FLAGS(ret) |= NPY_UPDATEIFCOPY;
-        PyArray_BASE(ret) = a;
-        PyArray_FLAGS(a) &= ~NPY_WRITEABLE;
-        Py_INCREF(a);
-        return ret;
-}
-
-/* NA_IoArray is a combination of NA_InputArray and NA_OutputArray.
-
-Unlike NA_OutputArray, if a temporary is required it is initialized to a copy
-of the input array.
-
-Unlike NA_InputArray, deallocating any resulting temporary array results in a
-copy from the temporary back to the original.
-*/
-static PyArrayObject *
-NA_IoArray(PyObject *a, NumarrayType t, int requires)
-{
-        PyArrayObject *shadow = NA_InputArray(a, t, requires | NPY_UPDATEIFCOPY );
-
-        if (!shadow) return NULL;
-
-        /* Guard against non-writable, but otherwise satisfying requires.
-             In this case,  shadow == a.
-        */
-        if (!PyArray_ISWRITEABLE(shadow)) {
-                PyErr_Format(PyExc_TypeError,
-                                         "NA_IoArray: I/O array must be writable array");
-                PyArray_XDECREF_ERR(shadow);
-                return NULL;
-        }
-
-        return shadow;
-}
 
 #define NUM_LITTLE_ENDIAN 0
 #define NUM_BIG_ENDIAN 1
@@ -186,92 +93,6 @@ NA_ByteOrder(void)
                 return NUM_BIG_ENDIAN;
 }
 
-/* ignores bytestride */
-static PyArrayObject *
-NA_NewAllFromBuffer(int ndim, npy_intp *shape, NumarrayType type,
-                    PyObject *bufferObject, npy_intp byteoffset,
-                    npy_intp bytestride, int byteorder, int aligned,
-                    int writeable)
-{
-        PyArrayObject *self = NULL;
-        PyArray_Descr *dtype;
-
-        if (type == tAny)
-                type = tDefault;
-
-        dtype = PyArray_DescrFromType(type);
-        if (dtype == NULL) return NULL;
-
-        if (byteorder != NA_ByteOrder()) {
-                PyArray_Descr *temp;
-                temp = PyArray_DescrNewByteorder(dtype, PyArray_SWAP);
-                Py_DECREF(dtype);
-                if (temp == NULL) return NULL;
-                dtype = temp;
-        }
-
-        if (bufferObject == Py_None || bufferObject == NULL) {
-                self = (PyArrayObject *)                                        \
-                        PyArray_NewFromDescr(&PyArray_Type, dtype,
-                                                                 ndim, shape, NULL, NULL,
-                                                                 0, NULL);
-        }
-        else {
-                npy_intp size = 1;
-                int i;
-                PyArrayObject *newself;
-                PyArray_Dims newdims;
-                for(i=0; i<ndim; i++) {
-                        size *= shape[i];
-                }
-                self = (PyArrayObject *)                                \
-                        PyArray_FromBuffer(bufferObject, dtype,
-                                                             size, byteoffset);
-                if (self == NULL) return self;
-                newdims.len = ndim;
-                newdims.ptr = shape;
-                newself = (PyArrayObject *)                                     \
-                        PyArray_Newshape(self, &newdims, PyArray_CORDER);
-                Py_DECREF(self);
-                self = newself;
-        }
-
-        return self;
-}
-
-static PyArrayObject *
-NA_NewAll(int ndim, npy_intp *shape, NumarrayType type,
-                    void *buffer, npy_intp byteoffset, npy_intp bytestride,
-                    int byteorder, int aligned, int writeable)
-{
-    PyArrayObject *result = NA_NewAllFromBuffer(ndim, shape, type, Py_None,
-                                                                                                byteoffset, bytestride,
-                                                                                                byteorder, aligned, writeable);
-        if (result) {
-                if (!PyArray_Check((PyObject *) result)) {
-            PyErr_Format(PyExc_TypeError, "NA_NewAll: non-NumArray result");
-                        result = NULL;
-                } else {
-                        if (buffer) {
-                                memcpy(PyArray_DATA(result), buffer, PyArray_NBYTES(result));
-                        } else {
-                                memset(PyArray_DATA(result), 0, PyArray_NBYTES(result));
-                        }
-                }
-        }
-        return  result;
-}
-
-/* Create a new numarray which is initially a C_array, or which
-references a C_array: aligned, !byteswapped, contiguous, ...
-Call with buffer==NULL to allocate storage.
-*/
-static PyArrayObject *
-NA_NewArray(void *buffer, NumarrayType type, int ndim, npy_intp *shape)
-{
-        return (PyArrayObject *) NA_NewAll(ndim, shape, type, buffer, 0, 0,
-                                                                             NA_ByteOrder(), 1, 1);
-}
 
 #endif /* ND_IMPORT_ARRAY */
 
