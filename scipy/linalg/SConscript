@@ -102,11 +102,11 @@ fenv.NumpyPythonExtension('fblas', ['fblas.c', 'fblas_fc.f'])
 #------------
 #   cblas
 #------------
-if has_cblas:
-    env.haha('cblas', 'generic_cblas.pyf')
-else:
-    env.hihi('cblas', 'generic_cblas.pyf')
-env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
+## if has_cblas:
+##     env.haha('cblas', 'generic_cblas.pyf')
+## else:
+##     env.hihi('cblas', 'generic_cblas.pyf')
+## env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
 
 #------------
 #   flapack
@@ -116,11 +116,11 @@ fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
 #------------
 #   clapack
 #------------
-if has_clapack:
-    env.haha('clapack', 'generic_clapack.pyf')
-else:
-    env.hihi('clapack', 'generic_clapack.pyf')
-env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
+## if has_clapack:
+##     env.haha('clapack', 'generic_clapack.pyf')
+## else:
+##     env.hihi('clapack', 'generic_clapack.pyf')
+## env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
 
 #----------------
 #   _flinalg
