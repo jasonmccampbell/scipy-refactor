@@ -10,18 +10,7 @@ c     suffixes: _c,_r     (column major order,row major order)
       double precision l(m,k),u(k,n),a(m,n)
       double precision p(m1,m1)
 
-cf2py intent(in,copy) :: a
-cf2py intent(out) :: info
-cf2py integer intent(hide,cache),depend(k),dimension(k) :: piv
-cf2py integer intent(hide),depend(a) :: m = shape(a,0)
-cf2py integer intent(hide),depend(a) :: n = shape(a,1)
-cf2py integer intent(hide),depend(m,n) :: k = (m<n?m:n)
-cf2py intent(out) :: p,l,u
-cf2py integer optional,intent(in):: permute_l = 0
-cf2py integer intent(hide),depend(permute_l,m) :: m1 = (permute_l?1:m)
-cf2py depend(m1) :: p
 
-cf2py callprotoargument double*,double*,double*,double*,int*,int*,int*,int*,int*,int*,int*
 
       external dgetrf,dlaswp
       call dgetrf(m,n,a,m,piv,info)
@@ -57,18 +46,7 @@ cf2py callprotoargument double*,double*,double*,double*,int*,int*,int*,int*,int*
       complex*16 l(m,k),u(k,n),a(m,n)
       double precision p(m1,m1)
 
-cf2py intent(in,copy) :: a
-cf2py intent(out) :: info
-cf2py integer intent(hide,cache),depend(k),dimension(k) :: piv
-cf2py integer intent(hide),depend(a) :: m = shape(a,0)
-cf2py integer intent(hide),depend(a) :: n = shape(a,1)
-cf2py integer intent(hide),depend(m,n) :: k = (m<n?m:n)
-cf2py intent(out) :: p,l,u
-cf2py integer optional,intent(in):: permute_l = 0
-cf2py integer intent(hide),depend(permute_l,m) :: m1 = (permute_l?1:m)
-cf2py depend(m1) :: p
 
-cf2py callprotoargument double*,complex_double*,complex_double*,complex_double*,int*,int*,int*,int*,int*,int*,int*
 
       external zgetrf,zlaswp,dlaswp
       call zgetrf(m,n,a,m,piv,info)
@@ -104,18 +82,7 @@ cf2py callprotoargument double*,complex_double*,complex_double*,complex_double*,
       real l(m,k),u(k,n),a(m,n)
       real p(m1,m1)
 
-cf2py intent(in,copy) :: a
-cf2py intent(out) :: info
-cf2py integer intent(hide,cache),depend(k),dimension(k) :: piv
-cf2py integer intent(hide),depend(a) :: m = shape(a,0)
-cf2py integer intent(hide),depend(a) :: n = shape(a,1)
-cf2py integer intent(hide),depend(m,n) :: k = (m<n?m:n)
-cf2py intent(out) :: p,l,u
-cf2py integer optional,intent(in):: permute_l = 0
-cf2py integer intent(hide),depend(permute_l,m) :: m1 = (permute_l?1:m)
-cf2py depend(m1) :: p
 
-cf2py callprotoargument float*,float*,float*,float*,int*,int*,int*,int*,int*,int*,int*
 
       external sgetrf,slaswp
       call sgetrf(m,n,a,m,piv,info)
@@ -151,18 +118,7 @@ cf2py callprotoargument float*,float*,float*,float*,int*,int*,int*,int*,int*,int
       complex l(m,k),u(k,n),a(m,n)
       real p(m1,m1)
 
-cf2py intent(in,copy) :: a
-cf2py intent(out) :: info
-cf2py integer intent(hide,cache),depend(k),dimension(k) :: piv
-cf2py integer intent(hide),depend(a) :: m = shape(a,0)
-cf2py integer intent(hide),depend(a) :: n = shape(a,1)
-cf2py integer intent(hide),depend(m,n) :: k = (m<n?m:n)
-cf2py intent(out) :: p,l,u
-cf2py integer optional,intent(in):: permute_l = 0
-cf2py integer intent(hide),depend(permute_l,m) :: m1 = (permute_l?1:m)
-cf2py depend(m1) :: p
 
-cf2py callprotoargument float*,complex_float*,complex_float*,complex_float*,int*,int*,int*,int*,int*,int*,int*
 
       external cgetrf,claswp,slaswp
       call cgetrf(m,n,a,m,piv,info)
