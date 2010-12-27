@@ -11,15 +11,21 @@ import types
 
 import numpy
 
+_use_force_clapack = 1
+
 from funcinfo import register_func_info
 from scipy.linalg import flapack
-from scipy.linalg import clapack
-_use_force_clapack = 1
-if hasattr(clapack,'empty_module'):
+try:
+    from scipy.linalg import clapack
+except ImportError:
     clapack = flapack
     _use_force_clapack = 0
-elif hasattr(flapack,'empty_module'):
-    flapack = clapack
+else:
+    if hasattr(clapack,'empty_module'):
+        clapack = flapack
+        _use_force_clapack = 0
+    elif hasattr(flapack,'empty_module'):
+        flapack = clapack
 
 def cast_to_lapack_prefix(t):
     if issubclass(t, numpy.single):

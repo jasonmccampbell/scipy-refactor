@@ -17,7 +17,7 @@ from scons_support import do_generate_interface, do_generate_fake_interface, \
 #    generate_config_header, generate_config_header_emitter
 
 env = GetNumpyEnvironment(ARGUMENTS)
-env.Tool('f2py')
+##env.Tool('f2py')
 
 # XXX: handle cblas wrapper for complex (check in numpy.scons or here ?)
 env.AppendUnique(F2PYOPTIONS = '--quiet')
@@ -102,34 +102,31 @@ fenv.NumpyPythonExtension('fblas', ['fblas.c', 'fblas_fc.f'])
 #------------
 #   cblas
 #------------
-if has_cblas:
-    env.haha('cblas', 'generic_cblas.pyf')
-else:
-    env.hihi('cblas', 'generic_cblas.pyf')
-env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
+## if has_cblas:
+##     env.haha('cblas', 'generic_cblas.pyf')
+## else:
+##     env.hihi('cblas', 'generic_cblas.pyf')
+## env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
 
 #------------
 #   flapack
 #------------
-yop = fenv.haha('flapack', 'generic_flapack.pyf')
-# XXX: automatically scan dependency on flapack_user_routines.pyf ?
-fenv.Depends(yop, 'flapack_user_routines.pyf')
-fenv.NumpyPythonExtension('flapack', 'flapack.pyf')
+fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
 
 #------------
 #   clapack
 #------------
-if has_clapack:
-    env.haha('clapack', 'generic_clapack.pyf')
-else:
-    env.hihi('clapack', 'generic_clapack.pyf')
-env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
+## if has_clapack:
+##     env.haha('clapack', 'generic_clapack.pyf')
+## else:
+##     env.hihi('clapack', 'generic_clapack.pyf')
+## env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
 
 #----------------
 #   _flinalg
 #----------------
 flinalg_fsrc = [pjoin('src', i) for i in ['det.f', 'lu.f']]
-flinalg_src = fenv.F2py(pjoin('src', '_flinalgmodule.c'), flinalg_fsrc)
+flinalg_src = ['_flinalg.c', '_flinalg_fc.f']
 
 fenv.NumpyPythonExtension('_flinalg', source = flinalg_src + flinalg_fsrc)
 

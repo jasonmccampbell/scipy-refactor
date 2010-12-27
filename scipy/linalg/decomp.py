@@ -747,7 +747,7 @@ def hessenberg(a, calc_q=False, overwrite_a=False):
         raise ValueError('illegal value in %d-th argument of internal gebal '
                                                     '(hessenberg)' % -info)
     n = len(a1)
-    lwork = calc_lwork.gehrd(get_func_info(gehrd).prefix, n, lo, hi)
+    lwork = calc_lwork.gehrd(get_func_info(gehrd).prefix, n, lo, hi)[0]
     hq, tau, info = gehrd(ba, lo=lo, hi=hi, lwork=lwork, overwrite_a=1)
     if info < 0:
         raise ValueError('illegal value in %d-th argument of internal gehrd '

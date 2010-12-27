@@ -435,9 +435,11 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
     if gelss_info.module_name[:7] == 'flapack':
         lwork = calc_lwork.gelss(gelss_info.prefix, m, n, nrhs)[1]
-        v, x, s, rank, info = gelss(a1, b1, cond=cond, lwork=lwork,
-                                                overwrite_a=overwrite_a,
-                                                overwrite_b=overwrite_b)
+        v, x, s, rank, info = gelss(a1, b1,
+                                    cond=-1 if cond is None else cond,
+                                    lwork=lwork,
+                                    overwrite_a=overwrite_a,
+                                    overwrite_b=overwrite_b)
     else:
         raise NotImplementedError('calling gelss from %s' % get_func_info(gelss).module_name)
     if info > 0:
