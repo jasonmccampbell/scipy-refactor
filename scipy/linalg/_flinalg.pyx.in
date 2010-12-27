@@ -31,46 +31,46 @@ cdef extern from "string.h":
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['sdet_c', 'ddet_c', 'cdet_c', 'zdet_c'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}({{ktp}} det, object a, fwi_integer_t n, object piv, fwi_integer_t info):
-    """{{name}}(det, a, n, piv, info[, det, a, n, piv, info]) -> (det, a, n, piv, info)
+cpdef api object {{name}}(object a, bint overwrite_a=False):
+    """{{name}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
     ----------
-    det : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
-    n : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(n), intent inout
-    info : fwi_integer, intent inout
+    a : {{ktp}}_, 2D array, dimension(n, n), intent in
+    overwrite_a : bint_, intent in
 
     Returns
     -------
-    det : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
-    n : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(n), intent inout
-    info : fwi_integer, intent inout
+    det : {{ktp}}_, intent out
+    info : fwi_integer, intent out
 
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t n
     cdef np.ndarray piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef {{ktp}} det
+    cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
+    if not (np.PyArray_DIMS(a_)[0] == np.PyArray_DIMS(a_)[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
+    n = np.PyArray_DIMS(a_)[0]
     if n != a_shape_[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    piv_, piv = fw_asfortranarray(piv, fwi_integer_t_enum, 1, False)
+    piv_, piv = fw_explicitshapearray(None, fwi_integer_t_enum, 1, [n], False)
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
-    if not (0 <= n <= piv_shape_[0]):
-        raise ValueError("(0 <= n <= piv.shape[0]) not satisifed")
+    if n != piv_shape_[0]:
+        raise ValueError("(n == piv.shape[0]) not satisifed")
     {{fc_name}}(&det, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &n, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (det, a, n, piv, info,)
+    return (det, info,)
 {{endfor}}
 
 
@@ -79,132 +79,129 @@ cpdef api object {{name}}({{ktp}} det, object a, fwi_integer_t n, object piv, fw
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['sdet_r', 'ddet_r', 'cdet_r', 'zdet_r'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}({{ktp}} det, object a, fwi_integer_t n, object piv, fwi_integer_t info):
-    """{{name}}(det, a, n, piv, info[, det, a, n, piv, info]) -> (det, a, n, piv, info)
+cpdef api object {{name}}(object a, bint overwrite_a=False):
+    """{{name}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
     ----------
-    det : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
-    n : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(n), intent inout
-    info : fwi_integer, intent inout
+    a : {{ktp}}_, 2D array, dimension(n, n), intent in
+    overwrite_a : bint_, intent in
 
     Returns
     -------
-    det : {{ktp}}_, intent inout
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
-    n : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(n), intent inout
-    info : fwi_integer, intent inout
+    det : {{ktp}}_, intent out
+    info : fwi_integer, intent out
 
     """
     cdef np.ndarray a_
     cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t n
     cdef np.ndarray piv_
     cdef fw_shape_t piv_shape_[1]
     cdef fwi_integer_t fw_iserr__
+    cdef {{ktp}} det
+    cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, False)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
+    if not (np.PyArray_DIMS(a_)[0] == np.PyArray_DIMS(a_)[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
+    n = np.PyArray_DIMS(a_)[0]
     if n != a_shape_[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    piv_, piv = fw_asfortranarray(piv, fwi_integer_t_enum, 1, False)
+    piv_, piv = fw_explicitshapearray(None, fwi_integer_t_enum, 1, [n], False)
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
-    if not (0 <= n <= piv_shape_[0]):
-        raise ValueError("(0 <= n <= piv.shape[0]) not satisifed")
+    if n != piv_shape_[0]:
+        raise ValueError("(n == piv.shape[0]) not satisifed")
     {{fc_name}}(&det, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &n, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (det, a, n, piv, info,)
+    return (det, info,)
 {{endfor}}
 
 
 {{for fc_name, ktp, ktp2, name, npy_enum, npy_enum2
       in zip(['slu_c_c', 'dlu_c_c', 'clu_c_c', 'zlu_c_c'],
-             ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['slu_c', 'dlu_c', 'clu_c', 'zlu_c'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwr_real_t_enum', 'fwr_dbl_t_enum'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}(object p, object l, object u, object a, fwi_integer_t m, fwi_integer_t n, fwi_integer_t k, object piv, fwi_integer_t info, fwi_integer_t permute_l, fwi_integer_t m1):
-    """{{name}}(p, l, u, a, m, n, k, piv, info, permute_l, m1[, p, l, u, a, m, n, k, piv, info, permute_l, m1]) -> (p, l, u, a, m, n, k, piv, info, permute_l, m1)
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
+cpdef api object {{name}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+    """{{name}}(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters
     ----------
-    p : {{ktp}}_, 2D array, dimension(m1, m1), intent inout
-    l : {{ktp2}}_, 2D array, dimension(m, k), intent inout
-    u : {{ktp2}}_, 2D array, dimension(k, n), intent inout
-    a : {{ktp2}}_, 2D array, dimension(m, n), intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(k), intent inout
-    info : fwi_integer, intent inout
-    permute_l : fwi_integer, intent inout
-    m1 : fwi_integer, intent inout
+    a : {{ktp}}_, 2D array, dimension(m, n), intent in
+    permute_l : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    p : {{ktp2}}_, 2D array, dimension(m1, m1), intent out
+    l : {{ktp}}_, 2D array, dimension(m, k), intent out
+    u : {{ktp}}_, 2D array, dimension(k, n), intent out
 
     Returns
     -------
-    p : {{ktp}}_, 2D array, dimension(m1, m1), intent inout
-    l : {{ktp2}}_, 2D array, dimension(m, k), intent inout
-    u : {{ktp2}}_, 2D array, dimension(k, n), intent inout
-    a : {{ktp2}}_, 2D array, dimension(m, n), intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    k : fwi_integer, intent inout
-    piv : fwi_integer, 1D array, dimension(k), intent inout
-    info : fwi_integer, intent inout
-    permute_l : fwi_integer, intent inout
-    m1 : fwi_integer, intent inout
+    p : {{ktp2}}_, 2D array, dimension(m1, m1), intent out
+    l : {{ktp}}_, 2D array, dimension(m, k), intent out
+    u : {{ktp}}_, 2D array, dimension(k, n), intent out
+    info : fwi_integer, intent out
 
     """
+    cdef np.ndarray a_
+    cdef fw_shape_t a_shape_[2]
     cdef np.ndarray p_
     cdef fw_shape_t p_shape_[2]
     cdef np.ndarray l_
     cdef fw_shape_t l_shape_[2]
     cdef np.ndarray u_
     cdef fw_shape_t u_shape_[2]
-    cdef np.ndarray a_
-    cdef fw_shape_t a_shape_[2]
+    cdef fwi_integer_t m
+    cdef fwi_integer_t n
+    cdef fwi_integer_t k
     cdef np.ndarray piv_
     cdef fw_shape_t piv_shape_[1]
+    cdef fwi_integer_t m1
     cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
-    p_, p = fw_asfortranarray(p, {{npy_enum}}, 2, False)
-    fw_copyshape(p_shape_, np.PyArray_DIMS(p_), 2)
-    if m1 != p_shape_[0]:
-        raise ValueError("(m1 == p.shape[0]) not satisifed")
-    if not (0 <= m1 <= p_shape_[1]):
-        raise ValueError("(0 <= m1 <= p.shape[1]) not satisifed")
-    l_, l = fw_asfortranarray(l, {{npy_enum2}}, 2, False)
-    fw_copyshape(l_shape_, np.PyArray_DIMS(l_), 2)
-    if m != l_shape_[0]:
-        raise ValueError("(m == l.shape[0]) not satisifed")
-    if not (0 <= k <= l_shape_[1]):
-        raise ValueError("(0 <= k <= l.shape[1]) not satisifed")
-    u_, u = fw_asfortranarray(u, {{npy_enum2}}, 2, False)
-    fw_copyshape(u_shape_, np.PyArray_DIMS(u_), 2)
-    if k != u_shape_[0]:
-        raise ValueError("(k == u.shape[0]) not satisifed")
-    if not (0 <= n <= u_shape_[1]):
-        raise ValueError("(0 <= n <= u.shape[1]) not satisifed")
-    a_, a = fw_asfortranarray(a, {{npy_enum2}}, 2, False)
+    a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
+    m = np.PyArray_DIMS(a_)[0]
+    n = np.PyArray_DIMS(a_)[1]
     if m != a_shape_[0]:
         raise ValueError("(m == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape_[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    piv_, piv = fw_asfortranarray(piv, fwi_integer_t_enum, 1, False)
+    m1 = 1 if permute_l else m
+    p_, p = fw_explicitshapearray(p, {{npy_enum2}}, 2, [m1, m1], False)
+    fw_copyshape(p_shape_, np.PyArray_DIMS(p_), 2)
+    if m1 != p_shape_[0]:
+        raise ValueError("(m1 == p.shape[0]) not satisifed")
+    if m1 != p_shape_[1]:
+        raise ValueError("(m1 == p.shape[1]) not satisifed")
+    k = m if (m < n) else n
+    l_, l = fw_explicitshapearray(l, {{npy_enum}}, 2, [m, k], False)
+    fw_copyshape(l_shape_, np.PyArray_DIMS(l_), 2)
+    if m != l_shape_[0]:
+        raise ValueError("(m == l.shape[0]) not satisifed")
+    if k != l_shape_[1]:
+        raise ValueError("(k == l.shape[1]) not satisifed")
+    u_, u = fw_explicitshapearray(u, {{npy_enum}}, 2, [k, n], False)
+    fw_copyshape(u_shape_, np.PyArray_DIMS(u_), 2)
+    if k != u_shape_[0]:
+        raise ValueError("(k == u.shape[0]) not satisifed")
+    if n != u_shape_[1]:
+        raise ValueError("(n == u.shape[1]) not satisifed")
+    piv_, piv = fw_explicitshapearray(None, fwi_integer_t_enum, 1, [k], False)
     fw_copyshape(piv_shape_, np.PyArray_DIMS(piv_), 1)
-    if not (0 <= k <= piv_shape_[0]):
-        raise ValueError("(0 <= k <= piv.shape[0]) not satisifed")
-    {{fc_name}}(p_shape_, <{{ktp}}*>np.PyArray_DATA(p_), l_shape_, <{{ktp2}}*>np.PyArray_DATA(l_), u_shape_, <{{ktp2}}*>np.PyArray_DATA(u_), a_shape_, <{{ktp2}}*>np.PyArray_DATA(a_), &m, &n, &k, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &permute_l, &m1, &fw_iserr__, fw_errstr__)
+    if k != piv_shape_[0]:
+        raise ValueError("(k == piv.shape[0]) not satisifed")
+    {{fc_name}}(p_shape_, <{{ktp2}}*>np.PyArray_DATA(p_), l_shape_, <{{ktp}}*>np.PyArray_DATA(l_), u_shape_, <{{ktp}}*>np.PyArray_DATA(u_), a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &m, &n, &k, piv_shape_, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &permute_l, &m1, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
-    return (p, l, u, a, m, n, k, piv, info, permute_l, m1,)
+    return (p, l, u, info,)
 {{endfor}}
 
 
@@ -274,10 +271,18 @@ cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
     for i in range(ndim):
         target[i] = source[i]
 
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy, int alignment=1):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result 
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy, alignment)
+
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_c657038
 # Fwrap: self-sha1 9c27bf03e429178b02879c0c9af7e1f9f38ef60f
-# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: pyf-sha1 9dd28228ad1f01e3740de25b3ee32b361014b0b1
 # Fwrap: wraps src/det.f
 # Fwrap:     sha1 cf2332711df8b7cc1f4f025cddf95ec6102ea3f0
 # Fwrap: wraps src/lu.f
