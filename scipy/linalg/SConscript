@@ -17,7 +17,7 @@ from scons_support import do_generate_interface, do_generate_fake_interface, \
 #    generate_config_header, generate_config_header_emitter
 
 env = GetNumpyEnvironment(ARGUMENTS)
-env.Tool('f2py')
+##env.Tool('f2py')
 
 # XXX: handle cblas wrapper for complex (check in numpy.scons or here ?)
 env.AppendUnique(F2PYOPTIONS = '--quiet')
@@ -126,7 +126,7 @@ fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
 #   _flinalg
 #----------------
 flinalg_fsrc = [pjoin('src', i) for i in ['det.f', 'lu.f']]
-flinalg_src = fenv.F2py(pjoin('src', '_flinalgmodule.c'), flinalg_fsrc)
+flinalg_src = ['_flinalg.c', '_flinalg_fc.f']
 
 fenv.NumpyPythonExtension('_flinalg', source = flinalg_src + flinalg_fsrc)
 
