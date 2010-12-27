@@ -5732,6 +5732,8 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
 # Fwrap:     sha1 0
+# Fwrap: wraps $REFERENCE_LAPACK/INSTALL/slamch.f
+# Fwrap:     sha1 0
 # Fwrap: exclude cbbcsd
 # Fwrap: exclude cbdsqr
 # Fwrap: exclude cgbbrd
