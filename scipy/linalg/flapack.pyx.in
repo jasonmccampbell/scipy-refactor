@@ -7222,6 +7222,8 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: emulate-f2py True
+# Fwrap: template sgees,dgees
+# Fwrap: template cgees,zgees
 # Fwrap: auxiliary flapack.pxd
 # Fwrap: auxiliary flapack.pyx.in
 # Fwrap: auxiliary flapack_fc.f
