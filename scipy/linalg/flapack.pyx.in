@@ -86,20 +86,19 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-{{for fc_name, ktp, ktp2, name, name2, npy_enum, npy_enum2
+{{for fc_name, ktp, ktp2, name, npy_enum, npy_enum2
       in zip(['cgees_c', 'zgees_c'],
              ['fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['cgees', 'zgees'],
-             ['cselect', 'zselect'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
-    """{{name}}({{name2}}, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
+cpdef api object {{name}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
+    """{{name}}(select, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
 
     Parameters
     ----------
-    {{name2}} : fwr_real, intent in
+    select : callback function
     a : {{ktp}}_, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     sort_t : fwi_integer, intent in
@@ -138,13 +137,13 @@ cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_
     cdef fwi_integer_t fw_iserr__
     cdef char *fw_jobvs_f = [0, 0]
     cdef char *fw_sort_f = [0, 0]
-    cdef fwl_logical_t select_f
     cdef fwi_integer_t sdim
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     jobvs_f = "V" if compute_v else "N"
     sort_f = "S" if sort_t else "N"
-    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    if sort_t:
+        raise NotImplementedError('select callback not yet implemented')
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     nrows = np.PyArray_DIMS(a_)[0]
@@ -191,7 +190,7 @@ cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_
     fw_sort_f[0] = fw_aschar(sort_f)
     if fw_sort_f[0] == 0:
         raise ValueError("len(sort_f) != 1")
-    {{fc_name}}(fw_jobvs_f, fw_sort_f, &select_f, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, w_shape_, <{{ktp}}*>np.PyArray_DATA(w_), vs_shape_, <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, rwork_shape_, <{{ktp2}}*>np.PyArray_DATA(rwork_), bwork_shape_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, &fw_iserr__, fw_errstr__)
+    {{fc_name}}(fw_jobvs_f, fw_sort_f, NULL, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, w_shape_, <{{ktp}}*>np.PyArray_DATA(w_), vs_shape_, <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, rwork_shape_, <{{ktp2}}*>np.PyArray_DATA(rwork_), bwork_shape_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
     return (a, sdim, w, vs, work, info,)
@@ -2373,18 +2372,17 @@ cpdef api object {{name}}(object a, fwi_integer_t scale=0, fwi_integer_t permute
 {{endfor}}
 
 
-{{for fc_name, ktp, name, name2, npy_enum
+{{for fc_name, ktp, name, npy_enum
       in zip(['sgees_c', 'dgees_c'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['sgees', 'dgees'],
-             ['sselect', 'dselect'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
-    """{{name}}({{name2}}, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
+cpdef api object {{name}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
+    """{{name}}(select, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
 
     Parameters
     ----------
-    {{name2}} : fwr_real, intent in
+    select : callback function
     a : {{ktp}}_, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     sort_t : fwi_integer, intent in
@@ -2425,13 +2423,13 @@ cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_
     cdef fwi_integer_t fw_iserr__
     cdef char *fw_jobvs_f = [0, 0]
     cdef char *fw_sort_f = [0, 0]
-    cdef fwl_logical_t select_f
     cdef fwi_integer_t sdim
     cdef fwi_integer_t info
     cdef fw_character_t fw_errstr__[fw_errstr_len]
     jobvs_f = "V" if compute_v else "N"
     sort_f = "S" if sort_t else "N"
-    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    if sort_t:
+        raise NotImplementedError('select callback not yet implemented')
     a_, a = fw_asfortranarray(a, {{npy_enum}}, 2, not overwrite_a, 8)
     fw_copyshape(a_shape_, np.PyArray_DIMS(a_), 2)
     nrows = np.PyArray_DIMS(a_)[0]
@@ -2478,7 +2476,7 @@ cpdef api object {{name}}(fwr_real_t {{name2}}, object a, fwi_integer_t compute_
     fw_sort_f[0] = fw_aschar(sort_f)
     if fw_sort_f[0] == 0:
         raise ValueError("len(sort_f) != 1")
-    {{fc_name}}(fw_jobvs_f, fw_sort_f, &select_f, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, wr_shape_, <{{ktp}}*>np.PyArray_DATA(wr_), wi_shape_, <{{ktp}}*>np.PyArray_DATA(wi_), vs_shape_, <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, bwork_shape_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, &fw_iserr__, fw_errstr__)
+    {{fc_name}}(fw_jobvs_f, fw_sort_f, NULL, &n, a_shape_, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, wr_shape_, <{{ktp}}*>np.PyArray_DATA(wr_), wi_shape_, <{{ktp}}*>np.PyArray_DATA(wi_), vs_shape_, <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, work_shape_, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, bwork_shape_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, &fw_iserr__, fw_errstr__)
     if fw_iserr__ != FW_NO_ERR__:
         raise RuntimeError("an error was encountered when calling the '{{name}}' wrapper.")
     return (a, sdim, wr, wi, vs, work, info,)
