@@ -10,11 +10,15 @@ __all__ = ['get_blas_funcs']
 # is raised at the first attempt to use the resources.
 
 from scipy.linalg import fblas
-from scipy.linalg import cblas
-if hasattr(cblas,'empty_module'):
+try:
+    from scipy.linalg import cblas
+except ImportError:
     cblas = fblas
-elif hasattr(fblas,'empty_module'):
-    fblas = cblas
+else:
+    if hasattr(cblas,'empty_module'):
+        cblas = fblas
+    elif hasattr(fblas,'empty_module'):
+        fblas = cblas
 from funcinfo import register_func_info
 
 _type_conv = {'f':'s', 'd':'d', 'F':'c', 'D':'z'} # 'd' will be default for 'i',..
