@@ -1,0 +1,280 @@
+#cython: ccomplex=True
+
+"""The _fftpack module was generated with Fwrap v0.2.0dev_3b035b7.
+
+Below is a listing of functions and data types.
+For usage information see the function docstrings.
+
+Functions
+---------
+cfft, zfft(...)
+cfftnd, zfftnd(...)
+dct1, dct2, dct3, ddct1, ddct2, ddct3(...)
+destroy_cfft_cache, destroy_cfftnd_cache, destroy_dct1_cache, destroy_dct2_cache, destroy_ddct1_cache, destroy_ddct2_cache, destroy_drfft_cache, destroy_rfft_cache, destroy_zfft_cache, destroy_zfftnd_cache(...)
+rfft, drfft, crfft, zrfft(...)
+
+Data Types
+----------
+fwc_complex_x16
+fwc_complex_x8
+fwi_integer
+fwr_real_x4
+fwr_real_x8
+
+"""
+np.import_array()
+include 'fwrap_ktp.pxi'
+cdef extern from "string.h":
+    void *memcpy(void *dest, void *src, size_t n)
+# Template for cfft, zfft
+{{for ktp, name, npy_enum
+      in zip(['fwc_complex_x8_t', 'fwc_complex_x16_t'],
+             ['cfft', 'zfft'],
+             ['fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
+cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+    """{{name}}(x[, n, direction, normalize, overwrite_x]) -> x
+
+    Parameters
+    ----------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+    n : fwi_integer, intent in
+    direction : fwi_integer, intent in
+    normalize : fwi_integer, intent in
+    overwrite_x : bint_, intent in
+
+    Returns
+    -------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+
+    """
+    cdef np.ndarray x_
+    cdef fwi_integer_t n_
+    cdef fwi_integer_t normalize_
+    cdef fwi_integer_t howmany
+    normalize_ = normalize if (normalize is not None) else direction < 0
+    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
+    n_ = n if (n is not None) else np.PyArray_SIZE(x_)
+    howmany = np.PyArray_SIZE(x_) // n_
+    if not (n_ > 0):
+        raise ValueError('Condition on arguments not satisfied: n > 0')
+    if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
+        raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
+    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
+    return x
+{{endfor}}
+
+
+# Template for rfft, drfft, crfft, zrfft
+{{for ktp, name, npy_enum
+      in zip(['fwr_real_x4_t', 'fwr_real_x8_t', 'fwc_complex_x8_t', 'fwc_complex_x16_t'],
+             ['rfft', 'drfft', 'crfft', 'zrfft'],
+             ['fwr_real_x4_t_enum', 'fwr_real_x8_t_enum', 'fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
+cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+    """{{name}}(x[, n, direction, normalize, overwrite_x]) -> x
+
+    Parameters
+    ----------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+    n : fwi_integer, intent in
+    direction : fwi_integer, intent in
+    normalize : fwi_integer, intent in
+    overwrite_x : bint_, intent in
+
+    Returns
+    -------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+
+    """
+    cdef np.ndarray x_
+    cdef fwi_integer_t n_
+    cdef fwi_integer_t normalize_
+    cdef fwi_integer_t howmany
+    normalize_ = normalize if (normalize is not None) else direction < 0
+    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
+    n_ = n if (n is not None) else np.PyArray_SIZE(x_)
+    howmany = np.PyArray_SIZE(x_) // n_
+    if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
+        raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
+    if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
+        raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
+    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
+    return x
+{{endfor}}
+
+
+# Template for cfftnd, zfftnd
+{{for ktp, name, npy_enum
+      in zip(['fwc_complex_x8_t', 'fwc_complex_x16_t'],
+             ['cfftnd', 'zfftnd'],
+             ['fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
+cpdef api object {{name}}(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+    """{{name}}(x[, s, direction, normalize, overwrite_x]) -> x
+
+    Parameters
+    ----------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+    s : fwi_integer, 1D array, dimension(r), intent in
+    direction : fwi_integer, intent in
+    normalize : fwi_integer, intent in
+    overwrite_x : bint_, intent in
+
+    Returns
+    -------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+
+    """
+    cdef np.ndarray x_
+    cdef np.ndarray s_
+    cdef fwi_integer_t normalize_
+    cdef fwi_integer_t r
+    cdef fwi_integer_t howmany
+    cdef fwi_integer_t j
+    normalize_ = normalize if (normalize is not None) else direction < 0
+    howmany = 1
+    j = 0
+    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
+    r = ##TODO Get ndim before broadcasting: np.PyArray_NDIM(x_)
+    ##TODO s_ = ##TODO (watch any dependencies that may be further down!) old_shape(x,j++)
+    s_, s = fw_explicitshapearray(s, fwi_integer_t_enum, 1, [r], False)
+    if not (r >= np.PyArray_DIMS(s_)[0]):
+        raise ValueError('Condition on arguments not satisfied: r >= s.shape[0]')
+    if not (0 <= r <= np.PyArray_DIMS(s_)[0]):
+        raise ValueError("(0 <= r <= s.shape[0]) not satisifed")
+    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_, j)
+    return x
+{{endfor}}
+
+
+# Template for destroy_cfft_cache, destroy_cfftnd_cache, destroy_dct1_cache, destroy_dct2_cache, destroy_ddct1_cache, destroy_ddct2_cache, destroy_drfft_cache, destroy_rfft_cache, destroy_zfft_cache, destroy_zfftnd_cache
+{{for name in ['destroy_cfft_cache', 'destroy_cfftnd_cache', 'destroy_dct1_cache', 'destroy_dct2_cache', 'destroy_ddct1_cache', 'destroy_ddct2_cache', 'destroy_drfft_cache', 'destroy_rfft_cache', 'destroy_zfft_cache', 'destroy_zfftnd_cache']}}
+cpdef api object {{name}}():
+    """{{name}}()
+
+    Parameters
+    ----------
+    None
+
+    """
+    fc.{{name}}()
+{{endfor}}
+
+
+# Template for dct1, dct2, dct3, ddct1, ddct2, ddct3
+{{for ktp, name, npy_enum
+      in zip(['fwr_real_x4_t', 'fwr_real_x4_t', 'fwr_real_x4_t', 'fwr_real_x8_t', 'fwr_real_x8_t', 'fwr_real_x8_t'],
+             ['dct1', 'dct2', 'dct3', 'ddct1', 'ddct2', 'ddct3'],
+             ['fwr_real_x4_t_enum', 'fwr_real_x4_t_enum', 'fwr_real_x4_t_enum', 'fwr_real_x8_t_enum', 'fwr_real_x8_t_enum', 'fwr_real_x8_t_enum'])}}
+cpdef api object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+    """{{name}}(x[, n, normalize, overwrite_x]) -> x
+
+    Parameters
+    ----------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+    n : fwi_integer, intent in
+    normalize : fwi_integer, intent in
+    overwrite_x : bint_, intent in
+
+    Returns
+    -------
+    x : {{ktp}}_, 1D array, dimension(*), intent inout
+
+    """
+    cdef np.ndarray x_
+    cdef fwi_integer_t n_
+    cdef fwi_integer_t howmany
+    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
+    n_ = n if (n is not None) else np.PyArray_SIZE(x_)
+    howmany = np.PyArray_SIZE(x_) // n_
+    if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
+        raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
+    if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
+        raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
+    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, howmany, normalize)
+    return x
+{{endfor}}
+
+
+
+cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,
+                              int alignment=1):
+    cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
+    if ndim <= 1:
+        # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
+        flags |= np.NPY_C_CONTIGUOUS
+    if (not copy and alignment > 1 and np.PyArray_Check(value) and
+        (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
+        # mis-aligned array
+        copy = True
+    if copy:
+        flags |= np.NPY_ENSURECOPY
+    result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
+
+    if ndim == result.ndim:
+        return result, result
+    else:
+        to_shape = [None] * ndim
+        fw_f2py_shape_coercion(ndim, to_shape, result.ndim, result.shape,
+                               result.size)
+        return result.reshape(to_shape, order='F'), result
+
+cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
+                                   int from_ndim, object from_shape,
+                                   Py_ssize_t from_size):
+    # Logic ported from check_and_fix_dimensions in fortranobject.c
+    # Todo: optimize
+    if to_ndim > from_ndim:
+        to_size = 1
+        free_ax = -1
+        for i in range(from_ndim):
+            d = from_shape[i]
+            if d == 0:
+                d = 1
+            to_shape[i] = d
+            to_size *= d
+        for i in range(from_ndim, to_ndim):
+            if free_ax < 0:
+                free_ax = i
+            else:
+                to_shape[i] = 1
+        if free_ax >= 0:
+            to_shape[free_ax] = from_size // to_size
+    elif to_ndim < from_ndim:
+        j = 0
+        for i in range(from_ndim):
+            while j < from_ndim and from_shape[j] < 2:
+                j += 1
+            if j >= from_ndim:
+                d = 1
+            else:
+                d = from_shape[j]
+                j += 1
+            if i < to_ndim:
+                to_shape[i] = d
+            else:
+                to_shape[to_ndim - 1] *= d
+
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy, int alignment=1):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result 
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy, alignment)
+
+# Fwrap configuration:
+# Fwrap: version 0.2.0dev_3b035b7
+# Fwrap: self-sha1 12ef15055d416bfe089eeac9ac0743d5b5ed7f52
+# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: wraps fftpack.pyf
+# Fwrap:     sha1 3bf3ae94045bfe4b686846ebe39efa0998d5cd9d
+# Fwrap: f77binding True
+# Fwrap: detect-templates True
+# Fwrap: template rfft,drfft,crfft,zrfft
+# Fwrap: template-pattern destroy.*cache
+# Fwrap: template-pattern .*dct.*
+# Fwrap: emulate-f2py True
+# Fwrap: auxiliary _fftpack.pxd
+# Fwrap: auxiliary _fftpack.pyx.in
+# Fwrap: auxiliary _fftpack_fc.h
+# Fwrap: auxiliary _fftpack_fc.pxd
+
