@@ -132,15 +132,23 @@ cpdef api object {{name}}(object x, object s=None, fwi_integer_t direction=1, ob
     normalize_ = normalize if (normalize is not None) else direction < 0
     howmany = 1
     j = 0
-    x_, x = fw_asfortranarray(x, {{npy_enum}}, 1, not overwrite_x)
-    r = ##TODO Get ndim before broadcasting: np.PyArray_NDIM(x_)
-    ##TODO s_ = ##TODO (watch any dependencies that may be further down!) old_shape(x,j++)
-    s_, s = fw_explicitshapearray(s, fwi_integer_t_enum, 1, [r], False)
-    if not (r >= np.PyArray_DIMS(s_)[0]):
-        raise ValueError('Condition on arguments not satisfied: r >= s.shape[0]')
-    if not (0 <= r <= np.PyArray_DIMS(s_)[0]):
-        raise ValueError("(0 <= r <= s.shape[0]) not satisifed")
-    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_, j)
+    # First, convert x to an array with arbitrary number of dimensions
+    x = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
+                           np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
+                           (0 if overwrite_x else np.NPY_ENSURECOPY))
+    # Then, let x_ be the flattened 1D view of x
+    x_ = x.ravel()
+    # Next, let the default of s be the tuple x_.shape,
+    # and get the array of s
+    if s is None:
+        s = (<object>x_).shape
+    s_, s = fw_asfortranarray(s, fwi_integer_t_enum, 1, False)
+    r = np.PyArray_NDIM(x) # Note: x, not x_
+    if not (r == np.PyArray_DIMS(s_)[0]):
+        raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
+    # Make call
+    fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)
+    # Return the non-flattened view of the buffer
     return x
 {{endfor}}
 
