@@ -31,7 +31,7 @@ env.PrependUnique(LIBS = ['fftpack', 'dfftpack'])
 env.PrependUnique(LIBPATH = ['.'])
 
 # Build _fftpack
-src = ['src/zfft.c','src/drfft.c','src/zrfft.c', 'src/zfftnd.c', 'fftpack.pyf']
+src = ['src/zfft.c','src/drfft.c','src/zrfft.c', 'src/zfftnd.c', '_fftpack.c']
 src += env.FromCTemplate('src/dct.c.src')
 env.NumpyPythonExtension('_fftpack', src)
 
