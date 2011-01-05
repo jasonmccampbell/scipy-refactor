@@ -21,32 +21,45 @@ fwr_real_x8
 """
 np.import_array()
 include 'fwrap_ktp.pxi'
-cdef extern from "string.h":
-    void *memcpy(void *dest, void *src, size_t n)
 
 __all__ = ['init_convolution_kernel', 'destroy_convolve_cache',
            'convolve', 'convolve_z']
 
+cdef extern from "string.h":
+    void *memcpy(void *dest, void *src, size_t n)
+
+cdef extern from "setjmp.h":
+    ctypedef struct jmp_buf:
+        pass
+    
+    int setjmp(jmp_buf env)
+    void longjmp(jmp_buf env, int val)
+
+
+cdef class _LongJmpBuf(object):
+    cdef jmp_buf buf
+
 import threading
+import sys
 threadloc = threading.local()
 
 cdef double call_kernel_func(int k) with gil:
-    cdef double retval 
-    call_obj = threadloc.call_obj
-    threadloc.call_obj = None
+    cdef double retval
+    cdef _LongJmpBuf jmp
+    
+    call_obj, args, jmp = info = threadloc.kernel_func_info
+    threadloc.kernel_func_info = None
     try:
         try:
-            retval = call_obj(k)
-        except Exception, e:
-            threadloc.exception = e
-            import sys
-            print 'ERROR: NOT IMPLEMENTED'
-            sys.exit(1)
+            retval = call_obj(k, *args)
+        except:
+            threadloc.exc_info = sys.exc_info()
+            longjmp(jmp.buf, 1)
     finally:
-        threadloc.call_obj = call_obj
+        threadloc.kernel_func_info = info
     return retval
 
-cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object omega=None):
+cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=(), object omega=None):
     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
 
     Parameters
@@ -64,14 +77,24 @@ cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fw
     """
     cdef fwi_integer_t zero_nyquist_
     cdef np.ndarray omega_
+    cdef _LongJmpBuf jmp
     zero_nyquist_ = zero_nyquist if (zero_nyquist is not None) else d % 2
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)
     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
-    threadloc.call_obj = kernel_func
-    fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &call_kernel_func, zero_nyquist_)
+    jmp = _LongJmpBuf()
+    threadloc.kernel_func_info = (kernel_func, kernel_func_extra_args, jmp)
+    try:
+        if setjmp(jmp.buf) == 0:
+            fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &call_kernel_func, zero_nyquist_)
+        else:
+            t, val, tb = threadloc.exc_info
+            threadloc.exc_info = None
+            raise t, val, tb
+    finally:
+        threadloc.kernel_func_info = None
     return omega
 
 
@@ -83,7 +106,6 @@ cpdef api object destroy_convolve_cache():
     None
 
     """
-    threadloc.call_obj = None
     fc.destroy_convolve_cache()
 
 
@@ -112,7 +134,6 @@ cpdef api object convolve(object x, object omega, fwi_integer_t swap_real_imag=0
     omega_, omega = fw_asfortranarray(omega, fwr_real_x8_t_enum, 1, False)
     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
-    # TODO: setjmp
     fc.convolve(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_), swap_real_imag)
     return x
 
@@ -146,7 +167,6 @@ cpdef api object convolve_z(object x, object omega_real, object omega_imag, bint
     omega_imag_, omega_imag = fw_asfortranarray(omega_imag, fwr_real_x8_t_enum, 1, False)
     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
         raise ValueError("(0 <= n <= omega_imag.shape[0]) not satisifed")
-    # TODO: setjmp
     fc.convolve_z(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_real_), <fwr_real_x8_t*>np.PyArray_DATA(omega_imag_))
     return x
 
