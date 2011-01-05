@@ -59,7 +59,7 @@ cdef double call_kernel_func(int k) with gil:
         threadloc.kernel_func_info = info
     return retval
 
-cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=(), object omega=None):
+cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=(), object omega=None):
     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
 
     Parameters
@@ -98,7 +98,7 @@ cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fw
     return omega
 
 
-cpdef api object destroy_convolve_cache():
+cpdef object destroy_convolve_cache():
     """destroy_convolve_cache()
 
     Parameters
@@ -109,7 +109,7 @@ cpdef api object destroy_convolve_cache():
     fc.destroy_convolve_cache()
 
 
-cpdef api object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):
+cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):
     """convolve(x, omega[, swap_real_imag, overwrite_x]) -> x
 
     Parameters
@@ -138,7 +138,7 @@ cpdef api object convolve(object x, object omega, fwi_integer_t swap_real_imag=0
     return x
 
 
-cpdef api object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):
+cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):
     """convolve_z(x, omega_real, omega_imag[, overwrite_x]) -> x
 
     Parameters

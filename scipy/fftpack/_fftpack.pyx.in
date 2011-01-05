@@ -31,7 +31,7 @@ cdef extern from "string.h":
       in zip(['fwc_complex_x8_t', 'fwc_complex_x16_t'],
              ['cfft', 'zfft'],
              ['fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+cpdef object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """{{name}}(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -71,7 +71,7 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
       in zip(['fwr_real_x4_t', 'fwr_real_x8_t', 'fwc_complex_x8_t', 'fwc_complex_x16_t'],
              ['rfft', 'drfft', 'crfft', 'zrfft'],
              ['fwr_real_x4_t_enum', 'fwr_real_x8_t_enum', 'fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+cpdef object {{name}}(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """{{name}}(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -112,7 +112,7 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
       in zip(['fwc_complex_x8_t', 'fwc_complex_x16_t'],
              ['cfftnd', 'zfftnd'],
              ['fwc_complex_x8_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef api object {{name}}(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+cpdef object {{name}}(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """{{name}}(x[, s, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -164,7 +164,7 @@ cpdef api object {{name}}(object x, object s=None, fwi_integer_t direction=1, ob
 
 # Template for destroy_cfft_cache, destroy_cfftnd_cache, destroy_dct1_cache, destroy_dct2_cache, destroy_ddct1_cache, destroy_ddct2_cache, destroy_drfft_cache, destroy_rfft_cache, destroy_zfft_cache, destroy_zfftnd_cache
 {{for name in ['destroy_cfft_cache', 'destroy_cfftnd_cache', 'destroy_dct1_cache', 'destroy_dct2_cache', 'destroy_ddct1_cache', 'destroy_ddct2_cache', 'destroy_drfft_cache', 'destroy_rfft_cache', 'destroy_zfft_cache', 'destroy_zfftnd_cache']}}
-cpdef api object {{name}}():
+cpdef object {{name}}():
     """{{name}}()
 
     Parameters
@@ -181,7 +181,7 @@ cpdef api object {{name}}():
       in zip(['fwr_real_x4_t', 'fwr_real_x4_t', 'fwr_real_x4_t', 'fwr_real_x8_t', 'fwr_real_x8_t', 'fwr_real_x8_t'],
              ['dct1', 'dct2', 'dct3', 'ddct1', 'ddct2', 'ddct3'],
              ['fwr_real_x4_t_enum', 'fwr_real_x4_t_enum', 'fwr_real_x4_t_enum', 'fwr_real_x8_t_enum', 'fwr_real_x8_t_enum', 'fwr_real_x8_t_enum'])}}
-cpdef api object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+cpdef object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """{{name}}(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
