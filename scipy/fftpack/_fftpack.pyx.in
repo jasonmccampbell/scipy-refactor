@@ -129,32 +129,36 @@ cpdef api object {{name}}(object x, object s=None, fwi_integer_t direction=1, ob
 
     """
     cdef np.ndarray x_
-    cdef np.ndarray s_
+    cdef np.ndarray[int, ndim=1, mode='c'] s_
     cdef fwi_integer_t normalize_
     cdef fwi_integer_t r
     cdef fwi_integer_t howmany
     cdef fwi_integer_t j
+    cdef Py_ssize_t i, sz, xsz
     normalize_ = normalize if (normalize is not None) else direction < 0
-    howmany = 1
     j = 0
-    # First, convert x to an array with arbitrary number of dimensions
-    x = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
-                           np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
-                           (0 if overwrite_x else np.NPY_ENSURECOPY))
-    # Then, let x_ be the flattened 1D view of x
-    x_ = x.ravel()
+    x_ = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
+                            np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
+                            (0 if overwrite_x else np.NPY_ENSURECOPY))
     # Next, let the default of s be the tuple x_.shape,
     # and get the array of s
     if s is None:
         s = (<object>x_).shape
-    s_, s = fw_asfortranarray(s, fwi_integer_t_enum, 1, False)
-    r = np.PyArray_NDIM(x) # Note: x, not x_
+    s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
+                            np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
+    r = np.PyArray_NDIM(x_)
     if not (r == np.PyArray_DIMS(s_)[0]):
         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
-    # Make call
+    xsz = np.PyArray_SIZE(x_)
+    sz = 1
+    for i in range(r):
+        sz *= s_[i]
+    howmany = xsz // sz
+    if sz * howmany != xsz:
+        raise ValueError("inconsistency in x.shape and s argument")
     fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)
     # Return the non-flattened view of the buffer
-    return x
+    return x_
 {{endfor}}
 
 
@@ -208,65 +212,6 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bi
     return x_
 {{endfor}}
 
-
-
-cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,
-                              int alignment=1):
-    cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
-    if ndim <= 1:
-        # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
-        flags |= np.NPY_C_CONTIGUOUS
-    if (not copy and alignment > 1 and np.PyArray_Check(value) and
-        (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
-        # mis-aligned array
-        copy = True
-    if copy:
-        flags |= np.NPY_ENSURECOPY
-    result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
-
-    if ndim == result.ndim:
-        return result, result
-    else:
-        to_shape = [None] * ndim
-        fw_f2py_shape_coercion(ndim, to_shape, result.ndim, result.shape,
-                               result.size)
-        return result.reshape(to_shape, order='F'), result
-
-cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
-                                   int from_ndim, object from_shape,
-                                   Py_ssize_t from_size):
-    # Logic ported from check_and_fix_dimensions in fortranobject.c
-    # Todo: optimize
-    if to_ndim > from_ndim:
-        to_size = 1
-        free_ax = -1
-        for i in range(from_ndim):
-            d = from_shape[i]
-            if d == 0:
-                d = 1
-            to_shape[i] = d
-            to_size *= d
-        for i in range(from_ndim, to_ndim):
-            if free_ax < 0:
-                free_ax = i
-            else:
-                to_shape[i] = 1
-        if free_ax >= 0:
-            to_shape[free_ax] = from_size // to_size
-    elif to_ndim < from_ndim:
-        j = 0
-        for i in range(from_ndim):
-            while j < from_ndim and from_shape[j] < 2:
-                j += 1
-            if j >= from_ndim:
-                d = 1
-            else:
-                d = from_shape[j]
-                j += 1
-            if i < to_ndim:
-                to_shape[i] = d
-            else:
-                to_shape[to_ndim - 1] *= d
 
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_3b035b7
