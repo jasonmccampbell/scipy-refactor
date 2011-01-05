@@ -23,30 +23,36 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object kernel_func(fwi_integer_t k):
-    """kernel_func(k[, k]) -> fw_ret_arg
 
-    Parameters
-    ----------
-    k : fwi_integer, intent in
+__all__ = ['init_convolution_kernel', 'destroy_convolve_cache',
+           'convolve', 'convolve_z']
 
-    Returns
-    -------
-    fw_ret_arg : fwr_real_x8, intent out
+import threading
+threadloc = threading.local()
 
-    """
-    cdef fwr_real_x8_t fw_ret_arg
-    fw_ret_arg = fc.kernel_func(k)
-    return fw_ret_arg
+cdef double call_kernel_func(int k) with gil:
+    cdef double retval 
+    call_obj = threadloc.call_obj
+    threadloc.call_obj = None
+    try:
+        try:
+            retval = call_obj(k)
+        except Exception, e:
+            threadloc.exception = e
+            import sys
+            print 'ERROR: NOT IMPLEMENTED'
+            sys.exit(1)
+    finally:
+        threadloc.call_obj = call_obj
+    return retval
 
-
-cpdef api object init_convolution_kernel(fwi_integer_t n, fwi_integer_t kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object omega=None):
+cpdef api object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object omega=None):
     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
 
     Parameters
     ----------
     n : fwi_integer, intent in
-    kernel_func : fwi_integer, intent in
+    kernel_func : object, intent in
     d : fwi_integer, intent in
     zero_nyquist : fwi_integer, intent in
     omega : fwr_real_x8, 1D array, dimension(n), intent out
@@ -64,7 +70,8 @@ cpdef api object init_convolution_kernel(fwi_integer_t n, fwi_integer_t kernel_f
     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)
     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
-    fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &kernel_func, zero_nyquist_)
+    threadloc.call_obj = kernel_func
+    fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &call_kernel_func, zero_nyquist_)
     return omega
 
 
@@ -76,6 +83,7 @@ cpdef api object destroy_convolve_cache():
     None
 
     """
+    threadloc.call_obj = None
     fc.destroy_convolve_cache()
 
 
@@ -104,6 +112,7 @@ cpdef api object convolve(object x, object omega, fwi_integer_t swap_real_imag=0
     omega_, omega = fw_asfortranarray(omega, fwr_real_x8_t_enum, 1, False)
     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
+    # TODO: setjmp
     fc.convolve(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_), swap_real_imag)
     return x
 
@@ -137,6 +146,7 @@ cpdef api object convolve_z(object x, object omega_real, object omega_imag, bint
     omega_imag_, omega_imag = fw_asfortranarray(omega_imag, fwr_real_x8_t_enum, 1, False)
     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
         raise ValueError("(0 <= n <= omega_imag.shape[0]) not satisifed")
+    # TODO: setjmp
     fc.convolve_z(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_real_), <fwr_real_x8_t*>np.PyArray_DATA(omega_imag_))
     return x
 
