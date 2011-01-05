@@ -52,13 +52,9 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
     cdef fwi_integer_t normalize_
     cdef fwi_integer_t howmany
     normalize_ = normalize if (normalize is not None) else direction < 0
-
-    # First, convert x to an array with arbitrary number of dimensions
-    x = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
-                           np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
-                           (0 if overwrite_x else np.NPY_ENSURECOPY))
-    # Then, let x_ be the flattened 1D view of x
-    x_ = x.ravel()
+    x_ = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
+                            np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
+                            (0 if overwrite_x else np.NPY_ENSURECOPY))
     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
     howmany = np.PyArray_SIZE(x_) // n_
     if not (n_ > 0):
@@ -66,7 +62,7 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
-    return x
+    return x_
 {{endfor}}
 
 
@@ -97,11 +93,9 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
     cdef fwi_integer_t howmany
     normalize_ = normalize if (normalize is not None) else direction < 0
     # First, convert x to an array with arbitrary number of dimensions
-    x = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
-                           np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
-                           (0 if overwrite_x else np.NPY_ENSURECOPY))
-    # Then, let x_ be the flattened 1D view of x
-    x_ = x.ravel()
+    x_ = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
+                            np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
+                            (0 if overwrite_x else np.NPY_ENSURECOPY))
     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
     howmany = np.PyArray_SIZE(x_) // n_
     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
@@ -109,7 +103,7 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t direction=1, ob
     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
-    return x
+    return x_
 {{endfor}}
 
 
@@ -201,12 +195,9 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bi
     cdef np.ndarray x_
     cdef fwi_integer_t n_
     cdef fwi_integer_t howmany
-    # First, convert x to an array with arbitrary number of dimensions
-    x = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
-                           np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
-                           (0 if overwrite_x else np.NPY_ENSURECOPY))
-    # Then, let x_ be the flattened 1D view of x
-    x_ = x.ravel()
+    x_ = np.PyArray_FROMANY(x, {{npy_enum}}, 0, 0,
+                            np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
+                            (0 if overwrite_x else np.NPY_ENSURECOPY))
     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
     howmany = np.PyArray_SIZE(x_) // n_
     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
@@ -214,7 +205,7 @@ cpdef api object {{name}}(object x, object n=None, fwi_integer_t normalize=0, bi
     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.{{name}}(<{{ktp}}*>np.PyArray_DATA(x_), n_, howmany, normalize)
-    return x
+    return x_
 {{endfor}}
 
 
