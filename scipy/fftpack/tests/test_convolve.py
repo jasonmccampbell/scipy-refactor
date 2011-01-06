@@ -106,6 +106,22 @@ class TestCallback(TestCase):
         assert_equal(' '.join(trace), '<1 <2 (3) (3) 2@ 1@')
 
 
+def benchmark():
+    """
+    Function that can be called from IPython to do benchmarks
+    using %timeit with different SciPy implementations.
+    """
+    n = 400
+
+    def level2(k):
+        return 2 * k
+
+    def level1(k):
+        omega = convolve.init_convolution_kernel(n, level2, d=1)
+        return k
+
+    convolve.init_convolution_kernel(n, level1, d=1)
+    
 
 if __name__ == "__main__":
     run_module_suite()

@@ -19,6 +19,8 @@ fwi_integer
 fwr_real_x8
 
 """
+import sys
+
 np.import_array()
 include 'fwrap_ktp.pxi'
 
@@ -36,30 +38,43 @@ cdef extern from "setjmp.h":
     void longjmp(jmp_buf env, int val)
 
 
-cdef class _LongJmpBuf(object):
-    cdef jmp_buf buf
+cdef class _CallbackInfo(object):
+    cdef object callback
+    cdef object extra_args
+    cdef object exc
+    cdef jmp_buf jmp
+    cdef object arrays
 
-import threading
-import sys
-threadloc = threading.local()
+cdef _CallbackInfo kernel_func_info
 
-cdef double call_kernel_func(int k) with gil:
-    cdef double retval
-    cdef _LongJmpBuf jmp
+cdef int init_convolution_kernel_cb_core(double* presult, int k):
+    global kernel_func_info
+    cdef _CallbackInfo info
     
-    call_obj, args, jmp = info = threadloc.kernel_func_info
-    threadloc.kernel_func_info = None
+    info = kernel_func_info
+    kernel_func_info = None
     try:
-        try:
-            retval = call_obj(k, *args)
-        except:
-            threadloc.exc_info = sys.exc_info()
-            longjmp(jmp.buf, 1)
-    finally:
-        threadloc.kernel_func_info = info
-    return retval
+        if info.extra_args is None:
+            presult[0] = info.callback(k)
+        else:
+            presult[0] = info.callback(k, *info.extra_args)
+        kernel_func_info = info
+        return 0
+    except:
+        kernel_func_info = info
+        info.exc = sys.exc_info()
+        return -1
 
-cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=(), object omega=None):
+cdef double init_convolution_kernel_cb(int k):
+    # To make sure we do not loose references, do the longjmp in a
+    # function with no Python objects
+    cdef double result
+    if init_convolution_kernel_cb_core(&result, k) == 0:
+        return result
+    else:
+        longjmp(kernel_func_info.jmp, 1)
+
+cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
 
     Parameters
@@ -75,26 +90,29 @@ cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_in
     omega : fwr_real_x8, 1D array, dimension(n), intent out
 
     """
+    global kernel_func_info
     cdef fwi_integer_t zero_nyquist_
     cdef np.ndarray omega_
-    cdef _LongJmpBuf jmp
+    cdef _CallbackInfo cbinfo
     zero_nyquist_ = zero_nyquist if (zero_nyquist is not None) else d % 2
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)
     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
-    jmp = _LongJmpBuf()
-    threadloc.kernel_func_info = (kernel_func, kernel_func_extra_args, jmp)
+    cbinfo = _CallbackInfo()
+    cbinfo.callback = kernel_func
+    cbinfo.extra_args = kernel_func_extra_args
+    kernel_func_info = cbinfo
     try:
-        if setjmp(jmp.buf) == 0:
-            fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &call_kernel_func, zero_nyquist_)
+        if setjmp(cbinfo.jmp) == 0:
+            fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
         else:
-            t, val, tb = threadloc.exc_info
-            threadloc.exc_info = None
+            t, val, tb = cbinfo.exc
+            cbinfo.exc = None
             raise t, val, tb
     finally:
-        threadloc.kernel_func_info = None
+        kernel_func_info = None
     return omega
 
 
