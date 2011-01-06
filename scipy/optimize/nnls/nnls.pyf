@@ -16,6 +16,7 @@ python module _nnls ! in
             integer dimension(*) :: index_bn
             integer , intent(out):: mode
         end subroutine nnls
+    end interface
 end python module _nnls
 
 ! This file was auto-generated with f2py (version:2_5878).
