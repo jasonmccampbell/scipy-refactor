@@ -70,7 +70,7 @@ src = [pjoin('cobyla', i) for i in ['cobyla2.f', 'trstlp.f', 'cobyla.pyf']]
 env.NumpyPythonExtension('_cobyla', source = src)
 
 # _minpack2 pyextension
-src = [pjoin('minpack2', i) for i in ['dcsrch.f', 'dcstep.f', 'minpack2.pyf']]
+src = ['minpack2.c'] + [pjoin('minpack2', i) for i in ['dcsrch.f', 'dcstep.f']]
 env.NumpyPythonExtension('minpack2', source = src)
 
 # _nnls pyextension
