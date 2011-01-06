@@ -7,9 +7,6 @@ For usage information see the function docstrings.
 
 Functions
 ---------
-diff(...)
-g1(...)
-h12(...)
 nnls(...)
 
 Data Types
@@ -22,140 +19,54 @@ np.import_array()
 include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object nnls(object a, fwi_integer_t mda, fwi_integer_t m, fwi_integer_t n, object b, object x, fwr_dbl_t rnorm, object w, object zz, object index, fwi_integer_t mode):
-    """nnls(a, mda, m, n, b, x, rnorm, w, zz, index, mode) -> (a, mda, m, n, b, x, rnorm, w, zz, index, mode)
+cpdef object nnls(object a, fwi_integer_t m, fwi_integer_t n, object b, object w, object zz, object index_bn, object mda=None, bint overwrite_a=False, bint overwrite_b=False, object x=None):
+    """nnls(a, m, n, b, w, zz, index_bn[, mda, overwrite_a, overwrite_b, x]) -> (x, rnorm, mode)
 
     Parameters
     ----------
-    a : fwr_dbl, 2D array, dimension(mda, *), intent inout
-    mda : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    b : fwr_dbl, 1D array, dimension(*), intent inout
-    x : fwr_dbl, 1D array, dimension(*), intent inout
-    rnorm : fwr_dbl, intent inout
-    w : fwr_dbl, 1D array, dimension(*), intent inout
-    zz : fwr_dbl, 1D array, dimension(*), intent inout
-    index : fwi_integer, 1D array, dimension(*), intent inout
-    mode : fwi_integer, intent inout
+    a : fwr_dbl, 2D array, dimension(mda, *), intent in
+    m : fwi_integer, intent in
+    n : fwi_integer, intent in
+    b : fwr_dbl, 1D array, dimension(*), intent in
+    w : fwr_dbl, 1D array, dimension(*), intent in
+    zz : fwr_dbl, 1D array, dimension(*), intent in
+    index_bn : fwi_integer, 1D array, dimension(*), intent in
+    mda : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    overwrite_b : bint_, intent in
+    x : fwr_dbl, 1D array, dimension(n), intent out
 
     Returns
     -------
-    a : fwr_dbl, 2D array, dimension(mda, *), intent inout
-    mda : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    n : fwi_integer, intent inout
-    b : fwr_dbl, 1D array, dimension(*), intent inout
-    x : fwr_dbl, 1D array, dimension(*), intent inout
-    rnorm : fwr_dbl, intent inout
-    w : fwr_dbl, 1D array, dimension(*), intent inout
-    zz : fwr_dbl, 1D array, dimension(*), intent inout
-    index : fwi_integer, 1D array, dimension(*), intent inout
-    mode : fwi_integer, intent inout
+    x : fwr_dbl, 1D array, dimension(n), intent out
+    rnorm : fwr_dbl, intent out
+    mode : fwi_integer, intent out
 
     """
     cdef np.ndarray a_
     cdef np.ndarray b_
-    cdef np.ndarray x_
     cdef np.ndarray w_
     cdef np.ndarray zz_
-    cdef np.ndarray index_
-    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, False)
-    if mda != np.PyArray_DIMS(a_)[0]:
+    cdef np.ndarray index_bn_
+    cdef fwi_integer_t mda_
+    cdef np.ndarray x_
+    cdef fwr_dbl_t rnorm
+    cdef fwi_integer_t mode
+    a_, a = fw_asfortranarray(a, fwr_dbl_t_enum, 2, not overwrite_a)
+    mda_ = mda if (mda is not None) else np.PyArray_DIMS(a_)[0]
+    if not (np.PyArray_DIMS(a_)[0] == mda_):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == mda')
+    if mda_ != np.PyArray_DIMS(a_)[0]:
         raise ValueError("(mda == a.shape[0]) not satisifed")
-    b_, b = fw_asfortranarray(b, fwr_dbl_t_enum, 1, False)
-    x_, x = fw_asfortranarray(x, fwr_dbl_t_enum, 1, False)
+    b_, b = fw_asfortranarray(b, fwr_dbl_t_enum, 1, not overwrite_b)
     w_, w = fw_asfortranarray(w, fwr_dbl_t_enum, 1, False)
     zz_, zz = fw_asfortranarray(zz, fwr_dbl_t_enum, 1, False)
-    index_, index = fw_asfortranarray(index, fwi_integer_t_enum, 1, False)
-    fc.nnls(<fwr_dbl_t*>np.PyArray_DATA(a_), &mda, &m, &n, <fwr_dbl_t*>np.PyArray_DATA(b_), <fwr_dbl_t*>np.PyArray_DATA(x_), &rnorm, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(zz_), <fwi_integer_t*>np.PyArray_DATA(index_), &mode)
-    return (a, mda, m, n, b, x, rnorm, w, zz, index, mode,)
-
-
-cpdef object diff(fwr_dbl_t x, fwr_dbl_t y):
-    """diff(x, y) -> (fw_ret_arg, x, y)
-
-    Parameters
-    ----------
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-
-    Returns
-    -------
-    fw_ret_arg : fwr_dbl, intent out
-    x : fwr_dbl, intent inout
-    y : fwr_dbl, intent inout
-
-    """
-    cdef fwr_dbl_t fw_ret_arg
-    fw_ret_arg = fc.diff(&x, &y)
-    return (fw_ret_arg, x, y,)
-
-
-cpdef object h12(fwi_integer_t mode, fwi_integer_t lpivot, fwi_integer_t l1, fwi_integer_t m, object u, fwi_integer_t iue, fwr_dbl_t up, object c, fwi_integer_t ice, fwi_integer_t icv, fwi_integer_t ncv):
-    """h12(mode, lpivot, l1, m, u, iue, up, c, ice, icv, ncv) -> (mode, lpivot, l1, m, u, iue, up, c, ice, icv, ncv)
-
-    Parameters
-    ----------
-    mode : fwi_integer, intent inout
-    lpivot : fwi_integer, intent inout
-    l1 : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    u : fwr_dbl, 2D array, dimension(iue, *), intent inout
-    iue : fwi_integer, intent inout
-    up : fwr_dbl, intent inout
-    c : fwr_dbl, 1D array, dimension(*), intent inout
-    ice : fwi_integer, intent inout
-    icv : fwi_integer, intent inout
-    ncv : fwi_integer, intent inout
-
-    Returns
-    -------
-    mode : fwi_integer, intent inout
-    lpivot : fwi_integer, intent inout
-    l1 : fwi_integer, intent inout
-    m : fwi_integer, intent inout
-    u : fwr_dbl, 2D array, dimension(iue, *), intent inout
-    iue : fwi_integer, intent inout
-    up : fwr_dbl, intent inout
-    c : fwr_dbl, 1D array, dimension(*), intent inout
-    ice : fwi_integer, intent inout
-    icv : fwi_integer, intent inout
-    ncv : fwi_integer, intent inout
-
-    """
-    cdef np.ndarray u_
-    cdef np.ndarray c_
-    u_, u = fw_asfortranarray(u, fwr_dbl_t_enum, 2, False)
-    if iue != np.PyArray_DIMS(u_)[0]:
-        raise ValueError("(iue == u.shape[0]) not satisifed")
-    c_, c = fw_asfortranarray(c, fwr_dbl_t_enum, 1, False)
-    fc.h12(&mode, &lpivot, &l1, &m, <fwr_dbl_t*>np.PyArray_DATA(u_), &iue, &up, <fwr_dbl_t*>np.PyArray_DATA(c_), &ice, &icv, &ncv)
-    return (mode, lpivot, l1, m, u, iue, up, c, ice, icv, ncv,)
-
-
-cpdef object g1(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t cterm, fwr_dbl_t sterm, fwr_dbl_t sig):
-    """g1(a, b, cterm, sterm, sig) -> (a, b, cterm, sterm, sig)
-
-    Parameters
-    ----------
-    a : fwr_dbl, intent inout
-    b : fwr_dbl, intent inout
-    cterm : fwr_dbl, intent inout
-    sterm : fwr_dbl, intent inout
-    sig : fwr_dbl, intent inout
-
-    Returns
-    -------
-    a : fwr_dbl, intent inout
-    b : fwr_dbl, intent inout
-    cterm : fwr_dbl, intent inout
-    sterm : fwr_dbl, intent inout
-    sig : fwr_dbl, intent inout
-
-    """
-    fc.g1(&a, &b, &cterm, &sterm, &sig)
-    return (a, b, cterm, sterm, sig,)
+    index_bn_, index_bn = fw_asfortranarray(index_bn, fwi_integer_t_enum, 1, False)
+    x_, x = fw_explicitshapearray(x, fwr_dbl_t_enum, 1, [n], False)
+    if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
+        raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
+    fc.nnls(<fwr_dbl_t*>np.PyArray_DATA(a_), &mda_, &m, &n, <fwr_dbl_t*>np.PyArray_DATA(b_), <fwr_dbl_t*>np.PyArray_DATA(x_), &rnorm, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(zz_), <fwi_integer_t*>np.PyArray_DATA(index_bn_), &mode)
+    return (x, rnorm, mode,)
 
 
 
@@ -194,12 +105,23 @@ cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,
         out_dims.len = ndim
         return np.PyArray_Newshape(result, &out_dims, np.NPY_FORTRANORDER), result
 
+cdef object fw_explicitshapearray(object value, int typenum, int ndim,
+                                  np.intp_t *shape, bint copy, int alignment=1):
+    if value is None:
+        result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
+        return result, result 
+    else:
+        return fw_asfortranarray(value, typenum, ndim, copy, alignment)
+
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_2cc1de8
 # Fwrap: self-sha1 773c0ee681faa3be49badae6b41e33a7c2d40654
-# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: pyf-sha1 8146a56ba4db8ac5633f05fa1b64a8a08936c432
 # Fwrap: wraps nnls/nnls.f
 # Fwrap:     sha1 9f987f085eba325f16d57fdacc88f51e64ad8555
+# Fwrap: exclude diff
+# Fwrap: exclude g1
+# Fwrap: exclude h12
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
