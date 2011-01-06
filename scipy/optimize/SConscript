@@ -74,7 +74,7 @@ src = ['minpack2.c'] + [pjoin('minpack2', i) for i in ['dcsrch.f', 'dcstep.f']]
 env.NumpyPythonExtension('minpack2', source = src)
 
 # _nnls pyextension
-src = [pjoin('nnls', i) for i in ['nnls.f', 'nnls.pyf']]
+src = ['_nnls.c', pjoin('nnls', 'nnls.f')]
 env.NumpyPythonExtension('_nnls', source = src)
 
 # moduleTNC pyextension
