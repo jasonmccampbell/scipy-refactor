@@ -1,0 +1,28 @@
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _lbfgsb_fc as fc
+
+cpdef  object setulb(fwi_integer_t n, fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object wa, object iwa, fw_bytes task, fwi_integer_t iprint, fw_bytes csave, object lsave, object isave, object dsave)
+cpdef  object mainlb(fwi_integer_t n, fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object ws, object wy, object sy, object ss, object yy, object wt, object wn, object snd, object z, object r, object d, object t, object wa, object sg, object sgo, object yg, object ygo, object index, object iwhere, object indx2, fw_bytes task, fwi_integer_t iprint, fw_bytes csave, object lsave, object isave, object dsave)
+cpdef  object active(fwi_integer_t n, object l, object u, object nbd, object x, object iwhere, fwi_integer_t iprint, bint prjctd, bint cnstnd, bint boxed)
+cpdef  object bmv(fwi_integer_t m, object sy, object wt, fwi_integer_t col, object v, object p, fwi_integer_t info)
+cpdef  object cauchy(fwi_integer_t n, object x, object l, object u, object nbd, object g, object iorder, object iwhere, object t, object d, object xcp, fwi_integer_t m, object wy, object ws, object sy, object wt, fwr_dbl_t theta, fwi_integer_t col, fwi_integer_t head, object p, object c, object wbp, object v, fwi_integer_t nint, object sg, object yg, fwi_integer_t iprint, fwr_dbl_t sbgnrm, fwi_integer_t info, fwr_dbl_t epsmch)
+cpdef  object cmprlb(fwi_integer_t n, fwi_integer_t m, object x, object g, object ws, object wy, object sy, object wt, object z, object r, object wa, object index, fwr_dbl_t theta, fwi_integer_t col, fwi_integer_t head, fwi_integer_t nfree, bint cnstnd, fwi_integer_t info)
+cpdef  object errclb(fwi_integer_t n, fwi_integer_t m, fwr_dbl_t factr, object l, object u, object nbd, fw_bytes task, fwi_integer_t info, fwi_integer_t k)
+cpdef  object formk(fwi_integer_t n, fwi_integer_t nsub, object ind, fwi_integer_t nenter, fwi_integer_t ileave, object indx2, fwi_integer_t iupdat, bint updatd, object wn, object wn1, fwi_integer_t m, object ws, object wy, object sy, fwr_dbl_t theta, fwi_integer_t col, fwi_integer_t head, fwi_integer_t info)
+cpdef  object formt(fwi_integer_t m, object wt, object sy, object ss, fwi_integer_t col, fwr_dbl_t theta, fwi_integer_t info)
+cpdef  object freev(fwi_integer_t n, fwi_integer_t nfree, object index, fwi_integer_t nenter, fwi_integer_t ileave, object indx2, object iwhere, bint wrk, bint updatd, bint cnstnd, fwi_integer_t iprint, fwi_integer_t iter)
+cpdef  object hpsolb(fwi_integer_t n, object t, object iorder, fwi_integer_t iheap)
+cpdef  object lnsrlb(fwi_integer_t n, object l, object u, object nbd, object x, fwr_dbl_t f, fwr_dbl_t fold, fwr_dbl_t gd, fwr_dbl_t gdold, object g, object d, object r, object t, object z, fwr_dbl_t stp, fwr_dbl_t dnorm, fwr_dbl_t dtd, fwr_dbl_t xstep, fwr_dbl_t stpmx, fwi_integer_t iter, fwi_integer_t ifun, fwi_integer_t iback, fwi_integer_t nfgv, fwi_integer_t info, fw_bytes task, bint boxed, bint cnstnd, fw_bytes csave, object isave, object dsave)
+cpdef  object matupd(fwi_integer_t n, fwi_integer_t m, object ws, object wy, object sy, object ss, object d, object r, fwi_integer_t itail, fwi_integer_t iupdat, fwi_integer_t col, fwi_integer_t head, fwr_dbl_t theta, fwr_dbl_t rr, fwr_dbl_t dr, fwr_dbl_t stp, fwr_dbl_t dtd)
+cpdef  object prn1lb(fwi_integer_t n, fwi_integer_t m, object l, object u, object x, fwi_integer_t iprint, fwi_integer_t itfile, fwr_dbl_t epsmch)
+cpdef  object prn2lb(fwi_integer_t n, object x, fwr_dbl_t f, object g, fwi_integer_t iprint, fwi_integer_t itfile, fwi_integer_t iter, fwi_integer_t nfgv, fwi_integer_t nact, fwr_dbl_t sbgnrm, fwi_integer_t nint, fw_bytes word, fwi_integer_t iword, fwi_integer_t iback, fwr_dbl_t stp, fwr_dbl_t xstep)
+cpdef  object prn3lb(fwi_integer_t n, object x, fwr_dbl_t f, fw_bytes task, fwi_integer_t iprint, fwi_integer_t info, fwi_integer_t itfile, fwi_integer_t iter, fwi_integer_t nfgv, fwi_integer_t nintol, fwi_integer_t nskip, fwi_integer_t nact, fwr_dbl_t sbgnrm, fwr_dbl_t time, fwi_integer_t nint, fw_bytes word, fwi_integer_t iback, fwr_dbl_t stp, fwr_dbl_t xstep, fwi_integer_t k, fwr_dbl_t cachyt, fwr_dbl_t sbtime, fwr_dbl_t lnscht)
+cpdef  object projgr(fwi_integer_t n, object l, object u, object nbd, object x, object g, fwr_dbl_t sbgnrm)
+cpdef  object subsm(fwi_integer_t n, fwi_integer_t m, fwi_integer_t nsub, object ind, object l, object u, object nbd, object x, object d, object ws, object wy, fwr_dbl_t theta, fwi_integer_t col, fwi_integer_t head, fwi_integer_t iword, object wv, object wn, fwi_integer_t iprint, fwi_integer_t info)
+cpdef  object dcsrch(fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t stp, fwr_dbl_t ftol, fwr_dbl_t gtol, fwr_dbl_t xtol, fwr_dbl_t stpmin, fwr_dbl_t stpmax, fw_bytes task, object isave, object dsave)
+cpdef  object dcstep(fwr_dbl_t stx, fwr_dbl_t fx, fwr_dbl_t dx, fwr_dbl_t sty, fwr_dbl_t fy, fwr_dbl_t dy, fwr_dbl_t stp, fwr_dbl_t fp, fwr_dbl_t dp, bint brackt, fwr_dbl_t stpmin, fwr_dbl_t stpmax)
+cpdef  object timer(fwr_dbl_t ttime)
+cpdef  object dpmeps()
+cpdef  object dpofa(object a, fwi_integer_t lda, fwi_integer_t n, fwi_integer_t info)
+cpdef  object dtrsl(object t, fwi_integer_t ldt, fwi_integer_t n, object b, fwi_integer_t job, fwi_integer_t info)
