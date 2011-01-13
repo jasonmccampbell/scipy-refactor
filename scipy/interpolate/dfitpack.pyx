@@ -1280,6 +1280,82 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
         coerced_shape[i] = 1
     return result
 
+
+#
+# Auxiliary code
+#
+
+cdef double dmax(np.ndarray seq, int n):
+    cdef np.ndarray[double] seq_ = seq
+    cdef double val
+    if n < 0:
+        return -1e308
+    val = seq_[0]
+    for i in range(1, n):
+        if seq_[i] > val:
+            val = seq_[i]
+    return val
+
+cdef double dmax(np.ndarray seq, int n):
+    cdef np.ndarray[double] seq_ = seq
+    cdef double val
+    if n < 0:
+        return 1e308
+    val = seq_[0]
+    for i in range(1, n):
+        if seq_[i] < val:
+            val = seq_[i]
+    return val
+
+cdef double calc_b(np.ndarray x, int m, np.ndarray tx, int nx):
+    cdef double val1 = dmin(x, m)
+    cdef double val2 = dmin(tx, nx)
+    if val2 > val1:
+        return val1
+    val1 = dmax(tx, nx)
+    return val2 - (val1 - val2) / nx
+
+cdef double calc_e(np.ndarray x, int m, np.ndarray tx, int nx):
+    cdef double val1 = dmax(x, m)
+    cdef double val2 = dmax(tx, nx)
+    if val2 < val1:
+        return val1
+    val1 = dmin(tx, nx)
+    return val2 + (val2 - val1) / nx
+
+cdef int calc_surfit_lwrk1(int m, int kx, int ky, int nxest, int nyest):
+    cdef int u, v, km, ne, bx, by_, b1, b2
+    u = nxest - kx - 1
+    v = nyest - ky - 1
+    km = max(kx, ky) + 1
+    ne = max(nxest, nyest)
+    bx = kx*v+ky+1
+    by_ = ky*u+kx+1
+    if bx <= by_:
+        b1 = bx
+        b2 = bx + v - ky
+    else:
+        b1 = by_
+        b2 = by_ + u - kx
+    return u * v * (2 + b1 + b2) + 2 * (u + v + km * (m + ne) + ne - kx - ky) + b2 + 1
+
+cdef int calc_surfit_lwrk2(int m, int kx, int ky, int nxest, int nyest):
+    cdef int u, v, bx, by_, b2
+    u = nxest - kx - 1
+    v = nyest - ky - 1
+    bx = kx * v + ky + 1
+    by_ = ky * u + kx + 1
+    b2 = bx + v - ky if bx <= by_ else by_ + u - kx
+    return u * v * (b2 + 1) + b2
+
+cdef int calc_regrid_lwrk(int mx, int my, int kx, int ky,
+                          int nxest, int nyest):
+    cdef u = max(my, nxest)
+    return (4 + nxest * (my + 2 * kx + 5) +
+            nyest * (2 * ky + 5) +
+            mx * (kx +1 ) + my * (ky + 1) + u)
+
+
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_66e37de
 # Fwrap: self-sha1 3078d720c73e99bebd81a31bd6f084104a40fda2
