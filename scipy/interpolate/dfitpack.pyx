@@ -302,7 +302,7 @@ cpdef object fpcurf0(object x, object y, object w, fwi_integer_t k, object xb=No
     """
     cdef fwi_integer_t nest_, iopt, m, maxit, k1, k2, n, ier
     cdef np.ndarray y_, t_, c_, fpint_, nrdata_, wrk_
-    cdef fwr_real_x8_t *b_f_, *g_f_, *q_f_
+    cdef fwr_real_x8_t *a_f_, *b_f_, *g_f_, *q_f_
     cdef np.ndarray[fwr_real_x8_t] x_, w_
     cdef Py_ssize_t i
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
@@ -326,21 +326,11 @@ cpdef object fpcurf0(object x, object y, object w, fwi_integer_t k, object xb=No
     k2 = k + 2
     wrk_shape[0] = (nest_ * 3 * k2) + (m * k1)
     wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    wrk_shape[0] = (nest_ * 3 * k2) + (m * k1)
-    wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    ##TODO b_f_ = wrk_ + (nest_ * k2)
-    b_f_shape[0] = nest_; b_f_shape[1] = k2
-    b_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, b_f_shape, False, True)
-    ##TODO g_f_ = wrk_ + (nest_ * 2 * k2)
-    g_f_shape[0] = nest_; g_f_shape[1] = k2
-    g_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, g_f_shape, False, True)
-    ##TODO q_f_ = wrk_ + (nest_ * 3 * k2)
-    q_f_shape[0] = m; q_f_shape[1] = k1
-    q_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, q_f_shape, False, True)
+    a_f_ = np.PyArray_DATA(wrk_) + nest_
+    b_f_ = np.PyArray_DATA(wrk_) + (nest_ * k2)
+    g_f_ = np.PyArray_DATA(wrk_) + (nest_ * 2 * k2)
+    q_f_ = np.PyArray_DATA(wrk_) + (nest_ * 3 * k2)
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
-    ##TODO w_ = 1.0
-    w_shape[0] = m
-    w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (w_shape[0] == m):
@@ -379,7 +369,11 @@ cpdef object fpcurf0(object x, object y, object w, fwi_integer_t k, object xb=No
     nrdata_ = fw_asfortranarray(nrdata, fwi_integer_t_enum, 1, nrdata_shape, False, True)
     if nest_ != nrdata_shape[0]:
         raise ValueError("(nest == nrdata.shape[0]) not satisifed")
-    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb_, &xe_, &k, &s_, &nest_, &tol, &maxit, &k1, &k2, &n, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + nest, <fwr_real_x8_t*>np.PyArray_DATA(b_f_), <fwr_real_x8_t*>np.PyArray_DATA(g_f_), <fwr_real_x8_t*>np.PyArray_DATA(q_f_), <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
+    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb_, &xe_, &k, &s_, &nest_, &tol, &maxit, &k1, &k2, &n, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_),
+              <fwr_real_x8_t*>np.PyArray_DATA(wrk_),
+              a_f_, b_f_, g_f_, q_f_,
+              <fwi_integer_t*>np.PyArray_DATA(nrdata_),
+              &ier)
     return (x_, y_, w_, xb_, xe_, k, s_, n, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
@@ -429,8 +423,9 @@ cpdef object fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8
 
     """
     cdef fwi_integer_t iopt, m, nest, maxit, k1, k2
-    cdef np.ndarray x_, y_, w_, t_, c_, fpint_, nrdata_, wrk_, wrk_, b_f_, g_f_, q_f_
-    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1], wrk_shape[1], b_f_shape[2], g_f_shape[2], q_f_shape[2]
+    cdef np.ndarray x_, y_, w_, t_, c_, fpint_, nrdata_, wrk_,
+    cdef fwr_real_x8_t *a_f_, *b_f_, *g_f_, *q_f_
+    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t tol
     iopt = 1
     tol = 0.001
@@ -443,17 +438,10 @@ cpdef object fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8
     k2 = k + 2
     wrk_shape[0] = (nest * 3 * k2) + (m * k1)
     wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    wrk_shape[0] = (nest * 3 * k2) + (m * k1)
-    wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    ##TODO b_f_ = wrk_ + (nest * k2)
-    b_f_shape[0] = nest; b_f_shape[1] = k2
-    b_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, b_f_shape, False, True)
-    ##TODO g_f_ = wrk_ + (nest * 2 * k2)
-    g_f_shape[0] = nest; g_f_shape[1] = k2
-    g_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, g_f_shape, False, True)
-    ##TODO q_f_ = wrk_ + (nest * 3 * k2)
-    q_f_shape[0] = m; q_f_shape[1] = k1
-    q_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, q_f_shape, False, True)
+    a_f_ = np.PyArray_DATA(wrk_) + nest_
+    b_f_ = np.PyArray_DATA(wrk_) + (nest_ * k2)
+    g_f_ = np.PyArray_DATA(wrk_) + (nest_ * 2 * k2)
+    q_f_ = np.PyArray_DATA(wrk_) + (nest_ * 3 * k2)
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, not overwrite_y, False)
     w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, not overwrite_w, False)
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, not overwrite_c, False)
@@ -489,7 +477,10 @@ cpdef object fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8
         raise ValueError("(nest == fpint.shape[0]) not satisifed")
     if nest != nrdata_shape[0]:
         raise ValueError("(nest == nrdata.shape[0]) not satisifed")
-    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb, &xe, &k, &s, &nest, &tol, &maxit, &k1, &k2, &n, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + nest, <fwr_real_x8_t*>np.PyArray_DATA(b_f_), <fwr_real_x8_t*>np.PyArray_DATA(g_f_), <fwr_real_x8_t*>np.PyArray_DATA(q_f_), <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
+    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb, &xe, &k, &s, &nest, &tol, &maxit, &k1, &k2, &n, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_),
+              <fwr_real_x8_t*>np.PyArray_DATA(wrk_),
+              a_f_, b_f_, g_f_, q_f_,
+              <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
     return (x_, y_, w_, xb, xe, k, s, n, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
@@ -529,7 +520,8 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
 
     """
     cdef fwi_integer_t iopt, m, nest, maxit, k1, k2, n_, ier
-    cdef np.ndarray y_, t_, c_, fpint_, nrdata_, wrk_, b_f_, g_f_, q_f_
+    cdef np.ndarray y_, t_, c_, fpint_, nrdata_, wrk_
+    cdef fwr_real_x8_t *a_f_, *b_f_, *g_f_, *q_f_
     cdef np.ndarray[fwr_real_x8_t] x_, w_
     cdef Py_ssize_t i
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
@@ -548,17 +540,10 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     k2 = k + 2
     wrk_shape[0] = (nest * 3 * k2) + (m * k1)
     wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    wrk_shape[0] = (nest * 3 * k2) + (m * k1)
-    wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
-    ##TODO b_f_ = wrk_ + (nest * k2)
-    b_f_shape[0] = nest; b_f_shape[1] = k2
-    b_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, b_f_shape, False, True)
-    ##TODO g_f_ = wrk_ + (nest * 2 * k2)
-    g_f_shape[0] = nest; g_f_shape[1] = k2
-    g_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, g_f_shape, False, True)
-    ##TODO q_f_ = wrk_ + (nest * 3 * k2)
-    q_f_shape[0] = m; q_f_shape[1] = k1
-    q_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, q_f_shape, False, True)
+    a_f_ = np.PyArray_DATA(wrk_) + nest_
+    b_f_ = np.PyArray_DATA(wrk_) + (nest_ * k2)
+    g_f_ = np.PyArray_DATA(wrk_) + (nest_ * 2 * k2)
+    q_f_ = np.PyArray_DATA(wrk_) + (nest_ * 3 * k2)
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     w_shape[0] = m
     if w is None:
@@ -599,7 +584,10 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     nrdata_ = fw_asfortranarray(nrdata, fwi_integer_t_enum, 1, nrdata_shape, False, True)
     if nest != nrdata_shape[0]:
         raise ValueError("(nest == nrdata.shape[0]) not satisifed")
-    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb_, &xe_, &k, &s, &nest, &tol, &maxit, &k1, &k2, &n_, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + nest, <fwr_real_x8_t*>np.PyArray_DATA(b_f_), <fwr_real_x8_t*>np.PyArray_DATA(g_f_), <fwr_real_x8_t*>np.PyArray_DATA(q_f_), <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
+    fc.fpcurf(&iopt, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &m, &xb_, &xe_, &k, &s, &nest, &tol, &maxit, &k1, &k2, &n_, <fwr_real_x8_t*>np.PyArray_DATA(t_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(fpint_),
+              <fwr_real_x8_t*>np.PyArray_DATA(wrk_),
+              a_f_, b_f_, g_f_, q_f_,
+              <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
     return (x_, y_, w_, xb_, xe_, k, s, n_, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
