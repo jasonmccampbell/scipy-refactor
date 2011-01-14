@@ -26,6 +26,8 @@ surfit_lsq(...)
 surfit_smth(...)
 
 """
+from libc.math cimport sqrt
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
@@ -171,22 +173,23 @@ cpdef object curfit(fwi_integer_t iopt, object x, object y, object w, object t, 
 
     """
     cdef fwi_integer_t m, nest, lwrk, n_, ier
-    cdef np.ndarray x_, y_, w_, t_, wrk_, iwrk_, c_
+    cdef np.ndarray y_, w_, t_, wrk_, iwrk_, c_
+    cdef np.ndarray[fwr_real_x8_t] x_
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], wrk_shape[1], iwrk_shape[1], c_shape[1]
     cdef fwr_real_x8_t xb_, xe_, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) x[0]
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) x[m-1]
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, False)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
+    xb_ = xb if (xb is not None) else x_[0]
+    xe_ = xe if (xe is not None) else x_[m - 1]
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (w_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: w.shape[0] == m')
-    if not (##TODO (watch any dependencies that may be further down!) xb<=x[0]):
+    if not xb <= x_[0]:
         raise ValueError('Condition on arguments not satisfied: xb<=x[0]')
-    if not (##TODO (watch any dependencies that may be further down!) xe>=x[m-1]):
+    if not xe >= x_[m - 1]:
         raise ValueError('Condition on arguments not satisfied: xe>=x[m-1]')
     if not ((1 <= k) and (k <= 5)):
         raise ValueError('Condition on arguments not satisfied: (1 <= k) and (k <= 5)')
@@ -194,8 +197,6 @@ cpdef object curfit(fwi_integer_t iopt, object x, object y, object w, object t, 
         raise ValueError('Condition on arguments not satisfied: s >= 0.0')
     if not (m > k):
         raise ValueError('Condition on arguments not satisfied: m > k')
-    if not (0 <= m <= x_shape[0]):
-        raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
     if m != y_shape[0]:
         raise ValueError("(m == y.shape[0]) not satisifed")
     if m != w_shape[0]:
@@ -300,16 +301,25 @@ cpdef object fpcurf0(object x, object y, object w, fwi_integer_t k, object xb=No
 
     """
     cdef fwi_integer_t nest_, iopt, m, maxit, k1, k2, n, ier
-    cdef np.ndarray x_, y_, w_, t_, c_, fpint_, nrdata_, wrk_, wrk_, b_f_, g_f_, q_f_
-    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1], wrk_shape[1], b_f_shape[2], g_f_shape[2], q_f_shape[2]
+    cdef np.ndarray y_, t_, c_, fpint_, nrdata_, wrk_
+    cdef fwr_real_x8_t *b_f_, *g_f_, *q_f_
+    cdef np.ndarray[fwr_real_x8_t] x_, w_
+    cdef Py_ssize_t i
+    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, s_, tol, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) x[0]
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) x[m-1]
+    xb_ = xb if (xb is not None) else x_[0]
+    xe_ = xe if (xe is not None) else x_[m - 1]
     iopt = 0
     tol = 0.001
     maxit = 20
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
+    if w is None:
+        w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
+        for i in range(0, w_shape[0]):
+            w_[i] = 1
+    else:
+        w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     s_ = s if (s is not None) else m
     k1 = k + 1
     nest_ = nest if (nest is not None) else (m + k + 1) if (s_ == 0.0) else max((m // 2), (2 * k1))
@@ -337,9 +347,9 @@ cpdef object fpcurf0(object x, object y, object w, fwi_integer_t k, object xb=No
         raise ValueError('Condition on arguments not satisfied: w.shape[0] == m')
     if not ((1 <= k) and (k <= 5)):
         raise ValueError('Condition on arguments not satisfied: (1 <= k) and (k <= 5)')
-    if not (##TODO (watch any dependencies that may be further down!) xb<=x[0]):
+    if not (xb <= x[0]):
         raise ValueError('Condition on arguments not satisfied: xb<=x[0]')
-    if not (##TODO (watch any dependencies that may be further down!) xe>=x[m-1]):
+    if not (xe >= x[m - 1]):
         raise ValueError('Condition on arguments not satisfied: xe>=x[m-1]')
     if not (s_ >= 0.0):
         raise ValueError('Condition on arguments not satisfied: s >= 0.0')
@@ -519,11 +529,13 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
 
     """
     cdef fwi_integer_t iopt, m, nest, maxit, k1, k2, n_, ier
-    cdef np.ndarray x_, y_, w_, t_, c_, fpint_, nrdata_, wrk_, wrk_, b_f_, g_f_, q_f_
-    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1], wrk_shape[1], b_f_shape[2], g_f_shape[2], q_f_shape[2]
+    cdef np.ndarray y_, t_, c_, fpint_, nrdata_, wrk_, b_f_, g_f_, q_f_
+    cdef np.ndarray[fwr_real_x8_t] x_, w_
+    cdef Py_ssize_t i
+    cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, tol, s, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) x[0]
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) x[m-1]
+    xb_ = xb if (xb is not None) else x[0]
+    xe_ = xe if (xe is not None) else x[m - 1]
     iopt = -1
     tol = 0.001
     maxit = 20
@@ -548,18 +560,22 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     q_f_shape[0] = m; q_f_shape[1] = k1
     q_f_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 2, q_f_shape, False, True)
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
-    ##TODO w_ = 1.0
     w_shape[0] = m
-    w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
+    if w is None:
+        w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
+        for i in range(0, w_shape[0]):
+            w_[i] = 1
+    else:
+        w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (w_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: w.shape[0] == m')
     if not ((1 <= k) and (k <= 5)):
         raise ValueError('Condition on arguments not satisfied: (1 <= k) and (k <= 5)')
-    if not (##TODO (watch any dependencies that may be further down!) xb<=x[0]):
+    if not (xb <= x[0]):
         raise ValueError('Condition on arguments not satisfied: xb<=x[0]')
-    if not (##TODO (watch any dependencies that may be further down!) xe>=x[m-1]):
+    if not (xe >= x[m - 1]):
         raise ValueError('Condition on arguments not satisfied: xe>=x[m-1]')
     if not (m > k):
         raise ValueError('Condition on arguments not satisfied: m > k')
@@ -768,10 +784,6 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     cdef np.ndarray x_, y_, z_, tx_, ty_, c_, wrk_, iwrk_
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], tx_shape[1], ty_shape[1], c_shape[1], wrk_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) dmin(x,mx)
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) dmax(x,mx)
-    yb_ = yb if (yb is not None) else ##TODO (watch any dependencies that may be further down!) dmin(y,my)
-    ye_ = ye if (ye is not None) else ##TODO (watch any dependencies that may be further down!) dmax(y,my)
     iopt = 0
     lwrk = ##TODO (watch any dependencies that may be further down!) calc_regrid_lwrk(mx,my,kx,ky,nxest,nyest)
     wrk_shape[0] = lwrk
@@ -786,6 +798,10 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
     z_ = fw_asfortranarray(z, fwr_real_x8_t_enum, 1, z_shape, False, False)
+    xb_ = xb if (xb is not None) else dmin(x,mx)
+    xe_ = xe if (xe is not None) else dmax(x,mx)
+    yb_ = yb if (yb is not None) else dmin(y,my)
+    ye_ = ye if (ye is not None) else dmax(y,my)
     if not (z_shape[0] == (mx * my)):
         raise ValueError('Condition on arguments not satisfied: z.shape[0] == (mx * my)')
     if not ((1 <= kx) and (kx <= 5)):
@@ -844,7 +860,6 @@ cpdef object spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object
     cdef fwi_integer_t n, k1_f, ier
     cdef np.ndarray t_, c_, d_
     cdef np.npy_intp t_shape[1], c_shape[1], d_shape[1]
-    k1_f = ##TODO (watch any dependencies that may be further down!) &k1
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
     n = t_shape[0]
@@ -858,7 +873,7 @@ cpdef object spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object
     d_ = fw_asfortranarray(d, fwr_real_x8_t_enum, 1, d_shape, False, True)
     if k + 1 != d_shape[0]:
         raise ValueError("(k + 1 == d.shape[0]) not satisifed")
-    #TODO: int k1=k+1;
+    k1_f = k + 1
     fc.spalde(<fwr_real_x8_t*>np.PyArray_DATA(t_), &n, <fwr_real_x8_t*>np.PyArray_DATA(c_), &k1_f, &x, <fwr_real_x8_t*>np.PyArray_DATA(d_), &ier)
     return (d_, ier,)
 
@@ -1067,13 +1082,10 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
 
     """
     cdef fwi_integer_t nxest_, nyest_, lwrk2_, iopt, m, nmax, lwrk1, kwrk, nx, ny, ier
-    cdef np.ndarray x_, y_, z_, w_, tx_, ty_, c_, wrk1_, wrk2_, iwrk_
+    cdef np.ndarray x_, y_, z_, tx_, ty_, c_, wrk1_, wrk2_, iwrk_
+    cdef np.ndarray[fwr_real_x8_t] w_
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], w_shape[1], tx_shape[1], ty_shape[1], c_shape[1], wrk1_shape[1], wrk2_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, s_, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) dmin(x,m)
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) dmax(x,m)
-    yb_ = yb if (yb is not None) else ##TODO (watch any dependencies that may be further down!) dmin(y,m)
-    ye_ = ye if (ye is not None) else ##TODO (watch any dependencies that may be further down!) dmax(y,m)
     iopt = 0
     lwrk2_ = lwrk2 if (lwrk2 is not None) else ##TODO (watch any dependencies that may be further down!) calc_surfit_lwrk2(m,kx,ky,nxest,nyest)
     wrk2_shape[0] = lwrk2_
@@ -1086,11 +1098,21 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
+    xb_ = xb if (xb is not None) else dmin(x,m)
+    xe_ = xe if (xe is not None) else dmax(x,m)
+    yb_ = yb if (yb is not None) else dmin(y,m)
+    ye_ = ye if (ye is not None) else dmax(y,m)
     z_ = fw_asfortranarray(z, fwr_real_x8_t_enum, 1, z_shape, False, False)
-    ##TODO w_ = 1.0
     w_shape[0] = m
-    w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
+    if w is None:
+        w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
+        for i in range(0, w_shape[0]):
+            w_[i] = 1
+    else:
+        w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     s_ = s if (s is not None) else m
+    nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m//2), 2 * (kx + 1))
+    nyest_ = nyest if (nyest is not None) else max(ky + 1 + sqrt(m//2), 2 * (ky + 1))
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (z_shape[0] == m):
@@ -1132,7 +1154,7 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, True)
     if (nxest_ - kx - 1) * (nyest_ - ky - 1) != c_shape[0]:
         raise ValueError("((nxest - kx - 1) * (nyest - ky - 1) == c.shape[0]) not satisifed")
-    lwrk1 = ##TODO (watch any dependencies that may be further down!) calc_surfit_lwrk1(m,kx,ky,nxest,nyest)
+    lwrk1 = calc_surfit_lwrk1(m, kx, ky, nxest, nyest)
     wrk1_shape[0] = lwrk1
     wrk1_ = fw_asfortranarray(wrk1, fwr_real_x8_t_enum, 1, wrk1_shape, False, True)
     if lwrk1 != wrk1_shape[0]:
@@ -1175,12 +1197,9 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     """
     cdef fwi_integer_t lwrk2_, iopt, m, nxest, nyest, nmax, nx, ny, lwrk1, kwrk, ier
     cdef np.ndarray x_, y_, z_, tx_, ty_, w_, c_, wrk1_, wrk2_, iwrk_
+    cdef np.ndarray[fwr_real_x8_t] w_
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], tx_shape[1], ty_shape[1], w_shape[1], c_shape[1], wrk1_shape[1], wrk2_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, s, fp
-    xb_ = xb if (xb is not None) else ##TODO (watch any dependencies that may be further down!) calc_b(x,m,tx,nx)
-    xe_ = xe if (xe is not None) else ##TODO (watch any dependencies that may be further down!) calc_e(x,m,tx,nx)
-    yb_ = yb if (yb is not None) else ##TODO (watch any dependencies that may be further down!) calc_b(y,m,ty,ny)
-    ye_ = ye if (ye is not None) else ##TODO (watch any dependencies that may be further down!) calc_e(y,m,ty,ny)
     iopt = -1
     s = 0.0
     tx_ = fw_asfortranarray(tx, fwr_real_x8_t_enum, 1, tx_shape, not overwrite_tx, False)
@@ -1198,14 +1217,12 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     wrk2_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk2_shape, False, True)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
-    kwrk = m + ((nx - (2 * kx) - 1) * (ny - (2 * ky) - 1))
-    iwrk_shape[0] = kwrk
-    iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
-    y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
-    z_ = fw_asfortranarray(z, fwr_real_x8_t_enum, 1, z_shape, False, False)
-    ##TODO w_ = 1.0
-    w_shape[0] = m
-    w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
+    if w is None:
+        w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
+        for i in range(0, w_shape[0]):
+            w_[i] = 1
+    else:
+        w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (z_shape[0] == m):
@@ -1240,6 +1257,10 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, True)
     if (nx - kx - 1) * (ny - ky - 1) != c_shape[0]:
         raise ValueError("((nx - kx - 1) * (ny - ky - 1) == c.shape[0]) not satisifed")
+    xb_ = xb if (xb is not None) else calc_b(x, m, tx, nx)
+    xe_ = xe if (xe is not None) else calc_e(x,m,tx,nx)
+    yb_ = yb if (yb is not None) else calc_b(y,m,ty,ny)
+    ye_ = ye if (ye is not None) else calc_e(y,m,ty,ny)
     fc.surfit(&iopt, &m, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(z_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &xb_, &xe_, &yb_, &ye_, &kx, &ky, &s, &nxest, &nyest, &nmax, &eps, &nx, <fwr_real_x8_t*>np.PyArray_DATA(tx_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(ty_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk1_), &lwrk1, <fwr_real_x8_t*>np.PyArray_DATA(wrk2_), &lwrk2_, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (tx_, ty_, c_, fp, ier,)
 
@@ -1296,7 +1317,7 @@ cdef double dmax(np.ndarray seq, int n):
             val = seq_[i]
     return val
 
-cdef double dmax(np.ndarray seq, int n):
+cdef double dmin(np.ndarray seq, int n):
     cdef np.ndarray[double] seq_ = seq
     cdef double val
     if n < 0:
