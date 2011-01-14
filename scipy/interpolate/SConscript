@@ -38,7 +38,7 @@ env.NumpyPythonExtension('_fitpack', source = 'src/_fitpackmodule.c',
 		LIBS="fitpack")
 
 # Build dfitpack
-env.NumpyPythonExtension('dfitpack', source = 'src/fitpack.pyf',
+env.NumpyPythonExtension('dfitpack', source = 'dfitpack.c',
 		LIBS="fitpack")
 
 # Build _interpolate
