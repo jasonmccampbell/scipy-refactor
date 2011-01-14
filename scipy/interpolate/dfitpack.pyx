@@ -773,9 +773,6 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], tx_shape[1], ty_shape[1], c_shape[1], wrk_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, fp
     iopt = 0
-    lwrk = ##TODO (watch any dependencies that may be further down!) calc_regrid_lwrk(mx,my,kx,ky,nxest,nyest)
-    wrk_shape[0] = lwrk
-    wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     mx = x_shape[0]
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
@@ -824,6 +821,9 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, True)
     if (nxest - kx - 1) * (nyest - ky - 1) != c_shape[0]:
         raise ValueError("((nxest - kx - 1) * (nyest - ky - 1) == c.shape[0]) not satisifed")
+    lwrk = calc_regrid_lwrk(mx, my, kx, ky, nxest, nyest)
+    wrk_shape[0] = lwrk
+    wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
     fc.regrid(&iopt, &mx, <fwr_real_x8_t*>np.PyArray_DATA(x_), &my, <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(z_), &xb_, &xe_, &yb_, &ye_, &kx, &ky, &s, &nxest, &nyest, &nx, <fwr_real_x8_t*>np.PyArray_DATA(tx_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(ty_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk_), &lwrk, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (nx, tx_, ny, ty_, c_, fp, ier,)
 
@@ -1075,11 +1075,8 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], w_shape[1], tx_shape[1], ty_shape[1], c_shape[1], wrk1_shape[1], wrk2_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, s_, fp
     iopt = 0
-    lwrk2_ = lwrk2 if (lwrk2 is not None) else ##TODO (watch any dependencies that may be further down!) calc_surfit_lwrk2(m,kx,ky,nxest,nyest)
-    wrk2_shape[0] = lwrk2_
-    wrk2_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk2_shape, False, True)
-    nxest_ = nxest if (nxest is not None) else ##TODO (watch any dependencies that may be further down!) imax(kx+1+sqrt(m/2),2*(kx+1))
-    nyest_ = nyest if (nyest is not None) else ##TODO (watch any dependencies that may be further down!) imax(ky+1+sqrt(m/2),2*(ky+1))
+    nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m // 2), 2 * (kx + 1))
+    nyest_ = nyest if (nyest is not None) else max(ky + 1 + sqrt(m // 2), 2 * (ky + 1))
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     kwrk = m + ((nxest_ - (2 * kx) - 1) * (nyest_ - (2 * ky) - 1))
@@ -1147,6 +1144,9 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     wrk1_ = fw_asfortranarray(wrk1, fwr_real_x8_t_enum, 1, wrk1_shape, False, True)
     if lwrk1 != wrk1_shape[0]:
         raise ValueError("(lwrk1 == wrk1.shape[0]) not satisifed")
+    lwrk2_ = lwrk2 if (lwrk2 is not None) else calc_surfit_lwrk2(m, kx, ky, nxest, nyest)
+    wrk2_shape[0] = lwrk2_
+    wrk2_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk2_shape, False, True)
     fc.surfit(&iopt, &m, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(z_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &xb_, &xe_, &yb_, &ye_, &kx, &ky, &s_, &nxest_, &nyest_, &nmax, &eps, &nx, <fwr_real_x8_t*>np.PyArray_DATA(tx_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(ty_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk1_), &lwrk1, <fwr_real_x8_t*>np.PyArray_DATA(wrk2_), &lwrk2_, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (nx, tx_, ny, ty_, c_, fp, wrk1_, ier,)
 
@@ -1197,12 +1197,6 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     ny = ty_shape[0]
     nyest = ny
     nmax = max(nx, ny)
-    lwrk1 = ##TODO (watch any dependencies that may be further down!) calc_surfit_lwrk1(m,kx,ky,nxest,nyest)
-    wrk1_shape[0] = lwrk1
-    wrk1_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk1_shape, False, True)
-    lwrk2_ = lwrk2 if (lwrk2 is not None) else ##TODO (watch any dependencies that may be further down!) calc_surfit_lwrk2(m,kx,ky,nxest,nyest)
-    wrk2_shape[0] = lwrk2_
-    wrk2_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk2_shape, False, True)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     if w is None:
@@ -1249,6 +1243,12 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     xe_ = xe if (xe is not None) else calc_e(x,m,tx,nx)
     yb_ = yb if (yb is not None) else calc_b(y,m,ty,ny)
     ye_ = ye if (ye is not None) else calc_e(y,m,ty,ny)
+    lwrk1 = calc_surfit_lwrk1(m, kx, ky, nxest, nyest)
+    wrk1_shape[0] = lwrk1
+    wrk1_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk1_shape, False, True)
+    lwrk2_ = lwrk2 if (lwrk2 is not None) else calc_surfit_lwrk2(m, kx, ky, nxest, nyest)
+    wrk2_shape[0] = lwrk2_
+    wrk2_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk2_shape, False, True)
     fc.surfit(&iopt, &m, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(z_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &xb_, &xe_, &yb_, &ye_, &kx, &ky, &s, &nxest, &nyest, &nmax, &eps, &nx, <fwr_real_x8_t*>np.PyArray_DATA(tx_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(ty_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk1_), &lwrk1, <fwr_real_x8_t*>np.PyArray_DATA(wrk2_), &lwrk2_, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (tx_, ty_, c_, fp, ier,)
 
