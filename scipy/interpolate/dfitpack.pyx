@@ -1071,10 +1071,10 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, s_, fp, eps_
     iopt = 0
     eps_ = 1e-16 if eps is None else eps
-    nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m // 2), 2 * (kx + 1))
-    nyest_ = nyest if (nyest is not None) else max(ky + 1 + sqrt(m // 2), 2 * (ky + 1))
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
+    nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m // 2), 2 * (kx + 1))
+    nyest_ = nyest if (nyest is not None) else max(ky + 1 + sqrt(m // 2), 2 * (ky + 1))
     kwrk = m + ((nxest_ - (2 * kx) - 1) * (nyest_ - (2 * ky) - 1))
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
@@ -1092,8 +1092,6 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     else:
         w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, True)
     s_ = s if (s is not None) else m
-    nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m//2), 2 * (kx + 1))
-    nyest_ = nyest if (nyest is not None) else max(ky + 1 + sqrt(m//2), 2 * (ky + 1))
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
     if not (z_shape[0] == m):
