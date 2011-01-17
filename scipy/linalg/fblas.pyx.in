@@ -1271,6 +1271,8 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: pyf-sha1 14d9d96b5a9918e5adfbe50b423a2ad647ef5568
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
+# Fwrap: wraps src/fblaswrap.f
+# Fwrap:     sha1 0
 # Fwrap: exclude cgbmv
 # Fwrap: exclude chbmv
 # Fwrap: exclude chemm
@@ -1357,6 +1359,8 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: template isamax,idamax,icamax,izamax
+# Fwrap: template sdot,ddot
+# Fwrap: template cdotc,cdotu,zdotc,zdotu
 # Fwrap: emulate-f2py True
 # Fwrap: auxiliary fblas.pxd
 # Fwrap: auxiliary fblas.pyx.in
