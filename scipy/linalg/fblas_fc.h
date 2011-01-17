@@ -77,6 +77,10 @@ FORTRAN_CALLSPEC void F_FUNC(dsymv,DSYMV)(char * uplo, fwi_integer_t * n, fwr_db
 FORTRAN_CALLSPEC void F_FUNC(dtrmv,DTRMV)(char * uplo, char * trans, char * diag, fwi_integer_t * n, fwr_dbl_t * a, fwi_integer_t * lda, fwr_dbl_t * x, fwi_integer_t * incx, size_t uplo_len_, size_t trans_len_, size_t diag_len_);
 FORTRAN_CALLSPEC fwr_dbl_t F_FUNC(dzasum,DZASUM)(fwi_integer_t * n, fwc_dbl_complex_t * zx, fwi_integer_t * incx);
 FORTRAN_CALLSPEC fwr_dbl_t F_FUNC(dznrm2,DZNRM2)(fwi_integer_t * n, fwc_dbl_complex_t * x, fwi_integer_t * incx);
+FORTRAN_CALLSPEC void F_FUNC(wcdotu,WCDOTU)(fwc_complex_t * r, fwi_integer_t * n, fwc_complex_t * cx, fwi_integer_t * incx, fwc_complex_t * cy, fwi_integer_t * incy);
+FORTRAN_CALLSPEC void F_FUNC(wzdotu,WZDOTU)(fwc_dbl_complex_t * r, fwi_integer_t * n, fwc_dbl_complex_t * zx, fwi_integer_t * incx, fwc_dbl_complex_t * zy, fwi_integer_t * incy);
+FORTRAN_CALLSPEC void F_FUNC(wcdotc,WCDOTC)(fwc_complex_t * r, fwi_integer_t * n, fwc_complex_t * cx, fwi_integer_t * incx, fwc_complex_t * cy, fwi_integer_t * incy);
+FORTRAN_CALLSPEC void F_FUNC(wzdotc,WZDOTC)(fwc_dbl_complex_t * r, fwi_integer_t * n, fwc_dbl_complex_t * zx, fwi_integer_t * incx, fwc_dbl_complex_t * zy, fwi_integer_t * incy);
 FORTRAN_CALLSPEC fwi_integer_t F_FUNC(icamax,ICAMAX)(fwi_integer_t * n, fwc_complex_t * cx, fwi_integer_t * incx);
 FORTRAN_CALLSPEC fwi_integer_t F_FUNC(idamax,IDAMAX)(fwi_integer_t * n, fwr_dbl_t * dx, fwi_integer_t * incx);
 FORTRAN_CALLSPEC fwi_integer_t F_FUNC(isamax,ISAMAX)(fwi_integer_t * n, fwr_real_t * sx, fwi_integer_t * incx);
@@ -148,6 +152,10 @@ FORTRAN_CALLSPEC void F_FUNC(ztrmv,ZTRMV)(char * uplo, char * trans, char * diag
 #define dtrmv F_FUNC(dtrmv,DTRMV)
 #define dzasum F_FUNC(dzasum,DZASUM)
 #define dznrm2 F_FUNC(dznrm2,DZNRM2)
+#define wcdotu F_FUNC(wcdotu,WCDOTU)
+#define wzdotu F_FUNC(wzdotu,WZDOTU)
+#define wcdotc F_FUNC(wcdotc,WCDOTC)
+#define wzdotc F_FUNC(wzdotc,WZDOTC)
 #define icamax F_FUNC(icamax,ICAMAX)
 #define idamax F_FUNC(idamax,IDAMAX)
 #define isamax F_FUNC(isamax,ISAMAX)
