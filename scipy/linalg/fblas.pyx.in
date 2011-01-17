@@ -247,7 +247,7 @@ cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-# Template for cdotc, cdotu, zdotc, zdotu
+# Template cdotc, cdotu, zdotc, zdotu.
 {{for cy_name, ktp, name, npy_enum
       in zip(['cdotc', 'cdotu', 'zdotc', 'zdotu'],
              ['fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
@@ -271,6 +271,8 @@ cpdef object {{cy_name}}(object x, object y, object n=None, fwi_integer_t offx=0
     xy : {{ktp}}_, intent out
 
     """
+    # These call a subroutine wrapper because the return argument
+    # is complex, which is less compatible ABI-wise
     cdef {{ktp}} xy
     cdef fwi_integer_t n_
     cdef np.ndarray x_, y_
