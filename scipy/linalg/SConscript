@@ -97,7 +97,7 @@ write_info(fenv)
 #------------
 #   fblas
 #------------
-fenv.NumpyPythonExtension('fblas', ['fblas.c', 'fblas_fc.f'])
+fenv.NumpyPythonExtension('fblas', ['fblas.c', pjoin('src', 'fblaswrap.f')])
 
 #------------
 #   cblas
