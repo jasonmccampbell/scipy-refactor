@@ -1194,6 +1194,9 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     w_shape[0] = m
+    kwrk = m + ((nx - (2 * kx) - 1) * (ny - (2 * ky) - 1))
+    iwrk_shape[0] = kwrk
+    iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
     if w is None:
         w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
         for i in range(0, w_shape[0]):
