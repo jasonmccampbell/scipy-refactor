@@ -137,11 +137,11 @@ cpdef object bispev(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     if not (0 <= my <= y_shape[0]):
         raise ValueError("(0 <= my <= y.shape[0]) not satisifed")
     z_shape[0] = mx; z_shape[1] = my
-    z_ = fw_asfortranarray(z, fwr_real_x8_t_enum, 2, z_shape, False, True)
-    if mx != z_shape[0]:
-        raise ValueError("(mx == z.shape[0]) not satisifed")
-    if my != z_shape[1]:
-        raise ValueError("(my == z.shape[1]) not satisifed")
+    # z should be C-contiguous
+    if z is None:
+        z_ = np.PyArray_ZEROS(2, z_shape, fwr_real_x8_t_enum, 0)
+    else:
+        z_ = np.PyArray_FROMANY(z, fwr_real_x8_t_enum, 1, 1, np.NPY_C_CONTIGUOUS)
     fc.bispev(<fwr_real_x8_t*>np.PyArray_DATA(tx_), &nx, <fwr_real_x8_t*>np.PyArray_DATA(ty_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(c_), &kx, &ky, <fwr_real_x8_t*>np.PyArray_DATA(x_), &mx, <fwr_real_x8_t*>np.PyArray_DATA(y_), &my, <fwr_real_x8_t*>np.PyArray_DATA(z_), <fwr_real_x8_t*>np.PyArray_DATA(wrk_), &lwrk, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (z_, ier,)
 
