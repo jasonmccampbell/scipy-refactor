@@ -5,7 +5,6 @@ from os.path import join as pjoin
 from numscons import GetNumpyEnvironment, CheckF77Clib, CheckF77Mangling
 
 env = GetNumpyEnvironment(ARGUMENTS)
-env.Tool('f2py')
 
 config = env.NumpyConfigure(custom_tests = {'CheckF77Clib' : CheckF77Clib, 'CheckF77Mangling': CheckF77Mangling})
 if not config.CheckF77Clib():
@@ -38,7 +37,7 @@ env.NumpyPythonExtension('_fitpack', source = 'src/_fitpackmodule.c',
 		LIBS="fitpack")
 
 # Build dfitpack
-env.NumpyPythonExtension('dfitpack', source = 'src/fitpack.pyf',
+env.NumpyPythonExtension('dfitpack', source = 'dfitpack.c',
 		LIBS="fitpack")
 
 # Build _interpolate
