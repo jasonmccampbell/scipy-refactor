@@ -1525,6 +1525,7 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_b7db3aa
 # Fwrap: self-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
+# Fwrap: pyf-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: exclude cgbmv
