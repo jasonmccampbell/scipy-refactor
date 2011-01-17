@@ -521,13 +521,13 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     cdef Py_ssize_t i
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, tol, s, fp
-    xb_ = xb if (xb is not None) else x[0]
-    xe_ = xe if (xe is not None) else x[m - 1]
     iopt = -1
     tol = 0.001
     maxit = 20
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
+    xb_ = xb if (xb is not None) else x_[0]
+    xe_ = xe if (xe is not None) else x_[m - 1]
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, not overwrite_t, False)
     n_ = t_shape[0]
     nest = n_
@@ -553,9 +553,9 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
         raise ValueError('Condition on arguments not satisfied: w.shape[0] == m')
     if not ((1 <= k) and (k <= 5)):
         raise ValueError('Condition on arguments not satisfied: (1 <= k) and (k <= 5)')
-    if not (xb_ <= x[0]):
+    if not (xb_ <= x_[0]):
         raise ValueError('Condition on arguments not satisfied: xb<=x[0]')
-    if not (xe_ >= x[m - 1]):
+    if not (xe_ >= x_[m - 1]):
         raise ValueError('Condition on arguments not satisfied: xe>=x[m-1]')
     if not (m > k):
         raise ValueError('Condition on arguments not satisfied: m > k')
