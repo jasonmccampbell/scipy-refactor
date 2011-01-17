@@ -1,12 +1,13 @@
 #cython: ccomplex=True
 
-"""The fblas module was generated with Fwrap v0.2.0dev_66e37de.
+"""The fblas module was generated with Fwrap v0.2.0dev_9f2ab1b.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
 
 Functions
 ---------
+cdotc, cdotu, zdotc, zdotu(...)
 chemv, zhemv(...)
 csrot(...)
 csscal(...)
@@ -38,7 +39,7 @@ zdscal(...)
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['{{name}}', 'csrot', 'csscal', 'dzasum', 'dznrm2', '{{name}}', '{{name}}', '{{name}}', 'scasum', 'scnrm2', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', 'zdrot', 'zdscal']
+__all__ = ['{{name}}', 'csrot', 'csscal', 'dzasum', 'dznrm2', '{{cy_name}}', '{{name}}', '{{name}}', '{{name}}', 'scasum', 'scnrm2', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', 'zdrot', 'zdscal']
 # Template for chemv, zhemv
 {{for ktp, name, npy_enum
       in zip(['fwc_complex_t', 'fwc_dbl_complex_t'],
@@ -244,6 +245,54 @@ cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fw_ret_arg = fc.dznrm2(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
+
+
+# Template for wcdotc, wcdotu, wzdotc, wzdotu
+{{for cy_name, ktp, name, npy_enum
+      in zip(['cdotc', 'cdotu', 'zdotc', 'zdotu'],
+             ['fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
+             ['wcdotc', 'wcdotu', 'wzdotc', 'wzdotu'],
+             ['fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
+cpdef object {{cy_name}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{cy_name}}(x, y[, n, offx, incx, offy, incy]) -> xy
+
+    Parameters
+    ----------
+    x : {{ktp}}_, 1D array, dimension(*), intent in
+    y : {{ktp}}_, 1D array, dimension(*), intent in
+    n : fwi_integer, intent in
+    offx : fwi_integer, intent in
+    incx : fwi_integer, intent in
+    offy : fwi_integer, intent in
+    incy : fwi_integer, intent in
+
+    Returns
+    -------
+    xy : {{ktp}}_, intent out
+
+    """
+    cdef {{ktp}} xy
+    cdef fwi_integer_t n_
+    cdef np.ndarray x_, y_
+    cdef np.npy_intp x_shape[1], y_shape[1]
+    x_ = fw_asfortranarray(x, {{npy_enum}}, 1, x_shape, False, False)
+    y_ = fw_asfortranarray(y, {{npy_enum}}, 1, y_shape, False, False)
+    n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
+    if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
+        raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
+    if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
+        raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
+    if not ((offx >= 0) and (offx < x_shape[0])):
+        raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
+    if not ((incx > 0) or (incx < 0)):
+        raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
+    if not ((offy >= 0) and (offy < y_shape[0])):
+        raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
+    if not ((incy > 0) or (incy < 0)):
+        raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
+    fc.{{name}}(&xy, &n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
+    return xy
+{{endfor}}
 
 
 # Template for isamax, idamax, icamax, izamax
@@ -1259,11 +1308,13 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_66e37de
+# Fwrap: version 0.2.0dev_9f2ab1b
 # Fwrap: self-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
-# Fwrap: pyf-sha1 14d9d96b5a9918e5adfbe50b423a2ad647ef5568
+# Fwrap: pyf-sha1 aecd6df4206a334184e799d47b341b828bd42501
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
+# Fwrap: wraps src/fblaswrap.f
+# Fwrap:     sha1 0
 # Fwrap: exclude cgbmv
 # Fwrap: exclude chbmv
 # Fwrap: exclude chemm
@@ -1350,6 +1401,8 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: template isamax,idamax,icamax,izamax
+# Fwrap: template sdot,ddot
+# Fwrap: template cdotc,cdotu,zdotc,zdotu
 # Fwrap: emulate-f2py True
 # Fwrap: auxiliary fblas.pxd
 # Fwrap: auxiliary fblas.pyx.in
