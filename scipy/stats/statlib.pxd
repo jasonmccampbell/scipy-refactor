@@ -1,7 +1,8 @@
 cimport numpy as np
-from statlib_fc cimport *
+from fwrap_ktp cimport *
+cimport statlib_fc as fc
 
-cpdef api object wprob(fwi_integer_t test, fwi_integer_t other, object a1=*)
-cpdef api object gscale(fwi_integer_t test, fwi_integer_t other, object a1=*)
-cpdef api object prho(fwi_integer_t n, fwi_integer_t is__)
-cpdef api object swilk(object x, object a, bint init=*, object n1=*)
+cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=*)
+cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=*)
+cpdef object prho(fwi_integer_t n, fwi_integer_t is__)
+cpdef object swilk(object x, object a, bint init=*, object n1=*)
