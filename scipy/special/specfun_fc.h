@@ -46,99 +46,99 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(lqmn_c,LQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clpmn_c,CLPMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(jdzo_c,JDZO_C)(fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(bernob_c,BERNOB_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(bernoa_c,BERNOA_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(csphjy_c,CSPHJY_C)(fwi_integer_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lpmns_c,LPMNS_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(eulera_c,EULERA_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clqn_c,CLQN_C)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(airyzo_c,AIRYZO_C)(fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(eulerb_c,EULERB_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(cva1_c,CVA1_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lqnb_c,LQNB_C)(fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lamv_c,LAMV_C)(fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lagzo_c,LAGZO_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(legzo_c,LEGZO_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(pbdv_c,PBDV_C)(fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(cerzo_c,CERZO_C)(fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lamn_c,LAMN_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clpn_c,CLPN_C)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lqmns_c,LQMNS_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(chgm_c,CHGM_C)(fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lpmn_c,LPMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(fcszo_c,FCSZO_C)(fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(aswfb_c,ASWFB_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lqna_c,LQNA_C)(fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(cpbdn_c,CPBDN_C)(fwi_integer_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lpn_c,LPN_C)(fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(fcoef_c,FCOEF_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(sphi_c,SPHI_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(rcty_c,RCTY_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(lpni_c,LPNI_C)(fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(cyzo_c,CYZO_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(csphik_c,CSPHIK_C)(fwi_integer_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(sphj_c,SPHJ_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(othpl_c,OTHPL_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(klvnzo_c,KLVNZO_C)(fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(jyzo_c,JYZO_C)(fwi_integer_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(rctj_c,RCTJ_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(herzo_c,HERZO_C)(fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(sphk_c,SPHK_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(pbvv_c,PBVV_C)(fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(clqmn_c,CLQMN_C)(fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fw_shape_t *, fwc_complex_x16_t *, fw_shape_t *, fwc_complex_x16_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(segv_c,SEGV_C)(fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(sphy_c,SPHY_C)(fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fw_shape_t *, fwr_dbl_t *, fw_shape_t *, fwr_dbl_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(lqmn,LQMN)(fwi_integer_t * mm, fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * qm, fwr_dbl_t * qd);
+FORTRAN_CALLSPEC void F_FUNC(clpmn,CLPMN)(fwi_integer_t * mm, fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwc_complex_x16_t * cpm, fwc_complex_x16_t * cpd);
+FORTRAN_CALLSPEC void F_FUNC(jdzo,JDZO)(fwi_integer_t * nt, fwi_integer_t * n, fwi_integer_t * m, fwi_integer_t * p, fwr_dbl_t * zo);
+FORTRAN_CALLSPEC void F_FUNC(bernob,BERNOB)(fwi_integer_t * n, fwr_dbl_t * bn);
+FORTRAN_CALLSPEC void F_FUNC(bernoa,BERNOA)(fwi_integer_t * n, fwr_dbl_t * bn);
+FORTRAN_CALLSPEC void F_FUNC(csphjy,CSPHJY)(fwi_integer_t * n, fwc_complex_x16_t * z, fwi_integer_t * nm, fwc_complex_x16_t * csj, fwc_complex_x16_t * cdj, fwc_complex_x16_t * csy, fwc_complex_x16_t * cdy);
+FORTRAN_CALLSPEC void F_FUNC(lpmns,LPMNS)(fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * pm, fwr_dbl_t * pd);
+FORTRAN_CALLSPEC void F_FUNC(eulera,EULERA)(fwi_integer_t * n, fwr_dbl_t * en);
+FORTRAN_CALLSPEC void F_FUNC(clqn,CLQN)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwc_complex_x16_t * cqn, fwc_complex_x16_t * cqd);
+FORTRAN_CALLSPEC void F_FUNC(airyzo,AIRYZO)(fwi_integer_t * nt, fwi_integer_t * kf, fwr_dbl_t * xa, fwr_dbl_t * xb, fwr_dbl_t * xc, fwr_dbl_t * xd);
+FORTRAN_CALLSPEC void F_FUNC(eulerb,EULERB)(fwi_integer_t * n, fwr_dbl_t * en);
+FORTRAN_CALLSPEC void F_FUNC(cva1,CVA1)(fwi_integer_t * kd, fwi_integer_t * m, fwr_dbl_t * q, fwr_dbl_t * cv);
+FORTRAN_CALLSPEC void F_FUNC(lqnb,LQNB)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * qn, fwr_dbl_t * qd);
+FORTRAN_CALLSPEC void F_FUNC(lamv,LAMV)(fwr_dbl_t * v, fwr_dbl_t * x, fwr_dbl_t * vm, fwr_dbl_t * vl, fwr_dbl_t * dl);
+FORTRAN_CALLSPEC void F_FUNC(lagzo,LAGZO)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * w);
+FORTRAN_CALLSPEC void F_FUNC(legzo,LEGZO)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * w);
+FORTRAN_CALLSPEC void F_FUNC(pbdv,PBDV)(fwr_dbl_t * v, fwr_dbl_t * x, fwr_dbl_t * dv, fwr_dbl_t * dp, fwr_dbl_t * pdf, fwr_dbl_t * pdd);
+FORTRAN_CALLSPEC void F_FUNC(cerzo,CERZO)(fwi_integer_t * nt, fwc_complex_x16_t * zo);
+FORTRAN_CALLSPEC void F_FUNC(lamn,LAMN)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * bl, fwr_dbl_t * dl);
+FORTRAN_CALLSPEC void F_FUNC(clpn,CLPN)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwc_complex_x16_t * cpn, fwc_complex_x16_t * cpd);
+FORTRAN_CALLSPEC void F_FUNC(lqmns,LQMNS)(fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * qm, fwr_dbl_t * qd);
+FORTRAN_CALLSPEC void F_FUNC(chgm,CHGM)(fwr_dbl_t * a, fwr_dbl_t * b, fwr_dbl_t * x, fwr_dbl_t * hg);
+FORTRAN_CALLSPEC void F_FUNC(lpmn,LPMN)(fwi_integer_t * mm, fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * pm, fwr_dbl_t * pd);
+FORTRAN_CALLSPEC void F_FUNC(fcszo,FCSZO)(fwi_integer_t * kf, fwi_integer_t * nt, fwc_complex_x16_t * zo);
+FORTRAN_CALLSPEC void F_FUNC(aswfb,ASWFB)(fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * c, fwr_dbl_t * x, fwi_integer_t * kd, fwr_dbl_t * cv, fwr_dbl_t * s1f, fwr_dbl_t * s1d);
+FORTRAN_CALLSPEC void F_FUNC(lqna,LQNA)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * qn, fwr_dbl_t * qd);
+FORTRAN_CALLSPEC void F_FUNC(cpbdn,CPBDN)(fwi_integer_t * n, fwc_complex_x16_t * z, fwc_complex_x16_t * cpb, fwc_complex_x16_t * cpd);
+FORTRAN_CALLSPEC void F_FUNC(lpn,LPN)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * pn, fwr_dbl_t * pd);
+FORTRAN_CALLSPEC void F_FUNC(fcoef,FCOEF)(fwi_integer_t * kd, fwi_integer_t * m, fwr_dbl_t * q, fwr_dbl_t * a, fwr_dbl_t * fc);
+FORTRAN_CALLSPEC void F_FUNC(sphi,SPHI)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * si, fwr_dbl_t * di);
+FORTRAN_CALLSPEC void F_FUNC(rcty,RCTY)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * ry, fwr_dbl_t * dy);
+FORTRAN_CALLSPEC void F_FUNC(lpni,LPNI)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * pn, fwr_dbl_t * pd, fwr_dbl_t * pl);
+FORTRAN_CALLSPEC void F_FUNC(cyzo,CYZO)(fwi_integer_t * nt, fwi_integer_t * kf, fwi_integer_t * kc, fwc_complex_x16_t * zo, fwc_complex_x16_t * zv);
+FORTRAN_CALLSPEC void F_FUNC(csphik,CSPHIK)(fwi_integer_t * n, fwc_complex_x16_t * z, fwi_integer_t * nm, fwc_complex_x16_t * csi, fwc_complex_x16_t * cdi, fwc_complex_x16_t * csk, fwc_complex_x16_t * cdk);
+FORTRAN_CALLSPEC void F_FUNC(sphj,SPHJ)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * sj, fwr_dbl_t * dj);
+FORTRAN_CALLSPEC void F_FUNC(othpl,OTHPL)(fwi_integer_t * kf, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * pl, fwr_dbl_t * dpl);
+FORTRAN_CALLSPEC void F_FUNC(klvnzo,KLVNZO)(fwi_integer_t * nt, fwi_integer_t * kd, fwr_dbl_t * zo);
+FORTRAN_CALLSPEC void F_FUNC(jyzo,JYZO)(fwi_integer_t * n, fwi_integer_t * nt, fwr_dbl_t * rj0, fwr_dbl_t * rj1, fwr_dbl_t * ry0, fwr_dbl_t * ry1);
+FORTRAN_CALLSPEC void F_FUNC(rctj,RCTJ)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * rj, fwr_dbl_t * dj);
+FORTRAN_CALLSPEC void F_FUNC(herzo,HERZO)(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * w);
+FORTRAN_CALLSPEC void F_FUNC(sphk,SPHK)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * sk, fwr_dbl_t * dk);
+FORTRAN_CALLSPEC void F_FUNC(pbvv,PBVV)(fwr_dbl_t * v, fwr_dbl_t * x, fwr_dbl_t * vv, fwr_dbl_t * vp, fwr_dbl_t * pvf, fwr_dbl_t * pvd);
+FORTRAN_CALLSPEC void F_FUNC(clqmn,CLQMN)(fwi_integer_t * mm, fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwc_complex_x16_t * cqm, fwc_complex_x16_t * cqd);
+FORTRAN_CALLSPEC void F_FUNC(segv,SEGV)(fwi_integer_t * m, fwi_integer_t * n, fwr_dbl_t * c, fwi_integer_t * kd, fwr_dbl_t * cv, fwr_dbl_t * eg);
+FORTRAN_CALLSPEC void F_FUNC(sphy,SPHY)(fwi_integer_t * n, fwr_dbl_t * x, fwi_integer_t * nm, fwr_dbl_t * sy, fwr_dbl_t * dy);
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif
 
 #if !defined(NO_FORTRAN_MANGLING)
-#define lqmn_c F_FUNC(lqmn_c,LQMN_C)
-#define clpmn_c F_FUNC(clpmn_c,CLPMN_C)
-#define jdzo_c F_FUNC(jdzo_c,JDZO_C)
-#define bernob_c F_FUNC(bernob_c,BERNOB_C)
-#define bernoa_c F_FUNC(bernoa_c,BERNOA_C)
-#define csphjy_c F_FUNC(csphjy_c,CSPHJY_C)
-#define lpmns_c F_FUNC(lpmns_c,LPMNS_C)
-#define eulera_c F_FUNC(eulera_c,EULERA_C)
-#define clqn_c F_FUNC(clqn_c,CLQN_C)
-#define airyzo_c F_FUNC(airyzo_c,AIRYZO_C)
-#define eulerb_c F_FUNC(eulerb_c,EULERB_C)
-#define cva1_c F_FUNC(cva1_c,CVA1_C)
-#define lqnb_c F_FUNC(lqnb_c,LQNB_C)
-#define lamv_c F_FUNC(lamv_c,LAMV_C)
-#define lagzo_c F_FUNC(lagzo_c,LAGZO_C)
-#define legzo_c F_FUNC(legzo_c,LEGZO_C)
-#define pbdv_c F_FUNC(pbdv_c,PBDV_C)
-#define cerzo_c F_FUNC(cerzo_c,CERZO_C)
-#define lamn_c F_FUNC(lamn_c,LAMN_C)
-#define clpn_c F_FUNC(clpn_c,CLPN_C)
-#define lqmns_c F_FUNC(lqmns_c,LQMNS_C)
-#define chgm_c F_FUNC(chgm_c,CHGM_C)
-#define lpmn_c F_FUNC(lpmn_c,LPMN_C)
-#define fcszo_c F_FUNC(fcszo_c,FCSZO_C)
-#define aswfb_c F_FUNC(aswfb_c,ASWFB_C)
-#define lqna_c F_FUNC(lqna_c,LQNA_C)
-#define cpbdn_c F_FUNC(cpbdn_c,CPBDN_C)
-#define lpn_c F_FUNC(lpn_c,LPN_C)
-#define fcoef_c F_FUNC(fcoef_c,FCOEF_C)
-#define sphi_c F_FUNC(sphi_c,SPHI_C)
-#define rcty_c F_FUNC(rcty_c,RCTY_C)
-#define lpni_c F_FUNC(lpni_c,LPNI_C)
-#define cyzo_c F_FUNC(cyzo_c,CYZO_C)
-#define csphik_c F_FUNC(csphik_c,CSPHIK_C)
-#define sphj_c F_FUNC(sphj_c,SPHJ_C)
-#define othpl_c F_FUNC(othpl_c,OTHPL_C)
-#define klvnzo_c F_FUNC(klvnzo_c,KLVNZO_C)
-#define jyzo_c F_FUNC(jyzo_c,JYZO_C)
-#define rctj_c F_FUNC(rctj_c,RCTJ_C)
-#define herzo_c F_FUNC(herzo_c,HERZO_C)
-#define sphk_c F_FUNC(sphk_c,SPHK_C)
-#define pbvv_c F_FUNC(pbvv_c,PBVV_C)
-#define clqmn_c F_FUNC(clqmn_c,CLQMN_C)
-#define segv_c F_FUNC(segv_c,SEGV_C)
-#define sphy_c F_FUNC(sphy_c,SPHY_C)
+#define lqmn F_FUNC(lqmn,LQMN)
+#define clpmn F_FUNC(clpmn,CLPMN)
+#define jdzo F_FUNC(jdzo,JDZO)
+#define bernob F_FUNC(bernob,BERNOB)
+#define bernoa F_FUNC(bernoa,BERNOA)
+#define csphjy F_FUNC(csphjy,CSPHJY)
+#define lpmns F_FUNC(lpmns,LPMNS)
+#define eulera F_FUNC(eulera,EULERA)
+#define clqn F_FUNC(clqn,CLQN)
+#define airyzo F_FUNC(airyzo,AIRYZO)
+#define eulerb F_FUNC(eulerb,EULERB)
+#define cva1 F_FUNC(cva1,CVA1)
+#define lqnb F_FUNC(lqnb,LQNB)
+#define lamv F_FUNC(lamv,LAMV)
+#define lagzo F_FUNC(lagzo,LAGZO)
+#define legzo F_FUNC(legzo,LEGZO)
+#define pbdv F_FUNC(pbdv,PBDV)
+#define cerzo F_FUNC(cerzo,CERZO)
+#define lamn F_FUNC(lamn,LAMN)
+#define clpn F_FUNC(clpn,CLPN)
+#define lqmns F_FUNC(lqmns,LQMNS)
+#define chgm F_FUNC(chgm,CHGM)
+#define lpmn F_FUNC(lpmn,LPMN)
+#define fcszo F_FUNC(fcszo,FCSZO)
+#define aswfb F_FUNC(aswfb,ASWFB)
+#define lqna F_FUNC(lqna,LQNA)
+#define cpbdn F_FUNC(cpbdn,CPBDN)
+#define lpn F_FUNC(lpn,LPN)
+#define fcoef F_FUNC(fcoef,FCOEF)
+#define sphi F_FUNC(sphi,SPHI)
+#define rcty F_FUNC(rcty,RCTY)
+#define lpni F_FUNC(lpni,LPNI)
+#define cyzo F_FUNC(cyzo,CYZO)
+#define csphik F_FUNC(csphik,CSPHIK)
+#define sphj F_FUNC(sphj,SPHJ)
+#define othpl F_FUNC(othpl,OTHPL)
+#define klvnzo F_FUNC(klvnzo,KLVNZO)
+#define jyzo F_FUNC(jyzo,JYZO)
+#define rctj F_FUNC(rctj,RCTJ)
+#define herzo F_FUNC(herzo,HERZO)
+#define sphk F_FUNC(sphk,SPHK)
+#define pbvv F_FUNC(pbvv,PBVV)
+#define clqmn F_FUNC(clqmn,CLQMN)
+#define segv F_FUNC(segv,SEGV)
+#define sphy F_FUNC(sphy,SPHY)
 #endif
