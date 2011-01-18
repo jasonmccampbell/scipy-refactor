@@ -111,7 +111,7 @@ fenv.NumpyPythonExtension('fblas', ['fblas.c', pjoin('src', 'fblaswrap.f')])
 #------------
 #   flapack
 #------------
-fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
+fenv.NumpyPythonExtension('flapack', ['flapack.c'])
 
 #------------
 #   clapack
@@ -126,7 +126,7 @@ fenv.NumpyPythonExtension('flapack', ['flapack.c', 'flapack_fc.f'])
 #   _flinalg
 #----------------
 flinalg_fsrc = [pjoin('src', i) for i in ['det.f', 'lu.f']]
-flinalg_src = ['_flinalg.c', '_flinalg_fc.f']
+flinalg_src = ['_flinalg.c']
 
 fenv.NumpyPythonExtension('_flinalg', source = flinalg_src + flinalg_fsrc)
 
@@ -134,7 +134,7 @@ fenv.NumpyPythonExtension('_flinalg', source = flinalg_src + flinalg_fsrc)
 # calc_lwork:
 #----------------
 fenv.NumpyPythonExtension('calc_lwork',
-                          [pjoin('src', 'calc_lwork.f'), 'calc_lwork.c', 'calc_lwork_fc.f'])
+                          [pjoin('src', 'calc_lwork.f'), 'calc_lwork.c'])
 
 #--------------
 # Atlas version

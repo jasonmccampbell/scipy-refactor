@@ -63,4 +63,4 @@ env.NumpyPythonExtension('_cephes',
 
 # Specfun extension
 env.Prepend(LIBS = ['sc_specfunlib'])
-env.NumpyPythonExtension('specfun', source = ['specfun.c', 'specfun_fc.f'])
+env.NumpyPythonExtension('specfun', source = ['specfun.c'])
