@@ -1803,6 +1803,7 @@ cdef object fw_explicitshapearray(object value, int typenum, int ndim,
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_2a63538
 # Fwrap: self-sha1 df364bb88062d673b42b68f8ed9cec6b610b855d
+# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 975d5e3c152da9ce29774e9c581efe5511a6dba5
 # Fwrap: exclude airya
