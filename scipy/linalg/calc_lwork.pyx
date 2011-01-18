@@ -355,6 +355,7 @@ cdef char fw_aschar(object s):
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_b7db3aa
 # Fwrap: self-sha1 ae171eebe0ba45db91d6dbbd05c40bf021f08682
+# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
 # Fwrap: wraps src/calc_lwork.f
 # Fwrap:     sha1 9403c229ea6a86018979d6df550170cd2e1cef89
 # Fwrap: f77binding True
