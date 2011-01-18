@@ -1,5 +1,6 @@
 cimport numpy as np
-from futil_fc cimport *
+from fwrap_ktp cimport *
+cimport futil_fc as fc
 
-cpdef api object dqsort(object arr, bint overwrite_arr=*)
-cpdef api object dfreps(object arr, object replist=*, object repnum=*)
+cpdef object dqsort(object arr, bint overwrite_arr=*)
+cpdef object dfreps(object arr, object replist=*, object repnum=*)
