@@ -46,29 +46,29 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(gehrd_c,GEHRD_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(gesdd_c,GESDD_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(gelss_c,GELSS_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(getri_c,GETRI_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(geev_c,GEEV_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(heev_c,HEEV_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(syev_c,SYEV_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(gees_c,GEES_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(geqrf_c,GEQRF_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(gqr_c,GQR_C)(fwi_integer_t *, fwi_integer_t *, fw_character_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(gehrd,GEHRD)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, fwi_integer_t * lo, fwi_integer_t * hi, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(gesdd,GESDD)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * m, fwi_integer_t * n, fwi_integer_t * compute_uv, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(gelss,GELSS)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * m, fwi_integer_t * n, fwi_integer_t * nrhs, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(getri,GETRI)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(geev,GEEV)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, fwi_integer_t * compute_vl, fwi_integer_t * compute_vr, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(heev,HEEV)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, fwi_integer_t * lower, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(syev,SYEV)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, fwi_integer_t * lower, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(gees,GEES)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * n, fwi_integer_t * compute_v, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(geqrf,GEQRF)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * m, fwi_integer_t * n, size_t prefix_len_);
+FORTRAN_CALLSPEC void F_FUNC(gqr,GQR)(fwi_integer_t * min_lwork, fwi_integer_t * max_lwork, char * prefix, fwi_integer_t * m, fwi_integer_t * n, size_t prefix_len_);
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif
 
 #if !defined(NO_FORTRAN_MANGLING)
-#define gehrd_c F_FUNC(gehrd_c,GEHRD_C)
-#define gesdd_c F_FUNC(gesdd_c,GESDD_C)
-#define gelss_c F_FUNC(gelss_c,GELSS_C)
-#define getri_c F_FUNC(getri_c,GETRI_C)
-#define geev_c F_FUNC(geev_c,GEEV_C)
-#define heev_c F_FUNC(heev_c,HEEV_C)
-#define syev_c F_FUNC(syev_c,SYEV_C)
-#define gees_c F_FUNC(gees_c,GEES_C)
-#define geqrf_c F_FUNC(geqrf_c,GEQRF_C)
-#define gqr_c F_FUNC(gqr_c,GQR_C)
+#define gehrd F_FUNC(gehrd,GEHRD)
+#define gesdd F_FUNC(gesdd,GESDD)
+#define gelss F_FUNC(gelss,GELSS)
+#define getri F_FUNC(getri,GETRI)
+#define geev F_FUNC(geev,GEEV)
+#define heev F_FUNC(heev,HEEV)
+#define syev F_FUNC(syev,SYEV)
+#define gees F_FUNC(gees,GEES)
+#define geqrf F_FUNC(geqrf,GEQRF)
+#define gqr F_FUNC(gqr,GQR)
 #endif
