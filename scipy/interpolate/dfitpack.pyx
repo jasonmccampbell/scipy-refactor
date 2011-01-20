@@ -14,7 +14,6 @@ dblint(...)
 fpcurf0(...)
 fpcurf1(...)
 fpcurfm1(...)
-parcur(...)
 percur(...)
 regrid_smth(...)
 spalde(...)
@@ -31,7 +30,7 @@ from libc.math cimport sqrt
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['bispeu', 'bispev', 'curfit', 'dblint', 'fpcurf0', 'fpcurf1', 'fpcurfm1', 'parcur', 'percur', 'regrid_smth', 'spalde', 'splder', 'splev', 'splint', 'sproot', 'surfit_smth', 'surfit_lsq']
+__all__ = ['bispeu', 'bispev', 'curfit', 'dblint', 'fpcurf0', 'fpcurf1', 'fpcurfm1', 'percur', 'regrid_smth', 'spalde', 'splder', 'splev', 'splint', 'sproot', 'surfit_smth', 'surfit_lsq']
 cpdef object bispeu(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, object x, object y, object z=None):
     """bispeu(tx, ty, c, kx, ky, x, y[, z]) -> (z, ier)
 
@@ -594,88 +593,6 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
               a_f_, b_f_, g_f_, q_f_,
               <fwi_integer_t*>np.PyArray_DATA(nrdata_), &ier)
     return (x_, y_, w_, xb_, xe_, k, s, n_, t_, c_, fp, fpint_, nrdata_, ier,)
-
-
-cpdef object parcur(fwi_integer_t iopt, fwi_integer_t ipar, fwi_integer_t idim, object u, object x, object w, fwr_real_x8_t ub, fwr_real_x8_t ue, object t, object wrk, object iwrk, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
-    """parcur(iopt, ipar, idim, u, x, w, ub, ue, t, wrk, iwrk[, k, s, c]) -> (n, c, fp, ier)
-
-    Parameters
-    ----------
-    iopt : fwi_integer, intent in
-    ipar : fwi_integer, intent in
-    idim : fwi_integer, intent in
-    u : fwr_real_x8, 1D array, dimension(m), intent inout
-    x : fwr_real_x8, 1D array, dimension(mx), intent in
-    w : fwr_real_x8, 1D array, dimension(m), intent in
-    ub : fwr_real_x8, intent in
-    ue : fwr_real_x8, intent in
-    t : fwr_real_x8, 1D array, dimension(nest), intent inout
-    wrk : fwr_real_x8, 1D array, dimension(lwrk), intent inout
-    iwrk : fwi_integer, 1D array, dimension(nest), intent inout
-    k : fwi_integer, intent in
-    s : fwr_real_x8, intent in
-    c : fwr_real_x8, 1D array, dimension(nc), intent out
-
-    Returns
-    -------
-    n : fwi_integer, intent out
-    c : fwr_real_x8, 1D array, dimension(nc), intent out
-    fp : fwr_real_x8, intent out
-    ier : fwi_integer, intent out
-
-    """
-    cdef fwi_integer_t m, mx, nest, nc, lwrk, n_, ier
-    cdef np.ndarray u_, x_, w_, t_, wrk_, iwrk_, c_
-    cdef np.npy_intp u_shape[1], x_shape[1], w_shape[1], t_shape[1], wrk_shape[1], iwrk_shape[1], c_shape[1]
-    cdef fwr_real_x8_t fp
-    t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
-    nest = t_shape[0]
-    n_ = nest
-    fp = 0
-    ier = 0
-    u_ = fw_asfortranarray(u, fwr_real_x8_t_enum, 1, u_shape, False, False)
-    m = u_shape[0]
-    x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
-    mx = x_shape[0]
-    nc = 0
-    if not ((iopt >= -1) and (iopt <= 1)):
-        raise ValueError('Condition on arguments not satisfied: (iopt >= -1) and (iopt <= 1)')
-    if not ((ipar == 1) or (ipar == 0)):
-        raise ValueError('Condition on arguments not satisfied: (ipar == 1) or (ipar == 0)')
-    if not ((idim > 0) and (idim < 11)):
-        raise ValueError('Condition on arguments not satisfied: (idim > 0) and (idim < 11)')
-    if not ((1 <= k) and (k <= 5)):
-        raise ValueError('Condition on arguments not satisfied: (1 <= k) and (k <= 5)')
-    if not (s >= 0.0):
-        raise ValueError('Condition on arguments not satisfied: s >= 0.0')
-    if not (m > k):
-        raise ValueError('Condition on arguments not satisfied: m > k')
-    if not (mx >= (idim * m)):
-        raise ValueError('Condition on arguments not satisfied: mx >= (idim * m)')
-    if not (nc >= (idim * nest)):
-        raise ValueError('Condition on arguments not satisfied: nc >= (idim * nest)')
-    if not (0 <= m <= u_shape[0]):
-        raise ValueError("(0 <= m <= u.shape[0]) not satisifed")
-    if not (0 <= mx <= x_shape[0]):
-        raise ValueError("(0 <= mx <= x.shape[0]) not satisifed")
-    w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, False)
-    if not (0 <= m <= w_shape[0]):
-        raise ValueError("(0 <= m <= w.shape[0]) not satisifed")
-    if not (0 <= nest <= t_shape[0]):
-        raise ValueError("(0 <= nest <= t.shape[0]) not satisifed")
-    wrk_ = fw_asfortranarray(wrk, fwr_real_x8_t_enum, 1, wrk_shape, False, False)
-    lwrk = wrk_shape[0]
-    if not (0 <= lwrk <= wrk_shape[0]):
-        raise ValueError("(0 <= lwrk <= wrk.shape[0]) not satisifed")
-    iwrk_ = fw_asfortranarray(iwrk, fwi_integer_t_enum, 1, iwrk_shape, False, False)
-    if not (0 <= nest <= iwrk_shape[0]):
-        raise ValueError("(0 <= nest <= iwrk.shape[0]) not satisifed")
-    c_shape[0] = nc
-    c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, True)
-    if not (0 <= nc <= c_shape[0]):
-        raise ValueError("(0 <= nc <= c.shape[0]) not satisifed")
-    fc.parcur(&iopt, &ipar, &idim, &m, <fwr_real_x8_t*>np.PyArray_DATA(u_), &mx, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &ub, &ue, &k, &s, &nest, &n_, <fwr_real_x8_t*>np.PyArray_DATA(t_), &nc, <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk_), &lwrk, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &ier)
-    return (n_, c_, fp, ier,)
 
 
 cpdef object percur(fwi_integer_t iopt, object x, object y, object w, object t, object wrk, object iwrk, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
@@ -1635,6 +1552,7 @@ cdef int calc_regrid_lwrk(int mx, int my, int kx, int ky,
 # Fwrap: exclude spgrid
 # Fwrap: exclude sphere
 # Fwrap: exclude surev
+# Fwrap: exclude parcur
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
