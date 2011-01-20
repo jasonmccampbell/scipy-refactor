@@ -19,14 +19,14 @@ env.DistutilsStaticExtLibrary('statlibimp', source = src)
 env.AppendUnique(LIBPATH = '.')
 
 # Statlib extension
-env.NumpyPythonExtension('statlib', source = ['statlib.c', 'statlib_fc.f'],
+env.NumpyPythonExtension('statlib', source = ['statlib.c'],
                          LIBS = 'statlibimp')
 
 # futil extension
-env.NumpyPythonExtension('futil', source = ['futil.c', 'futil_fc.f', pjoin('src', 'futil.f')])
+env.NumpyPythonExtension('futil', source = ['futil.c', pjoin('src', 'futil.f')])
 
 # mvn extension
-env.NumpyPythonExtension('mvn', source = ['mvn.c', 'mvn_fc.f', pjoin('src', 'mvndst.f')])
+env.NumpyPythonExtension('mvn', source = ['mvn.c', pjoin('src', 'mvndst.f')])
 
 # vonmisses_cython extension
 env.NumpyPythonExtension('vonmises_cython', source = ['vonmises_cython.c'])
