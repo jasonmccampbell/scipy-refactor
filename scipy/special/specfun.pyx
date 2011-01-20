@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The specfun module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The specfun module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -259,6 +259,7 @@ cpdef object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, objec
     cdef fwi_integer_t nm
     cdef np.ndarray csj_, cdj_, csy_, cdy_
     cdef np.npy_intp csj_shape[1], cdj_shape[1], csy_shape[1], cdy_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     csj_shape[0] = n + 1
@@ -526,6 +527,7 @@ cpdef object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     cdef fwr_dbl_t vm
     cdef np.ndarray vl_, dl_
     cdef np.npy_intp vl_shape[1], dl_shape[1]
+    vm = 0
     if not (v >= 1):
         raise ValueError('Condition on arguments not satisfied: v >= 1')
     vl_shape[0] = <int>v + 1
@@ -623,6 +625,8 @@ cpdef object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     cdef fwr_dbl_t pdf, pdd
     cdef np.ndarray dv_, dp_
     cdef np.npy_intp dv_shape[1], dp_shape[1]
+    pdf = 0
+    pdd = 0
     if not ((abs(<int>v) + 2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     dv_shape[0] = abs(<int>v) + 2
@@ -682,6 +686,7 @@ cpdef object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     cdef fwi_integer_t nm
     cdef np.ndarray bl_, dl_
     cdef np.npy_intp bl_shape[1], dl_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     bl_shape[0] = n + 1
@@ -781,6 +786,7 @@ cpdef object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
 
     """
     cdef fwr_dbl_t hg
+    hg = 0
     fc.chgm(&a, &b, &x, &hg)
     return hg
 
@@ -873,6 +879,8 @@ cpdef object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, f
 
     """
     cdef fwr_dbl_t s1f, s1d
+    s1f = 0
+    s1d = 0
     if not (m >= 0):
         raise ValueError('Condition on arguments not satisfied: m >= 0')
     if not (n >= m):
@@ -1033,6 +1041,7 @@ cpdef object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     cdef fwi_integer_t nm
     cdef np.ndarray si_, di_
     cdef np.npy_intp si_shape[1], di_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     si_shape[0] = n + 1
@@ -1067,6 +1076,7 @@ cpdef object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     cdef fwi_integer_t nm
     cdef np.ndarray ry_, dy_
     cdef np.npy_intp ry_shape[1], dy_shape[1]
+    nm = 0
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     ry_shape[0] = n + 1
@@ -1180,6 +1190,7 @@ cpdef object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, objec
     cdef fwi_integer_t nm
     cdef np.ndarray csi_, cdi_, csk_, cdk_
     cdef np.npy_intp csi_shape[1], cdi_shape[1], csk_shape[1], cdk_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     csi_shape[0] = n + 1
@@ -1222,6 +1233,7 @@ cpdef object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sj_, dj_
     cdef np.npy_intp sj_shape[1], dj_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     sj_shape[0] = n + 1
@@ -1365,6 +1377,7 @@ cpdef object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     cdef fwi_integer_t nm
     cdef np.ndarray rj_, dj_
     cdef np.npy_intp rj_shape[1], dj_shape[1]
+    nm = 0
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     rj_shape[0] = n + 1
@@ -1430,6 +1443,7 @@ cpdef object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sk_, dk_
     cdef np.npy_intp sk_shape[1], dk_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     if not (x >= 0):
@@ -1467,6 +1481,8 @@ cpdef object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     cdef fwr_dbl_t pvf, pvd
     cdef np.ndarray vv_, vp_
     cdef np.npy_intp vv_shape[1], vp_shape[1]
+    pvf = 0
+    pvd = 0
     if not ((abs(<int>v) + 2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     vv_shape[0] = abs(<int>v) + 2
@@ -1545,6 +1561,7 @@ cpdef object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t k
     cdef fwr_dbl_t cv
     cdef np.ndarray eg_
     cdef np.npy_intp eg_shape[1]
+    cv = 0
     if not ((n >= m) and ((n - m) < 199)):
         raise ValueError('Condition on arguments not satisfied: (n >= m) and ((n - m) < 199)')
     if not ((kd == -1) or (kd == 1)):
@@ -1577,6 +1594,7 @@ cpdef object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sy_, dy_
     cdef np.npy_intp sy_shape[1], dy_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     if not (x >= 0):
@@ -1630,9 +1648,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 df364bb88062d673b42b68f8ed9cec6b610b855d
-# Fwrap: pyf-sha1 748c4a1175d62fe42e2ef7d97468558a905204df
+# Fwrap: pyf-sha1 7e6795c1d414375b9b59c56c616f1bb9266cf657
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 975d5e3c152da9ce29774e9c581efe5511a6dba5
 # Fwrap: exclude airya

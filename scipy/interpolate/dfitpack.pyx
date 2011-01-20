@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The dfitpack module was generated with Fwrap v0.2.0dev_66e37de.
+"""The dfitpack module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -58,6 +58,7 @@ cpdef object bispeu(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     lwrk = kx + ky + 2
     wrk_shape[0] = lwrk
     wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     tx_ = fw_asfortranarray(tx, fwr_real_x8_t_enum, 1, tx_shape, False, False)
     nx = tx_shape[0]
@@ -119,6 +120,7 @@ cpdef object bispev(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     kwrk = mx + my
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     tx_ = fw_asfortranarray(tx, fwr_real_x8_t_enum, 1, tx_shape, False, False)
     nx = tx_shape[0]
@@ -177,6 +179,8 @@ cpdef object curfit(fwi_integer_t iopt, object x, object y, object w, object t, 
     cdef np.ndarray[fwr_real_x8_t] x_
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], wrk_shape[1], iwrk_shape[1], c_shape[1]
     cdef fwr_real_x8_t xb_, xe_, fp
+    fp = 0
+    ier = 0
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, False)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
@@ -313,6 +317,8 @@ cpdef object fpcurf0(object x, object y, fwi_integer_t k, object w=None, object 
     iopt = 0
     tol = 0.001
     maxit = 20
+    n = 0
+    fp = 0
     m = x_shape[0]
     w_shape[0] = m
     if w is None:
@@ -331,6 +337,7 @@ cpdef object fpcurf0(object x, object y, fwi_integer_t k, object w=None, object 
     b_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest_ * k2)
     g_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest_ * 2 * k2)
     q_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest_ * 3 * k2)
+    ier = 0
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     if not (y_shape[0] == m):
         raise ValueError('Condition on arguments not satisfied: y.shape[0] == m')
@@ -522,8 +529,10 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, tol, s, fp
     iopt = -1
+    s = 0
     tol = 0.001
     maxit = 20
+    fp = 0
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     xb_ = xb if (xb is not None) else x_[0]
@@ -539,6 +548,7 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     b_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest * k2)
     g_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest * 2 * k2)
     q_f_ = <fwr_real_x8_t*>np.PyArray_DATA(wrk_) + (nest * 3 * k2)
+    ier = 0
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     w_shape[0] = m
     if w is None:
@@ -621,10 +631,13 @@ cpdef object parcur(fwi_integer_t iopt, fwi_integer_t ipar, fwi_integer_t idim, 
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
     nest = t_shape[0]
     n_ = nest
+    fp = 0
+    ier = 0
     u_ = fw_asfortranarray(u, fwr_real_x8_t_enum, 1, u_shape, False, False)
     m = u_shape[0]
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     mx = x_shape[0]
+    nc = 0
     if not ((iopt >= -1) and (iopt <= 1)):
         raise ValueError('Condition on arguments not satisfied: (iopt >= -1) and (iopt <= 1)')
     if not ((ipar == 1) or (ipar == 0)):
@@ -693,6 +706,8 @@ cpdef object percur(fwi_integer_t iopt, object x, object y, object w, object t, 
     cdef np.ndarray x_, y_, w_, t_, wrk_, iwrk_, c_
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], wrk_shape[1], iwrk_shape[1], c_shape[1]
     cdef fwr_real_x8_t fp
+    fp = 0
+    ier = 0
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     w_ = fw_asfortranarray(w, fwr_real_x8_t_enum, 1, w_shape, False, False)
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
@@ -768,6 +783,9 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     cdef np.npy_intp x_shape[1], y_shape[1], z_shape[1], tx_shape[1], ty_shape[1], c_shape[1], wrk_shape[1], iwrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, fp
     iopt = 0
+    nx = 0
+    ny = 0
+    fp = 0
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     mx = x_shape[0]
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
@@ -777,6 +795,7 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     kwrk = 3 + mx + my + nxest + nyest
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
+    ier = 0
     z_ = fw_asfortranarray(z, fwr_real_x8_t_enum, 1, z_shape, False, False)
     xb_ = xb if (xb is not None) else dmin(x_,mx)
     xe_ = xe if (xe is not None) else dmax(x_,mx)
@@ -843,6 +862,7 @@ cpdef object spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object
     cdef fwi_integer_t n, k1_f, ier
     cdef np.ndarray t_, c_, d_
     cdef np.npy_intp t_shape[1], c_shape[1], d_shape[1]
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
     n = t_shape[0]
@@ -886,6 +906,7 @@ cpdef object splder(object t, object c, fwi_integer_t k, object x, fwi_integer_t
     n = t_shape[0]
     wrk_shape[0] = n
     wrk_ = fw_asfortranarray(None, fwr_real_x8_t_enum, 1, wrk_shape, False, True)
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     if not (c_shape[0] == n):
         raise ValueError('Condition on arguments not satisfied: c.shape[0] == n')
@@ -929,6 +950,7 @@ cpdef object splev(object t, object c, fwi_integer_t k, object x, fwi_integer_t 
     cdef fwi_integer_t n, m, ier
     cdef np.ndarray t_, c_, x_, y_
     cdef np.npy_intp t_shape[1], c_shape[1], x_shape[1], y_shape[1]
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
     n = t_shape[0]
@@ -1007,6 +1029,8 @@ cpdef object sproot(object t, object c, object mest=None, object zero=None):
     cdef fwi_integer_t mest_, n, m, ier
     cdef np.ndarray t_, c_, zero_
     cdef np.npy_intp t_shape[1], c_shape[1], zero_shape[1]
+    m = 0
+    ier = 0
     c_ = fw_asfortranarray(c, fwr_real_x8_t_enum, 1, c_shape, False, False)
     t_ = fw_asfortranarray(t, fwr_real_x8_t_enum, 1, t_shape, False, False)
     n = t_shape[0]
@@ -1071,6 +1095,9 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     cdef fwr_real_x8_t xb_, xe_, yb_, ye_, s_, fp, eps_
     iopt = 0
     eps_ = 1e-16 if eps is None else eps
+    nx = 0
+    ny = 0
+    fp = 0
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     nxest_ = nxest if (nxest is not None) else max(kx + 1 + sqrt(m // 2), 2 * (kx + 1))
@@ -1078,6 +1105,7 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     kwrk = m + ((nxest_ - (2 * kx) - 1) * (nyest_ - (2 * ky) - 1))
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
+    ier = 0
     y_ = fw_asfortranarray(y, fwr_real_x8_t_enum, 1, y_shape, False, False)
     xb_ = xb if (xb is not None) else dmin(x_,m)
     xe_ = xe if (xe is not None) else dmax(x_,m)
@@ -1191,12 +1219,14 @@ cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, obje
     ny = ty_shape[0]
     nyest = ny
     nmax = max(nx, ny)
+    fp = 0
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
     m = x_shape[0]
     w_shape[0] = m
     kwrk = m + ((nx - (2 * kx) - 1) * (ny - (2 * ky) - 1))
     iwrk_shape[0] = kwrk
     iwrk_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwrk_shape, False, True)
+    ier = 0
     if w is None:
         w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
         for i in range(0, w_shape[0]):
@@ -1364,9 +1394,9 @@ cdef int calc_regrid_lwrk(int mx, int my, int kx, int ky,
 
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_66e37de
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 3078d720c73e99bebd81a31bd6f084104a40fda2
-# Fwrap: pyf-sha1 bf9620e70e75178515e8fca448c1a0e0edbd06a3
+# Fwrap: pyf-sha1 2d9290ed372448f70d1ad9f4d114a7953e807331
 # Fwrap: wraps fitpack/bispeu.f
 # Fwrap:     sha1 8a58ee9c07576ccb81ebf587c844a09a06eef222
 # Fwrap: wraps fitpack/bispev.f
