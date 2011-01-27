@@ -1,145 +1,132 @@
 """
-Interpolation Tools
-===================
+Sub-package for objects used in interpolation.
 
-Wrappers around FITPACK functions
-----------------------------------
+As listed below, this sub-package contains spline functions and classes,
+one-dimensional and multi-dimensional (univariate and multivariate)
+interpolation classes, Lagrange and Taylor polynomial interpolators, and
+wrappers for `FITPACK <http://www.cisl.ucar.edu/softlib/FITPACK.html>`_
+and DFITPACK functions.
 
-  splrep
-          find smoothing spline given (x,y) points on curve.
-  splprep
-          find smoothing spline given parametrically defined curve.
-  splev
-          evaluate the spline or its derivatives.
-  splint
-          compute definite integral of a spline.
-  sproot
-          find the roots of a cubic spline.
-  spalde
-          compute all derivatives of a spline at given points.
-  bisplrep
-          find bivariate smoothing spline representation.
-  bisplev
-          evaluate bivariate smoothing spline.
+Univariate interpolation
+========================
 
-  UnivariateSpline
-          A more recent, object-oriented wrapper; finds a (possibly
-          smoothed) interpolating spline.
+.. autosummary::
+   :toctree: generated/
 
-  InterpolatedUnivariateSpline
+   interp1d
+   BarycentricInterpolator
+   KroghInterpolator
+   PiecewisePolynomial
+   barycentric_interpolate
+   krogh_interpolate
+   piecewise_polynomial_interpolate
 
-  LSQUnivariateSpline
 
-  BivariateSpline
-           A more recent, object-oriented wrapper; finds a
-           interpolating spline for a bivariate function.
+Multivariate interpolation
+==========================
 
-  SmoothBivariateSpline
+Unstructured data:
 
-Low-level Piece-wise Spline Tools
------------------------------------
-  splmake
-              Create a spline representation from data-points
-              where the internal knots are the data-points.
-              
-  spleval
-              Evaluate a spline representation on a new set of
-              input data values.
+.. autosummary::
+   :toctree: generated/
 
-  spline
-              Single-call interface to splmake and spleval
-              
-  spltopp
-              Return piecewise polynomial representation from a
-              spline representation. 
-                
-  
+   griddata
+   LinearNDInterpolator
+   NearestNDInterpolator
+   CloughTocher2DInterpolator
+   Rbf
 
-Interpolation Classes (univariate)
------------------------------------
+Data given on a regular grid:
 
-  interp1d
-               Create a class whose instances can linearly interpolate
-               to compute unknown values of a univariate function.
+.. autosummary::
+   :toctree: generated/
 
-  BarycentricInterpolator
-               Compute with a numerically-stable version
-               of the Lagrange interpolating polynomial.
+   interp2d
 
-  barycentric_interpolate
-               procedural interface to the above
 
-  KroghInterpolator
-               Compute with the Hermite interpolating polynomial
-               (allows the specification of derivatives at some points).
+1-D Splines
+===========
 
-  krogh_interpolate
-               procedural interface to the above
+.. autosummary::
+   :toctree: generated/
 
-  PiecewisePolynomial
-               Spline that is specified by giving positions and
-               derivatives at every knot; allows high orders and
-               efficient appending.
+   UnivariateSpline
+   InterpolatedUnivariateSpline
+   LSQUnivariateSpline
 
-  piecewise_polynomial_interpolate
-               procedural interface to the above
+The above univariate spline classes have the following methods:
 
-  ppform
-               Class to create a piecewise polynomial representation of
-               a spline from the coefficients of the polynomial in each
-               section and the break-points
 
-Interpolation Classes (multivariate)
--------------------------------------
+.. autosummary::
+   :toctree: generated/
 
-  interp2d
-               Create a class whose instances can interpolate
-               to compute unknown values of a bivariate function.
+   UnivariateSpline.__call__
+   UnivariateSpline.derivatives
+   UnivariateSpline.integral
+   UnivariateSpline.roots
+   UnivariateSpline.get_coeffs
+   UnivariateSpline.get_knots
+   UnivariateSpline.get_residual
+   UnivariateSpline.set_smoothing_factor
 
-  Rbf
-               Apply Radial Basis Functions to interpolate scattered N-D data.
+
+Low-level interface to FITPACK functions:
+
+.. autosummary::
+   :toctree: generated/
+
+   splrep
+   splprep
+   splev
+   splint
+   sproot
+   spalde
+   bisplrep
+   bisplev
+
+
+2-D Splines
+===========
+
+.. seealso:: scipy.ndimage.map_coordinates
+
+.. autosummary::
+   :toctree: generated/
+
+   BivariateSpline
+   SmoothBivariateSpline
+   LSQBivariateSpline
+
+Low-level interface to FITPACK functions:
+
+.. autosummary::
+   :toctree: generated/
+
+   bisplrep
+   bisplev
 
 Additional tools
------------------
+================
 
-  lagrange
-               Compute the Lagrange interpolating polynomial.
+.. autosummary::
+   :toctree: generated/
 
-  approximate_taylor_polynomial
-               compute an approximate Taylor polynomial for
-               a function using polynomial interpolation
+   lagrange
+   approximate_taylor_polynomial
 
+.. seealso::
 
-See Also
-------------
-
-  ndimage
-     map_coordinates
-               N-d interpolation from evenly-spaced data using
-               fast B-splines. 
-
-     spline_filter
-               Method to pre-compute spline coefficients to make
-               map_coordinates efficient for muliple calls on the same
-               set of interpolated points.
-
-  signal
-     resample
-
-              Perform sinc-interpolation using a Fourier filter.
-              This function can decimate or interpolate to an evenly
-              sampled grid.
-          
-     bspline
-     gauss_spline
-     qspline1d
-     cspline1d
-     qspline1d_eval
-     cspline1d_eval
-     qspline2d
-     cspline2d
-               Low-level spline tools for regularly spaced data using
-               fast B-spline algorithms.
+   ndimage.map_coordinates
+   ndimage.spline_filter
+   signal.resample
+   signal.bspline
+   signal.gauss_spline
+   signal.qspline1d
+   signal.cspline1d
+   signal.qspline1d_eval
+   signal.cspline1d_eval
+   signal.qspline2d
+   signal.cspline2d
 
 """
 

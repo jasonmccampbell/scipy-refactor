@@ -7,6 +7,7 @@ from scipy.linalg import calc_lwork
 # Local imports.
 from misc import LinAlgError, _datanotshared
 from lapack import get_lapack_funcs
+from funcinfo import get_func_info
 
 
 def svd(a, full_matrices=True, compute_uv=True, overwrite_a=False):
@@ -75,12 +76,13 @@ def svd(a, full_matrices=True, compute_uv=True, overwrite_a=False):
     m,n = a1.shape
     overwrite_a = overwrite_a or (_datanotshared(a1, a))
     gesdd, = get_lapack_funcs(('gesdd',), (a1,))
-    if gesdd.module_name[:7] == 'flapack':
-        lwork = calc_lwork.gesdd(gesdd.prefix, m, n, compute_uv)[1]
+    gesdd_info = get_func_info(gesdd)
+    if gesdd_info.module_name[:7] == 'flapack':
+        lwork = calc_lwork.gesdd(gesdd_info.prefix, m, n, compute_uv)[1]
         u,s,v,info = gesdd(a1,compute_uv = compute_uv, lwork = lwork,
                                                 overwrite_a = overwrite_a)
     else: # 'clapack'
-        raise NotImplementedError('calling gesdd from %s' % gesdd.module_name)
+        raise NotImplementedError('calling gesdd from %s' % gesdd_info.module_name)
     if info > 0:
         raise LinAlgError("SVD did not converge")
     if info < 0:

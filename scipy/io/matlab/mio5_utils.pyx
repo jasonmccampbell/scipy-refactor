@@ -16,6 +16,9 @@ import sys
 
 from copy import copy as pycopy
 
+from libc.stdlib cimport calloc, free
+from libc.string cimport strcmp, strlen
+
 from cpython cimport Py_INCREF, Py_DECREF
 from cpython cimport PyObject
 
@@ -124,6 +127,16 @@ cdef class VarHeader5:
     cdef public int is_global
     cdef size_t nzmax
 
+    def set_dims(self, dims):
+        """ Allow setting of dimensions from python
+
+        This is for constructing headers for tests
+        """
+        self.dims = dims
+        self.n_dims = len(dims)
+        for i, dim in enumerate(dims):
+            self.dims_ptr[i] = <cnp.int32_t>int(dim)
+
 
 cdef class VarReader5:
     cdef public int is_swapped, little_endian
@@ -135,8 +148,6 @@ cdef class VarReader5:
     cdef PyObject* dtypes[_N_MIS]
     # pointers to stuff in preader.class_dtypes
     cdef PyObject* class_dtypes[_N_MXS]
-    # necessary to keep memory alive for .dtypes, .class_dtypes
-    cdef object preader
     # cached here for convenience in later array creation
     cdef cnp.dtype U1_dtype
     cdef cnp.dtype bool_dtype
@@ -145,9 +156,22 @@ cdef class VarReader5:
         int mat_dtype
         int squeeze_me
         int chars_as_strings
-        
+
+    """ Initialize from file reader object
+
+    preader needs the following fields defined:
+
+    * mat_stream (file-like)
+    * byte_order (str)
+    * uint16_codec (str)
+    * struct_as_record (bool)
+    * chars_as_strings (bool)
+    * mat_dtype (bool)
+    * squeeze_me (bool)
+    """
     def __new__(self, preader):
-        self.is_swapped = preader.byte_order == swapped_code
+        byte_order = preader.byte_order
+        self.is_swapped = byte_order == swapped_code
         if self.is_swapped:
             self.little_endian = not sys_is_le
         else:
@@ -155,24 +179,27 @@ cdef class VarReader5:
         # option affecting reading of matlab struct arrays
         self.struct_as_record = preader.struct_as_record
         # store codecs for text matrix reading
-        self.codecs = preader.codecs
+        self.codecs = mio5p.MDTYPES[byte_order]['codecs'].copy()
         self.uint16_codec = preader.uint16_codec
+        uint16_codec = self.uint16_codec
+        # Set length of miUINT16 char encoding
+        self.codecs['uint16_len'] = len("  ".encode(uint16_codec)) \
+                - len(" ".encode(uint16_codec))
+        self.codecs['uint16_codec'] = uint16_codec
         # set c-optimized stream object from python file-like object
         self.set_stream(preader.mat_stream)
         # options for element processing
         self.mat_dtype = preader.mat_dtype
         self.chars_as_strings = preader.chars_as_strings
         self.squeeze_me = preader.squeeze_me
-        # copy refs to dtypes into object pointer array. Store preader
-        # to keep preader.dtypes, class_dtypes alive. We only need the
+        # copy refs to dtypes into object pointer array. We only need the
         # integer-keyed dtypes
-        self.preader = preader
-        for key, dt in preader.dtypes.items():
+        for key, dt in mio5p.MDTYPES[byte_order]['dtypes'].items():
             if isinstance(key, str):
                 continue
             self.dtypes[key] = <PyObject*>dt
         # copy refs to class_dtypes into object pointer array
-        for key, dt in preader.class_dtypes.items():
+        for key, dt in mio5p.MDTYPES[byte_order]['classes'].items():
             if isinstance(key, str):
                 continue
             self.class_dtypes[key] = <PyObject*>dt
@@ -557,6 +584,7 @@ cdef class VarReader5:
         '''
         # calculate number of items in array from dims product
         cdef size_t size = 1
+        cdef int i
         for i in range(header.n_dims):
             size *= header.dims_ptr[i]
         return size
@@ -667,7 +695,13 @@ cdef class VarReader5:
             # avoid array copy to save memory
             res = self.read_numeric(False)
             res_j = self.read_numeric(False)
-            res = res + (res_j * 1j)
+            # Use c8 for f4s and c16 for f8 input. Just ``res = res + res_j *
+            # 1j`` upcasts to c16 regardless of input type.
+            if res.itemsize == 4:
+                res = res.astype('c8')
+            else:
+                res = res.astype('c16')
+            res.imag = res_j
         else:
             res = self.read_numeric()
         return res.reshape(header.dims[::-1]).T
@@ -705,7 +739,7 @@ cdef class VarReader5:
         return scipy.sparse.csc_matrix(
             (data,rowind,indptr),
             shape=(M,N))
-                
+
     cpdef cnp.ndarray read_char(self, VarHeader5 header):
         ''' Read char matrices from stream as arrays
 
@@ -713,7 +747,7 @@ cdef class VarReader5:
         string by later processing in ``array_from_header``
         '''
         '''Notes to friendly fellow-optimizer
-        
+
         This routine is not much optimized.  If I was going to do it,
         I'd store the codecs as an object pointer array, as for the
         .dtypes, I might use python_string.PyBytes_Decode for decoding,
@@ -724,7 +758,7 @@ cdef class VarReader5:
         deals with unicode strings passed as memory,
 
         My own unicode introduction here:
-        https://cirl.berkeley.edu/mb312/pydagogue/python_unicode.html
+        http://matthew-brett.github.com/pydagogue/python_unicode.html
         '''
         cdef:
             cnp.uint32_t mdtype, byte_count
@@ -732,14 +766,23 @@ cdef class VarReader5:
             size_t el_count
             object data, res, codec
             cnp.ndarray arr
+            cnp.dtype dt
         cdef size_t length = self.size_from_header(header)
         data = self.read_element(
             &mdtype, &byte_count, <void **>&data_ptr, True)
+        # There are mat files in the wild that have 0 byte count strings, but
+        # maybe with non-zero length.
+        if byte_count == 0:
+            arr = np.array(' ' * length, dtype='U')
+            return np.ndarray(shape=header.dims,
+                              dtype=self.U1_dtype,
+                              buffer=arr,
+                              order='F')
         # Character data can be of apparently numerical types,
         # specifically np.uint8, np.int8, np.uint16.  np.unit16 can have
         # a length 1 type encoding, like ascii, or length 2 type
         # encoding
-        cdef cnp.dtype dt = <cnp.dtype>self.dtypes[mdtype]
+        dt = <cnp.dtype>self.dtypes[mdtype]
         if mdtype == miUINT16:
             codec = self.uint16_codec
             if self.codecs['uint16_len'] == 1: # need LSBs only
@@ -759,14 +802,13 @@ cdef class VarReader5:
         uc_str = data.decode(codec)
         # cast to array to deal with 2, 4 byte width characters
         arr = np.array(uc_str, dtype='U')
-        dt = self.U1_dtype
         # could take this to numpy C-API level, but probably not worth
         # it
         return np.ndarray(shape=header.dims,
-                          dtype=dt,
+                          dtype=self.U1_dtype,
                           buffer=arr,
                           order='F')
-                             
+
     cpdef cnp.ndarray read_cells(self, VarHeader5 header):
         ''' Read cell array from stream '''
         cdef:
@@ -800,14 +842,34 @@ cdef class VarReader5:
         cdef object names = self.read_int8_string()
         field_names = []
         n_names = PyBytes_Size(names) // namelength
-        cdef char *n_ptr = names
+        # Make n_duplicates and pointer arrays
+        cdef:
+            int *n_duplicates
+            char **name_ptrs
+        n_duplicates = <int *>calloc(n_names, sizeof(int))
+        name_ptrs = <char **>calloc(n_names, sizeof(char *))
+        cdef:
+            char *n_ptr = names
+            int j, dup_no
         for i in range(n_names):
-            name = PyBytes_FromString(n_ptr)
-            field_names.append(asstr(name))
+            name = asstr(PyBytes_FromString(n_ptr))
+            # Check if this is a duplicate field, rename if so
+            name_ptrs[i] = n_ptr
+            dup_no = 0
+            for j in range(i):
+                if strcmp(n_ptr, name_ptrs[j]) == 0: # the same
+                    n_duplicates[j] += 1
+                    dup_no = n_duplicates[j]
+                    break
+            if dup_no != 0:
+                name = '_%d_%s' % (dup_no, name)
+            field_names.append(name)
             n_ptr += namelength
+        free(n_duplicates)
+        free(name_ptrs)
         n_names_ptr[0] = n_names
         return field_names
-        
+
     cpdef cnp.ndarray read_struct(self, VarHeader5 header):
         ''' Read struct or object array from stream
 

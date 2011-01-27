@@ -4,10 +4,6 @@
 c
 c     Returned maxwrk is acctually optimal lwork.
 c
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n,lo,hi
 
       INTEGER NB
       EXTERNAL ILAENV
@@ -23,12 +19,6 @@ cf2py intent(in) :: n,lo,hi
       integer min_lwork,max_lwork,m,n,compute_uv
       character prefix
 
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n,&compute_uv)
-cf2py callprotoargument int*,int*,char*,int*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: m,n,compute_uv
 
       INTEGER MINMN, MNTHR, MINWRK, MAXWRK, SMLSIZ, BDSPAC, BDSPAN
       INTEGER            ILAENV, WRKBL
@@ -170,12 +160,6 @@ cf2py intent(in) :: m,n,compute_uv
       integer min_lwork,max_lwork,m,n,nrhs
       character prefix      
 
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n,&nrhs)
-cf2py callprotoargument int*,int*,char*,int*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: m,n,nrhs
 
       INTEGER MAXWRK, MINMN, MINWRK, MM, MNTHR
       INTEGER ILAENV, BDSPAC, MAXMN
@@ -269,12 +253,6 @@ cf2py intent(in) :: m,n,nrhs
       subroutine getri(min_lwork,max_lwork,prefix,n)
       integer min_lwork,max_lwork,n
       character prefix
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n)
-cf2py callprotoargument int*,int*,char*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n
       INTEGER ILAENV, NB
       EXTERNAL ILAENV
       NB = ILAENV( 1, prefix // 'GETRI', ' ', N, -1, -1, -1 )
@@ -287,13 +265,6 @@ cf2py intent(in) :: n
 
       integer min_lwork,max_lwork,n,compute_vl,compute_vr
       character prefix
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&compute_vl,&compute_vr)
-cf2py callprotoargument int*,int*,char*,int*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py integer optional,intent(in) :: compute_vl = 1,compute_vr = 1
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n
 
       LOGICAL WANTVL, WANTVR
       INTEGER ILAENV, MINWRK, MAXWRK, MAXB, HSWORK, K
@@ -333,13 +304,6 @@ cf2py intent(in) :: n
 
       integer min_lwork,max_lwork,n,lower
       character prefix
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&lower)
-cf2py callprotoargument int*,int*,char*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py integer optional,intent(in) :: lower = 0
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n
 
       CHARACTER UPLO
       INTEGER ILAENV, NB
@@ -362,13 +326,6 @@ cf2py intent(in) :: n
 
       integer min_lwork,max_lwork,n,lower
       character prefix
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&lower)
-cf2py callprotoargument int*,int*,char*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py integer optional,intent(in) :: lower = 0
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n
 
       CHARACTER UPLO
       INTEGER ILAENV, NB
@@ -392,13 +349,6 @@ cf2py intent(in) :: n
       integer min_lwork,max_lwork,n,compute_v
       character prefix
 
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&compute_v)
-cf2py callprotoargument int*,int*,char*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py integer optional,intent(in) :: compute_v = 1
-cf2py intent(in) :: prefix
-cf2py intent(in) :: n
 
       INTEGER            HSWORK, MAXWRK, MINWRK, MAXB, K
       INTEGER            ILAENV
@@ -435,12 +385,6 @@ cf2py intent(in) :: n
       integer min_lwork,max_lwork,m,n
       character prefix      
 
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n)
-cf2py callprotoargument int*,int*,char*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: m,n
 
       INTEGER NB
       INTEGER ILAENV
@@ -458,12 +402,6 @@ cf2py intent(in) :: m,n
       integer min_lwork,max_lwork,m,n
       character prefix
 
-cf2py callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n)
-cf2py callprotoargument int*,int*,char*,int*,int*
-cf2py intent(out,out=minwrk) :: min_lwork
-cf2py intent(out,out=maxwrk) :: max_lwork
-cf2py intent(in) :: prefix
-cf2py intent(in) :: m,n
 
       INTEGER NB
       INTEGER ILAENV

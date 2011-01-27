@@ -1,3 +1,10 @@
+"""
+A collection of image utilities using the Python Imaging Library (PIL).
+
+Note that PIL is not a dependency of SciPy and this module is not
+available on systems that don't have PIL installed.
+
+"""
 # Functions which need the PIL
 
 import numpy
@@ -16,19 +23,43 @@ __all__ = ['fromimage','toimage','imsave','imread','bytescale',
 # Returns a byte-scaled image
 def bytescale(data, cmin=None, cmax=None, high=255, low=0):
     """
+    Byte scales an array (image).
+
     Parameters
     ----------
-    im : PIL image
-         Input image.
-    flatten : bool
-              If true, convert the output to grey-scale
+    data : ndarray
+        PIL image data array.
+    cmin :  Scalar
+        Bias scaling of small values, Default is data.min().
+    cmax : scalar
+        Bias scaling of large values, Default is data.max().
+    high : scalar
+        Scale max value to `high`.
+    low : scalar
+        Scale min value to `low`.
 
     Returns
     -------
     img_array : ndarray
-                The different colour bands/channels are stored in the
-                third dimension, such that a grey-image is MxN, an
-                RGB-image MxNx3 and an RGBA-image MxNx4.
+        Bytescaled array.
+
+    Examples
+    --------
+    >>> img = array([[ 91.06794177,   3.39058326,  84.4221549 ],
+                     [ 73.88003259,  80.91433048,   4.88878881],
+                     [ 51.53875334,  34.45808177,  27.5873488 ]])
+    >>> bytescale(img)
+    array([[255,   0, 236],
+           [205, 225,   4],
+           [140,  90,  70]], dtype=uint8)
+    >>> bytescale(img, high=200, low=100)
+    array([[200, 100, 192],
+           [180, 188, 102],
+           [155, 135, 128]], dtype=uint8)
+    >>> bytescale(img, cmin=0, cmax=255)
+    array([[91,  3, 84],
+           [74, 81,  5],
+           [52, 34, 28]], dtype=uint8)
 
     """
     if data.dtype == uint8:
@@ -136,7 +167,7 @@ def toimage(arr,high=255,low=0,cmin=None,cmax=None,pal=None,
     """
     data = asarray(arr)
     if iscomplexobj(data):
-        raise ValueError, "Cannot convert a complex-valued array."
+        raise ValueError("Cannot convert a complex-valued array.")
     shape = list(data.shape)
     valid = len(shape)==2 or ((len(shape)==3) and \
                               ((3 in shape) or (4 in shape)))
@@ -171,7 +202,7 @@ def toimage(arr,high=255,low=0,cmin=None,cmax=None,pal=None,
             data32 = data.astype(numpy.uint32)
             image = Image.fromstring(mode,shape,data32.tostring())
         else:
-            raise ValueError, _errstr
+            raise ValueError(_errstr)
         return image
 
     # if here then 3-d array with a 3 or a 4 in the shape length.
@@ -184,13 +215,13 @@ def toimage(arr,high=255,low=0,cmin=None,cmax=None,pal=None,
             if len(ca):
                 ca = ca[0]
             else:
-                raise ValueError, "Could not find channel dimension."
+                raise ValueError("Could not find channel dimension.")
     else:
         ca = channel_axis
 
     numch = shape[ca]
     if numch not in [3,4]:
-        raise ValueError, "Channel axis dimension is not valid."
+        raise ValueError("Channel axis dimension is not valid.")
 
     bytedata = bytescale(data,high=high,low=low,cmin=cmin,cmax=cmax)
     if ca == 2:
@@ -208,7 +239,7 @@ def toimage(arr,high=255,low=0,cmin=None,cmax=None,pal=None,
 
 
     if mode not in ['RGB','RGBA','YCbCr','CMYK']:
-        raise ValueError, _errstr
+        raise ValueError(_errstr)
 
     if mode in ['RGB', 'YCbCr']:
         assert numch == 3, "Invalid array shape for mode."
@@ -255,7 +286,28 @@ def imrotate(arr,angle,interp='bilinear'):
     return fromimage(im)
 
 def imshow(arr):
-    """Simple showing of an image through an external viewer.
+    """
+    Simple showing of an image through an external viewer.
+
+    Uses the image viewer specified by the environment variable
+    SCIPY_PIL_IMAGE_VIEWER, or if that is not defined then `see`,
+    to view a temporary file generated from array data.
+
+    Parameters
+    ----------
+    arr : ndarray
+        Array of image data to show.
+
+    Returns
+    -------
+    None
+
+    Examples
+    --------
+    >>> a = np.tile(np.arange(255), (255,1))
+    >>> from scipy import misc
+    >>> misc.pilutil.imshow(a)
+
     """
     im = toimage(arr)
     fnum,fname = tempfile.mkstemp('.png')
@@ -353,7 +405,7 @@ def imfilter(arr,ftype):
 
     im = toimage(arr)
     if ftype not in _tdict.keys():
-        raise ValueError, "Unknown filter type."
+        raise ValueError("Unknown filter type.")
     return fromimage(im.filter(_tdict[ftype]))
 
 

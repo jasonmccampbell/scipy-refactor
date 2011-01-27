@@ -11,14 +11,21 @@ import types
 
 import numpy
 
-from scipy.linalg import flapack
-from scipy.linalg import clapack
 _use_force_clapack = 1
-if hasattr(clapack,'empty_module'):
+
+from funcinfo import register_func_info
+from scipy.linalg import flapack
+try:
+    from scipy.linalg import clapack
+except ImportError:
     clapack = flapack
     _use_force_clapack = 0
-elif hasattr(flapack,'empty_module'):
-    flapack = clapack
+else:
+    if hasattr(clapack,'empty_module'):
+        clapack = flapack
+        _use_force_clapack = 0
+    elif hasattr(flapack,'empty_module'):
+        flapack = clapack
 
 def cast_to_lapack_prefix(t):
     if issubclass(t, numpy.single):
@@ -87,9 +94,9 @@ def get_lapack_funcs(names, arrays=()):
         func = getattr(m1,func_name,None)
         if func is None:
             func = getattr(m2,func_name)
-            func.module_name = m2_name
+            module_name = m2_name
         else:
-            func.module_name = m1_name
+            module_name = m1_name
             if force_clapack and m1 is flapack:
                 func2 = getattr(m2,func_name,None)
                 if func2 is not None:
@@ -97,10 +104,8 @@ def get_lapack_funcs(names, arrays=()):
                     func = types.FunctionType(func_code,
                                               {'clapack_func':func2},
                                               func_name)
-                    func.module_name = m2_name
-                    func.__doc__ = func2.__doc__
-        func.prefix = required_prefix
-        func.dtype = dtype
+                    module_name = m2_name
+        register_func_info(func, module_name, required_prefix, None, dtype)
         funcs.append(func)
     return tuple(funcs)
 

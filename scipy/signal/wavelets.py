@@ -19,7 +19,8 @@ def daub(p):
 
     """
     sqrt = np.sqrt
-    assert(p>=1)
+    if p < 1:
+        raise ValueError("p must be at least 1.")
     if p==1:
         c = 1/sqrt(2)
         return np.array([c,c])
@@ -62,8 +63,8 @@ def daub(p):
         q = q / np.sum(q) * sqrt(2)
         return q.c[::-1]
     else:
-        raise ValueError, "Polynomial factorization does not work "\
-              "well for p too large."
+        raise ValueError("Polynomial factorization does not work "
+              "well for p too large.")
 
 def qmf(hk):
     """Return high-pass qmf filter from low-pass
@@ -118,9 +119,9 @@ def cascade(hk, J=7):
     N = len(hk)-1
 
     if (J > 30 - np.log2(N+1)):
-        raise ValueError, "Too many levels."
+        raise ValueError("Too many levels.")
     if (J < 1):
-        raise ValueError, "Too few levels."
+        raise ValueError("Too few levels.")
 
 
     # construct matrices needed

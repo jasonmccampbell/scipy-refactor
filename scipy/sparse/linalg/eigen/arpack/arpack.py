@@ -68,7 +68,8 @@ class _ArpackParams(object):
             raise ValueError("matrix type must be 'f', 'd', 'F', or 'D'")
 
         if v0 is not None:
-            self.resid = v0
+            # ARPACK overwrites its initial resid,  make a copy
+            self.resid = np.array(v0, copy=True)
             info = 1
         else:
             self.resid = np.zeros(n, tp)
@@ -80,9 +81,6 @@ class _ArpackParams(object):
         if ncv is None:
             ncv = 2 * k + 1
         ncv = min(ncv, n)
-
-        if ncv > n or ncv < k:
-            raise ValueError("ncv must be k<=ncv<=n, ncv=%s" % ncv)
 
         self.v = np.zeros((n, ncv), tp) # holds Ritz vectors
         self.iparam = np.zeros(11, "int")
@@ -117,6 +115,9 @@ class _SymmetricArpackParams(_ArpackParams):
 
         _ArpackParams.__init__(self, n, k, tp, matvec, sigma,
                  ncv, v0, maxiter, which, tol)
+
+        if self.ncv > n or self.ncv <= k:
+            raise ValueError("ncv must be k<ncv<=n, ncv=%s" % self.ncv)
 
         self.workd = np.zeros(3 * n, self.tp)
         self.workl = np.zeros(self.ncv * (self.ncv + 8), self.tp)
@@ -180,6 +181,9 @@ class _UnsymmetricArpackParams(_ArpackParams):
 
         _ArpackParams.__init__(self, n, k, tp, matvec, sigma,
                  ncv, v0, maxiter, which, tol)
+
+        if self.ncv > n or self.ncv <= k+1:
+            raise ValueError("ncv must be k+1<ncv<=n, ncv=%s" % self.ncv)
 
         self.workd = np.zeros(3 * n, self.tp)
         self.workl = np.zeros(3 * self.ncv * self.ncv + 6 * self.ncv, self.tp)
@@ -308,11 +312,11 @@ class _UnsymmetricArpackParams(_ArpackParams):
 def eigen(A, k=6, M=None, sigma=None, which='LM', v0=None,
           ncv=None, maxiter=None, tol=0,
           return_eigenvectors=True):
-    """Find k eigenvalues and eigenvectors of the square matrix A.
+    """
+    Find k eigenvalues and eigenvectors of the square matrix A.
 
-    Solves A * x[i] = w[i] * x[i], the standard eigenvalue problem for
-    w[i] eigenvalues with corresponding eigenvectors x[i].
-
+    Solves ``A * x[i] = w[i] * x[i]``, the standard eigenvalue problem
+    for w[i] eigenvalues with corresponding eigenvectors x[i].
 
     Parameters
     ----------
@@ -320,40 +324,34 @@ def eigen(A, k=6, M=None, sigma=None, which='LM', v0=None,
         An N x N matrix, array, or an object with matvec(x) method to perform
         the matrix vector product A * x.  The sparse matrix formats
         in scipy.sparse are appropriate for A.
-
     k : integer
         The number of eigenvalues and eigenvectors desired
 
     Returns
     -------
     w : array
-        Array of k eigenvalues
-
+        Array of k eigenvalues.
     v : array
-        An array of k eigenvectors
-        The v[i] is the eigenvector corresponding to the eigenvector w[i]
+        An array of `k` eigenvectors.
+        ``v[:, i]`` is the eigenvector corresponding to the eigenvalue w[i].
 
     Other Parameters
     ----------------
-
     M : matrix or array
         (Not implemented)
         A symmetric positive-definite matrix for the generalized
-        eigenvalue problem A * x = w * M * x
-
+        eigenvalue problem ``A * x = w * M * x``.
     sigma : real or complex
         (Not implemented)
         Find eigenvalues near sigma.  Shift spectrum by sigma.
-
     v0 : array
         Starting vector for iteration.
-
     ncv : integer
         The number of Lanczos vectors generated
-        ncv must be greater than k; it is recommended that ncv > 2*k
-
+        `ncv` must be greater than `k`; it is recommended that ``ncv > 2*k``.
     which : string
-        Which k eigenvectors and eigenvalues to find:
+        Which `k` eigenvectors and eigenvalues to find:
+
          - 'LM' : largest magnitude
          - 'SM' : smallest magnitude
          - 'LR' : largest real part
@@ -363,10 +361,8 @@ def eigen(A, k=6, M=None, sigma=None, which='LM', v0=None,
 
     maxiter : integer
         Maximum number of Arnoldi update iterations allowed
-
     tol : float
         Relative accuracy for eigenvalues (stopping criterion)
-
     return_eigenvectors : boolean
         Return eigenvectors (True) in addition to eigenvalues
 
@@ -374,11 +370,16 @@ def eigen(A, k=6, M=None, sigma=None, which='LM', v0=None,
     --------
     eigen_symmetric : eigenvalues and eigenvectors for symmetric matrix A
 
-    Notes
-    -----
-
     Examples
     --------
+    Find 6 eigenvectors of the identity matrix:
+
+    >>> id = np.identity(13)
+    >>> vals, vecs = sp.sparse.linalg.eigen(id, k=6)
+    >>> vals
+    array([ 1.+0.j,  1.+0.j,  1.+0.j,  1.+0.j,  1.+0.j,  1.+0.j])
+    >>> vecs.shape
+    (13, 6)
 
     """
     A = aslinearoperator(A)

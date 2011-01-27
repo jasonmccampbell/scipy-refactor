@@ -566,7 +566,7 @@ class rv_generic(object):
         args, loc, scale = self._fix_loc_scale(args, loc, scale)
         cond = logical_and(self._argcheck(*args),(scale >= 0))
         if not all(cond):
-            raise ValueError, "Domain error in arguments."
+            raise ValueError("Domain error in arguments.")
 
         # self._size is total size of all output values
         self._size = product(size, axis=0)
@@ -713,7 +713,7 @@ class rv_generic(object):
         """
         alpha = arr(alpha)
         if any((alpha > 1) | (alpha < 0)):
-            raise ValueError, "alpha must be between 0 and 1 inclusive"
+            raise ValueError("alpha must be between 0 and 1 inclusive")
         q1 = (1.0-alpha)/2
         q2 = (1.0+alpha)/2
         a = self.ppf(q1, *args, **kwds)
@@ -971,6 +971,10 @@ class rv_continuous(rv_generic):
 
     def _construct_default_doc(self, longname=None, extradoc=None):
         """Construct instance docstring from the default template."""
+        if longname is None:
+            longname = 'A'
+        if extradoc is None:
+            extradoc = ''
         if extradoc.startswith('\n\n'):
             extradoc = extradoc[2:]
         self.__doc__ = ''.join(['%s continuous random variable.'%longname,
@@ -1532,8 +1536,8 @@ class rv_continuous(rv_generic):
 
         """
         if (floor(n) != n):
-            raise ValueError, "Moment must be an integer."
-        if (n < 0): raise ValueError, "Moment must be positive."
+            raise ValueError("Moment must be an integer.")
+        if (n < 0): raise ValueError("Moment must be positive.")
         if (n == 0): return 1.0
         if (n > 0) and (n < 5):
             signature = inspect.getargspec(self._stats.im_func)
@@ -1577,7 +1581,7 @@ class rv_continuous(rv_generic):
             scale = theta[-1]
             args = tuple(theta[:-2])
         except IndexError:
-            raise ValueError, "Not enough input arguments."
+            raise ValueError("Not enough input arguments.")
         if not self._argcheck(*args) or scale <= 0:
             return inf
         x = arr((x-loc) / scale)
@@ -1612,7 +1616,7 @@ class rv_continuous(rv_generic):
             restore = None
         else:
             if len(fixedn) == len(index):
-                raise ValueError, "All parameters fixed. There is nothing to optimize."
+                raise ValueError("All parameters fixed. There is nothing to optimize.")
             def restore(args, theta):
                 # Replace with theta for all numbers not in fixedn
                 # This allows the non-fixed values to vary, but
@@ -1633,44 +1637,53 @@ class rv_continuous(rv_generic):
             
     def fit(self, data, *args, **kwds):
         """
-        Return max like estimators to shape, location, and scale from data
+        Return MLEs for shape, location, and scale parameters from data.
 
-        Starting points for the fit are given by input arguments.  For any 
-        arguments not given starting points, self._fitstart(data) is called 
-        to get the starting estimates.
+        MLE stands for Maximum Likelihood Estimate.  Starting estimates for
+        the fit are given by input arguments; for any arguments not provided
+        with starting estimates, ``self._fitstart(data)`` is called to generate
+        such.
 
-        You can hold some parameters fixed to specific values by passing in 
-        keyword arguments f0..fn for shape paramters and floc, fscale for 
-        location and scale parameters.
+        One can hold some parameters fixed to specific values by passing in
+        keyword arguments ``f0``..[is this supposed to be an ellipsis?] ``fn``
+        (for shape parameters) and ``floc`` and ``fscale`` (for location and
+        scale parameters, respectively).
 
         Parameters
         ----------
-        data : array-like
-            Data to use in calculating the MLE
-        args : optional
-            Starting values for any shape arguments (those not specified 
-            will be determined by _fitstart(data))
-        kwds : loc, scale
-            Starting values for the location and scale parameters 
-            Special keyword arguments are recognized as holding certain 
-              parameters fixed:
-               f0..fn : hold respective shape paramters fixed
-               floc : hold location parameter fixed to specified value
-               fscale : hold scale parameter fixed to specified value
-            optimizer : The optimizer to use.  The optimizer must take func, 
-                         and starting position as the first two arguments, 
-                         plus args (for extra arguments to pass to the 
-                         function to be optimized) and disp=0 to suppress
-                         output as keyword arguments.
-              
-        Return
-        ------
-        shape, loc, scale : tuple of float
-            MLE estimates for any shape arguments followed by location and scale
+        data : array_like
+            Data to use in calculating the MLEs
+        args : floats, optional
+            Starting value(s) for any shape-characterizing arguments (those not
+            provided will be determined by a call to ``_fitstart(data)``).
+            No default value.
+        kwds : floats, optional
+            Starting values for the location and scale parameters; no default.
+            Special keyword arguments are recognized as holding certain
+            parameters fixed:
+
+            f0..fn : hold respective shape parameters fixed.
+
+            floc : hold location parameter fixed to specified value.
+
+            fscale : hold scale parameter fixed to specified value.
+
+            optimizer : The optimizer to use.  The optimizer must take func,
+                        and starting position as the first two arguments,
+                        plus args (for extra arguments to pass to the
+                        function to be optimized) and disp=0 to suppress
+                        output as keyword arguments.
+
+        Returns
+        -------
+        shape, loc, scale : tuple of floats
+            MLEs for any shape statistics, followed by those for location and
+            scale.
+
         """
         Narg = len(args)
         if Narg > self.numargs:
-                raise ValueError, "Too many input arguments."
+                raise ValueError("Too many input arguments.")
         start = [None]*2
         if (Narg < self.numargs) or not (kwds.has_key('loc') and
                                          kwds.has_key('scale')):
@@ -1691,7 +1704,7 @@ class rv_continuous(rv_generic):
             try:
                 optimizer = getattr(optimize, optimizer)
             except AttributeError:
-                raise ValueError, "%s is not a valid optimizer" % optimizer
+                raise ValueError("%s is not a valid optimizer" % optimizer)
         vals = optimizer(func,x0,args=(ravel(data),),disp=0)
         vals = tuple(vals)
         if restore is not None:
@@ -2159,10 +2172,12 @@ class fisk_gen(burr_gen):
         return burr_gen._stats(self, c, 1.0)
     def _entropy(self, c):
         return 2 - log(c)
-fisk = fisk_gen(a=0.0, name='fink', longname="A funk",
+fisk = fisk_gen(a=0.0, name='fisk', longname="Fisk",
                 shapes='c', extradoc="""
 
-Fink distribution.
+Fisk distribution.
+
+Also known as the log-logistic distribution.
 
 Burr distribution with d=1.
 """
@@ -4489,7 +4504,7 @@ def entropy(pk,qk=None):
     else:
         qk = arr(qk)
         if len(qk) != len(pk):
-            raise ValueError, "qk and pk must have same length."
+            raise ValueError("qk and pk must have same length.")
         qk = 1.0*qk / sum(qk,axis=0)
         # If qk is zero anywhere, then unless pk is zero at those places
         #   too, the relative entropy is infinite.
@@ -5385,8 +5400,8 @@ class rv_discrete(rv_generic):
 
         """
         if (floor(n) != n):
-            raise ValueError, "Moment must be an integer."
-        if (n < 0): raise ValueError, "Moment must be positive."
+            raise ValueError("Moment must be an integer.")
+        if (n < 0): raise ValueError("Moment must be positive.")
         if (n == 0): return 1.0
         if (n > 0) and (n < 5):
             signature = inspect.getargspec(self._stats.im_func)
@@ -6073,7 +6088,7 @@ dlaplace = dlaplace_gen(a=-inf,
 
 Discrete Laplacian distribution.
 
-dlapacle.pmf(k,a) = tanh(a/2) * exp(-a*abs(k))
+dlaplace.pmf(k,a) = tanh(a/2) * exp(-a*abs(k))
 for a > 0.
 """
                         )

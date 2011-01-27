@@ -1,10 +1,6 @@
 #!/usr/bin/env python
 
-import os
-import sys
-import re
 from distutils.dep_util import newer_group, newer
-from glob import glob
 from os.path import join
 
 #-------------------
@@ -49,7 +45,7 @@ def configuration(parent_package='',top_path=None):
     lapack_opt = get_info('lapack_opt')
 
     if not lapack_opt:
-        raise NotFoundError,'no lapack/blas resources found'
+        raise NotFoundError('no lapack/blas resources found')
 
     atlas_version = ([v[3:-3] for k,v in lapack_opt.get('define_macros',[]) \
                       if k=='ATLAS_INFO']+[None])[0]

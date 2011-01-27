@@ -1,0 +1,101 @@
+python module calc_lwork
+interface
+!    -*- f90 -*-
+! Note: the context of this file is case sensitive.
+
+subroutine gehrd(min_lwork,max_lwork,prefix,n,lo,hi) ! in calc_lwork.f
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+    integer intent(in) :: lo
+    integer intent(in) :: hi
+end subroutine gehrd
+subroutine gesdd(min_lwork,max_lwork,prefix,m,n,compute_uv) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n,&compute_uv)
+    callprotoargument int*,int*,char*,int*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: m
+    integer intent(in) :: n
+    integer intent(in) :: compute_uv
+end subroutine gesdd
+subroutine gelss(min_lwork,max_lwork,prefix,m,n,nrhs) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n,&nrhs)
+    callprotoargument int*,int*,char*,int*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: m
+    integer intent(in) :: n
+    integer intent(in) :: nrhs
+end subroutine gelss
+subroutine getri(min_lwork,max_lwork,prefix,n) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n)
+    callprotoargument int*,int*,char*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+end subroutine getri
+subroutine geev(min_lwork,max_lwork,prefix,n,compute_vl,compute_vr) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&compute_vl,&compute_vr)
+    callprotoargument int*,int*,char*,int*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+    integer optional,intent(in) :: compute_vl=1
+    integer optional,intent(in) :: compute_vr=1
+end subroutine geev
+subroutine heev(min_lwork,max_lwork,prefix,n,lower) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&lower)
+    callprotoargument int*,int*,char*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+    integer optional,intent(in) :: lower=0
+end subroutine heev
+subroutine syev(min_lwork,max_lwork,prefix,n,lower) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&lower)
+    callprotoargument int*,int*,char*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+    integer optional,intent(in) :: lower=0
+end subroutine syev
+subroutine gees(min_lwork,max_lwork,prefix,n,compute_v) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&n,&compute_v)
+    callprotoargument int*,int*,char*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: n
+    integer optional,intent(in) :: compute_v=1
+end subroutine gees
+subroutine geqrf(min_lwork,max_lwork,prefix,m,n) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n)
+    callprotoargument int*,int*,char*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: m
+    integer intent(in) :: n
+end subroutine geqrf
+subroutine gqr(min_lwork,max_lwork,prefix,m,n) ! in calc_lwork.f
+    callstatement (*f2py_func)(&min_lwork,&max_lwork,prefix,&m,&n)
+    callprotoargument int*,int*,char*,int*,int*
+    integer intent(out) :: min_lwork
+    integer intent(out) :: max_lwork
+    character intent(in) :: prefix
+    integer intent(in) :: m
+    integer intent(in) :: n
+end subroutine gqr
+
+! This file was auto-generated with f2py (version:2).
+! See http://cens.ioc.ee/projects/f2py2e/
+end interface
+end python module calc_lwork

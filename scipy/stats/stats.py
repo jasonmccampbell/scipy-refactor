@@ -86,6 +86,7 @@ TRIMMING FCNS:  threshold (for arrays only)
 
 CORRELATION FCNS:  paired
                    pearsonr
+                   fisher_exact
                    spearmanr
                    pointbiserialr
                    kendalltau
@@ -219,8 +220,8 @@ __all__ = ['gmean', 'hmean', 'mean', 'cmedian', 'median', 'mode',
            'obrientransform', 'samplevar', 'samplestd', 'signaltonoise',
            'var', 'std', 'stderr', 'sem', 'z', 'zs', 'zmap', 'zscore',
            'threshold', 'sigmaclip', 'trimboth', 'trim1', 'trim_mean',
-           'cov', 'corrcoef', 'f_oneway', 'pearsonr', 'spearmanr',
-           'pointbiserialr', 'kendalltau', 'linregress',
+           'cov', 'corrcoef', 'f_oneway', 'pearsonr', 'fisher_exact',
+           'spearmanr', 'pointbiserialr', 'kendalltau', 'linregress',
            'ttest_1samp', 'ttest_ind', 'ttest_rel',
            'kstest', 'chisquare', 'ks_2samp', 'mannwhitneyu',
            'tiecorrect', 'ranksums', 'kruskal', 'friedmanchisquare',
@@ -244,17 +245,37 @@ def find_repeats(arr):
 ########
 
 def nanmean(x, axis=0):
-    """Compute the mean over the given axis ignoring nans.
+    """
+    Compute the mean over the given axis ignoring nans.
 
-    :Parameters:
-        x : ndarray
-            input array
-        axis : int
-            axis along which the mean is computed.
+    Parameters
+    ----------
+    x : ndarray
+        Input array.
+    axis : int, optional
+        Axis along which the mean is computed. Default is 0, i.e. the
+        first axis.
 
-    :Results:
-        m : float
-            the mean."""
+    Returns
+    -------
+    m : float
+        The mean of `x`, ignoring nans.
+
+    See Also
+    --------
+    nanstd, nanmedian
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.linspace(0, 4, 3)
+    >>> a
+    array([ 0.,  2.,  4.])
+    >>> a[-1] = np.nan
+    >>> stats.nanmean(a)
+    1.0
+
+    """
     x, axis = _chk_asarray(x,axis)
     x = x.copy()
     Norig = x.shape[axis]
@@ -264,20 +285,44 @@ def nanmean(x, axis=0):
     return np.mean(x,axis)/factor
 
 def nanstd(x, axis=0, bias=False):
-    """Compute the standard deviation over the given axis ignoring nans
+    """
+    Compute the standard deviation over the given axis, ignoring nans.
 
-    :Parameters:
-        x : ndarray
-            input array
-        axis : int
-            axis along which the standard deviation is computed.
-        bias : boolean
-            If true, the biased (normalized by N) definition is used. If false,
-            the unbiased is used (the default).
+    Parameters
+    ----------
+    x : array_like
+        Input array.
+    axis : int or None, optional
+        Axis along which the standard deviation is computed. Default is 0.
+        If None, compute over the whole array `x`.
+    bias : bool, optional
+        If True, the biased (normalized by N) definition is used. If False
+        (default), the unbiased definition is used.
 
-    :Results:
-        s : float
-            the standard deviation."""
+    Returns
+    -------
+    s : float
+        The standard deviation.
+
+    See Also
+    --------
+    nanmean, nanmedian
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.arange(10, dtype=float)
+    >>> a[1:3] = np.nan
+    >>> np.std(a)
+    nan
+    >>> stats.nanstd(a)
+    2.9154759474226504
+    >>> stats.nanstd(a.reshape(2, 5), axis=1)
+    array([ 2.0817,  1.5811])
+    >>> stats.nanstd(a.reshape(2, 5), axis=None)
+    2.9154759474226504
+
+    """
     x, axis = _chk_asarray(x,axis)
     x = x.copy()
     Norig = x.shape[axis]
@@ -317,20 +362,60 @@ def _nanmedian(arr1d):  # This only works on 1d arrays
     return np.median(x)
 
 def nanmedian(x, axis=0):
-    """ Compute the median along the given axis ignoring nan values
+    """
+    Compute the median along the given axis ignoring nan values.
 
-    :Parameters:
-        x : ndarray
-            input array
-        axis : int
-            axis along which the median is computed.
+    Parameters
+    ----------
+    x : array_like
+        Input array.
+    axis : int, optional
+        Axis along which the median is computed. Default is 0, i.e. the
+        first axis.
 
-    :Results:
-        m : float
-            the median."""
-    x, axis = _chk_asarray(x,axis)
+    Returns
+    -------
+    m : float
+        The median of `x` along `axis`.
+
+    See Also
+    --------
+    nanstd, nanmean
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.array([0, 3, 1, 5, 5, np.nan])
+    >>> stats.nanmedian(a)
+    array(3.0)
+
+    >>> b = np.array([0, 3, 1, 5, 5, np.nan, 5])
+    >>> stats.nanmedian(b)
+    array(4.0)
+
+    Example with axis:
+
+    >>> c = np.arange(30.).reshape(5,6)
+    >>> idx = np.array([False, False, False, True, False] * 6).reshape(5,6)
+    >>> c[idx] = np.nan
+    >>> c
+    array([[  0.,   1.,   2.,  nan,   4.,   5.],
+           [  6.,   7.,  nan,   9.,  10.,  11.],
+           [ 12.,  nan,  14.,  15.,  16.,  17.],
+           [ nan,  19.,  20.,  21.,  22.,  nan],
+           [ 24.,  25.,  26.,  27.,  nan,  29.]])
+    >>> stats.nanmedian(c, axis=1)
+    array([  2. ,   9. ,  15. ,  20.5,  26. ])
+
+    """
+    x, axis = _chk_asarray(x, axis)
+    if x.ndim == 0:
+        return float(x.item())
     x = x.copy()
-    return np.apply_along_axis(_nanmedian,axis,x)
+    x = np.apply_along_axis(_nanmedian, axis, x)
+    if x.ndim == 0:
+        x = float(x.item())
+    return x
 
 
 #####################################
@@ -405,15 +490,15 @@ def hmean(a, axis=0, dtype=None):
         Axis along which the harmonic mean is computed.
     dtype : dtype, optional
         Type of the returned array and of the accumulator in which the
-        elements are summed. If dtype is not specified, it defaults to the
-        dtype of a, unless a has an integer dtype with a precision less than
-        that of the default platform integer. In that case, the default
+        elements are summed. If `dtype` is not specified, it defaults to the
+        dtype of `a`, unless `a` has an integer `dtype` with a precision less
+        than that of the default platform integer. In that case, the default
         platform integer is used.
 
     Returns
     -------
     hmean : ndarray,
-        see dtype parameter above
+        see `dtype` parameter above
 
     See Also
     --------
@@ -571,19 +656,42 @@ Please note that:
 axis=0, ddof=1).""")
 
 def mode(a, axis=0):
-    """Returns an array of the modal (most common) value in the passed array.
+    """
+    Returns an array of the modal (most common) value in the passed array.
 
     If there is more than one such value, only the first is returned.
     The bin-count for the modal bins is also returned.
 
     Parameters
     ----------
-    a : array
-    axis=0 : int
+    a : array_like
+        n-dimensional array of which to find mode(s).
+    axis : int, optional
+        Axis along which to operate. Default is 0, i.e. the first axis.
 
     Returns
     -------
-    (array of modal values, array of counts for each mode)
+    vals : ndarray
+        Array of modal values.
+    counts : ndarray
+        Array of counts for each mode.
+
+    Examples
+    --------
+    >>> a = np.array([[6, 8, 3, 0],
+                      [3, 2, 1, 7],
+                      [8, 1, 8, 4],
+                      [5, 3, 0, 5],
+                      [4, 7, 5, 9]])
+    >>> from scipy import stats
+    >>> stats.mode(a)
+    (array([[ 3.,  1.,  0.,  0.]]), array([[ 1.,  1.,  1.,  1.]]))
+
+    To get mode of whole array, specify axis=None:
+
+    >>> stats.mode(a, axis=None)
+    (array([ 3.]), array([ 3.]))
+
     """
     a, axis = _chk_asarray(a, axis)
     scores = np.unique(np.ravel(a))       # get ALL unique values
@@ -894,13 +1002,16 @@ def moment(a, moment=1, axis=0):
 
 
 def variation(a, axis=0):
-    """Computes the coefficient of variation, the ratio of the biased standard
+    """
+    Computes the coefficient of variation, the ratio of the biased standard
     deviation to the mean.
 
     Parameters
     ----------
-    a : array
+    a : array_like
+        Input array.
     axis : int or None
+        Axis along which to calculate the coefficient of variation.
 
     References
     ----------
@@ -1248,15 +1359,39 @@ def _interpolate(a, b, fraction):
     return a + (b - a)*fraction;
 
 def scoreatpercentile(a, per, limit=()):
-    """Calculate the score at the given 'per' percentile of the
-    sequence a.  For example, the score at per=50 is the median.
+    """
+    Calculate the score at the given `per` percentile of the sequence `a`.
 
-    If the desired quantile lies between two data points, we
-    interpolate between them.
+    For example, the score at per=50 is the median. If the desired quantile
+    lies between two data points, we interpolate between them. If the parameter
+    `limit` is provided, it should be a tuple (lower, upper) of two values.
+    Values of `a` outside this (closed) interval will be ignored.
 
-    If the parameter 'limit' is provided, it should be a tuple (lower,
-    upper) of two values.  Values of 'a' outside this (closed)
-    interval will be ignored.
+    Parameters
+    ----------
+    a : ndarray
+        Values from which to extract score.
+    per : int or float
+        Percentile at which to extract score.
+    limit : tuple, optional
+        Tuple of two scalars, the lower and upper limits within which to
+        compute the percentile.
+
+    Returns
+    -------
+    score : float
+        Score at percentile.
+
+    See Also
+    --------
+    percentileofscore
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.arange(100)
+    >>> stats.scoreatpercentile(a, 50)
+    49.5
 
     """
     # TODO: this should be a simple wrapper around a well-written quantile
@@ -1361,7 +1496,7 @@ def percentileofscore(a, score, kind='rank'):
     elif kind == 'mean':
         return (sum(a < score) + sum(a <= score)) * 50 / float(n)
     else:
-        raise ValueError, "kind can only be 'rank', 'strict', 'weak' or 'mean'"
+        raise ValueError("kind can only be 'rank', 'strict', 'weak' or 'mean'")
 
 
 def histogram2(a, bins):
@@ -1460,12 +1595,30 @@ def histogram(a, numbins=10, defaultlimits=None, weights=None, printextras=False
 
 def cumfreq(a, numbins=10, defaultreallimits=None, weights=None):
     """
-Returns a cumulative frequency histogram, using the histogram function.
-Defaultreallimits can be None (use all data), or a 2-sequence containing
-lower and upper limits on values to include.
+    Returns a cumulative frequency histogram, using the histogram function.
 
-Returns: array of cumfreq bin values, lowerreallimit, binsize, extrapoints
-"""
+    Parameters
+    ----------
+    a : array_like
+        Input array.
+    numbins : int, optional
+        Number of bins.
+    defaultreallimits : 2-sequence or None, optional
+        None (use all data), or a 2-sequence containing lower and upper limits
+        on values to include.
+
+    Returns
+    -------
+    cumfreq : ndarray
+        Binned values of cumulative frequency.
+    lowerreallimit : float
+        Lower real limit
+    binsize : float
+        Width of each bin.
+    extrapoints : int
+        Extra points.
+
+    """
     h,l,b,e = histogram(a, numbins, defaultreallimits, weights=weights)
     cumhist = np.cumsum(h*1, axis=0)
     return cumhist,l,b,e
@@ -1520,7 +1673,7 @@ Returns: transformed data for use in an ANOVA
         if v[j] - np.mean(nargs[j]) > TINY:
             check = 0
     if check != 1:
-        raise ValueError, 'Lack of convergence in obrientransform.'
+        raise ValueError('Lack of convergence in obrientransform.')
     else:
         return array(nargs)
 
@@ -1631,24 +1784,46 @@ first), or an integer (the axis over which to operate).
 def sem(a, axis=0, ddof=1):
     """
     Calculates the standard error of the mean (or standard error of
-    measurement) of the values in the passed array.
+    measurement) of the values in the input array.
 
     Parameters
     ----------
-    a: array like
-        An array containing the values for which
-    axis: int or None, optional.
-        if equal None, ravel array first. If equal to an integer, this will be
+    a : array_like
+        An array containing the values for which the standard error is
+        returned.
+    axis : int or None, optional.
+        If axis is None, ravel `a` first. If axis is an integer, this will be
         the axis over which to operate. Defaults to 0.
-    ddof: int
-        Delta degrees-of-freedom. How many degrees of freedom to adjust for
-        bias in limited samples relative to the population estimate of variance
+    ddof : int, optional
+        Delta degrees-of-freedom. How many degrees of freedom to adjust
+        for bias in limited samples relative to the population estimate
+        of variance. Defaults to 1.
 
     Returns
     -------
-    The standard error of the mean in the sample(s), along the input axis
+    s : ndarray or float
+        The standard error of the mean in the sample(s), along the input axis.
 
-"""
+    Notes
+    -----
+    The default value for `ddof` is different to the default (0) used by other
+    ddof containing routines, such as np.std nd stats.nanstd.
+
+    Examples
+    --------
+    Find standard error along the first axis:
+
+    >>> from scipy import stats
+    >>> a = np.arange(20).reshape(5,4)
+    >>> stats.sem(a)
+    array([ 2.8284,  2.8284,  2.8284,  2.8284])
+
+    Find standard error across the whole array, using n degrees of freedom:
+
+    >>> stats.sem(a, axis=None, ddof=0)
+    1.2893796958227628
+
+    """
     a, axis = _chk_asarray(a, axis)
     n = a.shape[axis]
     #s = samplestd(a,axis) / np.sqrt(n-1)
@@ -1691,22 +1866,50 @@ def zscore(a, axis=0, ddof=0):
 
     Parameters
     ----------
-    a: array_like
-       An array like object containing the sample data
-    axis: int or None, optional
-         If axis is equal to None, the array is first ravel'd. If axis is an
-         integer, this is the axis over which to operate. Defaults to 0.
+    a : array_like
+        An array like object containing the sample data.
+    axis : int or None, optional
+        If `axis` is equal to None, the array is first raveled. If `axis` is
+        an integer, this is the axis over which to operate. Default is 0.
+    ddof : int, optional
+        Degrees of freedom correction in the calculation of the
+        standard deviation. Default is 0.
 
     Returns
     -------
-    zscore: array_like
-        the z-scores, standardized by mean and standard deviation of input
-        array
+    zscore : array_like
+        The z-scores, standardized by mean and standard deviation of input
+        array `a`.
 
     Notes
     -----
-    This function does not convert array classes, and works also with
-    matrices and masked arrays.
+    This function preserves ndarray subclasses, and works also with
+    matrices and masked arrays (it uses `asanyarray` instead of `asarray`
+    for parameters).
+
+    Examples
+    --------
+    >>> a = np.array([ 0.7972,  0.0767,  0.4383,  0.7866,  0.8091,  0.1954,
+                       0.6307, 0.6599,  0.1065,  0.0508])
+    >>> from scipy import stats
+    >>> stats.zscore(a)
+    array([ 1.1273, -1.247 , -0.0552,  1.0923,  1.1664, -0.8559,  0.5786,
+            0.6748, -1.1488, -1.3324])
+
+    Computing along a specified axis, using n-1 degrees of freedom (``ddof=1``)
+    to calculate the standard deviation:
+
+    >>> b = np.array([[ 0.3148,  0.0478,  0.6243,  0.4608],
+                      [ 0.7149,  0.0775,  0.6072,  0.9656],
+                      [ 0.6341,  0.1403,  0.9759,  0.4064],
+                      [ 0.5918,  0.6948,  0.904 ,  0.3721],
+                      [ 0.0921,  0.2481,  0.1188,  0.1366]])
+    >>> stats.zscore(b, axis=1, ddof=1)
+    array([[-1.1649, -1.4319, -0.8554, -1.0189],
+           [-0.8661, -1.5035, -0.9737, -0.6154],
+           [-0.888 , -1.3817, -0.5461, -1.1156],
+           [-2.3043, -2.2014, -1.9921, -2.5241],
+           [-2.0773, -1.9212, -2.0506, -2.0328]])
 
     """
     a = np.asanyarray(a)
@@ -1722,32 +1925,37 @@ def zscore(a, axis=0, ddof=0):
 
 def zmap(scores, compare, axis=0, ddof=0):
     """
-    Calculates the zscores relative to the mean and standard deviation
-    of second input.
+    Calculates the relative z-scores.
 
-    Returns an array of z-scores, i.e. scores that are standardized to zero
+    Returns an array of z-scores, i.e., scores that are standardized to zero
     mean and unit variance, where mean and variance are calculated from the
     comparison array.
 
     Parameters
     ----------
-    scores : array-like
-       The input for which z scores are calculated
-    compare : array-like
-       The input from which the mean and standard deviation of the
-       normalization are taken, assumed to have same dimension as scores
-    axis : integer or None, {optional, default 0)
-        axis over which mean and std of compare array are calculated
+    scores : array_like
+        The input for which z-scores are calculated.
+    compare : array_like
+        The input from which the mean and standard deviation of the
+        normalization are taken; assumed to have the same dimension as
+        `scores`.
+    axis : int or None, optional
+        Axis over which mean and variance of `compare` are calculated.
+        Default is 0.
+    ddof : int, optional
+        Degrees of freedom correction in the calculation of the
+        standard deviation. Default is 0.
 
     Returns
     -------
     zscore : array_like
-       zscore in the same shape as scores
+        Z-scores, in the same shape as `scores`.
 
     Notes
     -----
-    This function does not convert array classes, and works also with
-    matrices and masked arrays.
+    This function preserves ndarray subclasses, and works also with
+    matrices and masked arrays (it uses `asanyarray` instead of `asarray`
+    for parameters).
 
     """
     scores, compare = map(np.asanyarray, [scores, compare])
@@ -1767,16 +1975,39 @@ def zmap(scores, compare, axis=0, ddof=0):
 #####################################
 
 def threshold(a, threshmin=None, threshmax=None, newval=0):
-    """Clip array to a given value.
+    """
+    Clip array to a given value.
 
-Similar to numpy.clip(), except that values less than threshmin or
-greater than threshmax are replaced by newval, instead of by
-threshmin and threshmax respectively.
+    Similar to numpy.clip(), except that values less than `threshmin` or
+    greater than `threshmax` are replaced by `newval`, instead of by
+    `threshmin` and `threshmax` respectively.
 
-Returns: a, with values less than threshmin or greater than threshmax
-         replaced with newval
+    Parameters
+    ----------
+    a : array_like
+        Data to threshold.
+    threshmin : float, int or None, optional
+        Minimum threshold, defaults to None.
+    threshmax : float, int or None, optional
+        Maximum threshold, defaults to None.
+    newval : float or int, optional
+        Value to put in place of values in `a` outside of bounds.
+        Defaults to 0.
 
-"""
+    Returns
+    -------
+    out : ndarray
+        The clipped input array, with values less than `threshmin` or
+        greater than `threshmax` replaced with `newval`.
+
+    Examples
+    --------
+    >>> a = np.array([9, 9, 6, 3, 1, 6, 1, 0, 0, 8])
+    >>> from scipy import stats
+    >>> stats.threshold(a, threshmin=2, threshmax=8, newval=-1)
+    array([-1, -1,  6,  3, -1,  6, -1, -1, -1,  8])
+
+    """
     a = asarray(a).copy()
     mask = zeros(a.shape, dtype=bool)
     if threshmin is not None:
@@ -1789,35 +2020,39 @@ Returns: a, with values less than threshmin or greater than threshmax
 
 
 def sigmaclip(a, low=4., high=4.):
-    """Iterative sigma-clipping of array elements.
+    """
+    Iterative sigma-clipping of array elements.
 
     The output array contains only those elements of the input array `c`
     that satisfy the conditions ::
 
         mean(c) - std(c)*low < c < mean(c) + std(c)*high
 
+    Starting from the full sample, all elements outside the critical range are
+    removed. The iteration continues with a new critical range until no
+    elements are outside the range.
+
     Parameters
     ----------
     a : array_like
-        data array, will be raveled if not 1d
-    low : float
-        lower bound factor of sigma clipping
-    high : float
-        upper bound factor of sigma clipping
+        Data array, will be raveled if not 1-D.
+    low : float, optional
+        Lower bound factor of sigma clipping. Default is 4.
+    high : float, optional
+        Upper bound factor of sigma clipping. Default is 4.
 
     Returns
     -------
-    c : array
-        input array with clipped elements removed
+    c : ndarray
+        Input array with clipped elements removed.
     critlower : float
-        lower threshold value use for clipping
+        Lower threshold value use for clipping.
     critlupper : float
-        upper threshold value use for clipping
-
+        Upper threshold value use for clipping.
 
     Examples
     --------
-    >>> a = np.concatenate((np.linspace(9.5,10.5,31),np.linspace(0,20,5)))
+    >>> a = np.concatenate((np.linspace(9.5,10.5,31), np.linspace(0,20,5)))
     >>> fact = 1.5
     >>> c, low, upp = sigmaclip(a, fact, fact)
     >>> c
@@ -1851,31 +2086,67 @@ def sigmaclip(a, low=4., high=4.):
 
 def trimboth(a, proportiontocut):
     """
-Slices off the passed proportion of items from BOTH ends of the passed
-array (i.e., with proportiontocut=0.1, slices 'leftmost' 10% AND
-'rightmost' 10% of scores.  You must pre-sort the array if you want
-"proper" trimming.  Slices off LESS if proportion results in a
-non-integer slice index (i.e., conservatively slices off
-proportiontocut).
+    Slices off a proportion of items from both ends of an array.
 
-Returns: trimmed version of array a
-"""
+    Slices off the passed proportion of items from both ends of the passed
+    array (i.e., with `proportiontocut` = 0.1, slices leftmost 10% **and**
+    rightmost 10% of scores).  You must pre-sort the array if you want
+    'proper' trimming.  Slices off less if proportion results in a
+    non-integer slice index (i.e., conservatively slices off
+    `proportiontocut`).
+
+    Parameters
+    ----------
+    a : array_like
+        Data to trim.
+    proportiontocut : float or int
+        Proportion of total data set to trim of each end.
+
+    Returns
+    -------
+    out : ndarray
+        Trimmed version of array `a`.
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.arange(20)
+    >>> b = stats.trimboth(a, 0.1)
+    >>> b.shape
+    (16,)
+
+    """
     a = asarray(a)
     lowercut = int(proportiontocut*len(a))
     uppercut = len(a) - lowercut
     if (lowercut >= uppercut):
-        raise ValueError, "Proportion too big."
+        raise ValueError("Proportion too big.")
     return a[lowercut:uppercut]
 
 
 def trim1(a, proportiontocut, tail='right'):
     """
-    Slices off the passed proportion of items from ONE end of the passed
-    array (i.e., if proportiontocut=0.1, slices off 'leftmost' or 'rightmost'
-    10% of scores).  Slices off LESS if proportion results in a non-integer
-    slice index (i.e., conservatively slices off proportiontocut).
+    Slices off a proportion of items from ONE end of the passed array
+    distribution.
 
-    Returns: trimmed version of array a
+    If `proportiontocut` = 0.1, slices off 'leftmost' or 'rightmost'
+    10% of scores.  Slices off LESS if proportion results in a non-integer
+    slice index (i.e., conservatively slices off `proportiontocut` ).
+
+    Parameters
+    ----------
+    a : array_like
+        Input array
+    proportiontocut : float
+        Fraction to cut off of 'left' or 'right' of distribution
+    tail : string, {'left', 'right'}, optional
+        Defaults to 'right'.
+
+    Returns
+    -------
+    trim1 : ndarray
+        Trimmed version of array `a`
+
     """
     a = asarray(a)
     if tail.lower() == 'right':
@@ -1887,8 +2158,26 @@ def trim1(a, proportiontocut, tail='right'):
     return a[lowercut:uppercut]
 
 def trim_mean(a, proportiontocut):
-    """Return mean with proportiontocut chopped from each of the lower and
-    upper tails.
+    """
+    Return mean of array after trimming distribution from both lower and upper
+    tails.
+
+    If `proportiontocut` = 0.1, slices off 'leftmost' and 'rightmost' 10% of
+    scores. Slices off LESS if proportion results in a non-integer slice
+    index (i.e., conservatively slices off `proportiontocut` ).
+
+    Parameters
+    ----------
+    a : array_like
+        Input array
+    proportiontocut : float
+        Fraction to cut off of both tails of the distribution
+
+    Returns
+    -------
+    trim_mean : ndarray
+        Mean of trimmed array.
+
     """
     newa = trimboth(np.sort(a),proportiontocut)
     return np.mean(newa,axis=0)
@@ -1934,7 +2223,7 @@ Please note that:
         y = np.transpose(y)
     N = m.shape[0]
     if (y.shape[0] != N):
-        raise ValueError, "x and y must have the same number of observations."
+        raise ValueError("x and y must have the same number of observations.")
     m = m - np.mean(m,axis=0)
     y = y - np.mean(y,axis=0)
     if bias:
@@ -1973,35 +2262,35 @@ def f_oneway(*args):
     """
     Performs a 1-way ANOVA.
 
-    The on-way ANOVA tests the null hypothesis that 2 or more groups have
+    The one-way ANOVA tests the null hypothesis that two or more groups have
     the same population mean.  The test is applied to samples from two or
     more groups, possibly with differing sizes.
 
     Parameters
     ----------
     sample1, sample2, ... : array_like
-        The sample measurements should be given as arguments.
+        The sample measurements for each group.
 
     Returns
     -------
     F-value : float
-        The computed F-value of the test
+        The computed F-value of the test.
     p-value : float
-        The associated p-value from the F-distribution
+        The associated p-value from the F-distribution.
 
     Notes
     -----
     The ANOVA test has important assumptions that must be satisfied in order
     for the associated p-value to be valid.
 
-    1. The samples are independent
-    2. Each sample is from a normally distributed population
+    1. The samples are independent.
+    2. Each sample is from a normally distributed population.
     3. The population standard deviations of the groups are all equal.  This
-       property is known as homocedasticity.
+       property is known as homoscedasticity.
 
     If these assumptions are not true for a given set of data, it may still be
     possible to use the Kruskal-Wallis H-test (`stats.kruskal`_) although with
-    some loss of power
+    some loss of power.
 
     The algorithm is from Heiman[2], pp.394-7.
 
@@ -2090,17 +2379,140 @@ def pearsonr(x, y):
     return r,prob
 
 
+def fisher_exact(table) :
+    """Performs a Fisher exact test on a 2x2 contingency table.
+
+    Parameters
+    ----------
+    table : array_like of ints
+        A 2x2 contingency table.
+
+    Returns
+    -------
+    oddsratio : float
+        This is prior odds ratio and not a posterior estimate.
+    p_value : float
+        P-value for 2-sided hypothesis of independence.
+
+    Notes
+    -----
+    The calculated odds ratio is different from the one R uses. In R language,
+    this implementation returns the (more common) "unconditional Maximum
+    Likelihood Estimate", while R uses the "conditional Maximum Likelihood
+    Estimate".
+
+    Examples
+    --------
+    >>> fisher_exact([[100, 2], [1000, 5]])
+    (0.25, 0.13007593634330314)
+    """
+    hypergeom = distributions.hypergeom
+    c = np.asarray(table, dtype=np.int64)  # int32 is not enough for the algorithm
+    if not c.shape == (2, 2):
+        raise ValueError("The input `table` must be of shape (2, 2).")
+
+    if c[1,0] > 0 and c[0,1] > 0:
+        odssratio = c[0,0] * c[1,1] / float(c[1,0] * c[0,1])
+    else:
+        odssratio = np.inf
+
+    n1 = c[0,0] + c[0,1]
+    n2 = c[1,0] + c[1,1]
+    n  = c[0,0] + c[1,0]
+
+    mode = int(float((n + 1) * (n1 + 1)) / (n1 + n2 + 2))
+    pexact = hypergeom.pmf(c[0,0], n1 + n2, n1, n)
+    pmode = hypergeom.pmf(mode, n1 + n2, n1, n)
+
+    epsilon = 1 - 1e-4
+    if float(np.abs(pexact - pmode)) / np.abs(np.max(pexact, pmode)) <= 1 - epsilon:
+        return odssratio, 1
+
+    elif c[0,0] < mode:
+        plower = hypergeom.cdf(c[0,0], n1 + n2, n1, n)
+
+        if hypergeom.pmf(n, n1 + n2, n1, n) > pexact / epsilon:
+            return odssratio, plower
+
+        # Binary search for where to begin upper half.
+        minval = mode
+        maxval = n
+        guess = -1
+        while maxval - minval > 1:
+            if maxval == minval + 1 and guess == minval:
+                guess = maxval
+            else:
+                guess = (maxval + minval) / 2
+
+            pguess = hypergeom.pmf(guess, n1 + n2, n1, n)
+            if pguess <= pexact and hypergeom.pmf(guess - 1, n1 + n2, n1, n) > pexact:
+                break
+            elif pguess < pexact:
+                maxval = guess
+            else:
+                minval = guess
+
+        if guess == -1:
+            guess = minval
+
+        while guess > 0 and hypergeom.pmf(guess, n1 + n2, n1, n) < pexact * epsilon:
+            guess -= 1
+
+        while hypergeom.pmf(guess, n1 + n2, n1, n) > pexact / epsilon:
+            guess += 1
+
+        p = plower + hypergeom.sf(guess - 1, n1 + n2, n1, n)
+        if p > 1.0:
+            p = 1.0
+        return odssratio, p
+    else:
+        pupper = hypergeom.sf(c[0,0] - 1, n1 + n2, n1, n)
+        if hypergeom.pmf(0, n1 + n2, n1, n) > pexact / epsilon:
+            return odssratio, pupper
+
+        # Binary search for where to begin lower half.
+        minval = 0
+        maxval = mode
+        guess = -1
+        while maxval - minval > 1:
+            if maxval == minval + 1 and guess == minval:
+                guess = maxval
+            else:
+                guess = (maxval + minval) / 2
+            pguess = hypergeom.pmf(guess, n1 + n2, n1, n)
+            if pguess <= pexact and hypergeom.pmf(guess + 1, n1 + n2, n1, n) > pexact:
+                break
+            elif pguess <= pexact:
+                minval = guess
+            else:
+                maxval = guess
+
+        if guess == -1:
+            guess = minval
+
+        while hypergeom.pmf(guess, n1 + n2, n1, n) < pexact * epsilon:
+            guess += 1
+
+        while guess > 0 and hypergeom.pmf(guess, n1 + n2, n1, n) > pexact / epsilon:
+            guess -= 1
+
+        p = pupper + hypergeom.cdf(guess, n1 + n2, n1, n)
+        if p > 1.0:
+            p = 1.0
+        return odssratio, p
+
+
 def spearmanr(a, b=None, axis=0):
     """
     Calculates a Spearman rank-order correlation coefficient and the p-value
     to test for non-correlation.
 
-    The Spearman correlation is a nonparametric measure of the linear
-    relationship between two datasets. Unlike the Pearson correlation, the
-    Spearman correlation does not assume that both datasets are normally
+    The Spearman correlation is a nonparametric measure of the monotonicity
+    of the relationship between two datasets. Unlike the Pearson correlation,
+    the Spearman correlation does not assume that both datasets are normally
     distributed. Like other correlation coefficients, this one varies
     between -1 and +1 with 0 implying no correlation. Correlations of -1 or
-    +1 imply an exact linear relationship. Positive correlations imply that
+    +1 imply an exact monotonic relationship. Positive correlations imply that
     as x increases, so does y. Negative correlations imply that as x
     increases, y decreases.
 
@@ -2109,37 +2521,34 @@ def spearmanr(a, b=None, axis=0):
     as the one computed from these datasets. The p-values are not entirely
     reliable but are probably reasonable for datasets larger than 500 or so.
 
-    spearmanr currently does not do any tie correction, and is only correct
-    if there are no ties in the data.
-
     Parameters
     ----------
     a, b : 1D or 2D array_like, b is optional
         One or two 1-D or 2-D arrays containing multiple variables and
-        observations. Each column of m represents a variable, and each row
-        entry a single observation of those variables. Also see axis below.
-        Both arrays need to have the same length in the `axis` dimension.
-
+        observations. Each column of `a` and `b` represents a variable, and
+        each row entry a single observation of those variables. See also
+        `axis`. Both arrays need to have the same length in the `axis`
+        dimension.
     axis : int or None, optional
         If axis=0 (default), then each column represents a variable, with
         observations in the rows. If axis=0, the relationship is transposed:
         each row represents a variable, while the columns contain observations.
-        If axis=None, then both arrays will be raveled
+        If axis=None, then both arrays will be raveled.
 
     Returns
     -------
-    rho: float or array (2D square)
-        Spearman correlation matrix or correlation coefficient (if only 2 variables
-        are given as parameters. Correlation matrix is square with length
-        equal to total number of variables (columns or rows) in a and b
-        combined
+    rho: float or ndarray (2-D square)
+        Spearman correlation matrix or correlation coefficient (if only 2
+        variables are given as parameters. Correlation matrix is square with
+        length equal to total number of variables (columns or rows) in a and b
+        combined.
     p-value : float
         The two-sided p-value for a hypothesis test whose null hypothesis is
-        that two sets of data are uncorrelated, has same dimension as rho
+        that two sets of data are uncorrelated, has same dimension as rho.
 
     Notes
     -----
-    changes in scipy 0.8: rewrite to add tie-handling,  and axis
+    Changes in scipy 0.8.0: rewrite to add tie-handling, and axis.
 
     References
     ----------
@@ -2151,7 +2560,6 @@ def spearmanr(a, b=None, axis=0):
 
     Examples
     --------
-
     >>> spearmanr([1,2,3,4,5],[5,6,7,8,7])
     (0.82078268166812329, 0.088587005313543798)
     >>> np.random.seed(1234321)
@@ -2221,19 +2629,39 @@ def pointbiserialr(x, y):
     implying no correlation. Correlations of -1 or +1 imply a determinative
     relationship.
 
+    This function uses a shortcut formula but produces the same result as
+    `pearsonr`.
+
     Parameters
     ----------
-    x : array of bools
-    y : array of floats
+    x : array_like of bools
+        Input array.
+    y : array_like
+        Input array.
 
     Returns
     -------
-    (point-biserial r,
-     2-tailed p-value)
+    r : float
+        R value
+    p-value : float
+        2-tailed p-value
 
     References
     ----------
     http://www.childrens-mercy.org/stats/definitions/biserial.htm
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.array([0, 0, 0, 1, 1, 1, 1])
+    >>> b = np.arange(7)
+    >>> stats.pointbiserialr(a, b)
+    (0.8660254037844386, 0.011724811003954652)
+    >>> stats.pearsonr(a, b)
+    (0.86602540378443871, 0.011724811003954626)
+    >>> np.corrcoef(a, b)
+    array([[ 1.       ,  0.8660254],
+           [ 0.8660254,  1.       ]])
     """
 
     ## Test data: http://support.sas.com/ctx/samples/index.jsp?sid=490&tab=output
@@ -2629,7 +3057,7 @@ def ttest_rel(a,b,axis=0):
     """
     a, b, axis = _chk2_asarray(a, b, axis)
     if a.shape[axis] != b.shape[axis]:
-        raise ValueError, 'unequal length arrays'
+        raise ValueError('unequal length arrays')
     n = a.shape[axis]
     df = float(n-1)
 
@@ -2780,7 +3208,7 @@ def kstest(rvs, cdf, args=(), N=20, alternative = 'two_sided', mode='approx',**k
             cdf = getattr(distributions, rvs).cdf
             rvs = getattr(distributions, rvs).rvs
         else:
-            raise AttributeError, 'if rvs is string, cdf has to be the same distribution'
+            raise AttributeError('if rvs is string, cdf has to be the same distribution')
 
 
     if isinstance(cdf, basestring):
@@ -3006,7 +3434,7 @@ def mannwhitneyu(x, y, use_continuity=True):
     #T = np.sqrt(tiecorrect(ranked))  # correction factor for tied scores
     T = tiecorrect(ranked)
     if T == 0:
-        raise ValueError, 'All numbers are identical in amannwhitneyu'
+        raise ValueError('All numbers are identical in amannwhitneyu')
     sd = np.sqrt(T*n1*n2*(n1+n2+1)/12.0)
 
     if use_continuity:
@@ -3144,7 +3572,7 @@ def kruskal(*args):
     h = 12.0 / (totaln*(totaln+1)) * ssbn - 3*(totaln+1)
     df = len(args) - 1
     if T == 0:
-        raise ValueError, 'All numbers are identical in kruskal'
+        raise ValueError('All numbers are identical in kruskal')
     h = h / float(T)
     return h, chisqprob(h,df)
 
@@ -3187,11 +3615,11 @@ def friedmanchisquare(*args):
     """
     k = len(args)
     if k < 3:
-        raise ValueError, '\nLess than 3 levels.  Friedman test not appropriate.\n'
+        raise ValueError('\nLess than 3 levels.  Friedman test not appropriate.\n')
     n = len(args[0])
     for i in range(1,k):
         if len(args[i]) <> n:
-            raise ValueError, 'Unequal N in friedmanchisquare.  Aborting.'
+            raise ValueError('Unequal N in friedmanchisquare.  Aborting.')
 
     # Rank data
     data = apply(_support.abut,args)
@@ -3221,20 +3649,23 @@ erfc = np.lib.deprecate(special.erfc, old_name="scipy.stats.erfc",
                                       new_name="scipy.special.erfc")
 
 def chisqprob(chisq, df):
-    """Returns the (1-tail) probability value associated with the provided
-    chi-square value and degrees of freedom.
+    """
+    Probability value (1-tail) for the Chi^2 probability distribution.
 
     Broadcasting rules apply.
 
     Parameters
     ----------
-    chisq : array or float > 0
-    df : array or float, probably int >= 1
+    chisq : array_like or float > 0
+
+    df : array_like or float, probably int >= 1
 
     Returns
     -------
-    The area from chisq to infinity under the Chi^2 probability distribution
-    with degrees of freedom df.
+    chisqprob : ndarray
+        The area from `chisq` to infinity under the Chi^2 probability
+        distribution with degrees of freedom `df`.
+
     """
     return special.chdtrc(df,chisq)
 
@@ -3242,7 +3673,8 @@ ksprob = special.kolmogorov
 fprob = special.fdtrc
 
 def betai(a, b, x):
-    """Returns the incomplete beta function.
+    """
+    Returns the incomplete beta function.
 
     I_x(a,b) = 1/B(a,b)*(Integral(0,x) of t^(a-1)(1-t)^(b-1) dt)
 
@@ -3253,13 +3685,17 @@ def betai(a, b, x):
 
     Parameters
     ----------
-    a : array or float > 0
-    b : array or float > 0
-    x : array or float
+    a : array_like or float > 0
+
+    b : array_like or float > 0
+
+    x : array_like or float
         x will be clipped to be no greater than 1.0 .
 
     Returns
     -------
+    betai : ndarray
+        Incomplete beta function.
 
     """
     x = np.asarray(x)
@@ -3372,28 +3808,75 @@ def f_value_multivariate(ER, EF, dfnum, dfden):
 #####################################
 
 def ss(a, axis=0):
-    """Squares each value in the passed array, adds these squares, and
-    returns the result.
+    """
+    Squares each element of the input array, and returns the square(s) of that.
 
     Parameters
     ----------
-    a : array
-    axis : int or None
+    a : array_like
+        Input array.
+    axis : int or None, optional
+        The axis along which to calculate. If None, use whole array.
+        Default is 0, i.e. along the first axis.
 
     Returns
     -------
-    The sum along the given axis for (a*a).
+    ss : ndarray
+        The sum along the given axis for (a**2).
+
+    See also
+    --------
+    square_of_sums : The square(s) of the sum(s) (the opposite of `ss`).
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.array([1., 2., 5.])
+    >>> stats.ss(a)
+    30.0
+
+    And calculating along an axis:
+
+    >>> b = np.array([[1., 2., 5.], [2., 5., 6.]])
+    >>> stats.ss(b, axis=1)
+    array([ 30., 65.])
+
     """
     a, axis = _chk_asarray(a, axis)
     return np.sum(a*a, axis)
 
 
 def square_of_sums(a, axis=0):
-    """Adds the values in the passed array, squares that sum, and returns the
-result.
+    """
+    Sums elements of the input array, and returns the square(s) of that sum.
 
-Returns: the square of the sum over axis.
-"""
+    Parameters
+    ----------
+    a : array_like
+        Input array.
+    axis : int or None, optional
+        If axis is None, ravel `a` first. If `axis` is an integer, this will
+        be the axis over which to operate. Defaults to 0.
+
+    Returns
+    -------
+    ss : float or ndarray
+        The square of the sum over `axis`.
+
+    See also
+    --------
+    ss : The sum of squares (the opposite of `square_of_sums`).
+
+    Examples
+    --------
+    >>> from scipy import stats
+    >>> a = np.arange(20).reshape(5,4)
+    >>> stats.square_of_sums(a)
+    array([ 1600.,  2025.,  2500.,  3025.])
+    >>> stats.square_of_sums(a, axis=None)
+    36100.0
+
+    """
     a, axis = _chk_asarray(a, axis)
     s = np.sum(a,axis)
     if not np.isscalar(s):
@@ -3421,25 +3904,28 @@ def fastsort(a):
     return as_, it
 
 def rankdata(a):
-    """Ranks the data in a, dealing with ties appropriately.
+    """
+    Ranks the data, dealing with ties appropriately.
 
     Equal values are assigned a rank that is the average of the ranks that
     would have been otherwise assigned to all of the values within that set.
     Ranks begin at 1, not 0.
 
-    Example
-    -------
-    In [15]: stats.rankdata([0, 2, 2, 3])
-    Out[15]: array([ 1. ,  2.5,  2.5,  4. ])
-
     Parameters
     ----------
-    a : array
+    a : array_like
         This array is first flattened.
 
     Returns
     -------
-    An array of length equal to the size of a, containing rank scores.
+    rankdata : ndarray
+         An array of length equal to the size of `a`, containing rank scores.
+
+    Examples
+    --------
+    >>> stats.rankdata([0, 2, 2, 3])
+    array([ 1. ,  2.5,  2.5,  4. ])
+
     """
     a = np.ravel(a)
     n = len(a)

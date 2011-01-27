@@ -24,6 +24,7 @@ from scipy.linalg import calc_lwork
 from misc import LinAlgError, _datanotshared
 from lapack import get_lapack_funcs
 from blas import get_blas_funcs
+from funcinfo import get_func_info
 
 
 _I = cast['F'](1j)
@@ -51,11 +52,12 @@ def _geneig(a1, b, left, right, overwrite_a, overwrite_b):
         raise ValueError('expected square matrix')
     ggev, = get_lapack_funcs(('ggev',), (a1, b1))
     cvl, cvr = left, right
-    if ggev.module_name[:7] == 'clapack':
-        raise NotImplementedError('calling ggev from %s' % ggev.module_name)
+    ggev_info = get_func_info(ggev)
+    if ggev_info.module_name[:7] == 'clapack':
+        raise NotImplementedError('calling ggev from %s' % get_func_info(ggev).module_name)
     res = ggev(a1, b1, lwork=-1)
     lwork = res[-2][0]
-    if ggev.prefix in 'cz':
+    if ggev_info.prefix in 'cz':
         alpha, beta, vl, vr, work, info = ggev(a1, b1, cvl, cvr, lwork,
                                                     overwrite_a, overwrite_b)
         w = alpha / beta
@@ -71,7 +73,7 @@ def _geneig(a1, b, left, right, overwrite_a, overwrite_b):
                                                                     % info)
 
     only_real = numpy.logical_and.reduce(numpy.equal(w.imag, 0.0))
-    if not (ggev.prefix in 'cz' or only_real):
+    if not (ggev_info.prefix in 'cz' or only_real):
         t = w.dtype.char
         if left:
             vl = _make_complex_eigvecs(w, vl, t)
@@ -145,11 +147,12 @@ def eig(a, b=None, left=False, right=True, overwrite_a=False, overwrite_b=False)
             raise ValueError('a and b must have the same shape')
         return _geneig(a1, b, left, right, overwrite_a, overwrite_b)
     geev, = get_lapack_funcs(('geev',), (a1,))
+    geev_info = get_func_info(geev)
     compute_vl, compute_vr = left, right
-    if geev.module_name[:7] == 'flapack':
-        lwork = calc_lwork.geev(geev.prefix, a1.shape[0],
-                                    compute_vl, compute_vr)[1]
-        if geev.prefix in 'cz':
+    if geev_info.module_name[:7] == 'flapack':
+        lwork = calc_lwork.geev(geev_info.prefix, a1.shape[0],
+                                compute_vl, compute_vr)[1]
+        if geev_info.prefix in 'cz':
             w, vl, vr, info = geev(a1, lwork=lwork,
                                         compute_vl=compute_vl,
                                         compute_vr=compute_vr,
@@ -162,7 +165,7 @@ def eig(a, b=None, left=False, right=True, overwrite_a=False, overwrite_b=False)
             t = {'f':'F','d':'D'}[wr.dtype.char]
             w = wr + _I * wi
     else: # 'clapack'
-        if geev.prefix in 'cz':
+        if geev_info.prefix in 'cz':
             w, vl, vr, info = geev(a1,
                                     compute_vl=compute_vl,
                                     compute_vr=compute_vr,
@@ -182,7 +185,7 @@ def eig(a, b=None, left=False, right=True, overwrite_a=False, overwrite_b=False)
                             "with order >= %d have converged)" % info)
 
     only_real = numpy.logical_and.reduce(numpy.equal(w.imag, 0.0))
-    if not (geev.prefix in 'cz' or only_real):
+    if not (geev_info.prefix in 'cz' or only_real):
         t = w.dtype.char
         if left:
             vl = _make_complex_eigvecs(w, vl, t)
@@ -492,7 +495,7 @@ def eig_banded(a_band, lower=False, eigvals_only=False, overwrite_a_band=False,
             select = 2
             vl, vu, il, iu = 0.0, 0.0, min(select_range), max(select_range)
             if min(il, iu) < 0 or max(il, iu) >= a1.shape[1]:
-                raise ValueError, 'select_range out of bounds'
+                raise ValueError('select_range out of bounds')
             max_ev = iu - il + 1
         else:  # 1, 'v', 'value'
             select = 1
@@ -744,7 +747,7 @@ def hessenberg(a, calc_q=False, overwrite_a=False):
         raise ValueError('illegal value in %d-th argument of internal gebal '
                                                     '(hessenberg)' % -info)
     n = len(a1)
-    lwork = calc_lwork.gehrd(gehrd.prefix, n, lo, hi)
+    lwork = calc_lwork.gehrd(get_func_info(gehrd).prefix, n, lo, hi)[0]
     hq, tau, info = gehrd(ba, lo=lo, hi=hi, lwork=lwork, overwrite_a=1)
     if info < 0:
         raise ValueError('illegal value in %d-th argument of internal gehrd '
