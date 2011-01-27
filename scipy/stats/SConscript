@@ -6,8 +6,6 @@ from numscons import GetNumpyEnvironment, CheckF77Clib
 
 env = GetNumpyEnvironment(ARGUMENTS)
 
-t = env.Tool('f2py')
-
 config = env.NumpyConfigure(custom_tests = {'CheckF77Clib' : CheckF77Clib})
 if not config.CheckF77Clib():
     raise RuntimeError("Could not get C/F77 runtime information")
@@ -21,16 +19,14 @@ env.DistutilsStaticExtLibrary('statlibimp', source = src)
 env.AppendUnique(LIBPATH = '.')
 
 # Statlib extension
-env.NumpyPythonExtension('statlib', source = 'statlib.pyf', 
-                         F2PYOPTIONS = ["--no-wrap-functions"],
+env.NumpyPythonExtension('statlib', source = ['statlib.c', 'statlib_fc.f'],
                          LIBS = 'statlibimp')
 
 # futil extension
-futil_src = env.F2py(pjoin('futilmodule.c'), pjoin('futil.f'))
-env.NumpyPythonExtension('futil', source = futil_src + ['futil.f'])
+env.NumpyPythonExtension('futil', source = ['futil.c', 'futil_fc.f', pjoin('src', 'futil.f')])
 
 # mvn extension
-env.NumpyPythonExtension('mvn', source = ['mvn.pyf', 'mvndst.f'])
+env.NumpyPythonExtension('mvn', source = ['mvn.c', 'mvn_fc.f', pjoin('src', 'mvndst.f')])
 
 # vonmisses_cython extension
 env.NumpyPythonExtension('vonmises_cython', source = ['vonmises_cython.c'])

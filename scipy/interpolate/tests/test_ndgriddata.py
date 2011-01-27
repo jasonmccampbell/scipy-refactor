@@ -11,7 +11,7 @@ class TestGriddata(object):
         y = [1, 2, 3]
 
         yi = griddata(x, y, [(1,1), (1,2), (0,0)], fill_value=-1)
-        assert_array_equal(yi, [-1, -1, 1])
+        assert_array_equal(yi, [-1., -1, 1])
 
         yi = griddata(x, y, [(1,1), (1,2), (0,0)])
         assert_array_equal(yi, [np.nan, np.nan, 1])
@@ -64,6 +64,18 @@ class TestGriddata(object):
             assert_equal(yi.shape, (5, 3), err_msg=method)
             assert_allclose(yi, np.tile(y[:,None], (1, 3)),
                             atol=1e-14, err_msg=method)
+
+    def test_1d(self):
+        x = np.array([1, 2.5, 3, 4.5, 5, 6])
+        y = np.array([1,   2, 0, 3.9, 2, 1])
+
+        for method in ('nearest', 'linear', 'cubic'):
+            assert_allclose(griddata(x, y, x, method=method), y,
+                            err_msg=method, atol=1e-14)
+            assert_allclose(griddata(x.reshape(6, 1), y, x, method=method), y,
+                            err_msg=method, atol=1e-14)
+            assert_allclose(griddata((x,), y, (x,), method=method), y,
+                            err_msg=method, atol=1e-14)
 
 if __name__ == "__main__":
     run_module_suite()

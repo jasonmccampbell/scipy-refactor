@@ -39,8 +39,8 @@ def _valfrommode(mode):
         val = _modedict[mode]
     except KeyError:
         if mode not in [0,1,2]:
-            raise ValueError, "Acceptable mode flags are 'valid' (0)," \
-                  "'same' (1), or 'full' (2)."
+            raise ValueError("Acceptable mode flags are 'valid' (0),"
+                    " 'same' (1), or 'full' (2).")
         val = mode
     return val
 
@@ -49,8 +49,8 @@ def _bvalfromboundary(boundary):
         val = _boundarydict[boundary] << 2
     except KeyError:
         if val not in [0,1,2] :
-            raise ValueError, "Acceptable boundary flags are 'fill', 'wrap'" \
-                  " (or 'circular'), \n  and 'symm' (or 'symmetric')."
+            raise ValueError("Acceptable boundary flags are 'fill', 'wrap'"
+                    " (or 'circular'), \n  and 'symm' (or 'symmetric').")
         val = boundary << 2
     return val
 
@@ -297,8 +297,8 @@ def order_filter(a, domain, rank):
     size = domain.shape
     for k in range(len(size)):
         if (size[k] % 2) != 1:
-            raise ValueError, "Each dimension of domain argument " \
-                  "should have an odd number of elements."
+            raise ValueError("Each dimension of domain argument "
+                    " should have an odd number of elements.")
     return sigtools._order_filterND(a, domain, rank)
 
 
@@ -336,7 +336,7 @@ def medfilt(volume, kernel_size=None):
 
     for k in range(len(volume.shape)):
         if (kernel_size[k] % 2) != 1:
-            raise ValueError, "Each element of kernel_size should be odd."
+            raise ValueError("Each element of kernel_size should be odd.")
 
     domain = ones(kernel_size)
 
@@ -536,106 +536,11 @@ def medfilt2d(input, kernel_size=3):
 
     for size in kernel_size:
         if (size % 2) != 1:
-            raise ValueError, "Each element of kernel_size should be odd."
+            raise ValueError("Each element of kernel_size should be odd.")
 
     return sigtools._medfilt2d(image, kernel_size)
 
-def remez(numtaps, bands, desired, weight=None, Hz=1, type='bandpass',
-          maxiter=25, grid_density=16):
-    """
-    Calculate the minimax optimal filter using the Remez exchange algorithm.
 
-    Calculate the filter-coefficients for the finite impulse response
-    (FIR) filter whose transfer function minimizes the maximum error
-    between the desired gain and the realized gain in the specified
-    frequency bands using the Remez exchange algorithm.
-
-    Parameters
-    ----------
-    numtaps : int
-        The desired number of taps in the filter. The number of taps is
-        the number of terms in the filter, or the filter order plus one.
-    bands : array_like
-        A monotonic sequence containing the band edges in Hz.
-        All elements must be non-negative and less than half the sampling
-        frequency as given by `Hz`.
-    desired : array_like
-        A sequence half the size of bands containing the desired gain
-        in each of the specified bands.
-    weight : array_like, optional
-        A relative weighting to give to each band region. The length of
-        `weight` has to be half the length of `bands`.
-    Hz : scalar, optional
-        The sampling frequency in Hz. Default is 1.
-    type : {'bandpass', 'differentiator', 'hilbert'}, optional
-        The type of filter:
-
-          'bandpass' : flat response in bands. This is the default.
-
-          'differentiator' : frequency proportional response in bands.
-
-          'hilbert' : filter with odd symmetry, that is, type III
-                      (for even order) or type IV (for odd order)
-                      linear phase filters.
-
-    maxiter : int, optional
-        Maximum number of iterations of the algorithm. Default is 25.
-    grid_density : int, optional
-        Grid density. The dense grid used in `remez` is of size
-        ``(numtaps + 1) * grid_density``. Default is 16.
-
-    Returns
-    -------
-    out : ndarray
-        A rank-1 array containing the coefficients of the optimal
-        (in a minimax sense) filter.
-
-    See Also
-    --------
-    freqz : Compute the frequency response of a digital filter.
-
-    References
-    ----------
-    .. [1] J. H. McClellan and T. W. Parks, "A unified approach to the
-           design of optimum FIR linear phase digital filters",
-           IEEE Trans. Circuit Theory, vol. CT-20, pp. 697-701, 1973.
-    .. [2] J. H. McClellan, T. W. Parks and L. R. Rabiner, "A Computer
-           Program for Designing Optimum FIR Linear Phase Digital
-           Filters", IEEE Trans. Audio Electroacoust., vol. AU-21,
-           pp. 506-525, 1973.
-
-    Examples
-    --------
-    We want to construct a filter with a passband at 0.2-0.4 Hz, and
-    stop bands at 0-0.1 Hz and 0.45-0.5 Hz. Note that this means that the
-    behavior in the frequency ranges between those bands is unspecified and
-    may overshoot.
-
-    >>> bpass = sp.signal.remez(72, [0, 0.1, 0.2, 0.4, 0.45, 0.5], [0, 1, 0])
-    >>> freq, response = sp.signal.freqz(bpass)
-    >>> ampl = np.abs(response)
-
-    >>> import matplotlib.pyplot as plt
-    >>> fig = plt.figure()
-    >>> ax1 = fig.add_subplot(111)
-    >>> ax1.semilogy(freq/(2*np.pi), ampl, 'b-') # freq in Hz
-    [<matplotlib.lines.Line2D object at 0xf486790>]
-    >>> plt.show()
-
-    """
-    # Convert type
-    try:
-        tnum = {'bandpass':1, 'differentiator':2, 'hilbert':3}[type]
-    except KeyError:
-        raise ValueError("Type must be 'bandpass', 'differentiator', or 'hilbert'")
-
-    # Convert weight
-    if weight is None:
-        weight = [1] * len(desired)
-
-    bands = asarray(bands).copy()
-    return sigtools._remez(numtaps, bands, desired, weight, tnum, Hz,
-                           maxiter, grid_density)
 
 def lfilter(b, a, x, axis=-1, zi=None):
     """
@@ -819,7 +724,7 @@ def hilbert(x, N=None, axis=-1):
     if N is None:
         N = x.shape[axis]
     if N <=0:
-        raise ValueError, "N must be positive."
+        raise ValueError("N must be positive.")
     if iscomplexobj(x):
         print "Warning: imaginary part of x ignored."
         x = real(x)
@@ -868,7 +773,7 @@ def hilbert2(x, N=None):
         N = x.shape
     if len(N) < 2:
         if N <=0:
-            raise ValueError, "N must be positive."
+            raise ValueError("N must be positive.")
         N = (N,N)
     if iscomplexobj(x):
         print "Warning: imaginary part of x ignored."
@@ -1352,7 +1257,7 @@ def detrend(data, axis=-1, type='linear', bp=0):
 
     """
     if type not in ['linear','l','constant','c']:
-        raise ValueError, "Trend type must be linear or constant"
+        raise ValueError("Trend type must be 'linear' or 'constant'.")
     data = asarray(data)
     dtype = data.dtype.char
     if dtype not in 'dfDF':
@@ -1365,8 +1270,8 @@ def detrend(data, axis=-1, type='linear', bp=0):
         N = dshape[axis]
         bp = sort(unique(r_[0,bp,N]))
         if any(bp > N):
-            raise ValueError, "Breakpoints must be less than length " \
-                  "of data along given axis."
+            raise ValueError("Breakpoints must be less than length "
+                    "of data along given axis.")
         Nreg = len(bp) - 1
         # Restructure data so that axis is along first dimension and
         #  all other dimensions are collapsed into second dimension
@@ -1426,12 +1331,12 @@ def filtfilt(b, a, x):
     edge=ntaps*3
 
     if x.ndim != 1:
-        raise ValueError, "filtfilt only accepts 1-d arrays."
+        raise ValueError("filtfilt only accepts 1-d arrays.")
 
     #x must be bigger than edge
     if x.size < edge:
-        raise ValueError, "Input vector needs to be bigger than " \
-              "3 * max(len(a),len(b)."
+        raise ValueError("Input vector needs to be bigger than "
+              "3 * max(len(a),len(b).")
 
     if len(a) < ntaps:
         a=r_[a,zeros(len(b)-len(a))]
@@ -1487,7 +1392,7 @@ def decimate(x, q, n=None, ftype='iir', axis=-1):
     """
 
     if not isinstance(q, int):
-        raise TypeError, "q must be an integer"
+        raise TypeError("q must be an integer")
 
     if n is None:
         if ftype == 'fir':

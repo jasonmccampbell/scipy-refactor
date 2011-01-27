@@ -178,7 +178,8 @@ def wrap_function(function, args):
 
 def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
          full_output=0, disp=1, retall=0, callback=None):
-    """Minimize a function using the downhill simplex algorithm.
+    """
+    Minimize a function using the downhill simplex algorithm.
 
     Parameters
     ----------
@@ -208,7 +209,7 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
     allvecs : list
         Solution at each iteration.
 
-    Other Parameters
+    Other parameters
     ----------------
     xtol : float
         Relative error in xopt acceptable for convergence.
@@ -219,7 +220,7 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
     maxfun : number
         Maximum number of function evaluations to make.
     full_output : bool
-        Set to True if fval and warnflag outputs are desired.
+        Set to True if fopt and warnflag outputs are desired.
     disp : bool
         Set to True to print convergence messages.
     retall : bool
@@ -227,8 +228,8 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
 
     Notes
     -----
-    Uses a Nelder-Mead simplex algorithm to find the minimum of
-    a function of one or more variables.
+    Uses a Nelder-Mead simplex algorithm to find the minimum of function of
+    one or more variables.
 
     """
     fcalls, func = wrap_function(func, args)
@@ -236,7 +237,7 @@ def fmin(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None, maxfun=None,
     N = len(x0)
     rank = len(x0.shape)
     if not -1 < rank < 2:
-        raise ValueError, "Initial guess must be a scalar or rank-1 sequence."
+        raise ValueError("Initial guess must be a scalar or rank-1 sequence.")
     if maxiter is None:
         maxiter = N * 200
     if maxfun is None:
@@ -1284,7 +1285,7 @@ def golden(func, args=(), brack=None, tol=_epsilon, full_output=0):
         assert ((fb<fa) and (fb < fc)), "Not a bracketing interval."
         funcalls = 3
     else:
-        raise ValueError, "Bracketing interval must be length 2 or 3 sequence."
+        raise ValueError("Bracketing interval must be length 2 or 3 sequence.")
 
     _gR = 0.61803399
     _gC = 1.0-_gR
@@ -1371,7 +1372,7 @@ def bracket(func, xa=0.0, xb=1.0, args=(), grow_limit=110.0, maxiter=1000):
         w = xb - ((xb-xc)*tmp2-(xb-xa)*tmp1)/denom
         wlim = xb + grow_limit*(xc-xb)
         if iter > maxiter:
-            raise RuntimeError, "Too many iterations."
+            raise RuntimeError("Too many iterations.")
         iter += 1
         if (w-xc)*(xb-w) > 0.0:
             fw = func(*((w,)+args))
@@ -1422,7 +1423,8 @@ def _linesearch_powell(func, p, xi, tol=1e-3):
 def fmin_powell(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None,
                 maxfun=None, full_output=0, disp=1, retall=0, callback=None,
                 direc=None):
-    """Minimize a function using modified Powell's method.
+    """
+    Minimize a function using modified Powell's method.
 
     Parameters
     ----------
@@ -1431,7 +1433,7 @@ def fmin_powell(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None,
     x0 : ndarray
         Initial guess.
     args : tuple
-        Eextra arguments passed to func.
+        Extra arguments passed to func.
     callback : callable
         An optional user-supplied function, called after each
         iteration.  Called as ``callback(xk)``, where ``xk`` is the
@@ -1491,7 +1493,7 @@ def fmin_powell(func, x0, args=(), xtol=1e-4, ftol=1e-4, maxiter=None,
     N = len(x)
     rank = len(x.shape)
     if not -1 < rank < 2:
-        raise ValueError, "Initial guess must be a scalar or rank-1 sequence."
+        raise ValueError("Initial guess must be a scalar or rank-1 sequence.")
     if maxiter is None:
         maxiter = N * 1000
     if maxfun is None:
@@ -1627,8 +1629,8 @@ def brute(func, ranges, args=(), Ns=20, full_output=0, finish=fmin):
     """
     N = len(ranges)
     if N > 40:
-        raise ValueError, "Brute Force not possible with more " \
-              "than 40 variables."
+        raise ValueError("Brute Force not possible with more " \
+              "than 40 variables.")
     lrange = list(ranges)
     for k in range(N):
         if type(lrange[k]) is not type(slice(None)):

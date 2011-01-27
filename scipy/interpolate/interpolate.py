@@ -6,7 +6,7 @@
 __all__ = ['interp1d', 'interp2d', 'spline', 'spleval', 'splmake', 'spltopp',
            'ppform', 'lagrange']
 
-from numpy import shape, sometrue, rank, array, transpose, searchsorted, \
+from numpy import shape, sometrue, array, transpose, searchsorted, \
                   ones, logical_or, atleast_1d, atleast_2d, meshgrid, ravel, \
                   dot, poly1d, asarray, intp
 import numpy as np
@@ -23,10 +23,22 @@ def reduce_sometrue(a):
     return all
 
 def lagrange(x, w):
-    """Return the Lagrange interpolating polynomial of the data-points (x,w)
+    """
+    Return a Lagrange interpolating polynomial.
 
-    Warning: This implementation is numerically unstable; do not expect to
+    Given two 1-D arrays `x` and `w,` returns the Lagrange interpolating
+    polynomial through the points ``(x, w)``.
+
+    Warning: This implementation is numerically unstable. Do not expect to
     be able to use more than about 20 points even if they are chosen optimally.
+
+    Parameters
+    ----------
+    x : array_like
+        `x` represents the x-coordinates of a set of datapoints.
+    w : array_like
+        `w` represents the y-coordinates of a set of datapoints, i.e. f(`x`).
+
     """
     M = len(x)
     p = poly1d(0.0)
@@ -55,11 +67,11 @@ class interp2d(object):
     x, y : 1D arrays
         Arrays defining the coordinates of a 2D grid.  If the
         points lie on a regular grid, `x` can specify the column coordinates
-        and `y` the row coordinates, e.g.::
+        and `y` the row coordinates, for example:
 
             x = [0,1,2];  y = [0,3,7]
 
-        otherwise x and y must specify the full coordinates, i.e.::
+        otherwise x and y must specify the full coordinates, for example:
 
             x = [0,1,2,0,1,2,0,1,2];  y = [0,0,0,3,3,3,7,7,7]
 
@@ -667,7 +679,7 @@ def _get_spline3_Bb(xk, yk, kind, conds):
         b *= 6.0
         return B, b, None, None
     else:
-        raise ValueError, "%s not supported" % kind
+        raise ValueError("%s not supported" % kind)
 
 # conds is a tuple of an array and a vector
 #  giving the left-hand and the right-hand side
@@ -675,8 +687,8 @@ def _get_spline3_Bb(xk, yk, kind, conds):
 def _find_user(xk, yk, order, conds, B):
     lh = conds[0]
     rh = conds[1]
-    B = concatenate((B,lh),axis=0)
-    w = concatenate((yk,rh),axis=0)
+    B = np.concatenate((B,lh),axis=0)
+    w = np.concatenate((yk,rh),axis=0)
     M,N = B.shape
     if (M>N):
         raise ValueError("over-specification of conditions")

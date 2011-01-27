@@ -3,10 +3,8 @@
 #
 # w/ additions by Travis Oliphant, March 2002
 
-__all__ = ['solve', 'solveh_banded', 'solve_banded',
+__all__ = ['solve', 'solve_triangular', 'solveh_banded', 'solve_banded',
             'inv', 'det', 'lstsq', 'pinv', 'pinv2']
-
-from warnings import warn
 
 from numpy import asarray, zeros, sum, conjugate, dot, transpose, \
         asarray_chkfinite,  single
@@ -16,6 +14,7 @@ from flinalg import get_flinalg_funcs
 from lapack import get_lapack_funcs
 from misc import LinAlgError
 from scipy.linalg import calc_lwork
+from funcinfo import get_func_info
 import decomp_svd
 
 
@@ -48,9 +47,9 @@ def solve(a, b, sym_pos=False, lower=False, overwrite_a=False, overwrite_b=False
     """
     a1, b1 = map(asarray_chkfinite,(a,b))
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
-        raise ValueError, 'expected square matrix'
+        raise ValueError('expected square matrix')
     if a1.shape[0] != b1.shape[0]:
-        raise ValueError, 'incompatible dimensions'
+        raise ValueError('incompatible dimensions')
     overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
     if debug:
@@ -72,6 +71,66 @@ def solve(a, b, sym_pos=False, lower=False, overwrite_a=False, overwrite_b=False
         raise LinAlgError("singular matrix")
     raise ValueError('illegal value in %d-th argument of internal gesv|posv'
                                                                     % -info)
+
+def solve_triangular(a, b, trans=0, lower=False, unit_diagonal=False,
+                     overwrite_b=False, debug=False):
+    """Solve the equation `a x = b` for `x`, assuming a is a triangular matrix.
+
+    Parameters
+    ----------
+    a : array, shape (M, M)
+    b : array, shape (M,) or (M, N)
+    lower : boolean
+        Use only data contained in the lower triangle of a.
+        Default is to use upper triangle.
+    trans : {0, 1, 2, 'N', 'T', 'C'}
+        Type of system to solve:
+
+        ========  =========
+        trans     system
+        ========  =========
+        0 or 'N'  a x   = b
+        1 or 'T'  a^T x = b
+        2 or 'C'  a^H x = b
+        ========  =========
+
+    unit_diagonal : boolean
+        If True, diagonal elements of A are assumed to be 1 and
+        will not be referenced.
+
+    overwrite_b : boolean
+        Allow overwriting data in b (may enhance performance)
+
+    Returns
+    -------
+    x : array, shape (M,) or (M, N) depending on b
+        Solution to the system a x = b
+
+    Raises
+    ------
+    LinAlgError
+        If a is singular
+
+    """
+
+    a1, b1 = map(asarray_chkfinite,(a,b))
+    if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
+        raise ValueError('expected square matrix')
+    if a1.shape[0] != b1.shape[0]:
+        raise ValueError('incompatible dimensions')
+    overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
+    if debug:
+        print 'solve:overwrite_b=',overwrite_b
+    trans = {'N': 0, 'T': 1, 'C': 2}.get(trans, trans)
+    trtrs, = get_lapack_funcs(('trtrs',), (a1,b1))
+    x, info = trtrs(a1, b1, overwrite_b=overwrite_b, lower=lower,
+                    trans=trans, unitdiag=unit_diagonal)
+
+    if info == 0:
+        return x
+    if info > 0:
+        raise LinAlgError("singular matrix: resolution failed at diagonal %s" % (info-1))
+    raise ValueError('illegal value in %d-th argument of internal trtrs')
 
 def solve_banded((l, u), ab, b, overwrite_ab=False, overwrite_b=False,
           debug=False):
@@ -119,7 +178,7 @@ def solve_banded((l, u), ab, b, overwrite_ab=False, overwrite_b=False,
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
 
     gbsv, = get_lapack_funcs(('gbsv',), (a1, b1))
-    a2 = zeros((2*l+u+1, a1.shape[1]), dtype=gbsv.dtype)
+    a2 = zeros((2*l+u+1, a1.shape[1]), dtype=get_func_info(gbsv).dtype)
     a2[l:,:] = a1
     lu, piv, x, info = gbsv(l, u, a2, b1, overwrite_ab=True,
                                                 overwrite_b=overwrite_b)
@@ -167,19 +226,10 @@ def solveh_banded(ab, b, overwrite_ab=False, overwrite_b=False, lower=False):
 
     Returns
     -------
-    c : array, shape (u+1, M)
-        Cholesky factorization of a, in the same banded format as ab
     x : array, shape (M,) or (M, K)
         The solution to the system a x = b
-        
-    Notes
-    -----
-    The inclusion of `c` in the return value is deprecated.  In SciPy
-    version 0.9, the return value will be the solution `x` only.
 
     """
-    warn("In SciPy 0.9, the return value of solveh_banded will be "
-            "the solution x only.", DeprecationWarning)
 
     ab, b = map(asarray_chkfinite, (ab, b))
 
@@ -195,34 +245,40 @@ def solveh_banded(ab, b, overwrite_ab=False, overwrite_b=False, lower=False):
     if info < 0:
         raise ValueError('illegal value in %d-th argument of internal pbsv'
                                                                     % -info)
-    return c, x
+    return x
 
 
 # matrix inversion
 def inv(a, overwrite_a=False):
-    """Compute the inverse of a matrix.
+    """
+    Compute the inverse of a matrix.
 
     Parameters
     ----------
-    a : array-like, shape (M, M)
-        Matrix to be inverted
+    a : array_like
+        Square matrix to be inverted.
     overwrite_a : bool, optional
-        Discard data in ``a`` (may improve performance)
+        Discard data in `a` (may improve performance). Default is False.
 
     Returns
     -------
-    ainv : array-like, shape (M, M)
-        Inverse of the matrix a
+    ainv : ndarray
+        Inverse of the matrix `a`.
 
-    Raises LinAlgError if a is singular
+    Raises
+    ------
+    LinAlgError :
+        If `a` is singular.
+    ValueError :
+        If `a` is not square, or not 2-dimensional.
 
     Examples
     --------
-    >>> a = array([[1., 2.], [3., 4.]])
-    >>> inv(a)
+    >>> a = np.array([[1., 2.], [3., 4.]])
+    >>> sp.linalg.inv(a)
     array([[-2. ,  1. ],
            [ 1.5, -0.5]])
-    >>> dot(a, inv(a))
+    >>> np.dot(a, sp.linalg.inv(a))
     array([[ 1.,  0.],
            [ 0.,  1.]])
 
@@ -241,11 +297,14 @@ def inv(a, overwrite_a=False):
 ##         if info<0: raise ValueError,\
 ##            'illegal value in %d-th argument of internal inv.getrf|getri'%(-info)
     getrf, getri = get_lapack_funcs(('getrf','getri'), (a1,))
+    getrf_info = get_func_info(getrf)
+    getri_info = get_func_info(getri)
     #XXX: C ATLAS versions of getrf/i have rowmajor=1, this could be
     #     exploited for further optimization. But it will be probably
     #     a mess. So, a good testing site is required before trying
     #     to do that.
-    if getrf.module_name[:7] == 'clapack' != getri.module_name[:7]:
+    if (getrf_info.module_name[:7] == 'clapack' !=
+        getri_info.module_name[:7]):
         # ATLAS 3.2.1 has getrf but not getri.
         lu, piv, info = getrf(transpose(a1), rowmajor=0,
                                                 overwrite_a=overwrite_a)
@@ -253,8 +312,8 @@ def inv(a, overwrite_a=False):
     else:
         lu, piv, info = getrf(a1, overwrite_a=overwrite_a)
     if info == 0:
-        if getri.module_name[:7] == 'flapack':
-            lwork = calc_lwork.getri(getri.prefix, a1.shape[0])
+        if getri_info.module_name[:7] == 'flapack':
+            lwork = calc_lwork.getri(getri_info.prefix, a1.shape[0])
             lwork = lwork[1]
             # XXX: the following line fixes curious SEGFAULT when
             # benchmarking 500x500 matrix inverse. This seems to
@@ -353,7 +412,7 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
     """
     a1, b1 = map(asarray_chkfinite, (a, b))
     if len(a1.shape) != 2:
-        raise ValueError, 'expected matrix'
+        raise ValueError('expected matrix')
     m, n = a1.shape
     if len(b1.shape) == 2:
         nrhs = b1.shape[1]
@@ -362,10 +421,11 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
     if m != b1.shape[0]:
         raise ValueError('incompatible dimensions')
     gelss, = get_lapack_funcs(('gelss',), (a1, b1))
+    gelss_info = get_func_info(gelss)
     if n > m:
         # need to extend b matrix as it will be filled with
         # a larger solution matrix
-        b2 = zeros((n, nrhs), dtype=gelss.dtype)
+        b2 = zeros((n, nrhs), dtype=gelss_info.dtype)
         if len(b1.shape) == 2:
             b2[:m,:] = b1
         else:
@@ -373,13 +433,15 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
         b1 = b2
     overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
     overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
-    if gelss.module_name[:7] == 'flapack':
-        lwork = calc_lwork.gelss(gelss.prefix, m, n, nrhs)[1]
-        v, x, s, rank, info = gelss(a1, b1, cond=cond, lwork=lwork,
-                                                overwrite_a=overwrite_a,
-                                                overwrite_b=overwrite_b)
+    if gelss_info.module_name[:7] == 'flapack':
+        lwork = calc_lwork.gelss(gelss_info.prefix, m, n, nrhs)[1]
+        v, x, s, rank, info = gelss(a1, b1,
+                                    cond=-1 if cond is None else cond,
+                                    lwork=lwork,
+                                    overwrite_a=overwrite_a,
+                                    overwrite_b=overwrite_b)
     else:
-        raise NotImplementedError('calling gelss from %s' % gelss.module_name)
+        raise NotImplementedError('calling gelss from %s' % get_func_info(gelss).module_name)
     if info > 0:
         raise LinAlgError("SVD did not converge in Linear Least Squares")
     if info < 0:

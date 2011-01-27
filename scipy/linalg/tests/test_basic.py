@@ -19,17 +19,15 @@ Run tests if linalg is not installed:
   python tests/test_basic.py
 """
 
-import warnings
-
 from numpy import arange, array, dot, zeros, identity, conjugate, transpose, \
-        float32, zeros_like
+        float32
 import numpy.linalg as linalg
 
 from numpy.testing import TestCase, rand, run_module_suite, assert_raises, \
     assert_equal, assert_almost_equal, assert_array_almost_equal, assert_
 
 from scipy.linalg import solve, inv, det, lstsq, pinv, pinv2, norm,\
-        solve_banded, solveh_banded
+        solve_banded, solveh_banded, solve_triangular
 
 
 def random(size):
@@ -101,12 +99,8 @@ class TestSolveBanded(TestCase):
 
 
 class TestSolveHBanded(TestCase):
-    # solveh_banded currently has a DeprecationWarning.  When the warning
-    # is removed in scipy 0.9, the 'ignore' filters and the test for the
-    # warning can be removed.
 
     def test_01_upper(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1]
         # [ 1 4 1] X = [4]
@@ -114,17 +108,10 @@ class TestSolveHBanded(TestCase):
         # with the RHS as a 1D array.
         ab = array([[-99, 1.0, 1.0], [4.0, 4.0, 4.0]])
         b = array([1.0, 4.0, 1.0])
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         assert_array_almost_equal(x, [0.0, 1.0, 0.0])
-        # Remove the following part of this test in scipy 0.9.
-        a = array([[4.0, 1.0, 0.0], [1.0, 4.0, 1.0], [0.0, 1.0, 4.0]])
-        fac = zeros_like(a)
-        fac[range(3),range(3)] = c[-1]
-        fac[(0,1),(1,2)] = c[0,1:]
-        assert_array_almost_equal(a, dot(fac.T, fac))
 
     def test_02_upper(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1 4]
         # [ 1 4 1] X = [4 2]
@@ -135,14 +122,13 @@ class TestSolveHBanded(TestCase):
         b = array([[1.0, 4.0],
                    [4.0, 2.0],
                    [1.0, 4.0]])
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         expected = array([[0.0, 1.0],
                           [1.0, 0.0],
                           [0.0, 1.0]])
         assert_array_almost_equal(x, expected)
 
     def test_03_upper(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1]
         # [ 1 4 1] X = [4]
@@ -150,11 +136,10 @@ class TestSolveHBanded(TestCase):
         # with the RHS as a 2D array with shape (3,1).
         ab = array([[-99, 1.0, 1.0], [4.0, 4.0, 4.0]])
         b = array([1.0, 4.0, 1.0]).reshape(-1,1)
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         assert_array_almost_equal(x, array([0.0, 1.0, 0.0]).reshape(-1,1))
 
     def test_01_lower(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1]
         # [ 1 4 1] X = [4]
@@ -163,11 +148,10 @@ class TestSolveHBanded(TestCase):
         ab = array([[4.0, 4.0, 4.0],
                     [1.0, 1.0, -99]])
         b = array([1.0, 4.0, 1.0])
-        c, x = solveh_banded(ab, b, lower=True)
+        x = solveh_banded(ab, b, lower=True)
         assert_array_almost_equal(x, [0.0, 1.0, 0.0])
 
     def test_02_lower(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1 4]
         # [ 1 4 1] X = [4 2]
@@ -178,14 +162,13 @@ class TestSolveHBanded(TestCase):
         b = array([[1.0, 4.0],
                    [4.0, 2.0],
                    [1.0, 4.0]])
-        c, x = solveh_banded(ab, b, lower=True)
+        x = solveh_banded(ab, b, lower=True)
         expected = array([[0.0, 1.0],
                           [1.0, 0.0],
                           [0.0, 1.0]])
         assert_array_almost_equal(x, expected)
 
     def test_01_float32(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1]
         # [ 1 4 1] X = [4]
@@ -193,11 +176,10 @@ class TestSolveHBanded(TestCase):
         #
         ab = array([[-99, 1.0, 1.0], [4.0, 4.0, 4.0]], dtype=float32)
         b = array([1.0, 4.0, 1.0], dtype=float32)
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         assert_array_almost_equal(x, [0.0, 1.0, 0.0])
 
     def test_02_float32(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 1 0]     [1 4]
         # [ 1 4 1] X = [4 2]
@@ -208,14 +190,13 @@ class TestSolveHBanded(TestCase):
         b = array([[1.0, 4.0],
                    [4.0, 2.0],
                    [1.0, 4.0]], dtype=float32)
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         expected = array([[0.0, 1.0],
                           [1.0, 0.0],
                           [0.0, 1.0]])
         assert_array_almost_equal(x, expected)
 
     def test_01_complex(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 -j 0]     [ -j]
         # [ j 4 -j] X = [4-j]
@@ -223,11 +204,10 @@ class TestSolveHBanded(TestCase):
         #
         ab = array([[-99, -1.0j, -1.0j], [4.0, 4.0, 4.0]])
         b = array([-1.0j, 4.0-1j, 4+1j])
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         assert_array_almost_equal(x, [0.0, 1.0, 1.0])
 
     def test_02_complex(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
         # Solve
         # [ 4 -j 0]     [ -j    4j]
         # [ j 4 -j] X = [4-j  -1-j]
@@ -238,15 +218,13 @@ class TestSolveHBanded(TestCase):
         b = array([[   -1j,    4.0j],
                    [4.0-1j, -1.0-1j],
                    [4.0+1j,     4.0]])
-        c, x = solveh_banded(ab, b)
+        x = solveh_banded(ab, b)
         expected = array([[0.0, 1.0j],
                           [1.0,  0.0],
                           [1.0,  1.0]])
         assert_array_almost_equal(x, expected)
 
     def test_bad_shapes(self):
-        warnings.simplefilter('ignore', category=DeprecationWarning)
-
         ab = array([[-99, 1.0, 1.0],
                     [4.0, 4.0, 4.0]])
         b = array([[1.0, 4.0],
@@ -254,12 +232,6 @@ class TestSolveHBanded(TestCase):
         assert_raises(ValueError, solveh_banded, ab, b)
         assert_raises(ValueError, solveh_banded, ab, [1.0, 2.0])
         assert_raises(ValueError, solveh_banded, ab, [1.0])
-
-    def test_00_deprecation_warning(self):
-        warnings.simplefilter('error', category=DeprecationWarning)
-        ab = array([[-99, 1.0, 1.0], [4.0, 4.0, 4.0]])
-        b = array([1.0, 4.0, 1.0])
-        assert_raises(DeprecationWarning, solveh_banded, ab, b)
 
 
 class TestSolve(TestCase):
@@ -362,6 +334,40 @@ class TestSolve(TestCase):
         for i in range(2):
             x = solve(a,b,sym_pos=1)
             assert_array_almost_equal(dot(a,x),b)
+
+
+class TestSolveTriangular(TestCase):
+
+    def test_simple(self):
+        """
+        solve_triangular on a simple 2x2 matrix.
+        """
+        A = array([[1,0], [1,2]])
+        b = [1, 1]
+        sol = solve_triangular(A, b, lower=True)
+        assert_array_almost_equal(sol, [1, 0])
+
+        # check that it works also for non-contiguous matrices
+        sol = solve_triangular(A.T, b, lower=False)
+        assert_array_almost_equal(sol, [.5, .5])
+
+        # and that it gives the same result as trans=1
+        sol = solve_triangular(A, b, lower=True, trans=1)
+        assert_array_almost_equal(sol, [.5, .5])
+
+        b = identity(2)
+        sol = solve_triangular(A, b, lower=True, trans=1)
+        assert_array_almost_equal(sol, [[1., -.5], [0, 0.5]])
+
+    def test_simple_complex(self):
+        """
+        solve_triangular on a simple 2x2 complex matrix
+        """
+        A = array([[1+1j, 0], [1j, 2]])
+        b = identity(2)
+        sol = solve_triangular(A, b, lower=True, trans=1)
+        assert_array_almost_equal(sol, [[.5-.5j, -.25-.25j], [0, 0.5]])
+
 
 
 class TestInv(TestCase):

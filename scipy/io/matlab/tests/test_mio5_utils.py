@@ -12,6 +12,8 @@ else:
 
 import numpy as np
 
+from numpy.compat import asbytes
+
 from nose.tools import assert_true, assert_false, \
      assert_equal, assert_raises
 
@@ -20,8 +22,7 @@ from numpy.testing import assert_array_equal, assert_array_almost_equal, \
 
 import scipy.io.matlab.byteordercodes as boc
 import scipy.io.matlab.streams as streams
-import scipy.io.matlab.miobase as miob
-import scipy.io.matlab.mio5 as mio5
+import scipy.io.matlab.mio5_params as mio5p
 import scipy.io.matlab.mio5_utils as m5u
 
 
@@ -79,16 +80,14 @@ def _write_stream(stream, *strings):
     stream.seek(0)
 
 
-def _make_readerlike():
+def _make_readerlike(stream, byte_order=boc.native_code):
     class R(object):
         pass
     r = R()
-    r.byte_order = boc.native_code
-    r.dtypes = {}
-    r.class_dtypes = {}
-    r.codecs = {}
+    r.mat_stream = stream
+    r.byte_order = byte_order
     r.struct_as_record = True
-    r.uint16_codec = None
+    r.uint16_codec = sys.getdefaultencoding()
     r.chars_as_strings = False
     r.mat_dtype = False
     r.squeeze_me = False
@@ -99,20 +98,19 @@ def test_read_tag():
     # mainly to test errors
     # make reader-like thing
     str_io = BytesIO()
-    r = _make_readerlike()
-    r.mat_stream = str_io
+    r = _make_readerlike(str_io)
     c_reader = m5u.VarReader5(r)
     # This works for StringIO but _not_ cStringIO
     yield assert_raises, IOError, c_reader.read_tag
     # bad SDE
-    tag = _make_tag('i4', 1, mio5.miINT32, sde=True)
+    tag = _make_tag('i4', 1, mio5p.miINT32, sde=True)
     tag['byte_count'] = 5
     _write_stream(str_io, tag.tostring())
     yield assert_raises, ValueError, c_reader.read_tag
 
 
 def test_read_stream():
-    tag = _make_tag('i4', 1, mio5.miINT32, sde=True)
+    tag = _make_tag('i4', 1, mio5p.miINT32, sde=True)
     tag_str = tag.tostring()
     str_io = cStringIO(tag_str)
     st = streams.make_stream(str_io)
@@ -123,16 +121,14 @@ def test_read_stream():
 def test_read_numeric():
     # make reader-like thing
     str_io = cStringIO()
-    r = _make_readerlike()
-    r.mat_stream = str_io
+    r = _make_readerlike(str_io)
     # check simplest of tags
     for base_dt, val, mdtype in (
-        ('u2', 30, mio5.miUINT16),
-        ('i4', 1, mio5.miINT32),
-        ('i2', -1, mio5.miINT16)):
+        ('u2', 30, mio5p.miUINT16),
+        ('i4', 1, mio5p.miINT32),
+        ('i2', -1, mio5p.miINT16)):
         for byte_code in ('<', '>'):
             r.byte_order = byte_code
-            r.dtypes = miob.convert_dtypes(mio5.mdtypes_template, byte_code)
             c_reader = m5u.VarReader5(r)
             yield assert_equal, c_reader.little_endian, byte_code == '<'
             yield assert_equal, c_reader.is_swapped, byte_code != boc.native_code
@@ -149,22 +145,50 @@ def test_read_numeric():
                 yield assert_equal, el, val
                 el = c_reader.read_numeric()
                 yield assert_equal, el, val
-    
+
 
 def test_read_numeric_writeable():
     # make reader-like thing
     str_io = cStringIO()
-    r = _make_readerlike()
-    r.mat_stream = str_io
-    r.byte_order = '<'
-    r.dtypes = miob.convert_dtypes(mio5.mdtypes_template, '<')
+    r = _make_readerlike(str_io, '<')
     c_reader = m5u.VarReader5(r)
     dt = np.dtype('<u2')
-    a = _make_tag(dt, 30, mio5.miUINT16, 0)
+    a = _make_tag(dt, 30, mio5p.miUINT16, 0)
     a_str = a.tostring()
     _write_stream(str_io, a_str)
     el = c_reader.read_numeric()
     yield assert_true, el.flags.writeable
-    
+
+
+def test_zero_byte_string():
+    # Tests hack to allow chars of non-zero length, but 0 bytes
+    # make reader-like thing
+    str_io = cStringIO()
+    r = _make_readerlike(str_io, '<')
+    c_reader = m5u.VarReader5(r)
+    tag_dt = np.dtype([('mdtype', 'u4'), ('byte_count', 'u4')])
+    tag = np.zeros((1,), dtype=tag_dt)
+    tag['mdtype'] = mio5p.miINT8
+    tag['byte_count'] = 1
+    hdr = m5u.VarHeader5()
+    # Try when string is 1 length
+    hdr.set_dims([1,])
+    _write_stream(str_io, tag.tostring() + asbytes('        '))
+    str_io.seek(0)
+    val = c_reader.read_char(hdr)
+    assert_equal(val, u' ')
+    # Now when string has 0 bytes 1 length
+    tag['byte_count'] = 0
+    _write_stream(str_io, tag.tostring())
+    str_io.seek(0)
+    val = c_reader.read_char(hdr)
+    assert_equal(val, u' ')
+    # Now when string has 0 bytes 4 length
+    str_io.seek(0)
+    hdr.set_dims([4,])
+    val = c_reader.read_char(hdr)
+    assert_array_equal(val, [u' '] * 4)
+
+
 if __name__ == "__main__":
     run_module_suite()

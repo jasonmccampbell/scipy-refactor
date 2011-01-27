@@ -8,7 +8,7 @@
 ! Additions by Travis Oliphant
 ! Additions by Tiziano Zito
 ! Usage:
-!   f2py -c flapack.pyf -L/usr/local/lib/atlas -llapack -lf77blas -lcblas -latlas -lg2c
+!   f2py -c generic_flapack.pyf -L/usr/local/lib/atlas -llapack -lf77blas -lcblas -latlas -lg2c
 
 python module flapack
 interface
@@ -106,6 +106,29 @@ interface
      integer intent(out) :: info
      
    end subroutine <tchar=c,z>pbtrs
+
+
+   subroutine <tchar=s,d,c,z>trtrs(lower, trans, unitdiag, n, nrhs, a, lda, b, ldb, info)
+
+     ! Solve a system of linear equations A*X = B with a triangular
+     ! matrix A.
+
+     callstatement (*f2py_func)((lower?"L":"U"),(trans?(trans==2?"C":"T"):"N"),(unitdiag?"U":"N"),&n,&nrhs,a,&lda,b,&ldb,&info); 
+     callprotoargument char*,char*,char*,int*,int*,<type_in_c>*,int*,<type_in_c>*,int*,int*
+
+     integer optional,intent(in),check(lower==0||lower==1) :: lower = 0
+     integer optional,intent(in),check(trans>=0 && trans <=2) :: trans = 0
+     integer optional,intent(in),check(unitdiag==0||unitdiag==1) :: unitdiag = 0
+     integer optional,check(shape(a,0)==lda),depend(a) :: lda=shape(a,0)
+     integer intent(hide),depend(a) :: n=shape(a,1)
+     integer intent(hide),depend(b) :: ldb=shape(b,0)
+     integer intent(hide),depend(b) :: nrhs=shape(b,1)
+
+     <type_in> dimension(ldb, nrhs),intent(in,out,copy,out=x) :: b
+     <type_in> dimension(lda,n),intent(in) :: a
+     integer intent(out) :: info
+   end subroutine <tchar=s,d,c,z>trtrs
+
 
    subroutine <tchar=s,d>pbsv(lower,n,kd,nrhs,ab,ldab,b,ldb,info)
    
@@ -371,7 +394,7 @@ interface
 
    end subroutine <tchar=s,d>gesdd
 
-   subroutine <tchar=c,z>gesdd(m,n,minmn,du,dvt,a,compute_uv,u,s,vt,work,rwork,lwork,iwork,info)
+   subroutine <tchar=c,z>gesdd(m,n,minmn,du,dvt,a,compute_uv,u,s,vt,work,rwork,lwork,iwork,info,rwork_len)
    
    ! u,s,vt,info = gesdd(a,compute_uv=1,lwork=..,overwrite_a=0)
    ! Compute the singular value decomposition (SVD):
@@ -396,7 +419,8 @@ interface
    <type_in> dimension(du,du),intent(out),depend(du) :: u
    <type_in> dimension(dvt,dvt),intent(out),depend(dvt) :: vt
    <type_in> dimension(lwork),intent(hide,cache),depend(lwork) :: work
-   <rtype_in> dimension((compute_uv?5*minmn*minmn+7*minmn:5*minmn)),intent(hide,cache),depend(minmn,compute_uv) :: rwork
+   <rtype_in> dimension(rwork_len),intent(hide,cache),depend(minmn,compute_uv) :: rwork
+   integer, intent(hide) :: rwork_len = (compute_uv?5*minmn*minmn+7*minmn:5*minmn)
    integer optional,intent(in),depend(minmn,compute_uv) &
         :: lwork = (compute_uv?2*minmn*minmn+MAX(m,n)+2*minmn:2*minmn+MAX(m,n))
    check(lwork>=(compute_uv?2*minmn*minmn+MAX(m,n)+2*minmn:2*minmn+MAX(m,n))) :: lwork
@@ -951,8 +975,8 @@ interface
      !  A = Z * T * Z^H  -- a complex matrix is in Schur form if it is upper 
      !  triangular
 
-     callstatement (*f2py_func)((compute_v?"V":"N"),(sort_t?"S":"N"),cb_<tchar>select_in_<tchar>gees__user__routines,&n,a,&nrows,&sdim,w,vs,&ldvs,work,&lwork,rwork,bwork,&info,1,1)
-     callprotoargument char*,char*,int(*)(<type_in_c>*),int*,<type_in_c>*,int*,int*,<type_in_c>*,<type_in_c>*,int*,<type_in_c>*,int*,<rtype_in_c>*,int*,int*,int,int
+     callstatement (*f2py_func)((compute_v?"V":"N"),(sort_t?"S":"N"),cb_<tchar>select_in_<tchar>gees__user__routines,&n,a,&nrows,&sdim,w,vs,&ldvs,work,&lwork,rwork,bwork,&info)
+     callprotoargument char*,char*,int(*)(<type_in_c>*),int*,<type_in_c>*,int*,int*,<type_in_c>*,<type_in_c>*,int*,<type_in_c>*,int*,<rtype_in_c>*,int*,int*
 
      use <tchar>gees__user__routines
 
@@ -981,8 +1005,8 @@ interface
      !  A = Z * T * Z^H  -- a real matrix is in Schur form if it is upper quasi-
      !  triangular with 1x1 and 2x2 blocks.
 
-     callstatement (*f2py_func)((compute_v?"V":"N"),(sort_t?"S":"N"),cb_<tchar>select_in_<tchar>gees__user__routines,&n,a,&nrows,&sdim,wr,wi,vs,&ldvs,work,&lwork,bwork,&info,1,1)
-     callprotoargument char*,char*,int(*)(<type_in_c>*,<type_in_c>*),int*,<type_in_c>*,int*,int*,<type_in_c>*,<type_in_c>*,<type_in_c>*,int*,<type_in_c>*,int*,int*,int*,int,int
+     callstatement (*f2py_func)((compute_v?"V":"N"),(sort_t?"S":"N"),cb_<tchar>select_in_<tchar>gees__user__routines,&n,a,&nrows,&sdim,wr,wi,vs,&ldvs,work,&lwork,bwork,&info)
+     callprotoargument char*,char*,int(*)(<type_in_c>*,<type_in_c>*),int*,<type_in_c>*,int*,int*,<type_in_c>*,<type_in_c>*,<type_in_c>*,int*,<type_in_c>*,int*,int*,int*
 
     use <tchar>gees__user__routines
 
@@ -1144,7 +1168,7 @@ end subroutine <tchar=s,d>sbevd
 
 
 
-subroutine <tchar=s,d>sbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu,abstol,w,z,m,mmax,ldz,work,iwork,ifail,info) ! in :Band:dsbevx.f
+subroutine <tchar=s,d>sbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu,abstol,w,z,m,mmax,ldz,work,iwork,ifail,info,ifail_len) ! in :Band:dsbevx.f
 
   callstatement (*f2py_func)((compute_v?"V":"N"),(range>0?(range==1?"V":"I"):"A"),(lower?"L":"U"),&n,&kd,ab,&ldab,q,&ldq,&vl,&vu,&il,&iu,&abstol,&m,w,z,&ldz,work,iwork,ifail,&info)
                              
@@ -1215,7 +1239,8 @@ subroutine <tchar=s,d>sbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu
 
   <type_in> dimension(7*n),intent(hide) :: work
   integer dimension(5*n),intent(hide) :: iwork
-  integer dimension((compute_v?n:1)),intent(out) :: ifail
+  integer dimension(ifail_len),intent(out) :: ifail
+  integer, intent(hide) :: ifail_len = (compute_v?n:1)
   integer intent(out):: info
 end subroutine <tchar=s,d>sbevx
 
@@ -1263,12 +1288,11 @@ end subroutine <tchar=c,z>hbevd
 
 
 
-subroutine <tchar=c,z>hbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu,abstol,w,z,m,mmax,ldz,work,rwork,iwork,ifail,info) ! in :Band:dsbevx.f
+subroutine <tchar=c,z>hbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu,abstol,w,z,m,mmax,ldz,work,rwork,iwork,ifail,info,ifail_len) ! in :Band:dsbevx.f
 
   callstatement (*f2py_func)((compute_v?"V":"N"),(range>0?(range==1?"V":"I"):"A"),(lower?"L":"U"),&n,&kd,ab,&ldab,q,&ldq,&vl,&vu,&il,&iu,&abstol,&m,w,z,&ldz,work,rwork,iwork,ifail,&info)
                              
-  callprotoargument
-  char*,char*,char*,int*,int*,<type_in_c>*,int*,<type_in_c>*,int*,<rtype_in_c>*,<rtype_in_c>*,int*,int*,<rtype_in_c>*,int*,<rtype_in_c>*,<type_in_c>*,int*,<type_in_c>*,<rtype_in_c>*,int*,int*,int*
+  callprotoargument char*,char*,char*,int*,int*,<type_in_c>*,int*,<type_in_c>*,int*,<rtype_in_c>*,<rtype_in_c>*,int*,int*,<rtype_in_c>*,int*,<rtype_in_c>*,<type_in_c>*,int*,<type_in_c>*,<rtype_in_c>*,int*,int*,int*
   
   integer optional,intent(in):: compute_v = 1
   check(compute_v==1||compute_v==0) compute_v
@@ -1336,7 +1360,8 @@ subroutine <tchar=c,z>hbevx(ab,ldab,compute_v,range,lower,n,kd,q,ldq,vl,vu,il,iu
   <type_in> dimension(n),intent(hide) :: work
   <rtype_in> dimension(7*n),intent(hide) :: rwork
   integer dimension(5*n),intent(hide) :: iwork
-  integer dimension((compute_v?n:1)),intent(out) :: ifail
+  integer, intent(hide) :: ifail_len = (compute_v?n:1)
+  integer dimension(ifail_len),intent(out) :: ifail
   integer intent(out):: info
 end subroutine <tchar=c,z>hbevx
 
@@ -1411,7 +1436,7 @@ subroutine <tchar=s,d,c,z>gbtrs(ab,kl,ku,b,ipiv,trans,n,nrhs,ldab,ldb,info) ! in
 !  2  = 'C':  A'* X = B  (Conjugate transpose = Transpose)
 
 callstatement {int i;for(i=0;i<n;++ipiv[i++]);(*f2py_func)((trans>0?(trans==1?"T":"C"):"N"),&n,&kl,&ku,&nrhs,ab,&ldab,ipiv,b,&ldb,&info);for(i=0;i<n;--ipiv[i++]);}
-lprotoargument char*,int*,int *,int*,int*,<type_in_c>*,int*,int*,<type_in_c>*,int*,int*
+callprotoargument char*,int*,int *,int*,int*,<type_in_c>*,int*,int*,<type_in_c>*,int*,int*
     !character optional:: trans='N'
     integer optional:: trans=0
     integer optional,depend(ab) :: n=shape(ab,1)

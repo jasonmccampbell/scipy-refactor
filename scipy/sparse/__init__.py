@@ -1,5 +1,3 @@
-"Sparse Matrix Support"
-
 from info import __doc__
 
 from base import *

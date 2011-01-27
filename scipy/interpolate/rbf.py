@@ -72,9 +72,9 @@ class Rbf(object):
             'quintic': r**5
             'thin_plate': r**2 * log(r)
 
-        If callable, then it must take 2 arguments (self, r).  The epsilon parameter
-        will be available as self.epsilon.  Other keyword arguments passed in will
-        be available as well.
+        If callable, then it must take 2 arguments (self, r).  The epsilon
+        parameter will be available as self.epsilon.  Other keyword
+        arguments passed in will be available as well.
 
     epsilon : float, optional
         Adjustable constant for gaussian or multiquadrics functions
@@ -93,13 +93,14 @@ class Rbf(object):
                 return sqrt( ((x1 - x2)**2).sum(axis=0) )
 
         which is called with x1=x1[ndims,newaxis,:] and
-        x2=x2[ndims,:,newaxis] such that the result is a matrix of the distances
-        from each point in x1 to each point in x2.
+        x2=x2[ndims,:,newaxis] such that the result is a matrix of the
+        distances from each point in x1 to each point in x2.
 
     Examples
     --------
     >>> rbfi = Rbf(x, y, z, d)  # radial basis function interpolator instance
     >>> di = rbfi(xi, yi, zi)   # interpolated values
+
     """
 
     def _euclidean_norm(self, x1, x2):
@@ -137,8 +138,8 @@ class Rbf(object):
                self._function = getattr(self, func_name)
            else:
                functionlist = [x[3:] for x in dir(self) if x.startswith('_h_')]
-               raise ValueError, "function must be a callable or one of ", \
-                   ", ".join(functionlist)               
+               raise ValueError("function must be a callable or one of " +
+                                    ", ".join(functionlist))
            self._function = getattr(self, "_h_"+self.function)
         elif callable(self.function):
             allow_one = False
@@ -151,8 +152,8 @@ class Rbf(object):
             elif hasattr(self.function, "__call__"):
                 val = self.function.__call__.im_func
             else:
-                raise ValueError, "Cannot determine number of arguments to function"
-            
+                raise ValueError("Cannot determine number of arguments to function")
+
             argcount = val.func_code.co_argcount
             if allow_one and argcount == 1:
                 self._function = self.function
@@ -164,11 +165,11 @@ class Rbf(object):
                     self._function = new.instancemethod(self.function, self,
                                                         Rbf)
             else:
-                raise ValueError, "Function argument must take 1 or 2 arguments."
+                raise ValueError("Function argument must take 1 or 2 arguments.")
                 
         a0 = self._function(r)
         if a0.shape != r.shape:
-            raise ValueError, "Callable must take array and return array of the same shape"
+            raise ValueError("Callable must take array and return array of the same shape")
         return a0
 
     def __init__(self, *args, **kwargs):

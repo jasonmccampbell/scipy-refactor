@@ -66,14 +66,14 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
     ----------
     func : callable f(x,*args)
         Objective function.
-    x0 : ndarray of float
+    x0 : 1-D ndarray of float
         Initial guess for the independent variable(s).
     eqcons : list
         A list of functions of length n such that
         eqcons[j](x0,*args) == 0.0 in a successfully optimized
         problem.
     f_eqcons : callable f(x,*args)
-        Returns an array in which each element must equal 0.0 in a
+        Returns a 1-D array in which each element must equal 0.0 in a
         successfully optimized problem.  If f_eqcons is specified,
         eqcons is ignored.
     ieqcons : list
@@ -81,7 +81,7 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
         ieqcons[j](x0,*args) >= 0.0 in a successfully optimized
         problem.
     f_ieqcons : callable f(x0,*args)
-        Returns an array in which each element must be greater or
+        Returns a 1-D ndarray in which each element must be greater or
         equal to 0.0 in a successfully optimized problem.  If
         f_ieqcons is specified, ieqcons is ignored.
     bounds : list
@@ -256,13 +256,13 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
     if len(bounds) == 0:
         bounds = [(-1.0E12, 1.0E12) for i in range(n)]
     elif len(bounds) != n:
-        raise IndexError, \
-        'SLSQP Error:  If bounds is specified, len(bounds) == len(x0)'
+        raise IndexError('SLSQP Error:  If bounds is specified, '
+                            'len(bounds) == len(x0)')
     else:
         for i in range(len(bounds)):
             if bounds[i][0] > bounds[i][1]:
-                raise ValueError, \
-                'SLSQP Error: lb > ub in bounds[' + str(i) +']  ' + str(bounds[4])
+                raise ValueError('SLSQP Error: lb > ub in bounds[' + str(i)
+                                    + ']  ' + str(bounds[4]))
 
     xl = array( [ b[0] for b in bounds ] )
     xu = array( [ b[1] for b in bounds ] )

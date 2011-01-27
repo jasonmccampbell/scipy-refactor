@@ -40,7 +40,7 @@ from scipy.io.matlab.miobase import matdims, MatFileReader, \
 from scipy.io.matlab.mio import find_mat_file, mat_reader_factory, \
     loadmat, savemat
 from scipy.io.matlab.mio5 import MatlabObject, MatFile5Writer, \
-      MatFile5Reader, MatlabFunction
+      MatFile5Reader, MatlabFunction, varmats_from_mat
 
 # Use future defaults to silence unwanted test warnings
 savemat_future = partial(savemat, oned_as='row')
@@ -636,12 +636,12 @@ def test_save_object():
     savemat_future(stream, {'c': c})
     d = loadmat(stream, struct_as_record=False)
     c2 = d['c'][0,0]
-    yield assert_equal, c2.field1, 1
-    yield assert_equal, c2.field2, 'a string'
+    assert_equal(c2.field1, 1)
+    assert_equal(c2.field2, 'a string')
     d = loadmat(stream, struct_as_record=True)
     c2 = d['c'][0,0]
-    yield assert_equal, c2['field1'], 1
-    yield assert_equal, c2['field2'], 'a string'
+    assert_equal(c2['field1'], 1)
+    assert_equal(c2['field2'], 'a string')
 
 
 def test_read_opts():
@@ -789,6 +789,63 @@ def test_str_round():
     savemat_future(stream, {'a': in_arr_u})
     res = loadmat(stream)
     assert_array_equal(res['a'], out_arr_u)
+
+
+def test_fieldnames():
+    # Check that field names are as expected
+    stream = BytesIO()
+    savemat_future(stream, {'a': {'a':1, 'b':2}})
+    res = loadmat(stream)
+    field_names = res['a'].dtype.names
+    assert_equal(set(field_names), set(('a', 'b')))
+
+
+def test_loadmat_varnames():
+    # Test that we can get just one variable from a mat file using loadmat
+    eg_file = pjoin(test_data_path, 'testmulti_7.4_GLNX86.mat')
+    sys_v_names = ['__globals__',
+                   '__header__',
+                   '__version__']
+    vars = loadmat(eg_file)
+    assert_equal(set(vars.keys()), set(['a', 'theta'] + sys_v_names))
+    vars = loadmat(eg_file, variable_names=['a'])
+    assert_equal(set(vars.keys()), set(['a'] + sys_v_names))
+    vars = loadmat(eg_file, variable_names=['theta'])
+    assert_equal(set(vars.keys()), set(['theta'] + sys_v_names))
+
+
+def test_round_types():
+    # Check that saving, loading preserves dtype in most cases
+    arr = np.arange(10)
+    stream = BytesIO()
+    for dts in ('f8','f4','i8','i4','i2','i1',
+                'u8','u4','u2','u1','c16','c8'):
+        stream.truncate(0)
+        stream.seek(0) # needed for BytesIO in python 3
+        savemat_future(stream, {'arr': arr.astype(dts)})
+        vars = loadmat(stream)
+        assert_equal(np.dtype(dts), vars['arr'].dtype)
+
+
+def test_varmats_from_mat():
+    # Make a mat file with several variables, write it, read it back
+    names_vars = (('arr', mlarr(np.arange(10))),
+                  ('mystr', mlarr('a string')),
+                  ('mynum', mlarr(10)))
+    # Dict like thing to give variables in defined order
+    class C(object):
+        def items(self): return names_vars
+    stream = BytesIO()
+    savemat_future(stream, C())
+    varmats = varmats_from_mat(stream)
+    assert_equal(len(varmats), 3)
+    for i in range(3):
+        name, var_stream = varmats[i]
+        exp_name, exp_res = names_vars[i]
+        assert_equal(name, exp_name)
+        res = loadmat(var_stream)
+        assert_array_equal(res[name], exp_res)
+
 
 if __name__ == "__main__":
     run_module_suite()

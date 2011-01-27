@@ -71,9 +71,12 @@ variances.
 
 import math, types, cPickle
 import numpy as np
+from numpy import exp, asarray
 from scipy import optimize
 from scipy.linalg import norm
-from scipy.maxentropy.maxentutils import *
+from scipy.maxentropy.maxentutils import logsumexp, arrayexp, \
+        innerprod, innerprodtranspose, columnmeans, columnvariances, \
+        flatten, DivergenceError, sparsefeaturematrix
 
 
 class basemodel(object):
@@ -84,7 +87,7 @@ class basemodel(object):
     def __init__(self):
         self.format = self.__class__.__name__[:4]
         if self.format == 'base':
-            raise ValueError, "this class cannot be instantiated directly"
+            raise ValueError("this class cannot be instantiated directly")
         self.verbose = False
 
         self.maxgtol = 1e-5
@@ -185,13 +188,13 @@ class basemodel(object):
         if isinstance(self, bigmodel):
             # Ensure the sample matrix has been set
             if not hasattr(self, 'sampleF') and hasattr(self, 'samplelogprobs'):
-                raise AttributeError, "first specify a sample feature matrix" \
-                                      " using sampleFgen()"
+                raise AttributeError("first specify a sample feature matrix"
+                                      " using sampleFgen()")
         else:
             # Ensure the feature matrix for the sample space has been set
             if not hasattr(self, 'F'):
-                raise AttributeError, "first specify a feature matrix" \
-                                      " using setfeaturesandsamplespace()"
+                raise AttributeError("first specify a feature matrix"
+                                      " using setfeaturesandsamplespace()")
 
         # First convert K to a numpy array if necessary
         K = np.asarray(K, float)
@@ -226,9 +229,9 @@ class basemodel(object):
 
         elif algorithm == 'LBFGSB':
             if callback is not None:
-                raise NotImplementedError, "L-BFGS-B optimization algorithm"\
-                        " does not yet support callback functions for"\
-                        " testing with an external sample"
+                raise NotImplementedError("L-BFGS-B optimization algorithm"
+                        " does not yet support callback functions for"
+                        " testing with an external sample")
             retval = optimize.fmin_l_bfgs_b(dual, oldparams, \
                         grad, args=(), bounds=self.bounds, pgtol=self.maxgtol,
                         maxfun=self.maxfun)
@@ -268,9 +271,9 @@ class basemodel(object):
             (newparams, fopt, numiter, func_calls, warnflag) = retval
 
         else:
-            raise AttributeError, "the specified algorithm '" + str(algorithm) \
-                    + "' is unsupported.  Options are 'CG', 'LBFGSB', " \
-                    "'Nelder-Mead', 'Powell', and 'BFGS'"
+            raise AttributeError("the specified algorithm '" + str(algorithm)
+                    + "' is unsupported.  Options are 'CG', 'LBFGSB', "
+                    "'Nelder-Mead', 'Powell', and 'BFGS'")
 
         if np.any(self.params != newparams):
             self.setparams(newparams)
@@ -397,9 +400,9 @@ class basemodel(object):
 
         if not self.callingback and self.external is None:
             if self.mindual > -np.inf and self.dual() < self.mindual:
-                raise DivergenceError, "dual is below the threshold 'mindual'" \
-                        " and may be diverging to -inf.  Fix the constraints" \
-                        " or lower the threshold!"
+                raise DivergenceError("dual is below the threshold 'mindual'"
+                        " and may be diverging to -inf.  Fix the constraints"
+                        " or lower the threshold!")
 
         self.iters += 1
 
@@ -486,8 +489,8 @@ class basemodel(object):
         return np.exp(self.lognormconst())
 
 
-    def setsmooth(sigma):
-        """Speficies that the entropy dual and gradient should be
+    def setsmooth(self, sigma):
+        """Specifies that the entropy dual and gradient should be
         computed with a quadratic penalty term on magnitude of the
         parameters.  This 'smooths' the model to account for noise in the
         target expectation values or to improve robustness when using
@@ -543,7 +546,7 @@ class basemodel(object):
             elif hasattr(self, 'K'):
                 m = len(self.K)
             else:
-                raise ValueError, "specify the number of features / parameters"
+                raise ValueError("specify the number of features / parameters")
 
         # Set parameters, clearing cache variables
         self.setparams(np.zeros(m, float))
@@ -596,7 +599,7 @@ class basemodel(object):
 
         # Check whether the params are NaN
         if not np.all(self.params == self.params):
-            raise FloatingPointError, "some of the parameters are NaN"
+            raise FloatingPointError("some of the parameters are NaN")
 
         if self.verbose:
             print "Saving parameters ..."
@@ -642,8 +645,8 @@ class model(basemodel):
         if f is not None and samplespace is not None:
             self.setfeaturesandsamplespace(f, samplespace)
         elif f is not None and samplespace is None:
-            raise ValueError, "not supported: specify both features and" \
-                    " sample space or neither"
+            raise ValueError("not supported: specify both features and"
+                    " sample space or neither")
 
 
     def setfeaturesandsamplespace(self, f, samplespace):
@@ -674,7 +677,7 @@ class model(basemodel):
 
         # Has F = {f_i(x_j)} been precomputed?
         if not hasattr(self, 'F'):
-            raise AttributeError, "first create a feature matrix F"
+            raise AttributeError("first create a feature matrix F")
 
         # Good, assume the feature matrix exists
         log_p_dot = innerprodtranspose(self.F, self.params)
@@ -693,7 +696,7 @@ class model(basemodel):
         """
         # For discrete models, use the representation E_p[f(X)] = p . F
         if not hasattr(self, 'F'):
-            raise AttributeError, "first set the feature matrix F"
+            raise AttributeError("first set the feature matrix F")
 
         # A pre-computed matrix of features exists
         p = self.pmf()
@@ -707,7 +710,7 @@ class model(basemodel):
         """
         # Have the features already been computed and stored?
         if not hasattr(self, 'F'):
-            raise AttributeError, "first set the feature matrix F"
+            raise AttributeError("first set the feature matrix F")
 
         # Yes:
         # p(x) = exp(params.f(x)) / sum_y[exp params.f(y)]
@@ -763,8 +766,8 @@ class model(basemodel):
             try:
                 f = self.f
             except AttributeError:
-                raise AttributeError, "either pass a list f of feature" \
-                           " functions or set this as a member variable self.f"
+                raise AttributeError("either pass a list f of feature"
+                           " functions or set this as a member variable self.f")
 
         # Do we have a prior distribution p_0?
         priorlogpmf = None
@@ -772,7 +775,7 @@ class model(basemodel):
             try:
                 priorlogpmf = self.priorlogpmf
             except AttributeError:
-                raise AttributeError, "prior probability mass function not set"
+                raise AttributeError("prior probability mass function not set")
 
         def p(x):
             f_x = np.array([f[i](x) for i in range(len(f))], float)
@@ -790,7 +793,9 @@ class model(basemodel):
 class conditionalmodel(model):
     """
     A conditional maximum-entropy (exponential-form) model p(x|w) on a
-    discrete sample space.  This is useful for classification problems:
+    discrete sample space.
+
+    This is useful for classification problems:
     given the context w, what is the probability of each class x?
 
     The form of such a model is::
@@ -883,11 +888,11 @@ class conditionalmodel(model):
                 if counts.shape[0] > 1:
                     try:
                         # Try converting to a row vector
-                        p_tilde = count.reshape((1, size))
+                        p_tilde = counts.reshape((1, counts.size))
                     except AttributeError:
-                        raise ValueError, "the 'counts' object needs to be a"\
-                            " row vector (1 x n) rank-2 array/matrix) or have"\
-                            " a .reshape method to convert it into one"
+                        raise ValueError("the 'counts' object needs to be a"
+                            " row vector (1 x n) rank-2 array/matrix) or have"
+                            " a .reshape method to convert it into one")
                 else:
                     p_tilde = counts
         # Make a copy -- don't modify 'counts'
@@ -925,7 +930,7 @@ class conditionalmodel(model):
         S = self.numsamplepoints
         # Has F = {f_i(x_j)} been precomputed?
         if not hasattr(self, 'F'):
-            raise AttributeError, "first create a feature matrix F"
+            raise AttributeError("first create a feature matrix F")
 
         # Good, assume F has been precomputed
 
@@ -1028,7 +1033,7 @@ class conditionalmodel(model):
         self.p_tilde_context[w].
         """
         if not hasattr(self, 'F'):
-            raise AttributeError, "need a pre-computed feature matrix F"
+            raise AttributeError("need a pre-computed feature matrix F")
 
         # A pre-computed matrix of features exists
 
@@ -1058,7 +1063,7 @@ class conditionalmodel(model):
         """
         # Have the features already been computed and stored?
         if not hasattr(self, 'F'):
-            raise AttributeError, "first set the feature matrix F"
+            raise AttributeError("first set the feature matrix F")
 
         # p(x | c) = exp(theta.f(x, c)) / sum_c[exp theta.f(x, c)]
         #      = exp[log p_dot(x) - logsumexp{log(p_dot(y))}]
@@ -1165,7 +1170,7 @@ class bigmodel(basemodel):
         try:
             len(output)
         except TypeError:
-            raise ValueError, "output of sampleFgen.next() not recognized"
+            raise ValueError("output of sampleFgen.next() not recognized")
         if len(output) == 2:
             # Assume the format is (F, lp)
             (self.sampleF, self.samplelogprobs) = output
@@ -1173,7 +1178,7 @@ class bigmodel(basemodel):
             # Assume the format is (F, lp, sample)
             (self.sampleF, self.samplelogprobs, self.sample) = output
         else:
-            raise ValueError, "output of sampleFgen.next() not recognized"
+            raise ValueError("output of sampleFgen.next() not recognized")
 
         # Check whether the number m of features is correct
         try:
@@ -1186,8 +1191,8 @@ class bigmodel(basemodel):
             self.reset(m)
         else:
             if self.sampleF.shape[0] != m:
-                raise ValueError, "the sample feature generator returned" \
-                                  " a feature matrix of incorrect dimensions"
+                raise ValueError("the sample feature generator returned"
+                                  " a feature matrix of incorrect dimensions")
         if self.verbose >= 3:
             print "(done)"
 
@@ -1520,7 +1525,7 @@ class bigmodel(basemodel):
         try:
             a_k = self.a_0
         except AttributeError:
-            raise AttributeError, "first define the initial step size a_0"
+            raise AttributeError("first define the initial step size a_0")
 
         avgparams = self.params
         if self.exacttest:
