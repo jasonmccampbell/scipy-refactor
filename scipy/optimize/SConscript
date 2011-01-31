@@ -83,5 +83,5 @@ env.NumpyPythonExtension('moduleTNC',
                                                    ['moduleTNC.c', 'tnc.c']])
 
 # _slsqp pyextension
-src = [pjoin('slsqp', i) for i in ['slsqp_optmz.f', 'slsqp.pyf']]
+src = ['_slsqp.c', pjoin('slsqp', 'slsqp_optmz.f')]
 env.NumpyPythonExtension('_slsqp', source = src)
