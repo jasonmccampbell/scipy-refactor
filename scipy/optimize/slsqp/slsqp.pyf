@@ -24,7 +24,7 @@ python module _slsqp ! in
             integer optional,check(len(jw)>=l_jw),depend(jw) :: l_jw=len(jw)
         end subroutine slsqp
     end interface 
-end python module slsqp
+end python module _slsqp
 
 ! This file was auto-generated with f2py (version:2_3844).
 ! See http://cens.ioc.ee/projects/f2py2e/
