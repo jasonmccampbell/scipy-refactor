@@ -66,7 +66,7 @@ src = ['_lbfgsb.c', pjoin('lbfgsb', 'routines.f')]
 env.NumpyPythonExtension('_lbfgsb', source = src)
 
 # _cobyla pyextension
-src = [pjoin('cobyla', i) for i in ['cobyla2.f', 'trstlp.f', 'cobyla.pyf']]
+src = ['_cobyla.c'] + [pjoin('cobyla', i) for i in ['cobyla2.f', 'trstlp.f']]
 env.NumpyPythonExtension('_cobyla', source = src)
 
 # _minpack2 pyextension
