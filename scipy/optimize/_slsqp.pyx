@@ -15,7 +15,7 @@ __all__ = ['slsqp']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, object xu, fwr_dbl_t f, object c, object g, object a, fwr_dbl_t acc, fwi_integer_t iter, fwi_integer_t mode, object w, object jw, object la=None, object n=None, object l_w=None, object l_jw=None):
-    """slsqp(m, meq, x, xl, xu, f, c, g, a, acc, iter, mode, w, jw[, la, n, l_w, l_jw])
+    """slsqp(m, meq, x, xl, xu, f, c, g, a, acc, iter, mode, w, jw[, la, n, l_w, l_jw]) -> (acc, iter, mode)
 
     Parameters
     ----------
@@ -37,6 +37,12 @@ cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, obje
     n : fwi_integer, intent in
     l_w : fwi_integer, intent in
     l_jw : fwi_integer, intent in
+
+    Result
+    ------
+    acc : fwr_dbl
+    iter : fwi_integer
+    mode : fwi_integer
 
     """
     cdef fwi_integer_t la_, n_, l_w_, l_jw_
@@ -81,7 +87,7 @@ cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, obje
     if not (0 <= l_jw_ <= jw_shape[0]):
         raise ValueError("(0 <= l_jw <= jw.shape[0]) not satisifed")
     fc.slsqp(&m, &meq, &la_, &n_, <fwr_dbl_t*>np.PyArray_DATA(x_), <fwr_dbl_t*>np.PyArray_DATA(xl_), <fwr_dbl_t*>np.PyArray_DATA(xu_), &f, <fwr_dbl_t*>np.PyArray_DATA(c_), <fwr_dbl_t*>np.PyArray_DATA(g_), <fwr_dbl_t*>np.PyArray_DATA(a_), &acc, &iter, &mode, <fwr_dbl_t*>np.PyArray_DATA(w_), &l_w_, <fwi_integer_t*>np.PyArray_DATA(jw_), &l_jw_)
-
+    return acc, iter, mode
 
 
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
