@@ -71,7 +71,7 @@ quadenv.NumpyPythonExtension('_quadpack', source = '_quadpackmodule.c')
 odenv.NumpyPythonExtension('_odepack', source = '_odepackmodule.c')
 
 # Build vode
-odenv.NumpyPythonExtension('vode', source = 'vode.pyf')
+odenv.NumpyPythonExtension('vode', source = 'vode.c')
 
 # Dop extension
 dopenv = env.Clone()
