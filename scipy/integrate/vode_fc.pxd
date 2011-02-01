@@ -1,39 +1,47 @@
 from fwrap_ktp cimport *
 
 cdef extern from "vode_fc.h":
-    void dvode(void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_real_t *, fwr_dbl_t *, fwi_integer_t *), fwi_integer_t * neq, fwr_dbl_t * y, fwr_dbl_t * t, fwr_dbl_t * tout, fwi_integer_t * itol, fwr_dbl_t * rtol, fwr_dbl_t * atol, fwi_integer_t * itask, fwi_integer_t * istate, fwi_integer_t * iopt, fwr_dbl_t * rwork, fwi_integer_t * lrw, fwi_integer_t * iwork, fwi_integer_t * liw, void (*jac)(), fwi_integer_t * mf, fwr_dbl_t * rpar, fwi_integer_t * ipar)
-    void dvhin(fwi_integer_t * n, fwr_dbl_t * t0, fwr_dbl_t * y0, fwr_dbl_t * ydot, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *), fwr_dbl_t * rpar, fwi_integer_t * ipar, fwr_dbl_t * tout, fwr_dbl_t * uround, fwr_dbl_t * ewt, fwi_integer_t * itol, fwr_dbl_t * atol, fwr_dbl_t * y, fwr_dbl_t * temp, fwr_dbl_t * h0, fwi_integer_t * niter, fwi_integer_t * ier)
-    void dvindy(fwr_dbl_t * t, fwi_integer_t * k, fwr_dbl_t * yh, fwi_integer_t * ldyh, fwr_dbl_t * dky, fwi_integer_t * iflag)
-    void dvstep(fwr_dbl_t * y, fwr_dbl_t * yh, fwi_integer_t * ldyh, fwr_dbl_t * yh1, fwr_dbl_t * ewt, fwr_dbl_t * savf, fwr_dbl_t * vsav, fwr_dbl_t * acor, fwr_dbl_t * wm, fwi_integer_t * iwm, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *), void (*jac)(), void (*psol)(), void (*vnls)(fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwr_real_t *, fwi_integer_t *, fwr_real_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *), fwr_dbl_t * rpar, fwi_integer_t * ipar)
-    void dvset()
-    void dvjust(fwr_dbl_t * yh, fwi_integer_t * ldyh, fwi_integer_t * iord)
-    void dvnlsd(fwr_dbl_t * y, fwr_dbl_t * yh, fwi_integer_t * ldyh, fwr_dbl_t * vsav, fwr_dbl_t * savf, fwr_dbl_t * ewt, fwr_dbl_t * acor, fwi_integer_t * iwm, fwr_dbl_t * wm, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *), void (*jac)(), void (*pdum)(), fwi_integer_t * nflag, fwr_dbl_t * rpar, fwi_integer_t * ipar)
-    void dvjac(fwr_dbl_t * y, fwr_dbl_t * yh, fwi_integer_t * ldyh, fwr_dbl_t * ewt, fwr_dbl_t * ftem, fwr_dbl_t * savf, fwr_dbl_t * wm, fwi_integer_t * iwm, void (*f)(), void (*jac)(), fwi_integer_t * ierpj, fwr_dbl_t * rpar, fwi_integer_t * ipar)
-    void dacopy(fwi_integer_t * nrow, fwi_integer_t * ncol, fwr_dbl_t * a, fwi_integer_t * nrowa, fwr_dbl_t * b, fwi_integer_t * nrowb)
-    void dvsol(fwr_dbl_t * wm, fwi_integer_t * iwm, fwr_dbl_t * x, fwi_integer_t * iersl)
-    void dvsrco(fwr_dbl_t * rsav, fwi_integer_t * isav, fwi_integer_t * job)
-    void dewset(fwi_integer_t * n, fwi_integer_t * itol, fwr_dbl_t * rtol, fwr_dbl_t * atol, fwr_dbl_t * ycur, fwr_dbl_t * ewt)
-    fwr_dbl_t dvnorm(fwi_integer_t * n, fwr_dbl_t * v, fwr_dbl_t * w)
-    fwr_dbl_t d1mach(fwi_integer_t * idum)
-    void xerrwd(char * msg, fwi_integer_t * nmes, fwi_integer_t * nerr, fwi_integer_t * level, fwi_integer_t * ni, fwi_integer_t * i1, fwi_integer_t * i2, fwi_integer_t * nr, fwr_dbl_t * r1, fwr_dbl_t * r2, size_t msg_len_)
-    void xsetun(fwi_integer_t * lun)
-    void xsetf(fwi_integer_t * mflag)
-    fwi_integer_t ixsav(fwi_integer_t * ipar, fwi_integer_t * ivalue, fwl_logical_t * iset)
-    void zvode(void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwr_real_t *, fwr_real_t *, fwi_integer_t *), fwi_integer_t * neq, fwc_dbl_complex_t * y, fwr_dbl_t * t, fwr_dbl_t * tout, fwi_integer_t * itol, fwr_dbl_t * rtol, fwr_dbl_t * atol, fwi_integer_t * itask, fwi_integer_t * istate, fwi_integer_t * iopt, fwc_dbl_complex_t * zwork, fwi_integer_t * lzw, fwr_dbl_t * rwork, fwi_integer_t * lrw, fwi_integer_t * iwork, fwi_integer_t * liw, void (*jac)(), fwi_integer_t * mf, fwr_real_t * rpar, fwi_integer_t * ipar)
-    void zvhin(fwi_integer_t * n, fwr_dbl_t * t0, fwc_dbl_complex_t * y0, fwc_dbl_complex_t * ydot, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwr_real_t *, fwi_integer_t *), fwr_real_t * rpar, fwi_integer_t * ipar, fwr_dbl_t * tout, fwr_dbl_t * uround, fwr_dbl_t * ewt, fwi_integer_t * itol, fwr_dbl_t * atol, fwc_dbl_complex_t * y, fwc_dbl_complex_t * temp, fwr_dbl_t * h0, fwi_integer_t * niter, fwi_integer_t * ier)
-    void zvindy(fwr_dbl_t * t, fwi_integer_t * k, fwc_dbl_complex_t * yh, fwi_integer_t * ldyh, fwc_dbl_complex_t * dky, fwi_integer_t * iflag)
-    void zvstep(fwc_dbl_complex_t * y, fwc_dbl_complex_t * yh, fwi_integer_t * ldyh, fwc_dbl_complex_t * yh1, fwr_dbl_t * ewt, fwc_dbl_complex_t * savf, fwc_dbl_complex_t * vsav, fwc_dbl_complex_t * acor, fwc_dbl_complex_t * wm, fwi_integer_t * iwm, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwr_real_t *, fwi_integer_t *), void (*jac)(), void (*psol)(), void (*vnls)(fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwc_dbl_complex_t *, fwr_real_t *, fwi_integer_t *, fwr_real_t *, fwi_integer_t *, fwr_real_t *, fwi_integer_t *), fwr_real_t * rpar, fwi_integer_t * ipar)
-    void zvset()
-    void zvjust(fwc_dbl_complex_t * yh, fwi_integer_t * ldyh, fwi_integer_t * iord)
-    void zvnlsd(fwc_dbl_complex_t * y, fwc_dbl_complex_t * yh, fwi_integer_t * ldyh, fwc_dbl_complex_t * vsav, fwc_dbl_complex_t * savf, fwr_dbl_t * ewt, fwc_dbl_complex_t * acor, fwi_integer_t * iwm, fwc_dbl_complex_t * wm, void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwr_real_t *, fwi_integer_t *), void (*jac)(), void (*pdum)(), fwi_integer_t * nflag, fwr_real_t * rpar, fwi_integer_t * ipar)
-    void zvjac(fwc_dbl_complex_t * y, fwc_dbl_complex_t * yh, fwi_integer_t * ldyh, fwr_dbl_t * ewt, fwc_dbl_complex_t * ftem, fwc_dbl_complex_t * savf, fwc_dbl_complex_t * wm, fwi_integer_t * iwm, void (*f)(), void (*jac)(), fwi_integer_t * ierpj, fwr_real_t * rpar, fwi_integer_t * ipar)
-    void zacopy(fwi_integer_t * nrow, fwi_integer_t * ncol, fwc_dbl_complex_t * a, fwi_integer_t * nrowa, fwc_dbl_complex_t * b, fwi_integer_t * nrowb)
-    void zvsol(fwc_dbl_complex_t * wm, fwi_integer_t * iwm, fwc_dbl_complex_t * x, fwi_integer_t * iersl)
-    void zvsrco(fwr_dbl_t * rsav, fwi_integer_t * isav, fwi_integer_t * job)
-    void zewset(fwi_integer_t * n, fwi_integer_t * itol, fwr_dbl_t * rtol, fwr_dbl_t * atol, fwc_dbl_complex_t * ycur, fwr_dbl_t * ewt)
-    fwr_dbl_t zvnorm(fwi_integer_t * n, fwc_dbl_complex_t * v, fwr_dbl_t * w)
-    fwr_dbl_t zabssq(fwc_dbl_complex_t * z)
-    void dzscal(fwi_integer_t * n, fwr_dbl_t * da, fwc_dbl_complex_t * zx, fwi_integer_t * incx)
-    void dzaxpy(fwi_integer_t * n, fwr_dbl_t * da, fwc_dbl_complex_t * zx, fwi_integer_t * incx, fwc_dbl_complex_t * zy, fwi_integer_t * incy)
-    fwr_dbl_t dumach()
-    void dumsum(fwr_dbl_t * a, fwr_dbl_t * b, fwr_dbl_t * c)
+    void dvode(
+        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_real_t *, fwr_dbl_t *, fwi_integer_t *),
+        fwi_integer_t * neq,
+        fwr_dbl_t * y,
+        fwr_dbl_t * t,
+        fwr_dbl_t * tout,
+        fwi_integer_t * itol,
+        fwr_dbl_t * rtol,
+        fwr_dbl_t * atol,
+        fwi_integer_t * itask,
+        fwi_integer_t * istate,
+        fwi_integer_t * iopt,
+        fwr_dbl_t * rwork,
+        fwi_integer_t * lrw,
+        fwi_integer_t * iwork,
+        fwi_integer_t * liw,
+        void (*jac)(),
+        fwi_integer_t * mf,
+        fwr_dbl_t * rpar,
+        fwi_integer_t * ipar
+    )
+    void zvode(
+        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwr_real_t *, fwr_real_t *, fwi_integer_t *),
+        fwi_integer_t * neq,
+        fwc_dbl_complex_t * y,
+        fwr_dbl_t * t,
+        fwr_dbl_t * tout,
+        fwi_integer_t * itol,
+        fwr_dbl_t * rtol,
+        fwr_dbl_t * atol,
+        fwi_integer_t * itask,
+        fwi_integer_t * istate,
+        fwi_integer_t * iopt,
+        fwc_dbl_complex_t * zwork,
+        fwi_integer_t * lzw,
+        fwr_dbl_t * rwork,
+        fwi_integer_t * lrw,
+        fwi_integer_t * iwork,
+        fwi_integer_t * liw,
+        void (*jac)(),
+        fwi_integer_t * mf,
+        fwr_real_t * rpar,
+        fwi_integer_t * ipar
+    )
