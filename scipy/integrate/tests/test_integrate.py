@@ -29,6 +29,8 @@ class TestOdeint(TestCase):
             if problem.cmplx: continue
             self._do_problem(problem)
 
+f_arg_1, f_arg_2, jac_arg_1, jac_arg_2 = object(), object(), object(), object()
+
 class TestOde(TestCase):
     """
     Check integrate.ode
@@ -36,12 +38,23 @@ class TestOde(TestCase):
     def _do_problem(self, problem, integrator, method='adams'):
 
         # ode has callback arguments in different order than odeint
-        f = lambda t, z: problem.f(z, t)
+
+        extra_args_blacklist = ('dopri5', 'dop853')
+        
+        def f(t, z, *args):
+            if integrator not in extra_args_blacklist:
+                assert_(args == (f_arg_1, f_arg_2))
+            return problem.f(z, t)
         jac = None
         if hasattr(problem, 'jac'):
-            jac = lambda t, z: problem.jac(z, t)
+            def jac(t, z, *args):
+                if integrator not in extra_args_blacklist:
+                    assert_(args == (jac_arg_1, jac_arg_2))
+                return problem.jac(z, t)
 
         ig = ode(f, jac)
+        ig.set_f_params(f_arg_1, f_arg_2)
+        ig.set_jac_params(jac_arg_1, jac_arg_2)
         ig.set_integrator(integrator,
                           atol=problem.atol/10,
                           rtol=problem.rtol/10,
