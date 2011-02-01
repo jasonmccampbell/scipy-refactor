@@ -47,7 +47,7 @@
 extern "C" {
 #endif
 FORTRAN_CALLSPEC void F_FUNC(dvode,DVODE)(
-    void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
+    void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void*),
     fwi_integer_t * neq,
     fwr_dbl_t * y,
     fwr_dbl_t * t,
@@ -62,13 +62,13 @@ FORTRAN_CALLSPEC void F_FUNC(dvode,DVODE)(
     fwi_integer_t * lrw,
     fwi_integer_t * iwork,
     fwi_integer_t * liw,
-    void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *),
+    void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *),
     fwi_integer_t * mf,
     void * rpar, /* caller context */
     void * ipar /* caller context */
 );
 FORTRAN_CALLSPEC void F_FUNC(zvode,ZVODE)(
-    void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, fwr_dbl_t *, fwi_integer_t *),
+    void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, void *, void *),
     fwi_integer_t * neq,
     fwc_dbl_complex_t * y,
     fwr_dbl_t * t,
@@ -85,7 +85,7 @@ FORTRAN_CALLSPEC void F_FUNC(zvode,ZVODE)(
     fwi_integer_t * lrw,
     fwi_integer_t * iwork,
     fwi_integer_t * liw,
-    void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwi_integer_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *),
+    void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwi_integer_t *, fwc_dbl_complex_t *, fwi_integer_t *, void *, void *),
     fwi_integer_t * mf,
     void * rpar, /* caller context */
     void * ipar /* caller context */
