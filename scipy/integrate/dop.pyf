@@ -76,5 +76,5 @@ python module _dop
          integer intent(hide) :: ipar = 0
        end subroutine dop853
     end interface
-end python module dop
+end python module _dop
 
