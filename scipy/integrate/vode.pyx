@@ -111,8 +111,8 @@ cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, 
         longjmp(dvode_jac_cb_info.jmp, 1)
 
 
-cpdef object dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
-    """dvode(f, jac, y, t, tout, rtol, atol, itask, istate, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
+cpdef object dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
+    """dvode(f, jac, y, t, tout, rtol, atol, itask, istate, rwork, iwork, mf[, f_extra_args, jac_extra_args]) -> (y, t, istate)
 
     Parameters
     ----------
@@ -128,7 +128,9 @@ cpdef object dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, 
     rwork : fwr_dbl, 1D array, dimension(lrw), intent in
     iwork : fwi_integer, 1D array, dimension(liw), intent in
     mf : fwi_integer, intent in
-    overwrite_y : bint_, intent in
+    f_extra_args : tuple of extra arguments to pass to f
+    jac_extra_args : tuple of extra arguments to pass to f
+    overwrite_y : bool, intent in
 
     Returns
     -------
@@ -170,8 +172,8 @@ cpdef object dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, 
         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
     if not (0 <= liw <= iwork_shape[0]):
         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
-    dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, None)
-    dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, None)
+    dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
+    dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
     try:
         if setjmp(dvode_f_cb_info.jmp) == 0:
             if setjmp(dvode_jac_cb_info.jmp) == 0:
@@ -257,7 +259,7 @@ cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex
         longjmp(zvode_jac_cb_info.jmp, 1)
 
 
-cpdef object zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
+cpdef object zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
     """zvode(f, jac, y, t, tout, rtol, atol, itask, istate, zwork, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
 
     Parameters
@@ -275,7 +277,9 @@ cpdef object zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, 
     rwork : fwr_dbl, 1D array, dimension(lrw), intent in
     iwork : fwi_integer, 1D array, dimension(liw), intent in
     mf : fwi_integer, intent in
-    overwrite_y : bint_, intent in
+    f_extra_args : tuple of extra arguments to pass to f
+    jac_extra_args : tuple of extra arguments to pass to f
+    overwrite_y : bool, intent in
 
     Returns
     -------
@@ -323,8 +327,8 @@ cpdef object zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, 
         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
     if not (0 <= liw <= iwork_shape[0]):
         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
-    zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, None)
-    zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, None)
+    zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
+    zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
     try:
         if setjmp(zvode_f_cb_info.jmp) == 0:
             if setjmp(zvode_jac_cb_info.jmp) == 0:
