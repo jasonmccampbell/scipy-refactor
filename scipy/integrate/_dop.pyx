@@ -45,7 +45,7 @@ cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
 cdef fw_CallbackInfo dopri5_fcn_cb_info
-cdef int dopri5_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, fwr_dbl_t * rpar, fwi_integer_t * ipar):
+cdef int dopri5_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):
     global dopri5_fcn_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, f_
@@ -72,14 +72,14 @@ cdef int dopri5_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t 
         info.exc = sys.exc_info()
         return -1
 
-cdef void dopri5_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, fwr_dbl_t * rpar, fwi_integer_t * ipar):
+cdef void dopri5_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):
     if dopri5_fcn_cb_wrapper_core(n, x, y, f, rpar, ipar) != 0:
         longjmp(dopri5_fcn_cb_info.jmp, 1)
 
 
 
 cdef fw_CallbackInfo dopri5_solout_cb_info
-cdef int dopri5_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, fwr_dbl_t * rpar, fwi_integer_t * ipar, fwi_integer_t * irtn):
+cdef int dopri5_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):
     global dopri5_solout_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, con_, icomp_
@@ -103,7 +103,7 @@ cdef int dopri5_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr
         info.exc = sys.exc_info()
         return -1
 
-cdef void dopri5_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, fwr_dbl_t * rpar, fwi_integer_t * ipar, fwi_integer_t * irtn):
+cdef void dopri5_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):
     if dopri5_solout_cb_wrapper_core(nr, xold, x, y, n, con, icomp, nd, rpar, ipar, irtn) != 0:
         longjmp(dopri5_solout_cb_info.jmp, 1)
 
@@ -134,8 +134,7 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     """
     global dopri5_fcn_cb_info, dopri5_solout_cb_info
     cdef fw_CallbackInfo fw_fcn_cb, fw_solout_cb
-    cdef fwi_integer_t n, itol, iout, lwork, liwork, ipar, idid
-    cdef fwr_dbl_t rpar
+    cdef fwi_integer_t n, itol, iout, lwork, liwork, idid
     cdef np.ndarray y_, rtol_, atol_, work_, iwork_
     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
@@ -145,8 +144,6 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     lwork = work_shape[0]
     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
     liwork = iwork_shape[0]
-    rpar = 0.0
-    ipar = 0
     idid = 0
     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
@@ -166,7 +163,7 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     try:
         if setjmp(dopri5_fcn_cb_info.jmp) == 0:
             if setjmp(dopri5_solout_cb_info.jmp) == 0:
-                fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &rpar, &ipar, &idid)
+                fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
             else:
                 fw_exctype, fw_excval, fw_exctb = dopri5_solout_cb_info.exc
                 dopri5_solout_cb_info.exc = None
@@ -182,7 +179,7 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
 
 
 cdef fw_CallbackInfo dop853_fcn_cb_info
-cdef int dop853_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, fwr_dbl_t * rpar, fwi_integer_t * ipar):
+cdef int dop853_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):
     global dop853_fcn_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, f_
@@ -209,14 +206,14 @@ cdef int dop853_fcn_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t 
         info.exc = sys.exc_info()
         return -1
 
-cdef void dop853_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, fwr_dbl_t * rpar, fwi_integer_t * ipar):
+cdef void dop853_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):
     if dop853_fcn_cb_wrapper_core(n, x, y, f, rpar, ipar) != 0:
         longjmp(dop853_fcn_cb_info.jmp, 1)
 
 
 
 cdef fw_CallbackInfo dop853_solout_cb_info
-cdef int dop853_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, fwr_dbl_t * rpar, fwi_integer_t * ipar, fwi_integer_t * irtn):
+cdef int dop853_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):
     global dop853_solout_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, con_, icomp_
@@ -240,7 +237,7 @@ cdef int dop853_solout_cb_wrapper_core(fwi_integer_t * nr, fwr_dbl_t * xold, fwr
         info.exc = sys.exc_info()
         return -1
 
-cdef void dop853_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, fwr_dbl_t * rpar, fwi_integer_t * ipar, fwi_integer_t * irtn):
+cdef void dop853_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):
     if dop853_solout_cb_wrapper_core(nr, xold, x, y, n, con, icomp, nd, rpar, ipar, irtn) != 0:
         longjmp(dop853_solout_cb_info.jmp, 1)
 
@@ -271,8 +268,7 @@ cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     """
     global dop853_fcn_cb_info, dop853_solout_cb_info
     cdef fw_CallbackInfo fw_fcn_cb, fw_solout_cb
-    cdef fwi_integer_t n, itol, iout, lwork, liwork, ipar, idid
-    cdef fwr_dbl_t rpar
+    cdef fwi_integer_t n, itol, iout, lwork, liwork, idid
     cdef np.ndarray y_, rtol_, atol_, work_, iwork_
     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
@@ -282,8 +278,6 @@ cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     lwork = work_shape[0]
     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
     liwork = iwork_shape[0]
-    rpar = 0.0
-    ipar = 0
     idid = 0
     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
@@ -303,7 +297,7 @@ cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     try:
         if setjmp(dop853_fcn_cb_info.jmp) == 0:
             if setjmp(dop853_solout_cb_info.jmp) == 0:
-                fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &rpar, &ipar, &idid)
+                fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
             else:
                 fw_exctype, fw_excval, fw_exctb = dop853_solout_cb_info.exc
                 dop853_solout_cb_info.exc = None
