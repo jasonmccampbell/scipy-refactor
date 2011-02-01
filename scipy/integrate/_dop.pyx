@@ -108,8 +108,8 @@ cdef void dopri5_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl
         longjmp(dopri5_solout_cb_info.jmp, 1)
 
 
-cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, bint overwrite_y=False):
-    """dopri5(fcn, x, y, xend, rtol, atol, solout, work, iwork[, overwrite_y]) -> (x, y, iwork, idid)
+cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
+    """dopri5(fcn, x, y, xend, rtol, atol, solout, work, iwork[, fcn_extra_args, solout_extra_args, overwrite_y]) -> (x, y, iwork, idid)
 
     Parameters
     ----------
@@ -122,6 +122,8 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     solout : object, intent in
     work : fwr_dbl, 1D array, dimension(*), intent in
     iwork : fwi_integer, 1D array, dimension(*), intent inout
+    fcn_extra_args : tuple of extra arguments to pass to fcn
+    solout_extra_args : tuple of extra arguments to pass to solout
     overwrite_y : bint_, intent in
 
     Returns
@@ -158,8 +160,8 @@ cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
     if not (0 <= n <= y_shape[0]):
         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
-    dopri5_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, None)
-    dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, None)
+    dopri5_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
+    dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
     try:
         if setjmp(dopri5_fcn_cb_info.jmp) == 0:
             if setjmp(dopri5_solout_cb_info.jmp) == 0:
@@ -242,8 +244,8 @@ cdef void dop853_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl
         longjmp(dop853_solout_cb_info.jmp, 1)
 
 
-cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, bint overwrite_y=False):
-    """dop853(fcn, x, y, xend, rtol, atol, solout, work, iwork[, overwrite_y]) -> (x, y, iwork, idid)
+cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
+    """dop853(fcn, x, y, xend, rtol, atol, solout, work, iwork[, fcn_extra_args, solout_extra_args, overwrite_y]) -> (x, y, iwork, idid)
 
     Parameters
     ----------
@@ -256,6 +258,8 @@ cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
     solout : object, intent in
     work : fwr_dbl, 1D array, dimension(*), intent in
     iwork : fwi_integer, 1D array, dimension(*), intent inout
+    fcn_extra_args : tuple of extra arguments to pass to fcn
+    solout_extra_args : tuple of extra arguments to pass to solout
     overwrite_y : bint_, intent in
 
     Returns
@@ -292,8 +296,8 @@ cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rt
         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
     if not (0 <= n <= y_shape[0]):
         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
-    dop853_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, None)
-    dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, None)
+    dop853_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
+    dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
     try:
         if setjmp(dop853_fcn_cb_info.jmp) == 0:
             if setjmp(dop853_solout_cb_info.jmp) == 0:
