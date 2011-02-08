@@ -46,13 +46,13 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(dqsort_c,DQSORT_C)(fwi_integer_t *, fw_shape_t *, fwr_real_x8_t *, fwi_integer_t *, fw_character_t *);
-FORTRAN_CALLSPEC void F_FUNC(dfreps_c,DFREPS_C)(fw_shape_t *, fwr_real_x8_t *, fwi_integer_t *, fw_shape_t *, fwr_real_x8_t *, fw_shape_t *, fwi_integer_t *, fwi_integer_t *, fwi_integer_t *, fw_character_t *);
+FORTRAN_CALLSPEC void F_FUNC(dqsort,DQSORT)(fwi_integer_t * n, fwr_real_x8_t * arr);
+FORTRAN_CALLSPEC void F_FUNC(dfreps,DFREPS)(fwr_real_x8_t * arr, fwi_integer_t * n, fwr_real_x8_t * replist, fwi_integer_t * repnum, fwi_integer_t * nlist);
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif
 
 #if !defined(NO_FORTRAN_MANGLING)
-#define dqsort_c F_FUNC(dqsort_c,DQSORT_C)
-#define dfreps_c F_FUNC(dfreps_c,DFREPS_C)
+#define dqsort F_FUNC(dqsort,DQSORT)
+#define dfreps F_FUNC(dfreps,DFREPS)
 #endif

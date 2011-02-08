@@ -46,17 +46,13 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(wprob,WPROB)(fwi_integer_t * test, fwi_integer_t * other, fwr_real_t * astart, fwr_real_t * a1, fwi_integer_t * l1, fwr_real_t * a2, fwr_real_t * a3, fwi_integer_t * ifault);
-FORTRAN_CALLSPEC void F_FUNC(gscale,GSCALE)(fwi_integer_t * test, fwi_integer_t * other, fwr_real_t * astart, fwr_real_t * a1, fwi_integer_t * l1, fwr_real_t * a2, fwr_real_t * a3, fwi_integer_t * ifault);
-FORTRAN_CALLSPEC fwr_dbl_t F_FUNC(prho,PRHO)(fwi_integer_t * n, fwi_integer_t * is_, fwi_integer_t * ifault);
-FORTRAN_CALLSPEC void F_FUNC(swilk,SWILK)(fwl_logical_t * init, fwr_real_t * x, fwi_integer_t * n, fwi_integer_t * n1, fwi_integer_t * n2, fwr_real_t * a, fwr_real_t * w, fwr_real_t * pw, fwi_integer_t * ifault);
+FORTRAN_CALLSPEC void F_FUNC(dcsrch,DCSRCH)(fwr_dbl_t * stp, fwr_dbl_t * f, fwr_dbl_t * g, fwr_dbl_t * ftol, fwr_dbl_t * gtol, fwr_dbl_t * xtol, char * task, fwr_dbl_t * stpmin, fwr_dbl_t * stpmax, fwi_integer_t * isave, fwr_dbl_t * dsave, size_t task_len_);
+FORTRAN_CALLSPEC void F_FUNC(dcstep,DCSTEP)(fwr_dbl_t * stx, fwr_dbl_t * fx, fwr_dbl_t * dx, fwr_dbl_t * sty, fwr_dbl_t * fy, fwr_dbl_t * dy, fwr_dbl_t * stp, fwr_dbl_t * fp, fwr_dbl_t * dp, fwl_logical_t * brackt, fwr_dbl_t * stpmin, fwr_dbl_t * stpmax);
 #if defined(__cplusplus)
 } /* extern "C" */
 #endif
 
 #if !defined(NO_FORTRAN_MANGLING)
-#define wprob F_FUNC(wprob,WPROB)
-#define gscale F_FUNC(gscale,GSCALE)
-#define prho F_FUNC(prho,PRHO)
-#define swilk F_FUNC(swilk,SWILK)
+#define dcsrch F_FUNC(dcsrch,DCSRCH)
+#define dcstep F_FUNC(dcstep,DCSTEP)
 #endif

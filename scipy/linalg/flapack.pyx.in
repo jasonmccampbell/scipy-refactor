@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The flapack module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The flapack module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -116,11 +116,13 @@ cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_i
         raise NotImplementedError('select callback not yet implemented')
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     nrows = a_shape[0]
+    sdim = 0
     n = a_shape[1]
     rwork_shape[0] = n
     rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
     bwork_shape[0] = n
     bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
+    info = 0
     lwork_ = lwork if (lwork is not None) else 3 * n
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -195,6 +197,7 @@ cpdef object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = 2 * n
     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_vl == 1) or (compute_vl == 0)):
@@ -274,6 +277,7 @@ cpdef object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = 8 * n
     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -350,6 +354,7 @@ cpdef object cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
     cdef np.ndarray a_, b_, s_, work_, rwork_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1], rwork_shape[1]
+    r = 0
     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
@@ -362,6 +367,7 @@ cpdef object cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = (5 * minmn) - 1
     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
+    info = 0
     if not (maxmn == b_shape[0]):
         raise ValueError('Condition on arguments not satisfied: maxmn == b.shape[0]')
     if not (lwork_ >= 1):
@@ -420,6 +426,7 @@ cpdef object cgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
     iwork_shape[0] = 8 * minmn
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
     if not (lwork_ >= (((2 * minmn * minmn) + max(m, n) + (2 * minmn)) if compute_uv else ((2 * minmn) + max(m, n)))):
@@ -491,6 +498,7 @@ cpdef object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     n = a_shape[0]
     rwork_shape[0] = 8 * n
     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, not overwrite_b, False)
     lwork_ = lwork if (lwork is not None) else 2 * n
     if not (a_shape[0] == a_shape[1]):
@@ -593,6 +601,7 @@ cpdef object {{Xhbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lowe
     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
     iwork_shape[0] = liwork_
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((compute_v == 1) or (compute_v == 0)):
         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
@@ -679,12 +688,14 @@ cpdef object {{Xhbevx}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, f
     ldq = n if compute_v else 1
     q_shape[0] = ldq; q_shape[1] = ldq
     q_ = fw_asfortranarray(None, {{npy_enum}}, 2, q_shape, False, True)
+    m = 0
     work_shape[0] = n
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
     rwork_shape[0] = 7 * n
     rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
     iwork_shape[0] = 5 * n
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((il >= 1) and (il <= n)):
         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
@@ -769,6 +780,7 @@ cpdef object {{Xheev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
     rwork_shape[0] = (3 * n) - 1
     rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_v == 1) or (compute_v == 0)):
@@ -849,6 +861,7 @@ cpdef object {{Xheevr}}(object a, object jobz='V', object range='A', object uplo
     liwork = 10 * n
     iwork_shape[0] = liwork
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     z_shape[0] = n; z_shape[1] = m
     z_ = fw_asfortranarray(z, {{npy_enum}}, 2, z_shape, False, True)
     ldz = n
@@ -920,6 +933,7 @@ cpdef object {{Xhegv}}(object a, object b, fwi_integer_t itype=1, object jobz='V
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
     rwork_shape[0] = (3 * n) - 2
     rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
+    info = 0
     if n != a_shape[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -989,6 +1003,7 @@ cpdef object {{Xhegvd}}(object a, object b, fwi_integer_t itype=1, object jobz='
     liwork = 3 + (5 * n)
     iwork_shape[0] = liwork
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if n != a_shape[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -1066,6 +1081,7 @@ cpdef object {{Xhegvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t ityp
     rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
     iwork_shape[0] = 5 * n
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     m = iu - il + 1
     z_shape[0] = n; z_shape[1] = m
     z_ = fw_asfortranarray(z, {{npy_enum}}, 2, z_shape, False, True)
@@ -1132,6 +1148,7 @@ cpdef object {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_
     cdef fwi_integer_t lwork_, m, n, k, info
     cdef np.ndarray a_, tau_, work_
     cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -1190,6 +1207,7 @@ cpdef object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     lwork_ = lwork if (lwork is not None) else 4 * n
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_vl == 1) or (compute_vl == 0)):
@@ -1273,6 +1291,7 @@ cpdef object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     lwork_ = lwork if (lwork is not None) else 8 * n
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -1353,6 +1372,7 @@ cpdef object dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
     cdef np.ndarray a_, b_, s_, work_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1]
+    r = 0
     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
@@ -1363,6 +1383,7 @@ cpdef object dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     lwork_ = lwork if (lwork is not None) else (3 * minmn) + max((2 * minmn), max(maxmn, nrhs))
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
+    info = 0
     if not (maxmn == b_shape[0]):
         raise ValueError('Condition on arguments not satisfied: maxmn == b.shape[0]')
     if not (lwork_ >= 1):
@@ -1418,6 +1439,7 @@ cpdef object dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
     iwork_shape[0] = 8 * minmn
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
     if m != a_shape[0]:
@@ -1485,6 +1507,7 @@ cpdef object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     cdef np.npy_intp a_shape[2], b_shape[2], alphar_shape[1], alphai_shape[1], beta_shape[1], vl_shape[2], vr_shape[2], work_shape[1]
     jobvl_f = "V" if compute_vl else "N"
     jobvr_f = "V" if compute_vr else "N"
+    info = 0
     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, not overwrite_b, False)
     n = a_shape[0]
@@ -1577,6 +1600,7 @@ cpdef object {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, 
     cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef np.npy_intp ab_shape[2], b_shape[2], piv_shape[1]
     cdef Py_ssize_t i
+    info = 0
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     if not (((2 * kl) + ku + 1) == ab_shape[0]):
@@ -1635,6 +1659,7 @@ cpdef object {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=
     cdef np.ndarray[int, ndim=1, mode='fortran'] ipiv_
     cdef np.npy_intp ab_shape[2], ipiv_shape[1]
     cdef Py_ssize_t i
+    info = 0
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not (ab_shape[0] == ldab_):
@@ -1689,6 +1714,7 @@ cpdef object {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b,
     trans_f = ("T" if (trans == 1) else "C") if (trans > 0) else "N"
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
+    info = 0
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, False, False)
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     ldb_ = ldb if (ldb is not None) else b_shape[0]
@@ -1749,6 +1775,9 @@ cpdef object {{Xgebal}}(object a, fwi_integer_t scale=0, fwi_integer_t permute=0
     cdef np.ndarray a_, pivscale_
     cdef np.npy_intp a_shape[2], pivscale_shape[1]
     job_f = ("B" if scale else "P") if permute else ("S" if scale else "N")
+    lo = 0
+    hi = 0
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[1]
     m = a_shape[0]
@@ -1814,9 +1843,11 @@ cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_i
         raise NotImplementedError('select callback not yet implemented')    
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False, 8)
     nrows = a_shape[0]
+    sdim = 0
     n = a_shape[1]
     bwork_shape[0] = n
     bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
+    info = 0
     lwork_ = lwork if (lwork is not None) else 3 * n
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -1895,6 +1926,7 @@ cpdef object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     lwork_ = lwork if (lwork is not None) else 4 * n
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_vl == 1) or (compute_vl == 0)):
@@ -1978,6 +2010,7 @@ cpdef object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     lwork_ = lwork if (lwork is not None) else 8 * n
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -2065,6 +2098,7 @@ cpdef object {{Xgehrd}}(object a, fwi_integer_t lo=0, object hi=None, object lwo
     lwork_ = lwork if (lwork is not None) else max(n, 1)
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not (lwork_ >= max(n, 1)):
@@ -2109,6 +2143,7 @@ cpdef object sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
     cdef np.ndarray a_, b_, s_, work_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1]
+    r = 0
     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
@@ -2119,6 +2154,7 @@ cpdef object sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
     lwork_ = lwork if (lwork is not None) else (3 * minmn) + max((2 * minmn), max(maxmn, nrhs))
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
+    info = 0
     if not (maxmn == b_shape[0]):
         raise ValueError('Condition on arguments not satisfied: maxmn == b.shape[0]')
     if not (lwork_ >= 1):
@@ -2165,6 +2201,7 @@ cpdef object {{Xgeqrf}}(object a, object lwork=None, bint overwrite_a=False, obj
     cdef fwi_integer_t lwork_, m, n, info
     cdef np.ndarray a_, tau_, work_
     cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False, 8)
     n = a_shape[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -2214,6 +2251,7 @@ cpdef object {{Xgerqf}}(object a, object lwork=None, bint overwrite_a=False, obj
     cdef fwi_integer_t lwork_, m, n, info
     cdef np.ndarray a_, tau_, work_
     cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False, 8)
     n = a_shape[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -2272,6 +2310,7 @@ cpdef object sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
     iwork_shape[0] = 8 * minmn
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
     if m != a_shape[0]:
@@ -2331,6 +2370,7 @@ cpdef object {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrit
     cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef np.npy_intp a_shape[2], b_shape[2], piv_shape[1]
     cdef Py_ssize_t i
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
@@ -2383,6 +2423,7 @@ cpdef object {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
     cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
     cdef Py_ssize_t i
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     m = a_shape[0]
     n = a_shape[1]
@@ -2431,6 +2472,7 @@ cpdef object {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite
     lwork_ = lwork if (lwork is not None) else 3 * n
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
+    info = 0
     if not (lu_shape[0] == lu_shape[1]):
         raise ValueError('Condition on arguments not satisfied: lu.shape[0] == lu.shape[1]')
     if not (lwork_ >= n):
@@ -2479,6 +2521,7 @@ cpdef object {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, 
     cdef np.npy_intp lu_shape[2], piv_shape[1], b_shape[2]
     cdef Py_ssize_t i
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
+    info = 0
     lu_ = fw_asfortranarray(lu, {{npy_enum}}, 2, lu_shape, False, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     if not (lu_shape[0] == lu_shape[1]):
@@ -2548,6 +2591,7 @@ cpdef object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     cdef np.npy_intp a_shape[2], b_shape[2], alphar_shape[1], alphai_shape[1], beta_shape[1], vl_shape[2], vr_shape[2], work_shape[1]
     jobvl_f = "V" if compute_vl else "N"
     jobvr_f = "V" if compute_vr else "N"
+    info = 0
     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, not overwrite_b, False)
     n = a_shape[0]
@@ -2719,6 +2763,7 @@ cpdef object {{Xlauum}}(object c, fwi_integer_t lower=0, bint overwrite_c=False)
     cdef np.ndarray c_
     cdef np.npy_intp c_shape[2]
     uplo_f = "L" if lower else "U"
+    info = 0
     c_ = fw_asfortranarray(c, {{npy_enum}}, 2, c_shape, not overwrite_c, False)
     if not (c_shape[0] == c_shape[1]):
         raise ValueError('Condition on arguments not satisfied: c.shape[0] == c.shape[1]')
@@ -2762,6 +2807,7 @@ cpdef object {{Xorgqr}}(object a, object tau, object lwork=None, bint overwrite_
     cdef fwi_integer_t lwork_, m, n, k, info
     cdef np.ndarray a_, tau_, work_
     cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[1]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -2815,6 +2861,7 @@ cpdef object {{Xpbsv}}(object ab, object b, fwi_integer_t lower=0, object ldab=N
     uplo_f = "L" if lower else "U"
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     kd = ab_shape[0] - 1
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((lower == 0) or (lower == 1)):
         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -2867,6 +2914,7 @@ cpdef object {{Xpbtrf}}(object ab, fwi_integer_t lower=0, object ldab=None, bint
     uplo_f = "L" if lower else "U"
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     kd = ab_shape[0] - 1
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((lower == 0) or (lower == 1)):
         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -2913,6 +2961,7 @@ cpdef object {{Xpbtrs}}(object ab, object b, fwi_integer_t lower=0, object ldab=
     uplo_f = "L" if lower else "U"
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, False, False)
     kd = ab_shape[0] - 1
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((lower == 0) or (lower == 1)):
         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -2965,6 +3014,7 @@ cpdef object {{Xposv}}(object a, object b, fwi_integer_t lower=0, bint overwrite
     cdef np.ndarray a_, b_
     cdef np.npy_intp a_shape[2], b_shape[2]
     uplo_f = "L" if lower else "U"
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
@@ -3017,6 +3067,7 @@ cpdef object {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, 
     cdef np.npy_intp a_shape[2]
     cdef Py_ssize_t i, j
     uplo_f = "L" if lower else "U"
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -3070,6 +3121,7 @@ cpdef object {{Xpotri}}(object c, fwi_integer_t lower=0, bint overwrite_c=False)
     cdef np.ndarray c_
     cdef np.npy_intp c_shape[2]
     uplo_f = "L" if lower else "U"
+    info = 0
     c_ = fw_asfortranarray(c, {{npy_enum}}, 2, c_shape, not overwrite_c, False)
     if not (c_shape[0] == c_shape[1]):
         raise ValueError('Condition on arguments not satisfied: c.shape[0] == c.shape[1]')
@@ -3113,6 +3165,7 @@ cpdef object {{Xpotrs}}(object c, object b, fwi_integer_t lower=0, bint overwrit
     cdef np.ndarray c_, b_
     cdef np.npy_intp c_shape[2], b_shape[2]
     uplo_f = "L" if lower else "U"
+    info = 0
     c_ = fw_asfortranarray(c, {{npy_enum}}, 2, c_shape, False, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     if not (c_shape[0] == c_shape[1]):
@@ -3174,6 +3227,7 @@ cpdef object {{Xsbev}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower
     n = ab_shape[1]
     work_shape[0] = max(1, ((3 * n) - 1))
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((compute_v == 1) or (compute_v == 0)):
         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
@@ -3245,6 +3299,7 @@ cpdef object {{Xsbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lowe
     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
     iwork_shape[0] = liwork_
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((compute_v == 1) or (compute_v == 0)):
         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
@@ -3325,10 +3380,12 @@ cpdef object {{Xsbevx}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi
     ldq = n if compute_v else 1
     q_shape[0] = ldq; q_shape[1] = ldq
     q_ = fw_asfortranarray(None, {{npy_enum}}, 2, q_shape, False, True)
+    m = 0
     work_shape[0] = 7 * n
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
     iwork_shape[0] = 5 * n
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
     if not ((il >= 1) and (il <= n)):
         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
@@ -3409,6 +3466,7 @@ cpdef object {{Xsyev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=
     lwork_ = lwork if (lwork is not None) else (3 * n) - 1
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_v == 1) or (compute_v == 0)):
@@ -3484,6 +3542,7 @@ cpdef object {{Xsyevr}}(object a, object jobz='V', object range='A', object uplo
     liwork = 10 * n
     iwork_shape[0] = liwork
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     z_shape[0] = n; z_shape[1] = m
     z_ = fw_asfortranarray(z, {{npy_enum}}, 2, z_shape, False, True)
     ldz = n
@@ -3551,6 +3610,7 @@ cpdef object {{Xsygv}}(object a, object b, fwi_integer_t itype=1, object jobz='V
     lwork = (3 * n) - 1
     work_shape[0] = lwork
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
+    info = 0
     if n != a_shape[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -3615,6 +3675,7 @@ cpdef object {{Xsygvd}}(object a, object b, fwi_integer_t itype=1, object jobz='
     liwork = 3 + (5 * n)
     iwork_shape[0] = liwork
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if n != a_shape[0]:
         raise ValueError("(n == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -3688,6 +3749,7 @@ cpdef object {{Xsygvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t ityp
     work_ = fw_asfortranarray(None, {{npy_enum}}, 1, work_shape, False, True)
     iwork_shape[0] = 5 * n
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     m = iu - il + 1
     z_shape[0] = n; z_shape[1] = m
     z_ = fw_asfortranarray(z, {{npy_enum}}, 2, z_shape, False, True)
@@ -3755,6 +3817,7 @@ cpdef object {{Xtrtri}}(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=
     cdef np.npy_intp c_shape[2]
     uplo_f = "L" if lower else "U"
     diag_f = "U" if unitdiag else "N"
+    info = 0
     c_ = fw_asfortranarray(c, {{npy_enum}}, 2, c_shape, not overwrite_c, False)
     if not (c_shape[0] == c_shape[1]):
         raise ValueError('Condition on arguments not satisfied: c.shape[0] == c.shape[1]')
@@ -3808,6 +3871,7 @@ cpdef object {{Xtrtrs}}(object a, object b, fwi_integer_t lower=0, fwi_integer_t
     uplo_f = "L" if lower else "U"
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     diag_f = "U" if unitdiag else "N"
+    info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, False, False)
     lda_ = lda if (lda is not None) else a_shape[0]
     if not ((lower == 0) or (lower == 1)):
@@ -3879,6 +3943,7 @@ cpdef object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = 2 * n
     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if not ((compute_vl == 1) or (compute_vl == 0)):
@@ -3958,6 +4023,7 @@ cpdef object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = 8 * n
     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, not overwrite_b, False)
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -4034,6 +4100,7 @@ cpdef object zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
     cdef np.ndarray a_, b_, s_, work_, rwork_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1], rwork_shape[1]
+    r = 0
     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
@@ -4046,6 +4113,7 @@ cpdef object zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
     rwork_shape[0] = (5 * minmn) - 1
     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
+    info = 0
     if not (maxmn == b_shape[0]):
         raise ValueError('Condition on arguments not satisfied: maxmn == b.shape[0]')
     if not (lwork_ >= 1):
@@ -4104,6 +4172,7 @@ cpdef object zgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
     iwork_shape[0] = 8 * minmn
     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
+    info = 0
     if not ((compute_uv == 0) or (compute_uv == 1)):
         raise ValueError('Condition on arguments not satisfied: (compute_uv == 0) or (compute_uv == 1)')
     if not (lwork_ >= (((2 * minmn * minmn) + max(m, n) + (2 * minmn)) if compute_uv else ((2 * minmn) + max(m, n)))):
@@ -4175,6 +4244,7 @@ cpdef object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     n = a_shape[0]
     rwork_shape[0] = 8 * n
     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
+    info = 0
     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, not overwrite_b, False)
     lwork_ = lwork if (lwork is not None) else 2 * n
     if not (a_shape[0] == a_shape[1]):
@@ -4286,9 +4356,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 4354c4e796f26cb03595424c040f1e0893847675
+# Fwrap: pyf-sha1 bc65e5ca785183e9ba121bd4b23eec031a8dac11
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
