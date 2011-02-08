@@ -4,6 +4,7 @@
 
 #include "specfun_wrappers.h"
 #include <stdio.h>
+#include <stdlib.h>
 
 #define CADDR(z) (double *)(&((z).real)), (double*)(&((z).imag))
 #define F2C_CST(z) (double *)&((z)->real), (double *)&((z)->imag)
@@ -65,6 +66,10 @@ extern void F_FUNC(rswfp,RSWFP)(int*,int*,double*,double*,double*,int*,double*,d
 extern void F_FUNC(rswfo,RSWFO)(int*,int*,double*,double*,double*,int*,double*,double*,double*,double*);
 extern void F_FUNC(ffk,FFK)(int*,double*,double*,double*,double*,double*,double*,double*,double*,double*);
 
+/* TODO: Temporary hack */
+void scipy_special_raise_warning(char *fmt, ...)
+{
+}
 
 /* This must be linked with fortran
  */
@@ -640,7 +645,7 @@ int pbdv_wrap(double v, double x, double *pdf, double *pdd) {
 
   /* NB. Indexing of DV/DP in specfun.f:PBDV starts from 0, hence +2 */
   num = ABS((int)v) + 2;
-  dv = (double *)PyMem_Malloc(sizeof(double)*2*num);
+  dv = (double *)malloc(sizeof(double)*2*num);
   if (dv==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *pdf = NPY_NAN;
@@ -649,7 +654,7 @@ int pbdv_wrap(double v, double x, double *pdf, double *pdd) {
   }
   dp = dv + num;
   F_FUNC(pbdv,PBDV)(&v, &x, dv, dp, pdf, pdd);
-  PyMem_Free(dv);
+  free(dv);
   return 0;
 }
 
@@ -660,7 +665,7 @@ int pbvv_wrap(double v, double x, double *pvf, double *pvd) {
 
   /* NB. Indexing of DV/DP in specfun.f:PBVV starts from 0, hence +2 */
   num = ABS((int)v) + 2;
-  vv = (double *)PyMem_Malloc(sizeof(double)*2*num);
+  vv = (double *)malloc(sizeof(double)*2*num);
   if (vv==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *pvf = NPY_NAN;
@@ -669,7 +674,7 @@ int pbvv_wrap(double v, double x, double *pvf, double *pvd) {
   }
   vp = vv + num;
   F_FUNC(pbvv,PBVV)(&v, &x, vv, vp, pvf, pvd);
-  PyMem_Free(vv);
+  free(vv);
   return 0;
 }
 
@@ -684,13 +689,13 @@ double prolate_segv_wrap(double m, double n, double c)
   }
   int_m = (int) m;
   int_n = (int) n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     return NPY_NAN;
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
-  PyMem_Free(eg);
+  free(eg);
   return cv;
 }
 
@@ -705,13 +710,13 @@ double oblate_segv_wrap(double m, double n, double c)
   }
   int_m = (int) m;
   int_n = (int) n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     return NPY_NAN;
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
-  PyMem_Free(eg);
+  free(eg);
   return cv;
 }
 
@@ -729,7 +734,7 @@ double prolate_aswfa_nocv_wrap(double m, double n, double c, double x, double *s
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *s1d = NPY_NAN;
@@ -737,7 +742,7 @@ double prolate_aswfa_nocv_wrap(double m, double n, double c, double x, double *s
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(aswfa,ASWFA)(&int_m,&int_n,&c,&x,&kd,&cv,&s1f,s1d);
-  PyMem_Free(eg);
+  free(eg);
   return s1f;
 }
 
@@ -755,7 +760,7 @@ double oblate_aswfa_nocv_wrap(double m, double n, double c, double x, double *s1
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *s1d = NPY_NAN;
@@ -763,7 +768,7 @@ double oblate_aswfa_nocv_wrap(double m, double n, double c, double x, double *s1
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(aswfa,ASWFA)(&int_m,&int_n,&c,&x,&kd,&cv,&s1f,s1d);
-  PyMem_Free(eg);
+  free(eg);
   return s1f;
 }
 
@@ -817,7 +822,7 @@ double prolate_radial1_nocv_wrap(double m, double n, double c, double x, double 
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *r1d = NPY_NAN;
@@ -825,7 +830,7 @@ double prolate_radial1_nocv_wrap(double m, double n, double c, double x, double 
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(rswfp,RSWFP)(&int_m,&int_n,&c,&x,&cv,&kf,&r1f,r1d,&r2f,&r2d);
-  PyMem_Free(eg);
+  free(eg);
   return r1f;
 }
 
@@ -842,7 +847,7 @@ double prolate_radial2_nocv_wrap(double m, double n, double c, double x, double 
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *r2d = NPY_NAN;
@@ -850,7 +855,7 @@ double prolate_radial2_nocv_wrap(double m, double n, double c, double x, double 
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(rswfp,RSWFP)(&int_m,&int_n,&c,&x,&cv,&kf,&r1f,&r1d,&r2f,r2d);
-  PyMem_Free(eg);
+  free(eg);
   return r2f;
 }
 
@@ -903,7 +908,7 @@ double oblate_radial1_nocv_wrap(double m, double n, double c, double x, double *
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *r1d = NPY_NAN;
@@ -911,7 +916,7 @@ double oblate_radial1_nocv_wrap(double m, double n, double c, double x, double *
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(rswfo,RSWFO)(&int_m,&int_n,&c,&x,&cv,&kf,&r1f,r1d,&r2f,&r2d);
-  PyMem_Free(eg);
+  free(eg);
   return r1f;
 }
 
@@ -928,7 +933,7 @@ double oblate_radial2_nocv_wrap(double m, double n, double c, double x, double *
   }
   int_m = (int )m;
   int_n = (int )n;
-  eg = (double *)PyMem_Malloc(sizeof(double)*(n-m+2));
+  eg = (double *)malloc(sizeof(double)*(n-m+2));
   if (eg==NULL) {
     printf("Warning: Memory allocation error.\n"); 
     *r2d = NPY_NAN;
@@ -936,7 +941,7 @@ double oblate_radial2_nocv_wrap(double m, double n, double c, double x, double *
   }
   F_FUNC(segv,SEGV)(&int_m,&int_n,&c,&kd,&cv,eg);
   F_FUNC(rswfo,RSWFO)(&int_m,&int_n,&c,&x,&cv,&kf,&r1f,&r1d,&r2f,r2d);
-  PyMem_Free(eg);
+  free(eg);
   return r2f;
 }
 

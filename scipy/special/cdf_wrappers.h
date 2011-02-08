@@ -8,11 +8,11 @@
 #ifndef _CDF_WRAPPERS_H
 #define _CDF_WRAPPERS_H
 #ifndef _AMOS_WRAPPERS_H
-#include "Python.h"
+#include "complex.h"
 #include "cephes/mconf.h"
 #endif
 
-#include <numpy/npy_math.h>
+#include <npy_math.h>
 
 extern double cdfbet3_wrap(double p, double x, double b);
 extern double cdfbet4_wrap(double p, double x, double a);

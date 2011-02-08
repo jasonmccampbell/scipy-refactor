@@ -65,8 +65,8 @@ Copyright 1984, 1987, 1989, 1995 by Stephen L. Moshier
 #ifndef CEPHES_MCONF_H
 #define CEPHES_MCONF_H
 
-#include <Python.h>
-#include <numpy/npy_math.h>
+#include "../complex.h"
+#include <npy_math.h>
 
 #include "cephes_names.h"
 #include "protos.h"

@@ -7,10 +7,10 @@
 
 #ifndef _AMOS_WRAPPERS_H
 #define _AMOS_WRAPPERS_H
-#include "Python.h"
+#include "complex.h"
 #include "cephes/mconf.h"
 
-#include <numpy/npy_math.h>
+#include <npy_math.h>
 
 #define DO_MTHERR(name, varp)                         \
     do {                                              \

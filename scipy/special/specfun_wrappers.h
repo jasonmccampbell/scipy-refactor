@@ -9,8 +9,8 @@
 
 #ifndef _SPEC_WRAPPERS_H
 #define _SPEC_WRAPPERS_H
-#include "Python.h"
-#include <numpy/npy_math.h>
+#include "complex.h"
+#include <npy_math.h>
 
 extern double PI;
 

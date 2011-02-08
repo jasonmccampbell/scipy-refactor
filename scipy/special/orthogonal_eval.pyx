@@ -15,6 +15,8 @@ References
 # Distributed under the same license as Scipy.
 #
 
+include "numpy.pxd"
+
 #------------------------------------------------------------------------------
 # Direct evaluation of polynomials
 #------------------------------------------------------------------------------
@@ -41,19 +43,15 @@ cdef double eval_poly_chebyt(long k, double x) nogil:
 # Ufunc boilerplate
 #------------------------------------------------------------------------------
 
-cdef extern from "numpy/arrayobject.h":
+cdef extern from "npy_arrayobject.h":
     void import_array()
     ctypedef int npy_intp
     cdef enum NPY_TYPES:
         NPY_LONG
         NPY_DOUBLE
 
-cdef extern from "numpy/ufuncobject.h":
+cdef extern from "npy_ufunc_object.h":
     void import_ufunc()
-    ctypedef void (*PyUFuncGenericFunction)(char**, npy_intp*, npy_intp*, void*)
-    object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
-                                   char* types, int ntypes, int nin, int nout,
-                                   int identity, char* name, char* doc, int c)
 
 cdef void _loop_id_d(char **args, npy_intp *dimensions, npy_intp *steps,
                      void *func) nogil:
@@ -76,7 +74,7 @@ _id_d_types[2] = NPY_DOUBLE
 _id_d_funcs[0] = _loop_id_d
 
 import_array()
-import_ufunc()
+#import_ufunc()
 
 #--
 

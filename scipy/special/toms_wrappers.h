@@ -8,7 +8,7 @@
 #ifndef _TOMS_WRAPPERS_H
 #define _TOMS_WRAPPERS_H
 #ifndef _AMOS_WRAPPERS_H
-#include "Python.h"
+#include "complex.h"
 #include "cephes/mconf.h"
 
 #define CADDR(z) (double *)&z.real, (double*)&z.imag
