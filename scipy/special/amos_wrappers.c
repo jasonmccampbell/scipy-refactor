@@ -5,6 +5,7 @@
  *  arguments.
  */
 
+#include <stdlib.h>
 #include "amos_wrappers.h"
 
 #define CADDR(z) (double *)(&((z).real)), (double*)(&((z).imag))

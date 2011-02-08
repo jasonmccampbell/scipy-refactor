@@ -1,5 +1,4 @@
-#include <Python.h>
-#include <numpy/npy_math.h>
+#include <npy_math.h>
 
 #include <stdio.h>
 #include <math.h>
