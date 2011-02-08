@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The calc_lwork module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The calc_lwork module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -41,6 +41,8 @@ cpdef object gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -66,6 +68,8 @@ cpdef object gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -91,6 +95,8 @@ cpdef object gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -114,6 +120,8 @@ cpdef object getri(object prefix, fwi_integer_t n):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -139,6 +147,8 @@ cpdef object geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fw
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -163,6 +173,8 @@ cpdef object heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -187,6 +199,8 @@ cpdef object syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -211,6 +225,8 @@ cpdef object gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -235,6 +251,8 @@ cpdef object geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -259,6 +277,8 @@ cpdef object gqr(object prefix, fwi_integer_t m, fwi_integer_t n):
     """
     cdef char *fw_prefix = [0, 0]
     cdef fwi_integer_t min_lwork, max_lwork
+    min_lwork = 0
+    max_lwork = 0
     fw_prefix[0] = fw_aschar(prefix)
     if fw_prefix[0] == 0:
         raise ValueError("len(prefix) != 1")
@@ -286,9 +306,9 @@ cdef char fw_aschar(object s):
         return buf[0]
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 ae171eebe0ba45db91d6dbbd05c40bf021f08682
-# Fwrap: pyf-sha1 9a9d6904d491517b565fdd032e7ff1582f9569ce
+# Fwrap: pyf-sha1 71c4f047b5c68db0788c1eec0d75656464ced56a
 # Fwrap: wraps src/calc_lwork.f
 # Fwrap:     sha1 9403c229ea6a86018979d6df550170cd2e1cef89
 # Fwrap: f77binding True

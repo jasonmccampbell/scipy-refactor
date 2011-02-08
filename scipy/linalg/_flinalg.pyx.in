@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _flinalg module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The _flinalg module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -38,10 +38,12 @@ cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
     cdef fwi_integer_t n, info
     cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
+    det = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[0]
     piv_shape[0] = n
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if n != a_shape[0]:
@@ -75,10 +77,12 @@ cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
     cdef fwi_integer_t n, info
     cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
+    det = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[0]
     piv_shape[0] = n
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if n != a_shape[0]:
@@ -125,6 +129,7 @@ cpdef object {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=Fal
     k = m if (m < n) else n
     piv_shape[0] = k
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if m != a_shape[0]:
         raise ValueError("(m == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -190,9 +195,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 9c27bf03e429178b02879c0c9af7e1f9f38ef60f
-# Fwrap: pyf-sha1 f306d593748fdb390bdc20caf7783cacea684ca7
+# Fwrap: pyf-sha1 52dfbd90853372d85d11a18f119a401b42f21c76
 # Fwrap: wraps src/det.f
 # Fwrap:     sha1 cf2332711df8b7cc1f4f025cddf95ec6102ea3f0
 # Fwrap: wraps src/lu.f

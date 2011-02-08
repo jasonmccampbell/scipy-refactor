@@ -62,19 +62,19 @@ env.NumpyPythonExtension('_minpack', '_minpackmodule.c')
 env.NumpyPythonExtension('_zeros', 'zeros.c')
 
 # _lbfgsb pyextension
-src = [pjoin('lbfgsb', i) for i in ['lbfgsb.pyf', 'routines.f']]
+src = ['_lbfgsb.c', pjoin('lbfgsb', 'routines.f')]
 env.NumpyPythonExtension('_lbfgsb', source = src)
 
 # _cobyla pyextension
-src = [pjoin('cobyla', i) for i in ['cobyla2.f', 'trstlp.f', 'cobyla.pyf']]
+src = ['_cobyla.c'] + [pjoin('cobyla', i) for i in ['cobyla2.f', 'trstlp.f']]
 env.NumpyPythonExtension('_cobyla', source = src)
 
 # _minpack2 pyextension
-src = [pjoin('minpack2', i) for i in ['dcsrch.f', 'dcstep.f', 'minpack2.pyf']]
+src = ['minpack2.c'] + [pjoin('minpack2', i) for i in ['dcsrch.f', 'dcstep.f']]
 env.NumpyPythonExtension('minpack2', source = src)
 
 # _nnls pyextension
-src = [pjoin('nnls', i) for i in ['nnls.f', 'nnls.pyf']]
+src = ['_nnls.c', pjoin('nnls', 'nnls.f')]
 env.NumpyPythonExtension('_nnls', source = src)
 
 # moduleTNC pyextension
@@ -83,5 +83,5 @@ env.NumpyPythonExtension('moduleTNC',
                                                    ['moduleTNC.c', 'tnc.c']])
 
 # _slsqp pyextension
-src = [pjoin('slsqp', i) for i in ['slsqp_optmz.f', 'slsqp.pyf']]
+src = ['_slsqp.c', pjoin('slsqp', 'slsqp_optmz.f')]
 env.NumpyPythonExtension('_slsqp', source = src)

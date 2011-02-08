@@ -270,9 +270,8 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
 
 
     # Initialize the iteration counter and the mode value
-    mode = array(0,int)
-    acc = array(acc,float)
-    majiter = array(iter,int)
+    mode = 0
+    majiter = iter
     majiter_prev = 0
 
     # Print the header if iprint >= 2
@@ -348,7 +347,7 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
             a = concatenate((a,zeros([la,1])),1)
 
         # Call SLSQP
-        slsqp(m, meq, x, xl, xu, fx, c, g, a, acc, majiter, mode, w, jw)
+        acc, majiter, mode = slsqp(m, meq, x, xl, xu, fx, c, g, a, acc, majiter, mode, w, jw)
 
         # Print the status of the current iterate if iprint > 2 and the
         # major iteration has incremented
@@ -360,11 +359,11 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
         if abs(mode) != 1:
             break
 
-        majiter_prev = int(majiter)
+        majiter_prev = majiter
 
     # Optimization loop complete.  Print status if requested
     if iprint >= 1:
-        print exit_modes[int(mode)] + "    (Exit mode " + str(mode) + ')'
+        print exit_modes[mode] + "    (Exit mode " + str(mode) + ')'
         print "            Current function value:", fx
         print "            Iterations:", majiter
         print "            Function evaluations:", feval[0]
@@ -375,6 +374,6 @@ def fmin_slsqp( func, x0 , eqcons=[], f_eqcons=None, ieqcons=[], f_ieqcons=None,
     else:
         return [list(x),
                 float(fx),
-                int(majiter),
-                int(mode),
-                exit_modes[int(mode)] ]
+                majiter,
+                mode,
+                exit_modes[mode] ]

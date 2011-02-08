@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The mvn module was generated with Fwrap v0.2.0dev_2886444.
+"""The mvn module was generated with Fwrap v0.2.0dev_9849d10.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -10,19 +10,12 @@ Functions
 mvndst(...)
 mvnun(...)
 
-Data Types
-----------
-fw_character
-fw_shape
-fwi_integer
-fwr_dbl
-
 """
 np.import_array()
-include 'fwrap_ktp.pxi'
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef api object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+__all__ = ['mvnun', 'mvndst']
+cpdef object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvnun(lower, upper, means, covar[, maxpts, abseps, releps]) -> (value, inform)
 
     Parameters
@@ -41,51 +34,36 @@ cpdef api object mvnun(object lower, object upper, object means, object covar, o
     inform : fwi_integer, intent out
 
     """
-    cdef np.ndarray lower_
-    cdef fw_shape_t lower_shape_[1]
-    cdef np.ndarray upper_
-    cdef fw_shape_t upper_shape_[1]
-    cdef np.ndarray means_
-    cdef fw_shape_t means_shape_[2]
-    cdef np.ndarray covar_
-    cdef fw_shape_t covar_shape_[2]
-    cdef fwi_integer_t maxpts_
-    cdef fwi_integer_t d
-    cdef fwi_integer_t n
-    cdef fwi_integer_t fw_iserr__
+    cdef fwi_integer_t maxpts_, d, n, inform
     cdef fwr_dbl_t value
-    cdef fwi_integer_t inform
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    means_, means = fw_asfortranarray(means, fwr_dbl_t_enum, 2, False)
-    fw_copyshape(means_shape_, np.PyArray_DIMS(means_), 2)
-    d = np.PyArray_DIMS(means_)[0]
+    cdef np.ndarray lower_, upper_, means_, covar_
+    cdef np.npy_intp lower_shape[1], upper_shape[1], means_shape[2], covar_shape[2]
+    means_ = fw_asfortranarray(means, fwr_dbl_t_enum, 2, means_shape, False, False)
+    d = means_shape[0]
     maxpts_ = maxpts if (maxpts is not None) else d * 1000
-    lower_, lower = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(lower_shape_, np.PyArray_DIMS(lower_), 1)
-    if not (0 <= d <= lower_shape_[0]):
+    value = 0
+    inform = 0
+    lower_ = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, lower_shape, False, False)
+    if not (0 <= d <= lower_shape[0]):
         raise ValueError("(0 <= d <= lower.shape[0]) not satisifed")
-    upper_, upper = fw_asfortranarray(upper, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(upper_shape_, np.PyArray_DIMS(upper_), 1)
-    if not (0 <= d <= upper_shape_[0]):
+    upper_ = fw_asfortranarray(upper, fwr_dbl_t_enum, 1, upper_shape, False, False)
+    if not (0 <= d <= upper_shape[0]):
         raise ValueError("(0 <= d <= upper.shape[0]) not satisifed")
-    n = np.PyArray_DIMS(means_)[1]
-    if d != means_shape_[0]:
+    n = means_shape[1]
+    if d != means_shape[0]:
         raise ValueError("(d == means.shape[0]) not satisifed")
-    if not (0 <= n <= means_shape_[1]):
+    if not (0 <= n <= means_shape[1]):
         raise ValueError("(0 <= n <= means.shape[1]) not satisifed")
-    covar_, covar = fw_asfortranarray(covar, fwr_dbl_t_enum, 2, False)
-    fw_copyshape(covar_shape_, np.PyArray_DIMS(covar_), 2)
-    if d != covar_shape_[0]:
+    covar_ = fw_asfortranarray(covar, fwr_dbl_t_enum, 2, covar_shape, False, False)
+    if d != covar_shape[0]:
         raise ValueError("(d == covar.shape[0]) not satisifed")
-    if not (0 <= d <= covar_shape_[1]):
+    if not (0 <= d <= covar_shape[1]):
         raise ValueError("(0 <= d <= covar.shape[1]) not satisifed")
-    mvnun_c(&d, &n, lower_shape_, <fwr_dbl_t*>np.PyArray_DATA(lower_), upper_shape_, <fwr_dbl_t*>np.PyArray_DATA(upper_), means_shape_, <fwr_dbl_t*>np.PyArray_DATA(means_), covar_shape_, <fwr_dbl_t*>np.PyArray_DATA(covar_), &maxpts_, &abseps, &releps, &value, &inform, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'mvnun' wrapper.")
+    fc.mvnun(&d, &n, <fwr_dbl_t*>np.PyArray_DATA(lower_), <fwr_dbl_t*>np.PyArray_DATA(upper_), <fwr_dbl_t*>np.PyArray_DATA(means_), <fwr_dbl_t*>np.PyArray_DATA(covar_), &maxpts_, &abseps, &releps, &value, &inform)
     return (value, inform,)
 
 
-cpdef api object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+cpdef object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvndst(lower, upper, infin, correl[, maxpts, abseps, releps]) -> (error, value, inform)
 
     Parameters
@@ -105,108 +83,70 @@ cpdef api object mvndst(object lower, object upper, object infin, object correl,
     inform : fwi_integer, intent out
 
     """
-    cdef np.ndarray lower_
-    cdef fw_shape_t lower_shape_[1]
-    cdef np.ndarray upper_
-    cdef fw_shape_t upper_shape_[1]
-    cdef np.ndarray infin_
-    cdef fw_shape_t infin_shape_[1]
-    cdef np.ndarray correl_
-    cdef fw_shape_t correl_shape_[1]
-    cdef fwi_integer_t n
-    cdef fwi_integer_t fw_iserr__
-    cdef fwr_dbl_t error
-    cdef fwr_dbl_t value
-    cdef fwi_integer_t inform
-    cdef fw_character_t fw_errstr__[fw_errstr_len]
-    lower_, lower = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(lower_shape_, np.PyArray_DIMS(lower_), 1)
-    n = np.PyArray_DIMS(lower_)[0]
-    if not (0 <= n <= lower_shape_[0]):
+    cdef fwi_integer_t n, inform
+    cdef fwr_dbl_t error, value
+    cdef np.ndarray lower_, upper_, infin_, correl_
+    cdef np.npy_intp lower_shape[1], upper_shape[1], infin_shape[1], correl_shape[1]
+    error = 0
+    value = 0
+    inform = 0
+    lower_ = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, lower_shape, False, False)
+    n = lower_shape[0]
+    if not (0 <= n <= lower_shape[0]):
         raise ValueError("(0 <= n <= lower.shape[0]) not satisifed")
-    upper_, upper = fw_asfortranarray(upper, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(upper_shape_, np.PyArray_DIMS(upper_), 1)
-    if not (0 <= n <= upper_shape_[0]):
+    upper_ = fw_asfortranarray(upper, fwr_dbl_t_enum, 1, upper_shape, False, False)
+    if not (0 <= n <= upper_shape[0]):
         raise ValueError("(0 <= n <= upper.shape[0]) not satisifed")
-    infin_, infin = fw_asfortranarray(infin, fwi_integer_t_enum, 1, False)
-    fw_copyshape(infin_shape_, np.PyArray_DIMS(infin_), 1)
-    if not (0 <= n <= infin_shape_[0]):
+    infin_ = fw_asfortranarray(infin, fwi_integer_t_enum, 1, infin_shape, False, False)
+    if not (0 <= n <= infin_shape[0]):
         raise ValueError("(0 <= n <= infin.shape[0]) not satisifed")
-    correl_, correl = fw_asfortranarray(correl, fwr_dbl_t_enum, 1, False)
-    fw_copyshape(correl_shape_, np.PyArray_DIMS(correl_), 1)
-    if not (0 <= n * (n - 1) // 2 <= correl_shape_[0]):
+    correl_ = fw_asfortranarray(correl, fwr_dbl_t_enum, 1, correl_shape, False, False)
+    if not (0 <= n * (n - 1) // 2 <= correl_shape[0]):
         raise ValueError("(0 <= n * (n - 1) // 2 <= correl.shape[0]) not satisifed")
-    mvndst_c(&n, lower_shape_, <fwr_dbl_t*>np.PyArray_DATA(lower_), upper_shape_, <fwr_dbl_t*>np.PyArray_DATA(upper_), infin_shape_, <fwi_integer_t*>np.PyArray_DATA(infin_), correl_shape_, <fwr_dbl_t*>np.PyArray_DATA(correl_), &maxpts, &abseps, &releps, &error, &value, &inform, &fw_iserr__, fw_errstr__)
-    if fw_iserr__ != FW_NO_ERR__:
-        raise RuntimeError("an error was encountered when calling the 'mvndst' wrapper.")
+    fc.mvndst(&n, <fwr_dbl_t*>np.PyArray_DATA(lower_), <fwr_dbl_t*>np.PyArray_DATA(upper_), <fwi_integer_t*>np.PyArray_DATA(infin_), <fwr_dbl_t*>np.PyArray_DATA(correl_), &maxpts, &abseps, &releps, &error, &value, &inform)
     return (error, value, inform,)
 
 
 
-cdef void fw_copyshape(fw_shape_t *target, np.intp_t *source, int ndim):
-    # In f77binding mode, we do not always have fw_shape_t and np.npy_intp
-    # as the same type, so must make a copy
-    cdef int i
-    for i in range(ndim):
-        target[i] = source[i]
-
-cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy):
+cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
+                                  np.intp_t * coerced_shape,
+                                  bint copy, bint create, int alignment=1):
     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
-    if ndim <= 1:
-        # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
-        flags |= np.NPY_C_CONTIGUOUS
-    if copy:
-        flags |= np.NPY_ENSURECOPY
-    result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
-
-    if ndim == result.ndim:
-        return result, result
+    cdef np.ndarray result
+    cdef np.npy_intp * in_shape
+    cdef int in_ndim
+    cdef int i
+    if value is None:
+        if create:
+            result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
+        else:
+            raise TypeError('Expected array but None provided')
     else:
-        to_shape = [None] * ndim
-        fw_f2py_shape_coercion(ndim, to_shape, result.ndim, result.shape,
-                               result.size)
-        return result.reshape(to_shape, order='F'), result
-
-cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
-                                   int from_ndim, object from_shape,
-                                   Py_ssize_t from_size):
-    # Logic ported from check_and_fix_dimensions in fortranobject.c
-    # Todo: optimize
-    if to_ndim > from_ndim:
-        to_size = 1
-        free_ax = -1
-        for i in range(from_ndim):
-            d = from_shape[i]
-            if d == 0:
-                d = 1
-            to_shape[i] = d
-            to_size *= d
-        for i in range(from_ndim, to_ndim):
-            if free_ax < 0:
-                free_ax = i
-            else:
-                to_shape[i] = 1
-        if free_ax >= 0:
-            to_shape[free_ax] = from_size // to_size
-    elif to_ndim < from_ndim:
-        j = 0
-        for i in range(from_ndim):
-            while j < from_ndim and from_shape[j] < 2:
-                j += 1
-            if j >= from_ndim:
-                d = 1
-            else:
-                d = from_shape[j]
-                j += 1
-            if i < to_ndim:
-                to_shape[i] = d
-            else:
-                to_shape[to_ndim - 1] *= d
+        if ndim <= 1:
+            # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
+            flags |= np.NPY_C_CONTIGUOUS
+        if (not copy and alignment > 1 and np.PyArray_Check(value) and
+            (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
+            # mis-aligned array
+            copy = True
+        if copy:
+            flags |= np.NPY_ENSURECOPY
+        result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
+    in_ndim = np.PyArray_NDIM(result)
+    if in_ndim > ndim:
+        raise ValueError("Dimension of array must be <= %d" % ndim)
+    in_shape = np.PyArray_DIMS(result)
+    for i in range(in_ndim):
+        coerced_shape[i] = in_shape[i]
+    for i in range(in_ndim, ndim):
+        # Pad shape with ones on right side if necessarry
+        coerced_shape[i] = 1
+    return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_2886444
+# Fwrap: version 0.2.0dev_9849d10
 # Fwrap: self-sha1 ae9426402166d8ba0c07ab8f65716a064bddb136
-# Fwrap: pyf-sha1 53b430ec2eed245a5b0f0d2e8dd68c8e01429eae
+# Fwrap: pyf-sha1 d0a418a7c74072732f13a54b55d564dcb8bc96cc
 # Fwrap: wraps src/mvndst.f
 # Fwrap:     sha1 3048e094d20be8b3e25e2882c1c93934a6e5881b
 # Fwrap: exclude bvnmvn
@@ -237,7 +177,6 @@ cdef object fw_f2py_shape_coercion(int to_ndim, object to_shape,
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
 # Fwrap: auxiliary mvn.pxd
-# Fwrap: auxiliary mvn_fc.f
 # Fwrap: auxiliary mvn_fc.h
 # Fwrap: auxiliary mvn_fc.pxd
 
