@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linalg", "linalg.vcxproj", "{CDC7BA00-5A3B-271C-9932-600E18ADE65B}"
+EndProject
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "calc_lwork", "calc_lwork.vfproj", "{FCF6923D-A80A-408A-941D-8D5FEF36CA96}"
+EndProject
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "flinalg", "flinalg.vfproj", "{B7103A2F-CF6E-4B63-8E0D-16987971051C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CDC7BA00-5A3B-271C-9932-600E18ADE65B}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CDC7BA00-5A3B-271C-9932-600E18ADE65B}.Debug|Win32.Build.0 = Debug|Win32
+		{CDC7BA00-5A3B-271C-9932-600E18ADE65B}.Release|Win32.ActiveCfg = Release|Win32
+		{CDC7BA00-5A3B-271C-9932-600E18ADE65B}.Release|Win32.Build.0 = Release|Win32
+		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Debug|Win32.Build.0 = Debug|Win32
+		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Release|Win32.ActiveCfg = Release|Win32
+		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Release|Win32.Build.0 = Release|Win32
+		{B7103A2F-CF6E-4B63-8E0D-16987971051C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{B7103A2F-CF6E-4B63-8E0D-16987971051C}.Debug|Win32.Build.0 = Debug|Win32
+		{B7103A2F-CF6E-4B63-8E0D-16987971051C}.Release|Win32.ActiveCfg = Release|Win32
+		{B7103A2F-CF6E-4B63-8E0D-16987971051C}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <LinkIncremental>true</LinkIncremental>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;LINALG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\numpy-refactor\libndarray;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;LINALG_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+      <AdditionalIncludeDirectories>..\..\..\numpy-refactor\libndarray;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+    <Link>
+      <TargetMachine>MachineX86</TargetMachine>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="atlas_version.c" />
+    <ClCompile Include="src\fblaswrap_veclib_c.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="calc_lwork_fc.h" />
+    <ClInclude Include="fblas_fc.h" />
+    <ClInclude Include="flapack_fc.h" />
+    <ClInclude Include="fwrap_ktp_header.h" />
+    <ClInclude Include="_flinalg_fc.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="basic.py" />
+    <None Include="blas.py" />
+    <None Include="calc_lwork.pxd" />
+    <None Include="calc_lwork.pyf" />
+    <None Include="calc_lwork.pyx" />
+    <None Include="calc_lwork_fc.pxd" />
+    <None Include="decomp.py" />
+    <None Include="decomp_cholesky.py" />
+    <None Include="decomp_lu.py" />
+    <None Include="decomp_qr.py" />
+    <None Include="decomp_schur.py" />
+    <None Include="decomp_svd.py" />
+    <None Include="fblas.pxd" />
+    <None Include="fblas.pyx" />
+    <None Include="fblas.pyx.in" />
+    <None Include="fblas_fc.pxd" />
+    <None Include="flapack.pxd" />
+    <None Include="flapack.pyx" />
+    <None Include="flapack.pyx.in" />
+    <None Include="flapack_fc.pxd" />
+    <None Include="flapack_user_routines.pyf" />
+    <None Include="flinalg.py" />
+    <None Include="funcinfo.py" />
+    <None Include="fwrap_ktp.pxd" />
+    <None Include="generic_cblas.pyf" />
+    <None Include="generic_cblas1.pyf" />
+    <None Include="generic_clapack.pyf" />
+    <None Include="generic_fblas.pyf" />
+    <None Include="generic_fblas1.pyf" />
+    <None Include="generic_fblas2.pyf" />
+    <None Include="generic_fblas3.pyf" />
+    <None Include="generic_flapack.pyf" />
+    <None Include="info.py" />
+    <None Include="interface_gen.py" />
+    <None Include="lapack.py" />
+    <None Include="linalg_version.py" />
+    <None Include="matfuncs.py" />
+    <None Include="misc.py" />
+    <None Include="special_matrices.py" />
+    <None Include="_flinalg.pyf" />
+    <None Include="_flinalg.pyx" />
+    <None Include="_flinalg.pyx.in" />
+    <None Include="_flinalg_fc.pxd" />
+    <None Include="__init__.py" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
