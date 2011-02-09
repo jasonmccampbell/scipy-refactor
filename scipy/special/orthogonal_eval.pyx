@@ -15,7 +15,8 @@ References
 # Distributed under the same license as Scipy.
 #
 
-include "numpy.pxd"
+cimport numpy as np
+ctypedef np.npy_intp npy_intp
 
 #------------------------------------------------------------------------------
 # Direct evaluation of polynomials
@@ -23,6 +24,9 @@ include "numpy.pxd"
 
 cdef extern from "math.h":
     double sqrt(double x) nogil
+
+cdef extern from "stdlib.h" nogil:
+    void *malloc(size_t size)
 
 cdef double eval_poly_chebyt(long k, double x) nogil:
     # Use Chebyshev T recurrence directly, see [MH]
@@ -43,16 +47,6 @@ cdef double eval_poly_chebyt(long k, double x) nogil:
 # Ufunc boilerplate
 #------------------------------------------------------------------------------
 
-cdef extern from "npy_arrayobject.h":
-    void import_array()
-    ctypedef int npy_intp
-    cdef enum NPY_TYPES:
-        NPY_LONG
-        NPY_DOUBLE
-
-cdef extern from "npy_ufunc_object.h":
-    void import_ufunc()
-
 cdef void _loop_id_d(char **args, npy_intp *dimensions, npy_intp *steps,
                      void *func) nogil:
     cdef int i
@@ -63,25 +57,26 @@ cdef void _loop_id_d(char **args, npy_intp *dimensions, npy_intp *steps,
             (<long*>ip1)[0], (<double*>ip2)[0])
         ip1 += steps[0]; ip2 += steps[1]; op += steps[2]
 
-cdef char _id_d_types[3]
+cdef char *_id_d_types = <char *>malloc(3)
 
-cdef PyUFuncGenericFunction _id_d_funcs[1]
+cdef np.PyUFuncGenericFunction *_id_d_funcs = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction))
 
-_id_d_types[0] = NPY_LONG
-_id_d_types[1] = NPY_DOUBLE
-_id_d_types[2] = NPY_DOUBLE
+_id_d_types[0] = np.NPY_LONG
+_id_d_types[1] = np.NPY_DOUBLE
+_id_d_types[2] = np.NPY_DOUBLE
 
 _id_d_funcs[0] = _loop_id_d
 
-import_array()
+#import_array()
 #import_ufunc()
 
 #--
 
-cdef void *chebyt_data[1]
+cdef void **chebyt_data = <void **>malloc(sizeof(void*))
 chebyt_data[0] = <void*>eval_poly_chebyt
-_eval_chebyt = PyUFunc_FromFuncAndData(_id_d_funcs, chebyt_data,
-                                       _id_d_types, 1, 2, 1, 0, "", "", 0)
+empty = ""
+_eval_chebyt = np.PyUFunc_FromFuncAndData(_id_d_funcs, chebyt_data,
+                                       _id_d_types, 1, 2, 1, 0, empty, empty, 0)
 
 
 #------------------------------------------------------------------------------
