@@ -22,10 +22,15 @@
 
 import cython
 import warnings
+import numpy
+cimport numpy as np
 
 cdef extern from "math.h":
     double exp(double x) nogil
     double log(double x) nogil
+
+cdef extern from "stdlib.h" nogil:
+    void *malloc(size_t size)
 
 # Use Numpy's portable C99-compatible complex functios
 
@@ -59,13 +64,14 @@ cdef inline double complex zexp(double complex x) nogil:
     r = npy_cexp((<npy_cdouble*>&x)[0])
     return (<double complex*>&r)[0]
 
-cdef void lambertw_raise_warning(double complex z) with gil:
-    warnings.warn("Lambert W iteration failed to converge: %r" % z)
+cdef void lambertw_raise_warning(double complex z): # XXX with gil:
+    # XXX warnings.warn("Lambert W iteration failed to converge: %r" % z)
+    pass
 
 # Heavy lifting is here:
 
 @cython.cdivision(True)
-cdef double complex lambertw_scalar(double complex z, long k, double tol) nogil:
+cdef double complex lambertw_scalar(double complex z, long k, double tol): # XXX nogil
     """
     This is just the implementation of W for a single input z.
     See the docstring for lambertw() below for the full description.
@@ -146,22 +152,24 @@ cdef double complex lambertw_scalar(double complex z, long k, double tol) nogil:
     return wn
 
 
-# Turn the above function into a Ufunc:
-#--------------------------------------
-cdef extern from "numpy/arrayobject.h":
-    void import_array()
-    ctypedef int npy_intp
-    cdef enum NPY_TYPES:
-        NPY_LONG
-        NPY_CDOUBLE
-        NPY_DOUBLE
+# # Turn the above function into a Ufunc:
+# #--------------------------------------
+# cdef extern from "numpy/arrayobject.h":
+#     void import_array()
+#     ctypedef int npy_intp
+#     cdef enum NPY_TYPES:
+#         NPY_LONG
+#         NPY_CDOUBLE
+#         NPY_DOUBLE
 
-cdef extern from "numpy/ufuncobject.h":
-    void import_ufunc()
-    ctypedef void (*PyUFuncGenericFunction)(char**, npy_intp*, npy_intp*, void*)
-    object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
-        char* types, int ntypes, int nin, int nout,
-        int identity, char* name, char* doc, int c)
+# cdef extern from "numpy/ufuncobject.h":
+#     void import_ufunc()
+#     ctypedef void (*PyUFuncGenericFunction)(char**, npy_intp*, npy_intp*, void*)
+#     object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
+#         char* types, int ntypes, int nin, int nout,
+#         int identity, char* name, char* doc, int c)
+
+ctypedef np.npy_intp npy_intp
 
 cdef void _apply_func_to_1d_vec(char **args, npy_intp *dimensions, npy_intp *steps,
                      void *func) nogil:
@@ -172,23 +180,24 @@ cdef void _apply_func_to_1d_vec(char **args, npy_intp *dimensions, npy_intp *ste
             (<double complex*>ip1)[0], (<long*>ip2)[0], (<double*>ip3)[0])
         ip1 += steps[0]; ip2 += steps[1]; ip3 += steps[2]; op += steps[3]
 
-cdef PyUFuncGenericFunction _loop_funcs[1]
+cdef np.PyUFuncGenericFunction *_loop_funcs = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction))
 _loop_funcs[0] = _apply_func_to_1d_vec
 
-cdef char _inp_outp_types[4]
-_inp_outp_types[0] = NPY_CDOUBLE
-_inp_outp_types[1] = NPY_LONG
-_inp_outp_types[2] = NPY_DOUBLE
-_inp_outp_types[3] = NPY_CDOUBLE
+cdef char *_inp_outp_types = <char *>malloc(4)
+_inp_outp_types[0] = np.NPY_CDOUBLE
+_inp_outp_types[1] = np.NPY_LONG
+_inp_outp_types[2] = np.NPY_DOUBLE
+_inp_outp_types[3] = np.NPY_CDOUBLE
 
-import_array()
-import_ufunc()
+# import_array()
+# import_ufunc()
 
 # The actual ufunc declaration:
-cdef void *the_func_to_apply[1]
+cdef void **the_func_to_apply = <void **>malloc(sizeof(void*))
 the_func_to_apply[0] = <void*>lambertw_scalar
-_lambertw = PyUFunc_FromFuncAndData(_loop_funcs, the_func_to_apply,
-    _inp_outp_types, 1, 3, 1, 0, "", "", 0)
+empty = ""
+_lambertw = np.PyUFunc_FromFuncAndData(_loop_funcs, the_func_to_apply,
+    _inp_outp_types, 1, 3, 1, 0, empty, empty, 0)
 
 def lambertw(z, k=0, tol=1e-8):
     r"""
