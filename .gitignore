@@ -8,6 +8,10 @@
 *~
 *.bak
 *.swp
+*.suo
+*.sdf
+*.vcxproj.*
+*.opensdf
 .\#*
 .deps
 .libs
