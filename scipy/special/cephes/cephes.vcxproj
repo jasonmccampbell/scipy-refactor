@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{0A8F1D0A-4795-4369-99E6-8F5ACC53D1C3}</ProjectGuid>
+    <RootNamespace>cephes</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>StaticLibrary</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>..\..\..\..\numpy-refactor\libndarray\src</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_MBCS;NO_CPYTHON;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="airy.c" />
+    <ClCompile Include="bdtr.c" />
+    <ClCompile Include="beta.c" />
+    <ClCompile Include="btdtr.c" />
+    <ClCompile Include="cbrt.c" />
+    <ClCompile Include="chbevl.c" />
+    <ClCompile Include="chdtr.c" />
+    <ClCompile Include="const.c" />
+    <ClCompile Include="cpmul.c" />
+    <ClCompile Include="dawsn.c" />
+    <ClCompile Include="ellie.c" />
+    <ClCompile Include="ellik.c" />
+    <ClCompile Include="ellpe.c" />
+    <ClCompile Include="ellpj.c" />
+    <ClCompile Include="ellpk.c" />
+    <ClCompile Include="euclid.c" />
+    <ClCompile Include="exp10.c" />
+    <ClCompile Include="exp2.c" />
+    <ClCompile Include="expn.c" />
+    <ClCompile Include="fabs.c" />
+    <ClCompile Include="fdtr.c" />
+    <ClCompile Include="fresnl.c" />
+    <ClCompile Include="gamma.c" />
+    <ClCompile Include="gdtr.c" />
+    <ClCompile Include="gels.c" />
+    <ClCompile Include="hyp2f1.c" />
+    <ClCompile Include="hyperg.c" />
+    <ClCompile Include="i0.c" />
+    <ClCompile Include="i1.c" />
+    <ClCompile Include="igam.c" />
+    <ClCompile Include="igami.c" />
+    <ClCompile Include="incbet.c" />
+    <ClCompile Include="incbi.c" />
+    <ClCompile Include="j0.c" />
+    <ClCompile Include="j1.c" />
+    <ClCompile Include="jv.c" />
+    <ClCompile Include="k0.c" />
+    <ClCompile Include="k1.c" />
+    <ClCompile Include="kn.c" />
+    <ClCompile Include="kolmogorov.c" />
+    <ClCompile Include="mmmpy.c" />
+    <ClCompile Include="mtherr.c" />
+    <ClCompile Include="mtransp.c" />
+    <ClCompile Include="mvmpy.c" />
+    <ClCompile Include="nbdtr.c" />
+    <ClCompile Include="ndtr.c" />
+    <ClCompile Include="ndtri.c" />
+    <ClCompile Include="pdtr.c" />
+    <ClCompile Include="polevl.c" />
+    <ClCompile Include="polmisc.c" />
+    <ClCompile Include="polrt.c" />
+    <ClCompile Include="polyn.c" />
+    <ClCompile Include="powi.c" />
+    <ClCompile Include="psi.c" />
+    <ClCompile Include="rgamma.c" />
+    <ClCompile Include="round.c" />
+    <ClCompile Include="scipy_iv.c" />
+    <ClCompile Include="setprec.c" />
+    <ClCompile Include="shichi.c" />
+    <ClCompile Include="sici.c" />
+    <ClCompile Include="simpsn.c" />
+    <ClCompile Include="simq.c" />
+    <ClCompile Include="sincos.c" />
+    <ClCompile Include="sindg.c" />
+    <ClCompile Include="spence.c" />
+    <ClCompile Include="stdtr.c" />
+    <ClCompile Include="struve.c" />
+    <ClCompile Include="tandg.c" />
+    <ClCompile Include="tukey.c" />
+    <ClCompile Include="unity.c" />
+    <ClCompile Include="yn.c" />
+    <ClCompile Include="zeta.c" />
+    <ClCompile Include="zetac.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="cephes_names.h" />
+    <ClInclude Include="mconf.h" />
+    <ClInclude Include="protos.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="tempout.txt" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

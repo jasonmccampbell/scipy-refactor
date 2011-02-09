@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{3B7AF75A-0B14-4A9A-AA33-7AD752BCFB8A}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebug"/>
+				<Tool Name="VFLibrarianTool" OutputFile="../$(OutDir)/$(ProjectName).lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\dgamln.f"/>
+		<File RelativePath=".\dsclmr.f"/>
+		<File RelativePath=".\fdump.f"/>
+		<File RelativePath=".\zabs.f"/>
+		<File RelativePath=".\zacai.f"/>
+		<File RelativePath=".\zacon.f"/>
+		<File RelativePath=".\zairy.f"/>
+		<File RelativePath=".\zasyi.f"/>
+		<File RelativePath=".\zbesh.f"/>
+		<File RelativePath=".\zbesi.f"/>
+		<File RelativePath=".\zbesj.f"/>
+		<File RelativePath=".\zbesk.f"/>
+		<File RelativePath=".\zbesy.f"/>
+		<File RelativePath=".\zbinu.f"/>
+		<File RelativePath=".\zbiry.f"/>
+		<File RelativePath=".\zbknu.f"/>
+		<File RelativePath=".\zbuni.f"/>
+		<File RelativePath=".\zbunk.f"/>
+		<File RelativePath=".\zdiv.f"/>
+		<File RelativePath=".\zexp.f"/>
+		<File RelativePath=".\zkscl.f"/>
+		<File RelativePath=".\zlog.f"/>
+		<File RelativePath=".\zmlri.f"/>
+		<File RelativePath=".\zmlt.f"/>
+		<File RelativePath=".\zrati.f"/>
+		<File RelativePath=".\zs1s2.f"/>
+		<File RelativePath=".\zseri.f"/>
+		<File RelativePath=".\zshch.f"/>
+		<File RelativePath=".\zsqrt.f"/>
+		<File RelativePath=".\zuchk.f"/>
+		<File RelativePath=".\zunhj.f"/>
+		<File RelativePath=".\zuni1.f"/>
+		<File RelativePath=".\zuni2.f"/>
+		<File RelativePath=".\zunik.f"/>
+		<File RelativePath=".\zunk1.f"/>
+		<File RelativePath=".\zunk2.f"/>
+		<File RelativePath=".\zuoik.f"/>
+		<File RelativePath=".\zwrsk.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
