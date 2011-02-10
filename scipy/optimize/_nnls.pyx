@@ -10,11 +10,16 @@ Functions
 nnls(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _nnls_fc as fc
+
 np.import_array()
 __all__ = ['nnls']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object nnls(object a, fwi_integer_t m, fwi_integer_t n, object b, object w, object zz, object index_bn, object mda=None, bint overwrite_a=False, bint overwrite_b=False, object x=None):
+def nnls(object a, fwi_integer_t m, fwi_integer_t n, object b, object w, object zz, object index_bn, object mda=None, bint overwrite_a=False, bint overwrite_b=False, object x=None):
     """nnls(a, m, n, b, w, zz, index_bn[, mda, overwrite_a, overwrite_b, x]) -> (x, rnorm, mode)
 
     Parameters

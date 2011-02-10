@@ -10,11 +10,16 @@ Functions
 slsqp(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _slsqp_fc as fc
+
 np.import_array()
 __all__ = ['slsqp']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, object xu, fwr_dbl_t f, object c, object g, object a, fwr_dbl_t acc, fwi_integer_t iter, fwi_integer_t mode, object w, object jw, object la=None, object n=None, object l_w=None, object l_jw=None):
+def slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, object xu, fwr_dbl_t f, object c, object g, object a, fwr_dbl_t acc, fwi_integer_t iter, fwi_integer_t mode, object w, object jw, object la=None, object n=None, object l_w=None, object l_jw=None):
     """slsqp(m, meq, x, xl, xu, f, c, g, a, acc, iter, mode, w, jw[, la, n, l_w, l_jw]) -> (acc, iter, mode)
 
     Parameters

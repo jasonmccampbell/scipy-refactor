@@ -10,6 +10,11 @@ Functions
 minimize(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _cobyla_fc as fc
+
 np.import_array()
 import sys
 
@@ -71,7 +76,7 @@ cdef void minimize_calcfc_cb_wrapper(fwi_integer_t * n, fwi_integer_t * m, fwr_d
         longjmp(minimize_calcfc_cb_info.jmp, 1)
 
 
-cpdef object minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl_t rhoend, fwi_integer_t iprint=1, fwi_integer_t maxfun=100):
+def minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl_t rhoend, fwi_integer_t iprint=1, fwi_integer_t maxfun=100):
     """minimize(calcfc, m, x, rhobeg, rhoend[, iprint, maxfun]) -> x
 
     Parameters
