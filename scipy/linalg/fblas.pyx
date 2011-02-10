@@ -36,6 +36,7 @@ zdrot(...)
 zdscal(...)
 
 """
+
 cimport numpy as np
 from fwrap_ktp cimport *
 cimport fblas_fc as fc
@@ -471,6 +472,7 @@ def zdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.wzdotu(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return xy
+
 def isamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """isamax(x[, n, offx, incx]) -> fw_ret_arg
 
@@ -587,6 +589,7 @@ def izamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     fw_ret_arg = fc.izamax(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     fw_ret_arg -= 1 # Convert Fortran index to Python index
     return fw_ret_arg
+
 def sasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """sasum(x[, n, offx, incx]) -> fw_ret_arg
 
@@ -645,6 +648,7 @@ def dasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fw_ret_arg = fc.dasum(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
+
 def saxpy(object x, object y, object n=None, fwr_real_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """saxpy(x, y[, n, a, offx, incx, offy, incy]) -> y
 
@@ -1016,6 +1020,7 @@ def zcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.zcopy(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
+
 def sdot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """sdot(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
 
@@ -1094,6 +1099,7 @@ def ddot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t 
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fw_ret_arg = fc.ddot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
     return fw_ret_arg
+
 def sgemm(fwr_real_t alpha, object a, object b, fwr_real_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """sgemm(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
@@ -1350,6 +1356,7 @@ def zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_t beta=0.
         raise ValueError("len(transb_f) != 1")
     fc.zgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
+
 def sgemv(fwr_real_t alpha, object a, object x, fwr_real_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """sgemv(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
@@ -1598,6 +1605,7 @@ def zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta=0.
         raise ValueError("len(trans_f) != 1")
     fc.zgemv(fw_trans_f, &m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
+
 def sger(fwr_real_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """sger(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
@@ -1862,6 +1870,7 @@ def zgeru(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.zgeru(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
     return a_
+
 def snrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """snrm2(x[, n, offx, incx]) -> fw_ret_arg
 
@@ -1920,6 +1929,7 @@ def dnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fw_ret_arg = fc.dnrm2(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
+
 def srot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """srot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
@@ -2006,6 +2016,7 @@ def drot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_intege
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.drot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
     return (x_, y_,)
+
 def srotg(fwr_real_t a, fwr_real_t b):
     """srotg(a, b) -> (c, s)
 
@@ -2082,6 +2093,7 @@ def zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
     c = 0
     s = 0
     fc.zrotg(&a, &b, &c, &s)
+
 def srotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """srotm(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
@@ -2172,6 +2184,7 @@ def drotm(object x, object y, object param, object n=None, fwi_integer_t offx=0,
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
     fc.drotm(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_dbl_t*>np.PyArray_DATA(param_))
     return (x_, y_,)
+
 def srotmg(fwr_real_t d1, fwr_real_t d2, fwr_real_t x1, fwr_real_t y1, object param=None):
     """srotmg(d1, d2, x1, y1[, param]) -> param
 
@@ -2220,6 +2233,7 @@ def drotmg(fwr_dbl_t d1, fwr_dbl_t d2, fwr_dbl_t x1, fwr_dbl_t y1, object param=
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
     fc.drotmg(&d1, &d2, &x1, &y1, <fwr_dbl_t*>np.PyArray_DATA(param_))
     return param_
+
 def sscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """sscal(a, x[, n, offx, incx]) -> x
 
@@ -2336,6 +2350,7 @@ def zscal(fwc_dbl_complex_t a, object x, object n=None, fwi_integer_t offx=0, fw
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fc.zscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
+
 def sswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """sswap(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
@@ -2492,6 +2507,7 @@ def zswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.zswap(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
+
 def ssymv(fwr_real_t alpha, object a, object x, fwr_real_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """ssymv(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
@@ -2612,6 +2628,7 @@ def dsymv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta, object y, fwi_int
         raise ValueError("len(uplo_f) != 1")
     fc.dsymv(fw_uplo_f, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
+
 def strmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """strmv(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 

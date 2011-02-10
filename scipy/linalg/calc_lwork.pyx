@@ -19,10 +19,10 @@ heev(...)
 syev(...)
 
 """
+
 cimport numpy as np
 from fwrap_ktp cimport *
 cimport calc_lwork_fc as fc
-
 
 np.import_array()
 cdef extern from "string.h":

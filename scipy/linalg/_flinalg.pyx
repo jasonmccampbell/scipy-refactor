@@ -12,6 +12,7 @@ sdet_r, ddet_r, cdet_r, zdet_r(...)
 slu_c, dlu_c, clu_c, zlu_c(...)
 
 """
+
 cimport numpy as np
 from fwrap_ktp cimport *
 cimport _flinalg_fc as fc
@@ -147,6 +148,7 @@ def zdet_c(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.zdet_c(&det, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
+
 def sdet_r(object a, bint overwrite_a=False):
     """sdet_r(a[, overwrite_a]) -> (det, info)
 
@@ -275,6 +277,7 @@ def zdet_r(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.zdet_r(&det, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
+
 def slu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """slu_c(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
