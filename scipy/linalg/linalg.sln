@@ -2,6 +2,10 @@
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linalg", "linalg.vcxproj", "{CDC7BA00-5A3B-271C-9932-600E18ADE65B}"
+	ProjectSection(ProjectDependencies) = postProject
+		{B7103A2F-CF6E-4B63-8E0D-16987971051C} = {B7103A2F-CF6E-4B63-8E0D-16987971051C}
+		{FCF6923D-A80A-408A-941D-8D5FEF36CA96} = {FCF6923D-A80A-408A-941D-8D5FEF36CA96}
+	EndProjectSection
 EndProject
 Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "calc_lwork", "calc_lwork.vfproj", "{FCF6923D-A80A-408A-941D-8D5FEF36CA96}"
 EndProject
