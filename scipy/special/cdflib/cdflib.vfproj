@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{26B3B323-37A5-4449-870A-8356699C1E7D}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" OutputDirectory="../$(ConfigurationName)" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\algdiv.f"/>
+		<File RelativePath=".\alngam.f"/>
+		<File RelativePath=".\alnrel.f"/>
+		<File RelativePath=".\apser.f"/>
+		<File RelativePath=".\basym.f"/>
+		<File RelativePath=".\bcorr.f"/>
+		<File RelativePath=".\betaln.f"/>
+		<File RelativePath=".\bfrac.f"/>
+		<File RelativePath=".\bgrat.f"/>
+		<File RelativePath=".\bpser.f"/>
+		<File RelativePath=".\bratio.f"/>
+		<File RelativePath=".\brcmp1.f"/>
+		<File RelativePath=".\brcomp.f"/>
+		<File RelativePath=".\bup.f"/>
+		<File RelativePath=".\cdfbet.f"/>
+		<File RelativePath=".\cdfbin.f"/>
+		<File RelativePath=".\cdfchi.f"/>
+		<File RelativePath=".\cdfchn.f"/>
+		<File RelativePath=".\cdff.f"/>
+		<File RelativePath=".\cdffnc.f"/>
+		<File RelativePath=".\cdfgam.f"/>
+		<File RelativePath=".\cdfnbn.f"/>
+		<File RelativePath=".\cdfnor.f"/>
+		<File RelativePath=".\cdfpoi.f"/>
+		<File RelativePath=".\cdft.f"/>
+		<File RelativePath=".\cdftnc.f"/>
+		<File RelativePath=".\cumbet.f"/>
+		<File RelativePath=".\cumbin.f"/>
+		<File RelativePath=".\cumchi.f"/>
+		<File RelativePath=".\cumchn.f"/>
+		<File RelativePath=".\cumf.f"/>
+		<File RelativePath=".\cumfnc.f"/>
+		<File RelativePath=".\cumgam.f"/>
+		<File RelativePath=".\cumnbn.f"/>
+		<File RelativePath=".\cumnor.f"/>
+		<File RelativePath=".\cumpoi.f"/>
+		<File RelativePath=".\cumt.f"/>
+		<File RelativePath=".\cumtnc.f"/>
+		<File RelativePath=".\devlpl.f"/>
+		<File RelativePath=".\dinvnr.f"/>
+		<File RelativePath=".\dinvr.f"/>
+		<File RelativePath=".\dt1.f"/>
+		<File RelativePath=".\dzror.f"/>
+		<File RelativePath=".\erf.f"/>
+		<File RelativePath=".\erfc1.f"/>
+		<File RelativePath=".\esum.f"/>
+		<File RelativePath=".\exparg.f"/>
+		<File RelativePath=".\fpser.f"/>
+		<File RelativePath=".\gam1.f"/>
+		<File RelativePath=".\gaminv.f"/>
+		<File RelativePath=".\gamln.f"/>
+		<File RelativePath=".\gamln1.f"/>
+		<File RelativePath=".\gamma_fort.f"/>
+		<File RelativePath=".\grat1.f"/>
+		<File RelativePath=".\gratio.f"/>
+		<File RelativePath=".\gsumln.f"/>
+		<File RelativePath=".\ipmpar.f"/>
+		<File RelativePath=".\psi_fort.f"/>
+		<File RelativePath=".\rcomp.f"/>
+		<File RelativePath=".\rexp.f"/>
+		<File RelativePath=".\rlog.f"/>
+		<File RelativePath=".\rlog1.f"/>
+		<File RelativePath=".\spmpar.f"/>
+		<File RelativePath=".\stvaln.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
