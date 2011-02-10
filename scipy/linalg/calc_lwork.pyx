@@ -19,16 +19,11 @@ heev(...)
 syev(...)
 
 """
-cimport numpy as np
-from fwrap_ktp cimport *
-cimport calc_lwork_fc as fc
-
-
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 __all__ = ['gehrd', 'gesdd', 'gelss', 'getri', 'geev', 'heev', 'syev', 'gees', 'geqrf', 'gqr']
-def gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):
+cpdef object gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):
     """gehrd(prefix, n, lo, hi) -> (min_lwork, max_lwork)
 
     Parameters
@@ -55,7 +50,7 @@ def gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):
     return (min_lwork, max_lwork,)
 
 
-def gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute_uv):
+cpdef object gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute_uv):
     """gesdd(prefix, m, n, compute_uv) -> (min_lwork, max_lwork)
 
     Parameters
@@ -82,7 +77,7 @@ def gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute
     return (min_lwork, max_lwork,)
 
 
-def gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):
+cpdef object gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):
     """gelss(prefix, m, n, nrhs) -> (min_lwork, max_lwork)
 
     Parameters
@@ -109,7 +104,7 @@ def gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):
     return (min_lwork, max_lwork,)
 
 
-def getri(object prefix, fwi_integer_t n):
+cpdef object getri(object prefix, fwi_integer_t n):
     """getri(prefix, n) -> (min_lwork, max_lwork)
 
     Parameters
@@ -134,7 +129,7 @@ def getri(object prefix, fwi_integer_t n):
     return (min_lwork, max_lwork,)
 
 
-def geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1):
+cpdef object geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1):
     """geev(prefix, n[, compute_vl, compute_vr]) -> (min_lwork, max_lwork)
 
     Parameters
@@ -161,7 +156,7 @@ def geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fwi_integer
     return (min_lwork, max_lwork,)
 
 
-def heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
+cpdef object heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """heev(prefix, n[, lower]) -> (min_lwork, max_lwork)
 
     Parameters
@@ -187,7 +182,7 @@ def heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     return (min_lwork, max_lwork,)
 
 
-def syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
+cpdef object syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     """syev(prefix, n[, lower]) -> (min_lwork, max_lwork)
 
     Parameters
@@ -213,7 +208,7 @@ def syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):
     return (min_lwork, max_lwork,)
 
 
-def gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):
+cpdef object gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):
     """gees(prefix, n[, compute_v]) -> (min_lwork, max_lwork)
 
     Parameters
@@ -239,7 +234,7 @@ def gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):
     return (min_lwork, max_lwork,)
 
 
-def geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):
+cpdef object geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):
     """geqrf(prefix, m, n) -> (min_lwork, max_lwork)
 
     Parameters
@@ -265,7 +260,7 @@ def geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):
     return (min_lwork, max_lwork,)
 
 
-def gqr(object prefix, fwi_integer_t m, fwi_integer_t n):
+cpdef object gqr(object prefix, fwi_integer_t m, fwi_integer_t n):
     """gqr(prefix, m, n) -> (min_lwork, max_lwork)
 
     Parameters
