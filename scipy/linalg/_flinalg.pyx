@@ -12,10 +12,15 @@ sdet_r, ddet_r, cdet_r, zdet_r(...)
 slu_c, dlu_c, clu_c, zlu_c(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _flinalg_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object sdet_c(object a, bint overwrite_a=False):
+def sdet_c(object a, bint overwrite_a=False):
     """sdet_c(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -47,7 +52,7 @@ cpdef object sdet_c(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.sdet_c(&det, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object ddet_c(object a, bint overwrite_a=False):
+def ddet_c(object a, bint overwrite_a=False):
     """ddet_c(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -79,7 +84,7 @@ cpdef object ddet_c(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.ddet_c(&det, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object cdet_c(object a, bint overwrite_a=False):
+def cdet_c(object a, bint overwrite_a=False):
     """cdet_c(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -111,7 +116,7 @@ cpdef object cdet_c(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.cdet_c(&det, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object zdet_c(object a, bint overwrite_a=False):
+def zdet_c(object a, bint overwrite_a=False):
     """zdet_c(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -144,7 +149,7 @@ cpdef object zdet_c(object a, bint overwrite_a=False):
     fc.zdet_c(&det, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
 
-cpdef object sdet_r(object a, bint overwrite_a=False):
+def sdet_r(object a, bint overwrite_a=False):
     """sdet_r(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -176,7 +181,7 @@ cpdef object sdet_r(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.sdet_r(&det, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object ddet_r(object a, bint overwrite_a=False):
+def ddet_r(object a, bint overwrite_a=False):
     """ddet_r(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -208,7 +213,7 @@ cpdef object ddet_r(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.ddet_r(&det, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object cdet_r(object a, bint overwrite_a=False):
+def cdet_r(object a, bint overwrite_a=False):
     """cdet_r(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -240,7 +245,7 @@ cpdef object cdet_r(object a, bint overwrite_a=False):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.cdet_r(&det, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
-cpdef object zdet_r(object a, bint overwrite_a=False):
+def zdet_r(object a, bint overwrite_a=False):
     """zdet_r(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -273,7 +278,7 @@ cpdef object zdet_r(object a, bint overwrite_a=False):
     fc.zdet_r(&det, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
     return (det, info,)
 
-cpdef object slu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def slu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """slu_c(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters
@@ -328,7 +333,7 @@ cpdef object slu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, 
         raise ValueError("(n == u.shape[1]) not satisifed")
     fc.slu_c(<fwr_real_t*>np.PyArray_DATA(p_), <fwr_real_t*>np.PyArray_DATA(l_), <fwr_real_t*>np.PyArray_DATA(u_), <fwr_real_t*>np.PyArray_DATA(a_), &m, &n, &k, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &permute_l, &m1)
     return (p_, l_, u_, info,)
-cpdef object dlu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def dlu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """dlu_c(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters
@@ -383,7 +388,7 @@ cpdef object dlu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, 
         raise ValueError("(n == u.shape[1]) not satisifed")
     fc.dlu_c(<fwr_dbl_t*>np.PyArray_DATA(p_), <fwr_dbl_t*>np.PyArray_DATA(l_), <fwr_dbl_t*>np.PyArray_DATA(u_), <fwr_dbl_t*>np.PyArray_DATA(a_), &m, &n, &k, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &permute_l, &m1)
     return (p_, l_, u_, info,)
-cpdef object clu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def clu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """clu_c(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters
@@ -438,7 +443,7 @@ cpdef object clu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, 
         raise ValueError("(n == u.shape[1]) not satisifed")
     fc.clu_c(<fwr_real_t*>np.PyArray_DATA(p_), <fwc_complex_t*>np.PyArray_DATA(l_), <fwc_complex_t*>np.PyArray_DATA(u_), <fwc_complex_t*>np.PyArray_DATA(a_), &m, &n, &k, <fwi_integer_t*>np.PyArray_DATA(piv_), &info, &permute_l, &m1)
     return (p_, l_, u_, info,)
-cpdef object zlu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def zlu_c(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """zlu_c(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters

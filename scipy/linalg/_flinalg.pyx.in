@@ -12,6 +12,11 @@ sdet_r, ddet_r, cdet_r, zdet_r(...)
 slu_c, dlu_c, clu_c, zlu_c(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _flinalg_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
@@ -20,7 +25,7 @@ cdef extern from "string.h":
       in zip(['sdet_c', 'ddet_c', 'cdet_c', 'zdet_c'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
+def {{Xdet_c}}(object a, bint overwrite_a=False):
     """{{Xdet_c}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -59,7 +64,7 @@ cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
       in zip(['sdet_r', 'ddet_r', 'cdet_r', 'zdet_r'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
+def {{Xdet_r}}(object a, bint overwrite_a=False):
     """{{Xdet_r}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -100,7 +105,7 @@ cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
              ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """{{Xlu_c}}(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters

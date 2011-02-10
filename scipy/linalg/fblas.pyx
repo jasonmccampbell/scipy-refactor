@@ -36,10 +36,15 @@ zdrot(...)
 zdscal(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport fblas_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object chemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def chemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """chemv(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -99,7 +104,7 @@ cpdef object chemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta, 
         raise ValueError("len(uplo_f) != 1")
     fc.chemv(fw_uplo_f, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
-cpdef object zhemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def zhemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """zhemv(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -161,7 +166,7 @@ cpdef object zhemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_
     return y_
 
 
-cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """csrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -206,7 +211,7 @@ cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None
     return (x_, y_,)
 
 
-cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """csscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters
@@ -238,7 +243,7 @@ cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0,
     return x_
 
 
-cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dzasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -269,7 +274,7 @@ cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dznrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -299,7 +304,7 @@ cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg = fc.dznrm2(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 
-cpdef object cdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def cdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """cdotc(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
@@ -341,7 +346,7 @@ cpdef object cdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.wcdotc(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return xy
-cpdef object cdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def cdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """cdotu(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
@@ -383,7 +388,7 @@ cpdef object cdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.wcdotu(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return xy
-cpdef object zdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def zdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """zdotc(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
@@ -425,7 +430,7 @@ cpdef object zdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.wzdotc(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return xy
-cpdef object zdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def zdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """zdotu(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
@@ -468,7 +473,7 @@ cpdef object zdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
     fc.wzdotu(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return xy
 
-cpdef object isamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def isamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """isamax(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -497,7 +502,7 @@ cpdef object isamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg = fc.isamax(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
     fw_ret_arg -= 1 # Convert Fortran index to Python index
     return fw_ret_arg
-cpdef object idamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def idamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """idamax(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -526,7 +531,7 @@ cpdef object idamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg = fc.idamax(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     fw_ret_arg -= 1 # Convert Fortran index to Python index
     return fw_ret_arg
-cpdef object icamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def icamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """icamax(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -555,7 +560,7 @@ cpdef object icamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg = fc.icamax(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     fw_ret_arg -= 1 # Convert Fortran index to Python index
     return fw_ret_arg
-cpdef object izamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def izamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """izamax(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -585,7 +590,7 @@ cpdef object izamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg -= 1 # Convert Fortran index to Python index
     return fw_ret_arg
 
-cpdef object sasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def sasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """sasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -614,7 +619,7 @@ cpdef object sasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t 
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fw_ret_arg = fc.sasum(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
-cpdef object dasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -644,7 +649,7 @@ cpdef object dasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t 
     fw_ret_arg = fc.dasum(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 
-cpdef object saxpy(object x, object y, object n=None, fwr_real_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def saxpy(object x, object y, object n=None, fwr_real_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """saxpy(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -683,7 +688,7 @@ cpdef object saxpy(object x, object y, object n=None, fwr_real_t a=1., fwi_integ
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.saxpy(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object daxpy(object x, object y, object n=None, fwr_dbl_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def daxpy(object x, object y, object n=None, fwr_dbl_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """daxpy(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -722,7 +727,7 @@ cpdef object daxpy(object x, object y, object n=None, fwr_dbl_t a=1., fwi_intege
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.daxpy(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object caxpy(object x, object y, object n=None, fwc_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def caxpy(object x, object y, object n=None, fwc_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """caxpy(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -761,7 +766,7 @@ cpdef object caxpy(object x, object y, object n=None, fwc_complex_t a=1., fwi_in
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.caxpy(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object zaxpy(object x, object y, object n=None, fwc_dbl_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def zaxpy(object x, object y, object n=None, fwc_dbl_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """zaxpy(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -802,7 +807,7 @@ cpdef object zaxpy(object x, object y, object n=None, fwc_dbl_complex_t a=1., fw
     return y_
 
 
-cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -833,7 +838,7 @@ cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scnrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -863,7 +868,7 @@ cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     fw_ret_arg = fc.scnrm2(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 
-cpdef object scopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def scopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """scopy(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -901,7 +906,7 @@ cpdef object scopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.scopy(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object dcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def dcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """dcopy(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -939,7 +944,7 @@ cpdef object dcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.dcopy(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object ccopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def ccopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """ccopy(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -977,7 +982,7 @@ cpdef object ccopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.ccopy(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
-cpdef object zcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def zcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """zcopy(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -1016,7 +1021,7 @@ cpdef object zcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
     fc.zcopy(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
 
-cpdef object sdot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def sdot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """sdot(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
 
     Parameters
@@ -1055,7 +1060,7 @@ cpdef object sdot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_i
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fw_ret_arg = fc.sdot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
     return fw_ret_arg
-cpdef object ddot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def ddot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """ddot(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
 
     Parameters
@@ -1095,7 +1100,7 @@ cpdef object ddot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_i
     fw_ret_arg = fc.ddot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
     return fw_ret_arg
 
-cpdef object sgemm(fwr_real_t alpha, object a, object b, fwr_real_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+def sgemm(fwr_real_t alpha, object a, object b, fwr_real_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """sgemm(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
@@ -1159,7 +1164,7 @@ cpdef object sgemm(fwr_real_t alpha, object a, object b, fwr_real_t beta=0.0, ob
         raise ValueError("len(transb_f) != 1")
     fc.sgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &lda, <fwr_real_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_real_t*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
-cpdef object dgemm(fwr_dbl_t alpha, object a, object b, fwr_dbl_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+def dgemm(fwr_dbl_t alpha, object a, object b, fwr_dbl_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """dgemm(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
@@ -1223,7 +1228,7 @@ cpdef object dgemm(fwr_dbl_t alpha, object a, object b, fwr_dbl_t beta=0.0, obje
         raise ValueError("len(transb_f) != 1")
     fc.dgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_dbl_t*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
-cpdef object cgemm(fwc_complex_t alpha, object a, object b, fwc_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+def cgemm(fwc_complex_t alpha, object a, object b, fwc_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """cgemm(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
@@ -1287,7 +1292,7 @@ cpdef object cgemm(fwc_complex_t alpha, object a, object b, fwc_complex_t beta=0
         raise ValueError("len(transb_f) != 1")
     fc.cgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
-cpdef object zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+def zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """zgemm(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
@@ -1352,7 +1357,7 @@ cpdef object zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_
     fc.zgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
 
-cpdef object sgemv(fwr_real_t alpha, object a, object x, fwr_real_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+def sgemv(fwr_real_t alpha, object a, object x, fwr_real_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """sgemv(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
@@ -1414,7 +1419,7 @@ cpdef object sgemv(fwr_real_t alpha, object a, object x, fwr_real_t beta=0.0, ob
         raise ValueError("len(trans_f) != 1")
     fc.sgemv(fw_trans_f, &m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
-cpdef object dgemv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+def dgemv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """dgemv(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
@@ -1476,7 +1481,7 @@ cpdef object dgemv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta=0.0, obje
         raise ValueError("len(trans_f) != 1")
     fc.dgemv(fw_trans_f, &m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
-cpdef object cgemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+def cgemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """cgemv(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
@@ -1538,7 +1543,7 @@ cpdef object cgemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta=0
         raise ValueError("len(trans_f) != 1")
     fc.cgemv(fw_trans_f, &m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
-cpdef object zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+def zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """zgemv(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
@@ -1601,7 +1606,7 @@ cpdef object zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_
     fc.zgemv(fw_trans_f, &m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
 
-cpdef object sger(fwr_real_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def sger(fwr_real_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """sger(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1645,7 +1650,7 @@ cpdef object sger(fwr_real_t alpha, object x, object y, fwi_integer_t incx=1, fw
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.sger(&m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(x_), &incx, <fwr_real_t*>np.PyArray_DATA(y_), &incy, <fwr_real_t*>np.PyArray_DATA(a_), &lda)
     return a_
-cpdef object dger(fwr_dbl_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def dger(fwr_dbl_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """dger(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1689,7 +1694,7 @@ cpdef object dger(fwr_dbl_t alpha, object x, object y, fwi_integer_t incx=1, fwi
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.dger(&m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(x_), &incx, <fwr_dbl_t*>np.PyArray_DATA(y_), &incy, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda)
     return a_
-cpdef object cgerc(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def cgerc(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """cgerc(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1733,7 +1738,7 @@ cpdef object cgerc(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.cgerc(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
     return a_
-cpdef object cgeru(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def cgeru(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """cgeru(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1777,7 +1782,7 @@ cpdef object cgeru(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.cgeru(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
     return a_
-cpdef object zgerc(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def zgerc(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """zgerc(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1821,7 +1826,7 @@ cpdef object zgerc(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t in
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     fc.zgerc(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
     return a_
-cpdef object zgeru(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def zgeru(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """zgeru(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -1866,7 +1871,7 @@ cpdef object zgeru(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t in
     fc.zgeru(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
     return a_
 
-cpdef object snrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def snrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """snrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -1895,7 +1900,7 @@ cpdef object snrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t 
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fw_ret_arg = fc.snrm2(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
-cpdef object dnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dnrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -1925,7 +1930,7 @@ cpdef object dnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t 
     fw_ret_arg = fc.dnrm2(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 
-cpdef object srot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def srot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """srot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -1968,7 +1973,7 @@ cpdef object srot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None,
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.srot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
     return (x_, y_,)
-cpdef object drot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def drot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """drot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -2012,7 +2017,7 @@ cpdef object drot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, f
     fc.drot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
     return (x_, y_,)
 
-cpdef object srotg(fwr_real_t a, fwr_real_t b):
+def srotg(fwr_real_t a, fwr_real_t b):
     """srotg(a, b) -> (c, s)
 
     Parameters
@@ -2031,7 +2036,7 @@ cpdef object srotg(fwr_real_t a, fwr_real_t b):
     c = 0
     s = 0
     fc.srotg(&a, &b, &c, &s)
-cpdef object drotg(fwr_dbl_t a, fwr_dbl_t b):
+def drotg(fwr_dbl_t a, fwr_dbl_t b):
     """drotg(a, b) -> (c, s)
 
     Parameters
@@ -2050,7 +2055,7 @@ cpdef object drotg(fwr_dbl_t a, fwr_dbl_t b):
     c = 0
     s = 0
     fc.drotg(&a, &b, &c, &s)
-cpdef object crotg(fwc_complex_t a, fwc_complex_t b):
+def crotg(fwc_complex_t a, fwc_complex_t b):
     """crotg(a, b) -> (c, s)
 
     Parameters
@@ -2069,7 +2074,7 @@ cpdef object crotg(fwc_complex_t a, fwc_complex_t b):
     c = 0
     s = 0
     fc.crotg(&a, &b, &c, &s)
-cpdef object zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
+def zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
     """zrotg(a, b) -> (c, s)
 
     Parameters
@@ -2089,7 +2094,7 @@ cpdef object zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
     s = 0
     fc.zrotg(&a, &b, &c, &s)
 
-cpdef object srotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def srotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """srotm(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -2134,7 +2139,7 @@ cpdef object srotm(object x, object y, object param, object n=None, fwi_integer_
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
     fc.srotm(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_real_t*>np.PyArray_DATA(param_))
     return (x_, y_,)
-cpdef object drotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def drotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """drotm(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -2180,7 +2185,7 @@ cpdef object drotm(object x, object y, object param, object n=None, fwi_integer_
     fc.drotm(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_dbl_t*>np.PyArray_DATA(param_))
     return (x_, y_,)
 
-cpdef object srotmg(fwr_real_t d1, fwr_real_t d2, fwr_real_t x1, fwr_real_t y1, object param=None):
+def srotmg(fwr_real_t d1, fwr_real_t d2, fwr_real_t x1, fwr_real_t y1, object param=None):
     """srotmg(d1, d2, x1, y1[, param]) -> param
 
     Parameters
@@ -2204,7 +2209,7 @@ cpdef object srotmg(fwr_real_t d1, fwr_real_t d2, fwr_real_t x1, fwr_real_t y1, 
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
     fc.srotmg(&d1, &d2, &x1, &y1, <fwr_real_t*>np.PyArray_DATA(param_))
     return param_
-cpdef object drotmg(fwr_dbl_t d1, fwr_dbl_t d2, fwr_dbl_t x1, fwr_dbl_t y1, object param=None):
+def drotmg(fwr_dbl_t d1, fwr_dbl_t d2, fwr_dbl_t x1, fwr_dbl_t y1, object param=None):
     """drotmg(d1, d2, x1, y1[, param]) -> param
 
     Parameters
@@ -2229,7 +2234,7 @@ cpdef object drotmg(fwr_dbl_t d1, fwr_dbl_t d2, fwr_dbl_t x1, fwr_dbl_t y1, obje
     fc.drotmg(&d1, &d2, &x1, &y1, <fwr_dbl_t*>np.PyArray_DATA(param_))
     return param_
 
-cpdef object sscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def sscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """sscal(a, x[, n, offx, incx]) -> x
 
     Parameters
@@ -2258,7 +2263,7 @@ cpdef object sscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, 
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fc.sscal(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
-cpdef object dscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dscal(a, x[, n, offx, incx]) -> x
 
     Parameters
@@ -2287,7 +2292,7 @@ cpdef object dscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, f
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fc.dscal(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
-cpdef object cscal(fwc_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def cscal(fwc_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """cscal(a, x[, n, offx, incx]) -> x
 
     Parameters
@@ -2316,7 +2321,7 @@ cpdef object cscal(fwc_complex_t a, object x, object n=None, fwi_integer_t offx=
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
     fc.cscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
-cpdef object zscal(fwc_dbl_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def zscal(fwc_dbl_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """zscal(a, x[, n, offx, incx]) -> x
 
     Parameters
@@ -2346,7 +2351,7 @@ cpdef object zscal(fwc_dbl_complex_t a, object x, object n=None, fwi_integer_t o
     fc.zscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
 
-cpdef object sswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def sswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """sswap(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
@@ -2385,7 +2390,7 @@ cpdef object sswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.sswap(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
-cpdef object dswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def dswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """dswap(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
@@ -2424,7 +2429,7 @@ cpdef object dswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.dswap(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
-cpdef object cswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def cswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """cswap(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
@@ -2463,7 +2468,7 @@ cpdef object cswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
     fc.cswap(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
-cpdef object zswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def zswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """zswap(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
@@ -2503,7 +2508,7 @@ cpdef object zswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_
     fc.zswap(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
 
-cpdef object ssymv(fwr_real_t alpha, object a, object x, fwr_real_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def ssymv(fwr_real_t alpha, object a, object x, fwr_real_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """ssymv(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -2563,7 +2568,7 @@ cpdef object ssymv(fwr_real_t alpha, object a, object x, fwr_real_t beta, object
         raise ValueError("len(uplo_f) != 1")
     fc.ssymv(fw_uplo_f, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
-cpdef object dsymv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def dsymv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """dsymv(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -2624,7 +2629,7 @@ cpdef object dsymv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta, object y
     fc.dsymv(fw_uplo_f, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
 
-cpdef object strmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+def strmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """strmv(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
@@ -2684,7 +2689,7 @@ cpdef object strmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=
         raise ValueError("len(diag_f) != 1")
     fc.strmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
     return x_
-cpdef object dtrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+def dtrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """dtrmv(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
@@ -2744,7 +2749,7 @@ cpdef object dtrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=
         raise ValueError("len(diag_f) != 1")
     fc.dtrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
     return x_
-cpdef object ctrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+def ctrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """ctrmv(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
@@ -2804,7 +2809,7 @@ cpdef object ctrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=
         raise ValueError("len(diag_f) != 1")
     fc.ctrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
     return x_
-cpdef object ztrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+def ztrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """ztrmv(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
@@ -2866,7 +2871,7 @@ cpdef object ztrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=
     return x_
 
 
-cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """zdrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -2911,7 +2916,7 @@ cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, 
     return (x_, y_,)
 
 
-cpdef object zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """zdscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters
