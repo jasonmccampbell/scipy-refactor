@@ -8,8 +8,9 @@
 #ifndef _TOMS_WRAPPERS_H
 #define _TOMS_WRAPPERS_H
 #ifndef _AMOS_WRAPPERS_H
-#include "complex.h"
 #include "cephes/mconf.h"
+
+typedef struct { double real, imag; } Py_complex;
 
 #define CADDR(z) (double *)&z.real, (double*)&z.imag
 #endif /*_AMOS */

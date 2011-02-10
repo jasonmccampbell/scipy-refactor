@@ -8,7 +8,6 @@
 #ifndef _CDF_WRAPPERS_H
 #define _CDF_WRAPPERS_H
 #ifndef _AMOS_WRAPPERS_H
-#include "complex.h"
 #include "cephes/mconf.h"
 #endif
 

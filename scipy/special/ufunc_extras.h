@@ -1,7 +1,8 @@
 #ifndef UFUNC_EXTRAS_H
 #define UFUNC_EXTRAS_H
 
-#include "complex.h"
+typedef struct { double real, imag; } Py_complex;
+
 #include "npy_api.h"
 
 typedef int    IntFunc_d_dd(double x, double *y, double *z);
