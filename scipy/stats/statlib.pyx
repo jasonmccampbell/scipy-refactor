@@ -13,11 +13,16 @@ swilk(...)
 wprob(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport statlib_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 __all__ = ['wprob', 'gscale', 'prho', 'swilk']
-cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
+def wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
     """wprob(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
@@ -52,7 +57,7 @@ cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
     return (astart, a1_, ifault,)
 
 
-cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
+def gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
     """gscale(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
@@ -87,7 +92,7 @@ cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
     return (astart, a1_, ifault,)
 
 
-cpdef object prho(fwi_integer_t n, fwi_integer_t is__):
+def prho(fwi_integer_t n, fwi_integer_t is__):
     """prho(n, is__) -> (fw_ret_arg, ifault)
 
     Parameters
@@ -108,7 +113,7 @@ cpdef object prho(fwi_integer_t n, fwi_integer_t is__):
     return (fw_ret_arg, ifault,)
 
 
-cpdef object swilk(object x, object a, bint init=0, object n1=None):
+def swilk(object x, object a, bint init=0, object n1=None):
     """swilk(x, a[, init, n1]) -> (a, w, pw, ifault)
 
     Parameters

@@ -11,11 +11,16 @@ dfreps(...)
 dqsort(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport futil_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 __all__ = ['dqsort', 'dfreps']
-cpdef object dqsort(object arr, bint overwrite_arr=False):
+def dqsort(object arr, bint overwrite_arr=False):
     """dqsort(arr[, overwrite_arr]) -> arr
 
     Parameters
@@ -39,7 +44,7 @@ cpdef object dqsort(object arr, bint overwrite_arr=False):
     return arr_
 
 
-cpdef object dfreps(object arr, object replist=None, object repnum=None):
+def dfreps(object arr, object replist=None, object repnum=None):
     """dfreps(arr[, replist, repnum]) -> (replist, repnum, nlist)
 
     Parameters

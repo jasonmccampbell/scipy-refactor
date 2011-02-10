@@ -11,11 +11,16 @@ mvndst(...)
 mvnun(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport mvn_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 __all__ = ['mvnun', 'mvndst']
-cpdef object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+def mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvnun(lower, upper, means, covar[, maxpts, abseps, releps]) -> (value, inform)
 
     Parameters
@@ -63,7 +68,7 @@ cpdef object mvnun(object lower, object upper, object means, object covar, objec
     return (value, inform,)
 
 
-cpdef object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+def mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvndst(lower, upper, infin, correl[, maxpts, abseps, releps]) -> (error, value, inform)
 
     Parameters
