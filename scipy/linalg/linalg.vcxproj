@@ -72,6 +72,7 @@
   <ItemGroup>
     <ClCompile Include="atlas_version.c" />
     <ClCompile Include="src\fblaswrap_veclib_c.c" />
+    <ClCompile Include="_flinalg.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="calc_lwork_fc.h" />
