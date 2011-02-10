@@ -141,7 +141,6 @@
     <None Include="matfuncs.py" />
     <None Include="misc.py" />
     <None Include="special_matrices.py" />
-    <None Include="_flinalg.pxd" />
     <None Include="_flinalg.pyf" />
     <None Include="_flinalg.pyx" />
     <None Include="_flinalg.pyx.in" />
