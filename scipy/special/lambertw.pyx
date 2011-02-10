@@ -34,7 +34,7 @@ cdef extern from "stdlib.h" nogil:
 
 # Use Numpy's portable C99-compatible complex functios
 
-cdef extern from "numpy/npy_math.h":
+cdef extern from "npy_math.h":
     ctypedef struct npy_cdouble:
         double real
         double imag
