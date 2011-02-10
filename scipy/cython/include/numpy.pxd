@@ -1,3 +1,5 @@
+ctypedef int npy_int
+ctypedef double double_t
 ctypedef int npy_intp
 ctypedef signed char        npy_int8
 ctypedef signed short       npy_int16
@@ -171,6 +173,9 @@ cdef extern from "npy_ufunc_object.h":
 
 cdef extern from "npy_api.h":
     NpyArray_Descr *NpyArray_DescrFromType(int typenum)
+    NpyArray *NpyArray_New(void *subtype, int nd, npy_intp *dims, int type_num,
+                           npy_intp *strides, void *data, int itemsize,
+                           int flags, void *obj)
 
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
@@ -189,6 +194,11 @@ cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortr
         shape_list.append(shape[i])
     import numpy
     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+
+cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+    assert subtype == NULL
+    assert obj == NULL
+    return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
 
 cdef inline void* PyArray_DATA(ndarray n):
     # XXX "long long" is wrong type

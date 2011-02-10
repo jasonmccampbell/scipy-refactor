@@ -12,6 +12,7 @@ sdet_r, ddet_r, cdet_r, zdet_r(...)
 slu_c, dlu_c, clu_c, zlu_c(...)
 
 """
+
 cimport numpy as np
 from fwrap_ktp cimport *
 cimport _flinalg_fc as fc
