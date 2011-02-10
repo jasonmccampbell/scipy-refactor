@@ -36,6 +36,11 @@ zdrot(...)
 zdscal(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport fblas_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
@@ -44,7 +49,7 @@ cdef extern from "string.h":
       in zip(['chemv', 'zhemv'],
              ['fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xhemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def {{Xhemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """{{Xhemv}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -107,7 +112,7 @@ cpdef object {{Xhemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y
 {{endfor}}
 
 
-cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """csrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -152,7 +157,7 @@ cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None
     return (x_, y_,)
 
 
-cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """csscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters
@@ -184,7 +189,7 @@ cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0,
     return x_
 
 
-cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dzasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -215,7 +220,7 @@ cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dznrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -251,7 +256,7 @@ cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
              ['fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
              ['wcdotc', 'wcdotu', 'wzdotc', 'wzdotu'],
              ['fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """{{XdotX}}(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
@@ -300,7 +305,7 @@ cpdef object {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, 
       in zip(['isamax', 'idamax', 'icamax', 'izamax'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],             
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{iXamax}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def {{iXamax}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """{{iXamax}}(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -336,7 +341,7 @@ cpdef object {{iXamax}}(object x, object n=None, fwi_integer_t offx=0, fwi_integ
       in zip(['sasum', 'dasum'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xasum}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def {{Xasum}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """{{Xasum}}(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -372,7 +377,7 @@ cpdef object {{Xasum}}(object x, object n=None, fwi_integer_t offx=0, fwi_intege
       in zip(['saxpy', 'daxpy', 'caxpy', 'zaxpy'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xaxpy}}(object x, object y, object n=None, {{ktp}} a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def {{Xaxpy}}(object x, object y, object n=None, {{ktp}} a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """{{Xaxpy}}(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -414,7 +419,7 @@ cpdef object {{Xaxpy}}(object x, object y, object n=None, {{ktp}} a=1., fwi_inte
 {{endfor}}
 
 
-cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -445,7 +450,7 @@ cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scnrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -480,7 +485,7 @@ cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
       in zip(['scopy', 'dcopy', 'ccopy', 'zcopy'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xcopy}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def {{Xcopy}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """{{Xcopy}}(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
@@ -525,7 +530,7 @@ cpdef object {{Xcopy}}(object x, object y, object n=None, fwi_integer_t offx=0, 
       in zip(['sdot', 'ddot'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xdot}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def {{Xdot}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """{{Xdot}}(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
 
     Parameters
@@ -571,7 +576,7 @@ cpdef object {{Xdot}}(object x, object y, object n=None, fwi_integer_t offx=0, f
       in zip(['sgemm', 'dgemm', 'cgemm', 'zgemm'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgemm}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+def {{Xgemm}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
     """{{Xgemm}}(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
@@ -642,7 +647,7 @@ cpdef object {{Xgemm}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, obje
       in zip(['sgemv', 'dgemv', 'cgemv', 'zgemv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+def {{Xgemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
     """{{Xgemv}}(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
@@ -711,7 +716,7 @@ cpdef object {{Xgemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, obje
       in zip(['sger', 'dger', 'cgerc', 'cgeru', 'zgerc', 'zgeru'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{XgerX}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+def {{XgerX}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
     """{{XgerX}}(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
@@ -762,7 +767,7 @@ cpdef object {{XgerX}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, 
       in zip(['snrm2', 'dnrm2'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xnrm2}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def {{Xnrm2}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """{{Xnrm2}}(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -798,7 +803,7 @@ cpdef object {{Xnrm2}}(object x, object n=None, fwi_integer_t offx=0, fwi_intege
       in zip(['srot', 'drot'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xrot}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def {{Xrot}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """{{Xrot}}(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -848,7 +853,7 @@ cpdef object {{Xrot}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, f
       in zip(['srotg', 'drotg', 'crotg', 'zrotg'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'])}}
-cpdef object {{Xrotg}}({{ktp}} a, {{ktp}} b):
+def {{Xrotg}}({{ktp}} a, {{ktp}} b):
     """{{Xrotg}}(a, b) -> (c, s)
 
     Parameters
@@ -874,7 +879,7 @@ cpdef object {{Xrotg}}({{ktp}} a, {{ktp}} b):
       in zip(['srotm', 'drotm'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xrotm}}(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def {{Xrotm}}(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """{{Xrotm}}(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -926,7 +931,7 @@ cpdef object {{Xrotm}}(object x, object y, object param, object n=None, fwi_inte
       in zip(['srotmg', 'drotmg'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xrotmg}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object param=None):
+def {{Xrotmg}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object param=None):
     """{{Xrotmg}}(d1, d2, x1, y1[, param]) -> param
 
     Parameters
@@ -957,7 +962,7 @@ cpdef object {{Xrotmg}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object p
       in zip(['sscal', 'dscal', 'cscal', 'zscal'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xscal}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def {{Xscal}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """{{Xscal}}(a, x[, n, offx, incx]) -> x
 
     Parameters
@@ -993,7 +998,7 @@ cpdef object {{Xscal}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0,
       in zip(['sswap', 'dswap', 'cswap', 'zswap'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xswap}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+def {{Xswap}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
     """{{Xswap}}(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
@@ -1039,7 +1044,7 @@ cpdef object {{Xswap}}(object x, object y, object n=None, fwi_integer_t offx=0, 
       in zip(['ssymv', 'dsymv'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsymv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+def {{Xsymv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
     """{{Xsymv}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
@@ -1106,7 +1111,7 @@ cpdef object {{Xsymv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y
       in zip(['strmv', 'dtrmv', 'ctrmv', 'ztrmv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xtrmv}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+def {{Xtrmv}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
     """{{Xtrmv}}(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
@@ -1169,7 +1174,7 @@ cpdef object {{Xtrmv}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t i
 {{endfor}}
 
 
-cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """zdrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -1214,7 +1219,7 @@ cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, 
     return (x_, y_,)
 
 
-cpdef object zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """zdscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters

@@ -71,6 +71,10 @@ zgesdd(...)
 zggev(...)
 
 """
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport flapack_fc as fc
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
@@ -81,7 +85,7 @@ cdef extern from "string.h":
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
+def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
     """{{Xgees}}(select, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
 
     Parameters
@@ -162,7 +166,7 @@ cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_i
 {{endfor}}
 
 
-cpdef object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):
+def cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):
     """cgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, w, vl, vr]) -> (w, vl, vr, info)
 
     Parameters
@@ -238,7 +242,7 @@ cpdef object cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     return (w_, vl_, vr_, info,)
 
 
-cpdef object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None):
+def cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None):
     """cgegv(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alpha, beta, vl, vr]) -> (alpha, beta, vl, vr, info)
 
     Parameters
@@ -329,7 +333,7 @@ cpdef object cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     return (alpha_, beta_, vl_, vr_, info,)
 
 
-cpdef object cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """cgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -388,7 +392,7 @@ cpdef object cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
     return (a_, b_, s_, r, info,)
 
 
-cpdef object cgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
+def cgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
     """cgesdd(a[, compute_uv, lwork, overwrite_a, u, s, vt]) -> (u, s, vt, info)
 
     Parameters
@@ -460,7 +464,7 @@ cpdef object cgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     return (u_, s_, vt_, info,)
 
 
-cpdef object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None):
+def cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None):
     """cggev(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alpha, beta, vl, vr, work]) -> (alpha, beta, vl, vr, work, info)
 
     Parameters
@@ -561,7 +565,7 @@ cpdef object cggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xhbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object lrwork=None, object liwork=None, bint overwrite_ab=True, object w=None, object z=None):
+def {{Xhbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object lrwork=None, object liwork=None, bint overwrite_ab=True, object w=None, object z=None):
     """{{Xhbevd}}(ab[, compute_v, lower, ldab, lrwork, liwork, overwrite_ab, w, z]) -> (w, z, info)
 
     Parameters
@@ -645,7 +649,7 @@ cpdef object {{Xhbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lowe
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xhbevx}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp2}} abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
+def {{Xhbevx}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp2}} abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
     """{{Xhbevx}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, overwrite_ab, w, z, ifail]) -> (w, z, m, ifail, info)
 
     Parameters
@@ -748,7 +752,7 @@ cpdef object {{Xhbevx}}(object ab, {{ktp2}} vl, {{ktp2}} vu, fwi_integer_t il, f
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xheev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
+def {{Xheev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
     """{{Xheev}}(a[, compute_v, lower, lwork, overwrite_a, w]) -> (w, a, info)
 
     Parameters
@@ -814,7 +818,7 @@ cpdef object {{Xheev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xheevr}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
+def {{Xheevr}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
     """{{Xheevr}}(a[, jobz, range, uplo, il, iu, lwork, overwrite_a, w, z]) -> (w, z, info)
 
     Parameters
@@ -899,7 +903,7 @@ cpdef object {{Xheevr}}(object a, object jobz='V', object range='A', object uplo
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xhegv}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
+def {{Xhegv}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """{{Xhegv}}(a, b[, itype, jobz, uplo, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
     Parameters
@@ -964,7 +968,7 @@ cpdef object {{Xhegv}}(object a, object b, fwi_integer_t itype=1, object jobz='V
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xhegvd}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
+def {{Xhegvd}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """{{Xhegvd}}(a, b[, itype, jobz, uplo, lwork, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
     Parameters
@@ -1034,7 +1038,7 @@ cpdef object {{Xhegvd}}(object a, object b, fwi_integer_t itype=1, object jobz='
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xhegvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
+def {{Xhegvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
     """{{Xhegvx}}(a, b, iu[, itype, jobz, uplo, il, lwork, overwrite_a, overwrite_b, w, z, ifail]) -> (w, z, ifail, info)
 
     Parameters
@@ -1127,7 +1131,7 @@ cpdef object {{Xhegvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t ityp
       in zip(['cungqr', 'zungqr'],
              ['fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+def {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
     """{{Xungqr}}(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
 
     Parameters
@@ -1172,7 +1176,7 @@ cpdef object {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_
 {{endfor}}
 
 
-cpdef object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
+def dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
     """dgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, wr, wi, vl, vr]) -> (wr, wi, vl, vr, info)
 
     Parameters
@@ -1252,7 +1256,7 @@ cpdef object dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     return (wr_, wi_, vl_, vr_, info,)
 
 
-cpdef object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None):
+def dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None):
     """dgegv(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alphar, alphai, beta, vl, vr]) -> (alphar, alphai, beta, vl, vr, info)
 
     Parameters
@@ -1347,7 +1351,7 @@ cpdef object dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     return (alphar_, alphai_, beta_, vl_, vr_, info,)
 
 
-cpdef object dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """dgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -1404,7 +1408,7 @@ cpdef object dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     return (a_, b_, s_, r, info,)
 
 
-cpdef object dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
+def dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
     """dgesdd(a[, compute_uv, lwork, overwrite_a, u, s, vt]) -> (u, s, vt, info)
 
     Parameters
@@ -1471,7 +1475,7 @@ cpdef object dgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     return (u_, s_, vt_, info,)
 
 
-cpdef object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None):
+def dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None):
     """dggev(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alphar, alphai, beta, vl, vr, work]) -> (alphar, alphai, beta, vl, vr, work, info)
 
     Parameters
@@ -1574,7 +1578,7 @@ cpdef object dggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
       in zip(['sgbsv', 'dgbsv', 'cgbsv', 'zgbsv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrite_ab=False, bint overwrite_b=False, object piv=None):
+def {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrite_ab=False, bint overwrite_b=False, object piv=None):
     """{{Xgbsv}}(kl, ku, ab, b[, overwrite_ab, overwrite_b, piv]) -> (ab, piv, b, info)
 
     Parameters
@@ -1633,7 +1637,7 @@ cpdef object {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, 
       in zip(['sgbtrf', 'dgbtrf', 'cgbtrf', 'zgbtrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
+def {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
     """{{Xgbtrf}}(ab, kl, ku[, m, n, ldab, overwrite_ab, ipiv]) -> (ab, ipiv, info)
 
     Parameters
@@ -1683,7 +1687,7 @@ cpdef object {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=
       in zip(['sgbtrs', 'dgbtrs', 'cgbtrs', 'zgbtrs'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
+def {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
     """{{Xgbtrs}}(ab, kl, ku, b, ipiv[, trans, n, ldab, ldb, overwrite_b]) -> (b, info)
 
     Parameters
@@ -1750,7 +1754,7 @@ cpdef object {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b,
              ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xgebal}}(object a, fwi_integer_t scale=0, fwi_integer_t permute=0, bint overwrite_a=False, object pivscale=None):
+def {{Xgebal}}(object a, fwi_integer_t scale=0, fwi_integer_t permute=0, bint overwrite_a=False, object pivscale=None):
     """{{Xgebal}}(a[, scale, permute, overwrite_a, pivscale]) -> (a, lo, hi, pivscale, info)
 
     Parameters
@@ -1805,7 +1809,7 @@ cpdef object {{Xgebal}}(object a, fwi_integer_t scale=0, fwi_integer_t permute=0
       in zip(['sgees', 'dgees'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
+def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
     """{{Xgees}}(select, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
 
     Parameters
@@ -1891,7 +1895,7 @@ cpdef object {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_i
 {{endfor}}
 
 
-cpdef object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
+def sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
     """sgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, wr, wi, vl, vr]) -> (wr, wi, vl, vr, info)
 
     Parameters
@@ -1971,7 +1975,7 @@ cpdef object sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     return (wr_, wi_, vl_, vr_, info,)
 
 
-cpdef object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None):
+def sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None):
     """sgegv(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alphar, alphai, beta, vl, vr]) -> (alphar, alphai, beta, vl, vr, info)
 
     Parameters
@@ -2070,7 +2074,7 @@ cpdef object sgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
       in zip(['sgehrd', 'dgehrd', 'cgehrd', 'zgehrd'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgehrd}}(object a, fwi_integer_t lo=0, object hi=None, object lwork=None, bint overwrite_a=False, object tau=None):
+def {{Xgehrd}}(object a, fwi_integer_t lo=0, object hi=None, object lwork=None, bint overwrite_a=False, object tau=None):
     """{{Xgehrd}}(a[, lo, hi, lwork, overwrite_a, tau]) -> (a, tau, info)
 
     Parameters
@@ -2118,7 +2122,7 @@ cpdef object {{Xgehrd}}(object a, fwi_integer_t lo=0, object hi=None, object lwo
 {{endfor}}
 
 
-cpdef object sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """sgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -2179,7 +2183,7 @@ cpdef object sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None,
       in zip(['sgeqrf', 'dgeqrf', 'cgeqrf', 'zgeqrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgeqrf}}(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
+def {{Xgeqrf}}(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
     """{{Xgeqrf}}(a[, lwork, overwrite_a, tau, work]) -> (a, tau, work, info)
 
     Parameters
@@ -2229,7 +2233,7 @@ cpdef object {{Xgeqrf}}(object a, object lwork=None, bint overwrite_a=False, obj
       in zip(['sgerqf', 'dgerqf', 'cgerqf', 'zgerqf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgerqf}}(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
+def {{Xgerqf}}(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
     """{{Xgerqf}}(a[, lwork, overwrite_a, tau, work]) -> (a, tau, work, info)
 
     Parameters
@@ -2275,7 +2279,7 @@ cpdef object {{Xgerqf}}(object a, object lwork=None, bint overwrite_a=False, obj
 {{endfor}}
 
 
-cpdef object sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
+def sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
     """sgesdd(a[, compute_uv, lwork, overwrite_a, u, s, vt]) -> (u, s, vt, info)
 
     Parameters
@@ -2346,7 +2350,7 @@ cpdef object sgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
       in zip(['sgesv', 'dgesv', 'cgesv', 'zgesv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrite_b=False, object piv=None):
+def {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrite_b=False, object piv=None):
     """{{Xgesv}}(a, b[, overwrite_a, overwrite_b, piv]) -> (a, piv, b, info)
 
     Parameters
@@ -2402,7 +2406,7 @@ cpdef object {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrit
       in zip(['sgetrf', 'dgetrf', 'cgetrf', 'zgetrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
+def {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
     """{{Xgetrf}}(a[, overwrite_a, piv]) -> (a, piv, info)
 
     Parameters
@@ -2446,7 +2450,7 @@ cpdef object {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
       in zip(['sgetri', 'dgetri', 'cgetri', 'zgetri'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite_lu=False):
+def {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite_lu=False):
     """{{Xgetri}}(lu, piv[, lwork, overwrite_lu]) -> (lu, info)
 
     Parameters
@@ -2497,7 +2501,7 @@ cpdef object {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite
       in zip(['sgetrs', 'dgetrs', 'cgetrs', 'zgetrs'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
+def {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
     """{{Xgetrs}}(lu, piv, b[, trans, overwrite_b]) -> (b, info)
 
     Parameters
@@ -2555,7 +2559,7 @@ cpdef object {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, 
 {{endfor}}
 
 
-cpdef object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None):
+def sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alphar=None, object alphai=None, object beta=None, object vl=None, object vr=None, object work=None):
     """sggev(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alphar, alphai, beta, vl, vr, work]) -> (alphar, alphai, beta, vl, vr, work, info)
 
     Parameters
@@ -2657,7 +2661,7 @@ cpdef object sggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
 {{for Xlamch, ktp
       in zip(['slamch', 'dlamch'],
              ['fwr_real_t', 'fwr_dbl_t'])}}
-cpdef object {{Xlamch}}(object cmach):
+def {{Xlamch}}(object cmach):
     """{{Xlamch}}(cmach) -> fw_ret_arg
 
     Parameters
@@ -2683,7 +2687,7 @@ cpdef object {{Xlamch}}(object cmach):
       in zip(['slaswp', 'dlaswp', 'claswp', 'zlaswp'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xlaswp}}(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
+def {{Xlaswp}}(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
     """{{Xlaswp}}(a, piv[, k1, k2, off, inc, overwrite_a]) -> a
 
     Parameters
@@ -2743,7 +2747,7 @@ cpdef object {{Xlaswp}}(object a, object piv, fwi_integer_t k1=0, object k2=None
       in zip(['slauum', 'dlauum', 'clauum', 'zlauum'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xlauum}}(object c, fwi_integer_t lower=0, bint overwrite_c=False):
+def {{Xlauum}}(object c, fwi_integer_t lower=0, bint overwrite_c=False):
     """{{Xlauum}}(c[, lower, overwrite_c]) -> (c, info)
 
     Parameters
@@ -2786,7 +2790,7 @@ cpdef object {{Xlauum}}(object c, fwi_integer_t lower=0, bint overwrite_c=False)
       in zip(['sorgqr', 'dorgqr'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xorgqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+def {{Xorgqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
     """{{Xorgqr}}(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
 
     Parameters
@@ -2835,7 +2839,7 @@ cpdef object {{Xorgqr}}(object a, object tau, object lwork=None, bint overwrite_
       in zip(['spbsv', 'dpbsv', 'cpbsv', 'zpbsv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpbsv}}(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False, bint overwrite_b=False):
+def {{Xpbsv}}(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False, bint overwrite_b=False):
     """{{Xpbsv}}(ab, b[, lower, ldab, overwrite_ab, overwrite_b]) -> (ab, b, info)
 
     Parameters
@@ -2891,7 +2895,7 @@ cpdef object {{Xpbsv}}(object ab, object b, fwi_integer_t lower=0, object ldab=N
       in zip(['spbtrf', 'dpbtrf', 'cpbtrf', 'zpbtrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpbtrf}}(object ab, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False):
+def {{Xpbtrf}}(object ab, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False):
     """{{Xpbtrf}}(ab[, lower, ldab, overwrite_ab]) -> (ab, info)
 
     Parameters
@@ -2937,7 +2941,7 @@ cpdef object {{Xpbtrf}}(object ab, fwi_integer_t lower=0, object ldab=None, bint
       in zip(['spbtrs', 'dpbtrs', 'cpbtrs', 'zpbtrs'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpbtrs}}(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_b=False):
+def {{Xpbtrs}}(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_b=False):
     """{{Xpbtrs}}(ab, b[, lower, ldab, overwrite_b]) -> (b, info)
 
     Parameters
@@ -2991,7 +2995,7 @@ cpdef object {{Xpbtrs}}(object ab, object b, fwi_integer_t lower=0, object ldab=
       in zip(['sposv', 'dposv', 'cposv', 'zposv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xposv}}(object a, object b, fwi_integer_t lower=0, bint overwrite_a=False, bint overwrite_b=False):
+def {{Xposv}}(object a, object b, fwi_integer_t lower=0, bint overwrite_a=False, bint overwrite_b=False):
     """{{Xposv}}(a, b[, lower, overwrite_a, overwrite_b]) -> (a, b, info)
 
     Parameters
@@ -3045,7 +3049,7 @@ cpdef object {{Xposv}}(object a, object b, fwi_integer_t lower=0, bint overwrite
       in zip(['spotrf', 'dpotrf', 'cpotrf', 'zpotrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
+def {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
     """{{Xpotrf}}(a[, lower, clean, overwrite_a]) -> (a, info)
 
     Parameters
@@ -3101,7 +3105,7 @@ cpdef object {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, 
       in zip(['spotri', 'dpotri', 'cpotri', 'zpotri'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpotri}}(object c, fwi_integer_t lower=0, bint overwrite_c=False):
+def {{Xpotri}}(object c, fwi_integer_t lower=0, bint overwrite_c=False):
     """{{Xpotri}}(c[, lower, overwrite_c]) -> (c, info)
 
     Parameters
@@ -3144,7 +3148,7 @@ cpdef object {{Xpotri}}(object c, fwi_integer_t lower=0, bint overwrite_c=False)
       in zip(['spotrs', 'dpotrs', 'cpotrs', 'zpotrs'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xpotrs}}(object c, object b, fwi_integer_t lower=0, bint overwrite_b=False):
+def {{Xpotrs}}(object c, object b, fwi_integer_t lower=0, bint overwrite_b=False):
     """{{Xpotrs}}(c, b[, lower, overwrite_b]) -> (b, info)
 
     Parameters
@@ -3196,7 +3200,7 @@ cpdef object {{Xpotrs}}(object c, object b, fwi_integer_t lower=0, bint overwrit
       in zip(['ssbev', 'dsbev'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsbev}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=True, object w=None, object z=None):
+def {{Xsbev}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=True, object w=None, object z=None):
     """{{Xsbev}}(ab[, compute_v, lower, ldab, overwrite_ab, w, z]) -> (w, z, info)
 
     Parameters
@@ -3263,7 +3267,7 @@ cpdef object {{Xsbev}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower
       in zip(['ssbevd', 'dsbevd'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object liwork=None, bint overwrite_ab=True, object w=None, object z=None):
+def {{Xsbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object liwork=None, bint overwrite_ab=True, object w=None, object z=None):
     """{{Xsbevd}}(ab[, compute_v, lower, ldab, liwork, overwrite_ab, w, z]) -> (w, z, info)
 
     Parameters
@@ -3337,7 +3341,7 @@ cpdef object {{Xsbevd}}(object ab, fwi_integer_t compute_v=1, fwi_integer_t lowe
       in zip(['ssbevx', 'dsbevx'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsbevx}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp}} abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
+def {{Xsbevx}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, {{ktp}} abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
     """{{Xsbevx}}(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, overwrite_ab, w, z, ifail]) -> (w, z, m, ifail, info)
 
     Parameters
@@ -3436,7 +3440,7 @@ cpdef object {{Xsbevx}}(object ab, {{ktp}} vl, {{ktp}} vu, fwi_integer_t il, fwi
       in zip(['ssyev', 'dsyev'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsyev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
+def {{Xsyev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
     """{{Xsyev}}(a[, compute_v, lower, lwork, overwrite_a, w]) -> (w, a, info)
 
     Parameters
@@ -3498,7 +3502,7 @@ cpdef object {{Xsyev}}(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=
       in zip(['ssyevr', 'dsyevr'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsyevr}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
+def {{Xsyevr}}(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
     """{{Xsyevr}}(a[, jobz, range, uplo, il, iu, lwork, overwrite_a, w, z]) -> (w, z, info)
 
     Parameters
@@ -3578,7 +3582,7 @@ cpdef object {{Xsyevr}}(object a, object jobz='V', object range='A', object uplo
       in zip(['ssygv', 'dsygv'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsygv}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
+def {{Xsygv}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """{{Xsygv}}(a, b[, itype, jobz, uplo, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
     Parameters
@@ -3639,7 +3643,7 @@ cpdef object {{Xsygv}}(object a, object b, fwi_integer_t itype=1, object jobz='V
       in zip(['ssygvd', 'dsygvd'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsygvd}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
+def {{Xsygvd}}(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """{{Xsygvd}}(a, b[, itype, jobz, uplo, lwork, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
     Parameters
@@ -3704,7 +3708,7 @@ cpdef object {{Xsygvd}}(object a, object b, fwi_integer_t itype=1, object jobz='
       in zip(['ssygvx', 'dsygvx'],
              ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xsygvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
+def {{Xsygvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
     """{{Xsygvx}}(a, b, iu[, itype, jobz, uplo, il, lwork, overwrite_a, overwrite_b, w, z, ifail]) -> (w, z, ifail, info)
 
     Parameters
@@ -3795,7 +3799,7 @@ cpdef object {{Xsygvx}}(object a, object b, fwi_integer_t iu, fwi_integer_t ityp
       in zip(['strtri', 'dtrtri', 'ctrtri', 'ztrtri'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xtrtri}}(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=0, bint overwrite_c=False):
+def {{Xtrtri}}(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=0, bint overwrite_c=False):
     """{{Xtrtri}}(c[, lower, unitdiag, overwrite_c]) -> (c, info)
 
     Parameters
@@ -3845,7 +3849,7 @@ cpdef object {{Xtrtri}}(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=
       in zip(['strtrs', 'dtrtrs', 'ctrtrs', 'ztrtrs'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{Xtrtrs}}(object a, object b, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, object lda=None, bint overwrite_b=False):
+def {{Xtrtrs}}(object a, object b, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, object lda=None, bint overwrite_b=False):
     """{{Xtrtrs}}(a, b[, lower, trans, unitdiag, lda, overwrite_b]) -> (b, info)
 
     Parameters
@@ -3908,7 +3912,7 @@ cpdef object {{Xtrtrs}}(object a, object b, fwi_integer_t lower=0, fwi_integer_t
 {{endfor}}
 
 
-cpdef object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):
+def zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):
     """zgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, w, vl, vr]) -> (w, vl, vr, info)
 
     Parameters
@@ -3984,7 +3988,7 @@ cpdef object zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_v
     return (w_, vl_, vr_, info,)
 
 
-cpdef object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None):
+def zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None):
     """zgegv(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alpha, beta, vl, vr]) -> (alpha, beta, vl, vr, info)
 
     Parameters
@@ -4075,7 +4079,7 @@ cpdef object zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t
     return (alpha_, beta_, vl_, vr_, info,)
 
 
-cpdef object zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """zgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -4134,7 +4138,7 @@ cpdef object zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, 
     return (a_, b_, s_, r, info,)
 
 
-cpdef object zgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
+def zgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bint overwrite_a=False, object u=None, object s=None, object vt=None):
     """zgesdd(a[, compute_uv, lwork, overwrite_a, u, s, vt]) -> (u, s, vt, info)
 
     Parameters
@@ -4206,7 +4210,7 @@ cpdef object zgesdd(object a, fwi_integer_t compute_uv=1, object lwork=None, bin
     return (u_, s_, vt_, info,)
 
 
-cpdef object zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None):
+def zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object alpha=None, object beta=None, object vl=None, object vr=None, object work=None):
     """zggev(a, b[, compute_vl, compute_vr, lwork, overwrite_a, overwrite_b, alpha, beta, vl, vr, work]) -> (alpha, beta, vl, vr, work, info)
 
     Parameters
