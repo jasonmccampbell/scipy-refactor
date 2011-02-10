@@ -7,10 +7,6 @@
    #define fw_complex(x) x _Complex
 #endif
 
-#define UPPERCASE_FORTRAN
-#undef PREPEND_FORTRAN
-#define NO_APPEND_FORTRAN
-
 #define FW_ARR_DIM__ 2
 #define FW_CHAR_SIZE__ 1
 #define FW_INIT_ERR__ -1
