@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The mvn module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The mvn module was generated with Fwrap v0.2.0dev_dcfbd8f.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -11,11 +11,16 @@ mvndst(...)
 mvnun(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport mvn_fc as fc
+
 np.import_array()
+__all__ = ['mvnun', 'mvndst']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['mvnun', 'mvndst']
-cpdef object mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+def mvnun(object lower, object upper, object means, object covar, object maxpts=None, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvnun(lower, upper, means, covar[, maxpts, abseps, releps]) -> (value, inform)
 
     Parameters
@@ -41,6 +46,8 @@ cpdef object mvnun(object lower, object upper, object means, object covar, objec
     means_ = fw_asfortranarray(means, fwr_dbl_t_enum, 2, means_shape, False, False)
     d = means_shape[0]
     maxpts_ = maxpts if (maxpts is not None) else d * 1000
+    value = 0
+    inform = 0
     lower_ = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, lower_shape, False, False)
     if not (0 <= d <= lower_shape[0]):
         raise ValueError("(0 <= d <= lower.shape[0]) not satisifed")
@@ -61,7 +68,7 @@ cpdef object mvnun(object lower, object upper, object means, object covar, objec
     return (value, inform,)
 
 
-cpdef object mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
+def mvndst(object lower, object upper, object infin, object correl, fwi_integer_t maxpts=2000, fwr_dbl_t abseps=1e-6, fwr_dbl_t releps=1e-6):
     """mvndst(lower, upper, infin, correl[, maxpts, abseps, releps]) -> (error, value, inform)
 
     Parameters
@@ -85,6 +92,9 @@ cpdef object mvndst(object lower, object upper, object infin, object correl, fwi
     cdef fwr_dbl_t error, value
     cdef np.ndarray lower_, upper_, infin_, correl_
     cdef np.npy_intp lower_shape[1], upper_shape[1], infin_shape[1], correl_shape[1]
+    error = 0
+    value = 0
+    inform = 0
     lower_ = fw_asfortranarray(lower, fwr_dbl_t_enum, 1, lower_shape, False, False)
     n = lower_shape[0]
     if not (0 <= n <= lower_shape[0]):
@@ -139,9 +149,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_dcfbd8f
 # Fwrap: self-sha1 ae9426402166d8ba0c07ab8f65716a064bddb136
-# Fwrap: pyf-sha1 c61413be1812569cc1993caa1b92fca9d0a4539a
+# Fwrap: pyf-sha1 379843d7608e85a453c00112a4a2aa6e260ce628
 # Fwrap: wraps src/mvndst.f
 # Fwrap:     sha1 3048e094d20be8b3e25e2882c1c93934a6e5881b
 # Fwrap: exclude bvnmvn
@@ -171,7 +181,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary mvn.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary mvn_fc.h
 # Fwrap: auxiliary mvn_fc.pxd
 

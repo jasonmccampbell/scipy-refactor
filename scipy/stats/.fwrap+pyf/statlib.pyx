@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The statlib module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The statlib module was generated with Fwrap v0.2.0dev_3a09519.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -13,11 +13,16 @@ swilk(...)
 wprob(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport statlib_fc as fc
+
 np.import_array()
+__all__ = ['wprob', 'gscale', 'prho', 'swilk']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['wprob', 'gscale', 'prho', 'swilk']
-cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
+def wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
     """wprob(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
@@ -37,11 +42,13 @@ cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
     cdef np.ndarray a1_, a2_, a3_
     cdef np.npy_intp a1_shape[1], a2_shape[1], a3_shape[1]
     cdef fwr_real_t astart
+    astart = 0
     l1 = 1 + ((test * other) // 2)
     a2_shape[0] = l1
     a2_ = fw_asfortranarray(None, fwr_real_t_enum, 1, a2_shape, False, True)
     a3_shape[0] = l1
     a3_ = fw_asfortranarray(None, fwr_real_t_enum, 1, a3_shape, False, True)
+    ifault = 0
     a1_shape[0] = l1
     a1_ = fw_asfortranarray(a1, fwr_real_t_enum, 1, a1_shape, False, True)
     if l1 != a1_shape[0]:
@@ -50,7 +57,7 @@ cpdef object wprob(fwi_integer_t test, fwi_integer_t other, object a1=None):
     return (astart, a1_, ifault,)
 
 
-cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
+def gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
     """gscale(test, other[, a1]) -> (astart, a1, ifault)
 
     Parameters
@@ -70,11 +77,13 @@ cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
     cdef np.ndarray a1_, a2_, a3_
     cdef np.npy_intp a1_shape[1], a2_shape[1], a3_shape[1]
     cdef fwr_real_t astart
+    astart = 0
     l1 = 1 + ((test * other) // 2)
     a2_shape[0] = l1
     a2_ = fw_asfortranarray(None, fwr_real_t_enum, 1, a2_shape, False, True)
     a3_shape[0] = l1
     a3_ = fw_asfortranarray(None, fwr_real_t_enum, 1, a3_shape, False, True)
+    ifault = 0
     a1_shape[0] = l1
     a1_ = fw_asfortranarray(a1, fwr_real_t_enum, 1, a1_shape, False, True)
     if not (0 <= l1 <= a1_shape[0]):
@@ -83,7 +92,7 @@ cpdef object gscale(fwi_integer_t test, fwi_integer_t other, object a1=None):
     return (astart, a1_, ifault,)
 
 
-cpdef object prho(fwi_integer_t n, fwi_integer_t is__):
+def prho(fwi_integer_t n, fwi_integer_t is__):
     """prho(n, is__) -> (fw_ret_arg, ifault)
 
     Parameters
@@ -99,11 +108,12 @@ cpdef object prho(fwi_integer_t n, fwi_integer_t is__):
     """
     cdef fwi_integer_t ifault
     cdef fwr_dbl_t fw_ret_arg
+    ifault = 0
     fw_ret_arg = fc.prho(&n, &is__, &ifault)
     return (fw_ret_arg, ifault,)
 
 
-cpdef object swilk(object x, object a, bint init=0, object n1=None):
+def swilk(object x, object a, bint init=0, object n1=None):
     """swilk(x, a[, init, n1]) -> (a, w, pw, ifault)
 
     Parameters
@@ -127,6 +137,9 @@ cpdef object swilk(object x, object a, bint init=0, object n1=None):
     cdef fwr_real_t w, pw
     cdef fwl_logical_t init_
     init_ = 1 if init else 0
+    w = 0
+    pw = 0
+    ifault = 0
     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
     n = x_shape[0]
     n1_ = n1 if (n1 is not None) else n
@@ -179,9 +192,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_3a09519
 # Fwrap: self-sha1 0ff006c1ae5e8d77511a99502334d391ba122ad8
-# Fwrap: pyf-sha1 6cea58f57fa6532583668e5c095b792f2aff63ef
+# Fwrap: pyf-sha1 a594b69b8f0da8c468048ac98ff9df70734de774
 # Fwrap: wraps statlib/*.f
 # Fwrap:     sha1 fdacc5bbd4afbc5c3867c04dad74d9ea6d64b3bd
 # Fwrap: exclude alnorm
@@ -201,7 +214,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary statlib.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary statlib_fc.h
 # Fwrap: auxiliary statlib_fc.pxd
 

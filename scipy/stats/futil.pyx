@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The futil module was generated with Fwrap v0.2.0dev_9849d10.
+"""The futil module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -11,11 +11,16 @@ dfreps(...)
 dqsort(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport futil_fc as fc
+
 np.import_array()
+__all__ = ['dqsort', 'dfreps']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['dqsort', 'dfreps']
-cpdef object dqsort(object arr, bint overwrite_arr=False):
+def dqsort(object arr, bint overwrite_arr=False):
     """dqsort(arr[, overwrite_arr]) -> arr
 
     Parameters
@@ -39,7 +44,7 @@ cpdef object dqsort(object arr, bint overwrite_arr=False):
     return arr_
 
 
-cpdef object dfreps(object arr, object replist=None, object repnum=None):
+def dfreps(object arr, object replist=None, object repnum=None):
     """dfreps(arr[, replist, repnum]) -> (replist, repnum, nlist)
 
     Parameters
@@ -112,15 +117,15 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9849d10
+# Fwrap: version 0.2.0dev_906fe37
 # Fwrap: self-sha1 5bfe1322e0df68842e5d85095b7f3308d908faa2
-# Fwrap: pyf-sha1 bc2dfd1e0850266b906cd000c694d8515d297488
+# Fwrap: pyf-sha1 630608d869f0de4976e865cf046bd510bf411d06
 # Fwrap: wraps src/futil.f
 # Fwrap:     sha1 3fb8012931d62222f0e2559e579c3d4f965b57ee
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary futil.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary futil_fc.h
 # Fwrap: auxiliary futil_fc.pxd
 
