@@ -138,7 +138,6 @@
     <ClCompile Include="futil.cpp" />
     <ClCompile Include="mvn.cpp" />
     <ClCompile Include="statlib.cpp" />
-    <ClCompile Include="vonmises_cython.c" />
     <ClCompile Include="vonmises_cython.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
