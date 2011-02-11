@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The dfitpack module was generated with Fwrap v0.2.0dev_9849d10.
+"""The dfitpack module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -27,11 +27,17 @@ surfit_smth(...)
 """
 from libc.math cimport sqrt
 
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport dfitpack_fc as fc
+
+__all__ = ['bispeu', 'bispev', 'curfit', 'dblint', 'fpcurf0', 'fpcurf1', 'fpcurfm1', 'percur', 'regrid_smth', 'spalde', 'splder', 'splev', 'splint', 'sproot', 'surfit_smth', 'surfit_lsq']
+
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['bispeu', 'bispev', 'curfit', 'dblint', 'fpcurf0', 'fpcurf1', 'fpcurfm1', 'percur', 'regrid_smth', 'spalde', 'splder', 'splev', 'splint', 'sproot', 'surfit_smth', 'surfit_lsq']
-cpdef object bispeu(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, object x, object y, object z=None):
+
+def bispeu(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, object x, object y, object z=None):
     """bispeu(tx, ty, c, kx, ky, x, y[, z]) -> (z, ier)
 
     Parameters
@@ -86,7 +92,7 @@ cpdef object bispeu(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     return (z_, ier,)
 
 
-cpdef object bispev(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, object x, object y, object z=None):
+def bispev(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, object x, object y, object z=None):
     """bispev(tx, ty, c, kx, ky, x, y[, z]) -> (z, ier)
 
     Parameters
@@ -147,7 +153,7 @@ cpdef object bispev(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     return (z_, ier,)
 
 
-cpdef object curfit(fwi_integer_t iopt, object x, object y, object w, object t, object wrk, object iwrk, object xb=None, object xe=None, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
+def curfit(fwi_integer_t iopt, object x, object y, object w, object t, object wrk, object iwrk, object xb=None, object xe=None, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
     """curfit(iopt, x, y, w, t, wrk, iwrk[, xb, xe, k, s, c]) -> (n, c, fp, ier)
 
     Parameters
@@ -224,7 +230,7 @@ cpdef object curfit(fwi_integer_t iopt, object x, object y, object w, object t, 
     return (n_, c_, fp, ier,)
 
 
-cpdef object dblint(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, fwr_real_x8_t xb, fwr_real_x8_t xe, fwr_real_x8_t yb, fwr_real_x8_t ye):
+def dblint(object tx, object ty, object c, fwi_integer_t kx, fwi_integer_t ky, fwr_real_x8_t xb, fwr_real_x8_t xe, fwr_real_x8_t yb, fwr_real_x8_t ye):
     """dblint(tx, ty, c, kx, ky, xb, xe, yb, ye) -> fw_ret_arg
 
     Parameters
@@ -267,7 +273,7 @@ cpdef object dblint(object tx, object ty, object c, fwi_integer_t kx, fwi_intege
     return fw_ret_arg
 
 
-cpdef object fpcurf0(object x, object y, fwi_integer_t k, object w=None, object xb=None, object xe=None, object s=None, object nest=None, object t=None, object c=None, object fpint=None, object nrdata=None):
+def fpcurf0(object x, object y, fwi_integer_t k, object w=None, object xb=None, object xe=None, object s=None, object nest=None, object t=None, object c=None, object fpint=None, object nrdata=None):
     """fpcurf0(x, y, k, [, w, xb, xe, s, nest, t, c, fpint, nrdata]) -> (x, y, w, xb, xe, k, s, n, t, c, fp, fpint, nrdata, ier)
 
     Parameters
@@ -380,7 +386,7 @@ cpdef object fpcurf0(object x, object y, fwi_integer_t k, object w=None, object 
     return (x_, y_, w_, xb_, xe_, k, s_, n, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
-cpdef object fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8_t xe, fwi_integer_t k, fwr_real_x8_t s, fwi_integer_t n, object t, object c, fwr_real_x8_t fp, object fpint, object nrdata, fwi_integer_t ier, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_w=True, bint overwrite_t=True, bint overwrite_c=True, bint overwrite_fpint=True, bint overwrite_nrdata=True):
+def fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8_t xe, fwi_integer_t k, fwr_real_x8_t s, fwi_integer_t n, object t, object c, fwr_real_x8_t fp, object fpint, object nrdata, fwi_integer_t ier, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_w=True, bint overwrite_t=True, bint overwrite_c=True, bint overwrite_fpint=True, bint overwrite_nrdata=True):
     """fpcurf1(x, y, w, xb, xe, k, s, n, t, c, fp, fpint, nrdata, ier[, overwrite_x, overwrite_y, overwrite_w, overwrite_t, overwrite_c, overwrite_fpint, overwrite_nrdata]) -> (x, y, w, xb, xe, k, s, n, t, c, fp, fpint, nrdata, ier)
 
     Parameters
@@ -485,7 +491,7 @@ cpdef object fpcurf1(object x, object y, object w, fwr_real_x8_t xb, fwr_real_x8
     return (x_, y_, w_, xb, xe, k, s, n, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
-cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, object xb=None, object xe=None, bint overwrite_t=True, object c=None, object fpint=None, object nrdata=None):
+def fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, object xb=None, object xe=None, bint overwrite_t=True, object c=None, object fpint=None, object nrdata=None):
     """fpcurfm1(x, y, w, k, t[, xb, xe, overwrite_t, c, fpint, nrdata]) -> (x, y, w, xb, xe, k, s, n, t, c, fp, fpint, nrdata, ier)
 
     Parameters
@@ -595,7 +601,7 @@ cpdef object fpcurfm1(object x, object y, object w, fwi_integer_t k, object t, o
     return (x_, y_, w_, xb_, xe_, k, s, n_, t_, c_, fp, fpint_, nrdata_, ier,)
 
 
-cpdef object percur(fwi_integer_t iopt, object x, object y, object w, object t, object wrk, object iwrk, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
+def percur(fwi_integer_t iopt, object x, object y, object w, object t, object wrk, object iwrk, fwi_integer_t k=3, fwr_real_x8_t s=0.0, object c=None):
     """percur(iopt, x, y, w, t, wrk, iwrk[, k, s, c]) -> (n, c, fp, ier)
 
     Parameters
@@ -665,7 +671,7 @@ cpdef object percur(fwi_integer_t iopt, object x, object y, object w, object t, 
     return (n_, c_, fp, ier,)
 
 
-cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, fwr_real_x8_t s=0.0, object tx=None, object ty=None, object c=None):
+def regrid_smth(object x, object y, object z, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, fwr_real_x8_t s=0.0, object tx=None, object ty=None, object c=None):
     """regrid_smth(x, y, z[, xb, xe, yb, ye, kx, ky, s, tx, ty, c]) -> (nx, tx, ny, ty, c, fp, ier)
 
     Parameters
@@ -759,7 +765,7 @@ cpdef object regrid_smth(object x, object y, object z, object xb=None, object xe
     return (nx, tx_, ny, ty_, c_, fp, ier,)
 
 
-cpdef object spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object d=None):
+def spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object d=None):
     """spalde(t, c, k, x[, d]) -> (d, ier)
 
     Parameters
@@ -798,7 +804,7 @@ cpdef object spalde(object t, object c, fwi_integer_t k, fwr_real_x8_t x, object
     return (d_, ier,)
 
 
-cpdef object splder(object t, object c, fwi_integer_t k, object x, fwi_integer_t nu=1, fwi_integer_t e=0, object y=None):
+def splder(object t, object c, fwi_integer_t k, object x, fwi_integer_t nu=1, fwi_integer_t e=0, object y=None):
     """splder(t, c, k, x[, nu, e, y]) -> y
 
     Parameters
@@ -847,7 +853,7 @@ cpdef object splder(object t, object c, fwi_integer_t k, object x, fwi_integer_t
     return y_
 
 
-cpdef object splev(object t, object c, fwi_integer_t k, object x, fwi_integer_t e=0, object y=None):
+def splev(object t, object c, fwi_integer_t k, object x, fwi_integer_t e=0, object y=None):
     """splev(t, c, k, x[, e, y]) -> y
 
     Parameters
@@ -891,7 +897,7 @@ cpdef object splev(object t, object c, fwi_integer_t k, object x, fwi_integer_t 
     return y_
 
 
-cpdef object splint(object t, object c, fwi_integer_t k, fwr_real_x8_t a, fwr_real_x8_t b):
+def splint(object t, object c, fwi_integer_t k, fwr_real_x8_t a, fwr_real_x8_t b):
     """splint(t, c, k, a, b) -> fw_ret_arg
 
     Parameters
@@ -926,7 +932,7 @@ cpdef object splint(object t, object c, fwi_integer_t k, fwr_real_x8_t a, fwr_re
     return fw_ret_arg
 
 
-cpdef object sproot(object t, object c, object mest=None, object zero=None):
+def sproot(object t, object c, object mest=None, object zero=None):
     """sproot(t, c[, mest, zero]) -> (zero, m, ier)
 
     Parameters
@@ -968,7 +974,7 @@ cpdef object sproot(object t, object c, object mest=None, object zero=None):
     return (zero_, m, ier,)
 
 
-cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, object s=None, object nxest=None, object nyest=None, object eps=None, object lwrk2=None, object tx=None, object ty=None, object c=None, object wrk1=None):
+def surfit_smth(object x, object y, object z, object w=None, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, object s=None, object nxest=None, object nyest=None, object eps=None, object lwrk2=None, object tx=None, object ty=None, object c=None, object wrk1=None):
     """surfit_smth(x, y, z[, w, xb, xe, yb, ye, kx, ky, s, nxest, nyest, eps, lwrk2, tx, ty, c, wrk1]) -> (nx, tx, ny, ty, c, fp, wrk1, ier)
 
     Parameters
@@ -1089,7 +1095,7 @@ cpdef object surfit_smth(object x, object y, object z, object w=None, object xb=
     fc.surfit(&iopt, &m, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(y_), <fwr_real_x8_t*>np.PyArray_DATA(z_), <fwr_real_x8_t*>np.PyArray_DATA(w_), &xb_, &xe_, &yb_, &ye_, &kx, &ky, &s_, &nxest_, &nyest_, &nmax, &eps_, &nx, <fwr_real_x8_t*>np.PyArray_DATA(tx_), &ny, <fwr_real_x8_t*>np.PyArray_DATA(ty_), <fwr_real_x8_t*>np.PyArray_DATA(c_), &fp, <fwr_real_x8_t*>np.PyArray_DATA(wrk1_), &lwrk1, <fwr_real_x8_t*>np.PyArray_DATA(wrk2_), &lwrk2_, <fwi_integer_t*>np.PyArray_DATA(iwrk_), &kwrk, &ier)
     return (nx, tx_, ny, ty_, c_, fp, wrk1_, ier,)
 
-cpdef object surfit_lsq(object x, object y, object z, object tx, object ty, object w=None, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, object eps=None, object lwrk2=None, bint overwrite_tx=True, bint overwrite_ty=True, object c=None):
+def surfit_lsq(object x, object y, object z, object tx, object ty, object w=None, object xb=None, object xe=None, object yb=None, object ye=None, fwi_integer_t kx=3, fwi_integer_t ky=3, object eps=None, object lwrk2=None, bint overwrite_tx=True, bint overwrite_ty=True, object c=None):
     """surfit_lsq(x, y, z, tx, ty[, w, xb, xe, yb, ye, kx, ky, eps, lwrk2, overwrite_tx, overwrite_ty, c]) -> (tx, ty, c, fp, ier)
 
     Parameters
@@ -1311,9 +1317,9 @@ cdef int calc_regrid_lwrk(int mx, int my, int kx, int ky,
 
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9849d10
+# Fwrap: version 0.2.0dev_906fe37
 # Fwrap: self-sha1 3078d720c73e99bebd81a31bd6f084104a40fda2
-# Fwrap: pyf-sha1 2d9290ed372448f70d1ad9f4d114a7953e807331
+# Fwrap: pyf-sha1 fb38e75ef34aaad9ecb2e5a5724453a8600ee09b
 # Fwrap: wraps fitpack/bispeu.f
 # Fwrap:     sha1 8a58ee9c07576ccb81ebf587c844a09a06eef222
 # Fwrap: wraps fitpack/bispev.f
@@ -1556,7 +1562,7 @@ cdef int calc_regrid_lwrk(int mx, int my, int kx, int ky,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary dfitpack.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary dfitpack_fc.h
 # Fwrap: auxiliary dfitpack_fc.pxd
 
