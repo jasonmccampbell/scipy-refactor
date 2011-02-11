@@ -9217,7 +9217,7 @@ static System::Object^ clqmn(System::Object^ m, System::Object^ n, System::Objec
   System::Object^ __pyx_t_4 = nullptr;
   __pyx_v_m = __site_cvt_1504_0->Target(__site_cvt_1504_0, m);
   __pyx_v_n = __site_cvt_1504_0_1->Target(__site_cvt_1504_0_1, n);
-  __pyx_t_1 = (System::Numerics::Complex)z;
+  __pyx_t_1 = (System::Numerics::Complex)(gcnew NumpyDotNet::ScalarComplex128(z))->Value;
   __pyx_v_z.real(__pyx_t_1.Real);
   __pyx_v_z.imag(__pyx_t_1.Imaginary);
   if (dynamic_cast<System::Reflection::Missing^>(cqm) == nullptr) {
