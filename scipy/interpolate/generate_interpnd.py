@@ -8,6 +8,10 @@ import shutil
 
 from mako.template import Template
 
+dotnet = False
+if len(sys.argv) > 1 and sys.argv[1] == '--dotnet':
+    dotnet = True
+
 f = open('interpnd.pyx', 'r')
 template = f.read()
 f.close()
@@ -21,8 +25,15 @@ try:
     f.close()
 
     # Run Cython
-    dst_fn = os.path.join(tmp_dir, 'interpnd.c')
-    ret = subprocess.call(['cython', '-I', '../..', '-o', dst_fn, fn])
+    if dotnet:
+        dst_name = 'interpnd.cpp'
+        args_extra = ['--dotnet']
+    else:
+        dst_name = 'interpnd.c'
+        args_extra = []
+    dst_fn = os.path.join(tmp_dir, dst_name)
+    
+    ret = subprocess.call(['cython', '-I', '../..', '-o'] + args_extra + [dst_fn, fn])
     if ret != 0:
         sys.exit(ret)
 
@@ -34,7 +45,7 @@ try:
     r = re.compile(r'/\*(.*?)\*/', re.S)
 
     text = r.sub('', text)
-    f = open('interpnd.c', 'w')
+    f = open(dst_name, 'w')
     f.write(text)
     f.close()
 finally:
