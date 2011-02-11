@@ -208,5 +208,15 @@ cdef inline intp_t* PyArray_DIMS(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
 
+cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+    import clr
+    import NumpyDotNet.NpyArray
+    return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+
+cdef inline object PyArray_FROMANY(m, type, min, max, flags):
+    if flags & NPY_ENSURECOPY:
+        flags |= NPY_DEFAULT
+    return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
+
 cdef inline void import_array():
     pass
