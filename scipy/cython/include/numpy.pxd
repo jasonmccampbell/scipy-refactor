@@ -218,5 +218,11 @@ cdef inline object PyArray_FROMANY(m, type, min, max, flags):
         flags |= NPY_DEFAULT
     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
 
+cdef inline object PyArray_Check(obj):
+    return isinstance(obj, ndarray)
+
+cdef inline object PyArray_NDIM(obj):
+    return obj.ndim
+
 cdef inline void import_array():
     pass
