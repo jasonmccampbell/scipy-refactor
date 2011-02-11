@@ -131,10 +131,15 @@
     <ClInclude Include="futil_fc.h" />
     <ClInclude Include="fwrap_ktp_header.h" />
     <ClInclude Include="mvn_fc.h" />
+    <ClInclude Include="npy_ironpython.h" />
     <ClInclude Include="statlib_fc.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="futil.cpp" />
+    <ClCompile Include="mvn.cpp" />
+    <ClCompile Include="statlib.cpp" />
     <ClCompile Include="vonmises_cython.c" />
+    <ClCompile Include="vonmises_cython.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
