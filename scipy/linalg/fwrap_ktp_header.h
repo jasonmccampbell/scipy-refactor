@@ -6,12 +6,13 @@
 #else
    #define fw_complex(x) x _Complex
 #endif
+
 #define FW_ARR_DIM__ 2
 #define FW_CHAR_SIZE__ 1
 #define FW_INIT_ERR__ -1
 #define FW_NO_ERR__ 0
 #define fw_errstr_len 63
-#include <numpy/npy_math.h>
+#include <npy_math.h>
 typedef int fwi_integer_t;
 typedef npy_int8 fwi_integer_x1_t;
 typedef npy_int8 fwi_integer_1_t;
