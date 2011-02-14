@@ -7,14 +7,14 @@
 *.la
 *~
 *.bak
+*.opensdf
 *.pdb
 *.swp
 *.suo
 *.sdf
-*.vcxproj.*
-*.opensdf
 *.u2d
 *.user
+*.vcxproj.*
 .\#*
 .deps
 .libs

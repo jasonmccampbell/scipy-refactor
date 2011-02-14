@@ -45,6 +45,8 @@ def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gt
     f : fwr_dbl, intent inout
     g : fwr_dbl, intent inout
     task : bytes, len 60, intent inout
+    isave : fwi_integer, 1D array, dimension(2), intent inout
+    dsave : fwr_dbl, 1D array, dimension(13), intent inout
 
     """
     cdef fw_shape_t fw_task_len
@@ -63,7 +65,7 @@ def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gt
     fw_task_buf = <char*>fw_task
     memcpy(fw_task_buf, <char*>task, fw_task_len+1)
     fc.dcsrch(&stp, &f, &g, &ftol, &gtol, &xtol, fw_task_buf, &stpmin, &stpmax, <fwi_integer_t*>np.PyArray_DATA(isave_), <fwr_dbl_t*>np.PyArray_DATA(dsave_), fw_task_len)
-    return (stp, f, g, fw_task,)
+    return (stp, f, g, fw_task, isave_, dsave_,)
 
 
 def dcstep(fwr_dbl_t stx, fwr_dbl_t fx, fwr_dbl_t dx, fwr_dbl_t sty, fwr_dbl_t fy, fwr_dbl_t dy, fwr_dbl_t stp, fwr_dbl_t fp, fwr_dbl_t dp, bint brackt, fwr_dbl_t stpmin, fwr_dbl_t stpmax):
