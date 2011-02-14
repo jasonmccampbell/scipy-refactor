@@ -1,7 +1,7 @@
 from fwrap_ktp cimport *
 
 cdef extern from "vode_fc.h":
-    void dvode(
+    void dvode "F_FUNC(dvode,DVODE)"(
         void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_real_t *, fwr_dbl_t *, fwi_integer_t *),
         fwi_integer_t * neq,
         fwr_dbl_t * y,
@@ -22,7 +22,7 @@ cdef extern from "vode_fc.h":
         fwr_dbl_t * rpar,
         fwi_integer_t * ipar
     )
-    void zvode(
+    void zvode "F_FUNC(zvode,ZVODE)"(
         void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwr_real_t *, fwr_real_t *, fwi_integer_t *),
         fwi_integer_t * neq,
         fwc_dbl_complex_t * y,

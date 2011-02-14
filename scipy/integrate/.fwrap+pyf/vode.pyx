@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The vode module was generated with Fwrap v0.2.0dev_51187a5.
+"""The vode module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -11,6 +11,11 @@ dvode(...)
 zvode(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport vode_fc as fc
+
 np.import_array()
 import sys
 
@@ -111,7 +116,7 @@ cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, 
         longjmp(dvode_jac_cb_info.jmp, 1)
 
 
-cpdef object dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
+def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
     """dvode(f, jac, y, t, tout, rtol, atol, itask, istate, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
 
     Parameters
@@ -260,7 +265,7 @@ cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex
         longjmp(zvode_jac_cb_info.jmp, 1)
 
 
-cpdef object zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
+def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
     """zvode(f, jac, y, t, tout, rtol, atol, itask, istate, zwork, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
 
     Parameters
@@ -385,9 +390,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_51187a5
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 95cff1f041bdf6557820520320ccd041fb929656
-# Fwrap: pyf-sha1 03ab7a8e14a2820cebd9e6ef5cf8a5c55f6bb879
+# Fwrap: pyf-sha1 db99e54317f2c0b81e2f8cbb515fe8dcbfe80000
 # Fwrap: wraps odepack/vode.f
 # Fwrap:     sha1 e6a4c327447ad9f1405171d2f51a3883c2a02be8
 # Fwrap: wraps odepack/zvode.f
@@ -429,7 +434,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary vode.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary vode_fc.h
 # Fwrap: auxiliary vode_fc.pxd
 

@@ -10,43 +10,50 @@
     #endif
 #endif
 #if defined(NO_FORTRAN_MANGLING)
-    #define F_FUNC(f,F) f
+    #define F_FUNC_MANGLING(f,F) f
 #else
     #if defined(PREPEND_FORTRAN)
         #if defined(NO_APPEND_FORTRAN)
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) _##F
+                #define F_FUNC_MANGLING(f,F) _##F
             #else
-                #define F_FUNC(f,F) _##f
+                #define F_FUNC_MANGLING(f,F) _##f
             #endif
         #else
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) _##F##_
+                #define F_FUNC_MANGLING(f,F) _##F##_
             #else
-                #define F_FUNC(f,F) _##f##_
+                #define F_FUNC_MANGLING(f,F) _##f##_
             #endif
         #endif
     #else
         #if defined(NO_APPEND_FORTRAN)
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) F
+                #define F_FUNC_MANGLING(f,F) F
             #else
                 #error Can not happen
             #endif
         #else
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) F##_
+                #define F_FUNC_MANGLING(f,F) F##_
             #else
-                #define F_FUNC(f,F) f##_
+                #define F_FUNC_MANGLING(f,F) f##_
             #endif
         #endif
     #endif
 #endif
 
 #if defined(__cplusplus)
+#define F_FUNC(f,F) ::F_FUNC_MANGLING(f,F)
+#else
+#define F_FUNC(f,F) F_FUNC_MANGLING(f,F)
+#endif
+
+
+#if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(dvode,DVODE)(
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dvode,DVODE)(
     void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_real_t *, fwr_dbl_t *, fwi_integer_t *),
     fwi_integer_t * neq,
     fwr_dbl_t * y,
@@ -67,7 +74,7 @@ FORTRAN_CALLSPEC void F_FUNC(dvode,DVODE)(
     fwr_dbl_t * rpar,
     fwi_integer_t * ipar
 );
-FORTRAN_CALLSPEC void F_FUNC(zvode,ZVODE)(
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(zvode,ZVODE)(
     void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwr_real_t *, fwr_real_t *, fwi_integer_t *),
     fwi_integer_t * neq,
     fwc_dbl_complex_t * y,
@@ -94,7 +101,3 @@ FORTRAN_CALLSPEC void F_FUNC(zvode,ZVODE)(
 } /* extern "C" */
 #endif
 
-#if !defined(NO_FORTRAN_MANGLING)
-#define dvode F_FUNC(dvode,DVODE)
-#define zvode F_FUNC(zvode,ZVODE)
-#endif
