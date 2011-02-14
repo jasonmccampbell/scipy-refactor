@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _nnls module was generated with Fwrap v0.2.0dev_ef9d8cc.
+"""The _nnls module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -10,11 +10,16 @@ Functions
 nnls(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _nnls_fc as fc
+
 np.import_array()
 __all__ = ['nnls']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object nnls(object a, fwi_integer_t m, fwi_integer_t n, object b, object w, object zz, object index_bn, object mda=None, bint overwrite_a=False, bint overwrite_b=False, object x=None):
+def nnls(object a, fwi_integer_t m, fwi_integer_t n, object b, object w, object zz, object index_bn, object mda=None, bint overwrite_a=False, bint overwrite_b=False, object x=None):
     """nnls(a, m, n, b, w, zz, index_bn[, mda, overwrite_a, overwrite_b, x]) -> (x, rnorm, mode)
 
     Parameters
@@ -99,9 +104,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_ef9d8cc
+# Fwrap: version 0.2.0dev_906fe37
 # Fwrap: self-sha1 773c0ee681faa3be49badae6b41e33a7c2d40654
-# Fwrap: pyf-sha1 e76b28aceea55917aca29491d4f23afbdf9ad8fb
+# Fwrap: pyf-sha1 50f907227830bc1071596de91a022bd7546ffdab
 # Fwrap: wraps nnls/nnls.f
 # Fwrap:     sha1 9f987f085eba325f16d57fdacc88f51e64ad8555
 # Fwrap: exclude diff
@@ -110,7 +115,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _nnls.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _nnls_fc.h
 # Fwrap: auxiliary _nnls_fc.pxd
 
