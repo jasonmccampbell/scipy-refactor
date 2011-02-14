@@ -17,10 +17,9 @@ cimport _lbfgsb_fc as fc
 
 np.import_array()
 __all__ = ['setulb']
-
-import numpy as np
-_S60_dtype = np.dtype('|S60')
-def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object wa, object iwa, np.ndarray task, fwi_integer_t iprint, np.ndarray csave, object lsave, object isave, object dsave, object n=None, bint overwrite_x=True, bint overwrite_f=True, bint overwrite_g=True, bint overwrite_wa=True, bint overwrite_iwa=True, bint overwrite_task=True, bint overwrite_csave=True, bint overwrite_lsave=True, bint overwrite_isave=True, bint overwrite_dsave=True):
+cdef extern from "string.h":
+    void *memcpy(void *dest, void *src, size_t n)
+def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object wa, object iwa, bytes task, fwi_integer_t iprint, bytes csave, object lsave, object isave, object dsave, object n=None, bint overwrite_x=True, bint overwrite_f=True, bint overwrite_g=True, bint overwrite_wa=True, bint overwrite_iwa=True, bint overwrite_task=True, bint overwrite_csave=True, bint overwrite_lsave=True, bint overwrite_isave=True, bint overwrite_dsave=True):
     """setulb(m, x, l, u, nbd, f, g, factr, pgtol, wa, iwa, task, iprint, csave, lsave, isave, dsave[, n, overwrite_x, overwrite_f, overwrite_g, overwrite_wa, overwrite_iwa, overwrite_task, overwrite_csave, overwrite_lsave, overwrite_isave, overwrite_dsave]) -> (x, f, g, wa, iwa, task, csave, lsave, isave, dsave)
 
     Parameters
@@ -36,9 +35,9 @@ def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t 
     pgtol : fwr_dbl, intent in
     wa : fwr_dbl, 1D array, dimension(2*m*n+4*n+12*m*m+12*m), intent inout
     iwa : fwi_integer, 1D array, dimension(3 * n), intent inout
-    task : np.ndarray, len 60, intent inout
+    task : bytes, len 60, intent inout
     iprint : fwi_integer, intent in
-    csave : np.ndarray, len 60, intent inout
+    csave : bytes, len 60, intent inout
     lsave : fwl_logical, 1D array, dimension(4), intent inout
     isave : fwi_integer, 1D array, dimension(44), intent inout
     dsave : fwr_dbl, 1D array, dimension(29), intent inout
@@ -61,14 +60,17 @@ def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t 
     g : fwr_dbl, 1D array, dimension(n), intent inout
     wa : fwr_dbl, 1D array, dimension(2*m*n+4*n+12*m*m+12*m), intent inout
     iwa : fwi_integer, 1D array, dimension(3 * n), intent inout
-    task : np.ndarray, len 60, intent inout
-    csave : np.ndarray, len 60, intent inout
+    task : bytes, len 60, intent inout
+    csave : bytes, len 60, intent inout
     lsave : fwl_logical, 1D array, dimension(4), intent inout
     isave : fwi_integer, 1D array, dimension(44), intent inout
     dsave : fwr_dbl, 1D array, dimension(29), intent inout
 
     """
+    cdef fw_shape_t fw_task_len, fw_csave_len
     cdef fwi_integer_t n_
+    cdef bytes fw_task, fw_csave
+    cdef char *fw_task_buf, *fw_csave_buf
     cdef np.ndarray x_, l_, u_, nbd_, g_, wa_, iwa_, lsave_, isave_, dsave_
     cdef np.npy_intp x_shape[1], l_shape[1], u_shape[1], nbd_shape[1], g_shape[1], wa_shape[1], iwa_shape[1], lsave_shape[1], isave_shape[1], dsave_shape[1]
     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
@@ -104,22 +106,18 @@ def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t 
     dsave_ = fw_asfortranarray(dsave, fwr_dbl_t_enum, 1, dsave_shape, not overwrite_dsave, False)
     if not (0 <= 29 <= dsave_shape[0]):
         raise ValueError("(0 <= 29 <= dsave.shape[0]) not satisifed")
-    if task.dtype != _S60_dtype or np.PyArray_NDIM(task) != 1 or np.PyArray_DIMS(task)[0] != 1:
-        raise ValueError("task.dtype != np.dtype('|S60') or task.shape != (1,)")
-    if csave.dtype != _S60_dtype or np.PyArray_NDIM(csave) != 1 or np.PyArray_DIMS(csave)[0] != 1:
-        raise ValueError("csave.dtype != np.dtype('|S60') or csave.shape != (1,)")
-    fw_space_pad(<char*>np.PyArray_DATA(task), 60)
-    fw_space_pad(<char*>np.PyArray_DATA(csave), 60)
-    fc.setulb(&n_, &m, <fwr_dbl_t*>np.PyArray_DATA(x_), <fwr_dbl_t*>np.PyArray_DATA(l_), <fwr_dbl_t*>np.PyArray_DATA(u_), <fwi_integer_t*>np.PyArray_DATA(nbd_), &f, <fwr_dbl_t*>np.PyArray_DATA(g_), &factr, &pgtol, <fwr_dbl_t*>np.PyArray_DATA(wa_), <fwi_integer_t*>np.PyArray_DATA(iwa_), <char*>np.PyArray_DATA(task), &iprint, <char*>np.PyArray_DATA(csave), <fwl_logical_t*>np.PyArray_DATA(lsave_), <fwi_integer_t*>np.PyArray_DATA(isave_), <fwr_dbl_t*>np.PyArray_DATA(dsave_), 60, 60)
-    return (x, f, g, wa, iwa, task, csave, lsave, isave, dsave,)
+    fw_task_len = 60
+    fw_task = PyBytes_FromStringAndSize(NULL, fw_task_len)
+    fw_task_buf = <char*>fw_task
+    memcpy(fw_task_buf, <char*>task, fw_task_len+1)
+    fw_csave_len = 60
+    fw_csave = PyBytes_FromStringAndSize(NULL, fw_csave_len)
+    fw_csave_buf = <char*>fw_csave
+    memcpy(fw_csave_buf, <char*>csave, fw_csave_len+1)
+    fc.setulb(&n_, &m, <fwr_dbl_t*>np.PyArray_DATA(x_), <fwr_dbl_t*>np.PyArray_DATA(l_), <fwr_dbl_t*>np.PyArray_DATA(u_), <fwi_integer_t*>np.PyArray_DATA(nbd_), &f, <fwr_dbl_t*>np.PyArray_DATA(g_), &factr, &pgtol, <fwr_dbl_t*>np.PyArray_DATA(wa_), <fwi_integer_t*>np.PyArray_DATA(iwa_), fw_task_buf, &iprint, fw_csave_buf, <fwl_logical_t*>np.PyArray_DATA(lsave_), <fwi_integer_t*>np.PyArray_DATA(isave_), <fwr_dbl_t*>np.PyArray_DATA(dsave_), fw_task_len, fw_csave_len)
+    return (x_, f, g_, wa_, iwa_, fw_task, fw_csave, lsave_, isave_, dsave_,)
 
 
-cdef void fw_space_pad(char * s, size_t len):
-    cdef size_t i
-    # Fortran strings are space-padded, we cannot have '\0' in them
-    for i in range(len):
-        if s[i] == 0:
-            s[i] = ' '
 
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
                                   np.intp_t * coerced_shape,

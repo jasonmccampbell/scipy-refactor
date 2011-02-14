@@ -53,18 +53,43 @@
 #if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC_MANGLING(nnls,NNLS)(
-    fwr_dbl_t * a,
-    fwi_integer_t * mda,
-    fwi_integer_t * m,
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dopri5,DOPRI5)(
     fwi_integer_t * n,
-    fwr_dbl_t * b,
+    void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
     fwr_dbl_t * x,
-    fwr_dbl_t * rnorm,
-    fwr_dbl_t * w,
-    fwr_dbl_t * zz,
-    fwi_integer_t * index,
-    fwi_integer_t * mode
+    fwr_dbl_t * y,
+    fwr_dbl_t * xend,
+    fwr_dbl_t * rtol,
+    fwr_dbl_t * atol,
+    fwi_integer_t * itol,
+    void (*solout)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *),
+    fwi_integer_t * iout,
+    fwr_dbl_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * iwork,
+    fwi_integer_t * liwork,
+    fwr_dbl_t * rpar,
+    fwi_integer_t * ipar,
+    fwi_integer_t * idid
+);
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dop853,DOP853)(
+    fwi_integer_t * n,
+    void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
+    fwr_dbl_t * x,
+    fwr_dbl_t * y,
+    fwr_dbl_t * xend,
+    fwr_dbl_t * rtol,
+    fwr_dbl_t * atol,
+    fwi_integer_t * itol,
+    void (*solout)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *),
+    fwi_integer_t * iout,
+    fwr_dbl_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * iwork,
+    fwi_integer_t * liwork,
+    fwr_dbl_t * rpar,
+    fwi_integer_t * ipar,
+    fwi_integer_t * idid
 );
 #if defined(__cplusplus)
 } /* extern "C" */

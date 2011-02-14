@@ -50,7 +50,7 @@ cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
 cdef fw_CallbackInfo dvode_f_cb_info
-cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
+cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     global dvode_f_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, ydot_
@@ -77,14 +77,14 @@ cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y
         info.exc = sys.exc_info()
         return -1
 
-cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
+cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     if dvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
         longjmp(dvode_f_cb_info.jmp, 1)
 
 
 
 cdef fw_CallbackInfo dvode_jac_cb_info
-cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     global dvode_jac_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, jac_
@@ -111,13 +111,13 @@ cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t *
         info.exc = sys.exc_info()
         return -1
 
-cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     if dvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
         longjmp(dvode_jac_cb_info.jmp, 1)
 
 
-def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
-    """dvode(f, jac, y, t, tout, rtol, atol, itask, istate, rwork, iwork, mf[, f_extra_args, jac_extra_args]) -> (y, t, istate)
+def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
+    """dvode(f, jac, y, t, tout, rtol, atol, itask, istate, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
 
     Parameters
     ----------
@@ -133,9 +133,7 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     rwork : fwr_dbl, 1D array, dimension(lrw), intent in
     iwork : fwi_integer, 1D array, dimension(liw), intent in
     mf : fwi_integer, intent in
-    f_extra_args : tuple of extra arguments to pass to f
-    jac_extra_args : tuple of extra arguments to pass to f
-    overwrite_y : bool, intent in
+    overwrite_y : bint_, intent in
 
     Returns
     -------
@@ -146,13 +144,16 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     """
     global dvode_f_cb_info, dvode_jac_cb_info
     cdef fw_CallbackInfo fw_f_cb, fw_jac_cb
-    cdef fwi_integer_t neq, itol, iopt, lrw, liw
+    cdef fwi_integer_t neq, itol, iopt, lrw, liw, ipar
+    cdef fwr_dbl_t rpar
     cdef np.ndarray y_, rtol_, atol_, rwork_, iwork_
     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], rwork_shape[1], iwork_shape[1]
     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
     iopt = 1
+    rpar = 0.0
+    ipar = 0
     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
@@ -177,12 +178,12 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
     if not (0 <= liw <= iwork_shape[0]):
         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
-    dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
-    dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
+    dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, None)
+    dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, None)
     try:
         if setjmp(dvode_f_cb_info.jmp) == 0:
             if setjmp(dvode_jac_cb_info.jmp) == 0:
-                fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)
+                fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, &rpar, &ipar)
             else:
                 fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc
                 dvode_jac_cb_info.exc = None
@@ -198,7 +199,7 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
 
 
 cdef fw_CallbackInfo zvode_f_cb_info
-cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
+cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     global zvode_f_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, ydot_
@@ -225,14 +226,14 @@ cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_compl
         info.exc = sys.exc_info()
         return -1
 
-cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
+cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     if zvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
         longjmp(zvode_f_cb_info.jmp, 1)
 
 
 
 cdef fw_CallbackInfo zvode_jac_cb_info
-cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     global zvode_jac_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, jac_
@@ -259,12 +260,12 @@ cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_com
         info.exc = sys.exc_info()
         return -1
 
-cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, fwr_dbl_t * rpar, fwi_integer_t * ipar):
     if zvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
         longjmp(zvode_jac_cb_info.jmp, 1)
 
 
-def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
+def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, bint overwrite_y=False):
     """zvode(f, jac, y, t, tout, rtol, atol, itask, istate, zwork, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
 
     Parameters
@@ -282,9 +283,7 @@ def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     rwork : fwr_dbl, 1D array, dimension(lrw), intent in
     iwork : fwi_integer, 1D array, dimension(liw), intent in
     mf : fwi_integer, intent in
-    f_extra_args : tuple of extra arguments to pass to f
-    jac_extra_args : tuple of extra arguments to pass to f
-    overwrite_y : bool, intent in
+    overwrite_y : bint_, intent in
 
     Returns
     -------
@@ -295,13 +294,16 @@ def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     """
     global zvode_f_cb_info, zvode_jac_cb_info
     cdef fw_CallbackInfo fw_f_cb, fw_jac_cb
-    cdef fwi_integer_t neq, itol, iopt, lzw, lrw, liw
+    cdef fwi_integer_t neq, itol, iopt, lzw, lrw, liw, ipar
+    cdef fwr_dbl_t rpar
     cdef np.ndarray y_, rtol_, atol_, zwork_, rwork_, iwork_
     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], zwork_shape[1], rwork_shape[1], iwork_shape[1]
     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
     iopt = 1
+    rpar = 0.0
+    ipar = 0
     zwork_ = fw_asfortranarray(zwork, fwc_dbl_complex_t_enum, 1, zwork_shape, False, False)
     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
@@ -332,12 +334,12 @@ def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
     if not (0 <= liw <= iwork_shape[0]):
         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
-    zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
-    zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
+    zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, None)
+    zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, None)
     try:
         if setjmp(zvode_f_cb_info.jmp) == 0:
             if setjmp(zvode_jac_cb_info.jmp) == 0:
-                fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)
+                fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, &rpar, &ipar)
             else:
                 fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc
                 zvode_jac_cb_info.exc = None
