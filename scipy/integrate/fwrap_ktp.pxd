@@ -1,5 +1,5 @@
 cimport numpy as np
-#from python_string cimport PyString_FromStringAndSize as PyBytes_FromStringAndSize
+from python_string cimport PyString_FromStringAndSize as PyBytes_FromStringAndSize
 ctypedef str fw_bytes
 ctypedef float complex fwc_complex_t
 ctypedef float complex fwc_complex_x8_t

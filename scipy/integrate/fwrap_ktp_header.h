@@ -11,7 +11,7 @@
 #define FW_INIT_ERR__ -1
 #define FW_NO_ERR__ 0
 #define fw_errstr_len 63
-#include <npy_math.h>
+#include <numpy/npy_math.h>
 typedef int fwi_integer_t;
 typedef npy_int8 fwi_integer_x1_t;
 typedef npy_int8 fwi_integer_1_t;

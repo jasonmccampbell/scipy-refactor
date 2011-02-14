@@ -2,7 +2,7 @@ from fwrap_ktp cimport *
 
 cdef extern from "vode_fc.h":
     void dvode "F_FUNC(dvode,DVODE)"(
-        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *),
+        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_real_t *, fwr_dbl_t *, fwi_integer_t *),
         fwi_integer_t * neq,
         fwr_dbl_t * y,
         fwr_dbl_t * t,
@@ -17,13 +17,13 @@ cdef extern from "vode_fc.h":
         fwi_integer_t * lrw,
         fwi_integer_t * iwork,
         fwi_integer_t * liw,
-        void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *),
+        void (*jac)(),
         fwi_integer_t * mf,
-        void * rpar, # caller context
-        void * ipar # caller context
+        fwr_dbl_t * rpar,
+        fwi_integer_t * ipar
     )
     void zvode "F_FUNC(zvode,ZVODE)"(
-        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwc_dbl_complex_t *, void *, void *),
+        void (*f)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwr_real_t *, fwr_real_t *, fwi_integer_t *),
         fwi_integer_t * neq,
         fwc_dbl_complex_t * y,
         fwr_dbl_t * t,
@@ -40,8 +40,8 @@ cdef extern from "vode_fc.h":
         fwi_integer_t * lrw,
         fwi_integer_t * iwork,
         fwi_integer_t * liw,
-        void (*jac)(fwi_integer_t *, fwr_dbl_t *, fwc_dbl_complex_t *, fwi_integer_t *, fwi_integer_t *, fwc_dbl_complex_t *, fwi_integer_t *, void *, void *),
+        void (*jac)(),
         fwi_integer_t * mf,
-        void * rpar, # caller context
-        void * ipar # caller context
+        fwr_real_t * rpar,
+        fwi_integer_t * ipar
     )
