@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _cobyla module was generated with Fwrap v0.2.0dev_bdc335e.
+"""The _cobyla module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -10,6 +10,11 @@ Functions
 minimize(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _cobyla_fc as fc
+
 np.import_array()
 import sys
 
@@ -71,7 +76,7 @@ cdef void minimize_calcfc_cb_wrapper(fwi_integer_t * n, fwi_integer_t * m, fwr_d
         longjmp(minimize_calcfc_cb_info.jmp, 1)
 
 
-cpdef object minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl_t rhoend, fwi_integer_t iprint=1, fwi_integer_t maxfun=100):
+def minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl_t rhoend, fwi_integer_t iprint=1, fwi_integer_t maxfun=100):
     """minimize(calcfc, m, x, rhobeg, rhoend[, iprint, maxfun]) -> x
 
     Parameters
@@ -154,15 +159,15 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_bdc335e
-# Fwrap: self-sha1 1330697db30acbe45221f71cf79cb614474c59e0
+# Fwrap: version 0.2.0dev_906fe37
+# Fwrap: self-sha1 b898693476c7b3c994cb02afcd7e3c165aa88dcc
 # Fwrap: pyf-sha1 0000000000000000000000000000000000000000
 # Fwrap: wraps cobyla/cobyla.pyf
 # Fwrap:     sha1 5f9b63618906306af3df673cb8d5dd71e8552907
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _cobyla.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _cobyla_fc.h
 # Fwrap: auxiliary _cobyla_fc.pxd
 
