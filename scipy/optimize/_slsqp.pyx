@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _slsqp module was generated with Fwrap v0.2.0dev_bdc335e.
+"""The _slsqp module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -10,11 +10,16 @@ Functions
 slsqp(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _slsqp_fc as fc
+
 np.import_array()
 __all__ = ['slsqp']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, object xu, fwr_dbl_t f, object c, object g, object a, fwr_dbl_t acc, fwi_integer_t iter, fwi_integer_t mode, object w, object jw, object la=None, object n=None, object l_w=None, object l_jw=None):
+def slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, object xu, fwr_dbl_t f, object c, object g, object a, fwr_dbl_t acc, fwi_integer_t iter, fwi_integer_t mode, object w, object jw, object la=None, object n=None, object l_w=None, object l_jw=None):
     """slsqp(m, meq, x, xl, xu, f, c, g, a, acc, iter, mode, w, jw[, la, n, l_w, l_jw]) -> (acc, iter, mode)
 
     Parameters
@@ -67,11 +72,11 @@ cpdef object slsqp(fwi_integer_t m, fwi_integer_t meq, object x, object xl, obje
     if not (0 <= n_ <= x_shape[0]):
         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
     xl_ = fw_asfortranarray(xl, fwr_dbl_t_enum, 1, xl_shape, False, False)
-    if not (0 <= n_ <= xl_shape[0]):
-        raise ValueError("(0 <= n <= xl.shape[0]) not satisifed")
+    if n_ != xl_shape[0]:
+        raise ValueError("(n == xl.shape[0]) not satisifed")
     xu_ = fw_asfortranarray(xu, fwr_dbl_t_enum, 1, xu_shape, False, False)
-    if not (0 <= n_ <= xu_shape[0]):
-        raise ValueError("(0 <= n <= xu.shape[0]) not satisifed")
+    if n_ != xu_shape[0]:
+        raise ValueError("(n == xu.shape[0]) not satisifed")
     if not (0 <= la_ <= c_shape[0]):
         raise ValueError("(0 <= la <= c.shape[0]) not satisifed")
     g_ = fw_asfortranarray(g, fwr_dbl_t_enum, 1, g_shape, False, False)
@@ -126,15 +131,15 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_bdc335e
+# Fwrap: version 0.2.0dev_906fe37
 # Fwrap: self-sha1 c5686651588941c40e03f5d7b85f3afe829dba98
-# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: pyf-sha1 5501a914e392013f966f8d9939f14d75f1c886a0
 # Fwrap: wraps slsqp/slsqp.pyf
 # Fwrap:     sha1 97a01aff76158e8c218424041d15c62b1c7bf8c3
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _slsqp.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _slsqp_fc.h
 # Fwrap: auxiliary _slsqp_fc.pxd
 
