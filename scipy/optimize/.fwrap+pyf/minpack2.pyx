@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The minpack2 module was generated with Fwrap v0.2.0dev_ef9d8cc.
+"""The minpack2 module was generated with Fwrap v0.2.0dev_e3d779b.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -11,11 +11,16 @@ dcsrch(...)
 dcstep(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport minpack2_fc as fc
+
 np.import_array()
 __all__ = ['dcsrch', 'dcstep']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gtol, fwr_dbl_t xtol, bytes task, fwr_dbl_t stpmin, fwr_dbl_t stpmax, object isave, object dsave, bint overwrite_isave=True, bint overwrite_dsave=True):
+def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gtol, fwr_dbl_t xtol, bytes task, fwr_dbl_t stpmin, fwr_dbl_t stpmax, object isave, object dsave, bint overwrite_isave=True, bint overwrite_dsave=True):
     """dcsrch(stp, f, g, ftol, gtol, xtol, task, stpmin, stpmax, isave, dsave[, overwrite_isave, overwrite_dsave]) -> (stp, f, g, task, isave, dsave)
 
     Parameters
@@ -40,6 +45,8 @@ cpdef object dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr
     f : fwr_dbl, intent inout
     g : fwr_dbl, intent inout
     task : bytes, len 60, intent inout
+    isave : fwi_integer, 1D array, dimension(2), intent inout
+    dsave : fwr_dbl, 1D array, dimension(13), intent inout
 
     """
     cdef fw_shape_t fw_task_len
@@ -58,10 +65,10 @@ cpdef object dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr
     fw_task_buf = <char*>fw_task
     memcpy(fw_task_buf, <char*>task, fw_task_len+1)
     fc.dcsrch(&stp, &f, &g, &ftol, &gtol, &xtol, fw_task_buf, &stpmin, &stpmax, <fwi_integer_t*>np.PyArray_DATA(isave_), <fwr_dbl_t*>np.PyArray_DATA(dsave_), fw_task_len)
-    return (stp, f, g, fw_task,)
+    return (stp, f, g, fw_task, isave_, dsave_,)
 
 
-cpdef object dcstep(fwr_dbl_t stx, fwr_dbl_t fx, fwr_dbl_t dx, fwr_dbl_t sty, fwr_dbl_t fy, fwr_dbl_t dy, fwr_dbl_t stp, fwr_dbl_t fp, fwr_dbl_t dp, bint brackt, fwr_dbl_t stpmin, fwr_dbl_t stpmax):
+def dcstep(fwr_dbl_t stx, fwr_dbl_t fx, fwr_dbl_t dx, fwr_dbl_t sty, fwr_dbl_t fy, fwr_dbl_t dy, fwr_dbl_t stp, fwr_dbl_t fp, fwr_dbl_t dp, bint brackt, fwr_dbl_t stpmin, fwr_dbl_t stpmax):
     """dcstep(stx, fx, dx, sty, fy, dy, stp, fp, dp, brackt, stpmin, stpmax) -> (stx, fx, dx, sty, fy, dy, stp, brackt)
 
     Parameters
@@ -134,9 +141,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_ef9d8cc
+# Fwrap: version 0.2.0dev_e3d779b
 # Fwrap: self-sha1 1e721086b58a76d43f19ca8af2092a510e8aaa5f
-# Fwrap: pyf-sha1 20d870376d047ab85463c9ff8bc9c927d2dc46b0
+# Fwrap: pyf-sha1 5a97f165170a6e453f22b757e49662df8da55e90
 # Fwrap: wraps minpack2/dcsrch.f
 # Fwrap:     sha1 747980a88ef526110d3f67b89c3936d06f37bd07
 # Fwrap: wraps minpack2/dcstep.f
@@ -144,7 +151,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary minpack2.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary minpack2_fc.h
 # Fwrap: auxiliary minpack2_fc.pxd
 
