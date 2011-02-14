@@ -27,57 +27,59 @@ typedef double DoubleFunc_dddd_d(double w, double x, double y, double z);
 typedef double DoubleFunc_dddd_dd(double w, double x, double y, double z, double *err);
 typedef double DoubleFunc_dddi_dd(double w, double x, double y, int z, double *err);
 
+extern void cephes_F_F_As_D_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void cephes_D_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_f_ff_As_d_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_d_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_F_FF_As_D_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_D_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_f_ff_As_d_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_d_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_F_FF_As_D_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_D_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_f_FF_As_d_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_d_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_f_FF_As_d_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_d_DD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_ff_ff_As_dd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_f_ffff_As_d_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_d_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_f_ffff_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_d_dddd_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_F_FFFF_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ff_ff_As_dd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_f_ffff_As_d_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_d_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_f_ffff_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_d_dddd_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_F_FFFF_As_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_D_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_f_FFFF_As_d_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_d_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_f_FFFF_As_d_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_d_DDDD(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
 
-extern void PyUFunc_ff_ffff_As_dd_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dd_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_fff_f_As_ddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_fff_ff_As_ddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ff_ffff_As_dd_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dd_dddd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fff_f_As_ddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fff_ff_As_ddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_ff_f_As_id_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dd_d_As_id_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ff_f_As_id_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dd_d_As_id_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_ff_f_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dd_d_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_fF_F_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ff_f_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dd_d_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fF_F_As_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_ffF_F_As_ddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_fffF_F_As_dddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ffF_F_As_ddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fffF_F_As_dddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dddD_D(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
-extern void PyUFunc_fff_f_As_iid_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ddd_d_As_iid_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ffff_f_As_dddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ffff_ff_As_dddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_fffff_ff_As_ddddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ddddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_ffff_ff_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
-extern void PyUFunc_dddd_dd_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fff_f_As_iid_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ddd_d_As_iid_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ffff_f_As_dddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dddd_d(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ffff_ff_As_dddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_fffff_ff_As_ddddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ddddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_ffff_ff_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+extern void NpyUFunc_dddd_dd_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 
 #endif /* UFUNC_EXTRAS_H */
