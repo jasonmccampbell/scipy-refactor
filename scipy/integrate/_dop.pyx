@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _dop module was generated with Fwrap v0.2.0dev_c4f4438.
+"""The _dop module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -11,6 +11,11 @@ dop853(...)
 dopri5(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _dop_fc as fc
+
 np.import_array()
 import sys
 
@@ -108,7 +113,7 @@ cdef void dopri5_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl
         longjmp(dopri5_solout_cb_info.jmp, 1)
 
 
-cpdef object dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
+def dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
     """dopri5(fcn, x, y, xend, rtol, atol, solout, work, iwork[, fcn_extra_args, solout_extra_args, overwrite_y]) -> (x, y, iwork, idid)
 
     Parameters
@@ -244,7 +249,7 @@ cdef void dop853_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl
         longjmp(dop853_solout_cb_info.jmp, 1)
 
 
-cpdef object dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
+def dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
     """dop853(fcn, x, y, xend, rtol, atol, solout, work, iwork[, fcn_extra_args, solout_extra_args, overwrite_y]) -> (x, y, iwork, idid)
 
     Parameters
@@ -352,15 +357,15 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_c4f4438
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 09a57cc1ee67e71b340a2cd5c28db7ad690870ae
-# Fwrap: pyf-sha1 0000000000000000000000000000000000000000
+# Fwrap: pyf-sha1 ad48c1ecae36a022e2a9bf95725cd90967930a1f
 # Fwrap: wraps dop.pyf
 # Fwrap:     sha1 d71eb4a49dfef0b1b0be5c8b9d0a477bdd4f914b
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _dop.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _dop_fc.h
 # Fwrap: auxiliary _dop_fc.pxd
 

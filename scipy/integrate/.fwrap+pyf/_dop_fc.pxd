@@ -1,7 +1,7 @@
 from fwrap_ktp cimport *
 
 cdef extern from "_dop_fc.h":
-    void dopri5(
+    void dopri5 "F_FUNC(dopri5,DOPRI5)"(
         fwi_integer_t * n,
         void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
         fwr_dbl_t * x,
@@ -20,7 +20,7 @@ cdef extern from "_dop_fc.h":
         fwi_integer_t * ipar,
         fwi_integer_t * idid
     )
-    void dop853(
+    void dop853 "F_FUNC(dop853,DOP853)"(
         fwi_integer_t * n,
         void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
         fwr_dbl_t * x,

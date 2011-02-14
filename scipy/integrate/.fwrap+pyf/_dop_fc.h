@@ -10,43 +10,50 @@
     #endif
 #endif
 #if defined(NO_FORTRAN_MANGLING)
-    #define F_FUNC(f,F) f
+    #define F_FUNC_MANGLING(f,F) f
 #else
     #if defined(PREPEND_FORTRAN)
         #if defined(NO_APPEND_FORTRAN)
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) _##F
+                #define F_FUNC_MANGLING(f,F) _##F
             #else
-                #define F_FUNC(f,F) _##f
+                #define F_FUNC_MANGLING(f,F) _##f
             #endif
         #else
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) _##F##_
+                #define F_FUNC_MANGLING(f,F) _##F##_
             #else
-                #define F_FUNC(f,F) _##f##_
+                #define F_FUNC_MANGLING(f,F) _##f##_
             #endif
         #endif
     #else
         #if defined(NO_APPEND_FORTRAN)
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) F
+                #define F_FUNC_MANGLING(f,F) F
             #else
                 #error Can not happen
             #endif
         #else
             #if defined(UPPERCASE_FORTRAN)
-                #define F_FUNC(f,F) F##_
+                #define F_FUNC_MANGLING(f,F) F##_
             #else
-                #define F_FUNC(f,F) f##_
+                #define F_FUNC_MANGLING(f,F) f##_
             #endif
         #endif
     #endif
 #endif
 
 #if defined(__cplusplus)
+#define F_FUNC(f,F) ::F_FUNC_MANGLING(f,F)
+#else
+#define F_FUNC(f,F) F_FUNC_MANGLING(f,F)
+#endif
+
+
+#if defined(__cplusplus)
 extern "C" {
 #endif
-FORTRAN_CALLSPEC void F_FUNC(dopri5,DOPRI5)(
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dopri5,DOPRI5)(
     fwi_integer_t * n,
     void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
     fwr_dbl_t * x,
@@ -65,7 +72,7 @@ FORTRAN_CALLSPEC void F_FUNC(dopri5,DOPRI5)(
     fwi_integer_t * ipar,
     fwi_integer_t * idid
 );
-FORTRAN_CALLSPEC void F_FUNC(dop853,DOP853)(
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dop853,DOP853)(
     fwi_integer_t * n,
     void (*fcn)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *),
     fwr_dbl_t * x,
@@ -88,7 +95,3 @@ FORTRAN_CALLSPEC void F_FUNC(dop853,DOP853)(
 } /* extern "C" */
 #endif
 
-#if !defined(NO_FORTRAN_MANGLING)
-#define dopri5 F_FUNC(dopri5,DOPRI5)
-#define dop853 F_FUNC(dop853,DOP853)
-#endif
