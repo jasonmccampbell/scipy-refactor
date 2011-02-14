@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _lbfgsb module was generated with Fwrap v0.2.0dev_da05ccf.
+"""The _lbfgsb module was generated with Fwrap v0.2.0dev_906fe37.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -10,11 +10,16 @@ Functions
 setulb(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _lbfgsb_fc as fc
+
 np.import_array()
 __all__ = ['setulb']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cpdef object setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object wa, object iwa, bytes task, fwi_integer_t iprint, bytes csave, object lsave, object isave, object dsave, object n=None, bint overwrite_x=True, bint overwrite_f=True, bint overwrite_g=True, bint overwrite_wa=True, bint overwrite_iwa=True, bint overwrite_task=True, bint overwrite_csave=True, bint overwrite_lsave=True, bint overwrite_isave=True, bint overwrite_dsave=True):
+def setulb(fwi_integer_t m, object x, object l, object u, object nbd, fwr_dbl_t f, object g, fwr_dbl_t factr, fwr_dbl_t pgtol, object wa, object iwa, bytes task, fwi_integer_t iprint, bytes csave, object lsave, object isave, object dsave, object n=None, bint overwrite_x=True, bint overwrite_f=True, bint overwrite_g=True, bint overwrite_wa=True, bint overwrite_iwa=True, bint overwrite_task=True, bint overwrite_csave=True, bint overwrite_lsave=True, bint overwrite_isave=True, bint overwrite_dsave=True):
     """setulb(m, x, l, u, nbd, f, g, factr, pgtol, wa, iwa, task, iprint, csave, lsave, isave, dsave[, n, overwrite_x, overwrite_f, overwrite_g, overwrite_wa, overwrite_iwa, overwrite_task, overwrite_csave, overwrite_lsave, overwrite_isave, overwrite_dsave]) -> (x, f, g, wa, iwa, task, csave, lsave, isave, dsave)
 
     Parameters
@@ -150,9 +155,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_da05ccf
+# Fwrap: version 0.2.0dev_906fe37
 # Fwrap: self-sha1 60b5669bc8cfd8c30abd7ab9c40f461ea82a0425
-# Fwrap: pyf-sha1 4f66ddad416cbe044bf98df89c06b77dfc30d520
+# Fwrap: pyf-sha1 d72c8e8ca4ea860f19b9dabca309997a3bc583fe
 # Fwrap: wraps lbfgsb/routines.f
 # Fwrap:     sha1 2ddd087c3cfe43adc24d55a6a4a0e4727306cd20
 # Fwrap: exclude active
@@ -181,7 +186,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _lbfgsb.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _lbfgsb_fc.h
 # Fwrap: auxiliary _lbfgsb_fc.pxd
 
