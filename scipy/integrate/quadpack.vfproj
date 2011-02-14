@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{ABD3FF9F-E81A-4FA2-A58A-BEE453772822}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool" OutputFile="./$(ProjectName).lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\quadpack\dqag.f"/>
+		<File RelativePath=".\quadpack\dqage.f"/>
+		<File RelativePath=".\quadpack\dqagi.f"/>
+		<File RelativePath=".\quadpack\dqagie.f"/>
+		<File RelativePath=".\quadpack\dqagp.f"/>
+		<File RelativePath=".\quadpack\dqagpe.f"/>
+		<File RelativePath=".\quadpack\dqags.f"/>
+		<File RelativePath=".\quadpack\dqagse.f"/>
+		<File RelativePath=".\quadpack\dqawc.f"/>
+		<File RelativePath=".\quadpack\dqawce.f"/>
+		<File RelativePath=".\quadpack\dqawf.f"/>
+		<File RelativePath=".\quadpack\dqawfe.f"/>
+		<File RelativePath=".\quadpack\dqawo.f"/>
+		<File RelativePath=".\quadpack\dqawoe.f"/>
+		<File RelativePath=".\quadpack\dqaws.f"/>
+		<File RelativePath=".\quadpack\dqawse.f"/>
+		<File RelativePath=".\quadpack\dqc25c.f"/>
+		<File RelativePath=".\quadpack\dqc25f.f"/>
+		<File RelativePath=".\quadpack\dqc25s.f"/>
+		<File RelativePath=".\quadpack\dqcheb.f"/>
+		<File RelativePath=".\quadpack\dqelg.f"/>
+		<File RelativePath=".\quadpack\dqk15.f"/>
+		<File RelativePath=".\quadpack\dqk15i.f"/>
+		<File RelativePath=".\quadpack\dqk15w.f"/>
+		<File RelativePath=".\quadpack\dqk21.f"/>
+		<File RelativePath=".\quadpack\dqk31.f"/>
+		<File RelativePath=".\quadpack\dqk41.f"/>
+		<File RelativePath=".\quadpack\dqk51.f"/>
+		<File RelativePath=".\quadpack\dqk61.f"/>
+		<File RelativePath=".\quadpack\dqmomo.f"/>
+		<File RelativePath=".\quadpack\dqng.f"/>
+		<File RelativePath=".\quadpack\dqpsrt.f"/>
+		<File RelativePath=".\quadpack\dqwgtc.f"/>
+		<File RelativePath=".\quadpack\dqwgtf.f"/>
+		<File RelativePath=".\quadpack\dqwgts.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
