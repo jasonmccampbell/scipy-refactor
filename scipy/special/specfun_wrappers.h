@@ -10,8 +10,7 @@
 #ifndef _SPEC_WRAPPERS_H
 #define _SPEC_WRAPPERS_H
 #include <npy_math.h>
-
-typedef struct { double real, imag; } Py_complex;
+#include "ufunc_extras.h"
 
 #if !defined(M_PI)
 #define M_PI 3.14159265358979323846

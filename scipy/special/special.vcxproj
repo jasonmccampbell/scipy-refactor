@@ -47,7 +47,7 @@
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <Optimization>Disabled</Optimization>
-      <AdditionalIncludeDirectories>..\..\..\numpy-refactor\libndarray\src</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\c_misc;..\..\..\numpy-refactor\libndarray\src</AdditionalIncludeDirectories>
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
@@ -97,6 +97,7 @@
     <None Include="specfun_fc.pxd" />
     <None Include="special_version.py" />
     <None Include="spfun_stats.py" />
+    <None Include="_cephes.pyx" />
     <None Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
@@ -120,6 +121,7 @@
     <ClCompile Include="ufunc_extras.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="_cephes.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="amos_wrappers.h" />

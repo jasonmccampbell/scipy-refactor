@@ -8,10 +8,10 @@
 #ifndef _AMOS_WRAPPERS_H
 #define _AMOS_WRAPPERS_H
 #include "cephes/mconf.h"
+#include "ufunc_extras.h"
 
 #include <npy_math.h>
 
-typedef struct { double real, imag; } Py_complex;
 
 #if !defined(M_PI)
 #define M_PI 3.14159265358979323846

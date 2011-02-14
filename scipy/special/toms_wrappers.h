@@ -10,7 +10,7 @@
 #ifndef _AMOS_WRAPPERS_H
 #include "cephes/mconf.h"
 
-typedef struct { double real, imag; } Py_complex;
+#include "ufunc_extras.h"
 
 #define CADDR(z) (double *)&z.real, (double*)&z.imag
 #endif /*_AMOS */
