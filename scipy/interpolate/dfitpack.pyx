@@ -317,6 +317,7 @@ def fpcurf0(object x, object y, fwi_integer_t k, object w=None, object xb=None, 
     cdef np.npy_intp x_shape[1], y_shape[1], w_shape[1], t_shape[1], c_shape[1], fpint_shape[1], nrdata_shape[1], wrk_shape[1]
     cdef fwr_real_x8_t xb_, xe_, s_, tol, fp
     x_ = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, x_shape, False, False)
+    m = x_shape[0]
     xb_ = xb if (xb is not None) else x_[0]
     xe_ = xe if (xe is not None) else x_[m - 1]
     iopt = 0
@@ -324,7 +325,6 @@ def fpcurf0(object x, object y, fwi_integer_t k, object w=None, object xb=None, 
     maxit = 20
     n = 0
     fp = 0
-    m = x_shape[0]
     w_shape[0] = m
     if w is None:
         w_ = np.PyArray_EMPTY(1, w_shape, fwr_real_x8_t_enum, 1)
