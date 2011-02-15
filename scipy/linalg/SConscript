@@ -17,7 +17,7 @@ from scons_support import do_generate_interface, do_generate_fake_interface, \
 #    generate_config_header, generate_config_header_emitter
 
 env = GetNumpyEnvironment(ARGUMENTS)
-env.Tool('f2py')
+##env.Tool('f2py')
 
 # XXX: handle cblas wrapper for complex (check in numpy.scons or here ?)
 env.AppendUnique(F2PYOPTIONS = '--quiet')
@@ -97,54 +97,44 @@ write_info(fenv)
 #------------
 #   fblas
 #------------
-fenv.haha('fblas', 'generic_fblas.pyf')
-source = ['fblas.pyf']
-if IsVeclib(fenv, 'blas') or IsAccelerate(fenv, 'blas'):
-    source.append(pjoin('src', 'fblaswrap_veclib_c.c'))
-else:
-    source.append(pjoin('src', 'fblaswrap.f'))
-fenv.NumpyPythonExtension('fblas', source)
+fenv.NumpyPythonExtension('fblas', ['fblas.c', pjoin('src', 'fblaswrap.f')])
 
 #------------
 #   cblas
 #------------
-if has_cblas:
-    env.haha('cblas', 'generic_cblas.pyf')
-else:
-    env.hihi('cblas', 'generic_cblas.pyf')
-env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
+## if has_cblas:
+##     env.haha('cblas', 'generic_cblas.pyf')
+## else:
+##     env.hihi('cblas', 'generic_cblas.pyf')
+## env.NumpyPythonExtension('cblas', source = 'cblas.pyf')
 
 #------------
 #   flapack
 #------------
-yop = fenv.haha('flapack', 'generic_flapack.pyf')
-# XXX: automatically scan dependency on flapack_user_routines.pyf ?
-fenv.Depends(yop, 'flapack_user_routines.pyf')
-fenv.NumpyPythonExtension('flapack', 'flapack.pyf')
+fenv.NumpyPythonExtension('flapack', ['flapack.c'])
 
 #------------
 #   clapack
 #------------
-if has_clapack:
-    env.haha('clapack', 'generic_clapack.pyf')
-else:
-    env.hihi('clapack', 'generic_clapack.pyf')
-env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
+## if has_clapack:
+##     env.haha('clapack', 'generic_clapack.pyf')
+## else:
+##     env.hihi('clapack', 'generic_clapack.pyf')
+## env.NumpyPythonExtension('clapack', source = 'clapack.pyf')
 
 #----------------
 #   _flinalg
 #----------------
 flinalg_fsrc = [pjoin('src', i) for i in ['det.f', 'lu.f']]
-flinalg_src = fenv.F2py(pjoin('src', '_flinalgmodule.c'), flinalg_fsrc)
+flinalg_src = ['_flinalg.c']
 
 fenv.NumpyPythonExtension('_flinalg', source = flinalg_src + flinalg_fsrc)
 
 #----------------
 # calc_lwork:
 #----------------
-calc_fsrc = [pjoin('src', 'calc_lwork.f')]
-calc_src = env.F2py(pjoin('src', 'calc_lworkmodule.c'), calc_fsrc)
-fenv.NumpyPythonExtension('calc_lwork', calc_src + calc_fsrc)
+fenv.NumpyPythonExtension('calc_lwork',
+                          [pjoin('src', 'calc_lwork.f'), 'calc_lwork.c'])
 
 #--------------
 # Atlas version

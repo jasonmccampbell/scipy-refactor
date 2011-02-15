@@ -181,7 +181,7 @@ def qr_old(a, overwrite_a=False, lwork=None):
         v = zeros((M,), t)
         v[i] = 1
         v[i+1:M] = qr[i+1:M, i]
-        H = gemm(-tau[i], v, v, 1+0j, ident, trans_b=2)
+        H = gemm(-tau[i], v, v, 1, ident, trans_b=2)
         Q = gemm(1, Q, H)
     return Q, R
 
@@ -243,6 +243,6 @@ def rq(a, overwrite_a=False, lwork=None):
         v = zeros((M,), t)
         v[N-k+i] = 1
         v[0:N-k+i] = rq[M-k+i, 0:N-k+i]
-        H = gemm(-tau[i], v, v, 1+0j, ident, trans_b=2)
+        H = gemm(-tau[i], v, v, 1, ident, trans_b=2)
         Q = gemm(1, Q, H)
     return R, Q

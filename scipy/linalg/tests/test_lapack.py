@@ -7,7 +7,7 @@ from numpy.testing import TestCase, run_module_suite, assert_equal, \
     assert_array_almost_equal, assert_
 from numpy import ones
 
-from scipy.linalg import flapack, clapack
+from scipy.linalg import flapack
 
 
 class TestFlapackSimple(TestCase):
@@ -49,10 +49,6 @@ class TestLapack(TestCase):
             #flapack module is empty
             pass
 
-    def test_clapack(self):
-        if hasattr(clapack,'empty_module'):
-            #clapack module is empty
-            pass
 
 
 if __name__ == "__main__":

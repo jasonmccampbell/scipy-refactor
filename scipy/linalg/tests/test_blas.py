@@ -15,8 +15,11 @@ import math
 from numpy.testing import TestCase, run_module_suite, assert_equal, \
     assert_almost_equal, assert_array_almost_equal
     
-from scipy.linalg import fblas, cblas
-
+from scipy.linalg import fblas
+try:
+    from scipy.linalg import cblas
+except ImportError:
+    cblas = None
 
 class TestCBLAS1Simple(TestCase):
 
@@ -29,6 +32,9 @@ class TestCBLAS1Simple(TestCase):
             f = getattr(cblas,p+'axpy',None)
             if f is None: continue
             assert_array_almost_equal(f(5,[1,2j,3],[2,-1,3]),[7,10j-1,18])
+
+if cblas is None:
+    TestCBLAS1Simple = None
 
 class TestFBLAS1Simple(TestCase):
 
