@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The specfun module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The specfun module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -54,11 +54,16 @@ sphk(...)
 sphy(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport specfun_fc as fc
+
 np.import_array()
+__all__ = ['lqmn', 'clpmn', 'jdzo', 'bernob', 'bernoa', 'csphjy', 'lpmns', 'eulera', 'clqn', 'airyzo', 'eulerb', 'cva1', 'lqnb', 'lamv', 'lagzo', 'legzo', 'pbdv', 'cerzo', 'lamn', 'clpn', 'lqmns', 'chgm', 'lpmn', 'fcszo', 'aswfb', 'lqna', 'cpbdn', 'lpn', 'fcoef', 'sphi', 'rcty', 'lpni', 'cyzo', 'csphik', 'sphj', 'othpl', 'klvnzo', 'jyzo', 'rctj', 'herzo', 'sphk', 'pbvv', 'clqmn', 'segv', 'sphy']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['lqmn', 'clpmn', 'jdzo', 'bernob', 'bernoa', 'csphjy', 'lpmns', 'eulera', 'clqn', 'airyzo', 'eulerb', 'cva1', 'lqnb', 'lamv', 'lagzo', 'legzo', 'pbdv', 'cerzo', 'lamn', 'clpn', 'lqmns', 'chgm', 'lpmn', 'fcszo', 'aswfb', 'lqna', 'cpbdn', 'lpn', 'fcoef', 'sphi', 'rcty', 'lpni', 'cyzo', 'csphik', 'sphj', 'othpl', 'klvnzo', 'jyzo', 'rctj', 'herzo', 'sphk', 'pbvv', 'clqmn', 'segv', 'sphy']
-cpdef object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
+def lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """lqmn(m, n, x[, qm, qd]) -> (qm, qd)
 
     Parameters
@@ -99,7 +104,7 @@ cpdef object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None,
     return (qm_, qd_,)
 
 
-cpdef object clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm=None, object cpd=None):
+def clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm=None, object cpd=None):
     """clpmn(m, n, x, y[, cpm, cpd]) -> (cpm, cpd)
 
     Parameters
@@ -141,7 +146,7 @@ cpdef object clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, o
     return (cpm_, cpd_,)
 
 
-cpdef object jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, object zo=None):
+def jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, object zo=None):
     """jdzo(nt[, n, m, pcode, zo]) -> (n, m, pcode, zo)
 
     Parameters
@@ -184,7 +189,7 @@ cpdef object jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=N
     return (n_, m_, pcode_, zo_,)
 
 
-cpdef object bernob(fwi_integer_t n, object bn=None):
+def bernob(fwi_integer_t n, object bn=None):
     """bernob(n[, bn]) -> bn
 
     Parameters
@@ -203,13 +208,13 @@ cpdef object bernob(fwi_integer_t n, object bn=None):
         raise ValueError('Condition on arguments not satisfied: n >= 2')
     bn_shape[0] = n + 1
     bn_ = fw_asfortranarray(bn, fwr_dbl_t_enum, 1, bn_shape, False, True)
-    if n + 1 != bn_shape[0]:
-        raise ValueError("(n + 1 == bn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= bn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= bn.shape[0]) not satisifed")
     fc.bernob(&n, <fwr_dbl_t*>np.PyArray_DATA(bn_))
     return bn_
 
 
-cpdef object bernoa(fwi_integer_t n, object bn=None):
+def bernoa(fwi_integer_t n, object bn=None):
     """bernoa(n[, bn]) -> bn
 
     Parameters
@@ -228,13 +233,13 @@ cpdef object bernoa(fwi_integer_t n, object bn=None):
         raise ValueError('Condition on arguments not satisfied: n >= 0')
     bn_shape[0] = n + 1
     bn_ = fw_asfortranarray(bn, fwr_dbl_t_enum, 1, bn_shape, False, True)
-    if n + 1 != bn_shape[0]:
-        raise ValueError("(n + 1 == bn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= bn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= bn.shape[0]) not satisifed")
     fc.bernoa(&n, <fwr_dbl_t*>np.PyArray_DATA(bn_))
     return bn_
 
 
-cpdef object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=None, object csy=None, object cdy=None):
+def csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=None, object csy=None, object cdy=None):
     """csphjy(n, z[, csj, cdj, csy, cdy]) -> (nm, csj, cdj, csy, cdy)
 
     Parameters
@@ -258,29 +263,30 @@ cpdef object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, objec
     cdef fwi_integer_t nm
     cdef np.ndarray csj_, cdj_, csy_, cdy_
     cdef np.npy_intp csj_shape[1], cdj_shape[1], csy_shape[1], cdy_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     csj_shape[0] = n + 1
     csj_ = fw_asfortranarray(csj, fwc_complex_x16_t_enum, 1, csj_shape, False, True)
-    if n + 1 != csj_shape[0]:
-        raise ValueError("(n + 1 == csj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= csj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= csj.shape[0]) not satisifed")
     cdj_shape[0] = n + 1
     cdj_ = fw_asfortranarray(cdj, fwc_complex_x16_t_enum, 1, cdj_shape, False, True)
-    if n + 1 != cdj_shape[0]:
-        raise ValueError("(n + 1 == cdj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cdj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cdj.shape[0]) not satisifed")
     csy_shape[0] = n + 1
     csy_ = fw_asfortranarray(csy, fwc_complex_x16_t_enum, 1, csy_shape, False, True)
-    if n + 1 != csy_shape[0]:
-        raise ValueError("(n + 1 == csy.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= csy_shape[0]):
+        raise ValueError("(0 <= n + 1 <= csy.shape[0]) not satisifed")
     cdy_shape[0] = n + 1
     cdy_ = fw_asfortranarray(cdy, fwc_complex_x16_t_enum, 1, cdy_shape, False, True)
-    if n + 1 != cdy_shape[0]:
-        raise ValueError("(n + 1 == cdy.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cdy_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cdy.shape[0]) not satisifed")
     fc.csphjy(&n, &z, &nm, <fwc_complex_x16_t*>np.PyArray_DATA(csj_), <fwc_complex_x16_t*>np.PyArray_DATA(cdj_), <fwc_complex_x16_t*>np.PyArray_DATA(csy_), <fwc_complex_x16_t*>np.PyArray_DATA(cdy_))
     return (nm, csj_, cdj_, csy_, cdy_,)
 
 
-cpdef object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
+def lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """lpmns(m, n, x[, pm, pd]) -> (pm, pd)
 
     Parameters
@@ -305,17 +311,17 @@ cpdef object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     pm_shape[0] = n + 1
     pm_ = fw_asfortranarray(pm, fwr_dbl_t_enum, 1, pm_shape, False, True)
-    if n + 1 != pm_shape[0]:
-        raise ValueError("(n + 1 == pm.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pm_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pm.shape[0]) not satisifed")
     pd_shape[0] = n + 1
     pd_ = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, pd_shape, False, True)
-    if n + 1 != pd_shape[0]:
-        raise ValueError("(n + 1 == pd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pd.shape[0]) not satisifed")
     fc.lpmns(&m, &n, &x, <fwr_dbl_t*>np.PyArray_DATA(pm_), <fwr_dbl_t*>np.PyArray_DATA(pd_))
     return (pm_, pd_,)
 
 
-cpdef object eulera(fwi_integer_t n, object en=None):
+def eulera(fwi_integer_t n, object en=None):
     """eulera(n[, en]) -> en
 
     Parameters
@@ -334,13 +340,13 @@ cpdef object eulera(fwi_integer_t n, object en=None):
         raise ValueError('Condition on arguments not satisfied: n >= 0')
     en_shape[0] = n + 1
     en_ = fw_asfortranarray(en, fwr_dbl_t_enum, 1, en_shape, False, True)
-    if n + 1 != en_shape[0]:
-        raise ValueError("(n + 1 == en.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= en_shape[0]):
+        raise ValueError("(0 <= n + 1 <= en.shape[0]) not satisifed")
     fc.eulera(&n, <fwr_dbl_t*>np.PyArray_DATA(en_))
     return en_
 
 
-cpdef object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None):
+def clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None):
     """clqn(n, z[, cqn, cqd]) -> (cqn, cqd)
 
     Parameters
@@ -365,17 +371,17 @@ cpdef object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object 
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     cqn_shape[0] = n + 1
     cqn_ = fw_asfortranarray(cqn, fwc_complex_x16_t_enum, 1, cqn_shape, False, True)
-    if n + 1 != cqn_shape[0]:
-        raise ValueError("(n + 1 == cqn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cqn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cqn.shape[0]) not satisifed")
     cqd_shape[0] = n + 1
     cqd_ = fw_asfortranarray(cqd, fwc_complex_x16_t_enum, 1, cqd_shape, False, True)
-    if n + 1 != cqd_shape[0]:
-        raise ValueError("(n + 1 == cqd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cqd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cqd.shape[0]) not satisifed")
     fc.clqn(&n, &x_f, &y_f, <fwc_complex_x16_t*>np.PyArray_DATA(cqn_), <fwc_complex_x16_t*>np.PyArray_DATA(cqd_))
     return (cqn_, cqd_,)
 
 
-cpdef object airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None, object xc=None, object xd=None):
+def airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None, object xc=None, object xd=None):
     """airyzo(nt[, kf, xa, xb, xc, xd]) -> (xa, xb, xc, xd)
 
     Parameters
@@ -419,7 +425,7 @@ cpdef object airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object
     return (xa_, xb_, xc_, xd_,)
 
 
-cpdef object eulerb(fwi_integer_t n, object en=None):
+def eulerb(fwi_integer_t n, object en=None):
     """eulerb(n[, en]) -> en
 
     Parameters
@@ -438,13 +444,13 @@ cpdef object eulerb(fwi_integer_t n, object en=None):
         raise ValueError('Condition on arguments not satisfied: n >= 2')
     en_shape[0] = n + 1
     en_ = fw_asfortranarray(en, fwr_dbl_t_enum, 1, en_shape, False, True)
-    if n + 1 != en_shape[0]:
-        raise ValueError("(n + 1 == en.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= en_shape[0]):
+        raise ValueError("(0 <= n + 1 <= en.shape[0]) not satisifed")
     fc.eulerb(&n, <fwr_dbl_t*>np.PyArray_DATA(en_))
     return en_
 
 
-cpdef object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
+def cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
     """cva1(kd, m, q[, cv]) -> cv
 
     Parameters
@@ -473,7 +479,7 @@ cpdef object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None
     return cv_
 
 
-cpdef object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
+def lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """lqnb(n, x[, qn, qd]) -> (qn, qd)
 
     Parameters
@@ -495,17 +501,17 @@ cpdef object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     qn_shape[0] = n + 1
     qn_ = fw_asfortranarray(qn, fwr_dbl_t_enum, 1, qn_shape, False, True)
-    if n + 1 != qn_shape[0]:
-        raise ValueError("(n + 1 == qn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qn.shape[0]) not satisifed")
     qd_shape[0] = n + 1
     qd_ = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, qd_shape, False, True)
-    if n + 1 != qd_shape[0]:
-        raise ValueError("(n + 1 == qd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qd.shape[0]) not satisifed")
     fc.lqnb(&n, &x, <fwr_dbl_t*>np.PyArray_DATA(qn_), <fwr_dbl_t*>np.PyArray_DATA(qd_))
     return (qn_, qd_,)
 
 
-cpdef object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
+def lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     """lamv(v, x[, vl, dl]) -> (vm, vl, dl)
 
     Parameters
@@ -525,6 +531,7 @@ cpdef object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     cdef fwr_dbl_t vm
     cdef np.ndarray vl_, dl_
     cdef np.npy_intp vl_shape[1], dl_shape[1]
+    vm = 0
     if not (v >= 1):
         raise ValueError('Condition on arguments not satisfied: v >= 1')
     vl_shape[0] = <int>v + 1
@@ -539,7 +546,7 @@ cpdef object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     return (vm, vl_, dl_,)
 
 
-cpdef object lagzo(fwi_integer_t n, object x=None, object w=None):
+def lagzo(fwi_integer_t n, object x=None, object w=None):
     """lagzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -570,7 +577,7 @@ cpdef object lagzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-cpdef object legzo(fwi_integer_t n, object x=None, object w=None):
+def legzo(fwi_integer_t n, object x=None, object w=None):
     """legzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -601,7 +608,7 @@ cpdef object legzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-cpdef object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
+def pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     """pbdv(v, x[, dv, dp]) -> (dv, dp, pdf, pdd)
 
     Parameters
@@ -622,6 +629,8 @@ cpdef object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     cdef fwr_dbl_t pdf, pdd
     cdef np.ndarray dv_, dp_
     cdef np.npy_intp dv_shape[1], dp_shape[1]
+    pdf = 0
+    pdd = 0
     if not ((abs(<int>v) + 2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     dv_shape[0] = abs(<int>v) + 2
@@ -636,7 +645,7 @@ cpdef object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     return (dv_, dp_, pdf, pdd,)
 
 
-cpdef object cerzo(fwi_integer_t nt, object zo=None):
+def cerzo(fwi_integer_t nt, object zo=None):
     """cerzo(nt[, zo]) -> zo
 
     Parameters
@@ -661,7 +670,7 @@ cpdef object cerzo(fwi_integer_t nt, object zo=None):
     return zo_
 
 
-cpdef object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
+def lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     """lamn(n, x[, bl, dl]) -> (nm, bl, dl)
 
     Parameters
@@ -681,21 +690,22 @@ cpdef object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     cdef fwi_integer_t nm
     cdef np.ndarray bl_, dl_
     cdef np.npy_intp bl_shape[1], dl_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     bl_shape[0] = n + 1
     bl_ = fw_asfortranarray(bl, fwr_dbl_t_enum, 1, bl_shape, False, True)
-    if n + 1 != bl_shape[0]:
-        raise ValueError("(n + 1 == bl.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= bl_shape[0]):
+        raise ValueError("(0 <= n + 1 <= bl.shape[0]) not satisifed")
     dl_shape[0] = n + 1
     dl_ = fw_asfortranarray(dl, fwr_dbl_t_enum, 1, dl_shape, False, True)
-    if n + 1 != dl_shape[0]:
-        raise ValueError("(n + 1 == dl.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dl_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dl.shape[0]) not satisifed")
     fc.lamn(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(bl_), <fwr_dbl_t*>np.PyArray_DATA(dl_))
     return (nm, bl_, dl_,)
 
 
-cpdef object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None):
+def clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None):
     """clpn(n, z[, cpn, cpd]) -> (cpn, cpd)
 
     Parameters
@@ -720,17 +730,17 @@ cpdef object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object 
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     cpn_shape[0] = n + 1
     cpn_ = fw_asfortranarray(cpn, fwc_complex_x16_t_enum, 1, cpn_shape, False, True)
-    if n + 1 != cpn_shape[0]:
-        raise ValueError("(n + 1 == cpn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cpn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cpn.shape[0]) not satisifed")
     cpd_shape[0] = n + 1
     cpd_ = fw_asfortranarray(cpd, fwc_complex_x16_t_enum, 1, cpd_shape, False, True)
-    if n + 1 != cpd_shape[0]:
-        raise ValueError("(n + 1 == cpd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cpd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cpd.shape[0]) not satisifed")
     fc.clpn(&n, &x_f, &y_f, <fwc_complex_x16_t*>np.PyArray_DATA(cpn_), <fwc_complex_x16_t*>np.PyArray_DATA(cpd_))
     return (cpn_, cpd_,)
 
 
-cpdef object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
+def lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """lqmns(m, n, x[, qm, qd]) -> (qm, qd)
 
     Parameters
@@ -755,17 +765,17 @@ cpdef object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     qm_shape[0] = n + 1
     qm_ = fw_asfortranarray(qm, fwr_dbl_t_enum, 1, qm_shape, False, True)
-    if n + 1 != qm_shape[0]:
-        raise ValueError("(n + 1 == qm.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qm_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qm.shape[0]) not satisifed")
     qd_shape[0] = n + 1
     qd_ = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, qd_shape, False, True)
-    if n + 1 != qd_shape[0]:
-        raise ValueError("(n + 1 == qd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qd.shape[0]) not satisifed")
     fc.lqmns(&m, &n, &x, <fwr_dbl_t*>np.PyArray_DATA(qm_), <fwr_dbl_t*>np.PyArray_DATA(qd_))
     return (qm_, qd_,)
 
 
-cpdef object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
+def chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
     """chgm(a, b, x) -> hg
 
     Parameters
@@ -780,11 +790,12 @@ cpdef object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
 
     """
     cdef fwr_dbl_t hg
+    hg = 0
     fc.chgm(&a, &b, &x, &hg)
     return hg
 
 
-cpdef object lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
+def lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """lpmn(m, n, x[, pm, pd]) -> (pm, pd)
 
     Parameters
@@ -813,19 +824,19 @@ cpdef object lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None,
     pm_ = fw_asfortranarray(pm, fwr_dbl_t_enum, 2, pm_shape, False, True)
     if m + 1 != pm_shape[0]:
         raise ValueError("(m + 1 == pm.shape[0]) not satisifed")
-    if n + 1 != pm_shape[1]:
-        raise ValueError("(n + 1 == pm.shape[1]) not satisifed")
+    if not (0 <= n + 1 <= pm_shape[1]):
+        raise ValueError("(0 <= n + 1 <= pm.shape[1]) not satisifed")
     pd_shape[0] = m + 1; pd_shape[1] = n + 1
     pd_ = fw_asfortranarray(pd, fwr_dbl_t_enum, 2, pd_shape, False, True)
     if m + 1 != pd_shape[0]:
         raise ValueError("(m + 1 == pd.shape[0]) not satisifed")
-    if n + 1 != pd_shape[1]:
-        raise ValueError("(n + 1 == pd.shape[1]) not satisifed")
+    if not (0 <= n + 1 <= pd_shape[1]):
+        raise ValueError("(0 <= n + 1 <= pd.shape[1]) not satisifed")
     fc.lpmn(&mm, &m, &n, &x, <fwr_dbl_t*>np.PyArray_DATA(pm_), <fwr_dbl_t*>np.PyArray_DATA(pd_))
     return (pm_, pd_,)
 
 
-cpdef object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
+def fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
     """fcszo(kf, nt[, zo]) -> zo
 
     Parameters
@@ -853,7 +864,7 @@ cpdef object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
     return zo_
 
 
-cpdef object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv):
+def aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv):
     """aswfb(m, n, c, x, kd, cv) -> (s1f, s1d)
 
     Parameters
@@ -872,6 +883,8 @@ cpdef object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, f
 
     """
     cdef fwr_dbl_t s1f, s1d
+    s1f = 0
+    s1d = 0
     if not (m >= 0):
         raise ValueError('Condition on arguments not satisfied: m >= 0')
     if not (n >= m):
@@ -884,7 +897,7 @@ cpdef object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, f
     return (s1f, s1d,)
 
 
-cpdef object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
+def lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """lqna(n, x[, qn, qd]) -> (qn, qd)
 
     Parameters
@@ -908,17 +921,17 @@ cpdef object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
         raise ValueError('Condition on arguments not satisfied: fabs(x)<1')
     qn_shape[0] = n + 1
     qn_ = fw_asfortranarray(qn, fwr_dbl_t_enum, 1, qn_shape, False, True)
-    if n + 1 != qn_shape[0]:
-        raise ValueError("(n + 1 == qn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qn.shape[0]) not satisifed")
     qd_shape[0] = n + 1
     qd_ = fw_asfortranarray(qd, fwr_dbl_t_enum, 1, qd_shape, False, True)
-    if n + 1 != qd_shape[0]:
-        raise ValueError("(n + 1 == qd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= qd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= qd.shape[0]) not satisifed")
     fc.lqna(&n, &x, <fwr_dbl_t*>np.PyArray_DATA(qn_), <fwr_dbl_t*>np.PyArray_DATA(qd_))
     return (qn_, qd_,)
 
 
-cpdef object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None):
+def cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None):
     """cpbdn(n, z[, cpb, cpd]) -> (cpb, cpd)
 
     Parameters
@@ -940,17 +953,17 @@ cpdef object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object
         raise ValueError('Condition on arguments not satisfied: abs(n) >= 1')
     cpb_shape[0] = abs(n) + 2
     cpb_ = fw_asfortranarray(cpb, fwc_complex_x16_t_enum, 1, cpb_shape, False, True)
-    if abs(n) + 2 != cpb_shape[0]:
-        raise ValueError("(abs(n) + 2 == cpb.shape[0]) not satisifed")
+    if not (0 <= abs(n) + 2 <= cpb_shape[0]):
+        raise ValueError("(0 <= abs(n) + 2 <= cpb.shape[0]) not satisifed")
     cpd_shape[0] = abs(n) + 2
     cpd_ = fw_asfortranarray(cpd, fwc_complex_x16_t_enum, 1, cpd_shape, False, True)
-    if abs(n) + 2 != cpd_shape[0]:
-        raise ValueError("(abs(n) + 2 == cpd.shape[0]) not satisifed")
+    if not (0 <= abs(n) + 2 <= cpd_shape[0]):
+        raise ValueError("(0 <= abs(n) + 2 <= cpd.shape[0]) not satisifed")
     fc.cpbdn(&n, &z, <fwc_complex_x16_t*>np.PyArray_DATA(cpb_), <fwc_complex_x16_t*>np.PyArray_DATA(cpd_))
     return (cpb_, cpd_,)
 
 
-cpdef object lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
+def lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
     """lpn(n, x[, pn, pd]) -> (pn, pd)
 
     Parameters
@@ -972,17 +985,17 @@ cpdef object lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     pn_shape[0] = n + 1
     pn_ = fw_asfortranarray(pn, fwr_dbl_t_enum, 1, pn_shape, False, True)
-    if n + 1 != pn_shape[0]:
-        raise ValueError("(n + 1 == pn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pn.shape[0]) not satisifed")
     pd_shape[0] = n + 1
     pd_ = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, pd_shape, False, True)
-    if n + 1 != pd_shape[0]:
-        raise ValueError("(n + 1 == pd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pd.shape[0]) not satisifed")
     fc.lpn(&n, &x, <fwr_dbl_t*>np.PyArray_DATA(pn_), <fwr_dbl_t*>np.PyArray_DATA(pd_))
     return (pn_, pd_,)
 
 
-cpdef object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc__=None):
+def fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc__=None):
     """fcoef(kd, m, q, a[, fc__]) -> fc__
 
     Parameters
@@ -1012,7 +1025,7 @@ cpdef object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, 
     return fc___
 
 
-cpdef object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
+def sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     """sphi(n, x[, si, di]) -> (nm, si, di)
 
     Parameters
@@ -1032,21 +1045,22 @@ cpdef object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     cdef fwi_integer_t nm
     cdef np.ndarray si_, di_
     cdef np.npy_intp si_shape[1], di_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     si_shape[0] = n + 1
     si_ = fw_asfortranarray(si, fwr_dbl_t_enum, 1, si_shape, False, True)
-    if n + 1 != si_shape[0]:
-        raise ValueError("(n + 1 == si.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= si_shape[0]):
+        raise ValueError("(0 <= n + 1 <= si.shape[0]) not satisifed")
     di_shape[0] = n + 1
     di_ = fw_asfortranarray(di, fwr_dbl_t_enum, 1, di_shape, False, True)
-    if n + 1 != di_shape[0]:
-        raise ValueError("(n + 1 == di.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= di_shape[0]):
+        raise ValueError("(0 <= n + 1 <= di.shape[0]) not satisifed")
     fc.sphi(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(si_), <fwr_dbl_t*>np.PyArray_DATA(di_))
     return (nm, si_, di_,)
 
 
-cpdef object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
+def rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     """rcty(n, x[, ry, dy]) -> (nm, ry, dy)
 
     Parameters
@@ -1066,21 +1080,22 @@ cpdef object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     cdef fwi_integer_t nm
     cdef np.ndarray ry_, dy_
     cdef np.npy_intp ry_shape[1], dy_shape[1]
+    nm = 0
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     ry_shape[0] = n + 1
     ry_ = fw_asfortranarray(ry, fwr_dbl_t_enum, 1, ry_shape, False, True)
-    if n + 1 != ry_shape[0]:
-        raise ValueError("(n + 1 == ry.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= ry_shape[0]):
+        raise ValueError("(0 <= n + 1 <= ry.shape[0]) not satisifed")
     dy_shape[0] = n + 1
     dy_ = fw_asfortranarray(dy, fwr_dbl_t_enum, 1, dy_shape, False, True)
-    if n + 1 != dy_shape[0]:
-        raise ValueError("(n + 1 == dy.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dy_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dy.shape[0]) not satisifed")
     fc.rcty(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(ry_), <fwr_dbl_t*>np.PyArray_DATA(dy_))
     return (nm, ry_, dy_,)
 
 
-cpdef object lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl=None):
+def lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl=None):
     """lpni(n, x[, pn, pd, pl]) -> (pn, pd, pl)
 
     Parameters
@@ -1104,21 +1119,21 @@ cpdef object lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, 
         raise ValueError('Condition on arguments not satisfied: n > 0')
     pn_shape[0] = n + 1
     pn_ = fw_asfortranarray(pn, fwr_dbl_t_enum, 1, pn_shape, False, True)
-    if n + 1 != pn_shape[0]:
-        raise ValueError("(n + 1 == pn.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pn_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pn.shape[0]) not satisifed")
     pd_shape[0] = n + 1
     pd_ = fw_asfortranarray(pd, fwr_dbl_t_enum, 1, pd_shape, False, True)
-    if n + 1 != pd_shape[0]:
-        raise ValueError("(n + 1 == pd.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pd_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pd.shape[0]) not satisifed")
     pl_shape[0] = n + 1
     pl_ = fw_asfortranarray(pl, fwr_dbl_t_enum, 1, pl_shape, False, True)
-    if n + 1 != pl_shape[0]:
-        raise ValueError("(n + 1 == pl.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pl_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pl.shape[0]) not satisifed")
     fc.lpni(&n, &x, <fwr_dbl_t*>np.PyArray_DATA(pn_), <fwr_dbl_t*>np.PyArray_DATA(pd_), <fwr_dbl_t*>np.PyArray_DATA(pl_))
     return (pn_, pd_, pl_,)
 
 
-cpdef object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, object zv=None):
+def cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, object zv=None):
     """cyzo(nt, kf, kc[, zo, zv]) -> (zo, zv)
 
     Parameters
@@ -1155,7 +1170,7 @@ cpdef object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object z
     return (zo_, zv_,)
 
 
-cpdef object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=None, object csk=None, object cdk=None):
+def csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=None, object csk=None, object cdk=None):
     """csphik(n, z[, csi, cdi, csk, cdk]) -> (nm, csi, cdi, csk, cdk)
 
     Parameters
@@ -1179,29 +1194,30 @@ cpdef object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, objec
     cdef fwi_integer_t nm
     cdef np.ndarray csi_, cdi_, csk_, cdk_
     cdef np.npy_intp csi_shape[1], cdi_shape[1], csk_shape[1], cdk_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     csi_shape[0] = n + 1
     csi_ = fw_asfortranarray(csi, fwc_complex_x16_t_enum, 1, csi_shape, False, True)
-    if n + 1 != csi_shape[0]:
-        raise ValueError("(n + 1 == csi.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= csi_shape[0]):
+        raise ValueError("(0 <= n + 1 <= csi.shape[0]) not satisifed")
     cdi_shape[0] = n + 1
     cdi_ = fw_asfortranarray(cdi, fwc_complex_x16_t_enum, 1, cdi_shape, False, True)
-    if n + 1 != cdi_shape[0]:
-        raise ValueError("(n + 1 == cdi.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cdi_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cdi.shape[0]) not satisifed")
     csk_shape[0] = n + 1
     csk_ = fw_asfortranarray(csk, fwc_complex_x16_t_enum, 1, csk_shape, False, True)
-    if n + 1 != csk_shape[0]:
-        raise ValueError("(n + 1 == csk.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= csk_shape[0]):
+        raise ValueError("(0 <= n + 1 <= csk.shape[0]) not satisifed")
     cdk_shape[0] = n + 1
     cdk_ = fw_asfortranarray(cdk, fwc_complex_x16_t_enum, 1, cdk_shape, False, True)
-    if n + 1 != cdk_shape[0]:
-        raise ValueError("(n + 1 == cdk.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= cdk_shape[0]):
+        raise ValueError("(0 <= n + 1 <= cdk.shape[0]) not satisifed")
     fc.csphik(&n, &z, &nm, <fwc_complex_x16_t*>np.PyArray_DATA(csi_), <fwc_complex_x16_t*>np.PyArray_DATA(cdi_), <fwc_complex_x16_t*>np.PyArray_DATA(csk_), <fwc_complex_x16_t*>np.PyArray_DATA(cdk_))
     return (nm, csi_, cdi_, csk_, cdk_,)
 
 
-cpdef object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
+def sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     """sphj(n, x[, sj, dj]) -> (nm, sj, dj)
 
     Parameters
@@ -1221,21 +1237,22 @@ cpdef object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sj_, dj_
     cdef np.npy_intp sj_shape[1], dj_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     sj_shape[0] = n + 1
     sj_ = fw_asfortranarray(sj, fwr_dbl_t_enum, 1, sj_shape, False, True)
-    if n + 1 != sj_shape[0]:
-        raise ValueError("(n + 1 == sj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= sj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= sj.shape[0]) not satisifed")
     dj_shape[0] = n + 1
     dj_ = fw_asfortranarray(dj, fwr_dbl_t_enum, 1, dj_shape, False, True)
-    if n + 1 != dj_shape[0]:
-        raise ValueError("(n + 1 == dj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dj.shape[0]) not satisifed")
     fc.sphj(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(sj_), <fwr_dbl_t*>np.PyArray_DATA(dj_))
     return (nm, sj_, dj_,)
 
 
-cpdef object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object dpl=None):
+def othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object dpl=None):
     """othpl(kf, n, x[, pl, dpl]) -> (pl, dpl)
 
     Parameters
@@ -1260,17 +1277,17 @@ cpdef object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=Non
         raise ValueError('Condition on arguments not satisfied: n > 0')
     pl_shape[0] = n + 1
     pl_ = fw_asfortranarray(pl, fwr_dbl_t_enum, 1, pl_shape, False, True)
-    if n + 1 != pl_shape[0]:
-        raise ValueError("(n + 1 == pl.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= pl_shape[0]):
+        raise ValueError("(0 <= n + 1 <= pl.shape[0]) not satisifed")
     dpl_shape[0] = n + 1
     dpl_ = fw_asfortranarray(dpl, fwr_dbl_t_enum, 1, dpl_shape, False, True)
-    if n + 1 != dpl_shape[0]:
-        raise ValueError("(n + 1 == dpl.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dpl_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dpl.shape[0]) not satisifed")
     fc.othpl(&kf, &n, &x, <fwr_dbl_t*>np.PyArray_DATA(pl_), <fwr_dbl_t*>np.PyArray_DATA(dpl_))
     return (pl_, dpl_,)
 
 
-cpdef object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
+def klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
     """klvnzo(nt, kd[, zo]) -> zo
 
     Parameters
@@ -1298,7 +1315,7 @@ cpdef object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
     return zo_
 
 
-cpdef object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, object ry0=None, object ry1=None):
+def jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, object ry0=None, object ry1=None):
     """jyzo(n, nt[, rj0, rj1, ry0, ry1]) -> (rj0, rj1, ry0, ry1)
 
     Parameters
@@ -1344,7 +1361,7 @@ cpdef object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1
     return (rj0_, rj1_, ry0_, ry1_,)
 
 
-cpdef object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
+def rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     """rctj(n, x[, rj, dj]) -> (nm, rj, dj)
 
     Parameters
@@ -1364,21 +1381,22 @@ cpdef object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     cdef fwi_integer_t nm
     cdef np.ndarray rj_, dj_
     cdef np.npy_intp rj_shape[1], dj_shape[1]
+    nm = 0
     if not (n > 0):
         raise ValueError('Condition on arguments not satisfied: n > 0')
     rj_shape[0] = n + 1
     rj_ = fw_asfortranarray(rj, fwr_dbl_t_enum, 1, rj_shape, False, True)
-    if n + 1 != rj_shape[0]:
-        raise ValueError("(n + 1 == rj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= rj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= rj.shape[0]) not satisifed")
     dj_shape[0] = n + 1
     dj_ = fw_asfortranarray(dj, fwr_dbl_t_enum, 1, dj_shape, False, True)
-    if n + 1 != dj_shape[0]:
-        raise ValueError("(n + 1 == dj.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dj_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dj.shape[0]) not satisifed")
     fc.rctj(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(rj_), <fwr_dbl_t*>np.PyArray_DATA(dj_))
     return (nm, rj_, dj_,)
 
 
-cpdef object herzo(fwi_integer_t n, object x=None, object w=None):
+def herzo(fwi_integer_t n, object x=None, object w=None):
     """herzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -1409,7 +1427,7 @@ cpdef object herzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-cpdef object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
+def sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     """sphk(n, x[, sk, dk]) -> (nm, sk, dk)
 
     Parameters
@@ -1429,23 +1447,24 @@ cpdef object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sk_, dk_
     cdef np.npy_intp sk_shape[1], dk_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     if not (x >= 0):
         raise ValueError('Condition on arguments not satisfied: x >= 0')
     sk_shape[0] = n + 1
     sk_ = fw_asfortranarray(sk, fwr_dbl_t_enum, 1, sk_shape, False, True)
-    if n + 1 != sk_shape[0]:
-        raise ValueError("(n + 1 == sk.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= sk_shape[0]):
+        raise ValueError("(0 <= n + 1 <= sk.shape[0]) not satisifed")
     dk_shape[0] = n + 1
     dk_ = fw_asfortranarray(dk, fwr_dbl_t_enum, 1, dk_shape, False, True)
-    if n + 1 != dk_shape[0]:
-        raise ValueError("(n + 1 == dk.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dk_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dk.shape[0]) not satisifed")
     fc.sphk(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(sk_), <fwr_dbl_t*>np.PyArray_DATA(dk_))
     return (nm, sk_, dk_,)
 
 
-cpdef object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
+def pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     """pbvv(v, x[, vv, vp]) -> (vv, vp, pvf, pvd)
 
     Parameters
@@ -1466,6 +1485,8 @@ cpdef object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     cdef fwr_dbl_t pvf, pvd
     cdef np.ndarray vv_, vp_
     cdef np.npy_intp vv_shape[1], vp_shape[1]
+    pvf = 0
+    pvd = 0
     if not ((abs(<int>v) + 2) >= 2):
         raise ValueError('Condition on arguments not satisfied: (abs(<int>v) + 2) >= 2')
     vv_shape[0] = abs(<int>v) + 2
@@ -1480,7 +1501,7 @@ cpdef object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     return (vv_, vp_, pvf, pvd,)
 
 
-cpdef object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
+def clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
     """clqmn(m, n, z[, cqm, cqd]) -> (cqm, cqd)
 
     Parameters
@@ -1524,7 +1545,7 @@ cpdef object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object
     return (cqm_, cqd_,)
 
 
-cpdef object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object eg=None):
+def segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object eg=None):
     """segv(m, n, c, kd[, eg]) -> (cv, eg)
 
     Parameters
@@ -1544,6 +1565,7 @@ cpdef object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t k
     cdef fwr_dbl_t cv
     cdef np.ndarray eg_
     cdef np.npy_intp eg_shape[1]
+    cv = 0
     if not ((n >= m) and ((n - m) < 199)):
         raise ValueError('Condition on arguments not satisfied: (n >= m) and ((n - m) < 199)')
     if not ((kd == -1) or (kd == 1)):
@@ -1556,7 +1578,7 @@ cpdef object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t k
     return (cv, eg_,)
 
 
-cpdef object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
+def sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
     """sphy(n, x[, sy, dy]) -> (nm, sy, dy)
 
     Parameters
@@ -1576,18 +1598,19 @@ cpdef object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
     cdef fwi_integer_t nm
     cdef np.ndarray sy_, dy_
     cdef np.npy_intp sy_shape[1], dy_shape[1]
+    nm = 0
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     if not (x >= 0):
         raise ValueError('Condition on arguments not satisfied: x >= 0')
     sy_shape[0] = n + 1
     sy_ = fw_asfortranarray(sy, fwr_dbl_t_enum, 1, sy_shape, False, True)
-    if n + 1 != sy_shape[0]:
-        raise ValueError("(n + 1 == sy.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= sy_shape[0]):
+        raise ValueError("(0 <= n + 1 <= sy.shape[0]) not satisifed")
     dy_shape[0] = n + 1
     dy_ = fw_asfortranarray(dy, fwr_dbl_t_enum, 1, dy_shape, False, True)
-    if n + 1 != dy_shape[0]:
-        raise ValueError("(n + 1 == dy.shape[0]) not satisifed")
+    if not (0 <= n + 1 <= dy_shape[0]):
+        raise ValueError("(0 <= n + 1 <= dy.shape[0]) not satisifed")
     fc.sphy(&n, &x, &nm, <fwr_dbl_t*>np.PyArray_DATA(sy_), <fwr_dbl_t*>np.PyArray_DATA(dy_))
     return (nm, sy_, dy_,)
 
@@ -1629,9 +1652,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 df364bb88062d673b42b68f8ed9cec6b610b855d
-# Fwrap: pyf-sha1 748c4a1175d62fe42e2ef7d97468558a905204df
+# Fwrap: pyf-sha1 adf5a04a78ac638835966e30fda3b0de53c6d366
 # Fwrap: wraps specfun/specfun.f
 # Fwrap:     sha1 975d5e3c152da9ce29774e9c581efe5511a6dba5
 # Fwrap: exclude airya
@@ -1759,7 +1782,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates False
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary specfun.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary specfun_fc.h
 # Fwrap: auxiliary specfun_fc.pxd
 
