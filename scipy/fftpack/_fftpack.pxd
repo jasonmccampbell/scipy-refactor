@@ -1,0 +1,28 @@
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _fftpack_fc as fc
+
+cpdef object zfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object drfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object zrfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object zfftnd(object x, object s=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object destroy_zfft_cache()
+cpdef object destroy_zfftnd_cache()
+cpdef object destroy_drfft_cache()
+cpdef object cfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object rfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object crfft(object x, object n=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object cfftnd(object x, object s=*, fwi_integer_t direction=*, object normalize=*, bint overwrite_x=*)
+cpdef object destroy_cfft_cache()
+cpdef object destroy_cfftnd_cache()
+cpdef object destroy_rfft_cache()
+cpdef object ddct1(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object ddct2(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object ddct3(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object dct1(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object dct2(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object dct3(object x, object n=*, fwi_integer_t normalize=*, bint overwrite_x=*)
+cpdef object destroy_ddct2_cache()
+cpdef object destroy_ddct1_cache()
+cpdef object destroy_dct2_cache()
+cpdef object destroy_dct1_cache()
