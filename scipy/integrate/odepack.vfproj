@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{22A8D0DD-C092-4074-B2A5-6D5726DC554C}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" WarnInterfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool" OutputFile="./$(ProjectName).lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\odepack\adjlr.f"/>
+		<File RelativePath=".\odepack\aigbt.f"/>
+		<File RelativePath=".\odepack\ainvg.f"/>
+		<File RelativePath=".\odepack\blkdta000.f"/>
+		<File RelativePath=".\odepack\bnorm.f"/>
+		<File RelativePath=".\odepack\cdrv.f"/>
+		<File RelativePath=".\odepack\cfode.f"/>
+		<File RelativePath=".\odepack\cntnzu.f"/>
+		<File RelativePath=".\odepack\ddasrt.f"/>
+		<File RelativePath=".\odepack\ddassl.f"/>
+		<File RelativePath=".\odepack\decbt.f"/>
+		<File RelativePath=".\odepack\ewset.f"/>
+		<File RelativePath=".\odepack\fnorm.f"/>
+		<File RelativePath=".\odepack\intdy.f"/>
+		<File RelativePath=".\odepack\iprep.f"/>
+		<File RelativePath=".\odepack\jgroup.f"/>
+		<File RelativePath=".\odepack\lsoda.f"/>
+		<File RelativePath=".\odepack\lsodar.f"/>
+		<File RelativePath=".\odepack\lsode.f"/>
+		<File RelativePath=".\odepack\lsodes.f"/>
+		<File RelativePath=".\odepack\lsodi.f"/>
+		<File RelativePath=".\odepack\lsoibt.f"/>
+		<File RelativePath=".\odepack\md.f"/>
+		<File RelativePath=".\odepack\mdi.f"/>
+		<File RelativePath=".\odepack\mdm.f"/>
+		<File RelativePath=".\odepack\mdp.f"/>
+		<File RelativePath=".\odepack\mdu.f"/>
+		<File RelativePath=".\odepack\nnfc.f"/>
+		<File RelativePath=".\odepack\nnsc.f"/>
+		<File RelativePath=".\odepack\nntc.f"/>
+		<File RelativePath=".\odepack\nroc.f"/>
+		<File RelativePath=".\odepack\nsfc.f"/>
+		<File RelativePath=".\odepack\odrv.f"/>
+		<File RelativePath=".\odepack\pjibt.f"/>
+		<File RelativePath=".\odepack\prep.f"/>
+		<File RelativePath=".\odepack\prepj.f"/>
+		<File RelativePath=".\odepack\prepji.f"/>
+		<File RelativePath=".\odepack\prja.f"/>
+		<File RelativePath=".\odepack\prjs.f"/>
+		<File RelativePath=".\odepack\rchek.f"/>
+		<File RelativePath=".\odepack\roots.f"/>
+		<File RelativePath=".\odepack\slsbt.f"/>
+		<File RelativePath=".\odepack\slss.f"/>
+		<File RelativePath=".\odepack\solbt.f"/>
+		<File RelativePath=".\odepack\solsy.f"/>
+		<File RelativePath=".\odepack\srcar.f"/>
+		<File RelativePath=".\odepack\srcma.f"/>
+		<File RelativePath=".\odepack\srcms.f"/>
+		<File RelativePath=".\odepack\srcom.f"/>
+		<File RelativePath=".\odepack\sro.f"/>
+		<File RelativePath=".\odepack\stoda.f"/>
+		<File RelativePath=".\odepack\stode.f"/>
+		<File RelativePath=".\odepack\stodi.f"/>
+		<File RelativePath=".\odepack\vmnorm.f"/>
+		<File RelativePath=".\odepack\vnorm.f"/>
+		<File RelativePath=".\odepack\vode.f"/>
+		<File RelativePath=".\odepack\xerrwv.f"/>
+		<File RelativePath=".\odepack\xsetf.f"/>
+		<File RelativePath=".\odepack\xsetun.f"/>
+		<File RelativePath=".\odepack\zvode.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
