@@ -68,6 +68,7 @@
  */
 
 #include <stdlib.h>
+#include <assert.h>
 #include "mconf.h"
 
 #ifdef DEC

@@ -8,6 +8,9 @@ ctypedef int intp
 
 PyUFunc_None = -1
 
+cdef extern from "cephes_names.h":
+    pass
+
 cdef extern from "specfun_wrappers.h":
     Py_complex cgamma_wrap( Py_complex z)
     Py_complex clngamma_wrap( Py_complex z)
@@ -369,7 +372,7 @@ cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*
 cdef void ** alloc_data_from_list(l):
     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
     for i in range(len(l)):
-        data[i] = <void *>(l[i])
+        data[i] = <void *><long long>(l[i])
     return data
 
 cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
