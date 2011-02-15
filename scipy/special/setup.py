@@ -24,8 +24,9 @@ def configuration(parent_package='',top_path=None):
         define_macros.append(('_USE_MATH_DEFINES',None))
 
     # C libraries
+    # TODO: /usr/local/include is hard-coded to find libndarray until build issues are fixed
     config.add_library('sc_c_misc',sources=[join('c_misc','*.c')],
-                       include_dirs=[get_python_inc(), get_numpy_include_dirs()],
+                       include_dirs=[get_python_inc(), get_numpy_include_dirs(), "/usr/local/include"],
                        macros=define_macros)
     config.add_library('sc_cephes',sources=[join('cephes','*.c')],
                        include_dirs=[get_python_inc(), get_numpy_include_dirs()],
@@ -50,8 +51,7 @@ def configuration(parent_package='',top_path=None):
                                   "cdf_wrappers.h", "specfun_wrappers.h",
                                   "c_misc/misc.h", "cephes_doc.h",
                                   "cephes/mconf.h", "cephes/cephes_names.h"],
-                         define_macros = define_macros,
-                         extra_info=get_info("npymath")
+                         define_macros = define_macros
                          )
 
     # Extension specfun
@@ -64,14 +64,12 @@ def configuration(parent_package='',top_path=None):
     # Extension orthogonal_eval
     config.add_extension('orthogonal_eval',
                          sources=['orthogonal_eval.c'],
-                         define_macros=[],
-                         extra_info=get_info("npymath"))
+                         define_macros=[])
 
     # Extension lambertw
     config.add_extension('lambertw',
                          sources=['lambertw.c'],
-                         define_macros=[],
-                         extra_info=get_info("npymath"))
+                         define_macros=[])
 
     config.add_data_files('tests/*.py')
     config.add_data_files('tests/data/README')

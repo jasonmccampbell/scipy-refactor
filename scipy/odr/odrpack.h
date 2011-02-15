@@ -19,7 +19,7 @@
 
 #define PYERR(errobj,message) {PyErr_SetString(errobj,message); goto fail;}
 #define PYERR2(errobj,message) {PyErr_Print(); PyErr_SetString(errobj, message); goto fail;}
-#define ISCONTIGUOUS(m) ((m)->flags & CONTIGUOUS)
+#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & CONTIGUOUS)
 
 #define MAX(n1,n2) ((n1) > (n2))?(n1):(n2);
 #define MIN(n1,n2) ((n1) > (n2))?(n2):(n1);

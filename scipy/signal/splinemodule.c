@@ -11,7 +11,7 @@
 #define OBJECTTYPE(arr) ((arr)->descr->type_num)
 #define BASEOBJ(arr) ((PyArrayObject *)((arr)->base))
 #define RANK(arr) ((arr)->nd)
-#define ISCONTIGUOUS(m) ((m)->flags & NPY_CONTIGUOUS)
+#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & NPY_CONTIGUOUS)
 
 static void convert_strides(npy_intp*,npy_intp*,int,int);
 

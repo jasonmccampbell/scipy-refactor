@@ -36,10 +36,11 @@ the result tuple when the full_output argument is non-zero.
     #define PyInt_FromLong PyLong_FromLong
 #endif
 #include "numpy/arrayobject.h"
+#include "numpy/ndarraytypes.h"
 
 #define PYERR(errobj,message) {PyErr_SetString(errobj,message); goto fail;}
 #define PYERR2(errobj,message) {PyErr_Print(); PyErr_SetString(errobj, message); goto fail;}
-#define ISCONTIGUOUS(m) ((m)->flags & NPY_CONTIGUOUS)
+#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & NPY_CONTIGUOUS)
 
 #define STORE_VARS() PyObject *store_multipack_globals[4]; int store_multipack_globals3;
 
@@ -91,13 +92,13 @@ the result tuple when the full_output argument is non-zero.
   if (o_diag == NULL || o_diag == Py_None) { \
     ap_diag = (PyArrayObject *)PyArray_SimpleNew(1,&n,PyArray_DOUBLE); \
     if (ap_diag == NULL) goto fail; \
-    diag = (double *)ap_diag -> data; \
+    diag = (double *)PyArray_DATA(ap_diag); \
     mode = 1; \
   } \
   else { \
     ap_diag = (PyArrayObject *)PyArray_ContiguousFromObject(o_diag, PyArray_DOUBLE, 1, 1); \
     if (ap_diag == NULL) goto fail; \
-    diag = (double *)ap_diag -> data; \
+    diag = (double *)PyArray_DATA(ap_diag); \
     mode = 2; } }
 
 #define MATRIXC2F(jac,data,m,n) {double *p1=(double *)(jac), *p2, *p3=(double *)(data);\
