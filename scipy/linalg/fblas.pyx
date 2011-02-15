@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The fblas module was generated with Fwrap v0.2.0dev_9849d10.
+"""The fblas module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -2036,6 +2036,7 @@ def srotg(fwr_real_t a, fwr_real_t b):
     c = 0
     s = 0
     fc.srotg(&a, &b, &c, &s)
+    return (<fwr_real_t>c, s,)
 def drotg(fwr_dbl_t a, fwr_dbl_t b):
     """drotg(a, b) -> (c, s)
 
@@ -2055,6 +2056,7 @@ def drotg(fwr_dbl_t a, fwr_dbl_t b):
     c = 0
     s = 0
     fc.drotg(&a, &b, &c, &s)
+    return (<fwr_dbl_t>c, s,)
 def crotg(fwc_complex_t a, fwc_complex_t b):
     """crotg(a, b) -> (c, s)
 
@@ -2074,6 +2076,7 @@ def crotg(fwc_complex_t a, fwc_complex_t b):
     c = 0
     s = 0
     fc.crotg(&a, &b, &c, &s)
+    return (<fwc_complex_t>c, s,)
 def zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
     """zrotg(a, b) -> (c, s)
 
@@ -2093,6 +2096,7 @@ def zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):
     c = 0
     s = 0
     fc.zrotg(&a, &b, &c, &s)
+    return (<fwc_dbl_complex_t>c, s,)
 
 def srotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """srotm(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
@@ -2949,24 +2953,6 @@ def zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integ
 
 
 
-cdef char fw_aschar(object s):
-    cdef char* buf
-    try:
-        return <char>s # int
-    except TypeError:
-        pass
-    try:
-        buf = <char*>s # bytes
-    except TypeError:
-        s = s.encode('ASCII')
-        buf = <char*>s # unicode
-    if buf[0] == 0:
-        return 0
-    elif buf[1] != 0:
-        return 0
-    else:
-        return buf[0]
-
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
                                   np.intp_t * coerced_shape,
                                   bint copy, bint create, int alignment=1):
@@ -3002,10 +2988,28 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
         coerced_shape[i] = 1
     return result
 
+cdef char fw_aschar(object s):
+    cdef char* buf
+    try:
+        return <char>s # int
+    except TypeError:
+        pass
+    try:
+        buf = <char*>s # bytes
+    except TypeError:
+        s = s.encode('ASCII')
+        buf = <char*>s # unicode
+    if buf[0] == 0:
+        return 0
+    elif buf[1] != 0:
+        return 0
+    else:
+        return buf[0]
+
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9849d10
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
-# Fwrap: pyf-sha1 0e67fda2da1fd33565bb2f878dbf17a091a4e46d
+# Fwrap: pyf-sha1 097048e6c573d42b1b907c08c3cbbf78509b1b79
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: wraps src/fblaswrap.f
@@ -3099,7 +3103,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: template sdot,ddot
 # Fwrap: template cdotc,cdotu,zdotc,zdotu
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary fblas.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary fblas.pyx.in
 # Fwrap: auxiliary fblas_fc.h
 # Fwrap: auxiliary fblas_fc.pxd

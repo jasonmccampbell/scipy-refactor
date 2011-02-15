@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The fblas module was generated with Fwrap v0.2.0dev_9f2ab1b.
+"""The fblas module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -36,17 +36,21 @@ zdrot(...)
 zdscal(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport fblas_fc as fc
+
 np.import_array()
+__all__ = ['{{Xhemv}}', 'csrot', 'csscal', 'dzasum', 'dznrm2', '{{XdotX}}', '{{iXamax}}', '{{Xasum}}', '{{Xaxpy}}', 'scasum', 'scnrm2', '{{Xcopy}}', '{{Xdot}}', '{{Xgemm}}', '{{Xgemv}}', '{{XgerX}}', '{{Xnrm2}}', '{{Xrot}}', '{{Xrotg}}', '{{Xrotm}}', '{{Xrotmg}}', '{{Xscal}}', '{{Xswap}}', '{{Xsymv}}', '{{Xtrmv}}', 'zdrot', 'zdscal']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['{{name}}', 'csrot', 'csscal', 'dzasum', 'dznrm2', '{{cy_name}}', '{{name}}', '{{name}}', '{{name}}', 'scasum', 'scnrm2', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', '{{name}}', 'zdrot', 'zdscal']
-# Template for chemv, zhemv
-{{for ktp, name, npy_enum
-      in zip(['fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['chemv', 'zhemv'],
+{{for Xhemv, ktp, npy_enum
+      in zip(['chemv', 'zhemv'],
+             ['fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
-    """{{name}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
+def {{Xhemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+    """{{Xhemv}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
     ----------
@@ -103,12 +107,12 @@ cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y,
     fw_uplo_f[0] = fw_aschar(uplo_f)
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
-    fc.{{name}}(fw_uplo_f, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
+    fc.{{Xhemv}}(fw_uplo_f, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
 {{endfor}}
 
 
-cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """csrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -153,7 +157,7 @@ cpdef object csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None
     return (x_, y_,)
 
 
-cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """csscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters
@@ -185,7 +189,7 @@ cpdef object csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0,
     return x_
 
 
-cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dzasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -216,7 +220,7 @@ cpdef object dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """dznrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -247,14 +251,13 @@ cpdef object dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-# Template for wcdotc, wcdotu, wzdotc, wzdotu
-{{for cy_name, ktp, name, npy_enum
+{{for XdotX, ktp, name, npy_enum
       in zip(['cdotc', 'cdotu', 'zdotc', 'zdotu'],
              ['fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
              ['wcdotc', 'wcdotu', 'wzdotc', 'wzdotu'],
              ['fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{cy_name}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
-    """{{cy_name}}(x, y[, n, offx, incx, offy, incy]) -> xy
+def {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{XdotX}}(x, y[, n, offx, incx, offy, incy]) -> xy
 
     Parameters
     ----------
@@ -275,6 +278,7 @@ cpdef object {{cy_name}}(object x, object y, object n=None, fwi_integer_t offx=0
     cdef fwi_integer_t n_
     cdef np.ndarray x_, y_
     cdef np.npy_intp x_shape[1], y_shape[1]
+    xy = 0
     x_ = fw_asfortranarray(x, {{npy_enum}}, 1, x_shape, False, False)
     y_ = fw_asfortranarray(y, {{npy_enum}}, 1, y_shape, False, False)
     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
@@ -295,45 +299,43 @@ cpdef object {{cy_name}}(object x, object y, object n=None, fwi_integer_t offx=0
 {{endfor}}
 
 
-# Template for isamax, idamax, icamax, izamax
-{{for ktp, name, name2, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['isamax', 'idamax', 'icamax', 'izamax'],
+{{for iXamax, ktp, name, npy_enum
+      in zip(['isamax', 'idamax', 'icamax', 'izamax'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['sx', 'dx', 'cx', 'zx'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}(fwi_integer_t n, object {{name2}}, fwi_integer_t incx):
-    """{{name}}(n, {{name2}}, incx) -> (fw_ret_arg, n, {{name2}}, incx)
+def {{iXamax}}(fwi_integer_t n, object {{name}}, fwi_integer_t incx):
+    """{{iXamax}}(n, {{name}}, incx) -> (fw_ret_arg, n, {{name}}, incx)
 
     Parameters
     ----------
     n : fwi_integer, intent inout
-    {{name2}} : {{ktp}}_, 1D array, dimension(*), intent inout
+    {{name}} : {{ktp}}_, 1D array, dimension(*), intent inout
     incx : fwi_integer, intent inout
 
     Returns
     -------
     fw_ret_arg : fwi_integer, intent out
     n : fwi_integer, intent inout
-    {{name2}} : {{ktp}}_, 1D array, dimension(*), intent inout
+    {{name}} : {{ktp}}_, 1D array, dimension(*), intent inout
     incx : fwi_integer, intent inout
 
     """
     cdef fwi_integer_t fw_ret_arg
-    cdef np.ndarray {{name2}}_
-    cdef np.npy_intp {{name2}}_shape[1]
-    {{name2}}_ = fw_asfortranarray({{name2}}, {{npy_enum}}, 1, {{name2}}_shape, False, False)
-    fw_ret_arg = fc.{{name}}(&fw_ret_arg, &n, <{{ktp}}*>np.PyArray_DATA({{name2}}_), &incx)
-    return (fw_ret_arg, n, {{name2}}_, incx,)
+    cdef np.ndarray {{name}}_
+    cdef np.npy_intp {{name}}_shape[1]
+    {{name}}_ = fw_asfortranarray({{name}}, {{npy_enum}}, 1, {{name}}_shape, False, False)
+    fw_ret_arg = fc.{{iXamax}}(&fw_ret_arg, &n, <{{ktp}}*>np.PyArray_DATA({{name}}_), &incx)
+    return (fw_ret_arg, n, {{name}}_, incx,)
 {{endfor}}
 
 
-# Template for sasum, dasum
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['sasum', 'dasum'],
+{{for Xasum, ktp, npy_enum
+      in zip(['sasum', 'dasum'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
-    """{{name}}(x[, n, offx, incx]) -> fw_ret_arg
+def {{Xasum}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+    """{{Xasum}}(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
     ----------
@@ -359,18 +361,17 @@ cpdef object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer
         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
-    fw_ret_arg = fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
+    fw_ret_arg = fc.{{Xasum}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 {{endfor}}
 
 
-# Template for saxpy, daxpy, caxpy, zaxpy
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['saxpy', 'daxpy', 'caxpy', 'zaxpy'],
+{{for Xaxpy, ktp, npy_enum
+      in zip(['saxpy', 'daxpy', 'caxpy', 'zaxpy'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}(object x, object y, object n=None, {{ktp}} a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
-    """{{name}}(x, y[, n, a, offx, incx, offy, incy]) -> y
+def {{Xaxpy}}(object x, object y, object n=None, {{ktp}} a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{Xaxpy}}(x, y[, n, a, offx, incx, offy, incy]) -> y
 
     Parameters
     ----------
@@ -406,12 +407,12 @@ cpdef object {{name}}(object x, object y, object n=None, {{ktp}} a=1., fwi_integ
         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
-    fc.{{name}}(&n_, &a, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
+    fc.{{Xaxpy}}(&n_, &a, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
 {{endfor}}
 
 
-cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scasum(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -442,7 +443,7 @@ cpdef object scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+def scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
     """scnrm2(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
@@ -473,13 +474,12 @@ cpdef object scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t
     return fw_ret_arg
 
 
-# Template for scopy, dcopy, ccopy, zcopy
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['scopy', 'dcopy', 'ccopy', 'zcopy'],
+{{for Xcopy, ktp, npy_enum
+      in zip(['scopy', 'dcopy', 'ccopy', 'zcopy'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
-    """{{name}}(x, y[, n, offx, incx, offy, incy]) -> y
+def {{Xcopy}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{Xcopy}}(x, y[, n, offx, incx, offy, incy]) -> y
 
     Parameters
     ----------
@@ -514,18 +514,17 @@ cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, f
         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
-    fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
+    fc.{{Xcopy}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
     return y_
 {{endfor}}
 
 
-# Template for sdot, ddot
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['sdot', 'ddot'],
+{{for Xdot, ktp, npy_enum
+      in zip(['sdot', 'ddot'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
-    """{{name}}(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
+def {{Xdot}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{Xdot}}(x, y[, n, offx, incx, offy, incy]) -> fw_ret_arg
 
     Parameters
     ----------
@@ -561,18 +560,17 @@ cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, f
         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
-    fw_ret_arg = fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
+    fw_ret_arg = fc.{{Xdot}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
     return fw_ret_arg
 {{endfor}}
 
 
-# Template for sgemm, dgemm, cgemm, zgemm
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['sgemm', 'dgemm', 'cgemm', 'zgemm'],
+{{for Xgemm, ktp, npy_enum
+      in zip(['sgemm', 'dgemm', 'cgemm', 'zgemm'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
-    """{{name}}(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
+def {{Xgemm}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):
+    """{{Xgemm}}(alpha, a, b[, beta, c, trans_a, trans_b, overwrite_c]) -> c
 
     Parameters
     ----------
@@ -633,18 +631,17 @@ cpdef object {{name}}({{ktp}} alpha, object a, object b, {{ktp}} beta=0.0, objec
     fw_transb_f[0] = fw_aschar(transb_f)
     if fw_transb_f[0] == 0:
         raise ValueError("len(transb_f) != 1")
-    fc.{{name}}(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &lda, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, <{{ktp}}*>np.PyArray_DATA(c_), &m, 1, 1)
+    fc.{{Xgemm}}(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &lda, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &beta, <{{ktp}}*>np.PyArray_DATA(c_), &m, 1, 1)
     return c_
 {{endfor}}
 
 
-# Template for sgemv, dgemv, cgemv, zgemv
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['sgemv', 'dgemv', 'cgemv', 'zgemv'],
+{{for Xgemv, ktp, npy_enum
+      in zip(['sgemv', 'dgemv', 'cgemv', 'zgemv'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
-    """{{name}}(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
+def {{Xgemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):
+    """{{Xgemv}}(alpha, a, x[, beta, y, offx, incx, offy, incy, trans, overwrite_y]) -> y
 
     Parameters
     ----------
@@ -702,18 +699,17 @@ cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, objec
     fw_trans_f[0] = fw_aschar(trans_f)
     if fw_trans_f[0] == 0:
         raise ValueError("len(trans_f) != 1")
-    fc.{{name}}(fw_trans_f, &m, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &m, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
+    fc.{{Xgemv}}(fw_trans_f, &m, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &m, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
 {{endfor}}
 
 
-# Template for sger, dger, cgerc, cgeru, zgerc, zgeru
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
-             ['sger', 'dger', 'cgerc', 'cgeru', 'zgerc', 'zgeru'],
+{{for XgerX, ktp, npy_enum
+      in zip(['sger', 'dger', 'cgerc', 'cgeru', 'zgerc', 'zgeru'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_t', 'fwc_dbl_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
-    """{{name}}(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
+def {{XgerX}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):
+    """{{XgerX}}(alpha, x, y[, incx, incy, a, overwrite_x, overwrite_y, overwrite_a]) -> a
 
     Parameters
     ----------
@@ -754,18 +750,17 @@ cpdef object {{name}}({{ktp}} alpha, object x, object y, fwi_integer_t incx=1, f
         raise ValueError("(m == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    fc.{{name}}(&m, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(x_), &incx, <{{ktp}}*>np.PyArray_DATA(y_), &incy, <{{ktp}}*>np.PyArray_DATA(a_), &lda)
+    fc.{{XgerX}}(&m, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(x_), &incx, <{{ktp}}*>np.PyArray_DATA(y_), &incy, <{{ktp}}*>np.PyArray_DATA(a_), &lda)
     return a_
 {{endfor}}
 
 
-# Template for snrm2, dnrm2
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['snrm2', 'dnrm2'],
+{{for Xnrm2, ktp, npy_enum
+      in zip(['snrm2', 'dnrm2'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
-    """{{name}}(x[, n, offx, incx]) -> fw_ret_arg
+def {{Xnrm2}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+    """{{Xnrm2}}(x[, n, offx, incx]) -> fw_ret_arg
 
     Parameters
     ----------
@@ -791,18 +786,17 @@ cpdef object {{name}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer
         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
-    fw_ret_arg = fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
+    fw_ret_arg = fc.{{Xnrm2}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
     return fw_ret_arg
 {{endfor}}
 
 
-# Template for srot, drot
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['srot', 'drot'],
+{{for Xrot, ktp, npy_enum
+      in zip(['srot', 'drot'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
-    """{{name}}(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
+def {{Xrot}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+    """{{Xrot}}(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
     ----------
@@ -842,17 +836,16 @@ cpdef object {{name}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, f
         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
-    fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
+    fc.{{Xrot}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
     return (x_, y_,)
 {{endfor}}
 
 
-# Template for srotg, drotg, crotg, zrotg
-{{for ktp, name
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['srotg', 'drotg', 'crotg', 'zrotg'])}}
-cpdef object {{name}}({{ktp}} a, {{ktp}} b):
-    """{{name}}(a, b) -> (c, s)
+{{for Xrotg, ktp
+      in zip(['srotg', 'drotg', 'crotg', 'zrotg'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'])}}
+def {{Xrotg}}({{ktp}} a, {{ktp}} b):
+    """{{Xrotg}}(a, b) -> (c, s)
 
     Parameters
     ----------
@@ -866,18 +859,19 @@ cpdef object {{name}}({{ktp}} a, {{ktp}} b):
 
     """
     cdef {{ktp}} c, s
-    fc.{{name}}(&a, &b, &c, &s)
+    c = 0
+    s = 0
+    fc.{{Xrotg}}(&a, &b, &c, &s)
     return (c, s,)
 {{endfor}}
 
 
-# Template for srotm, drotm
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['srotm', 'drotm'],
+{{for Xrotm, ktp, npy_enum
+      in zip(['srotm', 'drotm'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
-    """{{name}}(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
+def {{Xrotm}}(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+    """{{Xrotm}}(x, y, param[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
     ----------
@@ -919,18 +913,17 @@ cpdef object {{name}}(object x, object y, object param, object n=None, fwi_integ
     param_ = fw_asfortranarray(param, {{npy_enum}}, 1, param_shape, False, False)
     if not (0 <= 5 <= param_shape[0]):
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
-    fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, <{{ktp}}*>np.PyArray_DATA(param_))
+    fc.{{Xrotm}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, <{{ktp}}*>np.PyArray_DATA(param_))
     return (x_, y_,)
 {{endfor}}
 
 
-# Template for srotmg, drotmg
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['srotmg', 'drotmg'],
+{{for Xrotmg, ktp, npy_enum
+      in zip(['srotmg', 'drotmg'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object param=None):
-    """{{name}}(d1, d2, x1, y1[, param]) -> param
+def {{Xrotmg}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object param=None):
+    """{{Xrotmg}}(d1, d2, x1, y1[, param]) -> param
 
     Parameters
     ----------
@@ -951,18 +944,17 @@ cpdef object {{name}}({{ktp}} d1, {{ktp}} d2, {{ktp}} x1, {{ktp}} y1, object par
     param_ = fw_asfortranarray(param, {{npy_enum}}, 1, param_shape, False, True)
     if not (0 <= 5 <= param_shape[0]):
         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
-    fc.{{name}}(&d1, &d2, &x1, &y1, <{{ktp}}*>np.PyArray_DATA(param_))
+    fc.{{Xrotmg}}(&d1, &d2, &x1, &y1, <{{ktp}}*>np.PyArray_DATA(param_))
     return param_
 {{endfor}}
 
 
-# Template for sscal, dscal, cscal, zscal
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['sscal', 'dscal', 'cscal', 'zscal'],
+{{for Xscal, ktp, npy_enum
+      in zip(['sscal', 'dscal', 'cscal', 'zscal'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
-    """{{name}}(a, x[, n, offx, incx]) -> x
+def {{Xscal}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
+    """{{Xscal}}(a, x[, n, offx, incx]) -> x
 
     Parameters
     ----------
@@ -988,18 +980,17 @@ cpdef object {{name}}({{ktp}} a, object x, object n=None, fwi_integer_t offx=0, 
         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not ((incx > 0) or (incx < 0)):
         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
-    fc.{{name}}(&n_, &a, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
+    fc.{{Xscal}}(&n_, &a, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
     return x_
 {{endfor}}
 
 
-# Template for sswap, dswap, cswap, zswap
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['sswap', 'dswap', 'cswap', 'zswap'],
+{{for Xswap, ktp, npy_enum
+      in zip(['sswap', 'dswap', 'cswap', 'zswap'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
-    """{{name}}(x, y[, n, offx, incx, offy, incy]) -> (x, y)
+def {{Xswap}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):
+    """{{Xswap}}(x, y[, n, offx, incx, offy, incy]) -> (x, y)
 
     Parameters
     ----------
@@ -1035,18 +1026,17 @@ cpdef object {{name}}(object x, object y, object n=None, fwi_integer_t offx=0, f
         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
     if not ((incy > 0) or (incy < 0)):
         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
-    fc.{{name}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
+    fc.{{Xswap}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy)
     return (x_, y_,)
 {{endfor}}
 
 
-# Template for ssymv, dsymv
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t'],
-             ['ssymv', 'dsymv'],
+{{for Xsymv, ktp, npy_enum
+      in zip(['ssymv', 'dsymv'],
+             ['fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
-    """{{name}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
+def {{Xsymv}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):
+    """{{Xsymv}}(alpha, a, x, beta, y[, offx, incx, offy, incy, lower, overwrite_y]) -> y
 
     Parameters
     ----------
@@ -1103,18 +1093,17 @@ cpdef object {{name}}({{ktp}} alpha, object a, object x, {{ktp}} beta, object y,
     fw_uplo_f[0] = fw_aschar(uplo_f)
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
-    fc.{{name}}(fw_uplo_f, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
+    fc.{{Xsymv}}(fw_uplo_f, &n, &alpha, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, &beta, <{{ktp}}*>np.PyArray_DATA(y_) + offy, &incy, 1)
     return y_
 {{endfor}}
 
 
-# Template for strmv, dtrmv, ctrmv, ztrmv
-{{for ktp, name, npy_enum
-      in zip(['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['strmv', 'dtrmv', 'ctrmv', 'ztrmv'],
+{{for Xtrmv, ktp, npy_enum
+      in zip(['strmv', 'dtrmv', 'ctrmv', 'ztrmv'],
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-cpdef object {{name}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
-    """{{name}}(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
+def {{Xtrmv}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):
+    """{{Xtrmv}}(a, x[, offx, incx, lower, trans, unitdiag, overwrite_x]) -> x
 
     Parameters
     ----------
@@ -1171,12 +1160,12 @@ cpdef object {{name}}(object a, object x, fwi_integer_t offx=0, fwi_integer_t in
     fw_diag_f[0] = fw_aschar(diag_f)
     if fw_diag_f[0] == 0:
         raise ValueError("len(diag_f) != 1")
-    fc.{{name}}(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
+    fc.{{Xtrmv}}(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
     return x_
 {{endfor}}
 
 
-cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
+def zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):
     """zdrot(x, y, c, s[, n, offx, incx, offy, incy, overwrite_x, overwrite_y]) -> (x, y)
 
     Parameters
@@ -1221,7 +1210,7 @@ cpdef object zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, 
     return (x_, y_,)
 
 
-cpdef object zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
+def zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):
     """zdscal(a, x[, n, offx, incx, overwrite_x]) -> x
 
     Parameters
@@ -1253,24 +1242,6 @@ cpdef object zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, 
     return x_
 
 
-
-cdef char fw_aschar(object s):
-    cdef char* buf
-    try:
-        return <char>s # int
-    except TypeError:
-        pass
-    try:
-        buf = <char*>s # bytes
-    except TypeError:
-        s = s.encode('ASCII')
-        buf = <char*>s # unicode
-    if buf[0] == 0:
-        return 0
-    elif buf[1] != 0:
-        return 0
-    else:
-        return buf[0]
 
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
                                   np.intp_t * coerced_shape,
@@ -1307,10 +1278,28 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
         coerced_shape[i] = 1
     return result
 
+cdef char fw_aschar(object s):
+    cdef char* buf
+    try:
+        return <char>s # int
+    except TypeError:
+        pass
+    try:
+        buf = <char*>s # bytes
+    except TypeError:
+        s = s.encode('ASCII')
+        buf = <char*>s # unicode
+    if buf[0] == 0:
+        return 0
+    elif buf[1] != 0:
+        return 0
+    else:
+        return buf[0]
+
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9f2ab1b
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 5a82c8c05f21f5079bd7084630d87d82ee91f36f
-# Fwrap: pyf-sha1 aecd6df4206a334184e799d47b341b828bd42501
+# Fwrap: pyf-sha1 097048e6c573d42b1b907c08c3cbbf78509b1b79
 # Fwrap: wraps $REFERENCE_BLAS/*.f
 # Fwrap:     sha1 7b2b93ccd4fe2190e45d3e3a21c5156f0fffcb80
 # Fwrap: wraps src/fblaswrap.f
@@ -1404,7 +1393,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: template sdot,ddot
 # Fwrap: template cdotc,cdotu,zdotc,zdotu
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary fblas.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary fblas.pyx.in
 # Fwrap: auxiliary fblas_fc.h
 # Fwrap: auxiliary fblas_fc.pxd
