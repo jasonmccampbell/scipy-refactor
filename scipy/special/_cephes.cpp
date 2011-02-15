@@ -93,6 +93,8 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "npy_loops.h"
 #include "ufunc_extras.h"
 
+extern "C" int cephes_airy(double x, double* ai, double* aip, double* bi, double* bip );
+extern "C" 
 #ifdef __GNUC__
 /* Test for GCC > 2.95 */
 #if __GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)) 
@@ -491,7 +493,8 @@ static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_371_22;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_371_18;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_371_4;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_372_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_372_39;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_372_39;
 static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_372_14;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_557_37;
 static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_557_37;
@@ -944,7 +947,8 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
   System::Object^ __pyx_t_3 = nullptr;
   size_t __pyx_t_4;
   System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> __pyx_t_5;
-  Py_ssize_t __pyx_t_6;
+  PY_LONG_LONG __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   __pyx_v_i = nullptr;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":370
@@ -952,7 +956,7 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
  * cdef void ** alloc_data_from_list(l):
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))             # <<<<<<<<<<<<<<
  *     for i in range(len(l)):
- *         data[i] = <void *>(l[i])
+ *         data[i] = <void *><long long>(l[i])
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
   __pyx_t_2 = __site_call1_370_43->Target(__site_call1_370_43, __pyx_context, __pyx_t_1, __pyx_v_l);
@@ -969,7 +973,7 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
  * cdef void ** alloc_data_from_list(l):
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
  *     for i in range(len(l)):             # <<<<<<<<<<<<<<
- *         data[i] = <void *>(l[i])
+ *         data[i] = <void *><long long>(l[i])
  *     return data
  */
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "range");
@@ -987,14 +991,15 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":372
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
  *     for i in range(len(l)):
- *         data[i] = <void *>(l[i])             # <<<<<<<<<<<<<<
+ *         data[i] = <void *><long long>(l[i])             # <<<<<<<<<<<<<<
  *     return data
  * 
  */
-      __pyx_t_2 = __site_getindex_372_28->Target(__site_getindex_372_28, __pyx_v_l, __pyx_v_i);
-      __pyx_t_6 = __site_cvt_Py_ssize_t_372_14->Target(__site_cvt_Py_ssize_t_372_14, __pyx_v_i);
-      (__pyx_v_data[__pyx_t_6]) = ((void *)__pyx_t_2);
+      __pyx_t_2 = __site_getindex_372_39->Target(__site_getindex_372_39, __pyx_v_l, __pyx_v_i);
+      __pyx_t_6 = __site_cvt_PY_LONG_LONG_372_39->Target(__site_cvt_PY_LONG_LONG_372_39, __pyx_t_2);
       __pyx_t_2 = nullptr;
+      __pyx_t_7 = __site_cvt_Py_ssize_t_372_14->Target(__site_cvt_Py_ssize_t_372_14, __pyx_v_i);
+      (__pyx_v_data[__pyx_t_7]) = ((void *)((PY_LONG_LONG)__pyx_t_6));
     }
   }
   finally {
@@ -1003,7 +1008,7 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":373
  *     for i in range(len(l)):
- *         data[i] = <void *>(l[i])
+ *         data[i] = <void *><long long>(l[i])
  *     return data             # <<<<<<<<<<<<<<
  * 
  * cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
@@ -1748,7 +1753,8 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_call1_371_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_371_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_iterator_371_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
-  __site_getindex_372_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_getindex_372_39 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_cvt_PY_LONG_LONG_372_39 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_Py_ssize_t_372_14 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_557_37 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_cvt_size_t_557_37 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));

@@ -25,6 +25,11 @@
       }                                               \
     } while (0)
 
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int ierr_to_mtherr( int nz, int ierr);
 void set_nan_if_no_computation_done(Py_complex *var, int ierr);
 int cairy_wrap(Py_complex z, Py_complex *ai, Py_complex *aip, Py_complex *bi, Py_complex *bip);
@@ -56,6 +61,10 @@ int cbesk_(doublecomplex *, double *, int *, int *, doublecomplex *, int *, int 
 int cbesy_(doublecomplex *, double *, int *, int *, doublecomplex *, int *, doublecomplex *, int *);
 int cbesh_(doublecomplex *, double *, int *, int *, int *, doublecomplex *, int *, int *);
 */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
 

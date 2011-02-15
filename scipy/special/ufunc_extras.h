@@ -5,6 +5,10 @@ typedef struct { double real, imag; } Py_complex;
 
 #include "npy_api.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 typedef int    IntFunc_d_dd(double x, double *y, double *z);
 typedef int    IntFunc_d_dddd(double v, double *w, double *x, double *y, double *z);
 typedef int    IntFunc_D_DDDD(Py_complex v, Py_complex *w, Py_complex *x, Py_complex *y, Py_complex *z);
@@ -81,5 +85,9 @@ extern void NpyUFunc_fffff_ff_As_ddddd_dd(char **args, npy_intp *dimensions, npy
 extern void NpyUFunc_ddddd_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 extern void NpyUFunc_ffff_ff_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
 extern void NpyUFunc_dddd_dd_As_dddi_dd(char **args, npy_intp *dimensions, npy_intp *steps, void *func);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* UFUNC_EXTRAS_H */
