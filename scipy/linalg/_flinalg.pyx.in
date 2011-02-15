@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _flinalg module was generated with Fwrap v0.2.0dev_9849d10.
+"""The _flinalg module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -200,9 +200,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9849d10
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 9c27bf03e429178b02879c0c9af7e1f9f38ef60f
-# Fwrap: pyf-sha1 52dfbd90853372d85d11a18f119a401b42f21c76
+# Fwrap: pyf-sha1 4ccc8f9dc1cdfb6aebbf89623c741dff7e3ee407
 # Fwrap: wraps src/det.f
 # Fwrap:     sha1 cf2332711df8b7cc1f4f025cddf95ec6102ea3f0
 # Fwrap: wraps src/lu.f
@@ -210,7 +210,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _flinalg.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _flinalg.pyx.in
 # Fwrap: auxiliary _flinalg_fc.h
 # Fwrap: auxiliary _flinalg_fc.pxd

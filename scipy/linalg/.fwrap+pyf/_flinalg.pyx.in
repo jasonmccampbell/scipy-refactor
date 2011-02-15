@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The _flinalg module was generated with Fwrap v0.2.0dev_346d9b8.
+"""The _flinalg module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -12,15 +12,20 @@ sdet_r, ddet_r, cdet_r, zdet_r(...)
 slu_c, dlu_c, clu_c, zlu_c(...)
 
 """
+
+cimport numpy as np
+from fwrap_ktp cimport *
+cimport _flinalg_fc as fc
+
 np.import_array()
+__all__ = ['{{Xdet_c}}', '{{Xdet_r}}', '{{Xlu_c}}']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-__all__ = ['{{Xdet_c}}', '{{Xdet_r}}', '{{Xlu_c}}']
 {{for Xdet_c, ktp, npy_enum
       in zip(['sdet_c', 'ddet_c', 'cdet_c', 'zdet_c'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
+def {{Xdet_c}}(object a, bint overwrite_a=False):
     """{{Xdet_c}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -38,10 +43,12 @@ cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
     cdef fwi_integer_t n, info
     cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
+    det = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[0]
     piv_shape[0] = n
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if n != a_shape[0]:
@@ -57,7 +64,7 @@ cpdef object {{Xdet_c}}(object a, bint overwrite_a=False):
       in zip(['sdet_r', 'ddet_r', 'cdet_r', 'zdet_r'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'])}}
-cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
+def {{Xdet_r}}(object a, bint overwrite_a=False):
     """{{Xdet_r}}(a[, overwrite_a]) -> (det, info)
 
     Parameters
@@ -75,10 +82,12 @@ cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
     cdef fwi_integer_t n, info
     cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
+    det = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     n = a_shape[0]
     piv_shape[0] = n
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if not (a_shape[0] == a_shape[1]):
         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
     if n != a_shape[0]:
@@ -96,7 +105,7 @@ cpdef object {{Xdet_r}}(object a, bint overwrite_a=False):
              ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_complex_x16_t_enum'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-cpdef object {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
+def {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=False, object p=None, object l=None, object u=None):
     """{{Xlu_c}}(a[, permute_l, overwrite_a, p, l, u]) -> (p, l, u, info)
 
     Parameters
@@ -125,6 +134,7 @@ cpdef object {{Xlu_c}}(object a, fwi_integer_t permute_l=0, bint overwrite_a=Fal
     k = m if (m < n) else n
     piv_shape[0] = k
     piv_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, piv_shape, False, True)
+    info = 0
     if m != a_shape[0]:
         raise ValueError("(m == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
@@ -190,9 +200,9 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
     return result
 
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_346d9b8
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 9c27bf03e429178b02879c0c9af7e1f9f38ef60f
-# Fwrap: pyf-sha1 f306d593748fdb390bdc20caf7783cacea684ca7
+# Fwrap: pyf-sha1 4ccc8f9dc1cdfb6aebbf89623c741dff7e3ee407
 # Fwrap: wraps src/det.f
 # Fwrap:     sha1 cf2332711df8b7cc1f4f025cddf95ec6102ea3f0
 # Fwrap: wraps src/lu.f
@@ -200,7 +210,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: f77binding True
 # Fwrap: detect-templates True
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary _flinalg.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary _flinalg.pyx.in
 # Fwrap: auxiliary _flinalg_fc.h
 # Fwrap: auxiliary _flinalg_fc.pxd
