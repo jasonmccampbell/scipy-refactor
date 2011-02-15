@@ -1,6 +1,6 @@
 #cython: ccomplex=True
 
-"""The flapack module was generated with Fwrap v0.2.0dev_9849d10.
+"""The flapack module was generated with Fwrap v0.2.0dev_00843a8.
 
 Below is a listing of functions and data types.
 For usage information see the function docstrings.
@@ -4306,24 +4306,6 @@ def zggev(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_
 
 
 
-cdef char fw_aschar(object s):
-    cdef char* buf
-    try:
-        return <char>s # int
-    except TypeError:
-        pass
-    try:
-        buf = <char*>s # bytes
-    except TypeError:
-        s = s.encode('ASCII')
-        buf = <char*>s # unicode
-    if buf[0] == 0:
-        return 0
-    elif buf[1] != 0:
-        return 0
-    else:
-        return buf[0]
-
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
                                   np.intp_t * coerced_shape,
                                   bint copy, bint create, int alignment=1):
@@ -4359,10 +4341,28 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
         coerced_shape[i] = 1
     return result
 
+cdef char fw_aschar(object s):
+    cdef char* buf
+    try:
+        return <char>s # int
+    except TypeError:
+        pass
+    try:
+        buf = <char*>s # bytes
+    except TypeError:
+        s = s.encode('ASCII')
+        buf = <char*>s # unicode
+    if buf[0] == 0:
+        return 0
+    elif buf[1] != 0:
+        return 0
+    else:
+        return buf[0]
+
 # Fwrap configuration:
-# Fwrap: version 0.2.0dev_9849d10
+# Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 bc65e5ca785183e9ba121bd4b23eec031a8dac11
+# Fwrap: pyf-sha1 f509ee88b58717125b0f055b7176ad0b6fa72241
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
@@ -5860,7 +5860,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 # Fwrap: template sgees,dgees
 # Fwrap: template cgees,zgees
 # Fwrap: emulate-f2py True
-# Fwrap: auxiliary flapack.pxd
+# Fwrap: no-cpdef True
 # Fwrap: auxiliary flapack.pyx.in
 # Fwrap: auxiliary flapack_fc.h
 # Fwrap: auxiliary flapack_fc.pxd
