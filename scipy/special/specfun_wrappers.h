@@ -25,6 +25,10 @@ extern double PI;
 #define CONVINF(x) if ((x)==1.0e300) (x)=NPY_INFINITY; if ((x)==-1.0e300) (x)=-NPY_INFINITY
 #define ABS(x) ((x)<0 ? -(x) : (x))
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 Py_complex cgamma_wrap( Py_complex z);
 Py_complex clngamma_wrap( Py_complex z);
 Py_complex cpsi_wrap( Py_complex z);
@@ -96,6 +100,11 @@ double oblate_segv_wrap(double, double, double);
 
 int modified_fresnel_plus_wrap(double x, Py_complex *F, Py_complex *K);
 int modified_fresnel_minus_wrap(double x, Py_complex *F, Py_complex *K);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif
 
 

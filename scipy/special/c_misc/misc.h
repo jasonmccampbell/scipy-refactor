@@ -15,6 +15,10 @@ typedef enum {
 
 typedef double (*objective_function)(double, void *);
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 fsolve_result_t false_position(double *a, double *fa, double *b, double *fb,
                        objective_function f, void *f_extra,
                        double abserr, double relerr, double bisect_til,
@@ -24,5 +28,9 @@ double besselpoly(double a, double lambda, double nu);
 double gammaincinv(double a, double x);
 
 #define gammaincinv_doc """gammaincinv(a, y) returns x such that gammainc(a, x) = y."""
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* C_MISC_MISC_H */
