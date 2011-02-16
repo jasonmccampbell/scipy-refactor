@@ -54,16 +54,12 @@ sphk(...)
 sphy(...)
 
 """
-cimport numpy as np
-from fwrap_ktp cimport *
-cimport specfun_fc as fc
-
 np.import_array()
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 cdef extern from "math.h":
     double fabs(double)
-def lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
+cpdef object lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """lqmn(m, n, x[, qm, qd]) -> (qm, qd)
 
     Parameters
@@ -104,7 +100,7 @@ def lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object q
     return (qm_, qd_,)
 
 
-def clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm=None, object cpd=None):
+cpdef object clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm=None, object cpd=None):
     """clpmn(m, n, x, y[, cpm, cpd]) -> (cpm, cpd)
 
     Parameters
@@ -146,7 +142,7 @@ def clpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, fwr_dbl_t y, object cpm
     return (cpm_, cpd_,)
 
 
-def jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, object zo=None):
+cpdef object jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, object zo=None):
     """jdzo(nt[, n, m, pcode, zo]) -> (n, m, pcode, zo)
 
     Parameters
@@ -189,7 +185,7 @@ def jdzo(fwi_integer_t nt, object n=None, object m=None, object pcode=None, obje
     return (n_, m_, pcode_, zo_,)
 
 
-def bernob(fwi_integer_t n, object bn=None):
+cpdef object bernob(fwi_integer_t n, object bn=None):
     """bernob(n[, bn]) -> bn
 
     Parameters
@@ -214,7 +210,7 @@ def bernob(fwi_integer_t n, object bn=None):
     return bn_
 
 
-def bernoa(fwi_integer_t n, object bn=None):
+cpdef object bernoa(fwi_integer_t n, object bn=None):
     """bernoa(n[, bn]) -> bn
 
     Parameters
@@ -239,7 +235,7 @@ def bernoa(fwi_integer_t n, object bn=None):
     return bn_
 
 
-def csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=None, object csy=None, object cdy=None):
+cpdef object csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=None, object csy=None, object cdy=None):
     """csphjy(n, z[, csj, cdj, csy, cdy]) -> (nm, csj, cdj, csy, cdy)
 
     Parameters
@@ -286,7 +282,7 @@ def csphjy(fwi_integer_t n, fwc_complex_x16_t z, object csj=None, object cdj=Non
     return (nm, csj_, cdj_, csy_, cdy_,)
 
 
-def lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
+cpdef object lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """lpmns(m, n, x[, pm, pd]) -> (pm, pd)
 
     Parameters
@@ -321,7 +317,7 @@ def lpmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object 
     return (pm_, pd_,)
 
 
-def eulera(fwi_integer_t n, object en=None):
+cpdef object eulera(fwi_integer_t n, object en=None):
     """eulera(n[, en]) -> en
 
     Parameters
@@ -346,7 +342,7 @@ def eulera(fwi_integer_t n, object en=None):
     return en_
 
 
-def clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None):
+cpdef object clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None):
     """clqn(n, z[, cqn, cqd]) -> (cqn, cqd)
 
     Parameters
@@ -381,7 +377,7 @@ def clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None)
     return (cqn_, cqd_,)
 
 
-def airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None, object xc=None, object xd=None):
+cpdef object airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None, object xc=None, object xd=None):
     """airyzo(nt[, kf, xa, xb, xc, xd]) -> (xa, xb, xc, xd)
 
     Parameters
@@ -425,7 +421,7 @@ def airyzo(fwi_integer_t nt, fwi_integer_t kf=1, object xa=None, object xb=None,
     return (xa_, xb_, xc_, xd_,)
 
 
-def eulerb(fwi_integer_t n, object en=None):
+cpdef object eulerb(fwi_integer_t n, object en=None):
     """eulerb(n[, en]) -> en
 
     Parameters
@@ -450,7 +446,7 @@ def eulerb(fwi_integer_t n, object en=None):
     return en_
 
 
-def cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
+cpdef object cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
     """cva1(kd, m, q[, cv]) -> cv
 
     Parameters
@@ -479,7 +475,7 @@ def cva1(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, object cv=None):
     return cv_
 
 
-def lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
+cpdef object lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """lqnb(n, x[, qn, qd]) -> (qn, qd)
 
     Parameters
@@ -511,7 +507,7 @@ def lqnb(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     return (qn_, qd_,)
 
 
-def lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
+cpdef object lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     """lamv(v, x[, vl, dl]) -> (vm, vl, dl)
 
     Parameters
@@ -546,7 +542,7 @@ def lamv(fwr_dbl_t v, fwr_dbl_t x, object vl=None, object dl=None):
     return (vm, vl_, dl_,)
 
 
-def lagzo(fwi_integer_t n, object x=None, object w=None):
+cpdef object lagzo(fwi_integer_t n, object x=None, object w=None):
     """lagzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -577,7 +573,7 @@ def lagzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-def legzo(fwi_integer_t n, object x=None, object w=None):
+cpdef object legzo(fwi_integer_t n, object x=None, object w=None):
     """legzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -608,7 +604,7 @@ def legzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-def pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
+cpdef object pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     """pbdv(v, x[, dv, dp]) -> (dv, dp, pdf, pdd)
 
     Parameters
@@ -645,7 +641,7 @@ def pbdv(fwr_dbl_t v, fwr_dbl_t x, object dv=None, object dp=None):
     return (dv_, dp_, pdf, pdd,)
 
 
-def cerzo(fwi_integer_t nt, object zo=None):
+cpdef object cerzo(fwi_integer_t nt, object zo=None):
     """cerzo(nt[, zo]) -> zo
 
     Parameters
@@ -670,7 +666,7 @@ def cerzo(fwi_integer_t nt, object zo=None):
     return zo_
 
 
-def lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
+cpdef object lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     """lamn(n, x[, bl, dl]) -> (nm, bl, dl)
 
     Parameters
@@ -705,7 +701,7 @@ def lamn(fwi_integer_t n, fwr_dbl_t x, object bl=None, object dl=None):
     return (nm, bl_, dl_,)
 
 
-def clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None):
+cpdef object clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None):
     """clpn(n, z[, cpn, cpd]) -> (cpn, cpd)
 
     Parameters
@@ -740,7 +736,7 @@ def clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None)
     return (cpn_, cpd_,)
 
 
-def lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
+cpdef object lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """lqmns(m, n, x[, qm, qd]) -> (qm, qd)
 
     Parameters
@@ -775,7 +771,7 @@ def lqmns(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object 
     return (qm_, qd_,)
 
 
-def chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
+cpdef object chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
     """chgm(a, b, x) -> hg
 
     Parameters
@@ -795,7 +791,7 @@ def chgm(fwr_dbl_t a, fwr_dbl_t b, fwr_dbl_t x):
     return hg
 
 
-def lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
+cpdef object lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object pd=None):
     """lpmn(m, n, x[, pm, pd]) -> (pm, pd)
 
     Parameters
@@ -836,7 +832,7 @@ def lpmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object pm=None, object p
     return (pm_, pd_,)
 
 
-def fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
+cpdef object fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
     """fcszo(kf, nt[, zo]) -> zo
 
     Parameters
@@ -864,7 +860,7 @@ def fcszo(fwi_integer_t kf, fwi_integer_t nt, object zo=None):
     return zo_
 
 
-def aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv):
+cpdef object aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_integer_t kd, fwr_dbl_t cv):
     """aswfb(m, n, c, x, kd, cv) -> (s1f, s1d)
 
     Parameters
@@ -897,7 +893,7 @@ def aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_intege
     return (s1f, s1d,)
 
 
-def lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
+cpdef object lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     """lqna(n, x[, qn, qd]) -> (qn, qd)
 
     Parameters
@@ -931,7 +927,7 @@ def lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     return (qn_, qd_,)
 
 
-def cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None):
+cpdef object cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None):
     """cpbdn(n, z[, cpb, cpd]) -> (cpb, cpd)
 
     Parameters
@@ -963,7 +959,7 @@ def cpbdn(fwi_integer_t n, fwc_complex_x16_t z, object cpb=None, object cpd=None
     return (cpb_, cpd_,)
 
 
-def lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
+cpdef object lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
     """lpn(n, x[, pn, pd]) -> (pn, pd)
 
     Parameters
@@ -995,7 +991,7 @@ def lpn(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None):
     return (pn_, pd_,)
 
 
-def fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc__=None):
+cpdef object fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc__=None):
     """fcoef(kd, m, q, a[, fc__]) -> fc__
 
     Parameters
@@ -1025,7 +1021,7 @@ def fcoef(fwi_integer_t kd, fwi_integer_t m, fwr_dbl_t q, fwr_dbl_t a, object fc
     return fc___
 
 
-def sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
+cpdef object sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     """sphi(n, x[, si, di]) -> (nm, si, di)
 
     Parameters
@@ -1060,7 +1056,7 @@ def sphi(fwi_integer_t n, fwr_dbl_t x, object si=None, object di=None):
     return (nm, si_, di_,)
 
 
-def rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
+cpdef object rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     """rcty(n, x[, ry, dy]) -> (nm, ry, dy)
 
     Parameters
@@ -1095,7 +1091,7 @@ def rcty(fwi_integer_t n, fwr_dbl_t x, object ry=None, object dy=None):
     return (nm, ry_, dy_,)
 
 
-def lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl=None):
+cpdef object lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl=None):
     """lpni(n, x[, pn, pd, pl]) -> (pn, pd, pl)
 
     Parameters
@@ -1133,7 +1129,7 @@ def lpni(fwi_integer_t n, fwr_dbl_t x, object pn=None, object pd=None, object pl
     return (pn_, pd_, pl_,)
 
 
-def cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, object zv=None):
+cpdef object cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, object zv=None):
     """cyzo(nt, kf, kc[, zo, zv]) -> (zo, zv)
 
     Parameters
@@ -1170,7 +1166,7 @@ def cyzo(fwi_integer_t nt, fwi_integer_t kf, fwi_integer_t kc, object zo=None, o
     return (zo_, zv_,)
 
 
-def csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=None, object csk=None, object cdk=None):
+cpdef object csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=None, object csk=None, object cdk=None):
     """csphik(n, z[, csi, cdi, csk, cdk]) -> (nm, csi, cdi, csk, cdk)
 
     Parameters
@@ -1217,7 +1213,7 @@ def csphik(fwi_integer_t n, fwc_complex_x16_t z, object csi=None, object cdi=Non
     return (nm, csi_, cdi_, csk_, cdk_,)
 
 
-def sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
+cpdef object sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     """sphj(n, x[, sj, dj]) -> (nm, sj, dj)
 
     Parameters
@@ -1252,7 +1248,7 @@ def sphj(fwi_integer_t n, fwr_dbl_t x, object sj=None, object dj=None):
     return (nm, sj_, dj_,)
 
 
-def othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object dpl=None):
+cpdef object othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object dpl=None):
     """othpl(kf, n, x[, pl, dpl]) -> (pl, dpl)
 
     Parameters
@@ -1287,7 +1283,7 @@ def othpl(fwi_integer_t kf, fwi_integer_t n, fwr_dbl_t x, object pl=None, object
     return (pl_, dpl_,)
 
 
-def klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
+cpdef object klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
     """klvnzo(nt, kd[, zo]) -> zo
 
     Parameters
@@ -1315,7 +1311,7 @@ def klvnzo(fwi_integer_t nt, fwi_integer_t kd, object zo=None):
     return zo_
 
 
-def jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, object ry0=None, object ry1=None):
+cpdef object jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, object ry0=None, object ry1=None):
     """jyzo(n, nt[, rj0, rj1, ry0, ry1]) -> (rj0, rj1, ry0, ry1)
 
     Parameters
@@ -1361,7 +1357,7 @@ def jyzo(fwi_integer_t n, fwi_integer_t nt, object rj0=None, object rj1=None, ob
     return (rj0_, rj1_, ry0_, ry1_,)
 
 
-def rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
+cpdef object rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     """rctj(n, x[, rj, dj]) -> (nm, rj, dj)
 
     Parameters
@@ -1396,7 +1392,7 @@ def rctj(fwi_integer_t n, fwr_dbl_t x, object rj=None, object dj=None):
     return (nm, rj_, dj_,)
 
 
-def herzo(fwi_integer_t n, object x=None, object w=None):
+cpdef object herzo(fwi_integer_t n, object x=None, object w=None):
     """herzo(n[, x, w]) -> (x, w)
 
     Parameters
@@ -1427,7 +1423,7 @@ def herzo(fwi_integer_t n, object x=None, object w=None):
     return (x_, w_,)
 
 
-def sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
+cpdef object sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     """sphk(n, x[, sk, dk]) -> (nm, sk, dk)
 
     Parameters
@@ -1464,7 +1460,7 @@ def sphk(fwi_integer_t n, fwr_dbl_t x, object sk=None, object dk=None):
     return (nm, sk_, dk_,)
 
 
-def pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
+cpdef object pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     """pbvv(v, x[, vv, vp]) -> (vv, vp, pvf, pvd)
 
     Parameters
@@ -1501,7 +1497,7 @@ def pbvv(fwr_dbl_t v, fwr_dbl_t x, object vv=None, object vp=None):
     return (vv_, vp_, pvf, pvd,)
 
 
-def clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
+cpdef object clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None, object cqd=None):
     """clqmn(m, n, z[, cqm, cqd]) -> (cqm, cqd)
 
     Parameters
@@ -1545,7 +1541,7 @@ def clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None
     return (cqm_, cqd_,)
 
 
-def segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object eg=None):
+cpdef object segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object eg=None):
     """segv(m, n, c, kd[, eg]) -> (cv, eg)
 
     Parameters
@@ -1578,7 +1574,7 @@ def segv(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwi_integer_t kd, object
     return (cv, eg_,)
 
 
-def sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
+cpdef object sphy(fwi_integer_t n, fwr_dbl_t x, object sy=None, object dy=None):
     """sphy(n, x[, sy, dy]) -> (nm, sy, dy)
 
     Parameters
