@@ -22,8 +22,8 @@ def install():
 
     ignore_pys = ["setup.py", "iron_install.py"]
     ignore_libs = ["Microsoft.Scripting.dll", "Microsoft.Scripting.Metadata.dll", 
-                   "Microsoft.Dynamic.dll", 
-                   "IronPython.dll", "IronPython.Modules.dll"]
+                   "Microsoft.Dynamic.dll", "IronPython.dll", "IronPython.Modules.dll",
+                   "NumpyDotNet.dll", "NpyAccessLib.dll", "ndarray.dll"]
 
     # Recursively walk the directory tree and copy all .py files into the
     # site-packages directory and all .dll files into DLLs.
