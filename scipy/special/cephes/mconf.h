@@ -70,6 +70,16 @@ Copyright 1984, 1987, 1989, 1995 by Stephen L. Moshier
 #include "cephes_names.h"
 #include "protos.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern int scipy_special_print_error_messages;
+
+#ifdef __cplusplus
+}
+#endif
+
 /* Constant definitions for math error conditions
  */
 

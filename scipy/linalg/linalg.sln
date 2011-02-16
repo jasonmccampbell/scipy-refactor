@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linalg", "linalg.vcxproj", "{C17714E2-5A55-5D60-D943-DF8BB365BAFE}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "linalg", "linalg.vcxproj", "{97F38796-E5C7-DC70-DC34-B0E6152FBF40}"
 	ProjectSection(ProjectDependencies) = postProject
 		{F5194113-3DF6-42ED-A355-624D0FC60C13} = {F5194113-3DF6-42ED-A355-624D0FC60C13}
 		{B7103A2F-CF6E-4B63-8E0D-16987971051C} = {B7103A2F-CF6E-4B63-8E0D-16987971051C}
@@ -20,10 +20,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C17714E2-5A55-5D60-D943-DF8BB365BAFE}.Debug|Win32.ActiveCfg = Debug|Win32
-		{C17714E2-5A55-5D60-D943-DF8BB365BAFE}.Debug|Win32.Build.0 = Debug|Win32
-		{C17714E2-5A55-5D60-D943-DF8BB365BAFE}.Release|Win32.ActiveCfg = Release|Win32
-		{C17714E2-5A55-5D60-D943-DF8BB365BAFE}.Release|Win32.Build.0 = Release|Win32
+		{97F38796-E5C7-DC70-DC34-B0E6152FBF40}.Debug|Win32.ActiveCfg = Debug|Win32
+		{97F38796-E5C7-DC70-DC34-B0E6152FBF40}.Debug|Win32.Build.0 = Debug|Win32
+		{97F38796-E5C7-DC70-DC34-B0E6152FBF40}.Release|Win32.ActiveCfg = Release|Win32
+		{97F38796-E5C7-DC70-DC34-B0E6152FBF40}.Release|Win32.Build.0 = Release|Win32
 		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Debug|Win32.ActiveCfg = Debug|Win32
 		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Debug|Win32.Build.0 = Debug|Win32
 		{FCF6923D-A80A-408A-941D-8D5FEF36CA96}.Release|Win32.ActiveCfg = Release|Win32

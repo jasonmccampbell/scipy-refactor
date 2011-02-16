@@ -84,6 +84,8 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "npy_ufunc_object.h"
 #include "npy_api.h"
 #include "npy_ironpython.h"
+#include "cephes/cephes_names.h"
+#include "cephes/mconf.h"
 #include "specfun_wrappers.h"
 #include "cdf_wrappers.h"
 #include "misc.h"
@@ -93,8 +95,6 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "npy_loops.h"
 #include "ufunc_extras.h"
 
-extern "C" int cephes_airy(double x, double* ai, double* aip, double* bi, double* bip );
-extern "C" 
 #ifdef __GNUC__
 /* Test for GCC > 2.95 */
 #if __GNUC__ > 2 || (__GNUC__ == 2 && (__GNUC_MINOR__ > 95)) 
@@ -207,6 +207,19 @@ typedef int __pyx_t_5scipy_7special_7_cephes_intp;
 /* Type declarations */
 
 typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
+
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":381
+ *     return data
+ * 
+ * cdef int errprint(self, int flag=-37):             # <<<<<<<<<<<<<<
+ *     oldFlag = scipy_special_print_error_messages;
+ *     if flag != -37:
+ */
+
+ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint {
+  int __pyx_n;
+  int flag;
+};
 /* Cython code section 'utility_code_proto' */
 
 #if CYTHON_CCOMPLEX
@@ -297,6 +310,9 @@ static CYTHON_INLINE void import_array(void); /*proto*/
 public delegate void **__pyx_delegate_t_5scipy_7special_7_cephes_alloc_data_from_list(System::Object^);
 static void **alloc_data_from_list(System::Object^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_7special_7_cephes_errprint(System::Object^, ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint ^__pyx_optional_args);
+static int errprint(System::Object^, ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint ^__pyx_optional_args); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate char *__pyx_delegate_t_5scipy_7special_7_cephes_alloc_types_from_list(System::Object^);
 static char *alloc_types_from_list(System::Object^); /*proto*/
 /* Cython code section 'typeinfo' */
@@ -307,203 +323,204 @@ static char *alloc_types_from_list(System::Object^); /*proto*/
 namespace clr__cephes {
   public ref class module__cephes sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_807_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_808_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_809_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_810_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_811_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_813_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_814_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_815_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_817_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_818_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_820_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_821_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_820_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_821_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_822_104;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_823_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_825_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_826_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_827_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_829_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_830_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_832_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_833_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_824_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_826_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_827_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_828_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_830_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_831_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_833_107;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_834_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_837_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_838_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_839_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_840_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_841_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_842_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_843_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_844_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_845_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_836_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_838_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_839_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_840_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_842_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_843_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_845_106;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_846_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_847_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_848_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_847_106;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_850_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_851_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_852_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_853_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_854_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_855_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_856_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_851_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_852_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_853_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_854_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_855_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_856_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_857_107;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_858_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_859_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_860_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_862_65;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_865_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_866_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_868_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_870_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_871_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_859_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_860_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_861_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_863_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_864_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_865_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_866_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_867_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_868_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_869_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_871_107;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_872_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_875_98;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_876_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_877_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_878_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_879_98;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_880_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_881_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_883_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_885_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_888_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_890_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_891_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_892_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_895_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_896_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_897_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_898_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_901_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_902_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_903_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_904_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_906_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_907_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_908_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_909_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_912_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_913_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_873_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_875_65;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_878_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_879_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_881_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_883_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_884_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_885_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_888_98;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_889_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_890_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_891_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_892_98;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_893_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_894_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_896_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_898_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_901_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_903_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_904_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_905_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_908_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_909_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_910_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_911_109;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_914_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_915_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_916_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_917_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_919_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_920_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_921_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_922_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_925_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_927_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_928_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_930_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_931_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_932_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_933_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_935_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_936_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_937_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_938_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_939_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_940_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_915_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_916_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_917_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_919_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_920_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_921_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_922_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_925_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_926_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_927_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_928_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_929_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_930_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_932_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_933_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_934_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_935_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_938_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_940_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_941_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_942_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_944_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_945_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_947_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_948_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_949_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_950_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_951_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_953_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_954_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_955_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_956_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_957_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_958_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_959_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_960_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_961_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_964_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_966_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_968_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_970_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_972_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_974_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_975_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_977_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_978_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_980_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_983_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_984_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_985_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_986_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_988_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_943_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_944_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_945_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_946_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_948_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_949_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_950_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_951_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_952_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_953_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_954_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_955_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_957_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_958_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_960_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_961_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_962_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_963_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_964_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_966_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_967_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_968_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_969_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_970_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_971_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_972_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_973_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_974_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_977_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_979_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_981_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_983_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_985_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_987_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_988_107;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_990_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_991_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_992_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_994_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_995_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_997_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_998_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_999_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1001_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1002_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1004_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1005_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1007_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1009_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1010_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_991_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_993_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_996_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_997_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_998_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_999_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1001_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1003_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1004_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1005_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1007_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1008_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1010_106;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1011_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1013_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1014_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1015_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1016_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1012_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1014_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1015_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1017_108;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1018_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1021_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1022_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1023_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1024_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1025_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1026_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1027_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1028_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1030_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1032_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1033_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1034_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1036_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1037_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1038_119;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1039_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1040_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1041_118;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1042_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1043_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1044_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1045_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1046_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1047_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1048_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1049_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1053_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1020_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1022_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1023_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1024_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1026_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1027_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1028_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1029_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1031_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1034_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1035_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1036_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1037_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1038_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1039_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1040_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1041_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1043_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1045_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1046_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1047_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1049_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1050_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1051_119;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1052_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1053_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1054_118;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1055_120;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_370_43;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_370_47;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_370_47;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_371_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_371_18;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_371_4;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_372_39;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_372_39;
-static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_372_14;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_557_37;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_557_37;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_558_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_558_18;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_558_4;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_559_16;
-static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_559_16;
-static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_559_11;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1056_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1057_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1058_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1059_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1060_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1061_122;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1062_122;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1066_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1068_120;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_376_43;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_376_47;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_376_47;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_377_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_377_18;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_377_4;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_378_39;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_378_39;
+static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_378_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_385_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_570_37;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_570_37;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_571_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_571_18;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_571_4;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_572_16;
+static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_572_16;
+static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_572_11;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_194_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_194_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_196_16;
@@ -930,7 +947,7 @@ static int^ __pyx_int_neg_1;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":369
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":375
  * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * 
  * cdef void ** alloc_data_from_list(l):             # <<<<<<<<<<<<<<
@@ -951,7 +968,7 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
   Py_ssize_t __pyx_t_7;
   __pyx_v_i = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":370
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":376
  * 
  * cdef void ** alloc_data_from_list(l):
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))             # <<<<<<<<<<<<<<
@@ -959,17 +976,17 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
  *         data[i] = <void *><long long>(l[i])
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
-  __pyx_t_2 = __site_call1_370_43->Target(__site_call1_370_43, __pyx_context, __pyx_t_1, __pyx_v_l);
+  __pyx_t_2 = __site_call1_376_43->Target(__site_call1_376_43, __pyx_context, __pyx_t_1, __pyx_v_l);
   __pyx_t_1 = nullptr;
   __pyx_t_1 = (sizeof(void *));
-  __pyx_t_3 = __site_op_mul_370_47->Target(__site_op_mul_370_47, __pyx_t_2, __pyx_t_1);
+  __pyx_t_3 = __site_op_mul_376_47->Target(__site_op_mul_376_47, __pyx_t_2, __pyx_t_1);
   __pyx_t_2 = nullptr;
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = __site_cvt_size_t_370_47->Target(__site_cvt_size_t_370_47, __pyx_t_3);
+  __pyx_t_4 = __site_cvt_size_t_376_47->Target(__site_cvt_size_t_376_47, __pyx_t_3);
   __pyx_t_3 = nullptr;
   __pyx_v_data = ((void **)malloc(__pyx_t_4));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":371
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":377
  * cdef void ** alloc_data_from_list(l):
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
  *     for i in range(len(l)):             # <<<<<<<<<<<<<<
@@ -978,27 +995,27 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
  */
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "range");
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
-  __pyx_t_2 = __site_call1_371_22->Target(__site_call1_371_22, __pyx_context, __pyx_t_1, __pyx_v_l);
+  __pyx_t_2 = __site_call1_377_22->Target(__site_call1_377_22, __pyx_context, __pyx_t_1, __pyx_v_l);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call1_371_18->Target(__site_call1_371_18, __pyx_context, __pyx_t_3, __pyx_t_2);
+  __pyx_t_1 = __site_call1_377_18->Target(__site_call1_377_18, __pyx_context, __pyx_t_3, __pyx_t_2);
   __pyx_t_3 = nullptr;
   __pyx_t_2 = nullptr;
-  __pyx_t_5 = __site_get_iterator_371_4->Target(__site_get_iterator_371_4, __pyx_t_1);
+  __pyx_t_5 = __site_get_iterator_377_4->Target(__site_get_iterator_377_4, __pyx_t_1);
   try {
     while (__pyx_t_5.Key->MoveNext()) {
       __pyx_v_i = ((System::Object^)__pyx_t_5.Key->Current);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":372
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":378
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
  *     for i in range(len(l)):
  *         data[i] = <void *><long long>(l[i])             # <<<<<<<<<<<<<<
  *     return data
  * 
  */
-      __pyx_t_2 = __site_getindex_372_39->Target(__site_getindex_372_39, __pyx_v_l, __pyx_v_i);
-      __pyx_t_6 = __site_cvt_PY_LONG_LONG_372_39->Target(__site_cvt_PY_LONG_LONG_372_39, __pyx_t_2);
+      __pyx_t_2 = __site_getindex_378_39->Target(__site_getindex_378_39, __pyx_v_l, __pyx_v_i);
+      __pyx_t_6 = __site_cvt_PY_LONG_LONG_378_39->Target(__site_cvt_PY_LONG_LONG_378_39, __pyx_t_2);
       __pyx_t_2 = nullptr;
-      __pyx_t_7 = __site_cvt_Py_ssize_t_372_14->Target(__site_cvt_Py_ssize_t_372_14, __pyx_v_i);
+      __pyx_t_7 = __site_cvt_Py_ssize_t_378_14->Target(__site_cvt_Py_ssize_t_378_14, __pyx_v_i);
       (__pyx_v_data[__pyx_t_7]) = ((void *)((PY_LONG_LONG)__pyx_t_6));
     }
   }
@@ -1006,12 +1023,12 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
     PythonOps::ForLoopDispose(__pyx_t_5);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":373
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":379
  *     for i in range(len(l)):
  *         data[i] = <void *><long long>(l[i])
  *     return data             # <<<<<<<<<<<<<<
  * 
- * cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
+ * cdef int errprint(self, int flag=-37):
  */
   __pyx_r = __pyx_v_data;
   __pyx_t_1 = nullptr;
@@ -1022,7 +1039,80 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":556
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":381
+ *     return data
+ * 
+ * cdef int errprint(self, int flag=-37):             # <<<<<<<<<<<<<<
+ *     oldFlag = scipy_special_print_error_messages;
+ *     if flag != -37:
+ */
+
+static  int errprint(System::Object^ __pyx_v_self, ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint ^__pyx_optional_args) {
+  int __pyx_v_flag = ((int)-37);
+  System::Object^ __pyx_v_oldFlag;
+  System::Object^ __pyx_v_scipy_special_print_error_messages;
+  int __pyx_r;
+  int __pyx_t_1;
+  System::Object^ __pyx_t_2 = nullptr;
+  int __pyx_t_3;
+  if (__pyx_optional_args) {
+    if (__pyx_optional_args->__pyx_n > 0) {
+      __pyx_v_flag = __pyx_optional_args->flag;
+    }
+  }
+  __pyx_v_oldFlag = nullptr;
+  __pyx_v_scipy_special_print_error_messages = nullptr;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":382
+ * 
+ * cdef int errprint(self, int flag=-37):
+ *     oldFlag = scipy_special_print_error_messages;             # <<<<<<<<<<<<<<
+ *     if flag != -37:
+ *         scipy_special_print_error_messages = (flag != 0)
+ */
+  __pyx_v_oldFlag = __pyx_v_scipy_special_print_error_messages;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":383
+ * cdef int errprint(self, int flag=-37):
+ *     oldFlag = scipy_special_print_error_messages;
+ *     if flag != -37:             # <<<<<<<<<<<<<<
+ *         scipy_special_print_error_messages = (flag != 0)
+ *     return oldFlag
+ */
+  __pyx_t_1 = (__pyx_v_flag != -37);
+  if (__pyx_t_1) {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":384
+ *     oldFlag = scipy_special_print_error_messages;
+ *     if flag != -37:
+ *         scipy_special_print_error_messages = (flag != 0)             # <<<<<<<<<<<<<<
+ *     return oldFlag
+ * 
+ */
+    __pyx_t_2 = (__pyx_v_flag != 0);
+    __pyx_v_scipy_special_print_error_messages = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":385
+ *     if flag != -37:
+ *         scipy_special_print_error_messages = (flag != 0)
+ *     return oldFlag             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_3 = __site_cvt_int_385_18->Target(__site_cvt_int_385_18, __pyx_v_oldFlag);
+  __pyx_r = __pyx_t_3;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":569
  * cdef void ** modfresnelm_data = alloc_data_from_list([<int> <void *>modified_fresnel_minus_wrap, <int> <void *>modified_fresnel_minus_wrap])
  * 
  * cdef char* alloc_types_from_list(l):             # <<<<<<<<<<<<<<
@@ -1043,7 +1133,7 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
   Py_ssize_t __pyx_t_7;
   __pyx_v_i = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":557
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":570
  * 
  * cdef char* alloc_types_from_list(l):
  *     cdef char* r = <char *>malloc(len(l))             # <<<<<<<<<<<<<<
@@ -1051,13 +1141,13 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
  *         r[i] = l[i]
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
-  __pyx_t_2 = __site_call1_557_37->Target(__site_call1_557_37, __pyx_context, __pyx_t_1, __pyx_v_l);
+  __pyx_t_2 = __site_call1_570_37->Target(__site_call1_570_37, __pyx_context, __pyx_t_1, __pyx_v_l);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_cvt_size_t_557_37->Target(__site_cvt_size_t_557_37, __pyx_t_2);
+  __pyx_t_3 = __site_cvt_size_t_570_37->Target(__site_cvt_size_t_570_37, __pyx_t_2);
   __pyx_t_2 = nullptr;
   __pyx_v_r = ((char *)malloc(__pyx_t_3));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":558
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":571
  * cdef char* alloc_types_from_list(l):
  *     cdef char* r = <char *>malloc(len(l))
  *     for i in range(len(l)):             # <<<<<<<<<<<<<<
@@ -1066,27 +1156,27 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
  */
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "range");
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
-  __pyx_t_5 = __site_call1_558_22->Target(__site_call1_558_22, __pyx_context, __pyx_t_1, __pyx_v_l);
+  __pyx_t_5 = __site_call1_571_22->Target(__site_call1_571_22, __pyx_context, __pyx_t_1, __pyx_v_l);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call1_558_18->Target(__site_call1_558_18, __pyx_context, __pyx_t_2, __pyx_t_5);
+  __pyx_t_1 = __site_call1_571_18->Target(__site_call1_571_18, __pyx_context, __pyx_t_2, __pyx_t_5);
   __pyx_t_2 = nullptr;
   __pyx_t_5 = nullptr;
-  __pyx_t_4 = __site_get_iterator_558_4->Target(__site_get_iterator_558_4, __pyx_t_1);
+  __pyx_t_4 = __site_get_iterator_571_4->Target(__site_get_iterator_571_4, __pyx_t_1);
   try {
     while (__pyx_t_4.Key->MoveNext()) {
       __pyx_v_i = ((System::Object^)__pyx_t_4.Key->Current);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":559
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":572
  *     cdef char* r = <char *>malloc(len(l))
  *     for i in range(len(l)):
  *         r[i] = l[i]             # <<<<<<<<<<<<<<
  *     return r
  * 
  */
-      __pyx_t_5 = __site_getindex_559_16->Target(__site_getindex_559_16, __pyx_v_l, __pyx_v_i);
-      __pyx_t_6 = __site_cvt_char_559_16->Target(__site_cvt_char_559_16, __pyx_t_5);
+      __pyx_t_5 = __site_getindex_572_16->Target(__site_getindex_572_16, __pyx_v_l, __pyx_v_i);
+      __pyx_t_6 = __site_cvt_char_572_16->Target(__site_cvt_char_572_16, __pyx_t_5);
       __pyx_t_5 = nullptr;
-      __pyx_t_7 = __site_cvt_Py_ssize_t_559_11->Target(__site_cvt_Py_ssize_t_559_11, __pyx_v_i);
+      __pyx_t_7 = __site_cvt_Py_ssize_t_572_11->Target(__site_cvt_Py_ssize_t_572_11, __pyx_v_i);
       (__pyx_v_r[__pyx_t_7]) = __pyx_t_6;
     }
   }
@@ -1094,7 +1184,7 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
     PythonOps::ForLoopDispose(__pyx_t_4);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":560
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":573
  *     for i in range(len(l)):
  *         r[i] = l[i]
  *     return r             # <<<<<<<<<<<<<<
@@ -1567,203 +1657,204 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_cvt_int_807_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_808_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_809_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_810_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_811_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_813_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_814_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_815_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_817_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_818_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_820_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_821_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_820_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_821_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_822_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_823_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_825_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_826_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_827_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_829_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_830_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_832_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_833_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_824_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_826_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_827_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_828_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_830_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_831_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_833_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_834_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_837_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_838_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_839_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_840_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_841_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_842_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_843_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_844_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_845_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_836_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_838_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_839_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_840_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_842_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_843_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_845_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_846_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_847_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_848_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_847_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_850_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_851_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_852_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_853_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_854_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_855_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_856_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_851_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_852_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_853_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_854_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_855_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_856_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_857_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_858_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_859_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_860_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_862_65 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_865_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_866_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_868_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_870_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_871_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_859_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_860_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_861_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_863_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_864_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_865_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_866_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_867_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_868_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_869_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_871_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_872_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_875_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_876_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_877_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_878_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_879_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_880_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_881_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_883_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_885_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_888_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_890_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_891_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_892_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_895_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_896_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_897_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_898_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_901_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_902_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_903_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_904_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_906_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_907_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_908_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_909_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_912_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_913_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_873_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_875_65 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_878_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_879_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_881_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_883_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_884_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_885_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_888_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_889_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_890_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_891_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_892_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_893_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_894_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_896_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_898_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_901_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_903_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_904_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_905_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_908_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_909_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_910_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_911_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_914_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_915_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_916_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_917_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_919_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_920_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_921_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_922_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_925_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_927_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_928_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_930_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_931_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_932_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_933_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_935_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_936_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_937_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_938_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_939_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_940_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_915_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_916_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_917_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_919_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_920_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_921_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_922_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_925_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_926_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_927_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_928_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_929_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_930_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_932_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_933_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_934_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_935_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_938_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_940_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_941_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_942_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_944_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_945_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_947_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_948_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_949_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_950_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_951_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_953_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_954_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_955_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_956_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_957_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_958_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_959_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_960_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_961_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_964_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_966_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_968_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_970_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_972_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_974_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_975_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_977_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_978_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_980_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_983_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_984_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_985_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_986_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_988_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_943_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_944_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_945_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_946_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_948_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_949_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_950_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_951_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_952_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_953_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_954_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_955_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_957_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_958_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_960_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_961_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_962_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_963_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_964_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_966_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_967_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_968_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_969_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_970_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_971_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_972_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_973_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_974_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_977_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_979_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_981_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_983_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_985_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_987_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_988_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_990_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_991_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_992_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_994_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_995_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_997_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_998_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_999_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1001_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1002_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1004_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1005_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1007_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1009_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1010_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_991_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_993_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_996_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_997_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_998_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_999_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1001_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1003_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1004_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1005_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1007_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1008_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1010_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1011_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1013_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1014_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1015_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1016_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1012_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1014_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1015_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1017_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1018_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1021_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1022_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1023_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1024_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1025_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1026_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1027_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1028_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1030_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1032_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1033_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1034_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1036_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1037_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1038_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1039_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1040_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1041_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1042_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1043_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1044_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1045_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1046_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1047_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1048_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1049_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1053_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1020_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1022_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1023_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1024_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1026_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1027_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1028_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1029_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1031_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1034_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1035_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1036_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1037_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1038_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1039_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1040_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1041_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1043_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1045_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1046_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1047_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1049_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1050_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1051_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1052_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1053_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1054_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1055_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_370_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_mul_370_47 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_size_t_370_47 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_371_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_371_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_iterator_371_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
-  __site_getindex_372_39 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_PY_LONG_LONG_372_39 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_Py_ssize_t_372_14 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_557_37 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_size_t_557_37 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_558_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_558_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_iterator_558_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
-  __site_getindex_559_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_char_559_16 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_Py_ssize_t_559_11 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1056_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1057_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1058_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1059_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1060_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1061_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1062_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1066_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1068_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_376_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_mul_376_47 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_cvt_size_t_376_47 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_377_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_377_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_iterator_377_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
+  __site_getindex_378_39 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_cvt_PY_LONG_LONG_378_39 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_Py_ssize_t_378_14 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_385_18 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_570_37 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_size_t_570_37 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_571_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_571_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_iterator_571_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
+  __site_getindex_572_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_cvt_char_572_16 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_Py_ssize_t_572_11 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
   __site_get_append_194_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_194_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_196_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -2151,11 +2242,11 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  * PyUFunc_None = -1             # <<<<<<<<<<<<<<
  * 
- * cdef extern from "specfun_wrappers.h":
+ * cdef extern from "cephes/cephes_names.h":
  */
   PythonOps::SetGlobal(__pyx_context, "PyUFunc_None", __pyx_int_neg_1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":348
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":354
  * 
  * 
  * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2164,7 +2255,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":349
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":355
  * 
  * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2173,7 +2264,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1rc_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":350
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":356
  * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2182,7 +2273,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":351
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":357
  * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2191,7 +2282,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":352
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":358
  * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2200,7 +2291,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":353
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":359
  * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2209,7 +2300,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":354
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":360
  * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2218,7 +2309,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":355
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":361
  * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2227,7 +2318,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":356
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":362
  * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2236,7 +2327,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":357
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":363
  * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2245,7 +2336,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2a_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":358
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":364
  * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2254,7 +2345,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":359
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":365
  * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2263,7 +2354,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":360
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":366
  * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2272,7 +2363,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes3_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":361
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":367
  * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2281,7 +2372,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes3a_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":362
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":368
  * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2290,7 +2381,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes3_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":363
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":369
  * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
@@ -2299,7 +2390,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":364
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":370
  * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2308,7 +2399,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":365
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":371
  * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
  * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2317,7 +2408,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes4_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":366
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":372
  * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2326,7 +2417,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes5_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":367
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":373
  * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
  * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
@@ -2335,8 +2426,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_v_5scipy_7special_7_cephes_cephes1c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":375
- *     return data
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":388
+ * 
  * 
  * cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])             # <<<<<<<<<<<<<<
  * cdef void ** airye_data = alloc_data_from_list([ <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e, <int> <void *>cairy_wrap_e, ])
@@ -2354,7 +2445,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_airy_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":376
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":389
  * 
  * cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
  * cdef void ** airye_data = alloc_data_from_list([ <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e, <int> <void *>cairy_wrap_e, ])             # <<<<<<<<<<<<<<
@@ -2373,7 +2464,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_airye_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":377
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":390
  * cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
  * cdef void ** airye_data = alloc_data_from_list([ <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e, <int> <void *>cairy_wrap_e, ])
  * cdef void ** itairy_data = alloc_data_from_list([ <int> <void *>itairy_wrap, <int> <void *>itairy_wrap, ])             # <<<<<<<<<<<<<<
@@ -2388,7 +2479,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_itairy_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":378
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":391
  * cdef void ** airye_data = alloc_data_from_list([ <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e, <int> <void *>cairy_wrap_e, ])
  * cdef void ** itairy_data = alloc_data_from_list([ <int> <void *>itairy_wrap, <int> <void *>itairy_wrap, ])
  * cdef void ** kelvin_data = alloc_data_from_list([ <int> <void *>kelvin_wrap, <int> <void *>kelvin_wrap,])             # <<<<<<<<<<<<<<
@@ -2403,7 +2494,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kelvin_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":379
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":392
  * cdef void ** itairy_data = alloc_data_from_list([ <int> <void *>itairy_wrap, <int> <void *>itairy_wrap, ])
  * cdef void ** kelvin_data = alloc_data_from_list([ <int> <void *>kelvin_wrap, <int> <void *>kelvin_wrap,])
  * cdef void ** ber_data = alloc_data_from_list([ <int> <void *>ber_wrap, <int> <void *>ber_wrap,])             # <<<<<<<<<<<<<<
@@ -2418,7 +2509,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ber_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":380
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":393
  * cdef void ** kelvin_data = alloc_data_from_list([ <int> <void *>kelvin_wrap, <int> <void *>kelvin_wrap,])
  * cdef void ** ber_data = alloc_data_from_list([ <int> <void *>ber_wrap, <int> <void *>ber_wrap,])
  * cdef void ** bei_data = alloc_data_from_list([ <int> <void *>bei_wrap, <int> <void *>bei_wrap,])             # <<<<<<<<<<<<<<
@@ -2433,7 +2524,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_bei_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":381
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":394
  * cdef void ** ber_data = alloc_data_from_list([ <int> <void *>ber_wrap, <int> <void *>ber_wrap,])
  * cdef void ** bei_data = alloc_data_from_list([ <int> <void *>bei_wrap, <int> <void *>bei_wrap,])
  * cdef void ** ker_data = alloc_data_from_list([ <int> <void *>ker_wrap, <int> <void *>ker_wrap,])             # <<<<<<<<<<<<<<
@@ -2448,7 +2539,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ker_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":382
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":395
  * cdef void ** bei_data = alloc_data_from_list([ <int> <void *>bei_wrap, <int> <void *>bei_wrap,])
  * cdef void ** ker_data = alloc_data_from_list([ <int> <void *>ker_wrap, <int> <void *>ker_wrap,])
  * cdef void ** kei_data = alloc_data_from_list([ <int> <void *>kei_wrap, <int> <void *>kei_wrap,])             # <<<<<<<<<<<<<<
@@ -2463,7 +2554,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kei_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":383
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":396
  * cdef void ** ker_data = alloc_data_from_list([ <int> <void *>ker_wrap, <int> <void *>ker_wrap,])
  * cdef void ** kei_data = alloc_data_from_list([ <int> <void *>kei_wrap, <int> <void *>kei_wrap,])
  * cdef void ** berp_data = alloc_data_from_list([ <int> <void *>berp_wrap, <int> <void *>berp_wrap,])             # <<<<<<<<<<<<<<
@@ -2478,7 +2569,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_berp_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":384
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":397
  * cdef void ** kei_data = alloc_data_from_list([ <int> <void *>kei_wrap, <int> <void *>kei_wrap,])
  * cdef void ** berp_data = alloc_data_from_list([ <int> <void *>berp_wrap, <int> <void *>berp_wrap,])
  * cdef void ** beip_data = alloc_data_from_list([ <int> <void *>beip_wrap, <int> <void *>beip_wrap,])             # <<<<<<<<<<<<<<
@@ -2493,7 +2584,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_beip_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":385
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":398
  * cdef void ** berp_data = alloc_data_from_list([ <int> <void *>berp_wrap, <int> <void *>berp_wrap,])
  * cdef void ** beip_data = alloc_data_from_list([ <int> <void *>beip_wrap, <int> <void *>beip_wrap,])
  * cdef void ** kerp_data = alloc_data_from_list([ <int> <void *>kerp_wrap, <int> <void *>kerp_wrap,])             # <<<<<<<<<<<<<<
@@ -2508,7 +2599,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kerp_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":386
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":399
  * cdef void ** beip_data = alloc_data_from_list([ <int> <void *>beip_wrap, <int> <void *>beip_wrap,])
  * cdef void ** kerp_data = alloc_data_from_list([ <int> <void *>kerp_wrap, <int> <void *>kerp_wrap,])
  * cdef void ** keip_data = alloc_data_from_list([ <int> <void *>keip_wrap, <int> <void *>keip_wrap,])             # <<<<<<<<<<<<<<
@@ -2523,7 +2614,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_keip_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":387
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":400
  * cdef void ** kerp_data = alloc_data_from_list([ <int> <void *>kerp_wrap, <int> <void *>kerp_wrap,])
  * cdef void ** keip_data = alloc_data_from_list([ <int> <void *>keip_wrap, <int> <void *>keip_wrap,])
  * cdef void ** ellpj_data = alloc_data_from_list([ <int> <void *>ellpj, <int> <void *>ellpj,])             # <<<<<<<<<<<<<<
@@ -2538,7 +2629,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ellpj_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":388
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":401
  * cdef void ** keip_data = alloc_data_from_list([ <int> <void *>keip_wrap, <int> <void *>keip_wrap,])
  * cdef void ** ellpj_data = alloc_data_from_list([ <int> <void *>ellpj, <int> <void *>ellpj,])
  * cdef void ** exp1_data = alloc_data_from_list([ <int> <void *>exp1_wrap, <int> <void *>exp1_wrap, <int> <void *>cexp1_wrap, <int> <void *>cexp1_wrap,])             # <<<<<<<<<<<<<<
@@ -2557,7 +2648,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_exp1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":389
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":402
  * cdef void ** ellpj_data = alloc_data_from_list([ <int> <void *>ellpj, <int> <void *>ellpj,])
  * cdef void ** exp1_data = alloc_data_from_list([ <int> <void *>exp1_wrap, <int> <void *>exp1_wrap, <int> <void *>cexp1_wrap, <int> <void *>cexp1_wrap,])
  * cdef void ** expi_data = alloc_data_from_list([ <int> <void *>expi_wrap, <int> <void *>expi_wrap, <int> <void *>cexpi_wrap, <int> <void *>cexpi_wrap,])             # <<<<<<<<<<<<<<
@@ -2576,7 +2667,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_expi_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":390
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":403
  * cdef void ** exp1_data = alloc_data_from_list([ <int> <void *>exp1_wrap, <int> <void *>exp1_wrap, <int> <void *>cexp1_wrap, <int> <void *>cexp1_wrap,])
  * cdef void ** expi_data = alloc_data_from_list([ <int> <void *>expi_wrap, <int> <void *>expi_wrap, <int> <void *>cexpi_wrap, <int> <void *>cexpi_wrap,])
  * cdef void ** expn_data = alloc_data_from_list([ <int> <void *>expn_, <int> <void *>expn_, ])             # <<<<<<<<<<<<<<
@@ -2591,7 +2682,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_expn_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":391
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":404
  * cdef void ** expi_data = alloc_data_from_list([ <int> <void *>expi_wrap, <int> <void *>expi_wrap, <int> <void *>cexpi_wrap, <int> <void *>cexpi_wrap,])
  * cdef void ** expn_data = alloc_data_from_list([ <int> <void *>expn_, <int> <void *>expn_, ])
  * cdef void ** kn_data = alloc_data_from_list([ <int> <void *>kn_, <int> <void *>kn_, ])             # <<<<<<<<<<<<<<
@@ -2606,7 +2697,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kn_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":392
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":405
  * cdef void ** expn_data = alloc_data_from_list([ <int> <void *>expn_, <int> <void *>expn_, ])
  * cdef void ** kn_data = alloc_data_from_list([ <int> <void *>kn_, <int> <void *>kn_, ])
  * cdef void ** pdtrc_data = alloc_data_from_list([ <int> <void *>pdtrc_, <int> <void *>pdtrc_, ])             # <<<<<<<<<<<<<<
@@ -2621,7 +2712,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":393
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":406
  * cdef void ** kn_data = alloc_data_from_list([ <int> <void *>kn_, <int> <void *>kn_, ])
  * cdef void ** pdtrc_data = alloc_data_from_list([ <int> <void *>pdtrc_, <int> <void *>pdtrc_, ])
  * cdef void ** pdtr_data = alloc_data_from_list([ <int> <void *>pdtr_, <int> <void *>pdtr_, ])             # <<<<<<<<<<<<<<
@@ -2636,7 +2727,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":394
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":407
  * cdef void ** pdtrc_data = alloc_data_from_list([ <int> <void *>pdtrc_, <int> <void *>pdtrc_, ])
  * cdef void ** pdtr_data = alloc_data_from_list([ <int> <void *>pdtr_, <int> <void *>pdtr_, ])
  * cdef void ** pdtri_data = alloc_data_from_list([ <int> <void *>pdtri_, <int> <void *>pdtri_, ])             # <<<<<<<<<<<<<<
@@ -2651,7 +2742,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":395
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":408
  * cdef void ** pdtr_data = alloc_data_from_list([ <int> <void *>pdtr_, <int> <void *>pdtr_, ])
  * cdef void ** pdtri_data = alloc_data_from_list([ <int> <void *>pdtri_, <int> <void *>pdtri_, ])
  * cdef void ** fresnl_data = alloc_data_from_list([ <int> <void *>fresnl, <int> <void *>fresnl, <int> <void *>cfresnl_wrap, <int> <void *>cfresnl_wrap ])             # <<<<<<<<<<<<<<
@@ -2670,7 +2761,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_fresnl_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":396
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":409
  * cdef void ** pdtri_data = alloc_data_from_list([ <int> <void *>pdtri_, <int> <void *>pdtri_, ])
  * cdef void ** fresnl_data = alloc_data_from_list([ <int> <void *>fresnl, <int> <void *>fresnl, <int> <void *>cfresnl_wrap, <int> <void *>cfresnl_wrap ])
  * cdef void ** shichi_data = alloc_data_from_list([ <int> <void *>shichi_, <int> <void *>shichi_, ])             # <<<<<<<<<<<<<<
@@ -2685,7 +2776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_shichi_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":397
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":410
  * cdef void ** fresnl_data = alloc_data_from_list([ <int> <void *>fresnl, <int> <void *>fresnl, <int> <void *>cfresnl_wrap, <int> <void *>cfresnl_wrap ])
  * cdef void ** shichi_data = alloc_data_from_list([ <int> <void *>shichi_, <int> <void *>shichi_, ])
  * cdef void ** sici_data = alloc_data_from_list([ <int> <void *>sici_, <int> <void *>sici_, ])             # <<<<<<<<<<<<<<
@@ -2700,7 +2791,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_sici_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":398
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":411
  * cdef void ** shichi_data = alloc_data_from_list([ <int> <void *>shichi_, <int> <void *>shichi_, ])
  * cdef void ** sici_data = alloc_data_from_list([ <int> <void *>sici_, <int> <void *>sici_, ])
  * cdef void ** itj0y0_data = alloc_data_from_list([ <int> <void *>it1j0y0_wrap, <int> <void *>it1j0y0_wrap, ])             # <<<<<<<<<<<<<<
@@ -2715,7 +2806,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_itj0y0_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":399
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":412
  * cdef void ** sici_data = alloc_data_from_list([ <int> <void *>sici_, <int> <void *>sici_, ])
  * cdef void ** itj0y0_data = alloc_data_from_list([ <int> <void *>it1j0y0_wrap, <int> <void *>it1j0y0_wrap, ])
  * cdef void ** it2j0y0_data = alloc_data_from_list([ <int> <void *>it2j0y0_wrap, <int> <void *>it2j0y0_wrap, ])             # <<<<<<<<<<<<<<
@@ -2730,7 +2821,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_it2j0y0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":400
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":413
  * cdef void ** itj0y0_data = alloc_data_from_list([ <int> <void *>it1j0y0_wrap, <int> <void *>it1j0y0_wrap, ])
  * cdef void ** it2j0y0_data = alloc_data_from_list([ <int> <void *>it2j0y0_wrap, <int> <void *>it2j0y0_wrap, ])
  * cdef void ** iti0k0_data = alloc_data_from_list([ <int> <void *>it1i0k0_wrap, <int> <void *>it1i0k0_wrap, ])             # <<<<<<<<<<<<<<
@@ -2745,7 +2836,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_iti0k0_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":401
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":414
  * cdef void ** it2j0y0_data = alloc_data_from_list([ <int> <void *>it2j0y0_wrap, <int> <void *>it2j0y0_wrap, ])
  * cdef void ** iti0k0_data = alloc_data_from_list([ <int> <void *>it1i0k0_wrap, <int> <void *>it1i0k0_wrap, ])
  * cdef void ** it2i0k0_data = alloc_data_from_list([ <int> <void *>it2i0k0_wrap, <int> <void *>it2i0k0_wrap, ])             # <<<<<<<<<<<<<<
@@ -2760,7 +2851,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_it2i0k0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":402
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":415
  * cdef void ** iti0k0_data = alloc_data_from_list([ <int> <void *>it1i0k0_wrap, <int> <void *>it1i0k0_wrap, ])
  * cdef void ** it2i0k0_data = alloc_data_from_list([ <int> <void *>it2i0k0_wrap, <int> <void *>it2i0k0_wrap, ])
  * cdef void ** yn_data = alloc_data_from_list([ <int> <void *>yn_, <int> <void *>yn_, ])             # <<<<<<<<<<<<<<
@@ -2775,7 +2866,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_yn_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":403
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":416
  * cdef void ** it2i0k0_data = alloc_data_from_list([ <int> <void *>it2i0k0_wrap, <int> <void *>it2i0k0_wrap, ])
  * cdef void ** yn_data = alloc_data_from_list([ <int> <void *>yn_, <int> <void *>yn_, ])
  * cdef void ** smirnov_data = alloc_data_from_list([ <int> <void *>smirnov_, <int> <void *>smirnov_, ])             # <<<<<<<<<<<<<<
@@ -2790,7 +2881,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_smirnov_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":404
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":417
  * cdef void ** yn_data = alloc_data_from_list([ <int> <void *>yn_, <int> <void *>yn_, ])
  * cdef void ** smirnov_data = alloc_data_from_list([ <int> <void *>smirnov_, <int> <void *>smirnov_, ])
  * cdef void ** smirnovi_data = alloc_data_from_list([ <int> <void *>smirnovi_, <int> <void *>smirnovi_, ])             # <<<<<<<<<<<<<<
@@ -2805,7 +2896,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_smirnovi_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":405
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":418
  * cdef void ** smirnov_data = alloc_data_from_list([ <int> <void *>smirnov_, <int> <void *>smirnov_, ])
  * cdef void ** smirnovi_data = alloc_data_from_list([ <int> <void *>smirnovi_, <int> <void *>smirnovi_, ])
  * cdef void ** bdtrc_data = alloc_data_from_list([ <int> <void *>bdtrc_, <int> <void *>bdtrc_, ])             # <<<<<<<<<<<<<<
@@ -2820,7 +2911,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_bdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":406
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":419
  * cdef void ** smirnovi_data = alloc_data_from_list([ <int> <void *>smirnovi_, <int> <void *>smirnovi_, ])
  * cdef void ** bdtrc_data = alloc_data_from_list([ <int> <void *>bdtrc_, <int> <void *>bdtrc_, ])
  * cdef void ** bdtr_data = alloc_data_from_list([ <int> <void *>bdtr_, <int> <void *>bdtr_, ])             # <<<<<<<<<<<<<<
@@ -2835,7 +2926,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_bdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":407
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":420
  * cdef void ** bdtrc_data = alloc_data_from_list([ <int> <void *>bdtrc_, <int> <void *>bdtrc_, ])
  * cdef void ** bdtr_data = alloc_data_from_list([ <int> <void *>bdtr_, <int> <void *>bdtr_, ])
  * cdef void ** bdtri_data = alloc_data_from_list([ <int> <void *>bdtri_, <int> <void *>bdtri_, ])             # <<<<<<<<<<<<<<
@@ -2850,7 +2941,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_bdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":408
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":421
  * cdef void ** bdtr_data = alloc_data_from_list([ <int> <void *>bdtr_, <int> <void *>bdtr_, ])
  * cdef void ** bdtri_data = alloc_data_from_list([ <int> <void *>bdtri_, <int> <void *>bdtri_, ])
  * cdef void ** btdtr_data = alloc_data_from_list([ <int> <void *>btdtr_, <int> <void *>btdtr_, ])             # <<<<<<<<<<<<<<
@@ -2865,7 +2956,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_btdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":409
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":422
  * cdef void ** bdtri_data = alloc_data_from_list([ <int> <void *>bdtri_, <int> <void *>bdtri_, ])
  * cdef void ** btdtr_data = alloc_data_from_list([ <int> <void *>btdtr_, <int> <void *>btdtr_, ])
  * cdef void ** btdtri_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])             # <<<<<<<<<<<<<<
@@ -2880,7 +2971,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_btdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":410
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":423
  * cdef void ** btdtr_data = alloc_data_from_list([ <int> <void *>btdtr_, <int> <void *>btdtr_, ])
  * cdef void ** btdtri_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])
  * cdef void ** fdtrc_data = alloc_data_from_list([ <int> <void *>fdtrc_, <int> <void *>fdtrc_, ])             # <<<<<<<<<<<<<<
@@ -2895,7 +2986,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_fdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":411
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":424
  * cdef void ** btdtri_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])
  * cdef void ** fdtrc_data = alloc_data_from_list([ <int> <void *>fdtrc_, <int> <void *>fdtrc_, ])
  * cdef void ** fdtr_data = alloc_data_from_list([ <int> <void *>fdtr_, <int> <void *>fdtr_, ])             # <<<<<<<<<<<<<<
@@ -2910,7 +3001,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_fdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":412
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":425
  * cdef void ** fdtrc_data = alloc_data_from_list([ <int> <void *>fdtrc_, <int> <void *>fdtrc_, ])
  * cdef void ** fdtr_data = alloc_data_from_list([ <int> <void *>fdtr_, <int> <void *>fdtr_, ])
  * cdef void ** fdtri_data = alloc_data_from_list([ <int> <void *>fdtri_, <int> <void *>fdtri_, ])             # <<<<<<<<<<<<<<
@@ -2925,7 +3016,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_fdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":413
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":426
  * cdef void ** fdtr_data = alloc_data_from_list([ <int> <void *>fdtr_, <int> <void *>fdtr_, ])
  * cdef void ** fdtri_data = alloc_data_from_list([ <int> <void *>fdtri_, <int> <void *>fdtri_, ])
  * cdef void ** gdtrc_data = alloc_data_from_list([ <int> <void *>gdtrc_, <int> <void *>gdtrc_, ])             # <<<<<<<<<<<<<<
@@ -2940,7 +3031,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_gdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":414
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":427
  * cdef void ** fdtri_data = alloc_data_from_list([ <int> <void *>fdtri_, <int> <void *>fdtri_, ])
  * cdef void ** gdtrc_data = alloc_data_from_list([ <int> <void *>gdtrc_, <int> <void *>gdtrc_, ])
  * cdef void ** gdtr_data = alloc_data_from_list([ <int> <void *>gdtr_, <int> <void *>gdtr_, ])             # <<<<<<<<<<<<<<
@@ -2955,7 +3046,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_gdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":415
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":428
  * cdef void ** gdtrc_data = alloc_data_from_list([ <int> <void *>gdtrc_, <int> <void *>gdtrc_, ])
  * cdef void ** gdtr_data = alloc_data_from_list([ <int> <void *>gdtr_, <int> <void *>gdtr_, ])
  * cdef void ** hyp2f1_data = alloc_data_from_list([ <int> <void *>hyp2f1_, <int> <void *>hyp2f1_, <int> <void *>chyp2f1_wrap, <int> <void *>chyp2f1_wrap])             # <<<<<<<<<<<<<<
@@ -2974,7 +3065,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hyp2f1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":416
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":429
  * cdef void ** gdtr_data = alloc_data_from_list([ <int> <void *>gdtr_, <int> <void *>gdtr_, ])
  * cdef void ** hyp2f1_data = alloc_data_from_list([ <int> <void *>hyp2f1_, <int> <void *>hyp2f1_, <int> <void *>chyp2f1_wrap, <int> <void *>chyp2f1_wrap])
  * cdef void ** hyp1f1_data = alloc_data_from_list([ <int> <void *>hyp1f1_wrap, <int> <void *>hyp1f1_wrap, <int> <void *>chyp1f1_wrap, <int> <void *>chyp1f1_wrap])             # <<<<<<<<<<<<<<
@@ -2993,7 +3084,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hyp1f1_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":417
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":430
  * cdef void ** hyp2f1_data = alloc_data_from_list([ <int> <void *>hyp2f1_, <int> <void *>hyp2f1_, <int> <void *>chyp2f1_wrap, <int> <void *>chyp2f1_wrap])
  * cdef void ** hyp1f1_data = alloc_data_from_list([ <int> <void *>hyp1f1_wrap, <int> <void *>hyp1f1_wrap, <int> <void *>chyp1f1_wrap, <int> <void *>chyp1f1_wrap])
  * cdef void ** hypU_data = alloc_data_from_list([ <int> <void *>hypU_wrap, <int> <void *>hypU_wrap, ])             # <<<<<<<<<<<<<<
@@ -3008,7 +3099,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hypU_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":418
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":431
  * cdef void ** hyp1f1_data = alloc_data_from_list([ <int> <void *>hyp1f1_wrap, <int> <void *>hyp1f1_wrap, <int> <void *>chyp1f1_wrap, <int> <void *>chyp1f1_wrap])
  * cdef void ** hypU_data = alloc_data_from_list([ <int> <void *>hypU_wrap, <int> <void *>hypU_wrap, ])
  * cdef void ** hyp2f0_data = alloc_data_from_list([ <int> <void *>hyp2f0_, <int> <void *>hyp2f0_, ])             # <<<<<<<<<<<<<<
@@ -3023,7 +3114,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hyp2f0_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":419
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":432
  * cdef void ** hypU_data = alloc_data_from_list([ <int> <void *>hypU_wrap, <int> <void *>hypU_wrap, ])
  * cdef void ** hyp2f0_data = alloc_data_from_list([ <int> <void *>hyp2f0_, <int> <void *>hyp2f0_, ])
  * cdef void ** threef0_data = alloc_data_from_list([ <int> <void *>threef0, <int> <void *>threef0, ])             # <<<<<<<<<<<<<<
@@ -3038,7 +3129,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_threef0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":420
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":433
  * cdef void ** hyp2f0_data = alloc_data_from_list([ <int> <void *>hyp2f0_, <int> <void *>hyp2f0_, ])
  * cdef void ** threef0_data = alloc_data_from_list([ <int> <void *>threef0, <int> <void *>threef0, ])
  * cdef void ** onef2_data = alloc_data_from_list([ <int> <void *>onef2, <int> <void *>onef2, ])             # <<<<<<<<<<<<<<
@@ -3053,7 +3144,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_onef2_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":421
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":434
  * cdef void ** threef0_data = alloc_data_from_list([ <int> <void *>threef0, <int> <void *>threef0, ])
  * cdef void ** onef2_data = alloc_data_from_list([ <int> <void *>onef2, <int> <void *>onef2, ])
  * cdef void ** incbet_data = alloc_data_from_list([ <int> <void *>incbet, <int> <void *>incbet, ])             # <<<<<<<<<<<<<<
@@ -3068,7 +3159,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_incbet_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":422
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":435
  * cdef void ** onef2_data = alloc_data_from_list([ <int> <void *>onef2, <int> <void *>onef2, ])
  * cdef void ** incbet_data = alloc_data_from_list([ <int> <void *>incbet, <int> <void *>incbet, ])
  * cdef void ** incbi_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])             # <<<<<<<<<<<<<<
@@ -3083,7 +3174,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_incbi_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":423
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":436
  * cdef void ** incbet_data = alloc_data_from_list([ <int> <void *>incbet, <int> <void *>incbet, ])
  * cdef void ** incbi_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])
  * cdef void ** nbdtrc_data = alloc_data_from_list([ <int> <void *>nbdtrc_, <int> <void *>nbdtrc_, ])             # <<<<<<<<<<<<<<
@@ -3098,7 +3189,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_nbdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":424
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":437
  * cdef void ** incbi_data = alloc_data_from_list([ <int> <void *>incbi, <int> <void *>incbi, ])
  * cdef void ** nbdtrc_data = alloc_data_from_list([ <int> <void *>nbdtrc_, <int> <void *>nbdtrc_, ])
  * cdef void ** nbdtr_data = alloc_data_from_list([ <int> <void *>nbdtr_, <int> <void *>nbdtr_, ])             # <<<<<<<<<<<<<<
@@ -3113,7 +3204,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_nbdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":425
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":438
  * cdef void ** nbdtrc_data = alloc_data_from_list([ <int> <void *>nbdtrc_, <int> <void *>nbdtrc_, ])
  * cdef void ** nbdtr_data = alloc_data_from_list([ <int> <void *>nbdtr_, <int> <void *>nbdtr_, ])
  * cdef void ** nbdtri_data = alloc_data_from_list([ <int> <void *>nbdtri_, <int> <void *>nbdtri_, ])             # <<<<<<<<<<<<<<
@@ -3128,7 +3219,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_nbdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":426
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":439
  * cdef void ** nbdtr_data = alloc_data_from_list([ <int> <void *>nbdtr_, <int> <void *>nbdtr_, ])
  * cdef void ** nbdtri_data = alloc_data_from_list([ <int> <void *>nbdtri_, <int> <void *>nbdtri_, ])
  * cdef void ** beta_data = alloc_data_from_list([ <int> <void *>beta_, <int> <void *>beta_, ])             # <<<<<<<<<<<<<<
@@ -3143,7 +3234,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_beta_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":427
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":440
  * cdef void ** nbdtri_data = alloc_data_from_list([ <int> <void *>nbdtri_, <int> <void *>nbdtri_, ])
  * cdef void ** beta_data = alloc_data_from_list([ <int> <void *>beta_, <int> <void *>beta_, ])
  * cdef void ** lbeta_data = alloc_data_from_list([ <int> <void *>lbeta, <int> <void *>lbeta, ])             # <<<<<<<<<<<<<<
@@ -3158,7 +3249,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_lbeta_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":428
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":441
  * cdef void ** beta_data = alloc_data_from_list([ <int> <void *>beta_, <int> <void *>beta_, ])
  * cdef void ** lbeta_data = alloc_data_from_list([ <int> <void *>lbeta, <int> <void *>lbeta, ])
  * cdef void ** cbrt_data = alloc_data_from_list([ <int> <void *>cbrt_, <int> <void *>cbrt_, ])             # <<<<<<<<<<<<<<
@@ -3173,7 +3264,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cbrt_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":429
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":442
  * cdef void ** lbeta_data = alloc_data_from_list([ <int> <void *>lbeta, <int> <void *>lbeta, ])
  * cdef void ** cbrt_data = alloc_data_from_list([ <int> <void *>cbrt_, <int> <void *>cbrt_, ])
  * cdef void ** chdtrc_data = alloc_data_from_list([ <int> <void *>chdtrc_, <int> <void *>chdtrc_, ])             # <<<<<<<<<<<<<<
@@ -3188,7 +3279,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_chdtrc_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":430
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":443
  * cdef void ** cbrt_data = alloc_data_from_list([ <int> <void *>cbrt_, <int> <void *>cbrt_, ])
  * cdef void ** chdtrc_data = alloc_data_from_list([ <int> <void *>chdtrc_, <int> <void *>chdtrc_, ])
  * cdef void ** chdtr_data = alloc_data_from_list([ <int> <void *>chdtr_, <int> <void *>chdtr_, ])             # <<<<<<<<<<<<<<
@@ -3203,7 +3294,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_chdtr_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":431
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":444
  * cdef void ** chdtrc_data = alloc_data_from_list([ <int> <void *>chdtrc_, <int> <void *>chdtrc_, ])
  * cdef void ** chdtr_data = alloc_data_from_list([ <int> <void *>chdtr_, <int> <void *>chdtr_, ])
  * cdef void ** chdtri_data = alloc_data_from_list([ <int> <void *>chdtri_, <int> <void *>chdtri_, ])             # <<<<<<<<<<<<<<
@@ -3218,7 +3309,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_chdtri_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":432
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":445
  * cdef void ** chdtr_data = alloc_data_from_list([ <int> <void *>chdtr_, <int> <void *>chdtr_, ])
  * cdef void ** chdtri_data = alloc_data_from_list([ <int> <void *>chdtri_, <int> <void *>chdtri_, ])
  * cdef void ** dawsn_data = alloc_data_from_list([  <int> <void *>dawsn_, <int> <void *>dawsn_, ])             # <<<<<<<<<<<<<<
@@ -3233,7 +3324,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_dawsn_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":433
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":446
  * cdef void ** chdtri_data = alloc_data_from_list([ <int> <void *>chdtri_, <int> <void *>chdtri_, ])
  * cdef void ** dawsn_data = alloc_data_from_list([  <int> <void *>dawsn_, <int> <void *>dawsn_, ])
  * cdef void ** ellie_data = alloc_data_from_list([ <int> <void *>ellie, <int> <void *>ellie, ])             # <<<<<<<<<<<<<<
@@ -3248,7 +3339,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ellie_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":434
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":447
  * cdef void ** dawsn_data = alloc_data_from_list([  <int> <void *>dawsn_, <int> <void *>dawsn_, ])
  * cdef void ** ellie_data = alloc_data_from_list([ <int> <void *>ellie, <int> <void *>ellie, ])
  * cdef void ** ellik_data = alloc_data_from_list([ <int> <void *>ellik, <int> <void *>ellik, ])             # <<<<<<<<<<<<<<
@@ -3263,7 +3354,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ellik_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":435
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":448
  * cdef void ** ellie_data = alloc_data_from_list([ <int> <void *>ellie, <int> <void *>ellie, ])
  * cdef void ** ellik_data = alloc_data_from_list([ <int> <void *>ellik, <int> <void *>ellik, ])
  * cdef void ** ellpe_data = alloc_data_from_list([ <int> <void *>ellpe, <int> <void *>ellpe, ])             # <<<<<<<<<<<<<<
@@ -3278,7 +3369,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ellpe_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":436
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":449
  * cdef void ** ellik_data = alloc_data_from_list([ <int> <void *>ellik, <int> <void *>ellik, ])
  * cdef void ** ellpe_data = alloc_data_from_list([ <int> <void *>ellpe, <int> <void *>ellpe, ])
  * cdef void ** ellpk_data = alloc_data_from_list([ <int> <void *>ellpk, <int> <void *>ellpk, ])             # <<<<<<<<<<<<<<
@@ -3293,7 +3384,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ellpk_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":437
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":450
  * cdef void ** ellpe_data = alloc_data_from_list([ <int> <void *>ellpe, <int> <void *>ellpe, ])
  * cdef void ** ellpk_data = alloc_data_from_list([ <int> <void *>ellpk, <int> <void *>ellpk, ])
  * cdef void ** exp10_data = alloc_data_from_list([ <int> <void *>exp10_, <int> <void *>exp10_, ])             # <<<<<<<<<<<<<<
@@ -3308,7 +3399,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_exp10_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":438
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":451
  * cdef void ** ellpk_data = alloc_data_from_list([ <int> <void *>ellpk, <int> <void *>ellpk, ])
  * cdef void ** exp10_data = alloc_data_from_list([ <int> <void *>exp10_, <int> <void *>exp10_, ])
  * cdef void ** exp2_data = alloc_data_from_list([ <int> <void *>exp2_, <int> <void *>exp2_, ])             # <<<<<<<<<<<<<<
@@ -3323,7 +3414,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_exp2_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":439
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":452
  * cdef void ** exp10_data = alloc_data_from_list([ <int> <void *>exp10_, <int> <void *>exp10_, ])
  * cdef void ** exp2_data = alloc_data_from_list([ <int> <void *>exp2_, <int> <void *>exp2_, ])
  * cdef void ** Gamma_data = alloc_data_from_list([ <int> <void *>Gamma, <int> <void *>Gamma, <int> <void *>cgamma_wrap, <int> <void *>cgamma_wrap])             # <<<<<<<<<<<<<<
@@ -3342,7 +3433,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_Gamma_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":440
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":453
  * cdef void ** exp2_data = alloc_data_from_list([ <int> <void *>exp2_, <int> <void *>exp2_, ])
  * cdef void ** Gamma_data = alloc_data_from_list([ <int> <void *>Gamma, <int> <void *>Gamma, <int> <void *>cgamma_wrap, <int> <void *>cgamma_wrap])
  * cdef void ** lgam_data = alloc_data_from_list([ <int> <void *>lgam, <int> <void *>lgam, <int> <void *>clngamma_wrap, <int> <void *>clngamma_wrap])             # <<<<<<<<<<<<<<
@@ -3361,7 +3452,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_lgam_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":441
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":454
  * cdef void ** Gamma_data = alloc_data_from_list([ <int> <void *>Gamma, <int> <void *>Gamma, <int> <void *>cgamma_wrap, <int> <void *>cgamma_wrap])
  * cdef void ** lgam_data = alloc_data_from_list([ <int> <void *>lgam, <int> <void *>lgam, <int> <void *>clngamma_wrap, <int> <void *>clngamma_wrap])
  * cdef void ** i0_data = alloc_data_from_list([ <int> <void *>i0_, <int> <void *>i0_, ])             # <<<<<<<<<<<<<<
@@ -3376,7 +3467,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_i0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":442
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":455
  * cdef void ** lgam_data = alloc_data_from_list([ <int> <void *>lgam, <int> <void *>lgam, <int> <void *>clngamma_wrap, <int> <void *>clngamma_wrap])
  * cdef void ** i0_data = alloc_data_from_list([ <int> <void *>i0_, <int> <void *>i0_, ])
  * cdef void ** i0e_data = alloc_data_from_list([ <int> <void *>i0e_, <int> <void *>i0e_, ])             # <<<<<<<<<<<<<<
@@ -3391,7 +3482,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_i0e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":443
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":456
  * cdef void ** i0_data = alloc_data_from_list([ <int> <void *>i0_, <int> <void *>i0_, ])
  * cdef void ** i0e_data = alloc_data_from_list([ <int> <void *>i0e_, <int> <void *>i0e_, ])
  * cdef void ** i1_data = alloc_data_from_list([ <int> <void *>i1_, <int> <void *>i1_, ])             # <<<<<<<<<<<<<<
@@ -3406,7 +3497,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_i1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":444
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":457
  * cdef void ** i0e_data = alloc_data_from_list([ <int> <void *>i0e_, <int> <void *>i0e_, ])
  * cdef void ** i1_data = alloc_data_from_list([ <int> <void *>i1_, <int> <void *>i1_, ])
  * cdef void ** i1e_data = alloc_data_from_list([ <int> <void *>i1e_, <int> <void *>i1e_, ])             # <<<<<<<<<<<<<<
@@ -3421,7 +3512,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_i1e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":445
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":458
  * cdef void ** i1_data = alloc_data_from_list([ <int> <void *>i1_, <int> <void *>i1_, ])
  * cdef void ** i1e_data = alloc_data_from_list([ <int> <void *>i1e_, <int> <void *>i1e_, ])
  * cdef void ** igamc_data = alloc_data_from_list([ <int> <void *>igamc, <int> <void *>igamc, ])             # <<<<<<<<<<<<<<
@@ -3436,7 +3527,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_igamc_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":446
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":459
  * cdef void ** i1e_data = alloc_data_from_list([ <int> <void *>i1e_, <int> <void *>i1e_, ])
  * cdef void ** igamc_data = alloc_data_from_list([ <int> <void *>igamc, <int> <void *>igamc, ])
  * cdef void ** igam_data = alloc_data_from_list([ <int> <void *>igam, <int> <void *>igam, ])             # <<<<<<<<<<<<<<
@@ -3451,7 +3542,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_igam_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":447
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":460
  * cdef void ** igamc_data = alloc_data_from_list([ <int> <void *>igamc, <int> <void *>igamc, ])
  * cdef void ** igam_data = alloc_data_from_list([ <int> <void *>igam, <int> <void *>igam, ])
  * cdef void ** igami_data = alloc_data_from_list([ <int> <void *>igami, <int> <void *>igami, ])             # <<<<<<<<<<<<<<
@@ -3466,7 +3557,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_igami_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":448
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":461
  * cdef void ** igam_data = alloc_data_from_list([ <int> <void *>igam, <int> <void *>igam, ])
  * cdef void ** igami_data = alloc_data_from_list([ <int> <void *>igami, <int> <void *>igami, ])
  * cdef void ** gammaincinv_data = alloc_data_from_list([ <int> <void *>gammaincinv_, <int> <void *>gammaincinv_, ])             # <<<<<<<<<<<<<<
@@ -3481,7 +3572,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_gammaincinv_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":449
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":462
  * cdef void ** igami_data = alloc_data_from_list([ <int> <void *>igami, <int> <void *>igami, ])
  * cdef void ** gammaincinv_data = alloc_data_from_list([ <int> <void *>gammaincinv_, <int> <void *>gammaincinv_, ])
  * cdef void ** iv_data = alloc_data_from_list([ <int> <void *>iv_, <int> <void *>iv_, <int> <void *>cbesi_wrap, <int> <void *>cbesi_wrap,])             # <<<<<<<<<<<<<<
@@ -3500,7 +3591,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_iv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":450
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":463
  * cdef void ** gammaincinv_data = alloc_data_from_list([ <int> <void *>gammaincinv_, <int> <void *>gammaincinv_, ])
  * cdef void ** iv_data = alloc_data_from_list([ <int> <void *>iv_, <int> <void *>iv_, <int> <void *>cbesi_wrap, <int> <void *>cbesi_wrap,])
  * cdef void ** ive_data = alloc_data_from_list([ <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e, <int> <void *>cbesi_wrap_e, ])             # <<<<<<<<<<<<<<
@@ -3519,7 +3610,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ive_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":451
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":464
  * cdef void ** iv_data = alloc_data_from_list([ <int> <void *>iv_, <int> <void *>iv_, <int> <void *>cbesi_wrap, <int> <void *>cbesi_wrap,])
  * cdef void ** ive_data = alloc_data_from_list([ <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e, <int> <void *>cbesi_wrap_e, ])
  * cdef void ** j0_data = alloc_data_from_list([ <int> <void *>j0_,  <int> <void *>j0_,  ])             # <<<<<<<<<<<<<<
@@ -3534,7 +3625,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_j0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":452
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":465
  * cdef void ** ive_data = alloc_data_from_list([ <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e_real, <int> <void *>cbesi_wrap_e, <int> <void *>cbesi_wrap_e, ])
  * cdef void ** j0_data = alloc_data_from_list([ <int> <void *>j0_,  <int> <void *>j0_,  ])
  * cdef void ** y0_data = alloc_data_from_list([ <int> <void *>y0_, <int> <void *>y0_, ])             # <<<<<<<<<<<<<<
@@ -3549,7 +3640,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_y0_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":453
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":466
  * cdef void ** j0_data = alloc_data_from_list([ <int> <void *>j0_,  <int> <void *>j0_,  ])
  * cdef void ** y0_data = alloc_data_from_list([ <int> <void *>y0_, <int> <void *>y0_, ])
  * cdef void ** j1_data = alloc_data_from_list([ <int> <void *>j1_,  <int> <void *>j1_,  ])             # <<<<<<<<<<<<<<
@@ -3564,7 +3655,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_j1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":454
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":467
  * cdef void ** y0_data = alloc_data_from_list([ <int> <void *>y0_, <int> <void *>y0_, ])
  * cdef void ** j1_data = alloc_data_from_list([ <int> <void *>j1_,  <int> <void *>j1_,  ])
  * cdef void ** y1_data = alloc_data_from_list([ <int> <void *>y1_, <int> <void *>y1_, ])             # <<<<<<<<<<<<<<
@@ -3579,7 +3670,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_y1_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":455
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":468
  * cdef void ** j1_data = alloc_data_from_list([ <int> <void *>j1_,  <int> <void *>j1_,  ])
  * cdef void ** y1_data = alloc_data_from_list([ <int> <void *>y1_, <int> <void *>y1_, ])
  * cdef void ** jv_data = alloc_data_from_list([ <int> <void *>jv_, <int> <void *>jv_, <int> <void *>cbesj_wrap, <int> <void *>cbesj_wrap,])             # <<<<<<<<<<<<<<
@@ -3598,7 +3689,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_jv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":456
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":469
  * cdef void ** y1_data = alloc_data_from_list([ <int> <void *>y1_, <int> <void *>y1_, ])
  * cdef void ** jv_data = alloc_data_from_list([ <int> <void *>jv_, <int> <void *>jv_, <int> <void *>cbesj_wrap, <int> <void *>cbesj_wrap,])
  * cdef void ** jve_data = alloc_data_from_list([ <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e, <int> <void *>cbesj_wrap_e, ])             # <<<<<<<<<<<<<<
@@ -3617,7 +3708,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_jve_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":457
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":470
  * cdef void ** jv_data = alloc_data_from_list([ <int> <void *>jv_, <int> <void *>jv_, <int> <void *>cbesj_wrap, <int> <void *>cbesj_wrap,])
  * cdef void ** jve_data = alloc_data_from_list([ <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e, <int> <void *>cbesj_wrap_e, ])
  * cdef void ** yv_data = alloc_data_from_list([ <int> <void *>yv_, <int> <void *>yv_, <int> <void *>cbesy_wrap, <int> <void *>cbesy_wrap,])             # <<<<<<<<<<<<<<
@@ -3636,7 +3727,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_yv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":458
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":471
  * cdef void ** jve_data = alloc_data_from_list([ <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e_real, <int> <void *>cbesj_wrap_e, <int> <void *>cbesj_wrap_e, ])
  * cdef void ** yv_data = alloc_data_from_list([ <int> <void *>yv_, <int> <void *>yv_, <int> <void *>cbesy_wrap, <int> <void *>cbesy_wrap,])
  * cdef void ** yve_data = alloc_data_from_list([ <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e, <int> <void *>cbesy_wrap_e, ])             # <<<<<<<<<<<<<<
@@ -3655,7 +3746,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_yve_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":459
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":472
  * cdef void ** yv_data = alloc_data_from_list([ <int> <void *>yv_, <int> <void *>yv_, <int> <void *>cbesy_wrap, <int> <void *>cbesy_wrap,])
  * cdef void ** yve_data = alloc_data_from_list([ <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e, <int> <void *>cbesy_wrap_e, ])
  * cdef void ** k0_data = alloc_data_from_list([ <int> <void *>k0_, <int> <void *>k0_, ])             # <<<<<<<<<<<<<<
@@ -3670,7 +3761,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_k0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":460
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":473
  * cdef void ** yve_data = alloc_data_from_list([ <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e_real, <int> <void *>cbesy_wrap_e, <int> <void *>cbesy_wrap_e, ])
  * cdef void ** k0_data = alloc_data_from_list([ <int> <void *>k0_, <int> <void *>k0_, ])
  * cdef void ** k0e_data = alloc_data_from_list([ <int> <void *>k0e_, <int> <void *>k0e_, ])             # <<<<<<<<<<<<<<
@@ -3685,7 +3776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_k0e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":461
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":474
  * cdef void ** k0_data = alloc_data_from_list([ <int> <void *>k0_, <int> <void *>k0_, ])
  * cdef void ** k0e_data = alloc_data_from_list([ <int> <void *>k0e_, <int> <void *>k0e_, ])
  * cdef void ** k1_data = alloc_data_from_list([ <int> <void *>k1_, <int> <void *>k1_, ])             # <<<<<<<<<<<<<<
@@ -3700,7 +3791,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_k1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":462
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":475
  * cdef void ** k0e_data = alloc_data_from_list([ <int> <void *>k0e_, <int> <void *>k0e_, ])
  * cdef void ** k1_data = alloc_data_from_list([ <int> <void *>k1_, <int> <void *>k1_, ])
  * cdef void ** k1e_data = alloc_data_from_list([ <int> <void *>k1e_, <int> <void *>k1e_, ])             # <<<<<<<<<<<<<<
@@ -3715,7 +3806,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_k1e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":463
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":476
  * cdef void ** k1_data = alloc_data_from_list([ <int> <void *>k1_, <int> <void *>k1_, ])
  * cdef void ** k1e_data = alloc_data_from_list([ <int> <void *>k1e_, <int> <void *>k1e_, ])
  * cdef void ** kv_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap, <int> <void *>cbesk_wrap,])             # <<<<<<<<<<<<<<
@@ -3734,7 +3825,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":464
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":477
  * cdef void ** k1e_data = alloc_data_from_list([ <int> <void *>k1e_, <int> <void *>k1e_, ])
  * cdef void ** kv_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap, <int> <void *>cbesk_wrap,])
  * cdef void ** kve_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e, <int> <void *>cbesk_wrap_e,])             # <<<<<<<<<<<<<<
@@ -3753,7 +3844,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kve_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":465
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":478
  * cdef void ** kv_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap_real, <int> <void *>cbesk_wrap, <int> <void *>cbesk_wrap,])
  * cdef void ** kve_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e, <int> <void *>cbesk_wrap_e,])
  * cdef void ** hankel1_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1, <int> <void *>cbesh_wrap1,])             # <<<<<<<<<<<<<<
@@ -3768,7 +3859,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hankel1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":466
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":479
  * cdef void ** kve_data = alloc_data_from_list([ <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e_real, <int> <void *>cbesk_wrap_e, <int> <void *>cbesk_wrap_e,])
  * cdef void ** hankel1_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1, <int> <void *>cbesh_wrap1,])
  * cdef void ** hankel1e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1_e, <int> <void *>cbesh_wrap1_e,])             # <<<<<<<<<<<<<<
@@ -3783,7 +3874,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hankel1e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":467
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":480
  * cdef void ** hankel1_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1, <int> <void *>cbesh_wrap1,])
  * cdef void ** hankel1e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1_e, <int> <void *>cbesh_wrap1_e,])
  * cdef void ** hankel2_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2, <int> <void *>cbesh_wrap2,])             # <<<<<<<<<<<<<<
@@ -3798,7 +3889,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hankel2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":468
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":481
  * cdef void ** hankel1e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap1_e, <int> <void *>cbesh_wrap1_e,])
  * cdef void ** hankel2_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2, <int> <void *>cbesh_wrap2,])
  * cdef void ** hankel2e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2_e, <int> <void *>cbesh_wrap2_e,])             # <<<<<<<<<<<<<<
@@ -3813,7 +3904,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_hankel2e_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":469
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":482
  * cdef void ** hankel2_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2, <int> <void *>cbesh_wrap2,])
  * cdef void ** hankel2e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2_e, <int> <void *>cbesh_wrap2_e,])
  * cdef void ** ndtr_data = alloc_data_from_list([ <int> <void *>ndtr_, <int> <void *>ndtr_, ])             # <<<<<<<<<<<<<<
@@ -3828,7 +3919,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ndtr_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":470
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":483
  * cdef void ** hankel2e_data = alloc_data_from_list([ <int> <void *>cbesh_wrap2_e, <int> <void *>cbesh_wrap2_e,])
  * cdef void ** ndtr_data = alloc_data_from_list([ <int> <void *>ndtr_, <int> <void *>ndtr_, ])
  * cdef void ** erfc_data = alloc_data_from_list([ <int> <void *>erfc_, <int> <void *>erfc_, ])             # <<<<<<<<<<<<<<
@@ -3843,7 +3934,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_erfc_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":471
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":484
  * cdef void ** ndtr_data = alloc_data_from_list([ <int> <void *>ndtr_, <int> <void *>ndtr_, ])
  * cdef void ** erfc_data = alloc_data_from_list([ <int> <void *>erfc_, <int> <void *>erfc_, ])
  * cdef void ** erf_data = alloc_data_from_list([ <int> <void *>erf_, <int> <void *>erf_, <int> <void *>cerf_wrap, <int> <void *>cerf_wrap])             # <<<<<<<<<<<<<<
@@ -3862,7 +3953,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_erf_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":472
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":485
  * cdef void ** erfc_data = alloc_data_from_list([ <int> <void *>erfc_, <int> <void *>erfc_, ])
  * cdef void ** erf_data = alloc_data_from_list([ <int> <void *>erf_, <int> <void *>erf_, <int> <void *>cerf_wrap, <int> <void *>cerf_wrap])
  * cdef void ** ndtri_data = alloc_data_from_list([ <int> <void *>ndtri_, <int> <void *>ndtri_, ])             # <<<<<<<<<<<<<<
@@ -3877,7 +3968,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_ndtri_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":473
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":486
  * cdef void ** erf_data = alloc_data_from_list([ <int> <void *>erf_, <int> <void *>erf_, <int> <void *>cerf_wrap, <int> <void *>cerf_wrap])
  * cdef void ** ndtri_data = alloc_data_from_list([ <int> <void *>ndtri_, <int> <void *>ndtri_, ])
  * cdef void ** psi_data = alloc_data_from_list([ <int> <void *>psi_, <int> <void *>psi_, <int> <void *>cpsi_wrap, <int> <void *>cpsi_wrap])             # <<<<<<<<<<<<<<
@@ -3896,7 +3987,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_psi_data = alloc_data_from_list(((System::Object^)__pyx_t_3));
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":474
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":487
  * cdef void ** ndtri_data = alloc_data_from_list([ <int> <void *>ndtri_, <int> <void *>ndtri_, ])
  * cdef void ** psi_data = alloc_data_from_list([ <int> <void *>psi_, <int> <void *>psi_, <int> <void *>cpsi_wrap, <int> <void *>cpsi_wrap])
  * cdef void ** rgamma_data = alloc_data_from_list([ <int> <void *>rgamma_, <int> <void *>rgamma_, <int> <void *>crgamma_wrap, <int> <void *>crgamma_wrap])             # <<<<<<<<<<<<<<
@@ -3915,7 +4006,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_rgamma_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":475
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":488
  * cdef void ** psi_data = alloc_data_from_list([ <int> <void *>psi_, <int> <void *>psi_, <int> <void *>cpsi_wrap, <int> <void *>cpsi_wrap])
  * cdef void ** rgamma_data = alloc_data_from_list([ <int> <void *>rgamma_, <int> <void *>rgamma_, <int> <void *>crgamma_wrap, <int> <void *>crgamma_wrap])
  * cdef void ** round_data = alloc_data_from_list([ <int> <void *>round_, <int> <void *>round_, ])             # <<<<<<<<<<<<<<
@@ -3930,7 +4021,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_round_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":476
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":489
  * cdef void ** rgamma_data = alloc_data_from_list([ <int> <void *>rgamma_, <int> <void *>rgamma_, <int> <void *>crgamma_wrap, <int> <void *>crgamma_wrap])
  * cdef void ** round_data = alloc_data_from_list([ <int> <void *>round_, <int> <void *>round_, ])
  * cdef void ** sindg_data = alloc_data_from_list([ <int> <void *>sindg_, <int> <void *>sindg_, ])             # <<<<<<<<<<<<<<
@@ -3945,7 +4036,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_sindg_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":477
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":490
  * cdef void ** round_data = alloc_data_from_list([ <int> <void *>round_, <int> <void *>round_, ])
  * cdef void ** sindg_data = alloc_data_from_list([ <int> <void *>sindg_, <int> <void *>sindg_, ])
  * cdef void ** cosdg_data = alloc_data_from_list([ <int> <void *>cosdg_, <int> <void *>cosdg_, ])             # <<<<<<<<<<<<<<
@@ -3960,7 +4051,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cosdg_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":478
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":491
  * cdef void ** sindg_data = alloc_data_from_list([ <int> <void *>sindg_, <int> <void *>sindg_, ])
  * cdef void ** cosdg_data = alloc_data_from_list([ <int> <void *>cosdg_, <int> <void *>cosdg_, ])
  * cdef void ** radian_data = alloc_data_from_list([ <int> <void *>radian_, <int> <void *>radian_, ])             # <<<<<<<<<<<<<<
@@ -3975,7 +4066,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_radian_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":479
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":492
  * cdef void ** cosdg_data = alloc_data_from_list([ <int> <void *>cosdg_, <int> <void *>cosdg_, ])
  * cdef void ** radian_data = alloc_data_from_list([ <int> <void *>radian_, <int> <void *>radian_, ])
  * cdef void ** tandg_data = alloc_data_from_list([ <int> <void *>tandg_, <int> <void *>tandg_, ])             # <<<<<<<<<<<<<<
@@ -3990,7 +4081,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_tandg_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":480
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":493
  * cdef void ** radian_data = alloc_data_from_list([ <int> <void *>radian_, <int> <void *>radian_, ])
  * cdef void ** tandg_data = alloc_data_from_list([ <int> <void *>tandg_, <int> <void *>tandg_, ])
  * cdef void ** cotdg_data = alloc_data_from_list([ <int> <void *>cotdg_, <int> <void *>cotdg_, ])             # <<<<<<<<<<<<<<
@@ -4005,7 +4096,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cotdg_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":481
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":494
  * cdef void ** tandg_data = alloc_data_from_list([ <int> <void *>tandg_, <int> <void *>tandg_, ])
  * cdef void ** cotdg_data = alloc_data_from_list([ <int> <void *>cotdg_, <int> <void *>cotdg_, ])
  * cdef void ** log1p_data = alloc_data_from_list([ <int> <void *>log1p_, <int> <void *>log1p_, ])             # <<<<<<<<<<<<<<
@@ -4020,7 +4111,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_log1p_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":482
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":495
  * cdef void ** cotdg_data = alloc_data_from_list([ <int> <void *>cotdg_, <int> <void *>cotdg_, ])
  * cdef void ** log1p_data = alloc_data_from_list([ <int> <void *>log1p_, <int> <void *>log1p_, ])
  * cdef void ** expm1_data = alloc_data_from_list([ <int> <void *>expm1_, <int> <void *>expm1_, ])             # <<<<<<<<<<<<<<
@@ -4035,7 +4126,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_expm1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":483
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":496
  * cdef void ** log1p_data = alloc_data_from_list([ <int> <void *>log1p_, <int> <void *>log1p_, ])
  * cdef void ** expm1_data = alloc_data_from_list([ <int> <void *>expm1_, <int> <void *>expm1_, ])
  * cdef void ** cosm1_data = alloc_data_from_list([ <int> <void *>cosm1_, <int> <void *>cosm1_, ])             # <<<<<<<<<<<<<<
@@ -4050,7 +4141,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cosm1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":484
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":497
  * cdef void ** expm1_data = alloc_data_from_list([ <int> <void *>expm1_, <int> <void *>expm1_, ])
  * cdef void ** cosm1_data = alloc_data_from_list([ <int> <void *>cosm1_, <int> <void *>cosm1_, ])
  * cdef void ** spence_data = alloc_data_from_list([ <int> <void *>spence_, <int> <void *>spence_, ])             # <<<<<<<<<<<<<<
@@ -4065,7 +4156,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_spence_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":485
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":498
  * cdef void ** cosm1_data = alloc_data_from_list([ <int> <void *>cosm1_, <int> <void *>cosm1_, ])
  * cdef void ** spence_data = alloc_data_from_list([ <int> <void *>spence_, <int> <void *>spence_, ])
  * cdef void ** struve_data = alloc_data_from_list([ <int> <void *>struve_wrap, <int> <void *>struve_wrap, ])             # <<<<<<<<<<<<<<
@@ -4080,7 +4171,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_struve_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":486
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":499
  * cdef void ** spence_data = alloc_data_from_list([ <int> <void *>spence_, <int> <void *>spence_, ])
  * cdef void ** struve_data = alloc_data_from_list([ <int> <void *>struve_wrap, <int> <void *>struve_wrap, ])
  * cdef void ** modstruve_data = alloc_data_from_list([ <int> <void *>modstruve_wrap, <int> <void *>modstruve_wrap, ])             # <<<<<<<<<<<<<<
@@ -4095,7 +4186,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_modstruve_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":487
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":500
  * cdef void ** struve_data = alloc_data_from_list([ <int> <void *>struve_wrap, <int> <void *>struve_wrap, ])
  * cdef void ** modstruve_data = alloc_data_from_list([ <int> <void *>modstruve_wrap, <int> <void *>modstruve_wrap, ])
  * cdef void ** itmodstruve0_data = alloc_data_from_list([ <int> <void *>itmodstruve0_wrap, <int> <void *>itmodstruve0_wrap, ])             # <<<<<<<<<<<<<<
@@ -4110,7 +4201,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_itmodstruve0_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":488
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":501
  * cdef void ** modstruve_data = alloc_data_from_list([ <int> <void *>modstruve_wrap, <int> <void *>modstruve_wrap, ])
  * cdef void ** itmodstruve0_data = alloc_data_from_list([ <int> <void *>itmodstruve0_wrap, <int> <void *>itmodstruve0_wrap, ])
  * cdef void ** itstruve0_data = alloc_data_from_list([ <int> <void *>itstruve0_wrap, <int> <void *>itstruve0_wrap, ])             # <<<<<<<<<<<<<<
@@ -4125,7 +4216,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_itstruve0_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":489
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":502
  * cdef void ** itmodstruve0_data = alloc_data_from_list([ <int> <void *>itmodstruve0_wrap, <int> <void *>itmodstruve0_wrap, ])
  * cdef void ** itstruve0_data = alloc_data_from_list([ <int> <void *>itstruve0_wrap, <int> <void *>itstruve0_wrap, ])
  * cdef void ** it2struve0_data = alloc_data_from_list([ <int> <void *>it2struve0_wrap, <int> <void *>it2struve0_wrap, ])             # <<<<<<<<<<<<<<
@@ -4140,7 +4231,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_it2struve0_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":490
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":503
  * cdef void ** itstruve0_data = alloc_data_from_list([ <int> <void *>itstruve0_wrap, <int> <void *>itstruve0_wrap, ])
  * cdef void ** it2struve0_data = alloc_data_from_list([ <int> <void *>it2struve0_wrap, <int> <void *>it2struve0_wrap, ])
  * cdef void ** zeta_data = alloc_data_from_list([ <int> <void *>zeta_, <int> <void *>zeta_, ])             # <<<<<<<<<<<<<<
@@ -4155,7 +4246,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_zeta_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":491
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":504
  * cdef void ** it2struve0_data = alloc_data_from_list([ <int> <void *>it2struve0_wrap, <int> <void *>it2struve0_wrap, ])
  * cdef void ** zeta_data = alloc_data_from_list([ <int> <void *>zeta_, <int> <void *>zeta_, ])
  * cdef void ** zetac_data = alloc_data_from_list([ <int> <void *>zetac_, <int> <void *>zetac_, ])             # <<<<<<<<<<<<<<
@@ -4170,7 +4261,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_zetac_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":492
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":505
  * cdef void ** zeta_data = alloc_data_from_list([ <int> <void *>zeta_, <int> <void *>zeta_, ])
  * cdef void ** zetac_data = alloc_data_from_list([ <int> <void *>zetac_, <int> <void *>zetac_, ])
  * cdef void ** kolmogorov_data = alloc_data_from_list([ <int> <void *>kolmogorov_, <int> <void *>kolmogorov_, ])             # <<<<<<<<<<<<<<
@@ -4185,7 +4276,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kolmogorov_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":493
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":506
  * cdef void ** zetac_data = alloc_data_from_list([ <int> <void *>zetac_, <int> <void *>zetac_, ])
  * cdef void ** kolmogorov_data = alloc_data_from_list([ <int> <void *>kolmogorov_, <int> <void *>kolmogorov_, ])
  * cdef void ** kolmogi_data = alloc_data_from_list([ <int> <void *>kolmogi_, <int> <void *>kolmogi_, ])             # <<<<<<<<<<<<<<
@@ -4200,7 +4291,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_kolmogi_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":494
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":507
  * cdef void ** kolmogorov_data = alloc_data_from_list([ <int> <void *>kolmogorov_, <int> <void *>kolmogorov_, ])
  * cdef void ** kolmogi_data = alloc_data_from_list([ <int> <void *>kolmogi_, <int> <void *>kolmogi_, ])
  * cdef void ** wofz_data = alloc_data_from_list([ <int> <void *>cwofz_wrap, <int> <void *>cwofz_wrap, ])             # <<<<<<<<<<<<<<
@@ -4215,7 +4306,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_wofz_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":495
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":508
  * cdef void ** kolmogi_data = alloc_data_from_list([ <int> <void *>kolmogi_, <int> <void *>kolmogi_, ])
  * cdef void ** wofz_data = alloc_data_from_list([ <int> <void *>cwofz_wrap, <int> <void *>cwofz_wrap, ])
  * cdef void ** besselpoly_data = alloc_data_from_list([<int> <void *>besselpoly_, <int> <void *>besselpoly_,])             # <<<<<<<<<<<<<<
@@ -4230,7 +4321,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_besselpoly_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":496
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":509
  * cdef void ** wofz_data = alloc_data_from_list([ <int> <void *>cwofz_wrap, <int> <void *>cwofz_wrap, ])
  * cdef void ** besselpoly_data = alloc_data_from_list([<int> <void *>besselpoly_, <int> <void *>besselpoly_,])
  * cdef void ** cdfbet3_data = alloc_data_from_list([<int> <void *>cdfbet3_wrap, <int> <void *>cdfbet3_wrap])             # <<<<<<<<<<<<<<
@@ -4245,7 +4336,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfbet3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":497
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":510
  * cdef void ** besselpoly_data = alloc_data_from_list([<int> <void *>besselpoly_, <int> <void *>besselpoly_,])
  * cdef void ** cdfbet3_data = alloc_data_from_list([<int> <void *>cdfbet3_wrap, <int> <void *>cdfbet3_wrap])
  * cdef void ** cdfbet4_data = alloc_data_from_list([<int> <void *>cdfbet4_wrap, <int> <void *>cdfbet4_wrap])             # <<<<<<<<<<<<<<
@@ -4260,7 +4351,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfbet4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":498
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":511
  * cdef void ** cdfbet3_data = alloc_data_from_list([<int> <void *>cdfbet3_wrap, <int> <void *>cdfbet3_wrap])
  * cdef void ** cdfbet4_data = alloc_data_from_list([<int> <void *>cdfbet4_wrap, <int> <void *>cdfbet4_wrap])
  * cdef void ** cdfbin2_data = alloc_data_from_list([<int> <void *>cdfbin2_wrap, <int> <void *>cdfbin2_wrap])             # <<<<<<<<<<<<<<
@@ -4275,7 +4366,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfbin2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":499
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":512
  * cdef void ** cdfbet4_data = alloc_data_from_list([<int> <void *>cdfbet4_wrap, <int> <void *>cdfbet4_wrap])
  * cdef void ** cdfbin2_data = alloc_data_from_list([<int> <void *>cdfbin2_wrap, <int> <void *>cdfbin2_wrap])
  * cdef void ** cdfbin3_data = alloc_data_from_list([<int> <void *>cdfbin3_wrap, <int> <void *>cdfbin3_wrap])             # <<<<<<<<<<<<<<
@@ -4290,7 +4381,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfbin3_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":500
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":513
  * cdef void ** cdfbin2_data = alloc_data_from_list([<int> <void *>cdfbin2_wrap, <int> <void *>cdfbin2_wrap])
  * cdef void ** cdfbin3_data = alloc_data_from_list([<int> <void *>cdfbin3_wrap, <int> <void *>cdfbin3_wrap])
  * cdef void ** cdfchi3_data = alloc_data_from_list([<int> <void *>cdfchi3_wrap, <int> <void *>cdfchi3_wrap])             # <<<<<<<<<<<<<<
@@ -4305,7 +4396,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfchi3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":501
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":514
  * cdef void ** cdfbin3_data = alloc_data_from_list([<int> <void *>cdfbin3_wrap, <int> <void *>cdfbin3_wrap])
  * cdef void ** cdfchi3_data = alloc_data_from_list([<int> <void *>cdfchi3_wrap, <int> <void *>cdfchi3_wrap])
  * cdef void ** cdfchn1_data = alloc_data_from_list([<int> <void *>cdfchn1_wrap, <int> <void *>cdfchn1_wrap])             # <<<<<<<<<<<<<<
@@ -4320,7 +4411,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfchn1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":502
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":515
  * cdef void ** cdfchi3_data = alloc_data_from_list([<int> <void *>cdfchi3_wrap, <int> <void *>cdfchi3_wrap])
  * cdef void ** cdfchn1_data = alloc_data_from_list([<int> <void *>cdfchn1_wrap, <int> <void *>cdfchn1_wrap])
  * cdef void ** cdfchn2_data = alloc_data_from_list([<int> <void *>cdfchn2_wrap, <int> <void *>cdfchn2_wrap])             # <<<<<<<<<<<<<<
@@ -4335,7 +4426,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfchn2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":503
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":516
  * cdef void ** cdfchn1_data = alloc_data_from_list([<int> <void *>cdfchn1_wrap, <int> <void *>cdfchn1_wrap])
  * cdef void ** cdfchn2_data = alloc_data_from_list([<int> <void *>cdfchn2_wrap, <int> <void *>cdfchn2_wrap])
  * cdef void ** cdfchn3_data = alloc_data_from_list([<int> <void *>cdfchn3_wrap, <int> <void *>cdfchn3_wrap])             # <<<<<<<<<<<<<<
@@ -4350,7 +4441,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfchn3_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":504
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":517
  * cdef void ** cdfchn2_data = alloc_data_from_list([<int> <void *>cdfchn2_wrap, <int> <void *>cdfchn2_wrap])
  * cdef void ** cdfchn3_data = alloc_data_from_list([<int> <void *>cdfchn3_wrap, <int> <void *>cdfchn3_wrap])
  * cdef void ** cdfchn4_data = alloc_data_from_list([<int> <void *>cdfchn4_wrap, <int> <void *>cdfchn4_wrap])             # <<<<<<<<<<<<<<
@@ -4365,7 +4456,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfchn4_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":505
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":518
  * cdef void ** cdfchn3_data = alloc_data_from_list([<int> <void *>cdfchn3_wrap, <int> <void *>cdfchn3_wrap])
  * cdef void ** cdfchn4_data = alloc_data_from_list([<int> <void *>cdfchn4_wrap, <int> <void *>cdfchn4_wrap])
  * cdef void ** cdff4_data = alloc_data_from_list([<int> <void *>cdff4_wrap, <int> <void *>cdff4_wrap])             # <<<<<<<<<<<<<<
@@ -4380,7 +4471,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdff4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":506
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":519
  * cdef void ** cdfchn4_data = alloc_data_from_list([<int> <void *>cdfchn4_wrap, <int> <void *>cdfchn4_wrap])
  * cdef void ** cdff4_data = alloc_data_from_list([<int> <void *>cdff4_wrap, <int> <void *>cdff4_wrap])
  * cdef void ** cdffnc1_data = alloc_data_from_list([<int> <void *>cdffnc1_wrap, <int> <void *>cdffnc1_wrap])             # <<<<<<<<<<<<<<
@@ -4395,7 +4486,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdffnc1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":507
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":520
  * cdef void ** cdff4_data = alloc_data_from_list([<int> <void *>cdff4_wrap, <int> <void *>cdff4_wrap])
  * cdef void ** cdffnc1_data = alloc_data_from_list([<int> <void *>cdffnc1_wrap, <int> <void *>cdffnc1_wrap])
  * cdef void ** cdffnc2_data = alloc_data_from_list([<int> <void *>cdffnc2_wrap, <int> <void *>cdffnc2_wrap])             # <<<<<<<<<<<<<<
@@ -4410,7 +4501,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdffnc2_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":508
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":521
  * cdef void ** cdffnc1_data = alloc_data_from_list([<int> <void *>cdffnc1_wrap, <int> <void *>cdffnc1_wrap])
  * cdef void ** cdffnc2_data = alloc_data_from_list([<int> <void *>cdffnc2_wrap, <int> <void *>cdffnc2_wrap])
  * cdef void ** cdffnc3_data = alloc_data_from_list([<int> <void *>cdffnc3_wrap, <int> <void *>cdffnc3_wrap])             # <<<<<<<<<<<<<<
@@ -4425,7 +4516,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdffnc3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":509
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":522
  * cdef void ** cdffnc2_data = alloc_data_from_list([<int> <void *>cdffnc2_wrap, <int> <void *>cdffnc2_wrap])
  * cdef void ** cdffnc3_data = alloc_data_from_list([<int> <void *>cdffnc3_wrap, <int> <void *>cdffnc3_wrap])
  * cdef void ** cdffnc4_data = alloc_data_from_list([<int> <void *>cdffnc4_wrap, <int> <void *>cdffnc4_wrap])             # <<<<<<<<<<<<<<
@@ -4440,7 +4531,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdffnc4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":510
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":523
  * cdef void ** cdffnc3_data = alloc_data_from_list([<int> <void *>cdffnc3_wrap, <int> <void *>cdffnc3_wrap])
  * cdef void ** cdffnc4_data = alloc_data_from_list([<int> <void *>cdffnc4_wrap, <int> <void *>cdffnc4_wrap])
  * cdef void ** cdffnc5_data = alloc_data_from_list([<int> <void *>cdffnc5_wrap, <int> <void *>cdffnc5_wrap])             # <<<<<<<<<<<<<<
@@ -4455,7 +4546,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdffnc5_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":511
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":524
  * cdef void ** cdffnc4_data = alloc_data_from_list([<int> <void *>cdffnc4_wrap, <int> <void *>cdffnc4_wrap])
  * cdef void ** cdffnc5_data = alloc_data_from_list([<int> <void *>cdffnc5_wrap, <int> <void *>cdffnc5_wrap])
  * cdef void ** cdfgam2_data = alloc_data_from_list([<int> <void *>cdfgam2_wrap, <int> <void *>cdfgam2_wrap])             # <<<<<<<<<<<<<<
@@ -4470,7 +4561,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfgam2_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":512
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":525
  * cdef void ** cdffnc5_data = alloc_data_from_list([<int> <void *>cdffnc5_wrap, <int> <void *>cdffnc5_wrap])
  * cdef void ** cdfgam2_data = alloc_data_from_list([<int> <void *>cdfgam2_wrap, <int> <void *>cdfgam2_wrap])
  * cdef void ** cdfgam3_data = alloc_data_from_list([<int> <void *>cdfgam3_wrap, <int> <void *>cdfgam3_wrap])             # <<<<<<<<<<<<<<
@@ -4485,7 +4576,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfgam3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":513
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":526
  * cdef void ** cdfgam2_data = alloc_data_from_list([<int> <void *>cdfgam2_wrap, <int> <void *>cdfgam2_wrap])
  * cdef void ** cdfgam3_data = alloc_data_from_list([<int> <void *>cdfgam3_wrap, <int> <void *>cdfgam3_wrap])
  * cdef void ** cdfgam4_data = alloc_data_from_list([<int> <void *>cdfgam4_wrap, <int> <void *>cdfgam4_wrap])             # <<<<<<<<<<<<<<
@@ -4500,7 +4591,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfgam4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":514
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":527
  * cdef void ** cdfgam3_data = alloc_data_from_list([<int> <void *>cdfgam3_wrap, <int> <void *>cdfgam3_wrap])
  * cdef void ** cdfgam4_data = alloc_data_from_list([<int> <void *>cdfgam4_wrap, <int> <void *>cdfgam4_wrap])
  * cdef void ** cdfnbn2_data = alloc_data_from_list([<int> <void *>cdfnbn2_wrap, <int> <void *>cdfnbn2_wrap])             # <<<<<<<<<<<<<<
@@ -4515,7 +4606,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfnbn2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":515
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":528
  * cdef void ** cdfgam4_data = alloc_data_from_list([<int> <void *>cdfgam4_wrap, <int> <void *>cdfgam4_wrap])
  * cdef void ** cdfnbn2_data = alloc_data_from_list([<int> <void *>cdfnbn2_wrap, <int> <void *>cdfnbn2_wrap])
  * cdef void ** cdfnbn3_data = alloc_data_from_list([<int> <void *>cdfnbn3_wrap, <int> <void *>cdfnbn3_wrap])             # <<<<<<<<<<<<<<
@@ -4530,7 +4621,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfnbn3_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":516
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":529
  * cdef void ** cdfnbn2_data = alloc_data_from_list([<int> <void *>cdfnbn2_wrap, <int> <void *>cdfnbn2_wrap])
  * cdef void ** cdfnbn3_data = alloc_data_from_list([<int> <void *>cdfnbn3_wrap, <int> <void *>cdfnbn3_wrap])
  * cdef void ** cdfnor3_data = alloc_data_from_list([<int> <void *>cdfnor3_wrap, <int> <void *>cdfnor3_wrap])             # <<<<<<<<<<<<<<
@@ -4545,7 +4636,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfnor3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":517
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":530
  * cdef void ** cdfnbn3_data = alloc_data_from_list([<int> <void *>cdfnbn3_wrap, <int> <void *>cdfnbn3_wrap])
  * cdef void ** cdfnor3_data = alloc_data_from_list([<int> <void *>cdfnor3_wrap, <int> <void *>cdfnor3_wrap])
  * cdef void ** cdfnor4_data = alloc_data_from_list([<int> <void *>cdfnor4_wrap, <int> <void *>cdfnor4_wrap])             # <<<<<<<<<<<<<<
@@ -4560,7 +4651,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfnor4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":518
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":531
  * cdef void ** cdfnor3_data = alloc_data_from_list([<int> <void *>cdfnor3_wrap, <int> <void *>cdfnor3_wrap])
  * cdef void ** cdfnor4_data = alloc_data_from_list([<int> <void *>cdfnor4_wrap, <int> <void *>cdfnor4_wrap])
  * cdef void ** cdfpoi2_data = alloc_data_from_list([<int> <void *>cdfpoi2_wrap, <int> <void *>cdfpoi2_wrap])             # <<<<<<<<<<<<<<
@@ -4575,7 +4666,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdfpoi2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":519
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":532
  * cdef void ** cdfnor4_data = alloc_data_from_list([<int> <void *>cdfnor4_wrap, <int> <void *>cdfnor4_wrap])
  * cdef void ** cdfpoi2_data = alloc_data_from_list([<int> <void *>cdfpoi2_wrap, <int> <void *>cdfpoi2_wrap])
  * cdef void ** cdft1_data = alloc_data_from_list([<int> <void *>cdft1_wrap, <int> <void *>cdft1_wrap])             # <<<<<<<<<<<<<<
@@ -4590,7 +4681,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdft1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":520
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":533
  * cdef void ** cdfpoi2_data = alloc_data_from_list([<int> <void *>cdfpoi2_wrap, <int> <void *>cdfpoi2_wrap])
  * cdef void ** cdft1_data = alloc_data_from_list([<int> <void *>cdft1_wrap, <int> <void *>cdft1_wrap])
  * cdef void ** cdft2_data = alloc_data_from_list([<int> <void *>cdft2_wrap, <int> <void *>cdft2_wrap])             # <<<<<<<<<<<<<<
@@ -4605,7 +4696,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdft2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":521
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":534
  * cdef void ** cdft1_data = alloc_data_from_list([<int> <void *>cdft1_wrap, <int> <void *>cdft1_wrap])
  * cdef void ** cdft2_data = alloc_data_from_list([<int> <void *>cdft2_wrap, <int> <void *>cdft2_wrap])
  * cdef void ** cdft3_data = alloc_data_from_list([<int> <void *>cdft3_wrap, <int> <void *>cdft3_wrap])             # <<<<<<<<<<<<<<
@@ -4620,7 +4711,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdft3_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":522
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":535
  * cdef void ** cdft2_data = alloc_data_from_list([<int> <void *>cdft2_wrap, <int> <void *>cdft2_wrap])
  * cdef void ** cdft3_data = alloc_data_from_list([<int> <void *>cdft3_wrap, <int> <void *>cdft3_wrap])
  * cdef void ** cdftnc1_data = alloc_data_from_list([<int> <void *>cdftnc1_wrap, <int> <void *>cdftnc1_wrap])             # <<<<<<<<<<<<<<
@@ -4635,7 +4726,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdftnc1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":523
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":536
  * cdef void ** cdft3_data = alloc_data_from_list([<int> <void *>cdft3_wrap, <int> <void *>cdft3_wrap])
  * cdef void ** cdftnc1_data = alloc_data_from_list([<int> <void *>cdftnc1_wrap, <int> <void *>cdftnc1_wrap])
  * cdef void ** cdftnc2_data = alloc_data_from_list([<int> <void *>cdftnc2_wrap, <int> <void *>cdftnc2_wrap])             # <<<<<<<<<<<<<<
@@ -4650,7 +4741,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdftnc2_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":524
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":537
  * cdef void ** cdftnc1_data = alloc_data_from_list([<int> <void *>cdftnc1_wrap, <int> <void *>cdftnc1_wrap])
  * cdef void ** cdftnc2_data = alloc_data_from_list([<int> <void *>cdftnc2_wrap, <int> <void *>cdftnc2_wrap])
  * cdef void ** cdftnc3_data = alloc_data_from_list([<int> <void *>cdftnc3_wrap, <int> <void *>cdftnc3_wrap])             # <<<<<<<<<<<<<<
@@ -4665,7 +4756,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdftnc3_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":525
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":538
  * cdef void ** cdftnc2_data = alloc_data_from_list([<int> <void *>cdftnc2_wrap, <int> <void *>cdftnc2_wrap])
  * cdef void ** cdftnc3_data = alloc_data_from_list([<int> <void *>cdftnc3_wrap, <int> <void *>cdftnc3_wrap])
  * cdef void ** cdftnc4_data = alloc_data_from_list([<int> <void *>cdftnc4_wrap, <int> <void *>cdftnc4_wrap])             # <<<<<<<<<<<<<<
@@ -4680,7 +4771,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cdftnc4_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":526
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":539
  * cdef void ** cdftnc3_data = alloc_data_from_list([<int> <void *>cdftnc3_wrap, <int> <void *>cdftnc3_wrap])
  * cdef void ** cdftnc4_data = alloc_data_from_list([<int> <void *>cdftnc4_wrap, <int> <void *>cdftnc4_wrap])
  * cdef void ** tklambda_data = alloc_data_from_list([<int> <void *>tukeylambdacdf, <int> <void *>tukeylambdacdf])             # <<<<<<<<<<<<<<
@@ -4695,7 +4786,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_tklambda_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":527
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":540
  * cdef void ** cdftnc4_data = alloc_data_from_list([<int> <void *>cdftnc4_wrap, <int> <void *>cdftnc4_wrap])
  * cdef void ** tklambda_data = alloc_data_from_list([<int> <void *>tukeylambdacdf, <int> <void *>tukeylambdacdf])
  * cdef void ** mathieu_a_data = alloc_data_from_list([<int> <void *>cem_cva_wrap, <int> <void *>cem_cva_wrap])             # <<<<<<<<<<<<<<
@@ -4710,7 +4801,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_a_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":528
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":541
  * cdef void ** tklambda_data = alloc_data_from_list([<int> <void *>tukeylambdacdf, <int> <void *>tukeylambdacdf])
  * cdef void ** mathieu_a_data = alloc_data_from_list([<int> <void *>cem_cva_wrap, <int> <void *>cem_cva_wrap])
  * cdef void ** mathieu_b_data = alloc_data_from_list([<int> <void *>sem_cva_wrap, <int> <void *>sem_cva_wrap])             # <<<<<<<<<<<<<<
@@ -4725,7 +4816,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_b_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":529
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":542
  * cdef void ** mathieu_a_data = alloc_data_from_list([<int> <void *>cem_cva_wrap, <int> <void *>cem_cva_wrap])
  * cdef void ** mathieu_b_data = alloc_data_from_list([<int> <void *>sem_cva_wrap, <int> <void *>sem_cva_wrap])
  * cdef void ** mathieu_cem_data = alloc_data_from_list([<int> <void *>cem_wrap, <int> <void *>cem_wrap])             # <<<<<<<<<<<<<<
@@ -4740,7 +4831,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_cem_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":530
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":543
  * cdef void ** mathieu_b_data = alloc_data_from_list([<int> <void *>sem_cva_wrap, <int> <void *>sem_cva_wrap])
  * cdef void ** mathieu_cem_data = alloc_data_from_list([<int> <void *>cem_wrap, <int> <void *>cem_wrap])
  * cdef void ** mathieu_sem_data = alloc_data_from_list([<int> <void *>sem_wrap, <int> <void *>sem_wrap])             # <<<<<<<<<<<<<<
@@ -4755,7 +4846,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_sem_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":531
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":544
  * cdef void ** mathieu_cem_data = alloc_data_from_list([<int> <void *>cem_wrap, <int> <void *>cem_wrap])
  * cdef void ** mathieu_sem_data = alloc_data_from_list([<int> <void *>sem_wrap, <int> <void *>sem_wrap])
  * cdef void ** mathieu_mcem1_data = alloc_data_from_list([<int> <void *>mcm1_wrap, <int> <void *>mcm1_wrap])             # <<<<<<<<<<<<<<
@@ -4770,7 +4861,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_mcem1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":532
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":545
  * cdef void ** mathieu_sem_data = alloc_data_from_list([<int> <void *>sem_wrap, <int> <void *>sem_wrap])
  * cdef void ** mathieu_mcem1_data = alloc_data_from_list([<int> <void *>mcm1_wrap, <int> <void *>mcm1_wrap])
  * cdef void ** mathieu_mcem2_data = alloc_data_from_list([<int> <void *>mcm2_wrap, <int> <void *>mcm2_wrap])             # <<<<<<<<<<<<<<
@@ -4785,7 +4876,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_mcem2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":533
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":546
  * cdef void ** mathieu_mcem1_data = alloc_data_from_list([<int> <void *>mcm1_wrap, <int> <void *>mcm1_wrap])
  * cdef void ** mathieu_mcem2_data = alloc_data_from_list([<int> <void *>mcm2_wrap, <int> <void *>mcm2_wrap])
  * cdef void ** mathieu_msem1_data = alloc_data_from_list([<int> <void *>msm1_wrap, <int> <void *>msm1_wrap])             # <<<<<<<<<<<<<<
@@ -4800,7 +4891,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_msem1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":534
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":547
  * cdef void ** mathieu_mcem2_data = alloc_data_from_list([<int> <void *>mcm2_wrap, <int> <void *>mcm2_wrap])
  * cdef void ** mathieu_msem1_data = alloc_data_from_list([<int> <void *>msm1_wrap, <int> <void *>msm1_wrap])
  * cdef void ** mathieu_msem2_data = alloc_data_from_list([<int> <void *>msm2_wrap, <int> <void *>msm2_wrap])             # <<<<<<<<<<<<<<
@@ -4815,7 +4906,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_mathieu_msem2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":535
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":548
  * cdef void ** mathieu_msem1_data = alloc_data_from_list([<int> <void *>msm1_wrap, <int> <void *>msm1_wrap])
  * cdef void ** mathieu_msem2_data = alloc_data_from_list([<int> <void *>msm2_wrap, <int> <void *>msm2_wrap])
  * cdef void ** lpmv_data = alloc_data_from_list([<int> <void *>pmv_wrap, <int> <void *>pmv_wrap])             # <<<<<<<<<<<<<<
@@ -4830,7 +4921,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_lpmv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":536
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":549
  * cdef void ** mathieu_msem2_data = alloc_data_from_list([<int> <void *>msm2_wrap, <int> <void *>msm2_wrap])
  * cdef void ** lpmv_data = alloc_data_from_list([<int> <void *>pmv_wrap, <int> <void *>pmv_wrap])
  * cdef void ** pbwa_data = alloc_data_from_list([<int> <void *>pbwa_wrap, <int> <void *>pbwa_wrap])             # <<<<<<<<<<<<<<
@@ -4845,7 +4936,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pbwa_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":537
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":550
  * cdef void ** lpmv_data = alloc_data_from_list([<int> <void *>pmv_wrap, <int> <void *>pmv_wrap])
  * cdef void ** pbwa_data = alloc_data_from_list([<int> <void *>pbwa_wrap, <int> <void *>pbwa_wrap])
  * cdef void ** pbdv_data = alloc_data_from_list([<int> <void *>pbdv_wrap, <int> <void *>pbdv_wrap])             # <<<<<<<<<<<<<<
@@ -4860,7 +4951,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pbdv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":538
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":551
  * cdef void ** pbwa_data = alloc_data_from_list([<int> <void *>pbwa_wrap, <int> <void *>pbwa_wrap])
  * cdef void ** pbdv_data = alloc_data_from_list([<int> <void *>pbdv_wrap, <int> <void *>pbdv_wrap])
  * cdef void ** pbvv_data = alloc_data_from_list([<int> <void *>pbvv_wrap, <int> <void *>pbvv_wrap])             # <<<<<<<<<<<<<<
@@ -4875,7 +4966,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_pbvv_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":539
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":552
  * cdef void ** pbdv_data = alloc_data_from_list([<int> <void *>pbdv_wrap, <int> <void *>pbdv_wrap])
  * cdef void ** pbvv_data = alloc_data_from_list([<int> <void *>pbvv_wrap, <int> <void *>pbvv_wrap])
  * cdef void ** prolate_aswfa_data = alloc_data_from_list([<int> <void *>prolate_aswfa_wrap, <int> <void *>prolate_aswfa_wrap])             # <<<<<<<<<<<<<<
@@ -4890,7 +4981,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":540
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":553
  * cdef void ** pbvv_data = alloc_data_from_list([<int> <void *>pbvv_wrap, <int> <void *>pbvv_wrap])
  * cdef void ** prolate_aswfa_data = alloc_data_from_list([<int> <void *>prolate_aswfa_wrap, <int> <void *>prolate_aswfa_wrap])
  * cdef void ** prolate_radial1_data = alloc_data_from_list([<int> <void *>prolate_radial1_wrap, <int> <void *>prolate_radial1_wrap])             # <<<<<<<<<<<<<<
@@ -4905,7 +4996,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_radial1_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":541
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":554
  * cdef void ** prolate_aswfa_data = alloc_data_from_list([<int> <void *>prolate_aswfa_wrap, <int> <void *>prolate_aswfa_wrap])
  * cdef void ** prolate_radial1_data = alloc_data_from_list([<int> <void *>prolate_radial1_wrap, <int> <void *>prolate_radial1_wrap])
  * cdef void ** prolate_radial2_data = alloc_data_from_list([<int> <void *>prolate_radial2_wrap, <int> <void *>prolate_radial2_wrap])             # <<<<<<<<<<<<<<
@@ -4920,7 +5011,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_radial2_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":542
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":555
  * cdef void ** prolate_radial1_data = alloc_data_from_list([<int> <void *>prolate_radial1_wrap, <int> <void *>prolate_radial1_wrap])
  * cdef void ** prolate_radial2_data = alloc_data_from_list([<int> <void *>prolate_radial2_wrap, <int> <void *>prolate_radial2_wrap])
  * cdef void ** oblate_aswfa_data = alloc_data_from_list([<int> <void *>oblate_aswfa_wrap, <int> <void *>oblate_aswfa_wrap])             # <<<<<<<<<<<<<<
@@ -4935,7 +5026,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":543
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":556
  * cdef void ** prolate_radial2_data = alloc_data_from_list([<int> <void *>prolate_radial2_wrap, <int> <void *>prolate_radial2_wrap])
  * cdef void ** oblate_aswfa_data = alloc_data_from_list([<int> <void *>oblate_aswfa_wrap, <int> <void *>oblate_aswfa_wrap])
  * cdef void ** oblate_radial1_data = alloc_data_from_list([<int> <void *>oblate_radial1_wrap, <int> <void *>oblate_radial1_wrap])             # <<<<<<<<<<<<<<
@@ -4950,7 +5041,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_radial1_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":544
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":557
  * cdef void ** oblate_aswfa_data = alloc_data_from_list([<int> <void *>oblate_aswfa_wrap, <int> <void *>oblate_aswfa_wrap])
  * cdef void ** oblate_radial1_data = alloc_data_from_list([<int> <void *>oblate_radial1_wrap, <int> <void *>oblate_radial1_wrap])
  * cdef void ** oblate_radial2_data = alloc_data_from_list([<int> <void *>oblate_radial2_wrap, <int> <void *>oblate_radial2_wrap])             # <<<<<<<<<<<<<<
@@ -4965,7 +5056,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_radial2_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":545
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":558
  * cdef void ** oblate_radial1_data = alloc_data_from_list([<int> <void *>oblate_radial1_wrap, <int> <void *>oblate_radial1_wrap])
  * cdef void ** oblate_radial2_data = alloc_data_from_list([<int> <void *>oblate_radial2_wrap, <int> <void *>oblate_radial2_wrap])
  * cdef void ** prolate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>prolate_aswfa_nocv_wrap, <int> <void *>prolate_aswfa_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -4980,7 +5071,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":546
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":559
  * cdef void ** oblate_radial2_data = alloc_data_from_list([<int> <void *>oblate_radial2_wrap, <int> <void *>oblate_radial2_wrap])
  * cdef void ** prolate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>prolate_aswfa_nocv_wrap, <int> <void *>prolate_aswfa_nocv_wrap])
  * cdef void ** prolate_radial1_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial1_nocv_wrap, <int> <void *>prolate_radial1_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -4995,7 +5086,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_radial1_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":547
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":560
  * cdef void ** prolate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>prolate_aswfa_nocv_wrap, <int> <void *>prolate_aswfa_nocv_wrap])
  * cdef void ** prolate_radial1_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial1_nocv_wrap, <int> <void *>prolate_radial1_nocv_wrap])
  * cdef void ** prolate_radial2_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial2_nocv_wrap, <int> <void *>prolate_radial2_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -5010,7 +5101,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_radial2_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":548
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":561
  * cdef void ** prolate_radial1_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial1_nocv_wrap, <int> <void *>prolate_radial1_nocv_wrap])
  * cdef void ** prolate_radial2_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial2_nocv_wrap, <int> <void *>prolate_radial2_nocv_wrap])
  * cdef void ** oblate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>oblate_aswfa_nocv_wrap, <int> <void *>oblate_aswfa_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -5025,7 +5116,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":549
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":562
  * cdef void ** prolate_radial2_nocv_data = alloc_data_from_list([<int> <void *>prolate_radial2_nocv_wrap, <int> <void *>prolate_radial2_nocv_wrap])
  * cdef void ** oblate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>oblate_aswfa_nocv_wrap, <int> <void *>oblate_aswfa_nocv_wrap])
  * cdef void ** oblate_radial1_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial1_nocv_wrap, <int> <void *>oblate_radial1_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -5040,7 +5131,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_radial1_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":550
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":563
  * cdef void ** oblate_aswfa_nocv_data = alloc_data_from_list([<int> <void *>oblate_aswfa_nocv_wrap, <int> <void *>oblate_aswfa_nocv_wrap])
  * cdef void ** oblate_radial1_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial1_nocv_wrap, <int> <void *>oblate_radial1_nocv_wrap])
  * cdef void ** oblate_radial2_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial2_nocv_wrap, <int> <void *>oblate_radial2_nocv_wrap])             # <<<<<<<<<<<<<<
@@ -5055,7 +5146,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_radial2_nocv_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":551
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":564
  * cdef void ** oblate_radial1_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial1_nocv_wrap, <int> <void *>oblate_radial1_nocv_wrap])
  * cdef void ** oblate_radial2_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial2_nocv_wrap, <int> <void *>oblate_radial2_nocv_wrap])
  * cdef void ** prolate_segv_data = alloc_data_from_list([<int> <void *>prolate_segv_wrap, <int> <void *>prolate_segv_wrap])             # <<<<<<<<<<<<<<
@@ -5070,7 +5161,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_prolate_segv_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":552
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":565
  * cdef void ** oblate_radial2_nocv_data = alloc_data_from_list([<int> <void *>oblate_radial2_nocv_wrap, <int> <void *>oblate_radial2_nocv_wrap])
  * cdef void ** prolate_segv_data = alloc_data_from_list([<int> <void *>prolate_segv_wrap, <int> <void *>prolate_segv_wrap])
  * cdef void ** oblate_segv_data = alloc_data_from_list([<int> <void *>oblate_segv_wrap, <int> <void *>oblate_segv_wrap])             # <<<<<<<<<<<<<<
@@ -5085,7 +5176,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_oblate_segv_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":553
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":566
  * cdef void ** prolate_segv_data = alloc_data_from_list([<int> <void *>prolate_segv_wrap, <int> <void *>prolate_segv_wrap])
  * cdef void ** oblate_segv_data = alloc_data_from_list([<int> <void *>oblate_segv_wrap, <int> <void *>oblate_segv_wrap])
  * cdef void ** modfresnelp_data = alloc_data_from_list([<int> <void *>modified_fresnel_plus_wrap, <int> <void *>modified_fresnel_plus_wrap])             # <<<<<<<<<<<<<<
@@ -5100,7 +5191,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_modfresnelp_data = alloc_data_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":554
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":567
  * cdef void ** oblate_segv_data = alloc_data_from_list([<int> <void *>oblate_segv_wrap, <int> <void *>oblate_segv_wrap])
  * cdef void ** modfresnelp_data = alloc_data_from_list([<int> <void *>modified_fresnel_plus_wrap, <int> <void *>modified_fresnel_plus_wrap])
  * cdef void ** modfresnelm_data = alloc_data_from_list([<int> <void *>modified_fresnel_minus_wrap, <int> <void *>modified_fresnel_minus_wrap])             # <<<<<<<<<<<<<<
@@ -5115,7 +5206,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_modfresnelm_data = alloc_data_from_list(((System::Object^)__pyx_t_5));
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":562
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":575
  *     return r
  * 
  * cdef char* cephes_7_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])             # <<<<<<<<<<<<<<
@@ -5154,7 +5245,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_7_types = alloc_types_from_list(((System::Object^)__pyx_t_15));
   __pyx_t_15 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":563
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":576
  * 
  * cdef char* cephes_7_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])
  * cdef char* cephes_6_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])             # <<<<<<<<<<<<<<
@@ -5189,7 +5280,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_6_types = alloc_types_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":564
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":577
  * cdef char* cephes_7_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])
  * cdef char* cephes_6_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])
  * cdef char* cephes_5_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])             # <<<<<<<<<<<<<<
@@ -5220,7 +5311,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_5_types = alloc_types_from_list(((System::Object^)__pyx_t_13));
   __pyx_t_13 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":566
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":579
  * cdef char* cephes_5_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])
  * 
  * cdef char* cephes_5b2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE,  np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, ])             # <<<<<<<<<<<<<<
@@ -5251,7 +5342,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_5b2_types = alloc_types_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":568
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":581
  * cdef char* cephes_5b2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE,  np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, ])
  * 
  * cdef char* cephes_5c_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5302,7 +5393,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_5c_types = alloc_types_from_list(((System::Object^)__pyx_t_21));
   __pyx_t_21 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":570
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":583
  * cdef char* cephes_5c_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * 
  * cdef char* cephes_5c2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5353,7 +5444,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_5c2_types = alloc_types_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":572
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":585
  * cdef char* cephes_5c2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * 
  * cdef char* cephes_4_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])             # <<<<<<<<<<<<<<
@@ -5380,7 +5471,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_4_types = alloc_types_from_list(((System::Object^)__pyx_t_11));
   __pyx_t_11 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":574
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":587
  * cdef char* cephes_4_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, ])
  * 
  * cdef char* cephes_4c_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE ])             # <<<<<<<<<<<<<<
@@ -5423,7 +5514,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_4c_types = alloc_types_from_list(((System::Object^)__pyx_t_17));
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":576
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":589
  * cdef char* cephes_4c_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE ])
  * 
  * cdef char* cephes_3_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5446,7 +5537,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_3_types = alloc_types_from_list(((System::Object^)__pyx_t_13));
   __pyx_t_13 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":577
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":590
  * 
  * cdef char* cephes_3_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE,  ])
  * cdef char* cephes_3_cmplx_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CFLOAT,  np.NPY_CFLOAT,  np.NPY_CFLOAT,   np.NPY_CDOUBLE,  np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5481,7 +5572,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_3_cmplx_types = alloc_types_from_list(((System::Object^)__pyx_t_7));
   __pyx_t_7 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":578
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":591
  * cdef char* cephes_3_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE,  ])
  * cdef char* cephes_3_cmplx_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CFLOAT,  np.NPY_CFLOAT,  np.NPY_CFLOAT,   np.NPY_CDOUBLE,  np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_3c_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5516,7 +5607,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_3c_types = alloc_types_from_list(((System::Object^)__pyx_t_13));
   __pyx_t_13 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":579
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":592
  * cdef char* cephes_3_cmplx_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_FLOAT,   np.NPY_DOUBLE,  np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_CFLOAT,  np.NPY_CFLOAT,  np.NPY_CFLOAT,   np.NPY_CDOUBLE,  np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_3c_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_3cp_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5539,7 +5630,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types = alloc_types_from_list(((System::Object^)__pyx_t_17));
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":580
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":593
  * cdef char* cephes_3c_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_FLOAT, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_DOUBLE, np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_3cp_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_DOUBLE,  np.NPY_DOUBLE,   ])             # <<<<<<<<<<<<<<
@@ -5558,7 +5649,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_2_types = alloc_types_from_list(((System::Object^)__pyx_t_15));
   __pyx_t_15 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":581
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":594
  * cdef char* cephes_3cp_types = alloc_types_from_list([ np.NPY_FLOAT, np.NPY_CFLOAT,  np.NPY_CFLOAT, np.NPY_DOUBLE, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * cdef char* cephes_2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_DOUBLE,  np.NPY_DOUBLE,   ])
  * cdef char* cephes_1rc_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_DOUBLE,  np.NPY_DOUBLE,  np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE  ])             # <<<<<<<<<<<<<<
@@ -5585,7 +5676,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types = alloc_types_from_list(((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":582
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":595
  * cdef char* cephes_2_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_DOUBLE,  np.NPY_DOUBLE,   ])
  * cdef char* cephes_1rc_types = alloc_types_from_list([ np.NPY_FLOAT,  np.NPY_FLOAT,  np.NPY_DOUBLE,  np.NPY_DOUBLE,  np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE  ])
  * cdef char* cephes_1c_types = alloc_types_from_list([ np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])             # <<<<<<<<<<<<<<
@@ -5604,7 +5695,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_v_5scipy_7special_7_cephes_cephes_1c_types = alloc_types_from_list(((System::Object^)__pyx_t_17));
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":584
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":597
  * cdef char* cephes_1c_types = alloc_types_from_list([ np.NPY_CFLOAT, np.NPY_CFLOAT, np.NPY_CDOUBLE, np.NPY_CDOUBLE,  ])
  * 
  * cephes1_functions[0] = NpyUFunc_f_f_As_d_d             # <<<<<<<<<<<<<<
@@ -5613,7 +5704,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_functions[0]) = NpyUFunc_f_f_As_d_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":585
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":598
  * 
  * cephes1_functions[0] = NpyUFunc_f_f_As_d_d
  * cephes1_functions[1] = NpyUFunc_d_d             # <<<<<<<<<<<<<<
@@ -5622,7 +5713,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_functions[1]) = NpyUFunc_d_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":586
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":599
  * cephes1_functions[0] = NpyUFunc_f_f_As_d_d
  * cephes1_functions[1] = NpyUFunc_d_d
  * cephes1c_functions[0] = cephes_F_F_As_D_D             # <<<<<<<<<<<<<<
@@ -5631,7 +5722,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_functions[0]) = cephes_F_F_As_D_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":587
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":600
  * cephes1_functions[1] = NpyUFunc_d_d
  * cephes1c_functions[0] = cephes_F_F_As_D_D
  * cephes1c_functions[1] = cephes_D_D             # <<<<<<<<<<<<<<
@@ -5640,7 +5731,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_functions[1]) = cephes_D_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":588
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":601
  * cephes1c_functions[0] = cephes_F_F_As_D_D
  * cephes1c_functions[1] = cephes_D_D
  * cephes1rc_functions[0] = NpyUFunc_f_f_As_d_d             # <<<<<<<<<<<<<<
@@ -5649,7 +5740,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions[0]) = NpyUFunc_f_f_As_d_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":589
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":602
  * cephes1c_functions[1] = cephes_D_D
  * cephes1rc_functions[0] = NpyUFunc_f_f_As_d_d
  * cephes1rc_functions[1] = NpyUFunc_d_d             # <<<<<<<<<<<<<<
@@ -5658,7 +5749,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions[1]) = NpyUFunc_d_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":590
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":603
  * cephes1rc_functions[0] = NpyUFunc_f_f_As_d_d
  * cephes1rc_functions[1] = NpyUFunc_d_d
  * cephes1rc_functions[2] = cephes_F_F_As_D_D             # <<<<<<<<<<<<<<
@@ -5667,7 +5758,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions[2]) = cephes_F_F_As_D_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":591
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":604
  * cephes1rc_functions[1] = NpyUFunc_d_d
  * cephes1rc_functions[2] = cephes_F_F_As_D_D
  * cephes1rc_functions[3] = cephes_D_D             # <<<<<<<<<<<<<<
@@ -5676,7 +5767,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions[3]) = cephes_D_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":592
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":605
  * cephes1rc_functions[2] = cephes_F_F_As_D_D
  * cephes1rc_functions[3] = cephes_D_D
  * cephes1_2_functions[0] = NpyUFunc_f_ff_As_d_dd             # <<<<<<<<<<<<<<
@@ -5685,7 +5776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions[0]) = NpyUFunc_f_ff_As_d_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":593
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":606
  * cephes1rc_functions[3] = cephes_D_D
  * cephes1_2_functions[0] = NpyUFunc_f_ff_As_d_dd
  * cephes1_2_functions[1] = NpyUFunc_d_dd             # <<<<<<<<<<<<<<
@@ -5694,7 +5785,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions[1]) = NpyUFunc_d_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":594
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":607
  * cephes1_2_functions[0] = NpyUFunc_f_ff_As_d_dd
  * cephes1_2_functions[1] = NpyUFunc_d_dd
  * cephes1_2_functions[2] = NpyUFunc_F_FF_As_D_DD             # <<<<<<<<<<<<<<
@@ -5703,7 +5794,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions[2]) = NpyUFunc_F_FF_As_D_DD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":595
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":608
  * cephes1_2_functions[1] = NpyUFunc_d_dd
  * cephes1_2_functions[2] = NpyUFunc_F_FF_As_D_DD
  * cephes1_2_functions[3] = NpyUFunc_D_DD             # <<<<<<<<<<<<<<
@@ -5712,7 +5803,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions[3]) = NpyUFunc_D_DD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":596
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":609
  * cephes1_2_functions[2] = NpyUFunc_F_FF_As_D_DD
  * cephes1_2_functions[3] = NpyUFunc_D_DD
  * cephes1_2c_functions[0] = NpyUFunc_f_FF_As_d_DD             # <<<<<<<<<<<<<<
@@ -5721,7 +5812,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions[0]) = NpyUFunc_f_FF_As_d_DD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":597
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":610
  * cephes1_2_functions[3] = NpyUFunc_D_DD
  * cephes1_2c_functions[0] = NpyUFunc_f_FF_As_d_DD
  * cephes1_2c_functions[1] = NpyUFunc_d_DD             # <<<<<<<<<<<<<<
@@ -5730,7 +5821,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions[1]) = NpyUFunc_d_DD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":598
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":611
  * cephes1_2c_functions[0] = NpyUFunc_f_FF_As_d_DD
  * cephes1_2c_functions[1] = NpyUFunc_d_DD
  * cephes1c_4_functions[0] = NpyUFunc_f_ffff_As_d_dddd             # <<<<<<<<<<<<<<
@@ -5739,7 +5830,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions[0]) = NpyUFunc_f_ffff_As_d_dddd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":599
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":612
  * cephes1_2c_functions[1] = NpyUFunc_d_DD
  * cephes1c_4_functions[0] = NpyUFunc_f_ffff_As_d_dddd
  * cephes1c_4_functions[1] = NpyUFunc_d_dddd             # <<<<<<<<<<<<<<
@@ -5748,7 +5839,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions[1]) = NpyUFunc_d_dddd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":600
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":613
  * cephes1c_4_functions[0] = NpyUFunc_f_ffff_As_d_dddd
  * cephes1c_4_functions[1] = NpyUFunc_d_dddd
  * cephes1c_4_functions[2] = NpyUFunc_F_FFFF_As_D_DDDD             # <<<<<<<<<<<<<<
@@ -5757,7 +5848,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions[2]) = NpyUFunc_F_FFFF_As_D_DDDD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":601
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":614
  * cephes1c_4_functions[1] = NpyUFunc_d_dddd
  * cephes1c_4_functions[2] = NpyUFunc_F_FFFF_As_D_DDDD
  * cephes1c_4_functions[3] = NpyUFunc_D_DDDD             # <<<<<<<<<<<<<<
@@ -5766,7 +5857,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions[3]) = NpyUFunc_D_DDDD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":602
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":615
  * cephes1c_4_functions[2] = NpyUFunc_F_FFFF_As_D_DDDD
  * cephes1c_4_functions[3] = NpyUFunc_D_DDDD
  * cephes1cpb_4_functions[0] = NpyUFunc_f_FFFF_As_d_DDDD             # <<<<<<<<<<<<<<
@@ -5775,7 +5866,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions[0]) = NpyUFunc_f_FFFF_As_d_DDDD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":603
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":616
  * cephes1c_4_functions[3] = NpyUFunc_D_DDDD
  * cephes1cpb_4_functions[0] = NpyUFunc_f_FFFF_As_d_DDDD
  * cephes1cpb_4_functions[1] = NpyUFunc_d_DDDD             # <<<<<<<<<<<<<<
@@ -5784,7 +5875,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions[1]) = NpyUFunc_d_DDDD;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":604
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":617
  * cephes1cpb_4_functions[0] = NpyUFunc_f_FFFF_As_d_DDDD
  * cephes1cpb_4_functions[1] = NpyUFunc_d_DDDD
  * cephes2_functions[0] = NpyUFunc_ff_f_As_dd_d             # <<<<<<<<<<<<<<
@@ -5793,7 +5884,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_functions[0]) = NpyUFunc_ff_f_As_dd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":605
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":618
  * cephes1cpb_4_functions[1] = NpyUFunc_d_DDDD
  * cephes2_functions[0] = NpyUFunc_ff_f_As_dd_d
  * cephes2_functions[1] = NpyUFunc_dd_d             # <<<<<<<<<<<<<<
@@ -5802,7 +5893,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_functions[1]) = NpyUFunc_dd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":606
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":619
  * cephes2_functions[0] = NpyUFunc_ff_f_As_dd_d
  * cephes2_functions[1] = NpyUFunc_dd_d
  * cephes2_2_functions[0] = NpyUFunc_ff_ff_As_dd_dd             # <<<<<<<<<<<<<<
@@ -5811,7 +5902,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions[0]) = NpyUFunc_ff_ff_As_dd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":607
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":620
  * cephes2_functions[1] = NpyUFunc_dd_d
  * cephes2_2_functions[0] = NpyUFunc_ff_ff_As_dd_dd
  * cephes2_2_functions[1] = NpyUFunc_dd_dd             # <<<<<<<<<<<<<<
@@ -5820,7 +5911,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions[1]) = NpyUFunc_dd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":608
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":621
  * cephes2_2_functions[0] = NpyUFunc_ff_ff_As_dd_dd
  * cephes2_2_functions[1] = NpyUFunc_dd_dd
  * cephes2a_functions[0] = NpyUFunc_ff_f_As_id_d             # <<<<<<<<<<<<<<
@@ -5829,7 +5920,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2a_functions[0]) = NpyUFunc_ff_f_As_id_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":609
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":622
  * cephes2_2_functions[1] = NpyUFunc_dd_dd
  * cephes2a_functions[0] = NpyUFunc_ff_f_As_id_d
  * cephes2a_functions[1] = NpyUFunc_dd_d_As_id_d             # <<<<<<<<<<<<<<
@@ -5838,7 +5929,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2a_functions[1]) = NpyUFunc_dd_d_As_id_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":610
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":623
  * cephes2a_functions[0] = NpyUFunc_ff_f_As_id_d
  * cephes2a_functions[1] = NpyUFunc_dd_d_As_id_d
  * cephes2c_functions[0] = NpyUFunc_ff_f_As_dd_d             # <<<<<<<<<<<<<<
@@ -5847,7 +5938,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2c_functions[0]) = NpyUFunc_ff_f_As_dd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":611
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":624
  * cephes2a_functions[1] = NpyUFunc_dd_d_As_id_d
  * cephes2c_functions[0] = NpyUFunc_ff_f_As_dd_d
  * cephes2c_functions[1] = NpyUFunc_dd_d             # <<<<<<<<<<<<<<
@@ -5856,7 +5947,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2c_functions[1]) = NpyUFunc_dd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":612
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":625
  * cephes2c_functions[0] = NpyUFunc_ff_f_As_dd_d
  * cephes2c_functions[1] = NpyUFunc_dd_d
  * cephes2c_functions[2] = NpyUFunc_fF_F_As_dD_D             # <<<<<<<<<<<<<<
@@ -5865,7 +5956,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2c_functions[2]) = NpyUFunc_fF_F_As_dD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":613
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":626
  * cephes2c_functions[1] = NpyUFunc_dd_d
  * cephes2c_functions[2] = NpyUFunc_fF_F_As_dD_D
  * cephes2c_functions[3] = NpyUFunc_dD_D             # <<<<<<<<<<<<<<
@@ -5874,7 +5965,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2c_functions[3]) = NpyUFunc_dD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":614
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":627
  * cephes2c_functions[2] = NpyUFunc_fF_F_As_dD_D
  * cephes2c_functions[3] = NpyUFunc_dD_D
  * cephes2cpp_functions[0] = NpyUFunc_fF_F_As_dD_D             # <<<<<<<<<<<<<<
@@ -5883,7 +5974,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions[0]) = NpyUFunc_fF_F_As_dD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":615
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":628
  * cephes2c_functions[3] = NpyUFunc_dD_D
  * cephes2cpp_functions[0] = NpyUFunc_fF_F_As_dD_D
  * cephes2cpp_functions[1] = NpyUFunc_dD_D             # <<<<<<<<<<<<<<
@@ -5892,7 +5983,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions[1]) = NpyUFunc_dD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":616
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":629
  * cephes2cpp_functions[0] = NpyUFunc_fF_F_As_dD_D
  * cephes2cpp_functions[1] = NpyUFunc_dD_D
  * cephes2_4_functions[0] = NpyUFunc_ff_ffff_As_dd_dddd             # <<<<<<<<<<<<<<
@@ -5901,7 +5992,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_4_functions[0]) = NpyUFunc_ff_ffff_As_dd_dddd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":617
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":630
  * cephes2cpp_functions[1] = NpyUFunc_dD_D
  * cephes2_4_functions[0] = NpyUFunc_ff_ffff_As_dd_dddd
  * cephes2_4_functions[1] = NpyUFunc_dd_dddd             # <<<<<<<<<<<<<<
@@ -5910,7 +6001,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes2_4_functions[1]) = NpyUFunc_dd_dddd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":618
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":631
  * cephes2_4_functions[0] = NpyUFunc_ff_ffff_As_dd_dddd
  * cephes2_4_functions[1] = NpyUFunc_dd_dddd
  * cephes3_functions[0] = NpyUFunc_fff_f_As_ddd_d             # <<<<<<<<<<<<<<
@@ -5919,7 +6010,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_functions[0]) = NpyUFunc_fff_f_As_ddd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":619
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":632
  * cephes2_4_functions[1] = NpyUFunc_dd_dddd
  * cephes3_functions[0] = NpyUFunc_fff_f_As_ddd_d
  * cephes3_functions[1] = NpyUFunc_ddd_d             # <<<<<<<<<<<<<<
@@ -5928,7 +6019,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_functions[1]) = NpyUFunc_ddd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":620
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":633
  * cephes3_functions[0] = NpyUFunc_fff_f_As_ddd_d
  * cephes3_functions[1] = NpyUFunc_ddd_d
  * cephes3_functions[2] = NpyUFunc_ffF_F_As_ddD_D             # <<<<<<<<<<<<<<
@@ -5937,7 +6028,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_functions[2]) = NpyUFunc_ffF_F_As_ddD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":621
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":634
  * cephes3_functions[1] = NpyUFunc_ddd_d
  * cephes3_functions[2] = NpyUFunc_ffF_F_As_ddD_D
  * cephes3_functions[3] = NpyUFunc_ddD_D             # <<<<<<<<<<<<<<
@@ -5946,7 +6037,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_functions[3]) = NpyUFunc_ddD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":622
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":635
  * cephes3_functions[2] = NpyUFunc_ffF_F_As_ddD_D
  * cephes3_functions[3] = NpyUFunc_ddD_D
  * cephes3a_functions[0] = NpyUFunc_fff_f_As_iid_d             # <<<<<<<<<<<<<<
@@ -5955,7 +6046,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3a_functions[0]) = NpyUFunc_fff_f_As_iid_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":623
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":636
  * cephes3_functions[3] = NpyUFunc_ddD_D
  * cephes3a_functions[0] = NpyUFunc_fff_f_As_iid_d
  * cephes3a_functions[1] = NpyUFunc_ddd_d_As_iid_d             # <<<<<<<<<<<<<<
@@ -5964,7 +6055,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3a_functions[1]) = NpyUFunc_ddd_d_As_iid_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":624
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":637
  * cephes3a_functions[0] = NpyUFunc_fff_f_As_iid_d
  * cephes3a_functions[1] = NpyUFunc_ddd_d_As_iid_d
  * cephes3_2_functions[0] = NpyUFunc_fff_ff_As_ddd_dd             # <<<<<<<<<<<<<<
@@ -5973,7 +6064,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions[0]) = NpyUFunc_fff_ff_As_ddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":625
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":638
  * cephes3a_functions[1] = NpyUFunc_ddd_d_As_iid_d
  * cephes3_2_functions[0] = NpyUFunc_fff_ff_As_ddd_dd
  * cephes3_2_functions[1] = NpyUFunc_ddd_dd             # <<<<<<<<<<<<<<
@@ -5982,7 +6073,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions[1]) = NpyUFunc_ddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":626
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":639
  * cephes3_2_functions[0] = NpyUFunc_fff_ff_As_ddd_dd
  * cephes3_2_functions[1] = NpyUFunc_ddd_dd
  * cephes4_functions[0] = NpyUFunc_ffff_f_As_dddd_d             # <<<<<<<<<<<<<<
@@ -5991,7 +6082,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_functions[0]) = NpyUFunc_ffff_f_As_dddd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":627
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":640
  * cephes3_2_functions[1] = NpyUFunc_ddd_dd
  * cephes4_functions[0] = NpyUFunc_ffff_f_As_dddd_d
  * cephes4_functions[1] = NpyUFunc_dddd_d             # <<<<<<<<<<<<<<
@@ -6000,7 +6091,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_functions[1]) = NpyUFunc_dddd_d;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":628
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":641
  * cephes4_functions[0] = NpyUFunc_ffff_f_As_dddd_d
  * cephes4_functions[1] = NpyUFunc_dddd_d
  * cephes4_functions[2] = NpyUFunc_fffF_F_As_dddD_D             # <<<<<<<<<<<<<<
@@ -6009,7 +6100,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_functions[2]) = NpyUFunc_fffF_F_As_dddD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":629
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":642
  * cephes4_functions[1] = NpyUFunc_dddd_d
  * cephes4_functions[2] = NpyUFunc_fffF_F_As_dddD_D
  * cephes4_functions[3] = NpyUFunc_dddD_D             # <<<<<<<<<<<<<<
@@ -6018,7 +6109,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_functions[3]) = NpyUFunc_dddD_D;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":630
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":643
  * cephes4_functions[2] = NpyUFunc_fffF_F_As_dddD_D
  * cephes4_functions[3] = NpyUFunc_dddD_D
  * cephes4_2_functions[0] = NpyUFunc_ffff_ff_As_dddd_dd             # <<<<<<<<<<<<<<
@@ -6027,7 +6118,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions[0]) = NpyUFunc_ffff_ff_As_dddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":631
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":644
  * cephes4_functions[3] = NpyUFunc_dddD_D
  * cephes4_2_functions[0] = NpyUFunc_ffff_ff_As_dddd_dd
  * cephes4_2_functions[1] = NpyUFunc_dddd_dd             # <<<<<<<<<<<<<<
@@ -6036,7 +6127,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions[1]) = NpyUFunc_dddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":632
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":645
  * cephes4_2_functions[0] = NpyUFunc_ffff_ff_As_dddd_dd
  * cephes4_2_functions[1] = NpyUFunc_dddd_dd
  * cephes4a_2_functions[0] = NpyUFunc_ffff_ff_As_dddi_dd             # <<<<<<<<<<<<<<
@@ -6045,7 +6136,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions[0]) = NpyUFunc_ffff_ff_As_dddi_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":633
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":646
  * cephes4_2_functions[1] = NpyUFunc_dddd_dd
  * cephes4a_2_functions[0] = NpyUFunc_ffff_ff_As_dddi_dd
  * cephes4a_2_functions[1] = NpyUFunc_dddd_dd_As_dddi_dd             # <<<<<<<<<<<<<<
@@ -6054,7 +6145,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions[1]) = NpyUFunc_dddd_dd_As_dddi_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":634
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":647
  * cephes4a_2_functions[0] = NpyUFunc_ffff_ff_As_dddi_dd
  * cephes4a_2_functions[1] = NpyUFunc_dddd_dd_As_dddi_dd
  * cephes5_2_functions[0] = NpyUFunc_fffff_ff_As_ddddd_dd             # <<<<<<<<<<<<<<
@@ -6063,7 +6154,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions[0]) = NpyUFunc_fffff_ff_As_ddddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":635
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":648
  * cephes4a_2_functions[1] = NpyUFunc_dddd_dd_As_dddi_dd
  * cephes5_2_functions[0] = NpyUFunc_fffff_ff_As_ddddd_dd
  * cephes5_2_functions[1] = NpyUFunc_ddddd_dd             # <<<<<<<<<<<<<<
@@ -6072,7 +6163,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions[1]) = NpyUFunc_ddddd_dd;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":637
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":650
  * cephes5_2_functions[1] = NpyUFunc_ddddd_dd
  * 
  * airy_doc = "(Ai,Aip,Bi,Bip)=airy(z) calculates the Airy functions and their derivatives\nevaluated at real or complex number z.  The Airy functions Ai and Bi \nare two independent solutions of y''(x)=xy.  Aip and Bip are the first derivatives\nevaluated at x of Ai and Bi respectively."             # <<<<<<<<<<<<<<
@@ -6081,7 +6172,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "airy_doc", ((System::Object^)"(Ai,Aip,Bi,Bip)=airy(z) calculates the Airy functions and their derivatives\nevaluated at real or complex number z.  The Airy functions Ai and Bi \nare two independent solutions of y''(x)=xy.  Aip and Bip are the first derivatives\nevaluated at x of Ai and Bi respectively."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":638
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":651
  * 
  * airy_doc = "(Ai,Aip,Bi,Bip)=airy(z) calculates the Airy functions and their derivatives\nevaluated at real or complex number z.  The Airy functions Ai and Bi \nare two independent solutions of y''(x)=xy.  Aip and Bip are the first derivatives\nevaluated at x of Ai and Bi respectively."
  * airye_doc = "(Aie,Aipe,Bie,Bipe)=airye(z) calculates the exponentially scaled Airy functions and \ntheir derivatives evaluated at real or complex number z.  \nairye(z)[0:1] = airy(z)[0:1] * exp(2.0/3.0*z*sqrt(z))\nairye(z)[2:3] = airy(z)[2:3] * exp(-abs((2.0/3.0*z*sqrt(z)).real))"             # <<<<<<<<<<<<<<
@@ -6090,7 +6181,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "airye_doc", ((System::Object^)"(Aie,Aipe,Bie,Bipe)=airye(z) calculates the exponentially scaled Airy functions and \ntheir derivatives evaluated at real or complex number z.  \nairye(z)[0:1] = airy(z)[0:1] * exp(2.0/3.0*z*sqrt(z))\nairye(z)[2:3] = airy(z)[2:3] * exp(-abs((2.0/3.0*z*sqrt(z)).real))"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":639
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":652
  * airy_doc = "(Ai,Aip,Bi,Bip)=airy(z) calculates the Airy functions and their derivatives\nevaluated at real or complex number z.  The Airy functions Ai and Bi \nare two independent solutions of y''(x)=xy.  Aip and Bip are the first derivatives\nevaluated at x of Ai and Bi respectively."
  * airye_doc = "(Aie,Aipe,Bie,Bipe)=airye(z) calculates the exponentially scaled Airy functions and \ntheir derivatives evaluated at real or complex number z.  \nairye(z)[0:1] = airy(z)[0:1] * exp(2.0/3.0*z*sqrt(z))\nairye(z)[2:3] = airy(z)[2:3] * exp(-abs((2.0/3.0*z*sqrt(z)).real))"
  * bdtr_doc = "y=bdtr(k,n,p) returns the sum of the terms 0 through k of the\nBinomial probability density:  sum(nCj p**j (1-p)**(n-j),j=0..k)"             # <<<<<<<<<<<<<<
@@ -6099,7 +6190,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "bdtr_doc", ((System::Object^)"y=bdtr(k,n,p) returns the sum of the terms 0 through k of the\nBinomial probability density:  sum(nCj p**j (1-p)**(n-j),j=0..k)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":640
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":653
  * airye_doc = "(Aie,Aipe,Bie,Bipe)=airye(z) calculates the exponentially scaled Airy functions and \ntheir derivatives evaluated at real or complex number z.  \nairye(z)[0:1] = airy(z)[0:1] * exp(2.0/3.0*z*sqrt(z))\nairye(z)[2:3] = airy(z)[2:3] * exp(-abs((2.0/3.0*z*sqrt(z)).real))"
  * bdtr_doc = "y=bdtr(k,n,p) returns the sum of the terms 0 through k of the\nBinomial probability density:  sum(nCj p**j (1-p)**(n-j),j=0..k)"
  * bdtrc_doc = "y=bdtrc(k,n,p) returns the sum of the terms k+1 through n of the\nBinomial probability density: sum(nCj p**j (1-p)**(n-j), j=k+1..n)"             # <<<<<<<<<<<<<<
@@ -6108,7 +6199,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "bdtrc_doc", ((System::Object^)"y=bdtrc(k,n,p) returns the sum of the terms k+1 through n of the\nBinomial probability density: sum(nCj p**j (1-p)**(n-j), j=k+1..n)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":641
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":654
  * bdtr_doc = "y=bdtr(k,n,p) returns the sum of the terms 0 through k of the\nBinomial probability density:  sum(nCj p**j (1-p)**(n-j),j=0..k)"
  * bdtrc_doc = "y=bdtrc(k,n,p) returns the sum of the terms k+1 through n of the\nBinomial probability density: sum(nCj p**j (1-p)**(n-j), j=k+1..n)"
  * bdtri_doc = "p=bdtri(k,n,y) finds the probability p such that the sum of the\nterms 0 through k of the Binomial probability density is equal to the\ngiven cumulative probability y."             # <<<<<<<<<<<<<<
@@ -6117,7 +6208,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "bdtri_doc", ((System::Object^)"p=bdtri(k,n,y) finds the probability p such that the sum of the\nterms 0 through k of the Binomial probability density is equal to the\ngiven cumulative probability y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":642
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":655
  * bdtrc_doc = "y=bdtrc(k,n,p) returns the sum of the terms k+1 through n of the\nBinomial probability density: sum(nCj p**j (1-p)**(n-j), j=k+1..n)"
  * bdtri_doc = "p=bdtri(k,n,y) finds the probability p such that the sum of the\nterms 0 through k of the Binomial probability density is equal to the\ngiven cumulative probability y."
  * bei_doc = "y=bei(x) returns the Kelvin function bei x"             # <<<<<<<<<<<<<<
@@ -6126,7 +6217,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "bei_doc", ((System::Object^)"y=bei(x) returns the Kelvin function bei x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":643
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":656
  * bdtri_doc = "p=bdtri(k,n,y) finds the probability p such that the sum of the\nterms 0 through k of the Binomial probability density is equal to the\ngiven cumulative probability y."
  * bei_doc = "y=bei(x) returns the Kelvin function bei x"
  * beip_doc = "y=beip(x) returns the derivative of the Kelvin function bei x"             # <<<<<<<<<<<<<<
@@ -6135,7 +6226,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "beip_doc", ((System::Object^)"y=beip(x) returns the derivative of the Kelvin function bei x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":644
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":657
  * bei_doc = "y=bei(x) returns the Kelvin function bei x"
  * beip_doc = "y=beip(x) returns the derivative of the Kelvin function bei x"
  * ber_doc = "y=ber(x) returns the Kelvin function ber x"             # <<<<<<<<<<<<<<
@@ -6144,7 +6235,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ber_doc", ((System::Object^)"y=ber(x) returns the Kelvin function ber x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":645
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":658
  * beip_doc = "y=beip(x) returns the derivative of the Kelvin function bei x"
  * ber_doc = "y=ber(x) returns the Kelvin function ber x"
  * berp_doc = "y=berp(x) returns the derivative of the Kelvin function ber x"             # <<<<<<<<<<<<<<
@@ -6153,7 +6244,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "berp_doc", ((System::Object^)"y=berp(x) returns the derivative of the Kelvin function ber x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":646
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":659
  * ber_doc = "y=ber(x) returns the Kelvin function ber x"
  * berp_doc = "y=berp(x) returns the derivative of the Kelvin function ber x"
  * besselpoly_doc = "y=besselpoly(a,lam,nu) returns the value of the integral:\nintegral(x**lam * jv(nu,2*a*x),x=0..1)."             # <<<<<<<<<<<<<<
@@ -6162,7 +6253,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "besselpoly_doc", ((System::Object^)"y=besselpoly(a,lam,nu) returns the value of the integral:\nintegral(x**lam * jv(nu,2*a*x),x=0..1)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":647
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":660
  * berp_doc = "y=berp(x) returns the derivative of the Kelvin function ber x"
  * besselpoly_doc = "y=besselpoly(a,lam,nu) returns the value of the integral:\nintegral(x**lam * jv(nu,2*a*x),x=0..1)."
  * beta_doc = "y=beta(a,b) returns gamma(a) * gamma(b) / gamma(a+b)"             # <<<<<<<<<<<<<<
@@ -6171,7 +6262,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "beta_doc", ((System::Object^)"y=beta(a,b) returns gamma(a) * gamma(b) / gamma(a+b)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":648
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":661
  * besselpoly_doc = "y=besselpoly(a,lam,nu) returns the value of the integral:\nintegral(x**lam * jv(nu,2*a*x),x=0..1)."
  * beta_doc = "y=beta(a,b) returns gamma(a) * gamma(b) / gamma(a+b)"
  * betainc_doc = "y=betainc(a,b,x) returns the incomplete beta integral of the\n" \             # <<<<<<<<<<<<<<
@@ -6180,7 +6271,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "betainc_doc", ((System::Object^)"y=betainc(a,b,x) returns the incomplete beta integral of the\narguments, evaluated from zero to x: \n\ngamma(a+b) / (gamma(a)*gamma(b)) * integral(t**(a-1) (1-t)**(b-1), t=0..x).\n\nNote\n----\nThe incomplete beta is also sometimes defined without the terms\nin gamma, in which case the above definition is the so-called regularized\nincomplete beta. Under this definition, you can get the incomplete beta by\nmultiplying the result of the scipy function by beta(a, b)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":658
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":671
  *                 "incomplete beta. Under this definition, you can get the incomplete beta by\n" \
  *                 "multiplying the result of the scipy function by beta(a, b)."
  * betaincinv_doc = "x=betaincinv(a,b,y) returns x such that betainc(a,b,x) = y."             # <<<<<<<<<<<<<<
@@ -6189,7 +6280,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "betaincinv_doc", ((System::Object^)"x=betaincinv(a,b,y) returns x such that betainc(a,b,x) = y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":659
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":672
  *                 "multiplying the result of the scipy function by beta(a, b)."
  * betaincinv_doc = "x=betaincinv(a,b,y) returns x such that betainc(a,b,x) = y."
  * betaln_doc = "y=betaln(a,b) returns the natural logarithm of the absolute value of\nbeta: ln(|beta(x)|)."             # <<<<<<<<<<<<<<
@@ -6198,7 +6289,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "betaln_doc", ((System::Object^)"y=betaln(a,b) returns the natural logarithm of the absolute value of\nbeta: ln(|beta(x)|)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":660
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":673
  * betaincinv_doc = "x=betaincinv(a,b,y) returns x such that betainc(a,b,x) = y."
  * betaln_doc = "y=betaln(a,b) returns the natural logarithm of the absolute value of\nbeta: ln(|beta(x)|)."
  * btdtr_doc = "y=btdtr(a,b,x) returns the area from zero to x under the beta\ndensity function: gamma(a+b)/(gamma(a)*gamma(b)))*integral(t**(a-1)\n(1-t)**(b-1), t=0..x).  SEE ALSO betainc"             # <<<<<<<<<<<<<<
@@ -6207,7 +6298,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "btdtr_doc", ((System::Object^)"y=btdtr(a,b,x) returns the area from zero to x under the beta\ndensity function: gamma(a+b)/(gamma(a)*gamma(b)))*integral(t**(a-1)\n(1-t)**(b-1), t=0..x).  SEE ALSO betainc"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":661
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":674
  * betaln_doc = "y=betaln(a,b) returns the natural logarithm of the absolute value of\nbeta: ln(|beta(x)|)."
  * btdtr_doc = "y=btdtr(a,b,x) returns the area from zero to x under the beta\ndensity function: gamma(a+b)/(gamma(a)*gamma(b)))*integral(t**(a-1)\n(1-t)**(b-1), t=0..x).  SEE ALSO betainc"
  * btdtri_doc = "x=btdtri(a,b,p) returns the pth quantile of the beta distribution.  It is\neffectively the inverse of btdtr returning the value of x for which \nbtdtr(a,b,x) = p.   SEE ALSO betaincinv"             # <<<<<<<<<<<<<<
@@ -6216,7 +6307,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "btdtri_doc", ((System::Object^)"x=btdtri(a,b,p) returns the pth quantile of the beta distribution.  It is\neffectively the inverse of btdtr returning the value of x for which \nbtdtr(a,b,x) = p.   SEE ALSO betaincinv"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":662
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":675
  * btdtr_doc = "y=btdtr(a,b,x) returns the area from zero to x under the beta\ndensity function: gamma(a+b)/(gamma(a)*gamma(b)))*integral(t**(a-1)\n(1-t)**(b-1), t=0..x).  SEE ALSO betainc"
  * btdtri_doc = "x=btdtri(a,b,p) returns the pth quantile of the beta distribution.  It is\neffectively the inverse of btdtr returning the value of x for which \nbtdtr(a,b,x) = p.   SEE ALSO betaincinv"
  * cbrt_doc = "y=cbrt(x) returns the real cube root of x."             # <<<<<<<<<<<<<<
@@ -6225,7 +6316,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "cbrt_doc", ((System::Object^)"y=cbrt(x) returns the real cube root of x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":663
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":676
  * btdtri_doc = "x=btdtri(a,b,p) returns the pth quantile of the beta distribution.  It is\neffectively the inverse of btdtr returning the value of x for which \nbtdtr(a,b,x) = p.   SEE ALSO betaincinv"
  * cbrt_doc = "y=cbrt(x) returns the real cube root of x."
  * chdtr_doc = "p=chdtr(v,x) Returns the area under the left hand tail (from 0 to x) of the Chi\nsquare probability density function with v degrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=0..x)"             # <<<<<<<<<<<<<<
@@ -6234,7 +6325,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "chdtr_doc", ((System::Object^)"p=chdtr(v,x) Returns the area under the left hand tail (from 0 to x) of the Chi\nsquare probability density function with v degrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=0..x)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":664
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":677
  * cbrt_doc = "y=cbrt(x) returns the real cube root of x."
  * chdtr_doc = "p=chdtr(v,x) Returns the area under the left hand tail (from 0 to x) of the Chi\nsquare probability density function with v degrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=0..x)"
  * chdtrc_doc = "p=chdtrc(v,x) returns the area under the right hand tail (from x to\ninfinity) of the Chi square probability density function with v\ndegrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=x..inf)"             # <<<<<<<<<<<<<<
@@ -6243,7 +6334,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "chdtrc_doc", ((System::Object^)"p=chdtrc(v,x) returns the area under the right hand tail (from x to\ninfinity) of the Chi square probability density function with v\ndegrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=x..inf)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":665
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":678
  * chdtr_doc = "p=chdtr(v,x) Returns the area under the left hand tail (from 0 to x) of the Chi\nsquare probability density function with v degrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=0..x)"
  * chdtrc_doc = "p=chdtrc(v,x) returns the area under the right hand tail (from x to\ninfinity) of the Chi square probability density function with v\ndegrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=x..inf)"
  * chdtri_doc = "x=chdtri(v,p) returns the argument x such that chdtrc(v,x) is equal\nto p."             # <<<<<<<<<<<<<<
@@ -6252,7 +6343,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "chdtri_doc", ((System::Object^)"x=chdtri(v,p) returns the argument x such that chdtrc(v,x) is equal\nto p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":666
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":679
  * chdtrc_doc = "p=chdtrc(v,x) returns the area under the right hand tail (from x to\ninfinity) of the Chi square probability density function with v\ndegrees of freedom:\n1/(2**(v/2) * gamma(v/2)) * integral(t**(v/2-1) * exp(-t/2), t=x..inf)"
  * chdtri_doc = "x=chdtri(v,p) returns the argument x such that chdtrc(v,x) is equal\nto p."
  * cosdg_doc = "y=cosdg(x) calculates the cosine of the angle x given in degrees."             # <<<<<<<<<<<<<<
@@ -6261,7 +6352,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "cosdg_doc", ((System::Object^)"y=cosdg(x) calculates the cosine of the angle x given in degrees."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":667
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":680
  * chdtri_doc = "x=chdtri(v,p) returns the argument x such that chdtrc(v,x) is equal\nto p."
  * cosdg_doc = "y=cosdg(x) calculates the cosine of the angle x given in degrees."
  * cosm1_doc = "y=calculates cos(x) - 1 for use when x is near zero."             # <<<<<<<<<<<<<<
@@ -6270,7 +6361,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "cosm1_doc", ((System::Object^)"y=calculates cos(x) - 1 for use when x is near zero."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":668
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":681
  * cosdg_doc = "y=cosdg(x) calculates the cosine of the angle x given in degrees."
  * cosm1_doc = "y=calculates cos(x) - 1 for use when x is near zero."
  * cotdg_doc = "y=cotdg(x) calculates the cotangent of the angle x given in degrees."             # <<<<<<<<<<<<<<
@@ -6279,7 +6370,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "cotdg_doc", ((System::Object^)"y=cotdg(x) calculates the cotangent of the angle x given in degrees."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":669
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":682
  * cosm1_doc = "y=calculates cos(x) - 1 for use when x is near zero."
  * cotdg_doc = "y=cotdg(x) calculates the cotangent of the angle x given in degrees."
  * dawsn_doc = "y=dawsn(x) returns dawson's integral: exp(-x**2) *\nintegral(exp(t**2),t=0..x)."             # <<<<<<<<<<<<<<
@@ -6288,7 +6379,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "dawsn_doc", ((System::Object^)"y=dawsn(x) returns dawson's integral: exp(-x**2) *\nintegral(exp(t**2),t=0..x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":670
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":683
  * cotdg_doc = "y=cotdg(x) calculates the cotangent of the angle x given in degrees."
  * dawsn_doc = "y=dawsn(x) returns dawson's integral: exp(-x**2) *\nintegral(exp(t**2),t=0..x)."
  * ellipe_doc = "y=ellipe(m) returns the complete integral of the second kind:\nintegral(sqrt(1-m*sin(t)**2),t=0..pi/2)"             # <<<<<<<<<<<<<<
@@ -6297,7 +6388,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ellipe_doc", ((System::Object^)"y=ellipe(m) returns the complete integral of the second kind:\nintegral(sqrt(1-m*sin(t)**2),t=0..pi/2)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":671
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":684
  * dawsn_doc = "y=dawsn(x) returns dawson's integral: exp(-x**2) *\nintegral(exp(t**2),t=0..x)."
  * ellipe_doc = "y=ellipe(m) returns the complete integral of the second kind:\nintegral(sqrt(1-m*sin(t)**2),t=0..pi/2)"
  * ellipeinc_doc = "y=ellipeinc(phi,m) returns the incomplete elliptic integral of the\nsecond kind: integral(sqrt(1-m*sin(t)**2),t=0..phi)"             # <<<<<<<<<<<<<<
@@ -6306,7 +6397,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ellipeinc_doc", ((System::Object^)"y=ellipeinc(phi,m) returns the incomplete elliptic integral of the\nsecond kind: integral(sqrt(1-m*sin(t)**2),t=0..phi)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":672
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":685
  * ellipe_doc = "y=ellipe(m) returns the complete integral of the second kind:\nintegral(sqrt(1-m*sin(t)**2),t=0..pi/2)"
  * ellipeinc_doc = "y=ellipeinc(phi,m) returns the incomplete elliptic integral of the\nsecond kind: integral(sqrt(1-m*sin(t)**2),t=0..phi)"
  * ellipj_doc = "(sn,cn,dn,ph)=ellipj(u,m) calculates the Jacobian elliptic functions of\nparameter m between 0 and 1, and real u.  The returned functions are\noften written sn(u|m), cn(u|m), and dn(u|m).  The value of ph is such\nthat if u = ellik(ph,m), then sn(u|m) = sin(ph) and cn(u|m) = cos(ph)."             # <<<<<<<<<<<<<<
@@ -6315,7 +6406,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ellipj_doc", ((System::Object^)"(sn,cn,dn,ph)=ellipj(u,m) calculates the Jacobian elliptic functions of\nparameter m between 0 and 1, and real u.  The returned functions are\noften written sn(u|m), cn(u|m), and dn(u|m).  The value of ph is such\nthat if u = ellik(ph,m), then sn(u|m) = sin(ph) and cn(u|m) = cos(ph)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":673
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":686
  * ellipeinc_doc = "y=ellipeinc(phi,m) returns the incomplete elliptic integral of the\nsecond kind: integral(sqrt(1-m*sin(t)**2),t=0..phi)"
  * ellipj_doc = "(sn,cn,dn,ph)=ellipj(u,m) calculates the Jacobian elliptic functions of\nparameter m between 0 and 1, and real u.  The returned functions are\noften written sn(u|m), cn(u|m), and dn(u|m).  The value of ph is such\nthat if u = ellik(ph,m), then sn(u|m) = sin(ph) and cn(u|m) = cos(ph)."
  * ellipk_doc = "y=ellipk(m) returns the complete integral of the first kind:\nintegral(1/sqrt(1-m*sin(t)**2),t=0..pi/2)"             # <<<<<<<<<<<<<<
@@ -6324,7 +6415,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ellipk_doc", ((System::Object^)"y=ellipk(m) returns the complete integral of the first kind:\nintegral(1/sqrt(1-m*sin(t)**2),t=0..pi/2)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":674
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":687
  * ellipj_doc = "(sn,cn,dn,ph)=ellipj(u,m) calculates the Jacobian elliptic functions of\nparameter m between 0 and 1, and real u.  The returned functions are\noften written sn(u|m), cn(u|m), and dn(u|m).  The value of ph is such\nthat if u = ellik(ph,m), then sn(u|m) = sin(ph) and cn(u|m) = cos(ph)."
  * ellipk_doc = "y=ellipk(m) returns the complete integral of the first kind:\nintegral(1/sqrt(1-m*sin(t)**2),t=0..pi/2)"
  * ellipkinc_doc = "y=ellipkinc(phi,m) returns the incomplete elliptic integral of the first\nkind: integral(1/sqrt(1-m*sin(t)**2),t=0..phi)"             # <<<<<<<<<<<<<<
@@ -6333,7 +6424,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ellipkinc_doc", ((System::Object^)"y=ellipkinc(phi,m) returns the incomplete elliptic integral of the first\nkind: integral(1/sqrt(1-m*sin(t)**2),t=0..phi)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":675
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":688
  * ellipk_doc = "y=ellipk(m) returns the complete integral of the first kind:\nintegral(1/sqrt(1-m*sin(t)**2),t=0..pi/2)"
  * ellipkinc_doc = "y=ellipkinc(phi,m) returns the incomplete elliptic integral of the first\nkind: integral(1/sqrt(1-m*sin(t)**2),t=0..phi)"
  * erf_doc = "y=erf(z) returns the error function of complex argument defined as\nas 2/sqrt(pi)*integral(exp(-t**2),t=0..z)"             # <<<<<<<<<<<<<<
@@ -6342,7 +6433,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "erf_doc", ((System::Object^)"y=erf(z) returns the error function of complex argument defined as\nas 2/sqrt(pi)*integral(exp(-t**2),t=0..z)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":676
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":689
  * ellipkinc_doc = "y=ellipkinc(phi,m) returns the incomplete elliptic integral of the first\nkind: integral(1/sqrt(1-m*sin(t)**2),t=0..phi)"
  * erf_doc = "y=erf(z) returns the error function of complex argument defined as\nas 2/sqrt(pi)*integral(exp(-t**2),t=0..z)"
  * erfc_doc = "y=erfc(x) returns 1 - erf(x)."             # <<<<<<<<<<<<<<
@@ -6351,7 +6442,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "erfc_doc", ((System::Object^)"y=erfc(x) returns 1 - erf(x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":677
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":690
  * erf_doc = "y=erf(z) returns the error function of complex argument defined as\nas 2/sqrt(pi)*integral(exp(-t**2),t=0..z)"
  * erfc_doc = "y=erfc(x) returns 1 - erf(x)."
  * exp1_doc = "y=exp1(z) returns the exponential integral (n=1) of complex argument\nz: integral(exp(-z*t)/t,t=1..inf)."             # <<<<<<<<<<<<<<
@@ -6360,7 +6451,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "exp1_doc", ((System::Object^)"y=exp1(z) returns the exponential integral (n=1) of complex argument\nz: integral(exp(-z*t)/t,t=1..inf)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":678
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":691
  * erfc_doc = "y=erfc(x) returns 1 - erf(x)."
  * exp1_doc = "y=exp1(z) returns the exponential integral (n=1) of complex argument\nz: integral(exp(-z*t)/t,t=1..inf)."
  * exp10_doc = "y=exp10(x) returns 10 raised to the x power."             # <<<<<<<<<<<<<<
@@ -6369,7 +6460,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "exp10_doc", ((System::Object^)"y=exp10(x) returns 10 raised to the x power."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":679
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":692
  * exp1_doc = "y=exp1(z) returns the exponential integral (n=1) of complex argument\nz: integral(exp(-z*t)/t,t=1..inf)."
  * exp10_doc = "y=exp10(x) returns 10 raised to the x power."
  * exp2_doc = "y=exp2(x) returns 2 raised to the x power."             # <<<<<<<<<<<<<<
@@ -6378,7 +6469,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "exp2_doc", ((System::Object^)"y=exp2(x) returns 2 raised to the x power."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":680
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":693
  * exp10_doc = "y=exp10(x) returns 10 raised to the x power."
  * exp2_doc = "y=exp2(x) returns 2 raised to the x power."
  * expi_doc = "y=expi(x) returns an exponential integral of argument x defined as\nintegral(exp(t)/t,t=-inf..x).  See expn for a different exponential\nintegral."             # <<<<<<<<<<<<<<
@@ -6387,7 +6478,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "expi_doc", ((System::Object^)"y=expi(x) returns an exponential integral of argument x defined as\nintegral(exp(t)/t,t=-inf..x).  See expn for a different exponential\nintegral."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":681
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":694
  * exp2_doc = "y=exp2(x) returns 2 raised to the x power."
  * expi_doc = "y=expi(x) returns an exponential integral of argument x defined as\nintegral(exp(t)/t,t=-inf..x).  See expn for a different exponential\nintegral."
  * expm1_doc = "y=expm1(x) calculates exp(x) - 1 for use when x is near zero."             # <<<<<<<<<<<<<<
@@ -6396,7 +6487,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "expm1_doc", ((System::Object^)"y=expm1(x) calculates exp(x) - 1 for use when x is near zero."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":682
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":695
  * expi_doc = "y=expi(x) returns an exponential integral of argument x defined as\nintegral(exp(t)/t,t=-inf..x).  See expn for a different exponential\nintegral."
  * expm1_doc = "y=expm1(x) calculates exp(x) - 1 for use when x is near zero."
  * expn_doc = "y=expn(n,x) returns the exponential integral for integer n and\nnon-negative x and n: integral(exp(-x*t) / t**n, t=1..inf)."             # <<<<<<<<<<<<<<
@@ -6405,7 +6496,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "expn_doc", ((System::Object^)"y=expn(n,x) returns the exponential integral for integer n and\nnon-negative x and n: integral(exp(-x*t) / t**n, t=1..inf)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":683
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":696
  * expm1_doc = "y=expm1(x) calculates exp(x) - 1 for use when x is near zero."
  * expn_doc = "y=expn(n,x) returns the exponential integral for integer n and\nnon-negative x and n: integral(exp(-x*t) / t**n, t=1..inf)."
  * fdtr_doc = "y=fdtr(dfn,dfd,x) returns the area from zero to x under the F density\nfunction (also known as Snedcor's density or the variance ratio\ndensity).  This is the density of X = (unum/dfn)/(uden/dfd), where unum and\nuden are random variables having Chi square distributions with dfn and\ndfd degrees of freedom, respectively."             # <<<<<<<<<<<<<<
@@ -6414,7 +6505,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fdtr_doc", ((System::Object^)"y=fdtr(dfn,dfd,x) returns the area from zero to x under the F density\nfunction (also known as Snedcor's density or the variance ratio\ndensity).  This is the density of X = (unum/dfn)/(uden/dfd), where unum and\nuden are random variables having Chi square distributions with dfn and\ndfd degrees of freedom, respectively."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":684
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":697
  * expn_doc = "y=expn(n,x) returns the exponential integral for integer n and\nnon-negative x and n: integral(exp(-x*t) / t**n, t=1..inf)."
  * fdtr_doc = "y=fdtr(dfn,dfd,x) returns the area from zero to x under the F density\nfunction (also known as Snedcor's density or the variance ratio\ndensity).  This is the density of X = (unum/dfn)/(uden/dfd), where unum and\nuden are random variables having Chi square distributions with dfn and\ndfd degrees of freedom, respectively."
  * fdtrc_doc = "y=fdtrc(dfn,dfd,x) returns the complemented F distribution function."             # <<<<<<<<<<<<<<
@@ -6423,7 +6514,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fdtrc_doc", ((System::Object^)"y=fdtrc(dfn,dfd,x) returns the complemented F distribution function."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":685
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":698
  * fdtr_doc = "y=fdtr(dfn,dfd,x) returns the area from zero to x under the F density\nfunction (also known as Snedcor's density or the variance ratio\ndensity).  This is the density of X = (unum/dfn)/(uden/dfd), where unum and\nuden are random variables having Chi square distributions with dfn and\ndfd degrees of freedom, respectively."
  * fdtrc_doc = "y=fdtrc(dfn,dfd,x) returns the complemented F distribution function."
  * fdtri_doc = "x=fdtri(dfn,dfd,p) finds the F density argument x such that \nfdtr(dfn,dfd,x)=p."             # <<<<<<<<<<<<<<
@@ -6432,7 +6523,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fdtri_doc", ((System::Object^)"x=fdtri(dfn,dfd,p) finds the F density argument x such that \nfdtr(dfn,dfd,x)=p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":686
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":699
  * fdtrc_doc = "y=fdtrc(dfn,dfd,x) returns the complemented F distribution function."
  * fdtri_doc = "x=fdtri(dfn,dfd,p) finds the F density argument x such that \nfdtr(dfn,dfd,x)=p."
  * fdtridfd_doc = "x=fdtridfd(dfn,p,x) finds the F density argument dfd such that \nfdtr(dfn,dfd,x)=p."             # <<<<<<<<<<<<<<
@@ -6441,7 +6532,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fdtridfd_doc", ((System::Object^)"x=fdtridfd(dfn,p,x) finds the F density argument dfd such that \nfdtr(dfn,dfd,x)=p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":687
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":700
  * fdtri_doc = "x=fdtri(dfn,dfd,p) finds the F density argument x such that \nfdtr(dfn,dfd,x)=p."
  * fdtridfd_doc = "x=fdtridfd(dfn,p,x) finds the F density argument dfd such that \nfdtr(dfn,dfd,x)=p."
  * fdtridfn_doc = "x=fdtridfn(p,dfd,x) finds the F density argument dfn such that \nfdtr(dfn,dfd,x)=p."             # <<<<<<<<<<<<<<
@@ -6450,7 +6541,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fdtridfn_doc", ((System::Object^)"x=fdtridfn(p,dfd,x) finds the F density argument dfn such that \nfdtr(dfn,dfd,x)=p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":688
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":701
  * fdtridfd_doc = "x=fdtridfd(dfn,p,x) finds the F density argument dfd such that \nfdtr(dfn,dfd,x)=p."
  * fdtridfn_doc = "x=fdtridfn(p,dfd,x) finds the F density argument dfn such that \nfdtr(dfn,dfd,x)=p."
  * fresnel_doc = "(ssa,cca)=fresnel(z) returns the fresnel sin and cos integrals: integral(sin(pi/2\n* t**2),t=0..z) and integral(cos(pi/2 * t**2),t=0..z) for real or \ncomplex z."             # <<<<<<<<<<<<<<
@@ -6459,7 +6550,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "fresnel_doc", ((System::Object^)"(ssa,cca)=fresnel(z) returns the fresnel sin and cos integrals: integral(sin(pi/2\n* t**2),t=0..z) and integral(cos(pi/2 * t**2),t=0..z) for real or \ncomplex z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":689
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":702
  * fdtridfn_doc = "x=fdtridfn(p,dfd,x) finds the F density argument dfn such that \nfdtr(dfn,dfd,x)=p."
  * fresnel_doc = "(ssa,cca)=fresnel(z) returns the fresnel sin and cos integrals: integral(sin(pi/2\n* t**2),t=0..z) and integral(cos(pi/2 * t**2),t=0..z) for real or \ncomplex z."
  * gamma_doc = "y=gamma(z) returns the gamma function of the argument.  The gamma\nfunction is often referred to as the generalized factorial since \nz*gamma(z) = gamma(z+1) and gamma(n+1) = n! for natural number n."             # <<<<<<<<<<<<<<
@@ -6468,7 +6559,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gamma_doc", ((System::Object^)"y=gamma(z) returns the gamma function of the argument.  The gamma\nfunction is often referred to as the generalized factorial since \nz*gamma(z) = gamma(z+1) and gamma(n+1) = n! for natural number n."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":690
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":703
  * fresnel_doc = "(ssa,cca)=fresnel(z) returns the fresnel sin and cos integrals: integral(sin(pi/2\n* t**2),t=0..z) and integral(cos(pi/2 * t**2),t=0..z) for real or \ncomplex z."
  * gamma_doc = "y=gamma(z) returns the gamma function of the argument.  The gamma\nfunction is often referred to as the generalized factorial since \nz*gamma(z) = gamma(z+1) and gamma(n+1) = n! for natural number n."
  * gammainc_doc = "y=gammainc(a,x) returns the incomplete gamma integral defined as\n1 / gamma(a) * integral(exp(-t) * t**(a-1), t=0..x).  Both arguments\nmust be positive."             # <<<<<<<<<<<<<<
@@ -6477,7 +6568,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gammainc_doc", ((System::Object^)"y=gammainc(a,x) returns the incomplete gamma integral defined as\n1 / gamma(a) * integral(exp(-t) * t**(a-1), t=0..x).  Both arguments\nmust be positive."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":691
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":704
  * gamma_doc = "y=gamma(z) returns the gamma function of the argument.  The gamma\nfunction is often referred to as the generalized factorial since \nz*gamma(z) = gamma(z+1) and gamma(n+1) = n! for natural number n."
  * gammainc_doc = "y=gammainc(a,x) returns the incomplete gamma integral defined as\n1 / gamma(a) * integral(exp(-t) * t**(a-1), t=0..x).  Both arguments\nmust be positive."
  * gammaincc_doc = "y=gammaincc(a,x) returns the complemented incomplete gamma integral\ndefined as 1 / gamma(a) * integral(exp(-t) * t**(a-1), t=x..inf) = 1 -\ngammainc(a,x).  Both arguments must be positive."             # <<<<<<<<<<<<<<
@@ -6486,7 +6577,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gammaincc_doc", ((System::Object^)"y=gammaincc(a,x) returns the complemented incomplete gamma integral\ndefined as 1 / gamma(a) * integral(exp(-t) * t**(a-1), t=x..inf) = 1 -\ngammainc(a,x).  Both arguments must be positive."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":692
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":705
  * gammainc_doc = "y=gammainc(a,x) returns the incomplete gamma integral defined as\n1 / gamma(a) * integral(exp(-t) * t**(a-1), t=0..x).  Both arguments\nmust be positive."
  * gammaincc_doc = "y=gammaincc(a,x) returns the complemented incomplete gamma integral\ndefined as 1 / gamma(a) * integral(exp(-t) * t**(a-1), t=x..inf) = 1 -\ngammainc(a,x).  Both arguments must be positive."
  * gammainccinv_doc = "x=gammainccinv(a,y) returns x such that gammaincc(a,x) = y."             # <<<<<<<<<<<<<<
@@ -6495,7 +6586,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gammainccinv_doc", ((System::Object^)"x=gammainccinv(a,y) returns x such that gammaincc(a,x) = y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":693
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":706
  * gammaincc_doc = "y=gammaincc(a,x) returns the complemented incomplete gamma integral\ndefined as 1 / gamma(a) * integral(exp(-t) * t**(a-1), t=x..inf) = 1 -\ngammainc(a,x).  Both arguments must be positive."
  * gammainccinv_doc = "x=gammainccinv(a,y) returns x such that gammaincc(a,x) = y."
  * gammaln_doc = "y=gammaln(z) returns the base e logarithm of the absolute value of the\ngamma function of z: ln(|gamma(z)|)"             # <<<<<<<<<<<<<<
@@ -6504,7 +6595,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gammaln_doc", ((System::Object^)"y=gammaln(z) returns the base e logarithm of the absolute value of the\ngamma function of z: ln(|gamma(z)|)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":694
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":707
  * gammainccinv_doc = "x=gammainccinv(a,y) returns x such that gammaincc(a,x) = y."
  * gammaln_doc = "y=gammaln(z) returns the base e logarithm of the absolute value of the\ngamma function of z: ln(|gamma(z)|)"
  * gdtr_doc = "y=gdtr(a,b,x) returns the integral from zero to x of the gamma\nprobability density function: a**b / gamma(b) * integral(t**(b-1) exp(-at),t=0..x).\nThe arguments a and b are used differently here than in other definitions."             # <<<<<<<<<<<<<<
@@ -6513,7 +6604,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gdtr_doc", ((System::Object^)"y=gdtr(a,b,x) returns the integral from zero to x of the gamma\nprobability density function: a**b / gamma(b) * integral(t**(b-1) exp(-at),t=0..x).\nThe arguments a and b are used differently here than in other definitions."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":695
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":708
  * gammaln_doc = "y=gammaln(z) returns the base e logarithm of the absolute value of the\ngamma function of z: ln(|gamma(z)|)"
  * gdtr_doc = "y=gdtr(a,b,x) returns the integral from zero to x of the gamma\nprobability density function: a**b / gamma(b) * integral(t**(b-1) exp(-at),t=0..x).\nThe arguments a and b are used differently here than in other definitions."
  * gdtrc_doc = "y=gdtrc(a,b,x) returns the integral from x to infinity of the gamma\nprobability density function.  SEE gdtr, gdtri"             # <<<<<<<<<<<<<<
@@ -6522,7 +6613,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gdtrc_doc", ((System::Object^)"y=gdtrc(a,b,x) returns the integral from x to infinity of the gamma\nprobability density function.  SEE gdtr, gdtri"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":696
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":709
  * gdtr_doc = "y=gdtr(a,b,x) returns the integral from zero to x of the gamma\nprobability density function: a**b / gamma(b) * integral(t**(b-1) exp(-at),t=0..x).\nThe arguments a and b are used differently here than in other definitions."
  * gdtrc_doc = "y=gdtrc(a,b,x) returns the integral from x to infinity of the gamma\nprobability density function.  SEE gdtr, gdtri"
  * gdtri_doc = "x=gdtri(a,b,p) returns pth quantile of the gamma distribution.  It is \nthe inverse of the gamma cdf returning the value of x for which \ngdtr(b,a,x) = p."             # <<<<<<<<<<<<<<
@@ -6531,7 +6622,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gdtri_doc", ((System::Object^)"x=gdtri(a,b,p) returns pth quantile of the gamma distribution.  It is \nthe inverse of the gamma cdf returning the value of x for which \ngdtr(b,a,x) = p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":697
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":710
  * gdtrc_doc = "y=gdtrc(a,b,x) returns the integral from x to infinity of the gamma\nprobability density function.  SEE gdtr, gdtri"
  * gdtri_doc = "x=gdtri(a,b,p) returns pth quantile of the gamma distribution.  It is \nthe inverse of the gamma cdf returning the value of x for which \ngdtr(b,a,x) = p."
  * hankel1_doc = "y=hankel1(v,z) returns the Hankel function of the first kind for real order v and complex argument z."             # <<<<<<<<<<<<<<
@@ -6540,7 +6631,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hankel1_doc", ((System::Object^)"y=hankel1(v,z) returns the Hankel function of the first kind for real order v and complex argument z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":698
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":711
  * gdtri_doc = "x=gdtri(a,b,p) returns pth quantile of the gamma distribution.  It is \nthe inverse of the gamma cdf returning the value of x for which \ngdtr(b,a,x) = p."
  * hankel1_doc = "y=hankel1(v,z) returns the Hankel function of the first kind for real order v and complex argument z."
  * hankel1e_doc = "y=hankel1e(v,z) returns the exponentially scaled Hankel function of the first\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(-1j * z)"             # <<<<<<<<<<<<<<
@@ -6549,7 +6640,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hankel1e_doc", ((System::Object^)"y=hankel1e(v,z) returns the exponentially scaled Hankel function of the first\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(-1j * z)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":699
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":712
  * hankel1_doc = "y=hankel1(v,z) returns the Hankel function of the first kind for real order v and complex argument z."
  * hankel1e_doc = "y=hankel1e(v,z) returns the exponentially scaled Hankel function of the first\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(-1j * z)"
  * hankel2_doc = "y=hankel2(v,z) returns the Hankel function of the second kind for real order v and complex argument z."             # <<<<<<<<<<<<<<
@@ -6558,7 +6649,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hankel2_doc", ((System::Object^)"y=hankel2(v,z) returns the Hankel function of the second kind for real order v and complex argument z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":700
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":713
  * hankel1e_doc = "y=hankel1e(v,z) returns the exponentially scaled Hankel function of the first\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(-1j * z)"
  * hankel2_doc = "y=hankel2(v,z) returns the Hankel function of the second kind for real order v and complex argument z."
  * hankel2e_doc = "y=hankel2e(v,z) returns the exponentially scaled Hankel function of the second\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(1j * z)"             # <<<<<<<<<<<<<<
@@ -6567,7 +6658,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hankel2e_doc", ((System::Object^)"y=hankel2e(v,z) returns the exponentially scaled Hankel function of the second\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(1j * z)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":701
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":714
  * hankel2_doc = "y=hankel2(v,z) returns the Hankel function of the second kind for real order v and complex argument z."
  * hankel2e_doc = "y=hankel2e(v,z) returns the exponentially scaled Hankel function of the second\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(1j * z)"
  * hyp1f1_doc = "y=hyp1f1(a,b,x) returns the confluent hypergeometeric function\n( 1F1(a,b;x) ) evaluated at the values a, b, and x."             # <<<<<<<<<<<<<<
@@ -6576,7 +6667,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyp1f1_doc", ((System::Object^)"y=hyp1f1(a,b,x) returns the confluent hypergeometeric function\n( 1F1(a,b;x) ) evaluated at the values a, b, and x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":702
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":715
  * hankel2e_doc = "y=hankel2e(v,z) returns the exponentially scaled Hankel function of the second\nkind for real order v and complex argument z:\nhankel1e(v,z) = hankel1(v,z) * exp(1j * z)"
  * hyp1f1_doc = "y=hyp1f1(a,b,x) returns the confluent hypergeometeric function\n( 1F1(a,b;x) ) evaluated at the values a, b, and x."
  * hyp1f2_doc = "(y,err)=hyp1f2(a,b,c,x) returns (y,err) with the hypergeometric function 1F2 in y and an error estimate in err."             # <<<<<<<<<<<<<<
@@ -6585,7 +6676,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyp1f2_doc", ((System::Object^)"(y,err)=hyp1f2(a,b,c,x) returns (y,err) with the hypergeometric function 1F2 in y and an error estimate in err."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":703
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":716
  * hyp1f1_doc = "y=hyp1f1(a,b,x) returns the confluent hypergeometeric function\n( 1F1(a,b;x) ) evaluated at the values a, b, and x."
  * hyp1f2_doc = "(y,err)=hyp1f2(a,b,c,x) returns (y,err) with the hypergeometric function 1F2 in y and an error estimate in err."
  * hyp2f0_doc = "(y,err)=hyp2f0(a,b,x,type) returns (y,err) with the hypergeometric function 2F0 in y and an error estimate in err.  The input type determines a convergence factor and\ncan be either 1 or 2."             # <<<<<<<<<<<<<<
@@ -6594,7 +6685,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyp2f0_doc", ((System::Object^)"(y,err)=hyp2f0(a,b,x,type) returns (y,err) with the hypergeometric function 2F0 in y and an error estimate in err.  The input type determines a convergence factor and\ncan be either 1 or 2."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":704
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":717
  * hyp1f2_doc = "(y,err)=hyp1f2(a,b,c,x) returns (y,err) with the hypergeometric function 1F2 in y and an error estimate in err."
  * hyp2f0_doc = "(y,err)=hyp2f0(a,b,x,type) returns (y,err) with the hypergeometric function 2F0 in y and an error estimate in err.  The input type determines a convergence factor and\ncan be either 1 or 2."
  * hyp2f1_doc = "y=hyp2f1(a,b,c,z) returns the gauss hypergeometric function\n( 2F1(a,b;c;z) )."             # <<<<<<<<<<<<<<
@@ -6603,7 +6694,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyp2f1_doc", ((System::Object^)"y=hyp2f1(a,b,c,z) returns the gauss hypergeometric function\n( 2F1(a,b;c;z) )."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":705
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":718
  * hyp2f0_doc = "(y,err)=hyp2f0(a,b,x,type) returns (y,err) with the hypergeometric function 2F0 in y and an error estimate in err.  The input type determines a convergence factor and\ncan be either 1 or 2."
  * hyp2f1_doc = "y=hyp2f1(a,b,c,z) returns the gauss hypergeometric function\n( 2F1(a,b;c;z) )."
  * hyp3f0_doc = "(y,err)=hyp3f0(a,b,c,x) returns (y,err) with the hypergeometric function 3F0 in y and an error estimate in err."             # <<<<<<<<<<<<<<
@@ -6612,7 +6703,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyp3f0_doc", ((System::Object^)"(y,err)=hyp3f0(a,b,c,x) returns (y,err) with the hypergeometric function 3F0 in y and an error estimate in err."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":706
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":719
  * hyp2f1_doc = "y=hyp2f1(a,b,c,z) returns the gauss hypergeometric function\n( 2F1(a,b;c;z) )."
  * hyp3f0_doc = "(y,err)=hyp3f0(a,b,c,x) returns (y,err) with the hypergeometric function 3F0 in y and an error estimate in err."
  * hyperu_doc = "y=hyperu(a,b,x) returns the confluent hypergeometric function of the\nsecond kind U(a,b,x)."             # <<<<<<<<<<<<<<
@@ -6621,7 +6712,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "hyperu_doc", ((System::Object^)"y=hyperu(a,b,x) returns the confluent hypergeometric function of the\nsecond kind U(a,b,x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":707
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":720
  * hyp3f0_doc = "(y,err)=hyp3f0(a,b,c,x) returns (y,err) with the hypergeometric function 3F0 in y and an error estimate in err."
  * hyperu_doc = "y=hyperu(a,b,x) returns the confluent hypergeometric function of the\nsecond kind U(a,b,x)."
  * i0_doc = "y=i0(x) returns the modified Bessel function of order 0 at x."             # <<<<<<<<<<<<<<
@@ -6630,7 +6721,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "i0_doc", ((System::Object^)"y=i0(x) returns the modified Bessel function of order 0 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":708
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":721
  * hyperu_doc = "y=hyperu(a,b,x) returns the confluent hypergeometric function of the\nsecond kind U(a,b,x)."
  * i0_doc = "y=i0(x) returns the modified Bessel function of order 0 at x."
  * i0e_doc = "y=i0e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i0e(x) = exp(-|x|) * i0(x)."             # <<<<<<<<<<<<<<
@@ -6639,7 +6730,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "i0e_doc", ((System::Object^)"y=i0e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i0e(x) = exp(-|x|) * i0(x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":709
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":722
  * i0_doc = "y=i0(x) returns the modified Bessel function of order 0 at x."
  * i0e_doc = "y=i0e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i0e(x) = exp(-|x|) * i0(x)."
  * i1_doc = "y=i1(x) returns the modified Bessel function of order 1 at x."             # <<<<<<<<<<<<<<
@@ -6648,7 +6739,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "i1_doc", ((System::Object^)"y=i1(x) returns the modified Bessel function of order 1 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":710
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":723
  * i0e_doc = "y=i0e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i0e(x) = exp(-|x|) * i0(x)."
  * i1_doc = "y=i1(x) returns the modified Bessel function of order 1 at x."
  * i1e_doc = "y=i1e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i1e(x) = exp(-|x|) * i1(x)."             # <<<<<<<<<<<<<<
@@ -6657,7 +6748,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "i1e_doc", ((System::Object^)"y=i1e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i1e(x) = exp(-|x|) * i1(x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":711
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":724
  * i1_doc = "y=i1(x) returns the modified Bessel function of order 1 at x."
  * i1e_doc = "y=i1e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i1e(x) = exp(-|x|) * i1(x)."
  * it2i0k0_doc = "(ii0,ik0)=it2i0k0(x) returns the integrals int((i0(t)-1)/t,t=0..x) and \nint(k0(t)/t,t=x..infinitity)."             # <<<<<<<<<<<<<<
@@ -6666,7 +6757,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "it2i0k0_doc", ((System::Object^)"(ii0,ik0)=it2i0k0(x) returns the integrals int((i0(t)-1)/t,t=0..x) and \nint(k0(t)/t,t=x..infinitity)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":712
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":725
  * i1e_doc = "y=i1e(x) returns the exponentially scaled modified Bessel function\nof order 0 at x.  i1e(x) = exp(-|x|) * i1(x)."
  * it2i0k0_doc = "(ii0,ik0)=it2i0k0(x) returns the integrals int((i0(t)-1)/t,t=0..x) and \nint(k0(t)/t,t=x..infinitity)."
  * it2j0y0_doc = "(ij0,iy0)=it2j0y0(x) returns the integrals int((1-j0(t))/t,t=0..x) and \nint(y0(t)/t,t=x..infinitity)."             # <<<<<<<<<<<<<<
@@ -6675,7 +6766,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "it2j0y0_doc", ((System::Object^)"(ij0,iy0)=it2j0y0(x) returns the integrals int((1-j0(t))/t,t=0..x) and \nint(y0(t)/t,t=x..infinitity)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":713
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":726
  * it2i0k0_doc = "(ii0,ik0)=it2i0k0(x) returns the integrals int((i0(t)-1)/t,t=0..x) and \nint(k0(t)/t,t=x..infinitity)."
  * it2j0y0_doc = "(ij0,iy0)=it2j0y0(x) returns the integrals int((1-j0(t))/t,t=0..x) and \nint(y0(t)/t,t=x..infinitity)."
  * it2struve0_doc = "y=it2struve0(x) returns the integral of the Struve function of order 0 \ndivided by t from x to infinity:  integral(H0(t)/t, t=x..inf)."             # <<<<<<<<<<<<<<
@@ -6684,7 +6775,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "it2struve0_doc", ((System::Object^)"y=it2struve0(x) returns the integral of the Struve function of order 0 \ndivided by t from x to infinity:  integral(H0(t)/t, t=x..inf)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":714
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":727
  * it2j0y0_doc = "(ij0,iy0)=it2j0y0(x) returns the integrals int((1-j0(t))/t,t=0..x) and \nint(y0(t)/t,t=x..infinitity)."
  * it2struve0_doc = "y=it2struve0(x) returns the integral of the Struve function of order 0 \ndivided by t from x to infinity:  integral(H0(t)/t, t=x..inf)."
  * itairy_doc = "(Apt,Bpt,Ant,Bnt)=itairy(x) calculates the integral of Airy functions from 0 to x\nfor positive (Apt, Bpt) and negative (Ant, Bnt) arguments."             # <<<<<<<<<<<<<<
@@ -6693,7 +6784,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "itairy_doc", ((System::Object^)"(Apt,Bpt,Ant,Bnt)=itairy(x) calculates the integral of Airy functions from 0 to x\nfor positive (Apt, Bpt) and negative (Ant, Bnt) arguments."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":715
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":728
  * it2struve0_doc = "y=it2struve0(x) returns the integral of the Struve function of order 0 \ndivided by t from x to infinity:  integral(H0(t)/t, t=x..inf)."
  * itairy_doc = "(Apt,Bpt,Ant,Bnt)=itairy(x) calculates the integral of Airy functions from 0 to x\nfor positive (Apt, Bpt) and negative (Ant, Bnt) arguments."
  * iti0k0_doc = "(ii0,ik0)=iti0k0(x) returns simple integrals from 0 to x of the zeroth order \nmodified bessel functions i0 and k0."             # <<<<<<<<<<<<<<
@@ -6702,7 +6793,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "iti0k0_doc", ((System::Object^)"(ii0,ik0)=iti0k0(x) returns simple integrals from 0 to x of the zeroth order \nmodified bessel functions i0 and k0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":716
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":729
  * itairy_doc = "(Apt,Bpt,Ant,Bnt)=itairy(x) calculates the integral of Airy functions from 0 to x\nfor positive (Apt, Bpt) and negative (Ant, Bnt) arguments."
  * iti0k0_doc = "(ii0,ik0)=iti0k0(x) returns simple integrals from 0 to x of the zeroth order \nmodified bessel functions i0 and k0."
  * itj0y0_doc = "(ij0,iy0)=itj0y0(x) returns simple integrals from 0 to x of the zeroth order \nbessel functions j0 and y0."             # <<<<<<<<<<<<<<
@@ -6711,7 +6802,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "itj0y0_doc", ((System::Object^)"(ij0,iy0)=itj0y0(x) returns simple integrals from 0 to x of the zeroth order \nbessel functions j0 and y0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":717
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":730
  * iti0k0_doc = "(ii0,ik0)=iti0k0(x) returns simple integrals from 0 to x of the zeroth order \nmodified bessel functions i0 and k0."
  * itj0y0_doc = "(ij0,iy0)=itj0y0(x) returns simple integrals from 0 to x of the zeroth order \nbessel functions j0 and y0."
  * itmodstruve0_doc = "y=itmodstruve0(x) returns the integral of the modified Struve function\nof order 0 from 0 to x:  integral(L0(t), t=0..x)."             # <<<<<<<<<<<<<<
@@ -6720,7 +6811,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "itmodstruve0_doc", ((System::Object^)"y=itmodstruve0(x) returns the integral of the modified Struve function\nof order 0 from 0 to x:  integral(L0(t), t=0..x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":718
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":731
  * itj0y0_doc = "(ij0,iy0)=itj0y0(x) returns simple integrals from 0 to x of the zeroth order \nbessel functions j0 and y0."
  * itmodstruve0_doc = "y=itmodstruve0(x) returns the integral of the modified Struve function\nof order 0 from 0 to x:  integral(L0(t), t=0..x)."
  * itstruve0_doc = "y=itstruve0(x) returns the integral of the Struve function of order 0 \nfrom 0 to x:  integral(H0(t), t=0..x)."             # <<<<<<<<<<<<<<
@@ -6729,7 +6820,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "itstruve0_doc", ((System::Object^)"y=itstruve0(x) returns the integral of the Struve function of order 0 \nfrom 0 to x:  integral(H0(t), t=0..x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":719
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":732
  * itmodstruve0_doc = "y=itmodstruve0(x) returns the integral of the modified Struve function\nof order 0 from 0 to x:  integral(L0(t), t=0..x)."
  * itstruve0_doc = "y=itstruve0(x) returns the integral of the Struve function of order 0 \nfrom 0 to x:  integral(H0(t), t=0..x)."
  * iv_doc = "y=iv(v,z) returns the modified Bessel function of real order v of\nz.  If z is of real type and negative, v must be integer valued."             # <<<<<<<<<<<<<<
@@ -6738,7 +6829,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "iv_doc", ((System::Object^)"y=iv(v,z) returns the modified Bessel function of real order v of\nz.  If z is of real type and negative, v must be integer valued."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":720
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":733
  * itstruve0_doc = "y=itstruve0(x) returns the integral of the Struve function of order 0 \nfrom 0 to x:  integral(H0(t), t=0..x)."
  * iv_doc = "y=iv(v,z) returns the modified Bessel function of real order v of\nz.  If z is of real type and negative, v must be integer valued."
  * ive_doc = "y=ive(v,z) returns the exponentially scaled modified Bessel function of \nreal order v and complex z: ive(v,z) = iv(v,z) * exp(-abs(z.real))"             # <<<<<<<<<<<<<<
@@ -6747,7 +6838,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ive_doc", ((System::Object^)"y=ive(v,z) returns the exponentially scaled modified Bessel function of \nreal order v and complex z: ive(v,z) = iv(v,z) * exp(-abs(z.real))"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":721
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":734
  * iv_doc = "y=iv(v,z) returns the modified Bessel function of real order v of\nz.  If z is of real type and negative, v must be integer valued."
  * ive_doc = "y=ive(v,z) returns the exponentially scaled modified Bessel function of \nreal order v and complex z: ive(v,z) = iv(v,z) * exp(-abs(z.real))"
  * j0_doc = "y=j0(x) returns the Bessel function of order 0 at x."             # <<<<<<<<<<<<<<
@@ -6756,7 +6847,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "j0_doc", ((System::Object^)"y=j0(x) returns the Bessel function of order 0 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":722
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":735
  * ive_doc = "y=ive(v,z) returns the exponentially scaled modified Bessel function of \nreal order v and complex z: ive(v,z) = iv(v,z) * exp(-abs(z.real))"
  * j0_doc = "y=j0(x) returns the Bessel function of order 0 at x."
  * j1_doc = "y=j1(x) returns the Bessel function of order 1 at x."             # <<<<<<<<<<<<<<
@@ -6765,7 +6856,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "j1_doc", ((System::Object^)"y=j1(x) returns the Bessel function of order 1 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":723
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":736
  * j0_doc = "y=j0(x) returns the Bessel function of order 0 at x."
  * j1_doc = "y=j1(x) returns the Bessel function of order 1 at x."
  * jn_doc = "y=jn(n,x) returns the Bessel function of integer order n at  x."             # <<<<<<<<<<<<<<
@@ -6774,7 +6865,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "jn_doc", ((System::Object^)"y=jn(n,x) returns the Bessel function of integer order n at  x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":724
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":737
  * j1_doc = "y=j1(x) returns the Bessel function of order 1 at x."
  * jn_doc = "y=jn(n,x) returns the Bessel function of integer order n at  x."
  * jv_doc = "y=jv(v,z) returns the Bessel function of real order v at complex z."             # <<<<<<<<<<<<<<
@@ -6783,7 +6874,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "jv_doc", ((System::Object^)"y=jv(v,z) returns the Bessel function of real order v at complex z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":725
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":738
  * jn_doc = "y=jn(n,x) returns the Bessel function of integer order n at  x."
  * jv_doc = "y=jv(v,z) returns the Bessel function of real order v at complex z."
  * jve_doc = "y=jve(v,z) returns the exponentially scaled Bessel function of real order\nv at complex z: jve(v,z) = jv(v,z) * exp(-abs(z.imag))"             # <<<<<<<<<<<<<<
@@ -6792,7 +6883,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "jve_doc", ((System::Object^)"y=jve(v,z) returns the exponentially scaled Bessel function of real order\nv at complex z: jve(v,z) = jv(v,z) * exp(-abs(z.imag))"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":726
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":739
  * jv_doc = "y=jv(v,z) returns the Bessel function of real order v at complex z."
  * jve_doc = "y=jve(v,z) returns the exponentially scaled Bessel function of real order\nv at complex z: jve(v,z) = jv(v,z) * exp(-abs(z.imag))"
  * k0_doc = "y=k0(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 0 at x."             # <<<<<<<<<<<<<<
@@ -6801,7 +6892,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "k0_doc", ((System::Object^)"y=k0(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 0 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":727
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":740
  * jve_doc = "y=jve(v,z) returns the exponentially scaled Bessel function of real order\nv at complex z: jve(v,z) = jv(v,z) * exp(-abs(z.imag))"
  * k0_doc = "y=k0(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 0 at x."
  * k0e_doc = "y=k0e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 0 at x.  k0e(x) = exp(x) * k0(x)."             # <<<<<<<<<<<<<<
@@ -6810,7 +6901,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "k0e_doc", ((System::Object^)"y=k0e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 0 at x.  k0e(x) = exp(x) * k0(x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":728
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":741
  * k0_doc = "y=k0(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 0 at x."
  * k0e_doc = "y=k0e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 0 at x.  k0e(x) = exp(x) * k0(x)."
  * k1_doc = "y=i1(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 1 at x."             # <<<<<<<<<<<<<<
@@ -6819,7 +6910,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "k1_doc", ((System::Object^)"y=i1(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 1 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":729
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":742
  * k0e_doc = "y=k0e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 0 at x.  k0e(x) = exp(x) * k0(x)."
  * k1_doc = "y=i1(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 1 at x."
  * k1e_doc = "y=k1e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 1 at x.  k1e(x) = exp(x) * k1(x)"             # <<<<<<<<<<<<<<
@@ -6828,7 +6919,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "k1e_doc", ((System::Object^)"y=k1e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 1 at x.  k1e(x) = exp(x) * k1(x)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":730
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":743
  * k1_doc = "y=i1(x) returns the modified Bessel function of the second kind (sometimes called the third kind) of\norder 1 at x."
  * k1e_doc = "y=k1e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 1 at x.  k1e(x) = exp(x) * k1(x)"
  * kei_doc = "y=kei(x) returns the Kelvin function ker x"             # <<<<<<<<<<<<<<
@@ -6837,7 +6928,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kei_doc", ((System::Object^)"y=kei(x) returns the Kelvin function ker x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":731
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":744
  * k1e_doc = "y=k1e(x) returns the exponentially scaled modified Bessel function\nof the second kind (sometimes called the third kind) of order 1 at x.  k1e(x) = exp(x) * k1(x)"
  * kei_doc = "y=kei(x) returns the Kelvin function ker x"
  * keip_doc = "y=keip(x) returns the derivative of the Kelvin function kei x"             # <<<<<<<<<<<<<<
@@ -6846,7 +6937,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "keip_doc", ((System::Object^)"y=keip(x) returns the derivative of the Kelvin function kei x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":732
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":745
  * kei_doc = "y=kei(x) returns the Kelvin function ker x"
  * keip_doc = "y=keip(x) returns the derivative of the Kelvin function kei x"
  * kelvin_doc = "(Be, Ke, Bep, Kep)=kelvin(x) returns the tuple (Be, Ke, Bep, Kep) which containes \ncomplex numbers representing the real and imaginary Kelvin functions \nand their derivatives evaluated at x.  For example, \nkelvin(x)[0].real = ber x and kelvin(x)[0].imag = bei x with similar \nrelationships for ker and kei."             # <<<<<<<<<<<<<<
@@ -6855,7 +6946,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kelvin_doc", ((System::Object^)"(Be, Ke, Bep, Kep)=kelvin(x) returns the tuple (Be, Ke, Bep, Kep) which containes \ncomplex numbers representing the real and imaginary Kelvin functions \nand their derivatives evaluated at x.  For example, \nkelvin(x)[0].real = ber x and kelvin(x)[0].imag = bei x with similar \nrelationships for ker and kei."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":733
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":746
  * keip_doc = "y=keip(x) returns the derivative of the Kelvin function kei x"
  * kelvin_doc = "(Be, Ke, Bep, Kep)=kelvin(x) returns the tuple (Be, Ke, Bep, Kep) which containes \ncomplex numbers representing the real and imaginary Kelvin functions \nand their derivatives evaluated at x.  For example, \nkelvin(x)[0].real = ber x and kelvin(x)[0].imag = bei x with similar \nrelationships for ker and kei."
  * ker_doc = "y=ker(x) returns the Kelvin function ker x"             # <<<<<<<<<<<<<<
@@ -6864,7 +6955,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ker_doc", ((System::Object^)"y=ker(x) returns the Kelvin function ker x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":734
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":747
  * kelvin_doc = "(Be, Ke, Bep, Kep)=kelvin(x) returns the tuple (Be, Ke, Bep, Kep) which containes \ncomplex numbers representing the real and imaginary Kelvin functions \nand their derivatives evaluated at x.  For example, \nkelvin(x)[0].real = ber x and kelvin(x)[0].imag = bei x with similar \nrelationships for ker and kei."
  * ker_doc = "y=ker(x) returns the Kelvin function ker x"
  * kerp_doc = "y=kerp(x) returns the derivative of the Kelvin function ker x"             # <<<<<<<<<<<<<<
@@ -6873,7 +6964,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kerp_doc", ((System::Object^)"y=kerp(x) returns the derivative of the Kelvin function ker x"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":735
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":748
  * ker_doc = "y=ker(x) returns the Kelvin function ker x"
  * kerp_doc = "y=kerp(x) returns the derivative of the Kelvin function ker x"
  * kn_doc = "y=kn(n,x) returns the modified Bessel function of the second kind (sometimes called the third kind) for\ninteger order n at x."             # <<<<<<<<<<<<<<
@@ -6882,7 +6973,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kn_doc", ((System::Object^)"y=kn(n,x) returns the modified Bessel function of the second kind (sometimes called the third kind) for\ninteger order n at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":736
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":749
  * kerp_doc = "y=kerp(x) returns the derivative of the Kelvin function ker x"
  * kn_doc = "y=kn(n,x) returns the modified Bessel function of the second kind (sometimes called the third kind) for\ninteger order n at x."
  * kolmogi_doc = "y=kolmogi(p) returns y such that kolmogorov(y) = p"             # <<<<<<<<<<<<<<
@@ -6891,7 +6982,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kolmogi_doc", ((System::Object^)"y=kolmogi(p) returns y such that kolmogorov(y) = p"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":737
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":750
  * kn_doc = "y=kn(n,x) returns the modified Bessel function of the second kind (sometimes called the third kind) for\ninteger order n at x."
  * kolmogi_doc = "y=kolmogi(p) returns y such that kolmogorov(y) = p"
  * kolmogorov_doc = "p=kolmogorov(y) returns the complementary cumulative distribution \nfunction of Kolmogorov's limiting distribution (Kn* for large n) \nof a two-sided test for equality between an empirical and a theoretical \ndistribution. It is equal to the (limit as n->infinity of the) probability \nthat sqrt(n) * max absolute deviation > y."             # <<<<<<<<<<<<<<
@@ -6900,7 +6991,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kolmogorov_doc", ((System::Object^)"p=kolmogorov(y) returns the complementary cumulative distribution \nfunction of Kolmogorov's limiting distribution (Kn* for large n) \nof a two-sided test for equality between an empirical and a theoretical \ndistribution. It is equal to the (limit as n->infinity of the) probability \nthat sqrt(n) * max absolute deviation > y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":738
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":751
  * kolmogi_doc = "y=kolmogi(p) returns y such that kolmogorov(y) = p"
  * kolmogorov_doc = "p=kolmogorov(y) returns the complementary cumulative distribution \nfunction of Kolmogorov's limiting distribution (Kn* for large n) \nof a two-sided test for equality between an empirical and a theoretical \ndistribution. It is equal to the (limit as n->infinity of the) probability \nthat sqrt(n) * max absolute deviation > y."
  * kv_doc = "y=kv(v,z) returns the modified Bessel function of the second kind (sometimes called the third kind) for\nreal order v at complex z."             # <<<<<<<<<<<<<<
@@ -6909,7 +7000,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kv_doc", ((System::Object^)"y=kv(v,z) returns the modified Bessel function of the second kind (sometimes called the third kind) for\nreal order v at complex z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":739
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":752
  * kolmogorov_doc = "p=kolmogorov(y) returns the complementary cumulative distribution \nfunction of Kolmogorov's limiting distribution (Kn* for large n) \nof a two-sided test for equality between an empirical and a theoretical \ndistribution. It is equal to the (limit as n->infinity of the) probability \nthat sqrt(n) * max absolute deviation > y."
  * kv_doc = "y=kv(v,z) returns the modified Bessel function of the second kind (sometimes called the third kind) for\nreal order v at complex z."
  * kve_doc = "y=kve(v,z) returns the exponentially scaled, modified Bessel function\nof the second kind (sometimes called the third kind) for real order v at complex z: kve(v,z) = kv(v,z) * exp(z)"             # <<<<<<<<<<<<<<
@@ -6918,7 +7009,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "kve_doc", ((System::Object^)"y=kve(v,z) returns the exponentially scaled, modified Bessel function\nof the second kind (sometimes called the third kind) for real order v at complex z: kve(v,z) = kv(v,z) * exp(z)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":740
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":753
  * kv_doc = "y=kv(v,z) returns the modified Bessel function of the second kind (sometimes called the third kind) for\nreal order v at complex z."
  * kve_doc = "y=kve(v,z) returns the exponentially scaled, modified Bessel function\nof the second kind (sometimes called the third kind) for real order v at complex z: kve(v,z) = kv(v,z) * exp(z)"
  * log1p_doc = "y=log1p(x) calculates log(1+x) for use when x is near zero."             # <<<<<<<<<<<<<<
@@ -6927,7 +7018,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "log1p_doc", ((System::Object^)"y=log1p(x) calculates log(1+x) for use when x is near zero."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":741
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":754
  * kve_doc = "y=kve(v,z) returns the exponentially scaled, modified Bessel function\nof the second kind (sometimes called the third kind) for real order v at complex z: kve(v,z) = kv(v,z) * exp(z)"
  * log1p_doc = "y=log1p(x) calculates log(1+x) for use when x is near zero."
  * lpmv_doc = "y=lpmv(m,v,x) returns the associated legendre function of integer order\nm and nonnegative degree v: |x|<=1."             # <<<<<<<<<<<<<<
@@ -6936,7 +7027,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "lpmv_doc", ((System::Object^)"y=lpmv(m,v,x) returns the associated legendre function of integer order\nm and nonnegative degree v: |x|<=1."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":742
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":755
  * log1p_doc = "y=log1p(x) calculates log(1+x) for use when x is near zero."
  * lpmv_doc = "y=lpmv(m,v,x) returns the associated legendre function of integer order\nm and nonnegative degree v: |x|<=1."
  * mathieu_a_doc = "lmbda=mathieu_a(m,q) returns the characteristic value for the even solution, \nce_m(z,q), of Mathieu's equation"             # <<<<<<<<<<<<<<
@@ -6945,7 +7036,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_a_doc", ((System::Object^)"lmbda=mathieu_a(m,q) returns the characteristic value for the even solution, \nce_m(z,q), of Mathieu's equation"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":743
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":756
  * lpmv_doc = "y=lpmv(m,v,x) returns the associated legendre function of integer order\nm and nonnegative degree v: |x|<=1."
  * mathieu_a_doc = "lmbda=mathieu_a(m,q) returns the characteristic value for the even solution, \nce_m(z,q), of Mathieu's equation"
  * mathieu_b_doc = "lmbda=mathieu_b(m,q) returns the characteristic value for the odd solution, \nse_m(z,q), of Mathieu's equation"             # <<<<<<<<<<<<<<
@@ -6954,7 +7045,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_b_doc", ((System::Object^)"lmbda=mathieu_b(m,q) returns the characteristic value for the odd solution, \nse_m(z,q), of Mathieu's equation"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":744
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":757
  * mathieu_a_doc = "lmbda=mathieu_a(m,q) returns the characteristic value for the even solution, \nce_m(z,q), of Mathieu's equation"
  * mathieu_b_doc = "lmbda=mathieu_b(m,q) returns the characteristic value for the odd solution, \nse_m(z,q), of Mathieu's equation"
  * mathieu_cem_doc = "(y,yp)=mathieu_cem(m,q,x) returns the even Mathieu function, ce_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of ce_m(x,q)"             # <<<<<<<<<<<<<<
@@ -6963,7 +7054,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_cem_doc", ((System::Object^)"(y,yp)=mathieu_cem(m,q,x) returns the even Mathieu function, ce_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of ce_m(x,q)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":745
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":758
  * mathieu_b_doc = "lmbda=mathieu_b(m,q) returns the characteristic value for the odd solution, \nse_m(z,q), of Mathieu's equation"
  * mathieu_cem_doc = "(y,yp)=mathieu_cem(m,q,x) returns the even Mathieu function, ce_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of ce_m(x,q)"
  * mathieu_modcem1_doc = "(y,yp)=mathieu_modcem1(m,q,x) evaluates the even modified Matheiu function \nof the first kind, Mc1m(x,q), and its derivative at x for order m and\nparameter q."             # <<<<<<<<<<<<<<
@@ -6972,7 +7063,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem1_doc", ((System::Object^)"(y,yp)=mathieu_modcem1(m,q,x) evaluates the even modified Matheiu function \nof the first kind, Mc1m(x,q), and its derivative at x for order m and\nparameter q."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":746
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":759
  * mathieu_cem_doc = "(y,yp)=mathieu_cem(m,q,x) returns the even Mathieu function, ce_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of ce_m(x,q)"
  * mathieu_modcem1_doc = "(y,yp)=mathieu_modcem1(m,q,x) evaluates the even modified Matheiu function \nof the first kind, Mc1m(x,q), and its derivative at x for order m and\nparameter q."
  * mathieu_modcem2_doc = "(y,yp)=mathieu_modcem2(m,q,x) evaluates the even modified Matheiu function \nof the second kind, Mc2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."             # <<<<<<<<<<<<<<
@@ -6981,7 +7072,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem2_doc", ((System::Object^)"(y,yp)=mathieu_modcem2(m,q,x) evaluates the even modified Matheiu function \nof the second kind, Mc2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":747
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":760
  * mathieu_modcem1_doc = "(y,yp)=mathieu_modcem1(m,q,x) evaluates the even modified Matheiu function \nof the first kind, Mc1m(x,q), and its derivative at x for order m and\nparameter q."
  * mathieu_modcem2_doc = "(y,yp)=mathieu_modcem2(m,q,x) evaluates the even modified Matheiu function \nof the second kind, Mc2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_modsem1_doc = "(y,yp)=mathieu_modsem1(m,q,x) evaluates the odd modified Matheiu function \nof the first kind, Ms1m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."             # <<<<<<<<<<<<<<
@@ -6990,7 +7081,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem1_doc", ((System::Object^)"(y,yp)=mathieu_modsem1(m,q,x) evaluates the odd modified Matheiu function \nof the first kind, Ms1m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":748
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":761
  * mathieu_modcem2_doc = "(y,yp)=mathieu_modcem2(m,q,x) evaluates the even modified Matheiu function \nof the second kind, Mc2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_modsem1_doc = "(y,yp)=mathieu_modsem1(m,q,x) evaluates the odd modified Matheiu function \nof the first kind, Ms1m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_modsem2_doc = "(y,yp)=mathieu_modsem2(m,q,x) evaluates the odd modified Matheiu function\nof the second kind, Ms2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."             # <<<<<<<<<<<<<<
@@ -6999,7 +7090,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem2_doc", ((System::Object^)"(y,yp)=mathieu_modsem2(m,q,x) evaluates the odd modified Matheiu function\nof the second kind, Ms2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":749
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":762
  * mathieu_modsem1_doc = "(y,yp)=mathieu_modsem1(m,q,x) evaluates the odd modified Matheiu function \nof the first kind, Ms1m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_modsem2_doc = "(y,yp)=mathieu_modsem2(m,q,x) evaluates the odd modified Matheiu function\nof the second kind, Ms2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_sem_doc = "(y,yp)=mathieu_sem(m,q,x) returns the odd Mathieu function, se_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of se_m(x,q)."             # <<<<<<<<<<<<<<
@@ -7008,7 +7099,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "mathieu_sem_doc", ((System::Object^)"(y,yp)=mathieu_sem(m,q,x) returns the odd Mathieu function, se_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of se_m(x,q)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":750
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":763
  * mathieu_modsem2_doc = "(y,yp)=mathieu_modsem2(m,q,x) evaluates the odd modified Matheiu function\nof the second kind, Ms2m(x,q), and its derivative at x (given in degrees)\nfor order m and parameter q."
  * mathieu_sem_doc = "(y,yp)=mathieu_sem(m,q,x) returns the odd Mathieu function, se_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of se_m(x,q)."
  * modfresnelm_doc = "(fm,km)=modfresnelp(x) returns the modified fresnel integrals F_-(x) amd K_-(x)\nas fp=integral(exp(-1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(1j*(x*x+pi/4))*fp"             # <<<<<<<<<<<<<<
@@ -7017,7 +7108,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "modfresnelm_doc", ((System::Object^)"(fm,km)=modfresnelp(x) returns the modified fresnel integrals F_-(x) amd K_-(x)\nas fp=integral(exp(-1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(1j*(x*x+pi/4))*fp"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":751
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":764
  * mathieu_sem_doc = "(y,yp)=mathieu_sem(m,q,x) returns the odd Mathieu function, se_m(x,q), \nof order m and parameter q evaluated at x (given in degrees).\nAlso returns the derivative with respect to x of se_m(x,q)."
  * modfresnelm_doc = "(fm,km)=modfresnelp(x) returns the modified fresnel integrals F_-(x) amd K_-(x)\nas fp=integral(exp(-1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(1j*(x*x+pi/4))*fp"
  * modfresnelp_doc = "(fp,kp)=modfresnelp(x) returns the modified fresnel integrals F_+(x) and K_+(x)\nas fp=integral(exp(1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(-1j*(x*x+pi/4))*fp"             # <<<<<<<<<<<<<<
@@ -7026,7 +7117,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "modfresnelp_doc", ((System::Object^)"(fp,kp)=modfresnelp(x) returns the modified fresnel integrals F_+(x) and K_+(x)\nas fp=integral(exp(1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(-1j*(x*x+pi/4))*fp"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":752
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":765
  * modfresnelm_doc = "(fm,km)=modfresnelp(x) returns the modified fresnel integrals F_-(x) amd K_-(x)\nas fp=integral(exp(-1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(1j*(x*x+pi/4))*fp"
  * modfresnelp_doc = "(fp,kp)=modfresnelp(x) returns the modified fresnel integrals F_+(x) and K_+(x)\nas fp=integral(exp(1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(-1j*(x*x+pi/4))*fp"
  * modstruve_doc = "y=modstruve(v,x) returns the modified Struve function Lv(x) of order\nv at x, x must be positive unless v is an integer and it is recommended\nthat |v|<=20."             # <<<<<<<<<<<<<<
@@ -7035,7 +7126,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "modstruve_doc", ((System::Object^)"y=modstruve(v,x) returns the modified Struve function Lv(x) of order\nv at x, x must be positive unless v is an integer and it is recommended\nthat |v|<=20."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":753
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":766
  * modfresnelp_doc = "(fp,kp)=modfresnelp(x) returns the modified fresnel integrals F_+(x) and K_+(x)\nas fp=integral(exp(1j*t*t),t=x..inf) and kp=1/sqrt(pi)*exp(-1j*(x*x+pi/4))*fp"
  * modstruve_doc = "y=modstruve(v,x) returns the modified Struve function Lv(x) of order\nv at x, x must be positive unless v is an integer and it is recommended\nthat |v|<=20."
  * nbdtr_doc = "y=nbdtr(k,n,p) returns the sum of the terms 0 through k of the\nnegative binomial distribution: sum((n+j-1)Cj p**n (1-p)**j,j=0..k).\nIn a sequence of Bernoulli trials this is the probability that k or\nfewer failures precede the nth success."             # <<<<<<<<<<<<<<
@@ -7044,7 +7135,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "nbdtr_doc", ((System::Object^)"y=nbdtr(k,n,p) returns the sum of the terms 0 through k of the\nnegative binomial distribution: sum((n+j-1)Cj p**n (1-p)**j,j=0..k).\nIn a sequence of Bernoulli trials this is the probability that k or\nfewer failures precede the nth success."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":754
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":767
  * modstruve_doc = "y=modstruve(v,x) returns the modified Struve function Lv(x) of order\nv at x, x must be positive unless v is an integer and it is recommended\nthat |v|<=20."
  * nbdtr_doc = "y=nbdtr(k,n,p) returns the sum of the terms 0 through k of the\nnegative binomial distribution: sum((n+j-1)Cj p**n (1-p)**j,j=0..k).\nIn a sequence of Bernoulli trials this is the probability that k or\nfewer failures precede the nth success."
  * nbdtrc_doc = "y=nbdtrc(k,n,p) returns the sum of the terms k+1 to infinity of the\nnegative binomial distribution."             # <<<<<<<<<<<<<<
@@ -7053,7 +7144,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "nbdtrc_doc", ((System::Object^)"y=nbdtrc(k,n,p) returns the sum of the terms k+1 to infinity of the\nnegative binomial distribution."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":755
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":768
  * nbdtr_doc = "y=nbdtr(k,n,p) returns the sum of the terms 0 through k of the\nnegative binomial distribution: sum((n+j-1)Cj p**n (1-p)**j,j=0..k).\nIn a sequence of Bernoulli trials this is the probability that k or\nfewer failures precede the nth success."
  * nbdtrc_doc = "y=nbdtrc(k,n,p) returns the sum of the terms k+1 to infinity of the\nnegative binomial distribution."
  * nbdtri_doc = "p=nbdtri(k,n,y) finds the argument p such that nbdtr(k,n,p)=y."             # <<<<<<<<<<<<<<
@@ -7062,7 +7153,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "nbdtri_doc", ((System::Object^)"p=nbdtri(k,n,y) finds the argument p such that nbdtr(k,n,p)=y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":756
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":769
  * nbdtrc_doc = "y=nbdtrc(k,n,p) returns the sum of the terms k+1 to infinity of the\nnegative binomial distribution."
  * nbdtri_doc = "p=nbdtri(k,n,y) finds the argument p such that nbdtr(k,n,p)=y."
  * nbdtrik_doc = "k=nbdtrik(y,n,p) finds the argument k such that nbdtr(k,n,p)=y."             # <<<<<<<<<<<<<<
@@ -7071,7 +7162,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "nbdtrik_doc", ((System::Object^)"k=nbdtrik(y,n,p) finds the argument k such that nbdtr(k,n,p)=y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":757
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":770
  * nbdtri_doc = "p=nbdtri(k,n,y) finds the argument p such that nbdtr(k,n,p)=y."
  * nbdtrik_doc = "k=nbdtrik(y,n,p) finds the argument k such that nbdtr(k,n,p)=y."
  * nbdtrin_doc = "n=nbdtrin(k,y,p) finds the argument n such that nbdtr(k,n,p)=y."             # <<<<<<<<<<<<<<
@@ -7080,7 +7171,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "nbdtrin_doc", ((System::Object^)"n=nbdtrin(k,y,p) finds the argument n such that nbdtr(k,n,p)=y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":758
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":771
  * nbdtrik_doc = "k=nbdtrik(y,n,p) finds the argument k such that nbdtr(k,n,p)=y."
  * nbdtrin_doc = "n=nbdtrin(k,y,p) finds the argument n such that nbdtr(k,n,p)=y."
  * ndtr_doc = "y=ndtr(x) returns the area under the standard Gaussian probability \ndensity function, integrated from minus infinity to x:\n1/sqrt(2*pi) * integral(exp(-t**2 / 2),t=-inf..x)"             # <<<<<<<<<<<<<<
@@ -7089,7 +7180,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ndtr_doc", ((System::Object^)"y=ndtr(x) returns the area under the standard Gaussian probability \ndensity function, integrated from minus infinity to x:\n1/sqrt(2*pi) * integral(exp(-t**2 / 2),t=-inf..x)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":759
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":772
  * nbdtrin_doc = "n=nbdtrin(k,y,p) finds the argument n such that nbdtr(k,n,p)=y."
  * ndtr_doc = "y=ndtr(x) returns the area under the standard Gaussian probability \ndensity function, integrated from minus infinity to x:\n1/sqrt(2*pi) * integral(exp(-t**2 / 2),t=-inf..x)"
  * ndtri_doc = "x=ndtri(y) returns the argument x for which the area udnder the\nGaussian probability density function (integrated from minus infinity\nto x) is equal to y."             # <<<<<<<<<<<<<<
@@ -7098,7 +7189,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "ndtri_doc", ((System::Object^)"x=ndtri(y) returns the argument x for which the area udnder the\nGaussian probability density function (integrated from minus infinity\nto x) is equal to y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":760
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":773
  * ndtr_doc = "y=ndtr(x) returns the area under the standard Gaussian probability \ndensity function, integrated from minus infinity to x:\n1/sqrt(2*pi) * integral(exp(-t**2 / 2),t=-inf..x)"
  * ndtri_doc = "x=ndtri(y) returns the argument x for which the area udnder the\nGaussian probability density function (integrated from minus infinity\nto x) is equal to y."
  * obl_ang1_doc = "(s,sp)=obl_ang1(m,n,c,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7107,7 +7198,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_ang1_doc", ((System::Object^)"(s,sp)=obl_ang1(m,n,c,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":761
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":774
  * ndtri_doc = "x=ndtri(y) returns the argument x for which the area udnder the\nGaussian probability density function (integrated from minus infinity\nto x) is equal to y."
  * obl_ang1_doc = "(s,sp)=obl_ang1(m,n,c,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_ang1_cv_doc = "(s,sp)=obl_ang1_cv(m,n,c,cv,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7116,7 +7207,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_ang1_cv_doc", ((System::Object^)"(s,sp)=obl_ang1_cv(m,n,c,cv,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":762
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":775
  * obl_ang1_doc = "(s,sp)=obl_ang1(m,n,c,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_ang1_cv_doc = "(s,sp)=obl_ang1_cv(m,n,c,cv,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * obl_cv_doc = "cv=obl_cv(m,n,c) computes the characteristic value of oblate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."             # <<<<<<<<<<<<<<
@@ -7125,7 +7216,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_cv_doc", ((System::Object^)"cv=obl_cv(m,n,c) computes the characteristic value of oblate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":763
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":776
  * obl_ang1_cv_doc = "(s,sp)=obl_ang1_cv(m,n,c,cv,x) computes the oblate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * obl_cv_doc = "cv=obl_cv(m,n,c) computes the characteristic value of oblate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."
  * obl_rad1_doc = "(s,sp)=obl_rad1(m,n,c,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7134,7 +7225,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_rad1_doc", ((System::Object^)"(s,sp)=obl_rad1(m,n,c,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":764
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":777
  * obl_cv_doc = "cv=obl_cv(m,n,c) computes the characteristic value of oblate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."
  * obl_rad1_doc = "(s,sp)=obl_rad1(m,n,c,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_rad1_cv_doc = "(s,sp)=obl_rad1_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7143,7 +7234,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_rad1_cv_doc", ((System::Object^)"(s,sp)=obl_rad1_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":765
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":778
  * obl_rad1_doc = "(s,sp)=obl_rad1(m,n,c,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_rad1_cv_doc = "(s,sp)=obl_rad1_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * obl_rad2_doc = "(s,sp)=obl_rad2(m,n,c,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7152,7 +7243,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_rad2_doc", ((System::Object^)"(s,sp)=obl_rad2(m,n,c,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":766
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":779
  * obl_rad1_cv_doc = "(s,sp)=obl_rad1_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * obl_rad2_doc = "(s,sp)=obl_rad2(m,n,c,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_rad2_cv_doc = "(s,sp)=obl_rad2_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7161,7 +7252,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "obl_rad2_cv_doc", ((System::Object^)"(s,sp)=obl_rad2_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":767
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":780
  * obl_rad2_doc = "(s,sp)=obl_rad2(m,n,c,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * obl_rad2_cv_doc = "(s,sp)=obl_rad2_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pbdv_doc = "(d,dp)=pbdv(v,x) returns (d,dp) with the parabolic cylinder function Dv(x) in \nd and the derivative, Dv'(x) in dp."             # <<<<<<<<<<<<<<
@@ -7170,7 +7261,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pbdv_doc", ((System::Object^)"(d,dp)=pbdv(v,x) returns (d,dp) with the parabolic cylinder function Dv(x) in \nd and the derivative, Dv'(x) in dp."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":768
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":781
  * obl_rad2_cv_doc = "(s,sp)=obl_rad2_cv(m,n,c,cv,x) computes the oblate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pbdv_doc = "(d,dp)=pbdv(v,x) returns (d,dp) with the parabolic cylinder function Dv(x) in \nd and the derivative, Dv'(x) in dp."
  * pbvv_doc = "(v,vp)=pbvv(v,x) returns (v,vp) with the parabolic cylinder function Vv(x) in \nv and the derivative, Vv'(x) in vp."             # <<<<<<<<<<<<<<
@@ -7179,7 +7270,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pbvv_doc", ((System::Object^)"(v,vp)=pbvv(v,x) returns (v,vp) with the parabolic cylinder function Vv(x) in \nv and the derivative, Vv'(x) in vp."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":769
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":782
  * pbdv_doc = "(d,dp)=pbdv(v,x) returns (d,dp) with the parabolic cylinder function Dv(x) in \nd and the derivative, Dv'(x) in dp."
  * pbvv_doc = "(v,vp)=pbvv(v,x) returns (v,vp) with the parabolic cylinder function Vv(x) in \nv and the derivative, Vv'(x) in vp."
  * pbwa_doc = "(w,wp)=pbwa(a,x) returns (w,wp) with the parabolic cylinder function W(a,x) in \nw and the derivative, W'(a,x) in wp.  May not be accurate for large (>5) \narguments in a and/or x."             # <<<<<<<<<<<<<<
@@ -7188,7 +7279,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pbwa_doc", ((System::Object^)"(w,wp)=pbwa(a,x) returns (w,wp) with the parabolic cylinder function W(a,x) in \nw and the derivative, W'(a,x) in wp.  May not be accurate for large (>5) \narguments in a and/or x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":770
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":783
  * pbvv_doc = "(v,vp)=pbvv(v,x) returns (v,vp) with the parabolic cylinder function Vv(x) in \nv and the derivative, Vv'(x) in vp."
  * pbwa_doc = "(w,wp)=pbwa(a,x) returns (w,wp) with the parabolic cylinder function W(a,x) in \nw and the derivative, W'(a,x) in wp.  May not be accurate for large (>5) \narguments in a and/or x."
  * pdtr_doc = "y=pdtr(k,m) returns the sum of the first k terms of the Poisson\ndistribution: sum(exp(-m) * m**j / j!, j=0..k) = gammaincc( k+1, m).\nArguments must both be positive and k an integer."             # <<<<<<<<<<<<<<
@@ -7197,7 +7288,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pdtr_doc", ((System::Object^)"y=pdtr(k,m) returns the sum of the first k terms of the Poisson\ndistribution: sum(exp(-m) * m**j / j!, j=0..k) = gammaincc( k+1, m).\nArguments must both be positive and k an integer."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":771
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":784
  * pbwa_doc = "(w,wp)=pbwa(a,x) returns (w,wp) with the parabolic cylinder function W(a,x) in \nw and the derivative, W'(a,x) in wp.  May not be accurate for large (>5) \narguments in a and/or x."
  * pdtr_doc = "y=pdtr(k,m) returns the sum of the first k terms of the Poisson\ndistribution: sum(exp(-m) * m**j / j!, j=0..k) = gammaincc( k+1, m).\nArguments must both be positive and k an integer."
  * pdtrc_doc = "y=pdtrc(k,m) returns the sum of the terms from k+1 to infinity of the\nPoisson distribution: sum(exp(-m) * m**j / j!, j=k+1..inf) = gammainc( k+1, m).\nArguments must both be positive and k an integer."             # <<<<<<<<<<<<<<
@@ -7206,7 +7297,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pdtrc_doc", ((System::Object^)"y=pdtrc(k,m) returns the sum of the terms from k+1 to infinity of the\nPoisson distribution: sum(exp(-m) * m**j / j!, j=k+1..inf) = gammainc( k+1, m).\nArguments must both be positive and k an integer."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":772
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":785
  * pdtr_doc = "y=pdtr(k,m) returns the sum of the first k terms of the Poisson\ndistribution: sum(exp(-m) * m**j / j!, j=0..k) = gammaincc( k+1, m).\nArguments must both be positive and k an integer."
  * pdtrc_doc = "y=pdtrc(k,m) returns the sum of the terms from k+1 to infinity of the\nPoisson distribution: sum(exp(-m) * m**j / j!, j=k+1..inf) = gammainc( k+1, m).\nArguments must both be positive and k an integer."
  * pdtri_doc = "m=pdtri(k,y) returns the Poisson variable m such that the sum\nfrom 0 to k of the Poisson density is equal to the given probability\ny:  calculated by gammaincinv( k+1, y).  k must be a nonnegative integer and\ny between 0 and 1."             # <<<<<<<<<<<<<<
@@ -7215,7 +7306,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pdtri_doc", ((System::Object^)"m=pdtri(k,y) returns the Poisson variable m such that the sum\nfrom 0 to k of the Poisson density is equal to the given probability\ny:  calculated by gammaincinv( k+1, y).  k must be a nonnegative integer and\ny between 0 and 1."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":773
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":786
  * pdtrc_doc = "y=pdtrc(k,m) returns the sum of the terms from k+1 to infinity of the\nPoisson distribution: sum(exp(-m) * m**j / j!, j=k+1..inf) = gammainc( k+1, m).\nArguments must both be positive and k an integer."
  * pdtri_doc = "m=pdtri(k,y) returns the Poisson variable m such that the sum\nfrom 0 to k of the Poisson density is equal to the given probability\ny:  calculated by gammaincinv( k+1, y).  k must be a nonnegative integer and\ny between 0 and 1."
  * pdtrik_doc = "k=pdtrik(p,m) returns the quantile k such that pdtr(k,m)=p"             # <<<<<<<<<<<<<<
@@ -7224,7 +7315,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pdtrik_doc", ((System::Object^)"k=pdtrik(p,m) returns the quantile k such that pdtr(k,m)=p"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":774
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":787
  * pdtri_doc = "m=pdtri(k,y) returns the Poisson variable m such that the sum\nfrom 0 to k of the Poisson density is equal to the given probability\ny:  calculated by gammaincinv( k+1, y).  k must be a nonnegative integer and\ny between 0 and 1."
  * pdtrik_doc = "k=pdtrik(p,m) returns the quantile k such that pdtr(k,m)=p"
  * pro_ang1_doc = "(s,sp)=pro_ang1(m,n,c,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7233,7 +7324,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_ang1_doc", ((System::Object^)"(s,sp)=pro_ang1(m,n,c,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":775
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":788
  * pdtrik_doc = "k=pdtrik(p,m) returns the quantile k such that pdtr(k,m)=p"
  * pro_ang1_doc = "(s,sp)=pro_ang1(m,n,c,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_ang1_cv_doc = "(s,sp)=pro_ang1_cv(m,n,c,cv,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7242,7 +7333,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_ang1_cv_doc", ((System::Object^)"(s,sp)=pro_ang1_cv(m,n,c,cv,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":776
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":789
  * pro_ang1_doc = "(s,sp)=pro_ang1(m,n,c,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_ang1_cv_doc = "(s,sp)=pro_ang1_cv(m,n,c,cv,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pro_cv_doc = "cv=pro_cv(m,n,c) computes the characteristic value of prolate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."             # <<<<<<<<<<<<<<
@@ -7251,7 +7342,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_cv_doc", ((System::Object^)"cv=pro_cv(m,n,c) computes the characteristic value of prolate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":777
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":790
  * pro_ang1_cv_doc = "(s,sp)=pro_ang1_cv(m,n,c,cv,x) computes the prolate sheroidal angular function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pro_cv_doc = "cv=pro_cv(m,n,c) computes the characteristic value of prolate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."
  * pro_rad1_doc = "(s,sp)=pro_rad1(m,n,c,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7260,7 +7351,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_rad1_doc", ((System::Object^)"(s,sp)=pro_rad1(m,n,c,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":778
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":791
  * pro_cv_doc = "cv=pro_cv(m,n,c) computes the characteristic value of prolate spheroidal \nwave functions of order m,n (n>=m) and spheroidal parameter c."
  * pro_rad1_doc = "(s,sp)=pro_rad1(m,n,c,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_rad1_cv_doc = "(s,sp)=pro_rad1_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7269,7 +7360,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_rad1_cv_doc", ((System::Object^)"(s,sp)=pro_rad1_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":779
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":792
  * pro_rad1_doc = "(s,sp)=pro_rad1(m,n,c,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_rad1_cv_doc = "(s,sp)=pro_rad1_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pro_rad2_doc = "(s,sp)=pro_rad2(m,n,c,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."             # <<<<<<<<<<<<<<
@@ -7278,7 +7369,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_rad2_doc", ((System::Object^)"(s,sp)=pro_rad2(m,n,c,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":780
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":793
  * pro_rad1_cv_doc = "(s,sp)=pro_rad1_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the first kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * pro_rad2_doc = "(s,sp)=pro_rad2(m,n,c,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_rad2_cv_doc = "(s,sp)=pro_rad2_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."             # <<<<<<<<<<<<<<
@@ -7287,7 +7378,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "pro_rad2_cv_doc", ((System::Object^)"(s,sp)=pro_rad2_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":781
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":794
  * pro_rad2_doc = "(s,sp)=pro_rad2(m,n,c,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0."
  * pro_rad2_cv_doc = "(s,sp)=pro_rad2_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * psi_doc = "y=psi(z) is the derivative of the logarithm of the gamma function\nevaluated at z (also called the digamma function)."             # <<<<<<<<<<<<<<
@@ -7296,7 +7387,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "psi_doc", ((System::Object^)"y=psi(z) is the derivative of the logarithm of the gamma function\nevaluated at z (also called the digamma function)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":782
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":795
  * pro_rad2_cv_doc = "(s,sp)=pro_rad2_cv(m,n,c,cv,x) computes the prolate sheroidal radial function \nof the second kind and its derivative (with respect to x) for mode paramters\nm>=0 and n>=m, spheroidal parameter c and |x|<1.0. Requires pre-computed\ncharacteristic value."
  * psi_doc = "y=psi(z) is the derivative of the logarithm of the gamma function\nevaluated at z (also called the digamma function)."
  * radian_doc = "y=radian(d,m,s) returns the angle given in (d)egrees, (m)inutes, and\n(s)econds in radians."             # <<<<<<<<<<<<<<
@@ -7305,7 +7396,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "radian_doc", ((System::Object^)"y=radian(d,m,s) returns the angle given in (d)egrees, (m)inutes, and\n(s)econds in radians."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":783
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":796
  * psi_doc = "y=psi(z) is the derivative of the logarithm of the gamma function\nevaluated at z (also called the digamma function)."
  * radian_doc = "y=radian(d,m,s) returns the angle given in (d)egrees, (m)inutes, and\n(s)econds in radians."
  * rgamma_doc = "y=rgamma(z) returns one divided by the gamma function of x."             # <<<<<<<<<<<<<<
@@ -7314,7 +7405,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "rgamma_doc", ((System::Object^)"y=rgamma(z) returns one divided by the gamma function of x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":784
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":797
  * radian_doc = "y=radian(d,m,s) returns the angle given in (d)egrees, (m)inutes, and\n(s)econds in radians."
  * rgamma_doc = "y=rgamma(z) returns one divided by the gamma function of x."
  * round_doc = "y=Returns the nearest integer to x as a double precision\nfloating point result.  If x ends in 0.5 exactly, the\nnearest even integer is chosen."             # <<<<<<<<<<<<<<
@@ -7323,7 +7414,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "round_doc", ((System::Object^)"y=Returns the nearest integer to x as a double precision\nfloating point result.  If x ends in 0.5 exactly, the\nnearest even integer is chosen."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":785
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":798
  * rgamma_doc = "y=rgamma(z) returns one divided by the gamma function of x."
  * round_doc = "y=Returns the nearest integer to x as a double precision\nfloating point result.  If x ends in 0.5 exactly, the\nnearest even integer is chosen."
  * shichi_doc = "(shi,chi)=shichi(x) returns the hyperbolic sine and cosine integrals:\nintegral(sinh(t)/t,t=0..x) and eul + ln x +\nintegral((cosh(t)-1)/t,t=0..x) where eul is Euler's Constant."             # <<<<<<<<<<<<<<
@@ -7332,7 +7423,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "shichi_doc", ((System::Object^)"(shi,chi)=shichi(x) returns the hyperbolic sine and cosine integrals:\nintegral(sinh(t)/t,t=0..x) and eul + ln x +\nintegral((cosh(t)-1)/t,t=0..x) where eul is Euler's Constant."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":786
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":799
  * round_doc = "y=Returns the nearest integer to x as a double precision\nfloating point result.  If x ends in 0.5 exactly, the\nnearest even integer is chosen."
  * shichi_doc = "(shi,chi)=shichi(x) returns the hyperbolic sine and cosine integrals:\nintegral(sinh(t)/t,t=0..x) and eul + ln x +\nintegral((cosh(t)-1)/t,t=0..x) where eul is Euler's Constant."
  * sici_doc = "(si,ci)=sici(x) returns in si the integral of the sinc function from 0 to x:\nintegral(sin(t)/t,t=0..x).  It returns in ci the cosine integral: eul + ln x +\nintegral((cos(t) - 1)/t,t=0..x)."             # <<<<<<<<<<<<<<
@@ -7341,7 +7432,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "sici_doc", ((System::Object^)"(si,ci)=sici(x) returns in si the integral of the sinc function from 0 to x:\nintegral(sin(t)/t,t=0..x).  It returns in ci the cosine integral: eul + ln x +\nintegral((cos(t) - 1)/t,t=0..x)."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":787
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":800
  * shichi_doc = "(shi,chi)=shichi(x) returns the hyperbolic sine and cosine integrals:\nintegral(sinh(t)/t,t=0..x) and eul + ln x +\nintegral((cosh(t)-1)/t,t=0..x) where eul is Euler's Constant."
  * sici_doc = "(si,ci)=sici(x) returns in si the integral of the sinc function from 0 to x:\nintegral(sin(t)/t,t=0..x).  It returns in ci the cosine integral: eul + ln x +\nintegral((cos(t) - 1)/t,t=0..x)."
  * sindg_doc = "y=sindg(x) calculates the sine of the angle x given in degrees."             # <<<<<<<<<<<<<<
@@ -7350,7 +7441,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "sindg_doc", ((System::Object^)"y=sindg(x) calculates the sine of the angle x given in degrees."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":788
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":801
  * sici_doc = "(si,ci)=sici(x) returns in si the integral of the sinc function from 0 to x:\nintegral(sin(t)/t,t=0..x).  It returns in ci the cosine integral: eul + ln x +\nintegral((cos(t) - 1)/t,t=0..x)."
  * sindg_doc = "y=sindg(x) calculates the sine of the angle x given in degrees."
  * smirnov_doc = "y=smirnov(n,e) returns the exact Kolmogorov-Smirnov complementary \ncumulative distribution function (Dn+ or Dn-) for a one-sided test of \nequality between an empirical and a theoretical distribution. It is equal \nto the probability that the maximum difference between a theoretical \ndistribution and an empirical one based on n samples is greater than e."             # <<<<<<<<<<<<<<
@@ -7359,7 +7450,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "smirnov_doc", ((System::Object^)"y=smirnov(n,e) returns the exact Kolmogorov-Smirnov complementary \ncumulative distribution function (Dn+ or Dn-) for a one-sided test of \nequality between an empirical and a theoretical distribution. It is equal \nto the probability that the maximum difference between a theoretical \ndistribution and an empirical one based on n samples is greater than e."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":789
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":802
  * sindg_doc = "y=sindg(x) calculates the sine of the angle x given in degrees."
  * smirnov_doc = "y=smirnov(n,e) returns the exact Kolmogorov-Smirnov complementary \ncumulative distribution function (Dn+ or Dn-) for a one-sided test of \nequality between an empirical and a theoretical distribution. It is equal \nto the probability that the maximum difference between a theoretical \ndistribution and an empirical one based on n samples is greater than e."
  * smirnovi_doc = "e=smirnovi(n,y) returns e such that smirnov(n,e) = y."             # <<<<<<<<<<<<<<
@@ -7368,7 +7459,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "smirnovi_doc", ((System::Object^)"e=smirnovi(n,y) returns e such that smirnov(n,e) = y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":790
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":803
  * smirnov_doc = "y=smirnov(n,e) returns the exact Kolmogorov-Smirnov complementary \ncumulative distribution function (Dn+ or Dn-) for a one-sided test of \nequality between an empirical and a theoretical distribution. It is equal \nto the probability that the maximum difference between a theoretical \ndistribution and an empirical one based on n samples is greater than e."
  * smirnovi_doc = "e=smirnovi(n,y) returns e such that smirnov(n,e) = y."
  * spence_doc = "y=spence(x) returns the dilogarithm integral: -integral(log t /\n(t-1),t=1..x)"             # <<<<<<<<<<<<<<
@@ -7377,7 +7468,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "spence_doc", ((System::Object^)"y=spence(x) returns the dilogarithm integral: -integral(log t /\n(t-1),t=1..x)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":791
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":804
  * smirnovi_doc = "e=smirnovi(n,y) returns e such that smirnov(n,e) = y."
  * spence_doc = "y=spence(x) returns the dilogarithm integral: -integral(log t /\n(t-1),t=1..x)"
  * stdtr_doc = "p=stdtr(df,t) returns the integral from minus infinity to t of the Student t\ndistribution with df > 0 degrees of freedom:\ngamma((df+1)/2)/(sqrt(df*pi)*gamma(df/2)) * integral((1+x**2/df)**(-df/2-1/2),\nx=-inf..t)"             # <<<<<<<<<<<<<<
@@ -7386,7 +7477,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "stdtr_doc", ((System::Object^)"p=stdtr(df,t) returns the integral from minus infinity to t of the Student t\ndistribution with df > 0 degrees of freedom:\ngamma((df+1)/2)/(sqrt(df*pi)*gamma(df/2)) * integral((1+x**2/df)**(-df/2-1/2),\nx=-inf..t)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":792
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":805
  * spence_doc = "y=spence(x) returns the dilogarithm integral: -integral(log t /\n(t-1),t=1..x)"
  * stdtr_doc = "p=stdtr(df,t) returns the integral from minus infinity to t of the Student t\ndistribution with df > 0 degrees of freedom:\ngamma((df+1)/2)/(sqrt(df*pi)*gamma(df/2)) * integral((1+x**2/df)**(-df/2-1/2),\nx=-inf..t)"
  * stdtridf_doc = "t=stdtridf(p,t) returns the argument df such that stdtr(df,t) is equal to p."             # <<<<<<<<<<<<<<
@@ -7395,7 +7486,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "stdtridf_doc", ((System::Object^)"t=stdtridf(p,t) returns the argument df such that stdtr(df,t) is equal to p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":793
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":806
  * stdtr_doc = "p=stdtr(df,t) returns the integral from minus infinity to t of the Student t\ndistribution with df > 0 degrees of freedom:\ngamma((df+1)/2)/(sqrt(df*pi)*gamma(df/2)) * integral((1+x**2/df)**(-df/2-1/2),\nx=-inf..t)"
  * stdtridf_doc = "t=stdtridf(p,t) returns the argument df such that stdtr(df,t) is equal to p."
  * stdtrit_doc = "t=stdtrit(df,p) returns the argument t such that stdtr(df,t) is equal to p."             # <<<<<<<<<<<<<<
@@ -7404,7 +7495,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "stdtrit_doc", ((System::Object^)"t=stdtrit(df,p) returns the argument t such that stdtr(df,t) is equal to p."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":794
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":807
  * stdtridf_doc = "t=stdtridf(p,t) returns the argument df such that stdtr(df,t) is equal to p."
  * stdtrit_doc = "t=stdtrit(df,p) returns the argument t such that stdtr(df,t) is equal to p."
  * struve_doc = "y=struve(v,x) returns the Struve function Hv(x) of order v at x, x\nmust be positive unless v is an integer."             # <<<<<<<<<<<<<<
@@ -7413,7 +7504,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "struve_doc", ((System::Object^)"y=struve(v,x) returns the Struve function Hv(x) of order v at x, x\nmust be positive unless v is an integer."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":795
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":808
  * stdtrit_doc = "t=stdtrit(df,p) returns the argument t such that stdtr(df,t) is equal to p."
  * struve_doc = "y=struve(v,x) returns the Struve function Hv(x) of order v at x, x\nmust be positive unless v is an integer."
  * tandg_doc = "y=tandg(x) calculates the tangent of the angle x given in degrees."             # <<<<<<<<<<<<<<
@@ -7422,7 +7513,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "tandg_doc", ((System::Object^)"y=tandg(x) calculates the tangent of the angle x given in degrees."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":796
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":809
  * struve_doc = "y=struve(v,x) returns the Struve function Hv(x) of order v at x, x\nmust be positive unless v is an integer."
  * tandg_doc = "y=tandg(x) calculates the tangent of the angle x given in degrees."
  * wofz_doc = "y=wofz(z) returns the value of the fadeeva function for complex argument\nz: exp(-z**2)*erfc(-i*z)"             # <<<<<<<<<<<<<<
@@ -7431,7 +7522,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "wofz_doc", ((System::Object^)"y=wofz(z) returns the value of the fadeeva function for complex argument\nz: exp(-z**2)*erfc(-i*z)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":797
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":810
  * tandg_doc = "y=tandg(x) calculates the tangent of the angle x given in degrees."
  * wofz_doc = "y=wofz(z) returns the value of the fadeeva function for complex argument\nz: exp(-z**2)*erfc(-i*z)"
  * y0_doc = "y=y0(x) returns the Bessel function of the second kind of order 0 at x."             # <<<<<<<<<<<<<<
@@ -7440,7 +7531,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "y0_doc", ((System::Object^)"y=y0(x) returns the Bessel function of the second kind of order 0 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":798
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":811
  * wofz_doc = "y=wofz(z) returns the value of the fadeeva function for complex argument\nz: exp(-z**2)*erfc(-i*z)"
  * y0_doc = "y=y0(x) returns the Bessel function of the second kind of order 0 at x."
  * y1_doc = "y=y1(x) returns the Bessel function of the second kind of order 1 at x."             # <<<<<<<<<<<<<<
@@ -7449,7 +7540,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "y1_doc", ((System::Object^)"y=y1(x) returns the Bessel function of the second kind of order 1 at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":799
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":812
  * y0_doc = "y=y0(x) returns the Bessel function of the second kind of order 0 at x."
  * y1_doc = "y=y1(x) returns the Bessel function of the second kind of order 1 at x."
  * yn_doc = "y=yn(n,x) returns the Bessel function of the second kind of integer\norder n at x."             # <<<<<<<<<<<<<<
@@ -7458,7 +7549,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "yn_doc", ((System::Object^)"y=yn(n,x) returns the Bessel function of the second kind of integer\norder n at x."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":800
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":813
  * y1_doc = "y=y1(x) returns the Bessel function of the second kind of order 1 at x."
  * yn_doc = "y=yn(n,x) returns the Bessel function of the second kind of integer\norder n at x."
  * yv_doc = "y=yv(v,z) returns the Bessel function of the second kind of real\norder v at complex z."             # <<<<<<<<<<<<<<
@@ -7467,7 +7558,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "yv_doc", ((System::Object^)"y=yv(v,z) returns the Bessel function of the second kind of real\norder v at complex z."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":801
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":814
  * yn_doc = "y=yn(n,x) returns the Bessel function of the second kind of integer\norder n at x."
  * yv_doc = "y=yv(v,z) returns the Bessel function of the second kind of real\norder v at complex z."
  * yve_doc = "y=yve(v,z) returns the exponentially scaled Bessel function of the second \nkind of real order v at complex z: yve(v,z) = yv(v,z) * exp(-abs(z.imag))"             # <<<<<<<<<<<<<<
@@ -7476,7 +7567,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "yve_doc", ((System::Object^)"y=yve(v,z) returns the exponentially scaled Bessel function of the second \nkind of real order v at complex z: yve(v,z) = yv(v,z) * exp(-abs(z.imag))"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":802
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":815
  * yv_doc = "y=yv(v,z) returns the Bessel function of the second kind of real\norder v at complex z."
  * yve_doc = "y=yve(v,z) returns the exponentially scaled Bessel function of the second \nkind of real order v at complex z: yve(v,z) = yv(v,z) * exp(-abs(z.imag))"
  * zeta_doc = "y=zeta(x,q) returns the Riemann zeta function of two arguments:\nsum((k+q)**(-x),k=0..inf)"             # <<<<<<<<<<<<<<
@@ -7485,7 +7576,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "zeta_doc", ((System::Object^)"y=zeta(x,q) returns the Riemann zeta function of two arguments:\nsum((k+q)**(-x),k=0..inf)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":803
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":816
  * yve_doc = "y=yve(v,z) returns the exponentially scaled Bessel function of the second \nkind of real order v at complex z: yve(v,z) = yv(v,z) * exp(-abs(z.imag))"
  * zeta_doc = "y=zeta(x,q) returns the Riemann zeta function of two arguments:\nsum((k+q)**(-x),k=0..inf)"
  * zetac_doc = "y=zetac(x) returns 1.0 - the Riemann zeta function: sum(k**(-x), k=2..inf)"             # <<<<<<<<<<<<<<
@@ -7494,7 +7585,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "zetac_doc", ((System::Object^)"y=zetac(x) returns 1.0 - the Riemann zeta function: sum(k**(-x), k=2..inf)"));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":805
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":818
  * zetac_doc = "y=zetac(x) returns 1.0 - the Riemann zeta function: sum(k**(-x), k=2..inf)"
  * 
  * gammaincinv_doc = """gammaincinv(a, y) returns x such that gammainc(a, x) = y."""             # <<<<<<<<<<<<<<
@@ -7503,7 +7594,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "gammaincinv_doc", ((System::Object^)"gammaincinv(a, y) returns x such that gammainc(a, x) = y."));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":807
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":820
  * gammaincinv_doc = """gammaincinv(a, y) returns x such that gammainc(a, x) = y."""
  * 
  * bdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrc", bdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7511,7 +7602,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtri", bdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_22 = __site_cvt_int_807_104->Target(__site_cvt_int_807_104, __pyx_t_17);
+  __pyx_t_22 = __site_cvt_int_820_104->Target(__site_cvt_int_820_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7522,7 +7613,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "bdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":808
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":821
  * 
  * bdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrc", bdtrc_doc, 0)
  * bdtr = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtr", bdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7530,7 +7621,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtr", btdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_25 = __site_cvt_int_808_102->Target(__site_cvt_int_808_102, __pyx_t_17);
+  __pyx_t_25 = __site_cvt_int_821_102->Target(__site_cvt_int_821_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7541,7 +7632,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "bdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":809
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":822
  * bdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrc", bdtrc_doc, 0)
  * bdtr = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtr", bdtr_doc, 0)
  * bdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtri", bdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -7549,7 +7640,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtri", btdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_27 = __site_cvt_int_809_104->Target(__site_cvt_int_809_104, __pyx_t_17);
+  __pyx_t_27 = __site_cvt_int_822_104->Target(__site_cvt_int_822_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7560,7 +7651,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "bdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":810
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":823
  * bdtr = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtr", bdtr_doc, 0)
  * bdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtri", bdtri_doc, 0)
  * btdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtr", btdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7568,7 +7659,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_29 = __site_cvt_int_810_103->Target(__site_cvt_int_810_103, __pyx_t_17);
+  __pyx_t_29 = __site_cvt_int_823_103->Target(__site_cvt_int_823_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "btdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7579,7 +7670,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "btdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":811
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":824
  * bdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtri", bdtri_doc, 0)
  * btdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtr", btdtr_doc, 0)
  * btdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtri", btdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -7587,7 +7678,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtrc", fdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_31 = __site_cvt_int_811_105->Target(__site_cvt_int_811_105, __pyx_t_17);
+  __pyx_t_31 = __site_cvt_int_824_105->Target(__site_cvt_int_824_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "btdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7598,7 +7689,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "btdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":813
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":826
  * btdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtri", btdtri_doc, 0)
  * 
  * fdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtrc", fdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7606,7 +7697,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtri", fdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_33 = __site_cvt_int_813_103->Target(__site_cvt_int_813_103, __pyx_t_17);
+  __pyx_t_33 = __site_cvt_int_826_103->Target(__site_cvt_int_826_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7617,7 +7708,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":814
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":827
  * 
  * fdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtrc", fdtrc_doc, 0)
  * fdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtr", fdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7625,7 +7716,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_35 = __site_cvt_int_814_101->Target(__site_cvt_int_814_101, __pyx_t_17);
+  __pyx_t_35 = __site_cvt_int_827_101->Target(__site_cvt_int_827_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7636,7 +7727,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":815
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":828
  * fdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtrc", fdtrc_doc, 0)
  * fdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtr", fdtr_doc, 0)
  * fdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtri", fdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -7644,7 +7735,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrc", gdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_37 = __site_cvt_int_815_103->Target(__site_cvt_int_815_103, __pyx_t_17);
+  __pyx_t_37 = __site_cvt_int_828_103->Target(__site_cvt_int_828_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7655,7 +7746,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":817
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":830
  * fdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtri", fdtri_doc, 0)
  * 
  * gdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrc", gdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7663,7 +7754,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_39 = __site_cvt_int_817_103->Target(__site_cvt_int_817_103, __pyx_t_17);
+  __pyx_t_39 = __site_cvt_int_830_103->Target(__site_cvt_int_830_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7674,7 +7765,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":818
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":831
  * 
  * gdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrc", gdtrc_doc, 0)
  * gdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtr", gdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7682,7 +7773,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp2f1 = np.PyUFunc_FromFuncAndData(cephes4_functions, hyp2f1_data, cephes_5c2_types, 4, 4, 1, PyUFunc_None, "hyp2f1", hyp2f1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_41 = __site_cvt_int_818_101->Target(__site_cvt_int_818_101, __pyx_t_17);
+  __pyx_t_41 = __site_cvt_int_831_101->Target(__site_cvt_int_831_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7693,7 +7784,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":820
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":833
  * gdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtr", gdtr_doc, 0)
  * 
  * hyp2f1 = np.PyUFunc_FromFuncAndData(cephes4_functions, hyp2f1_data, cephes_5c2_types, 4, 4, 1, PyUFunc_None, "hyp2f1", hyp2f1_doc, 0)             # <<<<<<<<<<<<<<
@@ -7701,7 +7792,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_43 = __site_cvt_int_820_107->Target(__site_cvt_int_820_107, __pyx_t_17);
+  __pyx_t_43 = __site_cvt_int_833_107->Target(__site_cvt_int_833_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp2f1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7712,7 +7803,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyp2f1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":821
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":834
  * 
  * hyp2f1 = np.PyUFunc_FromFuncAndData(cephes4_functions, hyp2f1_data, cephes_5c2_types, 4, 4, 1, PyUFunc_None, "hyp2f1", hyp2f1_doc, 0)
  * hyp1f1 = np.PyUFunc_FromFuncAndData(cephes3_functions, hyp1f1_data, cephes_4c_types, 4, 3, 1, PyUFunc_None, "hyp1f1", hyp1f1_doc, 0)             # <<<<<<<<<<<<<<
@@ -7720,7 +7811,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyperu = np.PyUFunc_FromFuncAndData(cephes3_functions, hypU_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "hyperu", hyperu_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_45 = __site_cvt_int_821_106->Target(__site_cvt_int_821_106, __pyx_t_17);
+  __pyx_t_45 = __site_cvt_int_834_106->Target(__site_cvt_int_834_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp1f1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7731,7 +7822,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyp1f1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":823
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":836
  * hyp1f1 = np.PyUFunc_FromFuncAndData(cephes3_functions, hyp1f1_data, cephes_4c_types, 4, 3, 1, PyUFunc_None, "hyp1f1", hyp1f1_doc, 0)
  * 
  * hyperu = np.PyUFunc_FromFuncAndData(cephes3_functions, hypU_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "hyperu", hyperu_doc, 0)             # <<<<<<<<<<<<<<
@@ -7739,7 +7830,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp2f0 = np.PyUFunc_FromFuncAndData(cephes4a_2_functions, hyp2f0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp2f0", hyp2f0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_47 = __site_cvt_int_823_103->Target(__site_cvt_int_823_103, __pyx_t_17);
+  __pyx_t_47 = __site_cvt_int_836_103->Target(__site_cvt_int_836_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyperu_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7750,7 +7841,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyperu", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":825
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":838
  * hyperu = np.PyUFunc_FromFuncAndData(cephes3_functions, hypU_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "hyperu", hyperu_doc, 0)
  * 
  * hyp2f0 = np.PyUFunc_FromFuncAndData(cephes4a_2_functions, hyp2f0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp2f0", hyp2f0_doc, 0)             # <<<<<<<<<<<<<<
@@ -7758,7 +7849,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp3f0 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, threef0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp3f0", hyp3f0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_49 = __site_cvt_int_825_108->Target(__site_cvt_int_825_108, __pyx_t_17);
+  __pyx_t_49 = __site_cvt_int_838_108->Target(__site_cvt_int_838_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp2f0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7769,7 +7860,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyp2f0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":826
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":839
  * 
  * hyp2f0 = np.PyUFunc_FromFuncAndData(cephes4a_2_functions, hyp2f0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp2f0", hyp2f0_doc, 0)
  * hyp1f2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, onef2_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp1f2", hyp1f2_doc, 0)             # <<<<<<<<<<<<<<
@@ -7777,7 +7868,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_51 = __site_cvt_int_826_106->Target(__site_cvt_int_826_106, __pyx_t_17);
+  __pyx_t_51 = __site_cvt_int_839_106->Target(__site_cvt_int_839_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp1f2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7788,7 +7879,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyp1f2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":827
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":840
  * hyp2f0 = np.PyUFunc_FromFuncAndData(cephes4a_2_functions, hyp2f0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp2f0", hyp2f0_doc, 0)
  * hyp1f2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, onef2_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp1f2", hyp1f2_doc, 0)
  * hyp3f0 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, threef0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp3f0", hyp3f0_doc, 0)             # <<<<<<<<<<<<<<
@@ -7796,7 +7887,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * betainc = np.PyUFunc_FromFuncAndData(cephes3_functions, incbet_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betainc", betainc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_53 = __site_cvt_int_827_108->Target(__site_cvt_int_827_108, __pyx_t_17);
+  __pyx_t_53 = __site_cvt_int_840_108->Target(__site_cvt_int_840_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp3f0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7807,7 +7898,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hyp3f0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":829
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":842
  * hyp3f0 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, threef0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp3f0", hyp3f0_doc, 0)
  * 
  * betainc = np.PyUFunc_FromFuncAndData(cephes3_functions, incbet_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betainc", betainc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7815,7 +7906,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_55 = __site_cvt_int_829_106->Target(__site_cvt_int_829_106, __pyx_t_17);
+  __pyx_t_55 = __site_cvt_int_842_106->Target(__site_cvt_int_842_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betainc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7826,7 +7917,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "betainc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":830
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":843
  * 
  * betainc = np.PyUFunc_FromFuncAndData(cephes3_functions, incbet_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betainc", betainc_doc, 0)
  * betaincinv = np.PyUFunc_FromFuncAndData(cephes3_functions, incbi_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betaincinv", betaincinv_doc, 0)             # <<<<<<<<<<<<<<
@@ -7834,7 +7925,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrc", nbdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_57 = __site_cvt_int_830_108->Target(__site_cvt_int_830_108, __pyx_t_17);
+  __pyx_t_57 = __site_cvt_int_843_108->Target(__site_cvt_int_843_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betaincinv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7845,7 +7936,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "betaincinv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":832
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":845
  * betaincinv = np.PyUFunc_FromFuncAndData(cephes3_functions, incbi_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betaincinv", betaincinv_doc, 0)
  * 
  * nbdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrc", nbdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7853,7 +7944,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtri", nbdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_59 = __site_cvt_int_832_106->Target(__site_cvt_int_832_106, __pyx_t_17);
+  __pyx_t_59 = __site_cvt_int_845_106->Target(__site_cvt_int_845_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7864,7 +7955,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "nbdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":833
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":846
  * 
  * nbdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrc", nbdtrc_doc, 0)
  * nbdtr = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtr", nbdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7872,7 +7963,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_61 = __site_cvt_int_833_104->Target(__site_cvt_int_833_104, __pyx_t_17);
+  __pyx_t_61 = __site_cvt_int_846_104->Target(__site_cvt_int_846_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7883,7 +7974,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "nbdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":834
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":847
  * nbdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrc", nbdtrc_doc, 0)
  * nbdtr = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtr", nbdtr_doc, 0)
  * nbdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtri", nbdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -7891,7 +7982,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_63 = __site_cvt_int_834_106->Target(__site_cvt_int_834_106, __pyx_t_17);
+  __pyx_t_63 = __site_cvt_int_847_106->Target(__site_cvt_int_847_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7902,7 +7993,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "nbdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":837
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":850
  * 
  * 
  * beta = np.PyUFunc_FromFuncAndData(cephes2_functions, beta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "beta", beta_doc, 0)             # <<<<<<<<<<<<<<
@@ -7910,7 +8001,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cbrt = np.PyUFunc_FromFuncAndData(cephes1_functions, cbrt_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cbrt", cbrt_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_65 = __site_cvt_int_837_101->Target(__site_cvt_int_837_101, __pyx_t_17);
+  __pyx_t_65 = __site_cvt_int_850_101->Target(__site_cvt_int_850_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "beta_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7921,7 +8012,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "beta", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":838
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":851
  * 
  * beta = np.PyUFunc_FromFuncAndData(cephes2_functions, beta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "beta", beta_doc, 0)
  * betaln = np.PyUFunc_FromFuncAndData(cephes2_functions, lbeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "betaln", betaln_doc, 0)             # <<<<<<<<<<<<<<
@@ -7929,7 +8020,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtrc = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtrc", chdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_67 = __site_cvt_int_838_104->Target(__site_cvt_int_838_104, __pyx_t_17);
+  __pyx_t_67 = __site_cvt_int_851_104->Target(__site_cvt_int_851_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betaln_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7940,7 +8031,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "betaln", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":839
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":852
  * beta = np.PyUFunc_FromFuncAndData(cephes2_functions, beta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "beta", beta_doc, 0)
  * betaln = np.PyUFunc_FromFuncAndData(cephes2_functions, lbeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "betaln", betaln_doc, 0)
  * cbrt = np.PyUFunc_FromFuncAndData(cephes1_functions, cbrt_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cbrt", cbrt_doc, 0)             # <<<<<<<<<<<<<<
@@ -7948,7 +8039,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtr", chdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_69 = __site_cvt_int_839_101->Target(__site_cvt_int_839_101, __pyx_t_17);
+  __pyx_t_69 = __site_cvt_int_852_101->Target(__site_cvt_int_852_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cbrt_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7959,7 +8050,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "cbrt", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":840
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":853
  * betaln = np.PyUFunc_FromFuncAndData(cephes2_functions, lbeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "betaln", betaln_doc, 0)
  * cbrt = np.PyUFunc_FromFuncAndData(cephes1_functions, cbrt_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cbrt", cbrt_doc, 0)
  * chdtrc = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtrc", chdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -7967,7 +8058,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtri = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtri", chdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_71 = __site_cvt_int_840_105->Target(__site_cvt_int_840_105, __pyx_t_17);
+  __pyx_t_71 = __site_cvt_int_853_105->Target(__site_cvt_int_853_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7978,7 +8069,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "chdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":841
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":854
  * cbrt = np.PyUFunc_FromFuncAndData(cephes1_functions, cbrt_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cbrt", cbrt_doc, 0)
  * chdtrc = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtrc", chdtrc_doc, 0)
  * chdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtr", chdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -7986,7 +8077,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * dawsn = np.PyUFunc_FromFuncAndData(cephes1_functions, dawsn_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "dawsn", dawsn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_73 = __site_cvt_int_841_103->Target(__site_cvt_int_841_103, __pyx_t_17);
+  __pyx_t_73 = __site_cvt_int_854_103->Target(__site_cvt_int_854_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7997,7 +8088,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "chdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":842
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":855
  * chdtrc = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtrc", chdtrc_doc, 0)
  * chdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtr", chdtr_doc, 0)
  * chdtri = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtri", chdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -8005,7 +8096,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipeinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellie_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipeinc", ellipeinc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_75 = __site_cvt_int_842_105->Target(__site_cvt_int_842_105, __pyx_t_17);
+  __pyx_t_75 = __site_cvt_int_855_105->Target(__site_cvt_int_855_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8016,7 +8107,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "chdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":843
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":856
  * chdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtr", chdtr_doc, 0)
  * chdtri = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtri", chdtri_doc, 0)
  * dawsn = np.PyUFunc_FromFuncAndData(cephes1_functions, dawsn_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "dawsn", dawsn_doc, 0)             # <<<<<<<<<<<<<<
@@ -8024,7 +8115,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipkinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellik_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipkinc", ellipkinc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_77 = __site_cvt_int_843_103->Target(__site_cvt_int_843_103, __pyx_t_17);
+  __pyx_t_77 = __site_cvt_int_856_103->Target(__site_cvt_int_856_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "dawsn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8035,7 +8126,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "dawsn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":844
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":857
  * chdtri = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtri", chdtri_doc, 0)
  * dawsn = np.PyUFunc_FromFuncAndData(cephes1_functions, dawsn_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "dawsn", dawsn_doc, 0)
  * ellipeinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellie_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipeinc", ellipeinc_doc, 0)             # <<<<<<<<<<<<<<
@@ -8043,7 +8134,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipe = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpe_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipe", ellipe_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_79 = __site_cvt_int_844_107->Target(__site_cvt_int_844_107, __pyx_t_17);
+  __pyx_t_79 = __site_cvt_int_857_107->Target(__site_cvt_int_857_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipeinc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8054,7 +8145,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ellipeinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":845
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":858
  * dawsn = np.PyUFunc_FromFuncAndData(cephes1_functions, dawsn_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "dawsn", dawsn_doc, 0)
  * ellipeinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellie_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipeinc", ellipeinc_doc, 0)
  * ellipkinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellik_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipkinc", ellipkinc_doc, 0)             # <<<<<<<<<<<<<<
@@ -8062,7 +8153,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipk = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpk_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipk", ellipk_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_81 = __site_cvt_int_845_107->Target(__site_cvt_int_845_107, __pyx_t_17);
+  __pyx_t_81 = __site_cvt_int_858_107->Target(__site_cvt_int_858_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipkinc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8073,7 +8164,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ellipkinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":846
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":859
  * ellipeinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellie_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipeinc", ellipeinc_doc, 0)
  * ellipkinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellik_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipkinc", ellipkinc_doc, 0)
  * ellipe = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpe_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipe", ellipe_doc, 0)             # <<<<<<<<<<<<<<
@@ -8081,7 +8172,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * exp10 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp10_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp10", exp10_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_83 = __site_cvt_int_846_104->Target(__site_cvt_int_846_104, __pyx_t_17);
+  __pyx_t_83 = __site_cvt_int_859_104->Target(__site_cvt_int_859_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipe_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8092,7 +8183,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ellipe", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":847
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":860
  * ellipkinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellik_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipkinc", ellipkinc_doc, 0)
  * ellipe = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpe_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipe", ellipe_doc, 0)
  * ellipk = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpk_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipk", ellipk_doc, 0)             # <<<<<<<<<<<<<<
@@ -8100,7 +8191,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_85 = __site_cvt_int_847_104->Target(__site_cvt_int_847_104, __pyx_t_17);
+  __pyx_t_85 = __site_cvt_int_860_104->Target(__site_cvt_int_860_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipk_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8111,7 +8202,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ellipk", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":848
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":861
  * ellipe = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpe_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipe", ellipe_doc, 0)
  * ellipk = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpk_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipk", ellipk_doc, 0)
  * exp10 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp10_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp10", exp10_doc, 0)             # <<<<<<<<<<<<<<
@@ -8119,7 +8210,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * exp2 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp2_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp2", exp2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_87 = __site_cvt_int_848_103->Target(__site_cvt_int_848_103, __pyx_t_17);
+  __pyx_t_87 = __site_cvt_int_861_103->Target(__site_cvt_int_861_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp10_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8130,7 +8221,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "exp10", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":850
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":863
  * exp10 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp10_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp10", exp10_doc, 0)
  * 
  * exp2 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp2_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp2", exp2_doc, 0)             # <<<<<<<<<<<<<<
@@ -8138,7 +8229,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaln = np.PyUFunc_FromFuncAndData(cephes1rc_functions, lgam_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gammaln", gammaln_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_89 = __site_cvt_int_850_101->Target(__site_cvt_int_850_101, __pyx_t_17);
+  __pyx_t_89 = __site_cvt_int_863_101->Target(__site_cvt_int_863_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8149,7 +8240,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "exp2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":851
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":864
  * 
  * exp2 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp2_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp2", exp2_doc, 0)
  * gamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, Gamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gamma", gamma_doc, 0)             # <<<<<<<<<<<<<<
@@ -8157,7 +8248,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i0 = np.PyUFunc_FromFuncAndData(cephes1_functions, i0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0", i0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_91 = __site_cvt_int_851_107->Target(__site_cvt_int_851_107, __pyx_t_17);
+  __pyx_t_91 = __site_cvt_int_864_107->Target(__site_cvt_int_864_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gamma_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8168,7 +8259,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gamma", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":852
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":865
  * exp2 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp2_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp2", exp2_doc, 0)
  * gamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, Gamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gamma", gamma_doc, 0)
  * gammaln = np.PyUFunc_FromFuncAndData(cephes1rc_functions, lgam_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gammaln", gammaln_doc, 0)             # <<<<<<<<<<<<<<
@@ -8176,7 +8267,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i0e = np.PyUFunc_FromFuncAndData(cephes1_functions, i0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0e", i0e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_93 = __site_cvt_int_852_108->Target(__site_cvt_int_852_108, __pyx_t_17);
+  __pyx_t_93 = __site_cvt_int_865_108->Target(__site_cvt_int_865_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammaln_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8187,7 +8278,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gammaln", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":853
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":866
  * gamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, Gamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gamma", gamma_doc, 0)
  * gammaln = np.PyUFunc_FromFuncAndData(cephes1rc_functions, lgam_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gammaln", gammaln_doc, 0)
  * i0 = np.PyUFunc_FromFuncAndData(cephes1_functions, i0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0", i0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8195,7 +8286,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i1 = np.PyUFunc_FromFuncAndData(cephes1_functions, i1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1", i1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_95 = __site_cvt_int_853_97->Target(__site_cvt_int_853_97, __pyx_t_17);
+  __pyx_t_95 = __site_cvt_int_866_97->Target(__site_cvt_int_866_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8206,7 +8297,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "i0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":854
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":867
  * gammaln = np.PyUFunc_FromFuncAndData(cephes1rc_functions, lgam_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gammaln", gammaln_doc, 0)
  * i0 = np.PyUFunc_FromFuncAndData(cephes1_functions, i0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0", i0_doc, 0)
  * i0e = np.PyUFunc_FromFuncAndData(cephes1_functions, i0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0e", i0e_doc, 0)             # <<<<<<<<<<<<<<
@@ -8214,7 +8305,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i1e = np.PyUFunc_FromFuncAndData(cephes1_functions, i1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1e", i1e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_97 = __site_cvt_int_854_99->Target(__site_cvt_int_854_99, __pyx_t_17);
+  __pyx_t_97 = __site_cvt_int_867_99->Target(__site_cvt_int_867_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i0e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8225,7 +8316,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "i0e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":855
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":868
  * i0 = np.PyUFunc_FromFuncAndData(cephes1_functions, i0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0", i0_doc, 0)
  * i0e = np.PyUFunc_FromFuncAndData(cephes1_functions, i0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0e", i0e_doc, 0)
  * i1 = np.PyUFunc_FromFuncAndData(cephes1_functions, i1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1", i1_doc, 0)             # <<<<<<<<<<<<<<
@@ -8233,7 +8324,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_99 = __site_cvt_int_855_97->Target(__site_cvt_int_855_97, __pyx_t_17);
+  __pyx_t_99 = __site_cvt_int_868_97->Target(__site_cvt_int_868_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8244,7 +8335,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "i1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":856
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":869
  * i0e = np.PyUFunc_FromFuncAndData(cephes1_functions, i0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0e", i0e_doc, 0)
  * i1 = np.PyUFunc_FromFuncAndData(cephes1_functions, i1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1", i1_doc, 0)
  * i1e = np.PyUFunc_FromFuncAndData(cephes1_functions, i1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1e", i1e_doc, 0)             # <<<<<<<<<<<<<<
@@ -8252,7 +8343,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaincc = np.PyUFunc_FromFuncAndData(cephes2_functions, igamc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammaincc", gammaincc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_101 = __site_cvt_int_856_99->Target(__site_cvt_int_856_99, __pyx_t_17);
+  __pyx_t_101 = __site_cvt_int_869_99->Target(__site_cvt_int_869_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8263,7 +8354,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "i1e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":858
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":871
  * i1e = np.PyUFunc_FromFuncAndData(cephes1_functions, i1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1e", i1e_doc, 0)
  * 
  * gammaincc = np.PyUFunc_FromFuncAndData(cephes2_functions, igamc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammaincc", gammaincc_doc, 0)             # <<<<<<<<<<<<<<
@@ -8271,7 +8362,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammainccinv = np.PyUFunc_FromFuncAndData(cephes2_functions, igami_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainccinv", gammainccinv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_103 = __site_cvt_int_858_107->Target(__site_cvt_int_858_107, __pyx_t_17);
+  __pyx_t_103 = __site_cvt_int_871_107->Target(__site_cvt_int_871_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammaincc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8282,7 +8373,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gammaincc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":859
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":872
  * 
  * gammaincc = np.PyUFunc_FromFuncAndData(cephes2_functions, igamc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammaincc", gammaincc_doc, 0)
  * gammainc = np.PyUFunc_FromFuncAndData(cephes2_functions, igam_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainc", gammainc_doc, 0)             # <<<<<<<<<<<<<<
@@ -8290,7 +8381,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaincinv = np.PyUFunc_FromFuncAndData(cephes2_functions, gammaincinv_data,
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_105 = __site_cvt_int_859_105->Target(__site_cvt_int_859_105, __pyx_t_17);
+  __pyx_t_105 = __site_cvt_int_872_105->Target(__site_cvt_int_872_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammainc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8301,7 +8392,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gammainc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":860
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":873
  * gammaincc = np.PyUFunc_FromFuncAndData(cephes2_functions, igamc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammaincc", gammaincc_doc, 0)
  * gammainc = np.PyUFunc_FromFuncAndData(cephes2_functions, igam_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainc", gammainc_doc, 0)
  * gammainccinv = np.PyUFunc_FromFuncAndData(cephes2_functions, igami_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainccinv", gammainccinv_doc, 0)             # <<<<<<<<<<<<<<
@@ -8309,7 +8400,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  *                             cephes_3_types, 2, 2, 1, PyUFunc_None,
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_107 = __site_cvt_int_860_110->Target(__site_cvt_int_860_110, __pyx_t_17);
+  __pyx_t_107 = __site_cvt_int_873_110->Target(__site_cvt_int_873_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammainccinv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8320,7 +8411,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gammainccinv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":862
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":875
  * gammainccinv = np.PyUFunc_FromFuncAndData(cephes2_functions, igami_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainccinv", gammainccinv_doc, 0)
  * gammaincinv = np.PyUFunc_FromFuncAndData(cephes2_functions, gammaincinv_data,
  *                             cephes_3_types, 2, 2, 1, PyUFunc_None,             # <<<<<<<<<<<<<<
@@ -8328,10 +8419,10 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_109 = __site_cvt_int_862_65->Target(__site_cvt_int_862_65, __pyx_t_17);
+  __pyx_t_109 = __site_cvt_int_875_65->Target(__site_cvt_int_875_65, __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":863
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":876
  * gammaincinv = np.PyUFunc_FromFuncAndData(cephes2_functions, gammaincinv_data,
  *                             cephes_3_types, 2, 2, 1, PyUFunc_None,
  *                             "gammaincinv", gammaincinv_doc, 0)             # <<<<<<<<<<<<<<
@@ -8347,7 +8438,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "gammaincinv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":865
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":878
  *                             "gammaincinv", gammaincinv_doc, 0)
  * 
  * iv = np.PyUFunc_FromFuncAndData(cephes2c_functions, iv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "iv", iv_doc, 0)             # <<<<<<<<<<<<<<
@@ -8355,7 +8446,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_111 = __site_cvt_int_865_99->Target(__site_cvt_int_865_99, __pyx_t_17);
+  __pyx_t_111 = __site_cvt_int_878_99->Target(__site_cvt_int_878_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "iv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8366,7 +8457,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "iv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":866
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":879
  * 
  * iv = np.PyUFunc_FromFuncAndData(cephes2c_functions, iv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "iv", iv_doc, 0)
  * ive = np.PyUFunc_FromFuncAndData(cephes2c_functions, ive_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "ive", ive_doc, 0)             # <<<<<<<<<<<<<<
@@ -8374,7 +8465,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipj = np.PyUFunc_FromFuncAndData(cephes2_4_functions, ellpj_data, cephes_6_types, 2, 2, 4, PyUFunc_None, "ellipj", ellipj_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_113 = __site_cvt_int_866_101->Target(__site_cvt_int_866_101, __pyx_t_17);
+  __pyx_t_113 = __site_cvt_int_879_101->Target(__site_cvt_int_879_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ive_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8385,7 +8476,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ive", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":868
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":881
  * ive = np.PyUFunc_FromFuncAndData(cephes2c_functions, ive_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "ive", ive_doc, 0)
  * 
  * ellipj = np.PyUFunc_FromFuncAndData(cephes2_4_functions, ellpj_data, cephes_6_types, 2, 2, 4, PyUFunc_None, "ellipj", ellipj_doc, 0)             # <<<<<<<<<<<<<<
@@ -8393,7 +8484,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expn = np.PyUFunc_FromFuncAndData(cephes2a_functions, expn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "expn", expn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_115 = __site_cvt_int_868_106->Target(__site_cvt_int_868_106, __pyx_t_17);
+  __pyx_t_115 = __site_cvt_int_881_106->Target(__site_cvt_int_881_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipj_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8404,7 +8495,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ellipj", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":870
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":883
  * ellipj = np.PyUFunc_FromFuncAndData(cephes2_4_functions, ellpj_data, cephes_6_types, 2, 2, 4, PyUFunc_None, "ellipj", ellipj_doc, 0)
  * 
  * expn = np.PyUFunc_FromFuncAndData(cephes2a_functions, expn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "expn", expn_doc, 0)             # <<<<<<<<<<<<<<
@@ -8412,7 +8503,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, expi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "expi", expi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_117 = __site_cvt_int_870_102->Target(__site_cvt_int_870_102, __pyx_t_17);
+  __pyx_t_117 = __site_cvt_int_883_102->Target(__site_cvt_int_883_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8423,7 +8514,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "expn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":871
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":884
  * 
  * expn = np.PyUFunc_FromFuncAndData(cephes2a_functions, expn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "expn", expn_doc, 0)
  * exp1 = np.PyUFunc_FromFuncAndData(cephes1rc_functions, exp1_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "exp1", exp1_doc, 0)             # <<<<<<<<<<<<<<
@@ -8431,7 +8522,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_119 = __site_cvt_int_871_105->Target(__site_cvt_int_871_105, __pyx_t_17);
+  __pyx_t_119 = __site_cvt_int_884_105->Target(__site_cvt_int_884_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8442,7 +8533,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "exp1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":872
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":885
  * expn = np.PyUFunc_FromFuncAndData(cephes2a_functions, expn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "expn", expn_doc, 0)
  * exp1 = np.PyUFunc_FromFuncAndData(cephes1rc_functions, exp1_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "exp1", exp1_doc, 0)
  * expi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, expi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "expi", expi_doc, 0)             # <<<<<<<<<<<<<<
@@ -8450,7 +8541,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_121 = __site_cvt_int_872_105->Target(__site_cvt_int_872_105, __pyx_t_17);
+  __pyx_t_121 = __site_cvt_int_885_105->Target(__site_cvt_int_885_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8461,7 +8552,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "expi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":875
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":888
  * 
  * 
  * kn = np.PyUFunc_FromFuncAndData(cephes2a_functions, kn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "kn", kn_doc, 0)             # <<<<<<<<<<<<<<
@@ -8469,7 +8560,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtr = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtr", pdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_123 = __site_cvt_int_875_98->Target(__site_cvt_int_875_98, __pyx_t_17);
+  __pyx_t_123 = __site_cvt_int_888_98->Target(__site_cvt_int_888_98, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8480,7 +8571,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":876
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":889
  * 
  * kn = np.PyUFunc_FromFuncAndData(cephes2a_functions, kn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "kn", kn_doc, 0)
  * pdtrc = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrc", pdtrc_doc, 0)             # <<<<<<<<<<<<<<
@@ -8488,7 +8579,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtri = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtri", pdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_125 = __site_cvt_int_876_104->Target(__site_cvt_int_876_104, __pyx_t_17);
+  __pyx_t_125 = __site_cvt_int_889_104->Target(__site_cvt_int_889_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8499,7 +8590,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pdtrc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":877
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":890
  * kn = np.PyUFunc_FromFuncAndData(cephes2a_functions, kn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "kn", kn_doc, 0)
  * pdtrc = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrc", pdtrc_doc, 0)
  * pdtr = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtr", pdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -8507,7 +8598,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yn = np.PyUFunc_FromFuncAndData(cephes2a_functions, yn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "yn", yn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_127 = __site_cvt_int_877_102->Target(__site_cvt_int_877_102, __pyx_t_17);
+  __pyx_t_127 = __site_cvt_int_890_102->Target(__site_cvt_int_890_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8518,7 +8609,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":878
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":891
  * pdtrc = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrc", pdtrc_doc, 0)
  * pdtr = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtr", pdtr_doc, 0)
  * pdtri = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtri", pdtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -8526,7 +8617,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * smirnov = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnov_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnov", smirnov_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_129 = __site_cvt_int_878_104->Target(__site_cvt_int_878_104, __pyx_t_17);
+  __pyx_t_129 = __site_cvt_int_891_104->Target(__site_cvt_int_891_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8537,7 +8628,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":879
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":892
  * pdtr = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtr", pdtr_doc, 0)
  * pdtri = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtri", pdtri_doc, 0)
  * yn = np.PyUFunc_FromFuncAndData(cephes2a_functions, yn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "yn", yn_doc, 0)             # <<<<<<<<<<<<<<
@@ -8545,7 +8636,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * smirnovi = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnovi_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnovi", smirnovi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_131 = __site_cvt_int_879_98->Target(__site_cvt_int_879_98, __pyx_t_17);
+  __pyx_t_131 = __site_cvt_int_892_98->Target(__site_cvt_int_892_98, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8556,7 +8647,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "yn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":880
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":893
  * pdtri = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtri", pdtri_doc, 0)
  * yn = np.PyUFunc_FromFuncAndData(cephes2a_functions, yn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "yn", yn_doc, 0)
  * smirnov = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnov_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnov", smirnov_doc, 0)             # <<<<<<<<<<<<<<
@@ -8564,7 +8655,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_133 = __site_cvt_int_880_108->Target(__site_cvt_int_880_108, __pyx_t_17);
+  __pyx_t_133 = __site_cvt_int_893_108->Target(__site_cvt_int_893_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "smirnov_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8575,7 +8666,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "smirnov", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":881
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":894
  * yn = np.PyUFunc_FromFuncAndData(cephes2a_functions, yn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "yn", yn_doc, 0)
  * smirnov = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnov_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnov", smirnov_doc, 0)
  * smirnovi = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnovi_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnovi", smirnovi_doc, 0)             # <<<<<<<<<<<<<<
@@ -8583,7 +8674,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * airy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airy_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airy", airy_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_135 = __site_cvt_int_881_110->Target(__site_cvt_int_881_110, __pyx_t_17);
+  __pyx_t_135 = __site_cvt_int_894_110->Target(__site_cvt_int_894_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "smirnovi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8594,7 +8685,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "smirnovi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":883
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":896
  * smirnovi = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnovi_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnovi", smirnovi_doc, 0)
  * 
  * airy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airy_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airy", airy_doc, 0)             # <<<<<<<<<<<<<<
@@ -8602,7 +8693,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itairy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, itairy_data, cephes_5_types, 2, 1, 4, PyUFunc_None, "itairy", itairy_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_137 = __site_cvt_int_883_105->Target(__site_cvt_int_883_105, __pyx_t_17);
+  __pyx_t_137 = __site_cvt_int_896_105->Target(__site_cvt_int_896_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "airy_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8613,7 +8704,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "airy", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":885
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":898
  * airy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airy_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airy", airy_doc, 0)
  * 
  * itairy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, itairy_data, cephes_5_types, 2, 1, 4, PyUFunc_None, "itairy", itairy_doc, 0)             # <<<<<<<<<<<<<<
@@ -8621,7 +8712,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_139 = __site_cvt_int_885_108->Target(__site_cvt_int_885_108, __pyx_t_17);
+  __pyx_t_139 = __site_cvt_int_898_108->Target(__site_cvt_int_898_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itairy_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8632,7 +8723,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "itairy", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":888
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":901
  * 
  * 
  * airye = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airye_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airye", airye_doc, 0)             # <<<<<<<<<<<<<<
@@ -8640,7 +8731,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fresnel = np.PyUFunc_FromFuncAndData(cephes1_2_functions, fresnl_data, cephes_3_cmplx_types, 4, 1, 2, PyUFunc_None, "fresnel", fresnel_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_141 = __site_cvt_int_888_107->Target(__site_cvt_int_888_107, __pyx_t_17);
+  __pyx_t_141 = __site_cvt_int_901_107->Target(__site_cvt_int_901_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "airye_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8651,7 +8742,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "airye", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":890
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":903
  * airye = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airye_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airye", airye_doc, 0)
  * 
  * fresnel = np.PyUFunc_FromFuncAndData(cephes1_2_functions, fresnl_data, cephes_3_cmplx_types, 4, 1, 2, PyUFunc_None, "fresnel", fresnel_doc, 0)             # <<<<<<<<<<<<<<
@@ -8659,7 +8750,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * sici = np.PyUFunc_FromFuncAndData(cephes1_2_functions, sici_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "sici", sici_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_143 = __site_cvt_int_890_114->Target(__site_cvt_int_890_114, __pyx_t_17);
+  __pyx_t_143 = __site_cvt_int_903_114->Target(__site_cvt_int_903_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fresnel_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8670,7 +8761,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fresnel", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":891
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":904
  * 
  * fresnel = np.PyUFunc_FromFuncAndData(cephes1_2_functions, fresnl_data, cephes_3_cmplx_types, 4, 1, 2, PyUFunc_None, "fresnel", fresnel_doc, 0)
  * shichi = np.PyUFunc_FromFuncAndData(cephes1_2_functions, shichi_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "shichi", shichi_doc, 0)             # <<<<<<<<<<<<<<
@@ -8678,7 +8769,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_145 = __site_cvt_int_891_107->Target(__site_cvt_int_891_107, __pyx_t_17);
+  __pyx_t_145 = __site_cvt_int_904_107->Target(__site_cvt_int_904_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "shichi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8689,7 +8780,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "shichi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":892
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":905
  * fresnel = np.PyUFunc_FromFuncAndData(cephes1_2_functions, fresnl_data, cephes_3_cmplx_types, 4, 1, 2, PyUFunc_None, "fresnel", fresnel_doc, 0)
  * shichi = np.PyUFunc_FromFuncAndData(cephes1_2_functions, shichi_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "shichi", shichi_doc, 0)
  * sici = np.PyUFunc_FromFuncAndData(cephes1_2_functions, sici_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "sici", sici_doc, 0)             # <<<<<<<<<<<<<<
@@ -8697,7 +8788,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_147 = __site_cvt_int_892_103->Target(__site_cvt_int_892_103, __pyx_t_17);
+  __pyx_t_147 = __site_cvt_int_905_103->Target(__site_cvt_int_905_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "sici_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8708,7 +8799,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "sici", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":895
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":908
  * 
  * 
  * itj0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, itj0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "itj0y0", itj0y0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8716,7 +8807,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * iti0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, iti0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "iti0k0", iti0k0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_149 = __site_cvt_int_895_107->Target(__site_cvt_int_895_107, __pyx_t_17);
+  __pyx_t_149 = __site_cvt_int_908_107->Target(__site_cvt_int_908_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itj0y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8727,7 +8818,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "itj0y0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":896
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":909
  * 
  * itj0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, itj0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "itj0y0", itj0y0_doc, 0)
  * it2j0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2j0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2j0y0", it2j0y0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8735,7 +8826,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * it2i0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2i0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2i0k0", it2i0k0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_151 = __site_cvt_int_896_109->Target(__site_cvt_int_896_109, __pyx_t_17);
+  __pyx_t_151 = __site_cvt_int_909_109->Target(__site_cvt_int_909_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2j0y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8746,7 +8837,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "it2j0y0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":897
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":910
  * itj0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, itj0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "itj0y0", itj0y0_doc, 0)
  * it2j0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2j0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2j0y0", it2j0y0_doc, 0)
  * iti0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, iti0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "iti0k0", iti0k0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8754,7 +8845,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_153 = __site_cvt_int_897_107->Target(__site_cvt_int_897_107, __pyx_t_17);
+  __pyx_t_153 = __site_cvt_int_910_107->Target(__site_cvt_int_910_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "iti0k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8765,7 +8856,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "iti0k0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":898
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":911
  * it2j0y0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2j0y0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2j0y0", it2j0y0_doc, 0)
  * iti0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, iti0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "iti0k0", iti0k0_doc, 0)
  * it2i0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2i0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2i0k0", it2i0k0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8773,7 +8864,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_155 = __site_cvt_int_898_109->Target(__site_cvt_int_898_109, __pyx_t_17);
+  __pyx_t_155 = __site_cvt_int_911_109->Target(__site_cvt_int_911_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2i0k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8784,7 +8875,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "it2i0k0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":901
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":914
  * 
  * 
  * j0 = np.PyUFunc_FromFuncAndData(cephes1_functions, j0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j0", j0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8792,7 +8883,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * j1 = np.PyUFunc_FromFuncAndData(cephes1_functions, j1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j1", j1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_157 = __site_cvt_int_901_97->Target(__site_cvt_int_901_97, __pyx_t_17);
+  __pyx_t_157 = __site_cvt_int_914_97->Target(__site_cvt_int_914_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "j0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8803,7 +8894,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "j0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":902
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":915
  * 
  * j0 = np.PyUFunc_FromFuncAndData(cephes1_functions, j0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j0", j0_doc, 0)
  * y0 = np.PyUFunc_FromFuncAndData(cephes1_functions, y0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y0", y0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8811,7 +8902,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * y1 = np.PyUFunc_FromFuncAndData(cephes1_functions, y1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y1", y1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_159 = __site_cvt_int_902_97->Target(__site_cvt_int_902_97, __pyx_t_17);
+  __pyx_t_159 = __site_cvt_int_915_97->Target(__site_cvt_int_915_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8822,7 +8913,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "y0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":903
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":916
  * j0 = np.PyUFunc_FromFuncAndData(cephes1_functions, j0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j0", j0_doc, 0)
  * y0 = np.PyUFunc_FromFuncAndData(cephes1_functions, y0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y0", y0_doc, 0)
  * j1 = np.PyUFunc_FromFuncAndData(cephes1_functions, j1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j1", j1_doc, 0)             # <<<<<<<<<<<<<<
@@ -8830,7 +8921,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_161 = __site_cvt_int_903_97->Target(__site_cvt_int_903_97, __pyx_t_17);
+  __pyx_t_161 = __site_cvt_int_916_97->Target(__site_cvt_int_916_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "j1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8841,7 +8932,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "j1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":904
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":917
  * y0 = np.PyUFunc_FromFuncAndData(cephes1_functions, y0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y0", y0_doc, 0)
  * j1 = np.PyUFunc_FromFuncAndData(cephes1_functions, j1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j1", j1_doc, 0)
  * y1 = np.PyUFunc_FromFuncAndData(cephes1_functions, y1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y1", y1_doc, 0)             # <<<<<<<<<<<<<<
@@ -8849,7 +8940,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * jv = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jv", jv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_163 = __site_cvt_int_904_97->Target(__site_cvt_int_904_97, __pyx_t_17);
+  __pyx_t_163 = __site_cvt_int_917_97->Target(__site_cvt_int_917_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "y1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8860,7 +8951,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "y1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":906
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":919
  * y1 = np.PyUFunc_FromFuncAndData(cephes1_functions, y1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y1", y1_doc, 0)
  * 
  * jv = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jv", jv_doc, 0)             # <<<<<<<<<<<<<<
@@ -8868,7 +8959,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_165 = __site_cvt_int_906_99->Target(__site_cvt_int_906_99, __pyx_t_17);
+  __pyx_t_165 = __site_cvt_int_919_99->Target(__site_cvt_int_919_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8879,7 +8970,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "jv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":907
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":920
  * 
  * jv = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jv", jv_doc, 0)
  * jve = np.PyUFunc_FromFuncAndData(cephes2c_functions, jve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jve", jve_doc, 0)             # <<<<<<<<<<<<<<
@@ -8887,7 +8978,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yve = np.PyUFunc_FromFuncAndData(cephes2c_functions, yve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yve", yve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_167 = __site_cvt_int_907_101->Target(__site_cvt_int_907_101, __pyx_t_17);
+  __pyx_t_167 = __site_cvt_int_920_101->Target(__site_cvt_int_920_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8898,7 +8989,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "jve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":908
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":921
  * jv = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jv", jv_doc, 0)
  * jve = np.PyUFunc_FromFuncAndData(cephes2c_functions, jve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jve", jve_doc, 0)
  * yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)             # <<<<<<<<<<<<<<
@@ -8906,7 +8997,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_169 = __site_cvt_int_908_99->Target(__site_cvt_int_908_99, __pyx_t_17);
+  __pyx_t_169 = __site_cvt_int_921_99->Target(__site_cvt_int_921_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8917,7 +9008,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "yv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":909
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":922
  * jve = np.PyUFunc_FromFuncAndData(cephes2c_functions, jve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jve", jve_doc, 0)
  * yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)
  * yve = np.PyUFunc_FromFuncAndData(cephes2c_functions, yve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yve", yve_doc, 0)             # <<<<<<<<<<<<<<
@@ -8925,7 +9016,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_171 = __site_cvt_int_909_101->Target(__site_cvt_int_909_101, __pyx_t_17);
+  __pyx_t_171 = __site_cvt_int_922_101->Target(__site_cvt_int_922_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8936,7 +9027,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "yve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":912
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":925
  * 
  * 
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)             # <<<<<<<<<<<<<<
@@ -8944,7 +9035,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_173 = __site_cvt_int_912_97->Target(__site_cvt_int_912_97, __pyx_t_17);
+  __pyx_t_173 = __site_cvt_int_925_97->Target(__site_cvt_int_925_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8955,7 +9046,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "k0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":913
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":926
  * 
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)             # <<<<<<<<<<<<<<
@@ -8963,7 +9054,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_175 = __site_cvt_int_913_99->Target(__site_cvt_int_913_99, __pyx_t_17);
+  __pyx_t_175 = __site_cvt_int_926_99->Target(__site_cvt_int_926_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8974,7 +9065,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "k0e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":914
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":927
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)             # <<<<<<<<<<<<<<
@@ -8982,7 +9073,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_177 = __site_cvt_int_914_97->Target(__site_cvt_int_914_97, __pyx_t_17);
+  __pyx_t_177 = __site_cvt_int_927_97->Target(__site_cvt_int_927_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8993,7 +9084,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "k1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":915
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":928
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9001,7 +9092,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_179 = __site_cvt_int_915_99->Target(__site_cvt_int_915_99, __pyx_t_17);
+  __pyx_t_179 = __site_cvt_int_928_99->Target(__site_cvt_int_928_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9012,7 +9103,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "k1e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":916
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":929
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)             # <<<<<<<<<<<<<<
@@ -9020,7 +9111,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_181 = __site_cvt_int_916_99->Target(__site_cvt_int_916_99, __pyx_t_17);
+  __pyx_t_181 = __site_cvt_int_929_99->Target(__site_cvt_int_929_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9031,7 +9122,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":917
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":930
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9039,7 +9130,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_183 = __site_cvt_int_917_101->Target(__site_cvt_int_917_101, __pyx_t_17);
+  __pyx_t_183 = __site_cvt_int_930_101->Target(__site_cvt_int_930_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9050,7 +9141,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":919
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":932
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)
  * 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9058,7 +9149,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_185 = __site_cvt_int_919_112->Target(__site_cvt_int_919_112, __pyx_t_17);
+  __pyx_t_185 = __site_cvt_int_932_112->Target(__site_cvt_int_932_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9069,7 +9160,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hankel1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":920
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":933
  * 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9077,7 +9168,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2e", hankel2e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_187 = __site_cvt_int_920_114->Target(__site_cvt_int_920_114, __pyx_t_17);
+  __pyx_t_187 = __site_cvt_int_933_114->Target(__site_cvt_int_933_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9088,7 +9179,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hankel1e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":921
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":934
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)             # <<<<<<<<<<<<<<
@@ -9096,7 +9187,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_189 = __site_cvt_int_921_112->Target(__site_cvt_int_921_112, __pyx_t_17);
+  __pyx_t_189 = __site_cvt_int_934_112->Target(__site_cvt_int_934_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9107,7 +9198,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hankel2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":922
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":935
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)
  * hankel2e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2e", hankel2e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9115,7 +9206,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_191 = __site_cvt_int_922_114->Target(__site_cvt_int_922_114, __pyx_t_17);
+  __pyx_t_191 = __site_cvt_int_935_114->Target(__site_cvt_int_935_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9126,7 +9217,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "hankel2e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":925
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":938
  * 
  * 
  * ndtr = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtr_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtr", ndtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -9134,7 +9225,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_193 = __site_cvt_int_925_101->Target(__site_cvt_int_925_101, __pyx_t_17);
+  __pyx_t_193 = __site_cvt_int_938_101->Target(__site_cvt_int_938_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9145,7 +9236,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ndtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":927
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":940
  * ndtr = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtr_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtr", ndtr_doc, 0)
  * 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)             # <<<<<<<<<<<<<<
@@ -9153,7 +9244,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_195 = __site_cvt_int_927_101->Target(__site_cvt_int_927_101, __pyx_t_17);
+  __pyx_t_195 = __site_cvt_int_940_101->Target(__site_cvt_int_940_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erfc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9164,7 +9255,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "erfc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":928
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":941
  * 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)
  * erf = np.PyUFunc_FromFuncAndData(cephes1rc_functions, erf_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "erf", erf_doc, 0)             # <<<<<<<<<<<<<<
@@ -9172,7 +9263,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_197 = __site_cvt_int_928_103->Target(__site_cvt_int_928_103, __pyx_t_17);
+  __pyx_t_197 = __site_cvt_int_941_103->Target(__site_cvt_int_941_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9183,7 +9274,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "erf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":930
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":943
  * erf = np.PyUFunc_FromFuncAndData(cephes1rc_functions, erf_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "erf", erf_doc, 0)
  * 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -9191,7 +9282,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_199 = __site_cvt_int_930_103->Target(__site_cvt_int_930_103, __pyx_t_17);
+  __pyx_t_199 = __site_cvt_int_943_103->Target(__site_cvt_int_943_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9202,7 +9293,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ndtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":931
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":944
  * 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)             # <<<<<<<<<<<<<<
@@ -9210,7 +9301,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_201 = __site_cvt_int_931_103->Target(__site_cvt_int_931_103, __pyx_t_17);
+  __pyx_t_201 = __site_cvt_int_944_103->Target(__site_cvt_int_944_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "psi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9221,7 +9312,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "psi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":932
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":945
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)             # <<<<<<<<<<<<<<
@@ -9229,7 +9320,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_203 = __site_cvt_int_932_109->Target(__site_cvt_int_932_109, __pyx_t_17);
+  __pyx_t_203 = __site_cvt_int_945_109->Target(__site_cvt_int_945_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "rgamma_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9240,7 +9331,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "rgamma", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":933
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":946
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)             # <<<<<<<<<<<<<<
@@ -9248,7 +9339,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_205 = __site_cvt_int_933_103->Target(__site_cvt_int_933_103, __pyx_t_17);
+  __pyx_t_205 = __site_cvt_int_946_103->Target(__site_cvt_int_946_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "round_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9259,7 +9350,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "round", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":935
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":948
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)
  * 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9267,7 +9358,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_207 = __site_cvt_int_935_103->Target(__site_cvt_int_935_103, __pyx_t_17);
+  __pyx_t_207 = __site_cvt_int_948_103->Target(__site_cvt_int_948_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "sindg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9278,7 +9369,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "sindg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":936
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":949
  * 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9286,7 +9377,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_209 = __site_cvt_int_936_103->Target(__site_cvt_int_936_103, __pyx_t_17);
+  __pyx_t_209 = __site_cvt_int_949_103->Target(__site_cvt_int_949_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9297,7 +9388,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "cosdg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":937
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":950
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)             # <<<<<<<<<<<<<<
@@ -9305,7 +9396,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_211 = __site_cvt_int_937_105->Target(__site_cvt_int_937_105, __pyx_t_17);
+  __pyx_t_211 = __site_cvt_int_950_105->Target(__site_cvt_int_950_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "radian_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9316,7 +9407,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "radian", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":938
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":951
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9324,7 +9415,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_213 = __site_cvt_int_938_103->Target(__site_cvt_int_938_103, __pyx_t_17);
+  __pyx_t_213 = __site_cvt_int_951_103->Target(__site_cvt_int_951_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "tandg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9335,7 +9426,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "tandg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":939
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":952
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9343,7 +9434,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_215 = __site_cvt_int_939_103->Target(__site_cvt_int_939_103, __pyx_t_17);
+  __pyx_t_215 = __site_cvt_int_952_103->Target(__site_cvt_int_952_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cotdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9354,7 +9445,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "cotdg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":940
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":953
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)             # <<<<<<<<<<<<<<
@@ -9362,7 +9453,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_217 = __site_cvt_int_940_103->Target(__site_cvt_int_940_103, __pyx_t_17);
+  __pyx_t_217 = __site_cvt_int_953_103->Target(__site_cvt_int_953_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "log1p_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9373,7 +9464,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "log1p", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":941
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":954
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9381,7 +9472,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_219 = __site_cvt_int_941_103->Target(__site_cvt_int_941_103, __pyx_t_17);
+  __pyx_t_219 = __site_cvt_int_954_103->Target(__site_cvt_int_954_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9392,7 +9483,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "expm1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":942
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":955
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9400,7 +9491,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_221 = __site_cvt_int_942_103->Target(__site_cvt_int_942_103, __pyx_t_17);
+  __pyx_t_221 = __site_cvt_int_955_103->Target(__site_cvt_int_955_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9411,7 +9502,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "cosm1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":944
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":957
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)
  * 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)             # <<<<<<<<<<<<<<
@@ -9419,7 +9510,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_223 = __site_cvt_int_944_105->Target(__site_cvt_int_944_105, __pyx_t_17);
+  __pyx_t_223 = __site_cvt_int_957_105->Target(__site_cvt_int_957_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "spence_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9430,7 +9521,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "spence", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":945
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":958
  * 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)
  * zetac = np.PyUFunc_FromFuncAndData(cephes1_functions, zetac_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "zetac", zetac_doc, 0)             # <<<<<<<<<<<<<<
@@ -9438,7 +9529,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_225 = __site_cvt_int_945_103->Target(__site_cvt_int_945_103, __pyx_t_17);
+  __pyx_t_225 = __site_cvt_int_958_103->Target(__site_cvt_int_958_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zetac_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9449,7 +9540,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "zetac", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":947
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":960
  * zetac = np.PyUFunc_FromFuncAndData(cephes1_functions, zetac_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "zetac", zetac_doc, 0)
  * 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9457,7 +9548,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_227 = __site_cvt_int_947_105->Target(__site_cvt_int_947_105, __pyx_t_17);
+  __pyx_t_227 = __site_cvt_int_960_105->Target(__site_cvt_int_960_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "struve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9468,7 +9559,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "struve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":948
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":961
  * 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9476,7 +9567,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_229 = __site_cvt_int_948_111->Target(__site_cvt_int_948_111, __pyx_t_17);
+  __pyx_t_229 = __site_cvt_int_961_111->Target(__site_cvt_int_961_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modstruve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9487,7 +9578,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "modstruve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":949
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":962
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9495,7 +9586,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_231 = __site_cvt_int_949_111->Target(__site_cvt_int_949_111, __pyx_t_17);
+  __pyx_t_231 = __site_cvt_int_962_111->Target(__site_cvt_int_962_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9506,7 +9597,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "itstruve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":950
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":963
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9514,7 +9605,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_233 = __site_cvt_int_950_113->Target(__site_cvt_int_950_113, __pyx_t_17);
+  __pyx_t_233 = __site_cvt_int_963_113->Target(__site_cvt_int_963_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2struve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9525,7 +9616,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "it2struve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":951
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":964
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9533,7 +9624,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_235 = __site_cvt_int_951_117->Target(__site_cvt_int_951_117, __pyx_t_17);
+  __pyx_t_235 = __site_cvt_int_964_117->Target(__site_cvt_int_964_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itmodstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9544,7 +9635,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "itmodstruve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":953
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":966
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)
  * 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)             # <<<<<<<<<<<<<<
@@ -9552,7 +9643,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_237 = __site_cvt_int_953_112->Target(__site_cvt_int_953_112, __pyx_t_17);
+  __pyx_t_237 = __site_cvt_int_966_112->Target(__site_cvt_int_966_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kelvin_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9563,7 +9654,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kelvin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":954
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":967
  * 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)             # <<<<<<<<<<<<<<
@@ -9571,7 +9662,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_239 = __site_cvt_int_954_99->Target(__site_cvt_int_954_99, __pyx_t_17);
+  __pyx_t_239 = __site_cvt_int_967_99->Target(__site_cvt_int_967_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ber_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9582,7 +9673,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ber", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":955
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":968
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)             # <<<<<<<<<<<<<<
@@ -9590,7 +9681,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_241 = __site_cvt_int_955_99->Target(__site_cvt_int_955_99, __pyx_t_17);
+  __pyx_t_241 = __site_cvt_int_968_99->Target(__site_cvt_int_968_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9601,7 +9692,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "bei", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":956
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":969
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)             # <<<<<<<<<<<<<<
@@ -9609,7 +9700,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_243 = __site_cvt_int_956_99->Target(__site_cvt_int_956_99, __pyx_t_17);
+  __pyx_t_243 = __site_cvt_int_969_99->Target(__site_cvt_int_969_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ker_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9620,7 +9711,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "ker", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":957
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":970
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)             # <<<<<<<<<<<<<<
@@ -9628,7 +9719,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_245 = __site_cvt_int_957_99->Target(__site_cvt_int_957_99, __pyx_t_17);
+  __pyx_t_245 = __site_cvt_int_970_99->Target(__site_cvt_int_970_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9639,7 +9730,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kei", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":958
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":971
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)             # <<<<<<<<<<<<<<
@@ -9647,7 +9738,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_247 = __site_cvt_int_958_101->Target(__site_cvt_int_958_101, __pyx_t_17);
+  __pyx_t_247 = __site_cvt_int_971_101->Target(__site_cvt_int_971_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "berp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9658,7 +9749,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "berp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":959
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":972
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)             # <<<<<<<<<<<<<<
@@ -9666,7 +9757,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * keip = np.PyUFunc_FromFuncAndData(cephes1_functions, keip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "keip", keip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_249 = __site_cvt_int_959_101->Target(__site_cvt_int_959_101, __pyx_t_17);
+  __pyx_t_249 = __site_cvt_int_972_101->Target(__site_cvt_int_972_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "beip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9677,7 +9768,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "beip", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":960
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":973
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)             # <<<<<<<<<<<<<<
@@ -9685,7 +9776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_251 = __site_cvt_int_960_101->Target(__site_cvt_int_960_101, __pyx_t_17);
+  __pyx_t_251 = __site_cvt_int_973_101->Target(__site_cvt_int_973_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kerp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9696,7 +9787,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kerp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":961
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":974
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)
  * keip = np.PyUFunc_FromFuncAndData(cephes1_functions, keip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "keip", keip_doc, 0)             # <<<<<<<<<<<<<<
@@ -9704,7 +9795,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_253 = __site_cvt_int_961_101->Target(__site_cvt_int_961_101, __pyx_t_17);
+  __pyx_t_253 = __site_cvt_int_974_101->Target(__site_cvt_int_974_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "keip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9715,7 +9806,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "keip", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":964
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":977
  * 
  * 
  * zeta = np.PyUFunc_FromFuncAndData(cephes2_functions, zeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "zeta", zeta_doc, 0)             # <<<<<<<<<<<<<<
@@ -9723,7 +9814,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_255 = __site_cvt_int_964_101->Target(__site_cvt_int_964_101, __pyx_t_17);
+  __pyx_t_255 = __site_cvt_int_977_101->Target(__site_cvt_int_977_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zeta_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9734,7 +9825,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "zeta", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":966
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":979
  * zeta = np.PyUFunc_FromFuncAndData(cephes2_functions, zeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "zeta", zeta_doc, 0)
  * 
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)             # <<<<<<<<<<<<<<
@@ -9742,7 +9833,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_257 = __site_cvt_int_966_113->Target(__site_cvt_int_966_113, __pyx_t_17);
+  __pyx_t_257 = __site_cvt_int_979_113->Target(__site_cvt_int_979_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogorov_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9753,7 +9844,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kolmogorov", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":968
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":981
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)
  * 
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)             # <<<<<<<<<<<<<<
@@ -9761,7 +9852,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_259 = __site_cvt_int_968_107->Target(__site_cvt_int_968_107, __pyx_t_17);
+  __pyx_t_259 = __site_cvt_int_981_107->Target(__site_cvt_int_981_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9772,7 +9863,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "kolmogi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":970
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":983
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)
  * 
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)             # <<<<<<<<<<<<<<
@@ -9780,7 +9871,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_261 = __site_cvt_int_970_103->Target(__site_cvt_int_970_103, __pyx_t_17);
+  __pyx_t_261 = __site_cvt_int_983_103->Target(__site_cvt_int_983_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "wofz_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9791,7 +9882,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "wofz", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":972
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":985
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)
  * 
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)             # <<<<<<<<<<<<<<
@@ -9799,7 +9890,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_263 = __site_cvt_int_972_113->Target(__site_cvt_int_972_113, __pyx_t_17);
+  __pyx_t_263 = __site_cvt_int_985_113->Target(__site_cvt_int_985_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "besselpoly_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9810,7 +9901,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "besselpoly", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":974
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":987
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)
  * 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)             # <<<<<<<<<<<<<<
@@ -9818,13 +9909,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_265 = __site_cvt_int_974_107->Target(__site_cvt_int_974_107, __pyx_t_17);
+  __pyx_t_265 = __site_cvt_int_987_107->Target(__site_cvt_int_987_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_265, __pyx_k__btdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtria", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":975
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":988
  * 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)
  * btdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtrib", "", 0)             # <<<<<<<<<<<<<<
@@ -9832,13 +9923,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_266 = __site_cvt_int_975_107->Target(__site_cvt_int_975_107, __pyx_t_17);
+  __pyx_t_266 = __site_cvt_int_988_107->Target(__site_cvt_int_988_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_266, __pyx_k__btdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtrib", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":977
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":990
  * btdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtrib", "", 0)
  * 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -9846,13 +9937,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_267 = __site_cvt_int_977_106->Target(__site_cvt_int_977_106, __pyx_t_17);
+  __pyx_t_267 = __site_cvt_int_990_106->Target(__site_cvt_int_990_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_267, __pyx_k__bdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":978
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":991
  * 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)
  * bdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrin", "", 0)             # <<<<<<<<<<<<<<
@@ -9860,13 +9951,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtriv = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfchi3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtriv", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_268 = __site_cvt_int_978_106->Target(__site_cvt_int_978_106, __pyx_t_17);
+  __pyx_t_268 = __site_cvt_int_991_106->Target(__site_cvt_int_991_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_268, __pyx_k__bdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":980
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":993
  * bdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrin", "", 0)
  * 
  * chdtriv = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfchi3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtriv", "", 0)             # <<<<<<<<<<<<<<
@@ -9874,13 +9965,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_269 = __site_cvt_int_980_107->Target(__site_cvt_int_980_107, __pyx_t_17);
+  __pyx_t_269 = __site_cvt_int_993_107->Target(__site_cvt_int_993_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfchi3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_269, __pyx_k__chdtriv, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chdtriv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":983
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":996
  * 
  * 
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)             # <<<<<<<<<<<<<<
@@ -9888,13 +9979,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_270 = __site_cvt_int_983_106->Target(__site_cvt_int_983_106, __pyx_t_17);
+  __pyx_t_270 = __site_cvt_int_996_106->Target(__site_cvt_int_996_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_270, __pyx_k__chndtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":984
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":997
  * 
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)             # <<<<<<<<<<<<<<
@@ -9902,13 +9993,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_271 = __site_cvt_int_984_108->Target(__site_cvt_int_984_108, __pyx_t_17);
+  __pyx_t_271 = __site_cvt_int_997_108->Target(__site_cvt_int_997_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_271, __pyx_k__chndtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrix", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":985
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":998
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)             # <<<<<<<<<<<<<<
@@ -9916,13 +10007,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_272 = __site_cvt_int_985_109->Target(__site_cvt_int_985_109, __pyx_t_17);
+  __pyx_t_272 = __site_cvt_int_998_109->Target(__site_cvt_int_998_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_272, __pyx_k__chndtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":986
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":999
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -9930,13 +10021,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_273 = __site_cvt_int_986_109->Target(__site_cvt_int_986_109, __pyx_t_17);
+  __pyx_t_273 = __site_cvt_int_999_109->Target(__site_cvt_int_999_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_273, __pyx_k__chndtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":988
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1001
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)
  * 
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)             # <<<<<<<<<<<<<<
@@ -9944,13 +10035,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_274 = __site_cvt_int_988_106->Target(__site_cvt_int_988_106, __pyx_t_17);
+  __pyx_t_274 = __site_cvt_int_1001_106->Target(__site_cvt_int_1001_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdff4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_274, __pyx_k__fdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "fdtridfd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":990
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1003
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)
  * 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)             # <<<<<<<<<<<<<<
@@ -9958,13 +10049,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_275 = __site_cvt_int_990_106->Target(__site_cvt_int_990_106, __pyx_t_17);
+  __pyx_t_275 = __site_cvt_int_1003_106->Target(__site_cvt_int_1003_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_275, __pyx_k__ncfdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":991
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1004
  * 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  * ncfdtri = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc2_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtri", "", 0)             # <<<<<<<<<<<<<<
@@ -9972,13 +10063,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_276 = __site_cvt_int_991_107->Target(__site_cvt_int_991_107, __pyx_t_17);
+  __pyx_t_276 = __site_cvt_int_1004_107->Target(__site_cvt_int_1004_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_276, __pyx_k__ncfdtri, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":992
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1005
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  * ncfdtri = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc2_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtri", "", 0)
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)             # <<<<<<<<<<<<<<
@@ -9986,13 +10077,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_277 = __site_cvt_int_992_110->Target(__site_cvt_int_992_110, __pyx_t_17);
+  __pyx_t_277 = __site_cvt_int_1005_110->Target(__site_cvt_int_1005_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_277, __pyx_k__ncfdtridfn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":994
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1007
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)
  * 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)             # <<<<<<<<<<<<<<
@@ -10000,13 +10091,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_278 = __site_cvt_int_994_110->Target(__site_cvt_int_994_110, __pyx_t_17);
+  __pyx_t_278 = __site_cvt_int_1007_110->Target(__site_cvt_int_1007_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_278, __pyx_k__ncfdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":995
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1008
  * 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)
  * ncfdtrinc = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc5_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -10014,13 +10105,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_279 = __site_cvt_int_995_109->Target(__site_cvt_int_995_109, __pyx_t_17);
+  __pyx_t_279 = __site_cvt_int_1008_109->Target(__site_cvt_int_1008_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc5_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_279, __pyx_k__ncfdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":997
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1010
  * ncfdtrinc = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc5_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtrinc", "", 0)
  * 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)             # <<<<<<<<<<<<<<
@@ -10028,13 +10119,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_280 = __site_cvt_int_997_106->Target(__site_cvt_int_997_106, __pyx_t_17);
+  __pyx_t_280 = __site_cvt_int_1010_106->Target(__site_cvt_int_1010_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_280, __pyx_k__gdtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrix", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":998
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1011
  * 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  * gdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrib", "", 0)             # <<<<<<<<<<<<<<
@@ -10042,13 +10133,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_281 = __site_cvt_int_998_106->Target(__site_cvt_int_998_106, __pyx_t_17);
+  __pyx_t_281 = __site_cvt_int_1011_106->Target(__site_cvt_int_1011_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_281, __pyx_k__gdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrib", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":999
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1012
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  * gdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrib", "", 0)
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)             # <<<<<<<<<<<<<<
@@ -10056,13 +10147,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_282 = __site_cvt_int_999_106->Target(__site_cvt_int_999_106, __pyx_t_17);
+  __pyx_t_282 = __site_cvt_int_1012_106->Target(__site_cvt_int_1012_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_282, __pyx_k__gdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtria", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1001
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1014
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)
  * 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -10070,13 +10161,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_283 = __site_cvt_int_1001_107->Target(__site_cvt_int_1001_107, __pyx_t_17);
+  __pyx_t_283 = __site_cvt_int_1014_107->Target(__site_cvt_int_1014_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_283, __pyx_k__nbdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1002
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1015
  * 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)
  * nbdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrin", "", 0)             # <<<<<<<<<<<<<<
@@ -10084,13 +10175,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_284 = __site_cvt_int_1002_107->Target(__site_cvt_int_1002_107, __pyx_t_17);
+  __pyx_t_284 = __site_cvt_int_1015_107->Target(__site_cvt_int_1015_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_284, __pyx_k__nbdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1004
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1017
  * nbdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrin", "", 0)
  * 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)             # <<<<<<<<<<<<<<
@@ -10098,13 +10189,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_285 = __site_cvt_int_1004_108->Target(__site_cvt_int_1004_108, __pyx_t_17);
+  __pyx_t_285 = __site_cvt_int_1017_108->Target(__site_cvt_int_1017_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_285, __pyx_k__nrdtrimn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrimn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1005
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1018
  * 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)
  * nrdtrisd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrisd", "", 0)             # <<<<<<<<<<<<<<
@@ -10112,13 +10203,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_286 = __site_cvt_int_1005_108->Target(__site_cvt_int_1005_108, __pyx_t_17);
+  __pyx_t_286 = __site_cvt_int_1018_108->Target(__site_cvt_int_1018_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_286, __pyx_k__nrdtrisd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrisd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1007
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1020
  * nrdtrisd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrisd", "", 0)
  * 
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -10126,13 +10217,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_287 = __site_cvt_int_1007_106->Target(__site_cvt_int_1007_106, __pyx_t_17);
+  __pyx_t_287 = __site_cvt_int_1020_106->Target(__site_cvt_int_1020_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfpoi2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_287, __pyx_k__pdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "pdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1009
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1022
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)
  * 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -10140,7 +10231,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_288 = __site_cvt_int_1009_103->Target(__site_cvt_int_1009_103, __pyx_t_17);
+  __pyx_t_288 = __site_cvt_int_1022_103->Target(__site_cvt_int_1022_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10151,7 +10242,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "stdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1010
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1023
  * 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  * stdtrit = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtrit", stdtrit_doc, 0)             # <<<<<<<<<<<<<<
@@ -10159,7 +10250,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_290 = __site_cvt_int_1010_105->Target(__site_cvt_int_1010_105, __pyx_t_17);
+  __pyx_t_290 = __site_cvt_int_1023_105->Target(__site_cvt_int_1023_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtrit_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10170,7 +10261,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "stdtrit", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1011
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1024
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  * stdtrit = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtrit", stdtrit_doc, 0)
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)             # <<<<<<<<<<<<<<
@@ -10178,7 +10269,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_292 = __site_cvt_int_1011_106->Target(__site_cvt_int_1011_106, __pyx_t_17);
+  __pyx_t_292 = __site_cvt_int_1024_106->Target(__site_cvt_int_1024_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtridf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10189,7 +10280,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "stdtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1013
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1026
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)
  * 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)             # <<<<<<<<<<<<<<
@@ -10197,13 +10288,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_294 = __site_cvt_int_1013_106->Target(__site_cvt_int_1013_106, __pyx_t_17);
+  __pyx_t_294 = __site_cvt_int_1026_106->Target(__site_cvt_int_1026_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_294, __pyx_k__nctdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1014
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1027
  * 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)             # <<<<<<<<<<<<<<
@@ -10211,13 +10302,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_295 = __site_cvt_int_1014_108->Target(__site_cvt_int_1014_108, __pyx_t_17);
+  __pyx_t_295 = __site_cvt_int_1027_108->Target(__site_cvt_int_1027_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_295, __pyx_k__nctdtrit, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrit", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1015
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1028
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)             # <<<<<<<<<<<<<<
@@ -10225,13 +10316,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_296 = __site_cvt_int_1015_109->Target(__site_cvt_int_1015_109, __pyx_t_17);
+  __pyx_t_296 = __site_cvt_int_1028_109->Target(__site_cvt_int_1028_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_296, __pyx_k__nctdtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1016
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1029
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -10239,13 +10330,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tklmbda = np.PyUFunc_FromFuncAndData(cephes2_functions, tklambda_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "tklmbda", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_297 = __site_cvt_int_1016_109->Target(__site_cvt_int_1016_109, __pyx_t_17);
+  __pyx_t_297 = __site_cvt_int_1029_109->Target(__site_cvt_int_1029_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_297, __pyx_k__nctdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1018
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1031
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)
  * 
  * tklmbda = np.PyUFunc_FromFuncAndData(cephes2_functions, tklambda_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "tklmbda", "", 0)             # <<<<<<<<<<<<<<
@@ -10253,13 +10344,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_298 = __site_cvt_int_1018_108->Target(__site_cvt_int_1018_108, __pyx_t_17);
+  __pyx_t_298 = __site_cvt_int_1031_108->Target(__site_cvt_int_1031_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_tklambda_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_298, __pyx_k__tklmbda, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "tklmbda", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1021
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1034
  * 
  * 
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)             # <<<<<<<<<<<<<<
@@ -10267,7 +10358,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_299 = __site_cvt_int_1021_111->Target(__site_cvt_int_1021_111, __pyx_t_17);
+  __pyx_t_299 = __site_cvt_int_1034_111->Target(__site_cvt_int_1034_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_a_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10278,7 +10369,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_a", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1022
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1035
  * 
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)             # <<<<<<<<<<<<<<
@@ -10286,7 +10377,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_301 = __site_cvt_int_1022_111->Target(__site_cvt_int_1022_111, __pyx_t_17);
+  __pyx_t_301 = __site_cvt_int_1035_111->Target(__site_cvt_int_1035_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_b_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10297,7 +10388,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_b", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1023
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1036
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)             # <<<<<<<<<<<<<<
@@ -10305,7 +10396,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_303 = __site_cvt_int_1023_117->Target(__site_cvt_int_1023_117, __pyx_t_17);
+  __pyx_t_303 = __site_cvt_int_1036_117->Target(__site_cvt_int_1036_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_cem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10316,7 +10407,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_cem", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1024
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1037
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)             # <<<<<<<<<<<<<<
@@ -10324,7 +10415,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_305 = __site_cvt_int_1024_117->Target(__site_cvt_int_1024_117, __pyx_t_17);
+  __pyx_t_305 = __site_cvt_int_1037_117->Target(__site_cvt_int_1037_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_sem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10335,7 +10426,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_sem", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1025
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1038
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10343,7 +10434,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_307 = __site_cvt_int_1025_123->Target(__site_cvt_int_1025_123, __pyx_t_17);
+  __pyx_t_307 = __site_cvt_int_1038_123->Target(__site_cvt_int_1038_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10354,7 +10445,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1026
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1039
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10362,7 +10453,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_309 = __site_cvt_int_1026_123->Target(__site_cvt_int_1026_123, __pyx_t_17);
+  __pyx_t_309 = __site_cvt_int_1039_123->Target(__site_cvt_int_1039_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10373,7 +10464,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1027
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1040
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10381,7 +10472,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_311 = __site_cvt_int_1027_123->Target(__site_cvt_int_1027_123, __pyx_t_17);
+  __pyx_t_311 = __site_cvt_int_1040_123->Target(__site_cvt_int_1040_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10392,7 +10483,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1028
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1041
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10400,7 +10491,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_313 = __site_cvt_int_1028_123->Target(__site_cvt_int_1028_123, __pyx_t_17);
+  __pyx_t_313 = __site_cvt_int_1041_123->Target(__site_cvt_int_1041_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10411,7 +10502,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1030
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1043
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)
  * 
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10419,7 +10510,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_315 = __site_cvt_int_1030_101->Target(__site_cvt_int_1030_101, __pyx_t_17);
+  __pyx_t_315 = __site_cvt_int_1043_101->Target(__site_cvt_int_1043_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "lpmv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10430,7 +10521,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "lpmv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1032
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1045
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)
  * 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)             # <<<<<<<<<<<<<<
@@ -10438,7 +10529,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_317 = __site_cvt_int_1032_103->Target(__site_cvt_int_1032_103, __pyx_t_17);
+  __pyx_t_317 = __site_cvt_int_1045_103->Target(__site_cvt_int_1045_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbwa_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10449,7 +10540,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pbwa", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1033
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1046
  * 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  * pbdv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbdv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbdv", pbdv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10457,7 +10548,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_319 = __site_cvt_int_1033_103->Target(__site_cvt_int_1033_103, __pyx_t_17);
+  __pyx_t_319 = __site_cvt_int_1046_103->Target(__site_cvt_int_1046_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbdv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10468,7 +10559,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pbdv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1034
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1047
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  * pbdv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbdv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbdv", pbdv_doc, 0)
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10476,7 +10567,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_321 = __site_cvt_int_1034_103->Target(__site_cvt_int_1034_103, __pyx_t_17);
+  __pyx_t_321 = __site_cvt_int_1047_103->Target(__site_cvt_int_1047_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbvv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10487,7 +10578,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pbvv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1036
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1049
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)
  * 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10495,7 +10586,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_323 = __site_cvt_int_1036_111->Target(__site_cvt_int_1036_111, __pyx_t_17);
+  __pyx_t_323 = __site_cvt_int_1049_111->Target(__site_cvt_int_1049_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10506,7 +10597,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1037
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1050
  * 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10514,7 +10605,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_325 = __site_cvt_int_1037_110->Target(__site_cvt_int_1037_110, __pyx_t_17);
+  __pyx_t_325 = __site_cvt_int_1050_110->Target(__site_cvt_int_1050_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10525,7 +10616,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1038
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1051
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10533,7 +10624,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_327 = __site_cvt_int_1038_119->Target(__site_cvt_int_1038_119, __pyx_t_17);
+  __pyx_t_327 = __site_cvt_int_1051_119->Target(__site_cvt_int_1051_119, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10544,7 +10635,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_ang1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1039
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1052
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10552,7 +10643,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_329 = __site_cvt_int_1039_121->Target(__site_cvt_int_1039_121, __pyx_t_17);
+  __pyx_t_329 = __site_cvt_int_1052_121->Target(__site_cvt_int_1052_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10563,7 +10654,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_rad1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1040
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1053
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10571,7 +10662,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_331 = __site_cvt_int_1040_121->Target(__site_cvt_int_1040_121, __pyx_t_17);
+  __pyx_t_331 = __site_cvt_int_1053_121->Target(__site_cvt_int_1053_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10582,7 +10673,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_rad2_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1041
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1054
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10590,7 +10681,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_333 = __site_cvt_int_1041_118->Target(__site_cvt_int_1041_118, __pyx_t_17);
+  __pyx_t_333 = __site_cvt_int_1054_118->Target(__site_cvt_int_1054_118, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10601,7 +10692,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_ang1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1042
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1055
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10609,7 +10700,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_335 = __site_cvt_int_1042_120->Target(__site_cvt_int_1042_120, __pyx_t_17);
+  __pyx_t_335 = __site_cvt_int_1055_120->Target(__site_cvt_int_1055_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10620,7 +10711,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_rad1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1043
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1056
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10628,7 +10719,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_337 = __site_cvt_int_1043_120->Target(__site_cvt_int_1043_120, __pyx_t_17);
+  __pyx_t_337 = __site_cvt_int_1056_120->Target(__site_cvt_int_1056_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10639,7 +10730,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_rad2_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1044
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1057
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10647,7 +10738,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_339 = __site_cvt_int_1044_121->Target(__site_cvt_int_1044_121, __pyx_t_17);
+  __pyx_t_339 = __site_cvt_int_1057_121->Target(__site_cvt_int_1057_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10658,7 +10749,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_ang1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1045
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1058
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10666,7 +10757,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_341 = __site_cvt_int_1045_123->Target(__site_cvt_int_1045_123, __pyx_t_17);
+  __pyx_t_341 = __site_cvt_int_1058_123->Target(__site_cvt_int_1058_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10677,7 +10768,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_rad1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1046
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1059
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10685,7 +10776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_343 = __site_cvt_int_1046_123->Target(__site_cvt_int_1046_123, __pyx_t_17);
+  __pyx_t_343 = __site_cvt_int_1059_123->Target(__site_cvt_int_1059_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10696,7 +10787,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "pro_rad2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1047
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1060
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10704,7 +10795,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad2", obl_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_345 = __site_cvt_int_1047_120->Target(__site_cvt_int_1047_120, __pyx_t_17);
+  __pyx_t_345 = __site_cvt_int_1060_120->Target(__site_cvt_int_1060_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10715,7 +10806,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_ang1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1048
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1061
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10723,7 +10814,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_347 = __site_cvt_int_1048_122->Target(__site_cvt_int_1048_122, __pyx_t_17);
+  __pyx_t_347 = __site_cvt_int_1061_122->Target(__site_cvt_int_1061_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10734,7 +10825,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_rad1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1049
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1062
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)
  * obl_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad2", obl_rad2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10742,7 +10833,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_349 = __site_cvt_int_1049_122->Target(__site_cvt_int_1049_122, __pyx_t_17);
+  __pyx_t_349 = __site_cvt_int_1062_122->Target(__site_cvt_int_1062_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10753,7 +10844,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "obl_rad2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1053
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1066
  * 
  * 
  * modfresnelp = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelp_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelp", modfresnelp_doc, 0)             # <<<<<<<<<<<<<<
@@ -10761,7 +10852,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_351 = __site_cvt_int_1053_120->Target(__site_cvt_int_1053_120, __pyx_t_17);
+  __pyx_t_351 = __site_cvt_int_1066_120->Target(__site_cvt_int_1066_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10772,13 +10863,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "modfresnelp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1055
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1068
  * modfresnelp = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelp_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelp", modfresnelp_doc, 0)
  * 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)             # <<<<<<<<<<<<<<
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_353 = __site_cvt_int_1055_120->Target(__site_cvt_int_1055_120, __pyx_t_17);
+  __pyx_t_353 = __site_cvt_int_1068_120->Target(__site_cvt_int_1068_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelm_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
