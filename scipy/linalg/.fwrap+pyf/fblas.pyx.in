@@ -42,6 +42,7 @@ from fwrap_ktp cimport *
 cimport fblas_fc as fc
 
 np.import_array()
+__all__ = ['{{Xhemv}}', 'csrot', 'csscal', 'dzasum', 'dznrm2', '{{XdotX}}', '{{iXamax}}', '{{Xasum}}', '{{Xaxpy}}', 'scasum', 'scnrm2', '{{Xcopy}}', '{{Xdot}}', '{{Xgemm}}', '{{Xgemv}}', '{{XgerX}}', '{{Xnrm2}}', '{{Xrot}}', '{{Xrotg}}', '{{Xrotm}}', '{{Xrotmg}}', '{{Xscal}}', '{{Xswap}}', '{{Xsymv}}', '{{Xtrmv}}', 'zdrot', 'zdscal']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 {{for Xhemv, ktp, npy_enum
@@ -273,8 +274,6 @@ def {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integ
     xy : {{ktp}}_, intent out
 
     """
-    # These call a subroutine wrapper because the return argument
-    # is complex, which is less compatible ABI-wise
     cdef {{ktp}} xy
     cdef fwi_integer_t n_
     cdef np.ndarray x_, y_
@@ -300,39 +299,34 @@ def {{XdotX}}(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integ
 {{endfor}}
 
 
-{{for iXamax, ktp, npy_enum
+{{for iXamax, ktp, name, npy_enum
       in zip(['isamax', 'idamax', 'icamax', 'izamax'],
-             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],             
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['sx', 'dx', 'cx', 'zx'],
              ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
-def {{iXamax}}(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):
-    """{{iXamax}}(x[, n, offx, incx]) -> fw_ret_arg
+def {{iXamax}}(fwi_integer_t n, object {{name}}, fwi_integer_t incx):
+    """{{iXamax}}(n, {{name}}, incx) -> (fw_ret_arg, n, {{name}}, incx)
 
     Parameters
     ----------
     n : fwi_integer, intent inout
-    x : {{ktp}}_, 1D array, dimension(*), intent inout
-    offx : fwi_integer, intent inout
+    {{name}} : {{ktp}}_, 1D array, dimension(*), intent inout
     incx : fwi_integer, intent inout
 
     Returns
     -------
     fw_ret_arg : fwi_integer, intent out
+    n : fwi_integer, intent inout
+    {{name}} : {{ktp}}_, 1D array, dimension(*), intent inout
+    incx : fwi_integer, intent inout
 
     """
-    cdef fwi_integer_t fw_ret_arg, n_
-    cdef np.ndarray x_
-    cdef np.npy_intp x_shape[1]
-    x_ = fw_asfortranarray(x, {{npy_enum}}, 1, x_shape, False, False)
-    n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
-    if offx < 0 or offx >= x_shape[0]:
-        raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
-    if not incx != 0:
-        raise ValueError("Not satisfied: incx != 0")
-    if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
-        raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
-    fw_ret_arg = fc.{{iXamax}}(&n_, <{{ktp}}*>np.PyArray_DATA(x_) + offx, &incx)
-    fw_ret_arg -= 1 # Convert Fortran index to Python index
-    return fw_ret_arg
+    cdef fwi_integer_t fw_ret_arg
+    cdef np.ndarray {{name}}_
+    cdef np.npy_intp {{name}}_shape[1]
+    {{name}}_ = fw_asfortranarray({{name}}, {{npy_enum}}, 1, {{name}}_shape, False, False)
+    fw_ret_arg = fc.{{iXamax}}(&fw_ret_arg, &n, <{{ktp}}*>np.PyArray_DATA({{name}}_), &incx)
+    return (fw_ret_arg, n, {{name}}_, incx,)
 {{endfor}}
 
 
@@ -674,15 +668,14 @@ def {{Xgemv}}({{ktp}} alpha, object a, object x, {{ktp}} beta=0.0, object y=None
     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     x_ = fw_asfortranarray(x, {{npy_enum}}, 1, x_shape, False, False)
+    ly = ##TODO (watch any dependencies that may be further down!) (y_capi==Py_None?1+offy+(rows-1)*abs(incy):-1)
+    y_shape[0] = ly
+    y_ = fw_asfortranarray(y, {{npy_enum}}, 1, y_shape, not overwrite_y, True)
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, False, False)
     m = a_shape[0]
     n = a_shape[1]
     rows = n if trans else m
     cols = m if trans else n
-    ly = 1 + offy + (rows - 1) * abs(incy)
-    y_shape[0] = ly
-    y_ = fw_asfortranarray(y, {{npy_enum}}, 1, y_shape, not overwrite_y, True)
-    ly = y_shape[0]
     if not ((offx >= 0) and (offx < x_shape[0])):
         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
@@ -848,10 +841,9 @@ def {{Xrot}}(object x, object y, {{ktp}} c, {{ktp}} s, object n=None, fwi_intege
 {{endfor}}
 
 
-{{for Xrotg, ktp, ktp_real
+{{for Xrotg, ktp
       in zip(['srotg', 'drotg', 'crotg', 'zrotg'],
-             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['fwr_real_t', 'fwr_dbl_t', 'fwr_real_t', 'fwr_dbl_t'])}}
+             ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'])}}
 def {{Xrotg}}({{ktp}} a, {{ktp}} b):
     """{{Xrotg}}(a, b) -> (c, s)
 
@@ -866,12 +858,11 @@ def {{Xrotg}}({{ktp}} a, {{ktp}} b):
     s : {{ktp}}_, intent out
 
     """
-    cdef {{ktp_real}} c
-    cdef {{ktp}} s
+    cdef {{ktp}} c, s
     c = 0
     s = 0
     fc.{{Xrotg}}(&a, &b, &c, &s)
-    return (<{{ktp}}>c, s,)
+    return (c, s,)
 {{endfor}}
 
 

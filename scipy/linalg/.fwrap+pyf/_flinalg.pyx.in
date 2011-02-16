@@ -18,9 +18,9 @@ from fwrap_ktp cimport *
 cimport _flinalg_fc as fc
 
 np.import_array()
+__all__ = ['{{Xdet_c}}', '{{Xdet_r}}', '{{Xlu_c}}']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-
 {{for Xdet_c, ktp, npy_enum
       in zip(['sdet_c', 'ddet_c', 'cdet_c', 'zdet_c'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_complex_x16_t'],

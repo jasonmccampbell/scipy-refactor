@@ -7,7 +7,7 @@ For usage information see the function docstrings.
 
 Functions
 ---------
-cgees, zgees(...)
+cgees(...)
 cgeev(...)
 cgegv(...)
 cgelss(...)
@@ -21,6 +21,7 @@ chegv, zhegv(...)
 chegvd, zhegvd(...)
 chegvx, zhegvx(...)
 cungqr, zungqr(...)
+dgees(...)
 dgeev(...)
 dgegv(...)
 dgelss(...)
@@ -30,7 +31,7 @@ sgbsv, dgbsv, cgbsv, zgbsv(...)
 sgbtrf, dgbtrf, cgbtrf, zgbtrf(...)
 sgbtrs, dgbtrs, cgbtrs, zgbtrs(...)
 sgebal, dgebal, cgebal, zgebal(...)
-sgees, dgees(...)
+sgees(...)
 sgeev(...)
 sgegv(...)
 sgehrd, dgehrd, cgehrd, zgehrd(...)
@@ -64,6 +65,7 @@ ssygvd, dsygvd(...)
 ssygvx, dsygvx(...)
 strtri, dtrtri, ctrtri, ztrtri(...)
 strtrs, dtrtrs, ctrtrs, ztrtrs(...)
+zgees(...)
 zgeev(...)
 zgegv(...)
 zgelss(...)
@@ -71,59 +73,107 @@ zgesdd(...)
 zggev(...)
 
 """
+
 cimport numpy as np
 from fwrap_ktp cimport *
 cimport flapack_fc as fc
 
 np.import_array()
+import sys
+
+cdef extern from "setjmp.h":
+    ctypedef struct jmp_buf:
+        pass    
+    int setjmp(jmp_buf env)
+    void longjmp(jmp_buf env, int val)
+
+cdef extern from "string.h":
+    void *memcpy(void *dest, void *src, int n)
+
+cdef class fw_CallbackInfo(object):
+    # Callable object to call
+    cdef object callback
+    # Pass *extra_args to callback (can be None)
+    cdef object extra_args
+    # If an exception is raised by callback it is stored here
+    cdef object exc
+    # Some times, one may want to communicate objects directly that are
+    # simply passed through in Fortran (in particular NumPy arrays)
+    cdef object arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9
+    # For use by longjmp
+    cdef jmp_buf jmp
+    def __cinit__(self, object callback, object extra_args):
+        self.callback = callback
+        self.extra_args = extra_args
+
+
+__all__ = ['cgees', 'cgeev', 'cgegv', 'cgelss', 'cgesdd', 'cggev', '{{Xhbevd}}', '{{Xhbevx}}', '{{Xheev}}', '{{Xheevr}}', '{{Xhegv}}', '{{Xhegvd}}', '{{Xhegvx}}', '{{Xungqr}}', 'dgees', 'dgeev', 'dgegv', 'dgelss', 'dgesdd', 'dggev', '{{Xgbsv}}', '{{Xgbtrf}}', '{{Xgbtrs}}', '{{Xgebal}}', 'sgees', 'sgeev', 'sgegv', '{{Xgehrd}}', 'sgelss', '{{Xgeqrf}}', '{{Xgerqf}}', 'sgesdd', '{{Xgesv}}', '{{Xgetrf}}', '{{Xgetri}}', '{{Xgetrs}}', 'sggev', '{{Xlamch}}', '{{Xlaswp}}', '{{Xlauum}}', '{{Xorgqr}}', '{{Xpbsv}}', '{{Xpbtrf}}', '{{Xpbtrs}}', '{{Xposv}}', '{{Xpotrf}}', '{{Xpotri}}', '{{Xpotrs}}', '{{Xsbev}}', '{{Xsbevd}}', '{{Xsbevx}}', '{{Xsyev}}', '{{Xsyevr}}', '{{Xsygv}}', '{{Xsygvd}}', '{{Xsygvx}}', '{{Xtrtri}}', '{{Xtrtrs}}', 'zgees', 'zgeev', 'zgegv', 'zgelss', 'zgesdd', 'zggev']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
-{{for Xgees, ktp, ktp2, npy_enum, npy_enum2
-      in zip(['cgees', 'zgees'],
-             ['fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['fwr_real_t', 'fwr_dbl_t'],
-             ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
-    """{{Xgees}}(select, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
+cdef fw_CallbackInfo cgees_select_cb_info
+cdef int cgees_select_cb_wrapper_core():
+    global cgees_select_cb_info;
+    cdef fw_CallbackInfo info
+    info = cgees_select_cb_info
+    try:
+        if info.extra_args is None:
+            info.callback()
+        else:
+            info.callback(*info.extra_args)
+        cgees_select_cb_info = info
+        return 0
+    except:
+        cgees_select_cb_info = info
+        info.exc = sys.exc_info()
+        return -1
+
+cdef void cgees_select_cb_wrapper():
+    if cgees_select_cb_wrapper_core() != 0:
+        longjmp(cgees_select_cb_info.jmp, 1)
+
+
+def cgees(object cselect, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
+    """cgees(cselect, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
 
     Parameters
     ----------
-    select : callback
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
+    cselect : object, intent in
+    a : fwc_complex, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     sort_t : fwi_integer, intent in
     lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
-    w : {{ktp}}_, 1D array, dimension(n), intent out
-    vs : {{ktp}}_, 2D array, dimension(ldvs, n), intent out
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    w : fwc_complex, 1D array, dimension(n), intent out
+    vs : fwc_complex, 2D array, dimension(ldvs, n), intent out
+    work : fwc_complex, 1D array, dimension(max(lwork,1)), intent out
 
     Returns
     -------
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
+    a : fwc_complex, 2D array, dimension(n, n), intent inout
     sdim : fwi_integer, intent out
-    w : {{ktp}}_, 1D array, dimension(n), intent out
-    vs : {{ktp}}_, 2D array, dimension(ldvs, n), intent out
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    w : fwc_complex, 1D array, dimension(n), intent out
+    vs : fwc_complex, 2D array, dimension(ldvs, n), intent out
+    work : fwc_complex, 1D array, dimension(max(lwork,1)), intent out
     info : fwi_integer, intent out
 
     """
+    global cgees_cselect_cb_info
+    cdef fw_CallbackInfo fw_cselect_cb
     cdef char *fw_jobvs_f = [0, 0], *fw_sort_f = [0, 0]
     cdef fwi_integer_t lwork_, n, nrows, ldvs, sdim, info
     cdef np.ndarray a_, w_, vs_, work_, rwork_, bwork_
     cdef np.npy_intp a_shape[2], w_shape[1], vs_shape[2], work_shape[1], rwork_shape[1], bwork_shape[1]
+    cdef object select_f
     jobvs_f = "V" if compute_v else "N"
     sort_f = "S" if sort_t else "N"
-    if sort_t:
-        raise NotImplementedError('select callback not yet implemented')
-    a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
+    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
     nrows = a_shape[0]
     sdim = 0
     n = a_shape[1]
     rwork_shape[0] = n
-    rwork_ = fw_asfortranarray(None, {{npy_enum2}}, 1, rwork_shape, False, True)
+    rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
     bwork_shape[0] = n
     bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
     info = 0
@@ -141,18 +191,18 @@ def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t 
     if not (0 <= n <= a_shape[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     w_shape[0] = n
-    w_ = fw_asfortranarray(w, {{npy_enum}}, 1, w_shape, False, True)
+    w_ = fw_asfortranarray(w, fwc_complex_t_enum, 1, w_shape, False, True)
     if not (0 <= n <= w_shape[0]):
         raise ValueError("(0 <= n <= w.shape[0]) not satisifed")
     ldvs = n if (compute_v == 1) else 1
     vs_shape[0] = ldvs; vs_shape[1] = n
-    vs_ = fw_asfortranarray(vs, {{npy_enum}}, 2, vs_shape, False, True)
+    vs_ = fw_asfortranarray(vs, fwc_complex_t_enum, 2, vs_shape, False, True)
     if ldvs != vs_shape[0]:
         raise ValueError("(ldvs == vs.shape[0]) not satisifed")
     if n != vs_shape[1]:
         raise ValueError("(n == vs.shape[1]) not satisifed")
     work_shape[0] = max(lwork_, 1)
-    work_ = fw_asfortranarray(work, {{npy_enum}}, 1, work_shape, False, True)
+    work_ = fw_asfortranarray(work, fwc_complex_t_enum, 1, work_shape, False, True)
     if max(lwork_, 1) != work_shape[0]:
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fw_jobvs_f[0] = fw_aschar(jobvs_f)
@@ -161,9 +211,17 @@ def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t 
     fw_sort_f[0] = fw_aschar(sort_f)
     if fw_sort_f[0] == 0:
         raise ValueError("len(sort_f) != 1")
-    fc.{{Xgees}}(fw_jobvs_f, fw_sort_f, NULL, &n, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, <{{ktp}}*>np.PyArray_DATA(w_), <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, <{{ktp2}}*>np.PyArray_DATA(rwork_), <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+    cgees_cselect_cb_info = fw_cselect_cb = fw_CallbackInfo(cselect, None)
+    try:
+        if setjmp(cgees_cselect_cb_info.jmp) == 0:
+            fc.cgees(fw_jobvs_f, fw_sort_f, &cgees_select_cb_wrapper, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &nrows, &sdim, <fwc_complex_t*>np.PyArray_DATA(w_), <fwc_complex_t*>np.PyArray_DATA(vs_), &ldvs, <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_real_t*>np.PyArray_DATA(rwork_), <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+        else:
+            fw_exctype, fw_excval, fw_exctb = cgees_cselect_cb_info.exc
+            cgees_cselect_cb_info.exc = None
+            raise fw_exctype, fw_excval, fw_exctb
+    finally:
+        cgees_cselect_cb_info = None
     return (a_, sdim, w_, vs_, work_, info,)
-{{endfor}}
 
 
 def cgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):
@@ -1176,6 +1234,124 @@ def {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, 
 {{endfor}}
 
 
+
+cdef fw_CallbackInfo dgees_select_cb_info
+cdef int dgees_select_cb_wrapper_core():
+    global dgees_select_cb_info;
+    cdef fw_CallbackInfo info
+    info = dgees_select_cb_info
+    try:
+        if info.extra_args is None:
+            info.callback()
+        else:
+            info.callback(*info.extra_args)
+        dgees_select_cb_info = info
+        return 0
+    except:
+        dgees_select_cb_info = info
+        info.exc = sys.exc_info()
+        return -1
+
+cdef void dgees_select_cb_wrapper():
+    if dgees_select_cb_wrapper_core() != 0:
+        longjmp(dgees_select_cb_info.jmp, 1)
+
+
+def dgees(object dselect, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
+    """dgees(dselect, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
+
+    Parameters
+    ----------
+    dselect : object, intent in
+    a : fwr_dbl, 2D array, dimension(n, n), intent inout
+    compute_v : fwi_integer, intent in
+    sort_t : fwi_integer, intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    wr : fwr_dbl, 1D array, dimension(n), intent out
+    wi : fwr_dbl, 1D array, dimension(n), intent out
+    vs : fwr_dbl, 2D array, dimension(ldvs, n), intent out
+    work : fwr_dbl, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwr_dbl, 2D array, dimension(n, n), intent inout
+    sdim : fwi_integer, intent out
+    wr : fwr_dbl, 1D array, dimension(n), intent out
+    wi : fwr_dbl, 1D array, dimension(n), intent out
+    vs : fwr_dbl, 2D array, dimension(ldvs, n), intent out
+    work : fwr_dbl, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    global dgees_dselect_cb_info
+    cdef fw_CallbackInfo fw_dselect_cb
+    cdef char *fw_jobvs_f = [0, 0], *fw_sort_f = [0, 0]
+    cdef fwi_integer_t lwork_, n, nrows, ldvs, sdim, info
+    cdef np.ndarray a_, wr_, wi_, vs_, work_, bwork_
+    cdef np.npy_intp a_shape[2], wr_shape[1], wi_shape[1], vs_shape[2], work_shape[1], bwork_shape[1]
+    cdef object select_f
+    jobvs_f = "V" if compute_v else "N"
+    sort_f = "S" if sort_t else "N"
+    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False, 8)
+    nrows = a_shape[0]
+    sdim = 0
+    n = a_shape[1]
+    bwork_shape[0] = n
+    bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
+    info = 0
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not (a_shape[0] == a_shape[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
+    if not ((compute_v == 0) or (compute_v == 1)):
+        raise ValueError('Condition on arguments not satisfied: (compute_v == 0) or (compute_v == 1)')
+    if not ((sort_t == 0) or (sort_t == 1)):
+        raise ValueError('Condition on arguments not satisfied: (sort_t == 0) or (sort_t == 1)')
+    if not ((lwork_ == -1) or (lwork_ >= max(1, (2 * n)))):
+        raise ValueError('Condition on arguments not satisfied: (lwork == -1) or (lwork >= max(1, (2 * n)))')
+    if n != a_shape[0]:
+        raise ValueError("(n == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    wr_shape[0] = n
+    wr_ = fw_asfortranarray(wr, fwr_dbl_t_enum, 1, wr_shape, False, True)
+    if not (0 <= n <= wr_shape[0]):
+        raise ValueError("(0 <= n <= wr.shape[0]) not satisifed")
+    wi_shape[0] = n
+    wi_ = fw_asfortranarray(wi, fwr_dbl_t_enum, 1, wi_shape, False, True)
+    if not (0 <= n <= wi_shape[0]):
+        raise ValueError("(0 <= n <= wi.shape[0]) not satisifed")
+    ldvs = n if (compute_v == 1) else 1
+    vs_shape[0] = ldvs; vs_shape[1] = n
+    vs_ = fw_asfortranarray(vs, fwr_dbl_t_enum, 2, vs_shape, False, True)
+    if ldvs != vs_shape[0]:
+        raise ValueError("(ldvs == vs.shape[0]) not satisifed")
+    if n != vs_shape[1]:
+        raise ValueError("(n == vs.shape[1]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fw_jobvs_f[0] = fw_aschar(jobvs_f)
+    if fw_jobvs_f[0] == 0:
+        raise ValueError("len(jobvs_f) != 1")
+    fw_sort_f[0] = fw_aschar(sort_f)
+    if fw_sort_f[0] == 0:
+        raise ValueError("len(sort_f) != 1")
+    dgees_dselect_cb_info = fw_dselect_cb = fw_CallbackInfo(dselect, None)
+    try:
+        if setjmp(dgees_dselect_cb_info.jmp) == 0:
+            fc.dgees(fw_jobvs_f, fw_sort_f, &dgees_select_cb_wrapper, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &nrows, &sdim, <fwr_dbl_t*>np.PyArray_DATA(wr_), <fwr_dbl_t*>np.PyArray_DATA(wi_), <fwr_dbl_t*>np.PyArray_DATA(vs_), &ldvs, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+        else:
+            fw_exctype, fw_excval, fw_exctb = dgees_dselect_cb_info.exc
+            dgees_dselect_cb_info.exc = None
+            raise fw_exctype, fw_excval, fw_exctb
+    finally:
+        dgees_dselect_cb_info = None
+    return (a_, sdim, wr_, wi_, vs_, work_, info,)
+
+
 def dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
     """dgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, wr, wi, vl, vr]) -> (wr, wi, vl, vr, info)
 
@@ -1600,10 +1776,9 @@ def {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint over
 
     """
     cdef fwi_integer_t n, nrhs, ldab_f, info
-    cdef np.ndarray ab_, b_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
+    cdef np.ndarray ab_, b_, piv_
     cdef np.npy_intp ab_shape[2], b_shape[2], piv_shape[1]
-    cdef Py_ssize_t i
+    ldab_f = ##TODO (watch any dependencies that may be further down!) &i
     info = 0
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
@@ -1625,10 +1800,9 @@ def {{Xgbsv}}(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint over
     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, True)
     if n != piv_shape[0]:
         raise ValueError("(n == piv.shape[0]) not satisifed")
-    ldab_f = 2*kl+ku+1
+    #TODO: int i=2*kl+ku+1;
     fc.{{Xgbsv}}(&n, &kl, &ku, &nrhs, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_f, <fwi_integer_t*>np.PyArray_DATA(piv_), <{{ktp}}*>np.PyArray_DATA(b_), &n, &info)
-    for i in range(0, piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0;i<n;--piv[i++])
     return (ab_, piv_, b_, info,)
 {{endfor}}
 
@@ -1659,10 +1833,8 @@ def {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, obj
 
     """
     cdef fwi_integer_t m_, n_, ldab_, info
-    cdef np.ndarray ab_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] ipiv_
+    cdef np.ndarray ab_, ipiv_
     cdef np.npy_intp ab_shape[2], ipiv_shape[1]
-    cdef Py_ssize_t i
     info = 0
     ab_ = fw_asfortranarray(ab, {{npy_enum}}, 2, ab_shape, not overwrite_ab, False)
     ldab_ = ldab if (ldab is not None) else ab_shape[0]
@@ -1676,9 +1848,9 @@ def {{Xgbtrf}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, obj
     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, True)
     if min(m_, n_) != ipiv_shape[0]:
         raise ValueError("(min(m, n) == ipiv.shape[0]) not satisifed")
+    #TODO: int i;
     fc.{{Xgbtrf}}(&m_, &n_, &kl, &ku, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info)
-    for i in range(ipiv_shape[0]):
-        ipiv_[i] -= 1
+    #TODO: for(i=0,n=MIN(m,n);i<n;--ipiv[i++])
     return (ab_, ipiv_, info,)
 {{endfor}}
 
@@ -1711,10 +1883,8 @@ def {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object i
     """
     cdef char *fw_trans_f = [0, 0]
     cdef fwi_integer_t n_, ldab_, ldb_, nrhs, info
-    cdef np.ndarray ab_, b_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] ipiv_
+    cdef np.ndarray ab_, b_, ipiv_
     cdef np.npy_intp ab_shape[2], b_shape[2], ipiv_shape[1]
-    cdef Py_ssize_t i
     trans_f = ("T" if (trans == 1) else "C") if (trans > 0) else "N"
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
     nrhs = b_shape[1]
@@ -1739,11 +1909,9 @@ def {{Xgbtrs}}(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object i
     fw_trans_f[0] = fw_aschar(trans_f)
     if fw_trans_f[0] == 0:
         raise ValueError("len(trans_f) != 1")
-    for i in range(ipiv_shape[0]):
-        ipiv_[i] += 1
+    #TODO: int i;for(i=0;i<n;++ipiv[i++]);
     fc.{{Xgbtrs}}(fw_trans_f, &n_, &kl, &ku, &nrhs, <{{ktp}}*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <{{ktp}}*>np.PyArray_DATA(b_), &ldb_, &info, 1)
-    for i in range(ipiv_shape[0]):
-        ipiv_[i] -= 1
+    #TODO: for(i=0;i<n;--ipiv[i++])
     return (b_, info,)
 {{endfor}}
 
@@ -1799,53 +1967,72 @@ def {{Xgebal}}(object a, fwi_integer_t scale=0, fwi_integer_t permute=0, bint ov
     if fw_job_f[0] == 0:
         raise ValueError("len(job_f) != 1")
     fc.{{Xgebal}}(fw_job_f, &n, <{{ktp}}*>np.PyArray_DATA(a_), &m, &lo, &hi, <{{ktp2}}*>np.PyArray_DATA(pivscale_), &info, 1)
-    hi -= 1
-    lo -= 1
+    #TODO: hi--; lo--
     return (a_, lo, hi, pivscale_, info,)
 {{endfor}}
 
 
-{{for Xgees, ktp, npy_enum
-      in zip(['sgees', 'dgees'],
-             ['fwr_real_t', 'fwr_dbl_t'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
-def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
-    """{{Xgees}}(select, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
+
+cdef fw_CallbackInfo sgees_select_cb_info
+cdef int sgees_select_cb_wrapper_core():
+    global sgees_select_cb_info;
+    cdef fw_CallbackInfo info
+    info = sgees_select_cb_info
+    try:
+        if info.extra_args is None:
+            info.callback()
+        else:
+            info.callback(*info.extra_args)
+        sgees_select_cb_info = info
+        return 0
+    except:
+        sgees_select_cb_info = info
+        info.exc = sys.exc_info()
+        return -1
+
+cdef void sgees_select_cb_wrapper():
+    if sgees_select_cb_wrapper_core() != 0:
+        longjmp(sgees_select_cb_info.jmp, 1)
+
+
+def sgees(object sselect, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
+    """sgees(sselect, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
 
     Parameters
     ----------
-    select : callback function
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
+    sselect : object, intent in
+    a : fwr_real, 2D array, dimension(n, n), intent inout
     compute_v : fwi_integer, intent in
     sort_t : fwi_integer, intent in
     lwork : fwi_integer, intent in
     overwrite_a : bint_, intent in
-    wr : {{ktp}}_, 1D array, dimension(n), intent out
-    wi : {{ktp}}_, 1D array, dimension(n), intent out
-    vs : {{ktp}}_, 2D array, dimension(ldvs, n), intent out
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    wr : fwr_real, 1D array, dimension(n), intent out
+    wi : fwr_real, 1D array, dimension(n), intent out
+    vs : fwr_real, 2D array, dimension(ldvs, n), intent out
+    work : fwr_real, 1D array, dimension(max(lwork,1)), intent out
 
     Returns
     -------
-    a : {{ktp}}_, 2D array, dimension(n, n), intent inout
+    a : fwr_real, 2D array, dimension(n, n), intent inout
     sdim : fwi_integer, intent out
-    wr : {{ktp}}_, 1D array, dimension(n), intent out
-    wi : {{ktp}}_, 1D array, dimension(n), intent out
-    vs : {{ktp}}_, 2D array, dimension(ldvs, n), intent out
-    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    wr : fwr_real, 1D array, dimension(n), intent out
+    wi : fwr_real, 1D array, dimension(n), intent out
+    vs : fwr_real, 2D array, dimension(ldvs, n), intent out
+    work : fwr_real, 1D array, dimension(max(lwork,1)), intent out
     info : fwi_integer, intent out
 
     """
+    global sgees_sselect_cb_info
+    cdef fw_CallbackInfo fw_sselect_cb
     cdef char *fw_jobvs_f = [0, 0], *fw_sort_f = [0, 0]
     cdef fwi_integer_t lwork_, n, nrows, ldvs, sdim, info
     cdef np.ndarray a_, wr_, wi_, vs_, work_, bwork_
     cdef np.npy_intp a_shape[2], wr_shape[1], wi_shape[1], vs_shape[2], work_shape[1], bwork_shape[1]
-    cdef fwl_logical_t select_f
+    cdef object select_f
     jobvs_f = "V" if compute_v else "N"
     sort_f = "S" if sort_t else "N"
-    if sort_t:
-        raise NotImplementedError('select callback not yet implemented')    
-    a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False, 8)
+    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False, 8)
     nrows = a_shape[0]
     sdim = 0
     n = a_shape[1]
@@ -1866,22 +2053,22 @@ def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t 
     if not (0 <= n <= a_shape[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     wr_shape[0] = n
-    wr_ = fw_asfortranarray(wr, {{npy_enum}}, 1, wr_shape, False, True)
+    wr_ = fw_asfortranarray(wr, fwr_real_t_enum, 1, wr_shape, False, True)
     if not (0 <= n <= wr_shape[0]):
         raise ValueError("(0 <= n <= wr.shape[0]) not satisifed")
     wi_shape[0] = n
-    wi_ = fw_asfortranarray(wi, {{npy_enum}}, 1, wi_shape, False, True)
+    wi_ = fw_asfortranarray(wi, fwr_real_t_enum, 1, wi_shape, False, True)
     if not (0 <= n <= wi_shape[0]):
         raise ValueError("(0 <= n <= wi.shape[0]) not satisifed")
     ldvs = n if (compute_v == 1) else 1
     vs_shape[0] = ldvs; vs_shape[1] = n
-    vs_ = fw_asfortranarray(vs, {{npy_enum}}, 2, vs_shape, False, True)
+    vs_ = fw_asfortranarray(vs, fwr_real_t_enum, 2, vs_shape, False, True)
     if ldvs != vs_shape[0]:
         raise ValueError("(ldvs == vs.shape[0]) not satisifed")
     if n != vs_shape[1]:
         raise ValueError("(n == vs.shape[1]) not satisifed")
     work_shape[0] = max(lwork_, 1)
-    work_ = fw_asfortranarray(work, {{npy_enum}}, 1, work_shape, False, True)
+    work_ = fw_asfortranarray(work, fwr_real_t_enum, 1, work_shape, False, True)
     if max(lwork_, 1) != work_shape[0]:
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fw_jobvs_f[0] = fw_aschar(jobvs_f)
@@ -1890,9 +2077,17 @@ def {{Xgees}}(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t 
     fw_sort_f[0] = fw_aschar(sort_f)
     if fw_sort_f[0] == 0:
         raise ValueError("len(sort_f) != 1")
-    fc.{{Xgees}}(fw_jobvs_f, fw_sort_f, NULL, &n, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &sdim, <{{ktp}}*>np.PyArray_DATA(wr_), <{{ktp}}*>np.PyArray_DATA(wi_), <{{ktp}}*>np.PyArray_DATA(vs_), &ldvs, <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+    sgees_sselect_cb_info = fw_sselect_cb = fw_CallbackInfo(sselect, None)
+    try:
+        if setjmp(sgees_sselect_cb_info.jmp) == 0:
+            fc.sgees(fw_jobvs_f, fw_sort_f, &sgees_select_cb_wrapper, &n, <fwr_real_t*>np.PyArray_DATA(a_), &nrows, &sdim, <fwr_real_t*>np.PyArray_DATA(wr_), <fwr_real_t*>np.PyArray_DATA(wi_), <fwr_real_t*>np.PyArray_DATA(vs_), &ldvs, <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+        else:
+            fw_exctype, fw_excval, fw_exctb = sgees_sselect_cb_info.exc
+            sgees_sselect_cb_info.exc = None
+            raise fw_exctype, fw_excval, fw_exctb
+    finally:
+        sgees_sselect_cb_info = None
     return (a_, sdim, wr_, wi_, vs_, work_, info,)
-{{endfor}}
 
 
 def sgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
@@ -2113,10 +2308,9 @@ def {{Xgehrd}}(object a, fwi_integer_t lo=0, object hi=None, object lwork=None, 
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
     tau_shape[0] = n - 1
     tau_ = fw_asfortranarray(tau, {{npy_enum}}, 1, tau_shape, False, True)
-    if n - 1 != tau_shape[0]:
-        raise ValueError("(n - 1 == tau.shape[0]) not satisifed")
-    lo += 1
-    hi_ += 1
+    if not (0 <= n - 1 <= tau_shape[0]):
+        raise ValueError("(0 <= n - 1 <= tau.shape[0]) not satisifed")
+    #TODO: hi++; lo++;
     fc.{{Xgehrd}}(&n, &lo, &hi_, <{{ktp}}*>np.PyArray_DATA(a_), &n, <{{ktp}}*>np.PyArray_DATA(tau_), <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, tau_, info,)
 {{endfor}}
@@ -2370,10 +2564,8 @@ def {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrite_b=False
 
     """
     cdef fwi_integer_t n, nrhs, info
-    cdef np.ndarray a_, b_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
+    cdef np.ndarray a_, b_, piv_
     cdef np.npy_intp a_shape[2], b_shape[2], piv_shape[1]
-    cdef Py_ssize_t i
     info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     b_ = fw_asfortranarray(b, {{npy_enum}}, 2, b_shape, not overwrite_b, False)
@@ -2395,9 +2587,9 @@ def {{Xgesv}}(object a, object b, bint overwrite_a=False, bint overwrite_b=False
     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, True)
     if n != piv_shape[0]:
         raise ValueError("(n == piv.shape[0]) not satisifed")
+    #TODO: int i;
     fc.{{Xgesv}}(&n, &nrhs, <{{ktp}}*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <{{ktp}}*>np.PyArray_DATA(b_), &n, &info)
-    for i in range(piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0;i<n;--piv[i++])
     return (a_, piv_, b_, info,)
 {{endfor}}
 
@@ -2423,10 +2615,8 @@ def {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
 
     """
     cdef fwi_integer_t m, n, info
-    cdef np.ndarray a_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
+    cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
-    cdef Py_ssize_t i
     info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
     m = a_shape[0]
@@ -2439,9 +2629,9 @@ def {{Xgetrf}}(object a, bint overwrite_a=False, object piv=None):
     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, True)
     if min(m, n) != piv_shape[0]:
         raise ValueError("(min(m, n) == piv.shape[0]) not satisifed")
+    #TODO: int i;
     fc.{{Xgetrf}}(&m, &n, <{{ktp}}*>np.PyArray_DATA(a_), &m, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
-    for i in range(piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0,n=MIN(m,n);i<n;--piv[i++])
     return (a_, piv_, info,)
 {{endfor}}
 
@@ -2467,10 +2657,8 @@ def {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite_lu=False
 
     """
     cdef fwi_integer_t lwork_, n, info
-    cdef np.ndarray lu_, work_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
+    cdef np.ndarray lu_, piv_, work_
     cdef np.npy_intp lu_shape[2], piv_shape[1], work_shape[1]
-    cdef Py_ssize_t i
     lu_ = fw_asfortranarray(lu, {{npy_enum}}, 2, lu_shape, not overwrite_lu, False)
     n = lu_shape[0]
     lwork_ = lwork if (lwork is not None) else 3 * n
@@ -2488,11 +2676,9 @@ def {{Xgetri}}(object lu, object piv, object lwork=None, bint overwrite_lu=False
     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
     if n != piv_shape[0]:
         raise ValueError("(n == piv.shape[0]) not satisifed")
-    for i in range(piv_shape[0]):
-        piv_[i] += 1
+    #TODO: int i;for(i=0;i<n;++piv[i++]);
     fc.{{Xgetri}}(&n, <{{ktp}}*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info)
-    for i in range(piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0;i<n;--piv[i++])
     return (lu_, info,)
 {{endfor}}
 
@@ -2520,10 +2706,8 @@ def {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, bint over
     """
     cdef char *fw_trans_f = [0, 0]
     cdef fwi_integer_t n, nrhs, info
-    cdef np.ndarray lu_, b_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_    
+    cdef np.ndarray lu_, piv_, b_
     cdef np.npy_intp lu_shape[2], piv_shape[1], b_shape[2]
-    cdef Py_ssize_t i
     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
     info = 0
     lu_ = fw_asfortranarray(lu, {{npy_enum}}, 2, lu_shape, False, False)
@@ -2550,11 +2734,9 @@ def {{Xgetrs}}(object lu, object piv, object b, fwi_integer_t trans=0, bint over
     fw_trans_f[0] = fw_aschar(trans_f)
     if fw_trans_f[0] == 0:
         raise ValueError("len(trans_f) != 1")
-    for i in range(piv_shape[0]):
-        piv_[i] += 1
+    #TODO: int i;for(i=0;i<n;++piv[i++]);
     fc.{{Xgetrs}}(fw_trans_f, &n, &nrhs, <{{ktp}}*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <{{ktp}}*>np.PyArray_DATA(b_), &n, &info, 1)
-    for i in range(piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0;i<n;--piv[i++])
     return (b_, info,)
 {{endfor}}
 
@@ -2706,10 +2888,8 @@ def {{Xlaswp}}(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_int
 
     """
     cdef fwi_integer_t k2_, n, nrows, m
-    cdef np.ndarray a_
-    cdef np.ndarray[int, ndim=1, mode='fortran'] piv_
+    cdef np.ndarray a_, piv_
     cdef np.npy_intp a_shape[2], piv_shape[1]
-    cdef Py_ssize_t i
     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
     k2_ = k2 if (k2 is not None) else piv_shape[0] - 1
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
@@ -2732,13 +2912,9 @@ def {{Xlaswp}}(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_int
         raise ValueError("(nrows == a.shape[0]) not satisifed")
     if not (0 <= n <= a_shape[1]):
         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
-    for i in range(piv_shape[0]):
-        piv_[i] += 1
-    k1 += 1
-    k2_ += 1
+    #TODO: int i;m=len(piv);for(i=0;i<m;++piv[i++]);++k1;++k2;
     fc.{{Xlaswp}}(&n, <{{ktp}}*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc)
-    for i in range(piv_shape[0]):
-        piv_[i] -= 1
+    #TODO: for(i=0;i<m;--piv[i++])
     return a_
 {{endfor}}
 
@@ -3045,10 +3221,11 @@ def {{Xposv}}(object a, object b, fwi_integer_t lower=0, bint overwrite_a=False,
 {{endfor}}
 
 
-{{for Xpotrf, ktp, npy_enum
+{{for Xpotrf, ktp, npy_enum, pyf_post_call_code
       in zip(['spotrf', 'dpotrf', 'cpotrf', 'zpotrf'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
-             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum', 'fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'],
+             ['if(clean){int i,j;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+j*n+i)=0.0;} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+i*n+j)=0.0', 'if(clean){int i,j;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+j*n+i)=0.0;} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) *(a+i*n+j)=0.0', 'if(clean){int i,j,k;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=j*n+i;(a+k)->r=(a+k)->i=0.0;}} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=i*n+j;(a+k)->r=(a+k)->i=0.0', 'if(clean){int i,j,k;if(lower){for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=j*n+i;(a+k)->r=(a+k)->i=0.0;}} else {for(i=0;i<n;++i) for(j=i+1;j<n;++j) {k=i*n+j;(a+k)->r=(a+k)->i=0.0'])}}
 def {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
     """{{Xpotrf}}(a[, lower, clean, overwrite_a]) -> (a, info)
 
@@ -3067,9 +3244,8 @@ def {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint over
     """
     cdef char *fw_uplo_f = [0, 0]
     cdef fwi_integer_t n, info
-    cdef np.ndarray[{{ktp}}, ndim=2, mode='fortran'] a_
+    cdef np.ndarray a_
     cdef np.npy_intp a_shape[2]
-    cdef Py_ssize_t i, j
     uplo_f = "L" if lower else "U"
     info = 0
     a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
@@ -3088,15 +3264,7 @@ def {{Xpotrf}}(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint over
     if fw_uplo_f[0] == 0:
         raise ValueError("len(uplo_f) != 1")
     fc.{{Xpotrf}}(fw_uplo_f, &n, <{{ktp}}*>np.PyArray_DATA(a_), &n, &info, 1)
-    if clean != 0:
-        if lower != 0:
-            for j in range(n):
-                for i in range(j):
-                    a_[i, j] = 0
-        else:
-            for j in range(n):
-                for i in range(j + 1, n):
-                    a_[i, j] = 0
+    #TODO: {{pyf_post_call_code}}
     return (a_, info,)
 {{endfor}}
 
@@ -3910,6 +4078,120 @@ def {{Xtrtrs}}(object a, object b, fwi_integer_t lower=0, fwi_integer_t trans=0,
     fc.{{Xtrtrs}}(fw_uplo_f, fw_trans_f, fw_diag_f, &n, &nrhs, <{{ktp}}*>np.PyArray_DATA(a_), &lda_, <{{ktp}}*>np.PyArray_DATA(b_), &ldb, &info, 1, 1, 1)
     return (b_, info,)
 {{endfor}}
+
+
+
+cdef fw_CallbackInfo zgees_select_cb_info
+cdef int zgees_select_cb_wrapper_core():
+    global zgees_select_cb_info;
+    cdef fw_CallbackInfo info
+    info = zgees_select_cb_info
+    try:
+        if info.extra_args is None:
+            info.callback()
+        else:
+            info.callback(*info.extra_args)
+        zgees_select_cb_info = info
+        return 0
+    except:
+        zgees_select_cb_info = info
+        info.exc = sys.exc_info()
+        return -1
+
+cdef void zgees_select_cb_wrapper():
+    if zgees_select_cb_wrapper_core() != 0:
+        longjmp(zgees_select_cb_info.jmp, 1)
+
+
+def zgees(object zselect, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object w=None, object vs=None, object work=None):
+    """zgees(zselect, a[, compute_v, sort_t, lwork, overwrite_a, w, vs, work]) -> (a, sdim, w, vs, work, info)
+
+    Parameters
+    ----------
+    zselect : object, intent in
+    a : fwc_dbl_complex, 2D array, dimension(n, n), intent inout
+    compute_v : fwi_integer, intent in
+    sort_t : fwi_integer, intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    w : fwc_dbl_complex, 1D array, dimension(n), intent out
+    vs : fwc_dbl_complex, 2D array, dimension(ldvs, n), intent out
+    work : fwc_dbl_complex, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwc_dbl_complex, 2D array, dimension(n, n), intent inout
+    sdim : fwi_integer, intent out
+    w : fwc_dbl_complex, 1D array, dimension(n), intent out
+    vs : fwc_dbl_complex, 2D array, dimension(ldvs, n), intent out
+    work : fwc_dbl_complex, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    global zgees_zselect_cb_info
+    cdef fw_CallbackInfo fw_zselect_cb
+    cdef char *fw_jobvs_f = [0, 0], *fw_sort_f = [0, 0]
+    cdef fwi_integer_t lwork_, n, nrows, ldvs, sdim, info
+    cdef np.ndarray a_, w_, vs_, work_, rwork_, bwork_
+    cdef np.npy_intp a_shape[2], w_shape[1], vs_shape[2], work_shape[1], rwork_shape[1], bwork_shape[1]
+    cdef object select_f
+    jobvs_f = "V" if compute_v else "N"
+    sort_f = "S" if sort_t else "N"
+    select_f = ##TODO (watch any dependencies that may be further down!) FOO
+    a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
+    nrows = a_shape[0]
+    sdim = 0
+    n = a_shape[1]
+    rwork_shape[0] = n
+    rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
+    bwork_shape[0] = n
+    bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
+    info = 0
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not (a_shape[0] == a_shape[1]):
+        raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
+    if not ((compute_v == 0) or (compute_v == 1)):
+        raise ValueError('Condition on arguments not satisfied: (compute_v == 0) or (compute_v == 1)')
+    if not ((sort_t == 0) or (sort_t == 1)):
+        raise ValueError('Condition on arguments not satisfied: (sort_t == 0) or (sort_t == 1)')
+    if not ((lwork_ == -1) or (lwork_ >= max(1, (2 * n)))):
+        raise ValueError('Condition on arguments not satisfied: (lwork == -1) or (lwork >= max(1, (2 * n)))')
+    if n != a_shape[0]:
+        raise ValueError("(n == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    w_shape[0] = n
+    w_ = fw_asfortranarray(w, fwc_dbl_complex_t_enum, 1, w_shape, False, True)
+    if not (0 <= n <= w_shape[0]):
+        raise ValueError("(0 <= n <= w.shape[0]) not satisifed")
+    ldvs = n if (compute_v == 1) else 1
+    vs_shape[0] = ldvs; vs_shape[1] = n
+    vs_ = fw_asfortranarray(vs, fwc_dbl_complex_t_enum, 2, vs_shape, False, True)
+    if ldvs != vs_shape[0]:
+        raise ValueError("(ldvs == vs.shape[0]) not satisifed")
+    if n != vs_shape[1]:
+        raise ValueError("(n == vs.shape[1]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fw_jobvs_f[0] = fw_aschar(jobvs_f)
+    if fw_jobvs_f[0] == 0:
+        raise ValueError("len(jobvs_f) != 1")
+    fw_sort_f[0] = fw_aschar(sort_f)
+    if fw_sort_f[0] == 0:
+        raise ValueError("len(sort_f) != 1")
+    zgees_zselect_cb_info = fw_zselect_cb = fw_CallbackInfo(zselect, None)
+    try:
+        if setjmp(zgees_zselect_cb_info.jmp) == 0:
+            fc.zgees(fw_jobvs_f, fw_sort_f, &zgees_select_cb_wrapper, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &nrows, &sdim, <fwc_dbl_complex_t*>np.PyArray_DATA(w_), <fwc_dbl_complex_t*>np.PyArray_DATA(vs_), &ldvs, <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), <fwl_logical_t*>np.PyArray_DATA(bwork_), &info, 1, 1)
+        else:
+            fw_exctype, fw_excval, fw_exctb = zgees_zselect_cb_info.exc
+            zgees_zselect_cb_info.exc = None
+            raise fw_exctype, fw_excval, fw_exctb
+    finally:
+        zgees_zselect_cb_info = None
+    return (a_, sdim, w_, vs_, work_, info,)
 
 
 def zgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object w=None, object vl=None, object vr=None):

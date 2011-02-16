@@ -63,8 +63,6 @@ np.import_array()
 __all__ = ['lqmn', 'clpmn', 'jdzo', 'bernob', 'bernoa', 'csphjy', 'lpmns', 'eulera', 'clqn', 'airyzo', 'eulerb', 'cva1', 'lqnb', 'lamv', 'lagzo', 'legzo', 'pbdv', 'cerzo', 'lamn', 'clpn', 'lqmns', 'chgm', 'lpmn', 'fcszo', 'aswfb', 'lqna', 'cpbdn', 'lpn', 'fcoef', 'sphi', 'rcty', 'lpni', 'cyzo', 'csphik', 'sphj', 'othpl', 'klvnzo', 'jyzo', 'rctj', 'herzo', 'sphk', 'pbvv', 'clqmn', 'segv', 'sphy']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-cdef extern from "math.h":
-    double fabs(double)
 def lqmn(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t x, object qm=None, object qd=None):
     """lqmn(m, n, x[, qm, qd]) -> (qm, qd)
 
@@ -367,8 +365,8 @@ def clqn(fwi_integer_t n, fwc_complex_x16_t z, object cqn=None, object cqd=None)
     cdef fwr_dbl_t x_f, y_f
     cdef np.ndarray cqn_, cqd_
     cdef np.npy_intp cqn_shape[1], cqd_shape[1]
-    x_f = z.real
-    y_f = z.imag
+    x_f = ##TODO (watch any dependencies that may be further down!) &(z.r)
+    y_f = ##TODO (watch any dependencies that may be further down!) &(z.i)
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     cqn_shape[0] = n + 1
@@ -726,8 +724,8 @@ def clpn(fwi_integer_t n, fwc_complex_x16_t z, object cpn=None, object cpd=None)
     cdef fwr_dbl_t x_f, y_f
     cdef np.ndarray cpn_, cpd_
     cdef np.npy_intp cpn_shape[1], cpd_shape[1]
-    x_f = z.real
-    y_f = z.imag
+    x_f = ##TODO (watch any dependencies that may be further down!) &(z.r)
+    y_f = ##TODO (watch any dependencies that may be further down!) &(z.i)
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
     cpn_shape[0] = n + 1
@@ -891,7 +889,7 @@ def aswfb(fwi_integer_t m, fwi_integer_t n, fwr_dbl_t c, fwr_dbl_t x, fwi_intege
         raise ValueError('Condition on arguments not satisfied: m >= 0')
     if not (n >= m):
         raise ValueError('Condition on arguments not satisfied: n >= m')
-    if not (fabs(x)<1):
+    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
         raise ValueError('Condition on arguments not satisfied: fabs(x)<1')
     if not ((kd == -1) or (kd == 1)):
         raise ValueError('Condition on arguments not satisfied: (kd == -1) or (kd == 1)')
@@ -919,7 +917,7 @@ def lqna(fwi_integer_t n, fwr_dbl_t x, object qn=None, object qd=None):
     cdef np.npy_intp qn_shape[1], qd_shape[1]
     if not (n >= 1):
         raise ValueError('Condition on arguments not satisfied: n >= 1')
-    if not (fabs(x)<1):
+    if not (##TODO (watch any dependencies that may be further down!) fabs(x)<1):
         raise ValueError('Condition on arguments not satisfied: fabs(x)<1')
     qn_shape[0] = n + 1
     qn_ = fw_asfortranarray(qn, fwr_dbl_t_enum, 1, qn_shape, False, True)
@@ -1524,8 +1522,8 @@ def clqmn(fwi_integer_t m, fwi_integer_t n, fwc_complex_x16_t z, object cqm=None
     cdef fwr_dbl_t x_f, y_f
     cdef np.ndarray cqm_, cqd_
     cdef np.npy_intp cqm_shape[2], cqd_shape[2]
-    x_f = z.real
-    y_f = z.imag
+    x_f = ##TODO (watch any dependencies that may be further down!) &(z.r)
+    y_f = ##TODO (watch any dependencies that may be further down!) &(z.i)
     if not (m >= 1):
         raise ValueError('Condition on arguments not satisfied: m >= 1')
     if not (n >= 1):
