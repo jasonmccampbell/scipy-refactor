@@ -643,7 +643,8 @@ def binary_erosion(object input, object strct, object mask, object output,
     cdef ndarray strct_ = NI_ObjectToInputArray(strct)
     cdef ndarray mask_ = None if mask is None else NI_ObjectToInputArray(mask)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
-    cdef ndarray origins_ = NA_InputArray(origins, NPY_INTP, NPY_CARRAY)
+    cdef ndarray[npy_intp, mode='c'] origins_ = NA_InputArray(origins, NPY_INTP, NPY_CARRAY)
+    1/0
     cdef int changed
     cdef NI_CoordinateList *coordinate_list = NULL
     NI_BinaryErosion(ARRAY(input_),
