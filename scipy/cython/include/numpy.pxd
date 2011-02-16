@@ -86,6 +86,9 @@ cdef extern from "npy_defs.h":
         NPY_COMPLEX256
         NPY_COMPLEX512
 
+        NPY_INTP
+        NPY_UINTP
+
     enum NPY_ORDER:
         NPY_ANYORDER
         NPY_CORDER
@@ -194,6 +197,14 @@ cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortr
         shape_list.append(shape[i])
     import numpy
     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+
+cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+    shape_list = []
+    cdef int i
+    for i in range(ndim):
+        shape_list.append(shape[i])
+    import numpy
+    return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
 
 cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
     assert subtype == NULL

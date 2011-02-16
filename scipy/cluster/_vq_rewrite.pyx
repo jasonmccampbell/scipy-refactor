@@ -14,11 +14,6 @@ cdef extern from "math.h":
     float sqrtf(float num)
     double sqrt(double num)
 
-cdef extern from "numpy/arrayobject.h":
-    object PyArray_EMPTY(int, np.npy_intp*, int, int)
-    cdef enum:
-        PyArray_INTP
-
 cdef extern from "numpy/npy_math.h":
     cdef enum:
         NPY_INFINITY
@@ -114,15 +109,15 @@ def vq(np.ndarray obs, np.ndarray codes):
     # We create this with the C API so that we can be sure that
     # the resulting array has elements big enough to store indices
     # on that platform. Hence, PyArray_INTP.
-    outcodes = PyArray_EMPTY(1, &nobs, PyArray_INTP, 0)
+    outcodes = np.PyArray_EMPTY(1, &nobs, np.NPY_INTP, 0)
     
     # This we just want to match the dtype of the input, so np.empty is fine.
     outdists = np.empty((nobs,), dtype=obs.dtype)
     
     if obs.dtype == np.float32:
-        float_tvq(<float32_t *>obs_a.data, <float32_t *>codes_a.data, 
-                  ncodes, nfeat, nobs, <np.npy_intp *>outcodes.data, 
-                  <float32_t *>outdists.data)
+        float_tvq(<float32_t *>np.PyArray_DATA(obs_a), <float32_t *>np.PyArray_DATA(codes_a), 
+                  ncodes, nfeat, nobs, <np.npy_intp *>np.PyArray_DATA(outcodes), 
+                  <float32_t *>np.PyArray_DATA(outdists))
     
     return outcodes, outdists
 
