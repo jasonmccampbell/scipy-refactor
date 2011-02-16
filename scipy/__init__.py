@@ -85,7 +85,9 @@ import numpy as _num
 from numpy import oldnumeric
 from numpy import *
 from numpy.random import rand, randn
-from numpy.fft import fft, ifft
+
+print "scipy.__init__.py: import for numpy.fft commented out"
+#from numpy.fft import fft, ifft
 from numpy.lib.scimath import *
 
 # Emit a warning if numpy is too old
@@ -103,8 +105,9 @@ __all__ += ['randn', 'rand', 'fft', 'ifft']
 del _num
 # Remove the linalg imported from numpy so that the scipy.linalg package can be
 # imported.
-del linalg
-__all__.remove('linalg')
+print "scipy.__init__: Comment out delete of linalg from numpy since it doesn't exist yet."
+#del linalg
+#__all__.remove('linalg')
 
 try:
     from scipy.__config__ import show as show_config

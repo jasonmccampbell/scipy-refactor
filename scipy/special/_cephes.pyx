@@ -8,8 +8,11 @@ ctypedef int intp
 
 PyUFunc_None = -1
 
-cdef extern from "cephes_names.h":
+cdef extern from "cephes/cephes_names.h":
     pass
+
+cdef extern from "cephes/mconf.h":
+    int scipy_special_print_error_messages
 
 cdef extern from "specfun_wrappers.h":
     Py_complex cgamma_wrap( Py_complex z)
@@ -374,6 +377,13 @@ cdef void ** alloc_data_from_list(l):
     for i in range(len(l)):
         data[i] = <void *><long long>(l[i])
     return data
+
+cdef int errprint(self, int flag=-37):
+    oldFlag = scipy_special_print_error_messages;
+    if flag != -37:
+        scipy_special_print_error_messages = (flag != 0)
+    return oldFlag
+
 
 cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])
 cdef void ** airye_data = alloc_data_from_list([ <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e_real, <int> <void *>cairy_wrap_e, <int> <void *>cairy_wrap_e, ])
