@@ -195,14 +195,12 @@ cdef class VarReader5:
         # copy refs to dtypes into object pointer array. We only need the
         # integer-keyed dtypes
         for key, dt in mio5p.MDTYPES[byte_order]['dtypes'].items():
-            if isinstance(key, str):
-                continue
-            self.dtypes[key] = <PyObject*>dt
+            if not isinstance(key, str):
+                self.dtypes[key] = <PyObject*>dt
         # copy refs to class_dtypes into object pointer array
         for key, dt in mio5p.MDTYPES[byte_order]['classes'].items():
-            if isinstance(key, str):
-                continue
-            self.class_dtypes[key] = <PyObject*>dt
+            if not isinstance(key, str):
+                self.class_dtypes[key] = <PyObject*>dt
         # cache correctly byte ordered dtypes
         if self.little_endian:
             self.U1_dtype = np.dtype('<U1')
@@ -893,7 +891,9 @@ cdef class VarReader5:
                 # representation we can use, falling back to empty
                 # object
                 return np.empty(tupdims, dtype=object).T
-            dt = [(field_name, object) for field_name in field_names]
+            dt = []
+            for field_name in field_names: dt.append( (field_name, object) )
+            #dt = [(field_name, object) for field_name in field_names]
             rec_res = np.empty(length, dtype=dt)
             for i in range(length):
                 for field_name in field_names:

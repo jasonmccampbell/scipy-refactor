@@ -43,7 +43,7 @@ cpdef cnp.ndarray chars_to_strings(in_arr):
     '''
     cdef cnp.ndarray arr = in_arr
     cdef int ndim = arr.ndim
-    cdef cnp.npy_intp *dims = arr.shape
+    cdef cnp.npy_intp *dims = cnp.PyArray_DIMS(arr)
     cdef cnp.npy_intp last_dim = dims[ndim-1]
     cdef object new_dt_str
     if last_dim == 0: # deal with empty array case
