@@ -13,6 +13,7 @@
 *.suo
 *.sdf
 *.u2d
+*.lib
 *.user
 *.vcxproj.*
 .\#*
