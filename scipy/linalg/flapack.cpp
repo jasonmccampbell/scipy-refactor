@@ -215,8 +215,8 @@ typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_np
 
 typedef System::Object^ __pyx_t_5scipy_6linalg_9fwrap_ktp_fw_bytes;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8433
- *         return buf[0]
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8415
+ * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
  *                                   np.intp_t * coerced_shape,
@@ -352,14 +352,23 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
 static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
 static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
 static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
 static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
@@ -379,11 +388,11 @@ static CYTHON_INLINE void import_array(void); /*proto*/
 /* Module declarations from scipy.linalg.flapack_fc */
 /* Module declarations from scipy.linalg.flapack */
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate char __pyx_delegate_t_5scipy_6linalg_7flapack_fw_aschar(System::Object^);
-static char fw_aschar(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate NumpyDotNet::ndarray^ __pyx_delegate_t_5scipy_6linalg_7flapack_fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_intp_t *, int, int, ref struct __pyx_opt_args_5scipy_6linalg_7flapack_fw_asfortranarray ^__pyx_optional_args);
 static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_intp_t *, int, int, ref struct __pyx_opt_args_5scipy_6linalg_7flapack_fw_asfortranarray ^__pyx_optional_args); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate char __pyx_delegate_t_5scipy_6linalg_7flapack_fw_aschar(System::Object^);
+static char fw_aschar(System::Object^); /*proto*/
 /* Cython code section 'typeinfo' */
 static __Pyx_TypeInfo __Pyx_TypeInfo_int = { "int", NULL, sizeof(int), 'I' };
 static __Pyx_TypeInfo __Pyx_TypeInfo_nn_fwr_real_t = { "fwr_real_t", NULL, sizeof(fwr_real_t), 'R' };
@@ -2157,31 +2166,39 @@ static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8403_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8406_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8409_24;
-static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_8418_28;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_encode_8424_13;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8424_20;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8445_27;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_8450_59;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_8457_29;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_8459_60;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8459_24;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_194_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_194_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_196_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_196_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_205_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_205_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_209_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_209_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_214_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_214_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_214_39;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_217_13;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_217_13;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_218_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_219_77;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_222_21;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_225_14;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8427_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_8432_59;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_8439_29;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_8441_60;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8441_24;
+static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_8453_28;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_encode_8459_13;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_8459_20;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_201_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_207_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_207_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_209_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_209_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_235_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_235_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_235_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_239_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_240_77;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
 /* Cython code section 'dotnet_globals' */
 
@@ -2270,7 +2287,7 @@ static System::Object^ cgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_81_0_2->Target(__site_cvt_81_0_2, overwrite_a);
@@ -2280,17 +2297,17 @@ static System::Object^ cgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vs) == nullptr) {
     __pyx_v_vs = vs;
   } else {
-    __pyx_v_vs = ((System::Object^)Py_None);
+    __pyx_v_vs = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -2424,7 +2441,7 @@ static System::Object^ cgees(System::Object^ select, System::Object^ a, [Interop
  *     bwork_shape[0] = n
  *     bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -2444,7 +2461,7 @@ static System::Object^ cgees(System::Object^ select, System::Object^ a, [Interop
  *     info = 0
  *     lwork_ = lwork if (lwork is not None) else 3 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
   __pyx_v_bwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -2464,7 +2481,7 @@ static System::Object^ cgees(System::Object^ select, System::Object^ a, [Interop
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -3034,7 +3051,7 @@ static System::Object^ zgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_159_0_2->Target(__site_cvt_159_0_2, overwrite_a);
@@ -3044,17 +3061,17 @@ static System::Object^ zgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vs) == nullptr) {
     __pyx_v_vs = vs;
   } else {
-    __pyx_v_vs = ((System::Object^)Py_None);
+    __pyx_v_vs = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -3188,7 +3205,7 @@ static System::Object^ zgees(System::Object^ select, System::Object^ a, [Interop
  *     bwork_shape[0] = n
  *     bwork_ = fw_asfortranarray(None, fwl_logical_t_enum, 1, bwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -3208,7 +3225,7 @@ static System::Object^ zgees(System::Object^ select, System::Object^ a, [Interop
  *     info = 0
  *     lwork_ = lwork if (lwork is not None) else 3 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
   __pyx_v_bwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -3228,7 +3245,7 @@ static System::Object^ zgees(System::Object^ select, System::Object^ a, [Interop
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -3790,7 +3807,7 @@ static System::Object^ cgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_239_0_2->Target(__site_cvt_239_0_2, overwrite_a);
@@ -3800,17 +3817,17 @@ static System::Object^ cgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -3892,7 +3909,7 @@ static System::Object^ cgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -3920,7 +3937,7 @@ static System::Object^ cgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     rwork_shape[0] = 2 * n
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -3940,7 +3957,7 @@ static System::Object^ cgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -4527,7 +4544,7 @@ static System::Object^ cgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_315_0_2->Target(__site_cvt_315_0_2, overwrite_a);
@@ -4542,22 +4559,22 @@ static System::Object^ cgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alpha) == nullptr) {
     __pyx_v_alpha = alpha;
   } else {
-    __pyx_v_alpha = ((System::Object^)Py_None);
+    __pyx_v_alpha = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -4641,7 +4658,7 @@ static System::Object^ cgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -4669,7 +4686,7 @@ static System::Object^ cgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     rwork_shape[0] = 8 * n
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -4689,7 +4706,7 @@ static System::Object^ cgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -5401,7 +5418,7 @@ static System::Object^ cgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_406_0_1->Target(__site_cvt_406_0_1, overwrite_a);
@@ -5416,7 +5433,7 @@ static System::Object^ cgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -5521,7 +5538,7 @@ static System::Object^ cgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -5556,7 +5573,7 @@ static System::Object^ cgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     rwork_shape[0] = (5 * minmn) - 1
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -5576,7 +5593,7 @@ static System::Object^ cgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if not (maxmn == b_shape[0]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -5889,7 +5906,7 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_465_0_1->Target(__site_cvt_465_0_1, overwrite_a);
@@ -5899,17 +5916,17 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(u) == nullptr) {
     __pyx_v_u = u;
   } else {
-    __pyx_v_u = ((System::Object^)Py_None);
+    __pyx_v_u = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vt) == nullptr) {
     __pyx_v_vt = vt;
   } else {
-    __pyx_v_vt = ((System::Object^)Py_None);
+    __pyx_v_vt = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_u_ = nullptr;
@@ -5998,7 +6015,7 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_2 = __pyx_v_lwork;
   } else {
@@ -6045,7 +6062,7 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     rwork_len = ((5 * minmn * minmn) + (7 * minmn)) if compute_uv else (5 * minmn)
  *     rwork_shape[0] = rwork_len
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -6079,7 +6096,7 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     iwork_shape[0] = 8 * minmn
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -6099,7 +6116,7 @@ static System::Object^ cgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not ((compute_uv == 0) or (compute_uv == 1)):
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -6605,7 +6622,7 @@ static System::Object^ cggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_537_0_2->Target(__site_cvt_537_0_2, overwrite_a);
@@ -6620,27 +6637,27 @@ static System::Object^ cggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alpha) == nullptr) {
     __pyx_v_alpha = alpha;
   } else {
-    __pyx_v_alpha = ((System::Object^)Py_None);
+    __pyx_v_alpha = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -6733,7 +6750,7 @@ static System::Object^ cggev(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -6764,7 +6781,7 @@ static System::Object^ cggev(System::Object^ a, System::Object^ b, [InteropServi
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -7541,17 +7558,17 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lrwork) == nullptr) {
     __pyx_v_lrwork = lrwork;
   } else {
-    __pyx_v_lrwork = ((System::Object^)Py_None);
+    __pyx_v_lrwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(liwork) == nullptr) {
     __pyx_v_liwork = liwork;
   } else {
-    __pyx_v_liwork = ((System::Object^)Py_None);
+    __pyx_v_liwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_631_0_2->Target(__site_cvt_631_0_2, overwrite_ab);
@@ -7561,12 +7578,12 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -7680,7 +7697,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     lrwork_ = lrwork if (lrwork is not None) else (1 + (5 * n) + (2 * n * n)) if compute_v else n
  *     rwork_shape[0] = lrwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -7691,7 +7708,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     rwork_shape[0] = lrwork_
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lrwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lrwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lrwork;
   } else {
@@ -7724,7 +7741,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
  *     iwork_shape[0] = liwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -7735,7 +7752,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     iwork_shape[0] = liwork_
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_liwork != Py_None);
+  __pyx_t_5 = (__pyx_v_liwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_liwork;
   } else {
@@ -7768,7 +7785,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -7788,7 +7805,7 @@ static System::Object^ chbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_5 = (__pyx_v_ldab != Py_None);
+  __pyx_t_5 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -8308,17 +8325,17 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lrwork) == nullptr) {
     __pyx_v_lrwork = lrwork;
   } else {
-    __pyx_v_lrwork = ((System::Object^)Py_None);
+    __pyx_v_lrwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(liwork) == nullptr) {
     __pyx_v_liwork = liwork;
   } else {
-    __pyx_v_liwork = ((System::Object^)Py_None);
+    __pyx_v_liwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_706_0_2->Target(__site_cvt_706_0_2, overwrite_ab);
@@ -8328,12 +8345,12 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -8447,7 +8464,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     lrwork_ = lrwork if (lrwork is not None) else (1 + (5 * n) + (2 * n * n)) if compute_v else n
  *     rwork_shape[0] = lrwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -8458,7 +8475,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     rwork_shape[0] = lrwork_
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lrwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lrwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lrwork;
   } else {
@@ -8491,7 +8508,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
  *     iwork_shape[0] = liwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -8502,7 +8519,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     iwork_shape[0] = liwork_
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_liwork != Py_None);
+  __pyx_t_5 = (__pyx_v_liwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_liwork;
   } else {
@@ -8535,7 +8552,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -8555,7 +8572,7 @@ static System::Object^ zhbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_5 = (__pyx_v_ldab != Py_None);
+  __pyx_t_5 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -9086,7 +9103,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(compute_v) == nullptr) {
     __pyx_v_compute_v = __site_cvt_782_0_4->Target(__site_cvt_782_0_4, compute_v);
@@ -9111,7 +9128,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(mmax) == nullptr) {
     __pyx_v_mmax = mmax;
   } else {
-    __pyx_v_mmax = ((System::Object^)Py_None);
+    __pyx_v_mmax = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_782_0_8->Target(__site_cvt_782_0_8, overwrite_ab);
@@ -9121,17 +9138,17 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -9273,7 +9290,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     m = 0
  *     work_shape[0] = n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
   __pyx_v_q_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -9302,7 +9319,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     rwork_shape[0] = 7 * n
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -9322,7 +9339,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -9342,7 +9359,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -9362,7 +9379,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     if not ((il >= 1) and (il <= n)):
  *         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_4 = __pyx_v_ldab;
   } else {
@@ -9657,7 +9674,7 @@ static System::Object^ chbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     ldz = n if compute_v else 1
  *     z_shape[0] = ldz; z_shape[1] = mmax_
  */
-  __pyx_t_10 = (__pyx_v_mmax != Py_None);
+  __pyx_t_10 = (__pyx_v_mmax != nullptr);
   if (__pyx_t_10) {
     __pyx_t_4 = __pyx_v_mmax;
   } else {
@@ -10047,7 +10064,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(compute_v) == nullptr) {
     __pyx_v_compute_v = __site_cvt_876_0_4->Target(__site_cvt_876_0_4, compute_v);
@@ -10072,7 +10089,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(mmax) == nullptr) {
     __pyx_v_mmax = mmax;
   } else {
-    __pyx_v_mmax = ((System::Object^)Py_None);
+    __pyx_v_mmax = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_876_0_8->Target(__site_cvt_876_0_8, overwrite_ab);
@@ -10082,17 +10099,17 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -10234,7 +10251,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     m = 0
  *     work_shape[0] = n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
   __pyx_v_q_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -10263,7 +10280,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     rwork_shape[0] = 7 * n
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -10283,7 +10300,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -10303,7 +10320,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -10323,7 +10340,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     if not ((il >= 1) and (il <= n)):
  *         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_4 = __pyx_v_ldab;
   } else {
@@ -10618,7 +10635,7 @@ static System::Object^ zhbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     ldz = n if compute_v else 1
  *     z_shape[0] = ldz; z_shape[1] = mmax_
  */
-  __pyx_t_10 = (__pyx_v_mmax != Py_None);
+  __pyx_t_10 = (__pyx_v_mmax != nullptr);
   if (__pyx_t_10) {
     __pyx_t_4 = __pyx_v_mmax;
   } else {
@@ -10982,7 +10999,7 @@ static System::Object^ cheev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_971_0_2->Target(__site_cvt_971_0_2, overwrite_a);
@@ -10992,7 +11009,7 @@ static System::Object^ cheev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -11072,7 +11089,7 @@ static System::Object^ cheev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -11100,7 +11117,7 @@ static System::Object^ cheev(System::Object^ a, [InteropServices::Optional]Syste
  *     rwork_shape[0] = (3 * n) - 1
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -11120,7 +11137,7 @@ static System::Object^ cheev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -11507,7 +11524,7 @@ static System::Object^ zheev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1028_0_2->Target(__site_cvt_1028_0_2, overwrite_a);
@@ -11517,7 +11534,7 @@ static System::Object^ zheev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -11597,7 +11614,7 @@ static System::Object^ zheev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -11625,7 +11642,7 @@ static System::Object^ zheev(System::Object^ a, [InteropServices::Optional]Syste
  *     rwork_shape[0] = (3 * n) - 1
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -11645,7 +11662,7 @@ static System::Object^ zheev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -12063,12 +12080,12 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(iu) == nullptr) {
     __pyx_v_iu = iu;
   } else {
-    __pyx_v_iu = ((System::Object^)Py_None);
+    __pyx_v_iu = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1086_0_1->Target(__site_cvt_1086_0_1, overwrite_a);
@@ -12078,12 +12095,12 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -12175,7 +12192,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     m = iu_ - il + 1
  *     isuppz_shape[0] = 2 * m
  */
-  __pyx_t_6 = (__pyx_v_iu != Py_None);
+  __pyx_t_6 = (__pyx_v_iu != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_iu;
   } else {
@@ -12212,7 +12229,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else 18 * n
  *     work_shape[0] = lwork_
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
   __pyx_v_isuppz_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12223,7 +12240,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -12251,7 +12268,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lrwork = 24 * n
  *     rwork_shape[0] = lrwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12280,7 +12297,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     liwork = 10 * n
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12309,7 +12326,7 @@ static System::Object^ cheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     z_shape[0] = n; z_shape[1] = m
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12748,12 +12765,12 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(iu) == nullptr) {
     __pyx_v_iu = iu;
   } else {
-    __pyx_v_iu = ((System::Object^)Py_None);
+    __pyx_v_iu = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1162_0_1->Target(__site_cvt_1162_0_1, overwrite_a);
@@ -12763,12 +12780,12 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -12860,7 +12877,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     m = iu_ - il + 1
  *     isuppz_shape[0] = 2 * m
  */
-  __pyx_t_6 = (__pyx_v_iu != Py_None);
+  __pyx_t_6 = (__pyx_v_iu != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_iu;
   } else {
@@ -12897,7 +12914,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else 18 * n
  *     work_shape[0] = lwork_
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
   __pyx_v_isuppz_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12908,7 +12925,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_x16_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -12936,7 +12953,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lrwork = 24 * n
  *     rwork_shape[0] = lrwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12965,7 +12982,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     liwork = 10 * n
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -12994,7 +13011,7 @@ static System::Object^ zheevr(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     z_shape[0] = n; z_shape[1] = m
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -13422,7 +13439,7 @@ static System::Object^ chegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -13509,7 +13526,7 @@ static System::Object^ chegv(System::Object^ a, System::Object^ b, [InteropServi
  *     rwork_shape[0] = (3 * n) - 2
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -13529,7 +13546,7 @@ static System::Object^ chegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -13883,7 +13900,7 @@ static System::Object^ zhegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -13970,7 +13987,7 @@ static System::Object^ zhegv(System::Object^ a, System::Object^ b, [InteropServi
  *     rwork_shape[0] = (3 * n) - 2
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -13990,7 +14007,7 @@ static System::Object^ zhegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -14340,7 +14357,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1352_0_1->Target(__site_cvt_1352_0_1, overwrite_a);
@@ -14355,7 +14372,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -14425,7 +14442,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -14453,7 +14470,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     lrwork = 1 + (5 * n) + (2 * n * n)
  *     rwork_shape[0] = lrwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -14482,7 +14499,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     liwork = 3 + (5 * n)
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -14511,7 +14528,7 @@ static System::Object^ chegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -14861,7 +14878,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1413_0_1->Target(__site_cvt_1413_0_1, overwrite_a);
@@ -14876,7 +14893,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -14946,7 +14963,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_x16_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -14974,7 +14991,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     lrwork = 1 + (5 * n) + (2 * n * n)
  *     rwork_shape[0] = lrwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -15003,7 +15020,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     liwork = 3 + (5 * n)
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -15032,7 +15049,7 @@ static System::Object^ zhegvd(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -15402,7 +15419,7 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1475_0_3->Target(__site_cvt_1475_0_3, overwrite_a);
@@ -15417,17 +15434,17 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -15539,7 +15556,7 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -15567,7 +15584,7 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
  *     rwork_shape[0] = 7 * n
  *     rwork_ = fw_asfortranarray(None, fwr_real_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -15587,7 +15604,7 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -15607,7 +15624,7 @@ static System::Object^ chegvx(System::Object^ a, System::Object^ b, System::Obje
  *     info = 0
  *     m = iu - il + 1
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -16175,7 +16192,7 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1561_0_3->Target(__site_cvt_1561_0_3, overwrite_a);
@@ -16190,17 +16207,17 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -16312,7 +16329,7 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_x16_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -16340,7 +16357,7 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
  *     rwork_shape[0] = 7 * n
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -16360,7 +16377,7 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -16380,7 +16397,7 @@ static System::Object^ zhegvx(System::Object^ a, System::Object^ b, System::Obje
  *     info = 0
  *     m = iu - il + 1
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -16900,7 +16917,7 @@ static System::Object^ cungqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1648_0->Target(__site_cvt_1648_0, overwrite_a);
@@ -16910,7 +16927,7 @@ static System::Object^ cungqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -16952,7 +16969,7 @@ static System::Object^ cungqr(System::Object^ a, System::Object^ tau, [InteropSe
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -17240,7 +17257,7 @@ static System::Object^ zungqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1690_0->Target(__site_cvt_1690_0, overwrite_a);
@@ -17250,7 +17267,7 @@ static System::Object^ zungqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -17292,7 +17309,7 @@ static System::Object^ zungqr(System::Object^ a, System::Object^ tau, [InteropSe
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -17603,7 +17620,7 @@ static System::Object^ dgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1734_0_2->Target(__site_cvt_1734_0_2, overwrite_a);
@@ -17613,22 +17630,22 @@ static System::Object^ dgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(wr) == nullptr) {
     __pyx_v_wr = wr;
   } else {
-    __pyx_v_wr = ((System::Object^)Py_None);
+    __pyx_v_wr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(wi) == nullptr) {
     __pyx_v_wi = wi;
   } else {
-    __pyx_v_wi = ((System::Object^)Py_None);
+    __pyx_v_wi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_wr_ = nullptr;
@@ -17712,7 +17729,7 @@ static System::Object^ dgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -17740,7 +17757,7 @@ static System::Object^ dgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -18384,7 +18401,7 @@ static System::Object^ dgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1814_0_2->Target(__site_cvt_1814_0_2, overwrite_a);
@@ -18399,27 +18416,27 @@ static System::Object^ dgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alphar) == nullptr) {
     __pyx_v_alphar = alphar;
   } else {
-    __pyx_v_alphar = ((System::Object^)Py_None);
+    __pyx_v_alphar = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(alphai) == nullptr) {
     __pyx_v_alphai = alphai;
   } else {
-    __pyx_v_alphai = ((System::Object^)Py_None);
+    __pyx_v_alphai = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -18503,7 +18520,7 @@ static System::Object^ dgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -18531,7 +18548,7 @@ static System::Object^ dgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -19289,7 +19306,7 @@ static System::Object^ dgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1909_0_1->Target(__site_cvt_1909_0_1, overwrite_a);
@@ -19304,7 +19321,7 @@ static System::Object^ dgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -19408,7 +19425,7 @@ static System::Object^ dgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -19450,7 +19467,7 @@ static System::Object^ dgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if not (maxmn == b_shape[0]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -19763,7 +19780,7 @@ static System::Object^ dgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_1966_0_1->Target(__site_cvt_1966_0_1, overwrite_a);
@@ -19773,17 +19790,17 @@ static System::Object^ dgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(u) == nullptr) {
     __pyx_v_u = u;
   } else {
-    __pyx_v_u = ((System::Object^)Py_None);
+    __pyx_v_u = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vt) == nullptr) {
     __pyx_v_vt = vt;
   } else {
-    __pyx_v_vt = ((System::Object^)Py_None);
+    __pyx_v_vt = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_u_ = nullptr;
@@ -19873,7 +19890,7 @@ static System::Object^ dgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_7 = (__pyx_v_lwork != Py_None);
+  __pyx_t_7 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_7) {
     __pyx_t_2 = __pyx_v_lwork;
   } else {
@@ -19927,7 +19944,7 @@ static System::Object^ dgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     iwork_shape[0] = 8 * minmn
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -19947,7 +19964,7 @@ static System::Object^ dgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not ((compute_uv == 0) or (compute_uv == 1)):
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -20409,7 +20426,7 @@ static System::Object^ dggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_2033_0_2->Target(__site_cvt_2033_0_2, overwrite_a);
@@ -20424,32 +20441,32 @@ static System::Object^ dggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alphar) == nullptr) {
     __pyx_v_alphar = alphar;
   } else {
-    __pyx_v_alphar = ((System::Object^)Py_None);
+    __pyx_v_alphar = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(alphai) == nullptr) {
     __pyx_v_alphai = alphai;
   } else {
-    __pyx_v_alphai = ((System::Object^)Py_None);
+    __pyx_v_alphai = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -20553,7 +20570,7 @@ static System::Object^ dggev(System::Object^ a, System::Object^ b, [InteropServi
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -21344,10 +21361,10 @@ static System::Object^ sgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_kl = __site_cvt_2131_0->Target(__site_cvt_2131_0, kl);
   __pyx_v_ku = __site_cvt_2131_0_1->Target(__site_cvt_2131_0_1, ku);
   __pyx_v_ab = ab;
@@ -21365,7 +21382,7 @@ static System::Object^ sgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -21605,7 +21622,7 @@ static System::Object^ sgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -21663,9 +21680,9 @@ static System::Object^ sgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *         piv_[i] -= 1
  *     return (ab_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2181
  *     fc.sgbsv(&n, &kl, &ku, &nrhs, <fwr_real_t*>np.PyArray_DATA(ab_), &ldab_f, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(b_), &n, &info)
@@ -21674,16 +21691,16 @@ static System::Object^ sgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *     return (ab_, piv_, b_, info,)
  * def dgbsv(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrite_ab=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2182
@@ -21741,10 +21758,10 @@ static System::Object^ dgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_kl = __site_cvt_2183_0->Target(__site_cvt_2183_0, kl);
   __pyx_v_ku = __site_cvt_2183_0_1->Target(__site_cvt_2183_0_1, ku);
   __pyx_v_ab = ab;
@@ -21762,7 +21779,7 @@ static System::Object^ dgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -22002,7 +22019,7 @@ static System::Object^ dgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -22060,9 +22077,9 @@ static System::Object^ dgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *         piv_[i] -= 1
  *     return (ab_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2233
  *     fc.dgbsv(&n, &kl, &ku, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_f, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &n, &info)
@@ -22071,16 +22088,16 @@ static System::Object^ dgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *     return (ab_, piv_, b_, info,)
  * def cgbsv(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrite_ab=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2234
@@ -22138,10 +22155,10 @@ static System::Object^ cgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_kl = __site_cvt_2235_0->Target(__site_cvt_2235_0, kl);
   __pyx_v_ku = __site_cvt_2235_0_1->Target(__site_cvt_2235_0_1, ku);
   __pyx_v_ab = ab;
@@ -22159,7 +22176,7 @@ static System::Object^ cgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -22399,7 +22416,7 @@ static System::Object^ cgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -22457,9 +22474,9 @@ static System::Object^ cgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *         piv_[i] -= 1
  *     return (ab_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2285
  *     fc.cgbsv(&n, &kl, &ku, &nrhs, <fwc_complex_t*>np.PyArray_DATA(ab_), &ldab_f, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(b_), &n, &info)
@@ -22468,16 +22485,16 @@ static System::Object^ cgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *     return (ab_, piv_, b_, info,)
  * def zgbsv(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrite_ab=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2286
@@ -22535,10 +22552,10 @@ static System::Object^ zgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_kl = __site_cvt_2287_0->Target(__site_cvt_2287_0, kl);
   __pyx_v_ku = __site_cvt_2287_0_1->Target(__site_cvt_2287_0_1, ku);
   __pyx_v_ab = ab;
@@ -22556,7 +22573,7 @@ static System::Object^ zgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -22796,7 +22813,7 @@ static System::Object^ zgbsv(System::Object^ kl, System::Object^ ku, System::Obj
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -22854,9 +22871,9 @@ static System::Object^ zgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *         piv_[i] -= 1
  *     return (ab_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2337
  *     fc.zgbsv(&n, &kl, &ku, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_f, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info)
@@ -22865,16 +22882,16 @@ static System::Object^ zgbsv(System::Object^ kl, System::Object^ ku, System::Obj
  *     return (ab_, piv_, b_, info,)
  * 
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2338
@@ -22936,27 +22953,27 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   fwi_integer_t __pyx_t_7;
   fwi_integer_t __pyx_t_8;
   fwi_integer_t __pyx_t_9;
-  int __pyx_t_10;
-  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  int __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2340_0->Target(__site_cvt_2340_0, kl);
   __pyx_v_ku = __site_cvt_2340_0_1->Target(__site_cvt_2340_0_1, ku);
   if (dynamic_cast<System::Reflection::Missing^>(m) == nullptr) {
     __pyx_v_m = m;
   } else {
-    __pyx_v_m = ((System::Object^)Py_None);
+    __pyx_v_m = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_2340_0_2->Target(__site_cvt_2340_0_2, overwrite_ab);
@@ -22966,7 +22983,7 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ipiv) == nullptr) {
     __pyx_v_ipiv = ipiv;
   } else {
-    __pyx_v_ipiv = ((System::Object^)Py_None);
+    __pyx_v_ipiv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_ipiv_ = nullptr;
@@ -22999,7 +23016,7 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_2 = (__pyx_v_ldab != Py_None);
+  __pyx_t_2 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_ldab;
   } else {
@@ -23070,7 +23087,7 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     n_ = n if (n is not None) else ab_shape[1]
  *     ipiv_shape[0] = min(m_, n_)
  */
-  __pyx_t_2 = (__pyx_v_m != Py_None);
+  __pyx_t_2 = (__pyx_v_m != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_m;
   } else {
@@ -23089,7 +23106,7 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     ipiv_shape[0] = min(m_, n_)
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_n != Py_None);
+  __pyx_t_2 = (__pyx_v_n != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_n;
   } else {
@@ -23128,7 +23145,7 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_10 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -23184,9 +23201,9 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (ab_, ipiv_, info,)
  */
-  __pyx_t_11 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+    __pyx_v_i = __pyx_t_11;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2381
  *     fc.sgbtrf(&m_, &n_, &kl, &ku, <fwr_real_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info)
@@ -23195,16 +23212,16 @@ static System::Object^ sgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     return (ab_, ipiv_, info,)
  * def dgbtrf(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
  */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_t_10 = -1;
-    if (__pyx_t_13 < 0) {
-      __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_10 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_10 = 0;
-    if (unlikely(__pyx_t_10 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+    __pyx_t_12 = __pyx_v_i;
+    __pyx_t_13 = -1;
+    if (__pyx_t_12 < 0) {
+      __pyx_t_12 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_13 = 0;
+    if (unlikely(__pyx_t_13 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_13);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2382
@@ -23266,27 +23283,27 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   fwi_integer_t __pyx_t_7;
   fwi_integer_t __pyx_t_8;
   fwi_integer_t __pyx_t_9;
-  int __pyx_t_10;
-  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  int __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2383_0->Target(__site_cvt_2383_0, kl);
   __pyx_v_ku = __site_cvt_2383_0_1->Target(__site_cvt_2383_0_1, ku);
   if (dynamic_cast<System::Reflection::Missing^>(m) == nullptr) {
     __pyx_v_m = m;
   } else {
-    __pyx_v_m = ((System::Object^)Py_None);
+    __pyx_v_m = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_2383_0_2->Target(__site_cvt_2383_0_2, overwrite_ab);
@@ -23296,7 +23313,7 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ipiv) == nullptr) {
     __pyx_v_ipiv = ipiv;
   } else {
-    __pyx_v_ipiv = ((System::Object^)Py_None);
+    __pyx_v_ipiv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_ipiv_ = nullptr;
@@ -23329,7 +23346,7 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_2 = (__pyx_v_ldab != Py_None);
+  __pyx_t_2 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_ldab;
   } else {
@@ -23400,7 +23417,7 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     n_ = n if (n is not None) else ab_shape[1]
  *     ipiv_shape[0] = min(m_, n_)
  */
-  __pyx_t_2 = (__pyx_v_m != Py_None);
+  __pyx_t_2 = (__pyx_v_m != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_m;
   } else {
@@ -23419,7 +23436,7 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     ipiv_shape[0] = min(m_, n_)
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_n != Py_None);
+  __pyx_t_2 = (__pyx_v_n != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_n;
   } else {
@@ -23458,7 +23475,7 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_10 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -23514,9 +23531,9 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (ab_, ipiv_, info,)
  */
-  __pyx_t_11 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+    __pyx_v_i = __pyx_t_11;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2424
  *     fc.dgbtrf(&m_, &n_, &kl, &ku, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info)
@@ -23525,16 +23542,16 @@ static System::Object^ dgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     return (ab_, ipiv_, info,)
  * def cgbtrf(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
  */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_t_10 = -1;
-    if (__pyx_t_13 < 0) {
-      __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_10 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_10 = 0;
-    if (unlikely(__pyx_t_10 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+    __pyx_t_12 = __pyx_v_i;
+    __pyx_t_13 = -1;
+    if (__pyx_t_12 < 0) {
+      __pyx_t_12 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_13 = 0;
+    if (unlikely(__pyx_t_13 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_13);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2425
@@ -23596,27 +23613,27 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   fwi_integer_t __pyx_t_7;
   fwi_integer_t __pyx_t_8;
   fwi_integer_t __pyx_t_9;
-  int __pyx_t_10;
-  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  int __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2426_0->Target(__site_cvt_2426_0, kl);
   __pyx_v_ku = __site_cvt_2426_0_1->Target(__site_cvt_2426_0_1, ku);
   if (dynamic_cast<System::Reflection::Missing^>(m) == nullptr) {
     __pyx_v_m = m;
   } else {
-    __pyx_v_m = ((System::Object^)Py_None);
+    __pyx_v_m = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_2426_0_2->Target(__site_cvt_2426_0_2, overwrite_ab);
@@ -23626,7 +23643,7 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ipiv) == nullptr) {
     __pyx_v_ipiv = ipiv;
   } else {
-    __pyx_v_ipiv = ((System::Object^)Py_None);
+    __pyx_v_ipiv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_ipiv_ = nullptr;
@@ -23659,7 +23676,7 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_2 = (__pyx_v_ldab != Py_None);
+  __pyx_t_2 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_ldab;
   } else {
@@ -23730,7 +23747,7 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     n_ = n if (n is not None) else ab_shape[1]
  *     ipiv_shape[0] = min(m_, n_)
  */
-  __pyx_t_2 = (__pyx_v_m != Py_None);
+  __pyx_t_2 = (__pyx_v_m != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_m;
   } else {
@@ -23749,7 +23766,7 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     ipiv_shape[0] = min(m_, n_)
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_n != Py_None);
+  __pyx_t_2 = (__pyx_v_n != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_n;
   } else {
@@ -23788,7 +23805,7 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_10 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -23844,9 +23861,9 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (ab_, ipiv_, info,)
  */
-  __pyx_t_11 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+    __pyx_v_i = __pyx_t_11;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2467
  *     fc.cgbtrf(&m_, &n_, &kl, &ku, <fwc_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info)
@@ -23855,16 +23872,16 @@ static System::Object^ cgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     return (ab_, ipiv_, info,)
  * def zgbtrf(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
  */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_t_10 = -1;
-    if (__pyx_t_13 < 0) {
-      __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_10 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_10 = 0;
-    if (unlikely(__pyx_t_10 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+    __pyx_t_12 = __pyx_v_i;
+    __pyx_t_13 = -1;
+    if (__pyx_t_12 < 0) {
+      __pyx_t_12 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_13 = 0;
+    if (unlikely(__pyx_t_13 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_13);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2468
@@ -23926,27 +23943,27 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   fwi_integer_t __pyx_t_7;
   fwi_integer_t __pyx_t_8;
   fwi_integer_t __pyx_t_9;
-  int __pyx_t_10;
-  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  Py_ssize_t __pyx_t_11;
   Py_ssize_t __pyx_t_12;
-  Py_ssize_t __pyx_t_13;
+  int __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2469_0->Target(__site_cvt_2469_0, kl);
   __pyx_v_ku = __site_cvt_2469_0_1->Target(__site_cvt_2469_0_1, ku);
   if (dynamic_cast<System::Reflection::Missing^>(m) == nullptr) {
     __pyx_v_m = m;
   } else {
-    __pyx_v_m = ((System::Object^)Py_None);
+    __pyx_v_m = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_2469_0_2->Target(__site_cvt_2469_0_2, overwrite_ab);
@@ -23956,7 +23973,7 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ipiv) == nullptr) {
     __pyx_v_ipiv = ipiv;
   } else {
-    __pyx_v_ipiv = ((System::Object^)Py_None);
+    __pyx_v_ipiv = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_ipiv_ = nullptr;
@@ -23989,7 +24006,7 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_2 = (__pyx_v_ldab != Py_None);
+  __pyx_t_2 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_ldab;
   } else {
@@ -24060,7 +24077,7 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     n_ = n if (n is not None) else ab_shape[1]
  *     ipiv_shape[0] = min(m_, n_)
  */
-  __pyx_t_2 = (__pyx_v_m != Py_None);
+  __pyx_t_2 = (__pyx_v_m != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_m;
   } else {
@@ -24079,7 +24096,7 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     ipiv_shape[0] = min(m_, n_)
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_n != Py_None);
+  __pyx_t_2 = (__pyx_v_n != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_n;
   } else {
@@ -24118,7 +24135,7 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_10 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -24174,9 +24191,9 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (ab_, ipiv_, info,)
  */
-  __pyx_t_11 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
-    __pyx_v_i = __pyx_t_12;
+  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
+    __pyx_v_i = __pyx_t_11;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2510
  *     fc.zgbtrf(&m_, &n_, &kl, &ku, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), &info)
@@ -24185,16 +24202,16 @@ static System::Object^ zgbtrf(System::Object^ ab, System::Object^ kl, System::Ob
  *     return (ab_, ipiv_, info,)
  * 
  */
-    __pyx_t_13 = __pyx_v_i;
-    __pyx_t_10 = -1;
-    if (__pyx_t_13 < 0) {
-      __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_10 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_10 = 0;
-    if (unlikely(__pyx_t_10 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_10);
+    __pyx_t_12 = __pyx_v_i;
+    __pyx_t_13 = -1;
+    if (__pyx_t_12 < 0) {
+      __pyx_t_12 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_12 < 0)) __pyx_t_13 = 0;
+    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_13 = 0;
+    if (unlikely(__pyx_t_13 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_13);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2511
@@ -24260,12 +24277,12 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   int __pyx_t_4;
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  int __pyx_t_7;
-  fwi_integer_t __pyx_t_8;
-  int __pyx_t_9;
-  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2513_0->Target(__site_cvt_2513_0, kl);
@@ -24280,17 +24297,17 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldb) == nullptr) {
     __pyx_v_ldb = ldb;
   } else {
-    __pyx_v_ldb = ((System::Object^)Py_None);
+    __pyx_v_ldb = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_2513_0_3->Target(__site_cvt_2513_0_3, overwrite_b);
@@ -24382,7 +24399,7 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     ldb_ = ldb if (ldb is not None) else b_shape[0]
  *     if not (ab_shape[0] == ldab_):
  */
-  __pyx_t_4 = (__pyx_v_ldab != Py_None);
+  __pyx_t_4 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -24401,7 +24418,7 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_4 = (__pyx_v_ldb != Py_None);
+  __pyx_t_4 = (__pyx_v_ldb != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldb;
   } else {
@@ -24554,7 +24571,7 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -24568,7 +24585,7 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (0 <= n_ <= ipiv_shape[0]):
  *         raise ValueError("(0 <= n <= ipiv.shape[0]) not satisifed")
  */
-  __pyx_t_4 = (__pyx_v_n != Py_None);
+  __pyx_t_4 = (__pyx_v_n != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_n;
   } else {
@@ -24576,9 +24593,9 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
     __pyx_t_3 = __pyx_t_2;
     __pyx_t_2 = nullptr;
   }
-  __pyx_t_8 = __site_cvt_fwi_integer_t_2559_9->Target(__site_cvt_fwi_integer_t_2559_9, __pyx_t_3);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_2559_9->Target(__site_cvt_fwi_integer_t_2559_9, __pyx_t_3);
   __pyx_t_3 = nullptr;
-  __pyx_v_n_ = __pyx_t_8;
+  __pyx_v_n_ = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2560
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, False)
@@ -24591,8 +24608,8 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (__pyx_t_4) {
     __pyx_t_4 = (__pyx_v_n_ <= (__pyx_v_ipiv_shape[0]));
   }
-  __pyx_t_9 = (!__pyx_t_4);
-  if (__pyx_t_9) {
+  __pyx_t_8 = (!__pyx_t_4);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2561
  *     n_ = n if (n is not None) else ab_shape[1]
@@ -24626,8 +24643,8 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         raise ValueError("len(trans_f) != 1")
  *     for i in range(ipiv_shape[0]):
  */
-  __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
-  if (__pyx_t_9) {
+  __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2564
  *     fw_trans_f[0] = fw_aschar(trans_f)
@@ -24652,9 +24669,9 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] += 1
  *     fc.sgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_real_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_real_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2566
  *         raise ValueError("len(trans_f) != 1")
@@ -24663,16 +24680,16 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     fc.sgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_real_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_real_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  *     for i in range(ipiv_shape[0]):
  */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_12 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_11 = __pyx_v_i;
+    __pyx_t_12 = -1;
+    if (__pyx_t_11 < 0) {
+      __pyx_t_11 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_ipiv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2567
@@ -24691,9 +24708,9 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2569
  *     fc.sgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_real_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_real_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
@@ -24703,13 +24720,13 @@ static System::Object^ sgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  * def dgbtrs(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
  */
     __pyx_t_13 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_12 = -1;
     if (__pyx_t_13 < 0) {
       __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
   }
@@ -24777,12 +24794,12 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   int __pyx_t_4;
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  int __pyx_t_7;
-  fwi_integer_t __pyx_t_8;
-  int __pyx_t_9;
-  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2571_0->Target(__site_cvt_2571_0, kl);
@@ -24797,17 +24814,17 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldb) == nullptr) {
     __pyx_v_ldb = ldb;
   } else {
-    __pyx_v_ldb = ((System::Object^)Py_None);
+    __pyx_v_ldb = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_2571_0_3->Target(__site_cvt_2571_0_3, overwrite_b);
@@ -24899,7 +24916,7 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     ldb_ = ldb if (ldb is not None) else b_shape[0]
  *     if not (ab_shape[0] == ldab_):
  */
-  __pyx_t_4 = (__pyx_v_ldab != Py_None);
+  __pyx_t_4 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -24918,7 +24935,7 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_4 = (__pyx_v_ldb != Py_None);
+  __pyx_t_4 = (__pyx_v_ldb != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldb;
   } else {
@@ -25071,7 +25088,7 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -25085,7 +25102,7 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (0 <= n_ <= ipiv_shape[0]):
  *         raise ValueError("(0 <= n <= ipiv.shape[0]) not satisifed")
  */
-  __pyx_t_4 = (__pyx_v_n != Py_None);
+  __pyx_t_4 = (__pyx_v_n != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_n;
   } else {
@@ -25093,9 +25110,9 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
     __pyx_t_3 = __pyx_t_2;
     __pyx_t_2 = nullptr;
   }
-  __pyx_t_8 = __site_cvt_fwi_integer_t_2617_9->Target(__site_cvt_fwi_integer_t_2617_9, __pyx_t_3);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_2617_9->Target(__site_cvt_fwi_integer_t_2617_9, __pyx_t_3);
   __pyx_t_3 = nullptr;
-  __pyx_v_n_ = __pyx_t_8;
+  __pyx_v_n_ = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2618
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, False)
@@ -25108,8 +25125,8 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (__pyx_t_4) {
     __pyx_t_4 = (__pyx_v_n_ <= (__pyx_v_ipiv_shape[0]));
   }
-  __pyx_t_9 = (!__pyx_t_4);
-  if (__pyx_t_9) {
+  __pyx_t_8 = (!__pyx_t_4);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2619
  *     n_ = n if (n is not None) else ab_shape[1]
@@ -25143,8 +25160,8 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         raise ValueError("len(trans_f) != 1")
  *     for i in range(ipiv_shape[0]):
  */
-  __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
-  if (__pyx_t_9) {
+  __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2622
  *     fw_trans_f[0] = fw_aschar(trans_f)
@@ -25169,9 +25186,9 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] += 1
  *     fc.dgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2624
  *         raise ValueError("len(trans_f) != 1")
@@ -25180,16 +25197,16 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     fc.dgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  *     for i in range(ipiv_shape[0]):
  */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_12 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_11 = __pyx_v_i;
+    __pyx_t_12 = -1;
+    if (__pyx_t_11 < 0) {
+      __pyx_t_11 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_ipiv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2625
@@ -25208,9 +25225,9 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2627
  *     fc.dgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
@@ -25220,13 +25237,13 @@ static System::Object^ dgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  * def cgbtrs(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
  */
     __pyx_t_13 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_12 = -1;
     if (__pyx_t_13 < 0) {
       __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
   }
@@ -25294,12 +25311,12 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   int __pyx_t_4;
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  int __pyx_t_7;
-  fwi_integer_t __pyx_t_8;
-  int __pyx_t_9;
-  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2629_0->Target(__site_cvt_2629_0, kl);
@@ -25314,17 +25331,17 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldb) == nullptr) {
     __pyx_v_ldb = ldb;
   } else {
-    __pyx_v_ldb = ((System::Object^)Py_None);
+    __pyx_v_ldb = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_2629_0_3->Target(__site_cvt_2629_0_3, overwrite_b);
@@ -25416,7 +25433,7 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     ldb_ = ldb if (ldb is not None) else b_shape[0]
  *     if not (ab_shape[0] == ldab_):
  */
-  __pyx_t_4 = (__pyx_v_ldab != Py_None);
+  __pyx_t_4 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -25435,7 +25452,7 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_4 = (__pyx_v_ldb != Py_None);
+  __pyx_t_4 = (__pyx_v_ldb != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldb;
   } else {
@@ -25588,7 +25605,7 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -25602,7 +25619,7 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (0 <= n_ <= ipiv_shape[0]):
  *         raise ValueError("(0 <= n <= ipiv.shape[0]) not satisifed")
  */
-  __pyx_t_4 = (__pyx_v_n != Py_None);
+  __pyx_t_4 = (__pyx_v_n != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_n;
   } else {
@@ -25610,9 +25627,9 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
     __pyx_t_3 = __pyx_t_2;
     __pyx_t_2 = nullptr;
   }
-  __pyx_t_8 = __site_cvt_fwi_integer_t_2675_9->Target(__site_cvt_fwi_integer_t_2675_9, __pyx_t_3);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_2675_9->Target(__site_cvt_fwi_integer_t_2675_9, __pyx_t_3);
   __pyx_t_3 = nullptr;
-  __pyx_v_n_ = __pyx_t_8;
+  __pyx_v_n_ = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2676
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, False)
@@ -25625,8 +25642,8 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (__pyx_t_4) {
     __pyx_t_4 = (__pyx_v_n_ <= (__pyx_v_ipiv_shape[0]));
   }
-  __pyx_t_9 = (!__pyx_t_4);
-  if (__pyx_t_9) {
+  __pyx_t_8 = (!__pyx_t_4);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2677
  *     n_ = n if (n is not None) else ab_shape[1]
@@ -25660,8 +25677,8 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         raise ValueError("len(trans_f) != 1")
  *     for i in range(ipiv_shape[0]):
  */
-  __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
-  if (__pyx_t_9) {
+  __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2680
  *     fw_trans_f[0] = fw_aschar(trans_f)
@@ -25686,9 +25703,9 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] += 1
  *     fc.cgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2682
  *         raise ValueError("len(trans_f) != 1")
@@ -25697,16 +25714,16 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     fc.cgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  *     for i in range(ipiv_shape[0]):
  */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_12 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_11 = __pyx_v_i;
+    __pyx_t_12 = -1;
+    if (__pyx_t_11 < 0) {
+      __pyx_t_11 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_ipiv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2683
@@ -25725,9 +25742,9 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2685
  *     fc.cgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
@@ -25737,13 +25754,13 @@ static System::Object^ cgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  * def zgbtrs(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
  */
     __pyx_t_13 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_12 = -1;
     if (__pyx_t_13 < 0) {
       __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
   }
@@ -25811,12 +25828,12 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   int __pyx_t_4;
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  int __pyx_t_7;
-  fwi_integer_t __pyx_t_8;
-  int __pyx_t_9;
-  __pyx_t_5numpy_npy_intp __pyx_t_10;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   Py_ssize_t __pyx_t_13;
   __pyx_v_ab = ab;
   __pyx_v_kl = __site_cvt_2687_0->Target(__site_cvt_2687_0, kl);
@@ -25831,17 +25848,17 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(n) == nullptr) {
     __pyx_v_n = n;
   } else {
-    __pyx_v_n = ((System::Object^)Py_None);
+    __pyx_v_n = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ldb) == nullptr) {
     __pyx_v_ldb = ldb;
   } else {
-    __pyx_v_ldb = ((System::Object^)Py_None);
+    __pyx_v_ldb = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_2687_0_3->Target(__site_cvt_2687_0_3, overwrite_b);
@@ -25933,7 +25950,7 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     ldb_ = ldb if (ldb is not None) else b_shape[0]
  *     if not (ab_shape[0] == ldab_):
  */
-  __pyx_t_4 = (__pyx_v_ldab != Py_None);
+  __pyx_t_4 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -25952,7 +25969,7 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (ab_shape[0] == ldab_):
  *         raise ValueError('Condition on arguments not satisfied: ab.shape[0] == ldab')
  */
-  __pyx_t_4 = (__pyx_v_ldb != Py_None);
+  __pyx_t_4 = (__pyx_v_ldb != nullptr);
   if (__pyx_t_4) {
     __pyx_t_2 = __pyx_v_ldb;
   } else {
@@ -26105,7 +26122,7 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_ipiv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_ipiv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_ipiv_ = __pyx_bstruct_ipiv_->Strides[0];
     __pyx_bshape_0_ipiv_ = __pyx_bstruct_ipiv_->Shape[0];
   }
@@ -26119,7 +26136,7 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     if not (0 <= n_ <= ipiv_shape[0]):
  *         raise ValueError("(0 <= n <= ipiv.shape[0]) not satisifed")
  */
-  __pyx_t_4 = (__pyx_v_n != Py_None);
+  __pyx_t_4 = (__pyx_v_n != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_n;
   } else {
@@ -26127,9 +26144,9 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
     __pyx_t_3 = __pyx_t_2;
     __pyx_t_2 = nullptr;
   }
-  __pyx_t_8 = __site_cvt_fwi_integer_t_2733_9->Target(__site_cvt_fwi_integer_t_2733_9, __pyx_t_3);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_2733_9->Target(__site_cvt_fwi_integer_t_2733_9, __pyx_t_3);
   __pyx_t_3 = nullptr;
-  __pyx_v_n_ = __pyx_t_8;
+  __pyx_v_n_ = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2734
  *     ipiv_ = fw_asfortranarray(ipiv, fwi_integer_t_enum, 1, ipiv_shape, False, False)
@@ -26142,8 +26159,8 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
   if (__pyx_t_4) {
     __pyx_t_4 = (__pyx_v_n_ <= (__pyx_v_ipiv_shape[0]));
   }
-  __pyx_t_9 = (!__pyx_t_4);
-  if (__pyx_t_9) {
+  __pyx_t_8 = (!__pyx_t_4);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2735
  *     n_ = n if (n is not None) else ab_shape[1]
@@ -26177,8 +26194,8 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         raise ValueError("len(trans_f) != 1")
  *     for i in range(ipiv_shape[0]):
  */
-  __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
-  if (__pyx_t_9) {
+  __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
+  if (__pyx_t_8) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2738
  *     fw_trans_f[0] = fw_aschar(trans_f)
@@ -26203,9 +26220,9 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] += 1
  *     fc.zgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2740
  *         raise ValueError("len(trans_f) != 1")
@@ -26214,16 +26231,16 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *     fc.zgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
  *     for i in range(ipiv_shape[0]):
  */
-    __pyx_t_12 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_12 < 0) {
-      __pyx_t_12 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_12 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_12 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_11 = __pyx_v_i;
+    __pyx_t_12 = -1;
+    if (__pyx_t_11 < 0) {
+      __pyx_t_11 += __pyx_bshape_0_ipiv_;
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_12, __pyx_bstride_0_ipiv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_ipiv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2741
@@ -26242,9 +26259,9 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  *         ipiv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_10 = (__pyx_v_ipiv_shape[0]);
-  for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
-    __pyx_v_i = __pyx_t_11;
+  __pyx_t_9 = (__pyx_v_ipiv_shape[0]);
+  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
+    __pyx_v_i = __pyx_t_10;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":2743
  *     fc.zgbtrs(fw_trans_f, &n_, &kl, &ku, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwi_integer_t*>np.PyArray_DATA(ipiv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb_, &info, 1)
@@ -26254,13 +26271,13 @@ static System::Object^ zgbtrs(System::Object^ ab, System::Object^ kl, System::Ob
  * 
  */
     __pyx_t_13 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_12 = -1;
     if (__pyx_t_13 < 0) {
       __pyx_t_13 += __pyx_bshape_0_ipiv_;
-      if (unlikely(__pyx_t_13 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_12 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_ipiv_)) __pyx_t_12 = 0;
+    if (unlikely(__pyx_t_12 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_12);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_ipiv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_ipiv_) -= 1;
   }
@@ -26337,7 +26354,7 @@ static System::Object^ sgebal(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(pivscale) == nullptr) {
     __pyx_v_pivscale = pivscale;
   } else {
-    __pyx_v_pivscale = ((System::Object^)Py_None);
+    __pyx_v_pivscale = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_pivscale_ = nullptr;
@@ -26702,7 +26719,7 @@ static System::Object^ dgebal(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(pivscale) == nullptr) {
     __pyx_v_pivscale = pivscale;
   } else {
-    __pyx_v_pivscale = ((System::Object^)Py_None);
+    __pyx_v_pivscale = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_pivscale_ = nullptr;
@@ -27067,7 +27084,7 @@ static System::Object^ cgebal(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(pivscale) == nullptr) {
     __pyx_v_pivscale = pivscale;
   } else {
-    __pyx_v_pivscale = ((System::Object^)Py_None);
+    __pyx_v_pivscale = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_pivscale_ = nullptr;
@@ -27432,7 +27449,7 @@ static System::Object^ zgebal(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(pivscale) == nullptr) {
     __pyx_v_pivscale = pivscale;
   } else {
-    __pyx_v_pivscale = ((System::Object^)Py_None);
+    __pyx_v_pivscale = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_pivscale_ = nullptr;
@@ -27816,7 +27833,7 @@ static System::Object^ sgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_2939_0_2->Target(__site_cvt_2939_0_2, overwrite_a);
@@ -27826,22 +27843,22 @@ static System::Object^ sgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(wr) == nullptr) {
     __pyx_v_wr = wr;
   } else {
-    __pyx_v_wr = ((System::Object^)Py_None);
+    __pyx_v_wr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(wi) == nullptr) {
     __pyx_v_wi = wi;
   } else {
-    __pyx_v_wi = ((System::Object^)Py_None);
+    __pyx_v_wi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vs) == nullptr) {
     __pyx_v_vs = vs;
   } else {
-    __pyx_v_vs = ((System::Object^)Py_None);
+    __pyx_v_vs = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_wr_ = nullptr;
@@ -27977,7 +27994,7 @@ static System::Object^ sgees(System::Object^ select, System::Object^ a, [Interop
  *     info = 0
  *     lwork_ = lwork if (lwork is not None) else 3 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
   __pyx_v_bwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -27997,7 +28014,7 @@ static System::Object^ sgees(System::Object^ select, System::Object^ a, [Interop
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -28619,7 +28636,7 @@ static System::Object^ dgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3022_0_2->Target(__site_cvt_3022_0_2, overwrite_a);
@@ -28629,22 +28646,22 @@ static System::Object^ dgees(System::Object^ select, System::Object^ a, [Interop
   if (dynamic_cast<System::Reflection::Missing^>(wr) == nullptr) {
     __pyx_v_wr = wr;
   } else {
-    __pyx_v_wr = ((System::Object^)Py_None);
+    __pyx_v_wr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(wi) == nullptr) {
     __pyx_v_wi = wi;
   } else {
-    __pyx_v_wi = ((System::Object^)Py_None);
+    __pyx_v_wi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vs) == nullptr) {
     __pyx_v_vs = vs;
   } else {
-    __pyx_v_vs = ((System::Object^)Py_None);
+    __pyx_v_vs = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_wr_ = nullptr;
@@ -28780,7 +28797,7 @@ static System::Object^ dgees(System::Object^ select, System::Object^ a, [Interop
  *     info = 0
  *     lwork_ = lwork if (lwork is not None) else 3 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_bwork_shape, 0, 1, nullptr)); 
   __pyx_v_bwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -28800,7 +28817,7 @@ static System::Object^ dgees(System::Object^ select, System::Object^ a, [Interop
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -29414,7 +29431,7 @@ static System::Object^ sgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3107_0_2->Target(__site_cvt_3107_0_2, overwrite_a);
@@ -29424,22 +29441,22 @@ static System::Object^ sgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(wr) == nullptr) {
     __pyx_v_wr = wr;
   } else {
-    __pyx_v_wr = ((System::Object^)Py_None);
+    __pyx_v_wr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(wi) == nullptr) {
     __pyx_v_wi = wi;
   } else {
-    __pyx_v_wi = ((System::Object^)Py_None);
+    __pyx_v_wi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_wr_ = nullptr;
@@ -29523,7 +29540,7 @@ static System::Object^ sgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -29551,7 +29568,7 @@ static System::Object^ sgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -30195,7 +30212,7 @@ static System::Object^ sgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3187_0_2->Target(__site_cvt_3187_0_2, overwrite_a);
@@ -30210,27 +30227,27 @@ static System::Object^ sgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alphar) == nullptr) {
     __pyx_v_alphar = alphar;
   } else {
-    __pyx_v_alphar = ((System::Object^)Py_None);
+    __pyx_v_alphar = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(alphai) == nullptr) {
     __pyx_v_alphai = alphai;
   } else {
-    __pyx_v_alphai = ((System::Object^)Py_None);
+    __pyx_v_alphai = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -30314,7 +30331,7 @@ static System::Object^ sgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -30342,7 +30359,7 @@ static System::Object^ sgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -31092,12 +31109,12 @@ static System::Object^ sgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(hi) == nullptr) {
     __pyx_v_hi = hi;
   } else {
-    __pyx_v_hi = ((System::Object^)Py_None);
+    __pyx_v_hi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3281_0_1->Target(__site_cvt_3281_0_1, overwrite_a);
@@ -31107,7 +31124,7 @@ static System::Object^ sgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -31142,7 +31159,7 @@ static System::Object^ sgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else max(n, 1)
  *     work_shape[0] = lwork_
  */
-  __pyx_t_3 = (__pyx_v_hi != Py_None);
+  __pyx_t_3 = (__pyx_v_hi != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_hi;
   } else {
@@ -31161,7 +31178,7 @@ static System::Object^ sgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -31196,7 +31213,7 @@ static System::Object^ sgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -31461,12 +31478,12 @@ static System::Object^ dgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(hi) == nullptr) {
     __pyx_v_hi = hi;
   } else {
-    __pyx_v_hi = ((System::Object^)Py_None);
+    __pyx_v_hi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3326_0_1->Target(__site_cvt_3326_0_1, overwrite_a);
@@ -31476,7 +31493,7 @@ static System::Object^ dgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -31511,7 +31528,7 @@ static System::Object^ dgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else max(n, 1)
  *     work_shape[0] = lwork_
  */
-  __pyx_t_3 = (__pyx_v_hi != Py_None);
+  __pyx_t_3 = (__pyx_v_hi != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_hi;
   } else {
@@ -31530,7 +31547,7 @@ static System::Object^ dgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -31565,7 +31582,7 @@ static System::Object^ dgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -31830,12 +31847,12 @@ static System::Object^ cgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(hi) == nullptr) {
     __pyx_v_hi = hi;
   } else {
-    __pyx_v_hi = ((System::Object^)Py_None);
+    __pyx_v_hi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3371_0_1->Target(__site_cvt_3371_0_1, overwrite_a);
@@ -31845,7 +31862,7 @@ static System::Object^ cgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -31880,7 +31897,7 @@ static System::Object^ cgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else max(n, 1)
  *     work_shape[0] = lwork_
  */
-  __pyx_t_3 = (__pyx_v_hi != Py_None);
+  __pyx_t_3 = (__pyx_v_hi != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_hi;
   } else {
@@ -31899,7 +31916,7 @@ static System::Object^ cgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -31934,7 +31951,7 @@ static System::Object^ cgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -32199,12 +32216,12 @@ static System::Object^ zgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(hi) == nullptr) {
     __pyx_v_hi = hi;
   } else {
-    __pyx_v_hi = ((System::Object^)Py_None);
+    __pyx_v_hi = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3416_0_1->Target(__site_cvt_3416_0_1, overwrite_a);
@@ -32214,7 +32231,7 @@ static System::Object^ zgehrd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -32249,7 +32266,7 @@ static System::Object^ zgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else max(n, 1)
  *     work_shape[0] = lwork_
  */
-  __pyx_t_3 = (__pyx_v_hi != Py_None);
+  __pyx_t_3 = (__pyx_v_hi != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_hi;
   } else {
@@ -32268,7 +32285,7 @@ static System::Object^ zgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -32303,7 +32320,7 @@ static System::Object^ zgehrd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -32576,7 +32593,7 @@ static System::Object^ sgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3463_0_1->Target(__site_cvt_3463_0_1, overwrite_a);
@@ -32591,7 +32608,7 @@ static System::Object^ sgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -32695,7 +32712,7 @@ static System::Object^ sgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -32737,7 +32754,7 @@ static System::Object^ sgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if not (maxmn == b_shape[0]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -33031,7 +33048,7 @@ static System::Object^ sgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3519_0->Target(__site_cvt_3519_0, overwrite_a);
@@ -33041,12 +33058,12 @@ static System::Object^ sgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -33090,7 +33107,7 @@ static System::Object^ sgeqrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -33394,7 +33411,7 @@ static System::Object^ dgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3562_0->Target(__site_cvt_3562_0, overwrite_a);
@@ -33404,12 +33421,12 @@ static System::Object^ dgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -33453,7 +33470,7 @@ static System::Object^ dgeqrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -33757,7 +33774,7 @@ static System::Object^ cgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3605_0->Target(__site_cvt_3605_0, overwrite_a);
@@ -33767,12 +33784,12 @@ static System::Object^ cgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -33816,7 +33833,7 @@ static System::Object^ cgeqrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -34120,7 +34137,7 @@ static System::Object^ zgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3648_0->Target(__site_cvt_3648_0, overwrite_a);
@@ -34130,12 +34147,12 @@ static System::Object^ zgeqrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -34179,7 +34196,7 @@ static System::Object^ zgeqrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -34483,7 +34500,7 @@ static System::Object^ sgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3692_0->Target(__site_cvt_3692_0, overwrite_a);
@@ -34493,12 +34510,12 @@ static System::Object^ sgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -34542,7 +34559,7 @@ static System::Object^ sgerqf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -34846,7 +34863,7 @@ static System::Object^ dgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3735_0->Target(__site_cvt_3735_0, overwrite_a);
@@ -34856,12 +34873,12 @@ static System::Object^ dgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -34905,7 +34922,7 @@ static System::Object^ dgerqf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -35209,7 +35226,7 @@ static System::Object^ cgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3778_0->Target(__site_cvt_3778_0, overwrite_a);
@@ -35219,12 +35236,12 @@ static System::Object^ cgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -35268,7 +35285,7 @@ static System::Object^ cgerqf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -35572,7 +35589,7 @@ static System::Object^ zgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3821_0->Target(__site_cvt_3821_0, overwrite_a);
@@ -35582,12 +35599,12 @@ static System::Object^ zgerqf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(tau) == nullptr) {
     __pyx_v_tau = tau;
   } else {
-    __pyx_v_tau = ((System::Object^)Py_None);
+    __pyx_v_tau = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -35631,7 +35648,7 @@ static System::Object^ zgerqf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_3 = (__pyx_v_lwork != Py_None);
+  __pyx_t_3 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_3) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -35954,7 +35971,7 @@ static System::Object^ sgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_3866_0_1->Target(__site_cvt_3866_0_1, overwrite_a);
@@ -35964,17 +35981,17 @@ static System::Object^ sgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(u) == nullptr) {
     __pyx_v_u = u;
   } else {
-    __pyx_v_u = ((System::Object^)Py_None);
+    __pyx_v_u = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vt) == nullptr) {
     __pyx_v_vt = vt;
   } else {
-    __pyx_v_vt = ((System::Object^)Py_None);
+    __pyx_v_vt = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_u_ = nullptr;
@@ -36064,7 +36081,7 @@ static System::Object^ sgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_7 = (__pyx_v_lwork != Py_None);
+  __pyx_t_7 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_7) {
     __pyx_t_2 = __pyx_v_lwork;
   } else {
@@ -36118,7 +36135,7 @@ static System::Object^ sgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     iwork_shape[0] = 8 * minmn
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -36138,7 +36155,7 @@ static System::Object^ sgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not ((compute_uv == 0) or (compute_uv == 1)):
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -36557,10 +36574,10 @@ static System::Object^ sgesv(System::Object^ a, System::Object^ b, [InteropServi
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_a = a;
   __pyx_v_b = b;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
@@ -36576,7 +36593,7 @@ static System::Object^ sgesv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -36816,7 +36833,7 @@ static System::Object^ sgesv(System::Object^ a, System::Object^ b, [InteropServi
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -36865,9 +36882,9 @@ static System::Object^ sgesv(System::Object^ a, System::Object^ b, [InteropServi
  *         piv_[i] -= 1
  *     return (a_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":3979
  *     fc.sgesv(&n, &nrhs, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(b_), &n, &info)
@@ -36876,16 +36893,16 @@ static System::Object^ sgesv(System::Object^ a, System::Object^ b, [InteropServi
  *     return (a_, piv_, b_, info,)
  * def dgesv(object a, object b, bint overwrite_a=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":3980
@@ -36940,10 +36957,10 @@ static System::Object^ dgesv(System::Object^ a, System::Object^ b, [InteropServi
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_a = a;
   __pyx_v_b = b;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
@@ -36959,7 +36976,7 @@ static System::Object^ dgesv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -37199,7 +37216,7 @@ static System::Object^ dgesv(System::Object^ a, System::Object^ b, [InteropServi
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -37248,9 +37265,9 @@ static System::Object^ dgesv(System::Object^ a, System::Object^ b, [InteropServi
  *         piv_[i] -= 1
  *     return (a_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4028
  *     fc.dgesv(&n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &n, &info)
@@ -37259,16 +37276,16 @@ static System::Object^ dgesv(System::Object^ a, System::Object^ b, [InteropServi
  *     return (a_, piv_, b_, info,)
  * def cgesv(object a, object b, bint overwrite_a=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4029
@@ -37323,10 +37340,10 @@ static System::Object^ cgesv(System::Object^ a, System::Object^ b, [InteropServi
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_a = a;
   __pyx_v_b = b;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
@@ -37342,7 +37359,7 @@ static System::Object^ cgesv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -37582,7 +37599,7 @@ static System::Object^ cgesv(System::Object^ a, System::Object^ b, [InteropServi
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -37631,9 +37648,9 @@ static System::Object^ cgesv(System::Object^ a, System::Object^ b, [InteropServi
  *         piv_[i] -= 1
  *     return (a_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4077
  *     fc.cgesv(&n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(b_), &n, &info)
@@ -37642,16 +37659,16 @@ static System::Object^ cgesv(System::Object^ a, System::Object^ b, [InteropServi
  *     return (a_, piv_, b_, info,)
  * def zgesv(object a, object b, bint overwrite_a=False, bint overwrite_b=False, object piv=None):
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4078
@@ -37706,10 +37723,10 @@ static System::Object^ zgesv(System::Object^ a, System::Object^ b, [InteropServi
   int __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
-  int __pyx_t_5;
-  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  Py_ssize_t __pyx_t_6;
   Py_ssize_t __pyx_t_7;
-  Py_ssize_t __pyx_t_8;
+  int __pyx_t_8;
   __pyx_v_a = a;
   __pyx_v_b = b;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
@@ -37725,7 +37742,7 @@ static System::Object^ zgesv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -37965,7 +37982,7 @@ static System::Object^ zgesv(System::Object^ a, System::Object^ b, [InteropServi
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_5 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -38014,9 +38031,9 @@ static System::Object^ zgesv(System::Object^ a, System::Object^ b, [InteropServi
  *         piv_[i] -= 1
  *     return (a_, piv_, b_, info,)
  */
-  __pyx_t_6 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
-    __pyx_v_i = __pyx_t_7;
+  __pyx_t_5 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+    __pyx_v_i = __pyx_t_6;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4126
  *     fc.zgesv(&n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info)
@@ -38025,16 +38042,16 @@ static System::Object^ zgesv(System::Object^ a, System::Object^ b, [InteropServi
  *     return (a_, piv_, b_, info,)
  * 
  */
-    __pyx_t_8 = __pyx_v_i;
-    __pyx_t_5 = -1;
-    if (__pyx_t_8 < 0) {
-      __pyx_t_8 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_8 < 0)) __pyx_t_5 = 0;
-    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_5 = 0;
-    if (unlikely(__pyx_t_5 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_5);
+    __pyx_t_7 = __pyx_v_i;
+    __pyx_t_8 = -1;
+    if (__pyx_t_7 < 0) {
+      __pyx_t_7 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_7 < 0)) __pyx_t_8 = 0;
+    } else if (unlikely(__pyx_t_7 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
+    if (unlikely(__pyx_t_8 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_8);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_7, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4127
@@ -38088,10 +38105,10 @@ static System::Object^ sgetrf(System::Object^ a, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
   fwi_integer_t __pyx_t_7;
-  int __pyx_t_8;
-  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
+  int __pyx_t_11;
   __pyx_v_a = a;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_4129_0->Target(__site_cvt_4129_0, overwrite_a);
@@ -38101,7 +38118,7 @@ static System::Object^ sgetrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_piv_ = nullptr;
@@ -38228,7 +38245,7 @@ static System::Object^ sgetrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_8 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -38284,9 +38301,9 @@ static System::Object^ sgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *         piv_[i] -= 1
  *     return (a_, piv_, info,)
  */
-  __pyx_t_9 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-    __pyx_v_i = __pyx_t_10;
+  __pyx_t_8 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4164
  *     fc.sgetrf(&m, &n, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
@@ -38295,16 +38312,16 @@ static System::Object^ sgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, piv_, info,)
  * def dgetrf(object a, bint overwrite_a=False, object piv=None):
  */
-    __pyx_t_11 = __pyx_v_i;
-    __pyx_t_8 = -1;
-    if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_8 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
-    if (unlikely(__pyx_t_8 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __pyx_t_10 = __pyx_v_i;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4165
@@ -38358,10 +38375,10 @@ static System::Object^ dgetrf(System::Object^ a, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
   fwi_integer_t __pyx_t_7;
-  int __pyx_t_8;
-  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
+  int __pyx_t_11;
   __pyx_v_a = a;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_4166_0->Target(__site_cvt_4166_0, overwrite_a);
@@ -38371,7 +38388,7 @@ static System::Object^ dgetrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_piv_ = nullptr;
@@ -38498,7 +38515,7 @@ static System::Object^ dgetrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_8 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -38554,9 +38571,9 @@ static System::Object^ dgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *         piv_[i] -= 1
  *     return (a_, piv_, info,)
  */
-  __pyx_t_9 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-    __pyx_v_i = __pyx_t_10;
+  __pyx_t_8 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4201
  *     fc.dgetrf(&m, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
@@ -38565,16 +38582,16 @@ static System::Object^ dgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, piv_, info,)
  * def cgetrf(object a, bint overwrite_a=False, object piv=None):
  */
-    __pyx_t_11 = __pyx_v_i;
-    __pyx_t_8 = -1;
-    if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_8 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
-    if (unlikely(__pyx_t_8 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __pyx_t_10 = __pyx_v_i;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4202
@@ -38628,10 +38645,10 @@ static System::Object^ cgetrf(System::Object^ a, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
   fwi_integer_t __pyx_t_7;
-  int __pyx_t_8;
-  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
+  int __pyx_t_11;
   __pyx_v_a = a;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_4203_0->Target(__site_cvt_4203_0, overwrite_a);
@@ -38641,7 +38658,7 @@ static System::Object^ cgetrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_piv_ = nullptr;
@@ -38768,7 +38785,7 @@ static System::Object^ cgetrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_8 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -38824,9 +38841,9 @@ static System::Object^ cgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *         piv_[i] -= 1
  *     return (a_, piv_, info,)
  */
-  __pyx_t_9 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-    __pyx_v_i = __pyx_t_10;
+  __pyx_t_8 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4238
  *     fc.cgetrf(&m, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
@@ -38835,16 +38852,16 @@ static System::Object^ cgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, piv_, info,)
  * def zgetrf(object a, bint overwrite_a=False, object piv=None):
  */
-    __pyx_t_11 = __pyx_v_i;
-    __pyx_t_8 = -1;
-    if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_8 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
-    if (unlikely(__pyx_t_8 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __pyx_t_10 = __pyx_v_i;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4239
@@ -38898,10 +38915,10 @@ static System::Object^ zgetrf(System::Object^ a, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_t_5;
   fwi_integer_t __pyx_t_6;
   fwi_integer_t __pyx_t_7;
-  int __pyx_t_8;
-  __pyx_t_5numpy_npy_intp __pyx_t_9;
+  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
-  Py_ssize_t __pyx_t_11;
+  int __pyx_t_11;
   __pyx_v_a = a;
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_4240_0->Target(__site_cvt_4240_0, overwrite_a);
@@ -38911,7 +38928,7 @@ static System::Object^ zgetrf(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(piv) == nullptr) {
     __pyx_v_piv = piv;
   } else {
-    __pyx_v_piv = ((System::Object^)Py_None);
+    __pyx_v_piv = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_piv_ = nullptr;
@@ -39038,7 +39055,7 @@ static System::Object^ zgetrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_8 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -39094,9 +39111,9 @@ static System::Object^ zgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *         piv_[i] -= 1
  *     return (a_, piv_, info,)
  */
-  __pyx_t_9 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-    __pyx_v_i = __pyx_t_10;
+  __pyx_t_8 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+    __pyx_v_i = __pyx_t_9;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4275
  *     fc.zgetrf(&m, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwi_integer_t*>np.PyArray_DATA(piv_), &info)
@@ -39105,16 +39122,16 @@ static System::Object^ zgetrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, piv_, info,)
  * 
  */
-    __pyx_t_11 = __pyx_v_i;
-    __pyx_t_8 = -1;
-    if (__pyx_t_11 < 0) {
-      __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_8 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_8 = 0;
-    if (unlikely(__pyx_t_8 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_8);
+    __pyx_t_10 = __pyx_v_i;
+    __pyx_t_11 = -1;
+    if (__pyx_t_10 < 0) {
+      __pyx_t_10 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_11 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_11 = 0;
+    if (unlikely(__pyx_t_11 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_11);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4276
@@ -39169,17 +39186,17 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
   System::Object^ __pyx_t_3 = nullptr;
   fwi_integer_t __pyx_t_4;
   int __pyx_t_5;
-  int __pyx_t_6;
-  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
+  int __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_lu) == nullptr) {
     __pyx_v_overwrite_lu = __site_cvt_4278_0->Target(__site_cvt_4278_0, overwrite_lu);
@@ -39218,7 +39235,7 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -39246,7 +39263,7 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     info = 0
  *     if not (lu_shape[0] == lu_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -39378,7 +39395,7 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_6 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -39418,9 +39435,9 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] += 1
  *     fc.sgetri(&n, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4317
  *         raise ValueError("(n == piv.shape[0]) not satisifed")
@@ -39429,16 +39446,16 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     fc.sgetri(&n, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_9 = __pyx_v_i;
-    __pyx_t_6 = -1;
-    if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_9 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+    __pyx_t_8 = __pyx_v_i;
+    __pyx_t_9 = -1;
+    if (__pyx_t_8 < 0) {
+      __pyx_t_8 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4318
@@ -39457,9 +39474,9 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] -= 1
  *     return (lu_, info,)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4320
  *     fc.sgetri(&n, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
@@ -39469,13 +39486,13 @@ static System::Object^ sgetri(System::Object^ lu, System::Object^ piv, [InteropS
  * def dgetri(object lu, object piv, object lwork=None, bint overwrite_lu=False):
  */
     __pyx_t_10 = __pyx_v_i;
-    __pyx_t_6 = -1;
+    __pyx_t_9 = -1;
     if (__pyx_t_10 < 0) {
       __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
@@ -39532,17 +39549,17 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
   System::Object^ __pyx_t_3 = nullptr;
   fwi_integer_t __pyx_t_4;
   int __pyx_t_5;
-  int __pyx_t_6;
-  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
+  int __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_lu) == nullptr) {
     __pyx_v_overwrite_lu = __site_cvt_4322_0->Target(__site_cvt_4322_0, overwrite_lu);
@@ -39581,7 +39598,7 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -39609,7 +39626,7 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     info = 0
  *     if not (lu_shape[0] == lu_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -39741,7 +39758,7 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_6 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -39781,9 +39798,9 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] += 1
  *     fc.dgetri(&n, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4361
  *         raise ValueError("(n == piv.shape[0]) not satisifed")
@@ -39792,16 +39809,16 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     fc.dgetri(&n, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_9 = __pyx_v_i;
-    __pyx_t_6 = -1;
-    if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_9 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+    __pyx_t_8 = __pyx_v_i;
+    __pyx_t_9 = -1;
+    if (__pyx_t_8 < 0) {
+      __pyx_t_8 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4362
@@ -39820,9 +39837,9 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] -= 1
  *     return (lu_, info,)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4364
  *     fc.dgetri(&n, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
@@ -39832,13 +39849,13 @@ static System::Object^ dgetri(System::Object^ lu, System::Object^ piv, [InteropS
  * def cgetri(object lu, object piv, object lwork=None, bint overwrite_lu=False):
  */
     __pyx_t_10 = __pyx_v_i;
-    __pyx_t_6 = -1;
+    __pyx_t_9 = -1;
     if (__pyx_t_10 < 0) {
       __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
@@ -39895,17 +39912,17 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
   System::Object^ __pyx_t_3 = nullptr;
   fwi_integer_t __pyx_t_4;
   int __pyx_t_5;
-  int __pyx_t_6;
-  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
+  int __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_lu) == nullptr) {
     __pyx_v_overwrite_lu = __site_cvt_4366_0->Target(__site_cvt_4366_0, overwrite_lu);
@@ -39944,7 +39961,7 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -39972,7 +39989,7 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     info = 0
  *     if not (lu_shape[0] == lu_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CFLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -40104,7 +40121,7 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_6 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -40144,9 +40161,9 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] += 1
  *     fc.cgetri(&n, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4405
  *         raise ValueError("(n == piv.shape[0]) not satisifed")
@@ -40155,16 +40172,16 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     fc.cgetri(&n, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_9 = __pyx_v_i;
-    __pyx_t_6 = -1;
-    if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_9 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+    __pyx_t_8 = __pyx_v_i;
+    __pyx_t_9 = -1;
+    if (__pyx_t_8 < 0) {
+      __pyx_t_8 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4406
@@ -40183,9 +40200,9 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] -= 1
  *     return (lu_, info,)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4408
  *     fc.cgetri(&n, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
@@ -40195,13 +40212,13 @@ static System::Object^ cgetri(System::Object^ lu, System::Object^ piv, [InteropS
  * def zgetri(object lu, object piv, object lwork=None, bint overwrite_lu=False):
  */
     __pyx_t_10 = __pyx_v_i;
-    __pyx_t_6 = -1;
+    __pyx_t_9 = -1;
     if (__pyx_t_10 < 0) {
       __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
@@ -40258,17 +40275,17 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
   System::Object^ __pyx_t_3 = nullptr;
   fwi_integer_t __pyx_t_4;
   int __pyx_t_5;
-  int __pyx_t_6;
-  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
-  Py_ssize_t __pyx_t_9;
+  int __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_lu) == nullptr) {
     __pyx_v_overwrite_lu = __site_cvt_4410_0->Target(__site_cvt_4410_0, overwrite_lu);
@@ -40307,7 +40324,7 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -40335,7 +40352,7 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     info = 0
  *     if not (lu_shape[0] == lu_shape[1]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -40467,7 +40484,7 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_6 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -40507,9 +40524,9 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] += 1
  *     fc.zgetri(&n, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4449
  *         raise ValueError("(n == piv.shape[0]) not satisifed")
@@ -40518,16 +40535,16 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *     fc.zgetri(&n, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_9 = __pyx_v_i;
-    __pyx_t_6 = -1;
-    if (__pyx_t_9 < 0) {
-      __pyx_t_9 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_9 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+    __pyx_t_8 = __pyx_v_i;
+    __pyx_t_9 = -1;
+    if (__pyx_t_8 < 0) {
+      __pyx_t_8 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_8 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_8 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4450
@@ -40546,9 +40563,9 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  *         piv_[i] -= 1
  *     return (lu_, info,)
  */
-  __pyx_t_7 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-    __pyx_v_i = __pyx_t_8;
+  __pyx_t_6 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+    __pyx_v_i = __pyx_t_7;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4452
  *     fc.zgetri(&n, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
@@ -40558,13 +40575,13 @@ static System::Object^ zgetri(System::Object^ lu, System::Object^ piv, [InteropS
  * 
  */
     __pyx_t_10 = __pyx_v_i;
-    __pyx_t_6 = -1;
+    __pyx_t_9 = -1;
     if (__pyx_t_10 < 0) {
       __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_6 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_6 = 0;
-    if (unlikely(__pyx_t_6 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      if (unlikely(__pyx_t_10 < 0)) __pyx_t_9 = 0;
+    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_9 = 0;
+    if (unlikely(__pyx_t_9 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_9);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) -= 1;
   }
@@ -40625,10 +40642,10 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
   int __pyx_t_4;
   int __pyx_t_5;
   int __pyx_t_6;
-  int __pyx_t_7;
-  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
+  int __pyx_t_10;
   Py_ssize_t __pyx_t_11;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
@@ -40873,7 +40890,7 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -41013,9 +41030,9 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] += 1
  *     fc.sgetrs(fw_trans_f, &n, &nrhs, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(b_), &n, &info, 1)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4505
  *         raise ValueError("len(trans_f) != 1")
@@ -41024,16 +41041,16 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
  *     fc.sgetrs(fw_trans_f, &n, &nrhs, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(b_), &n, &info, 1)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_10 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_9 = __pyx_v_i;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4506
@@ -41052,9 +41069,9 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4508
  *     fc.sgetrs(fw_trans_f, &n, &nrhs, <fwr_real_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_real_t*>np.PyArray_DATA(b_), &n, &info, 1)
@@ -41064,13 +41081,13 @@ static System::Object^ sgetrs(System::Object^ lu, System::Object^ piv, System::O
  * def dgetrs(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
  */
     __pyx_t_11 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_10 = -1;
     if (__pyx_t_11 < 0) {
       __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
   }
@@ -41131,10 +41148,10 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
   int __pyx_t_4;
   int __pyx_t_5;
   int __pyx_t_6;
-  int __pyx_t_7;
-  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
+  int __pyx_t_10;
   Py_ssize_t __pyx_t_11;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
@@ -41379,7 +41396,7 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -41519,9 +41536,9 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] += 1
  *     fc.dgetrs(fw_trans_f, &n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &n, &info, 1)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4560
  *         raise ValueError("len(trans_f) != 1")
@@ -41530,16 +41547,16 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
  *     fc.dgetrs(fw_trans_f, &n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &n, &info, 1)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_10 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_9 = __pyx_v_i;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4561
@@ -41558,9 +41575,9 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4563
  *     fc.dgetrs(fw_trans_f, &n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwr_dbl_t*>np.PyArray_DATA(b_), &n, &info, 1)
@@ -41570,13 +41587,13 @@ static System::Object^ dgetrs(System::Object^ lu, System::Object^ piv, System::O
  * def cgetrs(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
  */
     __pyx_t_11 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_10 = -1;
     if (__pyx_t_11 < 0) {
       __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
   }
@@ -41637,10 +41654,10 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
   int __pyx_t_4;
   int __pyx_t_5;
   int __pyx_t_6;
-  int __pyx_t_7;
-  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
+  int __pyx_t_10;
   Py_ssize_t __pyx_t_11;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
@@ -41885,7 +41902,7 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -42025,9 +42042,9 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] += 1
  *     fc.cgetrs(fw_trans_f, &n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4615
  *         raise ValueError("len(trans_f) != 1")
@@ -42036,16 +42053,16 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
  *     fc.cgetrs(fw_trans_f, &n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_10 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_9 = __pyx_v_i;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4616
@@ -42064,9 +42081,9 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4618
  *     fc.cgetrs(fw_trans_f, &n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
@@ -42076,13 +42093,13 @@ static System::Object^ cgetrs(System::Object^ lu, System::Object^ piv, System::O
  * def zgetrs(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
  */
     __pyx_t_11 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_10 = -1;
     if (__pyx_t_11 < 0) {
       __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
   }
@@ -42143,10 +42160,10 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
   int __pyx_t_4;
   int __pyx_t_5;
   int __pyx_t_6;
-  int __pyx_t_7;
-  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  __pyx_t_5numpy_npy_intp __pyx_t_7;
+  Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
-  Py_ssize_t __pyx_t_10;
+  int __pyx_t_10;
   Py_ssize_t __pyx_t_11;
   __pyx_v_lu = lu;
   __pyx_v_piv = piv;
@@ -42391,7 +42408,7 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_3), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -42531,9 +42548,9 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] += 1
  *     fc.zgetrs(fw_trans_f, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4670
  *         raise ValueError("len(trans_f) != 1")
@@ -42542,16 +42559,16 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
  *     fc.zgetrs(fw_trans_f, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
  *     for i in range(piv_shape[0]):
  */
-    __pyx_t_10 = __pyx_v_i;
-    __pyx_t_7 = -1;
-    if (__pyx_t_10 < 0) {
-      __pyx_t_10 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_10 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+    __pyx_t_9 = __pyx_v_i;
+    __pyx_t_10 = -1;
+    if (__pyx_t_9 < 0) {
+      __pyx_t_9 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_9 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4671
@@ -42570,9 +42587,9 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
  *         piv_[i] -= 1
  *     return (b_, info,)
  */
-  __pyx_t_8 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
-    __pyx_v_i = __pyx_t_9;
+  __pyx_t_7 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+    __pyx_v_i = __pyx_t_8;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4673
  *     fc.zgetrs(fw_trans_f, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(lu_), &n, <fwi_integer_t*>np.PyArray_DATA(piv_), <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
@@ -42582,13 +42599,13 @@ static System::Object^ zgetrs(System::Object^ lu, System::Object^ piv, System::O
  * 
  */
     __pyx_t_11 = __pyx_v_i;
-    __pyx_t_7 = -1;
+    __pyx_t_10 = -1;
     if (__pyx_t_11 < 0) {
       __pyx_t_11 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_11 < 0)) __pyx_t_7 = 0;
-    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_7 = 0;
-    if (unlikely(__pyx_t_7 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_7);
+      if (unlikely(__pyx_t_11 < 0)) __pyx_t_10 = 0;
+    } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_piv_)) __pyx_t_10 = 0;
+    if (unlikely(__pyx_t_10 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_10);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_piv_) -= 1;
   }
@@ -42688,7 +42705,7 @@ static System::Object^ sggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_4677_0_2->Target(__site_cvt_4677_0_2, overwrite_a);
@@ -42703,32 +42720,32 @@ static System::Object^ sggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alphar) == nullptr) {
     __pyx_v_alphar = alphar;
   } else {
-    __pyx_v_alphar = ((System::Object^)Py_None);
+    __pyx_v_alphar = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(alphai) == nullptr) {
     __pyx_v_alphai = alphai;
   } else {
-    __pyx_v_alphai = ((System::Object^)Py_None);
+    __pyx_v_alphai = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -42832,7 +42849,7 @@ static System::Object^ sggev(System::Object^ a, System::Object^ b, [InteropServi
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -43801,18 +43818,18 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
-  int __pyx_t_3;
-  System::Object^ __pyx_t_4 = nullptr;
-  fwi_integer_t __pyx_t_5;
+  System::Object^ __pyx_t_3 = nullptr;
+  fwi_integer_t __pyx_t_4;
+  System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  System::Object^ __pyx_t_7 = nullptr;
-  fwi_integer_t __pyx_t_8;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
-  System::Object^ __pyx_t_11 = nullptr;
-  __pyx_t_5numpy_npy_intp __pyx_t_12;
+  System::Object^ __pyx_t_10 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  Py_ssize_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
-  Py_ssize_t __pyx_t_14;
+  int __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   __pyx_v_a = a;
   __pyx_v_piv = piv;
@@ -43824,7 +43841,7 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(k2) == nullptr) {
     __pyx_v_k2 = k2;
   } else {
-    __pyx_v_k2 = ((System::Object^)Py_None);
+    __pyx_v_k2 = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(off) == nullptr) {
     __pyx_v_off = __site_cvt_4814_0_1->Target(__site_cvt_4814_0_1, off);
@@ -43856,7 +43873,7 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_2 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -43870,17 +43887,17 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
  *     nrows = a_shape[0]
  */
-  __pyx_t_3 = (__pyx_v_k2 != Py_None);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (__pyx_v_k2 != nullptr);
+  if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_k2;
   } else {
-    __pyx_t_4 = ((__pyx_v_piv_shape[0]) - 1);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_t_4 = nullptr;
+    __pyx_t_3 = ((__pyx_v_piv_shape[0]) - 1);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = nullptr;
   }
-  __pyx_t_5 = __site_cvt_fwi_integer_t_4838_10->Target(__site_cvt_fwi_integer_t_4838_10, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_4838_10->Target(__site_cvt_fwi_integer_t_4838_10, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_v_k2_ = __pyx_t_5;
+  __pyx_v_k2_ = __pyx_t_4;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4839
  *     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
@@ -43910,17 +43927,17 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  */
   __pyx_t_1 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_6 = __pyx_v_inc;
-  __pyx_t_7 = __site_call1_4841_35->Target(__site_call1_4841_35, __pyx_context, __pyx_t_4, __pyx_t_6);
-  __pyx_t_4 = nullptr;
-  __pyx_t_6 = nullptr;
-  __pyx_t_6 = __site_op_floordiv_4841_29->Target(__site_op_floordiv_4841_29, __pyx_t_1, __pyx_t_7);
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "abs");
+  __pyx_t_5 = __pyx_v_inc;
+  __pyx_t_6 = __site_call1_4841_35->Target(__site_call1_4841_35, __pyx_context, __pyx_t_3, __pyx_t_5);
+  __pyx_t_3 = nullptr;
+  __pyx_t_5 = nullptr;
+  __pyx_t_5 = __site_op_floordiv_4841_29->Target(__site_op_floordiv_4841_29, __pyx_t_1, __pyx_t_6);
   __pyx_t_1 = nullptr;
-  __pyx_t_7 = nullptr;
-  __pyx_t_8 = __site_cvt_fwi_integer_t_4841_29->Target(__site_cvt_fwi_integer_t_4841_29, __pyx_t_6);
   __pyx_t_6 = nullptr;
-  __pyx_v_m = __pyx_t_8;
+  __pyx_t_7 = __site_cvt_fwi_integer_t_4841_29->Target(__site_cvt_fwi_integer_t_4841_29, __pyx_t_5);
+  __pyx_t_5 = nullptr;
+  __pyx_v_m = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4842
  *     nrows = a_shape[0]
@@ -43929,8 +43946,8 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  *     if not (0 <= k1):
  */
-  __pyx_t_3 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4843
  *     m = (piv_shape[0] - off) // abs(inc)
@@ -43939,11 +43956,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= k1):
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4843_24->Target(__site_call1_4843_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4843_24->Target(__site_call1_4843_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -43955,8 +43972,8 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  */
-  __pyx_t_3 = (!(0 <= __pyx_v_k1));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!(0 <= __pyx_v_k1));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4845
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
@@ -43965,11 +43982,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4845_24->Target(__site_call1_4845_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4845_24->Target(__site_call1_4845_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L6;
   }
   __pyx_L6:;
@@ -43981,15 +43998,15 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  *     if not ((off >= 0) and (off < piv_shape[0])):
  */
-  __pyx_t_3 = (__pyx_v_k1 <= __pyx_v_k2_);
-  if (__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_k1 <= __pyx_v_k2_);
+  if (__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4847
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
@@ -43998,11 +44015,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((off >= 0) and (off < piv_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4847_24->Target(__site_call1_4847_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4847_24->Target(__site_call1_4847_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -44014,15 +44031,15 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  *     if not ((inc > 0) or (inc < 0)):
  */
-  __pyx_t_3 = (__pyx_v_off >= 0);
-  if (__pyx_t_3) {
-    __pyx_t_10 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
-    __pyx_t_9 = __pyx_t_10;
+  __pyx_t_2 = (__pyx_v_off >= 0);
+  if (__pyx_t_2) {
+    __pyx_t_9 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
+    __pyx_t_8 = __pyx_t_9;
   } else {
-    __pyx_t_9 = __pyx_t_3;
+    __pyx_t_8 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_9);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_8);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4849
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
@@ -44031,11 +44048,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((inc > 0) or (inc < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4849_24->Target(__site_call1_4849_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4849_24->Target(__site_call1_4849_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L8;
   }
   __pyx_L8:;
@@ -44047,15 +44064,15 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  */
-  __pyx_t_3 = (__pyx_v_inc > 0);
-  if (!__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_inc < 0);
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_inc > 0);
+  if (!__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_inc < 0);
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4851
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
@@ -44064,11 +44081,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4851_24->Target(__site_call1_4851_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4851_24->Target(__site_call1_4851_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -44080,23 +44097,23 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  *     n = a_shape[1]
  */
-  __pyx_t_7 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_6 = (__pyx_v_m - 1);
+  __pyx_t_6 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
+  __pyx_t_5 = (__pyx_v_m - 1);
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_4 = __pyx_v_inc;
-  __pyx_t_11 = __site_call1_4852_49->Target(__site_call1_4852_49, __pyx_context, __pyx_t_1, __pyx_t_4);
+  __pyx_t_3 = __pyx_v_inc;
+  __pyx_t_10 = __site_call1_4852_49->Target(__site_call1_4852_49, __pyx_context, __pyx_t_1, __pyx_t_3);
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_op_mul_4852_44->Target(__site_op_mul_4852_44, __pyx_t_6, __pyx_t_11);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_mul_4852_44->Target(__site_op_mul_4852_44, __pyx_t_5, __pyx_t_10);
+  __pyx_t_5 = nullptr;
+  __pyx_t_10 = nullptr;
+  __pyx_t_10 = __site_op_gt_4852_33->Target(__site_op_gt_4852_33, __pyx_t_6, __pyx_t_3);
   __pyx_t_6 = nullptr;
-  __pyx_t_11 = nullptr;
-  __pyx_t_11 = __site_op_gt_4852_33->Target(__site_op_gt_4852_33, __pyx_t_7, __pyx_t_4);
-  __pyx_t_7 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_3 = __site_istrue_4852_33->Target(__site_istrue_4852_33, __pyx_t_11);
-  __pyx_t_11 = nullptr;
-  __pyx_t_10 = (!__pyx_t_3);
-  if (__pyx_t_10) {
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = __site_istrue_4852_33->Target(__site_istrue_4852_33, __pyx_t_10);
+  __pyx_t_10 = nullptr;
+  __pyx_t_9 = (!__pyx_t_2);
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4853
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
@@ -44105,11 +44122,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     n = a_shape[1]
  *     if nrows != a_shape[0]:
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4853_24->Target(__site_call1_4853_24, __pyx_context, __pyx_t_11, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4853_24->Target(__site_call1_4853_24, __pyx_context, __pyx_t_10, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L10;
   }
   __pyx_L10:;
@@ -44130,8 +44147,8 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_10 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
-  if (__pyx_t_10) {
+  __pyx_t_9 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4856
  *     n = a_shape[1]
@@ -44140,11 +44157,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_11 = __site_call1_4856_24->Target(__site_call1_4856_24, __pyx_context, __pyx_t_4, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
-    __pyx_t_4 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_11, nullptr, nullptr);
-    __pyx_t_11 = nullptr;
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_10 = __site_call1_4856_24->Target(__site_call1_4856_24, __pyx_context, __pyx_t_3, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_10, nullptr, nullptr);
+    __pyx_t_10 = nullptr;
     goto __pyx_L11;
   }
   __pyx_L11:;
@@ -44156,12 +44173,12 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     for i in range(piv_shape[0]):
  */
-  __pyx_t_10 = (0 <= __pyx_v_n);
-  if (__pyx_t_10) {
-    __pyx_t_10 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_9 = (0 <= __pyx_v_n);
+  if (__pyx_t_9) {
+    __pyx_t_9 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4858
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
@@ -44170,11 +44187,11 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     for i in range(piv_shape[0]):
  *         piv_[i] += 1
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4858_24->Target(__site_call1_4858_24, __pyx_context, __pyx_t_11, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4858_24->Target(__site_call1_4858_24, __pyx_context, __pyx_t_10, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L12;
   }
   __pyx_L12:;
@@ -44186,9 +44203,9 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] += 1
  *     k1 += 1
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4860
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
@@ -44197,16 +44214,16 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     k1 += 1
  *     k2_ += 1
  */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_2 = -1;
-    if (__pyx_t_14 < 0) {
-      __pyx_t_14 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_14 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_14 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __pyx_t_13 = __pyx_v_i;
+    __pyx_t_14 = -1;
+    if (__pyx_t_13 < 0) {
+      __pyx_t_13 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_14, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4861
@@ -44243,9 +44260,9 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] -= 1
  *     return a_
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4865
  *     fc.slaswp(&n, <fwr_real_t*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc)
@@ -44255,13 +44272,13 @@ static System::Object^ slaswp(System::Object^ a, System::Object^ piv, [InteropSe
  * def dlaswp(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
  */
     __pyx_t_15 = __pyx_v_i;
-    __pyx_t_2 = -1;
+    __pyx_t_14 = -1;
     if (__pyx_t_15 < 0) {
       __pyx_t_15 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_15 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_15, __pyx_bstride_0_piv_) -= 1;
   }
@@ -44313,18 +44330,18 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
-  int __pyx_t_3;
-  System::Object^ __pyx_t_4 = nullptr;
-  fwi_integer_t __pyx_t_5;
+  System::Object^ __pyx_t_3 = nullptr;
+  fwi_integer_t __pyx_t_4;
+  System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  System::Object^ __pyx_t_7 = nullptr;
-  fwi_integer_t __pyx_t_8;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
-  System::Object^ __pyx_t_11 = nullptr;
-  __pyx_t_5numpy_npy_intp __pyx_t_12;
+  System::Object^ __pyx_t_10 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  Py_ssize_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
-  Py_ssize_t __pyx_t_14;
+  int __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   __pyx_v_a = a;
   __pyx_v_piv = piv;
@@ -44336,7 +44353,7 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(k2) == nullptr) {
     __pyx_v_k2 = k2;
   } else {
-    __pyx_v_k2 = ((System::Object^)Py_None);
+    __pyx_v_k2 = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(off) == nullptr) {
     __pyx_v_off = __site_cvt_4867_0_1->Target(__site_cvt_4867_0_1, off);
@@ -44368,7 +44385,7 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_2 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -44382,17 +44399,17 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
  *     nrows = a_shape[0]
  */
-  __pyx_t_3 = (__pyx_v_k2 != Py_None);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (__pyx_v_k2 != nullptr);
+  if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_k2;
   } else {
-    __pyx_t_4 = ((__pyx_v_piv_shape[0]) - 1);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_t_4 = nullptr;
+    __pyx_t_3 = ((__pyx_v_piv_shape[0]) - 1);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = nullptr;
   }
-  __pyx_t_5 = __site_cvt_fwi_integer_t_4891_10->Target(__site_cvt_fwi_integer_t_4891_10, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_4891_10->Target(__site_cvt_fwi_integer_t_4891_10, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_v_k2_ = __pyx_t_5;
+  __pyx_v_k2_ = __pyx_t_4;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4892
  *     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
@@ -44422,17 +44439,17 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  */
   __pyx_t_1 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_6 = __pyx_v_inc;
-  __pyx_t_7 = __site_call1_4894_35->Target(__site_call1_4894_35, __pyx_context, __pyx_t_4, __pyx_t_6);
-  __pyx_t_4 = nullptr;
-  __pyx_t_6 = nullptr;
-  __pyx_t_6 = __site_op_floordiv_4894_29->Target(__site_op_floordiv_4894_29, __pyx_t_1, __pyx_t_7);
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "abs");
+  __pyx_t_5 = __pyx_v_inc;
+  __pyx_t_6 = __site_call1_4894_35->Target(__site_call1_4894_35, __pyx_context, __pyx_t_3, __pyx_t_5);
+  __pyx_t_3 = nullptr;
+  __pyx_t_5 = nullptr;
+  __pyx_t_5 = __site_op_floordiv_4894_29->Target(__site_op_floordiv_4894_29, __pyx_t_1, __pyx_t_6);
   __pyx_t_1 = nullptr;
-  __pyx_t_7 = nullptr;
-  __pyx_t_8 = __site_cvt_fwi_integer_t_4894_29->Target(__site_cvt_fwi_integer_t_4894_29, __pyx_t_6);
   __pyx_t_6 = nullptr;
-  __pyx_v_m = __pyx_t_8;
+  __pyx_t_7 = __site_cvt_fwi_integer_t_4894_29->Target(__site_cvt_fwi_integer_t_4894_29, __pyx_t_5);
+  __pyx_t_5 = nullptr;
+  __pyx_v_m = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4895
  *     nrows = a_shape[0]
@@ -44441,8 +44458,8 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  *     if not (0 <= k1):
  */
-  __pyx_t_3 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4896
  *     m = (piv_shape[0] - off) // abs(inc)
@@ -44451,11 +44468,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= k1):
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4896_24->Target(__site_call1_4896_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4896_24->Target(__site_call1_4896_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -44467,8 +44484,8 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  */
-  __pyx_t_3 = (!(0 <= __pyx_v_k1));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!(0 <= __pyx_v_k1));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4898
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
@@ -44477,11 +44494,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4898_24->Target(__site_call1_4898_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4898_24->Target(__site_call1_4898_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L6;
   }
   __pyx_L6:;
@@ -44493,15 +44510,15 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  *     if not ((off >= 0) and (off < piv_shape[0])):
  */
-  __pyx_t_3 = (__pyx_v_k1 <= __pyx_v_k2_);
-  if (__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_k1 <= __pyx_v_k2_);
+  if (__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4900
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
@@ -44510,11 +44527,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((off >= 0) and (off < piv_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4900_24->Target(__site_call1_4900_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4900_24->Target(__site_call1_4900_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -44526,15 +44543,15 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  *     if not ((inc > 0) or (inc < 0)):
  */
-  __pyx_t_3 = (__pyx_v_off >= 0);
-  if (__pyx_t_3) {
-    __pyx_t_10 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
-    __pyx_t_9 = __pyx_t_10;
+  __pyx_t_2 = (__pyx_v_off >= 0);
+  if (__pyx_t_2) {
+    __pyx_t_9 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
+    __pyx_t_8 = __pyx_t_9;
   } else {
-    __pyx_t_9 = __pyx_t_3;
+    __pyx_t_8 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_9);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_8);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4902
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
@@ -44543,11 +44560,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((inc > 0) or (inc < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4902_24->Target(__site_call1_4902_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4902_24->Target(__site_call1_4902_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L8;
   }
   __pyx_L8:;
@@ -44559,15 +44576,15 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  */
-  __pyx_t_3 = (__pyx_v_inc > 0);
-  if (!__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_inc < 0);
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_inc > 0);
+  if (!__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_inc < 0);
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4904
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
@@ -44576,11 +44593,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4904_24->Target(__site_call1_4904_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4904_24->Target(__site_call1_4904_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -44592,23 +44609,23 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  *     n = a_shape[1]
  */
-  __pyx_t_7 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_6 = (__pyx_v_m - 1);
+  __pyx_t_6 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
+  __pyx_t_5 = (__pyx_v_m - 1);
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_4 = __pyx_v_inc;
-  __pyx_t_11 = __site_call1_4905_49->Target(__site_call1_4905_49, __pyx_context, __pyx_t_1, __pyx_t_4);
+  __pyx_t_3 = __pyx_v_inc;
+  __pyx_t_10 = __site_call1_4905_49->Target(__site_call1_4905_49, __pyx_context, __pyx_t_1, __pyx_t_3);
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_op_mul_4905_44->Target(__site_op_mul_4905_44, __pyx_t_6, __pyx_t_11);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_mul_4905_44->Target(__site_op_mul_4905_44, __pyx_t_5, __pyx_t_10);
+  __pyx_t_5 = nullptr;
+  __pyx_t_10 = nullptr;
+  __pyx_t_10 = __site_op_gt_4905_33->Target(__site_op_gt_4905_33, __pyx_t_6, __pyx_t_3);
   __pyx_t_6 = nullptr;
-  __pyx_t_11 = nullptr;
-  __pyx_t_11 = __site_op_gt_4905_33->Target(__site_op_gt_4905_33, __pyx_t_7, __pyx_t_4);
-  __pyx_t_7 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_3 = __site_istrue_4905_33->Target(__site_istrue_4905_33, __pyx_t_11);
-  __pyx_t_11 = nullptr;
-  __pyx_t_10 = (!__pyx_t_3);
-  if (__pyx_t_10) {
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = __site_istrue_4905_33->Target(__site_istrue_4905_33, __pyx_t_10);
+  __pyx_t_10 = nullptr;
+  __pyx_t_9 = (!__pyx_t_2);
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4906
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
@@ -44617,11 +44634,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     n = a_shape[1]
  *     if nrows != a_shape[0]:
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4906_24->Target(__site_call1_4906_24, __pyx_context, __pyx_t_11, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4906_24->Target(__site_call1_4906_24, __pyx_context, __pyx_t_10, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L10;
   }
   __pyx_L10:;
@@ -44642,8 +44659,8 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_10 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
-  if (__pyx_t_10) {
+  __pyx_t_9 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4909
  *     n = a_shape[1]
@@ -44652,11 +44669,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_11 = __site_call1_4909_24->Target(__site_call1_4909_24, __pyx_context, __pyx_t_4, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
-    __pyx_t_4 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_11, nullptr, nullptr);
-    __pyx_t_11 = nullptr;
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_10 = __site_call1_4909_24->Target(__site_call1_4909_24, __pyx_context, __pyx_t_3, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_10, nullptr, nullptr);
+    __pyx_t_10 = nullptr;
     goto __pyx_L11;
   }
   __pyx_L11:;
@@ -44668,12 +44685,12 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     for i in range(piv_shape[0]):
  */
-  __pyx_t_10 = (0 <= __pyx_v_n);
-  if (__pyx_t_10) {
-    __pyx_t_10 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_9 = (0 <= __pyx_v_n);
+  if (__pyx_t_9) {
+    __pyx_t_9 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4911
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
@@ -44682,11 +44699,11 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     for i in range(piv_shape[0]):
  *         piv_[i] += 1
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4911_24->Target(__site_call1_4911_24, __pyx_context, __pyx_t_11, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4911_24->Target(__site_call1_4911_24, __pyx_context, __pyx_t_10, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L12;
   }
   __pyx_L12:;
@@ -44698,9 +44715,9 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] += 1
  *     k1 += 1
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4913
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
@@ -44709,16 +44726,16 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     k1 += 1
  *     k2_ += 1
  */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_2 = -1;
-    if (__pyx_t_14 < 0) {
-      __pyx_t_14 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_14 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_14 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __pyx_t_13 = __pyx_v_i;
+    __pyx_t_14 = -1;
+    if (__pyx_t_13 < 0) {
+      __pyx_t_13 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_14, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4914
@@ -44755,9 +44772,9 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] -= 1
  *     return a_
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4918
  *     fc.dlaswp(&n, <fwr_dbl_t*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc)
@@ -44767,13 +44784,13 @@ static System::Object^ dlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  * def claswp(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
  */
     __pyx_t_15 = __pyx_v_i;
-    __pyx_t_2 = -1;
+    __pyx_t_14 = -1;
     if (__pyx_t_15 < 0) {
       __pyx_t_15 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_15 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_15, __pyx_bstride_0_piv_) -= 1;
   }
@@ -44825,18 +44842,18 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
-  int __pyx_t_3;
-  System::Object^ __pyx_t_4 = nullptr;
-  fwi_integer_t __pyx_t_5;
+  System::Object^ __pyx_t_3 = nullptr;
+  fwi_integer_t __pyx_t_4;
+  System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  System::Object^ __pyx_t_7 = nullptr;
-  fwi_integer_t __pyx_t_8;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
-  System::Object^ __pyx_t_11 = nullptr;
-  __pyx_t_5numpy_npy_intp __pyx_t_12;
+  System::Object^ __pyx_t_10 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  Py_ssize_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
-  Py_ssize_t __pyx_t_14;
+  int __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   __pyx_v_a = a;
   __pyx_v_piv = piv;
@@ -44848,7 +44865,7 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(k2) == nullptr) {
     __pyx_v_k2 = k2;
   } else {
-    __pyx_v_k2 = ((System::Object^)Py_None);
+    __pyx_v_k2 = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(off) == nullptr) {
     __pyx_v_off = __site_cvt_4920_0_1->Target(__site_cvt_4920_0_1, off);
@@ -44880,7 +44897,7 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_2 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -44894,17 +44911,17 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
  *     nrows = a_shape[0]
  */
-  __pyx_t_3 = (__pyx_v_k2 != Py_None);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (__pyx_v_k2 != nullptr);
+  if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_k2;
   } else {
-    __pyx_t_4 = ((__pyx_v_piv_shape[0]) - 1);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_t_4 = nullptr;
+    __pyx_t_3 = ((__pyx_v_piv_shape[0]) - 1);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = nullptr;
   }
-  __pyx_t_5 = __site_cvt_fwi_integer_t_4944_10->Target(__site_cvt_fwi_integer_t_4944_10, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_4944_10->Target(__site_cvt_fwi_integer_t_4944_10, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_v_k2_ = __pyx_t_5;
+  __pyx_v_k2_ = __pyx_t_4;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4945
  *     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
@@ -44934,17 +44951,17 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  */
   __pyx_t_1 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_6 = __pyx_v_inc;
-  __pyx_t_7 = __site_call1_4947_35->Target(__site_call1_4947_35, __pyx_context, __pyx_t_4, __pyx_t_6);
-  __pyx_t_4 = nullptr;
-  __pyx_t_6 = nullptr;
-  __pyx_t_6 = __site_op_floordiv_4947_29->Target(__site_op_floordiv_4947_29, __pyx_t_1, __pyx_t_7);
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "abs");
+  __pyx_t_5 = __pyx_v_inc;
+  __pyx_t_6 = __site_call1_4947_35->Target(__site_call1_4947_35, __pyx_context, __pyx_t_3, __pyx_t_5);
+  __pyx_t_3 = nullptr;
+  __pyx_t_5 = nullptr;
+  __pyx_t_5 = __site_op_floordiv_4947_29->Target(__site_op_floordiv_4947_29, __pyx_t_1, __pyx_t_6);
   __pyx_t_1 = nullptr;
-  __pyx_t_7 = nullptr;
-  __pyx_t_8 = __site_cvt_fwi_integer_t_4947_29->Target(__site_cvt_fwi_integer_t_4947_29, __pyx_t_6);
   __pyx_t_6 = nullptr;
-  __pyx_v_m = __pyx_t_8;
+  __pyx_t_7 = __site_cvt_fwi_integer_t_4947_29->Target(__site_cvt_fwi_integer_t_4947_29, __pyx_t_5);
+  __pyx_t_5 = nullptr;
+  __pyx_v_m = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4948
  *     nrows = a_shape[0]
@@ -44953,8 +44970,8 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  *     if not (0 <= k1):
  */
-  __pyx_t_3 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4949
  *     m = (piv_shape[0] - off) // abs(inc)
@@ -44963,11 +44980,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= k1):
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4949_24->Target(__site_call1_4949_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4949_24->Target(__site_call1_4949_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -44979,8 +44996,8 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  */
-  __pyx_t_3 = (!(0 <= __pyx_v_k1));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!(0 <= __pyx_v_k1));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4951
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
@@ -44989,11 +45006,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4951_24->Target(__site_call1_4951_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4951_24->Target(__site_call1_4951_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L6;
   }
   __pyx_L6:;
@@ -45005,15 +45022,15 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  *     if not ((off >= 0) and (off < piv_shape[0])):
  */
-  __pyx_t_3 = (__pyx_v_k1 <= __pyx_v_k2_);
-  if (__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_k1 <= __pyx_v_k2_);
+  if (__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4953
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
@@ -45022,11 +45039,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((off >= 0) and (off < piv_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4953_24->Target(__site_call1_4953_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4953_24->Target(__site_call1_4953_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -45038,15 +45055,15 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  *     if not ((inc > 0) or (inc < 0)):
  */
-  __pyx_t_3 = (__pyx_v_off >= 0);
-  if (__pyx_t_3) {
-    __pyx_t_10 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
-    __pyx_t_9 = __pyx_t_10;
+  __pyx_t_2 = (__pyx_v_off >= 0);
+  if (__pyx_t_2) {
+    __pyx_t_9 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
+    __pyx_t_8 = __pyx_t_9;
   } else {
-    __pyx_t_9 = __pyx_t_3;
+    __pyx_t_8 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_9);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_8);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4955
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
@@ -45055,11 +45072,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((inc > 0) or (inc < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_4955_24->Target(__site_call1_4955_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_4955_24->Target(__site_call1_4955_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L8;
   }
   __pyx_L8:;
@@ -45071,15 +45088,15 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  */
-  __pyx_t_3 = (__pyx_v_inc > 0);
-  if (!__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_inc < 0);
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_inc > 0);
+  if (!__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_inc < 0);
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4957
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
@@ -45088,11 +45105,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_4957_24->Target(__site_call1_4957_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_4957_24->Target(__site_call1_4957_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -45104,23 +45121,23 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  *     n = a_shape[1]
  */
-  __pyx_t_7 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_6 = (__pyx_v_m - 1);
+  __pyx_t_6 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
+  __pyx_t_5 = (__pyx_v_m - 1);
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_4 = __pyx_v_inc;
-  __pyx_t_11 = __site_call1_4958_49->Target(__site_call1_4958_49, __pyx_context, __pyx_t_1, __pyx_t_4);
+  __pyx_t_3 = __pyx_v_inc;
+  __pyx_t_10 = __site_call1_4958_49->Target(__site_call1_4958_49, __pyx_context, __pyx_t_1, __pyx_t_3);
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_op_mul_4958_44->Target(__site_op_mul_4958_44, __pyx_t_6, __pyx_t_11);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_mul_4958_44->Target(__site_op_mul_4958_44, __pyx_t_5, __pyx_t_10);
+  __pyx_t_5 = nullptr;
+  __pyx_t_10 = nullptr;
+  __pyx_t_10 = __site_op_gt_4958_33->Target(__site_op_gt_4958_33, __pyx_t_6, __pyx_t_3);
   __pyx_t_6 = nullptr;
-  __pyx_t_11 = nullptr;
-  __pyx_t_11 = __site_op_gt_4958_33->Target(__site_op_gt_4958_33, __pyx_t_7, __pyx_t_4);
-  __pyx_t_7 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_3 = __site_istrue_4958_33->Target(__site_istrue_4958_33, __pyx_t_11);
-  __pyx_t_11 = nullptr;
-  __pyx_t_10 = (!__pyx_t_3);
-  if (__pyx_t_10) {
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = __site_istrue_4958_33->Target(__site_istrue_4958_33, __pyx_t_10);
+  __pyx_t_10 = nullptr;
+  __pyx_t_9 = (!__pyx_t_2);
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4959
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
@@ -45129,11 +45146,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     n = a_shape[1]
  *     if nrows != a_shape[0]:
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4959_24->Target(__site_call1_4959_24, __pyx_context, __pyx_t_11, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4959_24->Target(__site_call1_4959_24, __pyx_context, __pyx_t_10, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L10;
   }
   __pyx_L10:;
@@ -45154,8 +45171,8 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_10 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
-  if (__pyx_t_10) {
+  __pyx_t_9 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4962
  *     n = a_shape[1]
@@ -45164,11 +45181,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_11 = __site_call1_4962_24->Target(__site_call1_4962_24, __pyx_context, __pyx_t_4, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
-    __pyx_t_4 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_11, nullptr, nullptr);
-    __pyx_t_11 = nullptr;
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_10 = __site_call1_4962_24->Target(__site_call1_4962_24, __pyx_context, __pyx_t_3, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_10, nullptr, nullptr);
+    __pyx_t_10 = nullptr;
     goto __pyx_L11;
   }
   __pyx_L11:;
@@ -45180,12 +45197,12 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     for i in range(piv_shape[0]):
  */
-  __pyx_t_10 = (0 <= __pyx_v_n);
-  if (__pyx_t_10) {
-    __pyx_t_10 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_9 = (0 <= __pyx_v_n);
+  if (__pyx_t_9) {
+    __pyx_t_9 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4964
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
@@ -45194,11 +45211,11 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     for i in range(piv_shape[0]):
  *         piv_[i] += 1
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_4964_24->Target(__site_call1_4964_24, __pyx_context, __pyx_t_11, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_4964_24->Target(__site_call1_4964_24, __pyx_context, __pyx_t_10, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L12;
   }
   __pyx_L12:;
@@ -45210,9 +45227,9 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] += 1
  *     k1 += 1
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4966
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
@@ -45221,16 +45238,16 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     k1 += 1
  *     k2_ += 1
  */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_2 = -1;
-    if (__pyx_t_14 < 0) {
-      __pyx_t_14 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_14 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_14 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __pyx_t_13 = __pyx_v_i;
+    __pyx_t_14 = -1;
+    if (__pyx_t_13 < 0) {
+      __pyx_t_13 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_14, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4967
@@ -45267,9 +45284,9 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] -= 1
  *     return a_
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4971
  *     fc.claswp(&n, <fwc_complex_t*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc)
@@ -45279,13 +45296,13 @@ static System::Object^ claswp(System::Object^ a, System::Object^ piv, [InteropSe
  * def zlaswp(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
  */
     __pyx_t_15 = __pyx_v_i;
-    __pyx_t_2 = -1;
+    __pyx_t_14 = -1;
     if (__pyx_t_15 < 0) {
       __pyx_t_15 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_15 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_15, __pyx_bstride_0_piv_) -= 1;
   }
@@ -45337,18 +45354,18 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
-  int __pyx_t_3;
-  System::Object^ __pyx_t_4 = nullptr;
-  fwi_integer_t __pyx_t_5;
+  System::Object^ __pyx_t_3 = nullptr;
+  fwi_integer_t __pyx_t_4;
+  System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  System::Object^ __pyx_t_7 = nullptr;
-  fwi_integer_t __pyx_t_8;
+  fwi_integer_t __pyx_t_7;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
-  System::Object^ __pyx_t_11 = nullptr;
-  __pyx_t_5numpy_npy_intp __pyx_t_12;
+  System::Object^ __pyx_t_10 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_11;
+  Py_ssize_t __pyx_t_12;
   Py_ssize_t __pyx_t_13;
-  Py_ssize_t __pyx_t_14;
+  int __pyx_t_14;
   Py_ssize_t __pyx_t_15;
   __pyx_v_a = a;
   __pyx_v_piv = piv;
@@ -45360,7 +45377,7 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(k2) == nullptr) {
     __pyx_v_k2 = k2;
   } else {
-    __pyx_v_k2 = ((System::Object^)Py_None);
+    __pyx_v_k2 = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(off) == nullptr) {
     __pyx_v_off = __site_cvt_4973_0_1->Target(__site_cvt_4973_0_1, off);
@@ -45392,7 +45409,7 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_piv_);
-    __pyx_t_2 = __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_piv_, ((NumpyDotNet::ndarray^)__pyx_t_1), &__Pyx_TypeInfo_int, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 1, 0, __pyx_stack);
     __pyx_bstride_0_piv_ = __pyx_bstruct_piv_->Strides[0];
     __pyx_bshape_0_piv_ = __pyx_bstruct_piv_->Shape[0];
   }
@@ -45406,17 +45423,17 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
  *     nrows = a_shape[0]
  */
-  __pyx_t_3 = (__pyx_v_k2 != Py_None);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (__pyx_v_k2 != nullptr);
+  if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_k2;
   } else {
-    __pyx_t_4 = ((__pyx_v_piv_shape[0]) - 1);
-    __pyx_t_1 = __pyx_t_4;
-    __pyx_t_4 = nullptr;
+    __pyx_t_3 = ((__pyx_v_piv_shape[0]) - 1);
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = nullptr;
   }
-  __pyx_t_5 = __site_cvt_fwi_integer_t_4997_10->Target(__site_cvt_fwi_integer_t_4997_10, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_4997_10->Target(__site_cvt_fwi_integer_t_4997_10, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_v_k2_ = __pyx_t_5;
+  __pyx_v_k2_ = __pyx_t_4;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":4998
  *     piv_ = fw_asfortranarray(piv, fwi_integer_t_enum, 1, piv_shape, False, False)
@@ -45446,17 +45463,17 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  */
   __pyx_t_1 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_6 = __pyx_v_inc;
-  __pyx_t_7 = __site_call1_5000_35->Target(__site_call1_5000_35, __pyx_context, __pyx_t_4, __pyx_t_6);
-  __pyx_t_4 = nullptr;
-  __pyx_t_6 = nullptr;
-  __pyx_t_6 = __site_op_floordiv_5000_29->Target(__site_op_floordiv_5000_29, __pyx_t_1, __pyx_t_7);
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "abs");
+  __pyx_t_5 = __pyx_v_inc;
+  __pyx_t_6 = __site_call1_5000_35->Target(__site_call1_5000_35, __pyx_context, __pyx_t_3, __pyx_t_5);
+  __pyx_t_3 = nullptr;
+  __pyx_t_5 = nullptr;
+  __pyx_t_5 = __site_op_floordiv_5000_29->Target(__site_op_floordiv_5000_29, __pyx_t_1, __pyx_t_6);
   __pyx_t_1 = nullptr;
-  __pyx_t_7 = nullptr;
-  __pyx_t_8 = __site_cvt_fwi_integer_t_5000_29->Target(__site_cvt_fwi_integer_t_5000_29, __pyx_t_6);
   __pyx_t_6 = nullptr;
-  __pyx_v_m = __pyx_t_8;
+  __pyx_t_7 = __site_cvt_fwi_integer_t_5000_29->Target(__site_cvt_fwi_integer_t_5000_29, __pyx_t_5);
+  __pyx_t_5 = nullptr;
+  __pyx_v_m = __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5001
  *     nrows = a_shape[0]
@@ -45465,8 +45482,8 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
  *     if not (0 <= k1):
  */
-  __pyx_t_3 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!((__pyx_v_piv_shape[0]) <= __pyx_v_nrows));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5002
  *     m = (piv_shape[0] - off) // abs(inc)
@@ -45475,11 +45492,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= k1):
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_5002_24->Target(__site_call1_5002_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_5002_24->Target(__site_call1_5002_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: piv.shape[0] <= nrows"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -45491,8 +45508,8 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  */
-  __pyx_t_3 = (!(0 <= __pyx_v_k1));
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!(0 <= __pyx_v_k1));
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5004
  *         raise ValueError('Condition on arguments not satisfied: piv.shape[0] <= nrows')
@@ -45501,11 +45518,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((k1 <= k2_) and (k2_ < (piv_shape[0] - off))):
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_5004_24->Target(__site_call1_5004_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_5004_24->Target(__site_call1_5004_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: 0 <= k1"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L6;
   }
   __pyx_L6:;
@@ -45517,15 +45534,15 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
  *     if not ((off >= 0) and (off < piv_shape[0])):
  */
-  __pyx_t_3 = (__pyx_v_k1 <= __pyx_v_k2_);
-  if (__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_k1 <= __pyx_v_k2_);
+  if (__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_k2_ < ((__pyx_v_piv_shape[0]) - __pyx_v_off));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5006
  *         raise ValueError('Condition on arguments not satisfied: 0 <= k1')
@@ -45534,11 +45551,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((off >= 0) and (off < piv_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_5006_24->Target(__site_call1_5006_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_5006_24->Target(__site_call1_5006_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -45550,15 +45567,15 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
  *     if not ((inc > 0) or (inc < 0)):
  */
-  __pyx_t_3 = (__pyx_v_off >= 0);
-  if (__pyx_t_3) {
-    __pyx_t_10 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
-    __pyx_t_9 = __pyx_t_10;
+  __pyx_t_2 = (__pyx_v_off >= 0);
+  if (__pyx_t_2) {
+    __pyx_t_9 = (__pyx_v_off < (__pyx_v_piv_shape[0]));
+    __pyx_t_8 = __pyx_t_9;
   } else {
-    __pyx_t_9 = __pyx_t_3;
+    __pyx_t_8 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_9);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_8);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5008
  *         raise ValueError('Condition on arguments not satisfied: (k1 <= k2) and (k2 < (piv.shape[0] - off))')
@@ -45567,11 +45584,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((inc > 0) or (inc < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  */
-    __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_5008_24->Target(__site_call1_5008_24, __pyx_context, __pyx_t_7, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
-    __pyx_t_7 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
+    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_5 = __site_call1_5008_24->Target(__site_call1_5008_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])"));
     __pyx_t_6 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
+    __pyx_t_5 = nullptr;
     goto __pyx_L8;
   }
   __pyx_L8:;
@@ -45583,15 +45600,15 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  */
-  __pyx_t_3 = (__pyx_v_inc > 0);
-  if (!__pyx_t_3) {
-    __pyx_t_9 = (__pyx_v_inc < 0);
-    __pyx_t_10 = __pyx_t_9;
+  __pyx_t_2 = (__pyx_v_inc > 0);
+  if (!__pyx_t_2) {
+    __pyx_t_8 = (__pyx_v_inc < 0);
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_3;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5010
  *         raise ValueError('Condition on arguments not satisfied: (off >= 0) and (off < piv.shape[0])')
@@ -45600,11 +45617,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not ((piv_shape[0] - off) > ((m - 1) * abs(inc))):
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  */
-    __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_5010_24->Target(__site_call1_5010_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_6 = __site_call1_5010_24->Target(__site_call1_5010_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (inc > 0) or (inc < 0)"));
+    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
-    __pyx_t_7 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -45616,23 +45633,23 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError('Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))')
  *     n = a_shape[1]
  */
-  __pyx_t_7 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
-  __pyx_t_6 = (__pyx_v_m - 1);
+  __pyx_t_6 = ((__pyx_v_piv_shape[0]) - __pyx_v_off);
+  __pyx_t_5 = (__pyx_v_m - 1);
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "abs");
-  __pyx_t_4 = __pyx_v_inc;
-  __pyx_t_11 = __site_call1_5011_49->Target(__site_call1_5011_49, __pyx_context, __pyx_t_1, __pyx_t_4);
+  __pyx_t_3 = __pyx_v_inc;
+  __pyx_t_10 = __site_call1_5011_49->Target(__site_call1_5011_49, __pyx_context, __pyx_t_1, __pyx_t_3);
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_op_mul_5011_44->Target(__site_op_mul_5011_44, __pyx_t_6, __pyx_t_11);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_mul_5011_44->Target(__site_op_mul_5011_44, __pyx_t_5, __pyx_t_10);
+  __pyx_t_5 = nullptr;
+  __pyx_t_10 = nullptr;
+  __pyx_t_10 = __site_op_gt_5011_33->Target(__site_op_gt_5011_33, __pyx_t_6, __pyx_t_3);
   __pyx_t_6 = nullptr;
-  __pyx_t_11 = nullptr;
-  __pyx_t_11 = __site_op_gt_5011_33->Target(__site_op_gt_5011_33, __pyx_t_7, __pyx_t_4);
-  __pyx_t_7 = nullptr;
-  __pyx_t_4 = nullptr;
-  __pyx_t_3 = __site_istrue_5011_33->Target(__site_istrue_5011_33, __pyx_t_11);
-  __pyx_t_11 = nullptr;
-  __pyx_t_10 = (!__pyx_t_3);
-  if (__pyx_t_10) {
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = __site_istrue_5011_33->Target(__site_istrue_5011_33, __pyx_t_10);
+  __pyx_t_10 = nullptr;
+  __pyx_t_9 = (!__pyx_t_2);
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5012
  *         raise ValueError('Condition on arguments not satisfied: (inc > 0) or (inc < 0)')
@@ -45641,11 +45658,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     n = a_shape[1]
  *     if nrows != a_shape[0]:
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_5012_24->Target(__site_call1_5012_24, __pyx_context, __pyx_t_11, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_5012_24->Target(__site_call1_5012_24, __pyx_context, __pyx_t_10, ((System::Object^)"Condition on arguments not satisfied: (piv.shape[0] - off) > ((m - 1) * abs(inc))"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L10;
   }
   __pyx_L10:;
@@ -45666,8 +45683,8 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_10 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
-  if (__pyx_t_10) {
+  __pyx_t_9 = (__pyx_v_nrows != (__pyx_v_a_shape[0]));
+  if (__pyx_t_9) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5015
  *     n = a_shape[1]
@@ -45676,11 +45693,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_11 = __site_call1_5015_24->Target(__site_call1_5015_24, __pyx_context, __pyx_t_4, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
-    __pyx_t_4 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_11, nullptr, nullptr);
-    __pyx_t_11 = nullptr;
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_10 = __site_call1_5015_24->Target(__site_call1_5015_24, __pyx_context, __pyx_t_3, ((System::Object^)"(nrows == a.shape[0]) not satisifed"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_10, nullptr, nullptr);
+    __pyx_t_10 = nullptr;
     goto __pyx_L11;
   }
   __pyx_L11:;
@@ -45692,12 +45709,12 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     for i in range(piv_shape[0]):
  */
-  __pyx_t_10 = (0 <= __pyx_v_n);
-  if (__pyx_t_10) {
-    __pyx_t_10 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_9 = (0 <= __pyx_v_n);
+  if (__pyx_t_9) {
+    __pyx_t_9 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_3 = (!__pyx_t_10);
-  if (__pyx_t_3) {
+  __pyx_t_2 = (!__pyx_t_9);
+  if (__pyx_t_2) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5017
  *         raise ValueError("(nrows == a.shape[0]) not satisifed")
@@ -45706,11 +45723,11 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     for i in range(piv_shape[0]):
  *         piv_[i] += 1
  */
-    __pyx_t_11 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_5017_24->Target(__site_call1_5017_24, __pyx_context, __pyx_t_11, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
-    __pyx_t_11 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
-    __pyx_t_4 = nullptr;
+    __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_5017_24->Target(__site_call1_5017_24, __pyx_context, __pyx_t_10, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_10 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L12;
   }
   __pyx_L12:;
@@ -45722,9 +45739,9 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] += 1
  *     k1 += 1
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5019
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
@@ -45733,16 +45750,16 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *     k1 += 1
  *     k2_ += 1
  */
-    __pyx_t_14 = __pyx_v_i;
-    __pyx_t_2 = -1;
-    if (__pyx_t_14 < 0) {
-      __pyx_t_14 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_14 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_14 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+    __pyx_t_13 = __pyx_v_i;
+    __pyx_t_14 = -1;
+    if (__pyx_t_13 < 0) {
+      __pyx_t_13 += __pyx_bshape_0_piv_;
+      if (unlikely(__pyx_t_13 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_13 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
-    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_14, __pyx_bstride_0_piv_) += 1;
+    *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_13, __pyx_bstride_0_piv_) += 1;
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5020
@@ -45779,9 +45796,9 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  *         piv_[i] -= 1
  *     return a_
  */
-  __pyx_t_12 = (__pyx_v_piv_shape[0]);
-  for (__pyx_t_13 = 0; __pyx_t_13 < __pyx_t_12; __pyx_t_13+=1) {
-    __pyx_v_i = __pyx_t_13;
+  __pyx_t_11 = (__pyx_v_piv_shape[0]);
+  for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
+    __pyx_v_i = __pyx_t_12;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":5024
  *     fc.zlaswp(&n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &nrows, &k1, &k2_, <fwi_integer_t*>np.PyArray_DATA(piv_) + off, &inc)
@@ -45791,13 +45808,13 @@ static System::Object^ zlaswp(System::Object^ a, System::Object^ piv, [InteropSe
  * 
  */
     __pyx_t_15 = __pyx_v_i;
-    __pyx_t_2 = -1;
+    __pyx_t_14 = -1;
     if (__pyx_t_15 < 0) {
       __pyx_t_15 += __pyx_bshape_0_piv_;
-      if (unlikely(__pyx_t_15 < 0)) __pyx_t_2 = 0;
-    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_2 = 0;
-    if (unlikely(__pyx_t_2 != -1)) {
-      __Pyx_RaiseBufferIndexError(__pyx_t_2);
+      if (unlikely(__pyx_t_15 < 0)) __pyx_t_14 = 0;
+    } else if (unlikely(__pyx_t_15 >= __pyx_bshape_0_piv_)) __pyx_t_14 = 0;
+    if (unlikely(__pyx_t_14 != -1)) {
+      __Pyx_RaiseBufferIndexError(__pyx_t_14);
     }
     *__Pyx_BufPtrFortranContig1d(int *, (int *)(long long)__pyx_bstruct_piv_->UnsafeAddress, __pyx_t_15, __pyx_bstride_0_piv_) -= 1;
   }
@@ -46950,7 +46967,7 @@ static System::Object^ sorgqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_5172_0->Target(__site_cvt_5172_0, overwrite_a);
@@ -46960,7 +46977,7 @@ static System::Object^ sorgqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -47002,7 +47019,7 @@ static System::Object^ sorgqr(System::Object^ a, System::Object^ tau, [InteropSe
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -47290,7 +47307,7 @@ static System::Object^ dorgqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_5214_0->Target(__site_cvt_5214_0, overwrite_a);
@@ -47300,7 +47317,7 @@ static System::Object^ dorgqr(System::Object^ a, System::Object^ tau, [InteropSe
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_tau_ = nullptr;
@@ -47342,7 +47359,7 @@ static System::Object^ dorgqr(System::Object^ a, System::Object^ tau, [InteropSe
  *     if not ((lwork_ >= n) or (lwork_ == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
  */
-  __pyx_t_2 = (__pyx_v_lwork != Py_None);
+  __pyx_t_2 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_2) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -47634,7 +47651,7 @@ static System::Object^ spbsv(System::Object^ ab, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5257_0_1->Target(__site_cvt_5257_0_1, overwrite_ab);
@@ -47712,7 +47729,7 @@ static System::Object^ spbsv(System::Object^ ab, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -48042,7 +48059,7 @@ static System::Object^ dpbsv(System::Object^ ab, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5306_0_1->Target(__site_cvt_5306_0_1, overwrite_ab);
@@ -48120,7 +48137,7 @@ static System::Object^ dpbsv(System::Object^ ab, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -48450,7 +48467,7 @@ static System::Object^ cpbsv(System::Object^ ab, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5355_0_1->Target(__site_cvt_5355_0_1, overwrite_ab);
@@ -48528,7 +48545,7 @@ static System::Object^ cpbsv(System::Object^ ab, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -48858,7 +48875,7 @@ static System::Object^ zpbsv(System::Object^ ab, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5404_0_1->Target(__site_cvt_5404_0_1, overwrite_ab);
@@ -48936,7 +48953,7 @@ static System::Object^ zpbsv(System::Object^ ab, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -49259,7 +49276,7 @@ static System::Object^ spbtrf(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5454_0_1->Target(__site_cvt_5454_0_1, overwrite_ab);
@@ -49331,7 +49348,7 @@ static System::Object^ spbtrf(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -49569,7 +49586,7 @@ static System::Object^ dpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5493_0_1->Target(__site_cvt_5493_0_1, overwrite_ab);
@@ -49641,7 +49658,7 @@ static System::Object^ dpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -49879,7 +49896,7 @@ static System::Object^ cpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5532_0_1->Target(__site_cvt_5532_0_1, overwrite_ab);
@@ -49951,7 +49968,7 @@ static System::Object^ cpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -50189,7 +50206,7 @@ static System::Object^ zpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_5571_0_1->Target(__site_cvt_5571_0_1, overwrite_ab);
@@ -50261,7 +50278,7 @@ static System::Object^ zpbtrf(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -50505,7 +50522,7 @@ static System::Object^ spbtrs(System::Object^ ab, System::Object^ b, [InteropSer
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_5611_0_1->Target(__site_cvt_5611_0_1, overwrite_b);
@@ -50578,7 +50595,7 @@ static System::Object^ spbtrs(System::Object^ ab, System::Object^ b, [InteropSer
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -50907,7 +50924,7 @@ static System::Object^ dpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_5658_0_1->Target(__site_cvt_5658_0_1, overwrite_b);
@@ -50980,7 +50997,7 @@ static System::Object^ dpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -51309,7 +51326,7 @@ static System::Object^ cpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_5705_0_1->Target(__site_cvt_5705_0_1, overwrite_b);
@@ -51382,7 +51399,7 @@ static System::Object^ cpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -51711,7 +51728,7 @@ static System::Object^ zpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_5752_0_1->Target(__site_cvt_5752_0_1, overwrite_b);
@@ -51784,7 +51801,7 @@ static System::Object^ zpbtrs(System::Object^ ab, System::Object^ b, [InteropSer
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_3 = (__pyx_v_ldab != Py_None);
+  __pyx_t_3 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_3) {
     __pyx_t_2 = __pyx_v_ldab;
   } else {
@@ -53648,15 +53665,15 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
   char __pyx_t_1[2];
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
-  int __pyx_t_4;
-  System::Object^ __pyx_t_5 = nullptr;
-  int __pyx_t_6;
-  fwi_integer_t __pyx_t_7;
+  System::Object^ __pyx_t_4 = nullptr;
+  int __pyx_t_5;
+  fwi_integer_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   fwi_integer_t __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   __pyx_v_a = a;
@@ -53725,7 +53742,7 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_a_);
-    __pyx_t_3 = __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo_nn_fwr_real_t, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo_nn_fwr_real_t, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
     __pyx_bstride_0_a_ = __pyx_bstruct_a_->Strides[0]; __pyx_bstride_1_a_ = __pyx_bstruct_a_->Strides[1];
     __pyx_bshape_0_a_ = __pyx_bstruct_a_->Shape[0]; __pyx_bshape_1_a_ = __pyx_bstruct_a_->Shape[1];
   }
@@ -53739,8 +53756,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((lower == 0) or (lower == 1)):
  */
-  __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6014
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
@@ -53750,10 +53767,10 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6014_24->Target(__site_call1_6014_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
+    __pyx_t_4 = __site_call1_6014_24->Target(__site_call1_6014_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -53768,14 +53785,14 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_lower) {
     case 0:
     case 1:
-    __pyx_t_4 = 1;
+    __pyx_t_3 = 1;
     break;
     default:
-    __pyx_t_4 = 0;
+    __pyx_t_3 = 0;
     break;
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6016
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -53784,9 +53801,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((clean == 0) or (clean == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (clean == 0) or (clean == 1)')
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6016_24->Target(__site_call1_6016_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6016_24->Target(__site_call1_6016_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L6;
@@ -53803,14 +53820,14 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_clean) {
     case 0:
     case 1:
-    __pyx_t_6 = 1;
+    __pyx_t_5 = 1;
     break;
     default:
-    __pyx_t_6 = 0;
+    __pyx_t_5 = 0;
     break;
   }
-  __pyx_t_4 = (!__pyx_t_6);
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!__pyx_t_5);
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6018
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -53820,10 +53837,10 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if n != a_shape[0]:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6018_24->Target(__site_call1_6018_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
+    __pyx_t_4 = __site_call1_6018_24->Target(__site_call1_6018_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -53844,8 +53861,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_4 = (__pyx_v_n != (__pyx_v_a_shape[0]));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (__pyx_v_n != (__pyx_v_a_shape[0]));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6021
  *     n = a_shape[0]
@@ -53854,9 +53871,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6021_24->Target(__site_call1_6021_24, __pyx_context, __pyx_t_5, ((System::Object^)"(n == a.shape[0]) not satisifed"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6021_24->Target(__site_call1_6021_24, __pyx_context, __pyx_t_4, ((System::Object^)"(n == a.shape[0]) not satisifed"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L8;
@@ -53870,12 +53887,12 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  */
-  __pyx_t_4 = (0 <= __pyx_v_n);
-  if (__pyx_t_4) {
-    __pyx_t_4 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_3 = (0 <= __pyx_v_n);
+  if (__pyx_t_3) {
+    __pyx_t_3 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6023
  *         raise ValueError("(n == a.shape[0]) not satisifed")
@@ -53885,10 +53902,10 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if fw_uplo_f[0] == 0:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6023_24->Target(__site_call1_6023_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_4 = __site_call1_6023_24->Target(__site_call1_6023_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -53909,8 +53926,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.spotrf(fw_uplo_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, &info, 1)
  */
-  __pyx_t_6 = ((__pyx_v_fw_uplo_f[0]) == 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = ((__pyx_v_fw_uplo_f[0]) == 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6026
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
@@ -53919,9 +53936,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     fc.spotrf(fw_uplo_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, &info, 1)
  *     if clean != 0:
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6026_24->Target(__site_call1_6026_24, __pyx_context, __pyx_t_5, ((System::Object^)"len(uplo_f) != 1"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6026_24->Target(__site_call1_6026_24, __pyx_context, __pyx_t_4, ((System::Object^)"len(uplo_f) != 1"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L10;
@@ -53944,8 +53961,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         if lower != 0:
  *             for j in range(n):
  */
-  __pyx_t_6 = (__pyx_v_clean != 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (__pyx_v_clean != 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6029
  *     fc.spotrf(fw_uplo_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, &info, 1)
@@ -53954,8 +53971,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *             for j in range(n):
  *                 for i in range(j):
  */
-    __pyx_t_6 = (__pyx_v_lower != 0);
-    if (__pyx_t_6) {
+    __pyx_t_5 = (__pyx_v_lower != 0);
+    if (__pyx_t_5) {
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6030
  *     if clean != 0:
@@ -53964,9 +53981,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6031
  *         if lower != 0:
@@ -53975,9 +53992,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                     a_[i, j] = 0
  *         else:
  */
-        __pyx_t_9 = __pyx_v_j;
-        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-          __pyx_v_i = __pyx_t_10;
+        __pyx_t_8 = __pyx_v_j;
+        for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+          __pyx_v_i = __pyx_t_9;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6032
  *             for j in range(n):
@@ -53986,21 +54003,21 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         else:
  *             for j in range(n):
  */
-          __pyx_t_11 = __pyx_v_i;
-          __pyx_t_12 = __pyx_v_j;
-          __pyx_t_3 = -1;
+          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_11 = __pyx_v_j;
+          __pyx_t_12 = -1;
+          if (__pyx_t_10 < 0) {
+            __pyx_t_10 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_11 < 0) {
-            __pyx_t_11 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_11 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
-          if (__pyx_t_12 < 0) {
-            __pyx_t_12 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_12 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_12 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            __pyx_t_11 += __pyx_bshape_1_a_;
+            if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(fwr_real_t *, (fwr_real_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_a_, __pyx_t_12, __pyx_bstride_1_a_) = 0.0;
+          *__Pyx_BufPtrFortranContig2d(fwr_real_t *, (fwr_real_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_11, __pyx_bstride_1_a_) = 0.0;
         }
       }
       goto __pyx_L12;
@@ -54014,9 +54031,9 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j + 1, n):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6035
  *         else:
@@ -54026,8 +54043,8 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  */
         __pyx_t_13 = __pyx_v_n;
-        for (__pyx_t_9 = (__pyx_v_j + 1); __pyx_t_9 < __pyx_t_13; __pyx_t_9+=1) {
-          __pyx_v_i = __pyx_t_9;
+        for (__pyx_t_8 = (__pyx_v_j + 1); __pyx_t_8 < __pyx_t_13; __pyx_t_8+=1) {
+          __pyx_v_i = __pyx_t_8;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6036
  *             for j in range(n):
@@ -54036,21 +54053,21 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  * def dpotrf(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
  */
-          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_9 = __pyx_v_i;
           __pyx_t_14 = __pyx_v_j;
-          __pyx_t_3 = -1;
-          if (__pyx_t_10 < 0) {
-            __pyx_t_10 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_10 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
+          __pyx_t_12 = -1;
+          if (__pyx_t_9 < 0) {
+            __pyx_t_9 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_14 < 0) {
             __pyx_t_14 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_14 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            if (unlikely(__pyx_t_14 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(fwr_real_t *, (fwr_real_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = 0.0;
+          *__Pyx_BufPtrFortranContig2d(fwr_real_t *, (fwr_real_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = 0.0;
         }
       }
     }
@@ -54067,10 +54084,10 @@ static System::Object^ spotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     """dpotrf(a[, lower, clean, overwrite_a]) -> (a, info)
  */
   __pyx_t_2 = __pyx_v_info;
-  __pyx_t_5 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
+  __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
   __pyx_t_2 = nullptr;
-  __pyx_r = __pyx_t_5;
-  __pyx_t_5 = nullptr;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -54109,15 +54126,15 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
   char __pyx_t_1[2];
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
-  int __pyx_t_4;
-  System::Object^ __pyx_t_5 = nullptr;
-  int __pyx_t_6;
-  fwi_integer_t __pyx_t_7;
+  System::Object^ __pyx_t_4 = nullptr;
+  int __pyx_t_5;
+  fwi_integer_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   fwi_integer_t __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   __pyx_v_a = a;
@@ -54186,7 +54203,7 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_a_);
-    __pyx_t_3 = __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo_nn_fwr_dbl_t, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo_nn_fwr_dbl_t, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
     __pyx_bstride_0_a_ = __pyx_bstruct_a_->Strides[0]; __pyx_bstride_1_a_ = __pyx_bstruct_a_->Strides[1];
     __pyx_bshape_0_a_ = __pyx_bstruct_a_->Shape[0]; __pyx_bshape_1_a_ = __pyx_bstruct_a_->Shape[1];
   }
@@ -54200,8 +54217,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((lower == 0) or (lower == 1)):
  */
-  __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6063
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
@@ -54211,10 +54228,10 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6063_24->Target(__site_call1_6063_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
+    __pyx_t_4 = __site_call1_6063_24->Target(__site_call1_6063_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -54229,14 +54246,14 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_lower) {
     case 0:
     case 1:
-    __pyx_t_4 = 1;
+    __pyx_t_3 = 1;
     break;
     default:
-    __pyx_t_4 = 0;
+    __pyx_t_3 = 0;
     break;
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6065
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -54245,9 +54262,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((clean == 0) or (clean == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (clean == 0) or (clean == 1)')
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6065_24->Target(__site_call1_6065_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6065_24->Target(__site_call1_6065_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L6;
@@ -54264,14 +54281,14 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_clean) {
     case 0:
     case 1:
-    __pyx_t_6 = 1;
+    __pyx_t_5 = 1;
     break;
     default:
-    __pyx_t_6 = 0;
+    __pyx_t_5 = 0;
     break;
   }
-  __pyx_t_4 = (!__pyx_t_6);
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!__pyx_t_5);
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6067
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -54281,10 +54298,10 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if n != a_shape[0]:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6067_24->Target(__site_call1_6067_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
+    __pyx_t_4 = __site_call1_6067_24->Target(__site_call1_6067_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -54305,8 +54322,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_4 = (__pyx_v_n != (__pyx_v_a_shape[0]));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (__pyx_v_n != (__pyx_v_a_shape[0]));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6070
  *     n = a_shape[0]
@@ -54315,9 +54332,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6070_24->Target(__site_call1_6070_24, __pyx_context, __pyx_t_5, ((System::Object^)"(n == a.shape[0]) not satisifed"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6070_24->Target(__site_call1_6070_24, __pyx_context, __pyx_t_4, ((System::Object^)"(n == a.shape[0]) not satisifed"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L8;
@@ -54331,12 +54348,12 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  */
-  __pyx_t_4 = (0 <= __pyx_v_n);
-  if (__pyx_t_4) {
-    __pyx_t_4 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_3 = (0 <= __pyx_v_n);
+  if (__pyx_t_3) {
+    __pyx_t_3 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6072
  *         raise ValueError("(n == a.shape[0]) not satisifed")
@@ -54346,10 +54363,10 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if fw_uplo_f[0] == 0:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6072_24->Target(__site_call1_6072_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_4 = __site_call1_6072_24->Target(__site_call1_6072_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -54370,8 +54387,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.dpotrf(fw_uplo_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, &info, 1)
  */
-  __pyx_t_6 = ((__pyx_v_fw_uplo_f[0]) == 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = ((__pyx_v_fw_uplo_f[0]) == 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6075
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
@@ -54380,9 +54397,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     fc.dpotrf(fw_uplo_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, &info, 1)
  *     if clean != 0:
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6075_24->Target(__site_call1_6075_24, __pyx_context, __pyx_t_5, ((System::Object^)"len(uplo_f) != 1"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6075_24->Target(__site_call1_6075_24, __pyx_context, __pyx_t_4, ((System::Object^)"len(uplo_f) != 1"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L10;
@@ -54405,8 +54422,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         if lower != 0:
  *             for j in range(n):
  */
-  __pyx_t_6 = (__pyx_v_clean != 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (__pyx_v_clean != 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6078
  *     fc.dpotrf(fw_uplo_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, &info, 1)
@@ -54415,8 +54432,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *             for j in range(n):
  *                 for i in range(j):
  */
-    __pyx_t_6 = (__pyx_v_lower != 0);
-    if (__pyx_t_6) {
+    __pyx_t_5 = (__pyx_v_lower != 0);
+    if (__pyx_t_5) {
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6079
  *     if clean != 0:
@@ -54425,9 +54442,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6080
  *         if lower != 0:
@@ -54436,9 +54453,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                     a_[i, j] = 0
  *         else:
  */
-        __pyx_t_9 = __pyx_v_j;
-        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-          __pyx_v_i = __pyx_t_10;
+        __pyx_t_8 = __pyx_v_j;
+        for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+          __pyx_v_i = __pyx_t_9;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6081
  *             for j in range(n):
@@ -54447,21 +54464,21 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         else:
  *             for j in range(n):
  */
-          __pyx_t_11 = __pyx_v_i;
-          __pyx_t_12 = __pyx_v_j;
-          __pyx_t_3 = -1;
+          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_11 = __pyx_v_j;
+          __pyx_t_12 = -1;
+          if (__pyx_t_10 < 0) {
+            __pyx_t_10 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_11 < 0) {
-            __pyx_t_11 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_11 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
-          if (__pyx_t_12 < 0) {
-            __pyx_t_12 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_12 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_12 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            __pyx_t_11 += __pyx_bshape_1_a_;
+            if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(fwr_dbl_t *, (fwr_dbl_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_a_, __pyx_t_12, __pyx_bstride_1_a_) = 0.0;
+          *__Pyx_BufPtrFortranContig2d(fwr_dbl_t *, (fwr_dbl_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_11, __pyx_bstride_1_a_) = 0.0;
         }
       }
       goto __pyx_L12;
@@ -54475,9 +54492,9 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j + 1, n):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6084
  *         else:
@@ -54487,8 +54504,8 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  */
         __pyx_t_13 = __pyx_v_n;
-        for (__pyx_t_9 = (__pyx_v_j + 1); __pyx_t_9 < __pyx_t_13; __pyx_t_9+=1) {
-          __pyx_v_i = __pyx_t_9;
+        for (__pyx_t_8 = (__pyx_v_j + 1); __pyx_t_8 < __pyx_t_13; __pyx_t_8+=1) {
+          __pyx_v_i = __pyx_t_8;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6085
  *             for j in range(n):
@@ -54497,21 +54514,21 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  * def cpotrf(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
  */
-          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_9 = __pyx_v_i;
           __pyx_t_14 = __pyx_v_j;
-          __pyx_t_3 = -1;
-          if (__pyx_t_10 < 0) {
-            __pyx_t_10 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_10 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
+          __pyx_t_12 = -1;
+          if (__pyx_t_9 < 0) {
+            __pyx_t_9 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_14 < 0) {
             __pyx_t_14 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_14 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            if (unlikely(__pyx_t_14 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(fwr_dbl_t *, (fwr_dbl_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = 0.0;
+          *__Pyx_BufPtrFortranContig2d(fwr_dbl_t *, (fwr_dbl_t *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = 0.0;
         }
       }
     }
@@ -54528,10 +54545,10 @@ static System::Object^ dpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     """cpotrf(a[, lower, clean, overwrite_a]) -> (a, info)
  */
   __pyx_t_2 = __pyx_v_info;
-  __pyx_t_5 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
+  __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
   __pyx_t_2 = nullptr;
-  __pyx_r = __pyx_t_5;
-  __pyx_t_5 = nullptr;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -54570,15 +54587,15 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
   char __pyx_t_1[2];
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
-  int __pyx_t_4;
-  System::Object^ __pyx_t_5 = nullptr;
-  int __pyx_t_6;
-  fwi_integer_t __pyx_t_7;
+  System::Object^ __pyx_t_4 = nullptr;
+  int __pyx_t_5;
+  fwi_integer_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   fwi_integer_t __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   __pyx_v_a = a;
@@ -54647,7 +54664,7 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_a_);
-    __pyx_t_3 = __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo___pyx_t_float_complex, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo___pyx_t_float_complex, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
     __pyx_bstride_0_a_ = __pyx_bstruct_a_->Strides[0]; __pyx_bstride_1_a_ = __pyx_bstruct_a_->Strides[1];
     __pyx_bshape_0_a_ = __pyx_bstruct_a_->Shape[0]; __pyx_bshape_1_a_ = __pyx_bstruct_a_->Shape[1];
   }
@@ -54661,8 +54678,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((lower == 0) or (lower == 1)):
  */
-  __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6112
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
@@ -54672,10 +54689,10 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6112_24->Target(__site_call1_6112_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
+    __pyx_t_4 = __site_call1_6112_24->Target(__site_call1_6112_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -54690,14 +54707,14 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_lower) {
     case 0:
     case 1:
-    __pyx_t_4 = 1;
+    __pyx_t_3 = 1;
     break;
     default:
-    __pyx_t_4 = 0;
+    __pyx_t_3 = 0;
     break;
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6114
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -54706,9 +54723,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((clean == 0) or (clean == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (clean == 0) or (clean == 1)')
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6114_24->Target(__site_call1_6114_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6114_24->Target(__site_call1_6114_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L6;
@@ -54725,14 +54742,14 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_clean) {
     case 0:
     case 1:
-    __pyx_t_6 = 1;
+    __pyx_t_5 = 1;
     break;
     default:
-    __pyx_t_6 = 0;
+    __pyx_t_5 = 0;
     break;
   }
-  __pyx_t_4 = (!__pyx_t_6);
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!__pyx_t_5);
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6116
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -54742,10 +54759,10 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if n != a_shape[0]:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6116_24->Target(__site_call1_6116_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
+    __pyx_t_4 = __site_call1_6116_24->Target(__site_call1_6116_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -54766,8 +54783,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_4 = (__pyx_v_n != (__pyx_v_a_shape[0]));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (__pyx_v_n != (__pyx_v_a_shape[0]));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6119
  *     n = a_shape[0]
@@ -54776,9 +54793,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6119_24->Target(__site_call1_6119_24, __pyx_context, __pyx_t_5, ((System::Object^)"(n == a.shape[0]) not satisifed"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6119_24->Target(__site_call1_6119_24, __pyx_context, __pyx_t_4, ((System::Object^)"(n == a.shape[0]) not satisifed"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L8;
@@ -54792,12 +54809,12 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  */
-  __pyx_t_4 = (0 <= __pyx_v_n);
-  if (__pyx_t_4) {
-    __pyx_t_4 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_3 = (0 <= __pyx_v_n);
+  if (__pyx_t_3) {
+    __pyx_t_3 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6121
  *         raise ValueError("(n == a.shape[0]) not satisifed")
@@ -54807,10 +54824,10 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if fw_uplo_f[0] == 0:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6121_24->Target(__site_call1_6121_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_4 = __site_call1_6121_24->Target(__site_call1_6121_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -54831,8 +54848,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.cpotrf(fw_uplo_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
  */
-  __pyx_t_6 = ((__pyx_v_fw_uplo_f[0]) == 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = ((__pyx_v_fw_uplo_f[0]) == 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6124
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
@@ -54841,9 +54858,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     fc.cpotrf(fw_uplo_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
  *     if clean != 0:
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6124_24->Target(__site_call1_6124_24, __pyx_context, __pyx_t_5, ((System::Object^)"len(uplo_f) != 1"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6124_24->Target(__site_call1_6124_24, __pyx_context, __pyx_t_4, ((System::Object^)"len(uplo_f) != 1"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L10;
@@ -54866,8 +54883,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         if lower != 0:
  *             for j in range(n):
  */
-  __pyx_t_6 = (__pyx_v_clean != 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (__pyx_v_clean != 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6127
  *     fc.cpotrf(fw_uplo_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
@@ -54876,8 +54893,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *             for j in range(n):
  *                 for i in range(j):
  */
-    __pyx_t_6 = (__pyx_v_lower != 0);
-    if (__pyx_t_6) {
+    __pyx_t_5 = (__pyx_v_lower != 0);
+    if (__pyx_t_5) {
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6128
  *     if clean != 0:
@@ -54886,9 +54903,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6129
  *         if lower != 0:
@@ -54897,9 +54914,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                     a_[i, j] = 0
  *         else:
  */
-        __pyx_t_9 = __pyx_v_j;
-        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-          __pyx_v_i = __pyx_t_10;
+        __pyx_t_8 = __pyx_v_j;
+        for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+          __pyx_v_i = __pyx_t_9;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6130
  *             for j in range(n):
@@ -54908,21 +54925,21 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         else:
  *             for j in range(n):
  */
-          __pyx_t_11 = __pyx_v_i;
-          __pyx_t_12 = __pyx_v_j;
-          __pyx_t_3 = -1;
+          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_11 = __pyx_v_j;
+          __pyx_t_12 = -1;
+          if (__pyx_t_10 < 0) {
+            __pyx_t_10 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_11 < 0) {
-            __pyx_t_11 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_11 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
-          if (__pyx_t_12 < 0) {
-            __pyx_t_12 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_12 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_12 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            __pyx_t_11 += __pyx_bshape_1_a_;
+            if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(__pyx_t_float_complex *, (__pyx_t_float_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_a_, __pyx_t_12, __pyx_bstride_1_a_) = __pyx_t_float_complex_from_parts(0, 0);
+          *__Pyx_BufPtrFortranContig2d(__pyx_t_float_complex *, (__pyx_t_float_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_11, __pyx_bstride_1_a_) = __pyx_t_float_complex_from_parts(0, 0);
         }
       }
       goto __pyx_L12;
@@ -54936,9 +54953,9 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j + 1, n):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6133
  *         else:
@@ -54948,8 +54965,8 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  */
         __pyx_t_13 = __pyx_v_n;
-        for (__pyx_t_9 = (__pyx_v_j + 1); __pyx_t_9 < __pyx_t_13; __pyx_t_9+=1) {
-          __pyx_v_i = __pyx_t_9;
+        for (__pyx_t_8 = (__pyx_v_j + 1); __pyx_t_8 < __pyx_t_13; __pyx_t_8+=1) {
+          __pyx_v_i = __pyx_t_8;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6134
  *             for j in range(n):
@@ -54958,21 +54975,21 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  * def zpotrf(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
  */
-          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_9 = __pyx_v_i;
           __pyx_t_14 = __pyx_v_j;
-          __pyx_t_3 = -1;
-          if (__pyx_t_10 < 0) {
-            __pyx_t_10 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_10 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
+          __pyx_t_12 = -1;
+          if (__pyx_t_9 < 0) {
+            __pyx_t_9 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_14 < 0) {
             __pyx_t_14 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_14 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            if (unlikely(__pyx_t_14 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(__pyx_t_float_complex *, (__pyx_t_float_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = __pyx_t_float_complex_from_parts(0, 0);
+          *__Pyx_BufPtrFortranContig2d(__pyx_t_float_complex *, (__pyx_t_float_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = __pyx_t_float_complex_from_parts(0, 0);
         }
       }
     }
@@ -54989,10 +55006,10 @@ static System::Object^ cpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     """zpotrf(a[, lower, clean, overwrite_a]) -> (a, info)
  */
   __pyx_t_2 = __pyx_v_info;
-  __pyx_t_5 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
+  __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
   __pyx_t_2 = nullptr;
-  __pyx_r = __pyx_t_5;
-  __pyx_t_5 = nullptr;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -55031,15 +55048,15 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
   char __pyx_t_1[2];
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
-  int __pyx_t_4;
-  System::Object^ __pyx_t_5 = nullptr;
-  int __pyx_t_6;
-  fwi_integer_t __pyx_t_7;
+  System::Object^ __pyx_t_4 = nullptr;
+  int __pyx_t_5;
+  fwi_integer_t __pyx_t_6;
+  Py_ssize_t __pyx_t_7;
   Py_ssize_t __pyx_t_8;
   Py_ssize_t __pyx_t_9;
   Py_ssize_t __pyx_t_10;
   Py_ssize_t __pyx_t_11;
-  Py_ssize_t __pyx_t_12;
+  int __pyx_t_12;
   fwi_integer_t __pyx_t_13;
   Py_ssize_t __pyx_t_14;
   __pyx_v_a = a;
@@ -55108,7 +55125,7 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
   {
     __Pyx_BufFmt_StackElem __pyx_stack[1];
     __Pyx_SafeReleaseBuffer(__pyx_bstruct_a_);
-    __pyx_t_3 = __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo___pyx_t_double_complex, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
+    __Pyx_GetBufferAndValidate(__pyx_bstruct_a_, ((NumpyDotNet::ndarray^)__pyx_t_2), &__Pyx_TypeInfo___pyx_t_double_complex, PyBUF_FORMAT| PyBUF_F_CONTIGUOUS| PyBUF_WRITABLE, 2, 0, __pyx_stack);
     __pyx_bstride_0_a_ = __pyx_bstruct_a_->Strides[0]; __pyx_bstride_1_a_ = __pyx_bstruct_a_->Strides[1];
     __pyx_bshape_0_a_ = __pyx_bstruct_a_->Shape[0]; __pyx_bshape_1_a_ = __pyx_bstruct_a_->Shape[1];
   }
@@ -55122,8 +55139,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((lower == 0) or (lower == 1)):
  */
-  __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6161
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
@@ -55133,10 +55150,10 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6161_24->Target(__site_call1_6161_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
+    __pyx_t_4 = __site_call1_6161_24->Target(__site_call1_6161_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: a.shape[0] == a.shape[1]"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L5;
   }
   __pyx_L5:;
@@ -55151,14 +55168,14 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_lower) {
     case 0:
     case 1:
-    __pyx_t_4 = 1;
+    __pyx_t_3 = 1;
     break;
     default:
-    __pyx_t_4 = 0;
+    __pyx_t_3 = 0;
     break;
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6163
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
@@ -55167,9 +55184,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not ((clean == 0) or (clean == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (clean == 0) or (clean == 1)')
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6163_24->Target(__site_call1_6163_24, __pyx_context, __pyx_t_5, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6163_24->Target(__site_call1_6163_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (lower == 0) or (lower == 1)"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L6;
@@ -55186,14 +55203,14 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
   switch (__pyx_v_clean) {
     case 0:
     case 1:
-    __pyx_t_6 = 1;
+    __pyx_t_5 = 1;
     break;
     default:
-    __pyx_t_6 = 0;
+    __pyx_t_5 = 0;
     break;
   }
-  __pyx_t_4 = (!__pyx_t_6);
-  if (__pyx_t_4) {
+  __pyx_t_3 = (!__pyx_t_5);
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6165
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
@@ -55203,10 +55220,10 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if n != a_shape[0]:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6165_24->Target(__site_call1_6165_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
+    __pyx_t_4 = __site_call1_6165_24->Target(__site_call1_6165_24, __pyx_context, __pyx_t_2, ((System::Object^)"Condition on arguments not satisfied: (clean == 0) or (clean == 1)"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L7;
   }
   __pyx_L7:;
@@ -55227,8 +55244,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  */
-  __pyx_t_4 = (__pyx_v_n != (__pyx_v_a_shape[0]));
-  if (__pyx_t_4) {
+  __pyx_t_3 = (__pyx_v_n != (__pyx_v_a_shape[0]));
+  if (__pyx_t_3) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6168
  *     n = a_shape[0]
@@ -55237,9 +55254,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6168_24->Target(__site_call1_6168_24, __pyx_context, __pyx_t_5, ((System::Object^)"(n == a.shape[0]) not satisifed"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6168_24->Target(__site_call1_6168_24, __pyx_context, __pyx_t_4, ((System::Object^)"(n == a.shape[0]) not satisifed"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L8;
@@ -55253,12 +55270,12 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  */
-  __pyx_t_4 = (0 <= __pyx_v_n);
-  if (__pyx_t_4) {
-    __pyx_t_4 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
+  __pyx_t_3 = (0 <= __pyx_v_n);
+  if (__pyx_t_3) {
+    __pyx_t_3 = (__pyx_v_n <= (__pyx_v_a_shape[1]));
   }
-  __pyx_t_6 = (!__pyx_t_4);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (!__pyx_t_3);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6170
  *         raise ValueError("(n == a.shape[0]) not satisifed")
@@ -55268,10 +55285,10 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     if fw_uplo_f[0] == 0:
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_6170_24->Target(__site_call1_6170_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
+    __pyx_t_4 = __site_call1_6170_24->Target(__site_call1_6170_24, __pyx_context, __pyx_t_2, ((System::Object^)"(0 <= n <= a.shape[1]) not satisifed"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
-    __pyx_t_5 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
     goto __pyx_L9;
   }
   __pyx_L9:;
@@ -55292,8 +55309,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.zpotrf(fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
  */
-  __pyx_t_6 = ((__pyx_v_fw_uplo_f[0]) == 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = ((__pyx_v_fw_uplo_f[0]) == 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6173
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
@@ -55302,9 +55319,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     fc.zpotrf(fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
  *     if clean != 0:
  */
-    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_2 = __site_call1_6173_24->Target(__site_call1_6173_24, __pyx_context, __pyx_t_5, ((System::Object^)"len(uplo_f) != 1"));
-    __pyx_t_5 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_2 = __site_call1_6173_24->Target(__site_call1_6173_24, __pyx_context, __pyx_t_4, ((System::Object^)"len(uplo_f) != 1"));
+    __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L10;
@@ -55327,8 +55344,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         if lower != 0:
  *             for j in range(n):
  */
-  __pyx_t_6 = (__pyx_v_clean != 0);
-  if (__pyx_t_6) {
+  __pyx_t_5 = (__pyx_v_clean != 0);
+  if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6176
  *     fc.zpotrf(fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, &info, 1)
@@ -55337,8 +55354,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *             for j in range(n):
  *                 for i in range(j):
  */
-    __pyx_t_6 = (__pyx_v_lower != 0);
-    if (__pyx_t_6) {
+    __pyx_t_5 = (__pyx_v_lower != 0);
+    if (__pyx_t_5) {
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6177
  *     if clean != 0:
@@ -55347,9 +55364,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6178
  *         if lower != 0:
@@ -55358,9 +55375,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                     a_[i, j] = 0
  *         else:
  */
-        __pyx_t_9 = __pyx_v_j;
-        for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
-          __pyx_v_i = __pyx_t_10;
+        __pyx_t_8 = __pyx_v_j;
+        for (__pyx_t_9 = 0; __pyx_t_9 < __pyx_t_8; __pyx_t_9+=1) {
+          __pyx_v_i = __pyx_t_9;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6179
  *             for j in range(n):
@@ -55369,21 +55386,21 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *         else:
  *             for j in range(n):
  */
-          __pyx_t_11 = __pyx_v_i;
-          __pyx_t_12 = __pyx_v_j;
-          __pyx_t_3 = -1;
+          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_11 = __pyx_v_j;
+          __pyx_t_12 = -1;
+          if (__pyx_t_10 < 0) {
+            __pyx_t_10 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_10 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_11 < 0) {
-            __pyx_t_11 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_11 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
-          if (__pyx_t_12 < 0) {
-            __pyx_t_12 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_12 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_12 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            __pyx_t_11 += __pyx_bshape_1_a_;
+            if (unlikely(__pyx_t_11 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_11 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(__pyx_t_double_complex *, (__pyx_t_double_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_a_, __pyx_t_12, __pyx_bstride_1_a_) = __pyx_t_double_complex_from_parts(0, 0);
+          *__Pyx_BufPtrFortranContig2d(__pyx_t_double_complex *, (__pyx_t_double_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_11, __pyx_bstride_1_a_) = __pyx_t_double_complex_from_parts(0, 0);
         }
       }
       goto __pyx_L12;
@@ -55397,9 +55414,9 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *                 for i in range(j + 1, n):
  *                     a_[i, j] = 0
  */
-      __pyx_t_7 = __pyx_v_n;
-      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-        __pyx_v_j = __pyx_t_8;
+      __pyx_t_6 = __pyx_v_n;
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6182
  *         else:
@@ -55409,8 +55426,8 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  */
         __pyx_t_13 = __pyx_v_n;
-        for (__pyx_t_9 = (__pyx_v_j + 1); __pyx_t_9 < __pyx_t_13; __pyx_t_9+=1) {
-          __pyx_v_i = __pyx_t_9;
+        for (__pyx_t_8 = (__pyx_v_j + 1); __pyx_t_8 < __pyx_t_13; __pyx_t_8+=1) {
+          __pyx_v_i = __pyx_t_8;
 
           /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":6183
  *             for j in range(n):
@@ -55419,21 +55436,21 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  *     return (a_, info,)
  * 
  */
-          __pyx_t_10 = __pyx_v_i;
+          __pyx_t_9 = __pyx_v_i;
           __pyx_t_14 = __pyx_v_j;
-          __pyx_t_3 = -1;
-          if (__pyx_t_10 < 0) {
-            __pyx_t_10 += __pyx_bshape_0_a_;
-            if (unlikely(__pyx_t_10 < 0)) __pyx_t_3 = 0;
-          } else if (unlikely(__pyx_t_10 >= __pyx_bshape_0_a_)) __pyx_t_3 = 0;
+          __pyx_t_12 = -1;
+          if (__pyx_t_9 < 0) {
+            __pyx_t_9 += __pyx_bshape_0_a_;
+            if (unlikely(__pyx_t_9 < 0)) __pyx_t_12 = 0;
+          } else if (unlikely(__pyx_t_9 >= __pyx_bshape_0_a_)) __pyx_t_12 = 0;
           if (__pyx_t_14 < 0) {
             __pyx_t_14 += __pyx_bshape_1_a_;
-            if (unlikely(__pyx_t_14 < 0)) __pyx_t_3 = 1;
-          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_3 = 1;
-          if (unlikely(__pyx_t_3 != -1)) {
-            __Pyx_RaiseBufferIndexError(__pyx_t_3);
+            if (unlikely(__pyx_t_14 < 0)) __pyx_t_12 = 1;
+          } else if (unlikely(__pyx_t_14 >= __pyx_bshape_1_a_)) __pyx_t_12 = 1;
+          if (unlikely(__pyx_t_12 != -1)) {
+            __Pyx_RaiseBufferIndexError(__pyx_t_12);
           }
-          *__Pyx_BufPtrFortranContig2d(__pyx_t_double_complex *, (__pyx_t_double_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_10, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = __pyx_t_double_complex_from_parts(0, 0);
+          *__Pyx_BufPtrFortranContig2d(__pyx_t_double_complex *, (__pyx_t_double_complex *)(long long)__pyx_bstruct_a_->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_a_, __pyx_t_14, __pyx_bstride_1_a_) = __pyx_t_double_complex_from_parts(0, 0);
         }
       }
     }
@@ -55450,10 +55467,10 @@ static System::Object^ zpotrf(System::Object^ a, [InteropServices::Optional]Syst
  * def spotri(object c, fwi_integer_t lower=0, bint overwrite_c=False):
  */
   __pyx_t_2 = __pyx_v_info;
-  __pyx_t_5 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
+  __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_a_), __pyx_t_2});
   __pyx_t_2 = nullptr;
-  __pyx_r = __pyx_t_5;
-  __pyx_t_5 = nullptr;
+  __pyx_r = __pyx_t_4;
+  __pyx_t_4 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -58136,7 +58153,7 @@ static System::Object^ ssbev(System::Object^ ab, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6512_0_2->Target(__site_cvt_6512_0_2, overwrite_ab);
@@ -58146,12 +58163,12 @@ static System::Object^ ssbev(System::Object^ ab, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -58256,7 +58273,7 @@ static System::Object^ ssbev(System::Object^ ab, [InteropServices::Optional]Syst
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -58276,7 +58293,7 @@ static System::Object^ ssbev(System::Object^ ab, [InteropServices::Optional]Syst
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -58699,7 +58716,7 @@ static System::Object^ dsbev(System::Object^ ab, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6572_0_2->Target(__site_cvt_6572_0_2, overwrite_ab);
@@ -58709,12 +58726,12 @@ static System::Object^ dsbev(System::Object^ ab, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -58819,7 +58836,7 @@ static System::Object^ dsbev(System::Object^ ab, [InteropServices::Optional]Syst
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -58839,7 +58856,7 @@ static System::Object^ dsbev(System::Object^ ab, [InteropServices::Optional]Syst
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -59266,12 +59283,12 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(liwork) == nullptr) {
     __pyx_v_liwork = liwork;
   } else {
-    __pyx_v_liwork = ((System::Object^)Py_None);
+    __pyx_v_liwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6633_0_2->Target(__site_cvt_6633_0_2, overwrite_ab);
@@ -59281,12 +59298,12 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -59399,7 +59416,7 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
  *     iwork_shape[0] = liwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -59410,7 +59427,7 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     iwork_shape[0] = liwork_
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_liwork != Py_None);
+  __pyx_t_5 = (__pyx_v_liwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_liwork;
   } else {
@@ -59443,7 +59460,7 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -59463,7 +59480,7 @@ static System::Object^ ssbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_5 = (__pyx_v_ldab != Py_None);
+  __pyx_t_5 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -59921,12 +59938,12 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(liwork) == nullptr) {
     __pyx_v_liwork = liwork;
   } else {
-    __pyx_v_liwork = ((System::Object^)Py_None);
+    __pyx_v_liwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6700_0_2->Target(__site_cvt_6700_0_2, overwrite_ab);
@@ -59936,12 +59953,12 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -60054,7 +60071,7 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     liwork_ = liwork if (liwork is not None) else (3 + (5 * n)) if compute_v else 1
  *     iwork_shape[0] = liwork_
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -60065,7 +60082,7 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     iwork_shape[0] = liwork_
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_liwork != Py_None);
+  __pyx_t_5 = (__pyx_v_liwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_liwork;
   } else {
@@ -60098,7 +60115,7 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -60118,7 +60135,7 @@ static System::Object^ dsbevd(System::Object^ ab, [InteropServices::Optional]Sys
  *     if not ((compute_v == 1) or (compute_v == 0)):
  *         raise ValueError('Condition on arguments not satisfied: (compute_v == 1) or (compute_v == 0)')
  */
-  __pyx_t_5 = (__pyx_v_ldab != Py_None);
+  __pyx_t_5 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_ldab;
   } else {
@@ -60590,7 +60607,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(compute_v) == nullptr) {
     __pyx_v_compute_v = __site_cvt_6768_0_4->Target(__site_cvt_6768_0_4, compute_v);
@@ -60615,7 +60632,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(mmax) == nullptr) {
     __pyx_v_mmax = mmax;
   } else {
-    __pyx_v_mmax = ((System::Object^)Py_None);
+    __pyx_v_mmax = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6768_0_8->Target(__site_cvt_6768_0_8, overwrite_ab);
@@ -60625,17 +60642,17 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -60776,7 +60793,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     m = 0
  *     work_shape[0] = 7 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
   __pyx_v_q_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -60805,7 +60822,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -60825,7 +60842,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -60845,7 +60862,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     if not ((il >= 1) and (il <= n)):
  *         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_4 = __pyx_v_ldab;
   } else {
@@ -61140,7 +61157,7 @@ static System::Object^ ssbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     ldz = n if compute_v else 1
  *     z_shape[0] = ldz; z_shape[1] = mmax_
  */
-  __pyx_t_10 = (__pyx_v_mmax != Py_None);
+  __pyx_t_10 = (__pyx_v_mmax != nullptr);
   if (__pyx_t_10) {
     __pyx_t_4 = __pyx_v_mmax;
   } else {
@@ -61528,7 +61545,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(ldab) == nullptr) {
     __pyx_v_ldab = ldab;
   } else {
-    __pyx_v_ldab = ((System::Object^)Py_None);
+    __pyx_v_ldab = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(compute_v) == nullptr) {
     __pyx_v_compute_v = __site_cvt_6860_0_4->Target(__site_cvt_6860_0_4, compute_v);
@@ -61553,7 +61570,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(mmax) == nullptr) {
     __pyx_v_mmax = mmax;
   } else {
-    __pyx_v_mmax = ((System::Object^)Py_None);
+    __pyx_v_mmax = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_ab) == nullptr) {
     __pyx_v_overwrite_ab = __site_cvt_6860_0_8->Target(__site_cvt_6860_0_8, overwrite_ab);
@@ -61563,17 +61580,17 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_ab_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -61714,7 +61731,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     m = 0
  *     work_shape[0] = 7 * n
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 2, __pyx_v_q_shape, 0, 1, nullptr)); 
   __pyx_v_q_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -61743,7 +61760,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -61763,7 +61780,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     info = 0
  *     ldab_ = ldab if (ldab is not None) else ab_shape[0]
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -61783,7 +61800,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     if not ((il >= 1) and (il <= n)):
  *         raise ValueError('Condition on arguments not satisfied: (il >= 1) and (il <= n)')
  */
-  __pyx_t_7 = (__pyx_v_ldab != Py_None);
+  __pyx_t_7 = (__pyx_v_ldab != nullptr);
   if (__pyx_t_7) {
     __pyx_t_4 = __pyx_v_ldab;
   } else {
@@ -62078,7 +62095,7 @@ static System::Object^ dsbevx(System::Object^ ab, System::Object^ vl, System::Ob
  *     ldz = n if compute_v else 1
  *     z_shape[0] = ldz; z_shape[1] = mmax_
  */
-  __pyx_t_10 = (__pyx_v_mmax != Py_None);
+  __pyx_t_10 = (__pyx_v_mmax != nullptr);
   if (__pyx_t_10) {
     __pyx_t_4 = __pyx_v_mmax;
   } else {
@@ -62440,7 +62457,7 @@ static System::Object^ ssyev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_6953_0_2->Target(__site_cvt_6953_0_2, overwrite_a);
@@ -62450,7 +62467,7 @@ static System::Object^ ssyev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -62529,7 +62546,7 @@ static System::Object^ ssyev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -62557,7 +62574,7 @@ static System::Object^ ssyev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -62942,7 +62959,7 @@ static System::Object^ dsyev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7008_0_2->Target(__site_cvt_7008_0_2, overwrite_a);
@@ -62952,7 +62969,7 @@ static System::Object^ dsyev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -63031,7 +63048,7 @@ static System::Object^ dsyev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -63059,7 +63076,7 @@ static System::Object^ dsyev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -63474,12 +63491,12 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(iu) == nullptr) {
     __pyx_v_iu = iu;
   } else {
-    __pyx_v_iu = ((System::Object^)Py_None);
+    __pyx_v_iu = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7064_0_1->Target(__site_cvt_7064_0_1, overwrite_a);
@@ -63489,12 +63506,12 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -63585,7 +63602,7 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     m = iu_ - il + 1
  *     isuppz_shape[0] = 2 * m
  */
-  __pyx_t_6 = (__pyx_v_iu != Py_None);
+  __pyx_t_6 = (__pyx_v_iu != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_iu;
   } else {
@@ -63622,7 +63639,7 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else 26 * n
  *     work_shape[0] = lwork_
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
   __pyx_v_isuppz_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -63633,7 +63650,7 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -63661,7 +63678,7 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     liwork = 10 * n
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -63690,7 +63707,7 @@ static System::Object^ ssyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     z_shape[0] = n; z_shape[1] = m
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -64126,12 +64143,12 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(iu) == nullptr) {
     __pyx_v_iu = iu;
   } else {
-    __pyx_v_iu = ((System::Object^)Py_None);
+    __pyx_v_iu = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7137_0_1->Target(__site_cvt_7137_0_1, overwrite_a);
@@ -64141,12 +64158,12 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -64237,7 +64254,7 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     m = iu_ - il + 1
  *     isuppz_shape[0] = 2 * m
  */
-  __pyx_t_6 = (__pyx_v_iu != Py_None);
+  __pyx_t_6 = (__pyx_v_iu != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_iu;
   } else {
@@ -64274,7 +64291,7 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     lwork_ = lwork if (lwork is not None) else 26 * n
  *     work_shape[0] = lwork_
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_isuppz_shape, 0, 1, nullptr)); 
   __pyx_v_isuppz_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -64285,7 +64302,7 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -64313,7 +64330,7 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     liwork = 10 * n
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -64342,7 +64359,7 @@ static System::Object^ dsyevr(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     z_shape[0] = n; z_shape[1] = m
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -64768,7 +64785,7 @@ static System::Object^ ssygv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -64854,7 +64871,7 @@ static System::Object^ ssygv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -65206,7 +65223,7 @@ static System::Object^ dsygv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -65292,7 +65309,7 @@ static System::Object^ dsygv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -65639,7 +65656,7 @@ static System::Object^ ssygvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7320_0_1->Target(__site_cvt_7320_0_1, overwrite_a);
@@ -65654,7 +65671,7 @@ static System::Object^ ssygvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -65723,7 +65740,7 @@ static System::Object^ ssygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -65751,7 +65768,7 @@ static System::Object^ ssygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     liwork = 3 + (5 * n)
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -65780,7 +65797,7 @@ static System::Object^ ssygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -66127,7 +66144,7 @@ static System::Object^ dsygvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7378_0_1->Target(__site_cvt_7378_0_1, overwrite_a);
@@ -66142,7 +66159,7 @@ static System::Object^ dsygvd(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -66211,7 +66228,7 @@ static System::Object^ dsygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -66239,7 +66256,7 @@ static System::Object^ dsygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     liwork = 3 + (5 * n)
  *     iwork_shape[0] = liwork
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -66268,7 +66285,7 @@ static System::Object^ dsygvd(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if n != a_shape[0]:
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -66636,7 +66653,7 @@ static System::Object^ ssygvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7437_0_3->Target(__site_cvt_7437_0_3, overwrite_a);
@@ -66651,17 +66668,17 @@ static System::Object^ ssygvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -66772,7 +66789,7 @@ static System::Object^ ssygvx(System::Object^ a, System::Object^ b, System::Obje
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -66800,7 +66817,7 @@ static System::Object^ ssygvx(System::Object^ a, System::Object^ b, System::Obje
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_FLOAT, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -66820,7 +66837,7 @@ static System::Object^ ssygvx(System::Object^ a, System::Object^ b, System::Obje
  *     info = 0
  *     m = iu - il + 1
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -67386,7 +67403,7 @@ static System::Object^ dsygvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_7521_0_3->Target(__site_cvt_7521_0_3, overwrite_a);
@@ -67401,17 +67418,17 @@ static System::Object^ dsygvx(System::Object^ a, System::Object^ b, System::Obje
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(z) == nullptr) {
     __pyx_v_z = z;
   } else {
-    __pyx_v_z = ((System::Object^)Py_None);
+    __pyx_v_z = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ifail) == nullptr) {
     __pyx_v_ifail = ifail;
   } else {
-    __pyx_v_ifail = ((System::Object^)Py_None);
+    __pyx_v_ifail = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -67522,7 +67539,7 @@ static System::Object^ dsygvx(System::Object^ a, System::Object^ b, System::Obje
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lwork;
   } else {
@@ -67550,7 +67567,7 @@ static System::Object^ dsygvx(System::Object^ a, System::Object^ b, System::Obje
  *     iwork_shape[0] = 5 * n
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -67570,7 +67587,7 @@ static System::Object^ dsygvx(System::Object^ a, System::Object^ b, System::Obje
  *     info = 0
  *     m = iu - il + 1
  */
-  __pyx_t_4 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_4 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
@@ -69595,7 +69612,7 @@ static System::Object^ strtrs(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lda) == nullptr) {
     __pyx_v_lda = lda;
   } else {
-    __pyx_v_lda = ((System::Object^)Py_None);
+    __pyx_v_lda = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_7779_0_3->Target(__site_cvt_7779_0_3, overwrite_b);
@@ -69703,7 +69720,7 @@ static System::Object^ strtrs(System::Object^ a, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_6 = (__pyx_v_lda != Py_None);
+  __pyx_t_6 = (__pyx_v_lda != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lda;
   } else {
@@ -70188,7 +70205,7 @@ static System::Object^ dtrtrs(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lda) == nullptr) {
     __pyx_v_lda = lda;
   } else {
-    __pyx_v_lda = ((System::Object^)Py_None);
+    __pyx_v_lda = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_7839_0_3->Target(__site_cvt_7839_0_3, overwrite_b);
@@ -70296,7 +70313,7 @@ static System::Object^ dtrtrs(System::Object^ a, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_6 = (__pyx_v_lda != Py_None);
+  __pyx_t_6 = (__pyx_v_lda != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lda;
   } else {
@@ -70781,7 +70798,7 @@ static System::Object^ ctrtrs(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lda) == nullptr) {
     __pyx_v_lda = lda;
   } else {
-    __pyx_v_lda = ((System::Object^)Py_None);
+    __pyx_v_lda = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_7899_0_3->Target(__site_cvt_7899_0_3, overwrite_b);
@@ -70889,7 +70906,7 @@ static System::Object^ ctrtrs(System::Object^ a, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_6 = (__pyx_v_lda != Py_None);
+  __pyx_t_6 = (__pyx_v_lda != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lda;
   } else {
@@ -71374,7 +71391,7 @@ static System::Object^ ztrtrs(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lda) == nullptr) {
     __pyx_v_lda = lda;
   } else {
-    __pyx_v_lda = ((System::Object^)Py_None);
+    __pyx_v_lda = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_b) == nullptr) {
     __pyx_v_overwrite_b = __site_cvt_7959_0_3->Target(__site_cvt_7959_0_3, overwrite_b);
@@ -71482,7 +71499,7 @@ static System::Object^ ztrtrs(System::Object^ a, System::Object^ b, [InteropServ
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  */
-  __pyx_t_6 = (__pyx_v_lda != Py_None);
+  __pyx_t_6 = (__pyx_v_lda != nullptr);
   if (__pyx_t_6) {
     __pyx_t_4 = __pyx_v_lda;
   } else {
@@ -71967,7 +71984,7 @@ static System::Object^ zgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_8021_0_2->Target(__site_cvt_8021_0_2, overwrite_a);
@@ -71977,17 +71994,17 @@ static System::Object^ zgeev(System::Object^ a, [InteropServices::Optional]Syste
   if (dynamic_cast<System::Reflection::Missing^>(w) == nullptr) {
     __pyx_v_w = w;
   } else {
-    __pyx_v_w = ((System::Object^)Py_None);
+    __pyx_v_w = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_w_ = nullptr;
@@ -72069,7 +72086,7 @@ static System::Object^ zgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -72097,7 +72114,7 @@ static System::Object^ zgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     rwork_shape[0] = 2 * n
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -72117,7 +72134,7 @@ static System::Object^ zgeev(System::Object^ a, [InteropServices::Optional]Syste
  *     info = 0
  *     if not (a_shape[0] == a_shape[1]):
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -72704,7 +72721,7 @@ static System::Object^ zgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_8097_0_2->Target(__site_cvt_8097_0_2, overwrite_a);
@@ -72719,22 +72736,22 @@ static System::Object^ zgegv(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alpha) == nullptr) {
     __pyx_v_alpha = alpha;
   } else {
-    __pyx_v_alpha = ((System::Object^)Py_None);
+    __pyx_v_alpha = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -72818,7 +72835,7 @@ static System::Object^ zgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -72846,7 +72863,7 @@ static System::Object^ zgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     rwork_shape[0] = 8 * n
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -72866,7 +72883,7 @@ static System::Object^ zgegv(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -73578,7 +73595,7 @@ static System::Object^ zgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_8188_0_1->Target(__site_cvt_8188_0_1, overwrite_a);
@@ -73593,7 +73610,7 @@ static System::Object^ zgelss(System::Object^ a, System::Object^ b, [InteropServ
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -73698,7 +73715,7 @@ static System::Object^ zgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_5 = (__pyx_v_lwork != Py_None);
+  __pyx_t_5 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_5) {
     __pyx_t_1 = __pyx_v_lwork;
   } else {
@@ -73733,7 +73750,7 @@ static System::Object^ zgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     rwork_shape[0] = (5 * minmn) - 1
  *     rwork_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, rwork_shape, False, True)
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -73753,7 +73770,7 @@ static System::Object^ zgelss(System::Object^ a, System::Object^ b, [InteropServ
  *     info = 0
  *     if not (maxmn == b_shape[0]):
  */
-  __pyx_t_1 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_1 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
@@ -74066,7 +74083,7 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_8247_0_1->Target(__site_cvt_8247_0_1, overwrite_a);
@@ -74076,17 +74093,17 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
   if (dynamic_cast<System::Reflection::Missing^>(u) == nullptr) {
     __pyx_v_u = u;
   } else {
-    __pyx_v_u = ((System::Object^)Py_None);
+    __pyx_v_u = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(s) == nullptr) {
     __pyx_v_s = s;
   } else {
-    __pyx_v_s = ((System::Object^)Py_None);
+    __pyx_v_s = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vt) == nullptr) {
     __pyx_v_vt = vt;
   } else {
-    __pyx_v_vt = ((System::Object^)Py_None);
+    __pyx_v_vt = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_u_ = nullptr;
@@ -74175,7 +74192,7 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     work_shape[0] = lwork_
  *     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
  */
-  __pyx_t_6 = (__pyx_v_lwork != Py_None);
+  __pyx_t_6 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_6) {
     __pyx_t_2 = __pyx_v_lwork;
   } else {
@@ -74222,7 +74239,7 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     rwork_len = ((5 * minmn * minmn) + (7 * minmn)) if compute_uv else (5 * minmn)
  *     rwork_shape[0] = rwork_len
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_CDOUBLE, 1, __pyx_v_work_shape, 0, 1, nullptr)); 
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -74256,7 +74273,7 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     iwork_shape[0] = 8 * minmn
  *     iwork_ = fw_asfortranarray(None, fwi_integer_t_enum, 1, iwork_shape, False, True)
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -74276,7 +74293,7 @@ static System::Object^ zgesdd(System::Object^ a, [InteropServices::Optional]Syst
  *     info = 0
  *     if not ((compute_uv == 0) or (compute_uv == 1)):
  */
-  __pyx_t_2 = ((System::Object^)fw_asfortranarray(Py_None, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
+  __pyx_t_2 = ((System::Object^)fw_asfortranarray(nullptr, NPY_INT, 1, __pyx_v_iwork_shape, 0, 1, nullptr)); 
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
@@ -74782,7 +74799,7 @@ static System::Object^ zggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(lwork) == nullptr) {
     __pyx_v_lwork = lwork;
   } else {
-    __pyx_v_lwork = ((System::Object^)Py_None);
+    __pyx_v_lwork = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_a) == nullptr) {
     __pyx_v_overwrite_a = __site_cvt_8319_0_2->Target(__site_cvt_8319_0_2, overwrite_a);
@@ -74797,27 +74814,27 @@ static System::Object^ zggev(System::Object^ a, System::Object^ b, [InteropServi
   if (dynamic_cast<System::Reflection::Missing^>(alpha) == nullptr) {
     __pyx_v_alpha = alpha;
   } else {
-    __pyx_v_alpha = ((System::Object^)Py_None);
+    __pyx_v_alpha = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(beta) == nullptr) {
     __pyx_v_beta = beta;
   } else {
-    __pyx_v_beta = ((System::Object^)Py_None);
+    __pyx_v_beta = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vl) == nullptr) {
     __pyx_v_vl = vl;
   } else {
-    __pyx_v_vl = ((System::Object^)Py_None);
+    __pyx_v_vl = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(vr) == nullptr) {
     __pyx_v_vr = vr;
   } else {
-    __pyx_v_vr = ((System::Object^)Py_None);
+    __pyx_v_vr = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(work) == nullptr) {
     __pyx_v_work = work;
   } else {
-    __pyx_v_work = ((System::Object^)Py_None);
+    __pyx_v_work = ((System::Object^)nullptr);
   }
   __pyx_v_a_ = nullptr;
   __pyx_v_b_ = nullptr;
@@ -74910,7 +74927,7 @@ static System::Object^ zggev(System::Object^ a, System::Object^ b, [InteropServi
  *     info = 0
  *     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, not overwrite_b, False)
  */
-  __pyx_t_3 = ((System::Object^)fw_asfortranarray(Py_None, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
+  __pyx_t_3 = ((System::Object^)fw_asfortranarray(nullptr, NPY_DOUBLE, 1, __pyx_v_rwork_shape, 0, 1, nullptr)); 
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
@@ -74941,7 +74958,7 @@ static System::Object^ zggev(System::Object^ a, System::Object^ b, [InteropServi
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  */
-  __pyx_t_4 = (__pyx_v_lwork != Py_None);
+  __pyx_t_4 = (__pyx_v_lwork != nullptr);
   if (__pyx_t_4) {
     __pyx_t_3 = __pyx_v_lwork;
   } else {
@@ -75654,201 +75671,6 @@ static System::Object^ zggev(System::Object^ a, System::Object^ b, [InteropServi
 /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8415
  * 
  * 
- * cdef char fw_aschar(object s):             # <<<<<<<<<<<<<<
- *     cdef char* buf
- *     try:
- */
-
-static  char fw_aschar(System::Object^ __pyx_v_s) {
-  char *__pyx_v_buf;
-  char __pyx_r;
-  char __pyx_t_3;
-  System::Object^ __pyx_t_4 = nullptr;
-  char *__pyx_t_8;
-  System::IntPtr __pyx_t_9;
-  System::Object^ __pyx_t_11 = nullptr;
-  char *__pyx_t_12;
-  int __pyx_t_13;
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8417
- * cdef char fw_aschar(object s):
- *     cdef char* buf
- *     try:             # <<<<<<<<<<<<<<
- *         return <char>s # int
- *     except TypeError:
- */
-  try {
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8418
- *     cdef char* buf
- *     try:
- *         return <char>s # int             # <<<<<<<<<<<<<<
- *     except TypeError:
- *         pass
- */
-    __pyx_t_3 = __site_cvt_char_8418_28->Target(__site_cvt_char_8418_28, __pyx_v_s);
-    __pyx_r = ((char)__pyx_t_3);
-    goto __pyx_L0;
-  } catch (System::Exception^ __pyx_lt_1) {
-    System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8419
- *     try:
- *         return <char>s # int
- *     except TypeError:             # <<<<<<<<<<<<<<
- *         pass
- *     try:
- */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_5;
-    __pyx_lt_5 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_5 != nullptr) {
-      // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.flapack.fw_aschar");
-      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
-    }
-    else {
-      // XXX we should set traceback here
-      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_1);
-    }
-    PythonOps::ExceptionHandled(__pyx_context);
-  }
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8421
- *     except TypeError:
- *         pass
- *     try:             # <<<<<<<<<<<<<<
- *         buf = <char*>s # bytes
- *     except TypeError:
- */
-  try {
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8422
- *         pass
- *     try:
- *         buf = <char*>s # bytes             # <<<<<<<<<<<<<<
- *     except TypeError:
- *         s = s.encode('ASCII')
- */
-    __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-    __pyx_t_8 = static_cast<char *>(__pyx_t_9.ToPointer());
-    __pyx_v_buf = ((char *)__pyx_t_8);
-    InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
-  } catch (System::Exception^ __pyx_lt_6) {
-    System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8423
- *     try:
- *         buf = <char*>s # bytes
- *     except TypeError:             # <<<<<<<<<<<<<<
- *         s = s.encode('ASCII')
- *         buf = <char*>s # unicode
- */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_10;
-    __pyx_lt_10 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_10 != nullptr) {
-      // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.flapack.fw_aschar");
-      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
-
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8424
- *         buf = <char*>s # bytes
- *     except TypeError:
- *         s = s.encode('ASCII')             # <<<<<<<<<<<<<<
- *         buf = <char*>s # unicode
- *     if buf[0] == 0:
- */
-      __pyx_t_4 = __site_get_encode_8424_13->Target(__site_get_encode_8424_13, __pyx_v_s, __pyx_context);
-      __pyx_t_11 = __site_call1_8424_20->Target(__site_call1_8424_20, __pyx_context, __pyx_t_4, ((System::Object^)"ASCII"));
-      __pyx_t_4 = nullptr;
-      __pyx_v_s = __pyx_t_11;
-      __pyx_t_11 = nullptr;
-
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8425
- *     except TypeError:
- *         s = s.encode('ASCII')
- *         buf = <char*>s # unicode             # <<<<<<<<<<<<<<
- *     if buf[0] == 0:
- *         return 0
- */
-      __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-      __pyx_t_12 = static_cast<char *>(__pyx_t_9.ToPointer());
-      __pyx_v_buf = ((char *)__pyx_t_12);
-      InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
-    }
-    else {
-      // XXX we should set traceback here
-      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
-    }
-    PythonOps::ExceptionHandled(__pyx_context);
-  }
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8426
- *         s = s.encode('ASCII')
- *         buf = <char*>s # unicode
- *     if buf[0] == 0:             # <<<<<<<<<<<<<<
- *         return 0
- *     elif buf[1] != 0:
- */
-  __pyx_t_13 = ((__pyx_v_buf[0]) == 0);
-  if (__pyx_t_13) {
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8427
- *         buf = <char*>s # unicode
- *     if buf[0] == 0:
- *         return 0             # <<<<<<<<<<<<<<
- *     elif buf[1] != 0:
- *         return 0
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
-    goto __pyx_L3;
-  }
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8428
- *     if buf[0] == 0:
- *         return 0
- *     elif buf[1] != 0:             # <<<<<<<<<<<<<<
- *         return 0
- *     else:
- */
-  __pyx_t_13 = ((__pyx_v_buf[1]) != 0);
-  if (__pyx_t_13) {
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8429
- *         return 0
- *     elif buf[1] != 0:
- *         return 0             # <<<<<<<<<<<<<<
- *     else:
- *         return buf[0]
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
-    goto __pyx_L3;
-  }
-  /*else*/ {
-
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8431
- *         return 0
- *     else:
- *         return buf[0]             # <<<<<<<<<<<<<<
- * 
- * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
- */
-    __pyx_r = (__pyx_v_buf[0]);
-    goto __pyx_L0;
-  }
-  __pyx_L3:;
-
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
-}
-
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8433
- *         return buf[0]
- * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
  *                                   np.intp_t * coerced_shape,
  *                                   bint copy, bint create, int alignment=1):
@@ -75880,7 +75702,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_v_result = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8436
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8418
  *                                   np.intp_t * coerced_shape,
  *                                   bint copy, bint create, int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST             # <<<<<<<<<<<<<<
@@ -75889,17 +75711,17 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_flags = (NPY_F_CONTIGUOUS | NPY_FORCECAST);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8441
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8423
  *     cdef int in_ndim
  *     cdef int i
  *     if value is None:             # <<<<<<<<<<<<<<
  *         if create:
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
  */
-  __pyx_t_1 = (__pyx_v_value == Py_None);
+  __pyx_t_1 = (__pyx_v_value == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8442
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8424
  *     cdef int i
  *     if value is None:
  *         if create:             # <<<<<<<<<<<<<<
@@ -75908,7 +75730,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_create) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8443
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8425
  *     if value is None:
  *         if create:
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)             # <<<<<<<<<<<<<<
@@ -75925,7 +75747,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8445
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8427
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
  *         else:
  *             raise TypeError('Expected array but None provided')             # <<<<<<<<<<<<<<
@@ -75933,7 +75755,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         if ndim <= 1:
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-      __pyx_t_3 = __site_call1_8445_27->Target(__site_call1_8445_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
+      __pyx_t_3 = __site_call1_8427_27->Target(__site_call1_8427_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -75943,7 +75765,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8447
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8429
  *             raise TypeError('Expected array but None provided')
  *     else:
  *         if ndim <= 1:             # <<<<<<<<<<<<<<
@@ -75953,7 +75775,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     __pyx_t_1 = (__pyx_v_ndim <= 1);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8449
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8431
  *         if ndim <= 1:
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -75965,7 +75787,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L5:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8450
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8432
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and             # <<<<<<<<<<<<<<
@@ -75977,11 +75799,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
       __pyx_t_4 = (__pyx_v_alignment > 1);
       if (__pyx_t_4) {
         __pyx_t_3 = PyArray_Check(__pyx_v_value); 
-        __pyx_t_5 = __site_istrue_8450_59->Target(__site_istrue_8450_59, __pyx_t_3);
+        __pyx_t_5 = __site_istrue_8432_59->Target(__site_istrue_8432_59, __pyx_t_3);
         __pyx_t_3 = nullptr;
         if (__pyx_t_5) {
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8451
+          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8433
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):             # <<<<<<<<<<<<<<
@@ -76006,7 +75828,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8453
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8435
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
  *             # mis-aligned array
  *             copy = True             # <<<<<<<<<<<<<<
@@ -76018,7 +75840,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8454
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8436
  *             # mis-aligned array
  *             copy = True
  *         if copy:             # <<<<<<<<<<<<<<
@@ -76027,7 +75849,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_copy) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8455
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8437
  *             copy = True
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY             # <<<<<<<<<<<<<<
@@ -76039,7 +75861,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L7:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8456
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8438
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)             # <<<<<<<<<<<<<<
@@ -76059,7 +75881,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8457
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8439
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)             # <<<<<<<<<<<<<<
@@ -76067,11 +75889,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  */
   __pyx_t_8 = PyArray_NDIM(((System::Object^)__pyx_v_result)); 
-  __pyx_t_9 = __site_cvt_int_8457_29->Target(__site_cvt_int_8457_29, __pyx_t_8);
+  __pyx_t_9 = __site_cvt_int_8439_29->Target(__site_cvt_int_8439_29, __pyx_t_8);
   __pyx_t_8 = nullptr;
   __pyx_v_in_ndim = __pyx_t_9;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8458
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8440
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:             # <<<<<<<<<<<<<<
@@ -76081,7 +75903,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_4 = (__pyx_v_in_ndim > __pyx_v_ndim);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8459
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8441
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)             # <<<<<<<<<<<<<<
@@ -76090,9 +75912,9 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
     __pyx_t_2 = __pyx_v_ndim;
-    __pyx_t_3 = __site_op_mod_8459_60->Target(__site_op_mod_8459_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
+    __pyx_t_3 = __site_op_mod_8441_60->Target(__site_op_mod_8441_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
     __pyx_t_2 = nullptr;
-    __pyx_t_2 = __site_call1_8459_24->Target(__site_call1_8459_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
+    __pyx_t_2 = __site_call1_8441_24->Target(__site_call1_8441_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
     __pyx_t_8 = nullptr;
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
@@ -76101,7 +75923,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8460
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8442
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)             # <<<<<<<<<<<<<<
@@ -76110,7 +75932,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_in_shape = PyArray_DIMS(__pyx_v_result);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8461
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8443
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):             # <<<<<<<<<<<<<<
@@ -76121,7 +75943,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8462
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8444
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]             # <<<<<<<<<<<<<<
@@ -76131,7 +75953,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = (__pyx_v_in_shape[__pyx_v_i]);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8463
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8445
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]
  *     for i in range(in_ndim, ndim):             # <<<<<<<<<<<<<<
@@ -76142,7 +75964,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = __pyx_v_in_ndim; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8465
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8447
  *     for i in range(in_ndim, ndim):
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1             # <<<<<<<<<<<<<<
@@ -76152,12 +75974,12 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = 1;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8466
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8448
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1
  *     return result             # <<<<<<<<<<<<<<
  * 
- * # Fwrap configuration:
+ * cdef char fw_aschar(object s):
  */
   __pyx_r = __pyx_v_result;
   goto __pyx_L0;
@@ -76167,7 +75989,202 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":185
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8450
+ *     return result
+ * 
+ * cdef char fw_aschar(object s):             # <<<<<<<<<<<<<<
+ *     cdef char* buf
+ *     try:
+ */
+
+static  char fw_aschar(System::Object^ __pyx_v_s) {
+  char *__pyx_v_buf;
+  char __pyx_r;
+  char __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  char *__pyx_t_8;
+  System::IntPtr __pyx_t_9;
+  System::Object^ __pyx_t_11 = nullptr;
+  char *__pyx_t_12;
+  int __pyx_t_13;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8452
+ * cdef char fw_aschar(object s):
+ *     cdef char* buf
+ *     try:             # <<<<<<<<<<<<<<
+ *         return <char>s # int
+ *     except TypeError:
+ */
+  try {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8453
+ *     cdef char* buf
+ *     try:
+ *         return <char>s # int             # <<<<<<<<<<<<<<
+ *     except TypeError:
+ *         pass
+ */
+    __pyx_t_3 = __site_cvt_char_8453_28->Target(__site_cvt_char_8453_28, __pyx_v_s);
+    __pyx_r = ((char)__pyx_t_3);
+    goto __pyx_L0;
+  } catch (System::Exception^ __pyx_lt_1) {
+    System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8454
+ *     try:
+ *         return <char>s # int
+ *     except TypeError:             # <<<<<<<<<<<<<<
+ *         pass
+ *     try:
+ */
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_5;
+    __pyx_lt_5 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_4);
+    __pyx_t_4 = nullptr;
+    if (__pyx_lt_5 != nullptr) {
+      // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.flapack.fw_aschar");
+      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
+    }
+    else {
+      // XXX we should set traceback here
+      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_1);
+    }
+    PythonOps::ExceptionHandled(__pyx_context);
+  }
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8456
+ *     except TypeError:
+ *         pass
+ *     try:             # <<<<<<<<<<<<<<
+ *         buf = <char*>s # bytes
+ *     except TypeError:
+ */
+  try {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8457
+ *         pass
+ *     try:
+ *         buf = <char*>s # bytes             # <<<<<<<<<<<<<<
+ *     except TypeError:
+ *         s = s.encode('ASCII')
+ */
+    __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+    __pyx_t_8 = static_cast<char *>(__pyx_t_9.ToPointer());
+    __pyx_v_buf = ((char *)__pyx_t_8);
+    InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
+  } catch (System::Exception^ __pyx_lt_6) {
+    System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8458
+ *     try:
+ *         buf = <char*>s # bytes
+ *     except TypeError:             # <<<<<<<<<<<<<<
+ *         s = s.encode('ASCII')
+ *         buf = <char*>s # unicode
+ */
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_10;
+    __pyx_lt_10 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_4);
+    __pyx_t_4 = nullptr;
+    if (__pyx_lt_10 != nullptr) {
+      // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.flapack.fw_aschar");
+      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
+
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8459
+ *         buf = <char*>s # bytes
+ *     except TypeError:
+ *         s = s.encode('ASCII')             # <<<<<<<<<<<<<<
+ *         buf = <char*>s # unicode
+ *     if buf[0] == 0:
+ */
+      __pyx_t_4 = __site_get_encode_8459_13->Target(__site_get_encode_8459_13, __pyx_v_s, __pyx_context);
+      __pyx_t_11 = __site_call1_8459_20->Target(__site_call1_8459_20, __pyx_context, __pyx_t_4, ((System::Object^)"ASCII"));
+      __pyx_t_4 = nullptr;
+      __pyx_v_s = __pyx_t_11;
+      __pyx_t_11 = nullptr;
+
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8460
+ *     except TypeError:
+ *         s = s.encode('ASCII')
+ *         buf = <char*>s # unicode             # <<<<<<<<<<<<<<
+ *     if buf[0] == 0:
+ *         return 0
+ */
+      __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+      __pyx_t_12 = static_cast<char *>(__pyx_t_9.ToPointer());
+      __pyx_v_buf = ((char *)__pyx_t_12);
+      InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
+    }
+    else {
+      // XXX we should set traceback here
+      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
+    }
+    PythonOps::ExceptionHandled(__pyx_context);
+  }
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8461
+ *         s = s.encode('ASCII')
+ *         buf = <char*>s # unicode
+ *     if buf[0] == 0:             # <<<<<<<<<<<<<<
+ *         return 0
+ *     elif buf[1] != 0:
+ */
+  __pyx_t_13 = ((__pyx_v_buf[0]) == 0);
+  if (__pyx_t_13) {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8462
+ *         buf = <char*>s # unicode
+ *     if buf[0] == 0:
+ *         return 0             # <<<<<<<<<<<<<<
+ *     elif buf[1] != 0:
+ *         return 0
+ */
+    __pyx_r = 0;
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8463
+ *     if buf[0] == 0:
+ *         return 0
+ *     elif buf[1] != 0:             # <<<<<<<<<<<<<<
+ *         return 0
+ *     else:
+ */
+  __pyx_t_13 = ((__pyx_v_buf[1]) != 0);
+  if (__pyx_t_13) {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8464
+ *         return 0
+ *     elif buf[1] != 0:
+ *         return 0             # <<<<<<<<<<<<<<
+ *     else:
+ *         return buf[0]
+ */
+    __pyx_r = 0;
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+  /*else*/ {
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":8466
+ *         return 0
+ *     else:
+ *         return buf[0]             # <<<<<<<<<<<<<<
+ * 
+ * # Fwrap configuration:
+ */
+    __pyx_r = (__pyx_v_buf[0]);
+    goto __pyx_L0;
+  }
+  __pyx_L3:;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -76179,7 +76196,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":188
+  /* "../cython/include\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -76196,7 +76213,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":190
+/* "../cython/include\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -76218,7 +76235,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":191
+  /* "../cython/include\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -76229,7 +76246,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":193
+  /* "../cython/include\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -76240,22 +76257,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":194
+    /* "../cython/include\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_194_18->Target(__site_get_append_194_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_199_18->Target(__site_get_append_199_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_194_25->Target(__site_call1_194_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_199_25->Target(__site_call1_199_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":195
+  /* "../cython/include\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -76266,21 +76283,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":196
+  /* "../cython/include\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_196_16->Target(__site_get_zeros_196_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_zeros_201_16->Target(__site_get_zeros_201_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_196_22->Target(__site_call3_196_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_201_22->Target(__site_call3_201_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -76293,8 +76310,105 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":198
+/* "../cython/include\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
+ *     shape_list = []
+ *     cdef int i
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+  System::Object^ __pyx_v_shape_list;
+  int __pyx_v_i;
+  System::Object^ __pyx_v_numpy;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  System::Object^ __pyx_t_6 = nullptr;
+  __pyx_v_shape_list = nullptr;
+  __pyx_v_numpy = nullptr;
+
+  /* "../cython/include\numpy.pxd":204
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+ *     shape_list = []             # <<<<<<<<<<<<<<
+ *     cdef int i
+ *     for i in range(ndim):
+ */
+  __pyx_t_1 = PythonOps::MakeListNoCopy(gcnew array<System::Object^>{});
+  __pyx_v_shape_list = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":206
+ *     shape_list = []
+ *     cdef int i
+ *     for i in range(ndim):             # <<<<<<<<<<<<<<
+ *         shape_list.append(shape[i])
+ *     import numpy
+ */
+  __pyx_t_2 = __pyx_v_ndim;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_i = __pyx_t_3;
+
+    /* "../cython/include\numpy.pxd":207
+ *     cdef int i
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ */
+    __pyx_t_1 = __site_get_append_207_18->Target(__site_get_append_207_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
+    __pyx_t_5 = __site_call1_207_25->Target(__site_call1_207_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_1 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+  }
+
+  /* "../cython/include\numpy.pxd":208
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])
+ *     import numpy             # <<<<<<<<<<<<<<
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ */
+  __pyx_t_5 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_numpy = __pyx_t_5;
+  __pyx_t_5 = nullptr;
+
+  /* "../cython/include\numpy.pxd":209
+ *         shape_list.append(shape[i])
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ */
+  __pyx_t_5 = __site_get_empty_209_16->Target(__site_get_empty_209_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  if (__pyx_v_fortran) {
+    __pyx_t_1 = "F";
+  } else {
+    __pyx_t_1 = "C";
+  }
+  __pyx_t_6 = __site_call3_209_22->Target(__site_call3_209_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_5 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_6;
+  __pyx_t_6 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":211
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
  *     assert subtype == NULL
@@ -76305,7 +76419,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":199
+  /* "../cython/include\numpy.pxd":212
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -76318,7 +76432,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":200
+  /* "../cython/include\numpy.pxd":213
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -76331,12 +76445,12 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":201
+  /* "../cython/include\numpy.pxd":214
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
  * 
- * cdef inline void* PyArray_DATA(ndarray n):
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  */
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj)); 
   __pyx_r = __pyx_t_1;
@@ -76348,8 +76462,39 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":203
+/* "../cython/include\numpy.pxd":216
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+ */
+
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int __pyx_v_flags) {
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":218
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void* PyArray_DATA(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_218_54->Target(__site_get_Array_218_54, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_218_54->Target(__site_cvt_PY_LONG_LONG_218_54, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":220
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
@@ -76361,15 +76506,15 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":205
+  /* "../cython/include\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_205_49->Target(__site_get_Array_205_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_205_49->Target(__site_cvt_PY_LONG_LONG_205_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_222_49->Target(__site_get_Array_222_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_222_49->Target(__site_cvt_PY_LONG_LONG_222_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -76379,7 +76524,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":207
+/* "../cython/include\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -76392,15 +76537,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":209
+  /* "../cython/include\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_209_49->Target(__site_get_Array_209_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_209_49->Target(__site_cvt_PY_LONG_LONG_209_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_226_49->Target(__site_get_Array_226_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_226_49->Target(__site_cvt_PY_LONG_LONG_226_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -76410,8 +76555,39 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":211
+/* "../cython/include\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_intp_t __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":230
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ */
+  __pyx_t_1 = __site_get_Array_230_49->Target(__site_get_Array_230_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_230_49->Target(__site_cvt_PY_LONG_LONG_230_49, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":232
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
  *     import clr
@@ -76427,7 +76603,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":212
+  /* "../cython/include\numpy.pxd":233
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -76438,7 +76614,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":213
+  /* "../cython/include\numpy.pxd":234
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -76449,17 +76625,17 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":214
+  /* "../cython/include\numpy.pxd":235
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  */
-  __pyx_t_1 = __site_get_NpyArray_214_22->Target(__site_get_NpyArray_214_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_FromAny_214_31->Target(__site_get_FromAny_214_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_235_22->Target(__site_get_NpyArray_235_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_235_31->Target(__site_get_FromAny_235_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_214_39->Target(__site_call6_214_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_235_39->Target(__site_call6_235_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -76470,7 +76646,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":216
+/* "../cython/include\numpy.pxd":237
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -76485,7 +76661,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":217
+  /* "../cython/include\numpy.pxd":238
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -76493,13 +76669,13 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
-  __pyx_t_2 = __site_op_and_217_13->Target(__site_op_and_217_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_2 = __site_op_and_238_13->Target(__site_op_and_238_13, __pyx_v_flags, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_217_13->Target(__site_istrue_217_13, __pyx_t_2);
+  __pyx_t_3 = __site_istrue_238_13->Target(__site_istrue_238_13, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":218
+    /* "../cython/include\numpy.pxd":239
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -76507,7 +76683,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  * 
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
-    __pyx_t_1 = __site_op_ior_218_14->Target(__site_op_ior_218_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_1 = __site_op_ior_239_14->Target(__site_op_ior_239_14, __pyx_v_flags, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_flags = __pyx_t_1;
     __pyx_t_1 = nullptr;
@@ -76515,16 +76691,16 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":219
+  /* "../cython/include\numpy.pxd":240
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Check(obj):
  */
-  __pyx_t_4 = __site_cvt_int_219_77->Target(__site_cvt_int_219_77, __pyx_v_type);
+  __pyx_t_4 = __site_cvt_int_240_77->Target(__site_cvt_int_240_77, __pyx_v_type);
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
-  __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, Py_None); 
+  __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -76535,7 +76711,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":221
+/* "../cython/include\numpy.pxd":242
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -76548,7 +76724,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":222
+  /* "../cython/include\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
  *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
@@ -76556,7 +76732,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline object PyArray_NDIM(obj):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_222_21->Target(__site_call2_222_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
+  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -76567,7 +76743,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":224
+/* "../cython/include\numpy.pxd":245
  *     return isinstance(obj, ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
@@ -76579,14 +76755,14 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":225
+  /* "../cython/include\numpy.pxd":246
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
  * 
  * cdef inline void import_array():
  */
-  __pyx_t_1 = __site_get_ndim_225_14->Target(__site_get_ndim_225_14, __pyx_v_obj, __pyx_context);
+  __pyx_t_1 = __site_get_ndim_246_14->Target(__site_get_ndim_246_14, __pyx_v_obj, __pyx_context);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -76596,7 +76772,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":227
+/* "../cython/include\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -78384,31 +78560,39 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_call1_8403_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_8406_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_8409_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_char_8418_28 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_encode_8424_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "encode", false));
-  __site_call1_8424_20 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_8445_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_8450_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_8457_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mod_8459_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_8459_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_append_194_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_194_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_196_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_196_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_205_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_205_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_209_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_209_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_214_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_FromAny_214_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
-  __site_call6_214_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_op_and_217_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_istrue_217_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ior_218_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
-  __site_cvt_int_219_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call2_222_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_ndim_225_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_call1_8427_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_8432_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_8439_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_8441_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_8441_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_char_8453_28 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_encode_8459_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "encode", false));
+  __site_call1_8459_20 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_201_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_207_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_207_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_209_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_209_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_218_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_218_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_222_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_222_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_226_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_226_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_230_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_230_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_235_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_235_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_235_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_238_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_238_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_239_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_int_240_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call2_243_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_ndim_246_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -78469,13 +78653,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":1
  * #cython: ccomplex=True             # <<<<<<<<<<<<<<
  * 
- * """The flapack module was generated with Fwrap v0.2.0dev_9849d10.
+ * """The flapack module was generated with Fwrap v0.2.0dev_00843a8.
  */
   __pyx_t_1 = PythonOps::MakeEmptyDict();
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":227
+  /* "../cython/include\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -78891,7 +79075,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
 static CYTHON_INLINE void __Pyx_GetBufferAndValidate(NumpyDotNet::IExtBufferProtocol^& buf, System::Object^ obj, __Pyx_TypeInfo* dtype, int flags, int nd, int cast, __Pyx_BufFmt_StackElem* stack) {
   if (obj == Py_None) {
     buf = nullptr;
-    return 0;
+    return;
   }
   if (__Pyx_GetBuffer(obj, buf, flags) == -1) goto fail;
   if (buf->NumberDimensions != nd) {
@@ -78926,10 +79110,10 @@ static CYTHON_INLINE void __Pyx_GetBufferAndValidate(NumpyDotNet::IExtBufferProt
   XXX
   if (buf->suboffsets == NULL) buf->suboffsets = __Pyx_minusones;
 #endif
-  return 0;
+  return;
 fail:;
   buf = nullptr;
-  return -1;
+  throw PythonOps::ValueError("XXX buffer error");
 }
 
 static CYTHON_INLINE void __Pyx_SafeReleaseBuffer(NumpyDotNet::IExtBufferProtocol^ info) {
