@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VisualStudioProject ProjectType="typeStaticLibrary" ProjectCreator="Intel Fortran" Keyword="Static Library" Version="11.0" ProjectIdGuid="{54E74064-7AB4-4620-9FDF-ECD3F088E462}">
+	<Platforms>
+		<Platform Name="Win32"/></Platforms>
+	<Configurations>
+		<Configuration Name="Debug|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true" DebugInformationFormat="debugEnabled" Optimization="optimizeDisabled" Interfaces="true" Traceback="true" BoundsCheck="true" RuntimeLibrary="rtMultiThreadedDebugDLL"/>
+				<Tool Name="VFLibrarianTool" OutputFile="./$(ProjectName).lib"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration>
+		<Configuration Name="Release|Win32" ConfigurationType="typeStaticLibrary">
+				<Tool Name="VFFortranCompilerTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFLibrarianTool"/>
+				<Tool Name="VFResourceCompilerTool"/>
+				<Tool Name="VFMidlTool" SuppressStartupBanner="true"/>
+				<Tool Name="VFCustomBuildTool"/>
+				<Tool Name="VFPreLinkEventTool"/>
+				<Tool Name="VFPreBuildEventTool"/>
+				<Tool Name="VFPostBuildEventTool"/></Configuration></Configurations>
+	<Files>
+		<Filter Name="Header Files" Filter="fi;fd"/>
+		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
+		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
+		<File RelativePath=".\src\dfftpack\dcosqb.f"/>
+		<File RelativePath=".\src\dfftpack\dcosqf.f"/>
+		<File RelativePath=".\src\dfftpack\dcosqi.f"/>
+		<File RelativePath=".\src\dfftpack\dcost.f"/>
+		<File RelativePath=".\src\dfftpack\dcosti.f"/>
+		<File RelativePath=".\src\dfftpack\dfftb.f"/>
+		<File RelativePath=".\src\dfftpack\dfftb1.f"/>
+		<File RelativePath=".\src\dfftpack\dfftf.f"/>
+		<File RelativePath=".\src\dfftpack\dfftf1.f"/>
+		<File RelativePath=".\src\dfftpack\dffti.f"/>
+		<File RelativePath=".\src\dfftpack\dffti1.f"/>
+		<File RelativePath=".\src\dfftpack\dsinqb.f"/>
+		<File RelativePath=".\src\dfftpack\dsinqf.f"/>
+		<File RelativePath=".\src\dfftpack\dsinqi.f"/>
+		<File RelativePath=".\src\dfftpack\dsint.f"/>
+		<File RelativePath=".\src\dfftpack\dsint1.f"/>
+		<File RelativePath=".\src\dfftpack\dsinti.f"/>
+		<File RelativePath=".\src\dfftpack\zfftb.f"/>
+		<File RelativePath=".\src\dfftpack\zfftb1.f"/>
+		<File RelativePath=".\src\dfftpack\zfftf.f"/>
+		<File RelativePath=".\src\dfftpack\zfftf1.f"/>
+		<File RelativePath=".\src\dfftpack\zffti.f"/>
+		<File RelativePath=".\src\dfftpack\zffti1.f"/></Filter></Files>
+	<Globals/></VisualStudioProject>
