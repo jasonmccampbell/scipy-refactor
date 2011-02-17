@@ -154,8 +154,10 @@ cdef extern from "npy_arrayobject.h":
     ctypedef struct NpyArray:
         pass
 
+    bint NpyArray_CHKFLAGS(NpyArray* obj, int flags)
     void *NpyArray_DATA(NpyArray* obj)
     npy_intp *NpyArray_DIMS(NpyArray* obj)
+    npy_intp NpyArray_SIZE(NpyArray* obj)
 
 cdef extern from "npy_descriptor.h":
     ctypedef struct NpyArray_Descr:
@@ -211,6 +213,10 @@ cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_n
     assert obj == NULL
     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
 
+cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+     # XXX "long long" is wrong type
+    return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+
 cdef inline void* PyArray_DATA(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
@@ -218,6 +224,10 @@ cdef inline void* PyArray_DATA(ndarray n):
 cdef inline intp_t* PyArray_DIMS(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+
+cdef inline intp_t PyArray_SIZE(ndarray n):
+    # XXX "long long" is wrong type
+    return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
 
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
