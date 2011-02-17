@@ -136,16 +136,16 @@
     <ClInclude Include="ufunc_extras.h" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="IronPython, Version=2.7.0.10, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython.Modules, Version=2.7.0.10, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython.Modules, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.Modules.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Dynamic, Version=1.1.0.10, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Dynamic.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Scripting, Version=1.1.0.10, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Scripting.dll</HintPath>
     </Reference>
     <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">

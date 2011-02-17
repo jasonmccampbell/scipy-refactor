@@ -110,6 +110,10 @@ static const char *__pyx_f[] = {
 /* Cython code section 'utility_code_proto_before_types' */
 /* Cython code section 'numeric_typedefs' */
 
+typedef int __pyx_t_5numpy_npy_int;
+
+typedef double __pyx_t_5numpy_double_t;
+
 typedef int __pyx_t_5numpy_npy_intp;
 
 typedef signed char __pyx_t_5numpy_npy_int8;
@@ -166,33 +170,58 @@ typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_np
 /* Module declarations from numpy */
 /* Module declarations from numpy */
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
 static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
 static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void *__pyx_delegate_t_PyArray_DATA(NumpyDotNet::ndarray^);
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
+static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_PyArray_DIMS(NumpyDotNet::ndarray^);
+public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
 static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_import_array(void);
+public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_Check(System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_NDIM(System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate void __pyx_delegate_t_5numpy_import_array(void);
 static CYTHON_INLINE void import_array(void); /*proto*/
 /* Module declarations from scipy.special.orthogonal_eval */
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate double __pyx_delegate_t_eval_poly_chebyt(long, double);
+public delegate double __pyx_delegate_t_5scipy_7special_15orthogonal_eval_eval_poly_chebyt(long, double);
 static double eval_poly_chebyt(long, double); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t__loop_id_d(char **, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, void *);
+public delegate void __pyx_delegate_t_5scipy_7special_15orthogonal_eval__loop_id_d(char **, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, void *);
 static void _loop_id_d(char **, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, void *); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
 #define __Pyx_MODULE_NAME "scipy.special.orthogonal_eval"
 
 /* Implementation of scipy.special.orthogonal_eval */
-public ref struct __pyx_module_orthogonal_eval {
+namespace clr_orthogonal_eval {
+  public ref class module_orthogonal_eval sealed abstract {
 /* Cython code section 'global_var' */
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exp_92_13;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_92_27;
@@ -344,14 +373,31 @@ static  CallSite< System::Func< CallSite^, System::Object^, System::Object^ >^ >
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_200_46;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_pow_200_41;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_200_38;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_189_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_189_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_191_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_191_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_195_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_195_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_199_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_199_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_201_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_207_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_207_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_209_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_209_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_235_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_235_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_235_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_239_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_240_77;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
 /* Cython code section 'dotnet_globals' */
 
@@ -368,6 +414,8 @@ static int^ __pyx_int_1;
 static int^ __pyx_int_2;
 static int^ __pyx_int_neg_1;
 /* Cython code section 'all_the_rest' */
+public:
+static System::String^ __module__ = __Pyx_MODULE_NAME;
 
 /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":31
  *     void *malloc(size_t size)
@@ -379,7 +427,7 @@ static int^ __pyx_int_neg_1;
 
 static double (*__pyx_function_pointer_eval_poly_chebyt)(long, double);
 typedef double (*__pyx_fp_t_eval_poly_chebyt)(long, double);
-static __pyx_delegate_t_eval_poly_chebyt^ __pyx_delegate_val_eval_poly_chebyt;
+static __pyx_delegate_t_5scipy_7special_15orthogonal_eval_eval_poly_chebyt^ __pyx_delegate_val_eval_poly_chebyt;
 static  double eval_poly_chebyt(long __pyx_v_k, double __pyx_v_x) {
   long __pyx_v_m;
   double __pyx_v_b2;
@@ -489,7 +537,7 @@ static  double eval_poly_chebyt(long __pyx_v_k, double __pyx_v_x) {
 
 static void (*__pyx_function_pointer__loop_id_d)(char **, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, void *);
 typedef void (*__pyx_fp_t__loop_id_d)(char **, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *, void *);
-static __pyx_delegate_t__loop_id_d^ __pyx_delegate_val__loop_id_d;
+static __pyx_delegate_t_5scipy_7special_15orthogonal_eval__loop_id_d^ __pyx_delegate_val__loop_id_d;
 static  void _loop_id_d(char **__pyx_v_args, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *__pyx_v_dimensions, __pyx_t_5scipy_7special_15orthogonal_eval_npy_intp *__pyx_v_steps, void *__pyx_v_func) {
   int __pyx_v_i;
   char *__pyx_v_ip1;
@@ -638,7 +686,7 @@ static System::Object^ eval_jacobi(System::Object^ n, System::Object^ alpha, Sys
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_d = nullptr;
   __pyx_v_a = nullptr;
@@ -762,7 +810,7 @@ static System::Object^ eval_sh_jacobi(System::Object^ n, System::Object^ p, Syst
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_factor = nullptr;
 
@@ -863,7 +911,7 @@ static System::Object^ eval_gegenbauer(System::Object^ n, System::Object^ alpha,
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_d = nullptr;
   __pyx_v_a = nullptr;
@@ -997,7 +1045,7 @@ static System::Object^ eval_chebyt(System::Object^ n, System::Object^ x, [Intero
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":124
@@ -1045,7 +1093,7 @@ static System::Object^ eval_chebyu(System::Object^ n, System::Object^ x, [Intero
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_d = nullptr;
   __pyx_v_a = nullptr;
@@ -1153,7 +1201,7 @@ static System::Object^ eval_chebys(System::Object^ n, System::Object^ x, [Intero
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":137
@@ -1198,7 +1246,7 @@ static System::Object^ eval_chebyc(System::Object^ n, System::Object^ x, [Intero
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":141
@@ -1247,7 +1295,7 @@ static System::Object^ eval_sh_chebyt(System::Object^ n, System::Object^ x, [Int
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":145
@@ -1294,7 +1342,7 @@ static System::Object^ eval_sh_chebyu(System::Object^ n, System::Object^ x, [Int
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":149
@@ -1346,7 +1394,7 @@ static System::Object^ eval_legendre(System::Object^ n, System::Object^ x, [Inte
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_d = nullptr;
   __pyx_v_a = nullptr;
@@ -1452,7 +1500,7 @@ static System::Object^ eval_sh_legendre(System::Object^ n, System::Object^ x, [I
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":162
@@ -1505,7 +1553,7 @@ static System::Object^ eval_genlaguerre(System::Object^ n, System::Object^ alpha
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_d = nullptr;
   __pyx_v_a = nullptr;
@@ -1600,7 +1648,7 @@ static System::Object^ eval_laguerre(System::Object^ n, System::Object^ x, [Inte
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":174
@@ -1651,7 +1699,7 @@ static System::Object^ eval_hermite(System::Object^ n, System::Object^ x, [Inter
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
   __pyx_v_even = nullptr;
   __pyx_v_m = nullptr;
@@ -1707,7 +1755,7 @@ static System::Object^ eval_hermite(System::Object^ n, System::Object^ x, [Inter
  *         out = np.zeros_like(0*n + 0*x)
  *     if (n % 1 != 0).any():
  */
-  __pyx_t_5 = (__pyx_v_out == Py_None);
+  __pyx_t_5 = (__pyx_v_out == nullptr);
   if (__pyx_t_5) {
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":182
@@ -1966,7 +2014,7 @@ static System::Object^ eval_hermitenorm(System::Object^ n, System::Object^ x, [I
   if (dynamic_cast<System::Reflection::Missing^>(out) == nullptr) {
     __pyx_v_out = out;
   } else {
-    __pyx_v_out = ((System::Object^)Py_None);
+    __pyx_v_out = ((System::Object^)nullptr);
   }
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":200
@@ -2000,7 +2048,7 @@ static System::Object^ eval_hermitenorm(System::Object^ n, System::Object^ x, [I
   return __pyx_r;
 }
 
-/* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":180
+/* "../cython/include\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -2008,14 +2056,11 @@ static System::Object^ eval_hermitenorm(System::Object^ n, System::Object^ x, [I
  *         int identity, char* name, char* doc, int c):
  */
 
-static System::Object^ (*__pyx_function_pointer_PyUFunc_FromFuncAndData)(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
-typedef System::Object^ (*__pyx_fp_t_PyUFunc_FromFuncAndData)(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
-static __pyx_delegate_t_PyUFunc_FromFuncAndData^ __pyx_delegate_val_PyUFunc_FromFuncAndData;
 static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":183
+  /* "../cython/include\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -2032,7 +2077,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":185
+/* "../cython/include\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -2040,9 +2085,6 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
  *     cdef int i
  */
 
-static System::Object^ (*__pyx_function_pointer_PyArray_ZEROS)(int, __pyx_t_5numpy_intp_t *, int, int);
-typedef System::Object^ (*__pyx_fp_t_PyArray_ZEROS)(int, __pyx_t_5numpy_intp_t *, int, int);
-static __pyx_delegate_t_PyArray_ZEROS^ __pyx_delegate_val_PyArray_ZEROS;
 static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
@@ -2057,7 +2099,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":186
+  /* "../cython/include\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -2068,7 +2110,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":188
+  /* "../cython/include\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -2079,22 +2121,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":189
+    /* "../cython/include\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_189_18->Target(__site_get_append_189_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_199_18->Target(__site_get_append_199_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_189_25->Target(__site_call1_189_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_199_25->Target(__site_call1_199_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":190
+  /* "../cython/include\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -2105,21 +2147,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":191
+  /* "../cython/include\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
- * cdef inline void* PyArray_DATA(ndarray n):
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_191_16->Target(__site_get_zeros_191_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_zeros_201_16->Target(__site_get_zeros_201_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_191_22->Target(__site_call3_191_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_201_22->Target(__site_call3_201_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -2132,31 +2174,211 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":193
+/* "../cython/include\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
+ *     shape_list = []
+ *     cdef int i
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+  System::Object^ __pyx_v_shape_list;
+  int __pyx_v_i;
+  System::Object^ __pyx_v_numpy;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  System::Object^ __pyx_t_6 = nullptr;
+  __pyx_v_shape_list = nullptr;
+  __pyx_v_numpy = nullptr;
+
+  /* "../cython/include\numpy.pxd":204
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+ *     shape_list = []             # <<<<<<<<<<<<<<
+ *     cdef int i
+ *     for i in range(ndim):
+ */
+  __pyx_t_1 = PythonOps::MakeListNoCopy(gcnew array<System::Object^>{});
+  __pyx_v_shape_list = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":206
+ *     shape_list = []
+ *     cdef int i
+ *     for i in range(ndim):             # <<<<<<<<<<<<<<
+ *         shape_list.append(shape[i])
+ *     import numpy
+ */
+  __pyx_t_2 = __pyx_v_ndim;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_i = __pyx_t_3;
+
+    /* "../cython/include\numpy.pxd":207
+ *     cdef int i
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ */
+    __pyx_t_1 = __site_get_append_207_18->Target(__site_get_append_207_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
+    __pyx_t_5 = __site_call1_207_25->Target(__site_call1_207_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_1 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+  }
+
+  /* "../cython/include\numpy.pxd":208
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])
+ *     import numpy             # <<<<<<<<<<<<<<
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ */
+  __pyx_t_5 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_numpy = __pyx_t_5;
+  __pyx_t_5 = nullptr;
+
+  /* "../cython/include\numpy.pxd":209
+ *         shape_list.append(shape[i])
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ */
+  __pyx_t_5 = __site_get_empty_209_16->Target(__site_get_empty_209_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  if (__pyx_v_fortran) {
+    __pyx_t_1 = "F";
+  } else {
+    __pyx_t_1 = "C";
+  }
+  __pyx_t_6 = __site_call3_209_22->Target(__site_call3_209_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_5 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_6;
+  __pyx_t_6 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":211
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
+ *     assert subtype == NULL
+ *     assert obj == NULL
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":212
+ * 
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ *     assert subtype == NULL             # <<<<<<<<<<<<<<
+ *     assert obj == NULL
+ *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ */
+  #ifndef PYREX_WITHOUT_ASSERTIONS
+  if (unlikely(!(__pyx_v_subtype == NULL))) {
+    PythonOps::RaiseAssertionError(nullptr);
+  }
+  #endif
+
+  /* "../cython/include\numpy.pxd":213
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ *     assert subtype == NULL
+ *     assert obj == NULL             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ * 
+ */
+  #ifndef PYREX_WITHOUT_ASSERTIONS
+  if (unlikely(!(__pyx_v_obj == NULL))) {
+    PythonOps::RaiseAssertionError(nullptr);
+  }
+  #endif
+
+  /* "../cython/include\numpy.pxd":214
+ *     assert subtype == NULL
+ *     assert obj == NULL
+ *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ */
+  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj)); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":216
+ *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+ */
+
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int __pyx_v_flags) {
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":218
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void* PyArray_DATA(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_218_54->Target(__site_get_Array_218_54, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_218_54->Target(__site_cvt_PY_LONG_LONG_218_54, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":220
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  */
 
-static void *(*__pyx_function_pointer_PyArray_DATA)(NumpyDotNet::ndarray^);
-typedef void *(*__pyx_fp_t_PyArray_DATA)(NumpyDotNet::ndarray^);
-static __pyx_delegate_t_PyArray_DATA^ __pyx_delegate_val_PyArray_DATA;
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   void *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":195
+  /* "../cython/include\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_195_49->Target(__site_get_Array_195_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_195_49->Target(__site_cvt_PY_LONG_LONG_195_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_222_49->Target(__site_get_Array_222_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_222_49->Target(__site_cvt_PY_LONG_LONG_222_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -2166,7 +2388,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":197
+/* "../cython/include\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -2174,23 +2396,20 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static __pyx_t_5numpy_intp_t *(*__pyx_function_pointer_PyArray_DIMS)(NumpyDotNet::ndarray^);
-typedef __pyx_t_5numpy_intp_t *(*__pyx_fp_t_PyArray_DIMS)(NumpyDotNet::ndarray^);
-static __pyx_delegate_t_PyArray_DIMS^ __pyx_delegate_val_PyArray_DIMS;
 static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
   __pyx_t_5numpy_intp_t *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":199
+  /* "../cython/include\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline void import_array():
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_199_49->Target(__site_get_Array_199_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_199_49->Target(__site_cvt_PY_LONG_LONG_199_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_226_49->Target(__site_get_Array_226_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_226_49->Target(__site_cvt_PY_LONG_LONG_226_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -2200,16 +2419,230 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":201
+/* "../cython/include\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_intp_t __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":230
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ */
+  __pyx_t_1 = __site_get_Array_230_49->Target(__site_get_Array_230_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_230_49->Target(__site_cvt_PY_LONG_LONG_230_49, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":232
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.NpyArray
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op, System::Object^ __pyx_v_newtype, System::Object^ __pyx_v_min_depth, System::Object^ __pyx_v_max_depth, System::Object^ __pyx_v_flags, System::Object^ __pyx_v_context) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "../cython/include\numpy.pxd":233
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.NpyArray
+ *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":234
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ *     import clr
+ *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyArray", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":235
+ *     import clr
+ *     import NumpyDotNet.NpyArray
+ *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
+ */
+  __pyx_t_1 = __site_get_NpyArray_235_22->Target(__site_get_NpyArray_235_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_235_31->Target(__site_get_FromAny_235_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_call6_235_39->Target(__site_call6_235_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_2 = nullptr;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":237
+ *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+ * 
+ * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
+ *     if flags & NPY_ENSURECOPY:
+ *         flags |= NPY_DEFAULT
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, System::Object^ __pyx_v_type, System::Object^ __pyx_v_min, System::Object^ __pyx_v_max, System::Object^ __pyx_v_flags) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  int __pyx_t_3;
+  int __pyx_t_4;
+
+  /* "../cython/include\numpy.pxd":238
+ * 
+ * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
+ *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
+ *         flags |= NPY_DEFAULT
+ *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
+ */
+  __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
+  __pyx_t_2 = __site_op_and_238_13->Target(__site_op_and_238_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_t_3 = __site_istrue_238_13->Target(__site_istrue_238_13, __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  if (__pyx_t_3) {
+
+    /* "../cython/include\numpy.pxd":239
+ * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
+ *     if flags & NPY_ENSURECOPY:
+ *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
+ *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
+ * 
+ */
+    __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
+    __pyx_t_1 = __site_op_ior_239_14->Target(__site_op_ior_239_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_2 = nullptr;
+    __pyx_v_flags = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "../cython/include\numpy.pxd":240
+ *     if flags & NPY_ENSURECOPY:
+ *         flags |= NPY_DEFAULT
+ *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_Check(obj):
+ */
+  __pyx_t_4 = __site_cvt_int_240_77->Target(__site_cvt_int_240_77, __pyx_v_type);
+  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
+  __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":242
+ *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
+ * 
+ * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
+ *     return isinstance(obj, ndarray)
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+
+  /* "../cython/include\numpy.pxd":243
+ * 
+ * cdef inline object PyArray_Check(obj):
+ *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_NDIM(obj):
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
+  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":245
+ *     return isinstance(obj, ndarray)
+ * 
+ * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
+ *     return obj.ndim
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":246
+ * 
+ * cdef inline object PyArray_NDIM(obj):
+ *     return obj.ndim             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void import_array():
+ */
+  __pyx_t_1 = __site_get_ndim_246_14->Target(__site_get_ndim_246_14, __pyx_v_obj, __pyx_context);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":248
+ *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
  *     pass
  */
 
-static void (*__pyx_function_pointer_import_array)(void);
-typedef void (*__pyx_fp_t_import_array)(void);
-static __pyx_delegate_t_import_array^ __pyx_delegate_val_import_array;
 static CYTHON_INLINE void import_array(void) {
 
 }
@@ -2384,14 +2817,31 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_op_div_200_46 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
   __site_op_pow_200_41 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Power));
   __site_op_mul_200_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_get_append_189_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_189_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_191_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_191_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_195_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_195_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_199_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_199_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_201_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_207_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_207_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_209_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_209_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_218_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_218_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_222_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_222_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_226_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_226_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_230_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_230_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_235_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_235_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_235_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_238_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_238_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_239_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_int_240_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call2_243_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_ndim_246_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -2401,9 +2851,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __Pyx_InitGlobals();
   /*--- Type init code ---*/
   /*--- Create function pointers ---*/
-  __pyx_delegate_val_eval_poly_chebyt = gcnew __pyx_delegate_t_eval_poly_chebyt(eval_poly_chebyt);
+  __pyx_delegate_val_eval_poly_chebyt = gcnew __pyx_delegate_t_5scipy_7special_15orthogonal_eval_eval_poly_chebyt(eval_poly_chebyt);
   __pyx_function_pointer_eval_poly_chebyt = (__pyx_fp_t_eval_poly_chebyt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_eval_poly_chebyt).ToPointer());
-  __pyx_delegate_val__loop_id_d = gcnew __pyx_delegate_t__loop_id_d(_loop_id_d);
+  __pyx_delegate_val__loop_id_d = gcnew __pyx_delegate_t_5scipy_7special_15orthogonal_eval__loop_id_d(_loop_id_d);
   __pyx_function_pointer__loop_id_d = (__pyx_fp_t__loop_id_d)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val__loop_id_d).ToPointer());
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
@@ -2570,8 +3020,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":201
- *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+  /* "../cython/include\numpy.pxd":248
+ *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
  *     pass
@@ -2585,4 +3035,5 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Runtime support code */
 /* Cython code section 'end' */
 };
-//[assembly: PythonModule("scipy.special.orthogonal_eval", __pyx_module_orthogonal_eval::typeid)];
+[assembly: PythonModule("scipy__special__orthogonal_eval", module_orthogonal_eval::typeid)];
+};

@@ -29,8 +29,7 @@ def install():
     # site-packages directory and all .dll files into DLLs.
     for root, dirs, files in os.walk("."):
         for fn in files:
-            abs_path = join(root, fn)
-            rel_path = abs_path[len(scipy_dir) + 1:]
+            rel_path = join(root, fn)
             if fn.endswith('.py') and fn not in ignore_pys:
                 dst_dir = dirname(join(sp_dir, rel_path))
                 if not isdir(dst_dir):
@@ -42,16 +41,16 @@ def install():
                 else:
                     dst_file = join(dst_dir, fn)
                     
-                #print "Copy %s to %s" % (abs_path, dst_file)
-                shutil.copy(abs_path, dst_file)
+                #print "Copy %s to %s" % (rel_path, dst_file)
+                shutil.copy(rel_path, dst_file)
             elif fn.endswith('.dll') and fn not in ignore_libs:
                 dst_file = join(dll_dir, fn)
                 if isfile(dst_file):
                     # Rename existing file because it is probably in use by the ipy command.
                     tmp_dir = tempfile.mkdtemp()
                     os.rename(dst_file, join(tmp_dir, fn))
-                #print "Copy %s to %s" % (abs_path, dst_file)
-                shutil.copy(abs_path, dst_file)
+                #print "Copy %s to %s" % (rel_path, dst_file)
+                shutil.copy(rel_path, dst_file)
                 
     write_config(join(sp_dir, r'scipy\__config__.py'))
     write_version(join(sp_dir, r'scipy\version.py'))
