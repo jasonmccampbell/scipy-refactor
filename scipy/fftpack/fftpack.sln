@@ -6,6 +6,10 @@ EndProject
 Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "fftpack", "fftpack.vfproj", "{1D1BE1BD-C52C-4733-A067-6DA970F0DDEE}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "_fftpack", "_fftpack.vcxproj", "{05608192-444C-5E17-3380-37D733BA971A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{54E74064-7AB4-4620-9FDF-ECD3F088E462} = {54E74064-7AB4-4620-9FDF-ECD3F088E462}
+		{1D1BE1BD-C52C-4733-A067-6DA970F0DDEE} = {1D1BE1BD-C52C-4733-A067-6DA970F0DDEE}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
