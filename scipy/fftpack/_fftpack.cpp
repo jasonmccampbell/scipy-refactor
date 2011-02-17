@@ -134,7 +134,7 @@ static const char * __pyx_cfilenm= __FILE__;
 /* Cython code section 'filename_table' */
 
 static const char *__pyx_f[] = {
-  "_fftpack.pyx",
+  0
 };
 /* Cython code section 'utility_code_proto_before_types' */
 /* Cython code section 'numeric_typedefs' */
@@ -434,10 +434,6 @@ ref struct __pyx_opt_args_5scipy_7fftpack_8_fftpack_dct3 {
 };
 /* Cython code section 'utility_code_proto' */
 
-static CYTHON_INLINE fwi_integer_t __Pyx_div_fwi_integer_t(fwi_integer_t, fwi_integer_t); /* proto */
-
-#define UNARY_NEG_WOULD_OVERFLOW(x)		(((x) < 0) & ((unsigned long)(x) == 0-(unsigned long)(x)))
-
 /* Run-time type information about structs used with buffers */
 struct __Pyx_StructField_;
 
@@ -464,8 +460,6 @@ static CYTHON_INLINE void  __Pyx_GetBufferAndValidate(NumpyDotNet::IExtBufferPro
 static CYTHON_INLINE void __Pyx_SafeReleaseBuffer(NumpyDotNet::IExtBufferProtocol^ info);
 static void __Pyx_RaiseBufferIndexError(int axis); /*proto*/
 #define __Pyx_BufPtrCContig1d(type, buf, i0, s0) ((type)buf + i0)
-
-static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t, Py_ssize_t); /* proto */
 static int __Pyx_GetBuffer(System::Object^ obj, NumpyDotNet::IExtBufferProtocol^& view, int flags);
 static void __Pyx_ReleaseBuffer(NumpyDotNet::IExtBufferProtocol^ view);
 
@@ -710,58 +704,58 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_int64_31_19;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_int64_32_18;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_intc_33_13;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_50_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_54_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_57_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_59_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_82_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_86_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_89_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_91_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_117_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_122_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_125_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_127_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_150_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_155_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_158_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_160_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_183_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_188_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_191_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_193_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_216_17;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_221_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_224_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_226_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_255_17;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_263_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_266_23;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_268_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_275_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_302_17;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_310_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_313_23;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_315_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_322_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_443_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_446_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_448_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_472_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_475_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_477_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_501_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_504_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_506_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_530_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_533_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_535_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_559_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_562_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_564_24;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_588_9;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_591_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_593_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_51_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_55_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_58_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_60_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_83_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_87_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_90_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_92_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_118_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_123_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_126_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_128_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_151_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_156_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_159_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_161_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_184_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_189_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_192_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_194_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_217_17;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_222_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_225_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_227_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_256_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_264_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_267_23;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_269_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_276_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_303_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_311_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_314_23;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_316_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_444_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_447_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_449_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_473_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_476_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_478_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_502_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_505_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_507_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_531_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_534_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_536_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_560_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_563_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_565_24;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_589_9;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_592_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_594_24;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
@@ -803,7 +797,7 @@ static int^ __pyx_int_1;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":30
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":31
  *     void *memcpy(void *dest, void *src, size_t n)
  * # Template for cfft, zfft
  * cpdef object cfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -828,7 +822,6 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -845,7 +838,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":50
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":51
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -860,11 +853,11 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_50_17->Target(__site_cvt_fwi_integer_t_50_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_51_17->Target(__site_cvt_fwi_integer_t_51_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":51
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":52
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -873,7 +866,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CFLOAT);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":53
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":54
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -895,7 +888,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":54
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":55
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -910,28 +903,20 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_54_9->Target(__site_cvt_fwi_integer_t_54_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_55_9->Target(__site_cvt_fwi_integer_t_55_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":55
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":56
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 55; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":56
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":57
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not (n_ > 0):             # <<<<<<<<<<<<<<
@@ -941,7 +926,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_2 = (!(__pyx_v_n_ > 0));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":57
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":58
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')             # <<<<<<<<<<<<<<
@@ -949,7 +934,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_57_24->Target(__site_call1_57_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
+    __pyx_t_3 = __site_call1_58_24->Target(__site_call1_58_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -957,7 +942,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":58
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":59
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -967,7 +952,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":59
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":60
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -975,7 +960,7 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_59_24->Target(__site_call1_59_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_60_24->Target(__site_call1_60_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -983,16 +968,16 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":60
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":61
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.cfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object zfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
  */
-  cfft(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(cfft)(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":61
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":62
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.cfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -1003,15 +988,11 @@ static  System::Object^ cfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.cfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":62
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":63
  *     fc.cfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_
  * cpdef object zfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1036,7 +1017,6 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -1053,7 +1033,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":82
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":83
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -1068,11 +1048,11 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_82_17->Target(__site_cvt_fwi_integer_t_82_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_83_17->Target(__site_cvt_fwi_integer_t_83_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":83
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":84
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -1081,7 +1061,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CDOUBLE);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":85
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":86
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -1103,7 +1083,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":86
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":87
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -1118,28 +1098,20 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_86_9->Target(__site_cvt_fwi_integer_t_86_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_87_9->Target(__site_cvt_fwi_integer_t_87_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":87
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":88
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 87; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":88
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":89
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not (n_ > 0):             # <<<<<<<<<<<<<<
@@ -1149,7 +1121,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_2 = (!(__pyx_v_n_ > 0));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":89
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":90
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')             # <<<<<<<<<<<<<<
@@ -1157,7 +1129,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_89_24->Target(__site_call1_89_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
+    __pyx_t_3 = __site_call1_90_24->Target(__site_call1_90_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1165,7 +1137,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":90
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":91
  *     if not (n_ > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -1175,7 +1147,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":91
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":92
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -1183,7 +1155,7 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_91_24->Target(__site_call1_91_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_92_24->Target(__site_call1_92_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -1191,16 +1163,16 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":92
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":93
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.zfft(<fwc_complex_x16_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * 
  */
-  zfft(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(zfft)(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":93
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":94
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.zfft(<fwc_complex_x16_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -1211,15 +1183,11 @@ static  System::Object^ zfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.zfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":97
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":98
  * 
  * # Template for rfft, drfft, crfft, zrfft
  * cpdef object rfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1244,9 +1212,8 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -1263,7 +1230,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":117
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":118
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -1278,11 +1245,11 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_117_17->Target(__site_cvt_fwi_integer_t_117_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_118_17->Target(__site_cvt_fwi_integer_t_118_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":119
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":120
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     # First, convert x to an array with arbitrary number of dimensions
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -1291,7 +1258,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT32);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":121
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":122
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -1313,7 +1280,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":122
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":123
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -1328,28 +1295,20 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_122_9->Target(__site_cvt_fwi_integer_t_122_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_123_9->Target(__site_cvt_fwi_integer_t_123_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":123
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":124
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 123; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":124
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":125
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -1358,15 +1317,15 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_2 = (__pyx_v_n_ > 0);
   if (__pyx_t_2) {
-    __pyx_t_9 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_10 = __pyx_t_9;
+    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_2;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_2 = (!__pyx_t_10);
+  __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":125
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":126
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -1374,7 +1333,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_125_24->Target(__site_call1_125_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_126_24->Target(__site_call1_126_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1382,7 +1341,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":126
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":127
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -1392,7 +1351,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":127
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":128
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -1400,7 +1359,7 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_127_24->Target(__site_call1_127_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_128_24->Target(__site_call1_128_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -1408,16 +1367,16 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":128
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":129
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.rfft(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object drfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
  */
-  rfft(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(rfft)(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":129
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":130
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.rfft(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -1428,15 +1387,11 @@ static  System::Object^ rfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.rfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":130
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":131
  *     fc.rfft(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_
  * cpdef object drfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1461,9 +1416,8 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -1480,7 +1434,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":150
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":151
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -1495,11 +1449,11 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_150_17->Target(__site_cvt_fwi_integer_t_150_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_151_17->Target(__site_cvt_fwi_integer_t_151_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":152
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":153
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     # First, convert x to an array with arbitrary number of dimensions
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -1508,7 +1462,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT64);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":154
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":155
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -1530,7 +1484,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":155
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":156
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -1545,28 +1499,20 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_155_9->Target(__site_cvt_fwi_integer_t_155_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_156_9->Target(__site_cvt_fwi_integer_t_156_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":156
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":157
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 156; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":157
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":158
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -1575,15 +1521,15 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_2 = (__pyx_v_n_ > 0);
   if (__pyx_t_2) {
-    __pyx_t_9 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_10 = __pyx_t_9;
+    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_2;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_2 = (!__pyx_t_10);
+  __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":158
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":159
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -1591,7 +1537,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_158_24->Target(__site_call1_158_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_159_24->Target(__site_call1_159_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1599,7 +1545,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":159
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":160
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -1609,7 +1555,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":160
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":161
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -1617,7 +1563,7 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_160_24->Target(__site_call1_160_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_161_24->Target(__site_call1_161_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -1625,16 +1571,16 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":161
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":162
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.drfft(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object crfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
  */
-  drfft(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(drfft)(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":162
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":163
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.drfft(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -1645,15 +1591,11 @@ static  System::Object^ drfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.drfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":163
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":164
  *     fc.drfft(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_
  * cpdef object crfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1678,9 +1620,8 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -1697,7 +1638,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":183
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":184
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -1712,11 +1653,11 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_183_17->Target(__site_cvt_fwi_integer_t_183_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_184_17->Target(__site_cvt_fwi_integer_t_184_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":185
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":186
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     # First, convert x to an array with arbitrary number of dimensions
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -1725,7 +1666,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CFLOAT);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":187
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":188
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -1747,7 +1688,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":188
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":189
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -1762,28 +1703,20 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_188_9->Target(__site_cvt_fwi_integer_t_188_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_189_9->Target(__site_cvt_fwi_integer_t_189_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":189
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":190
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 189; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":190
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":191
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -1792,15 +1725,15 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_2 = (__pyx_v_n_ > 0);
   if (__pyx_t_2) {
-    __pyx_t_9 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_10 = __pyx_t_9;
+    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_2;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_2 = (!__pyx_t_10);
+  __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":191
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":192
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -1808,7 +1741,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_191_24->Target(__site_call1_191_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_192_24->Target(__site_call1_192_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1816,7 +1749,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":192
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":193
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -1826,7 +1759,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":193
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":194
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -1834,7 +1767,7 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_193_24->Target(__site_call1_193_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_194_24->Target(__site_call1_194_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -1842,16 +1775,16 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":194
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":195
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.crfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object zrfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
  */
-  crfft(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(crfft)(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":195
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":196
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.crfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -1862,15 +1795,11 @@ static  System::Object^ crfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.crfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":196
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":197
  *     fc.crfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_
  * cpdef object zrfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1895,9 +1824,8 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   long __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
   fwi_integer_t __pyx_t_7;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_8;
+  int __pyx_t_8;
   int __pyx_t_9;
-  int __pyx_t_10;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -1914,7 +1842,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":216
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":217
  *     cdef fwi_integer_t normalize_
  *     cdef fwi_integer_t howmany
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -1929,11 +1857,11 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_216_17->Target(__site_cvt_fwi_integer_t_216_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_217_17->Target(__site_cvt_fwi_integer_t_217_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":218
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":219
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     # First, convert x to an array with arbitrary number of dimensions
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -1942,7 +1870,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CDOUBLE);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":220
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":221
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -1964,7 +1892,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":221
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":222
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -1979,28 +1907,20 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_6 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_7 = __site_cvt_fwi_integer_t_221_9->Target(__site_cvt_fwi_integer_t_221_9, __pyx_t_6);
+  __pyx_t_7 = __site_cvt_fwi_integer_t_222_9->Target(__site_cvt_fwi_integer_t_222_9, __pyx_t_6);
   __pyx_t_6 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":222
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":223
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_8 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_8))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 222; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_8, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":223
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":224
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -2009,15 +1929,15 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_2 = (__pyx_v_n_ > 0);
   if (__pyx_t_2) {
-    __pyx_t_9 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_10 = __pyx_t_9;
+    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_9 = __pyx_t_8;
   } else {
-    __pyx_t_10 = __pyx_t_2;
+    __pyx_t_9 = __pyx_t_2;
   }
-  __pyx_t_2 = (!__pyx_t_10);
+  __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":224
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":225
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -2025,7 +1945,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_224_24->Target(__site_call1_224_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_225_24->Target(__site_call1_225_24, __pyx_context, __pyx_t_6, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_6 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -2033,7 +1953,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":225
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":226
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -2043,7 +1963,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_2 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":226
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":227
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -2051,7 +1971,7 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_6 = __site_call1_226_24->Target(__site_call1_226_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_6 = __site_call1_227_24->Target(__site_call1_227_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
     __pyx_t_6 = nullptr;
@@ -2059,16 +1979,16 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":227
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":228
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.zrfft(<fwc_complex_x16_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     return x_
  * 
  */
-  zrfft(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(zrfft)(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":228
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":229
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.zrfft(<fwc_complex_x16_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
  *     return x_             # <<<<<<<<<<<<<<
@@ -2079,15 +1999,11 @@ static  System::Object^ zrfft(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.zrfft");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":232
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":233
  * 
  * # Template for cfftnd, zfftnd
  * cpdef object cfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -2143,7 +2059,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_s_ = nullptr;
   __pyx_bstruct_s_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":255
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":256
  *     cdef fwi_integer_t j
  *     cdef Py_ssize_t i, sz, xsz
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -2158,11 +2074,11 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_255_17->Target(__site_cvt_fwi_integer_t_255_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_256_17->Target(__site_cvt_fwi_integer_t_256_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":256
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":257
  *     cdef Py_ssize_t i, sz, xsz
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     j = 0             # <<<<<<<<<<<<<<
@@ -2171,7 +2087,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_j = 0;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":257
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":258
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     j = 0
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -2180,7 +2096,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CFLOAT);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":259
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":260
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -2202,7 +2118,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":262
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":263
  *     # Next, let the default of s be the tuple x_.shape,
  *     # and get the array of s
  *     if s is None:             # <<<<<<<<<<<<<<
@@ -2212,21 +2128,21 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = (__pyx_v_s == nullptr);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":263
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":264
  *     # and get the array of s
  *     if s is None:
  *         s = (<object>x_).shape             # <<<<<<<<<<<<<<
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  */
-    __pyx_t_6 = __site_get_shape_263_24->Target(__site_get_shape_263_24, ((System::Object^)__pyx_v_x_), __pyx_context);
+    __pyx_t_6 = __site_get_shape_264_24->Target(__site_get_shape_264_24, ((System::Object^)__pyx_v_x_), __pyx_context);
     __pyx_v_s = __pyx_t_6;
     __pyx_t_6 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":264
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":265
  *     if s is None:
  *         s = (<object>x_).shape
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,             # <<<<<<<<<<<<<<
@@ -2235,7 +2151,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_t_6 = (System::Object^)(long long)(NPY_INT);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":265
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":266
  *         s = (<object>x_).shape
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)             # <<<<<<<<<<<<<<
@@ -2261,7 +2177,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_s_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":266
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":267
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  *     r = np.PyArray_NDIM(x_)             # <<<<<<<<<<<<<<
@@ -2269,11 +2185,11 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  */
   __pyx_t_1 = PyArray_NDIM(((System::Object^)__pyx_v_x_)); 
-  __pyx_t_8 = __site_cvt_fwi_integer_t_266_23->Target(__site_cvt_fwi_integer_t_266_23, __pyx_t_1);
+  __pyx_t_8 = __site_cvt_fwi_integer_t_267_23->Target(__site_cvt_fwi_integer_t_267_23, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_r = __pyx_t_8;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":267
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":268
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  *     r = np.PyArray_NDIM(x_)
  *     if not (r == np.PyArray_DIMS(s_)[0]):             # <<<<<<<<<<<<<<
@@ -2283,7 +2199,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = (!(__pyx_v_r == (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_s_))[0])));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":268
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":269
  *     r = np.PyArray_NDIM(x_)
  *     if not (r == np.PyArray_DIMS(s_)[0]):
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')             # <<<<<<<<<<<<<<
@@ -2291,7 +2207,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *     sz = 1
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_268_24->Target(__site_call1_268_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: x.ndim == s.shape[0]"));
+    __pyx_t_3 = __site_call1_269_24->Target(__site_call1_269_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: x.ndim == s.shape[0]"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -2299,7 +2215,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":269
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":270
  *     if not (r == np.PyArray_DIMS(s_)[0]):
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  *     xsz = np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -2308,7 +2224,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_xsz = PyArray_SIZE(__pyx_v_x_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":270
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":271
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  *     xsz = np.PyArray_SIZE(x_)
  *     sz = 1             # <<<<<<<<<<<<<<
@@ -2317,7 +2233,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_sz = 1;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":271
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":272
  *     xsz = np.PyArray_SIZE(x_)
  *     sz = 1
  *     for i in range(r):             # <<<<<<<<<<<<<<
@@ -2328,7 +2244,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":272
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":273
  *     sz = 1
  *     for i in range(r):
  *         sz *= s_[i]             # <<<<<<<<<<<<<<
@@ -2347,23 +2263,16 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
     __pyx_v_sz *= (*__Pyx_BufPtrCContig1d(int *, (int *)(long long)__pyx_bstruct_s_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_s_));
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":273
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":274
  *     for i in range(r):
  *         sz *= s_[i]
  *     howmany = xsz // sz             # <<<<<<<<<<<<<<
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")
  */
-  if (unlikely(__pyx_v_sz == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(Py_ssize_t) == sizeof(long) && unlikely(__pyx_v_sz == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_xsz))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 273; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_Py_ssize_t(__pyx_v_xsz, __pyx_v_sz);
+  __pyx_v_howmany = (__pyx_v_xsz / __pyx_v_sz);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":274
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":275
  *         sz *= s_[i]
  *     howmany = xsz // sz
  *     if sz * howmany != xsz:             # <<<<<<<<<<<<<<
@@ -2373,7 +2282,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = ((__pyx_v_sz * __pyx_v_howmany) != __pyx_v_xsz);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":275
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":276
  *     howmany = xsz // sz
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")             # <<<<<<<<<<<<<<
@@ -2381,7 +2290,7 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *     # Return the non-flattened view of the buffer
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_275_24->Target(__site_call1_275_24, __pyx_context, __pyx_t_3, ((System::Object^)"inconsistency in x.shape and s argument"));
+    __pyx_t_1 = __site_call1_276_24->Target(__site_call1_276_24, __pyx_context, __pyx_t_3, ((System::Object^)"inconsistency in x.shape and s argument"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2389,16 +2298,16 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   }
   __pyx_L7:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":276
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":277
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")
  *     fc.cfftnd(<fwc_complex_x8_t*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     # Return the non-flattened view of the buffer
  *     return x_
  */
-  cfftnd(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_r, ((fwi_integer_t *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_s_))), __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(cfftnd)(((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_r, ((fwi_integer_t *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_s_))), __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":278
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":279
  *     fc.cfftnd(<fwc_complex_x8_t*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)
  *     # Return the non-flattened view of the buffer
  *     return x_             # <<<<<<<<<<<<<<
@@ -2409,19 +2318,12 @@ static  System::Object^ cfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_SafeReleaseBuffer(__pyx_bstruct_s_);
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.cfftnd");
-  __pyx_r = nullptr;
-  goto __pyx_L2;
   __pyx_L0:;
   __Pyx_SafeReleaseBuffer(__pyx_bstruct_s_);
-  __pyx_L2:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":279
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":280
  *     # Return the non-flattened view of the buffer
  *     return x_
  * cpdef object zfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -2477,7 +2379,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_s_ = nullptr;
   __pyx_bstruct_s_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":302
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":303
  *     cdef fwi_integer_t j
  *     cdef Py_ssize_t i, sz, xsz
  *     normalize_ = normalize if (normalize is not None) else direction < 0             # <<<<<<<<<<<<<<
@@ -2492,11 +2394,11 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_302_17->Target(__site_cvt_fwi_integer_t_302_17, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_303_17->Target(__site_cvt_fwi_integer_t_303_17, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_normalize_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":303
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":304
  *     cdef Py_ssize_t i, sz, xsz
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     j = 0             # <<<<<<<<<<<<<<
@@ -2505,7 +2407,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_j = 0;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":304
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":305
  *     normalize_ = normalize if (normalize is not None) else direction < 0
  *     j = 0
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -2514,7 +2416,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_CDOUBLE);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":306
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":307
  *     x_ = np.PyArray_FROMANY(x, fwc_complex_x16_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -2536,7 +2438,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":309
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":310
  *     # Next, let the default of s be the tuple x_.shape,
  *     # and get the array of s
  *     if s is None:             # <<<<<<<<<<<<<<
@@ -2546,21 +2448,21 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = (__pyx_v_s == nullptr);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":310
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":311
  *     # and get the array of s
  *     if s is None:
  *         s = (<object>x_).shape             # <<<<<<<<<<<<<<
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  */
-    __pyx_t_6 = __site_get_shape_310_24->Target(__site_get_shape_310_24, ((System::Object^)__pyx_v_x_), __pyx_context);
+    __pyx_t_6 = __site_get_shape_311_24->Target(__site_get_shape_311_24, ((System::Object^)__pyx_v_x_), __pyx_context);
     __pyx_v_s = __pyx_t_6;
     __pyx_t_6 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":311
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":312
  *     if s is None:
  *         s = (<object>x_).shape
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,             # <<<<<<<<<<<<<<
@@ -2569,7 +2471,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_t_6 = (System::Object^)(long long)(NPY_INT);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":312
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":313
  *         s = (<object>x_).shape
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)             # <<<<<<<<<<<<<<
@@ -2595,7 +2497,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_v_s_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":313
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":314
  *     s_ = np.PyArray_FROMANY(s, fwi_integer_t_enum, 1, 1,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  *     r = np.PyArray_NDIM(x_)             # <<<<<<<<<<<<<<
@@ -2603,11 +2505,11 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  */
   __pyx_t_1 = PyArray_NDIM(((System::Object^)__pyx_v_x_)); 
-  __pyx_t_8 = __site_cvt_fwi_integer_t_313_23->Target(__site_cvt_fwi_integer_t_313_23, __pyx_t_1);
+  __pyx_t_8 = __site_cvt_fwi_integer_t_314_23->Target(__site_cvt_fwi_integer_t_314_23, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_r = __pyx_t_8;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":314
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":315
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST)
  *     r = np.PyArray_NDIM(x_)
  *     if not (r == np.PyArray_DIMS(s_)[0]):             # <<<<<<<<<<<<<<
@@ -2617,7 +2519,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = (!(__pyx_v_r == (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_s_))[0])));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":315
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":316
  *     r = np.PyArray_NDIM(x_)
  *     if not (r == np.PyArray_DIMS(s_)[0]):
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')             # <<<<<<<<<<<<<<
@@ -2625,7 +2527,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *     sz = 1
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_315_24->Target(__site_call1_315_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: x.ndim == s.shape[0]"));
+    __pyx_t_3 = __site_call1_316_24->Target(__site_call1_316_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: x.ndim == s.shape[0]"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -2633,7 +2535,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":316
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":317
  *     if not (r == np.PyArray_DIMS(s_)[0]):
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  *     xsz = np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -2642,7 +2544,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_xsz = PyArray_SIZE(__pyx_v_x_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":317
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":318
  *         raise ValueError('Condition on arguments not satisfied: x.ndim == s.shape[0]')
  *     xsz = np.PyArray_SIZE(x_)
  *     sz = 1             # <<<<<<<<<<<<<<
@@ -2651,7 +2553,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  */
   __pyx_v_sz = 1;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":318
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":319
  *     xsz = np.PyArray_SIZE(x_)
  *     sz = 1
  *     for i in range(r):             # <<<<<<<<<<<<<<
@@ -2662,7 +2564,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_i = __pyx_t_10;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":319
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":320
  *     sz = 1
  *     for i in range(r):
  *         sz *= s_[i]             # <<<<<<<<<<<<<<
@@ -2681,23 +2583,16 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
     __pyx_v_sz *= (*__Pyx_BufPtrCContig1d(int *, (int *)(long long)__pyx_bstruct_s_->UnsafeAddress, __pyx_t_11, __pyx_bstride_0_s_));
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":320
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":321
  *     for i in range(r):
  *         sz *= s_[i]
  *     howmany = xsz // sz             # <<<<<<<<<<<<<<
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")
  */
-  if (unlikely(__pyx_v_sz == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(Py_ssize_t) == sizeof(long) && unlikely(__pyx_v_sz == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_v_xsz))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 320; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_Py_ssize_t(__pyx_v_xsz, __pyx_v_sz);
+  __pyx_v_howmany = (__pyx_v_xsz / __pyx_v_sz);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":321
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":322
  *         sz *= s_[i]
  *     howmany = xsz // sz
  *     if sz * howmany != xsz:             # <<<<<<<<<<<<<<
@@ -2707,7 +2602,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   __pyx_t_2 = ((__pyx_v_sz * __pyx_v_howmany) != __pyx_v_xsz);
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":322
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":323
  *     howmany = xsz // sz
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")             # <<<<<<<<<<<<<<
@@ -2715,7 +2610,7 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
  *     # Return the non-flattened view of the buffer
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_322_24->Target(__site_call1_322_24, __pyx_context, __pyx_t_3, ((System::Object^)"inconsistency in x.shape and s argument"));
+    __pyx_t_1 = __site_call1_323_24->Target(__site_call1_323_24, __pyx_context, __pyx_t_3, ((System::Object^)"inconsistency in x.shape and s argument"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2723,16 +2618,16 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   }
   __pyx_L7:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":323
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":324
  *     if sz * howmany != xsz:
  *         raise ValueError("inconsistency in x.shape and s argument")
  *     fc.zfftnd(<fwc_complex_x16_t*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)             # <<<<<<<<<<<<<<
  *     # Return the non-flattened view of the buffer
  *     return x_
  */
-  zfftnd(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_r, ((fwi_integer_t *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_s_))), __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
+  GLOBALFUNC(zfftnd)(((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), __pyx_v_r, ((fwi_integer_t *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_s_))), __pyx_v_direction, __pyx_v_howmany, __pyx_v_normalize_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":325
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":326
  *     fc.zfftnd(<fwc_complex_x16_t*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)
  *     # Return the non-flattened view of the buffer
  *     return x_             # <<<<<<<<<<<<<<
@@ -2743,19 +2638,12 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_SafeReleaseBuffer(__pyx_bstruct_s_);
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.zfftnd");
-  __pyx_r = nullptr;
-  goto __pyx_L2;
   __pyx_L0:;
   __Pyx_SafeReleaseBuffer(__pyx_bstruct_s_);
-  __pyx_L2:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":329
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":330
  * 
  * # Template for destroy_cfft_cache, destroy_cfftnd_cache, destroy_dct1_cache, destroy_dct2_cache, destroy_ddct1_cache, destroy_ddct2_cache, destroy_drfft_cache, destroy_rfft_cache, destroy_zfft_cache, destroy_zfftnd_cache
  * cpdef object destroy_cfft_cache():             # <<<<<<<<<<<<<<
@@ -2766,20 +2654,20 @@ static  System::Object^ zfftnd(System::Object^ __pyx_v_x, ref struct __pyx_opt_a
 static  System::Object^ destroy_cfft_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":337
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":338
  * 
  *     """
  *     fc.destroy_cfft_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_cfftnd_cache():
  *     """destroy_cfftnd_cache()
  */
-  destroy_cfft_cache();
+  GLOBALFUNC(destroy_cfft_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":338
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":339
  *     """
  *     fc.destroy_cfft_cache()
  * cpdef object destroy_cfftnd_cache():             # <<<<<<<<<<<<<<
@@ -2790,20 +2678,20 @@ static  System::Object^ destroy_cfft_cache(void) {
 static  System::Object^ destroy_cfftnd_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":346
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":347
  * 
  *     """
  *     fc.destroy_cfftnd_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_dct1_cache():
  *     """destroy_dct1_cache()
  */
-  destroy_cfftnd_cache();
+  GLOBALFUNC(destroy_cfftnd_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":347
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":348
  *     """
  *     fc.destroy_cfftnd_cache()
  * cpdef object destroy_dct1_cache():             # <<<<<<<<<<<<<<
@@ -2814,20 +2702,20 @@ static  System::Object^ destroy_cfftnd_cache(void) {
 static  System::Object^ destroy_dct1_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":355
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":356
  * 
  *     """
  *     fc.destroy_dct1_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_dct2_cache():
  *     """destroy_dct2_cache()
  */
-  destroy_dct1_cache();
+  GLOBALFUNC(destroy_dct1_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":356
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":357
  *     """
  *     fc.destroy_dct1_cache()
  * cpdef object destroy_dct2_cache():             # <<<<<<<<<<<<<<
@@ -2838,20 +2726,20 @@ static  System::Object^ destroy_dct1_cache(void) {
 static  System::Object^ destroy_dct2_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":364
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":365
  * 
  *     """
  *     fc.destroy_dct2_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_ddct1_cache():
  *     """destroy_ddct1_cache()
  */
-  destroy_dct2_cache();
+  GLOBALFUNC(destroy_dct2_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":365
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":366
  *     """
  *     fc.destroy_dct2_cache()
  * cpdef object destroy_ddct1_cache():             # <<<<<<<<<<<<<<
@@ -2862,20 +2750,20 @@ static  System::Object^ destroy_dct2_cache(void) {
 static  System::Object^ destroy_ddct1_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":373
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":374
  * 
  *     """
  *     fc.destroy_ddct1_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_ddct2_cache():
  *     """destroy_ddct2_cache()
  */
-  destroy_ddct1_cache();
+  GLOBALFUNC(destroy_ddct1_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":374
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":375
  *     """
  *     fc.destroy_ddct1_cache()
  * cpdef object destroy_ddct2_cache():             # <<<<<<<<<<<<<<
@@ -2886,20 +2774,20 @@ static  System::Object^ destroy_ddct1_cache(void) {
 static  System::Object^ destroy_ddct2_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":382
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":383
  * 
  *     """
  *     fc.destroy_ddct2_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_drfft_cache():
  *     """destroy_drfft_cache()
  */
-  destroy_ddct2_cache();
+  GLOBALFUNC(destroy_ddct2_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":383
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":384
  *     """
  *     fc.destroy_ddct2_cache()
  * cpdef object destroy_drfft_cache():             # <<<<<<<<<<<<<<
@@ -2910,20 +2798,20 @@ static  System::Object^ destroy_ddct2_cache(void) {
 static  System::Object^ destroy_drfft_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":391
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":392
  * 
  *     """
  *     fc.destroy_drfft_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_rfft_cache():
  *     """destroy_rfft_cache()
  */
-  destroy_drfft_cache();
+  GLOBALFUNC(destroy_drfft_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":392
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":393
  *     """
  *     fc.destroy_drfft_cache()
  * cpdef object destroy_rfft_cache():             # <<<<<<<<<<<<<<
@@ -2934,20 +2822,20 @@ static  System::Object^ destroy_drfft_cache(void) {
 static  System::Object^ destroy_rfft_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":400
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":401
  * 
  *     """
  *     fc.destroy_rfft_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_zfft_cache():
  *     """destroy_zfft_cache()
  */
-  destroy_rfft_cache();
+  GLOBALFUNC(destroy_rfft_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":401
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":402
  *     """
  *     fc.destroy_rfft_cache()
  * cpdef object destroy_zfft_cache():             # <<<<<<<<<<<<<<
@@ -2958,20 +2846,20 @@ static  System::Object^ destroy_rfft_cache(void) {
 static  System::Object^ destroy_zfft_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":409
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":410
  * 
  *     """
  *     fc.destroy_zfft_cache()             # <<<<<<<<<<<<<<
  * cpdef object destroy_zfftnd_cache():
  *     """destroy_zfftnd_cache()
  */
-  destroy_zfft_cache();
+  GLOBALFUNC(destroy_zfft_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":410
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":411
  *     """
  *     fc.destroy_zfft_cache()
  * cpdef object destroy_zfftnd_cache():             # <<<<<<<<<<<<<<
@@ -2982,20 +2870,20 @@ static  System::Object^ destroy_zfft_cache(void) {
 static  System::Object^ destroy_zfftnd_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":418
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":419
  * 
  *     """
  *     fc.destroy_zfftnd_cache()             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  destroy_zfftnd_cache();
+  GLOBALFUNC(destroy_zfftnd_cache)();
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":422
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":423
  * 
  * # Template for dct1, dct2, dct3, ddct1, ddct2, ddct3
  * cpdef object dct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3017,9 +2905,8 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3033,7 +2920,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":440
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":441
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -3042,7 +2929,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT32);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":442
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":443
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -3064,7 +2951,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":443
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":444
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -3079,28 +2966,20 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_443_9->Target(__site_cvt_fwi_integer_t_443_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_444_9->Target(__site_cvt_fwi_integer_t_444_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":444
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":445
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 444; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":445
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":446
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -3109,15 +2988,15 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":446
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":447
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -3125,7 +3004,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_446_24->Target(__site_call1_446_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_447_24->Target(__site_call1_447_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3133,7 +3012,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":447
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":448
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -3143,7 +3022,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":448
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":449
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -3151,7 +3030,7 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_448_24->Target(__site_call1_448_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_449_24->Target(__site_call1_449_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -3159,16 +3038,16 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":449
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":450
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct1(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object dct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
  */
-  dct1(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(dct1)(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":450
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":451
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct1(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3179,15 +3058,11 @@ static  System::Object^ dct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.dct1");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":451
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":452
  *     fc.dct1(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_
  * cpdef object dct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3209,9 +3084,8 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3225,7 +3099,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":469
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":470
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -3234,7 +3108,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT32);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":471
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":472
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -3256,7 +3130,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":472
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":473
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -3271,28 +3145,20 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_472_9->Target(__site_cvt_fwi_integer_t_472_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_473_9->Target(__site_cvt_fwi_integer_t_473_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":473
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":474
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 473; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":474
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":475
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -3301,15 +3167,15 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":475
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":476
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -3317,7 +3183,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_475_24->Target(__site_call1_475_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_476_24->Target(__site_call1_476_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3325,7 +3191,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":476
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":477
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -3335,7 +3201,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":477
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":478
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -3343,7 +3209,7 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_477_24->Target(__site_call1_477_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_478_24->Target(__site_call1_478_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -3351,16 +3217,16 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":478
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":479
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct2(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object dct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
  */
-  dct2(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(dct2)(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":479
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":480
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct2(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3371,15 +3237,11 @@ static  System::Object^ dct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.dct2");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":480
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":481
  *     fc.dct2(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_
  * cpdef object dct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3401,9 +3263,8 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3417,7 +3278,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":498
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":499
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -3426,7 +3287,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT32);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":500
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":501
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x4_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -3448,7 +3309,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":501
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":502
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -3463,28 +3324,20 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_501_9->Target(__site_cvt_fwi_integer_t_501_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_502_9->Target(__site_cvt_fwi_integer_t_502_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":502
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":503
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 502; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":503
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":504
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -3493,15 +3346,15 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":504
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":505
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -3509,7 +3362,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_504_24->Target(__site_call1_504_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_505_24->Target(__site_call1_505_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3517,7 +3370,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":505
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":506
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -3527,7 +3380,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":506
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":507
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -3535,7 +3388,7 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_506_24->Target(__site_call1_506_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_507_24->Target(__site_call1_507_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -3543,16 +3396,16 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":507
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":508
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct3(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object ddct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
  */
-  dct3(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(dct3)(((fwr_real_x4_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":508
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":509
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.dct3(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3563,15 +3416,11 @@ static  System::Object^ dct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_arg
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.dct3");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":509
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":510
  *     fc.dct3(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_
  * cpdef object ddct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3593,9 +3442,8 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3609,7 +3457,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":527
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":528
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -3618,7 +3466,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT64);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":529
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":530
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -3640,7 +3488,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":530
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":531
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -3655,28 +3503,20 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_530_9->Target(__site_cvt_fwi_integer_t_530_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_531_9->Target(__site_cvt_fwi_integer_t_531_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":531
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":532
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 531; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":532
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":533
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -3685,15 +3525,15 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":533
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":534
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -3701,7 +3541,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_533_24->Target(__site_call1_533_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_534_24->Target(__site_call1_534_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3709,7 +3549,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":534
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":535
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -3719,7 +3559,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":535
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":536
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -3727,7 +3567,7 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_535_24->Target(__site_call1_535_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_536_24->Target(__site_call1_536_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -3735,16 +3575,16 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":536
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":537
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct1(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object ddct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
  */
-  ddct1(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(ddct1)(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":537
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":538
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct1(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3755,15 +3595,11 @@ static  System::Object^ ddct1(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.ddct1");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":538
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":539
  *     fc.ddct1(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_
  * cpdef object ddct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3785,9 +3621,8 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3801,7 +3636,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":556
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":557
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -3810,7 +3645,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT64);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":558
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":559
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -3832,7 +3667,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":559
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":560
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -3847,28 +3682,20 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_559_9->Target(__site_cvt_fwi_integer_t_559_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_560_9->Target(__site_cvt_fwi_integer_t_560_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":560
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":561
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 560; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":561
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":562
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -3877,15 +3704,15 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":562
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":563
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -3893,7 +3720,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_562_24->Target(__site_call1_562_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_563_24->Target(__site_call1_563_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3901,7 +3728,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":563
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":564
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -3911,7 +3738,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":564
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":565
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -3919,7 +3746,7 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_564_24->Target(__site_call1_564_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_565_24->Target(__site_call1_565_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -3927,16 +3754,16 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":565
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":566
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct2(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * cpdef object ddct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
  */
-  ddct2(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(ddct2)(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":566
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":567
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct2(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3947,15 +3774,11 @@ static  System::Object^ ddct2(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   goto __pyx_L0;
 
   __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.ddct2");
-  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":567
+/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":568
  *     fc.ddct2(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_
  * cpdef object ddct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3977,9 +3800,8 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   fwi_integer_t __pyx_t_6;
-  __pyx_t_5scipy_7fftpack_5numpy_intp_t __pyx_t_7;
+  int __pyx_t_7;
   int __pyx_t_8;
-  int __pyx_t_9;
   if (__pyx_optional_args) {
     if (__pyx_optional_args->__pyx_n > 0) {
       __pyx_v_n = __pyx_optional_args->n;
@@ -3993,7 +3815,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":585
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":586
  *     cdef fwi_integer_t n_
  *     cdef fwi_integer_t howmany
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,             # <<<<<<<<<<<<<<
@@ -4002,7 +3824,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_FLOAT64);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":587
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":588
  *     x_ = np.PyArray_FROMANY(x, fwr_real_x8_t_enum, 0, 0,
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))             # <<<<<<<<<<<<<<
@@ -4024,7 +3846,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":588
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":589
  *                             np.NPY_C_CONTIGUOUS | np.NPY_FORCECAST |
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)             # <<<<<<<<<<<<<<
@@ -4039,28 +3861,20 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
     __pyx_t_4 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_6 = __site_cvt_fwi_integer_t_588_9->Target(__site_cvt_fwi_integer_t_588_9, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_fwi_integer_t_589_9->Target(__site_cvt_fwi_integer_t_589_9, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_v_n_ = __pyx_t_6;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":589
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":590
  *                             (0 if overwrite_x else np.NPY_ENSURECOPY))
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_             # <<<<<<<<<<<<<<
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  */
-  __pyx_t_7 = PyArray_SIZE(__pyx_v_x_);
-  if (unlikely(__pyx_v_n_ == 0)) {
-    throw PythonOps::ZeroDivisionError("integer division or modulo by zero");
-  }
-  else if (sizeof(fwi_integer_t) == sizeof(long) && unlikely(__pyx_v_n_ == -1) && unlikely(UNARY_NEG_WOULD_OVERFLOW(__pyx_t_7))) {
-    PyErr_Format(PyExc_OverflowError, "value too large to perform division");
-    {__pyx_filename = __pyx_f[0]; __pyx_lineno = 589; __pyx_clineno = __LINE__; goto __pyx_L1_error;}
-  }
-  __pyx_v_howmany = __Pyx_div_fwi_integer_t(__pyx_t_7, __pyx_v_n_);
+  __pyx_v_howmany = (PyArray_SIZE(__pyx_v_x_) / __pyx_v_n_);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":590
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":591
  *     n_ = n if (n is not None) else np.PyArray_SIZE(x_)
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):             # <<<<<<<<<<<<<<
@@ -4069,15 +3883,15 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  */
   __pyx_t_5 = (__pyx_v_n_ > 0);
   if (__pyx_t_5) {
-    __pyx_t_8 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
-    __pyx_t_9 = __pyx_t_8;
+    __pyx_t_7 = (__pyx_v_n_ <= PyArray_SIZE(__pyx_v_x_));
+    __pyx_t_8 = __pyx_t_7;
   } else {
-    __pyx_t_9 = __pyx_t_5;
+    __pyx_t_8 = __pyx_t_5;
   }
-  __pyx_t_5 = (!__pyx_t_9);
+  __pyx_t_5 = (!__pyx_t_8);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":591
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":592
  *     howmany = np.PyArray_SIZE(x_) // n_
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')             # <<<<<<<<<<<<<<
@@ -4085,7 +3899,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_591_24->Target(__site_call1_591_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
+    __pyx_t_3 = __site_call1_592_24->Target(__site_call1_592_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (n > 0) and (n <= x.size)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -4093,7 +3907,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":592
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":593
  *     if not ((n_ > 0) and (n_ <= np.PyArray_SIZE(x_))):
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):             # <<<<<<<<<<<<<<
@@ -4103,7 +3917,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_t_5 = (!((__pyx_v_n_ * __pyx_v_howmany) == PyArray_SIZE(__pyx_v_x_)));
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":593
+    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":594
  *         raise ValueError('Condition on arguments not satisfied: (n > 0) and (n <= x.size)')
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')             # <<<<<<<<<<<<<<
@@ -4111,7 +3925,7 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
  *     return x_
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_593_24->Target(__site_call1_593_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
+    __pyx_t_4 = __site_call1_594_24->Target(__site_call1_594_24, __pyx_context, __pyx_t_3, ((System::Object^)"Condition on arguments not satisfied: (n * howmany) == x.size"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -4119,16 +3933,16 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":594
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":595
  *     if not ((n_ * howmany) == np.PyArray_SIZE(x_)):
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct3(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)             # <<<<<<<<<<<<<<
  *     return x_
  * 
  */
-  ddct3(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
+  GLOBALFUNC(ddct3)(((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), __pyx_v_n_, __pyx_v_howmany, __pyx_v_normalize);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":595
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":596
  *         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
  *     fc.ddct3(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
  *     return x_             # <<<<<<<<<<<<<<
@@ -4138,10 +3952,6 @@ static  System::Object^ ddct3(System::Object^ __pyx_v_x, ref struct __pyx_opt_ar
   __pyx_r = ((System::Object^)__pyx_v_x_);
   goto __pyx_L0;
 
-  __pyx_r = nullptr;
-  goto __pyx_L0;
-  __pyx_L1_error:;
-  __Pyx_AddTraceback("scipy.fftpack._fftpack.ddct3");
   __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
@@ -4796,58 +4606,58 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_get_int64_31_19 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "int64", false));
   __site_get_int64_32_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "int64", false));
   __site_get_intc_33_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "intc", false));
-  __site_cvt_fwi_integer_t_50_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_54_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_57_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_59_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_82_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_86_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_89_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_91_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_117_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_122_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_125_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_127_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_150_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_155_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_158_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_160_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_183_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_188_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_191_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_193_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_216_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_fwi_integer_t_221_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_224_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_226_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_255_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_shape_263_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
-  __site_cvt_fwi_integer_t_266_23 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_268_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_275_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_302_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_shape_310_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
-  __site_cvt_fwi_integer_t_313_23 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_315_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_322_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_443_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_446_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_448_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_472_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_475_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_477_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_501_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_504_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_506_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_530_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_533_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_535_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_559_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_562_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_564_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_fwi_integer_t_588_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_591_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_593_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_51_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_55_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_58_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_60_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_83_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_87_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_90_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_92_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_118_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_123_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_126_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_128_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_151_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_156_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_159_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_161_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_184_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_189_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_192_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_194_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_217_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_fwi_integer_t_222_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_225_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_227_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_256_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_shape_264_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
+  __site_cvt_fwi_integer_t_267_23 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_269_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_276_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_303_17 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_shape_311_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
+  __site_cvt_fwi_integer_t_314_23 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_316_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_323_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_444_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_447_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_449_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_473_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_476_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_478_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_502_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_505_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_507_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_531_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_534_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_536_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_560_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_563_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_565_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_fwi_integer_t_589_9 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_592_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_594_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -4886,7 +4696,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":25
+  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":26
  * 
  * """
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -5318,8 +5128,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 
   /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\_fftpack.pyx":1
  * #cython: ccomplex=True             # <<<<<<<<<<<<<<
+ * #cython: cdivision=True
  * 
- * """The _fftpack module was generated with Fwrap v0.2.0dev_3b035b7.
  */
   __pyx_t_1 = PythonOps::MakeEmptyDict();
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
@@ -5338,13 +5148,6 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */
-
-static CYTHON_INLINE fwi_integer_t __Pyx_div_fwi_integer_t(fwi_integer_t a, fwi_integer_t b) {
-    fwi_integer_t q = a / b;
-    fwi_integer_t r = a - q*b;
-    q -= ((r != 0) & ((r ^ b) < 0));
-    return q;
-}
 
 #if 0
 static CYTHON_INLINE int __Pyx_IsLittleEndian(void) {
@@ -5803,13 +5606,6 @@ static void __Pyx_RaiseBufferIndexError(int axis) {
      "Out of bounds on buffer access (axis {0})", axis);
 }
 
-
-static CYTHON_INLINE Py_ssize_t __Pyx_div_Py_ssize_t(Py_ssize_t a, Py_ssize_t b) {
-    Py_ssize_t q = a / b;
-    Py_ssize_t r = a - q*b;
-    q -= ((r != 0) & ((r ^ b) < 0));
-    return q;
-}
 
 static int __Pyx_GetBuffer(System::Object^ obj, NumpyDotNet::IExtBufferProtocol^& view, int flags) {
   view = NumpyDotNet::NpyBuffer::GetBufferForObject(obj, (NumpyDotNet::NpyBuffer::PyBuf)flags);
