@@ -1,6 +1,6 @@
 from fwrap_ktp cimport *
 
-cdef extern:
+cdef extern from "_fftpack_fc.h":
     void zfft(fwc_complex_x16_t * x, fwi_integer_t n, fwi_integer_t direction, fwi_integer_t howmany, fwi_integer_t normalize)
     void drfft(fwr_real_x8_t * x, fwi_integer_t n, fwi_integer_t direction, fwi_integer_t howmany, fwi_integer_t normalize)
     void zrfft(fwc_complex_x16_t * x, fwi_integer_t n, fwi_integer_t direction, fwi_integer_t howmany, fwi_integer_t normalize)
