@@ -6,8 +6,9 @@ is granted under the SciPy License.
 */
 #include <Python.h>
 
+#ifdef DEADCODE
 #define PY_ARRAY_UNIQUE_SYMBOL _scipy_signal_ARRAY_API
-#include <numpy/noprefix.h>
+//#include <numpy/noprefix.h>
 
 #include "sigtools.h"
 #include <setjmp.h>
@@ -762,6 +763,7 @@ static int pre_remez(double *h2, int numtaps, int numbands, double *bands, doubl
 /****************************************************/
 /* End of python-independent routines               */
 /****************************************************/
+#endif
 
 /************************/
 /* N-D Order Filtering. */
@@ -820,7 +822,6 @@ COMPARE(USHORT_compare, ushort)
 COMPARE(UINT_compare, uint)
 COMPARE(ULONG_compare, ulong)
 COMPARE(ULONGLONG_compare, ulonglong)
-
 
 int OBJECT_compare(PyObject **ip1, PyObject **ip2) {
         /*return PyObject_Compare(*ip1, *ip2); */
