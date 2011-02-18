@@ -10482,10 +10482,12 @@ C       2) iterate
         IF (X-X0.GT.1) X=X0+1
         IF (DABS(X-X0).GT.1.0D-11) GO TO 10
 C       3) initial guess for j_{N,L+1}
-        IF (L.GE.1 .AND. X.LE.RJ0(L)+0.5) THEN
-           X=XGUESS+PI
+        IF (L.GE.1) then
+            if ( X.LE.RJ0(L)+0.5) THEN
+                X=XGUESS+PI
            XGUESS=X
            GO TO 10
+           end if
         END IF
         L=L+1
         RJ0(L)=X
@@ -10507,10 +10509,12 @@ C       -- Newton method for j_{N,L}'
         IF (X-X0.LT.-1) X=X0-1
         IF (X-X0.GT.1) X=X0+1
         IF (DABS(X-X0).GT.1.0D-11) GO TO 15
-        IF (L.GE.1 .AND. X.LE.RJ1(L)+0.5) THEN
-           X=XGUESS+PI
-           XGUESS=X
-           GO TO 15
+        IF (L.GE.1) THEN
+           IF (X.LE.RJ1(L)+0.5) THEN
+              X=XGUESS+PI
+              XGUESS=X
+              GO TO 15
+           END IF
         END IF
         L=L+1
         RJ1(L)=X
@@ -10531,10 +10535,12 @@ C       -- Newton method for y_{N,L}
         IF (X-X0.LT.-1) X=X0-1
         IF (X-X0.GT.1) X=X0+1
         IF (DABS(X-X0).GT.1.0D-11) GO TO 20
-        IF (L.GE.1 .AND. X.LE.RY0(L)+0.5) THEN
-           X=XGUESS+PI
-           XGUESS=X
-           GO TO 20
+        IF (L.GE.1) then
+            IF (X.LE.RY0(L)+0.5) THEN
+                X=XGUESS+PI
+                XGUESS=X
+                GO TO 20
+            END IF
         END IF
         L=L+1
         RY0(L)=X
@@ -10553,10 +10559,12 @@ C       -- Newton method for y_{N,L}'
         CALL JYNDD(N,X,BJN,DJN,FJN,BYN,DYN,FYN)
         X=X-DYN/FYN
         IF (DABS(X-X0).GT.1.0D-11) GO TO 25
-        IF (L.GE.1 .AND. X.LE.RY1(L)+0.5) THEN
-           X=XGUESS+PI
-           XGUESS=X
-           GO TO 25
+        IF (L.GE.1) THEN
+           IF (X.LE.RY1(L)+0.5) THEN
+              X=XGUESS+PI
+              XGUESS=X
+              GO TO 25
+           END IF
         END IF
         L=L+1
         RY1(L)=X
