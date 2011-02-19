@@ -86,7 +86,6 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "fwrap_ktp_header.h"
 #include "convolve_fc.h"
 #include "string.h"
-#include "setjmp.h"
 
 #if !defined(CYTHON_CCOMPLEX)
 #define CYTHON_CCOMPLEX 1
@@ -216,7 +215,7 @@ typedef void (*__pyx_t_5scipy_7fftpack_5numpy_PyUFuncGenericFunction)(char **, _
 
 typedef System::Object^ __pyx_t_5scipy_7fftpack_9fwrap_ktp_fw_bytes;
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pxd":5
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":5
  * cimport convolve_fc as fc
  * 
  * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=*, object zero_nyquist=*, object kernel_func_extra_args=*, object omega=*)             # <<<<<<<<<<<<<<
@@ -232,7 +231,7 @@ ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_init_convolution_kernel {
   System::Object^ omega;
 };
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pxd":7
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":7
  * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=*, object zero_nyquist=*, object kernel_func_extra_args=*, object omega=*)
  * cpdef object destroy_convolve_cache()
  * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=*, bint overwrite_x=*)             # <<<<<<<<<<<<<<
@@ -245,7 +244,7 @@ ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve {
   int overwrite_x;
 };
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pxd":8
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":8
  * cpdef object destroy_convolve_cache()
  * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=*, bint overwrite_x=*)
  * cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=*)             # <<<<<<<<<<<<<<
@@ -256,7 +255,7 @@ ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve_z {
   int overwrite_x;
 };
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":193
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":183
  * 
  * 
  * cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,             # <<<<<<<<<<<<<<
@@ -269,7 +268,7 @@ ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_fw_asfortranarray {
   int alignment;
 };
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":208
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":198
  *     return result, result
  * 
  * cdef object fw_explicitshapearray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -474,22 +473,22 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_int64_31_19;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_int64_32_18;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_intc_33_13;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_58_38;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_double_58_38;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_ARGS_60_38;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_double_60_38;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_65_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_65_31;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_97_20;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_99_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_102_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_103_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_151_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_154_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_181_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_184_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_187_24;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_199_55;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_49_38;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_double_49_38;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_ARGS_51_38;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_double_51_38;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_56_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_56_31;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_88_20;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_90_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_93_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_94_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_141_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_144_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_171_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_174_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_177_24;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_189_55;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
@@ -516,23 +515,13 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_5numpy_dtype = nullptr;
-
-
-
-static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_8convolve__CallbackInfo = nullptr;
-static _CallbackInfo^ __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = 0;
 /* Cython code section 'decls' */
 /* Cython code section 'all_the_rest' */
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":41
- * 
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":33
+ *     void *memcpy(void *dest, void *src, size_t n)
  * 
  * cdef class _CallbackInfo(object):             # <<<<<<<<<<<<<<
  *     cdef object callback
@@ -543,16 +532,10 @@ ref struct _CallbackInfo {
   System::Object^ callback;
   System::Object^ extra_args;
   System::Object^ exc;
-  jmp_buf (&jmp);
   System::Object^ arrays;
-  _CallbackInfo() : jmp(*(new jmp_buf)) {
-  }
-  !_CallbackInfo() {
-    delete &jmp;
-  }
 };
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":50
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":41
  * cdef _CallbackInfo kernel_func_info
  * 
  * cdef int init_convolution_kernel_cb_core(double* presult, int k):             # <<<<<<<<<<<<<<
@@ -570,7 +553,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
   double __pyx_t_7;
   __pyx_v_info = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":54
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":45
  *     cdef _CallbackInfo info
  * 
  *     info = kernel_func_info             # <<<<<<<<<<<<<<
@@ -579,7 +562,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  */
   __pyx_v_info = __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":55
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":46
  * 
  *     info = kernel_func_info
  *     kernel_func_info = None             # <<<<<<<<<<<<<<
@@ -588,7 +571,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  */
   __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = ((_CallbackInfo^)nullptr);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":56
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":47
  *     info = kernel_func_info
  *     kernel_func_info = None
  *     try:             # <<<<<<<<<<<<<<
@@ -597,7 +580,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  */
   try {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":57
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":48
  *     kernel_func_info = None
  *     try:
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -607,7 +590,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
     __pyx_t_3 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_3) {
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":58
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":49
  *     try:
  *         if info.extra_args is None:
  *             presult[0] = info.callback(k)             # <<<<<<<<<<<<<<
@@ -615,16 +598,16 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  *             presult[0] = info.callback(k, *info.extra_args)
  */
       __pyx_t_4 = __pyx_v_k;
-      __pyx_t_5 = __site_call1_58_38->Target(__site_call1_58_38, __pyx_context, __pyx_v_info->callback, __pyx_t_4);
+      __pyx_t_5 = __site_call1_49_38->Target(__site_call1_49_38, __pyx_context, __pyx_v_info->callback, __pyx_t_4);
       __pyx_t_4 = nullptr;
-      __pyx_t_6 = __site_cvt_double_58_38->Target(__site_cvt_double_58_38, __pyx_t_5);
+      __pyx_t_6 = __site_cvt_double_49_38->Target(__site_cvt_double_49_38, __pyx_t_5);
       __pyx_t_5 = nullptr;
       (__pyx_v_presult[0]) = __pyx_t_6;
       goto __pyx_L3;
     }
     /*else*/ {
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":60
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":51
  *             presult[0] = info.callback(k)
  *         else:
  *             presult[0] = info.callback(k, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -632,15 +615,15 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  *         return 0
  */
       __pyx_t_5 = __pyx_v_k;
-      __pyx_t_4 = __site_call1_ARGS_60_38->Target(__site_call1_ARGS_60_38, __pyx_context, __pyx_v_info->callback, __pyx_t_5, __pyx_v_info->extra_args);
+      __pyx_t_4 = __site_call1_ARGS_51_38->Target(__site_call1_ARGS_51_38, __pyx_context, __pyx_v_info->callback, __pyx_t_5, __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
-      __pyx_t_7 = __site_cvt_double_60_38->Target(__site_cvt_double_60_38, __pyx_t_4);
+      __pyx_t_7 = __site_cvt_double_51_38->Target(__site_cvt_double_51_38, __pyx_t_4);
       __pyx_t_4 = nullptr;
       (__pyx_v_presult[0]) = __pyx_t_7;
     }
     __pyx_L3:;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":61
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":52
  *         else:
  *             presult[0] = info.callback(k, *info.extra_args)
  *         kernel_func_info = info             # <<<<<<<<<<<<<<
@@ -649,7 +632,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  */
     __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = __pyx_v_info;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":62
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":53
  *             presult[0] = info.callback(k, *info.extra_args)
  *         kernel_func_info = info
  *         return 0             # <<<<<<<<<<<<<<
@@ -661,7 +644,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":63
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":54
  *         kernel_func_info = info
  *         return 0
  *     except:             # <<<<<<<<<<<<<<
@@ -672,7 +655,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
       // XXX should update traceback here __Pyx_AddTraceback("scipy.fftpack.convolve.init_convolution_kernel_cb_core");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":64
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":55
  *         return 0
  *     except:
  *         kernel_func_info = info             # <<<<<<<<<<<<<<
@@ -681,7 +664,7 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  */
       __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = __pyx_v_info;
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":65
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":56
  *     except:
  *         kernel_func_info = info
  *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
@@ -689,14 +672,14 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
  * 
  */
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_5 = __site_get_exc_info_65_22->Target(__site_get_exc_info_65_22, __pyx_t_4, __pyx_context);
+      __pyx_t_5 = __site_get_exc_info_56_22->Target(__site_get_exc_info_56_22, __pyx_t_4, __pyx_context);
       __pyx_t_4 = nullptr;
-      __pyx_t_4 = __site_call0_65_31->Target(__site_call0_65_31, __pyx_context, __pyx_t_5);
+      __pyx_t_4 = __site_call0_56_31->Target(__site_call0_56_31, __pyx_context, __pyx_t_5);
       __pyx_t_5 = nullptr;
       __pyx_v_info->exc = __pyx_t_4;
       __pyx_t_4 = nullptr;
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":66
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":57
  *         kernel_func_info = info
  *         info.exc = sys.exc_info()
  *         return -1             # <<<<<<<<<<<<<<
@@ -714,11 +697,11 @@ static  int init_convolution_kernel_cb_core(double *__pyx_v_presult, int __pyx_v
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":68
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":59
  *         return -1
  * 
  * cdef double init_convolution_kernel_cb(int k):             # <<<<<<<<<<<<<<
- *     # To make sure we do not loose references, do the longjmp in a
+ *     # To make sure we do not lose references, do the longjmp in a
  *     # function with no Python objects
  */
 
@@ -729,8 +712,9 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
   double __pyx_v_result;
   double __pyx_r;
   int __pyx_t_1;
+  System::Object^ __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":72
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":63
  *     # function with no Python objects
  *     cdef double result
  *     if init_convolution_kernel_cb_core(&result, k) == 0:             # <<<<<<<<<<<<<<
@@ -740,12 +724,12 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
   __pyx_t_1 = (init_convolution_kernel_cb_core((&__pyx_v_result), __pyx_v_k) == 0);
   if (__pyx_t_1) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":73
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":64
  *     cdef double result
  *     if init_convolution_kernel_cb_core(&result, k) == 0:
  *         return result             # <<<<<<<<<<<<<<
  *     else:
- *         longjmp(kernel_func_info.jmp, 1)
+ *         raise RuntimeError
  */
     __pyx_r = __pyx_v_result;
     goto __pyx_L0;
@@ -753,14 +737,16 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
   }
   /*else*/ {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":75
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":66
  *         return result
  *     else:
- *         longjmp(kernel_func_info.jmp, 1)             # <<<<<<<<<<<<<<
+ *         raise RuntimeError             # <<<<<<<<<<<<<<
  * 
  * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
  */
-    longjmp(__pyx_v_5scipy_7fftpack_8convolve_kernel_func_info->jmp, 1);
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "RuntimeError");
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+    __pyx_t_2 = nullptr;
   }
   __pyx_L3:;
 
@@ -769,8 +755,8 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":77
- *         longjmp(kernel_func_info.jmp, 1)
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":68
+ *         raise RuntimeError
  * 
  * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):             # <<<<<<<<<<<<<<
  *     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
@@ -817,7 +803,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   __pyx_v_val = nullptr;
   __pyx_v_tb = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":97
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":88
  *     cdef np.ndarray omega_
  *     cdef _CallbackInfo cbinfo
  *     zero_nyquist_ = zero_nyquist if (zero_nyquist is not None) else d % 2             # <<<<<<<<<<<<<<
@@ -832,11 +818,11 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
     __pyx_t_1 = __pyx_t_3;
     __pyx_t_3 = nullptr;
   }
-  __pyx_t_4 = __site_cvt_fwi_integer_t_97_20->Target(__site_cvt_fwi_integer_t_97_20, __pyx_t_1);
+  __pyx_t_4 = __site_cvt_fwi_integer_t_88_20->Target(__site_cvt_fwi_integer_t_88_20, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_zero_nyquist_ = __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":98
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":89
  *     cdef _CallbackInfo cbinfo
  *     zero_nyquist_ = zero_nyquist if (zero_nyquist is not None) else d % 2
  *     if not (n > 0):             # <<<<<<<<<<<<<<
@@ -846,7 +832,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   __pyx_t_2 = (!(__pyx_v_n > 0));
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":99
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":90
  *     zero_nyquist_ = zero_nyquist if (zero_nyquist is not None) else d % 2
  *     if not (n > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')             # <<<<<<<<<<<<<<
@@ -854,7 +840,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_99_24->Target(__site_call1_99_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
+    __pyx_t_3 = __site_call1_90_24->Target(__site_call1_90_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: n > 0"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -862,7 +848,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":100
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":91
  *     if not (n > 0):
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)             # <<<<<<<<<<<<<<
@@ -884,7 +870,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   __pyx_v_omega = __pyx_t_7;
   __pyx_t_7 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":101
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":92
  *         raise ValueError('Condition on arguments not satisfied: n > 0')
  *     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):             # <<<<<<<<<<<<<<
@@ -898,7 +884,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":102
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":93
  *     omega_, omega = fw_explicitshapearray(omega, fwr_real_x8_t_enum, 1, [n], False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -906,7 +892,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
  *     cbinfo.callback = kernel_func
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_7 = __site_call1_102_24->Target(__site_call1_102_24, __pyx_context, __pyx_t_3, ((System::Object^)"(0 <= n <= omega.shape[0]) not satisifed"));
+    __pyx_t_7 = __site_call1_93_24->Target(__site_call1_93_24, __pyx_context, __pyx_t_3, ((System::Object^)"(0 <= n <= omega.shape[0]) not satisifed"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
     __pyx_t_7 = nullptr;
@@ -914,18 +900,18 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":103
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":94
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
  *     cbinfo = _CallbackInfo()             # <<<<<<<<<<<<<<
  *     cbinfo.callback = kernel_func
  *     cbinfo.extra_args = kernel_func_extra_args
  */
-  __pyx_t_7 = __site_call0_103_26->Target(__site_call0_103_26, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_7fftpack_8convolve__CallbackInfo)));
+  __pyx_t_7 = __site_call0_94_26->Target(__site_call0_94_26, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_7fftpack_8convolve__CallbackInfo)));
   __pyx_v_cbinfo = ((_CallbackInfo^)__pyx_t_7);
   __pyx_t_7 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":104
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":95
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
  *     cbinfo = _CallbackInfo()
  *     cbinfo.callback = kernel_func             # <<<<<<<<<<<<<<
@@ -934,7 +920,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
  */
   __pyx_v_cbinfo->callback = __pyx_v_kernel_func;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":105
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":96
  *     cbinfo = _CallbackInfo()
  *     cbinfo.callback = kernel_func
  *     cbinfo.extra_args = kernel_func_extra_args             # <<<<<<<<<<<<<<
@@ -943,88 +929,98 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
  */
   __pyx_v_cbinfo->extra_args = __pyx_v_kernel_func_extra_args;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":106
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":97
  *     cbinfo.callback = kernel_func
  *     cbinfo.extra_args = kernel_func_extra_args
  *     kernel_func_info = cbinfo             # <<<<<<<<<<<<<<
  *     try:
- *         if setjmp(cbinfo.jmp) == 0:
+ *         fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
  */
   __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = __pyx_v_cbinfo;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":107
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":98
  *     cbinfo.extra_args = kernel_func_extra_args
  *     kernel_func_info = cbinfo
  *     try:             # <<<<<<<<<<<<<<
- *         if setjmp(cbinfo.jmp) == 0:
- *             fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
+ *         fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
+ *     except RuntimeError:
  */
   try {
+    try {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":108
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":99
  *     kernel_func_info = cbinfo
  *     try:
- *         if setjmp(cbinfo.jmp) == 0:             # <<<<<<<<<<<<<<
- *             fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
- *         else:
- */
-    __pyx_t_8 = (setjmp(__pyx_v_cbinfo->jmp) == 0);
-    if (__pyx_t_8) {
-
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":109
- *     try:
- *         if setjmp(cbinfo.jmp) == 0:
- *             fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)             # <<<<<<<<<<<<<<
- *         else:
- *             t, val, tb = cbinfo.exc
+ *         fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)             # <<<<<<<<<<<<<<
+ *     except RuntimeError:
+ *         t, val, tb = cbinfo.exc
  */
       GLOBALFUNC(init_convolution_kernel)(__pyx_v_n, ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_omega_)), __pyx_v_d, __pyx_function_pointer_init_convolution_kernel_cb, __pyx_v_zero_nyquist_);
-      goto __pyx_L5;
-    }
-    /*else*/ {
+    } catch (System::Exception^ __pyx_lt_9) {
+      System::Object^ __pyx_lt_10 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_9);
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":111
- *             fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
- *         else:
- *             t, val, tb = cbinfo.exc             # <<<<<<<<<<<<<<
- *             cbinfo.exc = None
- *             raise t, val, tb
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":100
+ *     try:
+ *         fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
+ *     except RuntimeError:             # <<<<<<<<<<<<<<
+ *         t, val, tb = cbinfo.exc
+ *         cbinfo.exc = None
  */
-      __pyx_t_6 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_cbinfo->exc, 3)));
-      __pyx_t_7 = __pyx_t_6[0];
-      __pyx_t_3 = __pyx_t_6[1];
-      __pyx_t_1 = __pyx_t_6[2];
-      __pyx_t_6 = nullptr;
-      __pyx_v_t = __pyx_t_7;
+      __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "RuntimeError");
+      System::Object^ __pyx_lt_11;
+      __pyx_lt_11 = PythonOps::CheckException(__pyx_context, __pyx_lt_10, __pyx_t_7);
       __pyx_t_7 = nullptr;
-      __pyx_v_val = __pyx_t_3;
-      __pyx_t_3 = nullptr;
-      __pyx_v_tb = __pyx_t_1;
-      __pyx_t_1 = nullptr;
+      if (__pyx_lt_11 != nullptr) {
+        // XXX should update traceback here __Pyx_AddTraceback("scipy.fftpack.convolve.init_convolution_kernel");
+        PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_9);
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":112
- *         else:
- *             t, val, tb = cbinfo.exc
- *             cbinfo.exc = None             # <<<<<<<<<<<<<<
- *             raise t, val, tb
+        /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":101
+ *         fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
+ *     except RuntimeError:
+ *         t, val, tb = cbinfo.exc             # <<<<<<<<<<<<<<
+ *         cbinfo.exc = None
+ *         raise t, val, tb
+ */
+        __pyx_t_6 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_cbinfo->exc, 3)));
+        __pyx_t_7 = __pyx_t_6[0];
+        __pyx_t_3 = __pyx_t_6[1];
+        __pyx_t_1 = __pyx_t_6[2];
+        __pyx_t_6 = nullptr;
+        __pyx_v_t = __pyx_t_7;
+        __pyx_t_7 = nullptr;
+        __pyx_v_val = __pyx_t_3;
+        __pyx_t_3 = nullptr;
+        __pyx_v_tb = __pyx_t_1;
+        __pyx_t_1 = nullptr;
+
+        /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":102
+ *     except RuntimeError:
+ *         t, val, tb = cbinfo.exc
+ *         cbinfo.exc = None             # <<<<<<<<<<<<<<
+ *         raise t, val, tb
  *     finally:
  */
-      __pyx_v_cbinfo->exc = nullptr;
+        __pyx_v_cbinfo->exc = nullptr;
 
-      /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":113
- *             t, val, tb = cbinfo.exc
- *             cbinfo.exc = None
- *             raise t, val, tb             # <<<<<<<<<<<<<<
+        /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":103
+ *         t, val, tb = cbinfo.exc
+ *         cbinfo.exc = None
+ *         raise t, val, tb             # <<<<<<<<<<<<<<
  *     finally:
  *         kernel_func_info = None
  */
-      throw PythonOps::MakeException(__pyx_context, __pyx_v_t, __pyx_v_val, __pyx_v_tb);
+        throw PythonOps::MakeException(__pyx_context, __pyx_v_t, __pyx_v_val, __pyx_v_tb);
+      }
+      else {
+        // XXX we should set traceback here
+        throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_9);
+      }
+      PythonOps::ExceptionHandled(__pyx_context);
     }
-    __pyx_L5:;
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":115
- *             raise t, val, tb
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":105
+ *         raise t, val, tb
  *     finally:
  *         kernel_func_info = None             # <<<<<<<<<<<<<<
  *     return omega
@@ -1034,7 +1030,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
     __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = ((_CallbackInfo^)nullptr);
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":116
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":106
  *     finally:
  *         kernel_func_info = None
  *     return omega             # <<<<<<<<<<<<<<
@@ -1049,7 +1045,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":119
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":109
  * 
  * 
  * cpdef object destroy_convolve_cache():             # <<<<<<<<<<<<<<
@@ -1060,7 +1056,7 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
 static  System::Object^ destroy_convolve_cache(void) {
   System::Object^ __pyx_r = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":127
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":117
  * 
  *     """
  *     fc.destroy_convolve_cache()             # <<<<<<<<<<<<<<
@@ -1073,7 +1069,7 @@ static  System::Object^ destroy_convolve_cache(void) {
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":130
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":120
  * 
  * 
  * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1105,7 +1101,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   __pyx_v_x_ = nullptr;
   __pyx_v_omega_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":148
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":138
  *     cdef np.ndarray omega_
  *     cdef fwi_integer_t n
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)             # <<<<<<<<<<<<<<
@@ -1126,7 +1122,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   __pyx_v_x = __pyx_t_4;
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":149
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":139
  *     cdef fwi_integer_t n
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)
  *     n = np.PyArray_DIMS(x_)[0]             # <<<<<<<<<<<<<<
@@ -1135,7 +1131,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
  */
   __pyx_v_n = (PyArray_DIMS(__pyx_v_x_)[0]);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":150
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":140
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)
  *     n = np.PyArray_DIMS(x_)[0]
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):             # <<<<<<<<<<<<<<
@@ -1149,7 +1145,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":151
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":141
  *     n = np.PyArray_DIMS(x_)[0]
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1157,7 +1153,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_151_24->Target(__site_call1_151_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= x.shape[0]) not satisifed"));
+    __pyx_t_4 = __site_call1_141_24->Target(__site_call1_141_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= x.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -1165,7 +1161,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":152
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":142
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
  *     omega_, omega = fw_asfortranarray(omega, fwr_real_x8_t_enum, 1, False)             # <<<<<<<<<<<<<<
@@ -1186,7 +1182,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   __pyx_v_omega = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":153
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":143
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
  *     omega_, omega = fw_asfortranarray(omega, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):             # <<<<<<<<<<<<<<
@@ -1200,7 +1196,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   __pyx_t_5 = (!__pyx_t_6);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":154
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":144
  *     omega_, omega = fw_asfortranarray(omega, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1208,7 +1204,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
  *     return x
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_154_24->Target(__site_call1_154_24, __pyx_context, __pyx_t_4, ((System::Object^)"(0 <= n <= omega.shape[0]) not satisifed"));
+    __pyx_t_3 = __site_call1_144_24->Target(__site_call1_144_24, __pyx_context, __pyx_t_4, ((System::Object^)"(0 <= n <= omega.shape[0]) not satisifed"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1216,7 +1212,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":155
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":145
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
  *     fc.convolve(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_), swap_real_imag)             # <<<<<<<<<<<<<<
@@ -1225,7 +1221,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
  */
   GLOBALFUNC(convolve)(__pyx_v_n, ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_omega_)), __pyx_v_swap_real_imag);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":156
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":146
  *         raise ValueError("(0 <= n <= omega.shape[0]) not satisifed")
  *     fc.convolve(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_), swap_real_imag)
  *     return x             # <<<<<<<<<<<<<<
@@ -1240,7 +1236,7 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":159
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":149
  * 
  * 
  * cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -1270,7 +1266,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_v_omega_real_ = nullptr;
   __pyx_v_omega_imag_ = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":178
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":168
  *     cdef np.ndarray omega_imag_
  *     cdef fwi_integer_t n
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)             # <<<<<<<<<<<<<<
@@ -1291,7 +1287,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_v_x = __pyx_t_4;
   __pyx_t_4 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":179
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":169
  *     cdef fwi_integer_t n
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)
  *     n = np.PyArray_DIMS(x_)[0]             # <<<<<<<<<<<<<<
@@ -1300,7 +1296,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
  */
   __pyx_v_n = (PyArray_DIMS(__pyx_v_x_)[0]);
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":180
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":170
  *     x_, x = fw_asfortranarray(x, fwr_real_x8_t_enum, 1, not overwrite_x)
  *     n = np.PyArray_DIMS(x_)[0]
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):             # <<<<<<<<<<<<<<
@@ -1314,7 +1310,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":181
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":171
  *     n = np.PyArray_DIMS(x_)[0]
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1322,7 +1318,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
  *     if not (0 <= n <= np.PyArray_DIMS(omega_real_)[0]):
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_181_24->Target(__site_call1_181_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= x.shape[0]) not satisifed"));
+    __pyx_t_4 = __site_call1_171_24->Target(__site_call1_171_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= x.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -1330,7 +1326,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":182
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":172
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
  *     omega_real_, omega_real = fw_asfortranarray(omega_real, fwr_real_x8_t_enum, 1, False)             # <<<<<<<<<<<<<<
@@ -1351,7 +1347,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_v_omega_real = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":183
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":173
  *         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
  *     omega_real_, omega_real = fw_asfortranarray(omega_real, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_real_)[0]):             # <<<<<<<<<<<<<<
@@ -1365,7 +1361,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_t_5 = (!__pyx_t_6);
   if (__pyx_t_5) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":184
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":174
  *     omega_real_, omega_real = fw_asfortranarray(omega_real, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_real_)[0]):
  *         raise ValueError("(0 <= n <= omega_real.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1373,7 +1369,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
  *     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_184_24->Target(__site_call1_184_24, __pyx_context, __pyx_t_4, ((System::Object^)"(0 <= n <= omega_real.shape[0]) not satisifed"));
+    __pyx_t_3 = __site_call1_174_24->Target(__site_call1_174_24, __pyx_context, __pyx_t_4, ((System::Object^)"(0 <= n <= omega_real.shape[0]) not satisifed"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -1381,7 +1377,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":185
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":175
  *     if not (0 <= n <= np.PyArray_DIMS(omega_real_)[0]):
  *         raise ValueError("(0 <= n <= omega_real.shape[0]) not satisifed")
  *     omega_imag_, omega_imag = fw_asfortranarray(omega_imag, fwr_real_x8_t_enum, 1, False)             # <<<<<<<<<<<<<<
@@ -1402,7 +1398,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_v_omega_imag = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":186
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":176
  *         raise ValueError("(0 <= n <= omega_real.shape[0]) not satisifed")
  *     omega_imag_, omega_imag = fw_asfortranarray(omega_imag, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):             # <<<<<<<<<<<<<<
@@ -1416,7 +1412,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   __pyx_t_6 = (!__pyx_t_5);
   if (__pyx_t_6) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":187
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":177
  *     omega_imag_, omega_imag = fw_asfortranarray(omega_imag, fwr_real_x8_t_enum, 1, False)
  *     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
  *         raise ValueError("(0 <= n <= omega_imag.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1424,7 +1420,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
  *     return x
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_187_24->Target(__site_call1_187_24, __pyx_context, __pyx_t_3, ((System::Object^)"(0 <= n <= omega_imag.shape[0]) not satisifed"));
+    __pyx_t_1 = __site_call1_177_24->Target(__site_call1_177_24, __pyx_context, __pyx_t_3, ((System::Object^)"(0 <= n <= omega_imag.shape[0]) not satisifed"));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1432,7 +1428,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   }
   __pyx_L5:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":188
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":178
  *     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
  *         raise ValueError("(0 <= n <= omega_imag.shape[0]) not satisifed")
  *     fc.convolve_z(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_real_), <fwr_real_x8_t*>np.PyArray_DATA(omega_imag_))             # <<<<<<<<<<<<<<
@@ -1441,7 +1437,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
  */
   GLOBALFUNC(convolve_z)(__pyx_v_n, ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_x_)), ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_omega_real_)), ((fwr_real_x8_t *)PyArray_DATA(__pyx_v_omega_imag_)));
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":189
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":179
  *         raise ValueError("(0 <= n <= omega_imag.shape[0]) not satisifed")
  *     fc.convolve_z(n, <fwr_real_x8_t*>np.PyArray_DATA(x_), <fwr_real_x8_t*>np.PyArray_DATA(omega_real_), <fwr_real_x8_t*>np.PyArray_DATA(omega_imag_))
  *     return x             # <<<<<<<<<<<<<<
@@ -1456,7 +1452,7 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":193
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":183
  * 
  * 
  * cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,             # <<<<<<<<<<<<<<
@@ -1486,7 +1482,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   }
   __pyx_v_result = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":195
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":185
  * cdef object fw_asfortranarray(object value, int typenum, int ndim, bint copy,
  *                               int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -1495,7 +1491,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
  */
   __pyx_v_flags = NPY_F_CONTIGUOUS;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":186
  *                               int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS
  *     if ndim <= 1:             # <<<<<<<<<<<<<<
@@ -1505,7 +1501,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   __pyx_t_1 = (__pyx_v_ndim <= 1);
   if (__pyx_t_1) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":198
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":188
  *     if ndim <= 1:
  *         # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *         flags |= np.NPY_C_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -1517,7 +1513,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":199
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":189
  *         # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *         flags |= np.NPY_C_CONTIGUOUS
  *     if (not copy and alignment > 1 and np.PyArray_Check(value) and             # <<<<<<<<<<<<<<
@@ -1529,11 +1525,11 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
     __pyx_t_2 = (__pyx_v_alignment > 1);
     if (__pyx_t_2) {
       __pyx_t_3 = PyArray_Check(__pyx_v_value); 
-      __pyx_t_4 = __site_istrue_199_55->Target(__site_istrue_199_55, __pyx_t_3);
+      __pyx_t_4 = __site_istrue_189_55->Target(__site_istrue_189_55, __pyx_t_3);
       __pyx_t_3 = nullptr;
       if (__pyx_t_4) {
 
-        /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":200
+        /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":190
  *         flags |= np.NPY_C_CONTIGUOUS
  *     if (not copy and alignment > 1 and np.PyArray_Check(value) and
  *         (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):             # <<<<<<<<<<<<<<
@@ -1558,7 +1554,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   }
   if (__pyx_t_2) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":202
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":192
  *         (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
  *         # mis-aligned array
  *         copy = True             # <<<<<<<<<<<<<<
@@ -1570,7 +1566,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   }
   __pyx_L4:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":203
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":193
  *         # mis-aligned array
  *         copy = True
  *     if copy:             # <<<<<<<<<<<<<<
@@ -1579,7 +1575,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
  */
   if (__pyx_v_copy) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":204
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":194
  *         copy = True
  *     if copy:
  *         flags |= np.NPY_ENSURECOPY             # <<<<<<<<<<<<<<
@@ -1591,7 +1587,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   }
   __pyx_L5:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":205
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":195
  *     if copy:
  *         flags |= np.NPY_ENSURECOPY
  *     result = np.PyArray_FROMANY(value, typenum, ndim, ndim, flags)             # <<<<<<<<<<<<<<
@@ -1610,7 +1606,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   __pyx_v_result = __pyx_t_10;
   __pyx_t_10 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":206
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":196
  *         flags |= np.NPY_ENSURECOPY
  *     result = np.PyArray_FROMANY(value, typenum, ndim, ndim, flags)
  *     return result, result             # <<<<<<<<<<<<<<
@@ -1627,7 +1623,7 @@ static  System::Object^ fw_asfortranarray(System::Object^ __pyx_v_value, int __p
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":208
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":198
  *     return result, result
  * 
  * cdef object fw_explicitshapearray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -1649,7 +1645,7 @@ static  System::Object^ fw_explicitshapearray(System::Object^ __pyx_v_value, int
   }
   __pyx_v_result = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":210
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":200
  * cdef object fw_explicitshapearray(object value, int typenum, int ndim,
  *                                   np.intp_t *shape, bint copy, int alignment=1):
  *     if value is None:             # <<<<<<<<<<<<<<
@@ -1659,7 +1655,7 @@ static  System::Object^ fw_explicitshapearray(System::Object^ __pyx_v_value, int
   __pyx_t_1 = (__pyx_v_value == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":211
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":201
  *                                   np.intp_t *shape, bint copy, int alignment=1):
  *     if value is None:
  *         result = np.PyArray_ZEROS(ndim, shape, typenum, 1)             # <<<<<<<<<<<<<<
@@ -1670,7 +1666,7 @@ static  System::Object^ fw_explicitshapearray(System::Object^ __pyx_v_value, int
     __pyx_v_result = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":212
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":202
  *     if value is None:
  *         result = np.PyArray_ZEROS(ndim, shape, typenum, 1)
  *         return result, result             # <<<<<<<<<<<<<<
@@ -1685,7 +1681,7 @@ static  System::Object^ fw_explicitshapearray(System::Object^ __pyx_v_value, int
   }
   /*else*/ {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":214
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":204
  *         return result, result
  *     else:
  *         return fw_asfortranarray(value, typenum, ndim, copy, alignment)             # <<<<<<<<<<<<<<
@@ -1706,7 +1702,7 @@ static  System::Object^ fw_explicitshapearray(System::Object^ __pyx_v_value, int
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":190
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -1718,7 +1714,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5scipy_7fft
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":193
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -1735,7 +1731,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5scipy_7fft
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":195
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -1757,7 +1753,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -1768,7 +1764,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":198
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1779,7 +1775,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":199
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -1794,7 +1790,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
     __pyx_t_5 = nullptr;
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":200
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1805,7 +1801,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":201
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -1832,7 +1828,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5sc
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":203
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -1854,7 +1850,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":204
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":204
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -1865,7 +1861,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":206
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":206
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1876,7 +1872,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":207
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":207
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -1891,7 +1887,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
     __pyx_t_5 = nullptr;
   }
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":208
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":208
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1902,7 +1898,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":209
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":209
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -1929,7 +1925,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5sc
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":211
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":211
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
@@ -1941,7 +1937,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":212
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":212
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -1954,7 +1950,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":213
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":213
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -1967,7 +1963,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":214
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":214
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
@@ -1984,7 +1980,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":216
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":216
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
  * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
@@ -1997,7 +1993,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":218
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":218
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  *      # XXX "long long" is wrong type
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
@@ -2015,7 +2011,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":220
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":220
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
@@ -2028,7 +2024,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":222
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2046,7 +2042,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":224
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -2059,7 +2055,7 @@ static CYTHON_INLINE __pyx_t_5scipy_7fftpack_5numpy_intp_t *PyArray_DIMS(NumpyDo
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":226
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2077,7 +2073,7 @@ static CYTHON_INLINE __pyx_t_5scipy_7fftpack_5numpy_intp_t *PyArray_DIMS(NumpyDo
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":228
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
@@ -2090,7 +2086,7 @@ static CYTHON_INLINE __pyx_t_5scipy_7fftpack_5numpy_intp_t PyArray_SIZE(NumpyDot
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":230
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":230
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2108,7 +2104,7 @@ static CYTHON_INLINE __pyx_t_5scipy_7fftpack_5numpy_intp_t PyArray_SIZE(NumpyDot
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":232
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":232
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -2125,7 +2121,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":233
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":233
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -2136,7 +2132,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":234
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -2147,7 +2143,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":235
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
@@ -2168,7 +2164,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":237
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":237
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -2183,7 +2179,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":238
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -2197,7 +2193,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":239
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":239
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -2213,7 +2209,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":240
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":240
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
@@ -2233,7 +2229,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":242
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":242
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -2246,7 +2242,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":243
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
  *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
@@ -2265,7 +2261,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":245
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":245
  *     return isinstance(obj, ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
@@ -2277,7 +2273,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":246
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":246
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
@@ -2294,7 +2290,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":248
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -2353,22 +2349,22 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_get_int64_31_19 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "int64", false));
   __site_get_int64_32_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "int64", false));
   __site_get_intc_33_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "intc", false));
-  __site_call1_58_38 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_double_58_38 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_ARGS_60_38 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument(ArgumentType::List)})));
-  __site_cvt_double_60_38 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_exc_info_65_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_65_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_cvt_fwi_integer_t_97_20 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_99_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_102_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call0_103_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call1_151_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_154_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_181_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_184_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_187_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_199_55 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_49_38 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_double_49_38 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_ARGS_51_38 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument(ArgumentType::List)})));
+  __site_cvt_double_51_38 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_exc_info_56_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_56_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_cvt_fwi_integer_t_88_20 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_90_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_93_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call0_94_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call1_141_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_144_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_171_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_174_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_177_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_189_55 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -2410,7 +2406,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":22
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":22
  * 
  * """
  * import sys             # <<<<<<<<<<<<<<
@@ -2421,7 +2417,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "sys", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":24
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":24
  * import sys
  * 
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -2430,7 +2426,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":1
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":1
  * import numpy as np             # <<<<<<<<<<<<<<
  * fwi_integer = np.intc
  * fwi_integer_x1 = np.int8
@@ -2439,7 +2435,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "np", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":2
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":2
  * import numpy as np
  * fwi_integer = np.intc             # <<<<<<<<<<<<<<
  * fwi_integer_x1 = np.int8
@@ -2451,7 +2447,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":3
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":3
  * import numpy as np
  * fwi_integer = np.intc
  * fwi_integer_x1 = np.int8             # <<<<<<<<<<<<<<
@@ -2464,7 +2460,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_x1", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":4
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":4
  * fwi_integer = np.intc
  * fwi_integer_x1 = np.int8
  * fwi_integer_1 = np.int8             # <<<<<<<<<<<<<<
@@ -2477,7 +2473,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_1", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":5
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":5
  * fwi_integer_x1 = np.int8
  * fwi_integer_1 = np.int8
  * fwi_integer_x2 = np.int16             # <<<<<<<<<<<<<<
@@ -2490,7 +2486,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_x2", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":6
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":6
  * fwi_integer_1 = np.int8
  * fwi_integer_x2 = np.int16
  * fwi_integer_2 = np.int16             # <<<<<<<<<<<<<<
@@ -2503,7 +2499,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_2", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":7
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":7
  * fwi_integer_x2 = np.int16
  * fwi_integer_2 = np.int16
  * fwi_integer_x4 = np.int32             # <<<<<<<<<<<<<<
@@ -2516,7 +2512,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_x4", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":8
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":8
  * fwi_integer_2 = np.int16
  * fwi_integer_x4 = np.int32
  * fwi_integer_4 = np.int32             # <<<<<<<<<<<<<<
@@ -2529,7 +2525,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_4", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":9
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":9
  * fwi_integer_x4 = np.int32
  * fwi_integer_4 = np.int32
  * fwi_integer_x8 = np.int64             # <<<<<<<<<<<<<<
@@ -2542,7 +2538,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_x8", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":10
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":10
  * fwi_integer_4 = np.int32
  * fwi_integer_x8 = np.int64
  * fwi_integer_8 = np.int64             # <<<<<<<<<<<<<<
@@ -2555,7 +2551,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwi_integer_8", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":11
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":11
  * fwi_integer_x8 = np.int64
  * fwi_integer_8 = np.int64
  * fwr_real = np.single             # <<<<<<<<<<<<<<
@@ -2568,7 +2564,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_real", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":12
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":12
  * fwi_integer_8 = np.int64
  * fwr_real = np.single
  * fwr_real_x4 = np.float32             # <<<<<<<<<<<<<<
@@ -2581,7 +2577,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_real_x4", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":13
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":13
  * fwr_real = np.single
  * fwr_real_x4 = np.float32
  * fwr_real_4 = np.float32             # <<<<<<<<<<<<<<
@@ -2594,7 +2590,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_real_4", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":14
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":14
  * fwr_real_x4 = np.float32
  * fwr_real_4 = np.float32
  * fwr_real_x8 = np.float64             # <<<<<<<<<<<<<<
@@ -2607,7 +2603,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_real_x8", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":15
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":15
  * fwr_real_4 = np.float32
  * fwr_real_x8 = np.float64
  * fwr_real_8 = np.float64             # <<<<<<<<<<<<<<
@@ -2620,7 +2616,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_real_8", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":16
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":16
  * fwr_real_x8 = np.float64
  * fwr_real_8 = np.float64
  * fwr_dbl = np.double             # <<<<<<<<<<<<<<
@@ -2633,7 +2629,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwr_dbl", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":17
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":17
  * fwr_real_8 = np.float64
  * fwr_dbl = np.double
  * fwc_complex = np.csingle             # <<<<<<<<<<<<<<
@@ -2646,7 +2642,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_complex", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":18
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":18
  * fwr_dbl = np.double
  * fwc_complex = np.csingle
  * fwc_complex_x8 = np.csingle             # <<<<<<<<<<<<<<
@@ -2659,7 +2655,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_complex_x8", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":19
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":19
  * fwc_complex = np.csingle
  * fwc_complex_x8 = np.csingle
  * fwc_complex_4 = np.csingle             # <<<<<<<<<<<<<<
@@ -2672,7 +2668,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_complex_4", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":20
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":20
  * fwc_complex_x8 = np.csingle
  * fwc_complex_4 = np.csingle
  * fwc_complex_x16 = np.cdouble             # <<<<<<<<<<<<<<
@@ -2685,7 +2681,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_complex_x16", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":21
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":21
  * fwc_complex_4 = np.csingle
  * fwc_complex_x16 = np.cdouble
  * fwc_complex_8 = np.cdouble             # <<<<<<<<<<<<<<
@@ -2698,7 +2694,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_complex_8", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":22
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":22
  * fwc_complex_x16 = np.cdouble
  * fwc_complex_8 = np.cdouble
  * fwc_dbl_complex = np.cdouble             # <<<<<<<<<<<<<<
@@ -2711,7 +2707,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwc_dbl_complex", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":23
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":23
  * fwc_complex_8 = np.cdouble
  * fwc_dbl_complex = np.cdouble
  * fw_character = np.byte             # <<<<<<<<<<<<<<
@@ -2724,7 +2720,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fw_character", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":24
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":24
  * fwc_dbl_complex = np.cdouble
  * fw_character = np.byte
  * fwl_logical = np.intc             # <<<<<<<<<<<<<<
@@ -2737,7 +2733,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":25
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":25
  * fw_character = np.byte
  * fwl_logical = np.intc
  * fwl_logical_x1 = np.int8             # <<<<<<<<<<<<<<
@@ -2750,7 +2746,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_x1", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":26
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":26
  * fwl_logical = np.intc
  * fwl_logical_x1 = np.int8
  * fwl_logical_1 = np.int8             # <<<<<<<<<<<<<<
@@ -2763,7 +2759,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_1", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":27
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":27
  * fwl_logical_x1 = np.int8
  * fwl_logical_1 = np.int8
  * fwl_logical_x2 = np.int16             # <<<<<<<<<<<<<<
@@ -2776,7 +2772,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_x2", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":28
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":28
  * fwl_logical_1 = np.int8
  * fwl_logical_x2 = np.int16
  * fwl_logical_2 = np.int16             # <<<<<<<<<<<<<<
@@ -2789,7 +2785,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_2", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":29
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":29
  * fwl_logical_x2 = np.int16
  * fwl_logical_2 = np.int16
  * fwl_logical_x4 = np.int32             # <<<<<<<<<<<<<<
@@ -2802,7 +2798,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_x4", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":30
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":30
  * fwl_logical_2 = np.int16
  * fwl_logical_x4 = np.int32
  * fwl_logical_4 = np.int32             # <<<<<<<<<<<<<<
@@ -2815,7 +2811,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_4", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":31
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":31
  * fwl_logical_x4 = np.int32
  * fwl_logical_4 = np.int32
  * fwl_logical_x8 = np.int64             # <<<<<<<<<<<<<<
@@ -2828,7 +2824,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_x8", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":32
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":32
  * fwl_logical_4 = np.int32
  * fwl_logical_x8 = np.int64
  * fwl_logical_8 = np.int64             # <<<<<<<<<<<<<<
@@ -2840,7 +2836,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fwl_logical_8", __pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":33
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\fwrap_ktp.pxi":33
  * fwl_logical_x8 = np.int64
  * fwl_logical_8 = np.int64
  * fw_shape = np.intc             # <<<<<<<<<<<<<<
@@ -2851,7 +2847,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "fw_shape", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":27
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":27
  * include 'fwrap_ktp.pxi'
  * 
  * __all__ = ['init_convolution_kernel', 'destroy_convolve_cache',             # <<<<<<<<<<<<<<
@@ -2862,7 +2858,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__all__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\convolve.pyx":1
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":1
  * #cython: ccomplex=True             # <<<<<<<<<<<<<<
  * 
  * """The convolve module was generated with Fwrap v0.2.0dev_e929453.
@@ -2871,7 +2867,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\jwiggins-scipy-refactor\scipy\fftpack\numpy.pxd":248
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -2881,6 +2877,16 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_5numpy_dtype = nullptr;
+
+
+
+static Types::PythonType^ __pyx_ptype_5scipy_7fftpack_8convolve__CallbackInfo = nullptr;
+static _CallbackInfo^ __pyx_v_5scipy_7fftpack_8convolve_kernel_func_info = nullptr;
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */
