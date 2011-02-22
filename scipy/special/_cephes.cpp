@@ -282,14 +282,23 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
 static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
 static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
 static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
 static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
@@ -398,111 +407,112 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_920_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_921_99;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_922_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_925_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_926_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_925_99;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_927_97;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_928_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_929_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_930_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_932_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_933_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_929_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_930_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_931_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_932_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_934_112;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_935_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_938_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_936_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_937_114;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_940_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_941_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_942_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_943_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_944_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_945_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_945_103;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_946_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_947_109;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_948_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_949_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_950_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_950_103;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_951_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_952_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_952_105;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_953_103;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_954_103;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_955_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_957_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_958_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_960_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_961_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_962_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_963_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_964_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_966_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_967_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_968_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_956_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_957_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_959_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_960_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_962_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_963_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_964_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_965_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_966_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_968_112;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_969_99;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_970_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_971_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_972_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_971_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_972_99;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_973_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_974_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_977_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_979_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_981_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_983_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_985_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_987_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_988_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_990_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_991_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_993_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_996_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_997_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_998_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_999_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1001_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_975_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_976_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_979_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_981_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_983_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_985_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_987_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_989_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_990_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_992_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_993_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_995_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_998_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_999_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1000_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1001_109;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1003_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1004_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1005_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1005_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1006_107;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1007_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1008_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1010_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1011_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1009_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1010_109;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1012_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1014_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1015_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1017_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1018_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1020_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1022_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1023_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1024_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1013_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1014_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1016_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1017_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1019_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1020_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1022_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1024_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1025_105;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1026_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1027_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1028_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1029_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1031_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1034_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1035_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1036_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1037_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1038_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1039_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1028_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1029_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1030_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1031_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1033_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1036_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1037_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1038_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1039_117;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1040_123;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1041_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1043_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1045_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1046_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1042_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1043_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1045_101;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1047_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1049_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1050_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1051_119;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1052_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1053_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1054_118;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1055_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1056_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1057_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1058_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1059_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1060_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1061_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1062_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1066_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1048_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1049_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1051_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1052_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1053_119;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1054_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1055_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1056_118;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1057_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1058_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1059_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1060_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1061_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1062_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1063_122;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1064_122;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1068_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1070_120;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_376_43;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_376_47;
 static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_376_47;
@@ -521,23 +531,31 @@ static  CallSite< System::Func< CallSite^, System::Object^, System::Collections:
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_572_16;
 static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_572_16;
 static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_572_11;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_194_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_194_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_196_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_196_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_205_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_205_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_209_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_209_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_214_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_214_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_214_39;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_217_13;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_217_13;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_218_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_219_77;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_222_21;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_225_14;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_201_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_207_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_207_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_209_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_209_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_218_54;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_222_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_226_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_230_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_235_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_235_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_235_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_238_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_239_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_240_77;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
 /* Cython code section 'dotnet_globals' */
 
@@ -767,6 +785,7 @@ static char *__pyx_k__i1 = "i1";
 static char *__pyx_k__iv = "iv";
 static char *__pyx_k__j0 = "j0";
 static char *__pyx_k__j1 = "j1";
+static char *__pyx_k__jn = "jn";
 static char *__pyx_k__jv = "jv";
 static char *__pyx_k__k0 = "k0";
 static char *__pyx_k__k1 = "k1";
@@ -1200,7 +1219,7 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":185
+/* "../cython/include\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -1212,7 +1231,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":188
+  /* "../cython/include\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -1229,7 +1248,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":190
+/* "../cython/include\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -1251,7 +1270,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":191
+  /* "../cython/include\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -1262,7 +1281,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":193
+  /* "../cython/include\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1273,22 +1292,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":194
+    /* "../cython/include\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_194_18->Target(__site_get_append_194_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_199_18->Target(__site_get_append_199_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_194_25->Target(__site_call1_194_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_199_25->Target(__site_call1_199_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":195
+  /* "../cython/include\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1299,21 +1318,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":196
+  /* "../cython/include\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_196_16->Target(__site_get_zeros_196_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_zeros_201_16->Target(__site_get_zeros_201_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_196_22->Target(__site_call3_196_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_201_22->Target(__site_call3_201_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -1326,8 +1345,105 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":198
+/* "../cython/include\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
+ *     shape_list = []
+ *     cdef int i
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+  System::Object^ __pyx_v_shape_list;
+  int __pyx_v_i;
+  System::Object^ __pyx_v_numpy;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  System::Object^ __pyx_t_6 = nullptr;
+  __pyx_v_shape_list = nullptr;
+  __pyx_v_numpy = nullptr;
+
+  /* "../cython/include\numpy.pxd":204
+ * 
+ * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+ *     shape_list = []             # <<<<<<<<<<<<<<
+ *     cdef int i
+ *     for i in range(ndim):
+ */
+  __pyx_t_1 = PythonOps::MakeListNoCopy(gcnew array<System::Object^>{});
+  __pyx_v_shape_list = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":206
+ *     shape_list = []
+ *     cdef int i
+ *     for i in range(ndim):             # <<<<<<<<<<<<<<
+ *         shape_list.append(shape[i])
+ *     import numpy
+ */
+  __pyx_t_2 = __pyx_v_ndim;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_i = __pyx_t_3;
+
+    /* "../cython/include\numpy.pxd":207
+ *     cdef int i
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ */
+    __pyx_t_1 = __site_get_append_207_18->Target(__site_get_append_207_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
+    __pyx_t_5 = __site_call1_207_25->Target(__site_call1_207_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_1 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+  }
+
+  /* "../cython/include\numpy.pxd":208
+ *     for i in range(ndim):
+ *         shape_list.append(shape[i])
+ *     import numpy             # <<<<<<<<<<<<<<
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ */
+  __pyx_t_5 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_numpy = __pyx_t_5;
+  __pyx_t_5 = nullptr;
+
+  /* "../cython/include\numpy.pxd":209
+ *         shape_list.append(shape[i])
+ *     import numpy
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ */
+  __pyx_t_5 = __site_get_empty_209_16->Target(__site_get_empty_209_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  if (__pyx_v_fortran) {
+    __pyx_t_1 = "F";
+  } else {
+    __pyx_t_1 = "C";
+  }
+  __pyx_t_6 = __site_call3_209_22->Target(__site_call3_209_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_5 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_6;
+  __pyx_t_6 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":211
+ *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
  *     assert subtype == NULL
@@ -1338,7 +1454,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":199
+  /* "../cython/include\numpy.pxd":212
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -1351,7 +1467,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":200
+  /* "../cython/include\numpy.pxd":213
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -1364,12 +1480,12 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":201
+  /* "../cython/include\numpy.pxd":214
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
  * 
- * cdef inline void* PyArray_DATA(ndarray n):
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  */
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj)); 
   __pyx_r = __pyx_t_1;
@@ -1381,8 +1497,39 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":203
+/* "../cython/include\numpy.pxd":216
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+ */
+
+static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int __pyx_v_flags) {
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":218
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ *      # XXX "long long" is wrong type
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void* PyArray_DATA(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_218_54->Target(__site_get_Array_218_54, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_218_54->Target(__site_cvt_PY_LONG_LONG_218_54, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":220
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
@@ -1394,15 +1541,15 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":205
+  /* "../cython/include\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_205_49->Target(__site_get_Array_205_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_205_49->Target(__site_cvt_PY_LONG_LONG_205_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_222_49->Target(__site_get_Array_222_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_222_49->Target(__site_cvt_PY_LONG_LONG_222_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -1412,7 +1559,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":207
+/* "../cython/include\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -1425,15 +1572,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":209
+  /* "../cython/include\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_209_49->Target(__site_get_Array_209_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_209_49->Target(__site_cvt_PY_LONG_LONG_209_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_226_49->Target(__site_get_Array_226_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_226_49->Target(__site_cvt_PY_LONG_LONG_226_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -1443,8 +1590,39 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":211
+/* "../cython/include\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_intp_t __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":230
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
+ *     # XXX "long long" is wrong type
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ */
+  __pyx_t_1 = __site_get_Array_230_49->Target(__site_get_Array_230_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_PY_LONG_LONG_230_49->Target(__site_cvt_PY_LONG_LONG_230_49, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":232
+ *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
  *     import clr
@@ -1460,7 +1638,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":212
+  /* "../cython/include\numpy.pxd":233
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -1471,7 +1649,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":213
+  /* "../cython/include\numpy.pxd":234
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -1482,17 +1660,17 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":214
+  /* "../cython/include\numpy.pxd":235
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  */
-  __pyx_t_1 = __site_get_NpyArray_214_22->Target(__site_get_NpyArray_214_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_FromAny_214_31->Target(__site_get_FromAny_214_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_235_22->Target(__site_get_NpyArray_235_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_235_31->Target(__site_get_FromAny_235_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_214_39->Target(__site_call6_214_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_235_39->Target(__site_call6_235_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -1503,7 +1681,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":216
+/* "../cython/include\numpy.pxd":237
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -1518,7 +1696,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":217
+  /* "../cython/include\numpy.pxd":238
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -1526,13 +1704,13 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
-  __pyx_t_2 = __site_op_and_217_13->Target(__site_op_and_217_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_2 = __site_op_and_238_13->Target(__site_op_and_238_13, __pyx_v_flags, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_217_13->Target(__site_istrue_217_13, __pyx_t_2);
+  __pyx_t_3 = __site_istrue_238_13->Target(__site_istrue_238_13, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":218
+    /* "../cython/include\numpy.pxd":239
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -1540,7 +1718,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  * 
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
-    __pyx_t_1 = __site_op_ior_218_14->Target(__site_op_ior_218_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_1 = __site_op_ior_239_14->Target(__site_op_ior_239_14, __pyx_v_flags, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_flags = __pyx_t_1;
     __pyx_t_1 = nullptr;
@@ -1548,16 +1726,16 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":219
+  /* "../cython/include\numpy.pxd":240
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Check(obj):
  */
-  __pyx_t_4 = __site_cvt_int_219_77->Target(__site_cvt_int_219_77, __pyx_v_type);
+  __pyx_t_4 = __site_cvt_int_240_77->Target(__site_cvt_int_240_77, __pyx_v_type);
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
-  __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, Py_None); 
+  __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -1568,7 +1746,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":221
+/* "../cython/include\numpy.pxd":242
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -1581,7 +1759,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":222
+  /* "../cython/include\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
  *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
@@ -1589,7 +1767,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline object PyArray_NDIM(obj):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_222_21->Target(__site_call2_222_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
+  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -1600,7 +1778,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":224
+/* "../cython/include\numpy.pxd":245
  *     return isinstance(obj, ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
@@ -1612,14 +1790,14 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":225
+  /* "../cython/include\numpy.pxd":246
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
  * 
  * cdef inline void import_array():
  */
-  __pyx_t_1 = __site_get_ndim_225_14->Target(__site_get_ndim_225_14, __pyx_v_obj, __pyx_context);
+  __pyx_t_1 = __site_get_ndim_246_14->Target(__site_get_ndim_246_14, __pyx_v_obj, __pyx_context);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -1629,7 +1807,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":227
+/* "../cython/include\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -1732,111 +1910,112 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_int_920_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_921_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_922_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_925_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_926_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_925_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_927_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_928_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_929_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_930_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_932_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_933_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_929_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_930_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_931_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_932_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_934_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_935_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_938_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_936_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_937_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_940_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_941_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_942_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_943_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_944_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_945_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_945_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_946_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_947_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_948_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_949_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_950_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_950_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_951_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_952_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_952_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_953_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_954_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_955_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_957_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_958_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_960_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_961_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_962_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_963_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_964_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_966_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_967_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_968_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_956_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_957_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_959_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_960_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_962_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_963_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_964_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_965_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_966_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_968_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_969_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_970_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_971_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_972_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_971_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_972_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_973_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_974_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_977_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_979_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_981_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_983_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_985_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_987_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_988_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_990_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_991_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_993_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_996_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_997_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_998_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_999_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1001_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_975_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_976_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_979_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_981_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_983_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_985_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_987_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_989_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_990_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_992_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_993_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_995_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_998_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_999_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1000_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1001_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1003_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1004_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1005_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1005_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1006_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1007_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1008_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1010_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1011_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1009_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1010_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1012_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1014_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1015_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1017_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1018_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1020_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1022_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1023_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1024_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1013_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1014_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1016_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1017_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1019_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1020_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1022_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1024_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1025_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1026_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1027_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1028_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1029_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1031_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1034_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1035_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1036_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1037_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1038_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1039_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1028_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1029_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1030_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1031_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1033_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1036_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1037_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1038_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1039_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1040_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1041_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1043_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1045_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1046_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1042_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1043_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1045_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1047_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1049_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1050_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1051_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1052_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1053_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1054_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1055_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1056_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1057_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1058_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1059_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1060_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1061_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1062_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1066_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1048_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1049_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1051_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1052_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1053_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1054_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1055_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1056_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1057_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1058_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1059_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1060_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1061_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1062_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1063_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1064_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_int_1068_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_int_1070_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_376_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_op_mul_376_47 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
   __site_cvt_size_t_376_47 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
@@ -1855,23 +2034,31 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_getindex_572_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
   __site_cvt_char_572_16 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_Py_ssize_t_572_11 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_append_194_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_194_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_196_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_196_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_205_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_205_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_209_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_209_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_214_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_FromAny_214_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
-  __site_call6_214_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_op_and_217_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_istrue_217_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ior_218_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
-  __site_cvt_int_219_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call2_222_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_ndim_225_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_201_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_207_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_207_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_209_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_209_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_218_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_218_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_222_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_222_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_226_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_226_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_230_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_PY_LONG_LONG_230_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_235_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_235_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_235_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_238_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_238_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_239_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_int_240_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call2_243_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_ndim_246_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -2147,7 +2334,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   int __pyx_t_263;
   char *__pyx_t_264;
   int __pyx_t_265;
-  int __pyx_t_266;
+  char *__pyx_t_266;
   int __pyx_t_267;
   int __pyx_t_268;
   int __pyx_t_269;
@@ -2170,18 +2357,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   int __pyx_t_286;
   int __pyx_t_287;
   int __pyx_t_288;
-  char *__pyx_t_289;
+  int __pyx_t_289;
   int __pyx_t_290;
   char *__pyx_t_291;
   int __pyx_t_292;
   char *__pyx_t_293;
   int __pyx_t_294;
-  int __pyx_t_295;
+  char *__pyx_t_295;
   int __pyx_t_296;
   int __pyx_t_297;
   int __pyx_t_298;
   int __pyx_t_299;
-  char *__pyx_t_300;
+  int __pyx_t_300;
   int __pyx_t_301;
   char *__pyx_t_302;
   int __pyx_t_303;
@@ -2236,6 +2423,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   char *__pyx_t_352;
   int __pyx_t_353;
   char *__pyx_t_354;
+  int __pyx_t_355;
+  char *__pyx_t_356;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":9
  * ctypedef int intp
@@ -9013,7 +9202,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)
  * yve = np.PyUFunc_FromFuncAndData(cephes2c_functions, yve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yve", yve_doc, 0)             # <<<<<<<<<<<<<<
  * 
- * 
+ * # In cephes jv is more accurate than jn so we just alias jn to jv.
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
   __pyx_t_171 = __site_cvt_int_922_101->Target(__site_cvt_int_922_101, __pyx_t_17);
@@ -9029,24 +9218,43 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":925
  * 
+ * # In cephes jv is more accurate than jn so we just alias jn to jv.
+ * jn = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jn", jn_doc, 0)             # <<<<<<<<<<<<<<
+ * 
+ * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
+ */
+  __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
+  __pyx_t_173 = __site_cvt_int_925_99->Target(__site_cvt_int_925_99, __pyx_t_17);
+  __pyx_t_17 = nullptr;
+  __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jn_doc");
+  __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
+  __pyx_t_174 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_17 = nullptr;
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2c_functions, __pyx_v_5scipy_7special_7_cephes_jv_data, __pyx_v_5scipy_7special_7_cephes_cephes_3c_types, 4, 2, 1, __pyx_t_173, __pyx_k__jn, __pyx_t_174, 0); 
+  InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
+  PythonOps::SetGlobal(__pyx_context, "jn", __pyx_t_17);
+  __pyx_t_17 = nullptr;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":927
+ * jn = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jn", jn_doc, 0)
  * 
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)             # <<<<<<<<<<<<<<
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_173 = __site_cvt_int_925_97->Target(__site_cvt_int_925_97, __pyx_t_17);
+  __pyx_t_175 = __site_cvt_int_927_97->Target(__site_cvt_int_927_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_174 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_176 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_173, __pyx_k__k0, __pyx_t_174, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_175, __pyx_k__k0, __pyx_t_176, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "k0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":926
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":928
  * 
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9054,18 +9262,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_175 = __site_cvt_int_926_99->Target(__site_cvt_int_926_99, __pyx_t_17);
+  __pyx_t_177 = __site_cvt_int_928_99->Target(__site_cvt_int_928_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_176 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_178 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k0e_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_175, __pyx_k__k0e, __pyx_t_176, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k0e_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_177, __pyx_k__k0e, __pyx_t_178, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "k0e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":927
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":929
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9073,18 +9281,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_177 = __site_cvt_int_927_97->Target(__site_cvt_int_927_97, __pyx_t_17);
+  __pyx_t_179 = __site_cvt_int_929_97->Target(__site_cvt_int_929_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_178 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_180 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_177, __pyx_k__k1, __pyx_t_178, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_179, __pyx_k__k1, __pyx_t_180, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "k1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":928
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":930
  * k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9092,18 +9300,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_179 = __site_cvt_int_928_99->Target(__site_cvt_int_928_99, __pyx_t_17);
+  __pyx_t_181 = __site_cvt_int_930_99->Target(__site_cvt_int_930_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_180 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_182 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k1e_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_179, __pyx_k__k1e, __pyx_t_180, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_k1e_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_181, __pyx_k__k1e, __pyx_t_182, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "k1e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":929
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":931
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)             # <<<<<<<<<<<<<<
@@ -9111,18 +9319,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_181 = __site_cvt_int_929_99->Target(__site_cvt_int_929_99, __pyx_t_17);
+  __pyx_t_183 = __site_cvt_int_931_99->Target(__site_cvt_int_931_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_182 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_184 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2c_functions, __pyx_v_5scipy_7special_7_cephes_kv_data, __pyx_v_5scipy_7special_7_cephes_cephes_3c_types, 4, 2, 1, __pyx_t_181, __pyx_k__kv, __pyx_t_182, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2c_functions, __pyx_v_5scipy_7special_7_cephes_kv_data, __pyx_v_5scipy_7special_7_cephes_cephes_3c_types, 4, 2, 1, __pyx_t_183, __pyx_k__kv, __pyx_t_184, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":930
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":932
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9130,18 +9338,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_183 = __site_cvt_int_930_101->Target(__site_cvt_int_930_101, __pyx_t_17);
+  __pyx_t_185 = __site_cvt_int_932_101->Target(__site_cvt_int_932_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_184 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_186 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2c_functions, __pyx_v_5scipy_7special_7_cephes_kve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3c_types, 4, 2, 1, __pyx_t_183, __pyx_k__kve, __pyx_t_184, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2c_functions, __pyx_v_5scipy_7special_7_cephes_kve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3c_types, 4, 2, 1, __pyx_t_185, __pyx_k__kve, __pyx_t_186, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":932
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":934
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)
  * 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9149,18 +9357,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_185 = __site_cvt_int_932_112->Target(__site_cvt_int_932_112, __pyx_t_17);
+  __pyx_t_187 = __site_cvt_int_934_112->Target(__site_cvt_int_934_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_186 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_188 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel1_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_185, __pyx_k__hankel1, __pyx_t_186, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel1_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_187, __pyx_k__hankel1, __pyx_t_188, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "hankel1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":933
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":935
  * 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9168,18 +9376,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2e", hankel2e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_187 = __site_cvt_int_933_114->Target(__site_cvt_int_933_114, __pyx_t_17);
+  __pyx_t_189 = __site_cvt_int_935_114->Target(__site_cvt_int_935_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_188 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_190 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel1e_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_187, __pyx_k__hankel1e, __pyx_t_188, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel1e_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_189, __pyx_k__hankel1e, __pyx_t_190, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "hankel1e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":934
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":936
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)             # <<<<<<<<<<<<<<
@@ -9187,18 +9395,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_189 = __site_cvt_int_934_112->Target(__site_cvt_int_934_112, __pyx_t_17);
+  __pyx_t_191 = __site_cvt_int_936_112->Target(__site_cvt_int_936_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_190 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_192 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_189, __pyx_k__hankel2, __pyx_t_190, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_191, __pyx_k__hankel2, __pyx_t_192, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "hankel2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":935
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":937
  * hankel1e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1e", hankel1e_doc, 0)
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)
  * hankel2e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2e", hankel2e_doc, 0)             # <<<<<<<<<<<<<<
@@ -9206,18 +9414,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_191 = __site_cvt_int_935_114->Target(__site_cvt_int_935_114, __pyx_t_17);
+  __pyx_t_193 = __site_cvt_int_937_114->Target(__site_cvt_int_937_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_192 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_194 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel2e_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_191, __pyx_k__hankel2e, __pyx_t_192, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions, __pyx_v_5scipy_7special_7_cephes_hankel2e_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 2, 1, __pyx_t_193, __pyx_k__hankel2e, __pyx_t_194, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "hankel2e", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":938
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":940
  * 
  * 
  * ndtr = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtr_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtr", ndtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -9225,18 +9433,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_193 = __site_cvt_int_938_101->Target(__site_cvt_int_938_101, __pyx_t_17);
+  __pyx_t_195 = __site_cvt_int_940_101->Target(__site_cvt_int_940_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_194 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_196 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ndtr_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_193, __pyx_k__ndtr, __pyx_t_194, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ndtr_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_195, __pyx_k__ndtr, __pyx_t_196, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "ndtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":940
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":942
  * ndtr = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtr_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtr", ndtr_doc, 0)
  * 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)             # <<<<<<<<<<<<<<
@@ -9244,18 +9452,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_195 = __site_cvt_int_940_101->Target(__site_cvt_int_940_101, __pyx_t_17);
+  __pyx_t_197 = __site_cvt_int_942_101->Target(__site_cvt_int_942_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erfc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_196 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_198 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_erfc_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_195, __pyx_k__erfc, __pyx_t_196, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_erfc_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_197, __pyx_k__erfc, __pyx_t_198, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "erfc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":941
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":943
  * 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)
  * erf = np.PyUFunc_FromFuncAndData(cephes1rc_functions, erf_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "erf", erf_doc, 0)             # <<<<<<<<<<<<<<
@@ -9263,18 +9471,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_197 = __site_cvt_int_941_103->Target(__site_cvt_int_941_103, __pyx_t_17);
+  __pyx_t_199 = __site_cvt_int_943_103->Target(__site_cvt_int_943_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_198 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_200 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_erf_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_197, __pyx_k__erf, __pyx_t_198, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_erf_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_199, __pyx_k__erf, __pyx_t_200, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "erf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":943
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":945
  * erf = np.PyUFunc_FromFuncAndData(cephes1rc_functions, erf_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "erf", erf_doc, 0)
  * 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)             # <<<<<<<<<<<<<<
@@ -9282,18 +9490,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_199 = __site_cvt_int_943_103->Target(__site_cvt_int_943_103, __pyx_t_17);
+  __pyx_t_201 = __site_cvt_int_945_103->Target(__site_cvt_int_945_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_200 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_202 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ndtri_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_199, __pyx_k__ndtri, __pyx_t_200, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ndtri_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_201, __pyx_k__ndtri, __pyx_t_202, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "ndtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":944
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":946
  * 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)             # <<<<<<<<<<<<<<
@@ -9301,18 +9509,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_201 = __site_cvt_int_944_103->Target(__site_cvt_int_944_103, __pyx_t_17);
+  __pyx_t_203 = __site_cvt_int_946_103->Target(__site_cvt_int_946_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "psi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_202 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_204 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_psi_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_201, __pyx_k__psi, __pyx_t_202, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_psi_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_203, __pyx_k__psi, __pyx_t_204, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "psi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":945
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":947
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)             # <<<<<<<<<<<<<<
@@ -9320,18 +9528,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_203 = __site_cvt_int_945_109->Target(__site_cvt_int_945_109, __pyx_t_17);
+  __pyx_t_205 = __site_cvt_int_947_109->Target(__site_cvt_int_947_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "rgamma_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_204 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_206 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_rgamma_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_203, __pyx_k__rgamma, __pyx_t_204, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions, __pyx_v_5scipy_7special_7_cephes_rgamma_data, __pyx_v_5scipy_7special_7_cephes_cephes_1rc_types, 4, 1, 1, __pyx_t_205, __pyx_k__rgamma, __pyx_t_206, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "rgamma", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":946
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":948
  * psi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, psi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "psi", psi_doc, 0)
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)             # <<<<<<<<<<<<<<
@@ -9339,18 +9547,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_205 = __site_cvt_int_946_103->Target(__site_cvt_int_946_103, __pyx_t_17);
+  __pyx_t_207 = __site_cvt_int_948_103->Target(__site_cvt_int_948_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "round_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_206 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_208 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_round_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_205, __pyx_k__round, __pyx_t_206, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_round_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_207, __pyx_k__round, __pyx_t_208, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "round", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":948
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":950
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)
  * 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9358,18 +9566,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_207 = __site_cvt_int_948_103->Target(__site_cvt_int_948_103, __pyx_t_17);
+  __pyx_t_209 = __site_cvt_int_950_103->Target(__site_cvt_int_950_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "sindg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_208 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_210 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_sindg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_207, __pyx_k__sindg, __pyx_t_208, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_sindg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_209, __pyx_k__sindg, __pyx_t_210, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "sindg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":949
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":951
  * 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9377,18 +9585,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_209 = __site_cvt_int_949_103->Target(__site_cvt_int_949_103, __pyx_t_17);
+  __pyx_t_211 = __site_cvt_int_951_103->Target(__site_cvt_int_951_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_210 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_212 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cosdg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_209, __pyx_k__cosdg, __pyx_t_210, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cosdg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_211, __pyx_k__cosdg, __pyx_t_212, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "cosdg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":950
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":952
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)             # <<<<<<<<<<<<<<
@@ -9396,18 +9604,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_211 = __site_cvt_int_950_105->Target(__site_cvt_int_950_105, __pyx_t_17);
+  __pyx_t_213 = __site_cvt_int_952_105->Target(__site_cvt_int_952_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "radian_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_212 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_214 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_radian_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_211, __pyx_k__radian, __pyx_t_212, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_radian_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_213, __pyx_k__radian, __pyx_t_214, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "radian", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":951
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":953
  * cosdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cosdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosdg", cosdg_doc, 0)
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9415,18 +9623,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_213 = __site_cvt_int_951_103->Target(__site_cvt_int_951_103, __pyx_t_17);
+  __pyx_t_215 = __site_cvt_int_953_103->Target(__site_cvt_int_953_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "tandg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_214 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_216 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_tandg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_213, __pyx_k__tandg, __pyx_t_214, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_tandg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_215, __pyx_k__tandg, __pyx_t_216, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "tandg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":952
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":954
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)             # <<<<<<<<<<<<<<
@@ -9434,18 +9642,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_215 = __site_cvt_int_952_103->Target(__site_cvt_int_952_103, __pyx_t_17);
+  __pyx_t_217 = __site_cvt_int_954_103->Target(__site_cvt_int_954_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cotdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_216 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_218 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cotdg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_215, __pyx_k__cotdg, __pyx_t_216, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cotdg_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_217, __pyx_k__cotdg, __pyx_t_218, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "cotdg", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":953
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":955
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)             # <<<<<<<<<<<<<<
@@ -9453,18 +9661,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_217 = __site_cvt_int_953_103->Target(__site_cvt_int_953_103, __pyx_t_17);
+  __pyx_t_219 = __site_cvt_int_955_103->Target(__site_cvt_int_955_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "log1p_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_218 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_220 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_log1p_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_217, __pyx_k__log1p, __pyx_t_218, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_log1p_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_219, __pyx_k__log1p, __pyx_t_220, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "log1p", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":954
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":956
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9472,18 +9680,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_219 = __site_cvt_int_954_103->Target(__site_cvt_int_954_103, __pyx_t_17);
+  __pyx_t_221 = __site_cvt_int_956_103->Target(__site_cvt_int_956_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_220 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_222 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_expm1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_219, __pyx_k__expm1, __pyx_t_220, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_expm1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_221, __pyx_k__expm1, __pyx_t_222, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "expm1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":955
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":957
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)             # <<<<<<<<<<<<<<
@@ -9491,18 +9699,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_221 = __site_cvt_int_955_103->Target(__site_cvt_int_955_103, __pyx_t_17);
+  __pyx_t_223 = __site_cvt_int_957_103->Target(__site_cvt_int_957_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_222 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_224 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cosm1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_221, __pyx_k__cosm1, __pyx_t_222, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_cosm1_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_223, __pyx_k__cosm1, __pyx_t_224, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "cosm1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":957
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":959
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)
  * 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)             # <<<<<<<<<<<<<<
@@ -9510,18 +9718,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_223 = __site_cvt_int_957_105->Target(__site_cvt_int_957_105, __pyx_t_17);
+  __pyx_t_225 = __site_cvt_int_959_105->Target(__site_cvt_int_959_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "spence_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_224 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_226 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_spence_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_223, __pyx_k__spence, __pyx_t_224, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_spence_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_225, __pyx_k__spence, __pyx_t_226, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "spence", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":958
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":960
  * 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)
  * zetac = np.PyUFunc_FromFuncAndData(cephes1_functions, zetac_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "zetac", zetac_doc, 0)             # <<<<<<<<<<<<<<
@@ -9529,18 +9737,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_225 = __site_cvt_int_958_103->Target(__site_cvt_int_958_103, __pyx_t_17);
+  __pyx_t_227 = __site_cvt_int_960_103->Target(__site_cvt_int_960_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zetac_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_226 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_228 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_zetac_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_225, __pyx_k__zetac, __pyx_t_226, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_zetac_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_227, __pyx_k__zetac, __pyx_t_228, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "zetac", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":960
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":962
  * zetac = np.PyUFunc_FromFuncAndData(cephes1_functions, zetac_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "zetac", zetac_doc, 0)
  * 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9548,18 +9756,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_227 = __site_cvt_int_960_105->Target(__site_cvt_int_960_105, __pyx_t_17);
+  __pyx_t_229 = __site_cvt_int_962_105->Target(__site_cvt_int_962_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "struve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_228 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_230 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_struve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_227, __pyx_k__struve, __pyx_t_228, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_struve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_229, __pyx_k__struve, __pyx_t_230, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "struve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":961
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":963
  * 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)             # <<<<<<<<<<<<<<
@@ -9567,18 +9775,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_229 = __site_cvt_int_961_111->Target(__site_cvt_int_961_111, __pyx_t_17);
+  __pyx_t_231 = __site_cvt_int_963_111->Target(__site_cvt_int_963_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modstruve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_230 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_232 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_modstruve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_229, __pyx_k__modstruve, __pyx_t_230, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_modstruve_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_231, __pyx_k__modstruve, __pyx_t_232, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "modstruve", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":962
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":964
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9586,18 +9794,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_231 = __site_cvt_int_962_111->Target(__site_cvt_int_962_111, __pyx_t_17);
+  __pyx_t_233 = __site_cvt_int_964_111->Target(__site_cvt_int_964_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_232 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_234 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_itstruve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_231, __pyx_k__itstruve0, __pyx_t_232, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_itstruve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_233, __pyx_k__itstruve0, __pyx_t_234, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "itstruve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":963
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":965
  * modstruve = np.PyUFunc_FromFuncAndData(cephes2_functions, modstruve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "modstruve", modstruve_doc, 0)
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9605,18 +9813,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_233 = __site_cvt_int_963_113->Target(__site_cvt_int_963_113, __pyx_t_17);
+  __pyx_t_235 = __site_cvt_int_965_113->Target(__site_cvt_int_965_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2struve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_234 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_236 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_it2struve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_233, __pyx_k__it2struve0, __pyx_t_234, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_it2struve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_235, __pyx_k__it2struve0, __pyx_t_236, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "it2struve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":964
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":966
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)             # <<<<<<<<<<<<<<
@@ -9624,18 +9832,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_235 = __site_cvt_int_964_117->Target(__site_cvt_int_964_117, __pyx_t_17);
+  __pyx_t_237 = __site_cvt_int_966_117->Target(__site_cvt_int_966_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itmodstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_236 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_238 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_itmodstruve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_235, __pyx_k__itmodstruve0, __pyx_t_236, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_itmodstruve0_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_237, __pyx_k__itmodstruve0, __pyx_t_238, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "itmodstruve0", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":966
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":968
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)
  * 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)             # <<<<<<<<<<<<<<
@@ -9643,18 +9851,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_237 = __site_cvt_int_966_112->Target(__site_cvt_int_966_112, __pyx_t_17);
+  __pyx_t_239 = __site_cvt_int_968_112->Target(__site_cvt_int_968_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kelvin_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_238 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_240 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions, __pyx_v_5scipy_7special_7_cephes_kelvin_data, __pyx_v_5scipy_7special_7_cephes_cephes_5b2_types, 2, 1, 4, __pyx_t_237, __pyx_k__kelvin, __pyx_t_238, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions, __pyx_v_5scipy_7special_7_cephes_kelvin_data, __pyx_v_5scipy_7special_7_cephes_cephes_5b2_types, 2, 1, 4, __pyx_t_239, __pyx_k__kelvin, __pyx_t_240, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kelvin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":967
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":969
  * 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)             # <<<<<<<<<<<<<<
@@ -9662,18 +9870,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_239 = __site_cvt_int_967_99->Target(__site_cvt_int_967_99, __pyx_t_17);
+  __pyx_t_241 = __site_cvt_int_969_99->Target(__site_cvt_int_969_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ber_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_240 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_242 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ber_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_239, __pyx_k__ber, __pyx_t_240, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ber_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_241, __pyx_k__ber, __pyx_t_242, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "ber", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":968
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":970
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)             # <<<<<<<<<<<<<<
@@ -9681,18 +9889,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_241 = __site_cvt_int_968_99->Target(__site_cvt_int_968_99, __pyx_t_17);
+  __pyx_t_243 = __site_cvt_int_970_99->Target(__site_cvt_int_970_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_242 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_244 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_bei_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_241, __pyx_k__bei, __pyx_t_242, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_bei_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_243, __pyx_k__bei, __pyx_t_244, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "bei", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":969
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":971
  * ber = np.PyUFunc_FromFuncAndData(cephes1_functions, ber_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ber", ber_doc, 0)
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)             # <<<<<<<<<<<<<<
@@ -9700,18 +9908,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_243 = __site_cvt_int_969_99->Target(__site_cvt_int_969_99, __pyx_t_17);
+  __pyx_t_245 = __site_cvt_int_971_99->Target(__site_cvt_int_971_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ker_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_244 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_246 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ker_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_243, __pyx_k__ker, __pyx_t_244, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_ker_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_245, __pyx_k__ker, __pyx_t_246, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "ker", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":970
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":972
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)             # <<<<<<<<<<<<<<
@@ -9719,18 +9927,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_245 = __site_cvt_int_970_99->Target(__site_cvt_int_970_99, __pyx_t_17);
+  __pyx_t_247 = __site_cvt_int_972_99->Target(__site_cvt_int_972_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_246 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_248 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kei_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_245, __pyx_k__kei, __pyx_t_246, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kei_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_247, __pyx_k__kei, __pyx_t_248, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kei", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":971
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":973
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)             # <<<<<<<<<<<<<<
@@ -9738,18 +9946,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_247 = __site_cvt_int_971_101->Target(__site_cvt_int_971_101, __pyx_t_17);
+  __pyx_t_249 = __site_cvt_int_973_101->Target(__site_cvt_int_973_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "berp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_248 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_250 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_berp_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_247, __pyx_k__berp, __pyx_t_248, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_berp_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_249, __pyx_k__berp, __pyx_t_250, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "berp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":972
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":974
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)             # <<<<<<<<<<<<<<
@@ -9757,18 +9965,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * keip = np.PyUFunc_FromFuncAndData(cephes1_functions, keip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "keip", keip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_249 = __site_cvt_int_972_101->Target(__site_cvt_int_972_101, __pyx_t_17);
+  __pyx_t_251 = __site_cvt_int_974_101->Target(__site_cvt_int_974_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "beip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_250 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_252 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_beip_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_249, __pyx_k__beip, __pyx_t_250, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_beip_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_251, __pyx_k__beip, __pyx_t_252, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "beip", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":973
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":975
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)             # <<<<<<<<<<<<<<
@@ -9776,18 +9984,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_251 = __site_cvt_int_973_101->Target(__site_cvt_int_973_101, __pyx_t_17);
+  __pyx_t_253 = __site_cvt_int_975_101->Target(__site_cvt_int_975_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kerp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_252 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_254 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kerp_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_251, __pyx_k__kerp, __pyx_t_252, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kerp_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_253, __pyx_k__kerp, __pyx_t_254, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kerp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":974
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":976
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)
  * keip = np.PyUFunc_FromFuncAndData(cephes1_functions, keip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "keip", keip_doc, 0)             # <<<<<<<<<<<<<<
@@ -9795,18 +10003,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_253 = __site_cvt_int_974_101->Target(__site_cvt_int_974_101, __pyx_t_17);
+  __pyx_t_255 = __site_cvt_int_976_101->Target(__site_cvt_int_976_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "keip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_254 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_256 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_keip_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_253, __pyx_k__keip, __pyx_t_254, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_keip_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_255, __pyx_k__keip, __pyx_t_256, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "keip", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":977
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":979
  * 
  * 
  * zeta = np.PyUFunc_FromFuncAndData(cephes2_functions, zeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "zeta", zeta_doc, 0)             # <<<<<<<<<<<<<<
@@ -9814,18 +10022,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_255 = __site_cvt_int_977_101->Target(__site_cvt_int_977_101, __pyx_t_17);
+  __pyx_t_257 = __site_cvt_int_979_101->Target(__site_cvt_int_979_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zeta_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_256 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_258 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_zeta_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_255, __pyx_k__zeta, __pyx_t_256, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_zeta_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_257, __pyx_k__zeta, __pyx_t_258, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "zeta", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":979
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":981
  * zeta = np.PyUFunc_FromFuncAndData(cephes2_functions, zeta_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "zeta", zeta_doc, 0)
  * 
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)             # <<<<<<<<<<<<<<
@@ -9833,18 +10041,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_257 = __site_cvt_int_979_113->Target(__site_cvt_int_979_113, __pyx_t_17);
+  __pyx_t_259 = __site_cvt_int_981_113->Target(__site_cvt_int_981_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogorov_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_258 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_260 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kolmogorov_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_257, __pyx_k__kolmogorov, __pyx_t_258, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kolmogorov_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_259, __pyx_k__kolmogorov, __pyx_t_260, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kolmogorov", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":981
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":983
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)
  * 
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)             # <<<<<<<<<<<<<<
@@ -9852,18 +10060,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_259 = __site_cvt_int_981_107->Target(__site_cvt_int_981_107, __pyx_t_17);
+  __pyx_t_261 = __site_cvt_int_983_107->Target(__site_cvt_int_983_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_260 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_262 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kolmogi_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_259, __pyx_k__kolmogi, __pyx_t_260, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_functions, __pyx_v_5scipy_7special_7_cephes_kolmogi_data, __pyx_v_5scipy_7special_7_cephes_cephes_2_types, 2, 1, 1, __pyx_t_261, __pyx_k__kolmogi, __pyx_t_262, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "kolmogi", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":983
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":985
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)
  * 
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)             # <<<<<<<<<<<<<<
@@ -9871,18 +10079,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_261 = __site_cvt_int_983_103->Target(__site_cvt_int_983_103, __pyx_t_17);
+  __pyx_t_263 = __site_cvt_int_985_103->Target(__site_cvt_int_985_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "wofz_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_262 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_264 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1c_functions, __pyx_v_5scipy_7special_7_cephes_wofz_data, __pyx_v_5scipy_7special_7_cephes_cephes_1c_types, 2, 1, 1, __pyx_t_261, __pyx_k__wofz, __pyx_t_262, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1c_functions, __pyx_v_5scipy_7special_7_cephes_wofz_data, __pyx_v_5scipy_7special_7_cephes_cephes_1c_types, 2, 1, 1, __pyx_t_263, __pyx_k__wofz, __pyx_t_264, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "wofz", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":985
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":987
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)
  * 
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)             # <<<<<<<<<<<<<<
@@ -9890,18 +10098,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_263 = __site_cvt_int_985_113->Target(__site_cvt_int_985_113, __pyx_t_17);
+  __pyx_t_265 = __site_cvt_int_987_113->Target(__site_cvt_int_987_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "besselpoly_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_264 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_266 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_besselpoly_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_263, __pyx_k__besselpoly, __pyx_t_264, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_besselpoly_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_265, __pyx_k__besselpoly, __pyx_t_266, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "besselpoly", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":987
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":989
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)
  * 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)             # <<<<<<<<<<<<<<
@@ -9909,13 +10117,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_265 = __site_cvt_int_987_107->Target(__site_cvt_int_987_107, __pyx_t_17);
+  __pyx_t_267 = __site_cvt_int_989_107->Target(__site_cvt_int_989_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_265, __pyx_k__btdtria, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_267, __pyx_k__btdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtria", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":988
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":990
  * 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)
  * btdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtrib", "", 0)             # <<<<<<<<<<<<<<
@@ -9923,13 +10131,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_266 = __site_cvt_int_988_107->Target(__site_cvt_int_988_107, __pyx_t_17);
+  __pyx_t_268 = __site_cvt_int_990_107->Target(__site_cvt_int_990_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_266, __pyx_k__btdtrib, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_268, __pyx_k__btdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtrib", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":990
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":992
  * btdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtrib", "", 0)
  * 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -9937,13 +10145,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_267 = __site_cvt_int_990_106->Target(__site_cvt_int_990_106, __pyx_t_17);
+  __pyx_t_269 = __site_cvt_int_992_106->Target(__site_cvt_int_992_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_267, __pyx_k__bdtrik, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_269, __pyx_k__bdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":991
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":993
  * 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)
  * bdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrin", "", 0)             # <<<<<<<<<<<<<<
@@ -9951,13 +10159,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtriv = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfchi3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtriv", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_268 = __site_cvt_int_991_106->Target(__site_cvt_int_991_106, __pyx_t_17);
+  __pyx_t_270 = __site_cvt_int_993_106->Target(__site_cvt_int_993_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_268, __pyx_k__bdtrin, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_270, __pyx_k__bdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":993
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":995
  * bdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrin", "", 0)
  * 
  * chdtriv = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfchi3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtriv", "", 0)             # <<<<<<<<<<<<<<
@@ -9965,13 +10173,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_269 = __site_cvt_int_993_107->Target(__site_cvt_int_993_107, __pyx_t_17);
+  __pyx_t_271 = __site_cvt_int_995_107->Target(__site_cvt_int_995_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfchi3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_269, __pyx_k__chdtriv, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfchi3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_271, __pyx_k__chdtriv, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chdtriv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":996
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":998
  * 
  * 
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)             # <<<<<<<<<<<<<<
@@ -9979,13 +10187,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_270 = __site_cvt_int_996_106->Target(__site_cvt_int_996_106, __pyx_t_17);
+  __pyx_t_272 = __site_cvt_int_998_106->Target(__site_cvt_int_998_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_270, __pyx_k__chndtr, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_272, __pyx_k__chndtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":997
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":999
  * 
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)             # <<<<<<<<<<<<<<
@@ -9993,13 +10201,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_271 = __site_cvt_int_997_108->Target(__site_cvt_int_997_108, __pyx_t_17);
+  __pyx_t_273 = __site_cvt_int_999_108->Target(__site_cvt_int_999_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_271, __pyx_k__chndtrix, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_273, __pyx_k__chndtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrix", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":998
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1000
  * chndtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtr", "", 0)
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)             # <<<<<<<<<<<<<<
@@ -10007,13 +10215,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_272 = __site_cvt_int_998_109->Target(__site_cvt_int_998_109, __pyx_t_17);
+  __pyx_t_274 = __site_cvt_int_1000_109->Target(__site_cvt_int_1000_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_272, __pyx_k__chndtridf, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_274, __pyx_k__chndtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":999
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1001
  * chndtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrix", "", 0)
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -10021,13 +10229,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_273 = __site_cvt_int_999_109->Target(__site_cvt_int_999_109, __pyx_t_17);
+  __pyx_t_275 = __site_cvt_int_1001_109->Target(__site_cvt_int_1001_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_273, __pyx_k__chndtrinc, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_275, __pyx_k__chndtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1001
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1003
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)
  * 
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)             # <<<<<<<<<<<<<<
@@ -10035,13 +10243,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_274 = __site_cvt_int_1001_106->Target(__site_cvt_int_1001_106, __pyx_t_17);
+  __pyx_t_276 = __site_cvt_int_1003_106->Target(__site_cvt_int_1003_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdff4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_274, __pyx_k__fdtridfd, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdff4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_276, __pyx_k__fdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "fdtridfd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1003
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1005
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)
  * 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)             # <<<<<<<<<<<<<<
@@ -10049,13 +10257,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_275 = __site_cvt_int_1003_106->Target(__site_cvt_int_1003_106, __pyx_t_17);
+  __pyx_t_277 = __site_cvt_int_1005_106->Target(__site_cvt_int_1005_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_275, __pyx_k__ncfdtr, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_277, __pyx_k__ncfdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1004
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1006
  * 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  * ncfdtri = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc2_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtri", "", 0)             # <<<<<<<<<<<<<<
@@ -10063,13 +10271,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_276 = __site_cvt_int_1004_107->Target(__site_cvt_int_1004_107, __pyx_t_17);
+  __pyx_t_278 = __site_cvt_int_1006_107->Target(__site_cvt_int_1006_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_276, __pyx_k__ncfdtri, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_278, __pyx_k__ncfdtri, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtri", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1005
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1007
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  * ncfdtri = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc2_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtri", "", 0)
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)             # <<<<<<<<<<<<<<
@@ -10077,13 +10285,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_277 = __site_cvt_int_1005_110->Target(__site_cvt_int_1005_110, __pyx_t_17);
+  __pyx_t_279 = __site_cvt_int_1007_110->Target(__site_cvt_int_1007_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_277, __pyx_k__ncfdtridfn, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_279, __pyx_k__ncfdtridfn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1007
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1009
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)
  * 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)             # <<<<<<<<<<<<<<
@@ -10091,13 +10299,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_278 = __site_cvt_int_1007_110->Target(__site_cvt_int_1007_110, __pyx_t_17);
+  __pyx_t_280 = __site_cvt_int_1009_110->Target(__site_cvt_int_1009_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_278, __pyx_k__ncfdtridfd, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_280, __pyx_k__ncfdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1008
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1010
  * 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)
  * ncfdtrinc = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc5_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -10105,13 +10313,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_279 = __site_cvt_int_1008_109->Target(__site_cvt_int_1008_109, __pyx_t_17);
+  __pyx_t_281 = __site_cvt_int_1010_109->Target(__site_cvt_int_1010_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc5_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_279, __pyx_k__ncfdtrinc, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc5_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_281, __pyx_k__ncfdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1010
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1012
  * ncfdtrinc = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc5_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtrinc", "", 0)
  * 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)             # <<<<<<<<<<<<<<
@@ -10119,13 +10327,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_280 = __site_cvt_int_1010_106->Target(__site_cvt_int_1010_106, __pyx_t_17);
+  __pyx_t_282 = __site_cvt_int_1012_106->Target(__site_cvt_int_1012_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_280, __pyx_k__gdtrix, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_282, __pyx_k__gdtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrix", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1011
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1013
  * 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  * gdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrib", "", 0)             # <<<<<<<<<<<<<<
@@ -10133,13 +10341,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_281 = __site_cvt_int_1011_106->Target(__site_cvt_int_1011_106, __pyx_t_17);
+  __pyx_t_283 = __site_cvt_int_1013_106->Target(__site_cvt_int_1013_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_281, __pyx_k__gdtrib, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_283, __pyx_k__gdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrib", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1012
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1014
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  * gdtrib = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrib", "", 0)
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)             # <<<<<<<<<<<<<<
@@ -10147,13 +10355,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_282 = __site_cvt_int_1012_106->Target(__site_cvt_int_1012_106, __pyx_t_17);
+  __pyx_t_284 = __site_cvt_int_1014_106->Target(__site_cvt_int_1014_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_282, __pyx_k__gdtria, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_284, __pyx_k__gdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtria", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1014
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1016
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)
  * 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -10161,13 +10369,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_283 = __site_cvt_int_1014_107->Target(__site_cvt_int_1014_107, __pyx_t_17);
+  __pyx_t_285 = __site_cvt_int_1016_107->Target(__site_cvt_int_1016_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_283, __pyx_k__nbdtrik, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_285, __pyx_k__nbdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1015
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1017
  * 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)
  * nbdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrin", "", 0)             # <<<<<<<<<<<<<<
@@ -10175,13 +10383,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_284 = __site_cvt_int_1015_107->Target(__site_cvt_int_1015_107, __pyx_t_17);
+  __pyx_t_286 = __site_cvt_int_1017_107->Target(__site_cvt_int_1017_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_284, __pyx_k__nbdtrin, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_286, __pyx_k__nbdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrin", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1017
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1019
  * nbdtrin = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrin", "", 0)
  * 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)             # <<<<<<<<<<<<<<
@@ -10189,13 +10397,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_285 = __site_cvt_int_1017_108->Target(__site_cvt_int_1017_108, __pyx_t_17);
+  __pyx_t_287 = __site_cvt_int_1019_108->Target(__site_cvt_int_1019_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_285, __pyx_k__nrdtrimn, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_287, __pyx_k__nrdtrimn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrimn", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1018
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1020
  * 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)
  * nrdtrisd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrisd", "", 0)             # <<<<<<<<<<<<<<
@@ -10203,13 +10411,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_286 = __site_cvt_int_1018_108->Target(__site_cvt_int_1018_108, __pyx_t_17);
+  __pyx_t_288 = __site_cvt_int_1020_108->Target(__site_cvt_int_1020_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_286, __pyx_k__nrdtrisd, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_288, __pyx_k__nrdtrisd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrisd", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1020
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1022
  * nrdtrisd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrisd", "", 0)
  * 
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)             # <<<<<<<<<<<<<<
@@ -10217,13 +10425,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_287 = __site_cvt_int_1020_106->Target(__site_cvt_int_1020_106, __pyx_t_17);
+  __pyx_t_289 = __site_cvt_int_1022_106->Target(__site_cvt_int_1022_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfpoi2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_287, __pyx_k__pdtrik, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfpoi2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_289, __pyx_k__pdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "pdtrik", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1022
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1024
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)
  * 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)             # <<<<<<<<<<<<<<
@@ -10231,18 +10439,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_288 = __site_cvt_int_1022_103->Target(__site_cvt_int_1022_103, __pyx_t_17);
+  __pyx_t_290 = __site_cvt_int_1024_103->Target(__site_cvt_int_1024_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_289 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_291 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft1_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_288, __pyx_k__stdtr, __pyx_t_289, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft1_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_290, __pyx_k__stdtr, __pyx_t_291, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "stdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1023
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1025
  * 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  * stdtrit = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtrit", stdtrit_doc, 0)             # <<<<<<<<<<<<<<
@@ -10250,18 +10458,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_290 = __site_cvt_int_1023_105->Target(__site_cvt_int_1023_105, __pyx_t_17);
+  __pyx_t_292 = __site_cvt_int_1025_105->Target(__site_cvt_int_1025_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtrit_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_291 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_293 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_290, __pyx_k__stdtrit, __pyx_t_291, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_292, __pyx_k__stdtrit, __pyx_t_293, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "stdtrit", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1024
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1026
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  * stdtrit = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtrit", stdtrit_doc, 0)
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)             # <<<<<<<<<<<<<<
@@ -10269,18 +10477,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_292 = __site_cvt_int_1024_106->Target(__site_cvt_int_1024_106, __pyx_t_17);
+  __pyx_t_294 = __site_cvt_int_1026_106->Target(__site_cvt_int_1026_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtridf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_293 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_295 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_292, __pyx_k__stdtridf, __pyx_t_293, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdft3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_294, __pyx_k__stdtridf, __pyx_t_295, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "stdtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1026
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1028
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)
  * 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)             # <<<<<<<<<<<<<<
@@ -10288,13 +10496,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_294 = __site_cvt_int_1026_106->Target(__site_cvt_int_1026_106, __pyx_t_17);
+  __pyx_t_296 = __site_cvt_int_1028_106->Target(__site_cvt_int_1028_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_294, __pyx_k__nctdtr, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_296, __pyx_k__nctdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtr", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1027
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1029
  * 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)             # <<<<<<<<<<<<<<
@@ -10302,13 +10510,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_295 = __site_cvt_int_1027_108->Target(__site_cvt_int_1027_108, __pyx_t_17);
+  __pyx_t_297 = __site_cvt_int_1029_108->Target(__site_cvt_int_1029_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_295, __pyx_k__nctdtrit, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_297, __pyx_k__nctdtrit, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrit", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1028
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1030
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)             # <<<<<<<<<<<<<<
@@ -10316,13 +10524,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_296 = __site_cvt_int_1028_109->Target(__site_cvt_int_1028_109, __pyx_t_17);
+  __pyx_t_298 = __site_cvt_int_1030_109->Target(__site_cvt_int_1030_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_296, __pyx_k__nctdtridf, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_298, __pyx_k__nctdtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtridf", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1029
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1031
  * nctdtrit = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrit", "", 0)
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)             # <<<<<<<<<<<<<<
@@ -10330,13 +10538,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tklmbda = np.PyUFunc_FromFuncAndData(cephes2_functions, tklambda_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "tklmbda", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_297 = __site_cvt_int_1029_109->Target(__site_cvt_int_1029_109, __pyx_t_17);
+  __pyx_t_299 = __site_cvt_int_1031_109->Target(__site_cvt_int_1031_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_297, __pyx_k__nctdtrinc, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_299, __pyx_k__nctdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrinc", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1031
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1033
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)
  * 
  * tklmbda = np.PyUFunc_FromFuncAndData(cephes2_functions, tklambda_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "tklmbda", "", 0)             # <<<<<<<<<<<<<<
@@ -10344,13 +10552,13 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_298 = __site_cvt_int_1031_108->Target(__site_cvt_int_1031_108, __pyx_t_17);
+  __pyx_t_300 = __site_cvt_int_1033_108->Target(__site_cvt_int_1033_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_tklambda_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_298, __pyx_k__tklmbda, __pyx_k_1, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_tklambda_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_300, __pyx_k__tklmbda, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "tklmbda", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1034
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1036
  * 
  * 
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)             # <<<<<<<<<<<<<<
@@ -10358,18 +10566,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_299 = __site_cvt_int_1034_111->Target(__site_cvt_int_1034_111, __pyx_t_17);
+  __pyx_t_301 = __site_cvt_int_1036_111->Target(__site_cvt_int_1036_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_a_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_300 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_302 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_a_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_299, __pyx_k__mathieu_a, __pyx_t_300, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_a_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_301, __pyx_k__mathieu_a, __pyx_t_302, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_a", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1035
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1037
  * 
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)             # <<<<<<<<<<<<<<
@@ -10377,18 +10585,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_301 = __site_cvt_int_1035_111->Target(__site_cvt_int_1035_111, __pyx_t_17);
+  __pyx_t_303 = __site_cvt_int_1037_111->Target(__site_cvt_int_1037_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_b_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_302 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_304 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_b_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_301, __pyx_k__mathieu_b, __pyx_t_302, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_b_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_303, __pyx_k__mathieu_b, __pyx_t_304, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_b", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1036
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1038
  * mathieu_a = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_a_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_a", mathieu_a_doc, 0)
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)             # <<<<<<<<<<<<<<
@@ -10396,18 +10604,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_303 = __site_cvt_int_1036_117->Target(__site_cvt_int_1036_117, __pyx_t_17);
+  __pyx_t_305 = __site_cvt_int_1038_117->Target(__site_cvt_int_1038_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_cem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_304 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_306 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_cem_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_303, __pyx_k__mathieu_cem, __pyx_t_304, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_cem_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_305, __pyx_k__mathieu_cem, __pyx_t_306, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_cem", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1037
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1039
  * mathieu_b = np.PyUFunc_FromFuncAndData(cephes2_functions, mathieu_b_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "mathieu_b", mathieu_b_doc, 0)
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)             # <<<<<<<<<<<<<<
@@ -10415,18 +10623,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_305 = __site_cvt_int_1037_117->Target(__site_cvt_int_1037_117, __pyx_t_17);
+  __pyx_t_307 = __site_cvt_int_1039_117->Target(__site_cvt_int_1039_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_sem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_306 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_308 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_sem_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_305, __pyx_k__mathieu_sem, __pyx_t_306, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_sem_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_307, __pyx_k__mathieu_sem, __pyx_t_308, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_sem", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1038
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1040
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10434,18 +10642,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_307 = __site_cvt_int_1038_123->Target(__site_cvt_int_1038_123, __pyx_t_17);
+  __pyx_t_309 = __site_cvt_int_1040_123->Target(__site_cvt_int_1040_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_308 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_310 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_mcem1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_307, __pyx_k__mathieu_modcem1, __pyx_t_308, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_mcem1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_309, __pyx_k__mathieu_modcem1, __pyx_t_310, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1039
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1041
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10453,18 +10661,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_309 = __site_cvt_int_1039_123->Target(__site_cvt_int_1039_123, __pyx_t_17);
+  __pyx_t_311 = __site_cvt_int_1041_123->Target(__site_cvt_int_1041_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_310 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_312 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_mcem2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_309, __pyx_k__mathieu_modcem2, __pyx_t_310, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_mcem2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_311, __pyx_k__mathieu_modcem2, __pyx_t_312, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_modcem2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1040
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1042
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10472,18 +10680,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_311 = __site_cvt_int_1040_123->Target(__site_cvt_int_1040_123, __pyx_t_17);
+  __pyx_t_313 = __site_cvt_int_1042_123->Target(__site_cvt_int_1042_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_312 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_314 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_msem1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_311, __pyx_k__mathieu_modsem1, __pyx_t_312, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_msem1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_313, __pyx_k__mathieu_modsem1, __pyx_t_314, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1041
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1043
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10491,18 +10699,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_313 = __site_cvt_int_1041_123->Target(__site_cvt_int_1041_123, __pyx_t_17);
+  __pyx_t_315 = __site_cvt_int_1043_123->Target(__site_cvt_int_1043_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_314 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_316 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_msem2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_313, __pyx_k__mathieu_modsem2, __pyx_t_314, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions, __pyx_v_5scipy_7special_7_cephes_mathieu_msem2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 3, 2, __pyx_t_315, __pyx_k__mathieu_modsem2, __pyx_t_316, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "mathieu_modsem2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1043
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1045
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)
  * 
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10510,18 +10718,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_315 = __site_cvt_int_1043_101->Target(__site_cvt_int_1043_101, __pyx_t_17);
+  __pyx_t_317 = __site_cvt_int_1045_101->Target(__site_cvt_int_1045_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "lpmv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_316 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_318 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_lpmv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_315, __pyx_k__lpmv, __pyx_t_316, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_lpmv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_317, __pyx_k__lpmv, __pyx_t_318, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "lpmv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1045
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1047
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)
  * 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)             # <<<<<<<<<<<<<<
@@ -10529,18 +10737,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_317 = __site_cvt_int_1045_103->Target(__site_cvt_int_1045_103, __pyx_t_17);
+  __pyx_t_319 = __site_cvt_int_1047_103->Target(__site_cvt_int_1047_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbwa_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_318 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_320 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbwa_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_317, __pyx_k__pbwa, __pyx_t_318, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbwa_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_319, __pyx_k__pbwa, __pyx_t_320, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pbwa", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1046
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1048
  * 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  * pbdv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbdv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbdv", pbdv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10548,18 +10756,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_319 = __site_cvt_int_1046_103->Target(__site_cvt_int_1046_103, __pyx_t_17);
+  __pyx_t_321 = __site_cvt_int_1048_103->Target(__site_cvt_int_1048_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbdv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_320 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_322 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbdv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_319, __pyx_k__pbdv, __pyx_t_320, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbdv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_321, __pyx_k__pbdv, __pyx_t_322, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pbdv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1047
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1049
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  * pbdv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbdv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbdv", pbdv_doc, 0)
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10567,18 +10775,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_321 = __site_cvt_int_1047_103->Target(__site_cvt_int_1047_103, __pyx_t_17);
+  __pyx_t_323 = __site_cvt_int_1049_103->Target(__site_cvt_int_1049_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbvv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_322 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_324 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbvv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_321, __pyx_k__pbvv, __pyx_t_322, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions, __pyx_v_5scipy_7special_7_cephes_pbvv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 2, 2, __pyx_t_323, __pyx_k__pbvv, __pyx_t_324, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pbvv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1049
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1051
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)
  * 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10586,18 +10794,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_323 = __site_cvt_int_1049_111->Target(__site_cvt_int_1049_111, __pyx_t_17);
+  __pyx_t_325 = __site_cvt_int_1051_111->Target(__site_cvt_int_1051_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_324 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_326 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_prolate_segv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_323, __pyx_k__pro_cv, __pyx_t_324, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_prolate_segv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_325, __pyx_k__pro_cv, __pyx_t_326, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1050
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1052
  * 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10605,18 +10813,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_325 = __site_cvt_int_1050_110->Target(__site_cvt_int_1050_110, __pyx_t_17);
+  __pyx_t_327 = __site_cvt_int_1052_110->Target(__site_cvt_int_1052_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_326 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_328 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_oblate_segv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_325, __pyx_k__obl_cv, __pyx_t_326, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_oblate_segv_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_327, __pyx_k__obl_cv, __pyx_t_328, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1051
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1053
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10624,18 +10832,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_327 = __site_cvt_int_1051_119->Target(__site_cvt_int_1051_119, __pyx_t_17);
+  __pyx_t_329 = __site_cvt_int_1053_119->Target(__site_cvt_int_1053_119, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_328 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_330 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_327, __pyx_k__pro_ang1_cv, __pyx_t_328, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_329, __pyx_k__pro_ang1_cv, __pyx_t_330, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_ang1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1052
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1054
  * obl_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, oblate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "obl_cv", obl_cv_doc, 0)
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10643,18 +10851,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_329 = __site_cvt_int_1052_121->Target(__site_cvt_int_1052_121, __pyx_t_17);
+  __pyx_t_331 = __site_cvt_int_1054_121->Target(__site_cvt_int_1054_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_330 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_332 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial1_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_329, __pyx_k__pro_rad1_cv, __pyx_t_330, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial1_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_331, __pyx_k__pro_rad1_cv, __pyx_t_332, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_rad1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1053
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1055
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10662,18 +10870,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_331 = __site_cvt_int_1053_121->Target(__site_cvt_int_1053_121, __pyx_t_17);
+  __pyx_t_333 = __site_cvt_int_1055_121->Target(__site_cvt_int_1055_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_332 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_334 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial2_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_331, __pyx_k__pro_rad2_cv, __pyx_t_332, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial2_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_333, __pyx_k__pro_rad2_cv, __pyx_t_334, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_rad2_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1054
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1056
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10681,18 +10889,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_333 = __site_cvt_int_1054_118->Target(__site_cvt_int_1054_118, __pyx_t_17);
+  __pyx_t_335 = __site_cvt_int_1056_118->Target(__site_cvt_int_1056_118, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_334 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_336 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_333, __pyx_k__obl_ang1_cv, __pyx_t_334, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_335, __pyx_k__obl_ang1_cv, __pyx_t_336, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_ang1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1055
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1057
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10700,18 +10908,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_335 = __site_cvt_int_1055_120->Target(__site_cvt_int_1055_120, __pyx_t_17);
+  __pyx_t_337 = __site_cvt_int_1057_120->Target(__site_cvt_int_1057_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_336 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_338 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial1_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_335, __pyx_k__obl_rad1_cv, __pyx_t_336, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial1_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_337, __pyx_k__obl_rad1_cv, __pyx_t_338, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_rad1_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1056
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1058
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)             # <<<<<<<<<<<<<<
@@ -10719,18 +10927,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_337 = __site_cvt_int_1056_120->Target(__site_cvt_int_1056_120, __pyx_t_17);
+  __pyx_t_339 = __site_cvt_int_1058_120->Target(__site_cvt_int_1058_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_338 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_340 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial2_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_337, __pyx_k__obl_rad2_cv, __pyx_t_338, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial2_data, __pyx_v_5scipy_7special_7_cephes_cephes_7_types, 2, 5, 2, __pyx_t_339, __pyx_k__obl_rad2_cv, __pyx_t_340, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_rad2_cv", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1057
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1059
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10738,18 +10946,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_339 = __site_cvt_int_1057_121->Target(__site_cvt_int_1057_121, __pyx_t_17);
+  __pyx_t_341 = __site_cvt_int_1059_121->Target(__site_cvt_int_1059_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_340 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_342 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_339, __pyx_k__pro_ang1, __pyx_t_340, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_aswfa_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_341, __pyx_k__pro_ang1, __pyx_t_342, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_ang1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1058
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1060
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10757,18 +10965,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_341 = __site_cvt_int_1058_123->Target(__site_cvt_int_1058_123, __pyx_t_17);
+  __pyx_t_343 = __site_cvt_int_1060_123->Target(__site_cvt_int_1060_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_342 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_344 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial1_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_341, __pyx_k__pro_rad1, __pyx_t_342, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial1_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_343, __pyx_k__pro_rad1, __pyx_t_344, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_rad1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1059
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1061
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10776,18 +10984,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_343 = __site_cvt_int_1059_123->Target(__site_cvt_int_1059_123, __pyx_t_17);
+  __pyx_t_345 = __site_cvt_int_1061_123->Target(__site_cvt_int_1061_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_344 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_346 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial2_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_343, __pyx_k__pro_rad2, __pyx_t_344, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_prolate_radial2_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_345, __pyx_k__pro_rad2, __pyx_t_346, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "pro_rad2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1060
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1062
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10795,18 +11003,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad2", obl_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_345 = __site_cvt_int_1060_120->Target(__site_cvt_int_1060_120, __pyx_t_17);
+  __pyx_t_347 = __site_cvt_int_1062_120->Target(__site_cvt_int_1062_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_346 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_348 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_345, __pyx_k__obl_ang1, __pyx_t_346, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_aswfa_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_347, __pyx_k__obl_ang1, __pyx_t_348, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_ang1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1061
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1063
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)             # <<<<<<<<<<<<<<
@@ -10814,18 +11022,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_347 = __site_cvt_int_1061_122->Target(__site_cvt_int_1061_122, __pyx_t_17);
+  __pyx_t_349 = __site_cvt_int_1063_122->Target(__site_cvt_int_1063_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_348 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_350 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial1_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_347, __pyx_k__obl_rad1, __pyx_t_348, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial1_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_349, __pyx_k__obl_rad1, __pyx_t_350, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_rad1", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1062
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1064
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)
  * obl_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad2", obl_rad2_doc, 0)             # <<<<<<<<<<<<<<
@@ -10833,18 +11041,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_349 = __site_cvt_int_1062_122->Target(__site_cvt_int_1062_122, __pyx_t_17);
+  __pyx_t_351 = __site_cvt_int_1064_122->Target(__site_cvt_int_1064_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_350 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_352 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial2_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_349, __pyx_k__obl_rad2, __pyx_t_350, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions, __pyx_v_5scipy_7special_7_cephes_oblate_radial2_nocv_data, __pyx_v_5scipy_7special_7_cephes_cephes_6_types, 2, 4, 2, __pyx_t_351, __pyx_k__obl_rad2, __pyx_t_352, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "obl_rad2", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1066
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1068
  * 
  * 
  * modfresnelp = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelp_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelp", modfresnelp_doc, 0)             # <<<<<<<<<<<<<<
@@ -10852,30 +11060,30 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_351 = __site_cvt_int_1066_120->Target(__site_cvt_int_1066_120, __pyx_t_17);
+  __pyx_t_353 = __site_cvt_int_1068_120->Target(__site_cvt_int_1068_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_352 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_354 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions, __pyx_v_5scipy_7special_7_cephes_modfresnelp_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 1, 2, __pyx_t_351, __pyx_k__modfresnelp, __pyx_t_352, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions, __pyx_v_5scipy_7special_7_cephes_modfresnelp_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 1, 2, __pyx_t_353, __pyx_k__modfresnelp, __pyx_t_354, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "modfresnelp", __pyx_t_17);
   __pyx_t_17 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1068
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":1070
  * modfresnelp = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelp_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelp", modfresnelp_doc, 0)
  * 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)             # <<<<<<<<<<<<<<
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_353 = __site_cvt_int_1068_120->Target(__site_cvt_int_1068_120, __pyx_t_17);
+  __pyx_t_355 = __site_cvt_int_1070_120->Target(__site_cvt_int_1070_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelm_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
-  __pyx_t_354 = static_cast<char *>(__pyx_t_24.ToPointer());
+  __pyx_t_356 = static_cast<char *>(__pyx_t_24.ToPointer());
   __pyx_t_17 = nullptr;
-  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions, __pyx_v_5scipy_7special_7_cephes_modfresnelm_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 1, 2, __pyx_t_353, __pyx_k__modfresnelm, __pyx_t_354, 0); 
+  __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions, __pyx_v_5scipy_7special_7_cephes_modfresnelm_data, __pyx_v_5scipy_7special_7_cephes_cephes_3cp_types, 2, 1, 2, __pyx_t_355, __pyx_k__modfresnelm, __pyx_t_356, 0); 
   InteropServices::Marshal::FreeHGlobal(__pyx_t_24);
   PythonOps::SetGlobal(__pyx_context, "modfresnelm", __pyx_t_17);
   __pyx_t_17 = nullptr;
@@ -10889,7 +11097,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_17));
   __pyx_t_17 = nullptr;
 
-  /* "../cython/include\numpy.pxd":227
+  /* "../cython/include\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<

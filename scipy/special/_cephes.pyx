@@ -206,7 +206,7 @@ cdef extern from "cephes.h":
     double j1_ "j1" ( double x )
     double y1_ "y1" ( double x )
 
-    double jn ( int n, double x )
+    double jn_ "jn" ( int n, double x )
     double jv_ "jv" ( double n, double x )
     double k0_ "k0" ( double x )
     double k0e_ "k0e" ( double x )
@@ -921,6 +921,8 @@ jve = np.PyUFunc_FromFuncAndData(cephes2c_functions, jve_data, cephes_3c_types, 
 yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)
 yve = np.PyUFunc_FromFuncAndData(cephes2c_functions, yve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yve", yve_doc, 0)
 
+# In cephes jv is more accurate than jn so we just alias jn to jv.
+jn = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jn", jn_doc, 0)
 
 k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
 k0e = np.PyUFunc_FromFuncAndData(cephes1_functions, k0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0e", k0e_doc, 0)
