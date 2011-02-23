@@ -219,12 +219,12 @@ class LinearNDInterpolator(NDInterpolatorBase):
         eps = np.finfo(np.double).eps * 100
 
         with nogil:
-            for i in xrange(xi.shape[0]):
+            for i in xrange(np.PyArray_DIMS(xi)[0]):
 
                 # 1) Find the simplex
 
                 isimplex = qhull._find_simplex(info, c,
-                                               (<double*>xi.data) + i*ndim,
+                                               (<double*>np.PyArray_DATA(xi)) + i*ndim,
                                                &start, eps)
 
                 # 2) Linear barycentric interpolation
@@ -483,10 +483,10 @@ def estimate_gradients_2d_global(tri, y, maxiter=400, tol=1e-6):
         with nogil:
             ret = _estimate_gradients_2d_global(
                 info,
-                <double*>data.data + info.npoints*k,
+                <double*>np.PyArray_DATA(data) + info.npoints*k,
                 maxiter,
                 tol,
-                <double*>grad.data + 2*info.npoints*k)
+                <double*>np.PyArray_DATA(grad) + 2*info.npoints*k)
 
         if ret == 0:
             warnings.warn("Gradient estimation did not converge, "
@@ -835,11 +835,11 @@ class CloughTocher2DInterpolator(NDInterpolatorBase):
         eps = np.finfo(np.double).eps * 100
 
         with nogil:
-            for i in xrange(xi.shape[0]):
+            for i in xrange(np.PyArray_DIMS(xi)[0]):
                 # 1) Find the simplex
 
                 isimplex = qhull._find_simplex(info, c,
-                                               (<double*>xi.data) + i*ndim,
+                                               (<double*>np.PyArray_DATA(xi)) + i*ndim,
                                                &start, eps)
 
                 # 2) Clough-Tocher interpolation
