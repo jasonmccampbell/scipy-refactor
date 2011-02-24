@@ -81,6 +81,7 @@ Continuous  (Total == 81 distributions)
    hypsecant         Hyperbolic Secant
    invgamma          Inverse Gamma
    invnorm           Inverse Normal
+   invgauss          Inverse Gaussian
    invweibull        Inverse Weibull
    johnsonsb         Johnson SB
    johnsonsu         Johnson SU
@@ -115,7 +116,7 @@ Continuous  (Total == 81 distributions)
    truncnorm         Truncated Normal
    tukeylambda       Tukey-Lambda
    uniform           Uniform
-   von_mises         Von-Mises (Circular)
+   vonmises          Von-Mises (Circular)
    wald              Wald
    weibull_min       Minimum Weibull (see Frechet)
    weibull_max       Maximum Weibull (see Frechet)
@@ -177,16 +178,9 @@ relfreq           _
 
 ================= ==============================================================
 obrientransform   _
-samplevar         _
-samplestd         _
 signaltonoise     _
 bayes_mvs         _
-var               _
-std               _
-stderr            _
 sem               _
-z                 _
-zs                _
 zmap              _
 ================= ==============================================================
 
@@ -194,8 +188,6 @@ zmap              _
 threshold         _
 trimboth          _
 trim1             _
-cov               _
-corrcoef          _
 ================= ==============================================================
 
 ================= ==============================================================
@@ -237,7 +229,6 @@ oneway            _
 
 ================= ==============================================================
 glm               _
-anova             _
 ================= ==============================================================
 
 

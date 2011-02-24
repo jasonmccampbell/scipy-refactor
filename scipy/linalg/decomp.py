@@ -11,17 +11,17 @@
 # April 2010: Functions for LU, QR, SVD, Schur and Cholesky decompositions were
 # moved to their own files.  Still in this file are functions for eigenstuff
 # and for the Hessenberg form.
- 
+
 __all__ = ['eig','eigh','eig_banded','eigvals','eigvalsh', 'eigvals_banded',
            'hessenberg']
 
 import numpy
 from numpy import array, asarray_chkfinite, asarray, diag, zeros, ones, \
-        isfinite, inexact, nonzero, iscomplexobj, cast
+        isfinite, inexact, nonzero, iscomplexobj, cast, flatnonzero, conj
 
 # Local imports
 from scipy.linalg import calc_lwork
-from misc import LinAlgError, _datanotshared
+from misc import LinAlgError, _datacopied
 from lapack import get_lapack_funcs
 from blas import get_blas_funcs
 from funcinfo import get_func_info
@@ -29,25 +29,22 @@ from funcinfo import get_func_info
 
 _I = cast['F'](1j)
 
-def _make_complex_eigvecs(w, vin, cmplx_tcode):
-    v = numpy.array(vin, dtype=cmplx_tcode)
-    #ind = numpy.flatnonzero(numpy.not_equal(w.imag,0.0))
-    ind = numpy.flatnonzero(numpy.logical_and(numpy.not_equal(w.imag, 0.0),
-                            numpy.isfinite(w)))
-    vnew = numpy.zeros((v.shape[0], len(ind)>>1), cmplx_tcode)
-    vnew.real = numpy.take(vin, ind[::2],1)
-    vnew.imag = numpy.take(vin, ind[1::2],1)
-    count = 0
-    conj = numpy.conjugate
-    for i in range(len(ind)//2):
-        v[:, ind[2*i]] = vnew[:, count]
-        v[:, ind[2*i+1]] = conj(vnew[:, count])
-        count += 1
+def _make_complex_eigvecs(w, vin, dtype):
+    """
+    Produce complex-valued eigenvectors from LAPACK DGGEV real-valued output
+    """
+    # - see LAPACK man page DGGEV at ALPHAI
+    v = numpy.array(vin, dtype=dtype)
+    m = (w.imag > 0)
+    m[:-1] |= (w.imag[1:] < 0) # workaround for LAPACK bug, cf. ticket #709
+    for i in flatnonzero(m):
+        v.imag[:,i] = vin[:,i+1]
+        conj(v[:,i], v[:,i+1])
     return v
 
 def _geneig(a1, b, left, right, overwrite_a, overwrite_b):
     b1 = asarray(b)
-    overwrite_b = overwrite_b or _datanotshared(b1, b)
+    overwrite_b = overwrite_b or _datacopied(b1, b)
     if len(b1.shape) != 2 or b1.shape[0] != b1.shape[1]:
         raise ValueError('expected square matrix')
     ggev, = get_lapack_funcs(('ggev',), (a1, b1))
@@ -140,7 +137,7 @@ def eig(a, b=None, left=False, right=True, overwrite_a=False, overwrite_b=False)
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError('expected square matrix')
-    overwrite_a = overwrite_a or (_datanotshared(a1, a))
+    overwrite_a = overwrite_a or (_datacopied(a1, a))
     if b is not None:
         b = asarray_chkfinite(b)
         if b.shape != a1.shape:
@@ -271,14 +268,14 @@ def eigh(a, b=None, lower=True, eigvals_only=False, overwrite_a=False,
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError('expected square matrix')
-    overwrite_a = overwrite_a or (_datanotshared(a1, a))
+    overwrite_a = overwrite_a or (_datacopied(a1, a))
     if iscomplexobj(a1):
         cplx = True
     else:
         cplx = False
     if b is not None:
         b1 = asarray_chkfinite(b)
-        overwrite_b = overwrite_b or _datanotshared(b1, b)
+        overwrite_b = overwrite_b or _datacopied(b1, b)
         if len(b1.shape) != 2 or b1.shape[0] != b1.shape[1]:
             raise ValueError('expected square matrix')
 
@@ -461,7 +458,7 @@ def eig_banded(a_band, lower=False, eigvals_only=False, overwrite_a_band=False,
     """
     if eigvals_only or overwrite_a_band:
         a1 = asarray_chkfinite(a_band)
-        overwrite_a_band = overwrite_a_band or (_datanotshared(a1, a_band))
+        overwrite_a_band = overwrite_a_band or (_datacopied(a1, a_band))
     else:
         a1 = array(a_band)
         if issubclass(a1.dtype.type, inexact) and not isfinite(a1).all():
@@ -740,9 +737,9 @@ def hessenberg(a, calc_q=False, overwrite_a=False):
     a1 = asarray(a)
     if len(a1.shape) != 2 or (a1.shape[0] != a1.shape[1]):
         raise ValueError('expected square matrix')
-    overwrite_a = overwrite_a or (_datanotshared(a1, a))
+    overwrite_a = overwrite_a or (_datacopied(a1, a))
     gehrd,gebal = get_lapack_funcs(('gehrd','gebal'), (a1,))
-    ba, lo, hi, pivscale, info = gebal(a, permute=1, overwrite_a=overwrite_a)
+    ba, lo, hi, pivscale, info = gebal(a1, permute=1, overwrite_a=overwrite_a)
     if info < 0:
         raise ValueError('illegal value in %d-th argument of internal gebal '
                                                     '(hessenberg)' % -info)

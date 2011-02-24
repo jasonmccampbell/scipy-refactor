@@ -135,21 +135,6 @@ class spmatrix(object):
             format = 'und'
         return format
 
-    @np.deprecate
-    def rowcol(self, num):
-        return (None, None)
-
-    @np.deprecate
-    def getdata(self, num):
-        return None
-
-    @np.deprecate
-    def listprint(self, start, stop):
-        """Provides a way to print over a single index.
-        """
-        return '\n'.join(['  %s\t%s' % (self.rowcol(ind), self.getdata(ind))
-                         for ind in xrange(start,stop)]) + '\n'
-
     def __repr__(self):
         nnz = self.getnnz()
         format = self.getformat()
@@ -222,6 +207,9 @@ class spmatrix(object):
         """
         return self.tocsr().multiply(other)
 
+    def dot(self, other):
+        return self * other
+
     def __abs__(self):
         return abs(self.tocsr())
 
@@ -237,35 +225,6 @@ class spmatrix(object):
 
     def __rsub__(self, other):  # other - self
         return self.tocsr().__rsub__(other)
-
-    # old __mul__ interfaces
-    @np.deprecate
-    def matvec(self,other):
-        return self * other
-
-    @np.deprecate
-    def matmat(self,other):
-        return self * other
-
-    @np.deprecate
-    def dot(self, other):
-        return self * other
-
-    @np.deprecate
-    def rmatvec(self, other, conjugate=True):
-        """Multiplies the vector 'other' by the sparse matrix, returning a
-        dense vector as a result.
-
-        If 'conjugate' is True:
-            - returns A.transpose().conj() * other
-        Otherwise:
-            - returns A.transpose() * other.
-
-        """
-        if conjugate:
-            return self.conj().transpose() * other
-        else:
-            return self.transpose() * other
 
     def __mul__(self, other):
         """interpret other and call one of the following
@@ -404,10 +363,6 @@ class spmatrix(object):
                 return result
         elif isscalarlike(other):
             raise ValueError('exponent must be an integer')
-        elif isspmatrix(other):
-            warn('Using ** for elementwise multiplication is deprecated.'\
-                    'Use .multiply() instead', DeprecationWarning)
-            return self.multiply(other)
         else:
             raise NotImplementedError
 
@@ -479,9 +434,12 @@ class spmatrix(object):
         # except for a_j = 1
         from csc import csc_matrix
         n = self.shape[1]
-        a = csc_matrix((n, 1), dtype=self.dtype)
-        a[j, 0] = 1
-        return self * a
+        if j < 0:
+            j += n
+        if j < 0 or j >= n:
+            raise IndexError("index out of bounds")
+        col_selector = csc_matrix(([1], [[j], [0]]), shape=(n,1), dtype=self.dtype)
+        return self * col_selector
 
     def getrow(self, i):
         """Returns a copy of row i of the matrix, as a (1 x n) sparse
@@ -492,9 +450,12 @@ class spmatrix(object):
         # except for a_i = 1
         from csr import csr_matrix
         m = self.shape[0]
-        a = csr_matrix((1, m), dtype=self.dtype)
-        a[0, i] = 1
-        return a * self
+        if i < 0:
+            i += m
+        if i < 0 or i >= m:
+            raise IndexError("index out of bounds")
+        row_selector = csr_matrix(([1], [[0], [i]]), shape=(1,m), dtype=self.dtype)
+        return row_selector * self
 
     #def __array__(self):
     #    return self.toarray()

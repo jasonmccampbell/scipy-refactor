@@ -13,7 +13,6 @@ __docformat__ = "restructuredtext en"
 
 __all__ = ['argstoarray',
            'betai',
-           'cov',  # from np.ma
            'chisquare','count_tied_groups',
            'describe',
            'f_oneway','f_value_wilks_lambda','find_repeats','friedmanchisquare',
@@ -27,16 +26,15 @@ __all__ = ['argstoarray',
            'obrientransform',
            'pearsonr','plotting_positions','pointbiserialr',
            'rankdata',
-           'samplestd','samplevar','scoreatpercentile','sem','std',
+           'scoreatpercentile','sem',
            'sen_seasonal_slopes','signaltonoise','skew','skewtest','spearmanr',
-           'stderr',
            'theilslopes','threshold','tmax','tmean','tmin','trim','trimboth',
            'trimtail','trima','trimr','trimmed_mean','trimmed_std',
            'trimmed_stde','trimmed_var','tsem','ttest_1samp','ttest_onesamp',
            'ttest_ind','ttest_rel','tvar',
-           'var','variation',
+           'variation',
            'winsorize',
-           'z','zmap','zs'
+           'zmap', 'zscore'
            ]
 
 import numpy as np
@@ -302,9 +300,6 @@ def msign(x):
     """Returns the sign of x, or 0 if x is masked."""
     return ma.filled(np.sign(x), 0)
 
-cov = ma.cov
-
-corrcoef = ma.corrcoef
 
 
 def pearsonr(x,y):
@@ -647,7 +642,7 @@ def linregress(*args):
     slope = Sxy / Sxx
     intercept = ymean - slope*xmean
     sterrest = ma.sqrt(1.-r*r) * y.std()
-    return slope, intercept, r, prob, sterrest, Syy/Sxx
+    return slope, intercept, r, prob, sterrest
 
 if stats.linregress.__doc__:
     linregress.__doc__ = stats.linregress.__doc__ + genmissingvaldoc
@@ -1291,7 +1286,8 @@ def trimmed_stde(a, limits=(0.1,0.1), inclusive=(1,1), axis=None):
         shp = a.shape
         return _trimmed_stde_1D(a.ravel(),lolim,uplim,loinc,upinc)
     else:
-        assert a.ndim <= 2, "Array should be 2D at most !"
+        if a.ndim > 2:
+            raise ValueError("Array 'a' must be at most two dimensional, but got a.ndim = %d" % a.ndim)
         return ma.apply_along_axis(_trimmed_stde_1D, axis, a,
                                    lolim,uplim,loinc,upinc)
 
@@ -1539,7 +1535,8 @@ median along the given axis. masked values are discarded.
     if (axis is None):
         return _stdemed_1D(data)
     else:
-        assert data.ndim <= 2, "Array should be 2D at most !"
+        if data.ndim > 2:
+            raise ValueError("Array 'data' must be at most two dimensional, but got data.ndim = %d" % data.ndim)
         return ma.apply_along_axis(_stdemed_1D, axis, data)
 
 #####--------------------------------------------------------------------------
@@ -1787,45 +1784,52 @@ def scoreatpercentile(data, per, limit=(), alphap=.4, betap=.4):
 
 
 def plotting_positions(data, alpha=0.4, beta=0.4):
-    """Returns the plotting positions (or empirical percentile points) for the
-    data.
-    Plotting positions are defined as (i-alpha)/(n-alpha-beta), where:
+    """
+    Returns plotting positions (or empirical percentile points) for the data.
+
+    Plotting positions are defined as ``(i-alpha)/(n-alpha-beta)``, where:
         - i is the rank order statistics
         - n is the number of unmasked values along the given axis
         - alpha and beta are two parameters.
 
     Typical values for alpha and beta are:
-        - (0,1)    : *p(k) = k/n* : linear interpolation of cdf (R, type 4)
-        - (.5,.5)  : *p(k) = (k-1/2.)/n* : piecewise linear function (R, type 5)
-        - (0,0)    : *p(k) = k/(n+1)* : Weibull (R type 6)
-        - (1,1)    : *p(k) = (k-1)/(n-1)*. In this case, p(k) = mode[F(x[k])].
-          That's R default (R type 7)
-        - (1/3,1/3): *p(k) = (k-1/3)/(n+1/3)*. Then p(k) ~ median[F(x[k])].
+        - (0,1)    : ``p(k) = k/n``, linear interpolation of cdf (R, type 4)
+        - (.5,.5)  : ``p(k) = (k-1/2.)/n``, piecewise linear function
+                                           (R, type 5)
+        - (0,0)    : ``p(k) = k/(n+1)``, Weibull (R type 6)
+        - (1,1)    : ``p(k) = (k-1)/(n-1)``, in this case,
+                     ``p(k) = mode[F(x[k])]``. That's R default (R type 7)
+        - (1/3,1/3): ``p(k) = (k-1/3)/(n+1/3)``, then
+                     ``p(k) ~ median[F(x[k])]``.
           The resulting quantile estimates are approximately median-unbiased
           regardless of the distribution of x. (R type 8)
-        - (3/8,3/8): *p(k) = (k-3/8)/(n+1/4)*. Blom.
+        - (3/8,3/8): ``p(k) = (k-3/8)/(n+1/4)``, Blom.
           The resulting quantile estimates are approximately unbiased
           if x is normally distributed (R type 9)
         - (.4,.4)  : approximately quantile unbiased (Cunnane)
         - (.35,.35): APL, used with PWM
 
-Parameters
-----------
-    x : sequence
+    Parameters
+    ----------
+    data : array_like
         Input data, as a sequence or array of dimension at most 2.
-    prob : sequence
-        List of quantiles to compute.
-    alpha : {0.4, float} optional
-        Plotting positions parameter.
-    beta : {0.4, float} optional
-        Plotting positions parameter.
+    alpha : float, optional
+        Plotting positions parameter. Default is 0.4.
+    beta : float, optional
+        Plotting positions parameter. Default is 0.4.
+
+    Returns
+    -------
+    positions : MaskedArray
+        The calculated plotting positions.
 
     """
     data = ma.array(data, copy=False).reshape(1,-1)
     n = data.count()
     plpos = np.empty(data.size, dtype=float)
     plpos[n:] = 0
-    plpos[data.argsort()[:n]] = (np.arange(1,n+1) - alpha)/(n+1-alpha-beta)
+    plpos[data.argsort()[:n]] = (np.arange(1, n+1) - alpha) / \
+                                (n + 1.0 - alpha - beta)
     return ma.array(plpos, mask=data._mask)
 
 meppf = plotting_positions
@@ -1877,54 +1881,6 @@ def signaltonoise(data, axis=0):
     return m/sd
 
 
-def samplevar(data, axis=0):
-    """Returns a biased estimate of the variance of the data, as the average
-    of the squared deviations from the mean.
-
-    Parameters
-    ----------
-        data : sequence
-            Input data
-        axis : {0, int} optional
-            Axis along which to compute. If None, the computation is performed
-            on a flat version of the array.
-    """
-    return ma.asarray(data).var(axis=axis,ddof=0)
-
-
-def samplestd(data, axis=0):
-    """Returns a biased estimate of the standard deviation of the data, as the
-    square root of the average squared deviations from the mean.
-
-    Parameters
-    ----------
-        data : sequence
-            Input data
-        axis : {0,int} optional
-            Axis along which to compute. If None, the computation is performed
-            on a flat version of the array.
-
-    Notes
-    -----
-        samplestd(a) is equivalent to a.std(ddof=0)
-
-    """
-    return ma.asarray(data).std(axis=axis,ddof=0)
-
-
-def var(a,axis=None):
-    return ma.asarray(a).var(axis=axis,ddof=1)
-var.__doc__ = stats.var.__doc__
-
-def std(a,axis=None):
-    return ma.asarray(a).std(axis=axis,ddof=1)
-std.__doc__ = stats.std.__doc__
-
-def stderr(a, axis=0):
-    a, axis = _chk_asarray(a, axis)
-    return a.std(axis=axis, ddof=1) / ma.sqrt(a.count(axis=axis))
-stderr.__doc__ = stats.stderr.__doc__
-
 def sem(a, axis=0):
     a, axis = _chk_asarray(a, axis)
     n = a.count(axis=axis)
@@ -1932,25 +1888,8 @@ def sem(a, axis=0):
     return s
 sem.__doc__ = stats.sem.__doc__
 
-def z(a, score):
-    a = ma.asarray(a)
-    z = (score-a.mean(None)) / a.std(axis=None, ddof=1)
-    return z
-z.__doc__ = stats.z.__doc__
-
-def zs(a):
-    a = ma.asarray(a)
-    mu = a.mean(axis=0)
-    sigma = a.std(axis=0,ddof=0)
-    return (a-mu)/sigma
-zs.__doc__ = stats.zs.__doc__
-
-def zmap(scores, compare, axis=0):
-    (scores, compare) = (ma.asarray(scores), ma.asarray(compare))
-    mns = compare.mean(axis=axis)
-    sstd = compare.std(axis=0, ddof=0)
-    return (scores - mns) / sstd
-zmap.__doc__ = stats.zmap.__doc__
+zmap = stats.zmap
+zscore = stats.zscore
 
 
 #####--------------------------------------------------------------------------

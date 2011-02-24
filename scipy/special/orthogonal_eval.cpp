@@ -399,15 +399,6 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
-
-static char *__pyx_v_5scipy_7special_15orthogonal_eval__id_d_types;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_15orthogonal_eval__id_d_funcs;
-static void **__pyx_v_5scipy_7special_15orthogonal_eval_chebyt_data;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
 static int^ __pyx_int_1;
@@ -2862,6 +2853,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   char *__pyx_t_4;
   System::IntPtr __pyx_t_5;
   System::Object^ __pyx_t_6 = nullptr;
+  PythonDictionary^ __pyx_t_7;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\orthogonal_eval.pyx":60
  *         ip1 += steps[0]; ip2 += steps[1]; op += steps[2]
@@ -3016,9 +3008,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * Evaluate orthogonal polynomial values using recurrence relations
  * or by calling special functions.
  */
-  __pyx_t_1 = PythonOps::MakeEmptyDict();
-  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
-  __pyx_t_1 = nullptr;
+  __pyx_t_7 = PythonOps::MakeEmptyDict();
+  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_7));
+  __pyx_t_7 = nullptr;
 
   /* "../cython/include\numpy.pxd":248
  *     return obj.ndim
@@ -3030,6 +3022,15 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+
+static char *__pyx_v_5scipy_7special_15orthogonal_eval__id_d_types;
+static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_15orthogonal_eval__id_d_funcs;
+static void **__pyx_v_5scipy_7special_15orthogonal_eval_chebyt_data;
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */

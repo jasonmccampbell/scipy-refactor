@@ -22,6 +22,18 @@ del atexit
 def istype(arr, typeclass):
     return issubclass(arr.dtype.type, typeclass)
 
+def _datacopied(arr, original):
+    """
+    Strict check for `arr` not sharing any data with `original`,
+    under the assumption that arr = asarray(original)
+
+    """
+    if arr is original:
+        return False
+    if not isinstance(original, numpy.ndarray) and hasattr(original, '__array__'):
+        return False
+    return arr.base is None
+
 # XXX: single precision FFTs partially disabled due to accuracy issues
 #      for large prime-sized inputs.
 #
@@ -113,14 +125,14 @@ def _fix_shape(x, n, axis):
         index = [slice(None)]*len(s)
         index[axis] = slice(0,n)
         x = x[index]
+        return x, False
     else:
         index = [slice(None)]*len(s)
         index[axis] = slice(0,s[axis])
         s[axis] = n
         z = zeros(s,x.dtype.char)
         z[index] = x
-        x = z
-    return x
+        return z, True
 
 
 def _raw_fft(x, n, axis, direction, overwrite_x, work_function):
@@ -128,8 +140,8 @@ def _raw_fft(x, n, axis, direction, overwrite_x, work_function):
     if n is None:
         n = x.shape[axis]
     elif n != x.shape[axis]:
-        x = _fix_shape(x,n,axis)
-        overwrite_x = 1
+        x, copy_made = _fix_shape(x,n,axis)
+        overwrite_x = overwrite_x or copy_made
     if axis == -1 or axis == len(x.shape)-1:
         r = work_function(x,n,direction,overwrite_x=overwrite_x)
     else:
@@ -195,21 +207,16 @@ def fft(x, n=None, axis=-1, overwrite_x=0):
     except KeyError:
         raise ValueError("type %s is not supported" % tmp.dtype)
 
-    if istype(tmp, numpy.complex128):
-        overwrite_x = overwrite_x or (tmp is not x and not \
-                                      hasattr(x,'__array__'))
-    elif istype(tmp, numpy.complex64):
-        overwrite_x = overwrite_x or (tmp is not x and not \
-                                      hasattr(x,'__array__'))
-    else:
+    if not (istype(tmp, numpy.complex64) or istype(tmp, numpy.complex128)):
         overwrite_x = 1
 
-    #return _raw_fft(tmp,n,axis,1,overwrite_x,work_function)
+    overwrite_x = overwrite_x or _datacopied(tmp, x)
+
     if n is None:
         n = tmp.shape[axis]
     elif n != tmp.shape[axis]:
-        tmp = _fix_shape(tmp,n,axis)
-        overwrite_x = 1
+        tmp, copy_made = _fix_shape(tmp,n,axis)
+        overwrite_x = overwrite_x or copy_made
 
     if axis == -1 or axis == len(tmp.shape) - 1:
         return work_function(tmp,n,1,0,overwrite_x)
@@ -248,21 +255,16 @@ def ifft(x, n=None, axis=-1, overwrite_x=0):
     except KeyError:
         raise ValueError("type %s is not supported" % tmp.dtype)
 
-    if istype(tmp, numpy.complex128):
-        overwrite_x = overwrite_x or (tmp is not x and not \
-                                      hasattr(x,'__array__'))
-    elif istype(tmp, numpy.complex64):
-        overwrite_x = overwrite_x or (tmp is not x and not \
-                                      hasattr(x,'__array__'))
-    else:
+    if not (istype(tmp, numpy.complex64) or istype(tmp, numpy.complex128)):
         overwrite_x = 1
 
-    #return _raw_fft(tmp,n,axis,-1,overwrite_x,work_function)
+    overwrite_x = overwrite_x or _datacopied(tmp, x)
+
     if n is None:
         n = tmp.shape[axis]
     elif n != tmp.shape[axis]:
-        tmp = _fix_shape(tmp,n,axis)
-        overwrite_x = 1
+        tmp, copy_made = _fix_shape(tmp,n,axis)
+        overwrite_x = overwrite_x or copy_made
 
     if axis == -1 or axis == len(tmp.shape) - 1:
         return work_function(tmp,n,-1,1,overwrite_x)
@@ -323,6 +325,8 @@ def rfft(x, n=None, axis=-1, overwrite_x=0):
     except KeyError:
         raise ValueError("type %s is not supported" % tmp.dtype)
 
+    overwrite_x = overwrite_x or _datacopied(tmp, x)
+
     return _raw_fft(tmp,n,axis,1,overwrite_x,work_function)
 
 
@@ -356,6 +360,8 @@ def irfft(x, n=None, axis=-1, overwrite_x=0):
     except KeyError:
         raise ValueError("type %s is not supported" % tmp.dtype)
 
+    overwrite_x = overwrite_x or _datacopied(tmp, x)
+
     return _raw_fft(tmp,n,axis,-1,overwrite_x,work_function)
 
 def _raw_fftnd(x, s, axes, direction, overwrite_x, work_function):
@@ -379,8 +385,8 @@ def _raw_fftnd(x, s, axes, direction, overwrite_x, work_function):
     # No need to swap axes, array is in C order
     if noaxes:
         for i in axes:
-            x = _fix_shape(x, s[i], i)
-        #print x.shape, s
+            x, copy_made = _fix_shape(x, s[i], i)
+            overwrite_x = overwrite_x or copy_made
         return work_function(x,s,direction,overwrite_x=overwrite_x)
 
     # We ordered axes, because the code below to push axes at the end of the
@@ -403,7 +409,8 @@ def _raw_fftnd(x, s, axes, direction, overwrite_x, work_function):
     shape[waxes] = s
 
     for i in range(len(waxes)):
-        x = _fix_shape(x, s[i], waxes[i])
+        x, copy_made = _fix_shape(x, s[i], waxes[i])
+        overwrite_x = overwrite_x or copy_made
 
     r = work_function(x, shape, direction, overwrite_x=overwrite_x)
 
@@ -456,13 +463,10 @@ def _raw_fftn_dispatch(x, shape, axes, overwrite_x, direction):
     except KeyError:
         raise ValueError("type %s is not supported" % tmp.dtype)
 
-    if istype(tmp, numpy.complex128):
-        overwrite_x = overwrite_x or (tmp is not x and not \
-                                      hasattr(x,'__array__'))
-    elif istype(tmp, numpy.complex64):
-        pass
-    else:
+    if not (istype(tmp, numpy.complex64) or istype(tmp, numpy.complex128)):
         overwrite_x = 1
+
+    overwrite_x = overwrite_x or _datacopied(tmp, x)
     return _raw_fftnd(tmp,shape,axes,direction,overwrite_x,work_function)
 
 

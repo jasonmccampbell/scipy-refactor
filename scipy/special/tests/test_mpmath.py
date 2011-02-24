@@ -7,7 +7,7 @@ import numpy as np
 from numpy.testing import dec
 import scipy.special as sc
 
-from testutils import FuncData, assert_func_equal
+from scipy.special._testutils import FuncData, assert_func_equal
 
 try:
     import mpmath
@@ -83,6 +83,10 @@ def test_hyp2f1_real_some_points():
         (-8, 18.016500331508873, 10.805295997850628, 0.90875647507000001),
         (-10,900,-10.5,0.99),
         (-10,900,10.5,0.99),
+        (-1,2,1,1.0),
+        (-1,2,1,-1.0),
+        (-3,13,5,1.0),
+        (-3,13,5,-1.0),
     ]
     dataset = [p + (float(mpmath.hyp2f1(*p)),) for p in pts]
     dataset = np.array(dataset, dtype=np.float_)
@@ -172,3 +176,48 @@ def test_erf_complex():
                           vectorized=False, rtol=2e-8)
     finally:
         mpmath.mp.dps, mpmath.mp.prec = old_dps, old_prec
+
+
+
+#------------------------------------------------------------------------------
+# lpmv
+#------------------------------------------------------------------------------
+
+@mpmath_check('0.15')
+def test_lpmv():
+    pts = []
+    for x in [-0.99, -0.557, 1e-6, 0.132, 1]:
+        pts.extend([
+            (1, 1, x),
+            (1, -1, x),
+            (-1, 1, x),
+            (-1, -2, x),
+            (1, 1.7, x),
+            (1, -1.7, x),
+            (-1, 1.7, x),
+            (-1, -2.7, x),
+            (1, 10, x),
+            (1, 11, x),
+            (3, 8, x),
+            (5, 11, x),
+            (-3, 8, x),
+            (-5, 11, x),
+            (3, -8, x),
+            (5, -11, x),
+            (-3, -8, x),
+            (-5, -11, x),
+            (3, 8.3, x),
+            (5, 11.3, x),
+            (-3, 8.3, x),
+            (-5, 11.3, x),
+            (3, -8.3, x),
+            (5, -11.3, x),
+            (-3, -8.3, x),
+            (-5, -11.3, x),
+        ])
+
+    dataset = [p + (mpmath.legenp(p[1], p[0], p[2]),) for p in pts]
+    dataset = np.array(dataset, dtype=np.float_)
+
+    evf = lambda mu,nu,x: sc.lpmv(mu.astype(int), nu, x)
+    FuncData(evf, dataset, (0,1,2), 3, rtol=1e-10, atol=1e-14).check()
