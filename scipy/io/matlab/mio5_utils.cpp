@@ -87,7 +87,6 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "npy_ufunc_object.h"
 #include "npy_api.h"
 #include "npy_ironpython.h"
-#include "numpy/arrayobject.h"
 #include "numpy_rephrasing.h"
 
 #ifdef __GNUC__
@@ -706,54 +705,6 @@ static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ _
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_199_49;
 static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_199_49;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
-
-static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_7streams_GenericStream = nullptr;
-
-static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_10mio5_utils_VarHeader5 = nullptr;
-static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_10mio5_utils_VarReader5 = nullptr;
-static NumpyDotNet::dtype^ __pyx_v_5scipy_2io_6matlab_10mio5_utils_OPAQUE_DTYPE = 0;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
 static int^ __pyx_int_1;
@@ -801,7 +752,7 @@ ref struct VarHeader5 {
   System::Object^ name;
   int mclass;
   System::Object^ dims;
-  __pyx_t_5numpy_int32_t dims_ptr[32];
+  __pyx_t_5numpy_int32_t (&dims_ptr)[32];
   int n_dims;
   int is_complex;
   int is_logical;
@@ -993,6 +944,11 @@ ref struct VarHeader5 {
     __pyx_r = nullptr;
     return __pyx_r;
   }
+  VarHeader5() : dims_ptr(*(new __pyx_t_5numpy_int32_t [32])) {
+  }
+  !VarHeader5() {
+    delete[] &dims_ptr;
+  }
 };
 
 /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":141
@@ -1010,8 +966,8 @@ ref struct VarReader5 {
   System::Object^ codecs;
   System::Object^ uint16_codec;
   GenericStream^ cstream;
-  PyObject *dtypes[20];
-  PyObject *class_dtypes[20];
+  PyObject *(&dtypes)[20];
+  PyObject *(&class_dtypes)[20];
   NumpyDotNet::dtype^ U1_dtype;
   NumpyDotNet::dtype^ bool_dtype;
   int mat_dtype;
@@ -1088,7 +1044,7 @@ ref struct VarReader5 {
  *         self.is_swapped = byte_order == swapped_code
  */
 
-  VarReader5(System::Object^ preader) {
+  VarReader5(System::Object^ preader) : dtypes(*(new PyObject *[20])), class_dtypes(*(new PyObject *[20])) {
     System::Object^ __pyx_v_preader = nullptr;
     System::Object^ __pyx_v_byte_order;
     System::Object^ __pyx_v_uint16_codec;
@@ -1598,7 +1554,7 @@ ref struct VarReader5 {
  *         tag_res = self.cread_tag(&mdtype, &byte_count, tag_ptr)
  *         if tag_res == 2: # sde format
  */
-    __pyx_v_tag_data = Py_None;
+    __pyx_v_tag_data = nullptr;
 
     /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":240
  *         cdef int tag_res
@@ -2844,7 +2800,7 @@ ref struct VarReader5 {
  *             header.dims = None
  *             return header
  */
-      __pyx_v_header->name = Py_None;
+      __pyx_v_header->name = nullptr;
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":554
  *         if mc == mxOPAQUE_CLASS:
@@ -2853,7 +2809,7 @@ ref struct VarReader5 {
  *             return header
  *         header.n_dims = self.read_into_int32s(header.dims_ptr)
  */
-      __pyx_v_header->dims = Py_None;
+      __pyx_v_header->dims = nullptr;
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":555
  *             header.name = None
@@ -3867,7 +3823,7 @@ ref struct VarReader5 {
  *     cdef object read_sparse(self, VarHeader5 header):
  */
     __pyx_t_3 = __site_get_reshape_705_18->Target(__site_get_reshape_705_18, ((System::Object^)__pyx_v_res), __pyx_context);
-    __pyx_t_1 = PythonOps::MakeSlice(Py_None, Py_None, __pyx_int_neg_1)
+    __pyx_t_1 = PythonOps::MakeSlice(nullptr, nullptr, __pyx_int_neg_1);
     __pyx_t_5 = __site_getindex_705_38->Target(__site_getindex_705_38, __pyx_v_header->dims, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_1 = __site_call1_705_26->Target(__site_call1_705_26, __pyx_context, __pyx_t_3, __pyx_t_5);
@@ -4545,10 +4501,10 @@ ref struct VarReader5 {
     System::Object^ __pyx_t_3 = nullptr;
     System::Object^ __pyx_t_4 = nullptr;
     NumpyDotNet::ndarray^ __pyx_t_5 = nullptr;
-    int __pyx_t_6;
+    size_t __pyx_t_6;
     size_t __pyx_t_7;
     size_t __pyx_t_8;
-    size_t __pyx_t_9;
+    int __pyx_t_9;
     System::Object^ *__pyx_t_10;
     VarReader5^ __pyx_v_self = this;
     __pyx_v_result = nullptr;
@@ -4563,7 +4519,7 @@ ref struct VarReader5 {
  *         result = np.empty(length, dtype=object)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "tuple");
-    __pyx_t_2 = PythonOps::MakeSlice(Py_None, Py_None, __pyx_int_neg_1)
+    __pyx_t_2 = PythonOps::MakeSlice(nullptr, nullptr, __pyx_int_neg_1);
     __pyx_t_3 = __site_getindex_816_35->Target(__site_getindex_816_35, __pyx_v_header->dims, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_t_2 = __site_call1_816_23->Target(__site_call1_816_23, __pyx_context, ((System::Object^)__pyx_t_1), __pyx_t_3);
@@ -4604,7 +4560,7 @@ ref struct VarReader5 {
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(__pyx_bstruct_result);
-      __pyx_t_6 = __Pyx_GetBufferAndValidate(__pyx_bstruct_result, __pyx_t_5, &__Pyx_TypeInfo_object, PyBUF_FORMAT| PyBUF_INDIRECT| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+      __Pyx_GetBufferAndValidate(__pyx_bstruct_result, __pyx_t_5, &__Pyx_TypeInfo_object, PyBUF_FORMAT| PyBUF_INDIRECT| PyBUF_WRITABLE, 1, 0, __pyx_stack);
       __pyx_bstride_0_result = __pyx_bstruct_result->Strides[0];
       __pyx_bshape_0_result = __pyx_bstruct_result->Shape[0];
       __pyx_boffset_0_result = __pyx_bstruct_result->SubOffsets[0];
@@ -4620,9 +4576,9 @@ ref struct VarReader5 {
  *             result[i] = self.read_mi_matrix()
  *         return result.reshape(tupdims).T
  */
-    __pyx_t_7 = __pyx_v_length;
-    for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
-      __pyx_v_i = __pyx_t_8;
+    __pyx_t_6 = __pyx_v_length;
+    for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+      __pyx_v_i = __pyx_t_7;
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":820
  *         result = np.empty(length, dtype=object)
@@ -4632,13 +4588,13 @@ ref struct VarReader5 {
  * 
  */
       __pyx_t_4 = __pyx_v_self->read_mi_matrix(nullptr); 
-      __pyx_t_9 = __pyx_v_i;
-      __pyx_t_6 = -1;
-      if (unlikely(__pyx_t_9 >= (size_t)__pyx_bshape_0_result)) __pyx_t_6 = 0;
-      if (unlikely(__pyx_t_6 != -1)) {
-        __Pyx_RaiseBufferIndexError(__pyx_t_6);
+      __pyx_t_8 = __pyx_v_i;
+      __pyx_t_9 = -1;
+      if (unlikely(__pyx_t_8 >= (size_t)__pyx_bshape_0_result)) __pyx_t_9 = 0;
+      if (unlikely(__pyx_t_9 != -1)) {
+        __Pyx_RaiseBufferIndexError(__pyx_t_9);
       }
-      __pyx_t_10 = __Pyx_BufPtrFull1d(System::Object^ *, (System::Object^ *)(long long)__pyx_bstruct_result->UnsafeAddress, __pyx_t_9, __pyx_bstride_0_result, __pyx_boffset_0_result);
+      __pyx_t_10 = __Pyx_BufPtrFull1d(System::Object^ *, (System::Object^ *)(long long)__pyx_bstruct_result->UnsafeAddress, __pyx_t_8, __pyx_bstride_0_result, __pyx_boffset_0_result);
       __Pyx_DECREF(*__pyx_t_10); __Pyx_INCREF(__pyx_t_4);
       *__pyx_t_10 = __pyx_t_4;
       __pyx_t_4 = nullptr;
@@ -5105,7 +5061,7 @@ ref struct VarReader5 {
  *         if self.struct_as_record: # to record arrays
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "tuple");
-    __pyx_t_2 = PythonOps::MakeSlice(Py_None, Py_None, __pyx_int_neg_1)
+    __pyx_t_2 = PythonOps::MakeSlice(nullptr, nullptr, __pyx_int_neg_1);
     __pyx_t_3 = __site_getindex_886_35->Target(__site_getindex_886_35, __pyx_v_header->dims, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_t_2 = __site_call1_886_23->Target(__site_call1_886_23, __pyx_context, ((System::Object^)__pyx_t_1), __pyx_t_3);
@@ -5335,7 +5291,7 @@ ref struct VarReader5 {
     {
       __Pyx_BufFmt_StackElem __pyx_stack[1];
       __Pyx_SafeReleaseBuffer(__pyx_bstruct_result);
-      __pyx_t_7 = __Pyx_GetBufferAndValidate(__pyx_bstruct_result, __pyx_t_9, &__Pyx_TypeInfo_object, PyBUF_FORMAT| PyBUF_INDIRECT| PyBUF_WRITABLE, 1, 0, __pyx_stack);
+      __Pyx_GetBufferAndValidate(__pyx_bstruct_result, __pyx_t_9, &__Pyx_TypeInfo_object, PyBUF_FORMAT| PyBUF_INDIRECT| PyBUF_WRITABLE, 1, 0, __pyx_stack);
       __pyx_bstride_0_result = __pyx_bstruct_result->Strides[0];
       __pyx_bshape_0_result = __pyx_bstruct_result->Shape[0];
       __pyx_boffset_0_result = __pyx_bstruct_result->SubOffsets[0];
@@ -5542,6 +5498,10 @@ ref struct VarReader5 {
     __pyx_r = nullptr;
     __pyx_L0:;
     return __pyx_r;
+  }
+  !VarReader5() {
+    delete[] &dtypes;
+    delete[] &class_dtypes;
   }
 };
 
@@ -5988,6 +5948,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
+  PythonDictionary^ __pyx_t_4;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio5_utils.pyx":15
  * '''
@@ -6192,9 +6153,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  * '''
  */
-  __pyx_t_2 = PythonOps::MakeEmptyDict();
-  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
-  __pyx_t_2 = nullptr;
+  __pyx_t_4 = PythonOps::MakeEmptyDict();
+  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_4));
+  __pyx_t_4 = nullptr;
 
   /* "C:\Python26\lib\site-packages\Cython\Includes\cpython\type.pxd":2
  * 
@@ -6206,6 +6167,54 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+
+static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_7streams_GenericStream = nullptr;
+
+static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_10mio5_utils_VarHeader5 = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_2io_6matlab_10mio5_utils_VarReader5 = nullptr;
+static NumpyDotNet::dtype^ __pyx_v_5scipy_2io_6matlab_10mio5_utils_OPAQUE_DTYPE = nullptr;
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */
@@ -6625,7 +6634,7 @@ static const char* __Pyx_BufFmt_CheckString(__Pyx_BufFmt_Context* ctx, const cha
 static CYTHON_INLINE void __Pyx_GetBufferAndValidate(NumpyDotNet::IExtBufferProtocol^& buf, System::Object^ obj, __Pyx_TypeInfo* dtype, int flags, int nd, int cast, __Pyx_BufFmt_StackElem* stack) {
   if (obj == Py_None) {
     buf = nullptr;
-    return 0;
+    return;
   }
   if (__Pyx_GetBuffer(obj, buf, flags) == -1) goto fail;
   if (buf->NumberDimensions != nd) {
@@ -6660,10 +6669,10 @@ static CYTHON_INLINE void __Pyx_GetBufferAndValidate(NumpyDotNet::IExtBufferProt
   XXX
   if (buf->suboffsets == NULL) buf->suboffsets = __Pyx_minusones;
 #endif
-  return 0;
+  return;
 fail:;
   buf = nullptr;
-  return -1;
+  throw PythonOps::ValueError("XXX buffer error");
 }
 
 static CYTHON_INLINE void __Pyx_SafeReleaseBuffer(NumpyDotNet::IExtBufferProtocol^ info) {
