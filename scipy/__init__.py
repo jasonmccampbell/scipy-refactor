@@ -86,8 +86,7 @@ from numpy import oldnumeric
 from numpy import *
 from numpy.random import rand, randn
 
-print "scipy.__init__.py: import for numpy.fft commented out"
-#from numpy.fft import fft, ifft
+from numpy.fft import fft, ifft
 from numpy.lib.scimath import *
 
 # Emit a warning if numpy is too old

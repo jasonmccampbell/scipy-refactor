@@ -128,6 +128,41 @@ int NI_AllocateLineBuffer(NpyArray* array, int axis, npy_intp size1,
     return 1;
 }
 
+/* Some NumPy types are ambiguous */
+int NI_CanonicalType(int type_num)
+{
+    switch (type_num) {
+        case NPY_INT:
+            return NPY_INT32;
+
+        case NPY_LONG:
+#if NPY_SIZEOF_LONG == 4
+            return NPY_INT32;
+#else
+            return NPY_INT64;
+#endif
+
+        case NPY_LONGLONG:
+            return NPY_INT64;
+
+        case NPY_UINT:
+            return NPY_UINT32;
+
+        case NPY_ULONG:
+#if NPY_SIZEOF_LONG == 4
+            return NPY_UINT32;
+#else
+            return NPY_UINT64;
+#endif
+
+        case NPY_ULONGLONG:
+            return NPY_UINT64;
+
+        default:
+            return type_num;
+    }
+}
+
 /* Initialize a line buffer */
 int NI_InitLineBuffer(NpyArray *array, int axis, npy_intp size1,
         npy_intp size2, npy_intp buffer_lines, double *buffer_data,

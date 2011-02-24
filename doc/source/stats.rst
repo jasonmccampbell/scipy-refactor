@@ -1,8 +1,8 @@
-.. module:: scipy.stats
-
 ==========================================
 Statistical functions (:mod:`scipy.stats`)
 ==========================================
+
+.. module:: scipy.stats
 
 This module contains a large number of probability distributions as
 well as a growing library of statistical functions.
@@ -13,12 +13,25 @@ Each included continuous distribution is an instance of the class rv_continous:
    :toctree: generated/
 
    rv_continuous
+   rv_continuous.rvs
    rv_continuous.pdf
+   rv_continuous.logpdf
    rv_continuous.cdf
+   rv_continuous.logcdf
    rv_continuous.sf
+   rv_continuous.logsf
    rv_continuous.ppf
    rv_continuous.isf
+   rv_continuous.moment
    rv_continuous.stats
+   rv_continuous.entropy
+   rv_continuous.fit
+   rv_continuous.expect
+   rv_continuous.median
+   rv_continuous.mean
+   rv_continuous.var
+   rv_continuous.std
+   rv_continuous.interval
 
 Each discrete distribution is an instance of the class rv_discrete:
 
@@ -26,12 +39,24 @@ Each discrete distribution is an instance of the class rv_discrete:
    :toctree: generated/
 
    rv_discrete
+   rv_discrete.rvs
    rv_discrete.pmf
+   rv_discrete.logpmf
    rv_discrete.cdf
+   rv_discrete.logcdf
    rv_discrete.sf
+   rv_discrete.logsf
    rv_discrete.ppf
    rv_discrete.isf
    rv_discrete.stats
+   rv_discrete.moment
+   rv_discrete.entropy
+   rv_discrete.expect
+   rv_discrete.median
+   rv_discrete.mean
+   rv_discrete.var
+   rv_discrete.std
+   rv_discrete.interval
 
 Continuous distributions
 ========================
@@ -62,8 +87,6 @@ Continuous distributions
    foldcauchy
    f
    foldnorm
-   fretchet_r
-   fretcher_l
    genlogistic
    genpareto
    genexpon
@@ -113,7 +136,7 @@ Continuous distributions
    truncnorm
    tukeylambda
    uniform
-   von_mises
+   vonmises
    wald
    weibull_min
    weibull_max
@@ -151,9 +174,7 @@ which work for masked arrays.
 
    gmean
    hmean
-   mean
    cmedian
-   median
    mode
    tmean
    tvar
@@ -186,16 +207,9 @@ which work for masked arrays.
    :toctree: generated/
 
    obrientransform
-   samplevar
-   samplestd
    signaltonoise
    bayes_mvs
-   var
-   std
-   stderr
    sem
-   z
-   zs
    zmap
    zscore
 
@@ -205,8 +219,6 @@ which work for masked arrays.
    threshold
    trimboth
    trim1
-   cov
-   corrcoef
 
 .. autosummary::
    :toctree: generated/
@@ -252,7 +264,6 @@ which work for masked arrays.
    :toctree: generated/
 
    glm
-   anova
 
 Plot-tests
 ==========

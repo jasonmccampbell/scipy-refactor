@@ -8,13 +8,15 @@ import numpy as np
 
 from numpy.testing import assert_almost_equal, assert_array_almost_equal, \
         assert_array_almost_equal_nulp, TestCase, run_module_suite, dec, \
-        assert_raises, verbose
+        assert_raises, verbose, assert_equal
 
 from numpy import array, finfo, argsort, dot, round, conj, random
-from scipy.sparse import csc_matrix
-from scipy.sparse.linalg.eigen.arpack import eigen_symmetric, eigen, svd
+from scipy.sparse import csc_matrix, isspmatrix
+from scipy.sparse.linalg import LinearOperator
+from scipy.sparse.linalg.eigen.arpack import eigs, eigsh, svds, \
+     ArpackNoConvergence
 
-from scipy.linalg import svd as dsvd
+from scipy.linalg import svd
 
 def assert_almost_equal_cc(actual,desired,decimal=7,err_msg='',verbose=True):
     # almost equal or complex conjugates almost equal
@@ -108,7 +110,7 @@ class TestEigenSymmetric(TestArpack):
         if v0 == None:
             v0 = d['v0']
         exact_eval=self.get_exact_eval(d,typ,k,which)
-        eval,evec=eigen_symmetric(a,k,which=which,v0=v0)
+        eval,evec=eigsh(a,k,which=which,v0=v0)
         # check eigenvalues
         assert_array_almost_equal(eval,exact_eval,decimal=_ndigits[typ])
         # check eigenvectors A*evec=eval*evec
@@ -132,6 +134,23 @@ class TestEigenSymmetric(TestArpack):
             self.eval_evec(self.symmetric[0],typ,k,which='LM',v0=v0)
 
 
+    def test_no_convergence(self):
+        np.random.seed(1234)
+        m = np.random.rand(30, 30)
+        m = m + m.T
+        try:
+            w, v = eigsh(m, 4, which='LM', v0=m[:,0], maxiter=5)
+            raise AssertionError("Spurious no-error exit")
+        except ArpackNoConvergence, err:
+            k = len(err.eigenvalues)
+            if k <= 0:
+                raise AssertionError("Spurious no-eigenvalues-found case")
+            w, v = err.eigenvalues, err.eigenvectors
+            for ww, vv in zip(w, v.T):
+                assert_array_almost_equal(dot(m, vv), ww*vv,
+                                          decimal=_ndigits['d'])
+
+
 class TestEigenComplexSymmetric(TestArpack):
 
     def sort_choose(self,eval,typ,k,which):
@@ -153,7 +172,7 @@ class TestEigenComplexSymmetric(TestArpack):
         ind=self.sort_choose(exact_eval,typ,k,which)
         exact_eval=exact_eval[ind]
         # compute eigenvalues
-        eval,evec=eigen(a,k,which=which,v0=v0)
+        eval,evec=eigs(a,k,which=which,v0=v0)
         ind=self.sort_choose(eval,typ,k,which)
         eval=eval[ind]
         evec=evec[:,ind]
@@ -172,6 +191,21 @@ class TestEigenComplexSymmetric(TestArpack):
             for which in ['LM','SM','LR','SR']:
                 self.eval_evec(self.symmetric[0],typ,k,which)
 
+
+    def test_no_convergence(self):
+        np.random.seed(1234)
+        m = np.random.rand(30, 30) + 1j*np.random.rand(30, 30)
+        try:
+            w, v = eigs(m, 3, which='LM', v0=m[:,0], maxiter=30)
+            raise AssertionError("Spurious no-error exit")
+        except ArpackNoConvergence, err:
+            k = len(err.eigenvalues)
+            if k <= 0:
+                raise AssertionError("Spurious no-eigenvalues-found case")
+            w, v = err.eigenvalues, err.eigenvectors
+            for ww, vv in zip(w, v.T):
+                assert_array_almost_equal(dot(m, vv), ww*vv,
+                                          decimal=_ndigits['D'])
 
 class TestEigenNonSymmetric(TestArpack):
 
@@ -201,7 +235,7 @@ class TestEigenNonSymmetric(TestArpack):
         ind=self.sort_choose(exact_eval,typ,k,which)
         exact_eval=exact_eval[ind]
         # compute eigenvalues
-        eval,evec=eigen(a,k,which=which,v0=v0)
+        eval,evec=eigs(a,k,which=which,v0=v0)
         ind=self.sort_choose(eval,typ,k,which)
         eval=eval[ind]
         evec=evec[:,ind]
@@ -231,8 +265,20 @@ class TestEigenNonSymmetric(TestArpack):
             v0 = random.rand(n).astype(typ)
             self.eval_evec(self.symmetric[0],typ,k,which='LM',v0=v0)
 
-
-
+    def test_no_convergence(self):
+        np.random.seed(1234)
+        m = np.random.rand(30, 30)
+        try:
+            w, v = eigs(m, 3, which='LM', v0=m[:,0], maxiter=30)
+            raise AssertionError("Spurious no-error exit")
+        except ArpackNoConvergence, err:
+            k = len(err.eigenvalues)
+            if k <= 0:
+                raise AssertionError("Spurious no-eigenvalues-found case")
+            w, v = err.eigenvalues, err.eigenvectors
+            for ww, vv in zip(w, v.T):
+                assert_array_almost_equal(dot(m, vv), ww*vv,
+                                          decimal=_ndigits['d'])
 
 class TestEigenComplexNonSymmetric(TestArpack):
 
@@ -265,7 +311,7 @@ class TestEigenComplexNonSymmetric(TestArpack):
 
 
         # compute eigenvalues
-        eval,evec=eigen(a,k,which=which,v0=v0)
+        eval,evec=eigs(a,k,which=which,v0=v0)
         ind=self.sort_choose(eval,typ,k,which)
         eval=eval[ind]
         evec=evec[:,ind]
@@ -287,16 +333,38 @@ class TestEigenComplexNonSymmetric(TestArpack):
                     self.eval_evec(m,typ,k,which)
 
 
+    def test_no_convergence(self):
+        np.random.seed(1234)
+        m = np.random.rand(30, 30) + 1j*np.random.rand(30, 30)
+        try:
+            w, v = eigs(m, 3, which='LM', v0=m[:,0], maxiter=30)
+            raise AssertionError("Spurious no-error exit")
+        except ArpackNoConvergence, err:
+            k = len(err.eigenvalues)
+            if k <= 0:
+                raise AssertionError("Spurious no-eigenvalues-found case")
+            w, v = err.eigenvalues, err.eigenvectors
+            for ww, vv in zip(w, v.T):
+                assert_array_almost_equal(dot(m, vv), ww*vv,
+                                          decimal=_ndigits['D'])
+
 def test_eigen_bad_shapes():
     # A is not square.
     A = csc_matrix(np.zeros((2,3)))
-    assert_raises(ValueError, eigen, A)
+    assert_raises(ValueError, eigs, A)
 
+def test_eigs_operator():
+    # Check inferring LinearOperator dtype
+    fft_op = LinearOperator((6, 6), np.fft.fft)
+    w, v = eigs(fft_op, k=3)
+    assert_equal(w.dtype, np.complex_)
 
 def sorted_svd(m, k):
     """Compute svd of a dense matrix m, and return singular vectors/values
     sorted."""
-    u, s, vh = dsvd(m)
+    if isspmatrix(m):
+        m = m.todense()
+    u, s, vh = svd(m)
     ii = np.argsort(s)[-k:]
 
     return u[:, ii], s[ii], vh[ii]
@@ -310,29 +378,37 @@ class TestSparseSvd(TestCase):
                       [3, 4, 3],
                       [1, 0, 2],
                       [0, 0, 1]], np.float)
+        y = np.array([[1, 2, 3, 8],
+                      [3, 4, 3, 5],
+                      [1, 0, 2, 3],
+                      [0, 0, 1, 0]], np.float)
+        z = csc_matrix(x)
 
-        for m in [x.T, x]:
-            for k in range(1, 3):
+        for m in [x.T, x, y, z, z.T]:
+            for k in range(1, min(m.shape)):
                 u, s, vh = sorted_svd(m, k)
-                su, ss, svh = svd(m, k)
+                su, ss, svh = svds(m, k)
 
                 m_hat = svd_estimate(u, s, vh)
                 sm_hat = svd_estimate(su, ss, svh)
 
                 assert_array_almost_equal_nulp(m_hat, sm_hat, nulp=1000)
 
-    @dec.knownfailureif(True, "Complex sparse SVD not implemented (depends on "
-                              "Hermitian support in eigen_symmetric")
     def test_simple_complex(self):
         x = np.array([[1, 2, 3],
                       [3, 4, 3],
                       [1+1j, 0, 2],
                       [0, 0, 1]], np.complex)
+        y = np.array([[1, 2, 3, 8+5j],
+                      [3-2j, 4, 3, 5],
+                      [1, 0, 2, 3],
+                      [0, 0, 1, 0]], np.complex)
+        z = csc_matrix(x)
 
-        for m in [x, x.T.conjugate()]:
-            for k in range(1, 3):
+        for m in [x, x.T.conjugate(), x.T, y, y.conjugate(), z, z.T]:
+            for k in range(1, min(m.shape)-1):
                 u, s, vh = sorted_svd(m, k)
-                su, ss, svh = svd(m, k)
+                su, ss, svh = svds(m, k)
 
                 m_hat = svd_estimate(u, s, vh)
                 sm_hat = svd_estimate(su, ss, svh)

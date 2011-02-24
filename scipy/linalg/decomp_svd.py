@@ -5,7 +5,7 @@ from numpy import asarray_chkfinite, zeros, r_, diag
 from scipy.linalg import calc_lwork
 
 # Local imports.
-from misc import LinAlgError, _datanotshared
+from misc import LinAlgError, _datacopied
 from lapack import get_lapack_funcs
 from funcinfo import get_func_info
 
@@ -74,7 +74,7 @@ def svd(a, full_matrices=True, compute_uv=True, overwrite_a=False):
     if len(a1.shape) != 2:
         raise ValueError('expected matrix')
     m,n = a1.shape
-    overwrite_a = overwrite_a or (_datanotshared(a1, a))
+    overwrite_a = overwrite_a or (_datacopied(a1, a))
     gesdd, = get_lapack_funcs(('gesdd',), (a1,))
     gesdd_info = get_func_info(gesdd)
     if gesdd_info.module_name[:7] == 'flapack':

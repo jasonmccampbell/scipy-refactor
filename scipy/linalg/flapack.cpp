@@ -2200,14 +2200,6 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
-
-
-
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
 static fwr_real_t __pyx_k_1;
@@ -78603,7 +78595,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Type init code ---*/
   /*--- Create function pointers ---*/
   /*--- Execution code ---*/
-  System::Object^ __pyx_t_1 = nullptr;
+  PythonDictionary^ __pyx_t_1;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\flapack.pyx":78
  * cimport flapack_fc as fc
@@ -78669,6 +78661,14 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+
+
+
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */

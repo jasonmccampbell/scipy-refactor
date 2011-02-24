@@ -1,3 +1,5 @@
+import warnings
+
 import numpy.testing as npt
 import numpy as np
 import nose
@@ -15,7 +17,7 @@ These tests currently check only/mostly for serious errors and exceptions,
 not for numerically exact results.
 
 
-TODO: 
+TODO:
 * make functioning test for skew and kurtosis
   still known failures - skip for now
 
@@ -70,6 +72,7 @@ distcont = [
     ['hypsecant', ()],
     ['invgamma', (2.0668996136993067,)],
     ['invnorm', (0.14546264555347513,)],
+    ['invgauss', (0.14546264555347513,)],
     ['invweibull', (10.58,)], # sample mean test fails at(0.58847112119264788,)]
     ['johnsonsb', (4.3172675099141058, 3.1837781130785063)],
     ['johnsonsu', (2.554395574161155, 2.2482281679651965)],
@@ -144,7 +147,7 @@ distmissing = ['wald', 'gausshyper', 'genexpon', 'rv_continuous',
     'loglaplace', 'rdist', 'semicircular', 'invweibull', 'ksone',
     'cosine', 'kstwobign', 'truncnorm', 'mielke', 'recipinvgauss', 'levy',
     'johnsonsu', 'levy_l', 'powernorm', 'wrapcauchy',
-    'johnsonsb', 'truncexpon', 'rice', 'invnorm', 'invgamma',
+    'johnsonsb', 'truncexpon', 'rice', 'invnorm', 'invgauss', 'invgamma',
     'powerlognorm']
 
 distmiss = [[dist,args] for dist,args in distcont if dist in distmissing]
@@ -153,10 +156,21 @@ distslow = ['rdist', 'gausshyper', 'recipinvgauss', 'ksone', 'genexpon',
             'powerlognorm', 'johnsonsu', 'kstwobign']
 #distslow are sorted by speed (very slow to slow)
 
+def _silence_fp_errors(func):
+    def wrap(*a, **kw):
+        olderr = np.seterr(all='ignore')
+        try:
+            return func(*a, **kw)
+        finally:
+            np.seterr(**olderr)
+    wrap.__name__ = func.__name__
+    return wrap
+
 def test_cont_basic():
     # this test skips slow distributions
     for distname, arg in distcont[:]:
-        if distname in distslow: continue
+        if distname in distslow:
+            continue
         distfn = getattr(stats, distname)
         np.random.seed(765456)
         sn = 1000
@@ -166,7 +180,7 @@ def test_cont_basic():
         skurt = stats.kurtosis(rvs)
         sskew = stats.skew(rvs)
         m,v = distfn.stats(*arg)
-        
+
         yield check_sample_meanvar_, distfn, arg, m, v, sm, sv, sn, distname + \
               'sample mean test'
         # the sample skew kurtosis test has known failures, not very good distance measure
@@ -175,7 +189,8 @@ def test_cont_basic():
         yield check_cdf_ppf, distfn, arg, distname
         yield check_sf_isf, distfn, arg, distname
         yield check_pdf, distfn, arg, distname
-        if distname in ['wald']: continue
+        if distname in ['wald']:
+            continue
         yield check_pdf_logpdf, distfn, arg, distname
         yield check_cdf_logcdf, distfn, arg, distname
         yield check_sf_logsf, distfn, arg, distname
@@ -213,24 +228,26 @@ def test_cont_basic_slow():
             alpha = 0.01
             yield check_distribution_rvs, distname, arg, alpha, rvs
 
+@_silence_fp_errors
 def check_moment(distfn, arg, m, v, msg):
     m1  = distfn.moment(1,*arg)
     m2  = distfn.moment(2,*arg)
     if not np.isinf(m):
         npt.assert_almost_equal(m1, m, decimal=10, err_msg= msg + \
                             ' - 1st moment')
-    else:                     # or np.isnan(m1), 
-        npt.assert_(np.isinf(m1), 
+    else:                     # or np.isnan(m1),
+        npt.assert_(np.isinf(m1),
                msg + ' - 1st moment -infinite, m1=%s' % str(m1))
         #np.isnan(m1) temporary special treatment for loggamma
     if not np.isinf(v):
         npt.assert_almost_equal(m2-m1*m1, v, decimal=10, err_msg= msg + \
                             ' - 2ndt moment')
-    else:                     #or np.isnan(m2), 
+    else:                     #or np.isnan(m2),
         npt.assert_(np.isinf(m2),
                msg + ' - 2nd moment -infinite, m2=%s' % str(m2))
         #np.isnan(m2) temporary special treatment for loggamma
 
+@_silence_fp_errors
 def check_sample_meanvar_(distfn, arg, m, v, sm, sv, sn, msg):
     #this did not work, skipped silently by nose
     #check_sample_meanvar, sm, m, msg + 'sample mean test'
@@ -286,11 +303,13 @@ def check_sample_meanvar(sm,m,msg):
 ##    else:
 ##        assert abs(sm) > 10000, 'infinite moment, sm = ' + str(sm)
 
+@_silence_fp_errors
 def check_cdf_ppf(distfn,arg,msg):
     npt.assert_almost_equal(distfn.cdf(distfn.ppf([0.001,0.5,0.999], *arg), *arg),
                             [0.001,0.5,0.999], decimal=DECIMAL, err_msg= msg + \
                             ' - cdf-ppf roundtrip')
 
+@_silence_fp_errors
 def check_sf_isf(distfn,arg,msg):
     npt.assert_almost_equal(distfn.sf(distfn.isf([0.1,0.5,0.9], *arg), *arg),
                             [0.1,0.5,0.9], decimal=DECIMAL, err_msg= msg + \
@@ -300,6 +319,7 @@ def check_sf_isf(distfn,arg,msg):
                             decimal=DECIMAL, err_msg= msg + \
                             ' - cdf-sf relationship')
 
+@_silence_fp_errors
 def check_pdf(distfn, arg, msg):
     # compares pdf at median with numerical derivative of cdf
     median = distfn.ppf(0.5, *arg)
@@ -316,6 +336,7 @@ def check_pdf(distfn, arg, msg):
     npt.assert_almost_equal(pdfv, cdfdiff,
                 decimal=DECIMAL, err_msg= msg + ' - cdf-pdf relationship')
 
+@_silence_fp_errors
 def check_pdf_logpdf(distfn, args, msg):
     # compares pdf at several points with the log of the pdf
     points = np.array([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
@@ -326,6 +347,7 @@ def check_pdf_logpdf(distfn, args, msg):
     logpdf = logpdf[np.isfinite(logpdf)]
     npt.assert_almost_equal(np.log(pdf), logpdf, decimal=7, err_msg=msg + " - logpdf-log(pdf) relationship")
 
+@_silence_fp_errors
 def check_sf_logsf(distfn, args, msg):
     # compares sf at several points with the log of the sf
     points = np.array([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
@@ -336,6 +358,7 @@ def check_sf_logsf(distfn, args, msg):
     logsf = logsf[np.isfinite(logsf)]
     npt.assert_almost_equal(np.log(sf), logsf, decimal=7, err_msg=msg + " - logsf-log(sf) relationship")
 
+@_silence_fp_errors
 def check_cdf_logcdf(distfn, args, msg):
     # compares cdf at several points with the log of the cdf
     points = np.array([0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8])
@@ -347,6 +370,7 @@ def check_cdf_logcdf(distfn, args, msg):
     npt.assert_almost_equal(np.log(cdf), logcdf, decimal=7, err_msg=msg + " - logcdf-log(cdf) relationship")
 
 
+@_silence_fp_errors
 def check_distribution_rvs(dist, args, alpha, rvs):
     #test from scipy.stats.tests
     #this version reuses existing random variables
@@ -355,6 +379,10 @@ def check_distribution_rvs(dist, args, alpha, rvs):
         D,pval = stats.kstest(dist,'',args=args, N=1000)
         npt.assert_(pval > alpha, "D = " + str(D) + "; pval = " + str(pval) +
                "; alpha = " + str(alpha) + "\nargs = " + str(args))
+
+
+warnings.filterwarnings('ignore', message="The `invnorm` distribution")
+
 
 if __name__ == "__main__":
     #nose.run(argv=['', __file__])
