@@ -414,14 +414,6 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
-
-
-
 /* Cython code section 'decls' */
 /* Cython code section 'all_the_rest' */
 public:
@@ -2525,6 +2517,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Create function pointers ---*/
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
+  PythonDictionary^ __pyx_t_2;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":27
  * cimport calc_lwork_fc as fc
@@ -2551,9 +2544,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  * """The calc_lwork module was generated with Fwrap v0.2.0dev_9849d10.
  */
-  __pyx_t_1 = PythonOps::MakeEmptyDict();
-  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
-  __pyx_t_1 = nullptr;
+  __pyx_t_2 = PythonOps::MakeEmptyDict();
+  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
+  __pyx_t_2 = nullptr;
 
   /* "../cython/include\numpy.pxd":248
  *     return obj.ndim
@@ -2565,6 +2558,14 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+
+
+
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */
