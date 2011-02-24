@@ -39,9 +39,7 @@ cdef extern from "math.h":
     double sqrt(double x) nogil
     double fabs(double a) nogil
 
-cdef extern from "numpy/ndarrayobject.h":
-    cdef enum:
-        NPY_MAXDIMS
+from numpy cimport NPY_MAXDIMS
 
 #------------------------------------------------------------------------------
 # Interpolator base class
