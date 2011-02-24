@@ -1,4 +1,3 @@
-#include "Python.h"
 #include <math.h>
 #include <stddef.h>
 #include <stdlib.h>
