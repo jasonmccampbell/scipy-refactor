@@ -4,29 +4,11 @@ Copyright 2005 Travis Oliphant
 Permission to use, copy, modify, and distribute this software without fee
 is granted under the SciPy License.
 */
-#define PY_ARRAY_UNIQUE_SYMBOL _scipy_signal_ARRAY_API
-//#include <numpy/noprefix.h>
 
 #include "sigtools.h"
 #include <setjmp.h>
 #include <stdlib.h>
 #include <math.h>
-#include <npy_defs.h>
-#include <npy_api.h>
-#include <npy_arrayobject.h>
-
-
-#define PYERR(message) {PyErr_SetString(PyExc_ValueError, message); goto fail;}
-
-#define DATA(arr) (PyArray_DATA(arr))
-#define DIMS(arr) (PyArray_DIMS(arr))
-#define STRIDES(arr) (PyArray_STRIDES(arr))
-#define ELSIZE(arr) (NpyDataType_ELSIZE(PyArray_DESCR(arr)))
-#define OBJECTTYPE(arr) (PyArray_DESCR(arr)->type_num)
-#define BASEOBJ(arr) (PyArray_BASE(arr))
-#define RANK(arr) (PyArray_NDIM(arr))
-#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & CONTIGUOUS)
-
 
 jmp_buf MALLOC_FAIL;
 
@@ -44,11 +26,6 @@ char *check_malloc (int size)
 	}
     return(the_block);
 }
-
-
-/************************************************************************
- * Start of portable, non-python specific routines.                     *
- ************************************************************************/
 
 /* Some core routines are written
 in a portable way so that they could be used in other applications.  The 
@@ -155,10 +132,6 @@ int increment(npy_intp *ret_ind, int nd, npy_intp *max_ind) {
  *
  *********************************************************/
 
-
-#define BANDPASS       1
-#define DIFFERENTIATOR 2
-#define HILBERT        3
 
 #define GOBACK goto
 #define DOloop(a,from,to) for ( (a) = (from); (a) <= (to); ++(a))
@@ -760,8 +733,3 @@ int pre_remez(double *h2, int numtaps, int numbands, double *bands, double *resp
 /**************************************************************
  * End of remez routines 
  **************************************************************/
-
-
-/****************************************************/
-/* End of python-independent routines               */
-/****************************************************/

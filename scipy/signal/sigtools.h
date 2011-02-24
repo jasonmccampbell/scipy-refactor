@@ -1,8 +1,6 @@
 #ifndef _SCIPY_PRIVATE_SIGNAL_SIGTOOLS_H_
 #define _SCIPY_PRIVATE_SIGNAL_SIGTOOLS_H_
 
-#include "Python.h"
-
 #if PY_VERSION_HEX >= 0x03000000
     #define PyString_AsString PyBytes_AsString
     #define PyString_FromFormat PyBytes_FromFormat
@@ -22,7 +20,11 @@
 
 #define CIRCULAR 8
 #define REFLECT  4
-#define PAD      0 
+#define PAD      0
+
+#define BANDPASS       1
+#define DIFFERENTIATOR 2
+#define HILBERT        3
 
 #define MAXTYPES 21
 
