@@ -84,11 +84,11 @@ def cspline2d(image, lambda_=0.0, precision=-1.0):
 
     elif thetype == PyArray_DOUBLE:
         if not (0.0 <= precision < 1.0):
-            precision = 1e-6;
+            precision = 1e-6
         retval = D_cubic_spline2D(<double *> DATA(a_image),
                                   <double *> DATA(ck),
                                   M, N, lambda_, instrides, outstrides,
-                                  precision);
+                                  precision)
 
     if retval == -3:
         raise Exception("Precision too high.  Error did not converge.")
@@ -118,9 +118,9 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
     thetype = NPY_MIN(thetype, PyArray_DOUBLE)
     a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
 
-    ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image), thetype);
-    M = DIMS(a_image)[0];
-    N = DIMS(a_image)[1];
+    ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image), thetype)
+    M = DIMS(a_image)[0]
+    N = DIMS(a_image)[1]
 
     convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
     outstrides[0] = N
@@ -136,7 +136,7 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
 
     elif thetype == PyArray_DOUBLE:
         if not (0.0 <= precision < 1.0):
-            precision = 1e-6;
+            precision = 1e-6
         retval = D_quadratic_spline2D(<double *> DATA(a_image),
                                       <double *> DATA(ck),
                                       M, N, lambda_, instrides, outstrides,
@@ -149,95 +149,57 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
         raise Exception("Problem occurred inside routine")
 
 
-static char doc_FIRsepsym2d[] = " sepfir2d(input, hrow, hcol) -> output\n"
-"\n"
-"  Description:\n"
-"\n"
-"    Convolve the rank-2 input array with the separable filter defined by the\n"
-"    rank-1 arrays hrow, and hcol. Mirror symmetric boundary conditions are\n"
-"    assumed.  This function can be used to find an image given its B-spline\n"
-"    representation.";
+def FIRsepsym2d(image, hrow, hcol):
+    """sepfir2d(input, hrow, hcol) -> output
 
-static PyObject *FIRsepsym2d(PyObject *NPY_UNUSED(dummy), PyObject *args)
-{
-  PyObject *image=NULL, *hrow=NULL, *hcol=NULL;
-  PyArrayObject *a_image=NULL, *a_hrow=NULL, *a_hcol=NULL, *out=NULL;
-  int thetype, M, N, ret;
-  npy_intp outstrides[2], instrides[2];
+    Description:
 
-  if (!PyArg_ParseTuple(args, "OOO", &image, &hrow, &hcol)) return NULL;
+    Convolve the rank-2 input array with the separable filter defined by the
+    rank-1 arrays hrow, and hcol. Mirror symmetric boundary conditions are
+    assumed.  This function can be used to find an image given its B-spline
+    representation.
+    """
+    cdef int thetype, M, N, ret
+    cdef npy_intp outstrides[2], instrides[2]
 
-  thetype = PyArray_ObjectType(image, PyArray_FLOAT);
-  thetype = NPY_MIN(thetype, PyArray_CDOUBLE);
-  a_image = (PyArrayObject *)PyArray_FromObject(image, thetype, 2, 2);
-  a_hrow = (PyArrayObject *)PyArray_ContiguousFromObject(hrow, thetype, 1, 1);
-  a_hcol = (PyArrayObject *)PyArray_ContiguousFromObject(hcol, thetype, 1, 1);
+    thetype = PyArray_ObjectType(image, PyArray_FLOAT)
+    thetype = NPY_MIN(thetype, PyArray_CDOUBLE)
+    a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
+    a_hrow = <PyArrayObject *> PyArray_ContiguousFromObject(hrow, thetype, 1, 1)
+    a_hcol = <PyArrayObject *> PyArray_ContiguousFromObject(hcol, thetype, 1, 1)
 
-  if ((a_image == NULL) || (a_hrow == NULL) || (a_hcol==NULL)) goto fail;
+    out = <PyArrayObject *> PyArray_SimpleNew(2,DIMS(a_image), thetype)
+    M = DIMS(a_image)[0]
+    N = DIMS(a_image)[1]
 
-  out = (PyArrayObject *)PyArray_SimpleNew(2,DIMS(a_image),thetype);
-  if (out == NULL) goto fail;
-  M = DIMS(a_image)[0];
-  N = DIMS(a_image)[1];
+    convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
+    outstrides[0] = N
+    outstrides[1] = 1
 
-  convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2);
-  outstrides[0] = N;
-  outstrides[1] = 1;
+    if thetype == PyArray_FLOAT:
+        ret = S_separable_2Dconvolve_mirror(
+            <float *> DATA(a_image),
+            <float *> DATA(out), M, N,
+            <float *> DATA(a_hrow),
+            <float *> DATA(a_hcol),
+            DIMS(a_hrow)[0], DIMS(a_hcol)[0],
+            instrides, outstrides)
 
-  switch (thetype) {
-  case PyArray_FLOAT:
-    ret = S_separable_2Dconvolve_mirror((float *)DATA(a_image),
-                                        (float *)DATA(out), M, N,
-                                        (float *)DATA(a_hrow),
-                                        (float *)DATA(a_hcol),
-                                        DIMS(a_hrow)[0], DIMS(a_hcol)[0],
-                                        instrides, outstrides);
-    break;
-  case PyArray_DOUBLE:
-    ret = D_separable_2Dconvolve_mirror((double *)DATA(a_image),
-                                        (double *)DATA(out), M, N,
-                                        (double *)DATA(a_hrow),
-                                        (double *)DATA(a_hcol),
-                                        DIMS(a_hrow)[0], DIMS(a_hcol)[0],
-                                        instrides, outstrides);
-    break;
-#ifdef __GNUC__
-  case PyArray_CFLOAT:
-    ret = C_separable_2Dconvolve_mirror((__complex__ float *)DATA(a_image),
-                                        (__complex__ float *)DATA(out), M, N,
-                                        (__complex__ float *)DATA(a_hrow),
-                                        (__complex__ float *)DATA(a_hcol),
-                                        DIMS(a_hrow)[0], DIMS(a_hcol)[0],
-                                        instrides, outstrides);
-    break;
-  case PyArray_CDOUBLE:
-    ret = Z_separable_2Dconvolve_mirror((__complex__ double *)DATA(a_image),
-                                        (__complex__ double *)DATA(out), M, N,
-                                        (__complex__ double *)DATA(a_hrow),
-                                        (__complex__ double *)DATA(a_hcol),
-                                        DIMS(a_hrow)[0], DIMS(a_hcol)[0],
-                                        instrides, outstrides);
-    break;
-#endif
-  default:
-    PYERR("Incorrect type.");
-  }
+    elif thetype == PyArray_DOUBLE:
+        ret = D_separable_2Dconvolve_mirror(
+            <double *> DATA(a_image),
+            <double *> DATA(out), M, N,
+            <double *> DATA(a_hrow),
+            <double *> DATA(a_hcol),
+            DIMS(a_hrow)[0], DIMS(a_hcol)[0],
+            instrides, outstrides)
 
-  if (ret < 0) PYERR("Problem occurred inside routine.");
+    else:
+        raise Exception("Incorrect type.")
 
-  Py_DECREF(a_image);
-  Py_DECREF(a_hrow);
-  Py_DECREF(a_hcol);
-  return PyArray_Return(out);
+    if ret < 0:
+        raise Exception("Problem occurred inside routine.")
 
- fail:
-  Py_XDECREF(a_image);
-  Py_XDECREF(a_hrow);
-  Py_XDECREF(a_hcol);
-  Py_XDECREF(out);
-  return NULL;
-
-}
 
 static char doc_IIRsymorder1[] = " symiirorder1(input, c0, z1 {, precision}) -> output\n"
 "\n"
