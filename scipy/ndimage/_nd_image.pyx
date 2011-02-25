@@ -507,7 +507,9 @@ cdef int cbwrapper_map(npy_intp *ocoor, double *icoor,
     cdef CallbackInfo info = <CallbackInfo>ctx
     cdef npy_intp i
     cdef tuple ret
-    coors = tuple([ocoor[i] for i in range(orank)])
+    cList = []
+    for i in range(orank): cList.append(ocoor[i])
+    coors = tuple(cList)
     ret = info.function(coors, *info.args, **info.kwargs)
     for i in range(irank):
         icoor[i] = ret[i]
