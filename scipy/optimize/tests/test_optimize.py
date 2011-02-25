@@ -67,7 +67,6 @@ class TestOptimize(TestCase):
         err = abs(self.func(params) - self.func(self.solution))
         #print "CG: Difference is: " + str(err)
         assert_(err < 1e-6)
-        print self.funccalls, self.gradcalls
 
         # Ensure that function call counts are 'known good'; these are from
         # Scipy 0.7.0. Don't allow them to increase.
@@ -121,7 +120,14 @@ class TestOptimize(TestCase):
 
         # Ensure that function call counts are 'known good'; these are from
         # Scipy 0.7.0. Don't allow them to increase.
-        assert_(self.funccalls == 116, self.funccalls)
+        #
+        # However, some leeway must be added: the exact evaluation
+        # count is sensitive to numerical error, and floating-point
+        # computations are not bit-for-bit reproducible across
+        # machines, and when using e.g. MKL, data alignment
+        # etc. affect the rounding error.
+        #
+        assert_(self.funccalls <= 116 + 20, self.funccalls)
         assert_(self.gradcalls == 0, self.gradcalls)
 
         # Ensure that the function behaves the same; this is from Scipy 0.7.0
@@ -174,7 +180,8 @@ class TestOptimize(TestCase):
         # Ensure that function call counts are 'known good'; these are from
         # Scipy 0.7.0. Don't allow them to increase.
         assert_(self.funccalls == 7, self.funccalls)
-        assert_(self.gradcalls == 18, self.gradcalls) # 0.8.0
+        assert_(self.gradcalls <= 18, self.gradcalls) # 0.9.0
+        #assert_(self.gradcalls == 18, self.gradcalls) # 0.8.0
         #assert_(self.gradcalls == 22, self.gradcalls) # 0.7.0
 
         # Ensure that the function behaves the same; this is from Scipy 0.7.0
@@ -347,7 +354,7 @@ class TestTnc(TestCase):
 
 
 class TestRosen(TestCase):
-    
+
     def test_hess(self):
         """Compare rosen_hess(x) times p with rosen_hess_prod(x,p) (ticket #1248)"""
         x = array([3, 4, 5])

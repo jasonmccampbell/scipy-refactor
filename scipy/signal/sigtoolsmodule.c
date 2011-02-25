@@ -6,7 +6,6 @@ is granted under the SciPy License.
 */
 #include <Python.h>
 
-#define PY_ARRAY_UNIQUE_SYMBOL _scipy_signal_ARRAY_API
 //#include <numpy/noprefix.h>
 
 #include "sigtools.h"
@@ -22,6 +21,7 @@ is granted under the SciPy License.
 #define BASEOBJ(arr) (PyArray_BASE(arr))
 #define RANK(arr) (PyArray_NDIM(arr))
 #define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & CONTIGUOUS)
+
 
 extern jmp_buf MALLOC_FAIL;
 
@@ -85,6 +85,7 @@ COMPARE(USHORT_compare, ushort)
 COMPARE(UINT_compare, uint)
 COMPARE(ULONG_compare, ulong)
 COMPARE(ULONGLONG_compare, ulonglong)
+
 
 int OBJECT_compare(PyObject **ip1, PyObject **ip2) {
         /*return PyObject_Compare(*ip1, *ip2); */
@@ -152,7 +153,7 @@ PyObject *PyArray_OrderFilterND(PyObject *op1, PyObject *op2, int order)
 	ret = (PyArrayObject *)PyArray_SimpleNew(PyArray_NDIM(ap1), PyArray_DIMS(ap1), typenum);
 	if (ret == NULL) goto fail;
 	
-	compare_func = compare_functions[PyArray_TYPE(ap1)];
+	compare_func = compare_functions[PyArray_DESCR(ap1)->type_num];
 	if (compare_func == NULL) {
 		PyErr_SetString(PyExc_ValueError, 
 			"order_filterND not available for this type");
@@ -163,14 +164,13 @@ PyObject *PyArray_OrderFilterND(PyObject *op1, PyObject *op2, int order)
 	
 	if (!(sort_buffer = malloc(n2_nonzero*is1))) goto fail;
 
-	op = PyArray_DATA(ret); os = PyArray_DESCR(ret)->elsize;
-
 	op = PyArray_DATA(ret);
+	os = PyArray_DESCR(ret)->elsize;
 
 	bytes_in_array = PyArray_NDIM(ap1)*sizeof(intp);
 	mode_dep = malloc(bytes_in_array);
 	for (k = 0; k < PyArray_NDIM(ap1); k++) { 
-	  mode_dep[k] = -((PyArray_DIM(ap2, k)-1) >> 1);
+	  mode_dep[k] = -((PyArray_DIMS(ap2)[k]-1) >> 1);
 	}	
 
 	b_ind = (intp *)malloc(bytes_in_array);  /* loop variables */
@@ -205,7 +205,7 @@ PyObject *PyArray_OrderFilterND(PyObject *op1, PyObject *op2, int order)
 	zptr = PyArray_Zero(ap1);
 	if (zptr == NULL) goto fail;
 	ap1_ptr = PyArray_DATA(ap1) + offset1*is1;
-	for (k=0; k < PyArray_NDIM(ap1); k++) {a_ind[k] = mode_dep[k]; check_ind[k] = PyArray_DIM(ap1,k) - PyArray_DIM(ap2,k) - mode_dep[k] - 1;}
+	for (k=0; k < PyArray_NDIM(ap1); k++) {a_ind[k] = mode_dep[k]; check_ind[k] = PyArray_DIMS(ap1)[k] - PyArray_DIMS(ap2)[k] - mode_dep[k] - 1;}
 	a_ind[PyArray_NDIM(ap1)-1]--;
 	i = PyArray_Size((PyObject *)ret);
 	while (i--) {
@@ -219,7 +219,7 @@ PyObject *PyArray_OrderFilterND(PyObject *op1, PyObject *op2, int order)
 	    
 	  k = PyArray_NDIM(ap1) - 1;
 	  while(--incr) {
-	    a_ind[k] -= PyArray_DIM(ret, k) - 1;   /* Return to start */
+	    a_ind[k] -= PyArray_DIMS(ret)[k] - 1;   /* Return to start */
 	    k--;
 	  }
 	  ap1_ptr += offsets2[k]*is1;
@@ -234,7 +234,7 @@ PyObject *PyArray_OrderFilterND(PyObject *op1, PyObject *op2, int order)
 	  qsort(sort_buffer, n2_nonzero, is1, compare_func);
 	  memcpy(op, sort_buffer + order*is1, os);
 
-	  incr = increment(ret_ind, PyArray_NDIM(ret), PyArray_DIMS(ret)); /* increment index counter */
+	  incr = increment(ret_ind,PyArray_NDIM(ret),PyArray_DIMS(ret)); /* increment index counter */
 	  op += os;   /* increment to next output index */
 
 	}
@@ -310,13 +310,11 @@ static PyObject *sigtools_convolve2d(PyObject *NPY_UNUSED(dummy), PyObject *args
     n1 = PyArray_Size((PyObject *)ain1);
     n2 = PyArray_Size((PyObject *)ain2);
     
-    /* Swap if first argument is not the largest */
-    if (n1 < n2) { aout = ain1; ain1 = ain2; ain2 = aout; aout = NULL; }
     aout_dimens = malloc(PyArray_NDIM(ain1)*sizeof(intp));
     switch(mode & OUTSIZE_MASK) {
     case VALID:
 	for (i = 0; i < PyArray_NDIM(ain1); i++) { 
-	    aout_dimens[i] = PyArray_DIM(ain1, i) - PyArray_DIM(ain2,i) + 1;
+	    aout_dimens[i] = PyArray_DIMS(ain1)[i] - PyArray_DIMS(ain2)[i] + 1;
 	    if (aout_dimens[i] < 0) {
 		PyErr_SetString(PyExc_ValueError, "no part of the output is valid, use option 1 (same) or 2 (full) for third argument");
 		goto fail;
@@ -324,10 +322,10 @@ static PyObject *sigtools_convolve2d(PyObject *NPY_UNUSED(dummy), PyObject *args
 	}
 	break;
     case SAME:
-	for (i = 0; i < PyArray_NDIM(ain1); i++) { aout_dimens[i] = PyArray_DIM(ain1,i);}
+	for (i = 0; i < PyArray_NDIM(ain1); i++) { aout_dimens[i] = PyArray_DIMS(ain1)[i];}
 	break;
     case FULL:
-	for (i = 0; i < PyArray_NDIM(ain1); i++) { aout_dimens[i] = PyArray_DIM(ain1, i) + PyArray_DIM(ain2, i) - 1;}
+	for (i = 0; i < PyArray_NDIM(ain1); i++) { aout_dimens[i] = PyArray_DIMS(ain1)[i] + PyArray_DIMS(ain2)[i] - 1;}
 	break;
     default: 
 	PyErr_SetString(PyExc_ValueError, 
@@ -443,8 +441,8 @@ static PyObject *sigtools_remez(PyObject *NPY_UNUSED(dummy), PyObject *args)
 	if (a_weight == NULL) goto fail;
 
 
-	numbands = PyArray_DIM(a_des,0);
-	if ((PyArray_DIM(a_bands, 0) != 2*numbands) || (PyArray_DIM(a_weight, 0) != numbands)) {
+	numbands = PyArray_DIMS(a_des)[0];
+	if ((PyArray_DIMS(a_bands)[0] != 2*numbands) || (PyArray_DIMS(a_weight)[0] != numbands)) {
 	  PyErr_SetString(PyExc_ValueError,
 			  "The inputs desired and weight must have same length.\n  The input bands must have twice this length.");
 	  goto fail;
@@ -475,8 +473,11 @@ static PyObject *sigtools_remez(PyObject *NPY_UNUSED(dummy), PyObject *args)
 	h = (PyArrayObject *)PyArray_SimpleNew(1, &ret_dimens, PyArray_DOUBLE);
 	if (h == NULL) goto fail;
 
-	err=pre_remez((double *)PyArray_DATA(h), numtaps, numbands, (double *)PyArray_DATA(a_bands), 
-                  (double *)PyArray_DATA(a_des), (double *)PyArray_DATA(a_weight), type, maxiter, grid_density);
+	err=pre_remez((double *)PyArray_DATA(h), numtaps, numbands,
+		      (double *)PyArray_DATA(a_bands),
+		      (double *)PyArray_DATA(a_des),
+		      (double *)PyArray_DATA(a_weight),
+		      type, maxiter, grid_density);
         if (err < 0) {
 	  if (err == -1) {
             sprintf(mystr,"Failure to converge after %d iterations.\n      Design may still be correct.",maxiter);

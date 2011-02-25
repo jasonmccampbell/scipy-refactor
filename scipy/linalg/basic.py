@@ -12,7 +12,7 @@ import numpy
 
 from flinalg import get_flinalg_funcs
 from lapack import get_lapack_funcs
-from misc import LinAlgError
+from misc import LinAlgError, _datacopied
 from scipy.linalg import calc_lwork
 from funcinfo import get_func_info
 import decomp_svd
@@ -50,8 +50,8 @@ def solve(a, b, sym_pos=False, lower=False, overwrite_a=False, overwrite_b=False
         raise ValueError('expected square matrix')
     if a1.shape[0] != b1.shape[0]:
         raise ValueError('incompatible dimensions')
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
-    overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
+    overwrite_a = overwrite_a or _datacopied(a1, a)
+    overwrite_b = overwrite_b or _datacopied(b1, b)
     if debug:
         print 'solve:overwrite_a=',overwrite_a
         print 'solve:overwrite_b=',overwrite_b
@@ -118,7 +118,7 @@ def solve_triangular(a, b, trans=0, lower=False, unit_diagonal=False,
         raise ValueError('expected square matrix')
     if a1.shape[0] != b1.shape[0]:
         raise ValueError('incompatible dimensions')
-    overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
+    overwrite_b = overwrite_b or _datacopied(b1, b)
     if debug:
         print 'solve:overwrite_b=',overwrite_b
     trans = {'N': 0, 'T': 1, 'C': 2}.get(trans, trans)
@@ -175,7 +175,7 @@ def solve_banded((l, u), ab, b, overwrite_ab=False, overwrite_b=False,
         raise ValueError("invalid values for the number of lower and upper diagonals:"
                 " l+u+1 (%d) does not equal ab.shape[0] (%d)" % (l+u+1, ab.shape[0]))
 
-    overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
+    overwrite_b = overwrite_b or _datacopied(b1, b)
 
     gbsv, = get_lapack_funcs(('gbsv',), (a1, b1))
     a2 = zeros((2*l+u+1, a1.shape[1]), dtype=get_func_info(gbsv).dtype)
@@ -286,7 +286,7 @@ def inv(a, overwrite_a=False):
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError('expected square matrix')
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or _datacopied(a1, a)
     #XXX: I found no advantage or disadvantage of using finv.
 ##     finv, = get_flinalg_funcs(('inv',),(a1,))
 ##     if finv is not None:
@@ -354,7 +354,7 @@ def det(a, overwrite_a=False):
     a1 = asarray_chkfinite(a)
     if len(a1.shape) != 2 or a1.shape[0] != a1.shape[1]:
         raise ValueError('expected square matrix')
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
+    overwrite_a = overwrite_a or _datacopied(a1, a)
     fdet, = get_flinalg_funcs(('det',), (a1,))
     a_det, info = fdet(a1, overwrite_a=overwrite_a)
     if info < 0:
@@ -431,15 +431,13 @@ def lstsq(a, b, cond=None, overwrite_a=False, overwrite_b=False):
         else:
             b2[:m,0] = b1
         b1 = b2
-    overwrite_a = overwrite_a or (a1 is not a and not hasattr(a,'__array__'))
-    overwrite_b = overwrite_b or (b1 is not b and not hasattr(b,'__array__'))
-    if gelss_info.module_name[:7] == 'flapack':
-        lwork = calc_lwork.gelss(gelss_info.prefix, m, n, nrhs)[1]
-        v, x, s, rank, info = gelss(a1, b1,
-                                    cond=-1 if cond is None else cond,
-                                    lwork=lwork,
-                                    overwrite_a=overwrite_a,
-                                    overwrite_b=overwrite_b)
+    overwrite_a = overwrite_a or _datacopied(a1, a)
+    overwrite_b = overwrite_b or _datacopied(b1, b)
+    if gelss.module_name[:7] == 'flapack':
+        lwork = calc_lwork.gelss(gelss.prefix, m, n, nrhs)[1]
+        v, x, s, rank, info = gelss(a1, b1, cond=cond, lwork=lwork,
+                                                overwrite_a=overwrite_a,
+                                                overwrite_b=overwrite_b)
     else:
         raise NotImplementedError('calling gelss from %s' % get_func_info(gelss).module_name)
     if info > 0:

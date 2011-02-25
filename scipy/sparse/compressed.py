@@ -17,15 +17,8 @@ from sputils import upcast, to_native, isdense, isshape, getdtype, \
 class _cs_matrix(_data_matrix):
     """base matrix class for compressed row and column oriented matrices"""
 
-    def __init__(self, arg1, shape=None, dtype=None, copy=False, dims=None, nzmax=None):
+    def __init__(self, arg1, shape=None, dtype=None, copy=False):
         _data_matrix.__init__(self)
-
-        if dims is not None:
-            warn("dims= is deprecated, use shape= instead", DeprecationWarning)
-            shape=dims
-
-        if nzmax is not None:
-            warn("nzmax= is deprecated", DeprecationWarning)
 
 
         if isspmatrix(arg1):
@@ -305,10 +298,6 @@ class _cs_matrix(_data_matrix):
         return self.__class__((data,indices,indptr),shape=(M,N))
 
 
-    @np.deprecate
-    def getdata(self, ind):
-        return self.data[ind]
-
     def diagonal(self):
         """Returns the main diagonal of the matrix
         """
@@ -483,12 +472,12 @@ class _cs_matrix(_data_matrix):
             indxs = np.where(minor_index == self.indices[start:end])[0]
 
             num_matches = len(indxs)
-    
-            
+
+
             if not np.isscalar(val):
                 raise ValueError('setting an array element with a sequence')
 
-            val = self.dtype.type(val) 
+            val = self.dtype.type(val)
 
             if num_matches == 0:
                 #entry not already present
@@ -629,19 +618,6 @@ class _cs_matrix(_data_matrix):
             fn = sparsetools.csr_sort_indices
             fn( len(self.indptr) - 1, self.indptr, self.indices, self.data)
             self.has_sorted_indices = True
-
-    #TODO remove after 0.7
-    def ensure_sorted_indices(self, inplace=False):
-        """Return a copy of this matrix where the column indices are sorted
-        """
-        warn('ensure_sorted_indices is deprecated, ' \
-                'use sorted_indices() or sort_indices() instead', \
-                DeprecationWarning)
-
-        if inplace:
-            self.sort_indices()
-        else:
-            return self.sorted_indices()
 
     def prune(self):
         """Remove empty space after all non-zero elements.

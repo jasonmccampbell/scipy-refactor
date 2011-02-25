@@ -213,21 +213,24 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_26_23;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_45_23;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_45_23;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_dtype_50_24;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_str_50_30;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_dtype_52_24;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_str_52_30;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getslice_52_34;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_52_45;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_52_40;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ascontiguousarray_54_12;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_54_30;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_view_55_13;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_55_18;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_reshape_56_14;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_56_29;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getslice_56_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_56_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_dtype_51_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_str_51_30;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_58_30;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getslice_58_36;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_58_42;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_dtype_60_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_str_60_30;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getslice_60_34;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_60_45;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_60_40;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_shape_61_26;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getslice_61_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ascontiguousarray_63_12;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_63_30;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_view_64_13;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_64_18;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_reshape_65_14;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_65_22;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_189_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_189_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_191_16;
@@ -237,13 +240,8 @@ static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ _
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_199_49;
 static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_199_49;
 static CodeContext^ __pyx_context;
-/* Cython code section 'dotnet_globals' */
-
-
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
-
 /* Cython code section 'decls' */
+static int^ __pyx_int_0;
 /* Cython code section 'all_the_rest' */
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
@@ -456,6 +454,7 @@ static  NumpyDotNet::ndarray^ chars_to_strings(System::Object^ __pyx_v_in_arr) {
   __pyx_t_5numpy_npy_intp *__pyx_v_dims;
   __pyx_t_5numpy_npy_intp __pyx_v_last_dim;
   System::Object^ __pyx_v_new_dt_str;
+  System::Object^ __pyx_v_out_shape;
   NumpyDotNet::ndarray^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -464,6 +463,7 @@ static  NumpyDotNet::ndarray^ chars_to_strings(System::Object^ __pyx_v_in_arr) {
   System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
   __pyx_v_new_dt_str = nullptr;
+  __pyx_v_out_shape = nullptr;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":44
  *        ``arr``
@@ -494,7 +494,7 @@ static  NumpyDotNet::ndarray^ chars_to_strings(System::Object^ __pyx_v_in_arr) {
  *     cdef int ndim = arr.ndim
  *     cdef cnp.npy_intp *dims = cnp.PyArray_DIMS(arr)             # <<<<<<<<<<<<<<
  *     cdef cnp.npy_intp last_dim = dims[ndim-1]
- *     cdef object new_dt_str
+ *     cdef object new_dt_str, out_shape
  */
   __pyx_v_dims = PyArray_DIMS(__pyx_v_arr);
 
@@ -502,112 +502,164 @@ static  NumpyDotNet::ndarray^ chars_to_strings(System::Object^ __pyx_v_in_arr) {
  *     cdef int ndim = arr.ndim
  *     cdef cnp.npy_intp *dims = cnp.PyArray_DIMS(arr)
  *     cdef cnp.npy_intp last_dim = dims[ndim-1]             # <<<<<<<<<<<<<<
- *     cdef object new_dt_str
+ *     cdef object new_dt_str, out_shape
  *     if last_dim == 0: # deal with empty array case
  */
   __pyx_v_last_dim = (__pyx_v_dims[(__pyx_v_ndim - 1)]);
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":49
  *     cdef cnp.npy_intp last_dim = dims[ndim-1]
- *     cdef object new_dt_str
+ *     cdef object new_dt_str, out_shape
  *     if last_dim == 0: # deal with empty array case             # <<<<<<<<<<<<<<
+ *         # Started with U1 - which is OK for us
  *         new_dt_str = arr.dtype.str
- *     else: # make new dtype string with N appended
  */
   __pyx_t_3 = (__pyx_v_last_dim == 0);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":50
- *     cdef object new_dt_str
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":51
  *     if last_dim == 0: # deal with empty array case
+ *         # Started with U1 - which is OK for us
  *         new_dt_str = arr.dtype.str             # <<<<<<<<<<<<<<
- *     else: # make new dtype string with N appended
- *         new_dt_str = arr.dtype.str[:-1] + str(last_dim)
+ *         # So far we only know this is an empty array and that the last length is
+ *         # 0.  The other dimensions could be non-zero.  We set the next to last
  */
-    __pyx_t_1 = __site_get_dtype_50_24->Target(__site_get_dtype_50_24, ((System::Object^)__pyx_v_arr), __pyx_context);
-    __pyx_t_4 = __site_get_str_50_30->Target(__site_get_str_50_30, __pyx_t_1, __pyx_context);
+    __pyx_t_1 = __site_get_dtype_51_24->Target(__site_get_dtype_51_24, ((System::Object^)__pyx_v_arr), __pyx_context);
+    __pyx_t_4 = __site_get_str_51_30->Target(__site_get_str_51_30, __pyx_t_1, __pyx_context);
     __pyx_t_1 = nullptr;
     __pyx_v_new_dt_str = __pyx_t_4;
     __pyx_t_4 = nullptr;
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":55
+ *         # 0.  The other dimensions could be non-zero.  We set the next to last
+ *         # dimension to zero to signal emptiness
+ *         if ndim == 2:             # <<<<<<<<<<<<<<
+ *             out_shape = (0,)
+ *         else:
+ */
+    __pyx_t_3 = (__pyx_v_ndim == 2);
+    if (__pyx_t_3) {
+
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":56
+ *         # dimension to zero to signal emptiness
+ *         if ndim == 2:
+ *             out_shape = (0,)             # <<<<<<<<<<<<<<
+ *         else:
+ *             out_shape = in_arr.shape[:-2] + (0,)
+ */
+      __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_int_0});
+      __pyx_v_out_shape = __pyx_t_4;
+      __pyx_t_4 = nullptr;
+      goto __pyx_L4;
+    }
+    /*else*/ {
+
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":58
+ *             out_shape = (0,)
+ *         else:
+ *             out_shape = in_arr.shape[:-2] + (0,)             # <<<<<<<<<<<<<<
+ *     else: # make new dtype string with N appended
+ *         new_dt_str = arr.dtype.str[:-1] + str(last_dim)
+ */
+      __pyx_t_4 = __site_get_shape_58_30->Target(__site_get_shape_58_30, __pyx_v_in_arr, __pyx_context);
+      __pyx_t_1 = __site_getslice_58_36->Target(__site_getslice_58_36, __pyx_t_4, 0, -2);
+      __pyx_t_4 = nullptr;
+      __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_int_0});
+      __pyx_t_5 = __site_op_add_58_42->Target(__site_op_add_58_42, __pyx_t_1, __pyx_t_4);
+      __pyx_t_1 = nullptr;
+      __pyx_t_4 = nullptr;
+      __pyx_v_out_shape = __pyx_t_5;
+      __pyx_t_5 = nullptr;
+    }
+    __pyx_L4:;
     goto __pyx_L3;
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":52
- *         new_dt_str = arr.dtype.str
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":60
+ *             out_shape = in_arr.shape[:-2] + (0,)
  *     else: # make new dtype string with N appended
  *         new_dt_str = arr.dtype.str[:-1] + str(last_dim)             # <<<<<<<<<<<<<<
+ *         out_shape = in_arr.shape[:-1]
+ *     # Copy to deal with F ordered arrays
+ */
+    __pyx_t_5 = __site_get_dtype_60_24->Target(__site_get_dtype_60_24, ((System::Object^)__pyx_v_arr), __pyx_context);
+    __pyx_t_4 = __site_get_str_60_30->Target(__site_get_str_60_30, __pyx_t_5, __pyx_context);
+    __pyx_t_5 = nullptr;
+    __pyx_t_5 = __site_getslice_60_34->Target(__site_getslice_60_34, __pyx_t_4, 0, -1);
+    __pyx_t_4 = nullptr;
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "str");
+    __pyx_t_1 = __pyx_v_last_dim;
+    __pyx_t_6 = __site_call1_60_45->Target(__site_call1_60_45, __pyx_context, ((System::Object^)__pyx_t_4), __pyx_t_1);
+    __pyx_t_4 = nullptr;
+    __pyx_t_1 = nullptr;
+    __pyx_t_1 = __site_op_add_60_40->Target(__site_op_add_60_40, __pyx_t_5, __pyx_t_6);
+    __pyx_t_5 = nullptr;
+    __pyx_t_6 = nullptr;
+    __pyx_v_new_dt_str = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":61
+ *     else: # make new dtype string with N appended
+ *         new_dt_str = arr.dtype.str[:-1] + str(last_dim)
+ *         out_shape = in_arr.shape[:-1]             # <<<<<<<<<<<<<<
  *     # Copy to deal with F ordered arrays
  *     arr = np.ascontiguousarray(arr)
  */
-    __pyx_t_4 = __site_get_dtype_52_24->Target(__site_get_dtype_52_24, ((System::Object^)__pyx_v_arr), __pyx_context);
-    __pyx_t_1 = __site_get_str_52_30->Target(__site_get_str_52_30, __pyx_t_4, __pyx_context);
-    __pyx_t_4 = nullptr;
-    __pyx_t_4 = __site_getslice_52_34->Target(__site_getslice_52_34, __pyx_t_1, 0, -1);
+    __pyx_t_1 = __site_get_shape_61_26->Target(__site_get_shape_61_26, __pyx_v_in_arr, __pyx_context);
+    __pyx_t_6 = __site_getslice_61_32->Target(__site_getslice_61_32, __pyx_t_1, 0, -1);
     __pyx_t_1 = nullptr;
-    __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "str");
-    __pyx_t_5 = __pyx_v_last_dim;
-    __pyx_t_6 = __site_call1_52_45->Target(__site_call1_52_45, __pyx_context, ((System::Object^)__pyx_t_1), __pyx_t_5);
-    __pyx_t_1 = nullptr;
-    __pyx_t_5 = nullptr;
-    __pyx_t_5 = __site_op_add_52_40->Target(__site_op_add_52_40, __pyx_t_4, __pyx_t_6);
-    __pyx_t_4 = nullptr;
+    __pyx_v_out_shape = __pyx_t_6;
     __pyx_t_6 = nullptr;
-    __pyx_v_new_dt_str = __pyx_t_5;
-    __pyx_t_5 = nullptr;
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":54
- *         new_dt_str = arr.dtype.str[:-1] + str(last_dim)
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":63
+ *         out_shape = in_arr.shape[:-1]
  *     # Copy to deal with F ordered arrays
  *     arr = np.ascontiguousarray(arr)             # <<<<<<<<<<<<<<
  *     arr = arr.view(new_dt_str)
- *     return arr.reshape(in_arr.shape[:-1])
+ *     return arr.reshape(out_shape)
  */
-  __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "np");
-  __pyx_t_6 = __site_get_ascontiguousarray_54_12->Target(__site_get_ascontiguousarray_54_12, __pyx_t_5, __pyx_context);
-  __pyx_t_5 = nullptr;
-  __pyx_t_5 = __site_call1_54_30->Target(__site_call1_54_30, __pyx_context, __pyx_t_6, ((System::Object^)__pyx_v_arr));
+  __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_1 = __site_get_ascontiguousarray_63_12->Target(__site_get_ascontiguousarray_63_12, __pyx_t_6, __pyx_context);
   __pyx_t_6 = nullptr;
-  if (__pyx_t_5 == nullptr || dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_5) == nullptr) {
-    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-  }
-  __pyx_v_arr = ((NumpyDotNet::ndarray^)__pyx_t_5);
-  __pyx_t_5 = nullptr;
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":55
- *     # Copy to deal with F ordered arrays
- *     arr = np.ascontiguousarray(arr)
- *     arr = arr.view(new_dt_str)             # <<<<<<<<<<<<<<
- *     return arr.reshape(in_arr.shape[:-1])
- */
-  __pyx_t_5 = __site_get_view_55_13->Target(__site_get_view_55_13, ((System::Object^)__pyx_v_arr), __pyx_context);
-  __pyx_t_6 = __site_call1_55_18->Target(__site_call1_55_18, __pyx_context, __pyx_t_5, __pyx_v_new_dt_str);
-  __pyx_t_5 = nullptr;
+  __pyx_t_6 = __site_call1_63_30->Target(__site_call1_63_30, __pyx_context, __pyx_t_1, ((System::Object^)__pyx_v_arr));
+  __pyx_t_1 = nullptr;
   if (__pyx_t_6 == nullptr || dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_6) == nullptr) {
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
   __pyx_v_arr = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":56
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":64
+ *     # Copy to deal with F ordered arrays
  *     arr = np.ascontiguousarray(arr)
- *     arr = arr.view(new_dt_str)
- *     return arr.reshape(in_arr.shape[:-1])             # <<<<<<<<<<<<<<
+ *     arr = arr.view(new_dt_str)             # <<<<<<<<<<<<<<
+ *     return arr.reshape(out_shape)
  */
-  __pyx_t_6 = __site_get_reshape_56_14->Target(__site_get_reshape_56_14, ((System::Object^)__pyx_v_arr), __pyx_context);
-  __pyx_t_5 = __site_get_shape_56_29->Target(__site_get_shape_56_29, __pyx_v_in_arr, __pyx_context);
-  __pyx_t_4 = __site_getslice_56_35->Target(__site_getslice_56_35, __pyx_t_5, 0, -1);
-  __pyx_t_5 = nullptr;
-  __pyx_t_5 = __site_call1_56_22->Target(__site_call1_56_22, __pyx_context, __pyx_t_6, __pyx_t_4);
+  __pyx_t_6 = __site_get_view_64_13->Target(__site_get_view_64_13, ((System::Object^)__pyx_v_arr), __pyx_context);
+  __pyx_t_1 = __site_call1_64_18->Target(__site_call1_64_18, __pyx_context, __pyx_t_6, __pyx_v_new_dt_str);
   __pyx_t_6 = nullptr;
-  __pyx_t_4 = nullptr;
-  if (__pyx_t_5 == nullptr || dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_5) == nullptr) {
+  if (__pyx_t_1 == nullptr || dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
-  __pyx_r = ((NumpyDotNet::ndarray^)__pyx_t_5);
-  __pyx_t_5 = nullptr;
+  __pyx_v_arr = ((NumpyDotNet::ndarray^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":65
+ *     arr = np.ascontiguousarray(arr)
+ *     arr = arr.view(new_dt_str)
+ *     return arr.reshape(out_shape)             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = __site_get_reshape_65_14->Target(__site_get_reshape_65_14, ((System::Object^)__pyx_v_arr), __pyx_context);
+  __pyx_t_6 = __site_call1_65_22->Target(__site_call1_65_22, __pyx_context, __pyx_t_1, __pyx_v_out_shape);
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_6 == nullptr || dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_6) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_r = ((NumpyDotNet::ndarray^)__pyx_t_6);
+  __pyx_t_6 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -819,6 +871,7 @@ static CYTHON_INLINE void import_array(void) {
 /* Cython code section 'init_globals' */
 
 static int __Pyx_InitGlobals(void) {
+  __pyx_int_0 = 0;
 
   return 0;
 }
@@ -849,21 +902,24 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_call0_26_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
   __site_get_ndim_45_23 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
   __site_cvt_int_45_23 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_dtype_50_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "dtype", false));
-  __site_get_str_50_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "str", false));
-  __site_get_dtype_52_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "dtype", false));
-  __site_get_str_52_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "str", false));
-  __site_getslice_52_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetSliceBinder(__pyx_context));
-  __site_call1_52_45 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_add_52_40 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_get_ascontiguousarray_54_12 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ascontiguousarray", false));
-  __site_call1_54_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_view_55_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "view", false));
-  __site_call1_55_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_reshape_56_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "reshape", false));
-  __site_get_shape_56_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
-  __site_getslice_56_35 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetSliceBinder(__pyx_context));
-  __site_call1_56_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_dtype_51_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "dtype", false));
+  __site_get_str_51_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "str", false));
+  __site_get_shape_58_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
+  __site_getslice_58_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetSliceBinder(__pyx_context));
+  __site_op_add_58_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_get_dtype_60_24 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "dtype", false));
+  __site_get_str_60_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "str", false));
+  __site_getslice_60_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetSliceBinder(__pyx_context));
+  __site_call1_60_45 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_60_40 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_get_shape_61_26 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "shape", false));
+  __site_getslice_61_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetSliceBinder(__pyx_context));
+  __site_get_ascontiguousarray_63_12 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ascontiguousarray", false));
+  __site_call1_63_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_view_64_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "view", false));
+  __site_call1_64_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_reshape_65_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "reshape", false));
+  __site_call1_65_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_189_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_189_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_191_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -883,6 +939,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Create function pointers ---*/
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
+  PythonDictionary^ __pyx_t_2;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\io\matlab\mio_utils.pyx":5
  * '''
@@ -900,9 +957,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ''' Utilities for generic processing of return arrays from read
  * '''
  */
-  __pyx_t_1 = PythonOps::MakeEmptyDict();
-  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
-  __pyx_t_1 = nullptr;
+  __pyx_t_2 = PythonOps::MakeEmptyDict();
+  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
+  __pyx_t_2 = nullptr;
 
   /* "C:\Python26\lib\site-packages\Cython\Includes\numpy.pxd":201
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
@@ -914,6 +971,12 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'cleanup_globals' */
 /* Cython code section 'cleanup_module' */
 /* Cython code section 'main_method' */
+/* Cython code section 'dotnet_globals' */
+
+
+static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */

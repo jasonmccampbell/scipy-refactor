@@ -114,83 +114,24 @@ class TestBasicStats(TestCase):
         II. C. Basic Statistics
     """
 
-    def test_meanX(self):
-        y = np.mean(X)
-        assert_almost_equal(y, 5.0)
+    dprec = np.finfo(np.float64).precision
 
-    def test_stdX(self):
-        y = np.std(X, ddof=1)
-        assert_almost_equal(y, 2.738612788)
-
+    # Really need to write these tests to handle missing values properly
     def test_tmeanX(self):
         y = stats.tmean(X, (2, 8), (True, True))
-        assert_almost_equal(y, 5.0)
+        assert_approx_equal(y, 5.0, significant=TestBasicStats.dprec)
 
     def test_tvarX(self):
         y = stats.tvar(X, (2, 8), (True, True))
-        assert_almost_equal(y, 4.6666666666666661)
+        assert_approx_equal(y, 4.6666666666666661,
+                            significant=TestBasicStats.dprec)
 
     def test_tstdX(self):
         y = stats.tstd(X, (2, 8), (True, True))
-        assert_almost_equal(y, 2.1602468994692865)
+        assert_approx_equal(y, 2.1602468994692865,
+                            significant=TestBasicStats.dprec)
 
-    def test_meanZERO(self):
-        y = np.mean(ZERO)
-        assert_almost_equal(y, 0.0)
 
-    def test_stdZERO(self):
-        y = np.std(ZERO, ddof=1)
-        assert_almost_equal(y, 0.0)
-
-##    Really need to write these tests to handle missing values properly
-##    def test_meanMISS(self):
-##        y = np.mean(MISS)
-##        assert_almost_equal(y, 0.0)
-##
-##    def test_stdMISS(self):
-##        y = stats.stdev(MISS)
-##        assert_almost_equal(y, 0.0)
-
-    def test_meanBIG(self):
-        y = np.mean(BIG)
-
-        assert_almost_equal(y, 99999995.00)
-
-    def test_stdBIG(self):
-        y = np.std(BIG, ddof=1)
-        assert_almost_equal(y, 2.738612788)
-
-    def test_meanLITTLE(self):
-        y = np.mean(LITTLE)
-        assert_approx_equal(y, 0.999999950)
-
-    def test_stdLITTLE(self):
-        y = np.std(LITTLE, ddof=1)
-        assert_approx_equal(y, 2.738612788e-8)
-
-    def test_meanHUGE(self):
-        y = np.mean(HUGE)
-        assert_approx_equal(y, 5.00000e+12)
-
-    def test_stdHUGE(self):
-        y = np.std(HUGE, ddof=1)
-        assert_approx_equal(y, 2.738612788e12)
-
-    def test_meanTINY(self):
-        y = np.mean(TINY)
-        assert_almost_equal(y, 0.0)
-
-    def test_stdTINY(self):
-        y = np.std(TINY, ddof=1)
-        assert_almost_equal(y, 0.0)
-
-    def test_meanROUND(self):
-        y = np.mean(ROUND)
-        assert_approx_equal(y, 4.500000000)
-
-    def test_stdROUND(self):
-        y = np.std(ROUND, ddof=1)
-        assert_approx_equal(y, 2.738612788)
 
 class TestNanFunc(TestCase):
     def __init__(self, *args, **kw):
@@ -217,7 +158,11 @@ class TestNanFunc(TestCase):
 
     def test_nanmean_all(self):
         """Check nanmean when all values are nan."""
-        m = stats.nanmean(self.Xall)
+        olderr = np.seterr(all='ignore')
+        try:
+            m = stats.nanmean(self.Xall)
+        finally:
+            np.seterr(**olderr)
         assert_(np.isnan(m))
 
     def test_nanstd_none(self):
@@ -232,7 +177,11 @@ class TestNanFunc(TestCase):
 
     def test_nanstd_all(self):
         """Check nanstd when all values are nan."""
-        s = stats.nanstd(self.Xall)
+        olderr = np.seterr(all='ignore')
+        try:
+            s = stats.nanstd(self.Xall)
+        finally:
+            np.seterr(**olderr)
         assert_(np.isnan(s))
 
     def test_nanstd_negative_axis(self):
@@ -375,6 +324,19 @@ class TestCorrPearsonr(TestCase):
         r = y[0]
         assert_approx_equal(r,1.0)
 
+    def test_r_exactly_pos1(self):
+        a = arange(3.0)
+        b = a
+        r, prob = stats.pearsonr(a,b)
+        assert_equal(r, 1.0)
+        assert_equal(prob, 0.0)
+
+    def test_r_exactly_neg1(self):
+        a = arange(3.0)
+        b = -a
+        r, prob = stats.pearsonr(a,b)
+        assert_equal(r, -1.0)
+        assert_equal(prob, 0.0)
 
 def test_fisher_exact():
     """Some tests to show that fisher_exact() works correctly.
@@ -585,10 +547,41 @@ class TestCorrSpearmanrTies(TestCase):
 ##    should appear on the diagonal and the total should be 899999955.
 ##    If the table cannot hold these values, forget about working with
 ##    census data.  You can also tabulate HUGE against TINY.  There is no
-##    reason a tabulation program should not be able to digtinguish
+##    reason a tabulation program should not be able to distinguish
 ##    different values regardless of their magnitude.
 
 ### I need to figure out how to do this one.
+
+
+def test_kendalltau():
+    """Some tests for kendalltau."""
+
+    # with some ties
+    x1 = [12, 2, 1, 12, 2]
+    x2 = [1, 4, 7, 1, 0]
+    res = (-0.47140452079103173, 0.24821309157521476)
+    expected = stats.kendalltau(x1, x2)
+    assert_approx_equal(res[0], expected[0])
+    assert_approx_equal(res[1], expected[1])
+
+    # check two different sort methods
+    assert_approx_equal(stats.kendalltau(x1, x2, initial_lexsort=False)[1],
+                        stats.kendalltau(x1, x2, initial_lexsort=True)[1])
+
+    # and with larger arrays
+    np.random.seed(7546)
+    x = np.array([np.random.normal(loc=1, scale=1, size=500),
+                np.random.normal(loc=1, scale=1, size=500)])
+    corr = [[1.0, 0.3],
+            [0.3, 1.0]]
+    x = np.dot(np.linalg.cholesky(corr), x)
+    expected = (0.19291382765531062, 1.1337108207276285e-10)
+    res = stats.kendalltau(x[0], x[1])
+    assert_approx_equal(res[0], expected[0])
+    assert_approx_equal(res[1], expected[1])
+
+    # and do we get a tau of 1 for identical inputs?
+    assert_approx_equal(stats.kendalltau([1,1,2], [1,1,2])[0], 1.0)
 
 
 class TestRegression(TestCase):
@@ -829,6 +822,25 @@ class TestHistogram(TestCase):
                                     decimal=2)
 
 
+def test_cumfreq():
+    x = [1, 4, 2, 1, 3, 1]
+    cumfreqs, lowlim, binsize, extrapoints = stats.cumfreq(x, numbins=4)
+    assert_array_almost_equal(cumfreqs, np.array([ 3.,  4.,  5.,  6.]))
+    cumfreqs, lowlim, binsize, extrapoints = stats.cumfreq(x, numbins=4,
+                                                      defaultreallimits=(1.5, 5))
+    assert_(extrapoints==3)
+
+
+def test_relfreq():
+    a = np.array([1, 4, 2, 1, 3, 1])
+    relfreqs, lowlim, binsize, extrapoints = stats.relfreq(a, numbins=4)
+    assert_array_almost_equal(relfreqs, array([0.5, 0.16666667, 0.16666667, 0.16666667]))
+
+    # check array_like input is accepted
+    relfreqs2, lowlim, binsize, extrapoints = stats.relfreq([1, 4, 2, 1, 3, 1], numbins=4)
+    assert_array_almost_equal(relfreqs, relfreqs2)
+
+
 # Utility
 
 def compare_results(res,desired):
@@ -924,54 +936,11 @@ class TestHMean(TestCase):
         assert_array_almost_equal(actual1, desired1, decimal=14)
 
 
-class TestMean(TestCase):
-    def test_basic(self):
-        a = [3,4,5,10,-3,-5,6]
-        af = [3.,4,5,10,-3,-5,-6]
-        Na = len(a)
-        Naf = len(af)
-        mn1 = 0.0
-        for el in a:
-            mn1 += el / float(Na)
-        assert_almost_equal(np.mean(a),mn1,11)
-        mn2 = 0.0
-        for el in af:
-            mn2 += el / float(Naf)
-        assert_almost_equal(np.mean(af),mn2,11)
-
-    def test_2d(self):
-        a = [[1.0, 2.0, 3.0],
-             [2.0, 4.0, 6.0],
-             [8.0, 12.0, 7.0]]
-        A = array(a)
-        N1, N2 = (3, 3)
-        mn1 = zeros(N2, dtype=float)
-        for k in range(N1):
-            mn1 += A[k,:] / N1
-        assert_almost_equal(np.mean(a, axis=0), mn1, decimal=13)
-        mn2 = zeros(N1, dtype=float)
-        for k in range(N2):
-            mn2 += A[:,k]
-        mn2 /= N2
-        assert_almost_equal(np.mean(a, axis=1), mn2, decimal=13)
-
-    def test_ravel(self):
-        a = rand(5,3,5)
-        A = 0
-        for val in ravel(a):
-            A += val
-        assert_almost_equal(np.mean(a,axis=None),A/(5*3.0*5))
-
 class TestPercentile(TestCase):
     def setUp(self):
         self.a1 = [3,4,5,10,-3,-5,6]
         self.a2 = [3,-6,-2,8,7,4,2,1]
         self.a3 = [3.,4,5,10,-3,-5,-6,7.0]
-
-    def test_median(self):
-        assert_equal(np.median(self.a1), 4)
-        assert_equal(np.median(self.a2), 2.5)
-        assert_equal(np.median(self.a3), 3.5)
 
     def test_percentile(self):
         x = arange(8) * 0.5
@@ -989,24 +958,6 @@ class TestPercentile(TestCase):
                            [1,1,1])
 
 
-class TestStd(TestCase):
-    def test_basic(self):
-        a = [3,4,5,10,-3,-5,6]
-        b = [3,4,5,10,-3,-5,-6]
-        assert_almost_equal(np.std(a, ddof=1),5.2098807225172772,11)
-        assert_almost_equal(np.std(b, ddof=1),5.9281411203561225,11)
-
-    def test_2d(self):
-        a = [[1.0, 2.0, 3.0],
-             [2.0, 4.0, 6.0],
-             [8.0, 12.0, 7.0]]
-        b1 = array((3.7859388972001824, 5.2915026221291814,
-                    2.0816659994661335))
-        b2 = array((1.0,2.0,2.64575131106))
-        assert_array_almost_equal(np.std(a,ddof=1,axis=0),b1,11)
-        assert_array_almost_equal(np.std(a,ddof=1,axis=1),b2,11)
-
-
 class TestCMedian(TestCase):
     def test_basic(self):
         data = [1,2,3,1,5,3,6,4,3,2,4,3,5,2.0]
@@ -1014,27 +965,6 @@ class TestCMedian(TestCase):
         assert_almost_equal(stats.cmedian(data,3),3.083333333333333)
         assert_almost_equal(stats.cmedian(data),3.0020020020020022)
 
-class TestMedian(TestCase):
-    def test_basic(self):
-        data1 = [1,3,5,2,3,1,19,-10,2,4.0]
-        data2 = [3,5,1,10,23,-10,3,-2,6,8,15]
-        assert_almost_equal(np.median(data1),2.5)
-        assert_almost_equal(np.median(data2),5)
-
-    def test_basic2(self):
-        a1 = [3,4,5,10,-3,-5,6]
-        a2 = [3,-6,-2,8,7,4,2,1]
-        a3 = [3.,4,5,10,-3,-5,-6,7.0]
-        assert_equal(np.median(a1),4)
-        assert_equal(np.median(a2),2.5)
-        assert_equal(np.median(a3),3.5)
-
-    def test_axis(self):
-        """Regression test for #760."""
-        a1 = np.array([[3,4,5], [10,-3,-5]])
-        assert_equal(np.median(a1), 3.5)
-        assert_equal(np.median(a1, axis=0), np.array([6.5, 0.5, 0.]))
-        assert_equal(np.median(a1, axis=-1), np.array([4., -3]))
 
 class TestMode(TestCase):
     def test_basic(self):
@@ -1049,35 +979,6 @@ class TestVariability(TestCase):
          note that length(testcase) = 4
     """
     testcase = [1,2,3,4]
-    def test_std(self):
-        y = np.std(self.testcase, ddof=1)
-        assert_approx_equal(y,1.290994449)
-
-    def test_var(self):
-        """
-        var(testcase) = 1.666666667 """
-        #y = stats.var(self.shoes[0])
-        #assert_approx_equal(y,6.009)
-        y = np.var(self.testcase)
-        assert_approx_equal(y,1.25)
-        y = np.var(self.testcase, ddof=1)
-        assert_approx_equal(y,1.666666667)
-
-    def test_samplevar(self):
-        """
-        R does not have 'samplevar' so the following was used
-        var(testcase)*(4-1)/4  where 4 = length(testcase)
-        """
-        #y = stats.samplevar(self.shoes[0])
-        #assert_approx_equal(y,5.4081)
-        y = stats.samplevar(self.testcase)
-        assert_approx_equal(y,1.25)
-
-    def test_samplestd(self):
-        #y = stats.samplestd(self.shoes[0])
-        #assert_approx_equal(y,2.325532197)
-        y = stats.samplestd(self.testcase)
-        assert_approx_equal(y,1.118033989)
 
     def test_signaltonoise(self):
         """
@@ -1088,15 +989,6 @@ class TestVariability(TestCase):
         y = stats.signaltonoise(self.testcase)
         assert_approx_equal(y,2.236067977)
 
-    def test_stderr(self):
-        """
-        this is not in R, so used
-        sqrt(var(testcase))/sqrt(4)
-        """
-##        y = stats.stderr(self.shoes[0])
-##        assert_approx_equal(y,0.775177399)
-        y = stats.stderr(self.testcase)
-        assert_approx_equal(y,0.6454972244)
     def test_sem(self):
         """
         this is not in R, so used
@@ -1107,28 +999,10 @@ class TestVariability(TestCase):
         y = stats.sem(self.testcase)
         assert_approx_equal(y,0.6454972244)
 
-    def test_z(self):
-        """
-        not in R, so used
-        (10-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
-        """
-        y = stats.z(self.testcase,np.mean(self.testcase, axis=0))
-        assert_almost_equal(y,0.0)
-
-    def test_zs(self):
-        """
-        not in R, so tested by using
-        (testcase[i]-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
-        """
-        y = stats.zs(self.testcase)
-        desired = ([-1.3416407864999, -0.44721359549996 , 0.44721359549996 , 1.3416407864999])
-        assert_array_almost_equal(desired,y,decimal=12)
-
     def test_zmap(self):
         """
         not in R, so tested by using
         (testcase[i]-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
-        copied from test_zs
         """
         y = stats.zmap(self.testcase,self.testcase)
         desired = ([-1.3416407864999, -0.44721359549996 , 0.44721359549996 , 1.3416407864999])
@@ -1138,7 +1012,6 @@ class TestVariability(TestCase):
         """
         not in R, so tested by using
         (testcase[i]-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
-        copied from test_zs as regression test for new function
         """
         y = stats.zscore(self.testcase)
         desired = ([-1.3416407864999, -0.44721359549996 , 0.44721359549996 , 1.3416407864999])
@@ -1484,14 +1357,18 @@ def test_ttest_rel():
     assert_array_almost_equal(np.abs(p), pr)
     assert_equal(t.shape, (3, 2))
 
-    #test zero division problem
-    t,p = stats.ttest_rel([0,0,0],[1,1,1])
-    assert_equal((np.abs(t),p), (np.inf, 0))
-    assert_almost_equal(stats.ttest_rel([0,0,0], [0,0,0]), (1.0, 0.42264973081037421))
+    olderr = np.seterr(all='ignore')
+    try:
+        #test zero division problem
+        t,p = stats.ttest_rel([0,0,0],[1,1,1])
+        assert_equal((np.abs(t),p), (np.inf, 0))
+        assert_almost_equal(stats.ttest_rel([0,0,0], [0,0,0]), (1.0, 0.42264973081037421))
 
-    #check that nan in input array result in nan output
-    anan = np.array([[1,np.nan],[-1,1]])
-    assert_equal(stats.ttest_ind(anan, np.zeros((2,2))),([0, np.nan], [1,np.nan]))
+        #check that nan in input array result in nan output
+        anan = np.array([[1,np.nan],[-1,1]])
+        assert_equal(stats.ttest_ind(anan, np.zeros((2,2))),([0, np.nan], [1,np.nan]))
+    finally:
+        np.seterr(**olderr)
 
 
 def test_ttest_ind():
@@ -1525,16 +1402,18 @@ def test_ttest_ind():
     assert_array_almost_equal(np.abs(p), pr)
     assert_equal(t.shape, (3, 2))
 
-    #test zero division problem
-    t,p = stats.ttest_ind([0,0,0],[1,1,1])
-    assert_equal((np.abs(t),p), (np.inf, 0))
-    assert_almost_equal(stats.ttest_ind([0,0,0], [0,0,0]), (1.0, 0.37390096630005898))
+    olderr = np.seterr(all='ignore')
+    try:
+        #test zero division problem
+        t,p = stats.ttest_ind([0,0,0],[1,1,1])
+        assert_equal((np.abs(t),p), (np.inf, 0))
+        assert_almost_equal(stats.ttest_ind([0,0,0], [0,0,0]), (1.0, 0.37390096630005898))
 
-    #check that nan in input array result in nan output
-    anan = np.array([[1,np.nan],[-1,1]])
-    assert_equal(stats.ttest_ind(anan, np.zeros((2,2))),([0, np.nan], [1,np.nan]))
-
-
+        #check that nan in input array result in nan output
+        anan = np.array([[1,np.nan],[-1,1]])
+        assert_equal(stats.ttest_ind(anan, np.zeros((2,2))),([0, np.nan], [1,np.nan]))
+    finally:
+        np.seterr(**olderr)
 
 
 def test_ttest_1samp_new():
@@ -1564,14 +1443,19 @@ def test_ttest_1samp_new():
     assert_almost_equal(t1[0,0],t3, decimal=14)
     assert_equal(t1.shape, (n1,n2))
 
-    #test zero division problem
-    t,p = stats.ttest_1samp([0,0,0], 1)
-    assert_equal((np.abs(t),p), (np.inf, 0))
-    assert_almost_equal(stats.ttest_1samp([0,0,0], 0), (1.0, 0.42264973081037421))
+    olderr = np.seterr(all='ignore')
+    try:
+        #test zero division problem
+        t,p = stats.ttest_1samp([0,0,0], 1)
+        assert_equal((np.abs(t),p), (np.inf, 0))
+        assert_almost_equal(stats.ttest_1samp([0,0,0], 0), (1.0, 0.42264973081037421))
 
-    #check that nan in input array result in nan output
-    anan = np.array([[1,np.nan],[-1,1]])
-    assert_equal(stats.ttest_1samp(anan, 0),([0, np.nan], [1,np.nan]))
+        #check that nan in input array result in nan output
+        anan = np.array([[1,np.nan],[-1,1]])
+        assert_equal(stats.ttest_1samp(anan, 0),([0, np.nan], [1,np.nan]))
+    finally:
+        np.seterr(**olderr)
+
 
 def test_describe():
     x = np.vstack((np.ones((3,4)),2*np.ones((2,4))))
@@ -1798,22 +1682,41 @@ class GeoMeanTestCase:
         ''' Test a 1d list with zero element'''
         a=[10, 20, 30, 40, 50, 60, 70, 80, 90, 0]
         b = 0.0 # due to exp(-inf)=0
-        self.do(a, b)
+        olderr = np.seterr(all='ignore')
+        try:
+            self.do(a, b)
+        finally:
+            np.seterr(**olderr)
+
     def test_1darray0(self):
         ''' Test a 1d array with zero element'''
         a=np.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 0])
         b = 0.0 # due to exp(-inf)=0
-        self.do(a, b)
+        olderr = np.seterr(all='ignore')
+        try:
+            self.do(a, b)
+        finally:
+            np.seterr(**olderr)
+
     def test_1dma0(self):
         ''' Test a 1d masked array with zero element'''
         a=np.ma.array([10, 20, 30, 40, 50, 60, 70, 80, 90, 0])
         b = 41.4716627439
-        self.do(a, b)
+        olderr = np.seterr(all='ignore')
+        try:
+            self.do(a, b)
+        finally:
+            np.seterr(**olderr)
+
     def test_1dmainf(self):
         ''' Test a 1d masked array with negative element'''
         a=np.ma.array([10, 20, 30, 40, 50, 60, 70, 80, 90, -1])
         b = 41.4716627439
-        self.do(a, b)
+        olderr = np.seterr(all='ignore')
+        try:
+            self.do(a, b)
+        finally:
+            np.seterr(**olderr)
 
 class TestGeoMean(GeoMeanTestCase, TestCase):
     def do(self, a, b, axis=None, dtype=None):

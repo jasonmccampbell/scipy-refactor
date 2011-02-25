@@ -7,7 +7,7 @@ def configuration(parent_package='', top_path=None):
     config = Configuration('ndimage', parent_package, top_path)
 
     config.add_extension("_nd_image",
-        sources=["src/nd_image.c","src/ni_filters.c",
+        sources=["_nd_image.c","src/ni_filters.c",
                  "src/ni_fourier.c","src/ni_interpolation.c",
                  "src/ni_measure.c",
                  "src/ni_morphology.c","src/ni_support.c"],
