@@ -73,7 +73,6 @@ cdef extern from "npy_defs.h":
 cdef extern from "npy_cython_macros.h":
     void NpyArray_SETBASE(NpyArray * obj, object value)
     void NpyArray_SETFLAGS(NpyArray * obj, int flags)
-    ctypedef npy_intp ni_size_t
 
 IF not DOTNET:
     # TODO, DO NOT import numpy.pxd for now, instead define parts we need below
@@ -343,7 +342,7 @@ cdef ndarray NI_ObjectToIoArray(object a):
 # Wrappers
 #
 def correlate1d(input, weights, int axis, output, NI_ExtendMode mode, double cval,
-                ni_size_t origin):
+                npy_intp origin):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray weights_ = NI_ObjectToInputArray(weights)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
@@ -362,17 +361,17 @@ def correlate(input, weights, output, int mode, double cval, origin):
                  <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
 
 
-def uniform_filter1d(object input, ni_size_t filter_size, int axis,
+def uniform_filter1d(object input, npy_intp filter_size, int axis,
                      object output, int mode, double cval,
-                     ni_size_t origin):
+                     npy_intp origin):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_UniformFilter1D(ARRAY(input_), filter_size, axis, 
                        ARRAY(output_), <NI_ExtendMode>mode, cval, origin)
 
-def min_or_max_filter1d(object input, ni_size_t filter_size, int axis,
+def min_or_max_filter1d(object input, npy_intp filter_size, int axis,
                         object output, int mode, double cval,
-                        ni_size_t origin, int minimum):
+                        npy_intp origin, int minimum):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_MinOrMaxFilter1D(ARRAY(input_), filter_size, axis, 
@@ -435,9 +434,9 @@ cdef int cbwrapper_filter_1d(double *iline, npy_intp ilen, double *oline, npy_in
     info.function(iarr, oarr, *info.args, **info.kwargs)
     return 1
 
-def generic_filter1d(object input, object callback, ni_size_t filter_size,
+def generic_filter1d(object input, object callback, npy_intp filter_size,
                      int axis, object output, int mode, double cval,
-                     ni_size_t origin, object extra_arguments, object extra_keywords):
+                     npy_intp origin, object extra_arguments, object extra_keywords):
     cdef CallbackInfo info
     cdef void *ctx
     cdef int (*funcptr)(double*, npy_intp, double*, npy_intp, void*) except 0
@@ -481,7 +480,7 @@ def generic_filter(object input, object callback, object footprint, object outpu
                      ARRAY(output_), <NI_ExtendMode>mode, cval,
                      <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
 
-def fourier_filter(object input, object parameters, ni_size_t n, int axis,
+def fourier_filter(object input, object parameters, npy_intp n, int axis,
                    object output, int filter_type):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray parameters_ = NI_ObjectToInputArray(parameters)
@@ -489,7 +488,7 @@ def fourier_filter(object input, object parameters, ni_size_t n, int axis,
     NI_FourierFilter(ARRAY(input_), ARRAY(parameters_), n, axis,
                      ARRAY(output_), filter_type)
     
-def fourier_shift(object input, object shifts, ni_size_t n, int axis,
+def fourier_shift(object input, object shifts, npy_intp n, int axis,
                   object output):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray shifts_ = NI_ObjectToInputArray(shifts)
