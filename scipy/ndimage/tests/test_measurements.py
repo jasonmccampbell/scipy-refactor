@@ -1,6 +1,6 @@
 from numpy.testing import assert_, assert_array_almost_equal, assert_equal, \
-                          assert_almost_equal, \
-                          run_module_suite
+                          assert_almost_equal, assert_array_equal, \
+                          run_module_suite, TestCase
 import numpy as np
 
 import scipy.ndimage as ndimage
@@ -9,6 +9,90 @@ types = [np.int8, np.uint8, np.int16,
          np.uint16, np.int32, np.uint32,
          np.int64, np.uint64,
          np.float32, np.float64]
+
+
+class Test_measurements_stats(TestCase):
+    """ndimage.measurements._stats() is a utility function used by other functions."""
+
+    def test_a(self):
+        x = [0,1,2,6]
+        labels = [0,0,1,1]
+        index = [0,1]
+        counts, sums = ndimage.measurements._stats(x, labels=labels, index=index)
+        assert_array_equal(counts, [2, 2])
+        assert_array_equal(sums, [1.0, 8.0])
+
+    def test_b(self):
+        # Same data as test_a, but different labels.  The label 9 exceeds the
+        # length of 'labels', so this test will follow a different code path.
+        x = [0,1,2,6]
+        labels = [0,0,9,9]
+        index = [0,9]
+        counts, sums = ndimage.measurements._stats(x, labels=labels, index=index)
+        assert_array_equal(counts, [2, 2])
+        assert_array_equal(sums, [1.0, 8.0])
+
+    def test_a_centered(self):
+        x = [0,1,2,6]
+        labels = [0,0,1,1]
+        index = [0,1]
+        counts, sums, centers = ndimage.measurements._stats(x, labels=labels,
+                                    index=index, centered=True)
+        assert_array_equal(counts, [2, 2])
+        assert_array_equal(sums, [1.0, 8.0])
+        assert_array_equal(centers, [0.5, 8.0])
+
+    def test_b_centered(self):
+        x = [0,1,2,6]
+        labels = [0,0,9,9]
+        index = [0,9]
+        counts, sums, centers = ndimage.measurements._stats(x, labels=labels,
+                                    index=index, centered=True)
+        assert_array_equal(counts, [2, 2])
+        assert_array_equal(sums, [1.0, 8.0])
+        assert_array_equal(centers, [0.5, 8.0])
+
+    def test_nonint_labels(self):
+        x = [0,1,2,6]
+        labels = [0.0, 0.0, 9.0, 9.0]
+        index = [0.0, 9.0]
+        counts, sums, centers = ndimage.measurements._stats(x, labels=labels,
+                                    index=index, centered=True)
+        assert_array_equal(counts, [2, 2])
+        assert_array_equal(sums, [1.0, 8.0])
+        assert_array_equal(centers, [0.5, 8.0])
+
+
+class Test_measurements_select(TestCase):
+    """ndimage.measurements._select() is a utility function used by other functions."""
+
+    def test_basic(self):
+        x = [0,1,6,2]
+        cases = [
+            ([0,0,1,1], [0,1]),                 # "Small" integer labels
+            ([0,0,9,9], [0,9]),                 # A label larger than len(labels)
+            ([0.0,0.0,7.0,7.0], [0.0, 7.0]),    # Non-integer labels
+        ]
+        for labels, index in cases:
+            result = ndimage.measurements._select(x, labels=labels, index=index)
+            assert_(len(result) == 0)
+            result = ndimage.measurements._select(x, labels=labels, index=index, find_max=True)
+            assert_(len(result) == 1)
+            assert_array_equal(result[0], [1, 6])
+            result = ndimage.measurements._select(x, labels=labels, index=index, find_min=True)
+            assert_(len(result) == 1)
+            assert_array_equal(result[0], [0, 2])
+            result = ndimage.measurements._select(x, labels=labels, index=index,
+                                find_min=True, find_min_positions=True)
+            assert_(len(result) == 2)
+            assert_array_equal(result[0], [0, 2])
+            assert_array_equal(result[1], [0, 3])
+            result = ndimage.measurements._select(x, labels=labels, index=index,
+                                find_max=True, find_max_positions=True)
+            assert_(len(result) == 2)
+            assert_array_equal(result[0], [1, 6])
+            assert_array_equal(result[1], [1, 2])
+
 
 def test_label01():
     "label 1"
@@ -356,12 +440,16 @@ def test_mean03():
 def test_mean04():
     "mean 4"
     labels = np.array([[1, 2], [2, 4]], np.int8)
-    for type in types:
-        input = np.array([[1, 2], [3, 4]], type)
-        output = ndimage.mean(input, labels=labels,
-                                        index=[4, 8, 2])
-        assert_array_almost_equal(output[[0,2]], [4.0, 2.5])
-        assert_(np.isnan(output[1]))
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([[1, 2], [3, 4]], type)
+            output = ndimage.mean(input, labels=labels,
+                                            index=[4, 8, 2])
+            assert_array_almost_equal(output[[0,2]], [4.0, 2.5])
+            assert_(np.isnan(output[1]))
+    finally:
+        np.seterr(**olderr)
 
 def test_minimum01():
     "minimum 1"
@@ -436,10 +524,14 @@ def test_maximum05():
 
 def test_variance01():
     "variance 1"
-    for type in types:
-        input = np.array([], type)
-        output = ndimage.variance(input)
-        assert_(np.isnan(output))
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([], type)
+            output = ndimage.variance(input)
+            assert_(np.isnan(output))
+    finally:
+        np.seterr(**olderr)
 
 def test_variance02():
     "variance 2"
@@ -472,17 +564,25 @@ def test_variance05():
 def test_variance06():
     "variance 6"
     labels = [2, 2, 3, 3, 4]
-    for type in types:
-        input = np.array([1, 3, 8, 10, 8], type)
-        output = ndimage.variance(input, labels, [2, 3, 4])
-        assert_array_almost_equal(output, [1.0, 1.0, 0.0])
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([1, 3, 8, 10, 8], type)
+            output = ndimage.variance(input, labels, [2, 3, 4])
+            assert_array_almost_equal(output, [1.0, 1.0, 0.0])
+    finally:
+        np.seterr(**olderr)
 
 def test_standard_deviation01():
     "standard deviation 1"
-    for type in types:
-        input = np.array([], type)
-        output = ndimage.standard_deviation(input)
-        assert_(np.isnan(output))
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([], type)
+            output = ndimage.standard_deviation(input)
+            assert_(np.isnan(output))
+    finally:
+        np.seterr(**olderr)
 
 def test_standard_deviation02():
     "standard deviation 2"
@@ -515,27 +615,33 @@ def test_standard_deviation05():
 def test_standard_deviation06():
     "standard deviation 6"
     labels = [2, 2, 3, 3, 4]
-    for type in types:
-        input = np.array([1, 3, 8, 10, 8], type)
-        output = ndimage.standard_deviation(input, labels,
-                                                      [2, 3, 4])
-        assert_array_almost_equal(output, [1.0, 1.0, 0.0])
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([1, 3, 8, 10, 8], type)
+            output = ndimage.standard_deviation(input, labels, [2, 3, 4])
+            assert_array_almost_equal(output, [1.0, 1.0, 0.0])
+    finally:
+        np.seterr(**olderr)
 
 def test_standard_deviation07():
     "standard deviation 7"
     labels = [1]
-    for type in types:
-        input = np.array([-0.00619519], type)
-        output = ndimage.standard_deviation(input, labels, [1])
-        assert_array_almost_equal(output, [0])
+    olderr = np.seterr(all='ignore')
+    try:
+        for type in types:
+            input = np.array([-0.00619519], type)
+            output = ndimage.standard_deviation(input, labels, [1])
+            assert_array_almost_equal(output, [0])
+    finally:
+        np.seterr(**olderr)
 
 def test_minimum_position01():
     "minimum position 1"
     labels = np.array([1, 0], bool)
     for type in types:
         input = np.array([[1, 2], [3, 4]], type)
-        output = ndimage.minimum_position(input,
-                                                    labels=labels)
+        output = ndimage.minimum_position(input, labels=labels)
         assert_equal(output, (0, 0))
 
 def test_minimum_position02():

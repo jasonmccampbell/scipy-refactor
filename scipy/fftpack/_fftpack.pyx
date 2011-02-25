@@ -1,4 +1,5 @@
 #cython: ccomplex=True
+#cython: cdivision=True
 
 """The _fftpack module was generated with Fwrap v0.2.0dev_3b035b7.
 

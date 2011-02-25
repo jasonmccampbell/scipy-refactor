@@ -147,7 +147,7 @@ byName = {
 # Build one in the reverse sense
 # -----------------------------------------------
 byOpcode = {}
-for name,op in map(None, byName.keys(), byName.values()):
+for name, op in byName.items():
     byOpcode[op] = name
     del name
     del op
@@ -238,10 +238,7 @@ class ByteCodeMeaning(object):
         elif goto is None:
             return next # Normal
         else:
-            if sys.version_info < (2, 6):
-                raise "Executing code failed."
-            else:
-                raise ValueError("Executing code failed.")
+            raise ValueError("Executing code failed.")
 
     symbols = { 0: 'less', 1: 'lesseq', 2: 'equal', 3: 'notequal',
                 4: 'greater', 5: 'greatereq', 6: 'in', 7: 'not in',
@@ -1154,7 +1151,7 @@ class CXXCoder(ByteCodeMeaning):
         v = self.stack[var_num]
         t = self.types[var_num]
         print 'LOADFAST',var_num,v,t
-        for VV,TT in map(None, self.stack, self.types):
+        for VV, TT in zip(self.stack, self.types):
             print VV,':',TT
         if t is None:
             raise TypeError('%s used before set?' % v)

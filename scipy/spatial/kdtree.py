@@ -116,13 +116,12 @@ class KDTree(object):
     def __init__(self, data, leafsize=10):
         """Construct a kd-tree.
 
-        Parameters:
-        ===========
-
-        data : array-like, shape (n,k)
+        Parameters
+        ----------
+        data : array_like, shape (n,k)
             The data points to be indexed. This array is not copied, and
             so modifying this data will result in bogus results.
-        leafsize : positive integer
+        leafsize : positive int
             The number of points at which the algorithm switches over to
             brute-force.
         """
@@ -592,12 +591,8 @@ class KDTree(object):
                 # This node pair will be visited in the other order
                 #return
                 pass
-            if rect1.min_distance_rectangle(rect2, p)>r/(1.+eps):
-                return
-            elif rect1.max_distance_rectangle(rect2, p)<r*(1.+eps):
-                traverse_no_checking(node1.less, node2)
-                traverse_no_checking(node1.greater, node2)
-            elif isinstance(node1, KDTree.leafnode):
+
+            if isinstance(node1, KDTree.leafnode):
                 if isinstance(node2, KDTree.leafnode):
                     d = self.data[node2.idx]
                     for i in node1.idx:
@@ -614,6 +609,11 @@ class KDTree(object):
                 less, greater = rect1.split(node1.split_dim, node1.split)
                 traverse_checking(node1.less,less,node2,rect2)
                 traverse_checking(node1.greater,greater,node2,rect2)
+            elif rect1.min_distance_rectangle(rect2, p)>r/(1.+eps):
+                return
+            elif rect1.max_distance_rectangle(rect2, p)<r*(1.+eps):
+                traverse_no_checking(node1.less, node2)
+                traverse_no_checking(node1.greater, node2)
             else:
                 less1, greater1 = rect1.split(node1.split_dim, node1.split)
                 less2, greater2 = rect2.split(node2.split_dim, node2.split)

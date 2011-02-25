@@ -39,23 +39,6 @@ Python 3
 
 Scipy 0.9.0 has full support for Python 3.
 
-Deprecated features
-===================
-
-Obsolete nonlinear solvers (in ``scipy.optimize``)
---------------------------------------------------
-
-The following nonlinear solvers from ``scipy.optimize`` are
-deprecated:
-
-- ``broyden_modified`` (bad performance)
-- ``broyden1_modified`` (bad performance)
-- ``broyden_generalized`` (equivalent to ``anderson``)
-- ``anderson2`` (equivalent to ``anderson``)
-- ``broyden3`` (obsoleted by new limited-memory broyden methods)
-- ``vackar`` (renamed to ``diagbroyden``)
-
-
 New features
 ============
 
@@ -114,15 +97,125 @@ Improved FIR filter design functions (``scipy.signal``)
 The function ``scipy.signal.firwin`` was enhanced to allow the
 design of highpass, bandpass, bandstop and multi-band FIR filters.
 
+The function ``scipy.signal.firwin2`` was added.  This function
+uses the window method to create a linear phase FIR filter with
+an arbitrary frequency response.
+
 The functions ``scipy.signal.kaiser_atten`` and ``scipy.signal.kaiser_beta``
-were added. 
+were added.
+
+
+Improved statistical tests (``scipy.stats``)
+--------------------------------------------
+
+A new function ``scipy.stats.fisher_exact`` was added, that provides Fisher's
+exact test for 2x2 contingency tables.
+
+The function ``scipy.stats.kendalltau`` was rewritten to make it much faster
+(O(n log(n)) vs O(n^2)).
+
+
+Deprecated features
+===================
+
+Obsolete nonlinear solvers (in ``scipy.optimize``)
+--------------------------------------------------
+
+The following nonlinear solvers from ``scipy.optimize`` are
+deprecated:
+
+- ``broyden_modified`` (bad performance)
+- ``broyden1_modified`` (bad performance)
+- ``broyden_generalized`` (equivalent to ``anderson``)
+- ``anderson2`` (equivalent to ``anderson``)
+- ``broyden3`` (obsoleted by new limited-memory broyden methods)
+- ``vackar`` (renamed to ``diagbroyden``)
 
 
 Removed features
 ================
 
-The deprecated modules ``helpdmod``, ``pexec`` and ``ppimport`` were removed
+The deprecated modules ``helpmod``, ``pexec`` and ``ppimport`` were removed
 from ``scipy.misc``.
 
-The ``save`` method of the ``spmatrix`` class in ``scipy.sparse``, which has
-been deprecated since version 0.7, was removed.
+The ``output_type`` keyword in many ``scipy.ndimage`` interpolation functions
+has been removed.
+
+The ``econ`` keyword in ``scipy.linalg.qr`` has been removed. The same
+functionality is still available by specifying ``mode='economic'``.
+
+
+Old correlate/convolve behavior (in ``scipy.signal``)
+-----------------------------------------------------
+
+The old behavior for ``scipy.signal.convolve``, ``scipy.signal.convolve2d``,
+``scipy.signal.correlate`` and ``scipy.signal.correlate2d`` was deprecated in
+0.8.0 and has now been removed.  Convolve and correlate used to swap their
+arguments if the second argument has dimensions larger than the first one, and
+the mode was relative to the input with the largest dimension. The current
+behavior is to never swap the inputs, which is what most people expect, and is
+how correlation is usually defined.
+
+
+``scipy.stats``
+---------------
+
+Many functions in ``scipy.stats`` that are either available from numpy or have
+been superseded, and have been deprecated since version 0.7, have been removed:
+`std`, `var`, `mean`, `median`, `cov`, `corrcoef`, `z`, `zs`, `stderr`,
+`samplestd`, `samplevar`, `pdfapprox`, `pdf_moments` and `erfc`.  These changes
+are mirrored in ``scipy.stats.mstats``.
+
+
+``scipy.sparse``
+----------------
+
+Several methods of the sparse matrix classes in ``scipy.sparse`` which had
+been deprecated since version 0.7 were removed: `save`, `rowcol`, `getdata`,
+`listprint`, `ensure_sorted_indices`, `matvec`, `matmat` and `rmatvec`. 
+
+The functions ``spkron``, ``speye``, ``spidentity``, ``lil_eye`` and
+``lil_diags`` were removed from ``scipy.sparse``.  The first three functions
+are still available as ``scipy.sparse.kron``, ``scipy.sparse.eye`` and
+``scipy.sparse.identity``.
+
+The `dims` and `nzmax` keywords were removed from the sparse matrix
+constructor. The `colind` and `rowind` attributes were removed from CSR and CSC
+matrices respectively.
+
+``scipy.sparse.linalg.arpack.speigs``
+-------------------------------------
+
+A duplicated interface to the ARPACK library was removed.
+
+
+Other changes
+=============
+
+ARPACK interface changes
+------------------------
+
+The interface to the ARPACK eigenvalue routines in
+``scipy.sparse.linalg`` was changed for more robustness.
+
+The eigenvalue and SVD routines now raise ``ArpackNoConvergence`` if
+the eigenvalue iteration fails to converge. If partially converged results
+are desired, they can be accessed as follows::
+
+    import numpy as np
+    from scipy.sparse.linalg import eigs, ArpackNoConvergence
+
+    m = np.random.randn(30, 30)
+    try:
+        w, v = eigs(m, 6)
+    except ArpackNoConvergence, err:
+        partially_converged_w = err.eigenvalues
+        partially_converged_v = err.eigenvectors
+
+Several bugs were also fixed.
+
+The routines were moreover renamed as follows:
+
+    - eigen --> eigs
+    - eigen_symmetric --> eigsh
+    - svd --> svds

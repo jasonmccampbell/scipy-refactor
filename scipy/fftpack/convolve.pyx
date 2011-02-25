@@ -30,19 +30,10 @@ __all__ = ['init_convolution_kernel', 'destroy_convolve_cache',
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
-cdef extern from "setjmp.h":
-    ctypedef struct jmp_buf:
-        pass
-    
-    int setjmp(jmp_buf env)
-    void longjmp(jmp_buf env, int val)
-
-
 cdef class _CallbackInfo(object):
     cdef object callback
     cdef object extra_args
     cdef object exc
-    cdef jmp_buf jmp
     cdef object arrays
 
 cdef _CallbackInfo kernel_func_info
@@ -66,15 +57,15 @@ cdef int init_convolution_kernel_cb_core(double* presult, int k):
         return -1
 
 cdef double init_convolution_kernel_cb(int k):
-    # To make sure we do not loose references, do the longjmp in a
+    # To make sure we do not lose references, do the longjmp in a
     # function with no Python objects
     cdef double result
     if init_convolution_kernel_cb_core(&result, k) == 0:
         return result
     else:
-        longjmp(kernel_func_info.jmp, 1)
+        raise RuntimeError
 
-cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
+def init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
 
     Parameters
@@ -105,12 +96,11 @@ cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_in
     cbinfo.extra_args = kernel_func_extra_args
     kernel_func_info = cbinfo
     try:
-        if setjmp(cbinfo.jmp) == 0:
-            fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
-        else:
-            t, val, tb = cbinfo.exc
-            cbinfo.exc = None
-            raise t, val, tb
+        fc.init_convolution_kernel(n, <fwr_real_x8_t*>np.PyArray_DATA(omega_), d, &init_convolution_kernel_cb, zero_nyquist_)
+    except RuntimeError:
+        t, val, tb = cbinfo.exc
+        cbinfo.exc = None
+        raise t, val, tb
     finally:
         kernel_func_info = None
     return omega
@@ -127,7 +117,7 @@ cpdef object destroy_convolve_cache():
     fc.destroy_convolve_cache()
 
 
-cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):
+def convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):
     """convolve(x, omega[, swap_real_imag, overwrite_x]) -> x
 
     Parameters
@@ -156,7 +146,7 @@ cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bi
     return x
 
 
-cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):
+def convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):
     """convolve_z(x, omega_real, omega_imag[, overwrite_x]) -> x
 
     Parameters

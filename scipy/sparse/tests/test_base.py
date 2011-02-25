@@ -133,9 +133,11 @@ class _TestCommon:
 
     def test_getrow(self):
         assert_array_equal(self.datsp.getrow(1).todense(), self.dat[1,:])
+        assert_array_equal(self.datsp.getrow(-1).todense(), self.dat[-1,:])
 
     def test_getcol(self):
         assert_array_equal(self.datsp.getcol(1).todense(), self.dat[:,1])
+        assert_array_equal(self.datsp.getcol(-1).todense(), self.dat[:,-1])
 
     def test_sum(self):
         """Does the matrix's .sum(axis=...) method work?
@@ -1297,6 +1299,34 @@ class TestDOK(_TestCommon, _TestGetSet, _TestSolve, TestCase):
         # Sparse ctor
         c = csr_matrix(b)
         assert_equal(A.todense(), c.todense())
+
+    def test_resize(self):
+        """A couple basic tests of the resize() method.
+        
+        resize(shape) resizes the array in-place.
+        """
+        a = dok_matrix((5,5))
+        a[:,0] = 1
+        a.resize((2,2))
+        expected1 = array([[1,0],[1,0]])
+        assert_array_equal(a.todense(), expected1)
+        a.resize((3,2))
+        expected2 = array([[1,0],[1,0],[0,0]])
+        assert_array_equal(a.todense(), expected2)
+
+
+    def test_ticket1160(self):
+        """Regression test for ticket #1160."""
+        a = dok_matrix((3,3))
+        a[0,0] = 0
+        # This assert would fail, because the above assignment would
+        # incorrectly call __set_item__ even though the value was 0.
+        assert_((0,0) not in a.keys(), "Unexpected entry (0,0) in keys")
+        
+        # Slice assignments were also affected.
+        b = dok_matrix((3,3))
+        b[:,0] = 0
+        assert_(len(b.keys())==0, "Unexpected entries in keys")
 
 
 

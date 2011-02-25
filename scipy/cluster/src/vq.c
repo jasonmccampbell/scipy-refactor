@@ -8,8 +8,6 @@
  * Including python.h is necessary because python header redefines some macros
  * in standart C header
  */
-#include <Python.h>
-
 #include <stddef.h>
 #include <math.h>
 
@@ -47,7 +45,7 @@ static int float_vq_1d(const float *in, int n,
 }
 #endif
 
-static int float_vq_obs(const float *obs,
+static int float_vq_obs(float *obs,
     float *code_book, int Ncodes, int Nfeatures,
        npy_intp* code, float *lowest_dist)
 {

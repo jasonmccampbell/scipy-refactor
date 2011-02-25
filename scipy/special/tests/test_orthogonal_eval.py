@@ -1,10 +1,8 @@
-#from numpy.testing import 
-
 import numpy as np
 from numpy.testing import assert_
 import scipy.special.orthogonal as orth
 
-from testutils import FuncData
+from scipy.special._testutils import FuncData
 
 
 def test_eval_chebyt():
@@ -13,6 +11,18 @@ def test_eval_chebyt():
     v1 = np.cos(n*np.arccos(x))
     v2 = orth.eval_chebyt(n, x)
     assert_(np.allclose(v1, v2, rtol=1e-15))
+
+
+def test_warnings():
+    # ticket 1334
+    olderr = np.seterr(all='raise')
+    try:
+        # these should raise no fp warnings
+        orth.eval_legendre(1, 0)
+        orth.eval_laguerre(1, 1)
+        orth.eval_gegenbauer(1, 1, 0)
+    finally:
+        np.seterr(**olderr)
 
 
 class TestPolys(object):
@@ -37,6 +47,8 @@ class TestPolys(object):
                 else:
                     p = (n,)
                 x = x_range[0] + (x_range[1] - x_range[0])*np.random.rand(nx)
+                x[0] = x_range[0] # always include domain start point
+                x[1] = x_range[1] # always include domain end point
                 poly = np.poly1d(cls(*p))
                 z = np.c_[np.tile(p, (nx,1)), x, poly(x)]
                 dataset.append(z)
@@ -47,9 +59,13 @@ class TestPolys(object):
             p = (p[0].astype(int),) + p[1:]
             return func(*p)
 
-        ds = FuncData(polyfunc, dataset, range(len(param_ranges)+2), -1,
-                      rtol=rtol)
-        ds.check()
+        olderr = np.seterr(all='raise')
+        try:
+            ds = FuncData(polyfunc, dataset, range(len(param_ranges)+2), -1,
+                          rtol=rtol)
+            ds.check()
+        finally:
+            np.seterr(**olderr)
 
     def test_jacobi(self):
         self.check_poly(orth.eval_jacobi, orth.jacobi,
@@ -83,8 +99,12 @@ class TestPolys(object):
                    param_ranges=[], x_range=[-2, 2])
 
     def test_sh_chebyt(self):
-        self.check_poly(orth.eval_sh_chebyt, orth.sh_chebyt,
-                   param_ranges=[], x_range=[0, 1])
+        olderr = np.seterr(all='ignore')
+        try:
+            self.check_poly(orth.eval_sh_chebyt, orth.sh_chebyt,
+                            param_ranges=[], x_range=[0, 1])
+        finally:
+            np.seterr(**olderr)
 
     def test_sh_chebyu(self):
         self.check_poly(orth.eval_sh_chebyu, orth.sh_chebyu,
@@ -95,8 +115,12 @@ class TestPolys(object):
                    param_ranges=[], x_range=[-1, 1])
 
     def test_sh_legendre(self):
-        self.check_poly(orth.eval_sh_legendre, orth.sh_legendre,
-                   param_ranges=[], x_range=[0, 1])
+        olderr = np.seterr(all='ignore')
+        try:
+            self.check_poly(orth.eval_sh_legendre, orth.sh_legendre,
+                            param_ranges=[], x_range=[0, 1])
+        finally:
+            np.seterr(**olderr)
 
     def test_genlaguerre(self):
         self.check_poly(orth.eval_genlaguerre, orth.genlaguerre,

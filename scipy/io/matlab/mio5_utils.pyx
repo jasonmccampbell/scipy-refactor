@@ -33,7 +33,7 @@ import numpy as np
 from numpy.compat import asbytes, asstr
 cimport numpy as cnp
 
-cdef extern from "numpy/arrayobject.h":
+cdef extern from "npy_arrayobject.h":
     PyTypeObject PyArray_Type
     cnp.ndarray PyArray_NewFromDescr(PyTypeObject *subtype,
                                      cnp.dtype newdtype,

@@ -3,7 +3,7 @@ import numpy as np
 from numpy.testing import TestCase, run_module_suite, assert_raises, \
         assert_array_almost_equal, assert_
 
-from scipy.signal import firwin, kaiserord, freqz, remez
+from scipy.signal import firwin, firwin2, kaiserord, freqz, remez
 
 
 class TestFirwin(TestCase):
@@ -104,7 +104,7 @@ class TestFirWinMore(TestCase):
         taps = firwin(ntaps, cutoff=0.5, window=('kaiser', beta), scale=False)
 
         # Check the symmetry of taps.
-        assert_array_almost_equal(taps[:ntaps/2], taps[ntaps:ntaps-ntaps/2-1:-1])
+        assert_array_almost_equal(taps[:ntaps//2], taps[ntaps:ntaps-ntaps//2-1:-1])
 
         # Check the gain at a few samples where we know it should be approximately 0 or 1.
         freq_samples = np.array([0.0, 0.25, 0.5-width/2, 0.5+width/2, 0.75, 1.0])
@@ -123,7 +123,7 @@ class TestFirWinMore(TestCase):
                         pass_zero=False, scale=False)
 
         # Check the symmetry of taps.
-        assert_array_almost_equal(taps[:ntaps/2], taps[ntaps:ntaps-ntaps/2-1:-1])
+        assert_array_almost_equal(taps[:ntaps//2], taps[ntaps:ntaps-ntaps//2-1:-1])
 
         # Check the gain at a few samples where we know it should be approximately 0 or 1.
         freq_samples = np.array([0.0, 0.25, 0.5-width/2, 0.5+width/2, 0.75, 1.0])
@@ -138,7 +138,7 @@ class TestFirWinMore(TestCase):
                         pass_zero=False, scale=False)
 
         # Check the symmetry of taps.
-        assert_array_almost_equal(taps[:ntaps/2], taps[ntaps:ntaps-ntaps/2-1:-1])
+        assert_array_almost_equal(taps[:ntaps//2], taps[ntaps:ntaps-ntaps//2-1:-1])
 
         # Check the gain at a few samples where we know it should be approximately 0 or 1.
         freq_samples = np.array([0.0, 0.2, 0.3-width/2, 0.3+width/2, 0.5,
@@ -154,7 +154,7 @@ class TestFirWinMore(TestCase):
                         pass_zero=True, scale=False)
 
         # Check the symmetry of taps.
-        assert_array_almost_equal(taps[:ntaps/2], taps[ntaps:ntaps-ntaps/2-1:-1])
+        assert_array_almost_equal(taps[:ntaps//2], taps[ntaps:ntaps-ntaps//2-1:-1])
 
         # Check the gain at a few samples where we know it should be approximately 0 or 1.
         freq_samples = np.array([0.0, 0.1, 0.2-width/2, 0.2+width/2, 0.35,
@@ -164,6 +164,25 @@ class TestFirWinMore(TestCase):
         assert_array_almost_equal(np.abs(response),
                 [1.0, 1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0],
                 decimal=5)
+
+    def test_nyq(self):
+        """Test the nyq keyword."""
+        nyquist = 1000
+        width = 40.0
+        relative_width = width/nyquist
+        ntaps, beta = kaiserord(120, relative_width)
+        taps = firwin(ntaps, cutoff=[300, 700], window=('kaiser', beta),
+                        pass_zero=False, scale=False, nyq=nyquist)
+
+        # Check the symmetry of taps.
+        assert_array_almost_equal(taps[:ntaps//2], taps[ntaps:ntaps-ntaps//2-1:-1])
+
+        # Check the gain at a few samples where we know it should be approximately 0 or 1.
+        freq_samples = np.array([0.0, 200, 300-width/2, 300+width/2, 500,
+                                700-width/2, 700+width/2, 800, 1000])
+        freqs, response = freqz(taps, worN=np.pi*freq_samples/nyquist)
+        assert_array_almost_equal(np.abs(response),
+                [0.0, 0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0, 0.0], decimal=5)
 
     def test_bad_cutoff(self):
         """Test that invalid cutoff argument raises ValueError."""
@@ -180,13 +199,81 @@ class TestFirWinMore(TestCase):
         assert_raises(ValueError, firwin, 99, [])
         # 2D array not allowed.
         assert_raises(ValueError, firwin, 99, [[0.1, 0.2],[0.3, 0.4]])               
-
+        # cutoff values must be less than nyq.
+        assert_raises(ValueError, firwin, 99, 50.0, nyq=40)
+        assert_raises(ValueError, firwin, 99, [10, 20, 30], nyq=25)
 
     def test_even_highpass_raises_value_error(self):
         """Test that attempt to create a highpass filter with an even number
         of taps raises a ValueError exception."""
         assert_raises(ValueError, firwin, 40, 0.5, pass_zero=False)
         assert_raises(ValueError, firwin, 40, [.25, 0.5])
+
+
+
+
+class TestFirwin2(TestCase):
+
+    def test_invalid_args(self):
+        # `freq` and `gain` have different lengths.
+        assert_raises(ValueError, firwin2, 50, [0, 0.5, 1], [0.0, 1.0])
+        # `nfreqs` is less than `ntaps`.
+        assert_raises(ValueError, firwin2, 50, [0, 0.5, 1], [0.0, 1.0, 1.0], nfreqs=33)
+        # Decreasing value in `freq`
+        assert_raises(ValueError, firwin2, 50, [0, 0.5, 0.4, 1.0], [0, .25, .5, 1.0])
+        # Value in `freq` repeated more than once.
+        assert_raises(ValueError, firwin2, 50, [  0,   .1, .1,   .1, 1.0],
+                                             [0.0, 0.5, 0.75, 1.0, 1.0])
+        # `freq` does not start at 0.0.
+        assert_raises(ValueError, firwin2, 50, [0.5, 1.0], [0.0, 1.0])
+
+    def test01(self):
+        width = 0.04
+        beta = 12.0
+        ntaps = 400
+        # Filter is 1 from w=0 to w=0.5, then decreases linearly from 1 to 0 as w
+        # increases from w=0.5 to w=1  (w=1 is the Nyquist frequency). 
+        freq = [0.0, 0.5, 1.0]
+        gain = [1.0, 1.0, 0.0] 
+        taps = firwin2(ntaps, freq, gain, window=('kaiser', beta))
+        freq_samples = np.array([0.0, 0.25, 0.5-width/2, 0.5+width/2,
+                                                        0.75, 1.0-width/2])
+        freqs, response = freqz(taps, worN=np.pi*freq_samples)
+        assert_array_almost_equal(np.abs(response),
+                        [1.0, 1.0, 1.0, 1.0-width, 0.5, width], decimal=5)
+
+    def test02(self):
+        width = 0.04
+        beta = 12.0
+        # ntaps must be odd for positive gain at Nyquist.
+        ntaps = 401
+        # An ideal highpass filter.
+        freq = [0.0, 0.5, 0.5, 1.0]
+        gain = [0.0, 0.0, 1.0, 1.0]
+        taps = firwin2(ntaps, freq, gain, window=('kaiser', beta))
+        freq_samples = np.array([0.0, 0.25, 0.5-width, 0.5+width, 0.75, 1.0])
+        freqs, response = freqz(taps, worN=np.pi*freq_samples)
+        assert_array_almost_equal(np.abs(response),
+                                [0.0, 0.0, 0.0, 1.0, 1.0, 1.0], decimal=5)
+
+    def test03(self):
+        width = 0.02
+        ntaps, beta = kaiserord(120, width)
+        # ntaps must be odd for positive gain at Nyquist.
+        ntaps = int(ntaps) | 1
+        freq = [0.0, 0.4, 0.4, 0.5, 0.5, 1.0]
+        gain = [1.0, 1.0, 0.0, 0.0, 1.0, 1.0]
+        taps = firwin2(ntaps, freq, gain, window=('kaiser', beta))
+        freq_samples = np.array([0.0, 0.4-width, 0.4+width, 0.45, 
+                                    0.5-width, 0.5+width, 0.75, 1.0])
+        freqs, response = freqz(taps, worN=np.pi*freq_samples)
+        assert_array_almost_equal(np.abs(response),
+                    [1.0, 1.0, 0.0, 0.0, 0.0, 1.0, 1.0, 1.0], decimal=5)
+
+    def test_nyq(self):
+        taps1 = firwin2(80, [0.0, 0.5, 1.0], [1.0, 1.0, 0.0])
+        taps2 = firwin2(80, [0.0, 30.0, 60.0], [1.0, 1.0, 0.0], nyq=60.0)
+        assert_array_almost_equal(taps1, taps2)
 
 
 class TestRemez(TestCase):
@@ -201,8 +288,8 @@ class TestRemez(TestCase):
         # make sure the filter has correct # of taps
         assert_(len(h) == N, "Number of Taps")
 
-        # make sure it is type III (anti-symmtric tap coefficients)
-        assert_array_almost_equal(h[:(N-1)/2], -h[:-(N-1)/2-1:-1])
+        # make sure it is type III (anti-symmetric tap coefficients)
+        assert_array_almost_equal(h[:(N-1)//2], -h[:-(N-1)//2-1:-1])
 
         # Since the requested response is symmetric, all even coeffcients
         # should be zero (or in this case really small)

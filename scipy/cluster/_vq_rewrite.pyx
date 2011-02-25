@@ -14,7 +14,7 @@ cdef extern from "math.h":
     float sqrtf(float num)
     double sqrt(double num)
 
-cdef extern from "numpy/npy_math.h":
+cdef extern from "npy_math.h":
     cdef enum:
         NPY_INFINITY
 

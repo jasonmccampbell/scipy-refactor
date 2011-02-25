@@ -32,6 +32,7 @@ Intended Audience :: Developers
 License :: OSI Approved
 Programming Language :: C
 Programming Language :: Python
+Programming Language :: Python :: 3
 Topic :: Software Development
 Topic :: Scientific/Engineering
 Operating System :: Microsoft :: Windows
@@ -42,7 +43,7 @@ Operating System :: MacOS
 """
 
 MAJOR               = 0
-MINOR               = 9
+MINOR               = 10
 MICRO               = 0
 ISRELEASED          = False
 VERSION             = '%d.%d.%d' % (MAJOR, MINOR, MICRO)

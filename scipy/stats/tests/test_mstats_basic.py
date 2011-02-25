@@ -15,25 +15,25 @@ from numpy.ma.testutils import assert_equal, assert_almost_equal, \
 
 
 class TestMquantiles(TestCase):
-    """Regression tests for mstats module.""" 
-    def test_mquantiles_limit_keyword(self): 
-        """Ticket #867""" 
-        data = np.array([[   6.,    7.,    1.], 
-                         [  47.,   15.,    2.], 
-                         [  49.,   36.,    3.], 
-                         [  15.,   39.,    4.], 
-                         [  42.,   40., -999.], 
-                         [  41.,   41., -999.], 
-                         [   7., -999., -999.], 
-                         [  39., -999., -999.], 
-                         [  43., -999., -999.], 
-                         [  40., -999., -999.], 
+    """Regression tests for mstats module."""
+    def test_mquantiles_limit_keyword(self):
+        """Ticket #867"""
+        data = np.array([[   6.,    7.,    1.],
+                         [  47.,   15.,    2.],
+                         [  49.,   36.,    3.],
+                         [  15.,   39.,    4.],
+                         [  42.,   40., -999.],
+                         [  41.,   41., -999.],
+                         [   7., -999., -999.],
+                         [  39., -999., -999.],
+                         [  43., -999., -999.],
+                         [  40., -999., -999.],
                          [  36., -999., -999.]])
-        desired = [[19.2, 14.6, 1.45], 
-                   [40.0, 37.5, 2.5 ], 
-                   [42.8, 40.05, 3.55]] 
-        quants = mstats.mquantiles(data, axis=0, limit=(0, 50)) 
-        assert_almost_equal(quants, desired) 
+        desired = [[19.2, 14.6, 1.45],
+                   [40.0, 37.5, 2.5 ],
+                   [42.8, 40.05, 3.55]]
+        quants = mstats.mquantiles(data, axis=0, limit=(0, 50))
+        assert_almost_equal(quants, desired)
 
 
 
@@ -128,11 +128,15 @@ class TestCorr(TestCase):
     def test_pearsonr(self):
         "Tests some computations of Pearson's r"
         x = ma.arange(10)
-        assert_almost_equal(mstats.pearsonr(x,x)[0], 1.0)
-        assert_almost_equal(mstats.pearsonr(x,x[::-1])[0], -1.0)
-        #
-        x = ma.array(x, mask=True)
-        pr = mstats.pearsonr(x,x)
+        olderr = np.seterr(all='ignore')
+        try:
+            assert_almost_equal(mstats.pearsonr(x,x)[0], 1.0)
+            assert_almost_equal(mstats.pearsonr(x,x[::-1])[0], -1.0)
+
+            x = ma.array(x, mask=True)
+            pr = mstats.pearsonr(x,x)
+        finally:
+            np.seterr(**olderr)
         assert_(pr[0] is masked)
         assert_(pr[1] is masked)
     #
@@ -193,34 +197,6 @@ class TestCorr(TestCase):
              2.8,2.8,2.5,2.4,2.3,2.1,1.7,1.7,1.5,1.3,1.3,1.2,1.2,1.1,
              0.8,0.7,0.6,0.5,0.2,0.2,0.1,np.nan]
         assert_almost_equal(mstats.pointbiserialr(x, y)[0], 0.36149, 5)
-    #
-    def test_cov(self):
-        "Tests the cov function."
-        x = ma.array([[1,2,3],[4,5,6]], mask=[[1,0,0],[0,0,0]])
-        c = mstats.cov(x[0])
-        assert_equal(c, x[0].var(ddof=1))
-        c = mstats.cov(x[1])
-        assert_equal(c, x[1].var(ddof=1))
-        c = mstats.cov(x)
-        assert_equal(c[1,0], (x[0].anom()*x[1].anom()).sum())
-        #
-        x = [[nan,nan,  4,  2, 16, 26,  5,  1,  5,  1,  2,  3,  1],
-             [  4,  3,  5,  3,  2,  7,  3,  1,  1,  2,  3,  5,  3],
-             [  3,  2,  5,  6, 18,  4,  9,  1,  1,nan,  1,  1,nan],
-             [nan,  6, 11,  4, 17,nan,  6,  1,  1,  2,  5,  1,  1]]
-        x = ma.fix_invalid(x).T
-        (winter,spring,summer,fall) = x.T
-        #
-        assert_almost_equal(mstats.cov(winter,winter,bias=True),
-                            winter.var(ddof=0))
-        assert_almost_equal(mstats.cov(winter,winter,bias=False),
-                            winter.var(ddof=1))
-        assert_almost_equal(mstats.cov(winter,spring)[0,1], 7.7)
-        assert_almost_equal(mstats.cov(winter,spring)[1,0], 7.7)
-        assert_almost_equal(mstats.cov(winter,summer)[0,1], 19.1111111, 7)
-        assert_almost_equal(mstats.cov(winter,summer)[1,0], 19.1111111, 7)
-        assert_almost_equal(mstats.cov(winter,fall)[0,1], 20)
-        assert_almost_equal(mstats.cov(winter,fall)[1,0], 20)
 
 
 class TestTrimming(TestCase):
@@ -403,34 +379,6 @@ class TestVariability(TestCase):
          note that length(testcase) = 4
     """
     testcase = ma.fix_invalid([1,2,3,4,np.nan])
-    #
-    def test_std(self):
-        y = mstats.std(self.testcase)
-        assert_almost_equal(y,1.290994449)
-
-    def test_var(self):
-        """
-        var(testcase) = 1.666666667 """
-        #y = stats.var(self.shoes[0])
-        #assert_approx_equal(y,6.009)
-        y = mstats.var(self.testcase)
-        assert_almost_equal(y,1.666666667)
-
-    def test_samplevar(self):
-        """
-        R does not have 'samplevar' so the following was used
-        var(testcase)*(4-1)/4  where 4 = length(testcase)
-        """
-        #y = stats.samplevar(self.shoes[0])
-        #assert_approx_equal(y,5.4081)
-        y = mstats.samplevar(self.testcase)
-        assert_almost_equal(y,1.25)
-
-    def test_samplestd(self):
-        #y = stats.samplestd(self.shoes[0])
-        #assert_approx_equal(y,2.325532197)
-        y = mstats.samplestd(self.testcase)
-        assert_almost_equal(y,1.118033989)
 
     def test_signaltonoise(self):
         """
@@ -440,16 +388,6 @@ class TestVariability(TestCase):
         #assert_approx_equal(y,4.5709967)
         y = mstats.signaltonoise(self.testcase)
         assert_almost_equal(y,2.236067977)
-
-    def test_stderr(self):
-        """
-        this is not in R, so used
-        sqrt(var(testcase))/sqrt(4)
-        """
-##        y = stats.stderr(self.shoes[0])
-##        assert_approx_equal(y,0.775177399)
-        y = mstats.stderr(self.testcase)
-        assert_almost_equal(y,0.6454972244)
 
     def test_sem(self):
         """
@@ -461,24 +399,26 @@ class TestVariability(TestCase):
         y = mstats.sem(self.testcase)
         assert_almost_equal(y,0.6454972244)
 
-    def test_z(self):
-        """
-        not in R, so used
-        (10-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
-        """
-        y = mstats.z(self.testcase, ma.array(self.testcase).mean())
-        assert_almost_equal(y,0.0)
-
-    def test_zs(self):
+    def test_zmap(self):
         """
         not in R, so tested by using
         (testcase[i]-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
         """
-        y = mstats.zs(self.testcase)
+        y = mstats.zmap(self.testcase, self.testcase)
+        desired_unmaskedvals = ([-1.3416407864999, -0.44721359549996 ,
+                                 0.44721359549996 , 1.3416407864999])
+        assert_array_almost_equal(desired_unmaskedvals,
+                                  y.data[y.mask==False], decimal=12)
+
+    def test_zscore(self):
+        """
+        not in R, so tested by using
+        (testcase[i]-mean(testcase,axis=0))/sqrt(var(testcase)*3/4)
+        """
+        y = mstats.zscore(self.testcase)
         desired = ma.fix_invalid([-1.3416407864999, -0.44721359549996 ,
                                   0.44721359549996 , 1.3416407864999, np.nan])
-        assert_almost_equal(desired,y,decimal=12)
-
+        assert_almost_equal(desired, y, decimal=12)
 
 
 class TestMisc(TestCase):
@@ -526,6 +466,23 @@ class TestMisc(TestCase):
         result = mstats.friedmanchisquare(*x)
         assert_almost_equal(result[0], 2.0156, 4)
         assert_almost_equal(result[1], 0.5692, 4)
+
+
+def test_regress_simple():
+    """Regress a line with sinusoidal noise. Test for #1273."""
+    x = np.linspace(0, 100, 100)
+    y = 0.2 * np.linspace(0, 100, 100) + 10
+    y += np.sin(np.linspace(0, 20, 100))
+
+    slope, intercept, r_value, p_value, sterr = mstats.linregress(x, y)
+    assert_almost_equal(slope, 0.19644990055858422)
+    assert_almost_equal(intercept, 10.211269918932341)
+
+
+def test_plotting_positions():
+    """Regression test for #1256"""
+    pos = mstats.plotting_positions(np.arange(3), 0, 0)
+    assert_array_almost_equal(pos.data, np.array([0.25, 0.5, 0.75]))
 
 
 if __name__ == "__main__":

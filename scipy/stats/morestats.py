@@ -26,8 +26,7 @@ __all__ = ['find_repeats', 'mvsdist',
            'boxcox_llf', 'boxcox', 'boxcox_normmax', 'boxcox_normplot',
            'shapiro', 'anderson', 'ansari', 'bartlett', 'levene', 'binom_test',
            'fligner', 'mood', 'oneway', 'wilcoxon',
-           'pdf_moments', 'pdf_fromgamma', 'pdfapprox',
-           'circmean', 'circvar', 'circstd',
+           'pdf_fromgamma', 'circmean', 'circvar', 'circstd',
           ]
 
 
@@ -41,105 +40,59 @@ __all__ = ['find_repeats', 'mvsdist',
 ##    at http://dspace.byu.edu/bitstream/1877/438/1/bayes_mvs.pdf
 ##    (Permanent link at http://hdl.handle.net/1877/438 )
 
-# assume distributions are gaussian with given means and variances.
-def _gauss_mvs(x, n, alpha):
-    xbar = x.mean()
-    C = x.var()
-    val = distributions.norm.ppf((1+alpha)/2.0)
-    # mean is a Gaussian with mean xbar and variance C/n
-    mp = xbar
-    fac0 = sqrt(C/n)
-    term = fac0*val
-    ma = mp - term
-    mb = mp + term
-    # var is a Gaussian with mean C and variance 2*C*C/n
-    vp = C
-    fac1 = sqrt(2.0/n)*C
-    term = fac1*val
-    va = vp - term
-    vb = vp + term
-    # std is a Gaussian with mean sqrt(C) and variance C/(2*n)
-    st = sqrt(C)
-    fac2 = sqrt(0.5)*fac0
-    term = fac2*val
-    sta = st - term
-    stb = st + term
-    return (mp, (ma, mb)), (vp, (va, vb)), (st, (sta, stb))
-
-
 ##  Assumes all is known is that mean, and std (variance,axis=0) exist
 ##   and are the same for all the data.  Uses Jeffrey's prior
 ##
 ##  Returns alpha confidence interval for the mean, variance,
 ##      and std.
 
-def bayes_mvs(data,alpha=0.90):
-    """Return Bayesian confidence intervals for the mean, var, and std.
+def bayes_mvs(data, alpha=0.90):
+    """Bayesian confidence intervals for the mean, var, and std.
 
-    Assumes 1-d data all has same mean and variance and uses Jeffrey's prior
-    for variance and std.
-
-    alpha gives the probability that the returned confidence interval contains
-    the true parameter.
-
-    Uses mean of conditional pdf as center estimate
-    (but centers confidence interval on the median)
-
-    Returns (center, (a, b)) for each of mean, variance and standard deviation.
-    Requires 2 or more data-points.
-    """
-    x = ravel(data)
-    n = len(x)
-    assert(n > 1)
-    assert(alpha < 1 and alpha > 0)
-    n = float(n)
-    if (n > 1000): # just a guess.  The curves look very similar at this point.
-        return _gauss_mvs(x, n, alpha)
-    xbar = x.mean()
-    C = x.var()
-    # mean 
-    fac = sqrt(C/(n-1))
-    tval = distributions.t.ppf((1+alpha)/2.0,n-1)
-    delta = fac*tval
-    ma = xbar - delta
-    mb = xbar + delta
-    mp = xbar
-    # var
-    fac = n*C/2.0
-    a = (n-1)/2
-    if (n < 4):
-        peak = distributions.invgamma.ppf(0.5,a)
-    else:
-        peak = 2.0/(n-3.0)
-    q1 = (1-alpha)/2.0
-    q2 = (1+alpha)/2.0
-    va = fac*distributions.invgamma.ppf(q1,a)
-    vb = fac*distributions.invgamma.ppf(q2,a)
-    vp = peak*fac
-    # std
-    fac = sqrt(fac)
-    if (n < 3):
-        peak = distributions.gengamma.ppf(0.5,a,-2)
-        stp = fac*peak
-    else:
-        ndiv2 = (n-1)/2.0
-        term = special.gammaln(ndiv2-0.5)-special.gammaln(ndiv2)
-        term += (log(n)+log(C)-log(2.0))*0.5
-        stp = exp(term)
-    q1 = (1-alpha)/2.0
-    q2 = (1+alpha)/2.0
-    sta = fac*distributions.gengamma.ppf(q1,a,-2)
-    stb = fac*distributions.gengamma.ppf(q2,a,-2)
-
-    return (mp,(ma,mb)),(vp,(va,vb)),(stp,(sta,stb))
-
-def mvsdist(data):
-    """Return 'frozen' distributions for mean, variance, and standard deviation of data.
-    
     Parameters
     ----------
-    data : array-like (raveled to 1-d)
+    data : array-like
+       Converted to 1-d using ravel.  Requires 2 or more data-points
+    alpha : float, optional
+       Probability that the returned confidence interval contains 
+       the true parameter
+
+    Returns
+    -------
+    Returns a 3 output arguments for each of mean, variance, and standard deviation.
+       Each of the outputs is a pair:
+          (center, (lower, upper))
+       with center the mean of the conditional pdf of the value given the data
+       and (lower, upper) is a confidence interval centered on the median, 
+       containing the estimate to a probability alpha.
     
+    mctr, (ma, mb) : 
+       Estimates for mean
+    vctr, (va, vb) : 
+       Estimates for variance
+    sctr, (sa, sb) : 
+       Estimates for standard deviation
+  
+    Notes
+    -----
+    Converts data to 1-d and assumes all data has the same mean and variance.
+    Uses Jeffrey's prior for variance and std.
+
+    Equivalent to tuple((x.mean(), x.interval(alpha)) for x in mvsdist(dat))
+    """
+    res = mvsdist(data)
+    if alpha >= 1 or alpha <= 0:
+        raise ValueError("0 < alpha < 1 is required, but alpha=%s was given." % alpha)
+    return tuple((x.mean(), x.interval(alpha)) for x in res)
+
+def mvsdist(data):
+    """'frozen' distributions for mean, variance, and standard deviation of data.
+
+    Parameters
+    ----------
+    data : array-like
+       Converted to 1-d using ravel.  Requires 2 or more data-points
+
     Returns
     -------
     mdist : "frozen" distribution object
@@ -148,6 +101,15 @@ def mvsdist(data):
         Distribution object representing the variance of the data
     sdist : "frozen" distribution object
         Distribution object representing the standard deviation of the data
+
+    Notes
+    -----
+    The return values from bayes_mvs(data) is equivalent to
+    tuple((x.mean(), x.interval(0.90)) for x in mvsdist(data))
+    
+    In other words, calling <dist>.mean() and <dist>.interval(0.90) on the 
+    three distribution objects returned from this function will give the same 
+    results that are returned from bayes_mvs    
     """
     x = ravel(data)
     n = len(x)
@@ -534,10 +496,11 @@ def shapiro(x,a=None,reta=0):
         a = zeros(N,'f')
         init = 0
     else:
-        assert(len(a) == N/2), "a must be == len(x)/2"
+        if len(a) != N//2:
+            raise ValueError("len(a) must equal len(x)/2")
         init = 1
     y = sort(x)
-    a,w,pw,ifault = statlib.swilk(y,a[:N/2],init)
+    a, w, pw, ifault = statlib.swilk(y, a[:N//2], init)
     if not ifault in [0,2]:
         warnings.warn(str(ifault))
     if N > 5000:
@@ -677,34 +640,6 @@ def anderson(x,dist='norm'):
     A2 = -N-S
     return A2, critical, sig
 
-
-def _find_repeats(arr):
-    """Find repeats in the array and return (repeats, repeat_count)
-    """
-    arr = sort(arr)
-    lastval = arr[0]
-    howmany = 0
-    ind = 1
-    N = len(arr)
-    repeat = 0
-    replist = []
-    repnum = []
-    while ind < N:
-        if arr[ind] != lastval:
-            if repeat:
-                repnum.append(howmany+1)
-                repeat = 0
-                howmany = 0
-        else:
-            howmany += 1
-            repeat = 1
-            if (howmany == 1):
-                replist.append(arr[ind])
-        lastval = arr[ind]
-        ind += 1
-    if repeat:
-        repnum.append(howmany+1)
-    return replist, repnum
 
 def ansari(x,y):
     """
@@ -1101,7 +1036,7 @@ def fligner(*args,**kwds):
     for i in range(k):
         allZij.extend(list(Zij[i]))
         g.append(len(allZij))
-    
+
     ranks = stats.rankdata(allZij)
     a = distributions.norm.ppf(ranks/(2*(Ntot+1.0)) + 0.5)
 
@@ -1159,13 +1094,13 @@ def mood(x,y):
     mnM = n*(N*N-1.0)/12
     varM = m*n*(N+1.0)*(N+2)*(N-2)/180
     z = (M-mnM)/sqrt(varM)
-    
+
     # Numerically better than p = norm.cdf(x); p = min(p, 1 - p)
     if z > 0:
         pval = distributions.norm.sf(z)
     else:
         pval = distributions.norm.cdf(z)
-    
+
     # Account for two-sidedness
     pval *= 2.
     return z, pval
@@ -1287,42 +1222,6 @@ def _hermnorm(N):
         plist[n] = plist[n-1].deriv() - poly1d([1,0])*plist[n-1]
     return plist
 
-@np.lib.deprecate(message="""
-scipy.stats.pdf_moments is broken. It will be removed from scipy in 0.9
-unless it is fixed.
-""")
-def pdf_moments(cnt):
-    """Return the Gaussian expanded pdf function given the list of central
-    moments (first one is mean).
-    """
-    N = len(cnt)
-    if N < 2:
-        raise ValueError("At least two moments must be given to " +
-              "approximate the pdf.")
-    totp = poly1d(1)
-    sig = sqrt(cnt[1])
-    mu = cnt[0]
-    if N > 2:
-        Dvals = _hermnorm(N+1)
-    for k in range(3,N+1):
-        # Find Ck
-        Ck = 0.0
-        for n in range((k-3)/2):
-            m = k-2*n
-            if m % 2: # m is odd
-                momdiff = cnt[m-1]
-            else:
-                momdiff = cnt[m-1] - sig*sig*scipy.factorial2(m-1)
-            Ck += Dvals[k][m] / sig**m * momdiff
-        # Add to totp
-        totp = totp +  Ck*Dvals[k]
-
-    def thisfunc(x):
-        xn = (x-mu)/sig
-        return totp(xn)*exp(-xn*xn/2.0)/sqrt(2*pi)/sig
-    return thisfunc
-
-
 def pdf_fromgamma(g1,g2,g3=0.0,g4=None):
     if g4 is None:
         g4 = 3*g2*g2
@@ -1345,30 +1244,6 @@ def pdf_fromgamma(g1,g2,g3=0.0,g4=None):
         xn = (x-mu)/sig
         return totp(xn)*exp(-xn*xn/2.0)
     return thefunc
-
-@np.lib.deprecate(message="""
-scipy.stats.pdfapprox is broken. It will be removed from scipy in 0.9
-unless it is fixed.
-""")
-def pdfapprox(samples):
-    """Return a function that approximates the pdf of a set of samples
-    using a Gaussian expansion computed from the mean, variance, skewness
-    and Fisher's kurtosis.
-    """
-    # Estimate mean, variance, skewness and kurtosis
-    mu,sig,sk,kur = stats.describe(samples)[2:]
-    # Get central moments
-    cnt = [None]*4
-    cnt[0] = mu
-    cnt[1] = sig*sig
-    cnt[2] = sk * sig**1.5
-    cnt[3] = (kur+3.0) * sig**2.0
-    return pdf_moments(cnt)
-    #g2 = (1.0/sig)**2.0
-    #g1 = mu / sig**3.0
-    #g3 = sk / sig**3.5
-    #g4 = (kur+3.0) / sig**4.0
-    #return pdf_fromgamma(g1, g2, g3, g4)
 
 def circmean(samples, high=2*pi, low=0):
     """
