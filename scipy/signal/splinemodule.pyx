@@ -1,6 +1,9 @@
 include "numpy.pxd"
 
 
+__version__ = '0.2'
+
+
 #define PYERR(message) do {PyErr_SetString(PyExc_ValueError, message); goto fail;} while(0)
 #define DATA(arr) PyArray_DATA(arr)
 #define DIMS(arr) PyArray_DIMS(arr)
@@ -339,70 +342,3 @@ def IIRsymorder2(sig, r, omega, precision=-1.0):
         raise Exception("Problem occurred inside routine.")
 
     return PyArray_Return(out)
-
-
-static struct PyMethodDef toolbox_module_methods[] = {
-    {"cspline2d", cspline2d, METH_VARARGS, doc_cspline2d},
-    {"qspline2d", qspline2d, METH_VARARGS, doc_qspline2d},
-    {"sepfir2d", FIRsepsym2d, METH_VARARGS, doc_FIRsepsym2d},
-    {"symiirorder1", IIRsymorder1, METH_VARARGS, doc_IIRsymorder1},
-    {"symiirorder2", IIRsymorder2, METH_VARARGS, doc_IIRsymorder2},
-    {NULL, NULL, 0, NULL}               /* sentinel */
-};
-
-/* Initialization function for the module (*must* be called initXXXXX) */
-#if PY_VERSION_HEX >= 0x03000000
-static struct PyModuleDef moduledef = {
-    PyModuleDef_HEAD_INIT,
-    "spline",
-    NULL,
-    -1,
-    toolbox_module_methods,
-    NULL,
-    NULL,
-    NULL,
-    NULL
-};
-
-PyObject *PyInit_spline(void)
-{
-    PyObject *m, *d, *s;
-
-    m = PyModule_Create(&moduledef);
-    import_array();
-
-    /* Add some symbolic constants to the module */
-    d = PyModule_GetDict(m);
-
-    s = PyUnicode_FromString("0.2");
-    PyDict_SetItemString(d, "__version__", s);
-    Py_DECREF(s);
-
-    /* Check for errors */
-    if (PyErr_Occurred()) {
-        Py_FatalError("can't initialize module array");
-    }
-    return m;
-}
-#else
-PyMODINIT_FUNC initspline(void) {
-    PyObject *m, *d, *s;
-
-    /* Create the module and add the functions */
-    m = Py_InitModule("spline", toolbox_module_methods);
-
-    /* Import the C API function pointers for the Array Object*/
-    import_array();
-
-    /* Add some symbolic constants to the module */
-    d = PyModule_GetDict(m);
-
-    s = PyString_FromString("0.2");
-    PyDict_SetItemString(d, "__version__", s);
-    Py_DECREF(s);
-
-    /* Check for errors */
-    if (PyErr_Occurred())
-        Py_FatalError("can't initialize module array");
-}
-#endif
