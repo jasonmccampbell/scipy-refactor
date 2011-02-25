@@ -201,124 +201,81 @@ def FIRsepsym2d(image, hrow, hcol):
         raise Exception("Problem occurred inside routine.")
 
 
-static char doc_IIRsymorder1[] = " symiirorder1(input, c0, z1 {, precision}) -> output\n"
-"\n"
-"  Description:\n"
-"\n"
-"    Implement a smoothing IIR filter with mirror-symmetric boundary conditions\n"
-"    using a cascade of first-order sections.  The second section uses a\n"
-"    reversed sequence.  This implements a system with the following\n"
-"    transfer function and mirror-symmetric boundary conditions.\n"
-"\n"
-"                           c0              \n"
-"           H(z) = ---------------------    \n"
-"                   (1-z1/z) (1 - z1 z)     \n"
-"\n"
-"    The resulting signal will have mirror symmetric boundary conditions as well.\n"
-"\n"
-"  Inputs:\n"
-"\n"
-"    input -- the input signal.\n"
-"    c0, z1 -- parameters in the transfer function.\n"
-"    precision -- specifies the precision for calculating initial conditions\n"
-"                 of the recursive filter based on mirror-symmetric input.\n"
-"\n"
-"  Output:\n"
-"\n"
-"    output -- filtered signal.";
+def IIRsymorder1(sig, c0, z1, precision=-1.0):
+    """symiirorder1(input, c0, z1 {, precision}) -> output
 
-static PyObject *IIRsymorder1(PyObject *NPY_UNUSED(dummy), PyObject *args)
-{
-  PyObject *sig=NULL;
-  PyArrayObject *a_sig=NULL, *out=NULL;
-  Py_complex c0, z1;
-  double precision = -1.0;
-  int thetype, N, ret;
-  npy_intp outstrides, instrides;
+    Description:
 
-  if (!PyArg_ParseTuple(args, "ODD|d", &sig, &c0, &z1, &precision))
-    return NULL;
+    Implement a smoothing IIR filter with mirror-symmetric boundary conditions
+    using a cascade of first-order sections.  The second section uses a
+    reversed sequence.  This implements a system with the following
+    transfer function and mirror-symmetric boundary conditions.
 
-  thetype = PyArray_ObjectType(sig, PyArray_FLOAT);
-  thetype = NPY_MIN(thetype, PyArray_CDOUBLE);
-  a_sig = (PyArrayObject *)PyArray_FromObject(sig, thetype, 1, 1);
+                           c0
+           H(z) = ---------------------
+                   (1-z1/z) (1 - z1 z)
 
-  if ((a_sig == NULL)) goto fail;
+    The resulting signal will have mirror symmetric boundary conditions as well.
 
-  out = (PyArrayObject *)PyArray_SimpleNew(1,DIMS(a_sig),thetype);
-  if (out == NULL) goto fail;
-  N = DIMS(a_sig)[0];
+    Inputs:
 
-  convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1);
-  outstrides = 1;
+    input -- the input signal.
+    c0, z1 -- parameters in the transfer function.
+    precision -- specifies the precision for calculating initial conditions
+                 of the recursive filter based on mirror-symmetric input.
 
-  switch (thetype) {
-  case PyArray_FLOAT:
-    {
-      float rc0 = c0.real;
-      float rz1 = z1.real;
+    Output:
 
-      if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-6;
-      ret = S_IIR_forback1 (rc0, rz1, (float *)DATA(a_sig),
-                            (float *)DATA(out), N,
-                            instrides, outstrides, (float )precision);
-    }
-    break;
-  case PyArray_DOUBLE:
-    {
-      double rc0 = c0.real;
-      double rz1 = z1.real;
+    output -- filtered signal.
+    """
+    cdef Py_complex c0, z1
+    cdef int thetype, N, ret
+    cdef npy_intp outstrides, instrides
+    cdef float rc0, rz1
 
-      if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-11;
-      ret = D_IIR_forback1 (rc0, rz1, (double *)DATA(a_sig),
-                            (double *)DATA(out), N,
-                            instrides, outstrides, precision);
-    }
-    break;
-#ifdef __GNUC__
-  case PyArray_CFLOAT:
-    {
-      __complex__ float zc0 = c0.real + 1.0i*c0.imag;
-      __complex__ float zz1 = z1.real + 1.0i*z1.imag;
-      if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-6;
-      ret = C_IIR_forback1 (zc0, zz1, (__complex__ float *)DATA(a_sig),
-                            (__complex__ float *)DATA(out), N,
-                            instrides, outstrides, (float )precision);
-    }
-    break;
-  case PyArray_CDOUBLE:
-    {
-      __complex__ double zc0 = c0.real + 1.0i*c0.imag;
-      __complex__ double zz1 = z1.real + 1.0i*z1.imag;
-      if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-11;
-      ret = Z_IIR_forback1 (zc0, zz1, (__complex__ double *)DATA(a_sig),
-                            (__complex__ double *)DATA(out), N,
-                            instrides, outstrides, precision);
-    }
-    break;
-#endif
-  default:
-    PYERR("Incorrect type.");
-  }
+    thetype = PyArray_ObjectType(sig, PyArray_FLOAT)
+    thetype = NPY_MIN(thetype, PyArray_CDOUBLE)
+    a_sig = <PyArrayObject *> PyArray_FromObject(sig, thetype, 1, 1)
 
-  if (ret == 0) {
-    Py_DECREF(a_sig);
-    return PyArray_Return(out);
-  }
+    out = <PyArrayObject *> PyArray_SimpleNew(1,DIMS(a_sig),thetype)
+    N = DIMS(a_sig)[0]
 
-  if (ret == -1) PYERR("Could not allocate enough memory.");
-  if (ret == -2) PYERR("|z1| must be less than 1.0");
-  if (ret == -3) PYERR("Sum to find symmetric boundary conditions did not converge.");
+    convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1)
+    outstrides = 1
 
-  PYERR("Unknown error.");
+    if thetype == PyArray_FLOAT:
+        rc0 = c0.real
+        rz1 = z1.real
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-6
+        ret = S_IIR_forback1(rc0, rz1,
+                             <float *> DATA(a_sig),
+                             <float *> DATA(out), N,
+                             instrides, outstrides, <float> precision)
 
+    elif thetype == PyArray_DOUBLE:
+        rc0 = c0.real
+        rz1 = z1.real
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-11
+        ret = D_IIR_forback1(rc0, rz1,
+                             <double *> DATA(a_sig),
+                             <double *> DATA(out), N,
+                             instrides, outstrides, precision);
 
- fail:
-  Py_XDECREF(a_sig);
-  Py_XDECREF(out);
-  return NULL;
+    else:
+        raise Exception("Incorrect type.")
 
-}
+    if ret == -1:
+        raise Exception("Could not allocate enough memory.")
+    if ret == -2:
+        raise Exception("|z1| must be less than 1.0")
+    if ret == -3:
+        raise Exception("Sum to find symmetric boundary conditions did not "
+                        "converge.")
+
+    return out
+
 
 static char doc_IIRsymorder2[] = " symiirorder2(input, r, omega {, precision}) -> output\n"
 "\n"
