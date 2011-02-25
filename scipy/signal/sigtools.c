@@ -6,26 +6,9 @@ is granted under the SciPy License.
 */
 
 #include "sigtools.h"
-#include <setjmp.h>
 #include <stdlib.h>
 #include <math.h>
 
-jmp_buf MALLOC_FAIL;
-
-char *check_malloc (int);
-
-char *check_malloc (int size)
-{
-    char *the_block;
-    
-    the_block = (char *)malloc(size);
-    if (the_block == NULL)
-	{
-	    printf("\nERROR: unable to allocate %d bytes!\n", size);
-	    longjmp(MALLOC_FAIL,-1);
-	}
-    return(the_block);
-}
 
 /* Some core routines are written
 in a portable way so that they could be used in other applications.  The 
