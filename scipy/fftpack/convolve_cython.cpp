@@ -215,46 +215,6 @@ typedef void (*__pyx_t_5scipy_7fftpack_5numpy_PyUFuncGenericFunction)(char **, _
 
 typedef System::Object^ __pyx_t_5scipy_7fftpack_9fwrap_ktp_fw_bytes;
 
-/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":5
- * cimport convolve_fc as fc
- * 
- * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=*, object zero_nyquist=*, object kernel_func_extra_args=*, object omega=*)             # <<<<<<<<<<<<<<
- * cpdef object destroy_convolve_cache()
- * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=*, bint overwrite_x=*)
- */
-
-ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_init_convolution_kernel {
-  int __pyx_n;
-  fwi_integer_t d;
-  System::Object^ zero_nyquist;
-  System::Object^ kernel_func_extra_args;
-  System::Object^ omega;
-};
-
-/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":7
- * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=*, object zero_nyquist=*, object kernel_func_extra_args=*, object omega=*)
- * cpdef object destroy_convolve_cache()
- * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=*, bint overwrite_x=*)             # <<<<<<<<<<<<<<
- * cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=*)
- */
-
-ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve {
-  int __pyx_n;
-  fwi_integer_t swap_real_imag;
-  int overwrite_x;
-};
-
-/* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pxd":8
- * cpdef object destroy_convolve_cache()
- * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=*, bint overwrite_x=*)
- * cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=*)             # <<<<<<<<<<<<<<
- */
-
-ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve_z {
-  int __pyx_n;
-  int overwrite_x;
-};
-
 /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":183
  * 
  * 
@@ -410,23 +370,14 @@ static CYTHON_INLINE void import_array(void); /*proto*/
 /* Module declarations from scipy.fftpack.convolve_fc */
 /* Module declarations from scipy.fftpack.convolve */
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_init_convolution_kernel(fwi_integer_t, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_init_convolution_kernel ^__pyx_optional_args);
-static System::Object^ init_convolution_kernel(fwi_integer_t, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_init_convolution_kernel ^__pyx_optional_args); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_destroy_convolve_cache(int __pyx_skip_dispatch);
-static System::Object^ destroy_convolve_cache(int __pyx_skip_dispatch); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_convolve(System::Object^, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve ^__pyx_optional_args);
-static System::Object^ convolve(System::Object^, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve ^__pyx_optional_args); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_convolve_z(System::Object^, System::Object^, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve_z ^__pyx_optional_args);
-static System::Object^ convolve_z(System::Object^, System::Object^, System::Object^, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve_z ^__pyx_optional_args); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate int __pyx_delegate_t_5scipy_7fftpack_8convolve_init_convolution_kernel_cb_core(double *, int);
 static int init_convolution_kernel_cb_core(double *, int); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate double __pyx_delegate_t_5scipy_7fftpack_8convolve_init_convolution_kernel_cb(int);
 static double init_convolution_kernel_cb(int); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_destroy_convolve_cache(int __pyx_skip_dispatch);
+static System::Object^ destroy_convolve_cache(int __pyx_skip_dispatch); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate System::Object^ __pyx_delegate_t_5scipy_7fftpack_8convolve_fw_asfortranarray(System::Object^, int, int, int, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_fw_asfortranarray ^__pyx_optional_args);
 static System::Object^ fw_asfortranarray(System::Object^, int, int, int, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_fw_asfortranarray ^__pyx_optional_args); /*proto*/
@@ -479,12 +430,17 @@ static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System
 static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_double_51_38;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_56_22;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_56_31;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_68_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_68_0_1;
 static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_fwi_integer_t_88_20;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_90_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_93_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_94_26;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_120_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_120_0_1;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_141_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_144_24;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_149_0;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_171_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_174_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_177_24;
@@ -742,7 +698,7 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
  *     else:
  *         raise RuntimeError             # <<<<<<<<<<<<<<
  * 
- * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
+ * def init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "RuntimeError");
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
@@ -758,16 +714,18 @@ static  double init_convolution_kernel_cb(int __pyx_v_k) {
 /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":68
  *         raise RuntimeError
  * 
- * cpdef object init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):             # <<<<<<<<<<<<<<
+ * def init_convolution_kernel(fwi_integer_t n, object kernel_func, fwi_integer_t d=0, object zero_nyquist=None, object kernel_func_extra_args=None, object omega=None):             # <<<<<<<<<<<<<<
  *     """init_convolution_kernel(n, kernel_func[, d, zero_nyquist, omega]) -> omega
  * 
  */
 
-static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System::Object^ __pyx_v_kernel_func, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_init_convolution_kernel ^__pyx_optional_args) {
-  fwi_integer_t __pyx_v_d = ((fwi_integer_t)0);
-  System::Object^ __pyx_v_zero_nyquist = ((System::Object^)nullptr);
-  System::Object^ __pyx_v_kernel_func_extra_args = ((System::Object^)nullptr);
-  System::Object^ __pyx_v_omega = ((System::Object^)nullptr);
+static System::Object^ init_convolution_kernel(System::Object^ n, System::Object^ kernel_func, [InteropServices::Optional]System::Object^ d, [InteropServices::Optional]System::Object^ zero_nyquist, [InteropServices::Optional]System::Object^ kernel_func_extra_args, [InteropServices::Optional]System::Object^ omega) {
+  fwi_integer_t __pyx_v_n;
+  System::Object^ __pyx_v_kernel_func = nullptr;
+  fwi_integer_t __pyx_v_d;
+  System::Object^ __pyx_v_zero_nyquist = nullptr;
+  System::Object^ __pyx_v_kernel_func_extra_args = nullptr;
+  System::Object^ __pyx_v_omega = nullptr;
   fwi_integer_t __pyx_v_zero_nyquist_;
   NumpyDotNet::ndarray^ __pyx_v_omega_;
   _CallbackInfo^ __pyx_v_cbinfo;
@@ -783,19 +741,27 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
   array<System::Object^>^ __pyx_t_6;
   System::Object^ __pyx_t_7 = nullptr;
   int __pyx_t_8;
-  if (__pyx_optional_args) {
-    if (__pyx_optional_args->__pyx_n > 0) {
-      __pyx_v_d = __pyx_optional_args->d;
-      if (__pyx_optional_args->__pyx_n > 1) {
-        __pyx_v_zero_nyquist = __pyx_optional_args->zero_nyquist;
-        if (__pyx_optional_args->__pyx_n > 2) {
-          __pyx_v_kernel_func_extra_args = __pyx_optional_args->kernel_func_extra_args;
-          if (__pyx_optional_args->__pyx_n > 3) {
-            __pyx_v_omega = __pyx_optional_args->omega;
-          }
-        }
-      }
-    }
+  __pyx_v_n = __site_cvt_68_0->Target(__site_cvt_68_0, n);
+  __pyx_v_kernel_func = kernel_func;
+  if (dynamic_cast<System::Reflection::Missing^>(d) == nullptr) {
+    __pyx_v_d = __site_cvt_68_0_1->Target(__site_cvt_68_0_1, d);
+  } else {
+    __pyx_v_d = ((fwi_integer_t)0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(zero_nyquist) == nullptr) {
+    __pyx_v_zero_nyquist = zero_nyquist;
+  } else {
+    __pyx_v_zero_nyquist = ((System::Object^)nullptr);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(kernel_func_extra_args) == nullptr) {
+    __pyx_v_kernel_func_extra_args = kernel_func_extra_args;
+  } else {
+    __pyx_v_kernel_func_extra_args = ((System::Object^)nullptr);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(omega) == nullptr) {
+    __pyx_v_omega = omega;
+  } else {
+    __pyx_v_omega = ((System::Object^)nullptr);
   }
   __pyx_v_omega_ = nullptr;
   __pyx_v_cbinfo = nullptr;
@@ -844,9 +810,9 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
-    goto __pyx_L3;
+    goto __pyx_L5;
   }
-  __pyx_L3:;
+  __pyx_L5:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":91
  *     if not (n > 0):
@@ -896,9 +862,9 @@ static  System::Object^ init_convolution_kernel(fwi_integer_t __pyx_v_n, System:
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_7, nullptr, nullptr);
     __pyx_t_7 = nullptr;
-    goto __pyx_L4;
+    goto __pyx_L6;
   }
-  __pyx_L4:;
+  __pyx_L6:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":94
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
@@ -1072,14 +1038,16 @@ static  System::Object^ destroy_convolve_cache(void) {
 /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":120
  * 
  * 
- * cpdef object convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
+ * def convolve(object x, object omega, fwi_integer_t swap_real_imag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
  *     """convolve(x, omega[, swap_real_imag, overwrite_x]) -> x
  * 
  */
 
-static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __pyx_v_omega, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve ^__pyx_optional_args) {
-  fwi_integer_t __pyx_v_swap_real_imag = ((fwi_integer_t)0);
-  int __pyx_v_overwrite_x = ((int)0);
+static System::Object^ convolve(System::Object^ x, System::Object^ omega, [InteropServices::Optional]System::Object^ swap_real_imag, [InteropServices::Optional]System::Object^ overwrite_x) {
+  System::Object^ __pyx_v_x = nullptr;
+  System::Object^ __pyx_v_omega = nullptr;
+  fwi_integer_t __pyx_v_swap_real_imag;
+  int __pyx_v_overwrite_x;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_omega_;
   fwi_integer_t __pyx_v_n;
@@ -1090,13 +1058,17 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   int __pyx_t_6;
-  if (__pyx_optional_args) {
-    if (__pyx_optional_args->__pyx_n > 0) {
-      __pyx_v_swap_real_imag = __pyx_optional_args->swap_real_imag;
-      if (__pyx_optional_args->__pyx_n > 1) {
-        __pyx_v_overwrite_x = __pyx_optional_args->overwrite_x;
-      }
-    }
+  __pyx_v_x = x;
+  __pyx_v_omega = omega;
+  if (dynamic_cast<System::Reflection::Missing^>(swap_real_imag) == nullptr) {
+    __pyx_v_swap_real_imag = __site_cvt_120_0->Target(__site_cvt_120_0, swap_real_imag);
+  } else {
+    __pyx_v_swap_real_imag = ((fwi_integer_t)0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(overwrite_x) == nullptr) {
+    __pyx_v_overwrite_x = __site_cvt_120_0_1->Target(__site_cvt_120_0_1, overwrite_x);
+  } else {
+    __pyx_v_overwrite_x = ((int)0);
   }
   __pyx_v_x_ = nullptr;
   __pyx_v_omega_ = nullptr;
@@ -1157,9 +1129,9 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
-    goto __pyx_L3;
+    goto __pyx_L5;
   }
-  __pyx_L3:;
+  __pyx_L5:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":142
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
@@ -1208,9 +1180,9 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
-    goto __pyx_L4;
+    goto __pyx_L6;
   }
-  __pyx_L4:;
+  __pyx_L6:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":145
  *     if not (0 <= n <= np.PyArray_DIMS(omega_)[0]):
@@ -1239,13 +1211,16 @@ static  System::Object^ convolve(System::Object^ __pyx_v_x, System::Object^ __py
 /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":149
  * 
  * 
- * cpdef object convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):             # <<<<<<<<<<<<<<
+ * def convolve_z(object x, object omega_real, object omega_imag, bint overwrite_x=False):             # <<<<<<<<<<<<<<
  *     """convolve_z(x, omega_real, omega_imag[, overwrite_x]) -> x
  * 
  */
 
-static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __pyx_v_omega_real, System::Object^ __pyx_v_omega_imag, ref struct __pyx_opt_args_5scipy_7fftpack_8convolve_convolve_z ^__pyx_optional_args) {
-  int __pyx_v_overwrite_x = ((int)0);
+static System::Object^ convolve_z(System::Object^ x, System::Object^ omega_real, System::Object^ omega_imag, [InteropServices::Optional]System::Object^ overwrite_x) {
+  System::Object^ __pyx_v_x = nullptr;
+  System::Object^ __pyx_v_omega_real = nullptr;
+  System::Object^ __pyx_v_omega_imag = nullptr;
+  int __pyx_v_overwrite_x;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_omega_real_;
   NumpyDotNet::ndarray^ __pyx_v_omega_imag_;
@@ -1257,10 +1232,13 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
   System::Object^ __pyx_t_4 = nullptr;
   int __pyx_t_5;
   int __pyx_t_6;
-  if (__pyx_optional_args) {
-    if (__pyx_optional_args->__pyx_n > 0) {
-      __pyx_v_overwrite_x = __pyx_optional_args->overwrite_x;
-    }
+  __pyx_v_x = x;
+  __pyx_v_omega_real = omega_real;
+  __pyx_v_omega_imag = omega_imag;
+  if (dynamic_cast<System::Reflection::Missing^>(overwrite_x) == nullptr) {
+    __pyx_v_overwrite_x = __site_cvt_149_0->Target(__site_cvt_149_0, overwrite_x);
+  } else {
+    __pyx_v_overwrite_x = ((int)0);
   }
   __pyx_v_x_ = nullptr;
   __pyx_v_omega_real_ = nullptr;
@@ -1322,9 +1300,9 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
-    goto __pyx_L3;
+    goto __pyx_L5;
   }
-  __pyx_L3:;
+  __pyx_L5:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":172
  *     if not (0 <= n <= np.PyArray_DIMS(x_)[0]):
@@ -1373,9 +1351,9 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
-    goto __pyx_L4;
+    goto __pyx_L6;
   }
-  __pyx_L4:;
+  __pyx_L6:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":175
  *     if not (0 <= n <= np.PyArray_DIMS(omega_real_)[0]):
@@ -1424,9 +1402,9 @@ static  System::Object^ convolve_z(System::Object^ __pyx_v_x, System::Object^ __
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
-    goto __pyx_L5;
+    goto __pyx_L7;
   }
-  __pyx_L5:;
+  __pyx_L7:;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":178
  *     if not (0 <= n <= np.PyArray_DIMS(omega_imag_)[0]):
@@ -2355,12 +2333,17 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_double_51_38 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
   __site_get_exc_info_56_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
   __site_call0_56_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_cvt_68_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_68_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_fwi_integer_t_88_20 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_90_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_93_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call0_94_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_cvt_120_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_120_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_141_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_144_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_149_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_171_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_174_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_177_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
@@ -2405,6 +2388,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
+  PythonDictionary^ __pyx_t_3;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\convolve.pyx":22
  * 
@@ -2863,9 +2847,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  * """The convolve module was generated with Fwrap v0.2.0dev_e929453.
  */
-  __pyx_t_1 = PythonOps::MakeEmptyDict();
-  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
-  __pyx_t_1 = nullptr;
+  __pyx_t_3 = PythonOps::MakeEmptyDict();
+  PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_3));
+  __pyx_t_3 = nullptr;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\fftpack\numpy.pxd":248
  *     return obj.ndim
