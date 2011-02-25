@@ -39,73 +39,63 @@ cdef void convert_strides(npy_intp* instrides,
     cdef int n
     cdef npy_intp bitshift
 
-    bitshift = -1;
+    bitshift = -1
     while size != 0:
-        size >>= 1;
-        bitshift += 1;
+        size >>= 1
+        bitshift += 1
 
     for n from 0 <= n < N:
         convstrides[n] = instrides[n] >> bitshift
 
 
+def cspline2d(dummy, image, lambda_=0.0, precision=-1.0):
+    """cspline2d(input {, lambda, precision}) -> ck
 
-static char doc_cspline2d[] = "cspline2d(input {, lambda, precision}) -> ck\n"
-"\n"
-"  Description:\n"
-"\n"
-"    Return the third-order B-spline coefficients over a regularly spacedi\n" 
-"    input grid for the two-dimensional input image.  The lambda argument\n" 
-"    specifies the amount of smoothing.  The precision argument allows specifying\n"
-"    the precision used when computing the infinite sum needed to apply mirror-\n"
-"    symmetric boundary conditions.\n";
+    Description:
 
+    Return the third-order B-spline coefficients over a regularly spacedi
+    input grid for the two-dimensional input image.  The lambda argument
+    specifies the amount of smoothing.  The precision argument allows specifying
+    the precision used when computing the infinite sum needed to apply mirror-
+    symmetric boundary conditions.
+    """
+    cdef int thetype, M, N, retval=0
+    cdef npy_intp outstrides[2], instrides[2]
+
+    thetype = PyArray_ObjectType(image, PyArray_FLOAT)
+    thetype = NPY_MIN(thetype, PyArray_DOUBLE)
+    a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
  
-static PyObject *cspline2d(PyObject *NPY_UNUSED(dummy), PyObject *args)
-{
-  PyObject *image=NULL;
-  PyArrayObject *a_image=NULL, *ck=NULL;
-  double lambda = 0.0;
-  double precision = -1.0;
-  int thetype, M, N, retval=0;
-  npy_intp outstrides[2], instrides[2];
+    ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image),thetype)
+    M = DIMS(a_image)[0]
+    N = DIMS(a_image)[1]
 
-  if (!PyArg_ParseTuple(args, "O|dd", &image, &lambda, &precision)) return NULL;
+    convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
+    outstrides[0] = N
+    outstrides[1] = 1
 
-  thetype = PyArray_ObjectType(image, PyArray_FLOAT);
-  thetype = NPY_MIN(thetype, PyArray_DOUBLE);
-  a_image = (PyArrayObject *)PyArray_FromObject(image, thetype, 2, 2);
-  if (a_image == NULL) goto fail;
- 
-  ck = (PyArrayObject *)PyArray_SimpleNew(2,DIMS(a_image),thetype);
-  if (ck == NULL) goto fail;
-  M = DIMS(a_image)[0];
-  N = DIMS(a_image)[1];
+    if thetype == PyArray_FLOAT:
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-3
+        return S_cubic_spline2D(<float *> DATA(a_image),
+                                <float *> DATA(ck),
+                                M, N, lambda_, instrides, outstrides,
+                                precision)
 
-  convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2);
-  outstrides[0] = N;
-  outstrides[1] = 1;
+    elif thetype == PyArray_DOUBLE:
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-6;
+        return D_cubic_spline2D(<double *> DATA(a_image),
+                                <double *> DATA(ck),
+                                M, N, lambda_, instrides, outstrides,
+                                precision);
 
-  if (thetype == PyArray_FLOAT) {
-    if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-3;
-    retval = S_cubic_spline2D((float *)DATA(a_image), (float *)DATA(ck), M, N, lambda, instrides, outstrides, precision);
-  }
-  else if (thetype == PyArray_DOUBLE) {
-    if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-6;
-    retval = D_cubic_spline2D((double *)DATA(a_image), (double *)DATA(ck), M, N, lambda, instrides, outstrides, precision);
-  }
+    if retval == -3:
+        raise Exeption("Precision too high.  Error did not converge.")
 
-  if (retval == -3) PYERR("Precision too high.  Error did not converge.");
-  if (retval < 0) PYERR("Problem occurred inside routine");
+    if (retval < 0):
+        raise Exeption("Problem occurred inside routine")
 
-  Py_DECREF(a_image);
-  return PyArray_Return(ck);
- 
- fail:
-  Py_XDECREF(a_image);
-  Py_XDECREF(ck);
-  return NULL;
-
-}
 
 static char doc_qspline2d[] = "qspline2d(input {, lambda, precision}) -> qk\n"
 "\n"
