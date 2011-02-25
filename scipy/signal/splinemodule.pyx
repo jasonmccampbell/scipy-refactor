@@ -11,9 +11,8 @@ include "numpy.pxd"
 #define RANK(arr) PyArray_NDIM(arr)
 #define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & NPY_CONTIGUOUS)
 
-static void convert_strides(npy_intp*,npy_intp*,int,int);
 
-def extern from "S_bspline_util.h":
+cdef extern from "S_bspline_util.h":
     int S_cubic_spline2D(float*, float*, int, int, double, npy_intp*,
                          npy_intp*,float)
     int S_quadratic_spline2D(float*, float*, int, int, double, npy_intp*,
@@ -23,7 +22,7 @@ def extern from "S_bspline_util.h":
     int S_separable_2Dconvolve_mirror(float*, float*, int, int, float*, float*,
                                       int, int, npy_intp*, npy_intp*)
 
-def extern from "D_bspline_util.h":
+cdef extern from "D_bspline_util.h":
     int D_cubic_spline2D(double*, double*, int, int, double, npy_intp*,
                          npy_intp*, double)
     int D_quadratic_spline2D(double*, double*, int, int, double, npy_intp*,
