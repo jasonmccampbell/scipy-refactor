@@ -36,18 +36,17 @@ cdef extern from "D_bspline_util.h":
 cdef void convert_strides(npy_intp* instrides,
                           npy_intp* convstrides,
                           int size, int N):
-int n; npy_intp bitshift;
+    cdef int n
+    cdef npy_intp bitshift
 
-  bitshift = -1;
+    bitshift = -1;
+    while size != 0:
+        size >>= 1;
+        bitshift += 1;
 
-  while (size != 0) {
-    size >>= 1;
-    bitshift++;
-  }
-  for (n = 0; n < N; n++) {
-    convstrides[n] = instrides[n] >> bitshift;
-  }
-}
+    for n from 0 <= n < N:
+        convstrides[n] = instrides[n] >> bitshift
+
 
 
 static char doc_cspline2d[] = "cspline2d(input {, lambda, precision}) -> ck\n"
