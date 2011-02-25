@@ -1,6 +1,4 @@
-#include "Python.h"
-#include "numpy/arrayobject.h"
-#include <math.h>
+include "numpy.pxd"
 
 
 #define PYERR(message) do {PyErr_SetString(PyExc_ValueError, message); goto fail;} while(0)
@@ -15,11 +13,17 @@
 
 static void convert_strides(npy_intp*,npy_intp*,int,int);
 
-extern int S_cubic_spline2D(float*,float*,int,int,double,npy_intp*,npy_intp*,float);
-extern int S_quadratic_spline2D(float*,float*,int,int,double,npy_intp*,npy_intp*,float);
-extern int S_IIR_forback1(float,float,float*,float*,int,int,int,float);
-extern int S_IIR_forback2(double,double,float*,float*,int,int,int,float); 
-extern int S_separable_2Dconvolve_mirror(float*,float*,int,int,float*,float*,int,int,npy_intp*,npy_intp*);
+def extern from "S_bspline_util.h":
+    int S_cubic_spline2D(float*, float*, int, int, double, npy_intp*,
+                         npy_intp*,float);
+    int S_quadratic_spline2D(float*, float*, int, int, double, npy_intp*,
+                             npy_intp*, float);
+    int S_IIR_forback1(float, float, float*, float*, int, int, int, float);
+    int S_IIR_forback2(double, double, float*, float*, int, int, int, float);
+    int S_separable_2Dconvolve_mirror(float*, float*, int, int, float*, float*,
+                                      int, int, npy_intp*, npy_intp*);
+
+
 
 extern int D_cubic_spline2D(double*,double*,int,int,double,npy_intp*,npy_intp*,double);
 extern int D_quadratic_spline2D(double*,double*,int,int,double,npy_intp*,npy_intp*,double);
