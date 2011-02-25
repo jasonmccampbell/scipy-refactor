@@ -261,7 +261,7 @@ def IIRsymorder1(sig, c0, z1, precision=-1.0):
         ret = D_IIR_forback1(rc0, rz1,
                              <double *> DATA(a_sig),
                              <double *> DATA(out), N,
-                             instrides, outstrides, precision);
+                             instrides, outstrides, precision)
 
     else:
         raise Exception("Incorrect type.")
@@ -274,89 +274,71 @@ def IIRsymorder1(sig, c0, z1, precision=-1.0):
         raise Exception("Sum to find symmetric boundary conditions did not "
                         "converge.")
 
-    return out
+    return PyArray_Return(out)
 
 
-static char doc_IIRsymorder2[] = " symiirorder2(input, r, omega {, precision}) -> output\n"
-"\n"
-"  Description:\n"
-"\n"
-"    Implement a smoothing IIR filter with mirror-symmetric boundary conditions\n"
-"    using a cascade of second-order sections.  The second section uses a\n"
-"    reversed sequence.  This implements the following transfer function:\n"
-"\n"
-"                                        cs^2\n"
-"               H(z) = ---------------------------------------\n"
-"                      (1 - a2/z - a3/z^2) (1 - a2 z - a3 z^2 )\n"
-"\n"
-"    where a2 = (2 r cos omega)\n"
-"          a3 = - r^2\n"
-"          cs = 1 - 2 r cos omega + r^2\n"
-"\n"
-"  Inputs:\n"
-"\n"
-"    input -- the input signal.\n"
-"    r, omega -- parameters in the transfer function.\n"
-"    precision -- specifies the precision for calculating initial conditions\n"
-"                 of the recursive filter based on mirror-symmetric input.\n"
-"\n"
-"  Output:\n"
-"\n"
-"    output -- filtered signal.\n";
+def IIRsymorder2(sig, r, omega, precision=-1.0):
+    """symiirorder2(input, r, omega {, precision}) -> output
 
-static PyObject *IIRsymorder2(PyObject *NPY_UNUSED(dummy), PyObject *args)
-{
-  PyObject *sig=NULL;
-  PyArrayObject *a_sig=NULL, *out=NULL;
-  double r, omega;
-  double precision = -1.0;
-  int thetype, N, ret;
-  npy_intp outstrides, instrides;
+    Description:
 
-  if (!PyArg_ParseTuple(args, "Odd|d", &sig, &r, &omega, &precision))
-    return NULL;
+    Implement a smoothing IIR filter with mirror-symmetric boundary conditions
+    using a cascade of second-order sections.  The second section uses a
+    reversed sequence.  This implements the following transfer function:
 
-  thetype = PyArray_ObjectType(sig, PyArray_FLOAT);
-  thetype = NPY_MIN(thetype, PyArray_DOUBLE);
-  a_sig = (PyArrayObject *)PyArray_FromObject(sig, thetype, 1, 1);
+                                        cs^2
+               H(z) = ---------------------------------------
+                      (1 - a2/z - a3/z^2) (1 - a2 z - a3 z^2 )
 
-  if ((a_sig == NULL)) goto fail;
+    where a2 = (2 r cos omega)
+          a3 = - r^2
+          cs = 1 - 2 r cos omega + r^2
 
-  out = (PyArrayObject *)PyArray_SimpleNew(1,DIMS(a_sig),thetype);
-  if (out == NULL) goto fail;
-  N = DIMS(a_sig)[0];
+    Inputs:
 
-  convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1);
-  outstrides = 1;
+    input -- the input signal.
+    r, omega -- parameters in the transfer function.
+    precision -- specifies the precision for calculating initial conditions
+                 of the recursive filter based on mirror-symmetric input.
 
-  switch (thetype) {
-  case PyArray_FLOAT:
-    if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-6;
-    ret = S_IIR_forback2 (r, omega, (float *)DATA(a_sig),
-                          (float *)DATA(out), N,
-                          instrides, outstrides, precision);
-    break;
-  case PyArray_DOUBLE:
-    if ((precision <= 0.0) || (precision > 1.0)) precision = 1e-11;
-    ret = D_IIR_forback2 (r, omega, (double *)DATA(a_sig),
-                          (double *)DATA(out), N,
-                          instrides, outstrides, precision);
-    break;
-  default:
-    PYERR("Incorrect type.");
-  }
+    Output:
 
-  if (ret < 0) PYERR("Problem occurred inside routine.");
+    output -- filtered signal.
+    """
+    cdef int thetype, N, ret
+    cdef npy_intp outstrides, instrides
 
-  Py_DECREF(a_sig);
-  return PyArray_Return(out);
+    thetype = PyArray_ObjectType(sig, PyArray_FLOAT)
+    thetype = NPY_MIN(thetype, PyArray_DOUBLE)
+    a_sig = <PyArrayObject *> PyArray_FromObject(sig, thetype, 1, 1)
 
- fail:
-  Py_XDECREF(a_sig);
-  Py_XDECREF(out);
-  return NULL;
+    out = <PyArrayObject *> PyArray_SimpleNew(1,DIMS(a_sig),thetype)
+    N = DIMS(a_sig)[0]
 
-}
+    convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1)
+    outstrides = 1
+
+    if thetype == PyArray_FLOAT:
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-6
+        ret = S_IIR_forback2(r, omega, <float *> DATA(a_sig),
+                             <float *> DATA(out), N,
+                             instrides, outstrides, precision)
+
+    elif thetype == PyArray_DOUBLE:
+        if not (0.0 <= precision < 1.0):
+            precision = 1e-11
+        ret = D_IIR_forback2(r, omega, <double *> DATA(a_sig),
+                             <double *> DATA(out), N,
+                             instrides, outstrides, precision)
+
+    else:
+        raise Exception("Incorrect type.")
+
+    if ret < 0:
+        raise Exception("Problem occurred inside routine.")
+
+    return PyArray_Return(out)
 
 
 static struct PyMethodDef toolbox_module_methods[] = {
