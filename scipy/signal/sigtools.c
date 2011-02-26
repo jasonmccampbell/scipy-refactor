@@ -16,7 +16,7 @@ order filtering, however uses python-specific constructs in its guts
 and is therefore Python dependent.  This could be changed in a 
 straightforward way but I haven't done it for lack of time.*/
 
-static int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims) {
+int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims) {
   int bad_index = 0, k = 0;
 
   while (!bad_index && (k++ < ndims)) {

@@ -9,20 +9,27 @@ cimport numpy as np
 np.import_array()
 
 cdef extern from "stdlib.h":
-    void free(void *ptr);
+    void free(void *ptr)
     void * malloc(size_t size)
+    void memset(void *, void *, int)
     void qsort(void *base, size_t nel, size_t width, int (*compar)(void *, void *))
 
 cdef extern from "string.h":
     int memcmp(void *s1, void *s2, size_t n)
-    void * memcpy(void * s1, void * s2, size_t n)
+    void * memcpy(void *s1, void *s2, size_t n)
+    void * memset(void *b, int c, size_t n)
 
 cdef extern from "sigtools.h":
-    int pylab_convolve_2d(char*,intp*,char*,intp*,char*,intp*,intp*,intp*,int,char*)
-    void f_medfilt2(float*,float*,intp*,intp*, char* (*alloc_fn)(int))
-    void d_medfilt2(double*,double*,intp*,intp*, char* (*alloc_fn)(int))
-    void b_medfilt2(unsigned char*,unsigned char*,intp*,intp*, char* (*alloc_fn)(int))
-    void scipy_signal_sigtools_linear_filter_module_init();
+    int index_out_of_bounds(np.npy_intp *indices, np.npy_intp *max_indices, int ndims)
+    np.npy_intp compute_offsets(np.npy_uintp *offsets, np.npy_intp *offsets2, np.npy_intp *dim1, np.npy_intp *dim2, np.npy_intp *dim3, np.npy_intp *mode_dep, int nd)
+    int increment(np.npy_intp *ret_ind, int nd, np.npy_intp *max_ind)
+    int pre_remez(double *h2, int numtaps, int numbands, double *bands, double *response, double *weight, int type, int maxiter, int grid_density)
+    int pylab_convolve_2d(char*,np.npy_intp*,char*,np.npy_intp*,char*,np.npy_intp*,np.npy_intp*,np.npy_intp*,int,char*)
+    void f_medfilt2(float*,float*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void d_medfilt2(double*,double*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void b_medfilt2(unsigned char*,unsigned char*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void scipy_signal_sigtools_linear_filter_module_init()
+
 
 # init the linear filter module
 scipy_signal_sigtools_linear_filter_module_init()
@@ -49,8 +56,8 @@ HILBERT        = 3
 cdef char *check_malloc(int size):
     cdef char *the_block = <char *>malloc(size)
     if the_block == NULL:
-	    print "\nERROR: unable to allocate %d bytes!\n" % size;
-	    raise MemoryError
+        print "\nERROR: unable to allocate %d bytes!\n" % size
+        raise MemoryError
 
     return the_block
 
@@ -60,29 +67,29 @@ cdef char *check_malloc(int size):
 
 cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
                  char *sort_buffer, int nels2, int check, np.npy_intp *loop_ind,
-                 np.npy_intp *temp_ind, uintp *offset):
+                 np.npy_intp *temp_ind, np.npy_uintp *offset):
     cdef int i, j, k, incr = 1
     cdef int ndims = np.PyArray_NDIM(ap1)
     cdef np.npy_intp *dims2 = np.PyArray_DIMS(ap2)
     cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)
     cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]
     cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]
-    cdef char *ip2 = np.PyArray_DATA(ap2)
+    cdef char *ip2 = <char *>np.PyArray_DATA(ap2)
     cdef int elsize = np.PyArray_DESCR(ap1).elsize
     cdef char *ptr
     
-    ptr = np.PyArray_Zero(ap2)
-    temp_ind[ndims-1]--
+    ptr = <char *>np.PyArray_Zero(ap2)
+    temp_ind[ndims-1] -= 1
     
     for i in range(nels2, 0, -1):
         # Adjust index array and move ptr1 to right place
         k = ndims - 1
         for j in range(incr):
             temp_ind[k] -= dims2[k] - 1  # Return to start for these dimensions
-            k--
+            k -= 1
 
         ip1 += offset[k] * is1           # Precomputed offset array
-        temp_ind[k]++
+        temp_ind[k] += 1
         
         if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and
                 memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):
@@ -96,51 +103,50 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
     return
 
 cdef int DOUBLE_compare(double *ip1, double *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int FLOAT_compare(float *ip1, float *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int LONGDOUBLE_compare(longdouble *ip1, longdouble *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int BYTE_compare(byte *ip1, byte *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int SHORT_compare(short *ip1, short *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int INT_compare(int *ip1, int *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int LONG_compare(long *ip1, long *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int LONGLONG_compare(longlong *ip1, longlong *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int UBYTE_compare(ubyte *ip1, ubyte *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int USHORT_compare(ushort *ip1, ushort *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int UINT_compare(uint *ip1, uint *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int ULONG_compare(ulong *ip1, ulong *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int ULONGLONG_compare(ulonglong *ip1, ulonglong *ip2):
-    return -1 if *ip1 < *ip2 else (0 if *ip1 == *ip2 else 1)
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int OBJECT_compare(object ip1, object ip2):
     return (ip1 == ip2) != 1
 
 ctypedef int (*CompareFunction) (void *, void *)
 
-cdef CompareFunction compare_functions[] = \
-{
+compare_functions = [
  NULL, BYTE_compare, UBYTE_compare,
  SHORT_compare, USHORT_compare,
  INT_compare, UINT_compare,
@@ -149,7 +155,7 @@ cdef CompareFunction compare_functions[] = \
  FLOAT_compare, DOUBLE_compare,
  LONGDOUBLE_compare, NULL, NULL, NULL,
  OBJECT_compare, NULL, NULL, NULL
-}
+]
 
 def _order_filterND(a0, domain, int order=0):
     """ out = _order_filterND(a,domain,order)
@@ -179,50 +185,49 @@ def _order_filterND(a0, domain, int order=0):
 
         n2 = np.PyArray_SIZE(ap2)
         n2_nonzero = 0
-        ap2_ptr = np.PyArray_DATA(ap2)
+        ap2_ptr = <char *>np.PyArray_DATA(ap2)
         
         # Find out the number of non-zero entries in domain (allows for
         # different shapped rank-filters to be used besides just rectangles)
-        zptr = np.PyArray_Zero(ap2)
+        zptr = <char *>np.PyArray_Zero(ap2)
         if zptr == NULL:
             return None
         
         for k in range(n2):
             n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).elsize) != 0)
-            ap2_ptr += np.PyArray_DESCR(ap2).elsize
+            ap2_ptr += <int>np.PyArray_DESCR(ap2).elsize
 
-        if ((order >= n2_nonzero) || (order < 0))
+        if (order >= n2_nonzero) or (order < 0):
             raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")
         
-        ret = np.PyArray_New(NULL, np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1),
-                             typenum, NULL, NULL, 0, np.NPY_CARRAY, NULL)
+        ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)
         
         compare_func = compare_functions[np.PyArray_TYPE(ap1)]
         if compare_func == NULL:
             raise ValueError("order_filterND not available for this type")
         
         is1 = np.PyArray_DESCR(ap1).elsize
-        sort_buffer = malloc(n2_nonzero*is1)
+        sort_buffer = <char *>malloc(n2_nonzero*is1)
         if sort_buffer == NULL:
             return None
 
-        op = np.PyArray_DATA(ret)
+        op = <char *>np.PyArray_DATA(ret)
         os = np.PyArray_DESCR(ret).elsize
 
         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
-        mode_dep = malloc(bytes_in_array)
+        mode_dep = <np.npy_intp *>malloc(bytes_in_array)
         for k in range(np.PyArray_NDIM(ap1)):
             mode_dep[k] = -((np.PyArray_DIMS(ap2)[k]-1) >> 1)
 
-        b_ind = (np.npy_intp *)malloc(bytes_in_array)  # loop variables
+        b_ind = <np.npy_intp *>malloc(bytes_in_array)  # loop variables
         memset(b_ind,0,bytes_in_array)
-        a_ind = (np.npy_intp *)malloc(bytes_in_array)
-        ret_ind = (np.npy_intp *)malloc(bytes_in_array)
+        a_ind = <np.npy_intp *>malloc(bytes_in_array)
+        ret_ind = <np.npy_intp *>malloc(bytes_in_array)
         memset(ret_ind,0,bytes_in_array)
-        temp_ind = (np.npy_intp *)malloc(bytes_in_array)
-        check_ind = (np.npy_intp *)malloc(bytes_in_array)
-        offsets = (np.npy_uintp *)malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_uintp))
-        offsets2 = (np.npy_intp *)malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_intp))
+        temp_ind = <np.npy_intp *>malloc(bytes_in_array)
+        check_ind = <np.npy_intp *>malloc(bytes_in_array)
+        offsets = <np.npy_uintp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_uintp))
+        offsets2 = <np.npy_intp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_intp))
         offset1 = compute_offsets(offsets,offsets2,
                                   np.PyArray_DIMS(ap1),np.PyArray_DIMS(ap2),
                                   np.PyArray_DIMS(ret),mode_dep,np.PyArray_NDIM(ap1))
@@ -246,11 +251,11 @@ def _order_filterND(a0, domain, int order=0):
         
         # Calculate it once and the just move it around appropriately
         np.PyDataMem_FREE(zptr)
-        zptr = np.PyArray_Zero(ap1)
+        zptr = <char *>np.PyArray_Zero(ap1)
         if zptr == NULL:
             return None
         
-        ap1_ptr = np.PyArray_DATA(ap1) + offset1*is1
+        ap1_ptr = <char *>np.PyArray_DATA(ap1) + offset1*is1
         for k in range(np.PyArray_NDIM(ap1)):
             a_ind[k] = mode_dep[k]
             check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1
@@ -331,12 +336,12 @@ def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=Non
             if fill_value is None:
                 newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
             else:
-                afill = np.PyArray_FROMANY(fill_value, PyArray_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)
+                afill = np.PyArray_FROMANY(fill_value, np.NPY_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)
                 if afill is None:
                     return None
                 newfill = np.PyArray_Cast(afill, typenum)
 
-            if newfill is None
+            if newfill is None:
                 return None
         else:
             newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
@@ -346,7 +351,7 @@ def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=Non
         n1 = np.PyArray_SIZE(ain1)
         n2 = np.PyArray_SIZE(ain2)
         
-        aout_dimens = malloc(np.PyArray_NDIM(ain1)*sizeof(np.npy_intp))
+        aout_dimens = <np.npy_intp *>malloc(np.PyArray_NDIM(ain1)*sizeof(np.npy_intp))
         masked_mode = mode & OUTSIZE_MASK
         
         if masked_mode == VALID:
@@ -355,7 +360,7 @@ def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=Non
                 if aout_dimens[i] < 0:
                     raise ValueError("no part of the output is valid, use option 1 (same) or 2 (full) for third argument")
         elif masked_mode == SAME:
-            for i in range(PyArray_NDIM(ain1)):
+            for i in range(np.PyArray_NDIM(ain1)):
                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i]
         elif masked_mode == FULL:
             for i in range(np.PyArray_NDIM(ain1)):
@@ -363,22 +368,22 @@ def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=Non
         else: 
             raise ValueError("mode must be 0 (valid), 1 (same), or 2 (full)")
             
-        aout = np.PyArray_SimpleNew(PyArray_NDIM(ain1), aout_dimens, typenum)
+        aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)
         if aout is None:
             return None
 
         flag = mode + boundary + (typenum << TYPE_SHIFT) + (flip != 0) * FLIP_MASK
         
-        ret = pylab_convolve_2d(np.PyArray_DATA(ain1),     # Input data Ns[0] x Ns[1]
+        ret = pylab_convolve_2d(<char *>np.PyArray_DATA(ain1),     # Input data Ns[0] x Ns[1]
                                 np.PyArray_STRIDES(ain1),  # Input strides
-                                np.PyArray_DATA(aout),     # Output data
+                                <char *>np.PyArray_DATA(aout),     # Output data
                                 np.PyArray_STRIDES(aout),  # Ouput strides
-                                np.PyArray_DATA(ain2),     # coefficients in filter
+                                <char *>np.PyArray_DATA(ain2),     # coefficients in filter
                                 np.PyArray_STRIDES(ain2),  # coefficients strides
                                 np.PyArray_DIMS(ain2),     # Size of kernel Nwin[2]
                                 np.PyArray_DIMS(ain1),     # Size of image Ns[0] x Ns[1]
                                 flag,                      # convolution parameters
-                                np.PyArray_DATA(newfill))  # fill value
+                                <char *>np.PyArray_DATA(newfill))  # fill value
 
 
         if ret == 0:
@@ -386,7 +391,7 @@ def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=Non
         elif ret in [-5, -4]:
             raise ValueError("convolve2d not available for this type.")
         elif ret == -3:
-            PyErr_NoMemory();
+            raise MemoryError
         elif ret == -2:
             raise ValueError("Invalid boundary type.")
         elif -1:
@@ -410,7 +415,7 @@ def _remez(int numtaps, object bands, object des, object weight, int type=BANDPA
           frequency.
     """
     cdef int k, numbands, err 
-    np.ndarray a_bands, a_des, a_weight, h
+    cdef np.ndarray a_bands, a_des, a_weight, h
     cdef np.npy_intp ret_dimens
     cdef double oldvalue, *dptr
 
@@ -434,17 +439,17 @@ def _remez(int numtaps, object bands, object des, object weight, int type=BANDPA
     dptr = <double *>np.PyArray_DATA(a_bands)
     oldvalue = 0
     for k in range(2*numbands):
-        if *dptr < oldvalue:
+        if dptr[0] < oldvalue:
             raise ValueError("Bands must be monotonic starting at zero.")
-        if (*dptr * 2 > Hz):
+        if (dptr[0] * 2.0) > Hz:
             raise ValueError("Band edges should be less than 1/2 the sampling frequency")
 
-        oldvalue = *dptr
-        *dptr = oldvalue / Hz # Change so that sampling frequency is 1.0
+        oldvalue = dptr[0]
+        dptr[0] = oldvalue / Hz # Change so that sampling frequency is 1.0
         dptr += 1
 
     ret_dimens = numtaps
-    h = np.PyArray_New(NULL, 1, &ret_dimens, np.NPY_DOUBLE, NULL, NULL, 0, np.NPY_CARRAY, NULL)
+    h = np.PyArray_SimpleNew(1, &ret_dimens, np.NPY_DOUBLE)
 
     err = pre_remez(<double *>np.PyArray_DATA(h), numtaps, numbands,
                     <double *>np.PyArray_DATA(a_bands), <double *>np.PyArray_DATA(a_des),
@@ -463,13 +468,13 @@ def _median2d(image, size=None):
     """
     cdef int typenum
     cdef np.ndarray a_image, a_size, a_out
-    cdef np.npy_intp Nwin[2] = [3,3]
+    cdef np.npy_intp *Nwin = [3,3]
 
     typenum = np.PyArray_ObjectType(image, 0)
     a_image = np.PyArray_FROMANY(image, typenum, 2, 2, np.NPY_CONTIGUOUS)
 
     if size is not None:
-        a_size = np.PyArray_FROMANY(size, NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)
+        a_size = np.PyArray_FROMANY(size, np.NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)
         if (np.PyArray_NDIM(a_size) != 1) or (np.PyArray_DIMS(a_size)[0] < 2):
             raise ValueError("Size must be a length two sequence")
         Nwin[0] = (<np.npy_intp *>np.PyArray_DATA(a_size))[0]

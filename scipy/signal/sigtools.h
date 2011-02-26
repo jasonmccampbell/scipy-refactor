@@ -57,14 +57,19 @@ typedef struct {
 
 typedef void (MultAddFunction) (char *, intp, char *, intp, char *, intp *, intp *, int, intp, int, intp *, intp *, uintp *);
 
-PyObject*
-scipy_signal_sigtools_linear_filter(PyObject * NPY_UNUSED(dummy), PyObject * args);
+#if defined(__cplusplus)
+extern "C" {
+#endif
 
-PyObject*
-scipy_signal_sigtools_correlateND(PyObject *NPY_UNUSED(dummy), PyObject *args);
-
-void
-scipy_signal_sigtools_linear_filter_module_init();
+int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims);
+npy_intp compute_offsets(npy_uintp *offsets, npy_intp *offsets2, npy_intp *dim1, npy_intp *dim2, npy_intp *dim3, npy_intp *mode_dep, int nd);
+int increment(npy_intp *ret_ind, int nd, npy_intp *max_ind);
+int pre_remez(double *h2, int numtaps, int numbands, double *bands, double *response, double *weight, int type, int maxiter, int grid_density);
+int pylab_convolve_2d(char*,npy_intp*,char*,npy_intp*,char*,npy_intp*,npy_intp*,npy_intp*,int,char*);
+void f_medfilt2(float*,float*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void d_medfilt2(double*,double*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void b_medfilt2(unsigned char*,unsigned char*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void scipy_signal_sigtools_linear_filter_module_init();
 
 /*
 static int index_out_of_bounds(int *, int *, int );
@@ -73,5 +78,10 @@ static int increment(int *, int, int *);
 static void convolveND(Generic_Array *, Generic_Array *, Generic_Array *, MultAddFunction *, int);
 static void RawFilter(Generic_Vector, Generic_Vector, Generic_Array, Generic_Array, Generic_Array *, Generic_Array *, BasicFilterFunction *, int);
 */
+
+#if defined(__cplusplus)
+}
+#endif
+
 
 #endif
