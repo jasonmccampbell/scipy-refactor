@@ -4,15 +4,10 @@ include "numpy.pxd"
 __version__ = '0.2'
 
 
-#define PYERR(message) do {PyErr_SetString(PyExc_ValueError, message); goto fail;} while(0)
 #define DATA(arr) PyArray_DATA(arr)
 #define DIMS(arr) PyArray_DIMS(arr)
 #define STRIDES(arr) PyArray_STRIDES(arr)
 #define ELSIZE(arr) (PyArray_DESCR(arr)->elsize)
-#define OBJECTTYPE(arr) PyArray_TYPE(arr)
-#define BASEOBJ(arr) PyArray_BASE(arr)
-#define RANK(arr) PyArray_NDIM(arr)
-#define ISCONTIGUOUS(m) (PyArray_FLAGS(m) & NPY_CONTIGUOUS)
 
 
 cdef extern from "S_bspline_util.h":
