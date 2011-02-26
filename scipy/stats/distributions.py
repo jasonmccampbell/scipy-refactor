@@ -1251,7 +1251,7 @@ class rv_continuous(rv_generic):
         if any(cond):
             goodargs = argsreduce(cond, *((x,)+args+(scale,)))
             scale, goodargs = goodargs[-1], goodargs[:-1]
-            place(output,cond,self._pdf(*goodargs) / scale)
+            output = place(output,cond,self._pdf(*goodargs) / scale)
         if output.ndim == 0:
             return output[()]
         return output
@@ -1294,7 +1294,7 @@ class rv_continuous(rv_generic):
         if any(cond):
             goodargs = argsreduce(cond, *((x,)+args+(scale,)))
             scale, goodargs = goodargs[-1], goodargs[:-1]
-            place(output,cond,self._logpdf(*goodargs) - log(scale))
+            output = place(output,cond,self._logpdf(*goodargs) - log(scale))
         if output.ndim == 0:
             return output[()]
         return output
@@ -1332,11 +1332,11 @@ class rv_continuous(rv_generic):
         cond2 = (x >= self.b) & cond0
         cond = cond0 & cond1
         output = zeros(shape(cond),'d')
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,1.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,1.0)
         if any(cond):  #call only if at least 1 entry
             goodargs = argsreduce(cond, *((x,)+args))
-            place(output,cond,self._cdf(*goodargs))
+            output = place(output,cond,self._cdf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -1374,11 +1374,11 @@ class rv_continuous(rv_generic):
         cond = cond0 & cond1
         output = empty(shape(cond),'d')
         output.fill(NINF)
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,0.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,0.0)
         if any(cond):  #call only if at least 1 entry
             goodargs = argsreduce(cond, *((x,)+args))
-            place(output,cond,self._logcdf(*goodargs))
+            output = place(output,cond,self._logcdf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -1415,11 +1415,11 @@ class rv_continuous(rv_generic):
         cond2 = cond0 & (x <= self.a)
         cond = cond0 & cond1
         output = zeros(shape(cond),'d')
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,1.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,1.0)
         if any(cond):
             goodargs = argsreduce(cond, *((x,)+args))
-            place(output,cond,self._sf(*goodargs))
+            output = place(output,cond,self._sf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -1456,11 +1456,11 @@ class rv_continuous(rv_generic):
         cond = cond0 & cond1
         output = empty(shape(cond),'d')
         output.fill(NINF)
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,0.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,0.0)
         if any(cond):
             goodargs = argsreduce(cond, *((x,)+args))
-            place(output,cond,self._logsf(*goodargs))
+            output = place(output,cond,self._logsf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -1496,12 +1496,12 @@ class rv_continuous(rv_generic):
         cond2 = (q==1) & cond0
         cond = cond0 & cond1
         output = valarray(shape(cond),value=self.a*scale + loc)
-        place(output,(1-cond0)+(1-cond1)*(q!=0.0), self.badvalue)
-        place(output,cond2,self.b*scale + loc)
+        output = place(output,(1-cond0)+(1-cond1)*(q!=0.0), self.badvalue)
+        output = place(output,cond2,self.b*scale + loc)
         if any(cond):  #call only if at least 1 entry
             goodargs = argsreduce(cond, *((q,)+args+(scale,loc)))
             scale, loc, goodargs = goodargs[-2], goodargs[-1], goodargs[:-2]
-            place(output,cond,self._ppf(*goodargs)*scale + loc)
+            output = place(output,cond,self._ppf(*goodargs)*scale + loc)
         if output.ndim == 0:
             return output[()]
         return output
@@ -1537,13 +1537,13 @@ class rv_continuous(rv_generic):
         cond2 = (q==1) & cond0
         cond = cond0 & cond1
         output = valarray(shape(cond),value=self.b)
-        #place(output,(1-cond0)*(cond1==cond1), self.badvalue)
-        place(output,(1-cond0)*(cond1==cond1)+(1-cond1)*(q!=0.0), self.badvalue)
-        place(output,cond2,self.a)
+        #output = place(output,(1-cond0)*(cond1==cond1), self.badvalue)
+        output = place(output,(1-cond0)*(cond1==cond1)+(1-cond1)*(q!=0.0), self.badvalue)
+        output = place(output,cond2,self.a)
         if any(cond):  #call only if at least 1 entry
             goodargs = argsreduce(cond, *((q,)+args+(scale,loc)))  #PB replace 1-q by q
             scale, loc, goodargs = goodargs[-2], goodargs[-1], goodargs[:-2]
-            place(output,cond,self._isf(*goodargs)*scale + loc) #PB use _isf instead of _ppf
+            output = place(output,cond,self._isf(*goodargs)*scale + loc) #PB use _isf instead of _ppf
         if output.ndim == 0:
             return output[()]
         return output
@@ -1618,7 +1618,7 @@ class rv_continuous(rv_generic):
                 if mu is None:
                     mu = self._munp(1.0,*goodargs)
                 out0 = default.copy()
-                place(out0,cond,mu*scale+loc)
+                out0 = place(out0,cond,mu*scale+loc)
                 output.append(out0)
 
             if 'v' in moments:
@@ -1631,7 +1631,7 @@ class rv_continuous(rv_generic):
                     #if mean is inf then var is also inf
                     mu2 = np.inf
                 out0 = default.copy()
-                place(out0,cond,mu2*scale*scale)
+                out0 = place(out0,cond,mu2*scale*scale)
                 output.append(out0)
 
             if 's' in moments:
@@ -1645,7 +1645,7 @@ class rv_continuous(rv_generic):
                     mu3 = mu3p - 3*mu*mu2 - mu**3
                     g1 = mu3 / mu2**1.5
                 out0 = default.copy()
-                place(out0,cond,g1)
+                out0 = place(out0,cond,g1)
                 output.append(out0)
 
             if 'k' in moments:
@@ -1662,7 +1662,7 @@ class rv_continuous(rv_generic):
                     mu4 = mu4p - 4*mu*mu3 - 6*mu*mu*mu2 - mu**4
                     g2 = mu4 / mu2**2.0 - 3.0
                 out0 = default.copy()
-                place(out0,cond,g2)
+                out0 = place(out0,cond,g2)
                 output.append(out0)
         else: #no valid args
             output = []
@@ -1932,13 +1932,13 @@ class rv_continuous(rv_generic):
         args = tuple(map(arr,args))
         cond0 = self._argcheck(*args) & (scale > 0) & (loc==loc)
         output = zeros(shape(cond0),'d')
-        place(output,(1-cond0),self.badvalue)
+        output = place(output,(1-cond0),self.badvalue)
         goodargs = argsreduce(cond0, *args)
         #I don't know when or why vecentropy got broken when numargs == 0
         if self.numargs == 0:
-            place(output,cond0,self._entropy()+log(scale))
+            output = place(output,cond0,self._entropy()+log(scale))
         else:
-            place(output,cond0,self.vecentropy(*goodargs)+log(scale))
+            output = place(output,cond0,self.vecentropy(*goodargs)+log(scale))
         return output
 
     def expect(self, func=None, args=(), loc=0, scale=1, lb=None, ub=None,
@@ -4089,25 +4089,25 @@ class pareto_gen(rv_continuous):
             mask = b > 1
             bt = extract(mask,b)
             mu = valarray(shape(b),value=inf)
-            place(mu, mask, bt / (bt-1.0))
+            mu = place(mu, mask, bt / (bt-1.0))
         if 'v' in moments:
             mask = b > 2
             bt = extract( mask,b)
             mu2 = valarray(shape(b), value=inf)
-            place(mu2, mask, bt / (bt-2.0) / (bt-1.0)**2)
+            mu2 = place(mu2, mask, bt / (bt-2.0) / (bt-1.0)**2)
         if 's' in moments:
             mask = b > 3
             bt = extract( mask,b)
             g1 = valarray(shape(b), value=nan)
             vals = 2*(bt+1.0)*sqrt(b-2.0)/((b-3.0)*sqrt(b))
-            place(g1, mask, vals)
+            g1 = place(g1, mask, vals)
         if 'k' in moments:
             mask = b > 4
             bt = extract( mask,b)
             g2 = valarray(shape(b), value=nan)
             vals = 6.0*polyval([1.0,1.0,-6,-2],bt)/ \
                    polyval([1.0,-7.0,12.0,0.0],bt)
-            place(g2, mask, vals)
+            g2 = place(g2, mask, vals)
         return mu, mu2, g1, g2
     def _entropy(self, c):
         return 1 + 1.0/c - log(c)
@@ -4664,12 +4664,12 @@ class wrapcauchy_gen(rv_continuous):
             xn = 2*pi - xn
             yn = tan(xn/2.0)
             on = 1.0-1.0/pi*arctan(valn*yn)
-            place(output, c2, on)
+            output = place(output, c2, on)
         if (any(xp)):
             valp = extract(c1, np.ones_like(x)*val)
             yp = tan(xp/2.0)
             op = 1.0/pi*arctan(valp*yp)
-            place(output, c1, op)
+            output = place(output, c1, op)
         return output
     def _ppf(self, q, c):
         val = (1.0-c)/(1.0+c)
@@ -5228,10 +5228,10 @@ class rv_discrete(rv_generic):
         cond1 = (k >= self.a) & (k <= self.b) & self._nonzero(k,*args)
         cond = cond0 & cond1
         output = zeros(shape(cond),'d')
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._pmf(*goodargs))
+            output = place(output,cond,self._pmf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5267,10 +5267,10 @@ class rv_discrete(rv_generic):
         cond = cond0 & cond1
         output = empty(shape(cond),'d')
         output.fill(NINF)
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._logpmf(*goodargs))
+            output = place(output,cond,self._logpmf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5305,12 +5305,12 @@ class rv_discrete(rv_generic):
         cond2 = (k >= self.b)
         cond = cond0 & cond1
         output = zeros(shape(cond),'d')
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2*(cond0==cond0), 1.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2*(cond0==cond0), 1.0)
 
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._cdf(*goodargs))
+            output = place(output,cond,self._cdf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5346,12 +5346,12 @@ class rv_discrete(rv_generic):
         cond = cond0 & cond1
         output = empty(shape(cond),'d')
         output.fill(NINF)
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2*(cond0==cond0), 0.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2*(cond0==cond0), 0.0)
 
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._logcdf(*goodargs))
+            output = place(output,cond,self._logcdf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5386,11 +5386,11 @@ class rv_discrete(rv_generic):
         cond2 = (k < self.a) & cond0
         cond = cond0 & cond1
         output = zeros(shape(cond),'d')
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,1.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,1.0)
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._sf(*goodargs))
+            output = place(output,cond,self._sf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5426,11 +5426,11 @@ class rv_discrete(rv_generic):
         cond = cond0 & cond1
         output = empty(shape(cond),'d')
         output.fill(NINF)
-        place(output,(1-cond0)*(cond1==cond1),self.badvalue)
-        place(output,cond2,0.0)
+        output = place(output,(1-cond0)*(cond1==cond1),self.badvalue)
+        output = place(output,cond2,0.0)
         if any(cond):
             goodargs = argsreduce(cond, *((k,)+args))
-            place(output,cond,self._logsf(*goodargs))
+            output = place(output,cond,self._logsf(*goodargs))
         if output.ndim == 0:
             return output[()]
         return output
@@ -5467,12 +5467,12 @@ class rv_discrete(rv_generic):
         cond = cond0 & cond1
         output = valarray(shape(cond),value=self.badvalue,typecode='d')
         #output type 'd' to handle nin and inf
-        place(output,(q==0)*(cond==cond), self.a-1)
-        place(output,cond2,self.b)
+        output = place(output,(q==0)*(cond==cond), self.a-1)
+        output = place(output,cond2,self.b)
         if any(cond):
             goodargs = argsreduce(cond, *((q,)+args+(loc,)))
             loc, goodargs = goodargs[-1], goodargs[:-1]
-            place(output,cond,self._ppf(*goodargs) + loc)
+            output = place(output,cond,self._ppf(*goodargs) + loc)
 
         if output.ndim == 0:
             return output[()]
@@ -5510,21 +5510,21 @@ class rv_discrete(rv_generic):
         #old:
 ##        output = valarray(shape(cond),value=self.b,typecode='d')
 ##        #typecode 'd' to handle nin and inf
-##        place(output,(1-cond0)*(cond1==cond1), self.badvalue)
-##        place(output,cond2,self.a-1)
+##        output = place(output,(1-cond0)*(cond1==cond1), self.badvalue)
+##        output = place(output,cond2,self.a-1)
 
         #same problem as with ppf
         # copied from ppf and changed
         output = valarray(shape(cond),value=self.badvalue,typecode='d')
         #output type 'd' to handle nin and inf
-        place(output,(q==0)*(cond==cond), self.b)
-        place(output,cond2,self.a-1)
+        output = place(output,(q==0)*(cond==cond), self.b)
+        output = place(output,cond2,self.a-1)
 
         # call place only if at least 1 valid argument
         if any(cond):
             goodargs = argsreduce(cond, *((q,)+args+(loc,)))
             loc, goodargs = goodargs[-1], goodargs[:-1]
-            place(output,cond,self._isf(*goodargs) + loc) #PB same as ticket 766
+            output = place(output,cond,self._isf(*goodargs) + loc) #PB same as ticket 766
 
         if output.ndim == 0:
             return output[()]
@@ -5590,7 +5590,7 @@ class rv_discrete(rv_generic):
             if mu is None:
                 mu = self._munp(1.0,*goodargs)
             out0 = default.copy()
-            place(out0,cond,mu+loc)
+            out0 = place(out0,cond,mu+loc)
             output.append(out0)
 
         if 'v' in moments:
@@ -5600,7 +5600,7 @@ class rv_discrete(rv_generic):
                     mu = self._munp(1.0,*goodargs)
                 mu2 = mu2p - mu*mu
             out0 = default.copy()
-            place(out0,cond,mu2)
+            out0 = place(out0,cond,mu2)
             output.append(out0)
 
         if 's' in moments:
@@ -5614,7 +5614,7 @@ class rv_discrete(rv_generic):
                 mu3 = mu3p - 3*mu*mu2 - mu**3
                 g1 = mu3 / mu2**1.5
             out0 = default.copy()
-            place(out0,cond,g1)
+            out0 = place(out0,cond,g1)
             output.append(out0)
 
         if 'k' in moments:
@@ -5631,7 +5631,7 @@ class rv_discrete(rv_generic):
                 mu4 = mu4p - 4*mu*mu3 - 6*mu*mu*mu2 - mu**4
                 g2 = mu4 / mu2**2.0 - 3.0
             out0 = default.copy()
-            place(out0,cond,g2)
+            out0 = place(out0,cond,g2)
             output.append(out0)
 
         if len(output) == 1:
@@ -5718,9 +5718,9 @@ class rv_discrete(rv_generic):
         args = map(arr,args)
         cond0 = self._argcheck(*args) & (loc==loc)
         output = zeros(shape(cond0),'d')
-        place(output,(1-cond0),self.badvalue)
+        output = place(output,(1-cond0),self.badvalue)
         goodargs = argsreduce(cond0, *args)
-        place(output,cond0,self.vecentropy(*goodargs))
+        output = place(output,cond0,self.vecentropy(*goodargs))
         return output
 
     def __call__(self, *args, **kwds):
