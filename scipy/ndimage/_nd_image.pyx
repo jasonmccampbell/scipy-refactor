@@ -32,7 +32,7 @@
 
 import numpy as np
 
-DEF DOTNET = False
+DEF DOTNET = True
 
 cdef extern from "stdlib.h":
     void *malloc(int size)
@@ -71,7 +71,7 @@ cdef extern from "npy_defs.h":
     char *NpyArray_DATA(NpyArray * a)
     
 cdef extern from "npy_cython_macros.h":
-    void NpyArray_SETBASE(NpyArray * obj, object value)
+    void NpyArray_SETBASE(NpyArray * obj, NpyArray * value)
     void NpyArray_SETFLAGS(NpyArray * obj, int flags)
 
 IF not DOTNET:
@@ -115,9 +115,6 @@ IF not DOTNET:
         
         ndarray PyArray_New(PyTypeObject *, int, npy_intp *, int, npy_intp *, char *, int, int, PyObject*)
 
-        void import_array()
-
-
     cdef void* NULL_dtype = NULL
 
     cdef inline void incref(object o):
@@ -144,16 +141,8 @@ IF not DOTNET:
             pcontext = <PyObject*>context
         return PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, pcontext)
 
-    cdef inline ndarray array_New(int ndim, npy_intp *shape, int typenum, npy_intp *strides,
-                                  char *data, int itemsize, int flags):
-        return PyArray_New(&PyArray_Type, ndim, shape, typenum, strides, data,
-                           itemsize, flags, NULL)
-
     cdef inline NpyArray* ARRAY(ndarray a):
         return PyArray_ARRAY(a)
-
-    cdef inline ndarray Empty(int nd, npy_intp * dims, dtype descr, int fortran):
-        return PyArray_Empty(nd, dims, descr, fortran)
 
     cdef inline dtype DESCR(ndarray a):
         return PyArray_DESCR(a)
@@ -175,6 +164,48 @@ IF not DOTNET:
 ##     cdef inline void *capsule_getdesc(obj):
 ##         return PyCapsule_GetDesc(obj)
 
+
+IF DOTNET:
+    from numpy cimport ndarray, dtype
+    from numpy cimport Npy_INTERFACE_descr, NpyArray_DescrFromType
+
+    cdef extern from "":
+        # can't properly wrap varargs function
+        object PythonOps__MemoryError "PythonOps::MemoryError"(str e)
+
+    cdef inline NpyArray* ARRAY(ndarray a):
+        return <NpyArray*> <long long> a.Array
+
+    cdef inline dtype DescrFromType(int typenum):
+        return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))
+
+    cdef inline dtype DESCR(ndarray x):
+        return x.Dtype
+
+    def raise_no_memory():
+        raise PythonOps__MemoryError("Out of memory")
+
+    cdef inline incref(x):
+        pass
+
+    cdef inline is_callable(f):
+        import clr
+        from IronPython.Runtime.Operations.PythonOps import IsCallable
+        return IsCallable(f)
+
+    cdef inline CheckFromAny(object op, dtype newtype, int min_depth, int max_depth,
+                             int flags, object context):
+        raise NotImplementedError
+
+from numpy cimport PyArray_New, PyArray_Empty, import_array
+
+cdef inline ndarray Empty(int nd, npy_intp * dims, dtype descr, int fortran):
+    return PyArray_Empty(nd, dims, descr, fortran)
+
+cdef inline ndarray array_New(int ndim, npy_intp *shape, int typenum, npy_intp *strides,
+                              char *data, int itemsize, int flags):
+    return PyArray_New(NULL, ndim, shape, typenum, strides, data,
+                       itemsize, flags, NULL)
 
 import_array()
 
@@ -325,7 +356,7 @@ cdef ndarray NA_OutputArray(object a_obj, int typenum, int requires):
     ret = ARRAY(ret_obj)
     NpyArray_SETFLAGS(ret, (NpyArray_FLAGS(ret) | NPY_UPDATEIFCOPY) & ~NPY_WRITEABLE)
     incref(a_obj)
-    NpyArray_SETBASE(ret, a_obj)
+    NpyArray_SETBASE(ret, <NpyArray *> <long long>a_obj.Array)
     return ret_obj
 
 cdef ndarray NI_ObjectToInputArray(object a):
@@ -388,7 +419,7 @@ def min_or_max_filter(object input, object footprint, object structure,
     cdef ndarray[npy_intp, mode='c'] origin_ = NA_InputArray(origin, NPY_INTP, NPY_CARRAY)
     NI_MinOrMaxFilter(ARRAY(input_),
                       ARRAY(footprint_),
-                      NULL if structure_ is None else ARRAY(structure_),
+                      <NpyArray*>NULL if structure_ is None else ARRAY(structure_),
                       ARRAY(output_),
                       <NI_ExtendMode>mode,
                       cval,
@@ -538,9 +569,9 @@ def geometric_transform(object input, object map_callback, object coordinates,
         funcptr = ctx = NULL
 
     NI_GeometricTransform(ARRAY(input_), funcptr, ctx,
-                          NULL if matrix_ is None else ARRAY(matrix_),
-                          NULL if shift_ is None else ARRAY(shift_),
-                          NULL if coordinates_ is None else ARRAY(coordinates_),
+                          <NpyArray*>NULL if matrix_ is None else ARRAY(matrix_),
+                          <NpyArray*>NULL if shift_ is None else ARRAY(shift_),
+                          <NpyArray*>NULL if coordinates_ is None else ARRAY(coordinates_),
                           ARRAY(output_), order, <NI_ExtendMode>mode, cval)
     
 
@@ -551,8 +582,8 @@ def zoom_shift(object input, object zoom, object shift, object output,
     cdef ndarray shift_ = None if shift is None else NI_ObjectToInputArray(shift)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_ZoomShift(ARRAY(input_),
-                 NULL if zoom_ is None else ARRAY(zoom_),
-                 NULL if shift_ is None else ARRAY(shift_),
+                 <NpyArray*>NULL if zoom_ is None else ARRAY(zoom_),
+                 <NpyArray*>NULL if shift_ is None else ARRAY(shift_),
                  ARRAY(output_), order, <NI_ExtendMode>mode, cval)
 
 def label(object input, object strct, object output):
@@ -611,23 +642,23 @@ def distance_transform_bf(object input, int metric, object sampling, object outp
     cdef ndarray output_ = None if output is None else NI_ObjectToOutputArray(output)
     cdef ndarray features_ = None if features is None else NI_ObjectToOutputArray(features)
     NI_DistanceTransformBruteForce(ARRAY(input_), metric,
-                                   NULL if sampling_ is None else ARRAY(sampling_),
-                                   NULL if output_ is None else ARRAY(output_),
-                                   NULL if features_ is None else ARRAY(features_))
+                                   <NpyArray*>NULL if sampling_ is None else ARRAY(sampling_),
+                                   <NpyArray*>NULL if output_ is None else ARRAY(output_),
+                                   <NpyArray*>NULL if features_ is None else ARRAY(features_))
 
 def distance_transform_op(object strct, object distances, object features):
     cdef ndarray strct_ = NI_ObjectToInputArray(strct)
     cdef ndarray distances_ = NI_ObjectToIoArray(distances)
     cdef ndarray features_ = None if features is None else NI_ObjectToOutputArray(features)
     NI_DistanceTransformOnePass(ARRAY(strct_), ARRAY(distances_),
-                                NULL if features_ is None else ARRAY(features_))
+                                <NpyArray*>NULL if features_ is None else ARRAY(features_))
 
 def euclidean_feature_transform(object input, object sampling, object features):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray sampling_ = None if sampling is None else NI_ObjectToInputArray(sampling)
     cdef ndarray features_ = NI_ObjectToOutputArray(features)
     NI_EuclideanFeatureTransform(ARRAY(input_),
-                                 NULL if sampling_ is None else ARRAY(sampling_),
+                                 <NpyArray*>NULL if sampling_ is None else ARRAY(sampling_),
                                  ARRAY(features_))
     
 cdef class CoordinateListWrapper:
@@ -649,7 +680,7 @@ def binary_erosion(object input, object strct, object mask, object output,
     cdef NI_CoordinateList *coordinate_list = NULL
     NI_BinaryErosion(ARRAY(input_),
                      ARRAY(strct_),
-                     NULL if mask_ is None else ARRAY(mask_),
+                     <NpyArray*>NULL if mask_ is None else ARRAY(mask_),
                      ARRAY(output_),
                      border_value,
                      <npy_intp*>NpyArray_DATA(ARRAY(origins_)),
@@ -671,14 +702,18 @@ def binary_erosion2(object array, object strct, object mask, int niter,
     cdef ndarray strct_ = NI_ObjectToInputArray(strct)
     cdef ndarray mask_ = None if mask is None else NI_ObjectToInputArray(mask)
     cdef ndarray origins_ = NA_InputArray(origins, NPY_INTP, NPY_CARRAY)
+    cdef NI_CoordinateList *ptr = colist_wrapper.ptr
     NI_BinaryErosion2(ARRAY(array_),
                       ARRAY(strct_),
-                      NULL if mask_ is None else ARRAY(mask_),
+                      <NpyArray*>NULL if mask_ is None else ARRAY(mask_),
                       niter,
                       <npy_intp*>NpyArray_DATA(ARRAY(origins_)),
                       invert,
-                      &colist_wrapper.ptr)
+                      &ptr)
 
 
 # Notes:
 # capsule not implemented yet (npy3_compat.h versions)
+
+import clr
+clr.AddReference('IronPython')
