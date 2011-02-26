@@ -24,6 +24,7 @@ fwr_real_x8
 
 """
 np.import_array()
+
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 # Template for cfft, zfft
