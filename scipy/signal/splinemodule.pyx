@@ -59,32 +59,35 @@ def cspline2d(image, lambda_=0.0, precision=-1.0):
     """
     cdef int thetype, M, N, retval=0
     cdef npy_intp outstrides[2], instrides[2]
+    cdef ndarray a_image, ck
 
-    thetype = PyArray_ObjectType(image, PyArray_FLOAT)
-    thetype = NPY_MIN(thetype, PyArray_DOUBLE)
-    a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
+    thetype = PyArray_ObjectType(image, NPY_FLOAT)
+    thetype = min(thetype, NPY_DOUBLE)
+    a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
 
-    ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image), thetype)
-    M = DIMS(a_image)[0]
-    N = DIMS(a_image)[1]
+    ck = PyArray_NEW(NULL, 2, PyArray_DIMS(a_image), thetype, NULL, NULL, 0,
+                     NPY_CONTIGUOUS, NULL)
+    M = PyArray_DIMS(a_image)[0]
+    N = PyArray_DIMS(a_image)[1]
 
-    convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
+    convert_strides(PyArray_STRIDES(a_image), instrides,
+                    PyArray_DESCR(a_image).elsize, 2)
     outstrides[0] = N
     outstrides[1] = 1
 
-    if thetype == PyArray_FLOAT:
+    if thetype == NPY_FLOAT:
         if not (0.0 <= precision < 1.0):
             precision = 1e-3
-        retval = S_cubic_spline2D(<float *> DATA(a_image),
-                                  <float *> DATA(ck),
+        retval = S_cubic_spline2D(<float *> PyArray_DATA(a_image),
+                                  <float *> PyArray_DATA(ck),
                                   M, N, lambda_, instrides, outstrides,
                                   precision)
 
-    elif thetype == PyArray_DOUBLE:
+    elif thetype == NPY_DOUBLE:
         if not (0.0 <= precision < 1.0):
             precision = 1e-6
-        retval = D_cubic_spline2D(<double *> DATA(a_image),
-                                  <double *> DATA(ck),
+        retval = D_cubic_spline2D(<double *> PyArray_DATA(a_image),
+                                  <double *> PyArray_DATA(ck),
                                   M, N, lambda_, instrides, outstrides,
                                   precision)
 
@@ -113,7 +116,7 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
         raise Exception("Smoothing spline not yet implemented.")
 
     thetype = PyArray_ObjectType(image, PyArray_FLOAT)
-    thetype = NPY_MIN(thetype, PyArray_DOUBLE)
+    thetype = min(thetype, PyArray_DOUBLE)
     a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
 
     ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image), thetype)
