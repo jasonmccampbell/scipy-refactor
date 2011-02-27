@@ -6,26 +6,9 @@ is granted under the SciPy License.
 */
 
 #include "sigtools.h"
-#include <setjmp.h>
 #include <stdlib.h>
 #include <math.h>
 
-jmp_buf MALLOC_FAIL;
-
-char *check_malloc (int);
-
-char *check_malloc (int size)
-{
-    char *the_block;
-    
-    the_block = (char *)malloc(size);
-    if (the_block == NULL)
-	{
-	    printf("\nERROR: unable to allocate %d bytes!\n", size);
-	    longjmp(MALLOC_FAIL,-1);
-	}
-    return(the_block);
-}
 
 /* Some core routines are written
 in a portable way so that they could be used in other applications.  The 
@@ -33,7 +16,7 @@ order filtering, however uses python-specific constructs in its guts
 and is therefore Python dependent.  This could be changed in a 
 straightforward way but I haven't done it for lack of time.*/
 
-static int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims) {
+int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims) {
   int bad_index = 0, k = 0;
 
   while (!bad_index && (k++ < ndims)) {

@@ -1,6 +1,7 @@
 ctypedef int npy_int
 ctypedef double double_t
 ctypedef int npy_intp
+ctypedef unsigned int npy_uintp
 ctypedef signed char        npy_int8
 ctypedef signed short       npy_int16
 ctypedef signed int         npy_int32
@@ -160,6 +161,7 @@ cdef extern from "npy_arrayobject.h":
     NpyArray_Descr *NpyArray_DESCR(NpyArray* obj)
     npy_intp *NpyArray_DIMS(NpyArray* obj)
     npy_intp NpyArray_SIZE(NpyArray* obj)
+    npy_intp* NpyArray_STRIDES(NpyArray* obj)
     int NpyArray_TYPE(NpyArray* obj)
 
 
@@ -211,6 +213,12 @@ cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_n
     assert obj == NULL
     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
 
+cdef inline object PyArray_SimpleNew(int nd, npy_intp *dims, int type_num):
+    return PyArray_New(NULL, nd, dims, type_num, NULL, NULL, 0, NPY_CARRAY, NULL)
+
+cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
+    return PyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL)
+
 cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
      # XXX "long long" is wrong type
     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
@@ -231,9 +239,17 @@ cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
 
+cdef inline npy_intp* PyArray_STRIDES(ndarray n):
+    return NpyArray_STRIDES(<NpyArray*> <long long>n.Array) 
+
 cdef inline int PyArray_TYPE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_TYPE(<NpyArray*> <long long>n.Array)
+
+cdef inline void *PyArray_Zero(arr):
+    import clr
+    import NumpyDotNet.NpyArray
+    return <void *><long long>NumpyDotNet.NpyArray.Zero(arr)
 
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
