@@ -1,8 +1,6 @@
 import os
 import sys
-import shutil
-import tempfile
-from os.path import dirname, isdir, isfile, join
+from os.path import join
 
 
 if sys.platform != 'cli':
@@ -24,7 +22,10 @@ def msbuild(dir, config):
 
 def buildall():
     for dir in ["special", "stats", "linalg", "integrate"]:
-        msbuild(dir, "Debug")
+        if '--release' in sys.argv:
+            msbuild(dir, "Release")
+        else:
+            msbuild(dir, "Debug")
 
 if __name__ == '__main__':
     buildall()
