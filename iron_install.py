@@ -1,4 +1,4 @@
-﻿# This file performs the installation step once the build is complete.
+# This file performs the installation step once the build is complete.
 # Installation primarily involves copying the build results to the
 # IronPython site-packages directory.
 
