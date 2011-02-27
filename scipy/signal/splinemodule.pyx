@@ -4,11 +4,6 @@ include "numpy.pxd"
 __version__ = '0.2'
 
 
-#define DATA(arr) PyArray_DATA(arr)
-#define DIMS(arr) PyArray_DIMS(arr)
-#define STRIDES(arr) PyArray_STRIDES(arr)
-#define ELSIZE(arr) (PyArray_DESCR(arr)->elsize)
-
 
 cdef extern from "S_bspline_util.h":
     int S_cubic_spline2D(float*, float*, int, int, double, npy_intp*,
@@ -111,35 +106,37 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
     """
     cdef int thetype, M, N, retval=0
     cdef npy_intp outstrides[2], instrides[2]
+    cdef ndarray a_image, ck
 
     if lambda_ != 0.0:
         raise Exception("Smoothing spline not yet implemented.")
 
-    thetype = PyArray_ObjectType(image, PyArray_FLOAT)
-    thetype = min(thetype, PyArray_DOUBLE)
-    a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
+    thetype = PyArray_ObjectType(image, NPY_FLOAT)
+    thetype = min(thetype, NPY_DOUBLE)
+    a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
 
-    ck = <PyArrayObject *> PyArray_SimpleNew(2, DIMS(a_image), thetype)
-    M = DIMS(a_image)[0]
-    N = DIMS(a_image)[1]
+    ck = PyArray_FROMANY(a_image, thetype, 2, 2, NPY_CONTIGUOUS)
+    M = PyArray_DIMS(a_image)[0]
+    N = PyArray_DIMS(a_image)[1]
 
-    convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
+    convert_strides(PyArray_STRIDES(a_image), instrides,
+                    PyArray_DESCR(a_image).elsize, 2)
     outstrides[0] = N
     outstrides[1] = 1
 
-    if thetype == PyArray_FLOAT:
+    if thetype == NPY_FLOAT:
          if not (0.0 <= precision < 1.0):
             precision = 1e-3
-         retval = S_quadratic_spline2D(<float *> DATA(a_image),
-                                       <float *> DATA(ck),
+         retval = S_quadratic_spline2D(<float *> PyArray_DATA(a_image),
+                                       <float *> PyArray_DATA(ck),
                                        M, N, lambda_, instrides, outstrides,
                                        precision)
 
-    elif thetype == PyArray_DOUBLE:
+    elif thetype == NPY_DOUBLE:
         if not (0.0 <= precision < 1.0):
             precision = 1e-6
-        retval = D_quadratic_spline2D(<double *> DATA(a_image),
-                                      <double *> DATA(ck),
+        retval = D_quadratic_spline2D(<double *> PyArray_DATA(a_image),
+                                      <double *> PyArray_DATA(ck),
                                       M, N, lambda_, instrides, outstrides,
                                       precision)
 
@@ -162,37 +159,39 @@ def FIRsepsym2d(image, hrow, hcol):
     """
     cdef int thetype, M, N, ret
     cdef npy_intp outstrides[2], instrides[2]
+    cdef ndarray a_image, a_hrow, a_hcol
 
-    thetype = PyArray_ObjectType(image, PyArray_FLOAT)
-    thetype = NPY_MIN(thetype, PyArray_CDOUBLE)
-    a_image = <PyArrayObject *> PyArray_FromObject(image, thetype, 2, 2)
-    a_hrow = <PyArrayObject *> PyArray_ContiguousFromObject(hrow, thetype, 1, 1)
-    a_hcol = <PyArrayObject *> PyArray_ContiguousFromObject(hcol, thetype, 1, 1)
+    thetype = PyArray_ObjectType(image, NPY_FLOAT)
+    thetype = min(thetype, NPY_CDOUBLE)
+    a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
+    a_hrow = PyArray_FROMANY(hrow, thetype, 1, 1, NPY_CONTIGUOUS)
+    a_hcol = PyArray_FROMANY(hcol, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(2,DIMS(a_image), thetype)
-    M = DIMS(a_image)[0]
-    N = DIMS(a_image)[1]
+    out = <PyArrayObject *> PyArray_SimpleNew(2, PyArray_DIMS(a_image), thetype)
+    M = PyArray_DIMS(a_image)[0]
+    N = PyArray_DIMS(a_image)[1]
 
-    convert_strides(STRIDES(a_image), instrides, ELSIZE(a_image), 2)
+    convert_strides(PyArray_STRIDES(a_image), instrides,
+                    PyArray_DESCR(a_image).elsize, 2)
     outstrides[0] = N
     outstrides[1] = 1
 
-    if thetype == PyArray_FLOAT:
+    if thetype == NPY_FLOAT:
         ret = S_separable_2Dconvolve_mirror(
-            <float *> DATA(a_image),
-            <float *> DATA(out), M, N,
-            <float *> DATA(a_hrow),
-            <float *> DATA(a_hcol),
-            DIMS(a_hrow)[0], DIMS(a_hcol)[0],
+            <float *> PyArray_DATA(a_image),
+            <float *> PyArray_DATA(out), M, N,
+            <float *> PyArray_DATA(a_hrow),
+            <float *> PyArray_DATA(a_hcol),
+            PyArray_DIMS(a_hrow)[0], PyArray_DIMS(a_hcol)[0],
             instrides, outstrides)
 
-    elif thetype == PyArray_DOUBLE:
+    elif thetype == NPY_DOUBLE:
         ret = D_separable_2Dconvolve_mirror(
-            <double *> DATA(a_image),
-            <double *> DATA(out), M, N,
-            <double *> DATA(a_hrow),
-            <double *> DATA(a_hcol),
-            DIMS(a_hrow)[0], DIMS(a_hcol)[0],
+            <double *> PyArray_DATA(a_image),
+            <double *> PyArray_DATA(out), M, N,
+            <double *> PyArray_DATA(a_hrow),
+            <double *> PyArray_DATA(a_hcol),
+            PyArray_DIMS(a_hrow)[0],PyArray_DIMS(a_hcol)[0],
             instrides, outstrides)
 
     else:
@@ -233,35 +232,37 @@ def IIRsymorder1(sig, c0, z1, precision=-1.0):
     cdef int thetype, N, ret
     cdef npy_intp outstrides, instrides
     cdef float rc0, rz1
+    cdef ndarray a_sig
 
-    thetype = PyArray_ObjectType(sig, PyArray_FLOAT)
-    thetype = NPY_MIN(thetype, PyArray_CDOUBLE)
-    a_sig = <PyArrayObject *> PyArray_FromObject(sig, thetype, 1, 1)
+    thetype = PyArray_ObjectType(sig, NPY_FLOAT)
+    thetype = min(thetype, NPY_CDOUBLE)
+    a_sig = PyArray_FROMANY(sig, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(1,DIMS(a_sig),thetype)
-    N = DIMS(a_sig)[0]
+    out = <PyArrayObject *> PyArray_SimpleNew(1, PyArray_DIMS(a_sig), thetype)
+    N = PyArray_DIMS(a_sig)[0]
 
-    convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1)
+    convert_strides(PyArray_STRIDES(a_sig), &instrides,
+                    PyArray_DESCR(a_sig).elsize, 1)
     outstrides = 1
 
-    if thetype == PyArray_FLOAT:
+    if thetype == NPY_FLOAT:
         rc0 = c0.real
         rz1 = z1.real
         if not (0.0 <= precision < 1.0):
             precision = 1e-6
         ret = S_IIR_forback1(rc0, rz1,
-                             <float *> DATA(a_sig),
-                             <float *> DATA(out), N,
+                             <float *> PyArray_DATA(a_sig),
+                             <float *> PyArray_DATA(out), N,
                              instrides, outstrides, <float> precision)
 
-    elif thetype == PyArray_DOUBLE:
+    elif thetype == NPY_DOUBLE:
         rc0 = c0.real
         rz1 = z1.real
         if not (0.0 <= precision < 1.0):
             precision = 1e-11
         ret = D_IIR_forback1(rc0, rz1,
-                             <double *> DATA(a_sig),
-                             <double *> DATA(out), N,
+                             <double *> PyArray_DATA(a_sig),
+                             <double *> PyArray_DATA(out), N,
                              instrides, outstrides, precision)
 
     else:
@@ -308,29 +309,31 @@ def IIRsymorder2(sig, r, omega, precision=-1.0):
     """
     cdef int thetype, N, ret
     cdef npy_intp outstrides, instrides
+    cdef ndarray a_sig
 
-    thetype = PyArray_ObjectType(sig, PyArray_FLOAT)
-    thetype = NPY_MIN(thetype, PyArray_DOUBLE)
-    a_sig = <PyArrayObject *> PyArray_FromObject(sig, thetype, 1, 1)
+    thetype = PyArray_ObjectType(sig, NPY_FLOAT)
+    thetype = min(thetype, NPY_DOUBLE)
+    a_sig = PyArray_FROMANY(sig, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(1,DIMS(a_sig),thetype)
-    N = DIMS(a_sig)[0]
+    out = <PyArrayObject *> PyArray_SimpleNew(1, PyArray_DIMS(a_sig),thetype)
+    N = PyArray_DIMS(a_sig)[0]
 
-    convert_strides(STRIDES(a_sig), &instrides, ELSIZE(a_sig), 1)
+    convert_strides(PyArray_STRIDES(a_sig), &instrides,
+                    PyArray_DESCR(a_sig).elsize, 1)
     outstrides = 1
 
-    if thetype == PyArray_FLOAT:
+    if thetype == NPY_FLOAT:
         if not (0.0 <= precision < 1.0):
             precision = 1e-6
-        ret = S_IIR_forback2(r, omega, <float *> DATA(a_sig),
-                             <float *> DATA(out), N,
+        ret = S_IIR_forback2(r, omega, <float *> PyArray_DATA(a_sig),
+                             <float *> PyArray_DATA(out), N,
                              instrides, outstrides, precision)
 
-    elif thetype == PyArray_DOUBLE:
+    elif thetype == NPY_DOUBLE:
         if not (0.0 <= precision < 1.0):
             precision = 1e-11
-        ret = D_IIR_forback2(r, omega, <double *> DATA(a_sig),
-                             <double *> DATA(out), N,
+        ret = D_IIR_forback2(r, omega, <double *> PyArray_DATA(a_sig),
+                             <double *> PyArray_DATA(out), N,
                              instrides, outstrides, precision)
 
     else:
