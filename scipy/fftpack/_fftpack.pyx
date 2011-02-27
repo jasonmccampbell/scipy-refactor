@@ -24,11 +24,11 @@ fwr_real_x8
 
 """
 np.import_array()
-include 'fwrap_ktp.pxi'
+
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 # Template for cfft, zfft
-cpdef object cfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def cfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """cfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -60,7 +60,7 @@ cpdef object cfft(object x, object n=None, fwi_integer_t direction=1, object nor
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.cfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
     return x_
-cpdef object zfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def zfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """zfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -95,7 +95,7 @@ cpdef object zfft(object x, object n=None, fwi_integer_t direction=1, object nor
 
 
 # Template for rfft, drfft, crfft, zrfft
-cpdef object rfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def rfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """rfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -128,7 +128,7 @@ cpdef object rfft(object x, object n=None, fwi_integer_t direction=1, object nor
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.rfft(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
     return x_
-cpdef object drfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def drfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """drfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -161,7 +161,7 @@ cpdef object drfft(object x, object n=None, fwi_integer_t direction=1, object no
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.drfft(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
     return x_
-cpdef object crfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def crfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """crfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -194,7 +194,7 @@ cpdef object crfft(object x, object n=None, fwi_integer_t direction=1, object no
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.crfft(<fwc_complex_x8_t*>np.PyArray_DATA(x_), n_, direction, howmany, normalize_)
     return x_
-cpdef object zrfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def zrfft(object x, object n=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """zrfft(x[, n, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -230,7 +230,7 @@ cpdef object zrfft(object x, object n=None, fwi_integer_t direction=1, object no
 
 
 # Template for cfftnd, zfftnd
-cpdef object cfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def cfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """cfftnd(x[, s, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -277,7 +277,7 @@ cpdef object cfftnd(object x, object s=None, fwi_integer_t direction=1, object n
     fc.cfftnd(<fwc_complex_x8_t*>np.PyArray_DATA(x_), r, <fwi_integer_t*>np.PyArray_DATA(s_), direction, howmany, normalize_)
     # Return the non-flattened view of the buffer
     return x_
-cpdef object zfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
+def zfftnd(object x, object s=None, fwi_integer_t direction=1, object normalize=None, bint overwrite_x=False):
     """zfftnd(x[, s, direction, normalize, overwrite_x]) -> x
 
     Parameters
@@ -420,7 +420,7 @@ cpdef object destroy_zfftnd_cache():
 
 
 # Template for dct1, dct2, dct3, ddct1, ddct2, ddct3
-cpdef object dct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def dct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """dct1(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
@@ -449,7 +449,7 @@ cpdef object dct1(object x, object n=None, fwi_integer_t normalize=0, bint overw
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.dct1(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
     return x_
-cpdef object dct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def dct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """dct2(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
@@ -478,7 +478,7 @@ cpdef object dct2(object x, object n=None, fwi_integer_t normalize=0, bint overw
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.dct2(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
     return x_
-cpdef object dct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def dct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """dct3(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
@@ -507,7 +507,7 @@ cpdef object dct3(object x, object n=None, fwi_integer_t normalize=0, bint overw
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.dct3(<fwr_real_x4_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
     return x_
-cpdef object ddct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def ddct1(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """ddct1(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
@@ -536,7 +536,7 @@ cpdef object ddct1(object x, object n=None, fwi_integer_t normalize=0, bint over
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.ddct1(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
     return x_
-cpdef object ddct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def ddct2(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """ddct2(x[, n, normalize, overwrite_x]) -> x
 
     Parameters
@@ -565,7 +565,7 @@ cpdef object ddct2(object x, object n=None, fwi_integer_t normalize=0, bint over
         raise ValueError('Condition on arguments not satisfied: (n * howmany) == x.size')
     fc.ddct2(<fwr_real_x8_t*>np.PyArray_DATA(x_), n_, howmany, normalize)
     return x_
-cpdef object ddct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
+def ddct3(object x, object n=None, fwi_integer_t normalize=0, bint overwrite_x=False):
     """ddct3(x[, n, normalize, overwrite_x]) -> x
 
     Parameters

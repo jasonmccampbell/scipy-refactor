@@ -30,7 +30,7 @@ def install():
     for root, dirs, files in os.walk("."):
         for fn in files:
             rel_path = join(root, fn)
-            if fn.endswith('.py') and fn not in ignore_pys:
+            if fn.endswith('.py') and fn not in ignore_pys or fn.endswith('.npz'):
                 dst_dir = dirname(join(sp_dir, rel_path))
                 if not isdir(dst_dir):
                      os.makedirs(dst_dir)
