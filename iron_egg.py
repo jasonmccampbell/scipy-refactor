@@ -53,7 +53,9 @@ arch = 'x86'
 platform = 'cli'
 osdist = None
 python = None
-packages = []
+packages = [
+  'numpy 2.0.0',
+]
 """ % scipy_version
 
 
