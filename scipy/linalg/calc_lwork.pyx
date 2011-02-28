@@ -295,7 +295,7 @@ def gqr(object prefix, fwi_integer_t m, fwi_integer_t n):
 cdef char fw_aschar(object s):
     cdef char* buf
     try:
-        return <char>s # int
+        return <char>ord(s[0]) # int
     except TypeError:
         pass
     try:

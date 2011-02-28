@@ -139,53 +139,53 @@ static const char *__pyx_f[] = {
 /* Cython code section 'utility_code_proto_before_types' */
 /* Cython code section 'numeric_typedefs' */
 
-typedef int __pyx_t_5numpy_npy_int;
+typedef int __pyx_t_5scipy_6linalg_5numpy_npy_int;
 
-typedef double __pyx_t_5numpy_double_t;
+typedef double __pyx_t_5scipy_6linalg_5numpy_double_t;
 
-typedef int __pyx_t_5numpy_npy_intp;
+typedef int __pyx_t_5scipy_6linalg_5numpy_npy_intp;
 
-typedef signed char __pyx_t_5numpy_npy_int8;
+typedef signed char __pyx_t_5scipy_6linalg_5numpy_npy_int8;
 
-typedef signed short __pyx_t_5numpy_npy_int16;
+typedef signed short __pyx_t_5scipy_6linalg_5numpy_npy_int16;
 
-typedef signed int __pyx_t_5numpy_npy_int32;
+typedef signed int __pyx_t_5scipy_6linalg_5numpy_npy_int32;
 
-typedef signed PY_LONG_LONG __pyx_t_5numpy_npy_int64;
+typedef signed PY_LONG_LONG __pyx_t_5scipy_6linalg_5numpy_npy_int64;
 
-typedef unsigned char __pyx_t_5numpy_npy_uint8;
+typedef unsigned char __pyx_t_5scipy_6linalg_5numpy_npy_uint8;
 
-typedef unsigned short __pyx_t_5numpy_npy_uint16;
+typedef unsigned short __pyx_t_5scipy_6linalg_5numpy_npy_uint16;
 
-typedef unsigned int __pyx_t_5numpy_npy_uint32;
+typedef unsigned int __pyx_t_5scipy_6linalg_5numpy_npy_uint32;
 
-typedef unsigned PY_LONG_LONG __pyx_t_5numpy_npy_uint64;
+typedef unsigned PY_LONG_LONG __pyx_t_5scipy_6linalg_5numpy_npy_uint64;
 
-typedef float __pyx_t_5numpy_npy_float32;
+typedef float __pyx_t_5scipy_6linalg_5numpy_npy_float32;
 
-typedef double __pyx_t_5numpy_npy_float64;
+typedef double __pyx_t_5scipy_6linalg_5numpy_npy_float64;
 
-typedef __pyx_t_5numpy_npy_intp __pyx_t_5numpy_intp_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_t_5scipy_6linalg_5numpy_intp_t;
 
-typedef __pyx_t_5numpy_npy_int8 __pyx_t_5numpy_int8_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int8 __pyx_t_5scipy_6linalg_5numpy_int8_t;
 
-typedef __pyx_t_5numpy_npy_int16 __pyx_t_5numpy_int16_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int16 __pyx_t_5scipy_6linalg_5numpy_int16_t;
 
-typedef __pyx_t_5numpy_npy_int32 __pyx_t_5numpy_int32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int32 __pyx_t_5scipy_6linalg_5numpy_int32_t;
 
-typedef __pyx_t_5numpy_npy_int64 __pyx_t_5numpy_int64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int64 __pyx_t_5scipy_6linalg_5numpy_int64_t;
 
-typedef __pyx_t_5numpy_npy_uint8 __pyx_t_5numpy_uint8_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint8 __pyx_t_5scipy_6linalg_5numpy_uint8_t;
 
-typedef __pyx_t_5numpy_npy_uint16 __pyx_t_5numpy_uint16_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint16 __pyx_t_5scipy_6linalg_5numpy_uint16_t;
 
-typedef __pyx_t_5numpy_npy_uint32 __pyx_t_5numpy_uint32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint32 __pyx_t_5scipy_6linalg_5numpy_uint32_t;
 
-typedef __pyx_t_5numpy_npy_uint64 __pyx_t_5numpy_uint64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint64 __pyx_t_5scipy_6linalg_5numpy_uint64_t;
 
-typedef __pyx_t_5numpy_npy_float32 __pyx_t_5numpy_float32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_float32 __pyx_t_5scipy_6linalg_5numpy_float32_t;
 
-typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_float64 __pyx_t_5scipy_6linalg_5numpy_float64_t;
 /* Cython code section 'complex_type_declarations' */
 
 #if CYTHON_CCOMPLEX
@@ -211,11 +211,11 @@ typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
 /* Type declarations */
 
-typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
+typedef void (*__pyx_t_5scipy_6linalg_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5scipy_6linalg_5numpy_npy_intp *, __pyx_t_5scipy_6linalg_5numpy_npy_intp *, void *);
 
 typedef System::Object^ __pyx_t_5scipy_6linalg_9fwrap_ktp_fw_bytes;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2956
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2956
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -223,7 +223,7 @@ typedef System::Object^ __pyx_t_5scipy_6linalg_9fwrap_ktp_fw_bytes;
  *                                   bint copy, bint create, int alignment=1):
  */
 
-ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray {
+public ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray {
   int __pyx_n;
   int alignment;
 };
@@ -311,55 +311,10 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 #endif
 /* Cython code section 'module_declarations' */
 /* Module declarations from numpy */
-/* Module declarations from numpy */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
-static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
-static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
-static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_Check(System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_NDIM(System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5numpy_import_array(void);
-static CYTHON_INLINE void import_array(void); /*proto*/
+/* Module declarations from scipy.linalg.numpy */
 /* Module declarations from scipy.linalg.fwrap_ktp */
 /* Module declarations from scipy.linalg.fblas_fc */
 /* Module declarations from scipy.linalg.fblas */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate NumpyDotNet::ndarray^ __pyx_delegate_t_5scipy_6linalg_5fblas_fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_intp_t *, int, int, ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray ^__pyx_optional_args);
-static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_intp_t *, int, int, ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray ^__pyx_optional_args); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate char __pyx_delegate_t_5scipy_6linalg_5fblas_fw_aschar(System::Object^);
-static char fw_aschar(System::Object^); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
 #define __Pyx_MODULE_NAME "scipy.linalg.fblas"
@@ -1669,7 +1624,9 @@ static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_is
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_2980_29;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_2982_60;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_2982_24;
-static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_2994_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_2994_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_2994_24;
+static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_2994_24;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_encode_3000_13;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_3000_20;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
@@ -1710,7 +1667,7 @@ static __pyx_t_double_complex (&__pyx_k_6) = *(new __pyx_t_double_complex);
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":47
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":47
  * cdef extern from "string.h":
  *     void *memcpy(void *dest, void *src, size_t n)
  * def chemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -1735,9 +1692,9 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
@@ -1795,7 +1752,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_uplo_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":69
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":69
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -1806,7 +1763,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_uplo_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":73
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":73
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -1821,7 +1778,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":74
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":74
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1832,7 +1789,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":75
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":75
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1843,7 +1800,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":76
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":76
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -1854,7 +1811,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":77
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":77
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -1863,7 +1820,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":78
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":78
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -1873,7 +1830,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":79
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":79
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -1889,7 +1846,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":80
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":80
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -1906,7 +1863,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_7);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":81
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":81
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -1922,7 +1879,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":82
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":82
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -1939,7 +1896,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":83
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":83
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -1955,7 +1912,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":84
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":84
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -1972,7 +1929,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_7);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":85
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":85
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -1988,7 +1945,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":86
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":86
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -2005,7 +1962,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":87
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":87
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -2021,7 +1978,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":88
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":88
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -2040,7 +1997,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":89
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":89
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -2056,7 +2013,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":90
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":90
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -2085,7 +2042,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":91
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":91
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -2101,7 +2058,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":92
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":92
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -2130,7 +2087,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":93
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":93
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -2146,7 +2103,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":94
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":94
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -2175,7 +2132,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":95
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":95
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -2191,7 +2148,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":96
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":96
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -2220,7 +2177,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":97
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":97
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -2236,7 +2193,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":98
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":98
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -2246,7 +2203,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":99
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":99
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -2262,7 +2219,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":100
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":100
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -2276,7 +2233,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":101
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":101
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -2292,7 +2249,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":102
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":102
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -2301,7 +2258,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":103
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":103
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -2311,7 +2268,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":104
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":104
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -2327,7 +2284,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":105
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":105
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.chemv(fw_uplo_f, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -2336,7 +2293,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(chemv,CHEMV)(__pyx_v_fw_uplo_f, (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":106
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":106
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.chemv(fw_uplo_f, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -2351,7 +2308,7 @@ static System::Object^ chemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":107
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":107
  *     fc.chemv(fw_uplo_f, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def zhemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -2376,9 +2333,9 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
@@ -2436,7 +2393,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_uplo_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":129
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":129
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -2447,7 +2404,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_uplo_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":133
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":133
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -2462,7 +2419,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":134
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":134
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2473,7 +2430,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":135
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":135
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2484,7 +2441,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":136
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":136
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -2495,7 +2452,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":137
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":137
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -2504,7 +2461,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":138
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":138
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -2514,7 +2471,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":139
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":139
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -2530,7 +2487,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":140
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":140
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -2547,7 +2504,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_7);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":141
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":141
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -2563,7 +2520,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":142
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":142
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -2580,7 +2537,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":143
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":143
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -2596,7 +2553,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":144
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":144
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -2613,7 +2570,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_7);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":145
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":145
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -2629,7 +2586,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":146
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":146
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -2646,7 +2603,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":147
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":147
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -2662,7 +2619,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":148
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":148
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -2681,7 +2638,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":149
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":149
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -2697,7 +2654,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":150
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":150
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -2726,7 +2683,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":151
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":151
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -2742,7 +2699,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":152
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":152
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -2771,7 +2728,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":153
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":153
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -2787,7 +2744,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":154
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":154
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -2816,7 +2773,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":155
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":155
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -2832,7 +2789,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":156
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":156
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -2861,7 +2818,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_4);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":157
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":157
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -2877,7 +2834,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":158
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":158
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -2887,7 +2844,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":159
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":159
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -2903,7 +2860,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":160
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":160
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -2917,7 +2874,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = (!__pyx_t_6);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":161
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":161
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -2933,7 +2890,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":162
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":162
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -2942,7 +2899,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":163
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":163
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -2952,7 +2909,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_4 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":164
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":164
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -2968,7 +2925,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":165
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":165
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.zhemv(fw_uplo_f, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -2977,7 +2934,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(zhemv,ZHEMV)(__pyx_v_fw_uplo_f, (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":166
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":166
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.zhemv(fw_uplo_f, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -2992,7 +2949,7 @@ static System::Object^ zhemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":169
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":169
  * 
  * 
  * def csrot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -3015,8 +2972,8 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -3069,7 +3026,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":195
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":195
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -3080,7 +3037,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":196
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -3091,7 +3048,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":197
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":197
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -3118,7 +3075,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":198
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":198
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -3143,7 +3100,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":199
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":199
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -3159,7 +3116,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":200
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":200
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -3184,7 +3141,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":201
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":201
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -3200,7 +3157,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":202
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":202
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -3217,7 +3174,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":203
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":203
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -3233,7 +3190,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":204
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":204
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -3250,7 +3207,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":205
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":205
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -3266,7 +3223,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":206
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":206
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -3283,7 +3240,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":207
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":207
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -3299,7 +3256,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":208
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":208
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -3316,7 +3273,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":209
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":209
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -3332,7 +3289,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":210
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":210
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.csrot(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)             # <<<<<<<<<<<<<<
@@ -3341,7 +3298,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
  */
   F_FUNC(csrot,CSROT)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":211
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":211
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.csrot(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -3358,7 +3315,7 @@ static System::Object^ csrot(System::Object^ x, System::Object^ y, System::Objec
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":214
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":214
  * 
  * 
  * def csscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -3375,7 +3332,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   int __pyx_v_overwrite_x;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -3410,7 +3367,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":234
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -3421,7 +3378,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":235
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -3448,7 +3405,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":236
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":236
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -3473,7 +3430,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":237
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":237
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -3489,7 +3446,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":238
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -3506,7 +3463,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":239
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":239
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -3522,7 +3479,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":240
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":240
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -3539,7 +3496,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":241
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":241
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -3555,7 +3512,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":242
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":242
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.csscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -3564,7 +3521,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
  */
   F_FUNC(csscal,CSSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":243
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":243
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.csscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -3579,7 +3536,7 @@ static System::Object^ csscal(System::Object^ a, System::Object^ x, [InteropServ
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":246
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":246
  * 
  * 
  * def dzasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -3595,7 +3552,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_n_;
   fwr_dbl_t __pyx_v_fw_ret_arg;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -3624,7 +3581,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":265
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":265
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -3635,7 +3592,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":266
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":266
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -3662,7 +3619,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":267
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":267
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -3687,7 +3644,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":268
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":268
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -3703,7 +3660,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":269
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":269
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -3720,7 +3677,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":270
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":270
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -3736,7 +3693,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":271
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":271
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -3753,7 +3710,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":272
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":272
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -3769,7 +3726,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":273
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":273
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dzasum(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -3778,7 +3735,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(dzasum,DZASUM)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":274
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":274
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dzasum(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -3795,7 +3752,7 @@ static System::Object^ dzasum(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":277
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":277
  * 
  * 
  * def dznrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -3811,7 +3768,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_n_;
   fwr_dbl_t __pyx_v_fw_ret_arg;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -3840,7 +3797,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":296
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":296
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -3851,7 +3808,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":297
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":297
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -3878,7 +3835,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":298
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":298
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -3903,7 +3860,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":299
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":299
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -3919,7 +3876,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":300
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":300
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -3936,7 +3893,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":301
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":301
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -3952,7 +3909,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":302
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":302
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -3969,7 +3926,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":303
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":303
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -3985,7 +3942,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":304
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":304
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dznrm2(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -3994,7 +3951,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(dznrm2,DZNRM2)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":305
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":305
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dznrm2(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -4011,7 +3968,7 @@ static System::Object^ dznrm2(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":307
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":307
  *     return fw_ret_arg
  * 
  * def cdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -4031,8 +3988,8 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -4073,7 +4030,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":331
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":331
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0             # <<<<<<<<<<<<<<
@@ -4082,7 +4039,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
  */
   __pyx_v_xy = __pyx_t_float_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":332
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":332
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4093,7 +4050,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":333
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":333
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4104,7 +4061,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":334
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":334
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -4131,7 +4088,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":335
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":335
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -4156,7 +4113,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":336
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":336
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -4172,7 +4129,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":337
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":337
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -4197,7 +4154,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":338
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":338
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -4213,7 +4170,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":339
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":339
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -4230,7 +4187,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":340
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":340
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -4246,7 +4203,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":341
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":341
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -4263,7 +4220,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":342
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":342
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -4279,7 +4236,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":343
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":343
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -4296,7 +4253,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":344
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":344
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -4312,7 +4269,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":345
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":345
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -4329,7 +4286,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":346
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":346
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -4345,7 +4302,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":347
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":347
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wcdotc(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -4354,7 +4311,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(wcdotc,WCDOTC)((&__pyx_v_xy), (&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":348
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":348
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wcdotc(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy             # <<<<<<<<<<<<<<
@@ -4371,7 +4328,7 @@ static System::Object^ cdotc(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":349
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":349
  *     fc.wcdotc(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy
  * def cdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -4391,8 +4348,8 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -4433,7 +4390,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":373
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":373
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0             # <<<<<<<<<<<<<<
@@ -4442,7 +4399,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
  */
   __pyx_v_xy = __pyx_t_float_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":374
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":374
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4453,7 +4410,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":375
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":375
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4464,7 +4421,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":376
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":376
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -4491,7 +4448,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":377
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":377
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -4516,7 +4473,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":378
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":378
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -4532,7 +4489,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":379
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":379
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -4557,7 +4514,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":380
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":380
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -4573,7 +4530,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":381
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":381
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -4590,7 +4547,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":382
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":382
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -4606,7 +4563,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":383
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":383
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -4623,7 +4580,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":384
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":384
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -4639,7 +4596,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":385
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":385
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -4656,7 +4613,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":386
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":386
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -4672,7 +4629,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":387
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":387
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -4689,7 +4646,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":388
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":388
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -4705,7 +4662,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":389
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":389
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wcdotu(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -4714,7 +4671,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(wcdotu,WCDOTU)((&__pyx_v_xy), (&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":390
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":390
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wcdotu(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy             # <<<<<<<<<<<<<<
@@ -4731,7 +4688,7 @@ static System::Object^ cdotu(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":391
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":391
  *     fc.wcdotu(&xy, &n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy
  * def zdotc(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -4751,8 +4708,8 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -4793,7 +4750,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":415
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":415
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0             # <<<<<<<<<<<<<<
@@ -4802,7 +4759,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
  */
   __pyx_v_xy = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":416
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":416
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4813,7 +4770,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":417
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":417
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -4824,7 +4781,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":418
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":418
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -4851,7 +4808,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":419
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":419
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -4876,7 +4833,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":420
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":420
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -4892,7 +4849,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":421
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":421
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -4917,7 +4874,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":422
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":422
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -4933,7 +4890,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":423
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":423
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -4950,7 +4907,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":424
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":424
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -4966,7 +4923,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":425
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":425
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -4983,7 +4940,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":426
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":426
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -4999,7 +4956,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":427
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":427
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -5016,7 +4973,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":428
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":428
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -5032,7 +4989,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":429
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":429
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -5049,7 +5006,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":430
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":430
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -5065,7 +5022,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":431
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":431
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wzdotc(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -5074,7 +5031,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(wzdotc,WZDOTC)((&__pyx_v_xy), (&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":432
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":432
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wzdotc(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy             # <<<<<<<<<<<<<<
@@ -5091,7 +5048,7 @@ static System::Object^ zdotc(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":433
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":433
  *     fc.wzdotc(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy
  * def zdotu(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -5111,8 +5068,8 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -5153,7 +5110,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":457
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":457
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0             # <<<<<<<<<<<<<<
@@ -5162,7 +5119,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
  */
   __pyx_v_xy = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":458
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":458
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -5173,7 +5130,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":459
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":459
  *     xy = 0
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -5184,7 +5141,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":460
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":460
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -5211,7 +5168,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":461
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":461
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -5236,7 +5193,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":462
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":462
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -5252,7 +5209,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":463
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":463
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -5277,7 +5234,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":464
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":464
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -5293,7 +5250,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":465
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":465
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -5310,7 +5267,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":466
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":466
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -5326,7 +5283,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":467
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":467
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -5343,7 +5300,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":468
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":468
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -5359,7 +5316,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":469
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":469
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -5376,7 +5333,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":470
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":470
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -5392,7 +5349,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":471
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":471
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -5409,7 +5366,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":472
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":472
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -5425,7 +5382,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":473
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":473
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wzdotu(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -5434,7 +5391,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(wzdotu,WZDOTU)((&__pyx_v_xy), (&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":474
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":474
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.wzdotu(&xy, &n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return xy             # <<<<<<<<<<<<<<
@@ -5451,7 +5408,7 @@ static System::Object^ zdotu(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":476
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":476
  *     return xy
  * 
  * def isamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -5467,7 +5424,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -5496,7 +5453,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":494
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":494
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -5507,7 +5464,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":495
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":495
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -5534,7 +5491,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":496
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":496
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:             # <<<<<<<<<<<<<<
@@ -5550,7 +5507,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":497
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":497
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")             # <<<<<<<<<<<<<<
@@ -5566,7 +5523,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":498
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":498
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:             # <<<<<<<<<<<<<<
@@ -5576,7 +5533,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_9 = (!(__pyx_v_incx != 0));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":499
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":499
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")             # <<<<<<<<<<<<<<
@@ -5592,7 +5549,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":500
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":500
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):             # <<<<<<<<<<<<<<
@@ -5617,7 +5574,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":501
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":501
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")             # <<<<<<<<<<<<<<
@@ -5633,7 +5590,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":502
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":502
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.isamax(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -5642,7 +5599,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(isamax,ISAMAX)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":503
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":503
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.isamax(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index             # <<<<<<<<<<<<<<
@@ -5651,7 +5608,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":504
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":504
  *     fw_ret_arg = fc.isamax(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -5668,7 +5625,7 @@ static System::Object^ isamax(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":505
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":505
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg
  * def idamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -5684,7 +5641,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -5713,7 +5670,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":523
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":523
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -5724,7 +5681,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":524
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":524
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -5751,7 +5708,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":525
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":525
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:             # <<<<<<<<<<<<<<
@@ -5767,7 +5724,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":526
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":526
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")             # <<<<<<<<<<<<<<
@@ -5783,7 +5740,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":527
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":527
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:             # <<<<<<<<<<<<<<
@@ -5793,7 +5750,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_9 = (!(__pyx_v_incx != 0));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":528
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":528
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")             # <<<<<<<<<<<<<<
@@ -5809,7 +5766,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":529
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":529
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):             # <<<<<<<<<<<<<<
@@ -5834,7 +5791,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":530
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":530
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")             # <<<<<<<<<<<<<<
@@ -5850,7 +5807,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":531
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":531
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.idamax(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -5859,7 +5816,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(idamax,IDAMAX)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":532
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":532
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.idamax(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index             # <<<<<<<<<<<<<<
@@ -5868,7 +5825,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":533
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":533
  *     fw_ret_arg = fc.idamax(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -5885,7 +5842,7 @@ static System::Object^ idamax(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":534
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":534
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg
  * def icamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -5901,7 +5858,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -5930,7 +5887,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":552
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":552
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -5941,7 +5898,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":553
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":553
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -5968,7 +5925,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":554
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":554
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:             # <<<<<<<<<<<<<<
@@ -5984,7 +5941,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":555
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":555
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")             # <<<<<<<<<<<<<<
@@ -6000,7 +5957,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":556
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":556
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:             # <<<<<<<<<<<<<<
@@ -6010,7 +5967,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_9 = (!(__pyx_v_incx != 0));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":557
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":557
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")             # <<<<<<<<<<<<<<
@@ -6026,7 +5983,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":558
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":558
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):             # <<<<<<<<<<<<<<
@@ -6051,7 +6008,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":559
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":559
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")             # <<<<<<<<<<<<<<
@@ -6067,7 +6024,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":560
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":560
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.icamax(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -6076,7 +6033,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(icamax,ICAMAX)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":561
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":561
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.icamax(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index             # <<<<<<<<<<<<<<
@@ -6085,7 +6042,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":562
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":562
  *     fw_ret_arg = fc.icamax(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -6102,7 +6059,7 @@ static System::Object^ icamax(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":563
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":563
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg
  * def izamax(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -6118,7 +6075,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -6147,7 +6104,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":581
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":581
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -6158,7 +6115,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":582
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":582
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -6185,7 +6142,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":583
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":583
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:             # <<<<<<<<<<<<<<
@@ -6201,7 +6158,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":584
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":584
  *     n_ = n if n is not None else (x_shape[0] - offx) // abs(incx)
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")             # <<<<<<<<<<<<<<
@@ -6217,7 +6174,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":585
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":585
  *     if offx < 0 or offx >= x_shape[0]:
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:             # <<<<<<<<<<<<<<
@@ -6227,7 +6184,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_9 = (!(__pyx_v_incx != 0));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":586
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":586
  *         raise ValueError("Not satisfied: offx>=0 and offx<len(x)")
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")             # <<<<<<<<<<<<<<
@@ -6243,7 +6200,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":587
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":587
  *     if not incx != 0:
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):             # <<<<<<<<<<<<<<
@@ -6268,7 +6225,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":588
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":588
  *         raise ValueError("Not satisfied: incx != 0")
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")             # <<<<<<<<<<<<<<
@@ -6284,7 +6241,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":589
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":589
  *     if not (x_shape[0] - offx) > (n_ - 1) * abs(incx):
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.izamax(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -6293,7 +6250,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(izamax,IZAMAX)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":590
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":590
  *         raise ValueError("Not satisfied: len(x)-offx>(n-1)*abs(incx)")
  *     fw_ret_arg = fc.izamax(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index             # <<<<<<<<<<<<<<
@@ -6302,7 +6259,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":591
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":591
  *     fw_ret_arg = fc.izamax(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     fw_ret_arg -= 1 # Convert Fortran index to Python index
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -6319,7 +6276,7 @@ static System::Object^ izamax(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":593
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":593
  *     return fw_ret_arg
  * 
  * def sasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -6335,7 +6292,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   fwr_real_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -6364,7 +6321,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":612
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":612
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -6375,7 +6332,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":613
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":613
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -6402,7 +6359,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":614
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":614
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -6427,7 +6384,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":615
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":615
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -6443,7 +6400,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":616
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":616
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -6460,7 +6417,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":617
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":617
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -6476,7 +6433,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":618
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":618
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -6493,7 +6450,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":619
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":619
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -6509,7 +6466,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":620
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":620
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.sasum(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -6518,7 +6475,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
  */
   __pyx_v_fw_ret_arg = F_FUNC(sasum,SASUM)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":621
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":621
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.sasum(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -6535,7 +6492,7 @@ static System::Object^ sasum(System::Object^ x, [InteropServices::Optional]Syste
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":622
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":622
  *     fw_ret_arg = fc.sasum(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg
  * def dasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -6551,7 +6508,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   fwr_dbl_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -6580,7 +6537,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":641
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":641
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -6591,7 +6548,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":642
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":642
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -6618,7 +6575,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":643
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":643
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -6643,7 +6600,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":644
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":644
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -6659,7 +6616,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":645
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":645
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -6676,7 +6633,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":646
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":646
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -6692,7 +6649,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":647
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":647
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -6709,7 +6666,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":648
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":648
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -6725,7 +6682,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":649
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":649
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dasum(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -6734,7 +6691,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
  */
   __pyx_v_fw_ret_arg = F_FUNC(dasum,DASUM)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":650
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":650
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dasum(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -6751,7 +6708,7 @@ static System::Object^ dasum(System::Object^ x, [InteropServices::Optional]Syste
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":652
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":652
  *     return fw_ret_arg
  * 
  * def saxpy(object x, object y, object n=None, fwr_real_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -6771,8 +6728,8 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -6818,7 +6775,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":674
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":674
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -6829,7 +6786,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":675
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":675
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -6840,7 +6797,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":676
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":676
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -6867,7 +6824,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":677
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":677
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -6892,7 +6849,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":678
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":678
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -6908,7 +6865,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":679
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":679
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -6933,7 +6890,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":680
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":680
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -6949,7 +6906,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":681
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":681
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -6966,7 +6923,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":682
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":682
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -6982,7 +6939,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":683
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":683
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -6999,7 +6956,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":684
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":684
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -7015,7 +6972,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":685
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":685
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -7032,7 +6989,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":686
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":686
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -7048,7 +7005,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":687
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":687
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -7065,7 +7022,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":688
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":688
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -7081,7 +7038,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":689
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":689
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.saxpy(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -7090,7 +7047,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(saxpy,SAXPY)((&__pyx_v_n_), (&__pyx_v_a), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":690
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":690
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.saxpy(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -7105,7 +7062,7 @@ static System::Object^ saxpy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":691
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":691
  *     fc.saxpy(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def daxpy(object x, object y, object n=None, fwr_dbl_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -7125,8 +7082,8 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -7172,7 +7129,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":713
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":713
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7183,7 +7140,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":714
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":714
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7194,7 +7151,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":715
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":715
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -7221,7 +7178,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":716
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":716
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -7246,7 +7203,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":717
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":717
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -7262,7 +7219,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":718
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":718
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -7287,7 +7244,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":719
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":719
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -7303,7 +7260,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":720
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":720
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -7320,7 +7277,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":721
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":721
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -7336,7 +7293,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":722
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":722
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -7353,7 +7310,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":723
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":723
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -7369,7 +7326,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":724
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":724
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -7386,7 +7343,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":725
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":725
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -7402,7 +7359,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":726
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":726
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -7419,7 +7376,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":727
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":727
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -7435,7 +7392,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":728
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":728
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.daxpy(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -7444,7 +7401,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(daxpy,DAXPY)((&__pyx_v_n_), (&__pyx_v_a), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":729
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":729
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.daxpy(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -7459,7 +7416,7 @@ static System::Object^ daxpy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":730
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":730
  *     fc.daxpy(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def caxpy(object x, object y, object n=None, fwc_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -7479,8 +7436,8 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -7529,7 +7486,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":752
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":752
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7540,7 +7497,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":753
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":753
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7551,7 +7508,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":754
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":754
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -7578,7 +7535,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = nullptr;
   __pyx_v_n_ = __pyx_t_8;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":755
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":755
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -7603,7 +7560,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":756
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":756
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -7619,7 +7576,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":757
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":757
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -7644,7 +7601,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":758
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":758
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -7660,7 +7617,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":759
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":759
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -7677,7 +7634,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_10);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":760
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":760
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -7693,7 +7650,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":761
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":761
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -7710,7 +7667,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":762
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":762
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -7726,7 +7683,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":763
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":763
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -7743,7 +7700,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_10);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":764
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":764
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -7759,7 +7716,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":765
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":765
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -7776,7 +7733,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":766
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":766
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -7792,7 +7749,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":767
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":767
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.caxpy(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -7801,7 +7758,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(caxpy,CAXPY)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":768
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":768
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.caxpy(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -7816,7 +7773,7 @@ static System::Object^ caxpy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":769
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":769
  *     fc.caxpy(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def zaxpy(object x, object y, object n=None, fwc_dbl_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -7836,8 +7793,8 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -7886,7 +7843,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":791
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":791
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7897,7 +7854,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":792
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":792
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -7908,7 +7865,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":793
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":793
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -7935,7 +7892,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = nullptr;
   __pyx_v_n_ = __pyx_t_8;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":794
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":794
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -7960,7 +7917,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":795
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":795
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -7976,7 +7933,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":796
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":796
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -8001,7 +7958,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":797
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":797
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -8017,7 +7974,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":798
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":798
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -8034,7 +7991,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_10);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":799
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":799
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -8050,7 +8007,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":800
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":800
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -8067,7 +8024,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":801
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":801
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -8083,7 +8040,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":802
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":802
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -8100,7 +8057,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_10);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":803
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":803
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -8116,7 +8073,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":804
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":804
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -8133,7 +8090,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_3 = (!__pyx_t_9);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":805
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":805
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -8149,7 +8106,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":806
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":806
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zaxpy(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -8158,7 +8115,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(zaxpy,ZAXPY)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":807
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":807
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zaxpy(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -8173,7 +8130,7 @@ static System::Object^ zaxpy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":810
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":810
  * 
  * 
  * def scasum(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -8188,7 +8145,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   fwr_real_t __pyx_v_fw_ret_arg;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
@@ -8218,7 +8175,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":829
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":829
  *     cdef np.npy_intp x_shape[1]
  *     cdef fwr_real_t fw_ret_arg
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -8229,7 +8186,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":830
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":830
  *     cdef fwr_real_t fw_ret_arg
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -8256,7 +8213,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":831
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":831
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -8281,7 +8238,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":832
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":832
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -8297,7 +8254,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":833
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":833
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -8314,7 +8271,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":834
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":834
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -8330,7 +8287,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":835
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":835
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -8347,7 +8304,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":836
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":836
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -8363,7 +8320,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":837
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":837
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.scasum(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -8372,7 +8329,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(scasum,SCASUM)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":838
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":838
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.scasum(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -8389,7 +8346,7 @@ static System::Object^ scasum(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":841
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":841
  * 
  * 
  * def scnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -8404,7 +8361,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   fwr_real_t __pyx_v_fw_ret_arg;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
@@ -8434,7 +8391,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":860
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":860
  *     cdef np.npy_intp x_shape[1]
  *     cdef fwr_real_t fw_ret_arg
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -8445,7 +8402,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":861
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":861
  *     cdef fwr_real_t fw_ret_arg
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -8472,7 +8429,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":862
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":862
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -8497,7 +8454,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":863
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":863
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -8513,7 +8470,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":864
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":864
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -8530,7 +8487,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":865
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":865
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -8546,7 +8503,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":866
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":866
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -8563,7 +8520,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":867
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":867
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -8579,7 +8536,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":868
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":868
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.scnrm2(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -8588,7 +8545,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
  */
   __pyx_v_fw_ret_arg = F_FUNC(scnrm2,SCNRM2)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":869
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":869
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.scnrm2(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -8605,7 +8562,7 @@ static System::Object^ scnrm2(System::Object^ x, [InteropServices::Optional]Syst
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":871
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":871
  *     return fw_ret_arg
  * 
  * def scopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -8624,8 +8581,8 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -8666,7 +8623,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":892
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":892
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -8677,7 +8634,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":893
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":893
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -8688,7 +8645,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":894
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":894
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -8715,7 +8672,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":895
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":895
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -8740,7 +8697,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":896
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":896
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -8756,7 +8713,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":897
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":897
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -8781,7 +8738,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":898
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":898
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -8797,7 +8754,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":899
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":899
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -8814,7 +8771,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":900
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":900
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -8830,7 +8787,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":901
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":901
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -8847,7 +8804,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":902
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":902
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -8863,7 +8820,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":903
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":903
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -8880,7 +8837,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":904
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":904
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -8896,7 +8853,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":905
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":905
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -8913,7 +8870,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":906
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":906
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -8929,7 +8886,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":907
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":907
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.scopy(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -8938,7 +8895,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(scopy,SCOPY)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":908
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":908
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.scopy(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -8953,7 +8910,7 @@ static System::Object^ scopy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":909
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":909
  *     fc.scopy(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def dcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -8972,8 +8929,8 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -9014,7 +8971,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":930
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":930
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9025,7 +8982,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":931
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":931
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9036,7 +8993,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":932
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":932
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -9063,7 +9020,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":933
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":933
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -9088,7 +9045,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":934
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":934
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -9104,7 +9061,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":935
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":935
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -9129,7 +9086,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":936
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":936
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -9145,7 +9102,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":937
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":937
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -9162,7 +9119,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":938
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":938
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -9178,7 +9135,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":939
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":939
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -9195,7 +9152,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":940
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":940
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -9211,7 +9168,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":941
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":941
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -9228,7 +9185,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":942
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":942
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -9244,7 +9201,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":943
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":943
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -9261,7 +9218,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":944
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":944
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -9277,7 +9234,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":945
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":945
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.dcopy(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -9286,7 +9243,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(dcopy,DCOPY)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":946
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":946
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.dcopy(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -9301,7 +9258,7 @@ static System::Object^ dcopy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":947
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":947
  *     fc.dcopy(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def ccopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -9320,8 +9277,8 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -9362,7 +9319,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":968
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":968
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9373,7 +9330,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":969
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":969
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9384,7 +9341,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":970
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":970
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -9411,7 +9368,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":971
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":971
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -9436,7 +9393,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":972
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":972
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -9452,7 +9409,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":973
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":973
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -9477,7 +9434,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":974
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":974
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -9493,7 +9450,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":975
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":975
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -9510,7 +9467,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":976
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":976
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -9526,7 +9483,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":977
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":977
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -9543,7 +9500,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":978
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":978
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -9559,7 +9516,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":979
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":979
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -9576,7 +9533,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":980
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":980
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -9592,7 +9549,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":981
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":981
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -9609,7 +9566,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":982
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":982
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -9625,7 +9582,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":983
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":983
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.ccopy(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -9634,7 +9591,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(ccopy,CCOPY)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":984
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":984
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.ccopy(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -9649,7 +9606,7 @@ static System::Object^ ccopy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":985
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":985
  *     fc.ccopy(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def zcopy(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -9668,8 +9625,8 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -9710,7 +9667,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1006
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1006
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9721,7 +9678,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1007
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1007
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -9732,7 +9689,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1008
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1008
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -9759,7 +9716,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1009
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1009
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -9784,7 +9741,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1010
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1010
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -9800,7 +9757,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1011
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1011
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -9825,7 +9782,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1012
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1012
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -9841,7 +9798,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1013
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1013
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -9858,7 +9815,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1014
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1014
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -9874,7 +9831,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1015
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1015
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -9891,7 +9848,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1016
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1016
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -9907,7 +9864,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1017
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1017
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -9924,7 +9881,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1018
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1018
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -9940,7 +9897,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1019
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1019
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -9957,7 +9914,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1020
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1020
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -9973,7 +9930,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1021
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1021
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zcopy(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -9982,7 +9939,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(zcopy,ZCOPY)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1022
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1022
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zcopy(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_             # <<<<<<<<<<<<<<
@@ -9997,7 +9954,7 @@ static System::Object^ zcopy(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1024
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1024
  *     return y_
  * 
  * def sdot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -10017,8 +9974,8 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -10059,7 +10016,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1046
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1046
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10070,7 +10027,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1047
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1047
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10081,7 +10038,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1048
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1048
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -10108,7 +10065,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1049
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1049
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -10133,7 +10090,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1050
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1050
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -10149,7 +10106,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1051
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1051
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -10174,7 +10131,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1052
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1052
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -10190,7 +10147,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1053
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1053
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -10207,7 +10164,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1054
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1054
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -10223,7 +10180,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1055
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1055
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -10240,7 +10197,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1056
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1056
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -10256,7 +10213,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1057
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1057
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -10273,7 +10230,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1058
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1058
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -10289,7 +10246,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1059
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1059
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -10306,7 +10263,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1060
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1060
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -10322,7 +10279,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1061
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1061
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fw_ret_arg = fc.sdot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -10331,7 +10288,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
  */
   __pyx_v_fw_ret_arg = F_FUNC(sdot,SDOT)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1062
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1062
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fw_ret_arg = fc.sdot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -10348,7 +10305,7 @@ static System::Object^ sdot(System::Object^ x, System::Object^ y, [InteropServic
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1063
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1063
  *     fw_ret_arg = fc.sdot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return fw_ret_arg
  * def ddot(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -10368,8 +10325,8 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -10410,7 +10367,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1085
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1085
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10421,7 +10378,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1086
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1086
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10432,7 +10389,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1087
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1087
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -10459,7 +10416,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1088
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1088
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -10484,7 +10441,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1089
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1089
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -10500,7 +10457,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1090
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1090
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -10525,7 +10482,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1091
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1091
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -10541,7 +10498,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1092
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1092
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -10558,7 +10515,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1093
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1093
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -10574,7 +10531,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1094
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1094
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -10591,7 +10548,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1095
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1095
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -10607,7 +10564,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1096
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1096
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -10624,7 +10581,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1097
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1097
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -10640,7 +10597,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1098
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1098
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -10657,7 +10614,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1099
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1099
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -10673,7 +10630,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1100
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1100
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fw_ret_arg = fc.ddot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -10682,7 +10639,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
  */
   __pyx_v_fw_ret_arg = F_FUNC(ddot,DDOT)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1101
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1101
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fw_ret_arg = fc.ddot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -10699,7 +10656,7 @@ static System::Object^ ddot(System::Object^ x, System::Object^ y, [InteropServic
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1103
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1103
  *     return fw_ret_arg
  * 
  * def sgemm(fwr_real_t alpha, object a, object b, fwr_real_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -10728,9 +10685,9 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_b_;
   NumpyDotNet::ndarray^ __pyx_v_c_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_b_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_c_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_b_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_c_shape[2];
   System::Object^ __pyx_v_transa_f;
   System::Object^ __pyx_v_transb_f;
   System::Object^ __pyx_r = nullptr;
@@ -10776,7 +10733,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = nullptr;
   __pyx_v_transb_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1122
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1122
  * 
  *     """
  *     cdef char *fw_transa_f = [0, 0], *fw_transb_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -10790,7 +10747,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_transb_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1126
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1126
  *     cdef np.ndarray a_, b_, c_
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"             # <<<<<<<<<<<<<<
@@ -10811,7 +10768,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1127
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1127
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"             # <<<<<<<<<<<<<<
@@ -10832,7 +10789,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transb_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1128
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1128
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10843,7 +10800,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1129
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1129
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]             # <<<<<<<<<<<<<<
@@ -10852,7 +10809,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_lda = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1130
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1130
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]
  *     ka = a_shape[1]             # <<<<<<<<<<<<<<
@@ -10861,7 +10818,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ka = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1131
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1131
  *     lda = a_shape[0]
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda             # <<<<<<<<<<<<<<
@@ -10875,7 +10832,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_m = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1132
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1132
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, False, False)             # <<<<<<<<<<<<<<
@@ -10886,7 +10843,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_b_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1133
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1133
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]             # <<<<<<<<<<<<<<
@@ -10895,7 +10852,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ldb = (__pyx_v_b_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1134
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1134
  *     b_ = fw_asfortranarray(b, fwr_real_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]
  *     kb = b_shape[1]             # <<<<<<<<<<<<<<
@@ -10904,7 +10861,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_kb = (__pyx_v_b_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1135
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1135
  *     ldb = b_shape[0]
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb             # <<<<<<<<<<<<<<
@@ -10918,7 +10875,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_n = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1136
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1136
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n             # <<<<<<<<<<<<<<
@@ -10928,7 +10885,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   (__pyx_v_c_shape[0]) = __pyx_v_m;
   (__pyx_v_c_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1137
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1137
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwr_real_t_enum, 2, c_shape, not overwrite_c, True)             # <<<<<<<<<<<<<<
@@ -10939,7 +10896,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_c_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1138
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1138
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwr_real_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka             # <<<<<<<<<<<<<<
@@ -10953,7 +10910,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_k = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1139
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1139
  *     c_ = fw_asfortranarray(c, fwr_real_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):             # <<<<<<<<<<<<<<
@@ -10970,7 +10927,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1140
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1140
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')             # <<<<<<<<<<<<<<
@@ -10986,7 +10943,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1141
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1141
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):             # <<<<<<<<<<<<<<
@@ -11003,7 +10960,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1142
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1142
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')             # <<<<<<<<<<<<<<
@@ -11019,7 +10976,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1143
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1143
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):             # <<<<<<<<<<<<<<
@@ -11036,7 +10993,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1144
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1144
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')             # <<<<<<<<<<<<<<
@@ -11052,7 +11009,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1145
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1145
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):             # <<<<<<<<<<<<<<
@@ -11067,7 +11024,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_6);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1146
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1146
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')             # <<<<<<<<<<<<<<
@@ -11083,7 +11040,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1147
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1147
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -11093,7 +11050,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_lda != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1148
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1148
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11109,7 +11066,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1149
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1149
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -11123,7 +11080,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1150
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1150
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11139,7 +11096,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1151
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1151
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:             # <<<<<<<<<<<<<<
@@ -11149,7 +11106,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (__pyx_v_ldb != (__pyx_v_b_shape[0]));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1152
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1152
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11165,7 +11122,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1153
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1153
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):             # <<<<<<<<<<<<<<
@@ -11179,7 +11136,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_6);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1154
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1154
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11195,7 +11152,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1155
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1155
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:             # <<<<<<<<<<<<<<
@@ -11205,7 +11162,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_m != (__pyx_v_c_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1156
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1156
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11221,7 +11178,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1157
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1157
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:             # <<<<<<<<<<<<<<
@@ -11231,7 +11188,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_c_shape[1]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1158
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1158
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11247,7 +11204,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1159
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1159
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)             # <<<<<<<<<<<<<<
@@ -11256,7 +11213,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transa_f[0]) = fw_aschar(__pyx_v_transa_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1160
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1160
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -11266,7 +11223,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_transa_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1161
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1161
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")             # <<<<<<<<<<<<<<
@@ -11282,7 +11239,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1162
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1162
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)             # <<<<<<<<<<<<<<
@@ -11291,7 +11248,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transb_f[0]) = fw_aschar(__pyx_v_transb_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1163
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1163
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -11301,7 +11258,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_transb_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1164
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1164
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")             # <<<<<<<<<<<<<<
@@ -11317,7 +11274,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1165
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1165
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")
  *     fc.sgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &lda, <fwr_real_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_real_t*>np.PyArray_DATA(c_), &m, 1, 1)             # <<<<<<<<<<<<<<
@@ -11326,7 +11283,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(sgemm,SGEMM)(__pyx_v_fw_transa_f, __pyx_v_fw_transb_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_k), (&__pyx_v_alpha), ((fwr_real_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda), ((fwr_real_t *)PyArray_DATA(__pyx_v_b_)), (&__pyx_v_ldb), (&__pyx_v_beta), ((fwr_real_t *)PyArray_DATA(__pyx_v_c_)), (&__pyx_v_m), 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1166
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1166
  *         raise ValueError("len(transb_f) != 1")
  *     fc.sgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &lda, <fwr_real_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_real_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_             # <<<<<<<<<<<<<<
@@ -11341,7 +11298,7 @@ static System::Object^ sgemm(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1167
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1167
  *     fc.sgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &lda, <fwr_real_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_real_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_
  * def dgemm(fwr_dbl_t alpha, object a, object b, fwr_dbl_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -11370,9 +11327,9 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_b_;
   NumpyDotNet::ndarray^ __pyx_v_c_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_b_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_c_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_b_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_c_shape[2];
   System::Object^ __pyx_v_transa_f;
   System::Object^ __pyx_v_transb_f;
   System::Object^ __pyx_r = nullptr;
@@ -11418,7 +11375,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = nullptr;
   __pyx_v_transb_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1186
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1186
  * 
  *     """
  *     cdef char *fw_transa_f = [0, 0], *fw_transb_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -11432,7 +11389,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_transb_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1190
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1190
  *     cdef np.ndarray a_, b_, c_
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"             # <<<<<<<<<<<<<<
@@ -11453,7 +11410,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1191
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1191
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"             # <<<<<<<<<<<<<<
@@ -11474,7 +11431,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transb_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1192
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1192
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -11485,7 +11442,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1193
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1193
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]             # <<<<<<<<<<<<<<
@@ -11494,7 +11451,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_lda = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1194
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1194
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]
  *     ka = a_shape[1]             # <<<<<<<<<<<<<<
@@ -11503,7 +11460,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ka = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1195
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1195
  *     lda = a_shape[0]
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda             # <<<<<<<<<<<<<<
@@ -11517,7 +11474,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_m = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1196
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, False, False)             # <<<<<<<<<<<<<<
@@ -11528,7 +11485,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_b_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1197
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1197
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]             # <<<<<<<<<<<<<<
@@ -11537,7 +11494,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ldb = (__pyx_v_b_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1198
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1198
  *     b_ = fw_asfortranarray(b, fwr_dbl_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]
  *     kb = b_shape[1]             # <<<<<<<<<<<<<<
@@ -11546,7 +11503,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_kb = (__pyx_v_b_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1199
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1199
  *     ldb = b_shape[0]
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb             # <<<<<<<<<<<<<<
@@ -11560,7 +11517,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_n = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1200
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1200
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n             # <<<<<<<<<<<<<<
@@ -11570,7 +11527,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   (__pyx_v_c_shape[0]) = __pyx_v_m;
   (__pyx_v_c_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1201
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1201
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwr_dbl_t_enum, 2, c_shape, not overwrite_c, True)             # <<<<<<<<<<<<<<
@@ -11581,7 +11538,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_c_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1202
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1202
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwr_dbl_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka             # <<<<<<<<<<<<<<
@@ -11595,7 +11552,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_k = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1203
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1203
  *     c_ = fw_asfortranarray(c, fwr_dbl_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):             # <<<<<<<<<<<<<<
@@ -11612,7 +11569,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1204
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1204
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')             # <<<<<<<<<<<<<<
@@ -11628,7 +11585,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1205
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1205
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):             # <<<<<<<<<<<<<<
@@ -11645,7 +11602,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1206
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1206
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')             # <<<<<<<<<<<<<<
@@ -11661,7 +11618,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1207
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1207
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):             # <<<<<<<<<<<<<<
@@ -11678,7 +11635,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1208
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1208
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')             # <<<<<<<<<<<<<<
@@ -11694,7 +11651,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1209
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1209
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):             # <<<<<<<<<<<<<<
@@ -11709,7 +11666,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_6);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1210
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1210
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')             # <<<<<<<<<<<<<<
@@ -11725,7 +11682,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1211
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1211
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -11735,7 +11692,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_lda != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1212
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1212
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11751,7 +11708,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1213
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1213
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -11765,7 +11722,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1214
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1214
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11781,7 +11738,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1215
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1215
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:             # <<<<<<<<<<<<<<
@@ -11791,7 +11748,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_6 = (__pyx_v_ldb != (__pyx_v_b_shape[0]));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1216
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1216
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11807,7 +11764,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1217
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1217
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):             # <<<<<<<<<<<<<<
@@ -11821,7 +11778,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_6);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1218
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1218
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11837,7 +11794,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1219
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1219
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:             # <<<<<<<<<<<<<<
@@ -11847,7 +11804,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_m != (__pyx_v_c_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1220
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1220
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11863,7 +11820,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1221
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1221
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:             # <<<<<<<<<<<<<<
@@ -11873,7 +11830,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_c_shape[1]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1222
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1222
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -11889,7 +11846,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1223
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1223
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)             # <<<<<<<<<<<<<<
@@ -11898,7 +11855,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transa_f[0]) = fw_aschar(__pyx_v_transa_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1224
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1224
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -11908,7 +11865,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_transa_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1225
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1225
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")             # <<<<<<<<<<<<<<
@@ -11924,7 +11881,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1226
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1226
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)             # <<<<<<<<<<<<<<
@@ -11933,7 +11890,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transb_f[0]) = fw_aschar(__pyx_v_transb_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1227
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1227
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -11943,7 +11900,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_transb_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1228
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1228
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")             # <<<<<<<<<<<<<<
@@ -11959,7 +11916,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1229
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1229
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")
  *     fc.dgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_dbl_t*>np.PyArray_DATA(c_), &m, 1, 1)             # <<<<<<<<<<<<<<
@@ -11968,7 +11925,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(dgemm,DGEMM)(__pyx_v_fw_transa_f, __pyx_v_fw_transb_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_k), (&__pyx_v_alpha), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_b_)), (&__pyx_v_ldb), (&__pyx_v_beta), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_c_)), (&__pyx_v_m), 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1230
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1230
  *         raise ValueError("len(transb_f) != 1")
  *     fc.dgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_dbl_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_             # <<<<<<<<<<<<<<
@@ -11983,7 +11940,7 @@ static System::Object^ dgemm(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1231
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1231
  *     fc.dgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_dbl_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_
  * def cgemm(fwc_complex_t alpha, object a, object b, fwc_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -12012,9 +11969,9 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_b_;
   NumpyDotNet::ndarray^ __pyx_v_c_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_b_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_c_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_b_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_c_shape[2];
   System::Object^ __pyx_v_transa_f;
   System::Object^ __pyx_v_transb_f;
   System::Object^ __pyx_r = nullptr;
@@ -12065,7 +12022,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = nullptr;
   __pyx_v_transb_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1250
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1250
  * 
  *     """
  *     cdef char *fw_transa_f = [0, 0], *fw_transb_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -12079,7 +12036,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3[1] = 0;
   __pyx_v_fw_transb_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1254
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1254
  *     cdef np.ndarray a_, b_, c_
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"             # <<<<<<<<<<<<<<
@@ -12100,7 +12057,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1255
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1255
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"             # <<<<<<<<<<<<<<
@@ -12121,7 +12078,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transb_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1256
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1256
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -12132,7 +12089,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1257
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1257
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]             # <<<<<<<<<<<<<<
@@ -12141,7 +12098,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_lda = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1258
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1258
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]
  *     ka = a_shape[1]             # <<<<<<<<<<<<<<
@@ -12150,7 +12107,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ka = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1259
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1259
  *     lda = a_shape[0]
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda             # <<<<<<<<<<<<<<
@@ -12164,7 +12121,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_m = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1260
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1260
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, False, False)             # <<<<<<<<<<<<<<
@@ -12175,7 +12132,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_b_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1261
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1261
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]             # <<<<<<<<<<<<<<
@@ -12184,7 +12141,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ldb = (__pyx_v_b_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1262
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1262
  *     b_ = fw_asfortranarray(b, fwc_complex_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]
  *     kb = b_shape[1]             # <<<<<<<<<<<<<<
@@ -12193,7 +12150,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_kb = (__pyx_v_b_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1263
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1263
  *     ldb = b_shape[0]
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb             # <<<<<<<<<<<<<<
@@ -12207,7 +12164,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_n = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1264
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1264
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n             # <<<<<<<<<<<<<<
@@ -12217,7 +12174,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   (__pyx_v_c_shape[0]) = __pyx_v_m;
   (__pyx_v_c_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1265
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1265
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwc_complex_t_enum, 2, c_shape, not overwrite_c, True)             # <<<<<<<<<<<<<<
@@ -12228,7 +12185,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_c_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1266
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1266
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwc_complex_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka             # <<<<<<<<<<<<<<
@@ -12242,7 +12199,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_k = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1267
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1267
  *     c_ = fw_asfortranarray(c, fwc_complex_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):             # <<<<<<<<<<<<<<
@@ -12259,7 +12216,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1268
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1268
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')             # <<<<<<<<<<<<<<
@@ -12275,7 +12232,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1269
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1269
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):             # <<<<<<<<<<<<<<
@@ -12292,7 +12249,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1270
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1270
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')             # <<<<<<<<<<<<<<
@@ -12308,7 +12265,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1271
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1271
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):             # <<<<<<<<<<<<<<
@@ -12325,7 +12282,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1272
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1272
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')             # <<<<<<<<<<<<<<
@@ -12341,7 +12298,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1273
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1273
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):             # <<<<<<<<<<<<<<
@@ -12356,7 +12313,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_7);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1274
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1274
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')             # <<<<<<<<<<<<<<
@@ -12372,7 +12329,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1275
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1275
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -12382,7 +12339,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_lda != (__pyx_v_a_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1276
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1276
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12398,7 +12355,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1277
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1277
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -12412,7 +12369,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1278
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1278
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12428,7 +12385,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1279
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1279
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:             # <<<<<<<<<<<<<<
@@ -12438,7 +12395,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (__pyx_v_ldb != (__pyx_v_b_shape[0]));
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1280
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1280
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12454,7 +12411,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1281
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1281
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):             # <<<<<<<<<<<<<<
@@ -12468,7 +12425,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_7);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1282
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1282
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12484,7 +12441,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1283
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1283
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:             # <<<<<<<<<<<<<<
@@ -12494,7 +12451,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_m != (__pyx_v_c_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1284
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1284
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12510,7 +12467,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1285
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1285
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:             # <<<<<<<<<<<<<<
@@ -12520,7 +12477,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_n != (__pyx_v_c_shape[1]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1286
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1286
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -12536,7 +12493,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1287
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1287
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)             # <<<<<<<<<<<<<<
@@ -12545,7 +12502,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transa_f[0]) = fw_aschar(__pyx_v_transa_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1288
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1288
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -12555,7 +12512,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_transa_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1289
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1289
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")             # <<<<<<<<<<<<<<
@@ -12571,7 +12528,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1290
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1290
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)             # <<<<<<<<<<<<<<
@@ -12580,7 +12537,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transb_f[0]) = fw_aschar(__pyx_v_transb_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1291
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1291
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -12590,7 +12547,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_transb_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1292
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1292
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")             # <<<<<<<<<<<<<<
@@ -12606,7 +12563,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1293
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1293
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")
  *     fc.cgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)             # <<<<<<<<<<<<<<
@@ -12615,7 +12572,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(cgemm,CGEMM)(__pyx_v_fw_transa_f, __pyx_v_fw_transb_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_k), (&__pyx_v_alpha), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_b_)), (&__pyx_v_ldb), (&__pyx_v_beta), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_c_)), (&__pyx_v_m), 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1294
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1294
  *         raise ValueError("len(transb_f) != 1")
  *     fc.cgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_             # <<<<<<<<<<<<<<
@@ -12630,7 +12587,7 @@ static System::Object^ cgemm(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1295
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1295
  *     fc.cgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_
  * def zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -12659,9 +12616,9 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_b_;
   NumpyDotNet::ndarray^ __pyx_v_c_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_b_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_c_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_b_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_c_shape[2];
   System::Object^ __pyx_v_transa_f;
   System::Object^ __pyx_v_transb_f;
   System::Object^ __pyx_r = nullptr;
@@ -12712,7 +12669,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = nullptr;
   __pyx_v_transb_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1314
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1314
  * 
  *     """
  *     cdef char *fw_transa_f = [0, 0], *fw_transb_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -12726,7 +12683,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3[1] = 0;
   __pyx_v_fw_transb_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1318
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1318
  *     cdef np.ndarray a_, b_, c_
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"             # <<<<<<<<<<<<<<
@@ -12747,7 +12704,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transa_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1319
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1319
  *     cdef np.npy_intp a_shape[2], b_shape[2], c_shape[2]
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"             # <<<<<<<<<<<<<<
@@ -12768,7 +12725,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_transb_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1320
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1320
  *     transa_f = ("C" if (trans_a == 2) else "T") if trans_a else "N"
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -12779,7 +12736,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1321
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1321
  *     transb_f = ("C" if (trans_b == 2) else "T") if trans_b else "N"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]             # <<<<<<<<<<<<<<
@@ -12788,7 +12745,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_lda = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1322
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1322
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     lda = a_shape[0]
  *     ka = a_shape[1]             # <<<<<<<<<<<<<<
@@ -12797,7 +12754,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ka = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1323
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1323
  *     lda = a_shape[0]
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda             # <<<<<<<<<<<<<<
@@ -12811,7 +12768,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_m = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1324
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1324
  *     ka = a_shape[1]
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, False, False)             # <<<<<<<<<<<<<<
@@ -12822,7 +12779,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_b_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1325
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1325
  *     m = ka if trans_a else lda
  *     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]             # <<<<<<<<<<<<<<
@@ -12831,7 +12788,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ldb = (__pyx_v_b_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1326
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1326
  *     b_ = fw_asfortranarray(b, fwc_dbl_complex_t_enum, 2, b_shape, False, False)
  *     ldb = b_shape[0]
  *     kb = b_shape[1]             # <<<<<<<<<<<<<<
@@ -12840,7 +12797,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_kb = (__pyx_v_b_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1327
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1327
  *     ldb = b_shape[0]
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb             # <<<<<<<<<<<<<<
@@ -12854,7 +12811,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_n = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1328
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1328
  *     kb = b_shape[1]
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n             # <<<<<<<<<<<<<<
@@ -12864,7 +12821,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   (__pyx_v_c_shape[0]) = __pyx_v_m;
   (__pyx_v_c_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1329
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1329
  *     n = ldb if trans_b else kb
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwc_dbl_complex_t_enum, 2, c_shape, not overwrite_c, True)             # <<<<<<<<<<<<<<
@@ -12875,7 +12832,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_c_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1330
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1330
  *     c_shape[0] = m; c_shape[1] = n
  *     c_ = fw_asfortranarray(c, fwc_dbl_complex_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka             # <<<<<<<<<<<<<<
@@ -12889,7 +12846,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_k = __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1331
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1331
  *     c_ = fw_asfortranarray(c, fwc_dbl_complex_t_enum, 2, c_shape, not overwrite_c, True)
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):             # <<<<<<<<<<<<<<
@@ -12906,7 +12863,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1332
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1332
  *     k = lda if trans_a else ka
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')             # <<<<<<<<<<<<<<
@@ -12922,7 +12879,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1333
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1333
  *     if not ((c_shape[0] == m) and (c_shape[1] == n)):
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):             # <<<<<<<<<<<<<<
@@ -12939,7 +12896,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1334
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1334
  *         raise ValueError('Condition on arguments not satisfied: (c.shape[0] == m) and (c.shape[1] == n)')
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')             # <<<<<<<<<<<<<<
@@ -12955,7 +12912,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1335
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1335
  *     if not ((trans_a >= 0) and (trans_a <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):             # <<<<<<<<<<<<<<
@@ -12972,7 +12929,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1336
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1336
  *         raise ValueError('Condition on arguments not satisfied: (trans_a >= 0) and (trans_a <= 2)')
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')             # <<<<<<<<<<<<<<
@@ -12988,7 +12945,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1337
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1337
  *     if not ((trans_b >= 0) and (trans_b <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):             # <<<<<<<<<<<<<<
@@ -13003,7 +12960,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_7);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1338
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1338
  *         raise ValueError('Condition on arguments not satisfied: (trans_b >= 0) and (trans_b <= 2)')
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')             # <<<<<<<<<<<<<<
@@ -13019,7 +12976,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1339
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1339
  *     if not ((kb == k) if trans_b else (ldb == k)):
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -13029,7 +12986,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_lda != (__pyx_v_a_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1340
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1340
  *         raise ValueError('Condition on arguments not satisfied: (kb == k) if trans_b else (ldb == k)')
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13045,7 +13002,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1341
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1341
  *     if lda != a_shape[0]:
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -13059,7 +13016,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (!__pyx_t_9);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1342
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1342
  *         raise ValueError("(lda == a.shape[0]) not satisifed")
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13075,7 +13032,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1343
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1343
  *     if not (0 <= ka <= a_shape[1]):
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:             # <<<<<<<<<<<<<<
@@ -13085,7 +13042,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = (__pyx_v_ldb != (__pyx_v_b_shape[0]));
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1344
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1344
  *         raise ValueError("(0 <= ka <= a.shape[1]) not satisifed")
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13101,7 +13058,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1345
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1345
  *     if ldb != b_shape[0]:
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):             # <<<<<<<<<<<<<<
@@ -13115,7 +13072,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_7);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1346
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1346
  *         raise ValueError("(ldb == b.shape[0]) not satisifed")
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13131,7 +13088,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1347
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1347
  *     if not (0 <= kb <= b_shape[1]):
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:             # <<<<<<<<<<<<<<
@@ -13141,7 +13098,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_m != (__pyx_v_c_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1348
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1348
  *         raise ValueError("(0 <= kb <= b.shape[1]) not satisifed")
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13157,7 +13114,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1349
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1349
  *     if m != c_shape[0]:
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:             # <<<<<<<<<<<<<<
@@ -13167,7 +13124,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_n != (__pyx_v_c_shape[1]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1350
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1350
  *         raise ValueError("(m == c.shape[0]) not satisifed")
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13183,7 +13140,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1351
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1351
  *     if n != c_shape[1]:
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)             # <<<<<<<<<<<<<<
@@ -13192,7 +13149,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transa_f[0]) = fw_aschar(__pyx_v_transa_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1352
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1352
  *         raise ValueError("(n == c.shape[1]) not satisifed")
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -13202,7 +13159,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_transa_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1353
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1353
  *     fw_transa_f[0] = fw_aschar(transa_f)
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")             # <<<<<<<<<<<<<<
@@ -13218,7 +13175,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1354
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1354
  *     if fw_transa_f[0] == 0:
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)             # <<<<<<<<<<<<<<
@@ -13227,7 +13184,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_transb_f[0]) = fw_aschar(__pyx_v_transb_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1355
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1355
  *         raise ValueError("len(transa_f) != 1")
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -13237,7 +13194,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_transb_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1356
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1356
  *     fw_transb_f[0] = fw_aschar(transb_f)
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")             # <<<<<<<<<<<<<<
@@ -13253,7 +13210,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1357
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1357
  *     if fw_transb_f[0] == 0:
  *         raise ValueError("len(transb_f) != 1")
  *     fc.zgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)             # <<<<<<<<<<<<<<
@@ -13262,7 +13219,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(zgemm,ZGEMM)(__pyx_v_fw_transa_f, __pyx_v_fw_transb_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_k), (&__pyx_v_alpha), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_b_)), (&__pyx_v_ldb), (&__pyx_v_beta), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_c_)), (&__pyx_v_m), 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1358
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1358
  *         raise ValueError("len(transb_f) != 1")
  *     fc.zgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_             # <<<<<<<<<<<<<<
@@ -13277,7 +13234,7 @@ static System::Object^ zgemm(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1360
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1360
  *     return c_
  * 
  * def sgemv(fwr_real_t alpha, object a, object x, fwr_real_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -13306,9 +13263,9 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_r = nullptr;
   char __pyx_t_1[2];
@@ -13370,7 +13327,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_trans_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1382
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1382
  * 
  *     """
  *     cdef char *fw_trans_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -13381,7 +13338,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_1[1] = 0;
   __pyx_v_fw_trans_f = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1386
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1386
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -13402,7 +13359,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_trans_f = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1387
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1387
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -13413,7 +13370,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1388
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1388
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -13424,7 +13381,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1389
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1389
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]             # <<<<<<<<<<<<<<
@@ -13433,7 +13390,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_m = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1390
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1390
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]
  *     n = a_shape[1]             # <<<<<<<<<<<<<<
@@ -13442,7 +13399,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1391
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1391
  *     m = a_shape[0]
  *     n = a_shape[1]
  *     rows = n if trans else m             # <<<<<<<<<<<<<<
@@ -13456,7 +13413,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_rows = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1392
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1392
  *     n = a_shape[1]
  *     rows = n if trans else m
  *     cols = m if trans else n             # <<<<<<<<<<<<<<
@@ -13470,7 +13427,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_cols = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1393
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1393
  *     rows = n if trans else m
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)             # <<<<<<<<<<<<<<
@@ -13494,7 +13451,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = nullptr;
   __pyx_v_ly = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1394
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1394
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly             # <<<<<<<<<<<<<<
@@ -13503,7 +13460,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_y_shape[0]) = __pyx_v_ly;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1395
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1395
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, True)             # <<<<<<<<<<<<<<
@@ -13514,7 +13471,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_7);
   __pyx_t_7 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1396
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1396
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]             # <<<<<<<<<<<<<<
@@ -13523,7 +13480,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ly = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1397
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1397
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -13540,7 +13497,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_10);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1398
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1398
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -13556,7 +13513,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1399
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1399
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -13585,7 +13542,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_8);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1400
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1400
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -13601,7 +13558,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1401
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1401
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -13618,7 +13575,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1402
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1402
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -13634,7 +13591,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1403
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1403
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -13663,7 +13620,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1404
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1404
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -13679,7 +13636,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1405
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1405
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -13696,7 +13653,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_8);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1406
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1406
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -13712,7 +13669,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1407
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1407
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -13729,7 +13686,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1408
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1408
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -13745,7 +13702,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1409
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1409
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -13762,7 +13719,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_8);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1410
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1410
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -13778,7 +13735,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1411
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1411
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -13788,7 +13745,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1412
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1412
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13804,7 +13761,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1413
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1413
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -13818,7 +13775,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1414
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1414
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13834,7 +13791,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1415
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1415
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:             # <<<<<<<<<<<<<<
@@ -13844,7 +13801,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_ly != (__pyx_v_y_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1416
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1416
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -13860,7 +13817,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1417
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1417
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -13869,7 +13826,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1418
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1418
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -13879,7 +13836,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1419
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1419
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -13895,7 +13852,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1420
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1420
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fc.sgemv(fw_trans_f, &m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -13904,7 +13861,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(sgemv,SGEMV)(__pyx_v_fw_trans_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_real_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_m), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1421
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1421
  *         raise ValueError("len(trans_f) != 1")
  *     fc.sgemv(fw_trans_f, &m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -13919,7 +13876,7 @@ static System::Object^ sgemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1422
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1422
  *     fc.sgemv(fw_trans_f, &m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def dgemv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -13948,9 +13905,9 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_r = nullptr;
   char __pyx_t_1[2];
@@ -14012,7 +13969,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_trans_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1444
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1444
  * 
  *     """
  *     cdef char *fw_trans_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -14023,7 +13980,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_1[1] = 0;
   __pyx_v_fw_trans_f = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1448
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1448
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -14044,7 +14001,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_trans_f = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1449
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1449
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -14055,7 +14012,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1450
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1450
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -14066,7 +14023,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1451
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1451
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]             # <<<<<<<<<<<<<<
@@ -14075,7 +14032,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_m = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1452
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1452
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]
  *     n = a_shape[1]             # <<<<<<<<<<<<<<
@@ -14084,7 +14041,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1453
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1453
  *     m = a_shape[0]
  *     n = a_shape[1]
  *     rows = n if trans else m             # <<<<<<<<<<<<<<
@@ -14098,7 +14055,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_rows = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1454
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1454
  *     n = a_shape[1]
  *     rows = n if trans else m
  *     cols = m if trans else n             # <<<<<<<<<<<<<<
@@ -14112,7 +14069,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_cols = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1455
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1455
  *     rows = n if trans else m
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)             # <<<<<<<<<<<<<<
@@ -14136,7 +14093,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_7 = nullptr;
   __pyx_v_ly = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1456
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1456
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly             # <<<<<<<<<<<<<<
@@ -14145,7 +14102,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_y_shape[0]) = __pyx_v_ly;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1457
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1457
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, True)             # <<<<<<<<<<<<<<
@@ -14156,7 +14113,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_7);
   __pyx_t_7 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1458
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1458
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]             # <<<<<<<<<<<<<<
@@ -14165,7 +14122,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ly = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1459
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1459
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -14182,7 +14139,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_10);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1460
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1460
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -14198,7 +14155,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1461
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1461
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -14227,7 +14184,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_8);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1462
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1462
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -14243,7 +14200,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1463
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1463
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -14260,7 +14217,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1464
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1464
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -14276,7 +14233,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1465
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1465
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -14305,7 +14262,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1466
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1466
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -14321,7 +14278,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1467
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1467
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -14338,7 +14295,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_8);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1468
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1468
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -14354,7 +14311,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1469
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1469
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -14371,7 +14328,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1470
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1470
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -14387,7 +14344,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1471
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1471
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -14404,7 +14361,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_8);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1472
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1472
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -14420,7 +14377,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1473
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1473
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -14430,7 +14387,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1474
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1474
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -14446,7 +14403,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1475
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1475
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -14460,7 +14417,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1476
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1476
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -14476,7 +14433,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1477
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1477
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:             # <<<<<<<<<<<<<<
@@ -14486,7 +14443,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = (__pyx_v_ly != (__pyx_v_y_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1478
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1478
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -14502,7 +14459,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1479
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1479
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -14511,7 +14468,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1480
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1480
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -14521,7 +14478,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1481
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1481
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -14537,7 +14494,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1482
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1482
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fc.dgemv(fw_trans_f, &m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -14546,7 +14503,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(dgemv,DGEMV)(__pyx_v_fw_trans_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_m), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1483
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1483
  *         raise ValueError("len(trans_f) != 1")
  *     fc.dgemv(fw_trans_f, &m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -14561,7 +14518,7 @@ static System::Object^ dgemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1484
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1484
  *     fc.dgemv(fw_trans_f, &m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def cgemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -14590,9 +14547,9 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
@@ -14659,7 +14616,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_trans_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1506
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1506
  * 
  *     """
  *     cdef char *fw_trans_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -14670,7 +14627,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_trans_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1510
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1510
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -14691,7 +14648,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_trans_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1511
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1511
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -14702,7 +14659,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1512
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1512
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -14713,7 +14670,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1513
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1513
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]             # <<<<<<<<<<<<<<
@@ -14722,7 +14679,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_m = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1514
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1514
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]
  *     n = a_shape[1]             # <<<<<<<<<<<<<<
@@ -14731,7 +14688,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1515
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1515
  *     m = a_shape[0]
  *     n = a_shape[1]
  *     rows = n if trans else m             # <<<<<<<<<<<<<<
@@ -14745,7 +14702,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_rows = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1516
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1516
  *     n = a_shape[1]
  *     rows = n if trans else m
  *     cols = m if trans else n             # <<<<<<<<<<<<<<
@@ -14759,7 +14716,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_cols = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1517
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1517
  *     rows = n if trans else m
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)             # <<<<<<<<<<<<<<
@@ -14783,7 +14740,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = nullptr;
   __pyx_v_ly = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1518
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1518
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly             # <<<<<<<<<<<<<<
@@ -14792,7 +14749,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_y_shape[0]) = __pyx_v_ly;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1519
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1519
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, True)             # <<<<<<<<<<<<<<
@@ -14803,7 +14760,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1520
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1520
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]             # <<<<<<<<<<<<<<
@@ -14812,7 +14769,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ly = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1521
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1521
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -14829,7 +14786,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_11);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1522
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1522
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -14845,7 +14802,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1523
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1523
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -14874,7 +14831,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_11 = (!__pyx_t_9);
   if (__pyx_t_11) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1524
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1524
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -14890,7 +14847,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1525
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1525
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -14907,7 +14864,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_11 = (!__pyx_t_10);
   if (__pyx_t_11) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1526
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1526
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -14923,7 +14880,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1527
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1527
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -14952,7 +14909,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_11);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1528
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1528
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -14968,7 +14925,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1529
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1529
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -14985,7 +14942,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1530
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1530
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -15001,7 +14958,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1531
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1531
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -15018,7 +14975,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_11);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1532
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1532
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -15034,7 +14991,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1533
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1533
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -15051,7 +15008,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1534
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1534
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -15067,7 +15024,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1535
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1535
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -15077,7 +15034,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1536
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1536
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15093,7 +15050,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1537
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1537
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -15107,7 +15064,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1538
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1538
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15123,7 +15080,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1539
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1539
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:             # <<<<<<<<<<<<<<
@@ -15133,7 +15090,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_ly != (__pyx_v_y_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1540
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1540
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15149,7 +15106,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1541
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1541
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -15158,7 +15115,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1542
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1542
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -15168,7 +15125,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1543
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1543
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -15184,7 +15141,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1544
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1544
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fc.cgemv(fw_trans_f, &m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -15193,7 +15150,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(cgemv,CGEMV)(__pyx_v_fw_trans_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_m), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1545
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1545
  *         raise ValueError("len(trans_f) != 1")
  *     fc.cgemv(fw_trans_f, &m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -15208,7 +15165,7 @@ static System::Object^ cgemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1546
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1546
  *     fc.cgemv(fw_trans_f, &m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -15237,9 +15194,9 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
@@ -15306,7 +15263,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_trans_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1568
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1568
  * 
  *     """
  *     cdef char *fw_trans_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -15317,7 +15274,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_2[1] = 0;
   __pyx_v_fw_trans_f = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1572
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1572
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -15338,7 +15295,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_trans_f = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1573
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1573
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -15349,7 +15306,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1574
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1574
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -15360,7 +15317,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1575
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1575
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]             # <<<<<<<<<<<<<<
@@ -15369,7 +15326,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_m = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1576
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1576
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     m = a_shape[0]
  *     n = a_shape[1]             # <<<<<<<<<<<<<<
@@ -15378,7 +15335,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[1]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1577
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1577
  *     m = a_shape[0]
  *     n = a_shape[1]
  *     rows = n if trans else m             # <<<<<<<<<<<<<<
@@ -15392,7 +15349,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_rows = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1578
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1578
  *     n = a_shape[1]
  *     rows = n if trans else m
  *     cols = m if trans else n             # <<<<<<<<<<<<<<
@@ -15406,7 +15363,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_v_cols = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1579
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1579
  *     rows = n if trans else m
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)             # <<<<<<<<<<<<<<
@@ -15430,7 +15387,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_8 = nullptr;
   __pyx_v_ly = __pyx_t_5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1580
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1580
  *     cols = m if trans else n
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly             # <<<<<<<<<<<<<<
@@ -15439,7 +15396,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_y_shape[0]) = __pyx_v_ly;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1581
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1581
  *     ly = 1 + offy + (rows - 1) * abs(incy)
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, True)             # <<<<<<<<<<<<<<
@@ -15450,7 +15407,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1582
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1582
  *     y_shape[0] = ly
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]             # <<<<<<<<<<<<<<
@@ -15459,7 +15416,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_ly = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1583
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1583
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, True)
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -15476,7 +15433,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_11);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1584
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1584
  *     ly = y_shape[0]
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -15492,7 +15449,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1585
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1585
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -15521,7 +15478,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_11 = (!__pyx_t_9);
   if (__pyx_t_11) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1586
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1586
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -15537,7 +15494,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1587
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1587
  *     if not (x_shape[0] > (offx + ((cols - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -15554,7 +15511,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_11 = (!__pyx_t_10);
   if (__pyx_t_11) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1588
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1588
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((cols - 1) * abs(incx)))')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -15570,7 +15527,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1589
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1589
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -15599,7 +15556,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_11);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1590
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1590
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -15615,7 +15572,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1591
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1591
  *     if not (y_shape[0] > (offy + ((rows - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -15632,7 +15589,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1592
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1592
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((rows - 1) * abs(incy)))')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -15648,7 +15605,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1593
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1593
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -15665,7 +15622,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_11);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1594
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1594
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -15681,7 +15638,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1595
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1595
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -15698,7 +15655,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (!__pyx_t_9);
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1596
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1596
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -15714,7 +15671,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1597
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1597
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -15724,7 +15681,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_10 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_10) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1598
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1598
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15740,7 +15697,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1599
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1599
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -15754,7 +15711,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1600
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1600
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15770,7 +15727,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1601
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1601
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:             # <<<<<<<<<<<<<<
@@ -15780,7 +15737,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = (__pyx_v_ly != (__pyx_v_y_shape[0]));
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1602
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1602
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -15796,7 +15753,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1603
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1603
  *     if ly != y_shape[0]:
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -15805,7 +15762,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1604
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1604
  *         raise ValueError("(ly == y.shape[0]) not satisifed")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -15815,7 +15772,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_9 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1605
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1605
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -15831,7 +15788,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1606
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1606
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fc.zgemv(fw_trans_f, &m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -15840,7 +15797,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(zgemv,ZGEMV)(__pyx_v_fw_trans_f, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_m), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1607
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1607
  *         raise ValueError("len(trans_f) != 1")
  *     fc.zgemv(fw_trans_f, &m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -15855,7 +15812,7 @@ static System::Object^ zgemv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1609
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1609
  *     return y_
  * 
  * def sger(fwr_real_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -15879,9 +15836,9 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -15924,7 +15881,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1632
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1632
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -15935,7 +15892,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1633
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1633
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -15944,7 +15901,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1634
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1634
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -15953,7 +15910,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1635
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1635
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -15972,7 +15929,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1636
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1636
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -15988,7 +15945,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1637
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1637
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -16007,7 +15964,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (!__pyx_t_3);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1638
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1638
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -16023,7 +15980,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1639
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1639
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -16037,7 +15994,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1640
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1640
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16053,7 +16010,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1641
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1641
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -16064,7 +16021,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1642
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1642
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -16073,7 +16030,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1643
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1643
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -16087,7 +16044,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (!__pyx_t_3);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1644
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1644
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16103,7 +16060,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1645
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1645
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -16113,7 +16070,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1646
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1646
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -16124,7 +16081,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1647
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1647
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -16134,7 +16091,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1648
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1648
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16150,7 +16107,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1649
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1649
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -16164,7 +16121,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1650
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1650
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16180,7 +16137,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1651
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1651
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.sger(&m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(x_), &incx, <fwr_real_t*>np.PyArray_DATA(y_), &incy, <fwr_real_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -16189,7 +16146,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   F_FUNC(sger,SGER)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_real_t *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((fwr_real_t *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((fwr_real_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1652
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1652
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.sger(&m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(x_), &incx, <fwr_real_t*>np.PyArray_DATA(y_), &incy, <fwr_real_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -16204,7 +16161,7 @@ static System::Object^ sger(System::Object^ alpha, System::Object^ x, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1653
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1653
  *     fc.sger(&m, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(x_), &incx, <fwr_real_t*>np.PyArray_DATA(y_), &incy, <fwr_real_t*>np.PyArray_DATA(a_), &lda)
  *     return a_
  * def dger(fwr_dbl_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -16228,9 +16185,9 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -16273,7 +16230,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1676
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1676
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -16284,7 +16241,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1677
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1677
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -16293,7 +16250,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1678
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1678
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -16302,7 +16259,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1679
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1679
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -16321,7 +16278,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1680
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1680
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -16337,7 +16294,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1681
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1681
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -16356,7 +16313,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (!__pyx_t_3);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1682
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1682
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -16372,7 +16329,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1683
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1683
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -16386,7 +16343,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1684
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1684
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16402,7 +16359,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1685
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1685
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -16413,7 +16370,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1686
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1686
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -16422,7 +16379,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1687
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1687
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -16436,7 +16393,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (!__pyx_t_3);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1688
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1688
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16452,7 +16409,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1689
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1689
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -16462,7 +16419,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1690
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1690
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -16473,7 +16430,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1691
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1691
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -16483,7 +16440,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_2 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1692
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1692
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16499,7 +16456,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1693
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1693
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -16513,7 +16470,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_2);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1694
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1694
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16529,7 +16486,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1695
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1695
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.dger(&m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(x_), &incx, <fwr_dbl_t*>np.PyArray_DATA(y_), &incy, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -16538,7 +16495,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
  */
   F_FUNC(dger,DGER)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1696
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1696
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.dger(&m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(x_), &incx, <fwr_dbl_t*>np.PyArray_DATA(y_), &incy, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -16553,7 +16510,7 @@ static System::Object^ dger(System::Object^ alpha, System::Object^ x, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1697
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1697
  *     fc.dger(&m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(x_), &incx, <fwr_dbl_t*>np.PyArray_DATA(y_), &incy, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda)
  *     return a_
  * def cgerc(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -16577,9 +16534,9 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -16625,7 +16582,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1720
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1720
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -16636,7 +16593,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1721
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1721
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -16645,7 +16602,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1722
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1722
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -16654,7 +16611,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1723
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1723
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -16673,7 +16630,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1724
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1724
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -16689,7 +16646,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1725
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1725
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -16708,7 +16665,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1726
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1726
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -16724,7 +16681,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1727
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1727
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -16738,7 +16695,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1728
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1728
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16754,7 +16711,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1729
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1729
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -16765,7 +16722,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1730
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1730
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -16774,7 +16731,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1731
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1731
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -16788,7 +16745,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1732
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1732
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16804,7 +16761,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1733
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1733
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -16814,7 +16771,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1734
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1734
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -16825,7 +16782,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1735
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1735
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -16835,7 +16792,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1736
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1736
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16851,7 +16808,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1737
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1737
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -16865,7 +16822,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1738
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1738
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -16881,7 +16838,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1739
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1739
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.cgerc(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -16890,7 +16847,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   F_FUNC(cgerc,CGERC)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1740
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1740
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.cgerc(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -16905,7 +16862,7 @@ static System::Object^ cgerc(System::Object^ alpha, System::Object^ x, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1741
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1741
  *     fc.cgerc(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_
  * def cgeru(fwc_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -16929,9 +16886,9 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -16977,7 +16934,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1764
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1764
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -16988,7 +16945,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1765
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1765
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -16997,7 +16954,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1766
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1766
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -17006,7 +16963,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1767
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1767
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -17025,7 +16982,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1768
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1768
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -17041,7 +16998,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1769
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1769
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -17060,7 +17017,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1770
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1770
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -17076,7 +17033,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1771
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1771
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -17090,7 +17047,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1772
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1772
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17106,7 +17063,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1773
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1773
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -17117,7 +17074,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1774
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1774
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -17126,7 +17083,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1775
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1775
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -17140,7 +17097,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1776
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1776
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17156,7 +17113,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1777
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1777
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -17166,7 +17123,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1778
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1778
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -17177,7 +17134,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1779
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1779
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -17187,7 +17144,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1780
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1780
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17203,7 +17160,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1781
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1781
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -17217,7 +17174,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1782
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1782
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17233,7 +17190,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1783
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1783
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.cgeru(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -17242,7 +17199,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   F_FUNC(cgeru,CGERU)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1784
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1784
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.cgeru(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -17257,7 +17214,7 @@ static System::Object^ cgeru(System::Object^ alpha, System::Object^ x, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1785
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1785
  *     fc.cgeru(&m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_
  * def zgerc(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -17281,9 +17238,9 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -17329,7 +17286,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1808
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1808
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -17340,7 +17297,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1809
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1809
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -17349,7 +17306,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1810
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1810
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -17358,7 +17315,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1811
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1811
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -17377,7 +17334,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1812
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1812
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -17393,7 +17350,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1813
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1813
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -17412,7 +17369,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1814
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1814
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -17428,7 +17385,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1815
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1815
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -17442,7 +17399,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1816
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1816
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17458,7 +17415,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1817
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1817
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -17469,7 +17426,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1818
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1818
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -17478,7 +17435,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1819
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1819
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -17492,7 +17449,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1820
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1820
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17508,7 +17465,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1821
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1821
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -17518,7 +17475,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1822
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1822
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -17529,7 +17486,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1823
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1823
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -17539,7 +17496,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1824
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1824
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17555,7 +17512,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1825
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1825
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -17569,7 +17526,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1826
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1826
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17585,7 +17542,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1827
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1827
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.zgerc(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -17594,7 +17551,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
  */
   F_FUNC(zgerc,ZGERC)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1828
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1828
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.zgerc(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -17609,7 +17566,7 @@ static System::Object^ zgerc(System::Object^ alpha, System::Object^ x, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1829
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1829
  *     fc.zgerc(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_
  * def zgeru(fwc_dbl_complex_t alpha, object x, object y, fwi_integer_t incx=1, fwi_integer_t incy=1, object a=None, bint overwrite_x=True, bint overwrite_y=True, bint overwrite_a=False):             # <<<<<<<<<<<<<<
@@ -17633,9 +17590,9 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_a_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -17681,7 +17638,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_a_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1852
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1852
  *     cdef np.ndarray x_, y_, a_
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -17692,7 +17649,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1853
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1853
  *     cdef np.npy_intp x_shape[1], y_shape[1], a_shape[2]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]             # <<<<<<<<<<<<<<
@@ -17701,7 +17658,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_m = (__pyx_v_x_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1854
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1854
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     m = x_shape[0]
  *     lda = m             # <<<<<<<<<<<<<<
@@ -17710,7 +17667,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_lda = __pyx_v_m;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1855
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1855
  *     m = x_shape[0]
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):             # <<<<<<<<<<<<<<
@@ -17729,7 +17686,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1856
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1856
  *     lda = m
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')             # <<<<<<<<<<<<<<
@@ -17745,7 +17702,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1857
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1857
  *     if not ((incx == 1) or (incx == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):             # <<<<<<<<<<<<<<
@@ -17764,7 +17721,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1858
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1858
  *         raise ValueError('Condition on arguments not satisfied: (incx == 1) or (incx == -1)')
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')             # <<<<<<<<<<<<<<
@@ -17780,7 +17737,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1859
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1859
  *     if not ((incy == 1) or (incy == -1)):
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):             # <<<<<<<<<<<<<<
@@ -17794,7 +17751,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1860
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1860
  *         raise ValueError('Condition on arguments not satisfied: (incy == 1) or (incy == -1)')
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17810,7 +17767,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1861
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1861
  *     if not (0 <= m <= x_shape[0]):
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -17821,7 +17778,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1862
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1862
  *         raise ValueError("(0 <= m <= x.shape[0]) not satisifed")
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -17830,7 +17787,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1863
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1863
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -17844,7 +17801,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1864
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1864
  *     n = y_shape[0]
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17860,7 +17817,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1865
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1865
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n             # <<<<<<<<<<<<<<
@@ -17870,7 +17827,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   (__pyx_v_a_shape[0]) = __pyx_v_m;
   (__pyx_v_a_shape[1]) = __pyx_v_n;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1866
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1866
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)             # <<<<<<<<<<<<<<
@@ -17881,7 +17838,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1867
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1867
  *     a_shape[0] = m; a_shape[1] = n
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -17891,7 +17848,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_3 = (__pyx_v_m != (__pyx_v_a_shape[0]));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1868
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1868
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, True)
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17907,7 +17864,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1869
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1869
  *     if m != a_shape[0]:
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -17921,7 +17878,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1870
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1870
  *         raise ValueError("(m == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -17937,7 +17894,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1871
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1871
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.zgeru(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)             # <<<<<<<<<<<<<<
@@ -17946,7 +17903,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
  */
   F_FUNC(zgeru,ZGERU)((&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_alpha), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)), (&__pyx_v_incx), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_incy), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_lda));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1872
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1872
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fc.zgeru(&m, &n, &alpha, <fwc_dbl_complex_t*>np.PyArray_DATA(x_), &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &incy, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &lda)
  *     return a_             # <<<<<<<<<<<<<<
@@ -17961,7 +17918,7 @@ static System::Object^ zgeru(System::Object^ alpha, System::Object^ x, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1874
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1874
  *     return a_
  * 
  * def snrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -17977,7 +17934,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   fwr_real_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -18006,7 +17963,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1893
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1893
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -18017,7 +17974,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1894
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1894
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -18044,7 +18001,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1895
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1895
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -18069,7 +18026,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1896
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1896
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -18085,7 +18042,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1897
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1897
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -18102,7 +18059,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1898
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1898
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -18118,7 +18075,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1899
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1899
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -18135,7 +18092,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1900
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1900
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -18151,7 +18108,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1901
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1901
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.snrm2(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -18160,7 +18117,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
  */
   __pyx_v_fw_ret_arg = F_FUNC(snrm2,SNRM2)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1902
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1902
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.snrm2(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -18177,7 +18134,7 @@ static System::Object^ snrm2(System::Object^ x, [InteropServices::Optional]Syste
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1903
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1903
  *     fw_ret_arg = fc.snrm2(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg
  * def dnrm2(object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -18193,7 +18150,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   fwr_dbl_t __pyx_v_fw_ret_arg;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -18222,7 +18179,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1922
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1922
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -18233,7 +18190,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1923
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1923
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -18260,7 +18217,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1924
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1924
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -18285,7 +18242,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1925
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1925
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -18301,7 +18258,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1926
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1926
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -18318,7 +18275,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1927
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1927
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -18334,7 +18291,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1928
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1928
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -18351,7 +18308,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1929
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1929
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -18367,7 +18324,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1930
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1930
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dnrm2(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -18376,7 +18333,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
  */
   __pyx_v_fw_ret_arg = F_FUNC(dnrm2,DNRM2)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1931
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1931
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fw_ret_arg = fc.dnrm2(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return fw_ret_arg             # <<<<<<<<<<<<<<
@@ -18393,7 +18350,7 @@ static System::Object^ dnrm2(System::Object^ x, [InteropServices::Optional]Syste
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1933
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1933
  *     return fw_ret_arg
  * 
  * def srot(object x, object y, fwr_real_t c, fwr_real_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -18416,8 +18373,8 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -18470,7 +18427,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1959
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1959
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -18481,7 +18438,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1960
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1960
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -18492,7 +18449,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1961
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1961
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -18519,7 +18476,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1962
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1962
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -18544,7 +18501,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1963
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1963
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -18560,7 +18517,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1964
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1964
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -18585,7 +18542,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1965
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1965
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -18601,7 +18558,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1966
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1966
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -18618,7 +18575,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1967
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1967
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -18634,7 +18591,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1968
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1968
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -18651,7 +18608,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1969
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1969
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -18667,7 +18624,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1970
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1970
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -18684,7 +18641,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1971
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1971
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -18700,7 +18657,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1972
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1972
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -18717,7 +18674,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1973
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1973
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -18733,7 +18690,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1974
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1974
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.srot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)             # <<<<<<<<<<<<<<
@@ -18742,7 +18699,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
  */
   F_FUNC(srot,SROT)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1975
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1975
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.srot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -18759,7 +18716,7 @@ static System::Object^ srot(System::Object^ x, System::Object^ y, System::Object
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1976
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1976
  *     fc.srot(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
  *     return (x_, y_,)
  * def drot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -18782,8 +18739,8 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -18836,7 +18793,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2002
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2002
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -18847,7 +18804,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2003
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2003
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -18858,7 +18815,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2004
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2004
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -18885,7 +18842,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2005
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2005
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -18910,7 +18867,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2006
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2006
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -18926,7 +18883,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2007
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2007
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -18951,7 +18908,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2008
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2008
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -18967,7 +18924,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2009
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2009
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -18984,7 +18941,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2010
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2010
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -19000,7 +18957,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2011
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2011
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -19017,7 +18974,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2012
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2012
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -19033,7 +18990,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2013
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2013
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -19050,7 +19007,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2014
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2014
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -19066,7 +19023,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2015
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2015
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -19083,7 +19040,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2016
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2016
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -19099,7 +19056,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2017
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2017
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.drot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)             # <<<<<<<<<<<<<<
@@ -19108,7 +19065,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
  */
   F_FUNC(drot,DROT)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2018
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2018
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.drot(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -19125,7 +19082,7 @@ static System::Object^ drot(System::Object^ x, System::Object^ y, System::Object
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2020
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2020
  *     return (x_, y_,)
  * 
  * def srotg(fwr_real_t a, fwr_real_t b):             # <<<<<<<<<<<<<<
@@ -19145,7 +19102,7 @@ static System::Object^ srotg(System::Object^ a, System::Object^ b) {
   __pyx_v_a = __site_cvt_2020_0->Target(__site_cvt_2020_0, a);
   __pyx_v_b = __site_cvt_2020_0_1->Target(__site_cvt_2020_0_1, b);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2036
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2036
  *     cdef fwr_real_t c
  *     cdef fwr_real_t s
  *     c = 0             # <<<<<<<<<<<<<<
@@ -19154,7 +19111,7 @@ static System::Object^ srotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_c = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2037
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2037
  *     cdef fwr_real_t s
  *     c = 0
  *     s = 0             # <<<<<<<<<<<<<<
@@ -19163,7 +19120,7 @@ static System::Object^ srotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_s = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2038
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2038
  *     c = 0
  *     s = 0
  *     fc.srotg(&a, &b, &c, &s)             # <<<<<<<<<<<<<<
@@ -19172,7 +19129,7 @@ static System::Object^ srotg(System::Object^ a, System::Object^ b) {
  */
   F_FUNC(srotg,SROTG)((&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2039
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2039
  *     s = 0
  *     fc.srotg(&a, &b, &c, &s)
  *     return (<fwr_real_t>c, s,)             # <<<<<<<<<<<<<<
@@ -19193,7 +19150,7 @@ static System::Object^ srotg(System::Object^ a, System::Object^ b) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2040
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2040
  *     fc.srotg(&a, &b, &c, &s)
  *     return (<fwr_real_t>c, s,)
  * def drotg(fwr_dbl_t a, fwr_dbl_t b):             # <<<<<<<<<<<<<<
@@ -19213,7 +19170,7 @@ static System::Object^ drotg(System::Object^ a, System::Object^ b) {
   __pyx_v_a = __site_cvt_2040_0->Target(__site_cvt_2040_0, a);
   __pyx_v_b = __site_cvt_2040_0_1->Target(__site_cvt_2040_0_1, b);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2056
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2056
  *     cdef fwr_dbl_t c
  *     cdef fwr_dbl_t s
  *     c = 0             # <<<<<<<<<<<<<<
@@ -19222,7 +19179,7 @@ static System::Object^ drotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_c = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2057
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2057
  *     cdef fwr_dbl_t s
  *     c = 0
  *     s = 0             # <<<<<<<<<<<<<<
@@ -19231,7 +19188,7 @@ static System::Object^ drotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_s = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2058
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2058
  *     c = 0
  *     s = 0
  *     fc.drotg(&a, &b, &c, &s)             # <<<<<<<<<<<<<<
@@ -19240,7 +19197,7 @@ static System::Object^ drotg(System::Object^ a, System::Object^ b) {
  */
   F_FUNC(drotg,DROTG)((&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2059
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2059
  *     s = 0
  *     fc.drotg(&a, &b, &c, &s)
  *     return (<fwr_dbl_t>c, s,)             # <<<<<<<<<<<<<<
@@ -19261,7 +19218,7 @@ static System::Object^ drotg(System::Object^ a, System::Object^ b) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2060
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2060
  *     fc.drotg(&a, &b, &c, &s)
  *     return (<fwr_dbl_t>c, s,)
  * def crotg(fwc_complex_t a, fwc_complex_t b):             # <<<<<<<<<<<<<<
@@ -19286,7 +19243,7 @@ static System::Object^ crotg(System::Object^ a, System::Object^ b) {
   __pyx_v_b.real(__pyx_t_1.Real);
   __pyx_v_b.imag(__pyx_t_1.Imaginary);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2076
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2076
  *     cdef fwr_real_t c
  *     cdef fwc_complex_t s
  *     c = 0             # <<<<<<<<<<<<<<
@@ -19295,7 +19252,7 @@ static System::Object^ crotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_c = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2077
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2077
  *     cdef fwc_complex_t s
  *     c = 0
  *     s = 0             # <<<<<<<<<<<<<<
@@ -19304,7 +19261,7 @@ static System::Object^ crotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_s = __pyx_t_float_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2078
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2078
  *     c = 0
  *     s = 0
  *     fc.crotg(&a, &b, &c, &s)             # <<<<<<<<<<<<<<
@@ -19313,7 +19270,7 @@ static System::Object^ crotg(System::Object^ a, System::Object^ b) {
  */
   F_FUNC(crotg,CROTG)((&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2079
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2079
  *     s = 0
  *     fc.crotg(&a, &b, &c, &s)
  *     return (<fwc_complex_t>c, s,)             # <<<<<<<<<<<<<<
@@ -19334,7 +19291,7 @@ static System::Object^ crotg(System::Object^ a, System::Object^ b) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2080
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2080
  *     fc.crotg(&a, &b, &c, &s)
  *     return (<fwc_complex_t>c, s,)
  * def zrotg(fwc_dbl_complex_t a, fwc_dbl_complex_t b):             # <<<<<<<<<<<<<<
@@ -19359,7 +19316,7 @@ static System::Object^ zrotg(System::Object^ a, System::Object^ b) {
   __pyx_v_b.real(__pyx_t_1.Real);
   __pyx_v_b.imag(__pyx_t_1.Imaginary);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2096
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2096
  *     cdef fwr_dbl_t c
  *     cdef fwc_dbl_complex_t s
  *     c = 0             # <<<<<<<<<<<<<<
@@ -19368,7 +19325,7 @@ static System::Object^ zrotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_c = 0.0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2097
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2097
  *     cdef fwc_dbl_complex_t s
  *     c = 0
  *     s = 0             # <<<<<<<<<<<<<<
@@ -19377,7 +19334,7 @@ static System::Object^ zrotg(System::Object^ a, System::Object^ b) {
  */
   __pyx_v_s = __pyx_t_double_complex_from_parts(0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2098
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2098
  *     c = 0
  *     s = 0
  *     fc.zrotg(&a, &b, &c, &s)             # <<<<<<<<<<<<<<
@@ -19386,7 +19343,7 @@ static System::Object^ zrotg(System::Object^ a, System::Object^ b) {
  */
   F_FUNC(zrotg,ZROTG)((&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2099
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2099
  *     s = 0
  *     fc.zrotg(&a, &b, &c, &s)
  *     return (<fwc_dbl_complex_t>c, s,)             # <<<<<<<<<<<<<<
@@ -19407,7 +19364,7 @@ static System::Object^ zrotg(System::Object^ a, System::Object^ b) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2101
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2101
  *     return (<fwc_dbl_complex_t>c, s,)
  * 
  * def srotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -19430,9 +19387,9 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_param_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_param_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_param_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -19485,7 +19442,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = nullptr;
   __pyx_v_param_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2126
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2126
  *     cdef np.ndarray x_, y_, param_
  *     cdef np.npy_intp x_shape[1], y_shape[1], param_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -19496,7 +19453,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2127
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2127
  *     cdef np.npy_intp x_shape[1], y_shape[1], param_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -19507,7 +19464,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2128
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2128
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -19534,7 +19491,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2129
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2129
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -19559,7 +19516,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2130
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2130
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -19575,7 +19532,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2131
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2131
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -19600,7 +19557,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2132
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2132
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -19616,7 +19573,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2133
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2133
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -19633,7 +19590,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2134
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2134
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -19649,7 +19606,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2135
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2135
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -19666,7 +19623,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2136
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2136
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -19682,7 +19639,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2137
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2137
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -19699,7 +19656,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2138
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2138
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -19715,7 +19672,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2139
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2139
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -19732,7 +19689,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2140
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2140
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -19748,7 +19705,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2141
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2141
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     param_ = fw_asfortranarray(param, fwr_real_t_enum, 1, param_shape, False, False)             # <<<<<<<<<<<<<<
@@ -19759,7 +19716,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_param_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2144
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2144
  *     if not (0 <= 5 <= param_shape[0]):
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.srotm(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_real_t*>np.PyArray_DATA(param_))             # <<<<<<<<<<<<<<
@@ -19768,7 +19725,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
  */
   F_FUNC(srotm,SROTM)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), ((fwr_real_t *)PyArray_DATA(__pyx_v_param_)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2145
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2145
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.srotm(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_real_t*>np.PyArray_DATA(param_))
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -19785,7 +19742,7 @@ static System::Object^ srotm(System::Object^ x, System::Object^ y, System::Objec
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2146
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2146
  *     fc.srotm(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_real_t*>np.PyArray_DATA(param_))
  *     return (x_, y_,)
  * def drotm(object x, object y, object param, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -19808,9 +19765,9 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_param_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_param_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_param_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -19863,7 +19820,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = nullptr;
   __pyx_v_param_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2171
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2171
  *     cdef np.ndarray x_, y_, param_
  *     cdef np.npy_intp x_shape[1], y_shape[1], param_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -19874,7 +19831,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2172
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2172
  *     cdef np.npy_intp x_shape[1], y_shape[1], param_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -19885,7 +19842,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2173
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2173
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -19912,7 +19869,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2174
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2174
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -19937,7 +19894,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2175
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2175
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -19953,7 +19910,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2176
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2176
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -19978,7 +19935,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2177
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2177
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -19994,7 +19951,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2178
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2178
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -20011,7 +19968,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2179
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2179
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -20027,7 +19984,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2180
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2180
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -20044,7 +20001,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2181
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2181
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -20060,7 +20017,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2182
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2182
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -20077,7 +20034,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2183
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2183
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -20093,7 +20050,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2184
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2184
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -20110,7 +20067,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2185
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2185
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -20126,7 +20083,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2186
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2186
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     param_ = fw_asfortranarray(param, fwr_dbl_t_enum, 1, param_shape, False, False)             # <<<<<<<<<<<<<<
@@ -20137,7 +20094,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_param_ = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2189
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2189
  *     if not (0 <= 5 <= param_shape[0]):
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.drotm(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_dbl_t*>np.PyArray_DATA(param_))             # <<<<<<<<<<<<<<
@@ -20146,7 +20103,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
  */
   F_FUNC(drotm,DROTM)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_param_)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2190
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2190
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.drotm(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, <fwr_dbl_t*>np.PyArray_DATA(param_))
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -20163,7 +20120,7 @@ static System::Object^ drotm(System::Object^ x, System::Object^ y, System::Objec
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2192
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2192
  *     return (x_, y_,)
  * 
  * def srotmg(fwr_real_t d1, fwr_real_t d2, fwr_real_t x1, fwr_real_t y1, object param=None):             # <<<<<<<<<<<<<<
@@ -20178,7 +20135,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
   fwr_real_t __pyx_v_y1;
   System::Object^ __pyx_v_param = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_param_;
-  __pyx_t_5numpy_npy_intp __pyx_v_param_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_param_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_v_d1 = __site_cvt_2192_0->Target(__site_cvt_2192_0, d1);
@@ -20192,7 +20149,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
   }
   __pyx_v_param_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2210
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2210
  *     cdef np.ndarray param_
  *     cdef np.npy_intp param_shape[1]
  *     param_shape[0] = 5             # <<<<<<<<<<<<<<
@@ -20201,7 +20158,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
  */
   (__pyx_v_param_shape[0]) = 5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2211
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2211
  *     cdef np.npy_intp param_shape[1]
  *     param_shape[0] = 5
  *     param_ = fw_asfortranarray(param, fwr_real_t_enum, 1, param_shape, False, True)             # <<<<<<<<<<<<<<
@@ -20212,7 +20169,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
   __pyx_v_param_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2214
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2214
  *     if not (0 <= 5 <= param_shape[0]):
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.srotmg(&d1, &d2, &x1, &y1, <fwr_real_t*>np.PyArray_DATA(param_))             # <<<<<<<<<<<<<<
@@ -20221,7 +20178,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
  */
   F_FUNC(srotmg,SROTMG)((&__pyx_v_d1), (&__pyx_v_d2), (&__pyx_v_x1), (&__pyx_v_y1), ((fwr_real_t *)PyArray_DATA(__pyx_v_param_)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2215
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2215
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.srotmg(&d1, &d2, &x1, &y1, <fwr_real_t*>np.PyArray_DATA(param_))
  *     return param_             # <<<<<<<<<<<<<<
@@ -20236,7 +20193,7 @@ static System::Object^ srotmg(System::Object^ d1, System::Object^ d2, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2216
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2216
  *     fc.srotmg(&d1, &d2, &x1, &y1, <fwr_real_t*>np.PyArray_DATA(param_))
  *     return param_
  * def drotmg(fwr_dbl_t d1, fwr_dbl_t d2, fwr_dbl_t x1, fwr_dbl_t y1, object param=None):             # <<<<<<<<<<<<<<
@@ -20251,7 +20208,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
   fwr_dbl_t __pyx_v_y1;
   System::Object^ __pyx_v_param = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_param_;
-  __pyx_t_5numpy_npy_intp __pyx_v_param_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_param_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_v_d1 = __site_cvt_2216_0->Target(__site_cvt_2216_0, d1);
@@ -20265,7 +20222,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
   }
   __pyx_v_param_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2234
  *     cdef np.ndarray param_
  *     cdef np.npy_intp param_shape[1]
  *     param_shape[0] = 5             # <<<<<<<<<<<<<<
@@ -20274,7 +20231,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
  */
   (__pyx_v_param_shape[0]) = 5;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2235
  *     cdef np.npy_intp param_shape[1]
  *     param_shape[0] = 5
  *     param_ = fw_asfortranarray(param, fwr_dbl_t_enum, 1, param_shape, False, True)             # <<<<<<<<<<<<<<
@@ -20285,7 +20242,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
   __pyx_v_param_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2238
  *     if not (0 <= 5 <= param_shape[0]):
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.drotmg(&d1, &d2, &x1, &y1, <fwr_dbl_t*>np.PyArray_DATA(param_))             # <<<<<<<<<<<<<<
@@ -20294,7 +20251,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
  */
   F_FUNC(drotmg,DROTMG)((&__pyx_v_d1), (&__pyx_v_d2), (&__pyx_v_x1), (&__pyx_v_y1), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_param_)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2239
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2239
  *         raise ValueError("(0 <= 5 <= param.shape[0]) not satisifed")
  *     fc.drotmg(&d1, &d2, &x1, &y1, <fwr_dbl_t*>np.PyArray_DATA(param_))
  *     return param_             # <<<<<<<<<<<<<<
@@ -20309,7 +20266,7 @@ static System::Object^ drotmg(System::Object^ d1, System::Object^ d2, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2241
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2241
  *     return param_
  * 
  * def sscal(fwr_real_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -20325,7 +20282,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -20355,7 +20312,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2260
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2260
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -20366,7 +20323,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2261
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2261
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -20393,7 +20350,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2262
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2262
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -20418,7 +20375,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2263
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2263
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -20434,7 +20391,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2264
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2264
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -20451,7 +20408,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2265
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2265
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -20467,7 +20424,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2266
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2266
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -20484,7 +20441,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2267
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2267
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -20500,7 +20457,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2268
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2268
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.sscal(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -20509,7 +20466,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(sscal,SSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2269
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2269
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.sscal(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -20524,7 +20481,7 @@ static System::Object^ sscal(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2270
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2270
  *     fc.sscal(&n_, &a, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_
  * def dscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -20540,7 +20497,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -20570,7 +20527,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2289
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2289
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -20581,7 +20538,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2290
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2290
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -20608,7 +20565,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2291
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2291
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -20633,7 +20590,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2292
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2292
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -20649,7 +20606,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2293
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2293
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -20666,7 +20623,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2294
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2294
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -20682,7 +20639,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2295
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2295
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -20699,7 +20656,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2296
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2296
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -20715,7 +20672,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2297
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2297
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.dscal(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -20724,7 +20681,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(dscal,DSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2298
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2298
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.dscal(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -20739,7 +20696,7 @@ static System::Object^ dscal(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2299
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2299
  *     fc.dscal(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_
  * def cscal(fwc_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -20755,7 +20712,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -20788,7 +20745,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2318
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2318
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -20799,7 +20756,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2319
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2319
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -20826,7 +20783,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_2 = nullptr;
   __pyx_v_n_ = __pyx_t_8;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2320
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2320
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -20851,7 +20808,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2321
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2321
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -20867,7 +20824,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2322
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2322
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -20884,7 +20841,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2323
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2323
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -20900,7 +20857,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2324
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2324
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -20917,7 +20874,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2325
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2325
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -20933,7 +20890,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2326
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2326
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.cscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -20942,7 +20899,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(cscal,CSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2327
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2327
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.cscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -20957,7 +20914,7 @@ static System::Object^ cscal(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2328
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2328
  *     fc.cscal(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_
  * def zscal(fwc_dbl_complex_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1):             # <<<<<<<<<<<<<<
@@ -20973,7 +20930,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_incx;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Numerics::Complex __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -21006,7 +20963,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2347
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2347
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21017,7 +20974,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2348
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2348
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -21044,7 +21001,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_2 = nullptr;
   __pyx_v_n_ = __pyx_t_8;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2349
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2349
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -21069,7 +21026,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2350
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2350
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -21085,7 +21042,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2351
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2351
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -21102,7 +21059,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_10);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2352
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2352
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -21118,7 +21075,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2353
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2353
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -21135,7 +21092,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_9 = (!__pyx_t_3);
   if (__pyx_t_9) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2354
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2354
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -21151,7 +21108,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2355
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2355
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.zscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -21160,7 +21117,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(zscal,ZSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2356
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2356
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.zscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -21175,7 +21132,7 @@ static System::Object^ zscal(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2358
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2358
  *     return x_
  * 
  * def sswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -21194,8 +21151,8 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -21236,7 +21193,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2380
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2380
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21247,7 +21204,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2381
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2381
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21258,7 +21215,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2382
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2382
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -21285,7 +21242,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2383
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2383
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -21310,7 +21267,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2384
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2384
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -21326,7 +21283,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2385
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2385
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -21351,7 +21308,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2386
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2386
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -21367,7 +21324,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2387
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2387
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -21384,7 +21341,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2388
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2388
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -21400,7 +21357,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2389
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2389
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -21417,7 +21374,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2390
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2390
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -21433,7 +21390,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2391
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2391
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -21450,7 +21407,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2392
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2392
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -21466,7 +21423,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2393
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2393
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -21483,7 +21440,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2394
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2394
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -21499,7 +21456,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2395
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2395
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.sswap(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -21508,7 +21465,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(sswap,SSWAP)((&__pyx_v_n_), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2396
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2396
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.sswap(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -21525,7 +21482,7 @@ static System::Object^ sswap(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2397
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2397
  *     fc.sswap(&n_, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)
  * def dswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -21544,8 +21501,8 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -21586,7 +21543,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2419
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2419
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21597,7 +21554,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2420
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2420
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21608,7 +21565,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2421
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2421
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -21635,7 +21592,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2422
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2422
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -21660,7 +21617,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2423
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2423
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -21676,7 +21633,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2424
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2424
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -21701,7 +21658,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2425
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2425
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -21717,7 +21674,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2426
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2426
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -21734,7 +21691,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2427
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2427
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -21750,7 +21707,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2428
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2428
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -21767,7 +21724,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2429
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2429
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -21783,7 +21740,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2430
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2430
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -21800,7 +21757,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2431
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2431
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -21816,7 +21773,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2432
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2432
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -21833,7 +21790,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2433
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2433
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -21849,7 +21806,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2434
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2434
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.dswap(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -21858,7 +21815,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(dswap,DSWAP)((&__pyx_v_n_), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2435
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2435
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.dswap(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -21875,7 +21832,7 @@ static System::Object^ dswap(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2436
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2436
  *     fc.dswap(&n_, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)
  * def cswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -21894,8 +21851,8 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -21936,7 +21893,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2458
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2458
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21947,7 +21904,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2459
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2459
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -21958,7 +21915,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2460
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2460
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -21985,7 +21942,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2461
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2461
  *     y_ = fw_asfortranarray(y, fwc_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -22010,7 +21967,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2462
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2462
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -22026,7 +21983,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2463
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2463
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -22051,7 +22008,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2464
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2464
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -22067,7 +22024,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2465
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2465
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -22084,7 +22041,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2466
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2466
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -22100,7 +22057,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2467
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2467
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -22117,7 +22074,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2468
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2468
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -22133,7 +22090,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2469
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2469
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -22150,7 +22107,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2470
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2470
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -22166,7 +22123,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2471
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2471
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -22183,7 +22140,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2472
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2472
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -22199,7 +22156,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2473
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2473
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.cswap(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -22208,7 +22165,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(cswap,CSWAP)((&__pyx_v_n_), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2474
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2474
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.cswap(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -22225,7 +22182,7 @@ static System::Object^ cswap(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2475
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2475
  *     fc.cswap(&n_, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)
  * def zswap(object x, object y, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -22244,8 +22201,8 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -22286,7 +22243,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2497
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2497
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -22297,7 +22254,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2498
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2498
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)             # <<<<<<<<<<<<<<
@@ -22308,7 +22265,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2499
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2499
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -22335,7 +22292,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2500
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2500
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, False, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -22360,7 +22317,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2501
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2501
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -22376,7 +22333,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2502
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2502
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -22401,7 +22358,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2503
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2503
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -22417,7 +22374,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2504
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2504
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -22434,7 +22391,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2505
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2505
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -22450,7 +22407,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2506
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2506
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -22467,7 +22424,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2507
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2507
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -22483,7 +22440,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2508
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2508
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -22500,7 +22457,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2509
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2509
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -22516,7 +22473,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2510
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2510
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -22533,7 +22490,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2511
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2511
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -22549,7 +22506,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2512
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2512
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zswap(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)             # <<<<<<<<<<<<<<
@@ -22558,7 +22515,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
  */
   F_FUNC(zswap,ZSWAP)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2513
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2513
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zswap(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -22575,7 +22532,7 @@ static System::Object^ zswap(System::Object^ x, System::Object^ y, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2515
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2515
  *     return (x_, y_,)
  * 
  * def ssymv(fwr_real_t alpha, object a, object x, fwr_real_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -22600,9 +22557,9 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_r = nullptr;
   char __pyx_t_1[2];
@@ -22655,7 +22612,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_uplo_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2537
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2537
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -22666,7 +22623,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_1[1] = 0;
   __pyx_v_fw_uplo_f = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2541
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2541
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -22681,7 +22638,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2542
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2542
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -22692,7 +22649,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2543
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2543
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -22703,7 +22660,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2544
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2544
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -22714,7 +22671,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2545
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2545
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -22723,7 +22680,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2546
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2546
  *     y_ = fw_asfortranarray(y, fwr_real_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -22733,7 +22690,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2547
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2547
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -22749,7 +22706,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2548
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2548
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -22766,7 +22723,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2549
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2549
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -22782,7 +22739,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2550
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2550
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -22799,7 +22756,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2551
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2551
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -22815,7 +22772,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2552
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2552
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -22832,7 +22789,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2553
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2553
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -22848,7 +22805,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2554
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2554
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -22865,7 +22822,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2555
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2555
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -22881,7 +22838,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2556
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2556
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -22900,7 +22857,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2557
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2557
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -22916,7 +22873,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2558
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2558
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -22945,7 +22902,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2559
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2559
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -22961,7 +22918,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2560
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2560
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -22990,7 +22947,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2561
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2561
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -23006,7 +22963,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2562
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2562
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -23035,7 +22992,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2563
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2563
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -23051,7 +23008,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2564
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2564
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -23080,7 +23037,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2565
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2565
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -23096,7 +23053,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2566
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2566
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -23106,7 +23063,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2567
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2567
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -23122,7 +23079,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2568
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2568
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -23136,7 +23093,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2569
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2569
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -23152,7 +23109,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2570
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2570
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -23161,7 +23118,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2571
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2571
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -23171,7 +23128,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2572
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2572
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -23187,7 +23144,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2573
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2573
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.ssymv(fw_uplo_f, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -23196,7 +23153,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(ssymv,SSYMV)(__pyx_v_fw_uplo_f, (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_real_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((fwr_real_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2574
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2574
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.ssymv(fw_uplo_f, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -23211,7 +23168,7 @@ static System::Object^ ssymv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2575
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2575
  *     fc.ssymv(fw_uplo_f, &n, &alpha, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_real_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def dsymv(fwr_dbl_t alpha, object a, object x, fwr_dbl_t beta, object y, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t lower=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -23236,9 +23193,9 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_r = nullptr;
   char __pyx_t_1[2];
@@ -23291,7 +23248,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = nullptr;
   __pyx_v_uplo_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2597
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2597
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -23302,7 +23259,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_1[1] = 0;
   __pyx_v_fw_uplo_f = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2601
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2601
  *     cdef np.ndarray a_, x_, y_
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -23317,7 +23274,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2602
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2602
  *     cdef np.npy_intp a_shape[2], x_shape[1], y_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -23328,7 +23285,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2603
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2603
  *     uplo_f = "L" if lower else "U"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)             # <<<<<<<<<<<<<<
@@ -23339,7 +23296,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2604
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2604
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -23350,7 +23307,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2605
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2605
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -23359,7 +23316,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2606
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2606
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -23369,7 +23326,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2607
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2607
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -23385,7 +23342,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2608
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2608
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -23402,7 +23359,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2609
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2609
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -23418,7 +23375,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2610
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2610
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -23435,7 +23392,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2611
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2611
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -23451,7 +23408,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2612
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2612
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -23468,7 +23425,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2613
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2613
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -23484,7 +23441,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2614
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2614
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -23501,7 +23458,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2615
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2615
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -23517,7 +23474,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2616
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2616
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -23536,7 +23493,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2617
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2617
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -23552,7 +23509,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2618
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2618
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -23581,7 +23538,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2619
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2619
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -23597,7 +23554,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2620
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2620
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -23626,7 +23583,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2621
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2621
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -23642,7 +23599,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2622
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2622
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -23671,7 +23628,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2623
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2623
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -23687,7 +23644,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2624
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2624
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):             # <<<<<<<<<<<<<<
@@ -23716,7 +23673,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2625
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2625
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')             # <<<<<<<<<<<<<<
@@ -23732,7 +23689,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2626
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2626
  *     if not (y_shape[0] > (offy + ((n - 1) * abs(incy)))):
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -23742,7 +23699,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_5 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_5) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2627
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2627
  *         raise ValueError('Condition on arguments not satisfied: y.shape[0] > (offy + ((n - 1) * abs(incy)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -23758,7 +23715,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2628
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2628
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -23772,7 +23729,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2629
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2629
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -23788,7 +23745,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2630
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2630
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -23797,7 +23754,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2631
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2631
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -23807,7 +23764,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   __pyx_t_3 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2632
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2632
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -23823,7 +23780,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2633
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2633
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.dsymv(fw_uplo_f, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)             # <<<<<<<<<<<<<<
@@ -23832,7 +23789,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
  */
   F_FUNC(dsymv,DSYMV)(__pyx_v_fw_uplo_f, (&__pyx_v_n), (&__pyx_v_alpha), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (&__pyx_v_beta), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2634
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2634
  *         raise ValueError("len(uplo_f) != 1")
  *     fc.dsymv(fw_uplo_f, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_             # <<<<<<<<<<<<<<
@@ -23847,7 +23804,7 @@ static System::Object^ dsymv(System::Object^ alpha, System::Object^ a, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2636
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2636
  *     return y_
  * 
  * def strmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -23870,8 +23827,8 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_n;
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_v_diag_f;
@@ -23926,7 +23883,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = nullptr;
   __pyx_v_diag_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2655
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2655
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0], *fw_trans_f = [0, 0], *fw_diag_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -23943,7 +23900,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_3[1] = 0;
   __pyx_v_fw_diag_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2659
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2659
  *     cdef np.ndarray a_, x_
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -23958,7 +23915,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2660
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2660
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -23979,7 +23936,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2661
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2661
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"             # <<<<<<<<<<<<<<
@@ -23994,7 +23951,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_diag_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2662
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2662
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -24005,7 +23962,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2663
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2663
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -24016,7 +23973,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2664
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2664
  *     a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -24025,7 +23982,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2665
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2665
  *     x_ = fw_asfortranarray(x, fwr_real_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -24035,7 +23992,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2666
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2666
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -24051,7 +24008,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2667
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2667
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -24068,7 +24025,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2668
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2668
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -24084,7 +24041,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2669
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2669
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -24101,7 +24058,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2670
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2670
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -24117,7 +24074,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2671
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2671
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -24136,7 +24093,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2672
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2672
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -24152,7 +24109,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2673
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2673
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -24169,7 +24126,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2674
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2674
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -24185,7 +24142,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2675
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2675
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):             # <<<<<<<<<<<<<<
@@ -24204,7 +24161,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2676
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2676
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')             # <<<<<<<<<<<<<<
@@ -24220,7 +24177,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2677
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2677
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -24249,7 +24206,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2678
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2678
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -24265,7 +24222,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2679
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2679
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -24294,7 +24251,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2680
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2680
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -24310,7 +24267,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2681
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2681
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -24320,7 +24277,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2682
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2682
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -24336,7 +24293,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2683
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2683
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -24350,7 +24307,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2684
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2684
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -24366,7 +24323,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2685
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2685
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -24375,7 +24332,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2686
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2686
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -24385,7 +24342,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2687
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2687
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -24401,7 +24358,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2688
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2688
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -24410,7 +24367,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2689
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2689
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -24420,7 +24377,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2690
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2690
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -24436,7 +24393,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2691
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2691
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)             # <<<<<<<<<<<<<<
@@ -24445,7 +24402,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_diag_f[0]) = fw_aschar(__pyx_v_diag_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2692
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2692
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -24455,7 +24412,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_diag_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2693
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2693
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")             # <<<<<<<<<<<<<<
@@ -24471,7 +24428,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2694
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2694
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")
  *     fc.strmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -24480,7 +24437,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(strmv,STRMV)(__pyx_v_fw_uplo_f, __pyx_v_fw_trans_f, __pyx_v_fw_diag_f, (&__pyx_v_n), ((fwr_real_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((fwr_real_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), 1, 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2695
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2695
  *         raise ValueError("len(diag_f) != 1")
  *     fc.strmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_             # <<<<<<<<<<<<<<
@@ -24495,7 +24452,7 @@ static System::Object^ strmv(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2696
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2696
  *     fc.strmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_real_t*>np.PyArray_DATA(a_), &n, <fwr_real_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_
  * def dtrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -24518,8 +24475,8 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_n;
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_v_diag_f;
@@ -24574,7 +24531,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = nullptr;
   __pyx_v_diag_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2715
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2715
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0], *fw_trans_f = [0, 0], *fw_diag_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -24591,7 +24548,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_3[1] = 0;
   __pyx_v_fw_diag_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2719
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2719
  *     cdef np.ndarray a_, x_
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -24606,7 +24563,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2720
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2720
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -24627,7 +24584,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2721
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2721
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"             # <<<<<<<<<<<<<<
@@ -24642,7 +24599,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_diag_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2722
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2722
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -24653,7 +24610,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2723
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2723
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -24664,7 +24621,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2724
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2724
  *     a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -24673,7 +24630,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2725
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2725
  *     x_ = fw_asfortranarray(x, fwr_dbl_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -24683,7 +24640,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2726
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2726
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -24699,7 +24656,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2727
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2727
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -24716,7 +24673,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2728
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2728
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -24732,7 +24689,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2729
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2729
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -24749,7 +24706,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2730
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2730
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -24765,7 +24722,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2731
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2731
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -24784,7 +24741,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2732
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2732
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -24800,7 +24757,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2733
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2733
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -24817,7 +24774,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2734
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2734
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -24833,7 +24790,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2735
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2735
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):             # <<<<<<<<<<<<<<
@@ -24852,7 +24809,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2736
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2736
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')             # <<<<<<<<<<<<<<
@@ -24868,7 +24825,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2737
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2737
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -24897,7 +24854,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2738
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2738
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -24913,7 +24870,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2739
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2739
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -24942,7 +24899,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2740
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2740
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -24958,7 +24915,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2741
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2741
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -24968,7 +24925,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2742
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2742
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -24984,7 +24941,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2743
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2743
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -24998,7 +24955,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2744
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2744
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -25014,7 +24971,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2745
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2745
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -25023,7 +24980,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2746
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2746
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25033,7 +24990,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2747
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2747
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -25049,7 +25006,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2748
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2748
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -25058,7 +25015,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2749
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2749
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25068,7 +25025,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2750
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2750
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -25084,7 +25041,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2751
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2751
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)             # <<<<<<<<<<<<<<
@@ -25093,7 +25050,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_diag_f[0]) = fw_aschar(__pyx_v_diag_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2752
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2752
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25103,7 +25060,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_diag_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2753
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2753
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")             # <<<<<<<<<<<<<<
@@ -25119,7 +25076,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2754
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2754
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")
  *     fc.dtrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -25128,7 +25085,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(dtrmv,DTRMV)(__pyx_v_fw_uplo_f, __pyx_v_fw_trans_f, __pyx_v_fw_diag_f, (&__pyx_v_n), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((fwr_dbl_t *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), 1, 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2755
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2755
  *         raise ValueError("len(diag_f) != 1")
  *     fc.dtrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_             # <<<<<<<<<<<<<<
@@ -25143,7 +25100,7 @@ static System::Object^ dtrmv(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2756
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2756
  *     fc.dtrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_
  * def ctrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -25166,8 +25123,8 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_n;
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_v_diag_f;
@@ -25222,7 +25179,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = nullptr;
   __pyx_v_diag_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2775
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2775
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0], *fw_trans_f = [0, 0], *fw_diag_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -25239,7 +25196,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_3[1] = 0;
   __pyx_v_fw_diag_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2779
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2779
  *     cdef np.ndarray a_, x_
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -25254,7 +25211,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2780
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2780
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -25275,7 +25232,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2781
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2781
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"             # <<<<<<<<<<<<<<
@@ -25290,7 +25247,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_diag_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2782
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2782
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -25301,7 +25258,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2783
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2783
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -25312,7 +25269,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2784
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2784
  *     a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -25321,7 +25278,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2785
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2785
  *     x_ = fw_asfortranarray(x, fwc_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -25331,7 +25288,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2786
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2786
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -25347,7 +25304,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2787
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2787
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -25364,7 +25321,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2788
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2788
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -25380,7 +25337,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2789
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2789
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -25397,7 +25354,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2790
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2790
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -25413,7 +25370,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2791
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2791
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -25432,7 +25389,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2792
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2792
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -25448,7 +25405,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2793
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2793
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -25465,7 +25422,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2794
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2794
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -25481,7 +25438,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2795
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2795
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):             # <<<<<<<<<<<<<<
@@ -25500,7 +25457,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2796
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2796
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')             # <<<<<<<<<<<<<<
@@ -25516,7 +25473,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2797
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2797
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -25545,7 +25502,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2798
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2798
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -25561,7 +25518,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2799
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2799
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -25590,7 +25547,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2800
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2800
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -25606,7 +25563,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2801
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2801
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -25616,7 +25573,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2802
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2802
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -25632,7 +25589,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2803
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2803
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -25646,7 +25603,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2804
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2804
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -25662,7 +25619,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2805
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2805
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -25671,7 +25628,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2806
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2806
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25681,7 +25638,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2807
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2807
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -25697,7 +25654,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2808
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2808
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -25706,7 +25663,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2809
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2809
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25716,7 +25673,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2810
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2810
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -25732,7 +25689,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2811
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2811
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)             # <<<<<<<<<<<<<<
@@ -25741,7 +25698,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_diag_f[0]) = fw_aschar(__pyx_v_diag_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2812
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2812
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -25751,7 +25708,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_diag_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2813
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2813
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")             # <<<<<<<<<<<<<<
@@ -25767,7 +25724,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2814
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2814
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")
  *     fc.ctrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -25776,7 +25733,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(ctrmv,CTRMV)(__pyx_v_fw_uplo_f, __pyx_v_fw_trans_f, __pyx_v_fw_diag_f, (&__pyx_v_n), ((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((__pyx_t_float_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), 1, 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2815
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2815
  *         raise ValueError("len(diag_f) != 1")
  *     fc.ctrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_             # <<<<<<<<<<<<<<
@@ -25791,7 +25748,7 @@ static System::Object^ ctrmv(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2816
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2816
  *     fc.ctrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_complex_t*>np.PyArray_DATA(a_), &n, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_
  * def ztrmv(object a, object x, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -25814,8 +25771,8 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   fwi_integer_t __pyx_v_n;
   NumpyDotNet::ndarray^ __pyx_v_a_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_a_shape[2];
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_a_shape[2];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_v_uplo_f;
   System::Object^ __pyx_v_trans_f;
   System::Object^ __pyx_v_diag_f;
@@ -25870,7 +25827,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = nullptr;
   __pyx_v_diag_f = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2835
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2835
  * 
  *     """
  *     cdef char *fw_uplo_f = [0, 0], *fw_trans_f = [0, 0], *fw_diag_f = [0, 0]             # <<<<<<<<<<<<<<
@@ -25887,7 +25844,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_3[1] = 0;
   __pyx_v_fw_diag_f = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2839
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2839
  *     cdef np.ndarray a_, x_
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"             # <<<<<<<<<<<<<<
@@ -25902,7 +25859,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_uplo_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2840
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2840
  *     cdef np.npy_intp a_shape[2], x_shape[1]
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"             # <<<<<<<<<<<<<<
@@ -25923,7 +25880,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_trans_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2841
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2841
  *     uplo_f = "L" if lower else "U"
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"             # <<<<<<<<<<<<<<
@@ -25938,7 +25895,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_diag_f = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2842
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2842
  *     trans_f = ("C" if (trans == 2) else "T") if trans else "N"
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)             # <<<<<<<<<<<<<<
@@ -25949,7 +25906,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_a_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2843
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2843
  *     diag_f = "U" if unitdiag else "N"
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -25960,7 +25917,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2844
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2844
  *     a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, False, False)
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]             # <<<<<<<<<<<<<<
@@ -25969,7 +25926,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   __pyx_v_n = (__pyx_v_a_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2845
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2845
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):             # <<<<<<<<<<<<<<
@@ -25979,7 +25936,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!((__pyx_v_a_shape[0]) == (__pyx_v_a_shape[1])));
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2846
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2846
  *     n = a_shape[0]
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')             # <<<<<<<<<<<<<<
@@ -25995,7 +25952,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2847
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2847
  *     if not (a_shape[0] == a_shape[1]):
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -26012,7 +25969,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_8);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2848
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2848
  *         raise ValueError('Condition on arguments not satisfied: a.shape[0] == a.shape[1]')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -26028,7 +25985,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2849
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2849
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -26045,7 +26002,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_6 = (!__pyx_t_7);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2850
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2850
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -26061,7 +26018,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2851
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2851
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):             # <<<<<<<<<<<<<<
@@ -26080,7 +26037,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_6);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2852
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2852
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')             # <<<<<<<<<<<<<<
@@ -26096,7 +26053,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2853
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2853
  *     if not ((lower == 0) or (lower == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):             # <<<<<<<<<<<<<<
@@ -26113,7 +26070,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2854
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2854
  *         raise ValueError('Condition on arguments not satisfied: (lower == 0) or (lower == 1)')
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')             # <<<<<<<<<<<<<<
@@ -26129,7 +26086,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2855
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2855
  *     if not ((trans >= 0) and (trans <= 2)):
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):             # <<<<<<<<<<<<<<
@@ -26148,7 +26105,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2856
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2856
  *         raise ValueError('Condition on arguments not satisfied: (trans >= 0) and (trans <= 2)')
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')             # <<<<<<<<<<<<<<
@@ -26164,7 +26121,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2857
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2857
  *     if not ((unitdiag == 0) or (unitdiag == 1)):
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -26193,7 +26150,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2858
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2858
  *         raise ValueError('Condition on arguments not satisfied: (unitdiag == 0) or (unitdiag == 1)')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -26209,7 +26166,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2859
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2859
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):             # <<<<<<<<<<<<<<
@@ -26238,7 +26195,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (!__pyx_t_7);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2860
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2860
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')             # <<<<<<<<<<<<<<
@@ -26254,7 +26211,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2861
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2861
  *     if not (x_shape[0] > (offx + ((n - 1) * abs(incx)))):
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:             # <<<<<<<<<<<<<<
@@ -26264,7 +26221,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_8 = (__pyx_v_n != (__pyx_v_a_shape[0]));
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2862
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2862
  *         raise ValueError('Condition on arguments not satisfied: x.shape[0] > (offx + ((n - 1) * abs(incx)))')
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -26280,7 +26237,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2863
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2863
  *     if n != a_shape[0]:
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):             # <<<<<<<<<<<<<<
@@ -26294,7 +26251,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = (!__pyx_t_8);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2864
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2864
  *         raise ValueError("(n == a.shape[0]) not satisifed")
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")             # <<<<<<<<<<<<<<
@@ -26310,7 +26267,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2865
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2865
  *     if not (0 <= n <= a_shape[1]):
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)             # <<<<<<<<<<<<<<
@@ -26319,7 +26276,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_uplo_f[0]) = fw_aschar(__pyx_v_uplo_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2866
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2866
  *         raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -26329,7 +26286,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_uplo_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2867
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2867
  *     fw_uplo_f[0] = fw_aschar(uplo_f)
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")             # <<<<<<<<<<<<<<
@@ -26345,7 +26302,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2868
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2868
  *     if fw_uplo_f[0] == 0:
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)             # <<<<<<<<<<<<<<
@@ -26354,7 +26311,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_trans_f[0]) = fw_aschar(__pyx_v_trans_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2869
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2869
  *         raise ValueError("len(uplo_f) != 1")
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -26364,7 +26321,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_trans_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2870
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2870
  *     fw_trans_f[0] = fw_aschar(trans_f)
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")             # <<<<<<<<<<<<<<
@@ -26380,7 +26337,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L16:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2871
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2871
  *     if fw_trans_f[0] == 0:
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)             # <<<<<<<<<<<<<<
@@ -26389,7 +26346,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   (__pyx_v_fw_diag_f[0]) = fw_aschar(__pyx_v_diag_f);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2872
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2872
  *         raise ValueError("len(trans_f) != 1")
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:             # <<<<<<<<<<<<<<
@@ -26399,7 +26356,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   __pyx_t_7 = ((__pyx_v_fw_diag_f[0]) == 0);
   if (__pyx_t_7) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2873
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2873
  *     fw_diag_f[0] = fw_aschar(diag_f)
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")             # <<<<<<<<<<<<<<
@@ -26415,7 +26372,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   }
   __pyx_L17:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2874
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2874
  *     if fw_diag_f[0] == 0:
  *         raise ValueError("len(diag_f) != 1")
  *     fc.ztrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)             # <<<<<<<<<<<<<<
@@ -26424,7 +26381,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
  */
   F_FUNC(ztrmv,ZTRMV)(__pyx_v_fw_uplo_f, __pyx_v_fw_trans_f, __pyx_v_fw_diag_f, (&__pyx_v_n), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_a_)), (&__pyx_v_n), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), 1, 1, 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2875
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2875
  *         raise ValueError("len(diag_f) != 1")
  *     fc.ztrmv(fw_uplo_f, fw_trans_f, fw_diag_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, 1, 1, 1)
  *     return x_             # <<<<<<<<<<<<<<
@@ -26439,7 +26396,7 @@ static System::Object^ ztrmv(System::Object^ a, System::Object^ x, [InteropServi
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2878
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2878
  * 
  * 
  * def zdrot(object x, object y, fwr_dbl_t c, fwr_dbl_t s, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, bint overwrite_x=False, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -26462,8 +26419,8 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
   NumpyDotNet::ndarray^ __pyx_v_y_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
-  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_y_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -26516,7 +26473,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = nullptr;
   __pyx_v_y_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2904
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2904
  *     cdef np.ndarray x_, y_
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -26527,7 +26484,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2905
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2905
  *     cdef np.npy_intp x_shape[1], y_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -26538,7 +26495,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2906
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2906
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -26565,7 +26522,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2907
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2907
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -26590,7 +26547,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2908
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2908
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -26606,7 +26563,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2909
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2909
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):             # <<<<<<<<<<<<<<
@@ -26631,7 +26588,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2910
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2910
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')             # <<<<<<<<<<<<<<
@@ -26647,7 +26604,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2911
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2911
  *     if not ((y_shape[0] - offy) > ((n_ - 1) * abs(incy))):
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -26664,7 +26621,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2912
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2912
  *         raise ValueError('Condition on arguments not satisfied: (y.shape[0] - offy) > ((n - 1) * abs(incy))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -26680,7 +26637,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2913
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2913
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -26697,7 +26654,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2914
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2914
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -26713,7 +26670,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2915
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2915
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):             # <<<<<<<<<<<<<<
@@ -26730,7 +26687,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_9);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2916
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2916
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')             # <<<<<<<<<<<<<<
@@ -26746,7 +26703,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2917
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2917
  *     if not ((offy >= 0) and (offy < y_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):             # <<<<<<<<<<<<<<
@@ -26763,7 +26720,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   __pyx_t_2 = (!__pyx_t_8);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2918
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2918
  *         raise ValueError('Condition on arguments not satisfied: (offy >= 0) and (offy < y.shape[0])')
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')             # <<<<<<<<<<<<<<
@@ -26779,7 +26736,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2919
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2919
  *     if not ((incy > 0) or (incy < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zdrot(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)             # <<<<<<<<<<<<<<
@@ -26788,7 +26745,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
  */
   F_FUNC(zdrot,ZDROT)((&__pyx_v_n_), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)) + __pyx_v_offy), (&__pyx_v_incy), (&__pyx_v_c), (&__pyx_v_s));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2920
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2920
  *         raise ValueError('Condition on arguments not satisfied: (incy > 0) or (incy < 0)')
  *     fc.zdrot(&n_, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_dbl_complex_t*>np.PyArray_DATA(y_) + offy, &incy, &c, &s)
  *     return (x_, y_,)             # <<<<<<<<<<<<<<
@@ -26805,7 +26762,7 @@ static System::Object^ zdrot(System::Object^ x, System::Object^ y, System::Objec
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2923
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2923
  * 
  * 
  * def zdscal(fwr_dbl_t a, object x, object n=None, fwi_integer_t offx=0, fwi_integer_t incx=1, bint overwrite_x=False):             # <<<<<<<<<<<<<<
@@ -26822,7 +26779,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   int __pyx_v_overwrite_x;
   fwi_integer_t __pyx_v_n_;
   NumpyDotNet::ndarray^ __pyx_v_x_;
-  __pyx_t_5numpy_npy_intp __pyx_v_x_shape[1];
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_v_x_shape[1];
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
@@ -26857,7 +26814,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_v_x_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2943
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2943
  *     cdef np.ndarray x_
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)             # <<<<<<<<<<<<<<
@@ -26868,7 +26825,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_v_x_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2944
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2944
  *     cdef np.npy_intp x_shape[1]
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)             # <<<<<<<<<<<<<<
@@ -26895,7 +26852,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_1 = nullptr;
   __pyx_v_n_ = __pyx_t_7;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2945
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2945
  *     x_ = fw_asfortranarray(x, fwc_dbl_complex_t_enum, 1, x_shape, not overwrite_x, False)
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):             # <<<<<<<<<<<<<<
@@ -26920,7 +26877,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2946
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2946
  *     n_ = n if (n is not None) else (x_shape[0] - offx) // abs(incx)
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')             # <<<<<<<<<<<<<<
@@ -26936,7 +26893,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2947
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2947
  *     if not ((x_shape[0] - offx) > ((n_ - 1) * abs(incx))):
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):             # <<<<<<<<<<<<<<
@@ -26953,7 +26910,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_9);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2948
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2948
  *         raise ValueError('Condition on arguments not satisfied: (x.shape[0] - offx) > ((n - 1) * abs(incx))')
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')             # <<<<<<<<<<<<<<
@@ -26969,7 +26926,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2949
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2949
  *     if not ((offx >= 0) and (offx < x_shape[0])):
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):             # <<<<<<<<<<<<<<
@@ -26986,7 +26943,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   __pyx_t_8 = (!__pyx_t_2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2950
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2950
  *         raise ValueError('Condition on arguments not satisfied: (offx >= 0) and (offx < x.shape[0])')
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')             # <<<<<<<<<<<<<<
@@ -27002,7 +26959,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2951
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2951
  *     if not ((incx > 0) or (incx < 0)):
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.zdscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)             # <<<<<<<<<<<<<<
@@ -27011,7 +26968,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
  */
   F_FUNC(zdscal,ZDSCAL)((&__pyx_v_n_), (&__pyx_v_a), (((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_x_)) + __pyx_v_offx), (&__pyx_v_incx));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2952
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2952
  *         raise ValueError('Condition on arguments not satisfied: (incx > 0) or (incx < 0)')
  *     fc.zdscal(&n_, &a, <fwc_dbl_complex_t*>np.PyArray_DATA(x_) + offx, &incx)
  *     return x_             # <<<<<<<<<<<<<<
@@ -27026,7 +26983,7 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2956
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2956
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -27034,11 +26991,11 @@ static System::Object^ zdscal(System::Object^ a, System::Object^ x, [InteropServ
  *                                   bint copy, bint create, int alignment=1):
  */
 
-static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, int __pyx_v_typenum, int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_coerced_shape, int __pyx_v_copy, int __pyx_v_create, ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray ^__pyx_optional_args) {
+static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, int __pyx_v_typenum, int __pyx_v_ndim, __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_v_coerced_shape, int __pyx_v_copy, int __pyx_v_create, ref struct __pyx_opt_args_5scipy_6linalg_5fblas_fw_asfortranarray ^__pyx_optional_args) {
   int __pyx_v_alignment = ((int)1);
   int __pyx_v_flags;
   NumpyDotNet::ndarray^ __pyx_v_result;
-  __pyx_t_5numpy_npy_intp *__pyx_v_in_shape;
+  __pyx_t_5scipy_6linalg_5numpy_npy_intp *__pyx_v_in_shape;
   int __pyx_v_in_ndim;
   int __pyx_v_i;
   NumpyDotNet::ndarray^ __pyx_r = nullptr;
@@ -27060,7 +27017,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_v_result = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2959
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2959
  *                                   np.intp_t * coerced_shape,
  *                                   bint copy, bint create, int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST             # <<<<<<<<<<<<<<
@@ -27069,7 +27026,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_flags = (NPY_F_CONTIGUOUS | NPY_FORCECAST);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2964
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2964
  *     cdef int in_ndim
  *     cdef int i
  *     if value is None:             # <<<<<<<<<<<<<<
@@ -27079,7 +27036,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_1 = (__pyx_v_value == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2965
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2965
  *     cdef int i
  *     if value is None:
  *         if create:             # <<<<<<<<<<<<<<
@@ -27088,7 +27045,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_create) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2966
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2966
  *     if value is None:
  *         if create:
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)             # <<<<<<<<<<<<<<
@@ -27105,7 +27062,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2968
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2968
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
  *         else:
  *             raise TypeError('Expected array but None provided')             # <<<<<<<<<<<<<<
@@ -27123,7 +27080,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2970
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2970
  *             raise TypeError('Expected array but None provided')
  *     else:
  *         if ndim <= 1:             # <<<<<<<<<<<<<<
@@ -27133,7 +27090,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     __pyx_t_1 = (__pyx_v_ndim <= 1);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2972
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2972
  *         if ndim <= 1:
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -27145,7 +27102,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L5:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2973
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2973
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and             # <<<<<<<<<<<<<<
@@ -27161,7 +27118,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
         __pyx_t_3 = nullptr;
         if (__pyx_t_5) {
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2974
+          /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2974
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):             # <<<<<<<<<<<<<<
@@ -27186,7 +27143,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2976
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2976
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
  *             # mis-aligned array
  *             copy = True             # <<<<<<<<<<<<<<
@@ -27198,7 +27155,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2977
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2977
  *             # mis-aligned array
  *             copy = True
  *         if copy:             # <<<<<<<<<<<<<<
@@ -27207,7 +27164,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_copy) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2978
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2978
  *             copy = True
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY             # <<<<<<<<<<<<<<
@@ -27219,7 +27176,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L7:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2979
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2979
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)             # <<<<<<<<<<<<<<
@@ -27239,7 +27196,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2980
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2980
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)             # <<<<<<<<<<<<<<
@@ -27251,7 +27208,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_8 = nullptr;
   __pyx_v_in_ndim = __pyx_t_9;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2981
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2981
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:             # <<<<<<<<<<<<<<
@@ -27261,7 +27218,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_4 = (__pyx_v_in_ndim > __pyx_v_ndim);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2982
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2982
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)             # <<<<<<<<<<<<<<
@@ -27281,7 +27238,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2983
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2983
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)             # <<<<<<<<<<<<<<
@@ -27290,7 +27247,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_in_shape = PyArray_DIMS(__pyx_v_result);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2984
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2984
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):             # <<<<<<<<<<<<<<
@@ -27301,7 +27258,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2985
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2985
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]             # <<<<<<<<<<<<<<
@@ -27311,7 +27268,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = (__pyx_v_in_shape[__pyx_v_i]);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2986
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2986
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]
  *     for i in range(in_ndim, ndim):             # <<<<<<<<<<<<<<
@@ -27322,7 +27279,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = __pyx_v_in_ndim; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2988
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2988
  *     for i in range(in_ndim, ndim):
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1             # <<<<<<<<<<<<<<
@@ -27332,7 +27289,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = 1;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2989
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2989
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1
  *     return result             # <<<<<<<<<<<<<<
@@ -27347,7 +27304,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2991
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2991
  *     return result
  * 
  * cdef char fw_aschar(object s):             # <<<<<<<<<<<<<<
@@ -27358,48 +27315,55 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
 static  char fw_aschar(System::Object^ __pyx_v_s) {
   char *__pyx_v_buf;
   char __pyx_r;
-  char __pyx_t_3;
+  System::Object^ __pyx_t_3 = nullptr;
   System::Object^ __pyx_t_4 = nullptr;
-  char *__pyx_t_8;
-  System::IntPtr __pyx_t_9;
-  System::Object^ __pyx_t_11 = nullptr;
-  char *__pyx_t_12;
-  int __pyx_t_13;
+  System::Object^ __pyx_t_5 = nullptr;
+  char __pyx_t_6;
+  char *__pyx_t_10;
+  System::IntPtr __pyx_t_11;
+  char *__pyx_t_13;
+  int __pyx_t_14;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2993
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2993
  * cdef char fw_aschar(object s):
  *     cdef char* buf
  *     try:             # <<<<<<<<<<<<<<
- *         return <char>s # int
+ *         return <char>ord(s[0]) # int
  *     except TypeError:
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2994
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2994
  *     cdef char* buf
  *     try:
- *         return <char>s # int             # <<<<<<<<<<<<<<
+ *         return <char>ord(s[0]) # int             # <<<<<<<<<<<<<<
  *     except TypeError:
  *         pass
  */
-    __pyx_t_3 = __site_cvt_char_2994_28->Target(__site_cvt_char_2994_28, __pyx_v_s);
-    __pyx_r = ((char)__pyx_t_3);
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ord");
+    __pyx_t_4 = __site_getindex_2994_26->Target(__site_getindex_2994_26, __pyx_v_s, ((System::Object^)0));
+    __pyx_t_5 = __site_call1_2994_24->Target(__site_call1_2994_24, __pyx_context, __pyx_t_3, __pyx_t_4);
+    __pyx_t_3 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_6 = __site_cvt_char_2994_24->Target(__site_cvt_char_2994_24, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    __pyx_r = ((char)__pyx_t_6);
     goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2995
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2995
  *     try:
- *         return <char>s # int
+ *         return <char>ord(s[0]) # int
  *     except TypeError:             # <<<<<<<<<<<<<<
  *         pass
  *     try:
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_5;
-    __pyx_lt_5 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_5 != nullptr) {
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_7;
+    __pyx_lt_7 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    if (__pyx_lt_7 != nullptr) {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.fblas.fw_aschar");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
     }
@@ -27410,7 +27374,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2997
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2997
  *     except TypeError:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -27419,78 +27383,78 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2998
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2998
  *         pass
  *     try:
  *         buf = <char*>s # bytes             # <<<<<<<<<<<<<<
  *     except TypeError:
  *         s = s.encode('ASCII')
  */
-    __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-    __pyx_t_8 = static_cast<char *>(__pyx_t_9.ToPointer());
-    __pyx_v_buf = ((char *)__pyx_t_8);
-    InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
-  } catch (System::Exception^ __pyx_lt_6) {
-    System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
+    __pyx_t_11 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+    __pyx_t_10 = static_cast<char *>(__pyx_t_11.ToPointer());
+    __pyx_v_buf = ((char *)__pyx_t_10);
+    InteropServices::Marshal::FreeHGlobal(__pyx_t_11);
+  } catch (System::Exception^ __pyx_lt_8) {
+    System::Object^ __pyx_lt_9 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_8);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":2999
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":2999
  *     try:
  *         buf = <char*>s # bytes
  *     except TypeError:             # <<<<<<<<<<<<<<
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_10;
-    __pyx_lt_10 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_10 != nullptr) {
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_12;
+    __pyx_lt_12 = PythonOps::CheckException(__pyx_context, __pyx_lt_9, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    if (__pyx_lt_12 != nullptr) {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.fblas.fw_aschar");
-      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
+      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_8);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3000
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3000
  *         buf = <char*>s # bytes
  *     except TypeError:
  *         s = s.encode('ASCII')             # <<<<<<<<<<<<<<
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:
  */
-      __pyx_t_4 = __site_get_encode_3000_13->Target(__site_get_encode_3000_13, __pyx_v_s, __pyx_context);
-      __pyx_t_11 = __site_call1_3000_20->Target(__site_call1_3000_20, __pyx_context, __pyx_t_4, ((System::Object^)"ASCII"));
+      __pyx_t_5 = __site_get_encode_3000_13->Target(__site_get_encode_3000_13, __pyx_v_s, __pyx_context);
+      __pyx_t_4 = __site_call1_3000_20->Target(__site_call1_3000_20, __pyx_context, __pyx_t_5, ((System::Object^)"ASCII"));
+      __pyx_t_5 = nullptr;
+      __pyx_v_s = __pyx_t_4;
       __pyx_t_4 = nullptr;
-      __pyx_v_s = __pyx_t_11;
-      __pyx_t_11 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3001
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3001
  *     except TypeError:
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode             # <<<<<<<<<<<<<<
  *     if buf[0] == 0:
  *         return 0
  */
-      __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-      __pyx_t_12 = static_cast<char *>(__pyx_t_9.ToPointer());
-      __pyx_v_buf = ((char *)__pyx_t_12);
-      InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
+      __pyx_t_11 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+      __pyx_t_13 = static_cast<char *>(__pyx_t_11.ToPointer());
+      __pyx_v_buf = ((char *)__pyx_t_13);
+      InteropServices::Marshal::FreeHGlobal(__pyx_t_11);
     }
     else {
       // XXX we should set traceback here
-      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
+      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_8);
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3002
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3002
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:             # <<<<<<<<<<<<<<
  *         return 0
  *     elif buf[1] != 0:
  */
-  __pyx_t_13 = ((__pyx_v_buf[0]) == 0);
-  if (__pyx_t_13) {
+  __pyx_t_14 = ((__pyx_v_buf[0]) == 0);
+  if (__pyx_t_14) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3003
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3003
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:
  *         return 0             # <<<<<<<<<<<<<<
@@ -27502,17 +27466,17 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
     goto __pyx_L3;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3004
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3004
  *     if buf[0] == 0:
  *         return 0
  *     elif buf[1] != 0:             # <<<<<<<<<<<<<<
  *         return 0
  *     else:
  */
-  __pyx_t_13 = ((__pyx_v_buf[1]) != 0);
-  if (__pyx_t_13) {
+  __pyx_t_14 = ((__pyx_v_buf[1]) != 0);
+  if (__pyx_t_14) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3005
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3005
  *         return 0
  *     elif buf[1] != 0:
  *         return 0             # <<<<<<<<<<<<<<
@@ -27525,7 +27489,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":3007
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":3007
  *         return 0
  *     else:
  *         return buf[0]             # <<<<<<<<<<<<<<
@@ -27542,7 +27506,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":190
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -27550,11 +27514,11 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
  *         int identity, char* name, char* doc, int c):
  */
 
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5scipy_6linalg_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":193
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -27571,7 +27535,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":195
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -27579,7 +27543,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -27593,7 +27557,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -27604,7 +27568,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":198
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -27615,7 +27579,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":199
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -27630,7 +27594,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":200
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -27641,7 +27605,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":201
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -27668,7 +27632,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":203
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -27676,7 +27640,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -27690,7 +27654,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":204
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":204
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -27701,7 +27665,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":206
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":206
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -27712,7 +27676,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":207
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":207
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -27727,7 +27691,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":208
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":208
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -27738,7 +27702,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":209
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":209
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -27765,7 +27729,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":211
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":211
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
@@ -27773,11 +27737,11 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5scipy_6linalg_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5scipy_6linalg_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":212
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":212
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -27790,7 +27754,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":213
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":213
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -27803,7 +27767,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":214
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":214
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
@@ -27820,7 +27784,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":216
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":216
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
  * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
@@ -27833,7 +27797,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":218
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":218
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  *      # XXX "long long" is wrong type
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
@@ -27851,7 +27815,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":220
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":220
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
@@ -27864,7 +27828,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":222
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -27882,7 +27846,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":224
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -27890,12 +27854,12 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  __pyx_t_5numpy_intp_t *__pyx_r;
+static CYTHON_INLINE __pyx_t_5scipy_6linalg_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":226
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -27913,7 +27877,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":228
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
@@ -27921,12 +27885,12 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
-  __pyx_t_5numpy_intp_t __pyx_r;
+static CYTHON_INLINE __pyx_t_5scipy_6linalg_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5scipy_6linalg_5numpy_intp_t __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":230
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":230
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -27944,7 +27908,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":232
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":232
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -27961,7 +27925,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":233
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":233
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -27972,7 +27936,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":234
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -27983,7 +27947,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":235
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
@@ -28004,7 +27968,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":237
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":237
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -28019,7 +27983,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":238
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -28033,7 +27997,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":239
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":239
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -28049,7 +28013,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":240
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":240
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
@@ -28069,7 +28033,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":242
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":242
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -28082,7 +28046,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":243
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
  *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
@@ -28090,7 +28054,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline object PyArray_NDIM(obj):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
+  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_6linalg_5numpy_ndarray)));
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -28101,7 +28065,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":245
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":245
  *     return isinstance(obj, ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
@@ -28113,7 +28077,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":246
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":246
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
@@ -28130,7 +28094,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":248
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -29459,7 +29423,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_int_2980_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_op_mod_2982_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
   __site_call1_2982_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_char_2994_28 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
+  __site_getindex_2994_26 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_call1_2994_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_char_2994_24 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
   __site_get_encode_3000_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "encode", false));
   __site_call1_3000_20 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
@@ -29499,7 +29465,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Execution code ---*/
   PythonDictionary^ __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":44
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":44
  * cimport fblas_fc as fc
  * 
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -29508,7 +29474,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":730
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":730
  *     fc.daxpy(&n_, &a, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def caxpy(object x, object y, object n=None, fwc_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -29517,7 +29483,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_1 = __pyx_t_float_complex_from_parts(1., 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":769
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":769
  *     fc.caxpy(&n_, &a, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy)
  *     return y_
  * def zaxpy(object x, object y, object n=None, fwc_dbl_complex_t a=1., fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1):             # <<<<<<<<<<<<<<
@@ -29526,7 +29492,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_2 = __pyx_t_double_complex_from_parts(1., 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1231
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1231
  *     fc.dgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwr_dbl_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_
  * def cgemm(fwc_complex_t alpha, object a, object b, fwc_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -29535,7 +29501,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_3 = __pyx_t_float_complex_from_parts(0.0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1295
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1295
  *     fc.cgemm(fw_transa_f, fw_transb_f, &m, &n, &k, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_t*>np.PyArray_DATA(b_), &ldb, &beta, <fwc_complex_t*>np.PyArray_DATA(c_), &m, 1, 1)
  *     return c_
  * def zgemm(fwc_dbl_complex_t alpha, object a, object b, fwc_dbl_complex_t beta=0.0, object c=None, fwi_integer_t trans_a=0, fwi_integer_t trans_b=0, bint overwrite_c=False):             # <<<<<<<<<<<<<<
@@ -29544,7 +29510,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_4 = __pyx_t_double_complex_from_parts(0.0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1484
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1484
  *     fc.dgemv(fw_trans_f, &m, &n, &alpha, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwr_dbl_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def cgemv(fwc_complex_t alpha, object a, object x, fwc_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -29553,7 +29519,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_5 = __pyx_t_float_complex_from_parts(0.0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1546
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1546
  *     fc.cgemv(fw_trans_f, &m, &n, &alpha, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(x_) + offx, &incx, &beta, <fwc_complex_t*>np.PyArray_DATA(y_) + offy, &incy, 1)
  *     return y_
  * def zgemv(fwc_dbl_complex_t alpha, object a, object x, fwc_dbl_complex_t beta=0.0, object y=None, fwi_integer_t offx=0, fwi_integer_t incx=1, fwi_integer_t offy=0, fwi_integer_t incy=1, fwi_integer_t trans=0, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -29562,7 +29528,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_6 = __pyx_t_double_complex_from_parts(0.0, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\fblas.pyx":1
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\fblas.pyx":1
  * #cython: ccomplex=True             # <<<<<<<<<<<<<<
  * 
  * """The fblas module was generated with Fwrap v0.2.0dev_00843a8.
@@ -29571,7 +29537,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":248
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -29584,8 +29550,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'dotnet_globals' */
 
 
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_6linalg_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_6linalg_5numpy_dtype = nullptr;
 
 
 

@@ -139,53 +139,53 @@ static const char *__pyx_f[] = {
 /* Cython code section 'utility_code_proto_before_types' */
 /* Cython code section 'numeric_typedefs' */
 
-typedef int __pyx_t_5numpy_npy_int;
+typedef int __pyx_t_5scipy_6linalg_5numpy_npy_int;
 
-typedef double __pyx_t_5numpy_double_t;
+typedef double __pyx_t_5scipy_6linalg_5numpy_double_t;
 
-typedef int __pyx_t_5numpy_npy_intp;
+typedef int __pyx_t_5scipy_6linalg_5numpy_npy_intp;
 
-typedef signed char __pyx_t_5numpy_npy_int8;
+typedef signed char __pyx_t_5scipy_6linalg_5numpy_npy_int8;
 
-typedef signed short __pyx_t_5numpy_npy_int16;
+typedef signed short __pyx_t_5scipy_6linalg_5numpy_npy_int16;
 
-typedef signed int __pyx_t_5numpy_npy_int32;
+typedef signed int __pyx_t_5scipy_6linalg_5numpy_npy_int32;
 
-typedef signed PY_LONG_LONG __pyx_t_5numpy_npy_int64;
+typedef signed PY_LONG_LONG __pyx_t_5scipy_6linalg_5numpy_npy_int64;
 
-typedef unsigned char __pyx_t_5numpy_npy_uint8;
+typedef unsigned char __pyx_t_5scipy_6linalg_5numpy_npy_uint8;
 
-typedef unsigned short __pyx_t_5numpy_npy_uint16;
+typedef unsigned short __pyx_t_5scipy_6linalg_5numpy_npy_uint16;
 
-typedef unsigned int __pyx_t_5numpy_npy_uint32;
+typedef unsigned int __pyx_t_5scipy_6linalg_5numpy_npy_uint32;
 
-typedef unsigned PY_LONG_LONG __pyx_t_5numpy_npy_uint64;
+typedef unsigned PY_LONG_LONG __pyx_t_5scipy_6linalg_5numpy_npy_uint64;
 
-typedef float __pyx_t_5numpy_npy_float32;
+typedef float __pyx_t_5scipy_6linalg_5numpy_npy_float32;
 
-typedef double __pyx_t_5numpy_npy_float64;
+typedef double __pyx_t_5scipy_6linalg_5numpy_npy_float64;
 
-typedef __pyx_t_5numpy_npy_intp __pyx_t_5numpy_intp_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_intp __pyx_t_5scipy_6linalg_5numpy_intp_t;
 
-typedef __pyx_t_5numpy_npy_int8 __pyx_t_5numpy_int8_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int8 __pyx_t_5scipy_6linalg_5numpy_int8_t;
 
-typedef __pyx_t_5numpy_npy_int16 __pyx_t_5numpy_int16_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int16 __pyx_t_5scipy_6linalg_5numpy_int16_t;
 
-typedef __pyx_t_5numpy_npy_int32 __pyx_t_5numpy_int32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int32 __pyx_t_5scipy_6linalg_5numpy_int32_t;
 
-typedef __pyx_t_5numpy_npy_int64 __pyx_t_5numpy_int64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_int64 __pyx_t_5scipy_6linalg_5numpy_int64_t;
 
-typedef __pyx_t_5numpy_npy_uint8 __pyx_t_5numpy_uint8_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint8 __pyx_t_5scipy_6linalg_5numpy_uint8_t;
 
-typedef __pyx_t_5numpy_npy_uint16 __pyx_t_5numpy_uint16_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint16 __pyx_t_5scipy_6linalg_5numpy_uint16_t;
 
-typedef __pyx_t_5numpy_npy_uint32 __pyx_t_5numpy_uint32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint32 __pyx_t_5scipy_6linalg_5numpy_uint32_t;
 
-typedef __pyx_t_5numpy_npy_uint64 __pyx_t_5numpy_uint64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_uint64 __pyx_t_5scipy_6linalg_5numpy_uint64_t;
 
-typedef __pyx_t_5numpy_npy_float32 __pyx_t_5numpy_float32_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_float32 __pyx_t_5scipy_6linalg_5numpy_float32_t;
 
-typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
+typedef __pyx_t_5scipy_6linalg_5numpy_npy_float64 __pyx_t_5scipy_6linalg_5numpy_float64_t;
 /* Cython code section 'complex_type_declarations' */
 
 #if CYTHON_CCOMPLEX
@@ -211,7 +211,7 @@ typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
 /* Type declarations */
 
-typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
+typedef void (*__pyx_t_5scipy_6linalg_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5scipy_6linalg_5numpy_npy_intp *, __pyx_t_5scipy_6linalg_5numpy_npy_intp *, void *);
 
 typedef System::Object^ __pyx_t_5scipy_6linalg_9fwrap_ktp_fw_bytes;
 /* Cython code section 'utility_code_proto' */
@@ -298,52 +298,10 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 #endif
 /* Cython code section 'module_declarations' */
 /* Module declarations from numpy */
-/* Module declarations from numpy */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
-static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
-static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
-static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_Check(System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_NDIM(System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5numpy_import_array(void);
-static CYTHON_INLINE void import_array(void); /*proto*/
+/* Module declarations from scipy.linalg.numpy */
 /* Module declarations from scipy.linalg.fwrap_ktp */
 /* Module declarations from scipy.linalg.calc_lwork_fc */
 /* Module declarations from scipy.linalg.calc_lwork */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate char __pyx_delegate_t_5scipy_6linalg_10calc_lwork_fw_aschar(System::Object^);
-static char fw_aschar(System::Object^); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
 #define __Pyx_MODULE_NAME "scipy.linalg.calc_lwork"
@@ -385,7 +343,9 @@ static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System
 static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_268_0;
 static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_268_0_1;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_289_24;
-static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_298_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_298_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_298_24;
+static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_298_24;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_encode_304_13;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_304_20;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
@@ -419,7 +379,7 @@ static CodeContext^ __pyx_context;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":31
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":31
  *     void *memcpy(void *dest, void *src, size_t n)
  * __all__ = ['gehrd', 'gesdd', 'gelss', 'getri', 'geev', 'heev', 'syev', 'gees', 'geqrf', 'gqr']
  * def gehrd(object prefix, fwi_integer_t n, fwi_integer_t lo, fwi_integer_t hi):             # <<<<<<<<<<<<<<
@@ -446,7 +406,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
   __pyx_v_lo = __site_cvt_31_0_1->Target(__site_cvt_31_0_1, lo);
   __pyx_v_hi = __site_cvt_31_0_2->Target(__site_cvt_31_0_2, hi);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":47
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":47
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -457,7 +417,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":49
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":49
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -466,7 +426,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":50
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":50
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -475,7 +435,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":51
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":51
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -484,7 +444,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":52
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":52
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -494,7 +454,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":53
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":53
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -510,7 +470,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":54
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":54
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.gehrd(&min_lwork, &max_lwork, fw_prefix, &n, &lo, &hi, 1)             # <<<<<<<<<<<<<<
@@ -519,7 +479,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
  */
   F_FUNC(gehrd,GEHRD)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), (&__pyx_v_lo), (&__pyx_v_hi), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":55
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":55
  *         raise ValueError("len(prefix) != 1")
  *     fc.gehrd(&min_lwork, &max_lwork, fw_prefix, &n, &lo, &hi, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -540,7 +500,7 @@ static System::Object^ gehrd(System::Object^ prefix, System::Object^ n, System::
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":58
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":58
  * 
  * 
  * def gesdd(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t compute_uv):             # <<<<<<<<<<<<<<
@@ -567,7 +527,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
   __pyx_v_n = __site_cvt_58_0_1->Target(__site_cvt_58_0_1, n);
   __pyx_v_compute_uv = __site_cvt_58_0_2->Target(__site_cvt_58_0_2, compute_uv);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":74
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":74
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -578,7 +538,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":76
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":76
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -587,7 +547,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":77
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":77
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -596,7 +556,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":78
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":78
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -605,7 +565,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":79
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":79
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -615,7 +575,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":80
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":80
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -631,7 +591,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":81
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":81
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.gesdd(&min_lwork, &max_lwork, fw_prefix, &m, &n, &compute_uv, 1)             # <<<<<<<<<<<<<<
@@ -640,7 +600,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
  */
   F_FUNC(gesdd,GESDD)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_compute_uv), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":82
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":82
  *         raise ValueError("len(prefix) != 1")
  *     fc.gesdd(&min_lwork, &max_lwork, fw_prefix, &m, &n, &compute_uv, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -661,7 +621,7 @@ static System::Object^ gesdd(System::Object^ prefix, System::Object^ m, System::
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":85
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":85
  * 
  * 
  * def gelss(object prefix, fwi_integer_t m, fwi_integer_t n, fwi_integer_t nrhs):             # <<<<<<<<<<<<<<
@@ -688,7 +648,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
   __pyx_v_n = __site_cvt_85_0_1->Target(__site_cvt_85_0_1, n);
   __pyx_v_nrhs = __site_cvt_85_0_2->Target(__site_cvt_85_0_2, nrhs);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":101
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":101
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -699,7 +659,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":103
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":103
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -708,7 +668,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":104
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":104
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -717,7 +677,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":105
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":105
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -726,7 +686,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":106
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":106
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -736,7 +696,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":107
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":107
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -752,7 +712,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":108
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":108
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.gelss(&min_lwork, &max_lwork, fw_prefix, &m, &n, &nrhs, 1)             # <<<<<<<<<<<<<<
@@ -761,7 +721,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
  */
   F_FUNC(gelss,GELSS)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_m), (&__pyx_v_n), (&__pyx_v_nrhs), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":109
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":109
  *         raise ValueError("len(prefix) != 1")
  *     fc.gelss(&min_lwork, &max_lwork, fw_prefix, &m, &n, &nrhs, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -782,7 +742,7 @@ static System::Object^ gelss(System::Object^ prefix, System::Object^ m, System::
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":112
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":112
  * 
  * 
  * def getri(object prefix, fwi_integer_t n):             # <<<<<<<<<<<<<<
@@ -805,7 +765,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
   __pyx_v_prefix = prefix;
   __pyx_v_n = __site_cvt_112_0->Target(__site_cvt_112_0, n);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":126
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":126
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -816,7 +776,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":128
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":128
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -825,7 +785,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":129
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":129
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -834,7 +794,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":130
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":130
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -843,7 +803,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":131
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":131
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -853,7 +813,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":132
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":132
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -869,7 +829,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":133
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":133
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.getri(&min_lwork, &max_lwork, fw_prefix, &n, 1)             # <<<<<<<<<<<<<<
@@ -878,7 +838,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
  */
   F_FUNC(getri,GETRI)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":134
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":134
  *         raise ValueError("len(prefix) != 1")
  *     fc.getri(&min_lwork, &max_lwork, fw_prefix, &n, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -899,7 +859,7 @@ static System::Object^ getri(System::Object^ prefix, System::Object^ n) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":137
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":137
  * 
  * 
  * def geev(object prefix, fwi_integer_t n, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1):             # <<<<<<<<<<<<<<
@@ -934,7 +894,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
     __pyx_v_compute_vr = ((fwi_integer_t)1);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":153
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":153
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -945,7 +905,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":155
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":155
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -954,7 +914,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":156
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":156
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -963,7 +923,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":157
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":157
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -972,7 +932,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":158
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":158
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -982,7 +942,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":159
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":159
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -998,7 +958,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":160
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":160
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.geev(&min_lwork, &max_lwork, fw_prefix, &n, &compute_vl, &compute_vr, 1)             # <<<<<<<<<<<<<<
@@ -1007,7 +967,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   F_FUNC(geev,GEEV)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), (&__pyx_v_compute_vl), (&__pyx_v_compute_vr), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":161
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":161
  *         raise ValueError("len(prefix) != 1")
  *     fc.geev(&min_lwork, &max_lwork, fw_prefix, &n, &compute_vl, &compute_vr, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1028,7 +988,7 @@ static System::Object^ geev(System::Object^ prefix, System::Object^ n, [InteropS
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":164
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":164
  * 
  * 
  * def heev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):             # <<<<<<<<<<<<<<
@@ -1057,7 +1017,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
     __pyx_v_lower = ((fwi_integer_t)0);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":179
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":179
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -1068,7 +1028,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":181
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":181
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -1077,7 +1037,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":182
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":182
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -1086,7 +1046,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":183
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":183
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -1095,7 +1055,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":184
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":184
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -1105,7 +1065,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":185
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":185
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -1121,7 +1081,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":186
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":186
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.heev(&min_lwork, &max_lwork, fw_prefix, &n, &lower, 1)             # <<<<<<<<<<<<<<
@@ -1130,7 +1090,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   F_FUNC(heev,HEEV)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), (&__pyx_v_lower), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":187
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":187
  *         raise ValueError("len(prefix) != 1")
  *     fc.heev(&min_lwork, &max_lwork, fw_prefix, &n, &lower, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1151,7 +1111,7 @@ static System::Object^ heev(System::Object^ prefix, System::Object^ n, [InteropS
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":190
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":190
  * 
  * 
  * def syev(object prefix, fwi_integer_t n, fwi_integer_t lower=0):             # <<<<<<<<<<<<<<
@@ -1180,7 +1140,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
     __pyx_v_lower = ((fwi_integer_t)0);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":205
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":205
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -1191,7 +1151,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":207
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":207
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -1200,7 +1160,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":208
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":208
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -1209,7 +1169,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":209
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":209
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -1218,7 +1178,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":210
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":210
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -1228,7 +1188,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":211
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":211
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -1244,7 +1204,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":212
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":212
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.syev(&min_lwork, &max_lwork, fw_prefix, &n, &lower, 1)             # <<<<<<<<<<<<<<
@@ -1253,7 +1213,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
  */
   F_FUNC(syev,SYEV)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), (&__pyx_v_lower), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":213
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":213
  *         raise ValueError("len(prefix) != 1")
  *     fc.syev(&min_lwork, &max_lwork, fw_prefix, &n, &lower, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1274,7 +1234,7 @@ static System::Object^ syev(System::Object^ prefix, System::Object^ n, [InteropS
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":216
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":216
  * 
  * 
  * def gees(object prefix, fwi_integer_t n, fwi_integer_t compute_v=1):             # <<<<<<<<<<<<<<
@@ -1303,7 +1263,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
     __pyx_v_compute_v = ((fwi_integer_t)1);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":231
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":231
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -1314,7 +1274,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":233
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":233
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -1323,7 +1283,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":234
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -1332,7 +1292,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":235
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -1341,7 +1301,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":236
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":236
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -1351,7 +1311,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":237
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":237
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -1367,7 +1327,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":238
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.gees(&min_lwork, &max_lwork, fw_prefix, &n, &compute_v, 1)             # <<<<<<<<<<<<<<
@@ -1376,7 +1336,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
  */
   F_FUNC(gees,GEES)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_n), (&__pyx_v_compute_v), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":239
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":239
  *         raise ValueError("len(prefix) != 1")
  *     fc.gees(&min_lwork, &max_lwork, fw_prefix, &n, &compute_v, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1397,7 +1357,7 @@ static System::Object^ gees(System::Object^ prefix, System::Object^ n, [InteropS
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":242
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":242
  * 
  * 
  * def geqrf(object prefix, fwi_integer_t m, fwi_integer_t n):             # <<<<<<<<<<<<<<
@@ -1422,7 +1382,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
   __pyx_v_m = __site_cvt_242_0->Target(__site_cvt_242_0, m);
   __pyx_v_n = __site_cvt_242_0_1->Target(__site_cvt_242_0_1, n);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":257
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":257
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -1433,7 +1393,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":259
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":259
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -1442,7 +1402,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":260
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":260
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -1451,7 +1411,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":261
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":261
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -1460,7 +1420,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":262
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":262
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -1470,7 +1430,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":263
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":263
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -1486,7 +1446,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":264
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":264
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.geqrf(&min_lwork, &max_lwork, fw_prefix, &m, &n, 1)             # <<<<<<<<<<<<<<
@@ -1495,7 +1455,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
  */
   F_FUNC(geqrf,GEQRF)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_m), (&__pyx_v_n), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":265
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":265
  *         raise ValueError("len(prefix) != 1")
  *     fc.geqrf(&min_lwork, &max_lwork, fw_prefix, &m, &n, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1516,7 +1476,7 @@ static System::Object^ geqrf(System::Object^ prefix, System::Object^ m, System::
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":268
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":268
  * 
  * 
  * def gqr(object prefix, fwi_integer_t m, fwi_integer_t n):             # <<<<<<<<<<<<<<
@@ -1541,7 +1501,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
   __pyx_v_m = __site_cvt_268_0->Target(__site_cvt_268_0, m);
   __pyx_v_n = __site_cvt_268_0_1->Target(__site_cvt_268_0_1, n);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":283
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":283
  * 
  *     """
  *     cdef char *fw_prefix = [0, 0]             # <<<<<<<<<<<<<<
@@ -1552,7 +1512,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
   __pyx_t_1[1] = 0;
   __pyx_v_fw_prefix = __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":285
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":285
  *     cdef char *fw_prefix = [0, 0]
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0             # <<<<<<<<<<<<<<
@@ -1561,7 +1521,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
  */
   __pyx_v_min_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":286
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":286
  *     cdef fwi_integer_t min_lwork, max_lwork
  *     min_lwork = 0
  *     max_lwork = 0             # <<<<<<<<<<<<<<
@@ -1570,7 +1530,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
  */
   __pyx_v_max_lwork = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":287
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":287
  *     min_lwork = 0
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)             # <<<<<<<<<<<<<<
@@ -1579,7 +1539,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
  */
   (__pyx_v_fw_prefix[0]) = fw_aschar(__pyx_v_prefix);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":288
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":288
  *     max_lwork = 0
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:             # <<<<<<<<<<<<<<
@@ -1589,7 +1549,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
   __pyx_t_2 = ((__pyx_v_fw_prefix[0]) == 0);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":289
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":289
  *     fw_prefix[0] = fw_aschar(prefix)
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")             # <<<<<<<<<<<<<<
@@ -1605,7 +1565,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":290
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":290
  *     if fw_prefix[0] == 0:
  *         raise ValueError("len(prefix) != 1")
  *     fc.gqr(&min_lwork, &max_lwork, fw_prefix, &m, &n, 1)             # <<<<<<<<<<<<<<
@@ -1614,7 +1574,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
  */
   F_FUNC(gqr,GQR)((&__pyx_v_min_lwork), (&__pyx_v_max_lwork), __pyx_v_fw_prefix, (&__pyx_v_m), (&__pyx_v_n), 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":291
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":291
  *         raise ValueError("len(prefix) != 1")
  *     fc.gqr(&min_lwork, &max_lwork, fw_prefix, &m, &n, 1)
  *     return (min_lwork, max_lwork,)             # <<<<<<<<<<<<<<
@@ -1635,7 +1595,7 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":295
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":295
  * 
  * 
  * cdef char fw_aschar(object s):             # <<<<<<<<<<<<<<
@@ -1646,48 +1606,55 @@ static System::Object^ gqr(System::Object^ prefix, System::Object^ m, System::Ob
 static  char fw_aschar(System::Object^ __pyx_v_s) {
   char *__pyx_v_buf;
   char __pyx_r;
-  char __pyx_t_3;
+  System::Object^ __pyx_t_3 = nullptr;
   System::Object^ __pyx_t_4 = nullptr;
-  char *__pyx_t_8;
-  System::IntPtr __pyx_t_9;
-  System::Object^ __pyx_t_11 = nullptr;
-  char *__pyx_t_12;
-  int __pyx_t_13;
+  System::Object^ __pyx_t_5 = nullptr;
+  char __pyx_t_6;
+  char *__pyx_t_10;
+  System::IntPtr __pyx_t_11;
+  char *__pyx_t_13;
+  int __pyx_t_14;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":297
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":297
  * cdef char fw_aschar(object s):
  *     cdef char* buf
  *     try:             # <<<<<<<<<<<<<<
- *         return <char>s # int
+ *         return <char>ord(s[0]) # int
  *     except TypeError:
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":298
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":298
  *     cdef char* buf
  *     try:
- *         return <char>s # int             # <<<<<<<<<<<<<<
+ *         return <char>ord(s[0]) # int             # <<<<<<<<<<<<<<
  *     except TypeError:
  *         pass
  */
-    __pyx_t_3 = __site_cvt_char_298_28->Target(__site_cvt_char_298_28, __pyx_v_s);
-    __pyx_r = ((char)__pyx_t_3);
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ord");
+    __pyx_t_4 = __site_getindex_298_26->Target(__site_getindex_298_26, __pyx_v_s, ((System::Object^)0));
+    __pyx_t_5 = __site_call1_298_24->Target(__site_call1_298_24, __pyx_context, __pyx_t_3, __pyx_t_4);
+    __pyx_t_3 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_6 = __site_cvt_char_298_24->Target(__site_cvt_char_298_24, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    __pyx_r = ((char)__pyx_t_6);
     goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":299
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":299
  *     try:
- *         return <char>s # int
+ *         return <char>ord(s[0]) # int
  *     except TypeError:             # <<<<<<<<<<<<<<
  *         pass
  *     try:
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_5;
-    __pyx_lt_5 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_5 != nullptr) {
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_7;
+    __pyx_lt_7 = PythonOps::CheckException(__pyx_context, __pyx_lt_2, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    if (__pyx_lt_7 != nullptr) {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.calc_lwork.fw_aschar");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
     }
@@ -1698,7 +1665,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":301
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":301
  *     except TypeError:
  *         pass
  *     try:             # <<<<<<<<<<<<<<
@@ -1707,78 +1674,78 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":302
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":302
  *         pass
  *     try:
  *         buf = <char*>s # bytes             # <<<<<<<<<<<<<<
  *     except TypeError:
  *         s = s.encode('ASCII')
  */
-    __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-    __pyx_t_8 = static_cast<char *>(__pyx_t_9.ToPointer());
-    __pyx_v_buf = ((char *)__pyx_t_8);
-    InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
-  } catch (System::Exception^ __pyx_lt_6) {
-    System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
+    __pyx_t_11 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+    __pyx_t_10 = static_cast<char *>(__pyx_t_11.ToPointer());
+    __pyx_v_buf = ((char *)__pyx_t_10);
+    InteropServices::Marshal::FreeHGlobal(__pyx_t_11);
+  } catch (System::Exception^ __pyx_lt_8) {
+    System::Object^ __pyx_lt_9 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_8);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":303
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":303
  *     try:
  *         buf = <char*>s # bytes
  *     except TypeError:             # <<<<<<<<<<<<<<
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode
  */
-    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    System::Object^ __pyx_lt_10;
-    __pyx_lt_10 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_4);
-    __pyx_t_4 = nullptr;
-    if (__pyx_lt_10 != nullptr) {
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    System::Object^ __pyx_lt_12;
+    __pyx_lt_12 = PythonOps::CheckException(__pyx_context, __pyx_lt_9, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    if (__pyx_lt_12 != nullptr) {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.linalg.calc_lwork.fw_aschar");
-      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
+      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_8);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":304
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":304
  *         buf = <char*>s # bytes
  *     except TypeError:
  *         s = s.encode('ASCII')             # <<<<<<<<<<<<<<
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:
  */
-      __pyx_t_4 = __site_get_encode_304_13->Target(__site_get_encode_304_13, __pyx_v_s, __pyx_context);
-      __pyx_t_11 = __site_call1_304_20->Target(__site_call1_304_20, __pyx_context, __pyx_t_4, ((System::Object^)"ASCII"));
+      __pyx_t_5 = __site_get_encode_304_13->Target(__site_get_encode_304_13, __pyx_v_s, __pyx_context);
+      __pyx_t_4 = __site_call1_304_20->Target(__site_call1_304_20, __pyx_context, __pyx_t_5, ((System::Object^)"ASCII"));
+      __pyx_t_5 = nullptr;
+      __pyx_v_s = __pyx_t_4;
       __pyx_t_4 = nullptr;
-      __pyx_v_s = __pyx_t_11;
-      __pyx_t_11 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":305
+      /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":305
  *     except TypeError:
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode             # <<<<<<<<<<<<<<
  *     if buf[0] == 0:
  *         return 0
  */
-      __pyx_t_9 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
-      __pyx_t_12 = static_cast<char *>(__pyx_t_9.ToPointer());
-      __pyx_v_buf = ((char *)__pyx_t_12);
-      InteropServices::Marshal::FreeHGlobal(__pyx_t_9);
+      __pyx_t_11 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_v_s));
+      __pyx_t_13 = static_cast<char *>(__pyx_t_11.ToPointer());
+      __pyx_v_buf = ((char *)__pyx_t_13);
+      InteropServices::Marshal::FreeHGlobal(__pyx_t_11);
     }
     else {
       // XXX we should set traceback here
-      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
+      throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_8);
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":306
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":306
  *         s = s.encode('ASCII')
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:             # <<<<<<<<<<<<<<
  *         return 0
  *     elif buf[1] != 0:
  */
-  __pyx_t_13 = ((__pyx_v_buf[0]) == 0);
-  if (__pyx_t_13) {
+  __pyx_t_14 = ((__pyx_v_buf[0]) == 0);
+  if (__pyx_t_14) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":307
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":307
  *         buf = <char*>s # unicode
  *     if buf[0] == 0:
  *         return 0             # <<<<<<<<<<<<<<
@@ -1790,17 +1757,17 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
     goto __pyx_L3;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":308
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":308
  *     if buf[0] == 0:
  *         return 0
  *     elif buf[1] != 0:             # <<<<<<<<<<<<<<
  *         return 0
  *     else:
  */
-  __pyx_t_13 = ((__pyx_v_buf[1]) != 0);
-  if (__pyx_t_13) {
+  __pyx_t_14 = ((__pyx_v_buf[1]) != 0);
+  if (__pyx_t_14) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":309
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":309
  *         return 0
  *     elif buf[1] != 0:
  *         return 0             # <<<<<<<<<<<<<<
@@ -1813,7 +1780,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":311
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":311
  *         return 0
  *     else:
  *         return buf[0]             # <<<<<<<<<<<<<<
@@ -1830,7 +1797,7 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":190
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":190
  *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
  * 
  * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -1838,11 +1805,11 @@ static  char fw_aschar(System::Object^ __pyx_v_s) {
  *         int identity, char* name, char* doc, int c):
  */
 
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5scipy_6linalg_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":193
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":193
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -1859,7 +1826,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":195
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":195
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -1867,7 +1834,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -1881,7 +1848,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":196
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":196
  * 
  * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -1892,7 +1859,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":198
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":198
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1903,7 +1870,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":199
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":199
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -1918,7 +1885,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":200
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":200
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1929,7 +1896,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":201
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":201
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -1956,7 +1923,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":203
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":203
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -1964,7 +1931,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -1978,7 +1945,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":204
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":204
  * 
  * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -1989,7 +1956,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":206
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":206
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -2000,7 +1967,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":207
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":207
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
@@ -2015,7 +1982,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":208
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":208
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -2026,7 +1993,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":209
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":209
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
@@ -2053,7 +2020,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":211
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":211
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
@@ -2061,11 +2028,11 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5scipy_6linalg_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5scipy_6linalg_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":212
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":212
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -2078,7 +2045,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":213
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":213
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -2091,7 +2058,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":214
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":214
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
@@ -2108,7 +2075,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":216
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":216
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
  * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
@@ -2121,7 +2088,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":218
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":218
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  *      # XXX "long long" is wrong type
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
@@ -2139,7 +2106,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":220
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":220
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
@@ -2152,7 +2119,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":222
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":222
  * cdef inline void* PyArray_DATA(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2170,7 +2137,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":224
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":224
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
@@ -2178,12 +2145,12 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  __pyx_t_5numpy_intp_t *__pyx_r;
+static CYTHON_INLINE __pyx_t_5scipy_6linalg_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5scipy_6linalg_5numpy_intp_t *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":226
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":226
  * cdef inline intp_t* PyArray_DIMS(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2201,7 +2168,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":228
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":228
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
@@ -2209,12 +2176,12 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
-  __pyx_t_5numpy_intp_t __pyx_r;
+static CYTHON_INLINE __pyx_t_5scipy_6linalg_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5scipy_6linalg_5numpy_intp_t __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":230
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":230
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
@@ -2232,7 +2199,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":232
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":232
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -2249,7 +2216,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":233
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":233
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -2260,7 +2227,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":234
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":234
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -2271,7 +2238,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":235
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":235
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
@@ -2292,7 +2259,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":237
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":237
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -2307,7 +2274,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":238
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":238
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -2321,7 +2288,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":239
+    /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":239
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -2337,7 +2304,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":240
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":240
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
@@ -2357,7 +2324,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":242
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":242
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -2370,7 +2337,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":243
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
  *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
@@ -2378,7 +2345,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline object PyArray_NDIM(obj):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
+  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_6linalg_5numpy_ndarray)));
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -2389,7 +2356,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":245
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":245
  *     return isinstance(obj, ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
@@ -2401,7 +2368,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":246
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":246
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
@@ -2418,7 +2385,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":248
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -2478,7 +2445,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_268_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_268_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_289_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_char_298_28 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
+  __site_getindex_298_26 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_call1_298_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_char_298_24 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
   __site_get_encode_304_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "encode", false));
   __site_call1_304_20 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
@@ -2519,7 +2488,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_1 = nullptr;
   PythonDictionary^ __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":27
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":27
  * cimport calc_lwork_fc as fc
  * 
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -2528,7 +2497,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":30
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":30
  * cdef extern from "string.h":
  *     void *memcpy(void *dest, void *src, size_t n)
  * __all__ = ['gehrd', 'gesdd', 'gelss', 'getri', 'geev', 'heev', 'syev', 'gees', 'geqrf', 'gqr']             # <<<<<<<<<<<<<<
@@ -2539,7 +2508,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__all__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\linalg\calc_lwork.pyx":1
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\calc_lwork.pyx":1
  * #cython: ccomplex=True             # <<<<<<<<<<<<<<
  * 
  * """The calc_lwork module was generated with Fwrap v0.2.0dev_9849d10.
@@ -2548,7 +2517,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
   __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":248
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -2561,8 +2530,8 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 /* Cython code section 'dotnet_globals' */
 
 
-static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
-static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_6linalg_5numpy_ndarray = nullptr;
+static Types::PythonType^ __pyx_ptype_5scipy_6linalg_5numpy_dtype = nullptr;
 
 
 
