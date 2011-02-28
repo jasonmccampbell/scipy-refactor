@@ -302,7 +302,8 @@ cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags
     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
 
 cdef inline object PyArray_Check(obj):
-    return isinstance(obj, ndarray)
+    import numpy as np
+    return isinstance(obj, np.ndarray)
 
 cdef inline object PyArray_NDIM(obj):
     return obj.ndim
