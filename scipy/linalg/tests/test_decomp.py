@@ -15,6 +15,8 @@ Run tests if linalg is not installed:
 """
 
 import numpy as np
+import sys
+
 from numpy.testing import TestCase, assert_equal, assert_array_almost_equal, \
         assert_array_equal, assert_raises, assert_, run_module_suite, dec
 
@@ -1133,6 +1135,7 @@ class TestDatacopied(TestCase):
                          err_msg=repr(item))
 
 
+@dec.skipif(sys.platform == 'cli')
 def test_aligned_mem_float():
     """Check linalg works with non-aligned memory"""
     # Allocate 402 bytes of memory (allocated on boundary)
@@ -1145,7 +1148,7 @@ def test_aligned_mem_float():
     eig(z, overwrite_a=True)
     eig(z.T, overwrite_a=True)
 
-
+@dec.skipif(sys.platform == 'cli')
 def test_aligned_mem():
     """Check linalg works with non-aligned memory"""
     # Allocate 804 bytes of memory (allocated on boundary)
