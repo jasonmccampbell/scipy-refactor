@@ -10,22 +10,31 @@ if sys.platform != 'cli':
 src_dir = os.getcwd()
 
 
-def msbuild(dir, config):
+def msbuild(subproject, config):
     # Note: need to use devenv instead of msbuild because msbuild can't build
     # Intel Fortran (.vfproj) files.
-    os.chdir(join(src_dir, "scipy", dir))
-    cmd = 'devenv %s.sln /Build %s' % (dir, config)
+    cmd = 'devenv %s.sln /Build %s' % (subproject, config)
     print cmd
     os.system(cmd)
     print "%s complete"
-    os.chdir(src_dir)
+
 
 def buildall():
-    for dir in ["special", "stats", "linalg", "integrate"]:
+    for subproject in ["special", "stats", "linalg", "integrate"]:
+        dir_path = join(src_dir, "scipy", subproject)
+        os.chdir(dir_path)
+        if '--clean' in sys.argv:
+            cmd = 'rd /s /q Release Debug'
+            print cmd
+            os.system(cmd)
+
         if '--release' in sys.argv:
-            msbuild(dir, "Release")
+            msbuild(subproject, "Release")
         else:
-            msbuild(dir, "Debug")
+            msbuild(subproject, "Debug")
+
+        os.chdir(src_dir)
+
 
 if __name__ == '__main__':
     buildall()
