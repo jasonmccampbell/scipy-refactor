@@ -215,6 +215,7 @@ cdef extern from "npy_api.h":
     NpyArray *NpyArray_New(void *subtype, int nd, npy_intp *dims, int type_num,
                            npy_intp *strides, void *data, int itemsize,
                            int flags, void *obj)
+    int NpyArray_INCREF(NpyArray *arr)
 
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
@@ -281,6 +282,10 @@ cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
 
+cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+    # XXX "long long" is wrong type
+    return <NpyArray*> <long long>n.Array
+
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
     import NumpyDotNet.NpyArray
@@ -290,6 +295,11 @@ cdef inline object PyArray_FROMANY(m, type, min, max, flags):
     if flags & NPY_ENSURECOPY:
         flags |= NPY_DEFAULT
     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
+
+cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
+    import clr
+    import NumpyDotNet.NpyArray
+    return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
 
 cdef inline object PyArray_Check(obj):
     return isinstance(obj, ndarray)

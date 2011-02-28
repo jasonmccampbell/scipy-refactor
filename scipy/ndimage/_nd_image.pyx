@@ -154,6 +154,15 @@ IF not DOTNET:
         PyErr_NoMemory()
         return 1
 
+    cdef extern from "cb_helper.h":
+        cdef struct callback_holder:
+            pass
+        void set_callback_holder(callback_holder, PyObject *)
+        void *cookie_from_callback(callback_holder)
+        object object_from_cookie(void *)
+            
+    
+    
 
 ##     cdef inline bint is_capsule(obj):
 ##         return PyCapsule_Check(obj)
@@ -167,7 +176,7 @@ IF not DOTNET:
 
 IF DOTNET:
     from numpy cimport ndarray, dtype
-    from numpy cimport Npy_INTERFACE_descr, NpyArray_DescrFromType
+    from numpy cimport Npy_INTERFACE_descr, NpyArray_DescrFromType, PyArray_CheckFromAny
 
     cdef extern from "":
         # can't properly wrap varargs function
@@ -195,9 +204,16 @@ IF DOTNET:
 
     cdef inline CheckFromAny(object op, dtype newtype, int min_depth, int max_depth,
                              int flags, object context):
-        raise NotImplementedError
+        return PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
 
-from numpy cimport PyArray_New, PyArray_Empty, import_array
+    cdef extern from "cb_helper.h":
+        cppclass callback_holder:
+            pass
+        void set_callback_holder(callback_holder, object)
+        void *cookie_from_callback(callback_holder)
+        object object_from_cookie(void *)
+
+from numpy cimport PyArray_New, PyArray_Empty, import_array, NpyArray_INCREF, PyArray_ARRAY
 
 cdef inline ndarray Empty(int nd, npy_intp * dims, dtype descr, int fortran):
     return PyArray_Empty(nd, dims, descr, fortran)
@@ -355,8 +371,9 @@ cdef ndarray NA_OutputArray(object a_obj, int typenum, int requires):
     ret_obj = Empty(NpyArray_NDIM(a), NpyArray_DIMS(a), descr, 0)
     ret = ARRAY(ret_obj)
     NpyArray_SETFLAGS(ret, (NpyArray_FLAGS(ret) | NPY_UPDATEIFCOPY) & ~NPY_WRITEABLE)
-    incref(a_obj)
-    NpyArray_SETBASE(ret, <NpyArray *> <long long>a_obj.Array)
+    cdef NpyArray* a_npy = PyArray_ARRAY(a_obj)
+    NpyArray_INCREF(a_npy)
+    NpyArray_SETBASE(ret, a_npy)
     return ret_obj
 
 cdef ndarray NI_ObjectToInputArray(object a):
@@ -459,7 +476,7 @@ cdef class CallbackInfo:
 
 cdef int cbwrapper_filter_1d(double *iline, npy_intp ilen, double *oline, npy_intp olen,
                              void* ctx) except 0:
-    cdef CallbackInfo info = <CallbackInfo>ctx
+    cdef CallbackInfo info = object_from_cookie(ctx)
     iarr = array_New(1, [ilen], NPY_DOUBLE, [sizeof(double)], <char*>iline, 0, NPY_CARRAY)
     oarr = array_New(1, [olen], NPY_DOUBLE, [sizeof(double)], <char*>oline, 0, NPY_CARRAY)
     info.function(iarr, oarr, *info.args, **info.kwargs)
@@ -479,13 +496,15 @@ def generic_filter1d(object input, object callback, npy_intp filter_size,
     if True:
         funcptr = &cbwrapper_filter_1d
         info = CallbackInfo(callback, extra_arguments, extra_keywords)
-        ctx = <void*>info
+    cdef callback_holder info_holder
+    set_callback_holder(info_holder, info)
+    ctx = cookie_from_callback(info_holder)
     NI_GenericFilter1D(ARRAY(input_), funcptr, ctx, filter_size, axis,
                        ARRAY(output_), <NI_ExtendMode>mode, cval, origin)
 
 cdef int cbwrapper_filter(double *buffer, npy_intp filter_size,
                           double *output, void *ctx) except 0:
-    cdef CallbackInfo info = <CallbackInfo>ctx
+    cdef CallbackInfo info = object_from_cookie(ctx)
     pybuf = array_New(1, [filter_size], NPY_DOUBLE, [sizeof(double)],
                       <char*>buffer, 0, NPY_CARRAY)
     rv = info.function(pybuf, *info.args, **info.kwargs)
@@ -506,7 +525,9 @@ def generic_filter(object input, object callback, object footprint, object outpu
     if True:
         funcptr = &cbwrapper_filter
         info = CallbackInfo(callback, extra_arguments, extra_keywords)
-        ctx = <void*>info
+    cdef callback_holder info_holder
+    set_callback_holder(info_holder, info)
+    ctx = cookie_from_callback(info_holder)
     NI_GenericFilter(ARRAY(input_), funcptr, ctx, ARRAY(footprint_),
                      ARRAY(output_), <NI_ExtendMode>mode, cval,
                      <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
@@ -534,7 +555,7 @@ def spline_filter1d(object input, int order, int axis, object output):
 
 cdef int cbwrapper_map(npy_intp *ocoor, double *icoor,
                        int orank, int irank, void *ctx) except 0:
-    cdef CallbackInfo info = <CallbackInfo>ctx
+    cdef CallbackInfo info = object_from_cookie(ctx)
     cdef npy_intp i
     cdef tuple ret
     cList = []
@@ -558,12 +579,15 @@ def geometric_transform(object input, object map_callback, object coordinates,
     cdef CallbackInfo info
     cdef void *ctx
     
+    cdef callback_holder info_holder
+
     if map_callback is not None:
         # TODO: Capsule support
         if True:
             funcptr = &cbwrapper_map
             info = CallbackInfo(map_callback, extra_arguments, extra_keywords)
-            ctx = <void*>info
+            set_callback_holder(info_holder, info)
+            ctx = cookie_from_callback(info_holder)
 
     else:
         funcptr = ctx = NULL
