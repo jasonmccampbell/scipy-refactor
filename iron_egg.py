@@ -83,8 +83,8 @@ def build_egg():
                     arcname = arcname[:-7] + '.py'
                 z.write(path, arcname)
 
-            elif (fn.endswith('.dll') and fn not in ignore_libs and
-                  '\\Release\\' in path):
+            elif fn.endswith('.dll') and fn not in ignore_libs:
+                print path
                 z.write(path, 'EGG-INFO/prefix/DLLs/' + fn)
 
     z.writestr('scipy/__config__.py', config_txt)
