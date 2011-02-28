@@ -32,6 +32,10 @@
 #ifndef NI_INTERPOLATION_H
 #define NI_INTERPOLATION_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int NI_SplineFilter1D(NpyArray*, int, int, NpyArray*);
 int NI_GeometricTransform(NpyArray*, int (*)(npy_intp*, double*, int, int,
                                                     void*), void*, NpyArray*, NpyArray*,
@@ -39,5 +43,9 @@ int NI_GeometricTransform(NpyArray*, int (*)(npy_intp*, double*, int, int,
                                                     double);
 int NI_ZoomShift(NpyArray*, NpyArray*, NpyArray*,
                                  NpyArray*, int, int, double);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

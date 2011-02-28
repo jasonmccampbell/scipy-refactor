@@ -32,6 +32,10 @@
 #ifndef NI_MORPHOLOGY_H
 #define NI_MORPHOLOGY_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int NI_BinaryErosion(NpyArray*, NpyArray*, NpyArray*, 
          NpyArray*, int, npy_intp*, int, int, int*, NI_CoordinateList**);
 int NI_BinaryErosion2(NpyArray*, NpyArray*, NpyArray*,
@@ -42,5 +46,9 @@ int NI_DistanceTransformOnePass(NpyArray*, NpyArray *,
                                                                 NpyArray*);
 int NI_EuclideanFeatureTransform(NpyArray*, NpyArray*, 
                                                                  NpyArray*);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

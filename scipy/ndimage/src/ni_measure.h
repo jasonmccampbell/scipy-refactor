@@ -34,6 +34,10 @@
 
 #include "nd_image.h"
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* structure for array regions to find objects: */
 typedef struct {
     int start[NI_MAXDIM], end[NI_MAXDIM];
@@ -56,5 +60,9 @@ int NI_Statistics(NpyArray*, NpyArray*, npy_intp, npy_intp,
 
 int NI_WatershedIFT(NpyArray*, NpyArray*, NpyArray*, 
                                         NpyArray*);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
