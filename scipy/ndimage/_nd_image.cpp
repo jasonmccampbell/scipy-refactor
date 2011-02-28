@@ -398,6 +398,7 @@ static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_is
 static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_328_54;
 static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_330_53;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_349_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_358_31;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_358_21;
 static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_358_21;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_359_23;
@@ -1213,38 +1214,43 @@ static  NumpyDotNet::ndarray^ NA_OutputArray(System::Object^ __pyx_v_a_obj, int 
   NumpyDotNet::ndarray^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
-  int __pyx_t_3;
+  System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
+  int __pyx_t_5;
   __pyx_v_descr = nullptr;
   __pyx_v_ret_obj = nullptr;
 
   /* "/home/cwitty/git-scipy/scipy-refactor/scipy/ndimage/_nd_image.pyx":358
  *     cdef ndarray ret_obj
  * 
- *     if not isinstance(a_obj, ndarray):             # <<<<<<<<<<<<<<
+ *     if not isinstance(a_obj, np.ndarray):             # <<<<<<<<<<<<<<
  *         raise TypeError('NA_OutputArray: ndarray instance expected')
  * 
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_358_21->Target(__site_call2_358_21, __pyx_context, __pyx_t_1, __pyx_v_a_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
-  __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_358_21->Target(__site_istrue_358_21, __pyx_t_2);
+  __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_3 = __site_get_ndarray_358_31->Target(__site_get_ndarray_358_31, __pyx_t_2, __pyx_context);
   __pyx_t_2 = nullptr;
-  __pyx_t_4 = (!__pyx_t_3);
-  if (__pyx_t_4) {
+  __pyx_t_2 = __site_call2_358_21->Target(__site_call2_358_21, __pyx_context, __pyx_t_1, __pyx_v_a_obj, __pyx_t_3);
+  __pyx_t_1 = nullptr;
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = __site_istrue_358_21->Target(__site_istrue_358_21, __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  __pyx_t_5 = (!__pyx_t_4);
+  if (__pyx_t_5) {
 
     /* "/home/cwitty/git-scipy/scipy-refactor/scipy/ndimage/_nd_image.pyx":359
  * 
- *     if not isinstance(a_obj, ndarray):
+ *     if not isinstance(a_obj, np.ndarray):
  *         raise TypeError('NA_OutputArray: ndarray instance expected')             # <<<<<<<<<<<<<<
  * 
  *     a = ARRAY(a_obj)
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    __pyx_t_1 = __site_call1_359_23->Target(__site_call1_359_23, __pyx_context, __pyx_t_2, ((System::Object^)"NA_OutputArray: ndarray instance expected"));
+    __pyx_t_3 = __site_call1_359_23->Target(__site_call1_359_23, __pyx_context, __pyx_t_2, ((System::Object^)"NA_OutputArray: ndarray instance expected"));
     __pyx_t_2 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
-    __pyx_t_1 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
@@ -1268,8 +1274,8 @@ static  NumpyDotNet::ndarray^ NA_OutputArray(System::Object^ __pyx_v_a_obj, int 
  *         raise TypeError('NA_OutputArray: only writeable arrays work for output.')
  *     if satisfies(a, requires, typenum):
  */
-  __pyx_t_4 = (!NpyArray_ISWRITEABLE(__pyx_v_a));
-  if (__pyx_t_4) {
+  __pyx_t_5 = (!NpyArray_ISWRITEABLE(__pyx_v_a));
+  if (__pyx_t_5) {
 
     /* "/home/cwitty/git-scipy/scipy-refactor/scipy/ndimage/_nd_image.pyx":363
  *     a = ARRAY(a_obj)
@@ -1278,9 +1284,9 @@ static  NumpyDotNet::ndarray^ NA_OutputArray(System::Object^ __pyx_v_a_obj, int 
  *     if satisfies(a, requires, typenum):
  *         return a_obj
  */
-    __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-    __pyx_t_2 = __site_call1_363_23->Target(__site_call1_363_23, __pyx_context, __pyx_t_1, ((System::Object^)"NA_OutputArray: only writeable arrays work for output."));
-    __pyx_t_1 = nullptr;
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+    __pyx_t_2 = __site_call1_363_23->Target(__site_call1_363_23, __pyx_context, __pyx_t_3, ((System::Object^)"NA_OutputArray: only writeable arrays work for output."));
+    __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     goto __pyx_L4;
@@ -1294,8 +1300,8 @@ static  NumpyDotNet::ndarray^ NA_OutputArray(System::Object^ __pyx_v_a_obj, int 
  *         return a_obj
  *     if typenum == -1:
  */
-  __pyx_t_4 = satisfies(__pyx_v_a, __pyx_v_requires, __pyx_v_typenum);
-  if (__pyx_t_4) {
+  __pyx_t_5 = satisfies(__pyx_v_a, __pyx_v_requires, __pyx_v_typenum);
+  if (__pyx_t_5) {
 
     /* "/home/cwitty/git-scipy/scipy-refactor/scipy/ndimage/_nd_image.pyx":365
  *         raise TypeError('NA_OutputArray: only writeable arrays work for output.')
@@ -1320,8 +1326,8 @@ static  NumpyDotNet::ndarray^ NA_OutputArray(System::Object^ __pyx_v_a_obj, int 
  *         descr = DESCR(a_obj)
  *     else:
  */
-  __pyx_t_4 = (__pyx_v_typenum == -1);
-  if (__pyx_t_4) {
+  __pyx_t_5 = (__pyx_v_typenum == -1);
+  if (__pyx_t_5) {
 
     /* "/home/cwitty/git-scipy/scipy-refactor/scipy/ndimage/_nd_image.pyx":367
  *         return a_obj
@@ -5497,6 +5503,7 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_istrue_328_54 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_istrue_330_53 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_349_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_ndarray_358_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
   __site_call2_358_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
   __site_istrue_358_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_359_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
@@ -5637,6 +5644,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Type init code ---*/
   __pyx_ptype_5scipy_7ndimage_9_nd_image_CallbackInfo = safe_cast<Types::PythonType^>(dict["CallbackInfo"]);
   __pyx_ptype_5scipy_7ndimage_9_nd_image_CoordinateListWrapper = safe_cast<Types::PythonType^>(dict["CoordinateListWrapper"]);
+  /*--- Type import code ---*/
+  // XXX skipping type ptr assignment for NumpyDotNet::ndarray
+  // XXX skipping type ptr assignment for NumpyDotNet::dtype
   /*--- Create function pointers ---*/
   __pyx_delegate_val_cbwrapper_filter_1d = gcnew __pyx_delegate_t_5scipy_7ndimage_9_nd_image_cbwrapper_filter_1d(cbwrapper_filter_1d);
   __pyx_function_pointer_cbwrapper_filter_1d = (__pyx_fp_t_cbwrapper_filter_1d)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_cbwrapper_filter_1d).ToPointer());

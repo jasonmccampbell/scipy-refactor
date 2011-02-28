@@ -355,7 +355,7 @@ cdef ndarray NA_OutputArray(object a_obj, int typenum, int requires):
     cdef NpyArray* ret
     cdef ndarray ret_obj
 
-    if not isinstance(a_obj, ndarray):
+    if not isinstance(a_obj, np.ndarray):
         raise TypeError('NA_OutputArray: ndarray instance expected')
 
     a = ARRAY(a_obj)
