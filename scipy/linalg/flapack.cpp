@@ -2154,8 +2154,9 @@ static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, Sys
 static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_238_13;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_239_14;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_240_77;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_244_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_244_21;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_247_14;
 static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
@@ -76751,27 +76752,43 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
- *     return isinstance(obj, ndarray)
- * 
+ *     import numpy as np
+ *     return isinstance(obj, np.ndarray)
  */
 
 static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) {
+  System::Object^ __pyx_v_np;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  __pyx_v_np = nullptr;
 
   /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":243
  * 
  * cdef inline object PyArray_Check(obj):
- *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
+ *     import numpy as np             # <<<<<<<<<<<<<<
+ *     return isinstance(obj, np.ndarray)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_np = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":244
+ * cdef inline object PyArray_Check(obj):
+ *     import numpy as np
+ *     return isinstance(obj, np.ndarray)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_NDIM(obj):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_6linalg_5numpy_ndarray)));
+  __pyx_t_2 = __site_get_ndarray_244_29->Target(__site_get_ndarray_244_29, __pyx_v_np, __pyx_context);
+  __pyx_t_3 = __site_call2_244_21->Target(__site_call2_244_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
   __pyx_t_1 = nullptr;
-  __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -76779,8 +76796,8 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":245
- *     return isinstance(obj, ndarray)
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":246
+ *     return isinstance(obj, np.ndarray)
  * 
  * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
  *     return obj.ndim
@@ -76791,14 +76808,14 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":246
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":247
  * 
  * cdef inline object PyArray_NDIM(obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
  * 
  * cdef inline void import_array():
  */
-  __pyx_t_1 = __site_get_ndim_246_14->Target(__site_get_ndim_246_14, __pyx_v_obj, __pyx_context);
+  __pyx_t_1 = __site_get_ndim_247_14->Target(__site_get_ndim_247_14, __pyx_v_obj, __pyx_context);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -76808,7 +76825,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
+/* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":249
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -78629,8 +78646,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_istrue_238_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_op_ior_239_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
   __site_cvt_int_240_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call2_243_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_ndim_246_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_get_ndarray_244_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_call2_244_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_ndim_247_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -78661,7 +78679,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_1));
   __pyx_t_1 = nullptr;
 
-  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":248
+  /* "C:\Users\jwiggins\source\scipy-refactor\scipy\linalg\numpy.pxd":249
  *     return obj.ndim
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
