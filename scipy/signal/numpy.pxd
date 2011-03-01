@@ -185,15 +185,13 @@ cdef extern from "npy_api.h":
                            int flags, void *obj)
     int NpyArray_AsCArray(NpyArray **apIn, void *ptr, npy_intp *dims, int nd,
                           NpyArray_Descr* typedescr)
+    void NpyDataMem_FREE(char *ptr)
 
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
     object Npy_INTERFACE_descr "Npy_INTERFACE_OBJECT" (NpyArray_Descr*)
     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
 
-cdef extern from "ndarraytypes.h":
-    char* PyDataMem_NEW(size_t size)
-    void PyDataMem_FREE(char *ptr)
 
 cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
         char* types, int ntypes, int nin, int nout,
@@ -234,6 +232,11 @@ cdef inline object PyArray_DESCR(ndarray n):
 cdef inline intp_t* PyArray_DIMS(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+
+cdef inline object PyArray_Return(arr):
+    import clr
+    import NumpyDotNet.NpyArray
+    return NumpyDotNet.NpyArray.ArrayReturn(arr)
 
 cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type

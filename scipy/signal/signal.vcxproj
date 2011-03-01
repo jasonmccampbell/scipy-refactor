@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -93,6 +93,7 @@
     <ClCompile Include="sigtools.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="sigtoolsmod.cpp" />
     <ClCompile Include="sigtoolsmodule.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
@@ -117,12 +118,33 @@
     <None Include="lfilter.c.src" />
     <None Include="ltisys.py" />
     <None Include="signaltools.py" />
+    <None Include="sigtoolsmod.pyx" />
+    <None Include="spectral.pyx" />
+    <None Include="splinemodule.pyx" />
     <None Include="waveforms.py" />
     <None Include="wavelets.py" />
     <None Include="windows.py" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="sigtools.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="IronPython, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\..\..\IronPython\bin\Debug\IronPython.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPython.Modules, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\..\..\IronPython\bin\Debug\IronPython.Modules.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Dynamic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Scripting, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+      <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Scripting.dll</HintPath>
+    </Reference>
+    <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug\NumpyDotNet.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -99,7 +99,7 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
         incr = increment(loop_ind, ndims, dims2)   # Returns number of N-D indices incremented.
         ip2 += is2
         
-    np.PyDataMem_FREE(ptr)
+    np.NpyDataMem_FREE(ptr)
     return
 
 cdef int DOUBLE_compare(double *ip1, double *ip2):
@@ -108,11 +108,11 @@ cdef int DOUBLE_compare(double *ip1, double *ip2):
 cdef int FLOAT_compare(float *ip1, float *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int LONGDOUBLE_compare(longdouble *ip1, longdouble *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int LONGDOUBLE_compare(longdouble *ip1, longdouble *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int BYTE_compare(byte *ip1, byte *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int BYTE_compare(byte *ip1, byte *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int SHORT_compare(short *ip1, short *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
@@ -123,39 +123,44 @@ cdef int INT_compare(int *ip1, int *ip2):
 cdef int LONG_compare(long *ip1, long *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int LONGLONG_compare(longlong *ip1, longlong *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int LONGLONG_compare(longlong *ip1, longlong *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int UBYTE_compare(ubyte *ip1, ubyte *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int UBYTE_compare(ubyte *ip1, ubyte *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int USHORT_compare(ushort *ip1, ushort *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int USHORT_compare(ushort *ip1, ushort *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int UINT_compare(uint *ip1, uint *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int UINT_compare(uint *ip1, uint *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int ULONG_compare(ulong *ip1, ulong *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int ULONG_compare(ulong *ip1, ulong *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-cdef int ULONGLONG_compare(ulonglong *ip1, ulonglong *ip2):
-    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+#cdef int ULONGLONG_compare(ulonglong *ip1, ulonglong *ip2):
+#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int OBJECT_compare(object ip1, object ip2):
     return (ip1 == ip2) != 1
 
 ctypedef int (*CompareFunction) (void *, void *)
 
-compare_functions = [
- NULL, BYTE_compare, UBYTE_compare,
- SHORT_compare, USHORT_compare,
- INT_compare, UINT_compare,
- LONG_compare, ULONG_compare,
- LONGLONG_compare, ULONGLONG_compare,
- FLOAT_compare, DOUBLE_compare,
- LONGDOUBLE_compare, NULL, NULL, NULL,
- OBJECT_compare, NULL, NULL, NULL
-]
+cdef CompareFunction compare_functions[21]
+#compare_functions[1] = <CompareFunction>BYTE_compare
+#compare_functions[2] = <CompareFunction>UBYTE_compare
+compare_functions[3] = <CompareFunction>SHORT_compare
+#compare_functions[4] = <CompareFunction>USHORT_compare
+compare_functions[5] = <CompareFunction>INT_compare
+#compare_functions[6] = <CompareFunction>UINT_compare
+compare_functions[7] = <CompareFunction>LONG_compare
+#compare_functions[8] = <CompareFunction>ULONG_compare
+#compare_functions[9] = <CompareFunction>LONGLONG_compare
+#compare_functions[10] = <CompareFunction>ULONGLONG_compare
+compare_functions[11] = <CompareFunction>FLOAT_compare
+compare_functions[12] = <CompareFunction>DOUBLE_compare
+#compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
+compare_functions[17] = <CompareFunction>OBJECT_compare
 
 def _order_filterND(a0, domain, int order=0):
     """ out = _order_filterND(a,domain,order)
@@ -250,7 +255,7 @@ def _order_filterND(a0, domain, int order=0):
         # if it is pointing outside dataspace)
         
         # Calculate it once and the just move it around appropriately
-        np.PyDataMem_FREE(zptr)
+        np.NpyDataMem_FREE(zptr)
         zptr = <char *>np.PyArray_Zero(ap1)
         if zptr == NULL:
             return None
@@ -285,7 +290,7 @@ def _order_filterND(a0, domain, int order=0):
                 k += 1
 
             fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)
-            qsort(sort_buffer, n2_nonzero, is1, compare_func)
+            qsort(<void *>sort_buffer, n2_nonzero, is1, compare_func)
             memcpy(op, sort_buffer + order*is1, os)
 
             incr = increment(ret_ind, np.PyArray_NDIM(ret), np.PyArray_DIMS(ret)) # increment index counter
@@ -307,7 +312,7 @@ def _order_filterND(a0, domain, int order=0):
     finally:
         # clean up after PyArray_Zero()
         if zptr != NULL:
-            np.PyDataMem_FREE(zptr)
+            np.NpyDataMem_FREE(zptr)
         
     return None
 
@@ -460,7 +465,7 @@ def _remez(int numtaps, object bands, object des, object weight, int type=BANDPA
         elif err == -2:
             raise MemoryError
 
-    return PyArray_Return(h)
+    return np.PyArray_Return(h)
 
 
 def _median2d(image, size=None):
@@ -500,7 +505,7 @@ def _median2d(image, size=None):
     else:
         raise ValueError("2D median filter only supports Int8, Float32, and Float64.")
 
-    return PyArray_Return(a_out);
+    return np.PyArray_Return(a_out);
 
 
 # static char doc_correlateND[] =
