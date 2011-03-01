@@ -87,9 +87,10 @@ def build_egg():
                 print path
                 z.write(path, 'EGG-INFO/prefix/DLLs/' + fn)
 
-    z.write(r'C:\Program Files (x86)\Intel\ComposerXE-2011'
-            r'\redist\ia32\compiler\libiomp5md.dll',
-            'EGG-INFO/prefix/DLLs/libiomp5md.dll')
+    for fn in ('libiomp5md.dll', 'libifcoremd.dll', 'libmmd.dll'):
+        z.write(join(r'C:\Program Files (x86)\Intel\ComposerXE-2011',
+                     r'redist\ia32\compiler' + fn),
+                'EGG-INFO/prefix/DLLs/' + fn)
 
     z.writestr('scipy/__config__.py', config_txt)
     z.writestr('scipy/version.py', version_txt)
