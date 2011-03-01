@@ -516,6 +516,17 @@ cdef extern from "flapack_fc.h":
         fwi_integer_t * lwork,
         fwi_integer_t * info
     )
+    void cungrq "F_FUNC(cungrq,CUNGRQ)"(
+        fwi_integer_t * m,
+        fwi_integer_t * n,
+        fwi_integer_t * k,
+        fwc_complex_t * a,
+        fwi_integer_t * lda,
+        fwc_complex_t * tau,
+        fwc_complex_t * work,
+        fwi_integer_t * lwork,
+        fwi_integer_t * info
+    )
     void dgbsv "F_FUNC(dgbsv,DGBSV)"(
         fwi_integer_t * n,
         fwi_integer_t * kl,
@@ -766,6 +777,17 @@ cdef extern from "flapack_fc.h":
         size_t uplo_len_
     )
     void dorgqr "F_FUNC(dorgqr,DORGQR)"(
+        fwi_integer_t * m,
+        fwi_integer_t * n,
+        fwi_integer_t * k,
+        fwr_dbl_t * a,
+        fwi_integer_t * lda,
+        fwr_dbl_t * tau,
+        fwr_dbl_t * work,
+        fwi_integer_t * lwork,
+        fwi_integer_t * info
+    )
+    void dorgrq "F_FUNC(dorgrq,DORGRQ)"(
         fwi_integer_t * m,
         fwi_integer_t * n,
         fwi_integer_t * k,
@@ -1283,6 +1305,17 @@ cdef extern from "flapack_fc.h":
         size_t uplo_len_
     )
     void sorgqr "F_FUNC(sorgqr,SORGQR)"(
+        fwi_integer_t * m,
+        fwi_integer_t * n,
+        fwi_integer_t * k,
+        fwr_real_t * a,
+        fwi_integer_t * lda,
+        fwr_real_t * tau,
+        fwr_real_t * work,
+        fwi_integer_t * lwork,
+        fwi_integer_t * info
+    )
+    void sorgrq "F_FUNC(sorgrq,SORGRQ)"(
         fwi_integer_t * m,
         fwi_integer_t * n,
         fwi_integer_t * k,
@@ -2050,6 +2083,17 @@ cdef extern from "flapack_fc.h":
         size_t diag_len_
     )
     void zungqr "F_FUNC(zungqr,ZUNGQR)"(
+        fwi_integer_t * m,
+        fwi_integer_t * n,
+        fwi_integer_t * k,
+        fwc_complex_x16_t * a,
+        fwi_integer_t * lda,
+        fwc_complex_x16_t * tau,
+        fwc_complex_x16_t * work,
+        fwi_integer_t * lwork,
+        fwi_integer_t * info
+    )
+    void zungrq "F_FUNC(zungrq,ZUNGRQ)"(
         fwi_integer_t * m,
         fwi_integer_t * n,
         fwi_integer_t * k,
