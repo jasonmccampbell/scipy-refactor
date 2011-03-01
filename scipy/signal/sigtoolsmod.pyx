@@ -8,6 +8,8 @@
 cimport numpy as np
 np.import_array()
 
+ctypedef int (*CompareFunction) (void *, void *)
+
 cdef extern from "stdlib.h":
     void free(void *ptr)
     void * malloc(size_t size)
@@ -20,6 +22,8 @@ cdef extern from "string.h":
     void * memset(void *b, int c, size_t n)
 
 cdef extern from "sigtools.h":
+    CompareFunction COMPARE_CONST_HELPER(CompareFunction)
+
     int index_out_of_bounds(np.npy_intp *indices, np.npy_intp *max_indices, int ndims)
     np.npy_intp compute_offsets(np.npy_uintp *offsets, np.npy_intp *offsets2, np.npy_intp *dim1, np.npy_intp *dim2, np.npy_intp *dim3, np.npy_intp *mode_dep, int nd)
     int increment(np.npy_intp *ret_ind, int nd, np.npy_intp *max_ind)
@@ -108,11 +112,11 @@ cdef int DOUBLE_compare(double *ip1, double *ip2):
 cdef int FLOAT_compare(float *ip1, float *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int LONGDOUBLE_compare(longdouble *ip1, longdouble *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int LONGDOUBLE_compare(np.npy_longdouble *ip1, np.npy_longdouble *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int BYTE_compare(byte *ip1, byte *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int BYTE_compare(np.npy_byte *ip1, np.npy_byte *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int SHORT_compare(short *ip1, short *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
@@ -123,43 +127,41 @@ cdef int INT_compare(int *ip1, int *ip2):
 cdef int LONG_compare(long *ip1, long *ip2):
     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int LONGLONG_compare(longlong *ip1, longlong *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int LONGLONG_compare(np.npy_longlong *ip1, np.npy_longlong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int UBYTE_compare(ubyte *ip1, ubyte *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int UBYTE_compare(np.npy_ubyte *ip1, np.npy_ubyte *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int USHORT_compare(ushort *ip1, ushort *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int USHORT_compare(np.npy_ushort *ip1, np.npy_ushort *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int UINT_compare(uint *ip1, uint *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int UINT_compare(np.npy_uint *ip1, np.npy_uint *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int ULONG_compare(ulong *ip1, ulong *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int ULONG_compare(np.npy_ulong *ip1, np.npy_ulong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
-#cdef int ULONGLONG_compare(ulonglong *ip1, ulonglong *ip2):
-#    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+cdef int ULONGLONG_compare(np.npy_ulonglong *ip1, np.npy_ulonglong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
 
 cdef int OBJECT_compare(object ip1, object ip2):
     return (ip1 == ip2) != 1
 
-ctypedef int (*CompareFunction) (void *, void *)
-
 cdef CompareFunction compare_functions[21]
-#compare_functions[1] = <CompareFunction>BYTE_compare
-#compare_functions[2] = <CompareFunction>UBYTE_compare
+compare_functions[1] = <CompareFunction>BYTE_compare
+compare_functions[2] = <CompareFunction>UBYTE_compare
 compare_functions[3] = <CompareFunction>SHORT_compare
-#compare_functions[4] = <CompareFunction>USHORT_compare
+compare_functions[4] = <CompareFunction>USHORT_compare
 compare_functions[5] = <CompareFunction>INT_compare
-#compare_functions[6] = <CompareFunction>UINT_compare
+compare_functions[6] = <CompareFunction>UINT_compare
 compare_functions[7] = <CompareFunction>LONG_compare
-#compare_functions[8] = <CompareFunction>ULONG_compare
-#compare_functions[9] = <CompareFunction>LONGLONG_compare
-#compare_functions[10] = <CompareFunction>ULONGLONG_compare
+compare_functions[8] = <CompareFunction>ULONG_compare
+compare_functions[9] = <CompareFunction>LONGLONG_compare
+compare_functions[10] = <CompareFunction>ULONGLONG_compare
 compare_functions[11] = <CompareFunction>FLOAT_compare
 compare_functions[12] = <CompareFunction>DOUBLE_compare
-#compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
+compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
 compare_functions[17] = <CompareFunction>OBJECT_compare
 
 def _order_filterND(a0, domain, int order=0):
@@ -290,7 +292,7 @@ def _order_filterND(a0, domain, int order=0):
                 k += 1
 
             fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)
-            qsort(<void *>sort_buffer, n2_nonzero, is1, compare_func)
+            qsort(<void *>sort_buffer, n2_nonzero, is1, COMPARE_CONST_HELPER(compare_func))
             memcpy(op, sort_buffer + order*is1, os)
 
             incr = increment(ret_ind, np.PyArray_NDIM(ret), np.PyArray_DIMS(ret)) # increment index counter

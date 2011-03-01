@@ -6,7 +6,7 @@
     #define PyString_FromFormat PyBytes_FromFormat
 #endif
 
-#include <npy_defs.h>
+#include <npy_common.h>
 
 #define BOUNDARY_MASK 12
 #define OUTSIZE_MASK 3
@@ -28,6 +28,7 @@
 
 #define MAXTYPES 21
 
+#define COMPARE_CONST_HELPER(x) ((int (*)(const void*, const void*))(x))
 
 /* Generally useful structures for passing data into and out of
    subroutines.  Used in the generic routines instead of the

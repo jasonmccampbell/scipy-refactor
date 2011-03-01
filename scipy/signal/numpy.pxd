@@ -1,26 +1,38 @@
-ctypedef int npy_int
-ctypedef double double_t
-ctypedef int npy_intp
-ctypedef unsigned int npy_uintp
-ctypedef signed char        npy_int8
-ctypedef signed short       npy_int16
-ctypedef signed int         npy_int32
-ctypedef signed long long   npy_int64
-ctypedef unsigned char        npy_uint8
-ctypedef unsigned short       npy_uint16
-ctypedef unsigned int         npy_uint32
-ctypedef unsigned long long   npy_uint64
-ctypedef float        npy_float32
-ctypedef double       npy_float64
+ctypedef signed char      npy_byte
+ctypedef signed short     npy_short
+ctypedef signed int       npy_int
+ctypedef signed long      npy_long
+ctypedef signed long long npy_longlong
+ctypedef unsigned char      npy_ubyte
+ctypedef unsigned short     npy_ushort
+ctypedef unsigned int       npy_uint
+ctypedef unsigned long      npy_ulong
+ctypedef unsigned long long npy_ulonglong
+ctypedef float          npy_float
+ctypedef double         npy_double
+ctypedef long double    npy_longdouble
+ctypedef double         double_t
+ctypedef int            npy_intp
+ctypedef unsigned int   npy_uintp
+ctypedef npy_byte       npy_int8
+ctypedef npy_short      npy_int16
+ctypedef npy_int        npy_int32
+ctypedef npy_longlong   npy_int64
+ctypedef npy_ubyte      npy_uint8
+ctypedef npy_ushort     npy_uint16
+ctypedef npy_uint       npy_uint32
+ctypedef npy_ulonglong  npy_uint64
+ctypedef npy_float      npy_float32
+ctypedef npy_double     npy_float64
 ctypedef npy_intp       intp_t
 ctypedef npy_int8       int8_t
 ctypedef npy_int16      int16_t
 ctypedef npy_int32      int32_t
 ctypedef npy_int64      int64_t
-ctypedef npy_uint8       uint8_t
-ctypedef npy_uint16      uint16_t
-ctypedef npy_uint32      uint32_t
-ctypedef npy_uint64      uint64_t
+ctypedef npy_uint8      uint8_t
+ctypedef npy_uint16     uint16_t
+ctypedef npy_uint32     uint32_t
+ctypedef npy_uint64     uint64_t
 ctypedef npy_float32    float32_t
 ctypedef npy_float64    float64_t
 
