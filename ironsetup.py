@@ -20,7 +20,8 @@ def msbuild(subproject, config):
 
 
 def buildall():
-    for subproject in ["special", "stats", "linalg", "integrate"]:
+    for subproject in ["linalg", "stats", "special"]:
+        print "##### %s ##### begin" % subproject
         dir_path = join(src_dir, "scipy", subproject)
         os.chdir(dir_path)
         if '--clean' in sys.argv:
@@ -34,6 +35,7 @@ def buildall():
             msbuild(subproject, "Debug")
 
         os.chdir(src_dir)
+        print "##### %s ##### end" % subproject
 
 
 if __name__ == '__main__':
