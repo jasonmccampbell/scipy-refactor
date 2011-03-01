@@ -87,6 +87,10 @@ def build_egg():
                 print path
                 z.write(path, 'EGG-INFO/prefix/DLLs/' + fn)
 
+    z.write(r'C:\Program Files (x86)\Intel\ComposerXE-2011'
+            r'\redist\ia32\compiler\libiomp5md.dll',
+            'EGG-INFO/prefix/DLLs/libiomp5md.dll')
+
     z.writestr('scipy/__config__.py', config_txt)
     z.writestr('scipy/version.py', version_txt)
     z.writestr('EGG-INFO/spec/depend', spec_txt)
