@@ -563,6 +563,17 @@ FORTRAN_CALLSPEC void F_FUNC_MANGLING(cungqr,CUNGQR)(
     fwi_integer_t * lwork,
     fwi_integer_t * info
 );
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(cungrq,CUNGRQ)(
+    fwi_integer_t * m,
+    fwi_integer_t * n,
+    fwi_integer_t * k,
+    fwc_complex_t * a,
+    fwi_integer_t * lda,
+    fwc_complex_t * tau,
+    fwc_complex_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * info
+);
 FORTRAN_CALLSPEC void F_FUNC_MANGLING(dgbsv,DGBSV)(
     fwi_integer_t * n,
     fwi_integer_t * kl,
@@ -813,6 +824,17 @@ FORTRAN_CALLSPEC void F_FUNC_MANGLING(dlauum,DLAUUM)(
     size_t uplo_len_
 );
 FORTRAN_CALLSPEC void F_FUNC_MANGLING(dorgqr,DORGQR)(
+    fwi_integer_t * m,
+    fwi_integer_t * n,
+    fwi_integer_t * k,
+    fwr_dbl_t * a,
+    fwi_integer_t * lda,
+    fwr_dbl_t * tau,
+    fwr_dbl_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * info
+);
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(dorgrq,DORGRQ)(
     fwi_integer_t * m,
     fwi_integer_t * n,
     fwi_integer_t * k,
@@ -1330,6 +1352,17 @@ FORTRAN_CALLSPEC void F_FUNC_MANGLING(slauum,SLAUUM)(
     size_t uplo_len_
 );
 FORTRAN_CALLSPEC void F_FUNC_MANGLING(sorgqr,SORGQR)(
+    fwi_integer_t * m,
+    fwi_integer_t * n,
+    fwi_integer_t * k,
+    fwr_real_t * a,
+    fwi_integer_t * lda,
+    fwr_real_t * tau,
+    fwr_real_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * info
+);
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(sorgrq,SORGRQ)(
     fwi_integer_t * m,
     fwi_integer_t * n,
     fwi_integer_t * k,
@@ -2097,6 +2130,17 @@ FORTRAN_CALLSPEC void F_FUNC_MANGLING(ztrtrs,ZTRTRS)(
     size_t diag_len_
 );
 FORTRAN_CALLSPEC void F_FUNC_MANGLING(zungqr,ZUNGQR)(
+    fwi_integer_t * m,
+    fwi_integer_t * n,
+    fwi_integer_t * k,
+    fwc_complex_x16_t * a,
+    fwi_integer_t * lda,
+    fwc_complex_x16_t * tau,
+    fwc_complex_x16_t * work,
+    fwi_integer_t * lwork,
+    fwi_integer_t * info
+);
+FORTRAN_CALLSPEC void F_FUNC_MANGLING(zungrq,ZUNGRQ)(
     fwi_integer_t * m,
     fwi_integer_t * n,
     fwi_integer_t * k,

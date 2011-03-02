@@ -21,6 +21,7 @@ chegv, zhegv(...)
 chegvd, zhegvd(...)
 chegvx, zhegvx(...)
 cungqr, zungqr(...)
+cungrq, zungrq(...)
 dgeev(...)
 dgegv(...)
 dgelss(...)
@@ -47,6 +48,7 @@ slamch, dlamch(...)
 slaswp, dlaswp, claswp, zlaswp(...)
 slauum, dlauum, clauum, zlauum(...)
 sorgqr, dorgqr(...)
+sorgrq, dorgrq(...)
 spbsv, dpbsv, cpbsv, zpbsv(...)
 spbtrf, dpbtrf, cpbtrf, zpbtrf(...)
 spbtrs, dpbtrs, cpbtrs, zpbtrs(...)
@@ -780,6 +782,7 @@ def zhbevd(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object l
         raise ValueError("len(uplo_f) != 1")
     fc.zhbevd(fw_jobz_f, fw_uplo_f, &n, &kd, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_dbl_complex_t*>np.PyArray_DATA(z_), &ldz, <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrwork_, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork_, &info, 1, 1)
     return (w_, z_, info,)
+
 def chbevx(object ab, fwr_real_t vl, fwr_real_t vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, fwr_real_t abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
     """chbevx(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, overwrite_ab, w, z, ifail]) -> (w, z, m, ifail, info)
 
@@ -968,6 +971,7 @@ def zhbevx(object ab, fwr_dbl_t vl, fwr_dbl_t vu, fwi_integer_t il, fwi_integer_
         raise ValueError("len(uplo_f) != 1")
     fc.zhbevx(fw_jobz_f, fw_range_f, fw_uplo_f, &n, &kd, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwc_dbl_complex_t*>np.PyArray_DATA(q_), &ldq, &vl, &vu, &il, &iu, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_dbl_complex_t*>np.PyArray_DATA(z_), &ldz, <fwc_dbl_complex_t*>np.PyArray_DATA(work_), <fwr_dbl_t*>np.PyArray_DATA(rwork_), <fwi_integer_t*>np.PyArray_DATA(iwork_), <fwi_integer_t*>np.PyArray_DATA(ifail_), &info, 1, 1, 1)
     return (w_, z_, m, ifail_, info,)
+
 def cheev(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
     """cheev(a[, compute_v, lower, lwork, overwrite_a, w]) -> (w, a, info)
 
@@ -1082,6 +1086,7 @@ def zheev(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwo
         raise ValueError("len(uplo_f) != 1")
     fc.zheev(fw_jobz_f, fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &info, 1, 1)
     return (w_, a_, info,)
+
 def cheevr(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
     """cheevr(a[, jobz, range, uplo, il, iu, lwork, overwrite_a, w, z]) -> (w, z, info)
 
@@ -1234,6 +1239,7 @@ def zheevr(object a, object jobz='V', object range='A', object uplo='L', fwi_int
         raise ValueError("len(uplo) != 1")
     fc.zheevr(fw_jobz, fw_range, fw_uplo, &n, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &lda, &vl, &vu, &il, &iu_, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_complex_x16_t*>np.PyArray_DATA(z_), &ldz, <fwi_integer_t*>np.PyArray_DATA(isuppz_), <fwc_complex_x16_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &info, 1, 1, 1)
     return (w_, z_, info,)
+
 def chegv(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """chegv(a, b[, itype, jobz, uplo, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
@@ -1346,6 +1352,7 @@ def zhegv(object a, object b, fwi_integer_t itype=1, object jobz='V', object upl
         raise ValueError("len(uplo) != 1")
     fc.zhegv(&itype, fw_jobz, fw_uplo, &n, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_x16_t*>np.PyArray_DATA(b_), &ldb, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_complex_x16_t*>np.PyArray_DATA(work_), &lwork, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &info, 1, 1)
     return (a_, w_, info,)
+
 def chegvd(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """chegvd(a, b[, itype, jobz, uplo, lwork, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
@@ -1468,6 +1475,7 @@ def zhegvd(object a, object b, fwi_integer_t itype=1, object jobz='V', object up
         raise ValueError("len(uplo) != 1")
     fc.zhegvd(&itype, fw_jobz, fw_uplo, &n, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_x16_t*>np.PyArray_DATA(b_), &ldb, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_complex_x16_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &info, 1, 1)
     return (a_, w_, info,)
+
 def chegvx(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
     """chegvx(a, b, iu[, itype, jobz, uplo, il, lwork, overwrite_a, overwrite_b, w, z, ifail]) -> (w, z, ifail, info)
 
@@ -1640,6 +1648,7 @@ def zhegvx(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object j
         raise ValueError("len(uplo) != 1")
     fc.zhegvx(&itype, fw_jobz, fw_range, fw_uplo, &n, <fwc_complex_x16_t*>np.PyArray_DATA(a_), &lda, <fwc_complex_x16_t*>np.PyArray_DATA(b_), &ldb, &vl, &vu, &il, &iu, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwc_complex_x16_t*>np.PyArray_DATA(z_), &ldz, <fwc_complex_x16_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), <fwi_integer_t*>np.PyArray_DATA(iwork_), <fwi_integer_t*>np.PyArray_DATA(ifail_), &info, 1, 1, 1)
     return (w_, z_, ifail_, info,)
+
 def cungqr(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
     """cungqr(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
 
@@ -1725,6 +1734,90 @@ def zungqr(object a, object tau, object lwork=None, bint overwrite_a=False, obje
     fc.zungqr(&m, &n, &k, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(tau_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, work_, info,)
 
+def cungrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """cungrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwc_complex_t_, 2D array, dimension(m, n), intent inout
+    tau : fwc_complex_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwc_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwc_complex_t_, 2D array, dimension(m, n), intent inout
+    work : fwc_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwc_complex_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwc_complex_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.cungrq(&m, &n, &k, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(tau_), <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+def zungrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """zungrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwc_dbl_complex_t_, 2D array, dimension(m, n), intent inout
+    tau : fwc_dbl_complex_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwc_dbl_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwc_dbl_complex_t_, 2D array, dimension(m, n), intent inout
+    work : fwc_dbl_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwc_dbl_complex_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.zungrq(&m, &n, &k, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(tau_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
 
 def dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
     """dgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, wr, wi, vl, vr]) -> (wr, wi, vl, vr, info)
@@ -2333,6 +2426,7 @@ def zgbsv(fwi_integer_t kl, fwi_integer_t ku, object ab, object b, bint overwrit
     for i in range(0, piv_shape[0]):
         piv_[i] -= 1
     return (ab_, piv_, b_, info,)
+
 def sgbtrf(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object n=None, object ldab=None, bint overwrite_ab=False, object ipiv=None):
     """sgbtrf(ab, kl, ku[, m, n, ldab, overwrite_ab, ipiv]) -> (ab, ipiv, info)
 
@@ -2505,6 +2599,7 @@ def zgbtrf(object ab, fwi_integer_t kl, fwi_integer_t ku, object m=None, object 
     for i in range(ipiv_shape[0]):
         ipiv_[i] -= 1
     return (ab_, ipiv_, info,)
+
 def sgbtrs(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv, fwi_integer_t trans=0, object n=None, object ldab=None, object ldb=None, bint overwrite_b=False):
     """sgbtrs(ab, kl, ku, b, ipiv[, trans, n, ldab, ldb, overwrite_b]) -> (b, info)
 
@@ -2737,6 +2832,7 @@ def zgbtrs(object ab, fwi_integer_t kl, fwi_integer_t ku, object b, object ipiv,
     for i in range(ipiv_shape[0]):
         ipiv_[i] -= 1
     return (b_, info,)
+
 def sgebal(object a, fwi_integer_t scale=0, fwi_integer_t permute=0, bint overwrite_a=False, object pivscale=None):
     """sgebal(a[, scale, permute, overwrite_a, pivscale]) -> (a, lo, hi, pivscale, info)
 
@@ -2929,6 +3025,7 @@ def zgebal(object a, fwi_integer_t scale=0, fwi_integer_t permute=0, bint overwr
     hi -= 1
     lo -= 1
     return (a_, lo, hi, pivscale_, info,)
+
 def sgees(object select, object a, fwi_integer_t compute_v=1, fwi_integer_t sort_t=0, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vs=None, object work=None):
     """sgees(select, a[, compute_v, sort_t, lwork, overwrite_a, wr, wi, vs, work]) -> (a, sdim, wr, wi, vs, work, info)
 
@@ -3683,6 +3780,7 @@ def zgeqrf(object a, object lwork=None, bint overwrite_a=False, object tau=None,
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fc.zgeqrf(&m, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(tau_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, tau_, work_, info,)
+
 def sgerqf(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
     """sgerqf(a[, lwork, overwrite_a, tau, work]) -> (a, tau, work, info)
 
@@ -4119,6 +4217,7 @@ def zgesv(object a, object b, bint overwrite_a=False, bint overwrite_b=False, ob
     for i in range(piv_shape[0]):
         piv_[i] -= 1
     return (a_, piv_, b_, info,)
+
 def sgetrf(object a, bint overwrite_a=False, object piv=None):
     """sgetrf(a[, overwrite_a, piv]) -> (a, piv, info)
 
@@ -4267,6 +4366,7 @@ def zgetrf(object a, bint overwrite_a=False, object piv=None):
     for i in range(piv_shape[0]):
         piv_[i] -= 1
     return (a_, piv_, info,)
+
 def sgetri(object lu, object piv, object lwork=None, bint overwrite_lu=False):
     """sgetri(lu, piv[, lwork, overwrite_lu]) -> (lu, info)
 
@@ -4443,6 +4543,7 @@ def zgetri(object lu, object piv, object lwork=None, bint overwrite_lu=False):
     for i in range(piv_shape[0]):
         piv_[i] -= 1
     return (lu_, info,)
+
 def sgetrs(object lu, object piv, object b, fwi_integer_t trans=0, bint overwrite_b=False):
     """sgetrs(lu, piv, b[, trans, overwrite_b]) -> (b, info)
 
@@ -4801,6 +4902,7 @@ def dlamch(object cmach):
         raise ValueError("len(cmach) != 1")
     fw_ret_arg = fc.dlamch(fw_cmach, 1)
     return fw_ret_arg
+
 def slaswp(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer_t off=0, fwi_integer_t inc=1, bint overwrite_a=False):
     """slaswp(a, piv[, k1, k2, off, inc, overwrite_a]) -> a
 
@@ -5013,6 +5115,7 @@ def zlaswp(object a, object piv, fwi_integer_t k1=0, object k2=None, fwi_integer
     for i in range(piv_shape[0]):
         piv_[i] -= 1
     return a_
+
 def slauum(object c, fwi_integer_t lower=0, bint overwrite_c=False):
     """slauum(c[, lower, overwrite_c]) -> (c, info)
 
@@ -5157,6 +5260,7 @@ def zlauum(object c, fwi_integer_t lower=0, bint overwrite_c=False):
         raise ValueError("len(uplo_f) != 1")
     fc.zlauum(fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &n, &info, 1)
     return (c_, info,)
+
 def sorgqr(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
     """sorgqr(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
 
@@ -5241,6 +5345,92 @@ def dorgqr(object a, object tau, object lwork=None, bint overwrite_a=False, obje
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fc.dorgqr(&m, &n, &k, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(tau_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, work_, info,)
+
+def sorgrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """sorgrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwr_real_t_, 2D array, dimension(m, n), intent inout
+    tau : fwr_real_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwr_real_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwr_real_t_, 2D array, dimension(m, n), intent inout
+    work : fwr_real_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwr_real_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwr_real_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.sorgrq(&m, &n, &k, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(tau_), <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+def dorgrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """dorgrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwr_dbl_t_, 2D array, dimension(m, n), intent inout
+    tau : fwr_dbl_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwr_dbl_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwr_dbl_t_, 2D array, dimension(m, n), intent inout
+    work : fwr_dbl_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwr_dbl_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.dorgrq(&m, &n, &k, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(tau_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+
 def spbsv(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False, bint overwrite_b=False):
     """spbsv(ab, b[, lower, ldab, overwrite_ab, overwrite_b]) -> (ab, b, info)
 
@@ -5437,6 +5627,7 @@ def zpbsv(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint ove
         raise ValueError("len(uplo_f) != 1")
     fc.zpbsv(fw_uplo_f, &n, &kd, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &info, 1)
     return (ab_, b_, info,)
+
 def spbtrf(object ab, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False):
     """spbtrf(ab[, lower, ldab, overwrite_ab]) -> (ab, info)
 
@@ -5593,6 +5784,7 @@ def zpbtrf(object ab, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab
         raise ValueError("len(uplo_f) != 1")
     fc.zpbtrf(fw_uplo_f, &n, &kd, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, &info, 1)
     return (ab_, info,)
+
 def spbtrs(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_b=False):
     """spbtrs(ab, b[, lower, ldab, overwrite_b]) -> (b, info)
 
@@ -5781,6 +5973,7 @@ def zpbtrs(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint ov
         raise ValueError("len(uplo_f) != 1")
     fc.zpbtrs(fw_uplo_f, &n, &kd, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(ab_), &ldab_, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &ldb, &info, 1)
     return (b_, info,)
+
 def sposv(object a, object b, fwi_integer_t lower=0, bint overwrite_a=False, bint overwrite_b=False):
     """sposv(a, b[, lower, overwrite_a, overwrite_b]) -> (a, b, info)
 
@@ -5969,6 +6162,7 @@ def zposv(object a, object b, fwi_integer_t lower=0, bint overwrite_a=False, bin
         raise ValueError("len(uplo_f) != 1")
     fc.zposv(fw_uplo_f, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
     return (a_, b_, info,)
+
 def spotrf(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrite_a=False):
     """spotrf(a[, lower, clean, overwrite_a]) -> (a, info)
 
@@ -6165,6 +6359,7 @@ def zpotrf(object a, fwi_integer_t lower=0, fwi_integer_t clean=1, bint overwrit
                 for i in range(j + 1, n):
                     a_[i, j] = 0
     return (a_, info,)
+
 def spotri(object c, fwi_integer_t lower=0, bint overwrite_c=False):
     """spotri(c[, lower, overwrite_c]) -> (c, info)
 
@@ -6309,6 +6504,7 @@ def zpotri(object c, fwi_integer_t lower=0, bint overwrite_c=False):
         raise ValueError("len(uplo_f) != 1")
     fc.zpotri(fw_uplo_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &n, &info, 1)
     return (c_, info,)
+
 def spotrs(object c, object b, fwi_integer_t lower=0, bint overwrite_b=False):
     """spotrs(c, b[, lower, overwrite_b]) -> (b, info)
 
@@ -6489,6 +6685,7 @@ def zpotrs(object c, object b, fwi_integer_t lower=0, bint overwrite_b=False):
         raise ValueError("len(uplo_f) != 1")
     fc.zpotrs(fw_uplo_f, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &n, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &n, &info, 1)
     return (b_, info,)
+
 def ssbev(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=True, object w=None, object z=None):
     """ssbev(ab[, compute_v, lower, ldab, overwrite_ab, w, z]) -> (w, z, info)
 
@@ -6609,6 +6806,7 @@ def dsbev(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ld
         raise ValueError("len(uplo_f) != 1")
     fc.dsbev(fw_jobz_f, fw_uplo_f, &n, &kd, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(z_), &ldz, <fwr_dbl_t*>np.PyArray_DATA(work_), &info, 1, 1)
     return (w_, z_, info,)
+
 def ssbevd(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object ldab=None, object liwork=None, bint overwrite_ab=True, object w=None, object z=None):
     """ssbevd(ab[, compute_v, lower, ldab, liwork, overwrite_ab, w, z]) -> (w, z, info)
 
@@ -6743,6 +6941,7 @@ def dsbevd(object ab, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object l
         raise ValueError("len(uplo_f) != 1")
     fc.dsbevd(fw_jobz_f, fw_uplo_f, &n, &kd, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(z_), &ldz, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork_, &info, 1, 1)
     return (w_, z_, info,)
+
 def ssbevx(object ab, fwr_real_t vl, fwr_real_t vu, fwi_integer_t il, fwi_integer_t iu, object ldab=None, fwi_integer_t compute_v=1, fwi_integer_t range=0, fwi_integer_t lower=0, fwr_real_t abstol=0.0, object mmax=None, bint overwrite_ab=True, object w=None, object z=None, object ifail=None):
     """ssbevx(ab, vl, vu, il, iu[, ldab, compute_v, range, lower, abstol, mmax, overwrite_ab, w, z, ifail]) -> (w, z, m, ifail, info)
 
@@ -6927,6 +7126,7 @@ def dsbevx(object ab, fwr_dbl_t vl, fwr_dbl_t vu, fwi_integer_t il, fwi_integer_
         raise ValueError("len(uplo_f) != 1")
     fc.dsbevx(fw_jobz_f, fw_range_f, fw_uplo_f, &n, &kd, <fwr_dbl_t*>np.PyArray_DATA(ab_), &ldab_, <fwr_dbl_t*>np.PyArray_DATA(q_), &ldq, &vl, &vu, &il, &iu, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(z_), &ldz, <fwr_dbl_t*>np.PyArray_DATA(work_), <fwi_integer_t*>np.PyArray_DATA(iwork_), <fwi_integer_t*>np.PyArray_DATA(ifail_), &info, 1, 1, 1)
     return (w_, z_, m, ifail_, info,)
+
 def ssyev(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwork=None, bint overwrite_a=False, object w=None):
     """ssyev(a[, compute_v, lower, lwork, overwrite_a, w]) -> (w, a, info)
 
@@ -7037,6 +7237,7 @@ def dsyev(object a, fwi_integer_t compute_v=1, fwi_integer_t lower=0, object lwo
         raise ValueError("len(uplo_f) != 1")
     fc.dsyev(fw_jobz_f, fw_uplo_f, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &n, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info, 1, 1)
     return (w_, a_, info,)
+
 def ssyevr(object a, object jobz='V', object range='A', object uplo='L', fwi_integer_t il=1, object iu=None, object lwork=None, bint overwrite_a=False, object w=None, object z=None):
     """ssyevr(a[, jobz, range, uplo, il, iu, lwork, overwrite_a, w, z]) -> (w, z, info)
 
@@ -7183,6 +7384,7 @@ def dsyevr(object a, object jobz='V', object range='A', object uplo='L', fwi_int
         raise ValueError("len(uplo) != 1")
     fc.dsyevr(fw_jobz, fw_range, fw_uplo, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, &vl, &vu, &il, &iu_, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(z_), &ldz, <fwi_integer_t*>np.PyArray_DATA(isuppz_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &info, 1, 1, 1)
     return (w_, z_, info,)
+
 def ssygv(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """ssygv(a, b[, itype, jobz, uplo, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
@@ -7291,6 +7493,7 @@ def dsygv(object a, object b, fwi_integer_t itype=1, object jobz='V', object upl
         raise ValueError("len(uplo) != 1")
     fc.dsygv(&itype, fw_jobz, fw_uplo, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, &info, 1, 1)
     return (a_, w_, info,)
+
 def ssygvd(object a, object b, fwi_integer_t itype=1, object jobz='V', object uplo='L', object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None):
     """ssygvd(a, b[, itype, jobz, uplo, lwork, overwrite_a, overwrite_b, w]) -> (a, w, info)
 
@@ -7407,6 +7610,7 @@ def dsygvd(object a, object b, fwi_integer_t itype=1, object jobz='V', object up
         raise ValueError("len(uplo) != 1")
     fc.dsygvd(&itype, fw_jobz, fw_uplo, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, &info, 1, 1)
     return (a_, w_, info,)
+
 def ssygvx(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object jobz='V', object uplo='L', fwi_integer_t il=1, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object w=None, object z=None, object ifail=None):
     """ssygvx(a, b, iu[, itype, jobz, uplo, il, lwork, overwrite_a, overwrite_b, w, z, ifail]) -> (w, z, ifail, info)
 
@@ -7575,6 +7779,7 @@ def dsygvx(object a, object b, fwi_integer_t iu, fwi_integer_t itype=1, object j
         raise ValueError("len(uplo) != 1")
     fc.dsygvx(&itype, fw_jobz, fw_range, fw_uplo, &n, <fwr_dbl_t*>np.PyArray_DATA(a_), &lda, <fwr_dbl_t*>np.PyArray_DATA(b_), &ldb, &vl, &vu, &il, &iu, &abstol, &m, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwr_dbl_t*>np.PyArray_DATA(z_), &ldz, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, <fwi_integer_t*>np.PyArray_DATA(iwork_), <fwi_integer_t*>np.PyArray_DATA(ifail_), &info, 1, 1, 1)
     return (w_, z_, ifail_, info,)
+
 def strtri(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=0, bint overwrite_c=False):
     """strtri(c[, lower, unitdiag, overwrite_c]) -> (c, info)
 
@@ -7747,6 +7952,7 @@ def ztrtri(object c, fwi_integer_t lower=0, fwi_integer_t unitdiag=0, bint overw
         raise ValueError("len(diag_f) != 1")
     fc.ztrtri(fw_uplo_f, fw_diag_f, &n, <fwc_dbl_complex_t*>np.PyArray_DATA(c_), &n, &info, 1, 1)
     return (c_, info,)
+
 def strtrs(object a, object b, fwi_integer_t lower=0, fwi_integer_t trans=0, fwi_integer_t unitdiag=0, object lda=None, bint overwrite_b=False):
     """strtrs(a, b[, lower, trans, unitdiag, lda, overwrite_b]) -> (b, info)
 
@@ -8441,7 +8647,7 @@ cdef char fw_aschar(object s):
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 f509ee88b58717125b0f055b7176ad0b6fa72241
+# Fwrap: pyf-sha1 4a68d1da76618cd2340e64fdc5f47ee6517a036e
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
@@ -8784,7 +8990,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude cunglq
 # Fwrap: exclude cungql
 # Fwrap: exclude cungr2
-# Fwrap: exclude cungrq
 # Fwrap: exclude cungtr
 # Fwrap: exclude cunm2l
 # Fwrap: exclude cunm2r
@@ -9040,7 +9245,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude dorglq
 # Fwrap: exclude dorgql
 # Fwrap: exclude dorgr2
-# Fwrap: exclude dorgrq
 # Fwrap: exclude dorgtr
 # Fwrap: exclude dorm2l
 # Fwrap: exclude dorm2r
@@ -9439,7 +9643,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude sorglq
 # Fwrap: exclude sorgql
 # Fwrap: exclude sorgr2
-# Fwrap: exclude sorgrq
 # Fwrap: exclude sorgtr
 # Fwrap: exclude sorm2l
 # Fwrap: exclude sorm2r
@@ -9915,7 +10118,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude zunglq
 # Fwrap: exclude zungql
 # Fwrap: exclude zungr2
-# Fwrap: exclude zungrq
 # Fwrap: exclude zungtr
 # Fwrap: exclude zunm2l
 # Fwrap: exclude zunm2r

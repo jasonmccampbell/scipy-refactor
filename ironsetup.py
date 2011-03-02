@@ -19,24 +19,24 @@ def msbuild(subproject, config):
     print "%s complete"
 
 
-def buildall():
-    for subproject in ["linalg", "stats", "special"]:
-        print "##### %s ##### begin" % subproject
-        dir_path = join(src_dir, "scipy", subproject)
-        os.chdir(dir_path)
-        if '--clean' in sys.argv:
-            cmd = 'rd /s /q Release Debug'
-            print cmd
-            os.system(cmd)
+def build_subproject(subproject):
+    print "##### %s ##### begin" % subproject
+    dir_path = join(src_dir, "scipy", subproject)
+    os.chdir(dir_path)
+    if '--clean' in sys.argv:
+        cmd = 'rd /s /q Release Debug'
+        print cmd
+        os.system(cmd)
 
-        if '--release' in sys.argv:
-            msbuild(subproject, "Release")
-        else:
-            msbuild(subproject, "Debug")
+    if '--release' in sys.argv:
+        msbuild(subproject, "Release")
+    else:
+        msbuild(subproject, "Debug")
 
-        os.chdir(src_dir)
-        print "##### %s ##### end" % subproject
+    os.chdir(src_dir)
+    print "##### %s ##### end" % subproject
 
 
 if __name__ == '__main__':
-    buildall()
+    for subproject in ["linalg", "stats", "special"]:
+        build_subproject(subproject)
