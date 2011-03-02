@@ -26,9 +26,12 @@ cdef extern from "D_bspline_util.h":
                                       double*, int, int, npy_intp*, npy_intp*)
 
 
-cdef void convert_strides(npy_intp* instrides,
-                          npy_intp* convstrides,
-                          int size, int N):
+ctypedef struct Py_complex:
+    double real
+    double imag
+
+
+cdef convert_strides(npy_intp* instrides, npy_intp* convstrides, int size, int num):
     cdef int n
     cdef npy_intp bitshift
 
@@ -37,11 +40,11 @@ cdef void convert_strides(npy_intp* instrides,
         size >>= 1
         bitshift += 1
 
-    for n from 0 <= n < N:
+    for n from 0 <= n < num:
         convstrides[n] = instrides[n] >> bitshift
 
 
-def cspline2d(image, lambda_=0.0, precision=-1.0):
+def cspline2d(ndarray image, double lambda_=0.0, double precision=-1.0):
     """cspline2d(input {, lambda, precision}) -> ck
 
     Description:
@@ -56,11 +59,11 @@ def cspline2d(image, lambda_=0.0, precision=-1.0):
     cdef npy_intp outstrides[2], instrides[2]
     cdef ndarray a_image, ck
 
-    thetype = PyArray_ObjectType(image, NPY_FLOAT)
-    thetype = min(thetype, NPY_DOUBLE)
+    thetype = PyArray_TYPE(image)
+    thetype = min(max(thetype, NPY_FLOAT), NPY_DOUBLE)
     a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
 
-    ck = PyArray_NEW(NULL, 2, PyArray_DIMS(a_image), thetype, NULL, NULL, 0,
+    ck = PyArray_New(NULL, 2, PyArray_DIMS(a_image), thetype, NULL, NULL, 0,
                      NPY_CONTIGUOUS, NULL)
     M = PyArray_DIMS(a_image)[0]
     N = PyArray_DIMS(a_image)[1]
@@ -92,8 +95,10 @@ def cspline2d(image, lambda_=0.0, precision=-1.0):
     if retval < 0:
         raise Exception("Problem occurred inside routine")
 
+    return PyArray_Return(ck)
 
-def qspline2d(image, lambda_=0.0, precision=-1.0):
+
+def qspline2d(ndarray image, double lambda_=0.0, precision=-1.0):
     """qspline2d(input {, lambda, precision}) -> qk
 
     Description:
@@ -111,8 +116,8 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
     if lambda_ != 0.0:
         raise Exception("Smoothing spline not yet implemented.")
 
-    thetype = PyArray_ObjectType(image, NPY_FLOAT)
-    thetype = min(thetype, NPY_DOUBLE)
+    thetype = PyArray_TYPE(image)
+    thetype = min(max(thetype, NPY_FLOAT), NPY_DOUBLE)
     a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
 
     ck = PyArray_FROMANY(a_image, thetype, 2, 2, NPY_CONTIGUOUS)
@@ -146,8 +151,10 @@ def qspline2d(image, lambda_=0.0, precision=-1.0):
     if retval < 0:
         raise Exception("Problem occurred inside routine")
 
+    return PyArray_Return(ck)
 
-def FIRsepsym2d(image, hrow, hcol):
+
+def FIRsepsym2d(ndarray image, ndarray hrow, ndarray hcol):
     """sepfir2d(input, hrow, hcol) -> output
 
     Description:
@@ -159,15 +166,15 @@ def FIRsepsym2d(image, hrow, hcol):
     """
     cdef int thetype, M, N, ret
     cdef npy_intp outstrides[2], instrides[2]
-    cdef ndarray a_image, a_hrow, a_hcol
+    cdef ndarray a_image, a_hrow, a_hcol, out
 
-    thetype = PyArray_ObjectType(image, NPY_FLOAT)
-    thetype = min(thetype, NPY_CDOUBLE)
+    thetype = PyArray_TYPE(image)
+    thetype = min(max(thetype, NPY_FLOAT), NPY_CDOUBLE)
     a_image = PyArray_FROMANY(image, thetype, 2, 2, NPY_CONTIGUOUS)
     a_hrow = PyArray_FROMANY(hrow, thetype, 1, 1, NPY_CONTIGUOUS)
     a_hcol = PyArray_FROMANY(hcol, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(2, PyArray_DIMS(a_image), thetype)
+    out = PyArray_SimpleNew(2, PyArray_DIMS(a_image), thetype)
     M = PyArray_DIMS(a_image)[0]
     N = PyArray_DIMS(a_image)[1]
 
@@ -200,8 +207,10 @@ def FIRsepsym2d(image, hrow, hcol):
     if ret < 0:
         raise Exception("Problem occurred inside routine.")
 
+    return PyArray_Return(out)
 
-def IIRsymorder1(sig, c0, z1, precision=-1.0):
+
+def IIRsymorder1(ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):
     """symiirorder1(input, c0, z1 {, precision}) -> output
 
     Description:
@@ -228,17 +237,16 @@ def IIRsymorder1(sig, c0, z1, precision=-1.0):
 
     output -- filtered signal.
     """
-    cdef Py_complex c0, z1
     cdef int thetype, N, ret
     cdef npy_intp outstrides, instrides
     cdef float rc0, rz1
-    cdef ndarray a_sig
+    cdef ndarray a_sig, out
 
-    thetype = PyArray_ObjectType(sig, NPY_FLOAT)
-    thetype = min(thetype, NPY_CDOUBLE)
+    thetype = PyArray_TYPE(sig)
+    thetype = min(max(thetype, NPY_FLOAT), NPY_CDOUBLE)
     a_sig = PyArray_FROMANY(sig, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(1, PyArray_DIMS(a_sig), thetype)
+    out = PyArray_SimpleNew(1, PyArray_DIMS(a_sig), thetype)
     N = PyArray_DIMS(a_sig)[0]
 
     convert_strides(PyArray_STRIDES(a_sig), &instrides,
@@ -279,7 +287,7 @@ def IIRsymorder1(sig, c0, z1, precision=-1.0):
     return PyArray_Return(out)
 
 
-def IIRsymorder2(sig, r, omega, precision=-1.0):
+def IIRsymorder2(ndarray sig, double r, double omega, double precision=-1.0):
     """symiirorder2(input, r, omega {, precision}) -> output
 
     Description:
@@ -309,13 +317,13 @@ def IIRsymorder2(sig, r, omega, precision=-1.0):
     """
     cdef int thetype, N, ret
     cdef npy_intp outstrides, instrides
-    cdef ndarray a_sig
+    cdef ndarray a_sig, out
 
-    thetype = PyArray_ObjectType(sig, NPY_FLOAT)
-    thetype = min(thetype, NPY_DOUBLE)
+    thetype = PyArray_TYPE(sig)
+    thetype = min(max(thetype, NPY_FLOAT), NPY_DOUBLE)
     a_sig = PyArray_FROMANY(sig, thetype, 1, 1, NPY_CONTIGUOUS)
 
-    out = <PyArrayObject *> PyArray_SimpleNew(1, PyArray_DIMS(a_sig),thetype)
+    out = PyArray_SimpleNew(1, PyArray_DIMS(a_sig),thetype)
     N = PyArray_DIMS(a_sig)[0]
 
     convert_strides(PyArray_STRIDES(a_sig), &instrides,
