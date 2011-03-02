@@ -4,7 +4,7 @@
 #include <string.h>
 #include <stdio.h>
 
-#include <npy_math.h>
+#include <npy_defs.h>
 
 
 void compute_root_from_lambda(double, double *, double *);

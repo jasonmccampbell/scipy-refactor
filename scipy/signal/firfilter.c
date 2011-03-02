@@ -1,23 +1,26 @@
+#include <stdlib.h>
+#include <string.h>
+
 #define NO_IMPORT_ARRAY
 #include "sigtools.h"
 
-static int elsizes[] = {sizeof(Bool),
-			sizeof(byte),
-                        sizeof(ubyte),
+static int elsizes[] = {sizeof(npy_bool),
+			sizeof(npy_byte),
+                        sizeof(npy_ubyte),
                         sizeof(short),
-                        sizeof(ushort),
+                        sizeof(npy_ushort),
                         sizeof(int),
-			sizeof(uint),
+			sizeof(npy_uint),
 			sizeof(long),
-                        sizeof(ulong),
-                        sizeof(longlong),
-			sizeof(ulonglong),
+                        sizeof(npy_ulong),
+                        sizeof(npy_longlong),
+			sizeof(npy_ulonglong),
                         sizeof(float),
                         sizeof(double),
-			sizeof(longdouble),
-                        sizeof(cfloat),
-                        sizeof(cdouble),
-			sizeof(clongdouble),
+			sizeof(npy_longdouble),
+                        sizeof(npy_cfloat),
+                        sizeof(npy_cdouble),
+			sizeof(npy_clongdouble),
                         sizeof(void *),
 			0,0,0,0};
 
@@ -28,21 +31,21 @@ static void fname ## _onemultadd(char *sum, char *term1, char *term2) { \
   (*((type *) sum)) += (*((type *) term1)) * \
   (*((type *) term2)); return; }
 
-MAKE_ONEMULTADD(UBYTE, ubyte)
-MAKE_ONEMULTADD(USHORT, ushort)
-MAKE_ONEMULTADD(UINT, uint)
-MAKE_ONEMULTADD(ULONG, ulong)
-MAKE_ONEMULTADD(ULONGLONG, ulonglong)
+MAKE_ONEMULTADD(UBYTE, npy_ubyte)
+MAKE_ONEMULTADD(USHORT, npy_ushort)
+MAKE_ONEMULTADD(UINT, npy_uint)
+MAKE_ONEMULTADD(ULONG, npy_ulong)
+MAKE_ONEMULTADD(ULONGLONG, npy_ulonglong)
 
-MAKE_ONEMULTADD(BYTE, byte)
+MAKE_ONEMULTADD(BYTE, npy_byte)
 MAKE_ONEMULTADD(SHORT, short)
 MAKE_ONEMULTADD(INT, int)
 MAKE_ONEMULTADD(LONG, long)
-MAKE_ONEMULTADD(LONGLONG, longlong)
+MAKE_ONEMULTADD(LONGLONG, npy_longlong)
 
 MAKE_ONEMULTADD(FLOAT, float)
 MAKE_ONEMULTADD(DOUBLE, double)
-MAKE_ONEMULTADD(LONGDOUBLE, longdouble)
+MAKE_ONEMULTADD(LONGDOUBLE, npy_longdouble)
  
 #ifdef __GNUC__
 MAKE_ONEMULTADD(CFLOAT, __complex__ float)
@@ -58,7 +61,7 @@ static void fname ## _onemultadd(char *sum, char *term1, char *term2) { \
   return; }
 MAKE_C_ONEMULTADD(CFLOAT, float)
 MAKE_C_ONEMULTADD(CDOUBLE, double)
-MAKE_C_ONEMULTADD(CLONGDOUBLE, longdouble)
+MAKE_C_ONEMULTADD(CLONGDOUBLE, npy_longdouble)
 #endif /* __GNUC__ */
 
 static OneMultAddFunction *OneMultAdd[]={NULL,
@@ -83,16 +86,16 @@ static OneMultAddFunction *OneMultAdd[]={NULL,
 
 /* This could definitely be more optimized... */
 
-int pylab_convolve_2d (char  *in,        /* Input data Ns[0] x Ns[1] */
-		       intp   *instr,     /* Input strides */
-		       char  *out,       /* Output data */
-		       intp   *outstr,    /* Ouput strides */
-		       char  *hvals,     /* coefficients in filter */
-		       intp   *hstr,      /* coefficients strides */ 
-		       intp   *Nwin,     /* Size of kernel Nwin[0] x Nwin[1] */
-		       intp   *Ns,        /* Size of image Ns[0] x Ns[1] */
-		       int   flag,       /* convolution parameters */
-		       char  *fillvalue) /* fill value */
+int pylab_convolve_2d (char  *in,   /* Input data Ns[0] x Ns[1] */
+		       npy_intp *instr,     /* Input strides */
+		       char     *out,       /* Output data */
+		       npy_intp *outstr,    /* Ouput strides */
+		       char     *hvals,     /* coefficients in filter */
+		       npy_intp *hstr,      /* coefficients strides */ 
+		       npy_intp *Nwin,      /* Size of kernel Nwin[0] x Nwin[1] */
+		       npy_intp *Ns,        /* Size of image Ns[0] x Ns[1] */
+		       int      flag,       /* convolution parameters */
+		       char     *fillvalue) /* fill value */
 {
   int bounds_pad_flag = 0;
   int m, n, j, k, ind0, ind1;

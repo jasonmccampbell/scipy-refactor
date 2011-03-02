@@ -6,7 +6,7 @@
     #define PyString_FromFormat PyBytes_FromFormat
 #endif
 
-#include <npy_common.h>
+#include <npy_defs.h>
 
 #define BOUNDARY_MASK 12
 #define OUTSIZE_MASK 3

@@ -1,15 +1,14 @@
 
 /*--------------------------------------------------------------------*/
-
-#include "Python.h"
+#include <stdlib.h>
 #define NO_IMPORT_ARRAY
-#include "numpy/noprefix.h"
+#include <npy_defs.h>
 
 
 /* defined below */
-void f_medfilt2(float*,float*,intp*,intp*, char * (*alloc_fn)(int));
-void d_medfilt2(double*,double*,intp*,intp*, char * (*alloc_fn)(int));
-void b_medfilt2(unsigned char*,unsigned char*,intp*,intp*, char * (*alloc_fn)(int));
+void f_medfilt2(float*,float*,npy_intp*,npy_intp*, char * (*alloc_fn)(int));
+void d_medfilt2(double*,double*,npy_intp*,npy_intp*, char * (*alloc_fn)(int));
+void b_medfilt2(unsigned char*,unsigned char*,npy_intp*,npy_intp*, char * (*alloc_fn)(int));
 
 
 /* The QUICK_SELECT routine is based on Hoare's Quickselect algorithm,
@@ -71,7 +70,7 @@ TYPE NAME(TYPE arr[], int n)                                            \
 
 /* 2-D median filter with zero-padding on edges. */
 #define MEDIAN_FILTER_2D(NAME, TYPE, SELECT)                            \
-void NAME(TYPE* in, TYPE* out, intp* Nwin, intp* Ns, char * (*alloc_fn)(int)) \
+void NAME(TYPE* in, TYPE* out, npy_intp* Nwin, npy_intp* Ns, char * (*alloc_fn)(int)) \
 {                                                                       \
     int nx, ny, hN[2];                                                  \
     int pre_x, pre_y, pos_x, pos_y;                                     \
