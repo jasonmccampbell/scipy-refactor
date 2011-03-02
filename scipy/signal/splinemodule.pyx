@@ -3,11 +3,6 @@ include "numpy.pxd"
 
 __version__ = '0.2'
 
-cdef extern from "splinemodule.h":
-    struct Py_complex:
-        double real
-        double imag
-
 cdef extern from "S_bspline_util.h":
     int S_cubic_spline2D(float*, float*, int, int, double, npy_intp*,
                          npy_intp*,float)
@@ -28,6 +23,8 @@ cdef extern from "D_bspline_util.h":
     int D_separable_2Dconvolve_mirror(double*, double*, int, int, double*,
                                       double*, int, int, npy_intp*, npy_intp*)
 
+
+ctypedef double complex Py_complex
 
 cdef convert_strides(npy_intp* instrides, npy_intp* convstrides, int size, int num):
     cdef int n
