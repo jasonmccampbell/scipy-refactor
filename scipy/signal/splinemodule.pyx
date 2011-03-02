@@ -3,7 +3,10 @@ include "numpy.pxd"
 
 __version__ = '0.2'
 
-
+cdef extern from "splinemodule.h":
+    struct Py_complex:
+        double real
+        double imag
 
 cdef extern from "S_bspline_util.h":
     int S_cubic_spline2D(float*, float*, int, int, double, npy_intp*,
@@ -24,11 +27,6 @@ cdef extern from "D_bspline_util.h":
     int D_IIR_forback2(double, double, double*, double*, int, int, int, double)
     int D_separable_2Dconvolve_mirror(double*, double*, int, int, double*,
                                       double*, int, int, npy_intp*, npy_intp*)
-
-
-ctypedef struct Py_complex:
-    double real
-    double imag
 
 
 cdef convert_strides(npy_intp* instrides, npy_intp* convstrides, int size, int num):
@@ -210,7 +208,7 @@ def FIRsepsym2d(ndarray image, ndarray hrow, ndarray hcol):
     return PyArray_Return(out)
 
 
-def IIRsymorder1(ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):
+cpdef IIRsymorder1(ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):
     """symiirorder1(input, c0, z1 {, precision}) -> output
 
     Description:
