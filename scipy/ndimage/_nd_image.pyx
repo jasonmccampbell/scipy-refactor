@@ -161,7 +161,8 @@ IF not DOTNET:
         void *cookie_from_callback(callback_holder)
         object object_from_cookie(void *)
             
-    
+    cdef inline void CheckError():
+        pass
     
 
 ##     cdef inline bint is_capsule(obj):
@@ -212,6 +213,9 @@ IF DOTNET:
         void set_callback_holder(callback_holder, object)
         void *cookie_from_callback(callback_holder)
         object object_from_cookie(void *)
+
+    cdef extern from "":
+        void CheckError "NumpyDotNet::NpyCoreApi::CheckError" ()
 
 from numpy cimport PyArray_New, PyArray_Empty, import_array, NpyArray_INCREF, PyArray_ARRAY
 
@@ -396,6 +400,7 @@ def correlate1d(input, weights, int axis, output, NI_ExtendMode mode, double cva
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_Correlate1D(ARRAY(input_), ARRAY(weights_), axis,
                    ARRAY(output_), <NI_ExtendMode>mode, cval, origin)
+    CheckError()
 
 def correlate(input, weights, output, int mode, double cval, origin):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
@@ -407,6 +412,7 @@ def correlate(input, weights, output, int mode, double cval, origin):
     NI_Correlate(ARRAY(input_), ARRAY(weights_),
                  ARRAY(output_), <NI_ExtendMode>mode, cval,
                  <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
+    CheckError()
 
 
 def uniform_filter1d(object input, npy_intp filter_size, int axis,
@@ -416,6 +422,7 @@ def uniform_filter1d(object input, npy_intp filter_size, int axis,
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_UniformFilter1D(ARRAY(input_), filter_size, axis, 
                        ARRAY(output_), <NI_ExtendMode>mode, cval, origin)
+    CheckError()
 
 def min_or_max_filter1d(object input, npy_intp filter_size, int axis,
                         object output, int mode, double cval,
@@ -425,6 +432,7 @@ def min_or_max_filter1d(object input, npy_intp filter_size, int axis,
     NI_MinOrMaxFilter1D(ARRAY(input_), filter_size, axis, 
                         ARRAY(output_), <NI_ExtendMode>mode, cval,
                         origin, minimum)
+    CheckError()
 
 def min_or_max_filter(object input, object footprint, object structure,
                       object output, int mode, double cval, object origin,
@@ -442,6 +450,7 @@ def min_or_max_filter(object input, object footprint, object structure,
                       cval,
                       <npy_intp*>NpyArray_DATA(ARRAY(origin_)),
                       minimum)
+    CheckError()
 
 def rank_filter(object input, int rank, object footprint,
                 object output, int mode, double cval, object origin):
@@ -456,6 +465,7 @@ def rank_filter(object input, int rank, object footprint,
                   <NI_ExtendMode>mode,
                   cval,
                   <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
+    CheckError()
     
 
 #
@@ -501,6 +511,7 @@ def generic_filter1d(object input, object callback, npy_intp filter_size,
     ctx = cookie_from_callback(info_holder)
     NI_GenericFilter1D(ARRAY(input_), funcptr, ctx, filter_size, axis,
                        ARRAY(output_), <NI_ExtendMode>mode, cval, origin)
+    CheckError()
 
 cdef int cbwrapper_filter(double *buffer, npy_intp filter_size,
                           double *output, void *ctx) except 0:
@@ -531,6 +542,7 @@ def generic_filter(object input, object callback, object footprint, object outpu
     NI_GenericFilter(ARRAY(input_), funcptr, ctx, ARRAY(footprint_),
                      ARRAY(output_), <NI_ExtendMode>mode, cval,
                      <npy_intp*>NpyArray_DATA(ARRAY(origin_)))
+    CheckError()
 
 def fourier_filter(object input, object parameters, npy_intp n, int axis,
                    object output, int filter_type):
@@ -539,6 +551,7 @@ def fourier_filter(object input, object parameters, npy_intp n, int axis,
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_FourierFilter(ARRAY(input_), ARRAY(parameters_), n, axis,
                      ARRAY(output_), filter_type)
+    CheckError()
     
 def fourier_shift(object input, object shifts, npy_intp n, int axis,
                   object output):
@@ -547,11 +560,13 @@ def fourier_shift(object input, object shifts, npy_intp n, int axis,
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_FourierShift(ARRAY(input_), ARRAY(shifts_), n, axis,
                     ARRAY(output_))
+    CheckError()
 
 def spline_filter1d(object input, int order, int axis, object output):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_SplineFilter1D(ARRAY(input_), order, axis, ARRAY(output_))
+    CheckError()
 
 cdef int cbwrapper_map(npy_intp *ocoor, double *icoor,
                        int orank, int irank, void *ctx) except 0:
@@ -597,6 +612,7 @@ def geometric_transform(object input, object map_callback, object coordinates,
                           <NpyArray*>NULL if shift_ is None else ARRAY(shift_),
                           <NpyArray*>NULL if coordinates_ is None else ARRAY(coordinates_),
                           ARRAY(output_), order, <NI_ExtendMode>mode, cval)
+    CheckError()
     
 
 def zoom_shift(object input, object zoom, object shift, object output,
@@ -609,6 +625,7 @@ def zoom_shift(object input, object zoom, object shift, object output,
                  <NpyArray*>NULL if zoom_ is None else ARRAY(zoom_),
                  <NpyArray*>NULL if shift_ is None else ARRAY(shift_),
                  ARRAY(output_), order, <NI_ExtendMode>mode, cval)
+    CheckError()
 
 def label(object input, object strct, object output):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
@@ -616,6 +633,7 @@ def label(object input, object strct, object output):
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     cdef npy_intp max_label
     NI_Label(ARRAY(input_), ARRAY(strct_), &max_label, ARRAY(output_))
+    CheckError()
     return max_label
 
 def find_objects(object input, npy_intp max_label):
@@ -636,6 +654,7 @@ def find_objects(object input, npy_intp max_label):
 
     try:
         NI_FindObjects(ARRAY(input_), max_label, regions)
+        CheckError()
         result = [None] * max_label
         for ii in range(max_label):
             idx = 2 * ndim * ii if ndim > 0 else ii
@@ -658,6 +677,7 @@ def watershed_ift(object input, object markers, object strct, object output):
     cdef ndarray strct_ = NI_ObjectToInputArray(strct)
     cdef ndarray output_ = NI_ObjectToOutputArray(output)
     NI_WatershedIFT(ARRAY(input_), ARRAY(markers_), ARRAY(strct_), ARRAY(output_))
+    CheckError()
 
 def distance_transform_bf(object input, int metric, object sampling, object output,
                           object features):
@@ -669,6 +689,7 @@ def distance_transform_bf(object input, int metric, object sampling, object outp
                                    <NpyArray*>NULL if sampling_ is None else ARRAY(sampling_),
                                    <NpyArray*>NULL if output_ is None else ARRAY(output_),
                                    <NpyArray*>NULL if features_ is None else ARRAY(features_))
+    CheckError()
 
 def distance_transform_op(object strct, object distances, object features):
     cdef ndarray strct_ = NI_ObjectToInputArray(strct)
@@ -676,6 +697,7 @@ def distance_transform_op(object strct, object distances, object features):
     cdef ndarray features_ = None if features is None else NI_ObjectToOutputArray(features)
     NI_DistanceTransformOnePass(ARRAY(strct_), ARRAY(distances_),
                                 <NpyArray*>NULL if features_ is None else ARRAY(features_))
+    CheckError()
 
 def euclidean_feature_transform(object input, object sampling, object features):
     cdef ndarray input_ = NI_ObjectToInputArray(input)
@@ -684,6 +706,7 @@ def euclidean_feature_transform(object input, object sampling, object features):
     NI_EuclideanFeatureTransform(ARRAY(input_),
                                  <NpyArray*>NULL if sampling_ is None else ARRAY(sampling_),
                                  ARRAY(features_))
+    CheckError()
     
 cdef class CoordinateListWrapper:
     cdef NI_CoordinateList *ptr
@@ -712,6 +735,7 @@ def binary_erosion(object input, object strct, object mask, object output,
                      center_is_true,
                      &changed,
                      &coordinate_list if return_coordinates else NULL)
+    CheckError()
     if return_coordinates:
         colist_wrapper = CoordinateListWrapper()
         colist_wrapper.ptr = coordinate_list
@@ -734,7 +758,7 @@ def binary_erosion2(object array, object strct, object mask, int niter,
                       <npy_intp*>NpyArray_DATA(ARRAY(origins_)),
                       invert,
                       &ptr)
-
+    CheckError()
 
 # Notes:
 # capsule not implemented yet (npy3_compat.h versions)
