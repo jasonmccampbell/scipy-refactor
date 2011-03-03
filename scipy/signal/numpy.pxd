@@ -38,7 +38,6 @@ ctypedef npy_float64    float64_t
 
 ctypedef void (*PyUFuncGenericFunction) (char **, npy_intp *, npy_intp *, void *)
 
-
 cdef extern from "":
     ctypedef class numpy.ndarray [clr "NumpyDotNet::ndarray"]:
         pass
@@ -172,6 +171,7 @@ cdef extern from "npy_arrayobject.h":
     void *NpyArray_DATA(NpyArray* obj)
     NpyArray_Descr *NpyArray_DESCR(NpyArray* obj)
     npy_intp *NpyArray_DIMS(NpyArray* obj)
+    int NpyArray_ITEMSIZE(NpyArray* obj)
     npy_intp NpyArray_SIZE(NpyArray* obj)
     npy_intp* NpyArray_STRIDES(NpyArray* obj)
     int NpyArray_TYPE(NpyArray* obj)
@@ -199,11 +199,43 @@ cdef extern from "npy_api.h":
                           NpyArray_Descr* typedescr)
     void NpyDataMem_FREE(char *ptr)
 
+cdef extern from "npy_iterators.h":
+    cdef enum:
+        NPY_NEIGHBORHOOD_ITER_ZERO_PADDING
+        NPY_NEIGHBORHOOD_ITER_ONE_PADDING
+        NPY_NEIGHBORHOOD_ITER_CONSTANT_PADDING
+        NPY_NEIGHBORHOOD_ITER_CIRCULAR_PADDING
+        NPY_NEIGHBORHOOD_ITER_MIRROR_PADDING
+    
+    ctypedef void (*npy_free_func)(void*)
+
+    ctypedef struct NpyArrayIterObject:
+        npy_intp size
+        NpyArray *ao
+        char *dataptr
+
+    ctypedef struct NpyArrayNeighborhoodIterObject:
+        npy_intp size
+        NpyArray *ao
+        char *dataptr
+
+    NpyArrayIterObject *NpyArray_IterNew(NpyArray *ao)
+    void NpyArray_ITER_NEXT(NpyArrayIterObject *obj)
+    void NpyArray_ITER_RESET(NpyArrayIterObject *obj)
+    void *NpyArray_ITER_DATA(NpyArrayIterObject *obj)
+
+    NpyArrayNeighborhoodIterObject* NpyArray_NeighborhoodIterNew(NpyArrayIterObject *obj,
+                                                                 npy_intp *bounds, int mode, 
+                                                                 void *fill, npy_free_func fillfree)
+    int NpyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter)
+    int NpyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter)
+
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
     object Npy_INTERFACE_descr "Npy_INTERFACE_OBJECT" (NpyArray_Descr*)
     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
 
+ctypedef void (*PyArray_CopySwapFunc)(void *, void *, int, NpyArray *)
 
 cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
         char* types, int ntypes, int nin, int nout,
@@ -245,6 +277,10 @@ cdef inline intp_t* PyArray_DIMS(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
 
+cdef inline int PyArray_ITEMSIZE(ndarray n):
+    # XXX "long long" is wrong type
+    return NpyArray_ITEMSIZE(<NpyArray*> <long long>n.Array)
+
 cdef inline object PyArray_Return(arr):
     import clr
     import NumpyDotNet.NpyArray
@@ -284,3 +320,28 @@ cdef inline object PyArray_NDIM(obj):
 
 cdef inline void import_array():
     pass
+
+cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
+    return NpyArray_IterNew(<NpyArray*> <long long>n.Array)
+
+cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
+    NpyArray_ITER_NEXT(obj)
+
+cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):
+    NpyArray_ITER_RESET(obj)
+
+cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):
+    return NpyArray_ITER_DATA(obj)
+
+cdef inline NpyArrayNeighborhoodIterObject* PyArray_NeighborhoodIterNew(NpyArrayIterObject *obj,
+                                                                        npy_intp *bounds,
+                                                                        int mode, 
+                                                                        void *fill,
+                                                                        npy_free_func fillfree):
+    return NpyArray_NeighborhoodIterNew(obj, bounds, mode, fill, fillfree)
+
+cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):
+    return NpyArrayNeighborhoodIter_Reset(iter)
+
+cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):
+    return NpyArrayNeighborhoodIter_Next(iter)
