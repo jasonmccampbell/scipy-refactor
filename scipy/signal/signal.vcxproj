@@ -57,8 +57,8 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>ndarray.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -70,14 +70,15 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>
-      </AdditionalDependencies>
+      <AdditionalDependencies>ndarray.lib</AdditionalDependencies>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="bspline_util.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
+    <ClCompile Include="correlate_nd.cpp" />
     <ClCompile Include="C_bspline_util.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
@@ -102,6 +103,7 @@
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
     </ClCompile>
+    <ClCompile Include="splinemodule.cpp" />
     <ClCompile Include="S_bspline_util.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
     </ClCompile>
@@ -111,11 +113,11 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bsplines.py" />
-    <None Include="correlate_nd.c.src" />
+    <None Include="correlate_nd.pyx.in" />
     <None Include="filter_design.py" />
     <None Include="fir_filter_design.py" />
     <None Include="info.py" />
-    <None Include="lfilter.c.src" />
+    <None Include="lfilter.pyx.in" />
     <None Include="ltisys.py" />
     <None Include="signaltools.py" />
     <None Include="sigtoolsmod.pyx" />
@@ -126,7 +128,10 @@
     <None Include="windows.py" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="D_bspline_util.h" />
+    <ClInclude Include="npy_ironpython.h" />
     <ClInclude Include="sigtools.h" />
+    <ClInclude Include="S_bspline_util.h" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="IronPython, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
