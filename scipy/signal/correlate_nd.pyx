@@ -5,8 +5,12 @@ np.import_array()
 cdef extern from "stdlib.h":
     void free(void *)
 
+cdef extern from "iterhelper.h":
+    object NpyIter_READOBJECT(void *iter)
+    void NpyIter_ASSIGNOBJECT(void *iter, object obj)
+
 cdef extern from "sigtools.h":
-    np.PyArray_CopySwapFunc array_get_copyswap_func(np.NpyArray *arr)
+    np.PyArray_CopySwapFunc ARRAY_COPYSWAP_FUNC(np.NpyArray *arr)
 
 CORR_MODE_VALID = 0
 CORR_MODE_SAME  = 1
@@ -432,7 +436,7 @@ cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
         np.NpyArrayIterObject *itz):
     cdef int i, j
     cdef char *zero
-    cdef np.PyArray_CopySwapFunc copyswap = array_get_copyswap_func(curx.ao)
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(curx.ao)
 
     zero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(curx.ao))
 
@@ -444,9 +448,10 @@ cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
             # compute tmp = acc + x * y. Not all objects supporting the
             # number protocol support inplace operations, so we do it the most
             # straightfoward way.
-            tmp = <object>itz.dataptr + <object>curneighx.dataptr * <object>ity.dataptr
-
-            <object>itz.dataptr = tmp
+            tmp = NpyIter_READOBJECT(itz) + \
+                  NpyIter_READOBJECT(curneighx) * NpyIter_READOBJECT(ity)
+            
+            NpyIter_ASSIGNOBJECT(itz, tmp)
 
             np.PyArrayNeighborhoodIter_Next(curneighx)
             np.PyArray_ITER_NEXT(ity)
@@ -460,7 +465,7 @@ cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
 
     return 0
 
-def _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
+cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
         np.NpyArrayIterObject *itz, int typenum, int mode):
     cdef np.NpyArrayNeighborhoodIterObject *curneighx, *curx
     cdef np.npy_intp i, nz, nx

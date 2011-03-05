@@ -7,7 +7,7 @@ cimport numpy as np
 np.import_array()
 
 cdef extern from "stdlib.h":
-    void free(void *ptr);
+    free(void *ptr)
     void *malloc(size_t size)
 
 cdef extern from "string.h":
@@ -15,64 +15,32 @@ cdef extern from "string.h":
     void *memset(void *b, int c, size_t len)
 
 cdef extern from "sigtools.h":
-    np.PyArray_CopySwapFunc array_get_copyswap_func(np.NpyArray *arr)
+    pass
 
-ctypedef void (BasicFilterFunction*) (char *, char *,  char *, char *, char *,
+ctypedef void (*BasicFilterFunction) (char *, char *,  char *, char *, char *,
                                       np.npy_intp, np.npy_uintp, np.npy_intp,
                                       np.npy_intp)
 
-static void FLOAT_filt(char *b, char *a, char *x, char *y, char *Z,
-                       intp len_b, uintp len_x, intp stride_X,
-                       intp stride_Y);
-static void DOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,
-                        intp len_b, uintp len_x, intp stride_X,
-                        intp stride_Y);
-static void EXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,
-                        intp len_b, uintp len_x, intp stride_X,
-                        intp stride_Y);
-static void CFLOAT_filt(char *b, char *a, char *x, char *y, char *Z,
-                        intp len_b, uintp len_x, intp stride_X,
-                        intp stride_Y);
-static void CDOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,
-                         intp len_b, uintp len_x, intp stride_X,
-                         intp stride_Y);
-static void CEXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,
-                         intp len_b, uintp len_x, intp stride_X,
-                         intp stride_Y);
-static void OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,
-                        intp len_b, uintp len_x, intp stride_X,
-                        intp stride_Y);
+cdef BasicFilterFunction get_filter_function(int typenum):
+    if typenum == np.npy_NPY_FLOAT:
+        return <BasicFilterFunction>FLOAT_filt
+    elif typenum == np.npy_NPY_DOUBLE:
+        return <BasicFilterFunction>DOUBLE_filt
+    elif typenum == np.npy_NPY_LONGDOUBLE:
+        return <BasicFilterFunction>EXTENDED_filt
+    elif typenum == np.npy_NPY_CFLOAT:
+        return <BasicFilterFunction>CFLOAT_filt
+    elif typenum == np.npy_NPY_CDOUBLE:
+        return <BasicFilterFunction>CDOUBLE_filt
+    elif typenum == np.npy_NPY_CLONGDOUBLE:
+        return <BasicFilterFunction>CEXTENDED_filt
+    #elif typenum == np.npy_NPY_OBJECT:
+    #    return <BasicFilterFunction>OBJECT_filt
+    
+    return NULL
 
 
-static BasicFilterFunction *BasicFilterFunctions[256];
-
-void
-scipy_signal_sigtools_linear_filter_module_init()
-{
-    int k;
-    for (k = 0; k < 256; ++k) {
-        BasicFilterFunctions[k] = NULL;
-    }
-    BasicFilterFunctions[NPY_FLOAT] = FLOAT_filt;
-    BasicFilterFunctions[NPY_DOUBLE] = DOUBLE_filt;
-    BasicFilterFunctions[NPY_LONGDOUBLE] = EXTENDED_filt;
-    BasicFilterFunctions[NPY_CFLOAT] = CFLOAT_filt;
-    BasicFilterFunctions[NPY_CDOUBLE] = CDOUBLE_filt;
-    BasicFilterFunctions[NPY_CLONGDOUBLE] = CEXTENDED_filt;
-    BasicFilterFunctions[NPY_OBJECT] = OBJECT_filt;
-}
-
-/* There is the start of an OBJECT_filt, but it may need work */
-
-static int
-RawFilter(const PyArrayObject * b, const PyArrayObject * a,
-          const PyArrayObject * x, const PyArrayObject * zi,
-          const PyArrayObject * zf, PyArrayObject * y, int axis,
-          BasicFilterFunction * filter_func);
-
-/*
- * XXX: Error checking not done yet
- */
+# XXX: Error checking not done yet
 def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
                                         np.ndarray X, int axis=-1,
                                         np.ndarray Vi=None):
@@ -109,13 +77,9 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
     if input_flag:
         arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)
 
-    if np.PyArray_TYPE(arX) < 256:
-        basic_filter = BasicFilterFunctions[(int) (PyArray_TYPE(arX))];
-    else:
-        basic_filter = None
-
-    if basic_filter is None:
-        raise NotImplementedError("input type '%s' not supported\n", str(PyArray_DESCR(arX)))
+    basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+    if basic_filter == NULL:
+        raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
 
     # Skip over leading zeros in vector representing denominator (a)
     # XXX: handle this correctly
@@ -143,7 +107,7 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
         return (arY, arVf)
 
 
-# Copy the first nxzfilled items of x into xzfilled , and fill the rest with 0s
+## Copy the first nxzfilled items of x into xzfilled , and fill the rest with 0s
 cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfilled):
     cdef char *xzero
     cdef np.npy_intp i, nxl
@@ -156,7 +120,7 @@ cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfi
         for i in range(nx):
             copyswap(xzfilled + i * nxl, np.PyArray_DATA(x) + i * nxl, 0, NULL)
 
-    for i int range(nx, nxzfilled):
+    for i in range(nx, nxzfilled):
         copyswap(xzfilled + i * nxl, xzero, 0, NULL)
 
     np.PyDataMem_FREE(xzero)
@@ -171,33 +135,33 @@ cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfi
 #
 # XXX: the code should be refactored (at least with/without initial
 # condition), some code is wasteful here
-cdef int RawFilter(np.PyArrayObject *b, np.PyArrayObject *a,
-          np.PyArrayObject *x, np.PyArrayObject *zi,
-          np.PyArrayObject *zf, np.PyArrayObject *y, int axis,
+cdef int RawFilter(np.ndarray b, np.ndarray a,
+          np.ndarray x, np.ndarray zi,
+          np.ndarray zf, np.ndarray y, int axis,
           BasicFilterFunction filter_func):
-    cdef np.PyArrayIterObject *itx, *ity, *itzi=NULL, *itzf=NULL
+    cdef np.NpyArrayIterObject *itx, *ity, *itzi=NULL, *itzf=NULL
     cdef np.npy_intp nitx, i, nxl, nzfl, j
     cdef np.npy_intp na, nb, nal, nbl
     cdef np.npy_intp nfilt
     cdef char *azfilled, *bzfilled, *zfzfilled, *yoyo
-    cdef np.PyArray_CopySwapFunc copyswap = array_get_copyswap_func(x)
+    cdef np.PyArray_CopySwapFunc copyswap = np.PyArray_DESCR(x).f.copyfunc
 
     itx = np.PyArray_IterAllButAxis(x, &axis)
-    if itx == NULL:
+    if itx is None:
         raise MemoryError("Could not create itx")
     nitx = np.PyIter_SIZE(itx)
 
-    ity = np.PyArray_IterAllButAxis((y, &axis)
-    if ity == NULL:
+    ity = np.PyArray_IterAllButAxis(y, &axis)
+    if ity is None:
         raise MemoryError("Could not create ity")
 
-    if zi != NULL:
-        itzi = PyArray_IterAllButAxis(zi, &axis)
-        if itzi == NULL:
+    if zi is not None:
+        itzi = np.PyArray_IterAllButAxis(zi, &axis)
+        if itzi is None:
             raise MemoryError("Could not create itzi")
 
-        itzf = PyArray_IterAllButAxis(zf, &axis)
-        if itzf == NULL:
+        itzf = np.PyArray_IterAllButAxis(zf, &axis)
+        if itzf is None:
             raise MemoryError("Could not create itzf")
 
     na = np.PyArray_SIZE(a)
@@ -242,7 +206,7 @@ cdef int RawFilter(np.PyArrayObject *b, np.PyArrayObject *a,
     # Iterate over the input array
     for i in range(nitx):
         if zi != NULL:
-            yoyo = np.PyIter_DATA(itzi)
+            yoyo = itzi.dataptr
             # Copy initial conditions zi in zfzfilled buffer
             for j in range(nfilt - 1):
                 copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
@@ -279,7 +243,7 @@ cdef int RawFilter(np.PyArrayObject *b, np.PyArrayObject *a,
 #   dimension of an N-D array.                                  #
 #################################################################
 {{for type, NAME
-      in zip(['float', 'double', 'npy_longdouble'],
+      in zip(['float', 'double', 'np.npy_longdouble'],
              ['FLOAT', 'DOUBLE', 'EXTENDED'])}}
 cdef {{NAME}}_filt(char *b, char *a, char *x, char *y, char *Z,
                    np.npy_intp len_b, np.npy_uintp len_x,

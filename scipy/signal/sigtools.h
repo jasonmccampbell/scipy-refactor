@@ -6,7 +6,9 @@
     #define PyString_FromFormat PyBytes_FromFormat
 #endif
 
+#include <npy_arrayobject.h>
 #include <npy_defs.h>
+#include <npy_descriptor.h>
 
 #define BOUNDARY_MASK 12
 #define OUTSIZE_MASK 3
@@ -29,6 +31,8 @@
 #define MAXTYPES 21
 
 #define COMPARE_CONST_HELPER(x) ((int (*)(const void*, const void*))(x))
+
+#define ARRAY_COPYSWAP_FUNC(x) (x->descr->f->copyswap)
 
 /* Generally useful structures for passing data into and out of
    subroutines.  Used in the generic routines instead of the
@@ -62,6 +66,7 @@ typedef void (MultAddFunction) (char *, npy_intp, char *, npy_intp, char *, npy_
 extern "C" {
 #endif
 
+NpyArray_CopySwapFunc *array_get_copyswap_func(NpyArray *);
 int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims);
 npy_intp compute_offsets(npy_uintp *offsets, npy_intp *offsets2, npy_intp *dim1, npy_intp *dim2, npy_intp *dim3, npy_intp *mode_dep, int nd);
 int increment(npy_intp *ret_ind, int nd, npy_intp *max_ind);

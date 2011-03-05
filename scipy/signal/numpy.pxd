@@ -219,7 +219,8 @@ cdef extern from "npy_iterators.h":
         NpyArray *ao
         char *dataptr
 
-    NpyArrayIterObject *NpyArray_IterNew(NpyArray *ao)
+    NpyArrayIterObject *NpyArray_IterNew(NpyArray *obj)
+    NpyArrayIterObject *NpyArray_IterAllButAxis(NpyArray* obj, int *inaxis)
     void NpyArray_ITER_NEXT(NpyArrayIterObject *obj)
     void NpyArray_ITER_RESET(NpyArrayIterObject *obj)
     void *NpyArray_ITER_DATA(NpyArrayIterObject *obj)
@@ -322,7 +323,11 @@ cdef inline void import_array():
     pass
 
 cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
+    # XXX "long long" is wrong type
     return NpyArray_IterNew(<NpyArray*> <long long>n.Array)
+
+cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
+    return NpyArray_IterAllButAxis(<NpyArray*> <long long>n.Array, inaxis)
 
 cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
     NpyArray_ITER_NEXT(obj)
