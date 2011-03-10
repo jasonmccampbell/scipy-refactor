@@ -1,8 +1,6 @@
 import os
 import sys
-import shutil
-import tempfile
-from os.path import dirname, isdir, isfile, join
+from os.path import join
 
 
 if sys.platform != 'cli':
@@ -12,19 +10,33 @@ if sys.platform != 'cli':
 src_dir = os.getcwd()
 
 
-def msbuild(dir, config):
+def msbuild(subproject, config):
     # Note: need to use devenv instead of msbuild because msbuild can't build
     # Intel Fortran (.vfproj) files.
-    os.chdir(join(src_dir, "scipy", dir))
-    cmd = 'devenv %s.sln /Build %s' % (dir, config)
+    cmd = 'devenv %s.sln /Build %s' % (subproject, config)
     print cmd
     os.system(cmd)
     print "%s complete"
-    os.chdir(src_dir)
 
-def buildall():
-    for dir in ["special", "stats", "linalg", "integrate"]:
-        msbuild(dir, "Debug")
+
+def build_subproject(subproject):
+    print "##### %s ##### begin" % subproject
+    dir_path = join(src_dir, "scipy", subproject)
+    os.chdir(dir_path)
+    if '--clean' in sys.argv:
+        cmd = 'rd /s /q Release Debug'
+        print cmd
+        os.system(cmd)
+
+    if '--release' in sys.argv:
+        msbuild(subproject, "Release")
+    else:
+        msbuild(subproject, "Debug")
+
+    os.chdir(src_dir)
+    print "##### %s ##### end" % subproject
+
 
 if __name__ == '__main__':
-    buildall()
+    for subproject in ["linalg", "stats", "special"]:
+        build_subproject(subproject)

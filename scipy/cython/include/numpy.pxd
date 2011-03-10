@@ -33,6 +33,40 @@ cdef extern from "":
     ctypedef class numpy.dtype [clr "NumpyDotNet::dtype"]:
         pass
 
+cdef extern from "npy_common.h":
+
+    ctypedef struct npy_cfloat:
+        double real
+        double imag
+
+    ctypedef struct npy_cdouble:
+        double real
+        double imag
+
+    ctypedef struct npy_clongdouble:
+        double real
+        double imag
+
+    ctypedef struct npy_complex64:
+        double real
+        double imag
+
+    ctypedef struct npy_complex128:
+        double real
+        double imag
+
+    ctypedef struct npy_complex160:
+        double real
+        double imag
+
+    ctypedef struct npy_complex192:
+        double real
+        double imag
+        
+    ctypedef struct npy_complex256:
+        double real
+        double imag
+
 cdef extern from "npy_defs.h":
     cdef enum NPY_TYPES:
         NPY_BOOL
@@ -181,11 +215,21 @@ cdef extern from "npy_api.h":
     NpyArray *NpyArray_New(void *subtype, int nd, npy_intp *dims, int type_num,
                            npy_intp *strides, void *data, int itemsize,
                            int flags, void *obj)
+    int NpyArray_INCREF(NpyArray *arr)
 
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
     object Npy_INTERFACE_descr "Npy_INTERFACE_OBJECT" (NpyArray_Descr*)
     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
+
+ctypedef float complex  complex64_t
+ctypedef double complex complex128_t
+
+ctypedef npy_cfloat      cfloat_t
+ctypedef npy_cdouble     cdouble_t
+ctypedef npy_clongdouble clongdouble_t
+
+ctypedef npy_cdouble     complex_t
 
 cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
         char* types, int ntypes, int nin, int nout,
@@ -208,6 +252,15 @@ cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortr
     import numpy
     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
 
+cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
+    shape_list = []
+    cdef int i
+    for i in range(nd):
+        shape_list.append(dims[i])
+    import numpy
+    return numpy.empty(shape_list, descr, 'F' if fortran else 'C')
+    
+
 cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
     assert subtype == NULL
     assert obj == NULL
@@ -217,17 +270,21 @@ cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
      # XXX "long long" is wrong type
     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
 
-cdef inline void* PyArray_DATA(ndarray n):
+cdef inline void* PyArray_DATA(ndarray n) nogil:
     # XXX "long long" is wrong type
     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
 
-cdef inline intp_t* PyArray_DIMS(ndarray n):
+cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
 
 cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+
+cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+    # XXX "long long" is wrong type
+    return <NpyArray*> <long long>n.Array
 
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
@@ -239,8 +296,14 @@ cdef inline object PyArray_FROMANY(m, type, min, max, flags):
         flags |= NPY_DEFAULT
     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
 
+cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
+    import clr
+    import NumpyDotNet.NpyArray
+    return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
+
 cdef inline object PyArray_Check(obj):
-    return isinstance(obj, ndarray)
+    import numpy as np
+    return isinstance(obj, np.ndarray)
 
 cdef inline object PyArray_NDIM(obj):
     return obj.ndim

@@ -38,6 +38,10 @@
 #include <limits.h>
 #include <assert.h>
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 /* The different boundary conditions. The mirror condition is not used
      by the python code, but C code is kept around in case we might wish
      to add it. */
@@ -322,5 +326,9 @@ int NI_CoordinateListStealBlocks(NI_CoordinateList*, NI_CoordinateList*);
 NI_CoordinateBlock* NI_CoordinateListAddBlock(NI_CoordinateList*);
 NI_CoordinateBlock* NI_CoordinateListDeleteBlock(NI_CoordinateList*);
 void NI_FreeCoordinateList(NI_CoordinateList*);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif

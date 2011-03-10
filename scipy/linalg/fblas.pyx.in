@@ -1290,7 +1290,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 cdef char fw_aschar(object s):
     cdef char* buf
     try:
-        return <char>s # int
+        return <char>ord(s[0]) # int
     except TypeError:
         pass
     try:

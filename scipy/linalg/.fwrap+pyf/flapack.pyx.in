@@ -21,6 +21,7 @@ chegv, zhegv(...)
 chegvd, zhegvd(...)
 chegvx, zhegvx(...)
 cungqr, zungqr(...)
+cungrq, zungrq(...)
 dgees(...)
 dgeev(...)
 dgegv(...)
@@ -48,6 +49,7 @@ slamch, dlamch(...)
 slaswp, dlaswp, claswp, zlaswp(...)
 slauum, dlauum, clauum, zlauum(...)
 sorgqr, dorgqr(...)
+sorgrq, dorgrq(...)
 spbsv, dpbsv, cpbsv, zpbsv(...)
 spbtrf, dpbtrf, cpbtrf, zpbtrf(...)
 spbtrs, dpbtrs, cpbtrs, zpbtrs(...)
@@ -107,7 +109,7 @@ cdef class fw_CallbackInfo(object):
         self.extra_args = extra_args
 
 
-__all__ = ['cgees', 'cgeev', 'cgegv', 'cgelss', 'cgesdd', 'cggev', '{{Xhbevd}}', '{{Xhbevx}}', '{{Xheev}}', '{{Xheevr}}', '{{Xhegv}}', '{{Xhegvd}}', '{{Xhegvx}}', '{{Xungqr}}', 'dgees', 'dgeev', 'dgegv', 'dgelss', 'dgesdd', 'dggev', '{{Xgbsv}}', '{{Xgbtrf}}', '{{Xgbtrs}}', '{{Xgebal}}', 'sgees', 'sgeev', 'sgegv', '{{Xgehrd}}', 'sgelss', '{{Xgeqrf}}', '{{Xgerqf}}', 'sgesdd', '{{Xgesv}}', '{{Xgetrf}}', '{{Xgetri}}', '{{Xgetrs}}', 'sggev', '{{Xlamch}}', '{{Xlaswp}}', '{{Xlauum}}', '{{Xorgqr}}', '{{Xpbsv}}', '{{Xpbtrf}}', '{{Xpbtrs}}', '{{Xposv}}', '{{Xpotrf}}', '{{Xpotri}}', '{{Xpotrs}}', '{{Xsbev}}', '{{Xsbevd}}', '{{Xsbevx}}', '{{Xsyev}}', '{{Xsyevr}}', '{{Xsygv}}', '{{Xsygvd}}', '{{Xsygvx}}', '{{Xtrtri}}', '{{Xtrtrs}}', 'zgees', 'zgeev', 'zgegv', 'zgelss', 'zgesdd', 'zggev']
+__all__ = ['cgees', 'cgeev', 'cgegv', 'cgelss', 'cgesdd', 'cggev', '{{Xhbevd}}', '{{Xhbevx}}', '{{Xheev}}', '{{Xheevr}}', '{{Xhegv}}', '{{Xhegvd}}', '{{Xhegvx}}', '{{Xungqr}}', '{{Xungrq}}', 'dgees', 'dgeev', 'dgegv', 'dgelss', 'dgesdd', 'dggev', '{{Xgbsv}}', '{{Xgbtrf}}', '{{Xgbtrs}}', '{{Xgebal}}', 'sgees', 'sgeev', 'sgegv', '{{Xgehrd}}', 'sgelss', '{{Xgeqrf}}', '{{Xgerqf}}', 'sgesdd', '{{Xgesv}}', '{{Xgetrf}}', '{{Xgetri}}', '{{Xgetrs}}', 'sggev', '{{Xlamch}}', '{{Xlaswp}}', '{{Xlauum}}', '{{Xorgqr}}', '{{Xorgrq}}', '{{Xpbsv}}', '{{Xpbtrf}}', '{{Xpbtrs}}', '{{Xposv}}', '{{Xpotrf}}', '{{Xpotri}}', '{{Xpotrs}}', '{{Xsbev}}', '{{Xsbevd}}', '{{Xsbevx}}', '{{Xsyev}}', '{{Xsyevr}}', '{{Xsygv}}', '{{Xsygvd}}', '{{Xsygvx}}', '{{Xtrtri}}', '{{Xtrtrs}}', 'zgees', 'zgeev', 'zgegv', 'zgelss', 'zgesdd', 'zggev']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
@@ -1230,6 +1232,55 @@ def {{Xungqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, 
     if max(lwork_, 1) != work_shape[0]:
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fc.{{Xungqr}}(&m, &n, &k, <{{ktp}}*>np.PyArray_DATA(a_), &m, <{{ktp}}*>np.PyArray_DATA(tau_), <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+{{endfor}}
+
+
+{{for Xungrq, ktp, npy_enum
+      in zip(['cungrq', 'zungrq'],
+             ['fwc_complex_t', 'fwc_dbl_complex_t'],
+             ['fwc_complex_t_enum', 'fwc_dbl_complex_t_enum'])}}
+def {{Xungrq}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """{{Xungrq}}(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    tau : {{ktp}}_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, {{npy_enum}}, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, {{npy_enum}}, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.{{Xungrq}}(&m, &n, &k, <{{ktp}}*>np.PyArray_DATA(a_), &m, <{{ktp}}*>np.PyArray_DATA(tau_), <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, work_, info,)
 {{endfor}}
 
@@ -3011,6 +3062,55 @@ def {{Xorgqr}}(object a, object tau, object lwork=None, bint overwrite_a=False, 
 {{endfor}}
 
 
+{{for Xorgrq, ktp, npy_enum
+      in zip(['sorgrq', 'dorgrq'],
+             ['fwr_real_t', 'fwr_dbl_t'],
+             ['fwr_real_t_enum', 'fwr_dbl_t_enum'])}}
+def {{Xorgrq}}(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """{{Xorgrq}}(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    tau : {{ktp}}_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : {{ktp}}_, 2D array, dimension(m, n), intent inout
+    work : {{ktp}}_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, {{npy_enum}}, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, {{npy_enum}}, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, {{npy_enum}}, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.{{Xorgrq}}(&m, &n, &k, <{{ktp}}*>np.PyArray_DATA(a_), &m, <{{ktp}}*>np.PyArray_DATA(tau_), <{{ktp}}*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+{{endfor}}
+
+
 {{for Xpbsv, ktp, npy_enum
       in zip(['spbsv', 'dpbsv', 'cpbsv', 'zpbsv'],
              ['fwr_real_t', 'fwr_dbl_t', 'fwc_complex_t', 'fwc_dbl_complex_t'],
@@ -4644,7 +4744,7 @@ cdef char fw_aschar(object s):
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 f509ee88b58717125b0f055b7176ad0b6fa72241
+# Fwrap: pyf-sha1 4a68d1da76618cd2340e64fdc5f47ee6517a036e
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
@@ -4987,7 +5087,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude cunglq
 # Fwrap: exclude cungql
 # Fwrap: exclude cungr2
-# Fwrap: exclude cungrq
 # Fwrap: exclude cungtr
 # Fwrap: exclude cunm2l
 # Fwrap: exclude cunm2r
@@ -5243,7 +5342,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude dorglq
 # Fwrap: exclude dorgql
 # Fwrap: exclude dorgr2
-# Fwrap: exclude dorgrq
 # Fwrap: exclude dorgtr
 # Fwrap: exclude dorm2l
 # Fwrap: exclude dorm2r
@@ -5642,7 +5740,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude sorglq
 # Fwrap: exclude sorgql
 # Fwrap: exclude sorgr2
-# Fwrap: exclude sorgrq
 # Fwrap: exclude sorgtr
 # Fwrap: exclude sorm2l
 # Fwrap: exclude sorm2r
@@ -6118,7 +6215,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude zunglq
 # Fwrap: exclude zungql
 # Fwrap: exclude zungr2
-# Fwrap: exclude zungrq
 # Fwrap: exclude zungtr
 # Fwrap: exclude zunm2l
 # Fwrap: exclude zunm2r

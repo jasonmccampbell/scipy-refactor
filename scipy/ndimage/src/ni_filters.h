@@ -32,6 +32,10 @@
 #ifndef NI_FILTERS_H
 #define NI_FILTERS_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int NI_Correlate1D(NpyArray*, NpyArray*, int, NpyArray*,
                    NI_ExtendMode, double, npy_intp);
 int NI_Correlate(NpyArray*, NpyArray*, NpyArray*,
@@ -51,4 +55,9 @@ int NI_GenericFilter1D(NpyArray*, int (*)(double*, npy_intp,
 int NI_GenericFilter(NpyArray*, int (*)(double*, npy_intp, double*,
                                          void*), void*, NpyArray*, NpyArray*,
                      NI_ExtendMode, double, npy_intp*);
+
+#ifdef __cplusplus
+}
+#endif
+
 #endif

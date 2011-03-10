@@ -21,6 +21,7 @@ chegv, zhegv(...)
 chegvd, zhegvd(...)
 chegvx, zhegvx(...)
 cungqr, zungqr(...)
+cungrq, zungrq(...)
 dgeev(...)
 dgegv(...)
 dgelss(...)
@@ -47,6 +48,7 @@ slamch, dlamch(...)
 slaswp, dlaswp, claswp, zlaswp(...)
 slauum, dlauum, clauum, zlauum(...)
 sorgqr, dorgqr(...)
+sorgrq, dorgrq(...)
 spbsv, dpbsv, cpbsv, zpbsv(...)
 spbtrf, dpbtrf, cpbtrf, zpbtrf(...)
 spbtrs, dpbtrs, cpbtrs, zpbtrs(...)
@@ -403,7 +405,7 @@ def cgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_
     return (alpha_, beta_, vl_, vr_, info,)
 
 
-def cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def cgelss(object a, object b, object cond=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """cgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -426,6 +428,7 @@ def cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
 
     """
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
+    cdef fwr_real_t cond_
     cdef np.ndarray a_, b_, s_, work_, rwork_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1], rwork_shape[1]
     r = 0
@@ -436,6 +439,7 @@ def cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
     n = a_shape[1]
     maxmn = max(m, n)
     minmn = min(m, n)
+    cond_ = cond if (cond is not None) else -1.0
     lwork_ = lwork if (lwork is not None) else (2 * minmn) + max(maxmn, nrhs)
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwc_complex_t_enum, 1, work_shape, False, True)
@@ -458,7 +462,7 @@ def cgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
     s_ = fw_asfortranarray(s, fwr_real_t_enum, 1, s_shape, False, True)
     if minmn != s_shape[0]:
         raise ValueError("(minmn == s.shape[0]) not satisifed")
-    fc.cgelss(&m, &n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(b_), &maxmn, <fwr_real_t*>np.PyArray_DATA(s_), &cond, &r, <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_real_t*>np.PyArray_DATA(rwork_), &info)
+    fc.cgelss(&m, &n, &nrhs, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(b_), &maxmn, <fwr_real_t*>np.PyArray_DATA(s_), &cond_, &r, <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_real_t*>np.PyArray_DATA(rwork_), &info)
     return (a_, b_, s_, r, info,)
 
 
@@ -1730,6 +1734,90 @@ def zungqr(object a, object tau, object lwork=None, bint overwrite_a=False, obje
     fc.zungqr(&m, &n, &k, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(tau_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, work_, info,)
 
+def cungrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """cungrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwc_complex_t_, 2D array, dimension(m, n), intent inout
+    tau : fwc_complex_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwc_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwc_complex_t_, 2D array, dimension(m, n), intent inout
+    work : fwc_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwc_complex_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwc_complex_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwc_complex_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.cungrq(&m, &n, &k, <fwc_complex_t*>np.PyArray_DATA(a_), &m, <fwc_complex_t*>np.PyArray_DATA(tau_), <fwc_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+def zungrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """zungrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwc_dbl_complex_t_, 2D array, dimension(m, n), intent inout
+    tau : fwc_dbl_complex_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwc_dbl_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwc_dbl_complex_t_, 2D array, dimension(m, n), intent inout
+    work : fwc_dbl_complex_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwc_dbl_complex_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwc_dbl_complex_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.zungrq(&m, &n, &k, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(tau_), <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
 
 def dgeev(object a, fwi_integer_t compute_vl=1, fwi_integer_t compute_vr=1, object lwork=None, bint overwrite_a=False, object wr=None, object wi=None, object vl=None, object vr=None):
     """dgeev(a[, compute_vl, compute_vr, lwork, overwrite_a, wr, wi, vl, vr]) -> (wr, wi, vl, vr, info)
@@ -1906,7 +1994,7 @@ def dgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_
     return (alphar_, alphai_, beta_, vl_, vr_, info,)
 
 
-def dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def dgelss(object a, object b, object cond=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """dgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -1929,6 +2017,7 @@ def dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
 
     """
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
+    cdef fwr_dbl_t cond_
     cdef np.ndarray a_, b_, s_, work_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1]
     r = 0
@@ -1939,6 +2028,7 @@ def dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
     n = a_shape[1]
     maxmn = max(m, n)
     minmn = min(m, n)
+    cond_ = cond if (cond is not None) else -1.0
     lwork_ = lwork if (lwork is not None) else (3 * minmn) + max((2 * minmn), max(maxmn, nrhs))
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_dbl_t_enum, 1, work_shape, False, True)
@@ -1959,7 +2049,7 @@ def dgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
     s_ = fw_asfortranarray(s, fwr_dbl_t_enum, 1, s_shape, False, True)
     if minmn != s_shape[0]:
         raise ValueError("(minmn == s.shape[0]) not satisifed")
-    fc.dgelss(&m, &n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(b_), &maxmn, <fwr_dbl_t*>np.PyArray_DATA(s_), &cond, &r, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    fc.dgelss(&m, &n, &nrhs, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(b_), &maxmn, <fwr_dbl_t*>np.PyArray_DATA(s_), &cond_, &r, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, b_, s_, r, info,)
 
 
@@ -3460,7 +3550,7 @@ def zgehrd(object a, fwi_integer_t lo=0, object hi=None, object lwork=None, bint
     return (a_, tau_, info,)
 
 
-def sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def sgelss(object a, object b, object cond=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """sgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -3483,6 +3573,7 @@ def sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
 
     """
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
+    cdef fwr_real_t cond_
     cdef np.ndarray a_, b_, s_, work_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1]
     r = 0
@@ -3493,6 +3584,7 @@ def sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
     n = a_shape[1]
     maxmn = max(m, n)
     minmn = min(m, n)
+    cond_ = cond if (cond is not None) else -1.0
     lwork_ = lwork if (lwork is not None) else (3 * minmn) + max((2 * minmn), max(maxmn, nrhs))
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwr_real_t_enum, 1, work_shape, False, True)
@@ -3513,7 +3605,7 @@ def sgelss(object a, object b, fwr_real_t cond=-1.0, object lwork=None, bint ove
     s_ = fw_asfortranarray(s, fwr_real_t_enum, 1, s_shape, False, True)
     if minmn != s_shape[0]:
         raise ValueError("(minmn == s.shape[0]) not satisifed")
-    fc.sgelss(&m, &n, &nrhs, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(b_), &maxmn, <fwr_real_t*>np.PyArray_DATA(s_), &cond, &r, <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    fc.sgelss(&m, &n, &nrhs, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(b_), &maxmn, <fwr_real_t*>np.PyArray_DATA(s_), &cond_, &r, <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, b_, s_, r, info,)
 
 def sgeqrf(object a, object lwork=None, bint overwrite_a=False, object tau=None, object work=None):
@@ -5252,6 +5344,91 @@ def dorgqr(object a, object tau, object lwork=None, bint overwrite_a=False, obje
     if max(lwork_, 1) != work_shape[0]:
         raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
     fc.dorgqr(&m, &n, &k, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(tau_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+
+def sorgrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """sorgrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwr_real_t_, 2D array, dimension(m, n), intent inout
+    tau : fwr_real_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwr_real_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwr_real_t_, 2D array, dimension(m, n), intent inout
+    work : fwr_real_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwr_real_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwr_real_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwr_real_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.sorgrq(&m, &n, &k, <fwr_real_t*>np.PyArray_DATA(a_), &m, <fwr_real_t*>np.PyArray_DATA(tau_), <fwr_real_t*>np.PyArray_DATA(work_), &lwork_, &info)
+    return (a_, work_, info,)
+def dorgrq(object a, object tau, object lwork=None, bint overwrite_a=False, object work=None):
+    """dorgrq(a, tau[, lwork, overwrite_a, work]) -> (a, work, info)
+
+    Parameters
+    ----------
+    a : fwr_dbl_t_, 2D array, dimension(m, n), intent inout
+    tau : fwr_dbl_t_, 1D array, dimension(k), intent in
+    lwork : fwi_integer, intent in
+    overwrite_a : bint_, intent in
+    work : fwr_dbl_t_, 1D array, dimension(max(lwork,1)), intent out
+
+    Returns
+    -------
+    a : fwr_dbl_t_, 2D array, dimension(m, n), intent inout
+    work : fwr_dbl_t_, 1D array, dimension(max(lwork,1)), intent out
+    info : fwi_integer, intent out
+
+    """
+    cdef fwi_integer_t lwork_, m, n, k, info
+    cdef np.ndarray a_, tau_, work_
+    cdef np.npy_intp a_shape[2], tau_shape[1], work_shape[1]
+    info = 0
+    a_ = fw_asfortranarray(a, fwr_dbl_t_enum, 2, a_shape, not overwrite_a, False)
+    n = a_shape[1]
+    lwork_ = lwork if (lwork is not None) else 3 * n
+    if not ((lwork_ >= n) or (lwork_ == -1)):
+        raise ValueError('Condition on arguments not satisfied: (lwork >= n) or (lwork == -1)')
+    m = a_shape[0]
+    if m != a_shape[0]:
+        raise ValueError("(m == a.shape[0]) not satisifed")
+    if not (0 <= n <= a_shape[1]):
+        raise ValueError("(0 <= n <= a.shape[1]) not satisifed")
+    tau_ = fw_asfortranarray(tau, fwr_dbl_t_enum, 1, tau_shape, False, False)
+    k = tau_shape[0]
+    if not (0 <= k <= tau_shape[0]):
+        raise ValueError("(0 <= k <= tau.shape[0]) not satisifed")
+    work_shape[0] = max(lwork_, 1)
+    work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, True)
+    if max(lwork_, 1) != work_shape[0]:
+        raise ValueError("(max(lwork, 1) == work.shape[0]) not satisifed")
+    fc.dorgrq(&m, &n, &k, <fwr_dbl_t*>np.PyArray_DATA(a_), &m, <fwr_dbl_t*>np.PyArray_DATA(tau_), <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork_, &info)
     return (a_, work_, info,)
 
 def spbsv(object ab, object b, fwi_integer_t lower=0, object ldab=None, bint overwrite_ab=False, bint overwrite_b=False):
@@ -8185,7 +8362,7 @@ def zgegv(object a, object b, fwi_integer_t compute_vl=1, fwi_integer_t compute_
     return (alpha_, beta_, vl_, vr_, info,)
 
 
-def zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
+def zgelss(object a, object b, object cond=None, object lwork=None, bint overwrite_a=False, bint overwrite_b=False, object s=None):
     """zgelss(a, b[, cond, lwork, overwrite_a, overwrite_b, s]) -> (a, b, s, r, info)
 
     Parameters
@@ -8208,6 +8385,7 @@ def zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
 
     """
     cdef fwi_integer_t lwork_, m, n, minmn, maxmn, nrhs, r, info
+    cdef fwr_dbl_t cond_
     cdef np.ndarray a_, b_, s_, work_, rwork_
     cdef np.npy_intp a_shape[2], b_shape[2], s_shape[1], work_shape[1], rwork_shape[1]
     r = 0
@@ -8218,6 +8396,7 @@ def zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
     n = a_shape[1]
     maxmn = max(m, n)
     minmn = min(m, n)
+    cond_ = cond if (cond is not None) else -1.0
     lwork_ = lwork if (lwork is not None) else (2 * minmn) + max(maxmn, nrhs)
     work_shape[0] = lwork_
     work_ = fw_asfortranarray(None, fwc_dbl_complex_t_enum, 1, work_shape, False, True)
@@ -8240,7 +8419,7 @@ def zgelss(object a, object b, fwr_dbl_t cond=-1.0, object lwork=None, bint over
     s_ = fw_asfortranarray(s, fwr_dbl_t_enum, 1, s_shape, False, True)
     if minmn != s_shape[0]:
         raise ValueError("(minmn == s.shape[0]) not satisifed")
-    fc.zgelss(&m, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &maxmn, <fwr_dbl_t*>np.PyArray_DATA(s_), &cond, &r, <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &info)
+    fc.zgelss(&m, &n, &nrhs, <fwc_dbl_complex_t*>np.PyArray_DATA(a_), &m, <fwc_dbl_complex_t*>np.PyArray_DATA(b_), &maxmn, <fwr_dbl_t*>np.PyArray_DATA(s_), &cond_, &r, <fwc_dbl_complex_t*>np.PyArray_DATA(work_), &lwork_, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &info)
     return (a_, b_, s_, r, info,)
 
 
@@ -8450,7 +8629,7 @@ cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
 cdef char fw_aschar(object s):
     cdef char* buf
     try:
-        return <char>s # int
+        return <char>ord(s[0]) # int
     except TypeError:
         pass
     try:
@@ -8468,7 +8647,7 @@ cdef char fw_aschar(object s):
 # Fwrap configuration:
 # Fwrap: version 0.2.0dev_00843a8
 # Fwrap: self-sha1 57571a0e42332f3f0c9a5ea3b239886ae0942c94
-# Fwrap: pyf-sha1 f509ee88b58717125b0f055b7176ad0b6fa72241
+# Fwrap: pyf-sha1 4a68d1da76618cd2340e64fdc5f47ee6517a036e
 # Fwrap: wraps $REFERENCE_LAPACK/SRC/*.f
 # Fwrap:     sha1 06e293fd20e9b3eb70d4bf63898874dd720f21b0
 # Fwrap: wraps $REFERENCE_LAPACK/INSTALL/dlamch.f
@@ -8811,7 +8990,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude cunglq
 # Fwrap: exclude cungql
 # Fwrap: exclude cungr2
-# Fwrap: exclude cungrq
 # Fwrap: exclude cungtr
 # Fwrap: exclude cunm2l
 # Fwrap: exclude cunm2r
@@ -9067,7 +9245,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude dorglq
 # Fwrap: exclude dorgql
 # Fwrap: exclude dorgr2
-# Fwrap: exclude dorgrq
 # Fwrap: exclude dorgtr
 # Fwrap: exclude dorm2l
 # Fwrap: exclude dorm2r
@@ -9466,7 +9643,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude sorglq
 # Fwrap: exclude sorgql
 # Fwrap: exclude sorgr2
-# Fwrap: exclude sorgrq
 # Fwrap: exclude sorgtr
 # Fwrap: exclude sorm2l
 # Fwrap: exclude sorm2r
@@ -9942,7 +10118,6 @@ cdef char fw_aschar(object s):
 # Fwrap: exclude zunglq
 # Fwrap: exclude zungql
 # Fwrap: exclude zungr2
-# Fwrap: exclude zungrq
 # Fwrap: exclude zungtr
 # Fwrap: exclude zunm2l
 # Fwrap: exclude zunm2r

@@ -41,6 +41,9 @@
 
 #undef NO_IMPORT_ARRAY
 
+#ifdef __cplusplus
+extern "C" {
+#endif
 
 /* Eventually get rid of everything below this line */
 
@@ -93,7 +96,10 @@ NA_ByteOrder(void)
                 return NUM_BIG_ENDIAN;
 }
 
-
 #endif /* ND_IMPORT_ARRAY */
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif /* ND_IMAGE_H */

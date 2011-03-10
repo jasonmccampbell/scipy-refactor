@@ -32,9 +32,17 @@
 #ifndef NI_FOURIER_H
 #define NI_FOURIER_H
 
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 int NI_FourierFilter(NpyArray*, NpyArray*, npy_intp, int,
                                          NpyArray*, int);
 int NI_FourierShift(NpyArray*, NpyArray*, npy_intp, int,
                                         NpyArray*);
+
+#ifdef __cplusplus
+}
+#endif
 
 #endif
