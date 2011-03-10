@@ -322,20 +322,16 @@ cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_nu
     return PyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL)
 
 cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
-     # XXX "long long" is wrong type
-    return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+    return  NpyArray_CHKFLAGS(<NpyArray*> <npy_intp>n.Array, flags)
 
 cdef inline void* PyArray_DATA(ndarray n) nogil:
-    # XXX "long long" is wrong type
-    return NpyArray_DATA(<NpyArray*> <long long>n.Array)
+    return NpyArray_DATA(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
-    # XXX "long long" is wrong type
-    return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+    return NpyArray_DIMS(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline int PyArray_ITEMSIZE(ndarray n):
-    # XXX "long long" is wrong type
-    return NpyArray_ITEMSIZE(<NpyArray*> <long long>n.Array)
+    return NpyArray_ITEMSIZE(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline object PyArray_Return(arr):
     import clr
@@ -343,20 +339,18 @@ cdef inline object PyArray_Return(arr):
     return NumpyDotNet.NpyArray.ArrayReturn(arr)
 
 cdef inline intp_t PyArray_SIZE(ndarray n):
-    # XXX "long long" is wrong type
-    return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+    return NpyArray_SIZE(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline npy_intp* PyArray_STRIDES(ndarray n):
-    return NpyArray_STRIDES(<NpyArray*> <long long>n.Array) 
+    return NpyArray_STRIDES(<NpyArray*> <npy_intp>n.Array) 
 
 cdef inline NpyArray *PyArray_ARRAY(ndarray n):
-    # XXX "long long" is wrong type
-    return <NpyArray*> <long long>n.Array
+    return <NpyArray*> <npy_intp>n.Array
 
 cdef inline void *PyArray_Zero(arr):
     import clr
     import NumpyDotNet.NpyArray
-    return <void *><long long>NumpyDotNet.NpyArray.Zero(arr)
+    return <void *><npy_intp>NumpyDotNet.NpyArray.Zero(arr)
 
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
@@ -384,11 +378,10 @@ cdef inline void import_array():
     pass
 
 cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
-    # XXX "long long" is wrong type
-    return NpyArray_IterNew(<NpyArray*> <long long>n.Array)
+    return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
-    return NpyArray_IterAllButAxis(<NpyArray*> <long long>n.Array, inaxis)
+    return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)
 
 cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
     NpyArray_ITER_NEXT(obj)
