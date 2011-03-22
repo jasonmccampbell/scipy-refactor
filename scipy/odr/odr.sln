@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "odr", "odr.vcxproj", "{2FA0221D-86D1-4E4F-A39F-FE75A6F6F83D}"
+EndProject
+Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "odrpack", "odrpack\odrpack.vfproj", "{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FA0221D-86D1-4E4F-A39F-FE75A6F6F83D}.Debug|Win32.ActiveCfg = Debug|Win32
+		{2FA0221D-86D1-4E4F-A39F-FE75A6F6F83D}.Debug|Win32.Build.0 = Debug|Win32
+		{2FA0221D-86D1-4E4F-A39F-FE75A6F6F83D}.Release|Win32.ActiveCfg = Release|Win32
+		{2FA0221D-86D1-4E4F-A39F-FE75A6F6F83D}.Release|Win32.Build.0 = Release|Win32
+		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Debug|Win32.ActiveCfg = Debug|Win32
+		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Debug|Win32.Build.0 = Debug|Win32
+		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Release|Win32.ActiveCfg = Release|Win32
+		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
