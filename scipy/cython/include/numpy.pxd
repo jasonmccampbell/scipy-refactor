@@ -191,8 +191,9 @@ cdef extern from "npy_arrayobject.h":
     bint NpyArray_CHKFLAGS(NpyArray* obj, int flags)
     void *NpyArray_DATA(NpyArray* obj)
     npy_intp *NpyArray_DIMS(NpyArray* obj)
+    npy_intp NpyArray_DIM(NpyArray *obj, int i)
     npy_intp NpyArray_SIZE(NpyArray* obj)
-
+    
 cdef extern from "npy_descriptor.h":
     ctypedef struct NpyArray_Descr:
         pass
@@ -216,6 +217,8 @@ cdef extern from "npy_api.h":
                            npy_intp *strides, void *data, int itemsize,
                            int flags, void *obj)
     int NpyArray_INCREF(NpyArray *arr)
+    int NpyDataType_TYPE_NUM(NpyArray_Descr *)
+
 
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
@@ -278,6 +281,9 @@ cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
 
+cdef inline intp_t PyArray_DIM(ndarray n, int dim):
+    return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
+
 cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
@@ -286,10 +292,24 @@ cdef inline NpyArray *PyArray_ARRAY(ndarray n):
     # XXX "long long" is wrong type
     return <NpyArray*> <long long>n.Array
 
+
+cdef inline object PyArray_Return(ndarray arr):
+    return ndarray.ArrayReturn(arr)
+
+
+cdef inline int PyDataType_TYPE_NUM(dtype t):
+    return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
+
 cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
     import NumpyDotNet.NpyArray
     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+
+
+cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):
+    return PyArray_FromAny(op, descr, min_depth, max_depth,
+                           NPY_ENSURECOPY | NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
+
 
 cdef inline object PyArray_FROMANY(m, type, min, max, flags):
     if flags & NPY_ENSURECOPY:
