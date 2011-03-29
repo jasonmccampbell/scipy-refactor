@@ -196,20 +196,24 @@ cdef extern from "npy_defs.h":
     cdef enum:
         NPY_MAXDIMS
 
+cdef extern from "npy_descriptor.h":
+    ctypedef struct NpyArray_Descr:
+        char type
+        # ... many other fields
+
 cdef extern from "npy_arrayobject.h":
     ctypedef struct NpyArray:
         pass
 
     bint NpyArray_CHKFLAGS(NpyArray* obj, int flags)
     void *NpyArray_DATA(NpyArray* obj)
+    NpyArray_Descr *NpyArray_DESCR(NpyArray* obj)
     npy_intp *NpyArray_DIMS(NpyArray* obj)
     int NpyArray_ITEMSIZE(NpyArray* obj)
     npy_intp NpyArray_SIZE(NpyArray* obj)
     npy_intp* NpyArray_STRIDES(NpyArray* obj)
+    int NpyArray_TYPE(NpyArray* obj)
 
-cdef extern from "npy_descriptor.h":
-    ctypedef struct NpyArray_Descr:
-        pass
 
 cdef extern from "npy_ufunc_object.h":
     ctypedef struct NpyUFuncObject:
@@ -230,6 +234,8 @@ cdef extern from "npy_api.h":
                            npy_intp *strides, void *data, int itemsize,
                            int flags, void *obj)
     int NpyArray_INCREF(NpyArray *arr)
+    int NpyArray_AsCArray(NpyArray **apIn, void *ptr, npy_intp *dims, int nd,
+                          NpyArray_Descr* typedescr)
     void NpyDataMem_FREE(char *ptr)
 
 cdef extern from "npy_iterators.h":
@@ -244,6 +250,7 @@ cdef extern from "npy_iterators.h":
 
     ctypedef struct NpyArrayIterObject:
         npy_intp size
+        npy_intp strides[NPY_MAXDIMS]
         NpyArray *ao
         char *dataptr
 
@@ -264,10 +271,18 @@ cdef extern from "npy_iterators.h":
     int NpyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter)
     int NpyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter)
  
+cdef extern from "": # NpyArray.cs
+    # Cython doesn't handle overloading
+    dtype NpyArray_FindArrayType_3args "NumpyDotNet::NpyArray::FindArrayType" (object src, dtype minitype, int max)
+
+cdef inline dtype NpyArray_FindArrayType_2args(object src, dtype minitype):
+    return NpyArray_FindArrayType_3args(src, minitype, NPY_MAXDIMS)
+
+
 cdef extern from "npy_ironpython.h":
     object Npy_INTERFACE_ufunc "Npy_INTERFACE_OBJECT" (NpyUFuncObject*)
-    object Npy_INTERFACE_descr "Npy_INTERFACE_OBJECT" (NpyArray_Descr*)
-    object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
+    dtype Npy_INTERFACE_descr "Npy_INTERFACE_OBJECT" (NpyArray_Descr*)
+    ndarray Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
 
 ctypedef float complex  complex64_t
 ctypedef double complex complex128_t
@@ -330,6 +345,9 @@ cdef inline void* PyArray_DATA(ndarray n) nogil:
 cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
     return NpyArray_DIMS(<NpyArray*> <npy_intp>n.Array)
 
+cdef inline object PyArray_DESCR(ndarray n):
+    return Npy_INTERFACE_descr(NpyArray_DESCR(<NpyArray*> <npy_intp>n.Array))
+
 cdef inline int PyArray_ITEMSIZE(ndarray n):
     return NpyArray_ITEMSIZE(<NpyArray*> <npy_intp>n.Array)
 
@@ -346,6 +364,9 @@ cdef inline npy_intp* PyArray_STRIDES(ndarray n):
 
 cdef inline NpyArray *PyArray_ARRAY(ndarray n):
     return <NpyArray*> <npy_intp>n.Array
+
+cdef inline int PyArray_TYPE(ndarray n):
+    return NpyArray_TYPE(<NpyArray*> <npy_intp>n.Array)
 
 cdef inline void *PyArray_Zero(arr):
     import clr
@@ -404,3 +425,6 @@ cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* it
 
 cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):
     return NpyArrayNeighborhoodIter_Next(iter)
+
+cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):
+    return Npy_INTERFACE_array(iter.ao)

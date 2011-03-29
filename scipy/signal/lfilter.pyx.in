@@ -7,7 +7,7 @@ cimport numpy as np
 np.import_array()
 
 cdef extern from "stdlib.h":
-    free(void *ptr)
+    void free(void *ptr)
     void *malloc(size_t size)
 
 cdef extern from "string.h":
@@ -15,7 +15,12 @@ cdef extern from "string.h":
     void *memset(void *b, int c, size_t len)
 
 cdef extern from "sigtools.h":
-    pass
+    np.PyArray_CopySwapFunc ARRAY_COPYSWAP_FUNC(np.NpyArray *arr)
+
+cdef extern from "iterhelper.h":
+     ctypedef void *PYOBJPTRPTR
+     object READOBJECT(PYOBJPTRPTR ptr)
+     void ASSIGNOBJECT(PYOBJPTRPTR ptr, obj)
 
 ctypedef void (*BasicFilterFunction) (char *, char *,  char *, char *, char *,
                                       np.npy_intp, np.npy_uintp, np.npy_intp,
@@ -45,20 +50,21 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
                                         np.ndarray X, int axis=-1,
                                         np.ndarray Vi=None):
     cdef np.ndarray ara, arb, arX, arY, arVf, arVi
-    cdef int typenum, theaxis, st
+    cdef int theaxis, st
     cdef char *ara_ptr, input_flag = 0, *azero
     cdef np.npy_intp na, nb, nal
     cdef BasicFilterFunction basic_filter
+    cdef np.dtype type
 
-    typenum = max(np.PyArray_TYPE(b), 0)
-    typenum = max(np.PyArray_TYPE(a), typenum)
-    typenum = max(np.PyArray_TYPE(X), typenum)
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))
+    type = np.NpyArray_FindArrayType_2args(a, type)
+    type = np.NpyArray_FindArrayType_2args(X, type)
     if Vi is not None:
-        typenum = max(np.PyArray_TYPE(Vi), typenum)
+        type = np.NpyArray_FindArrayType_2args(Vi, type)
 
-    ara = np.PyArray_FROMANY(a, typenum, 1, 1, np.NPY_CONTIGUOUS)
-    arb = np.PyArray_FROMANY(a, typenum, 1, 1, np.NPY_CONTIGUOUS)
-    arX = np.PyArray_FROMANY(X, typenum, 0, 0, 0)
+    ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
 
     if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
         raise ValueError("selected axis is out of range")
@@ -69,8 +75,10 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
         theaxis = axis
 
     if Vi is not None:
-        arVi = np.PyArray_FROMANY(Vi, typenum, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), 0)
+        arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
         input_flag = 1
+
+    cdef int typenum = type.num
 
     arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)
 
@@ -99,7 +107,7 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
 
     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
     if st:
-        return None
+        raise SystemError # RawFilter raised an exception
 
     if not input_flag:
         return np.PyArray_Return(arY)
@@ -111,14 +119,14 @@ def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
 cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfilled):
     cdef char *xzero
     cdef np.npy_intp i, nxl
-    cdef np.PyArray_CopySwapFunc copyswap = array_get_copyswap_func(x)
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(x)
 
-    nxl = np.PyArray_ITEMSIZE(x)
-    xzero = <char *>np.PyArray_Zero(x)
+    nxl = np.NpyArray_ITEMSIZE(x)
+    xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))
 
     if nx > 0:
         for i in range(nx):
-            copyswap(xzfilled + i * nxl, np.PyArray_DATA(x) + i * nxl, 0, NULL)
+            copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
 
     for i in range(nx, nxzfilled):
         copyswap(xzfilled + i * nxl, xzero, 0, NULL)
@@ -144,24 +152,24 @@ cdef int RawFilter(np.ndarray b, np.ndarray a,
     cdef np.npy_intp na, nb, nal, nbl
     cdef np.npy_intp nfilt
     cdef char *azfilled, *bzfilled, *zfzfilled, *yoyo
-    cdef np.PyArray_CopySwapFunc copyswap = np.PyArray_DESCR(x).f.copyfunc
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(np.PyArray_ARRAY(x))
 
     itx = np.PyArray_IterAllButAxis(x, &axis)
-    if itx is None:
+    if itx == NULL:
         raise MemoryError("Could not create itx")
-    nitx = np.PyIter_SIZE(itx)
+    nitx = itx.size
 
     ity = np.PyArray_IterAllButAxis(y, &axis)
-    if ity is None:
+    if ity == NULL:
         raise MemoryError("Could not create ity")
 
     if zi is not None:
         itzi = np.PyArray_IterAllButAxis(zi, &axis)
-        if itzi is None:
+        if itzi == NULL:
             raise MemoryError("Could not create itzi")
 
         itzf = np.PyArray_IterAllButAxis(zf, &axis)
-        if itzf is None:
+        if itzf == NULL:
             raise MemoryError("Could not create itzf")
 
     na = np.PyArray_SIZE(a)
@@ -194,41 +202,41 @@ cdef int RawFilter(np.ndarray b, np.ndarray a,
     memset(<void *>bzfilled, 0, nbl * nfilt)
     memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
 
-    zfill(a, na, azfilled, nfilt)
-    zfill(b, nb, bzfilled, nfilt)
+    zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)
+    zfill(np.PyArray_ARRAY(b), nb, bzfilled, nfilt)
 
     # XXX: Check that zf and zi have same type ?
-    if zf != NULL:
+    if zf is not None:
         nzfl = np.PyArray_ITEMSIZE(zf)
     else:
         nzfl = 0
 
     # Iterate over the input array
     for i in range(nitx):
-        if zi != NULL:
+        if zi is not None:
             yoyo = itzi.dataptr
             # Copy initial conditions zi in zfzfilled buffer
             for j in range(nfilt - 1):
                 copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
-                yoyo += np.PyIter_STRIDES(itzi)[axis]
+                yoyo += itzi.strides[axis]
             
             np.PyArray_ITER_NEXT(itzi)
         else:
-            zfill(x, 0, zfzfilled, nfilt - 1)
+            zfill(np.PyArray_ARRAY(x), 0, zfzfilled, nfilt - 1)
 
         filter_func(bzfilled, azfilled,
                     itx.dataptr, ity.dataptr, zfzfilled,
-                    nfilt, np.PyArray_DIMS(x)[axis], PyIter_STRIDES(itx)[axis],
-                    PyIter_STRIDES(ity)[axis]);
+                    nfilt, np.PyArray_DIMS(x)[axis], itx.strides[axis],
+                    ity.strides[axis]);
         np.PyArray_ITER_NEXT(itx)
         np.PyArray_ITER_NEXT(ity)
 
         # Copy tmp buffer fo final values back into zf output array
-        if zi != NULL:
+        if zi is not None:
             yoyo = itzf.dataptr
             for j in range(nfilt - 1):
                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
-                yoyo += PyIter_STRIDES(itzf)[axis]
+                yoyo += itzf.strides[axis]
             np.PyArray_ITER_NEXT(itzf);
 
     # Free up allocated memory
@@ -347,67 +355,51 @@ cdef OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,
                  np.npy_intp len_b, np.npy_uintp len_x,
                  np.npy_intp stride_X, np.npy_intp stride_Y):
     cdef char *ptr_x = x, *ptr_y = y
-    cdef PyObject **ptr_Z, **ptr_b
-    cdef PyObject **ptr_a
-    cdef PyObject **xn, **yn
-    cdef PyObject **a0 = (PyObject **) a
-    cdef PyObject *tmp1, *tmp2, *tmp3
+    cdef PYOBJPTRPTR ptr_Z, ptr_b
+    cdef PYOBJPTRPTR ptr_a
+    cdef PYOBJPTRPTR xn, yn
+    cdef PYOBJPTRPTR a0 = <PYOBJPTRPTR> a
+    cdef object tmp1, tmp2, tmp3
     cdef np.npy_intp n
     cdef np.npy_uintp k
 
     # My reference counting might not be right
     for k in range(len_x):
-        ptr_b = (PyObject **) b        # Reset a and b pointers
-        ptr_a = (PyObject **) a
-        xn = (PyObject **) ptr_x
-        yn = (PyObject **) ptr_y
+        ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+        ptr_a = <PYOBJPTRPTR> a
+        xn = <PYOBJPTRPTR> ptr_x
+        yn = <PYOBJPTRPTR> ptr_y
         if len_b > 1:
-            ptr_Z = ((PyObject **) Z)
+            ptr_Z = (<PYOBJPTRPTR> Z)
             # Calculate first delay (output)
-            tmp1 = PyNumber_Multiply(*ptr_b, *xn)
-            tmp2 = PyNumber_Divide(tmp1, *a0)
-            tmp3 = PyNumber_Add(tmp2, *ptr_Z)
-            Py_XDECREF(*yn)
-            *yn = tmp3
-            Py_DECREF(tmp1)
-            Py_DECREF(tmp2)
+            tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+            tmp2 = tmp1 / READOBJECT(a0)
+            tmp3 = tmp2 + READOBJECT(ptr_Z)
+            ASSIGNOBJECT(yn, tmp3)
             ptr_b += 1
             ptr_a += 1
 
             # Fill in middle delays
             for n in range(len_b - 2):
-                tmp1 = PyNumber_Multiply(*xn, *ptr_b)
-                tmp2 = PyNumber_Divide(tmp1, *a0)
-                tmp3 = PyNumber_Add(tmp2, ptr_Z[1])
-                Py_DECREF(tmp1)
-                Py_DECREF(tmp2)
-                tmp1 = PyNumber_Multiply(*yn, *ptr_a)
-                tmp2 = PyNumber_Divide(tmp1, *a0)
-                Py_DECREF(tmp1)
-                Py_XDECREF(*ptr_Z)
-                *ptr_Z = PyNumber_Subtract(tmp3, tmp2)
-                Py_DECREF(tmp2)
-                Py_DECREF(tmp3)
+                tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+                tmp2 = tmp1 / READOBJECT(a0)
+                tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+                tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+                tmp2 = tmp1 / READOBJECT(a0)
+                ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
                 ptr_b += 1
                 ptr_a += 1
                 ptr_Z += 1
             
             # Calculate last delay
-            tmp1 = PyNumber_Multiply(*xn, *ptr_b)
-            tmp3 = PyNumber_Divide(tmp1, *a0)
-            Py_DECREF(tmp1)
-            tmp1 = PyNumber_Multiply(*yn, *ptr_a)
-            tmp2 = PyNumber_Divide(tmp1, *a0)
-            Py_DECREF(tmp1)
-            Py_XDECREF(*ptr_Z)
-            *ptr_Z = PyNumber_Subtract(tmp3, tmp2)
-            Py_DECREF(tmp2)
-            Py_DECREF(tmp3)
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            tmp3 = tmp1 / READOBJECT(a0)
+            tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+            tmp2 = tmp1 / READOBJECT(a0)
+            ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
         else:
-            tmp1 = PyNumber_Multiply(*xn, *ptr_b)
-            Py_XDECREF(*yn)
-            *yn = PyNumber_Divide(tmp1, *a0)
-            Py_DECREF(tmp1)
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))
 
         ptr_y += stride_Y      # Move to next input/output point
         ptr_x += stride_X

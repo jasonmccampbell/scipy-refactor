@@ -12,17 +12,23 @@ cdef extern from "iterhelper.h":
 cdef extern from "sigtools.h":
     np.PyArray_CopySwapFunc ARRAY_COPYSWAP_FUNC(np.NpyArray *arr)
 
-CORR_MODE_VALID = 0
-CORR_MODE_SAME  = 1
-CORR_MODE_FULL  = 2
+cdef enum:
+    CORR_MODE_VALID = 0
+    CORR_MODE_SAME  = 1
+    CORR_MODE_FULL  = 2
 
 def scipy_signal_sigtools_correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
     cdef np.NpyArrayIterObject *itx, *ity, *itz
-    cdef int typenum, st
+    cdef int st
+    cdef np.dtype type
 
-    typenum = np.PyArray_TYPE(ax)
-    typenum = max(np.PyArray_TYPE(ay), typenum)
-    typenum = max(np.PyArray_TYPE(aout), typenum)
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(ax)))
+    type = np.NpyArray_FindArrayType_2args(ay, type)
+    type = np.NpyArray_FindArrayType_2args(aout, type)
+
+    ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+    ay = np.PyArray_FromAny(ay, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+    aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
 
     if np.PyArray_NDIM(ax) != np.PyArray_NDIM(ay):
         raise ValueError("Arrays must have the same number of dimensions.")
@@ -33,6 +39,8 @@ def scipy_signal_sigtools_correlateND(np.ndarray ax, np.ndarray ay, np.ndarray a
     itx = np.PyArray_IterNew(ax)
     ity = np.PyArray_IterNew(ay)
     itz = np.PyArray_IterNew(aout)
+
+    cdef int typenum = type.num
 
     st = _correlate_nd_imp(itx, ity, itz, typenum, mode);
     if st:
@@ -155,9 +163,9 @@ cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
     if mode == CORR_MODE_VALID:
         # Only walk through the input points such as the correponding
         # output will not depend on 0 padding
-        for i in range(np.PyArray_NDIM(np.PyIter_ARRAY(itx))):
-            bounds[2*i] = np.PyArray_DIMS(np.PyIter_ARRAY(ity))[i] - 1
-            bounds[2*i+1] = np.PyArray_DIMS(np.PyIter_ARRAY(itx))[i] - 1
+        for i in range(np.PyArray_NDIM(np.NpyIter_ARRAY(itx))):
+            bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1
+            bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1
     elif mode == CORR_MODE_SAME:
         # Only walk through the input such as the output will be centered
         # relatively to the output as computed in the full mode
@@ -193,6 +201,8 @@ cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
                         bounds, np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
 
     if typenum == np.NPY_OBJECT:
+        # The object array case does not worth being optimized, since most of
+    	# the cost is numerical operations, not iterators moving in this case ?
         _imp_correlate_nd_object(curx, curneighx, ity, itz)
 {{for TYPE, type
       in zip(['UBYTE', 'BYTE', 'USHORT', 'SHORT', 'UINT', 'INT', 'ULONG',
@@ -205,8 +215,6 @@ cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
         _imp_correlate_nd_{{type}}(curx, curneighx, ity, itz)
 {{endfor}}
 
-    # The object array case does not worth being optimized, since most of
-    # the cost is numerical operations, not iterators moving in this case ?
     else:
         raise ValueError("Unsupported type")
 

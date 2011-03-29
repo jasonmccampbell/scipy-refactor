@@ -13,7 +13,6 @@ ctypedef int (*CompareFunction) (void *, void *)
 cdef extern from "stdlib.h":
     void free(void *ptr)
     void * malloc(size_t size)
-    void memset(void *, void *, int)
     void qsort(void *base, size_t nel, size_t width, int (*compar)(void *, void *))
 
 cdef extern from "string.h":
@@ -36,7 +35,8 @@ cdef extern from "sigtools.h":
 
 
 # init the linear filter module
-scipy_signal_sigtools_linear_filter_module_init()
+# (doesn't work -- and isn't needed -- with IronPython; FIXME)
+#scipy_signal_sigtools_linear_filter_module_init()
 
 # define some constants
 OUTSIZE_MASK = 3
@@ -85,7 +85,7 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
     ptr = <char *>np.PyArray_Zero(ap2)
     temp_ind[ndims-1] -= 1
     
-    for i in range(nels2, 0, -1):
+    for i in range(nels2 - 1, -1, -1):
         # Adjust index array and move ptr1 to right place
         k = ndims - 1
         for j in range(incr):
@@ -173,19 +173,20 @@ def _order_filterND(a0, domain, int order=0):
     cdef np.npy_intp *offsets2
     cdef np.npy_intp *ret_ind
     cdef int i, j, n2, n2_nonzero, k, check, incr = 1
-    cdef int typenum, bytes_in_array
+    cdef int bytes_in_array
     cdef int is1, os
+    cdef int typenum
     cdef char *op, *ap1_ptr, *ap2_ptr, *sort_buffer
     cdef CompareFunction compare_func
     cdef char *zptr=NULL
 
     # Get Array objects from input
-    typenum = np.PyArray_ObjectType(a0, 0)
-    typenum = np.PyArray_ObjectType(domain, typenum)
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(a0)))
+    type = np.NpyArray_FindArrayType_2args(domain, type)
 
     try:
-        ap1 = np.PyArray_FROMANY(a0, typenum, 0, 0, np.NPY_CONTIGUOUS)    
-        ap2 = np.PyArray_FROMANY(domain, typenum, 0, 0, np.NPY_CONTIGUOUS)
+        ap1 = np.PyArray_FromAny(a0, type, 0, 0, np.NPY_CONTIGUOUS, None)
+        ap2 = np.PyArray_FromAny(domain, type, 0, 0, np.NPY_CONTIGUOUS, None)
 
         if np.PyArray_NDIM(ap1) != np.PyArray_NDIM(ap2):
             raise ValueError("All input arrays must have the same number of dimensions.")
@@ -207,6 +208,8 @@ def _order_filterND(a0, domain, int order=0):
         if (order >= n2_nonzero) or (order < 0):
             raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")
         
+        typenum = type.num
+
         ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)
         
         compare_func = compare_functions[np.PyArray_TYPE(ap1)]
@@ -322,19 +325,21 @@ def _order_filterND(a0, domain, int order=0):
 def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=None):
     """ out = _convolve2d(in1, in2, flip, mode, boundary, fillvalue)
     """
-    cdef int typenum, flag, ret
+    cdef int flag, ret
     cdef np.npy_intp *aout_dimens=NULL, *dims=NULL
     cdef char zeros[32] # Zeros
-    cdef int n1, n2, i, masked_mode
+    cdef int n1, n2, i, masked_mode, typenum
     cdef np.ndarray ain1, ain2, aout
     cdef np.ndarray afill, newfill
 
-    typenum = np.PyArray_ObjectType(in1, 0)
-    typenum = np.PyArray_ObjectType(in2, typenum)
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(in1)))
+    type = np.NpyArray_FindArrayType_2args(in2, type)
+
+    typenum = type.num
 
     try:
-        ain1 = np.PyArray_FROMANY(in1, typenum, 2, 2, np.NPY_CONTIGUOUS)
-        ain2 = np.PyArray_FROMANY(in2, typenum, 2, 2, np.NPY_CONTIGUOUS)
+        ain1 = np.PyArray_FromAny(in1, type, 2, 2, np.NPY_CONTIGUOUS, None)
+        ain2 = np.PyArray_FromAny(in2, type, 2, 2, np.NPY_CONTIGUOUS, None)
 
         if boundary != PAD and boundary != REFLECT and boundary != CIRCULAR:
             raise ValueError("Incorrect boundary value.")
@@ -477,7 +482,7 @@ def _median2d(image, size=None):
     cdef np.ndarray a_image, a_size, a_out
     cdef np.npy_intp *Nwin = [3,3]
 
-    typenum = np.PyArray_ObjectType(image, 0)
+    typenum = np.PyArray_TYPE(image)
     a_image = np.PyArray_FROMANY(image, typenum, 2, 2, np.NPY_CONTIGUOUS)
 
     if size is not None:
