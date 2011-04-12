@@ -23,8 +23,7 @@ ctypedef npy_uint64      uint64_t
 ctypedef npy_float32    float32_t
 ctypedef npy_float64    float64_t
 
-ctypedef void (*PyUFuncGenericFunction) (char **, npy_intp *, npy_intp *, void *)
-
+ctypedef void (*NpyUFuncGenericFunction) (char **, npy_intp *, npy_intp *, void *)
 
 cdef extern from "":
     ctypedef class numpy.ndarray [clr "NumpyDotNet::ndarray"]:
@@ -32,6 +31,8 @@ cdef extern from "":
 
     ctypedef class numpy.dtype [clr "NumpyDotNet::dtype"]:
         pass
+
+    ndarray ArrayReturn "NumpyDotNet::ndarray::ArrayReturn" (ndarray arr)
 
 cdef extern from "npy_common.h":
 
@@ -184,6 +185,14 @@ cdef extern from "npy_defs.h":
     cdef enum:
         NPY_MAXDIMS
 
+    ctypedef Py_ssize_t npy_intp
+    ctypedef struct NpyArray:
+        pass
+
+    cdef void *Npy_INCREF(void *)
+    cdef void Npy_DECREF(void *)
+
+
 cdef extern from "npy_arrayobject.h":
     ctypedef struct NpyArray:
         pass
@@ -234,10 +243,14 @@ ctypedef npy_clongdouble clongdouble_t
 
 ctypedef npy_cdouble     complex_t
 
-cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
+cdef inline object PyUFunc_FromFuncAndData(NpyUFuncGenericFunction* func, void** data,
         char* types, int ntypes, int nin, int nout,
         int identity, char* name, char* doc, int c):
    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
+
+cdef inline object PyArray_DescrFromType(int typenum):
+    return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))
+
 
 cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
     shape_list = []
@@ -247,7 +260,7 @@ cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortr
     import numpy
     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
 
-cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
     shape_list = []
     cdef int i
     for i in range(ndim):
@@ -277,12 +290,15 @@ cdef inline void* PyArray_DATA(ndarray n) nogil:
     # XXX "long long" is wrong type
     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
 
-cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
+cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
     # XXX "long long" is wrong type
     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
 
 cdef inline intp_t PyArray_DIM(ndarray n, int dim):
     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
+
+cdef inline object PyArray_NDIM(ndarray obj):
+    return obj.ndim
 
 cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
@@ -292,10 +308,16 @@ cdef inline NpyArray *PyArray_ARRAY(ndarray n):
     # XXX "long long" is wrong type
     return <NpyArray*> <long long>n.Array
 
-
 cdef inline object PyArray_Return(ndarray arr):
-    return ndarray.ArrayReturn(arr)
+    import NumpyDotNet.ndarray
+    if arr is None:
+        return None
+    return ArrayReturn(arr)
 
+cdef inline object NpyArray_Return(NpyArray *arr):
+    ret = Npy_INTERFACE_array(arr)
+    Npy_DECREF(arr)
+    return ret
 
 cdef inline int PyDataType_TYPE_NUM(dtype t):
     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
@@ -316,6 +338,10 @@ cdef inline object PyArray_FROMANY(m, type, min, max, flags):
         flags |= NPY_DEFAULT
     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
 
+cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
+    return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,
+                           NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
+
 cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
     import clr
     import NumpyDotNet.NpyArray
@@ -325,8 +351,10 @@ cdef inline object PyArray_Check(obj):
     import numpy as np
     return isinstance(obj, np.ndarray)
 
-cdef inline object PyArray_NDIM(obj):
-    return obj.ndim
-
 cdef inline void import_array():
     pass
+
+cdef inline PyNumber_Check(o):
+    import clr
+    import NumpyDotNet.ScalarGeneric
+    return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
