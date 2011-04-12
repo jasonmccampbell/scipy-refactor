@@ -104,7 +104,6 @@ __all__ += ['randn', 'rand', 'fft', 'ifft']
 del _num
 # Remove the linalg imported from numpy so that the scipy.linalg package can be
 # imported.
-print "scipy.__init__: Comment out delete of linalg from numpy since it doesn't exist yet."
 #del linalg
 #__all__.remove('linalg')
 
