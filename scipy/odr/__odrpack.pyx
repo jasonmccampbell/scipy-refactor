@@ -1,12 +1,7 @@
 
 import operator
 cimport numpy as np
-from numpy cimport Npy_INTERFACE_descr, NpyArray_DescrFromType, PyArray_CheckFromAny
-from numpy cimport PyArray_CopyFromObject, PyArray_Empty, PyArray_ARRAY, \
-    PyArray_DATA, PyArray_DIM, PyDataType_TYPE_NUM, PyArray_Return, \
-    NpyArray_New, NpyArray_DIMS, NpyArray_DIM, NpyArray_DATA, Npy_INTERFACE_array
-from numpy cimport ndarray, dtype
-
+import numpy as np
 np.import_array()
 
 cdef extern from "string.h":
@@ -21,15 +16,6 @@ cdef extern from "npy_defs.h":
     cdef void Npy_DECREF(void *)
 
 cdef extern from "odrpack.h":
-    cdef struct ODR_info_:
-        NpyArray *fcn
-        NpyArray *fjacb
-        NpyArray *fjacd
-        NpyArray *pyBeta
-        NpyArray *extra_args
-
-    cdef ODR_info_ odr_global
-
     cdef void dodrc "F_FUNC(dodrc,DODRC)"(
         void (*fcn)(int *n, int *m, int *npx, int *nq, int *ldn, int *ldm, 
             int *ldnp, double *beta, double *xplusd, int *ifixb, int *ifixx, 
@@ -57,20 +43,115 @@ cdef extern from "odrpack.h":
     cdef void dlunc "F_FUNC(dlunc, DLUNC)"(int *)
 
 
-cdef NpyArray *NpyArray_SimpleNew(int nd, npy_intp *dims, dtype descr):
-    return NpyArray_New(NULL, nd, dims, PyDataType_TYPE_NUM(descr), NULL, NULL, descr.itemsize, 0, NULL)
+cdef NpyArray *NpyArray_SimpleNew(int nd, npy_intp *dims, np.dtype descr):
+    return np.NpyArray_New(NULL, nd, dims, np.PyDataType_TYPE_NUM(descr), NULL, NULL, descr.itemsize, 0, NULL)
 
-cdef void fcn_callback(int *n, int *m, int *np, int *nq, int *ldn, int *ldm,
+class odr_stop(Exception):
+    pass
+
+class odr_error(Exception):
+    pass
+
+# Danger, global.  Used to pass data from odr to fcn_callback through intervening Fortran.
+odr_global = { "fcn" : None, "fjacb" : None, "fjacd" : None, "pyBeta" : None, "extra_args" : None }
+
+
+cdef object __evalArrayGenFunc(func, arglist, int *istop):
+    if func is None:
+        raise odr_error("Function has not been initialized")
+        
+    try:
+        result = apply(func, arglist)
+    except odr_stop, e:
+        istop[0] = 1
+        return
+    except Exception, e:
+        istop[0] = -1
+        name = func.func_name
+        msg = "Error occured while calling Python function"
+        if name is not None:
+            msg += " '%s'" % name
+        raise odr_error(msg)
+
+    try:
+        result_array = np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, 0, 2)
+    except Exception, e:
+        istop[0] = -1
+        raise odr_error("Result from function call is not a proper array of floats.")
+    return result_array
+
+
+cdef void fcn_callback(int *n, int *m, int *npx, int *nq, int *ldn, int *ldm,
     int *ldnp, double *beta, double *xplusd, int *ifixb,
     int *ifixx, int *ldfix, int *ideval, double *f,
     double *fjacb, double *fjacd, int *istop):
-    print "Called back!!!"
+
+    cdef object result, result_array
+    cdef object pyXplusD
+    cdef npy_intp dim1[1], dim2[2]
+
+    if m[0] != 1:
+        dim2[0] = m[0]
+        dim2[1] = n[0]
+        pyXplusD = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
+        memcpy(np.PyArray_DATA(pyXplusD), xplusd, m[0] * n[0] * sizeof(double))
+    else:
+        dim1[0] = n[0]
+        pyXplusD = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
+        memcpy(np.PyArray_DATA(pyXplusD), xplusd, n[0] * sizeof(double))
+
+    arg01 = (odr_global["pyBeta"], pyXplusD)
+
+    extra_args = odr_global["extra_args"]
+    arglist = arg01 + (extra_args, ) if extra_args is not None else arg01
+
+    istop[0] = 0
+
+    memcpy(np.PyArray_DATA(odr_global["pyBeta"]), beta, npx[0] * sizeof(double))
+    if (ideval[0] % 10) >= 1:
+        # Compute f with odr_global.fcn
+        result_array = __evalArrayGenFunc(odr_global["fcn"], arglist, istop)
+        memcpy(f, np.PyArray_DATA(result_array), n[0] * nq[0] * sizeof(double))
+    
+    if ((ideval[0] / 10) % 10) >= 1:
+        # Compute fjacb with odr_globals.fjacb
+        result_array = __evalArrayGenFunc(odr_global["fjacb"], arglist, istop)
+
+        if nq[0] != 1 and npx[0] != 1:
+            # result_array should be rank-3
+            if np.PyArray_NDIM(result_array) != 3:
+                raise odr_error("Beta Jacobian is not rank-3")
+        elif nq[0] == 1:
+            # result_array should be rank-2
+            if np.PyArray_NDIM(result_array) != 2:
+                raise odr_error("Beta Jacobian is not rank-2")
+        memcpy(fjacb, np.PyArray_DATA(result_array), n[0] * nq[0] * npx[0] * sizeof(double));
+
+    if ((ideval[0] / 100) % 10) >= 1:
+        # compute fjacd with odr_global.fjacd
+        result_array = __evalArrayGenFunc(odr_global["fjacd"], arglist, istop)
+
+        if nq[0] != 1 and m[0] != 1:
+            # result_array should be rank-3
+            if np.PyArray_NDIM(result_array) != 3:
+                raise odr_error("xplusd Jacobian is not rank-3")
+        elif nq[0] == 1 and m[0] != 1:
+            # result_array should be rank-2
+            if np.PyArray_NDIM(result_array) != 2:
+                raise odr_error("xplusd Jacobian is not rank-2")
+        elif nq[0] == 1 and m[0] == 1:
+            # result_array should be rank-1
+            if np.PyArray_NDIM(result_array) != 1:
+                raise odr_error("xplusd Jacobian is not rank-1")
+
+        memcpy(fjacd, np.PyArray_DATA(result_array), n[0] * nq[0] * m[0] * sizeof(double))
 
 
-cdef object gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
+
+cdef object gen_output(int n, int m, int npx, int nq, int ldwe, int ld2we,
                        NpyArray *beta, NpyArray *work, NpyArray *iwork,
                        int isodr, int info, int full_output):
-    cdef NpyArray *sd_beta, *cov_beta
+    cdef object sd_beta, cov_beta
 
     cdef int delta, eps, xplus, fn, sd, vcv, rvar, wss, wssde, wssep, rcond
     cdef int eta, olmav, tau, alpha, actrs, pnorm, rnors, prers, partl, sstol
@@ -87,9 +168,9 @@ cdef object gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
     if info == 50005:
         return NULL
 
-    lwkmn = NpyArray_DIM(work, 0);
+    lwkmn = np.NpyArray_DIM(work, 0);
 
-    dwinf(&n, &m, &np, &nq, &ldwe, &ld2we, &isodr,
+    dwinf(&n, &m, &npx, &nq, &ldwe, &ld2we, &isodr,
         &delta, &eps, &xplus, &fn, &sd, &vcv, &rvar, &wss, &wssde,
         &wssep, &rcond, &eta, &olmav, &tau, &alpha, &actrs, &pnorm,
         &rnors, &prers, &partl, &sstol, &taufc, &apsma, &betao, &betac,
@@ -148,21 +229,21 @@ cdef object gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
     wrk6-=1
     wrk7-=1
 
-    dim1[0] = NpyArray_DIM(beta, 0);
-    sd_beta = NpyArray_SimpleNew(1, dim1, np.double);
-    dim2[0] = dim2[1] = NpyArray_DIM(beta, 0);
-    cov_beta = NpyArray_SimpleNew(2, dim2, np.double);
+    dim1[0] = np.NpyArray_DIM(beta, 0);
+    sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)
+    dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);
+    cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)
 
-    memcpy(NpyArray_DATA(sd_beta), <void *>(<double *>NpyArray_DATA(work) + sd),
-        np * sizeof(double));
-    memcpy(NpyArray_DATA(cov_beta), <void *>(<double *>NpyArray_DATA(work) + vcv),
-        np * np * sizeof(double));
+    memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),
+        npx * sizeof(double));
+    memcpy(np.PyArray_DATA(cov_beta), <void *>(<double *>np.NpyArray_DATA(work) + vcv),
+        npx * npx * sizeof(double));
 
     retobj = None
     if not full_output:
-        retobj = (PyArray_Return(Npy_INTERFACE_array(beta)), 
-                  PyArray_Return(Npy_INTERFACE_array(sd_beta)), 
-                  PyArray_Return(Npy_INTERFACE_array(cov_beta)))
+        retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)), 
+                  np.PyArray_Return(sd_beta), 
+                  np.PyArray_Return(cov_beta))
         
     else:                
         work_ind = { 
@@ -194,70 +275,63 @@ cdef object gen_output(int n, int m, int np, int nq, int ldwe, int ld2we,
 
         if m == 1:
             dim1[0] = n;
-            deltaA = PyArray_Empty(1, &dim1[0], np.double, False)
-            xplusA = PyArray_Empty(1, &dim1[0], np.double, False)
+            deltaA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
+            xplusA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         else:
             dim2[0] = m;
             dim2[1] = n;
-            deltaA = PyArray_Empty(2, &dim2[0], np.double, False)
-            xplusA = PyArray_Empty(2, &dim2[0], np.double, False)
+            deltaA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
+            xplusA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
 
         if nq == 1:
             dim1[0] = n;
-            epsA = PyArray_Empty(1, &dim1[0], np.double, False)
-            fnA = PyArray_Empty(1, &dim1[0], np.double, False)
+            epsA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
+            fnA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         else:
             dim2[0] = nq;
             dim2[1] = n;
-            epsA = PyArray_Empty(2, &dim2[0], np.double, False)
-            fnA = PyArray_Empty(2, &dim2[0], np.double, False)
+            epsA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
+            fnA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
 
-        memcpy(PyArray_DATA(deltaA), <void *>(<double *>PyArray_DATA(work) + delta),
+        memcpy(np.PyArray_DATA(deltaA), <void *>(<double *>np.NpyArray_DATA(work) + delta),
             m * n * sizeof(double));
-        memcpy(PyArray_DATA(epsA), <void *>(<double *>PyArray_DATA(work) + eps),
+        memcpy(np.PyArray_DATA(epsA), <void *>(<double *>np.NpyArray_DATA(work) + eps),
             nq * n * sizeof(double));
-        memcpy(PyArray_DATA(xplusA), <void *>(<double *>PyArray_DATA(work) + xplus),
+        memcpy(np.PyArray_DATA(xplusA), <void *>(<double *>np.NpyArray_DATA(work) + xplus),
             m * n * sizeof(double));
-        memcpy(PyArray_DATA(fnA), <void *>(<double *>PyArray_DATA(work) + fn),
+        memcpy(np.PyArray_DATA(fnA), <void *>(<double *>np.NpyArray_DATA(work) + fn),
             nq * n * sizeof(double));
 
-        res_var = (<double *>NpyArray_DATA(work))[rvar];
-        sum_square = (<double *>NpyArray_DATA(work))[wss]
-        sum_square_delta = (<double *>NpyArray_DATA(work))[wssde];
-        sum_square_eps = (<double *>NpyArray_DATA(work))[wssep];
-        inv_condnum = (<double *>NpyArray_DATA(work))[rcond];
-        rel_error = (<double *>NpyArray_DATA(work))[eta];
+        res_var = (<double *>np.NpyArray_DATA(work))[rvar];
+        sum_square = (<double *>np.NpyArray_DATA(work))[wss]
+        sum_square_delta = (<double *>np.NpyArray_DATA(work))[wssde];
+        sum_square_eps = (<double *>np.NpyArray_DATA(work))[wssep];
+        inv_condnum = (<double *>np.NpyArray_DATA(work))[rcond];
+        rel_error = (<double *>np.NpyArray_DATA(work))[eta];
     
-        retobj = (PyArray_Return(Npy_INTERFACE_array(beta)), 
-                  PyArray_Return(Npy_INTERFACE_array(sd_beta)), 
-                  PyArray_Return(Npy_INTERFACE_array(cov_beta)),
-                  { "delta" : PyArray_Return(deltaA), 
-                    "eps" : PyArray_Return(epsA), 
-                    "xplus" : PyArray_Return(xplusA), 
-                    "y" : PyArray_Return(fnA), 
+        retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)), 
+                  np.PyArray_Return(sd_beta), 
+                  np.PyArray_Return(cov_beta),
+                  { "delta" : np.PyArray_Return(deltaA), 
+                    "eps" : np.PyArray_Return(epsA), 
+                    "xplus" : np.PyArray_Return(xplusA), 
+                    "y" : np.PyArray_Return(fnA), 
                     "res_var" : res_var, 
                     "sum_square" : sum_square,
                     "sum_square_delta" : sum_square_delta, 
                     "sum_square_eps" : sum_square_eps, 
                     "inv_condnum" : inv_condnum, 
                     "rel_error" : rel_error,
-                    "work" : PyArray_Return(work), 
+                    "work" : np.PyArray_Return(np.Npy_INTERFACE_array(work)), 
                     "work_ind" : work_ind, 
-                    "iwork" : PyArray_Return(iwork), 
+                    "iwork" : np.PyArray_Return(np.Npy_INTERFACE_array(iwork)), 
                     "info" : info })
 
-    Npy_DECREF(beta)
-    Npy_DECREF(sd_beta)
-    Npy_DECREF(cov_beta)
     return retobj;
 
-
-
-class odr_error(Exception):
-    pass
-
-class ord_stop(Exception):
-    pass
+def __mustBeSeq(name, v):
+    if v is not None and not operator.isSequenceType(v):
+        raise TypeError("%s must be a sequence" % name)
 
 
 def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_args=None,
@@ -275,7 +349,7 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
         sclb=None, scld=None, work=None, iwork=None,
         full_output=0)
     """
-    cdef int n, m, np, nq, ldy, ldx, ldwe, ld2we, ldwd, ld2wd, ldifx
+    cdef int n, m, npx, nq, ldy, ldx, ldwe, ld2we, ldwd, ld2wd, ldifx
     cdef int lunerr = -1
     cdef int lunrpt = -1
     cdef int ldstpd, ldscld, lwork, liwork, info=0
@@ -300,29 +374,41 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
     if wd is not None and not operator.isSequenceType(wd) and not isinstance(wd, (int, long, float)):
         raise TypeError("wd must be a sequence or a number")
 
-    for vn in ["fjacb", "fjacd", "extra_args", "ifixx", "ifixb", "stpb", "stpd", 
-               "sclb", "scld", "work", "iwork"]:
-        v = vars()[vn]
-        if v is not None and not operator.isSequenceType(v):
-            raise TypeError("%s must be a sequence" % v)
+    if fjacb is not None and not callable(fjacb):
+        raise TypeError("fjacb must be callable")
+    if fjacd is not None and not callable(fjacd):
+        raise TypeError("fjacd must be callable")
 
-    if work is not None and not isinstance(work, np.ndarray):
+    # vars() doesn't work in Cython for IronPython because it doesn't create a context for this
+    # function, we just get the context of the calling function which doesn't have these variables
+    # defined in the dict.
+    __mustBeSeq("extra_args", extra_args)
+    __mustBeSeq("ifixx", ifixx)
+    __mustBeSeq("ifixb", ifixb)
+    __mustBeSeq("stpb", stpb)
+    __mustBeSeq("stpd", stpd)
+    __mustBeSeq("sclb", sclb)
+    __mustBeSeq("scld", scld)
+    __mustBeSeq("work", work)
+    __mustBeSeq("iwork", iwork)
+
+    if work is not None and not np.PyArray_Check(work):
         raise TypeError("work must be an array")
-    if iwork is not None and not isinstance(work, np.ndarray):
+    if iwork is not None and not np.PyArray_Check(work):
         raise TypeError("iwork must be an array")
 
     implicit = (job % 10 == 1)
     if not implicit:
-        y = PyArray_CopyFromObject(y, np.double, 1, 2)
+        y = np.PyArray_CopyFromObject(y, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
         if y is None:
             raise ValueError("y could not be made into a suitable array")
-        x = PyArray_CopyFromObject(x, np.double, 1, 2)
+        x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
         if x is None:
             raise ValueError("x could not be made into a suitable array")
 
-    n = y.shape[-1]
-    if n != x.shape[-1]:
-        raise ValueError("x and y don't have matching numbers of observations")
+        n = y.shape[-1]
+        if n != x.shape[-1]:
+            raise ValueError("x and y don't have matching numbers of observations")
         nq = 1 if y.ndim == 1 else y.shape[0]
         ldx = ldy = n
     else:
@@ -331,26 +417,37 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
         dim1[0] = 1
     
         # Initialize y to a dummy array; never referenced
-        y = PyArray_Empty(1, &dim1[0], np.double, False)
-        x = PyArray_CopyFromObject(x, np.double, 1, 2)
+        y = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
+        x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
         if x is None:
             raise ValueError("x could not be made into a suitable array")
         n = x.shape[-1]
         ldx = n
 
     m = 1 if x.ndim == 1 else x.shape[0]
-    beta = PyArray_CopyFromObject(initbeta, np.double, 1, 1)
+    beta = np.PyArray_CopyFromObject(initbeta, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
     if beta is None:
         raise ValueError("initbeta could not be made into a suitable array")
-    np = beta.shape[0]
+    npx = beta.shape[0]
 
     if we is None:
         ldwe = ld2we = 1
         dim1[0] = n
-        we = PyArray_Empty(1, &dim1[0], np.double, False)
+        we = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         we[0] = -1.0
+    elif np.PyNumber_Check(we):
+        try:    
+            val = float(we)
+            dim3[0] = nq
+            dim3[1] = 1
+            dim3[2] = 1
+            we = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
+            we[0,0,0] = val if implicit else -val
+            ldwe = ld2we = 1
+        except ValueError, e:
+            raise ValueError("could not convert we to a suitable array")
     elif operator.isSequenceType(we):
-        we = PyArray_CopyFromObject(we, np.double, 1, 3)
+        we = np.PyArray_CopyFromObject(we, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
         if we is None:
             raise ValueError("could not convert we to a suitable array")
 
@@ -377,31 +474,32 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
             # weightings for each observations
             ldwe = n
             ld2we = 1
-        elif we.ndum == 3 and we.shape == (nq, nq, n):
+        elif we.ndim == 3 and we.shape == (nq, nq, n):
             # we is the full specification of the covariant weights for each observation
             ldwe = n
             ld2we = nq
         else:
             raise ValueError("could not convert we to a suitable array")
-    else:
-        try:    
-            val = float(we)
-            dim3[0] = nq
-            dim3[1] = 1
-            dim3[2] = 1
-            we = PyArray_Empty(3, &dim3[0], np.double, False)
-            we[0,0,0] = val if implicit else -val
-            ldwe = ld2we = 1
-        except ValueError, e:
-            raise ValueError("could not convert we to a suitable array")
 
     if wd is None:
         ldwd = ld2wd = 1
         dim1[0]= m
-        wd = PyArray_Empty(1, &dim1[0], np.double, False)
+        wd = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         wd[0] = -1.0
+    elif np.PyNumber_Check(wd):
+        try:
+            val = float(wd)
+            dim3[0] = 1
+            dim3[1] = 1
+            dim3[2] = m
+            wd = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
+            wd[0,0,0] = -val
+            ldwd = 1
+            ld2wd = 1
+        except ValueError, e:
+            raise ValueError("could not convert wd to a suitable array")
     elif operator.isSequenceType(wd):
-        wd = PyArray_CopyFromObject(wd, np.double, 1, 3)
+        wd = np.PyArray_CopyFromObject(wd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
         if wd is None:
             raise ValueError("could not convert wd to a suitable array")
 
@@ -433,36 +531,24 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
             ld2wd = m
         else:
             raise ValueError("could not convert wd to a suitable array")
-    else:
-        try:
-            val = float(wd)
-            dim3[0] = 1
-            dim3[1] = 1
-            dim3[2] = m
-            wd = PyArray_Empty(3, &dim3[0], np.double, False)
-            wd[0,0,0] = -val
-            ldwd = 1
-            ld2wd = 1
-        except ValueError, e:
-            raise ValueError("could not convert wd to a suitable array")
 
     if ifixb is None:
-        dim1[0] = np
-        ifixb = PyArray_Empty(1, &dim1[0], np.int, False)
+        dim1[0] = npx
+        ifixb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_INT, False)
         ifixb[0] = -1
     else:
-        ifixb = PyArray_CopyFromObject(ifixb, np.int, 1, 1)
-        if ifixb is None or ifixb.shape[0] != np:
+        ifixb = np.PyArray_CopyFromObject(ifixb, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
+        if ifixb is None or ifixb.shape[0] != npx:
             raise ValueError("could not convert ifixb to a suitable array")
 
     if ifixx is None:
         dim2[0] = m
         dim2[1] = 1
-        ifixx = PyArray_Empty(2, &dim2[0], np.int, False)
+        ifixx = np.PyArray_EMPTY(2, &dim2[0], np.NPY_INT, False)
         ifixx[0,0] = -1
         ldifx = 1
     else:
-        ifixx = PyArray_CopyFromObject(ifixx, np.int, 1, 2)
+        ifixx = np.PyArray_CopyFromObject(ifixx, np.PyArray_DescrFromType(np.NPY_INT), 1, 2)
         if ifixx is None:
             raise ValueError("could not convert ifixx to a suitable array")
 
@@ -485,22 +571,22 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
         dluno(&lunrpt, rptfile, len(rptfile))
 
     if stpb is None:
-        dim1[0] = np
-        stpb = PyArray_Empty(1, &dim1[0], np.double, False)
+        dim1[0] = npx
+        stpb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         stpb[0] = 0.0
     else:
-        stpb = PyArray_CopyFromObject(stpb, np.double, 1, 1)
-        if stpb is None or stpb.shape[0] != np:
+        stpb = np.PyArray_CopyFromObject(stpb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
+        if stpb is None or stpb.shape[0] != npx:
             raise ValueError("could not convert stpb to a suitable array")
 
     if stpd is None:
         dim2[0] = 1
         dim2[1] = m
-        stpd = PyArray_Empty(2, &dim2[0], np.double, False)
+        stpd = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
         stpd[0,0] = 0.0
         ldstpd = 1
     else:
-        stpd = PyArray_CopyFromObject(stpd, np.double, 1, 2)
+        stpd = np.PyArray_CopyFromObject(stpd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
         if stpd is None:
             raise ValueError("could not convert stpd to a suitable array")
 
@@ -514,22 +600,22 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
             raise ValueError("could not convert stpd to a suitable array")
 
     if sclb is None:
-        dim1[0] = np
-        sclb = PyArray_Empty(1, &dim1[0], np.double, False)
+        dim1[0] = npx
+        sclb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
         sclb[0] = 0.0
     else:
-        sclb = PyArray_CopyFromObject(sclb, np.double, 1, 1)
-        if sclb is None or sclb.shape[0] != np:
+        sclb = np.PyArray_CopyFromObject(sclb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
+        if sclb is None or sclb.shape[0] != npx:
             raise ValueError("could not convert sclb to a suitable array")
 
     if scld is None:
         dim2[0] = 1
         dim2[1] = n
-        scld = PyArray_Empty(2, &dim2[0], np.double, False)
+        scld = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
         scld[0,0] = 0.0
         ldscld = 1
     else:
-        scld = PyArray_CopyFromObject(scld, np.double, 1, 2)
+        scld = np.PyArray_CopyFromObject(scld, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
         if scld is None:
             raise ValueError("could not convert scld to a suitable array")
 
@@ -545,18 +631,18 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
     if job % 10 < 2:
         # ODR not OLS
         lwork = \
-            18 + 11 * np + np * np + m + m * m + 4 * n * nq + 6 * n * m + \
-            2 * n * nq * np + 2 * n * nq * m + nq * nq + 5 * nq + nq * (np + m) + \
+            18 + 11 * npx + npx * npx + m + m * m + 4 * n * nq + 6 * n * m + \
+            2 * n * nq * npx + 2 * n * nq * m + nq * nq + 5 * nq + nq * (npx + m) + \
             ldwe * ld2we * nq
         isodr = 1
     else:
         # OLS, not ODR 
         lwork = \
-            18 + 11 * np + np * np + m + m * m + 4 * n * nq + 2 * n * m + \
-            2 * n * nq * np + 5 * nq + nq * (np + m) + ldwe * ld2we * nq 
+            18 + 11 * npx + npx * npx + m + m * m + 4 * n * nq + 2 * n * m + \
+            2 * n * nq * npx + 5 * nq + nq * (npx + m) + ldwe * ld2we * nq 
         isodr = 0
 
-    liwork = 20 + np + nq * (np + m)
+    liwork = 20 + npx + nq * (npx + m)
 
     if (job / 10000) % 10 >= 1:
         # Fit is a restart, make sure work and iwork are input
@@ -569,27 +655,27 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
             raise ValueError("need to input work array for delta initialization")
 
     if work is not None:
-        work = PyArray_CopyFromObject(work, np.double, 1, 1)
+        work = np.PyArray_CopyFromObject(work, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
         if work is None:
             raise ValueError("could not convert work to a suitable array")
 
-    if work.dim[0] < lwork:
-        raise ValueError("work is too small")
+        if work.shape[0] < lwork:
+            raise ValueError("work is too small")
 
     else:
         dim1[0] = lwork
-        work = PyArray_Empty(1, &dim1[0], np.double, False)
+        work = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
 
     if iwork is not None:
-        iwork = PyArray_CopyFromObject(iwork, np.int, 1, 1)
+        iwork = np.PyArray_CopyFromObject(iwork, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
         if iwork is None:
             raise ValueError("could not convert iwork to a suitable array")
 
-        if iwork.dim[0] < liwork:
+        if iwork.shape[0] < liwork:
             raise ValueError("iwork is too small")
     else:
         dim1[0] = liwork
-        iwork = PyArray_Empty(1, &dim1[0], np.int, False)
+        iwork = np.PyArray_EMPTY(1, &dim1[0], np.NPY_INT, False)
 
     # check if what job requests can be done with what the user has input
     # into the function.
@@ -599,43 +685,29 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
             raise ValueError("need fjacb and fjacd to calculate derivatives")
 
     # Setup the global data for the callback. 
-    odr_global.fcn = PyArray_ARRAY(fcn)
-    Npy_INCREF(odr_global.fcn)
-    odr_global.fjacb = PyArray_ARRAY(fjacb)
-    Npy_INCREF(odr_global.fjacb)
-    odr_global.fjacd = PyArray_ARRAY(fjacd)
-    Npy_INCREF(odr_global.fjacd)
-    odr_global.pyBeta = PyArray_ARRAY(beta)
-    Npy_INCREF(odr_global.pyBeta)
-    odr_global.extra_args = PyArray_ARRAY(extra_args)
-    Npy_INCREF(odr_global.extra_args)
+    odr_global["fcn"] = fcn
+    odr_global["fjacb"] = fjacb
+    odr_global["fjacd"] = fjacd
+    odr_global["pyBeta"] = beta
+    odr_global["extra_args"] = extra_args
 
-    dodrc(fcn_callback, &n, &m, &np, &nq, <double *>PyArray_DATA(beta),
-        <double *>PyArray_DATA(y), &ldy, <double *>PyArray_DATA(x), &ldx,
-        <double *>PyArray_DATA(we), &ldwe, &ld2we,
-        <double *>PyArray_DATA(wd), &ldwd, &ld2wd,
-        <int *>PyArray_DATA(ifixb), <int *>PyArray_DATA(ifixx), &ldifx,
+    print "going in: beta = %s" % beta
+    dodrc(fcn_callback, &n, &m, &npx, &nq, <double *>np.PyArray_DATA(beta),
+        <double *>np.PyArray_DATA(y), &ldy, <double *>np.PyArray_DATA(x), &ldx,
+        <double *>np.PyArray_DATA(we), &ldwe, &ld2we,
+        <double *>np.PyArray_DATA(wd), &ldwd, &ld2wd,
+        <int *>np.PyArray_DATA(ifixb), <int *>np.PyArray_DATA(ifixx), &ldifx,
         &job, &ndigit, &taufac, &sstol, &partol, &maxit,
         &iprint, &lunerr, &lunrpt,
-        <double *>PyArray_DATA(stpb), <double *>PyArray_DATA(stpd), &ldstpd,
-        <double *>PyArray_DATA(sclb), <double *>PyArray_DATA(scld), &ldscld,
-        <double *>PyArray_DATA(work), &lwork, <int *>PyArray_DATA(iwork), &liwork,
+        <double *>np.PyArray_DATA(stpb), <double *>np.PyArray_DATA(stpd), &ldstpd,
+        <double *>np.PyArray_DATA(sclb), <double *>np.PyArray_DATA(scld), &ldscld,
+        <double *>np.PyArray_DATA(work), &lwork, <int *>np.PyArray_DATA(iwork), &liwork,
         &info);
 
-    result = gen_output(n, m, np, nq, ldwe, ld2we,
-        PyArray_ARRAY(beta), PyArray_ARRAY(work), 
-        PyArray_ARRAY(iwork), isodr, info, full_output);
-
-    Npy_DECREF(odr_global.fcn)
-    odr_global.fcn = NULL
-    Npy_DECREF(odr_global.fjacb)
-    odr_global.fjacb = NULL
-    Npy_DECREF(odr_global.fjacd)
-    odr_global.fjacd = NULL
-    Npy_DECREF(odr_global.pyBeta)
-    odr_global.pyBeta = NULL
-    Npy_DECREF(odr_global.extra_args)
-    odr_global.extra_args = NULL
+    print "before output: beta = %s" % beta
+    result = gen_output(n, m, npx, nq, ldwe, ld2we,
+        np.PyArray_ARRAY(beta), np.PyArray_ARRAY(work), 
+        np.PyArray_ARRAY(iwork), isodr, info, full_output);
 
     if result == None:
         raise RuntimeError("could not generate output")
