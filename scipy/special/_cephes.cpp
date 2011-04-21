@@ -78,6 +78,7 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include <math.h>
 #define __PYX_HAVE_API__scipy__special___cephes
 #include "stdlib.h"
+#include "npy_common.h"
 #include "npy_defs.h"
 #include "npy_arrayobject.h"
 #include "npy_descriptor.h"
@@ -190,7 +191,7 @@ typedef __pyx_t_5numpy_npy_float32 __pyx_t_5numpy_float32_t;
 
 typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
-typedef int __pyx_t_5scipy_7special_7_cephes_intp;
+typedef npy_intp __pyx_t_5scipy_7special_7_cephes_intp;
 /* Cython code section 'complex_type_declarations' */
 
 #if CYTHON_CCOMPLEX
@@ -202,11 +203,29 @@ typedef int __pyx_t_5scipy_7special_7_cephes_intp;
 #else
     typedef struct { double real, imag; } __pyx_t_double_complex;
 #endif
+
+#if CYTHON_CCOMPLEX
+  #ifdef __cplusplus
+    typedef ::std::complex< float > __pyx_t_float_complex;
+  #else
+    typedef float _Complex __pyx_t_float_complex;
+  #endif
+#else
+    typedef struct { float real, imag; } __pyx_t_float_complex;
+#endif
 /* Cython code section 'type_declarations' */
 
 /* Type declarations */
 
-typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
+typedef void (*__pyx_t_5numpy_NpyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
+
+typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
+
+typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
+
+typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
+
+typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
 /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":381
  *     return data
@@ -216,7 +235,7 @@ typedef void (*__pyx_t_5numpy_PyUFuncGenericFunction)(char **, __pyx_t_5numpy_np
  *     if flag != -37:
  */
 
-ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint {
+public ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint {
   int __pyx_n;
   int flag;
 };
@@ -272,57 +291,66 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
     static CYTHON_INLINE __pyx_t_double_complex __Pyx_c_conj(__pyx_t_double_complex);
     /*static CYTHON_INLINE double __Pyx_c_abs(__pyx_t_double_complex);*/
 #endif
+
+static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float, float);
+
+#if CYTHON_CCOMPLEX
+    #define __Pyx_c_eqf(a, b)   ((a)==(b))
+    #define __Pyx_c_sumf(a, b)  ((a)+(b))
+    #define __Pyx_c_difff(a, b) ((a)-(b))
+    #define __Pyx_c_prodf(a, b) ((a)*(b))
+    #define __Pyx_c_quotf(a, b) ((a)/(b))
+    #define __Pyx_c_negf(a)     (-(a))
+  #ifdef __cplusplus
+    #define __Pyx_c_is_zerof(z) ((z)==(float)0)
+    #define __Pyx_c_conjf(z)    (::std::conj(z))
+    /*#define __Pyx_c_absf(z)     (::std::abs(z))*/
+  #else
+    #define __Pyx_c_is_zerof(z) ((z)==0)
+    #define __Pyx_c_conjf(z)    (conjf(z))
+    /*#define __Pyx_c_absf(z)     (cabsf(z))*/
+ #endif
+#else
+    static CYTHON_INLINE int __Pyx_c_eqf(__pyx_t_float_complex, __pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_sumf(__pyx_t_float_complex, __pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_difff(__pyx_t_float_complex, __pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_prodf(__pyx_t_float_complex, __pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_quotf(__pyx_t_float_complex, __pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_negf(__pyx_t_float_complex);
+    static CYTHON_INLINE int __Pyx_c_is_zerof(__pyx_t_float_complex);
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_conjf(__pyx_t_float_complex);
+    /*static CYTHON_INLINE float __Pyx_c_absf(__pyx_t_float_complex);*/
+#endif
 /* Cython code section 'module_declarations' */
 /* Module declarations from numpy */
 /* Module declarations from numpy */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int);
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int);
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_intp_t *, int, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *);
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate int __pyx_delegate_t_5numpy_PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int);
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Empty(int, npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_New(void *, int, npy_intp *, int, npy_intp *, void *, int, int, void *); /*proto*/
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void *__pyx_delegate_t_5numpy_PyArray_DATA(NumpyDotNet::ndarray^);
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t *__pyx_delegate_t_5numpy_PyArray_DIMS(NumpyDotNet::ndarray^);
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate __pyx_t_5numpy_intp_t __pyx_delegate_t_5numpy_PyArray_SIZE(NumpyDotNet::ndarray^);
+static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
+static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *); /*proto*/
+static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_Check(System::Object^);
+static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate System::Object^ __pyx_delegate_t_5numpy_PyArray_NDIM(System::Object^);
-static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5numpy_import_array(void);
 static CYTHON_INLINE void import_array(void); /*proto*/
+static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^); /*proto*/
 /* Module declarations from scipy.special._cephes */
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void **__pyx_delegate_t_5scipy_7special_7_cephes_alloc_data_from_list(System::Object^);
 static void **alloc_data_from_list(System::Object^); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate int __pyx_delegate_t_5scipy_7special_7_cephes_errprint(System::Object^, ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint ^__pyx_optional_args);
 static int errprint(System::Object^, ref struct __pyx_opt_args_5scipy_7special_7_cephes_errprint ^__pyx_optional_args); /*proto*/
-[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate char *__pyx_delegate_t_5scipy_7special_7_cephes_alloc_types_from_list(System::Object^);
 static char *alloc_types_from_list(System::Object^); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
@@ -332,230 +360,249 @@ static char *alloc_types_from_list(System::Object^); /*proto*/
 namespace clr__cephes {
   public ref class module__cephes sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_820_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_821_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_822_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_823_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_824_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_826_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_827_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_828_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_830_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_831_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_833_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_834_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_836_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_838_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_839_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_840_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_842_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_843_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_845_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_846_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_847_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_850_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_851_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_852_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_853_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_854_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_855_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_856_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_857_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_858_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_859_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_860_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_861_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_863_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_864_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_865_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_866_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_867_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_868_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_869_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_871_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_872_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_873_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_875_65;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_878_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_879_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_881_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_883_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_884_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_885_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_888_98;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_889_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_890_102;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_891_104;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_892_98;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_893_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_894_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_896_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_898_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_901_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_903_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_904_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_905_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_908_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_909_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_910_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_911_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_914_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_915_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_916_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_917_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_919_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_920_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_921_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_922_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_925_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_927_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_928_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_929_97;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_930_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_931_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_932_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_934_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_935_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_936_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_937_114;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_940_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_942_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_943_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_945_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_946_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_947_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_948_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_950_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_951_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_952_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_953_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_954_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_955_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_956_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_957_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_959_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_960_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_962_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_963_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_964_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_965_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_966_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_968_112;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_969_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_970_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_971_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_972_99;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_973_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_974_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_975_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_976_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_979_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_981_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_983_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_985_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_987_113;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_989_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_990_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_992_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_993_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_995_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_998_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_999_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1000_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1001_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1003_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1005_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1006_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1007_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1009_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1010_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1012_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1013_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1014_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1016_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1017_107;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1019_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1020_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1022_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1024_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1025_105;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1026_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1028_106;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1029_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1030_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1031_109;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1033_108;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1036_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1037_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1038_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1039_117;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1040_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1041_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1042_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1043_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1045_101;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1047_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1048_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1049_103;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1051_111;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1052_110;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1053_119;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1054_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1055_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1056_118;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1057_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1058_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1059_121;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1060_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1061_123;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1062_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1063_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1064_122;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1068_120;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_1070_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_820_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_821_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_822_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_823_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_824_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_826_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_827_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_828_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_830_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_831_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_833_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_834_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_836_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_838_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_839_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_840_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_842_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_843_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_845_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_846_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_847_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_850_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_851_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_852_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_853_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_854_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_855_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_856_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_857_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_858_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_859_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_860_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_861_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_863_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_864_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_865_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_866_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_867_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_868_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_869_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_871_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_872_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_873_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_875_65;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_878_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_879_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_881_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_883_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_884_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_885_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_888_98;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_889_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_890_102;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_891_104;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_892_98;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_893_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_894_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_896_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_898_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_901_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_903_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_904_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_905_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_908_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_909_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_910_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_911_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_914_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_915_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_916_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_917_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_919_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_920_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_921_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_922_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_925_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_927_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_928_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_929_97;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_930_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_931_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_932_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_934_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_935_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_936_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_937_114;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_940_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_942_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_943_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_945_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_946_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_947_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_948_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_950_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_951_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_952_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_953_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_954_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_955_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_956_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_957_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_959_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_960_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_962_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_963_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_964_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_965_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_966_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_968_112;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_969_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_970_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_971_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_972_99;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_973_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_974_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_975_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_976_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_979_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_981_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_983_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_985_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_987_113;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_989_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_990_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_992_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_993_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_995_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_998_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_999_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1000_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1001_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1003_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1005_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1006_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1007_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1009_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1010_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1012_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1013_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1014_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1016_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1017_107;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1019_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1020_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1022_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1024_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1025_105;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1026_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1028_106;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1029_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1030_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1031_109;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1033_108;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1036_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1037_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1038_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1039_117;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1040_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1041_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1042_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1043_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1045_101;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1047_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1048_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1049_103;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1051_111;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1052_110;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1053_119;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1054_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1055_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1056_118;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1057_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1058_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1059_121;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1060_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1061_123;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1062_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1063_122;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1064_122;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1068_120;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1070_120;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_376_43;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_376_47;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_376_47;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_376_47;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_377_22;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_377_18;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_377_4;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_378_39;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_378_39;
-static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_378_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_385_18;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_378_39;
+static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_cvt_Py_ssize_t_378_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_385_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_570_37;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_size_t_570_37;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_570_37;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_571_22;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_571_18;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >^ __site_get_iterator_571_4;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_572_16;
-static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_char_572_16;
-static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_Py_ssize_t_572_11;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_199_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_199_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_201_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_201_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_207_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_207_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_209_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_209_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_218_54;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_218_54;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_222_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_222_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_226_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_226_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_230_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_PY_LONG_LONG_230_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_235_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_235_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_235_39;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_238_13;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_238_13;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_239_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_int_240_77;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_243_21;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_246_14;
+static  CallSite< System::Func< CallSite^, System::Object^, char >^ >^ __site_cvt_cvt_char_572_16;
+static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_cvt_Py_ssize_t_572_11;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_259_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_259_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_261_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_261_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_267_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_267_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_269_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_269_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_275_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_275_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_277_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_277_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_287_54;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_287_54;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_291_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_291_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_295_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_295_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_298_47;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_298_47;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_301_14;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_305_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_305_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_309_35;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_309_35;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Dtype_323_62;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_323_62;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_328_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_328_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_328_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_337_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_337_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_338_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_339_77;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_342_78;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_348_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CheckFromAny_348_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_348_44;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_352_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_352_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_360_45;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_360_73;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_58;
 static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static char *__pyx_k_1 = "";
@@ -746,7 +793,7 @@ public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
 /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":375
- * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  * 
  * cdef void ** alloc_data_from_list(l):             # <<<<<<<<<<<<<<
  *     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
@@ -780,7 +827,7 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
   __pyx_t_3 = __site_op_mul_376_47->Target(__site_op_mul_376_47, __pyx_t_2, __pyx_t_1);
   __pyx_t_2 = nullptr;
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = __site_cvt_size_t_376_47->Target(__site_cvt_size_t_376_47, __pyx_t_3);
+  __pyx_t_4 = __site_cvt_cvt_size_t_376_47->Target(__site_cvt_cvt_size_t_376_47, __pyx_t_3);
   __pyx_t_3 = nullptr;
   __pyx_v_data = ((void **)malloc(__pyx_t_4));
 
@@ -811,9 +858,9 @@ static  void **alloc_data_from_list(System::Object^ __pyx_v_l) {
  * 
  */
       __pyx_t_2 = __site_getindex_378_39->Target(__site_getindex_378_39, __pyx_v_l, __pyx_v_i);
-      __pyx_t_6 = __site_cvt_PY_LONG_LONG_378_39->Target(__site_cvt_PY_LONG_LONG_378_39, __pyx_t_2);
+      __pyx_t_6 = __site_cvt_cvt_PY_LONG_LONG_378_39->Target(__site_cvt_cvt_PY_LONG_LONG_378_39, __pyx_t_2);
       __pyx_t_2 = nullptr;
-      __pyx_t_7 = __site_cvt_Py_ssize_t_378_14->Target(__site_cvt_Py_ssize_t_378_14, __pyx_v_i);
+      __pyx_t_7 = __site_cvt_cvt_Py_ssize_t_378_14->Target(__site_cvt_cvt_Py_ssize_t_378_14, __pyx_v_i);
       (__pyx_v_data[__pyx_t_7]) = ((void *)((PY_LONG_LONG)__pyx_t_6));
     }
   }
@@ -901,7 +948,7 @@ static  int errprint(System::Object^ __pyx_v_self, ref struct __pyx_opt_args_5sc
  * 
  * 
  */
-  __pyx_t_3 = __site_cvt_int_385_18->Target(__site_cvt_int_385_18, __pyx_v_oldFlag);
+  __pyx_t_3 = __site_cvt_cvt_int_385_18->Target(__site_cvt_cvt_int_385_18, __pyx_v_oldFlag);
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
 
@@ -941,7 +988,7 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "len");
   __pyx_t_2 = __site_call1_570_37->Target(__site_call1_570_37, __pyx_context, __pyx_t_1, __pyx_v_l);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_cvt_size_t_570_37->Target(__site_cvt_size_t_570_37, __pyx_t_2);
+  __pyx_t_3 = __site_cvt_cvt_size_t_570_37->Target(__site_cvt_cvt_size_t_570_37, __pyx_t_2);
   __pyx_t_2 = nullptr;
   __pyx_v_r = ((char *)malloc(__pyx_t_3));
 
@@ -972,9 +1019,9 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
  * 
  */
       __pyx_t_5 = __site_getindex_572_16->Target(__site_getindex_572_16, __pyx_v_l, __pyx_v_i);
-      __pyx_t_6 = __site_cvt_char_572_16->Target(__site_cvt_char_572_16, __pyx_t_5);
+      __pyx_t_6 = __site_cvt_cvt_char_572_16->Target(__site_cvt_cvt_char_572_16, __pyx_t_5);
       __pyx_t_5 = nullptr;
-      __pyx_t_7 = __site_cvt_Py_ssize_t_572_11->Target(__site_cvt_Py_ssize_t_572_11, __pyx_v_i);
+      __pyx_t_7 = __site_cvt_cvt_Py_ssize_t_572_11->Target(__site_cvt_cvt_Py_ssize_t_572_11, __pyx_v_i);
       (__pyx_v_r[__pyx_t_7]) = __pyx_t_6;
     }
   }
@@ -998,24 +1045,24 @@ static  char *alloc_types_from_list(System::Object^ __pyx_v_l) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":190
- *     object Npy_INTERFACE_array "Npy_INTERFACE_OBJECT" (NpyArray*)
+/* "../cython/include\numpy.pxd":246
+ * ctypedef npy_cdouble     complex_t
  * 
- * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
+ * cdef inline object PyUFunc_FromFuncAndData(NpyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  */
 
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":193
+  /* "../cython/include\numpy.pxd":249
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
+ * cdef inline object PyArray_DescrFromType(int typenum):
  */
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyUFunc_FromFuncAndDataAndSignature(__pyx_v_func, __pyx_v_data, __pyx_v_types, __pyx_v_ntypes, __pyx_v_nin, __pyx_v_nout, __pyx_v_identity, __pyx_v_name, __pyx_v_doc, __pyx_v_c, NULL)); 
   __pyx_r = __pyx_t_1;
@@ -1027,15 +1074,44 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUF
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":195
+/* "../cython/include\numpy.pxd":251
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
- * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
+ * cdef inline object PyArray_DescrFromType(int typenum):             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":252
+ * 
+ * cdef inline object PyArray_DescrFromType(int typenum):
+ *     return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":255
+ * 
+ * 
+ * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
  *     shape_list = []
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -1049,9 +1125,9 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":196
+  /* "../cython/include\numpy.pxd":256
  * 
- * cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
+ * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
  *     cdef int i
  *     for i in range(ndim):
@@ -1060,7 +1136,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":198
+  /* "../cython/include\numpy.pxd":258
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1071,22 +1147,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":199
+    /* "../cython/include\numpy.pxd":259
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_199_18->Target(__site_get_append_199_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_259_18->Target(__site_get_append_259_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_199_25->Target(__site_call1_199_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_259_25->Target(__site_call1_259_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":200
+  /* "../cython/include\numpy.pxd":260
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1097,21 +1173,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":201
+  /* "../cython/include\numpy.pxd":261
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+ * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_201_16->Target(__site_get_zeros_201_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_zeros_261_16->Target(__site_get_zeros_261_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_201_22->Target(__site_call3_201_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_261_22->Target(__site_call3_261_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -1124,15 +1200,15 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":203
+/* "../cython/include\numpy.pxd":263
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
- * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
+ * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
  *     shape_list = []
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_intp_t *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -1146,9 +1222,9 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":204
+  /* "../cython/include\numpy.pxd":264
  * 
- * cdef inline object PyArray_EMPTY(int ndim, intp_t *shape, int typenum, int fortran):
+ * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
  *     cdef int i
  *     for i in range(ndim):
@@ -1157,7 +1233,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":206
+  /* "../cython/include\numpy.pxd":266
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -1168,22 +1244,22 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":207
+    /* "../cython/include\numpy.pxd":267
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_207_18->Target(__site_get_append_207_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_267_18->Target(__site_get_append_267_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_207_25->Target(__site_call1_207_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_267_25->Target(__site_call1_267_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":208
+  /* "../cython/include\numpy.pxd":268
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -1194,21 +1270,21 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":209
+  /* "../cython/include\numpy.pxd":269
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
+ * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
  */
-  __pyx_t_5 = __site_get_empty_209_16->Target(__site_get_empty_209_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_empty_269_16->Target(__site_get_empty_269_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_209_22->Target(__site_call3_209_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_269_22->Target(__site_call3_269_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -1221,19 +1297,113 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5nu
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":211
+/* "../cython/include\numpy.pxd":271
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
+ * 
+ * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):             # <<<<<<<<<<<<<<
+ *     shape_list = []
+ *     cdef int i
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
+  System::Object^ __pyx_v_shape_list;
+  int __pyx_v_i;
+  System::Object^ __pyx_v_numpy;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  int __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  __pyx_v_shape_list = nullptr;
+  __pyx_v_numpy = nullptr;
+
+  /* "../cython/include\numpy.pxd":272
+ * 
+ * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
+ *     shape_list = []             # <<<<<<<<<<<<<<
+ *     cdef int i
+ *     for i in range(nd):
+ */
+  __pyx_t_1 = PythonOps::MakeListNoCopy(gcnew array<System::Object^>{});
+  __pyx_v_shape_list = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":274
+ *     shape_list = []
+ *     cdef int i
+ *     for i in range(nd):             # <<<<<<<<<<<<<<
+ *         shape_list.append(dims[i])
+ *     import numpy
+ */
+  __pyx_t_2 = __pyx_v_nd;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_i = __pyx_t_3;
+
+    /* "../cython/include\numpy.pxd":275
+ *     cdef int i
+ *     for i in range(nd):
+ *         shape_list.append(dims[i])             # <<<<<<<<<<<<<<
+ *     import numpy
+ *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')
+ */
+    __pyx_t_1 = __site_get_append_275_18->Target(__site_get_append_275_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_4 = (__pyx_v_dims[__pyx_v_i]);
+    __pyx_t_5 = __site_call1_275_25->Target(__site_call1_275_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_1 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+  }
+
+  /* "../cython/include\numpy.pxd":276
+ *     for i in range(nd):
+ *         shape_list.append(dims[i])
+ *     import numpy             # <<<<<<<<<<<<<<
+ *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')
+ * 
+ */
+  __pyx_t_5 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_numpy = __pyx_t_5;
+  __pyx_t_5 = nullptr;
+
+  /* "../cython/include\numpy.pxd":277
+ *         shape_list.append(dims[i])
+ *     import numpy
+ *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_5 = __site_get_empty_277_16->Target(__site_get_empty_277_16, __pyx_v_numpy, __pyx_context);
+  if (__pyx_v_fortran) {
+    __pyx_t_4 = "F";
+  } else {
+    __pyx_t_4 = "C";
+  }
+  __pyx_t_1 = __site_call3_277_22->Target(__site_call3_277_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), ((System::Object^)__pyx_v_descr), ((System::Object^)__pyx_t_4));
+  __pyx_t_5 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":280
+ * 
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
  *     assert subtype == NULL
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":212
+  /* "../cython/include\numpy.pxd":281
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -1246,7 +1416,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":213
+  /* "../cython/include\numpy.pxd":282
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -1259,7 +1429,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":214
+  /* "../cython/include\numpy.pxd":283
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
@@ -1276,7 +1446,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":216
+/* "../cython/include\numpy.pxd":285
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
  * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
@@ -1289,15 +1459,15 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":218
+  /* "../cython/include\numpy.pxd":287
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  *      # XXX "long long" is wrong type
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
  * 
- * cdef inline void* PyArray_DATA(ndarray n):
+ * cdef inline void* PyArray_DATA(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_218_54->Target(__site_get_Array_218_54, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_218_54->Target(__site_cvt_PY_LONG_LONG_218_54, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_287_54->Target(__site_get_Array_287_54, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_287_54->Target(__site_cvt_cvt_PY_LONG_LONG_287_54, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
   goto __pyx_L0;
@@ -1307,10 +1477,10 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":220
+/* "../cython/include\numpy.pxd":289
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
- * cdef inline void* PyArray_DATA(ndarray n):             # <<<<<<<<<<<<<<
+ * cdef inline void* PyArray_DATA(ndarray n) nogil:             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  */
@@ -1320,15 +1490,15 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":222
- * cdef inline void* PyArray_DATA(ndarray n):
+  /* "../cython/include\numpy.pxd":291
+ * cdef inline void* PyArray_DATA(ndarray n) nogil:
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline intp_t* PyArray_DIMS(ndarray n):
+ * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_222_49->Target(__site_get_Array_222_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_222_49->Target(__site_cvt_PY_LONG_LONG_222_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_291_49->Target(__site_get_Array_291_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_291_49->Target(__site_cvt_cvt_PY_LONG_LONG_291_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -1338,28 +1508,28 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":224
+/* "../cython/include\numpy.pxd":293
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
- * cdef inline intp_t* PyArray_DIMS(ndarray n):             # <<<<<<<<<<<<<<
+ * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  __pyx_t_5numpy_intp_t *__pyx_r;
+static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  npy_intp *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":226
- * cdef inline intp_t* PyArray_DIMS(ndarray n):
+  /* "../cython/include\numpy.pxd":295
+ * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline intp_t PyArray_SIZE(ndarray n):
+ * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  */
-  __pyx_t_1 = __site_get_Array_226_49->Target(__site_get_Array_226_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_226_49->Target(__site_cvt_PY_LONG_LONG_226_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_295_49->Target(__site_get_Array_295_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_295_49->Target(__site_cvt_cvt_PY_LONG_LONG_295_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -1369,8 +1539,68 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":228
+/* "../cython/include\numpy.pxd":297
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline intp_t PyArray_DIM(ndarray n, int dim):             # <<<<<<<<<<<<<<
+ *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
+ * 
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^ __pyx_v_n, int __pyx_v_dim) {
+  __pyx_t_5numpy_intp_t __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":298
+ * 
+ * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
+ *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_NDIM(ndarray obj):
+ */
+  __pyx_t_1 = __site_get_Array_298_47->Target(__site_get_Array_298_47, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_298_47->Target(__site_cvt_cvt_PY_LONG_LONG_298_47, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_DIM(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_dim);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":300
+ *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
+ * 
+ * cdef inline object PyArray_NDIM(ndarray obj):             # <<<<<<<<<<<<<<
+ *     return obj.ndim
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^ __pyx_v_obj) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":301
+ * 
+ * cdef inline object PyArray_NDIM(ndarray obj):
+ *     return obj.ndim             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
+ */
+  __pyx_t_1 = __site_get_ndim_301_14->Target(__site_get_ndim_301_14, ((System::Object^)__pyx_v_obj), __pyx_context);
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":303
+ *     return obj.ndim
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
@@ -1382,15 +1612,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":230
+  /* "../cython/include\numpy.pxd":305
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_230_49->Target(__site_get_Array_230_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_PY_LONG_LONG_230_49->Target(__site_cvt_PY_LONG_LONG_230_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_305_49->Target(__site_get_Array_305_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_305_49->Target(__site_cvt_cvt_PY_LONG_LONG_305_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -1400,8 +1630,185 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":232
+/* "../cython/include\numpy.pxd":307
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):             # <<<<<<<<<<<<<<
+ *     # XXX "long long" is wrong type
+ *     return <NpyArray*> <long long>n.Array
+ */
+
+static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^ __pyx_v_n) {
+  NpyArray *__pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":309
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ *     # XXX "long long" is wrong type
+ *     return <NpyArray*> <long long>n.Array             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_Return(ndarray arr):
+ */
+  __pyx_t_1 = __site_get_Array_309_35->Target(__site_get_Array_309_35, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_309_35->Target(__site_cvt_cvt_PY_LONG_LONG_309_35, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = ((NpyArray *)((PY_LONG_LONG)__pyx_t_2));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":311
+ *     return <NpyArray*> <long long>n.Array
+ * 
+ * cdef inline object PyArray_Return(ndarray arr):             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.ndarray
+ *     if arr is None:
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_v_arr) {
+  System::Object^ __pyx_v_NumpyDotNet;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "../cython/include\numpy.pxd":312
+ * 
+ * cdef inline object PyArray_Return(ndarray arr):
+ *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
+ *     if arr is None:
+ *         return None
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ndarray", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":313
+ * cdef inline object PyArray_Return(ndarray arr):
+ *     import NumpyDotNet.ndarray
+ *     if arr is None:             # <<<<<<<<<<<<<<
+ *         return None
+ *     return ArrayReturn(arr)
+ */
+  __pyx_t_2 = (((System::Object^)__pyx_v_arr) == nullptr);
+  if (__pyx_t_2) {
+
+    /* "../cython/include\numpy.pxd":314
+ *     import NumpyDotNet.ndarray
+ *     if arr is None:
+ *         return None             # <<<<<<<<<<<<<<
+ *     return ArrayReturn(arr)
+ * 
+ */
+    __pyx_r = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "../cython/include\numpy.pxd":315
+ *     if arr is None:
+ *         return None
+ *     return ArrayReturn(arr)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object NpyArray_Return(NpyArray *arr):
+ */
+  __pyx_t_1 = ((System::Object^)NumpyDotNet::ndarray::ArrayReturn(__pyx_v_arr)); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":317
+ *     return ArrayReturn(arr)
+ * 
+ * cdef inline object NpyArray_Return(NpyArray *arr):             # <<<<<<<<<<<<<<
+ *     ret = Npy_INTERFACE_array(arr)
+ *     Npy_DECREF(arr)
+ */
+
+static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
+  System::Object^ __pyx_v_ret;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_v_ret = nullptr;
+
+  /* "../cython/include\numpy.pxd":318
+ * 
+ * cdef inline object NpyArray_Return(NpyArray *arr):
+ *     ret = Npy_INTERFACE_array(arr)             # <<<<<<<<<<<<<<
+ *     Npy_DECREF(arr)
+ *     return ret
+ */
+  __pyx_t_1 = Npy_INTERFACE_OBJECT(__pyx_v_arr); 
+  __pyx_v_ret = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":319
+ * cdef inline object NpyArray_Return(NpyArray *arr):
+ *     ret = Npy_INTERFACE_array(arr)
+ *     Npy_DECREF(arr)             # <<<<<<<<<<<<<<
+ *     return ret
+ * 
+ */
+  Npy_DECREF(__pyx_v_arr);
+
+  /* "../cython/include\numpy.pxd":320
+ *     ret = Npy_INTERFACE_array(arr)
+ *     Npy_DECREF(arr)
+ *     return ret             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline int PyDataType_TYPE_NUM(dtype t):
+ */
+  __pyx_r = __pyx_v_ret;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":322
+ *     return ret
+ * 
+ * cdef inline int PyDataType_TYPE_NUM(dtype t):             # <<<<<<<<<<<<<<
+ *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
+ * 
+ */
+
+static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^ __pyx_v_t) {
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":323
+ * 
+ * cdef inline int PyDataType_TYPE_NUM(dtype t):
+ *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
+ */
+  __pyx_t_1 = __site_get_Dtype_323_62->Target(__site_get_Dtype_323_62, ((System::Object^)__pyx_v_t), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_323_62->Target(__site_cvt_cvt_PY_LONG_LONG_323_62, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyDataType_TYPE_NUM(((NpyArray_Descr *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":325
+ *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
  *     import clr
@@ -1417,7 +1824,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":233
+  /* "../cython/include\numpy.pxd":326
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -1428,7 +1835,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":234
+  /* "../cython/include\numpy.pxd":327
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -1439,17 +1846,17 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":235
+  /* "../cython/include\numpy.pxd":328
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
+ * 
  */
-  __pyx_t_1 = __site_get_NpyArray_235_22->Target(__site_get_NpyArray_235_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_FromAny_235_31->Target(__site_get_FromAny_235_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_328_22->Target(__site_get_NpyArray_328_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_328_31->Target(__site_get_FromAny_328_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_235_39->Target(__site_call6_235_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_328_39->Target(__site_call6_328_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -1460,8 +1867,43 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":237
- *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)
+/* "../cython/include\numpy.pxd":331
+ * 
+ * 
+ * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):             # <<<<<<<<<<<<<<
+ *     return PyArray_FromAny(op, descr, min_depth, max_depth,
+ *                            NPY_ENSURECOPY | NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^ __pyx_v_op, System::Object^ __pyx_v_descr, System::Object^ __pyx_v_min_depth, System::Object^ __pyx_v_max_depth) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+
+  /* "../cython/include\numpy.pxd":333
+ * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):
+ *     return PyArray_FromAny(op, descr, min_depth, max_depth,
+ *                            NPY_ENSURECOPY | NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = (System::Object^)(long long)(((NPY_ENSURECOPY | NPY_DEFAULT) | NPY_ENSUREARRAY));
+  __pyx_t_2 = NULL;
+  __pyx_t_3 = PyArray_FromAny(__pyx_v_op, __pyx_v_descr, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_t_1, __pyx_t_2); 
+  __pyx_t_1 = nullptr;
+  __pyx_t_2 = nullptr;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":336
+ * 
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
  *     if flags & NPY_ENSURECOPY:
@@ -1475,7 +1917,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":238
+  /* "../cython/include\numpy.pxd":337
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -1483,13 +1925,13 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
-  __pyx_t_2 = __site_op_and_238_13->Target(__site_op_and_238_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_2 = __site_op_and_337_13->Target(__site_op_and_337_13, __pyx_v_flags, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_238_13->Target(__site_istrue_238_13, __pyx_t_2);
+  __pyx_t_3 = __site_istrue_337_13->Target(__site_istrue_337_13, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":239
+    /* "../cython/include\numpy.pxd":338
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -1497,7 +1939,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  * 
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
-    __pyx_t_1 = __site_op_ior_239_14->Target(__site_op_ior_239_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_1 = __site_op_ior_338_14->Target(__site_op_ior_338_14, __pyx_v_flags, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_flags = __pyx_t_1;
     __pyx_t_1 = nullptr;
@@ -1505,14 +1947,14 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":240
+  /* "../cython/include\numpy.pxd":339
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
  * 
- * cdef inline object PyArray_Check(obj):
+ * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  */
-  __pyx_t_4 = __site_cvt_int_240_77->Target(__site_cvt_int_240_77, __pyx_v_type);
+  __pyx_t_4 = __site_cvt_cvt_int_339_77->Target(__site_cvt_cvt_int_339_77, __pyx_v_type);
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
   __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
   __pyx_t_1 = nullptr;
@@ -1525,31 +1967,47 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":242
+/* "../cython/include\numpy.pxd":341
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
- * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
- *     return isinstance(obj, ndarray)
- * 
+ * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):             # <<<<<<<<<<<<<<
+ *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,
+ *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  */
 
-static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object^ __pyx_v_op, System::Object^ __pyx_v_type, System::Object^ __pyx_v_minDepth, System::Object^ __pyx_v_maxDepth) {
   System::Object^ __pyx_r = nullptr;
-  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":243
+  /* "../cython/include\numpy.pxd":342
  * 
- * cdef inline object PyArray_Check(obj):
- *     return isinstance(obj, ndarray)             # <<<<<<<<<<<<<<
+ * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
+ *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,             # <<<<<<<<<<<<<<
+ *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
- * cdef inline object PyArray_NDIM(obj):
  */
-  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_call2_243_21->Target(__site_call2_243_21, __pyx_context, __pyx_t_1, __pyx_v_obj, ((System::Object^)((System::Object^)__pyx_ptype_5numpy_ndarray)));
-  __pyx_t_1 = nullptr;
-  __pyx_r = __pyx_t_2;
+  __pyx_t_1 = __site_cvt_cvt_int_342_78->Target(__site_cvt_cvt_int_342_78, __pyx_v_type);
+  __pyx_t_2 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_1)); 
+
+  /* "../cython/include\numpy.pxd":343
+ * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
+ *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,
+ *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
+ */
+  __pyx_t_3 = (System::Object^)(long long)((NPY_DEFAULT | NPY_ENSUREARRAY));
+  __pyx_t_4 = NULL;
+  __pyx_t_5 = PyArray_FromAny(__pyx_v_op, __pyx_t_2, __pyx_v_minDepth, __pyx_v_maxDepth, __pyx_t_3, __pyx_t_4); 
   __pyx_t_2 = nullptr;
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_r = __pyx_t_5;
+  __pyx_t_5 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -1557,26 +2015,57 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":245
- *     return isinstance(obj, ndarray)
+/* "../cython/include\numpy.pxd":345
+ *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
- * cdef inline object PyArray_NDIM(obj):             # <<<<<<<<<<<<<<
- *     return obj.ndim
- * 
+ * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.NpyArray
  */
 
-static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_v_op, System::Object^ __pyx_v_newtype, System::Object^ __pyx_v_min_depth, System::Object^ __pyx_v_max_depth, System::Object^ __pyx_v_flags, System::Object^ __pyx_v_context) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":246
+  /* "../cython/include\numpy.pxd":346
  * 
- * cdef inline object PyArray_NDIM(obj):
- *     return obj.ndim             # <<<<<<<<<<<<<<
- * 
- * cdef inline void import_array():
+ * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.NpyArray
+ *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
  */
-  __pyx_t_1 = __site_get_ndim_246_14->Target(__site_get_ndim_246_14, __pyx_v_obj, __pyx_context);
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":347
+ * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
+ *     import clr
+ *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyArray", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":348
+ *     import clr
+ *     import NumpyDotNet.NpyArray
+ *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_Check(obj):
+ */
+  __pyx_t_1 = __site_get_NpyArray_348_22->Target(__site_get_NpyArray_348_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_CheckFromAny_348_31->Target(__site_get_CheckFromAny_348_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_call6_348_44->Target(__site_call6_348_44, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -1586,15 +2075,145 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(System::Object^ __pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":248
- *     return obj.ndim
+/* "../cython/include\numpy.pxd":350
+ *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
+ * 
+ * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
+ *     import numpy as np
+ *     return isinstance(obj, np.ndarray)
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) {
+  System::Object^ __pyx_v_np;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  __pyx_v_np = nullptr;
+
+  /* "../cython/include\numpy.pxd":351
+ * 
+ * cdef inline object PyArray_Check(obj):
+ *     import numpy as np             # <<<<<<<<<<<<<<
+ *     return isinstance(obj, np.ndarray)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  __pyx_v_np = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":352
+ * cdef inline object PyArray_Check(obj):
+ *     import numpy as np
+ *     return isinstance(obj, np.ndarray)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void import_array():
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
+  __pyx_t_2 = __site_get_ndarray_352_29->Target(__site_get_ndarray_352_29, __pyx_v_np, __pyx_context);
+  __pyx_t_3 = __site_call2_352_21->Target(__site_call2_352_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
+  __pyx_t_1 = nullptr;
+  __pyx_t_2 = nullptr;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":354
+ *     return isinstance(obj, np.ndarray)
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
  *     pass
+ * 
  */
 
 static CYTHON_INLINE void import_array(void) {
 
+}
+
+/* "../cython/include\numpy.pxd":357
+ *     pass
+ * 
+ * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.ScalarGeneric
+ */
+
+static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  int __pyx_t_6;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "../cython/include\numpy.pxd":358
+ * 
+ * cdef inline PyNumber_Check(o):
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.ScalarGeneric
+ *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":359
+ * cdef inline PyNumber_Check(o):
+ *     import clr
+ *     import NumpyDotNet.ScalarGeneric             # <<<<<<<<<<<<<<
+ *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ScalarGeneric", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":360
+ *     import clr
+ *     import NumpyDotNet.ScalarGeneric
+ *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
+  __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "int");
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "long");
+  __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "float");
+  __pyx_t_5 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_t_2), ((System::Object^)__pyx_t_3), ((System::Object^)__pyx_t_4)});
+  __pyx_t_2 = nullptr;
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_t_4 = __site_call2_360_21->Target(__site_call2_360_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
+  __pyx_t_1 = nullptr;
+  __pyx_t_5 = nullptr;
+  __pyx_t_6 = __site_cvt_bool_360_45->Target(__site_cvt_bool_360_45, __pyx_t_4);
+  if (!__pyx_t_6) {
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "isinstance");
+    __pyx_t_1 = __site_get_ScalarGeneric_360_73->Target(__site_get_ScalarGeneric_360_73, __pyx_v_NumpyDotNet, __pyx_context);
+    __pyx_t_3 = __site_call2_360_58->Target(__site_call2_360_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
+    __pyx_t_5 = nullptr;
+    __pyx_t_1 = nullptr;
+    __pyx_t_1 = __pyx_t_3;
+    __pyx_t_3 = nullptr;
+  } else {
+    __pyx_t_1 = __pyx_t_4;
+    __pyx_t_4 = nullptr;
+  }
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
 }
 // XXX skipping all typeobj definitions
 /* Cython code section 'pystring_table' */
@@ -1614,230 +2233,249 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_cvt_int_820_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_821_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_822_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_823_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_824_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_826_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_827_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_828_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_830_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_831_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_833_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_834_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_836_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_838_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_839_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_840_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_842_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_843_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_845_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_846_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_847_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_850_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_851_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_852_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_853_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_854_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_855_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_856_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_857_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_858_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_859_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_860_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_861_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_863_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_864_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_865_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_866_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_867_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_868_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_869_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_871_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_872_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_873_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_875_65 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_878_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_879_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_881_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_883_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_884_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_885_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_888_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_889_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_890_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_891_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_892_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_893_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_894_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_896_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_898_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_901_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_903_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_904_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_905_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_908_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_909_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_910_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_911_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_914_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_915_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_916_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_917_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_919_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_920_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_921_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_922_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_925_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_927_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_928_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_929_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_930_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_931_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_932_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_934_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_935_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_936_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_937_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_940_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_942_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_943_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_945_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_946_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_947_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_948_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_950_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_951_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_952_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_953_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_954_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_955_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_956_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_957_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_959_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_960_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_962_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_963_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_964_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_965_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_966_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_968_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_969_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_970_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_971_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_972_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_973_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_974_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_975_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_976_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_979_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_981_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_983_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_985_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_987_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_989_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_990_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_992_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_993_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_995_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_998_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_999_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1000_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1001_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1003_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1005_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1006_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1007_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1009_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1010_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1012_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1013_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1014_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1016_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1017_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1019_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1020_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1022_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1024_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1025_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1026_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1028_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1029_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1030_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1031_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1033_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1036_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1037_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1038_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1039_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1040_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1041_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1042_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1043_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1045_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1047_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1048_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1049_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1051_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1052_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1053_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1054_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1055_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1056_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1057_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1058_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1059_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1060_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1061_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1062_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1063_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1064_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1068_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_1070_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_820_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_821_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_822_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_823_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_824_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_826_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_827_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_828_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_830_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_831_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_833_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_834_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_836_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_838_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_839_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_840_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_842_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_843_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_845_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_846_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_847_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_850_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_851_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_852_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_853_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_854_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_855_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_856_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_857_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_858_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_859_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_860_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_861_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_863_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_864_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_865_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_866_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_867_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_868_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_869_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_871_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_872_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_873_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_875_65 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_878_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_879_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_881_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_883_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_884_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_885_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_888_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_889_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_890_102 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_891_104 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_892_98 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_893_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_894_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_896_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_898_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_901_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_903_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_904_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_905_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_908_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_909_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_910_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_911_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_914_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_915_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_916_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_917_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_919_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_920_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_921_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_922_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_925_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_927_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_928_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_929_97 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_930_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_931_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_932_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_934_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_935_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_936_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_937_114 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_940_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_942_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_943_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_945_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_946_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_947_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_948_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_950_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_951_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_952_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_953_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_954_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_955_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_956_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_957_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_959_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_960_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_962_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_963_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_964_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_965_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_966_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_968_112 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_969_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_970_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_971_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_972_99 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_973_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_974_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_975_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_976_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_979_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_981_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_983_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_985_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_987_113 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_989_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_990_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_992_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_993_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_995_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_998_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_999_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1000_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1001_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1003_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1005_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1006_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1007_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1009_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1010_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1012_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1013_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1014_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1016_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1017_107 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1019_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1020_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1022_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1024_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1025_105 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1026_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1028_106 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1029_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1030_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1031_109 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1033_108 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1036_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1037_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1038_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1039_117 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1040_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1041_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1042_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1043_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1045_101 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1047_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1048_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1049_103 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1051_111 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1052_110 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1053_119 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1054_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1055_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1056_118 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1057_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1058_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1059_121 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1060_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1061_123 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1062_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1063_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1064_122 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1068_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1070_120 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_376_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_op_mul_376_47 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_size_t_376_47 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_size_t_376_47 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_377_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_377_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_iterator_377_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
   __site_getindex_378_39 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_PY_LONG_LONG_378_39 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_Py_ssize_t_378_14 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_int_385_18 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_PY_LONG_LONG_378_39 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_Py_ssize_t_378_14 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_385_18 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_570_37 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_size_t_570_37 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_size_t_570_37 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_571_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_571_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_iterator_571_4 = CallSite< System::Func< CallSite^, System::Object^, System::Collections::Generic::KeyValuePair<System::Collections::IEnumerator^, System::IDisposable^> >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_GetEnumeratorForIteration));
   __site_getindex_572_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_char_572_16 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_Py_ssize_t_572_11 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_append_199_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_199_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_201_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_201_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_append_207_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_207_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_empty_209_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
-  __site_call3_209_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_218_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_218_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_222_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_222_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_226_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_226_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_230_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_PY_LONG_LONG_230_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_235_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_FromAny_235_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
-  __site_call6_235_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_op_and_238_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_istrue_238_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ior_239_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
-  __site_cvt_int_240_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call2_243_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_ndim_246_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_cvt_cvt_char_572_16 = CallSite< System::Func< CallSite^, System::Object^, char >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, char::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_Py_ssize_t_572_11 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_append_259_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_259_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_261_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_261_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_267_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_267_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_269_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_269_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_275_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_275_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_277_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_277_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_287_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_287_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_291_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_291_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_295_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_295_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_298_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_298_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ndim_301_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_get_Array_305_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_305_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_309_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_309_35 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Dtype_323_62 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Dtype", false));
+  __site_cvt_cvt_PY_LONG_LONG_323_62 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_328_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_328_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_328_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_337_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_337_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_338_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_cvt_int_339_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_342_78 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_348_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_CheckFromAny_348_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CheckFromAny", false));
+  __site_call6_348_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_get_ndarray_352_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_call2_352_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_360_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_cvt_bool_360_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ScalarGeneric_360_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
+  __site_call2_360_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -1846,6 +2484,9 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __Pyx_InitSites(__pyx_context);
   __Pyx_InitGlobals();
   /*--- Type init code ---*/
+  /*--- Type import code ---*/
+  // XXX skipping type ptr assignment for NumpyDotNet::ndarray
+  // XXX skipping type ptr assignment for NumpyDotNet::dtype
   /*--- Create function pointers ---*/
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
@@ -2207,7 +2848,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonDictionary^ __pyx_t_357;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":9
- * ctypedef int intp
+ * ctypedef np.npy_intp intp
  * 
  * PyUFunc_None = -1             # <<<<<<<<<<<<<<
  * 
@@ -2218,182 +2859,182 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":354
  * 
  * 
- * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1rc_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":355
  * 
- * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1rc_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1rc_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1rc_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":356
- * cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1rc_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":357
- * cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1rc_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":358
- * cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":359
- * cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":360
- * cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":361
- * cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":362
- * cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2_4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2_4_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":363
- * cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2a_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2a_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":364
- * cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2c_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":365
- * cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":366
- * cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes3_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes3_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":367
- * cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes3a_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes3a_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":368
- * cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes3_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes3_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":369
- * cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes4_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 4)));
+  __pyx_v_5scipy_7special_7_cephes_cephes4_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 4)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":370
- * cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes5_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":371
- * cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
- * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+ * cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes5_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes4_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes4_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":372
- * cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
- * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes5_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes1c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
  * 
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes5_2_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes5_2_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":373
- * cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
- * cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
+ * cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes5_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+ * cdef np.NpyUFuncGenericFunction *cephes1c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)             # <<<<<<<<<<<<<<
  * 
  * cdef void ** alloc_data_from_list(l):
  */
-  __pyx_v_5scipy_7special_7_cephes_cephes1c_functions = ((__pyx_t_5numpy_PyUFuncGenericFunction *)malloc(((sizeof(__pyx_t_5numpy_PyUFuncGenericFunction)) * 2)));
+  __pyx_v_5scipy_7special_7_cephes_cephes1c_functions = ((NpyUFuncGenericFunction *)malloc(((sizeof(NpyUFuncGenericFunction)) * 2)));
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":388
  * 
@@ -7571,7 +8212,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, bdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtri", bdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_22 = __site_cvt_int_820_104->Target(__site_cvt_int_820_104, __pyx_t_17);
+  __pyx_t_22 = __site_cvt_cvt_int_820_104->Target(__site_cvt_cvt_int_820_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7590,7 +8231,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtr_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtr", btdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_25 = __site_cvt_int_821_102->Target(__site_cvt_int_821_102, __pyx_t_17);
+  __pyx_t_25 = __site_cvt_cvt_int_821_102->Target(__site_cvt_cvt_int_821_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7609,7 +8250,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, btdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtri", btdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_27 = __site_cvt_int_822_104->Target(__site_cvt_int_822_104, __pyx_t_17);
+  __pyx_t_27 = __site_cvt_cvt_int_822_104->Target(__site_cvt_cvt_int_822_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7628,7 +8269,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_29 = __site_cvt_int_823_103->Target(__site_cvt_int_823_103, __pyx_t_17);
+  __pyx_t_29 = __site_cvt_cvt_int_823_103->Target(__site_cvt_cvt_int_823_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "btdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7647,7 +8288,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtrc", fdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_31 = __site_cvt_int_824_105->Target(__site_cvt_int_824_105, __pyx_t_17);
+  __pyx_t_31 = __site_cvt_cvt_int_824_105->Target(__site_cvt_cvt_int_824_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "btdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7666,7 +8307,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtri = np.PyUFunc_FromFuncAndData(cephes3_functions, fdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtri", fdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_33 = __site_cvt_int_826_103->Target(__site_cvt_int_826_103, __pyx_t_17);
+  __pyx_t_33 = __site_cvt_cvt_int_826_103->Target(__site_cvt_cvt_int_826_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7685,7 +8326,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_35 = __site_cvt_int_827_101->Target(__site_cvt_int_827_101, __pyx_t_17);
+  __pyx_t_35 = __site_cvt_cvt_int_827_101->Target(__site_cvt_cvt_int_827_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7704,7 +8345,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtrc = np.PyUFunc_FromFuncAndData(cephes3_functions, gdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrc", gdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_37 = __site_cvt_int_828_103->Target(__site_cvt_int_828_103, __pyx_t_17);
+  __pyx_t_37 = __site_cvt_cvt_int_828_103->Target(__site_cvt_cvt_int_828_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7723,7 +8364,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_39 = __site_cvt_int_830_103->Target(__site_cvt_int_830_103, __pyx_t_17);
+  __pyx_t_39 = __site_cvt_cvt_int_830_103->Target(__site_cvt_cvt_int_830_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7742,7 +8383,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp2f1 = np.PyUFunc_FromFuncAndData(cephes4_functions, hyp2f1_data, cephes_5c2_types, 4, 4, 1, PyUFunc_None, "hyp2f1", hyp2f1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_41 = __site_cvt_int_831_101->Target(__site_cvt_int_831_101, __pyx_t_17);
+  __pyx_t_41 = __site_cvt_cvt_int_831_101->Target(__site_cvt_cvt_int_831_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7761,7 +8402,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_43 = __site_cvt_int_833_107->Target(__site_cvt_int_833_107, __pyx_t_17);
+  __pyx_t_43 = __site_cvt_cvt_int_833_107->Target(__site_cvt_cvt_int_833_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp2f1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7780,7 +8421,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyperu = np.PyUFunc_FromFuncAndData(cephes3_functions, hypU_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "hyperu", hyperu_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_45 = __site_cvt_int_834_106->Target(__site_cvt_int_834_106, __pyx_t_17);
+  __pyx_t_45 = __site_cvt_cvt_int_834_106->Target(__site_cvt_cvt_int_834_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp1f1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7799,7 +8440,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp2f0 = np.PyUFunc_FromFuncAndData(cephes4a_2_functions, hyp2f0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp2f0", hyp2f0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_47 = __site_cvt_int_836_103->Target(__site_cvt_int_836_103, __pyx_t_17);
+  __pyx_t_47 = __site_cvt_cvt_int_836_103->Target(__site_cvt_cvt_int_836_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyperu_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7818,7 +8459,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hyp3f0 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, threef0_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "hyp3f0", hyp3f0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_49 = __site_cvt_int_838_108->Target(__site_cvt_int_838_108, __pyx_t_17);
+  __pyx_t_49 = __site_cvt_cvt_int_838_108->Target(__site_cvt_cvt_int_838_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp2f0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7837,7 +8478,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_51 = __site_cvt_int_839_106->Target(__site_cvt_int_839_106, __pyx_t_17);
+  __pyx_t_51 = __site_cvt_cvt_int_839_106->Target(__site_cvt_cvt_int_839_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp1f2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7856,7 +8497,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * betainc = np.PyUFunc_FromFuncAndData(cephes3_functions, incbet_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "betainc", betainc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_53 = __site_cvt_int_840_108->Target(__site_cvt_int_840_108, __pyx_t_17);
+  __pyx_t_53 = __site_cvt_cvt_int_840_108->Target(__site_cvt_cvt_int_840_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hyp3f0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7875,7 +8516,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_55 = __site_cvt_int_842_106->Target(__site_cvt_int_842_106, __pyx_t_17);
+  __pyx_t_55 = __site_cvt_cvt_int_842_106->Target(__site_cvt_cvt_int_842_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betainc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7894,7 +8535,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtrc = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtrc_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrc", nbdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_57 = __site_cvt_int_843_108->Target(__site_cvt_int_843_108, __pyx_t_17);
+  __pyx_t_57 = __site_cvt_cvt_int_843_108->Target(__site_cvt_cvt_int_843_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betaincinv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7913,7 +8554,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtri = np.PyUFunc_FromFuncAndData(cephes3a_functions, nbdtri_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtri", nbdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_59 = __site_cvt_int_845_106->Target(__site_cvt_int_845_106, __pyx_t_17);
+  __pyx_t_59 = __site_cvt_cvt_int_845_106->Target(__site_cvt_cvt_int_845_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7932,7 +8573,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_61 = __site_cvt_int_846_104->Target(__site_cvt_int_846_104, __pyx_t_17);
+  __pyx_t_61 = __site_cvt_cvt_int_846_104->Target(__site_cvt_cvt_int_846_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7951,7 +8592,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_63 = __site_cvt_int_847_106->Target(__site_cvt_int_847_106, __pyx_t_17);
+  __pyx_t_63 = __site_cvt_cvt_int_847_106->Target(__site_cvt_cvt_int_847_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "nbdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7970,7 +8611,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cbrt = np.PyUFunc_FromFuncAndData(cephes1_functions, cbrt_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cbrt", cbrt_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_65 = __site_cvt_int_850_101->Target(__site_cvt_int_850_101, __pyx_t_17);
+  __pyx_t_65 = __site_cvt_cvt_int_850_101->Target(__site_cvt_cvt_int_850_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "beta_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -7989,7 +8630,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtrc = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtrc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtrc", chdtrc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_67 = __site_cvt_int_851_104->Target(__site_cvt_int_851_104, __pyx_t_17);
+  __pyx_t_67 = __site_cvt_cvt_int_851_104->Target(__site_cvt_cvt_int_851_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "betaln_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8008,7 +8649,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtr", chdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_69 = __site_cvt_int_852_101->Target(__site_cvt_int_852_101, __pyx_t_17);
+  __pyx_t_69 = __site_cvt_cvt_int_852_101->Target(__site_cvt_cvt_int_852_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cbrt_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8027,7 +8668,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtri = np.PyUFunc_FromFuncAndData(cephes2_functions, chdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtri", chdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_71 = __site_cvt_int_853_105->Target(__site_cvt_int_853_105, __pyx_t_17);
+  __pyx_t_71 = __site_cvt_cvt_int_853_105->Target(__site_cvt_cvt_int_853_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8046,7 +8687,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * dawsn = np.PyUFunc_FromFuncAndData(cephes1_functions, dawsn_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "dawsn", dawsn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_73 = __site_cvt_int_854_103->Target(__site_cvt_int_854_103, __pyx_t_17);
+  __pyx_t_73 = __site_cvt_cvt_int_854_103->Target(__site_cvt_cvt_int_854_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8065,7 +8706,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipeinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellie_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipeinc", ellipeinc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_75 = __site_cvt_int_855_105->Target(__site_cvt_int_855_105, __pyx_t_17);
+  __pyx_t_75 = __site_cvt_cvt_int_855_105->Target(__site_cvt_cvt_int_855_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "chdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8084,7 +8725,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipkinc = np.PyUFunc_FromFuncAndData(cephes2_functions, ellik_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "ellipkinc", ellipkinc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_77 = __site_cvt_int_856_103->Target(__site_cvt_int_856_103, __pyx_t_17);
+  __pyx_t_77 = __site_cvt_cvt_int_856_103->Target(__site_cvt_cvt_int_856_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "dawsn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8103,7 +8744,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipe = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpe_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipe", ellipe_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_79 = __site_cvt_int_857_107->Target(__site_cvt_int_857_107, __pyx_t_17);
+  __pyx_t_79 = __site_cvt_cvt_int_857_107->Target(__site_cvt_cvt_int_857_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipeinc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8122,7 +8763,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipk = np.PyUFunc_FromFuncAndData(cephes1_functions, ellpk_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ellipk", ellipk_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_81 = __site_cvt_int_858_107->Target(__site_cvt_int_858_107, __pyx_t_17);
+  __pyx_t_81 = __site_cvt_cvt_int_858_107->Target(__site_cvt_cvt_int_858_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipkinc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8141,7 +8782,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * exp10 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp10_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp10", exp10_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_83 = __site_cvt_int_859_104->Target(__site_cvt_int_859_104, __pyx_t_17);
+  __pyx_t_83 = __site_cvt_cvt_int_859_104->Target(__site_cvt_cvt_int_859_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipe_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8160,7 +8801,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_85 = __site_cvt_int_860_104->Target(__site_cvt_int_860_104, __pyx_t_17);
+  __pyx_t_85 = __site_cvt_cvt_int_860_104->Target(__site_cvt_cvt_int_860_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipk_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8179,7 +8820,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * exp2 = np.PyUFunc_FromFuncAndData(cephes1_functions, exp2_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "exp2", exp2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_87 = __site_cvt_int_861_103->Target(__site_cvt_int_861_103, __pyx_t_17);
+  __pyx_t_87 = __site_cvt_cvt_int_861_103->Target(__site_cvt_cvt_int_861_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp10_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8198,7 +8839,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaln = np.PyUFunc_FromFuncAndData(cephes1rc_functions, lgam_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "gammaln", gammaln_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_89 = __site_cvt_int_863_101->Target(__site_cvt_int_863_101, __pyx_t_17);
+  __pyx_t_89 = __site_cvt_cvt_int_863_101->Target(__site_cvt_cvt_int_863_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8217,7 +8858,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i0 = np.PyUFunc_FromFuncAndData(cephes1_functions, i0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0", i0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_91 = __site_cvt_int_864_107->Target(__site_cvt_int_864_107, __pyx_t_17);
+  __pyx_t_91 = __site_cvt_cvt_int_864_107->Target(__site_cvt_cvt_int_864_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gamma_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8236,7 +8877,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i0e = np.PyUFunc_FromFuncAndData(cephes1_functions, i0e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i0e", i0e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_93 = __site_cvt_int_865_108->Target(__site_cvt_int_865_108, __pyx_t_17);
+  __pyx_t_93 = __site_cvt_cvt_int_865_108->Target(__site_cvt_cvt_int_865_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammaln_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8255,7 +8896,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i1 = np.PyUFunc_FromFuncAndData(cephes1_functions, i1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1", i1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_95 = __site_cvt_int_866_97->Target(__site_cvt_int_866_97, __pyx_t_17);
+  __pyx_t_95 = __site_cvt_cvt_int_866_97->Target(__site_cvt_cvt_int_866_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8274,7 +8915,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * i1e = np.PyUFunc_FromFuncAndData(cephes1_functions, i1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "i1e", i1e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_97 = __site_cvt_int_867_99->Target(__site_cvt_int_867_99, __pyx_t_17);
+  __pyx_t_97 = __site_cvt_cvt_int_867_99->Target(__site_cvt_cvt_int_867_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i0e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8293,7 +8934,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_99 = __site_cvt_int_868_97->Target(__site_cvt_int_868_97, __pyx_t_17);
+  __pyx_t_99 = __site_cvt_cvt_int_868_97->Target(__site_cvt_cvt_int_868_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8312,7 +8953,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaincc = np.PyUFunc_FromFuncAndData(cephes2_functions, igamc_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammaincc", gammaincc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_101 = __site_cvt_int_869_99->Target(__site_cvt_int_869_99, __pyx_t_17);
+  __pyx_t_101 = __site_cvt_cvt_int_869_99->Target(__site_cvt_cvt_int_869_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "i1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8331,7 +8972,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammainccinv = np.PyUFunc_FromFuncAndData(cephes2_functions, igami_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "gammainccinv", gammainccinv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_103 = __site_cvt_int_871_107->Target(__site_cvt_int_871_107, __pyx_t_17);
+  __pyx_t_103 = __site_cvt_cvt_int_871_107->Target(__site_cvt_cvt_int_871_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammaincc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8350,7 +8991,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gammaincinv = np.PyUFunc_FromFuncAndData(cephes2_functions, gammaincinv_data,
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_105 = __site_cvt_int_872_105->Target(__site_cvt_int_872_105, __pyx_t_17);
+  __pyx_t_105 = __site_cvt_cvt_int_872_105->Target(__site_cvt_cvt_int_872_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammainc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8369,7 +9010,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  *                             cephes_3_types, 2, 2, 1, PyUFunc_None,
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_107 = __site_cvt_int_873_110->Target(__site_cvt_int_873_110, __pyx_t_17);
+  __pyx_t_107 = __site_cvt_cvt_int_873_110->Target(__site_cvt_cvt_int_873_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "gammainccinv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8388,7 +9029,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_109 = __site_cvt_int_875_65->Target(__site_cvt_int_875_65, __pyx_t_17);
+  __pyx_t_109 = __site_cvt_cvt_int_875_65->Target(__site_cvt_cvt_int_875_65, __pyx_t_17);
   __pyx_t_17 = nullptr;
 
   /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\special\_cephes.pyx":876
@@ -8415,7 +9056,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_111 = __site_cvt_int_878_99->Target(__site_cvt_int_878_99, __pyx_t_17);
+  __pyx_t_111 = __site_cvt_cvt_int_878_99->Target(__site_cvt_cvt_int_878_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "iv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8434,7 +9075,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ellipj = np.PyUFunc_FromFuncAndData(cephes2_4_functions, ellpj_data, cephes_6_types, 2, 2, 4, PyUFunc_None, "ellipj", ellipj_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_113 = __site_cvt_int_879_101->Target(__site_cvt_int_879_101, __pyx_t_17);
+  __pyx_t_113 = __site_cvt_cvt_int_879_101->Target(__site_cvt_cvt_int_879_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ive_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8453,7 +9094,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expn = np.PyUFunc_FromFuncAndData(cephes2a_functions, expn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "expn", expn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_115 = __site_cvt_int_881_106->Target(__site_cvt_int_881_106, __pyx_t_17);
+  __pyx_t_115 = __site_cvt_cvt_int_881_106->Target(__site_cvt_cvt_int_881_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ellipj_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8472,7 +9113,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expi = np.PyUFunc_FromFuncAndData(cephes1rc_functions, expi_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "expi", expi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_117 = __site_cvt_int_883_102->Target(__site_cvt_int_883_102, __pyx_t_17);
+  __pyx_t_117 = __site_cvt_cvt_int_883_102->Target(__site_cvt_cvt_int_883_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8491,7 +9132,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_119 = __site_cvt_int_884_105->Target(__site_cvt_int_884_105, __pyx_t_17);
+  __pyx_t_119 = __site_cvt_cvt_int_884_105->Target(__site_cvt_cvt_int_884_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "exp1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8510,7 +9151,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_121 = __site_cvt_int_885_105->Target(__site_cvt_int_885_105, __pyx_t_17);
+  __pyx_t_121 = __site_cvt_cvt_int_885_105->Target(__site_cvt_cvt_int_885_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8529,7 +9170,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtr = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtr_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtr", pdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_123 = __site_cvt_int_888_98->Target(__site_cvt_int_888_98, __pyx_t_17);
+  __pyx_t_123 = __site_cvt_cvt_int_888_98->Target(__site_cvt_cvt_int_888_98, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8548,7 +9189,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtri = np.PyUFunc_FromFuncAndData(cephes2a_functions, pdtri_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtri", pdtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_125 = __site_cvt_int_889_104->Target(__site_cvt_int_889_104, __pyx_t_17);
+  __pyx_t_125 = __site_cvt_cvt_int_889_104->Target(__site_cvt_cvt_int_889_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtrc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8567,7 +9208,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yn = np.PyUFunc_FromFuncAndData(cephes2a_functions, yn_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "yn", yn_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_127 = __site_cvt_int_890_102->Target(__site_cvt_int_890_102, __pyx_t_17);
+  __pyx_t_127 = __site_cvt_cvt_int_890_102->Target(__site_cvt_cvt_int_890_102, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8586,7 +9227,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * smirnov = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnov_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnov", smirnov_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_129 = __site_cvt_int_891_104->Target(__site_cvt_int_891_104, __pyx_t_17);
+  __pyx_t_129 = __site_cvt_cvt_int_891_104->Target(__site_cvt_cvt_int_891_104, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pdtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8605,7 +9246,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * smirnovi = np.PyUFunc_FromFuncAndData(cephes2a_functions, smirnovi_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "smirnovi", smirnovi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_131 = __site_cvt_int_892_98->Target(__site_cvt_int_892_98, __pyx_t_17);
+  __pyx_t_131 = __site_cvt_cvt_int_892_98->Target(__site_cvt_cvt_int_892_98, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8624,7 +9265,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_133 = __site_cvt_int_893_108->Target(__site_cvt_int_893_108, __pyx_t_17);
+  __pyx_t_133 = __site_cvt_cvt_int_893_108->Target(__site_cvt_cvt_int_893_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "smirnov_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8643,7 +9284,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * airy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, airy_data, cephes_5c_types, 4, 1, 4, PyUFunc_None, "airy", airy_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_135 = __site_cvt_int_894_110->Target(__site_cvt_int_894_110, __pyx_t_17);
+  __pyx_t_135 = __site_cvt_cvt_int_894_110->Target(__site_cvt_cvt_int_894_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "smirnovi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8662,7 +9303,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itairy = np.PyUFunc_FromFuncAndData(cephes1c_4_functions, itairy_data, cephes_5_types, 2, 1, 4, PyUFunc_None, "itairy", itairy_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_137 = __site_cvt_int_896_105->Target(__site_cvt_int_896_105, __pyx_t_17);
+  __pyx_t_137 = __site_cvt_cvt_int_896_105->Target(__site_cvt_cvt_int_896_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "airy_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8681,7 +9322,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_139 = __site_cvt_int_898_108->Target(__site_cvt_int_898_108, __pyx_t_17);
+  __pyx_t_139 = __site_cvt_cvt_int_898_108->Target(__site_cvt_cvt_int_898_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itairy_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8700,7 +9341,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fresnel = np.PyUFunc_FromFuncAndData(cephes1_2_functions, fresnl_data, cephes_3_cmplx_types, 4, 1, 2, PyUFunc_None, "fresnel", fresnel_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_141 = __site_cvt_int_901_107->Target(__site_cvt_int_901_107, __pyx_t_17);
+  __pyx_t_141 = __site_cvt_cvt_int_901_107->Target(__site_cvt_cvt_int_901_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "airye_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8719,7 +9360,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * sici = np.PyUFunc_FromFuncAndData(cephes1_2_functions, sici_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "sici", sici_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_143 = __site_cvt_int_903_114->Target(__site_cvt_int_903_114, __pyx_t_17);
+  __pyx_t_143 = __site_cvt_cvt_int_903_114->Target(__site_cvt_cvt_int_903_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "fresnel_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8738,7 +9379,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_145 = __site_cvt_int_904_107->Target(__site_cvt_int_904_107, __pyx_t_17);
+  __pyx_t_145 = __site_cvt_cvt_int_904_107->Target(__site_cvt_cvt_int_904_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "shichi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8757,7 +9398,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_147 = __site_cvt_int_905_103->Target(__site_cvt_int_905_103, __pyx_t_17);
+  __pyx_t_147 = __site_cvt_cvt_int_905_103->Target(__site_cvt_cvt_int_905_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "sici_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8776,7 +9417,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * iti0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, iti0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "iti0k0", iti0k0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_149 = __site_cvt_int_908_107->Target(__site_cvt_int_908_107, __pyx_t_17);
+  __pyx_t_149 = __site_cvt_cvt_int_908_107->Target(__site_cvt_cvt_int_908_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itj0y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8795,7 +9436,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * it2i0k0 = np.PyUFunc_FromFuncAndData(cephes1_2_functions, it2i0k0_data, cephes_3_types, 2, 1, 2, PyUFunc_None, "it2i0k0", it2i0k0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_151 = __site_cvt_int_909_109->Target(__site_cvt_int_909_109, __pyx_t_17);
+  __pyx_t_151 = __site_cvt_cvt_int_909_109->Target(__site_cvt_cvt_int_909_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2j0y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8814,7 +9455,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_153 = __site_cvt_int_910_107->Target(__site_cvt_int_910_107, __pyx_t_17);
+  __pyx_t_153 = __site_cvt_cvt_int_910_107->Target(__site_cvt_cvt_int_910_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "iti0k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8833,7 +9474,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_155 = __site_cvt_int_911_109->Target(__site_cvt_int_911_109, __pyx_t_17);
+  __pyx_t_155 = __site_cvt_cvt_int_911_109->Target(__site_cvt_cvt_int_911_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2i0k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8852,7 +9493,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * j1 = np.PyUFunc_FromFuncAndData(cephes1_functions, j1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "j1", j1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_157 = __site_cvt_int_914_97->Target(__site_cvt_int_914_97, __pyx_t_17);
+  __pyx_t_157 = __site_cvt_cvt_int_914_97->Target(__site_cvt_cvt_int_914_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "j0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8871,7 +9512,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * y1 = np.PyUFunc_FromFuncAndData(cephes1_functions, y1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "y1", y1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_159 = __site_cvt_int_915_97->Target(__site_cvt_int_915_97, __pyx_t_17);
+  __pyx_t_159 = __site_cvt_cvt_int_915_97->Target(__site_cvt_cvt_int_915_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "y0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8890,7 +9531,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_161 = __site_cvt_int_916_97->Target(__site_cvt_int_916_97, __pyx_t_17);
+  __pyx_t_161 = __site_cvt_cvt_int_916_97->Target(__site_cvt_cvt_int_916_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "j1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8909,7 +9550,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * jv = np.PyUFunc_FromFuncAndData(cephes2c_functions, jv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "jv", jv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_163 = __site_cvt_int_917_97->Target(__site_cvt_int_917_97, __pyx_t_17);
+  __pyx_t_163 = __site_cvt_cvt_int_917_97->Target(__site_cvt_cvt_int_917_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "y1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8928,7 +9569,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yv = np.PyUFunc_FromFuncAndData(cephes2c_functions, yv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yv", yv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_165 = __site_cvt_int_919_99->Target(__site_cvt_int_919_99, __pyx_t_17);
+  __pyx_t_165 = __site_cvt_cvt_int_919_99->Target(__site_cvt_cvt_int_919_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8947,7 +9588,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * yve = np.PyUFunc_FromFuncAndData(cephes2c_functions, yve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "yve", yve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_167 = __site_cvt_int_920_101->Target(__site_cvt_int_920_101, __pyx_t_17);
+  __pyx_t_167 = __site_cvt_cvt_int_920_101->Target(__site_cvt_cvt_int_920_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8966,7 +9607,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_169 = __site_cvt_int_921_99->Target(__site_cvt_int_921_99, __pyx_t_17);
+  __pyx_t_169 = __site_cvt_cvt_int_921_99->Target(__site_cvt_cvt_int_921_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -8985,7 +9626,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * # In cephes jv is more accurate than jn so we just alias jn to jv.
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_171 = __site_cvt_int_922_101->Target(__site_cvt_int_922_101, __pyx_t_17);
+  __pyx_t_171 = __site_cvt_cvt_int_922_101->Target(__site_cvt_cvt_int_922_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "yve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9004,7 +9645,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k0 = np.PyUFunc_FromFuncAndData(cephes1_functions, k0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k0", k0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_173 = __site_cvt_int_925_99->Target(__site_cvt_int_925_99, __pyx_t_17);
+  __pyx_t_173 = __site_cvt_cvt_int_925_99->Target(__site_cvt_cvt_int_925_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "jn_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9023,7 +9664,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k1 = np.PyUFunc_FromFuncAndData(cephes1_functions, k1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1", k1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_175 = __site_cvt_int_927_97->Target(__site_cvt_int_927_97, __pyx_t_17);
+  __pyx_t_175 = __site_cvt_cvt_int_927_97->Target(__site_cvt_cvt_int_927_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9042,7 +9683,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * k1e = np.PyUFunc_FromFuncAndData(cephes1_functions, k1e_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "k1e", k1e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_177 = __site_cvt_int_928_99->Target(__site_cvt_int_928_99, __pyx_t_17);
+  __pyx_t_177 = __site_cvt_cvt_int_928_99->Target(__site_cvt_cvt_int_928_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k0e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9061,7 +9702,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kv = np.PyUFunc_FromFuncAndData(cephes2c_functions, kv_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kv", kv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_179 = __site_cvt_int_929_97->Target(__site_cvt_int_929_97, __pyx_t_17);
+  __pyx_t_179 = __site_cvt_cvt_int_929_97->Target(__site_cvt_cvt_int_929_97, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9080,7 +9721,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kve = np.PyUFunc_FromFuncAndData(cephes2c_functions, kve_data, cephes_3c_types, 4, 2, 1, PyUFunc_None, "kve", kve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_181 = __site_cvt_int_930_99->Target(__site_cvt_int_930_99, __pyx_t_17);
+  __pyx_t_181 = __site_cvt_cvt_int_930_99->Target(__site_cvt_cvt_int_930_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "k1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9099,7 +9740,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_183 = __site_cvt_int_931_99->Target(__site_cvt_int_931_99, __pyx_t_17);
+  __pyx_t_183 = __site_cvt_cvt_int_931_99->Target(__site_cvt_cvt_int_931_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9118,7 +9759,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel1 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel1_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel1", hankel1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_185 = __site_cvt_int_932_101->Target(__site_cvt_int_932_101, __pyx_t_17);
+  __pyx_t_185 = __site_cvt_cvt_int_932_101->Target(__site_cvt_cvt_int_932_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9137,7 +9778,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2 = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2", hankel2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_187 = __site_cvt_int_934_112->Target(__site_cvt_int_934_112, __pyx_t_17);
+  __pyx_t_187 = __site_cvt_cvt_int_934_112->Target(__site_cvt_cvt_int_934_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9156,7 +9797,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * hankel2e = np.PyUFunc_FromFuncAndData(cephes2cpp_functions, hankel2e_data, cephes_3cp_types, 2, 2, 1, PyUFunc_None, "hankel2e", hankel2e_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_189 = __site_cvt_int_935_114->Target(__site_cvt_int_935_114, __pyx_t_17);
+  __pyx_t_189 = __site_cvt_cvt_int_935_114->Target(__site_cvt_cvt_int_935_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel1e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9175,7 +9816,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_191 = __site_cvt_int_936_112->Target(__site_cvt_int_936_112, __pyx_t_17);
+  __pyx_t_191 = __site_cvt_cvt_int_936_112->Target(__site_cvt_cvt_int_936_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9194,7 +9835,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_193 = __site_cvt_int_937_114->Target(__site_cvt_int_937_114, __pyx_t_17);
+  __pyx_t_193 = __site_cvt_cvt_int_937_114->Target(__site_cvt_cvt_int_937_114, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "hankel2e_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9213,7 +9854,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * erfc = np.PyUFunc_FromFuncAndData(cephes1_functions, erfc_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "erfc", erfc_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_195 = __site_cvt_int_940_101->Target(__site_cvt_int_940_101, __pyx_t_17);
+  __pyx_t_195 = __site_cvt_cvt_int_940_101->Target(__site_cvt_cvt_int_940_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9232,7 +9873,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_197 = __site_cvt_int_942_101->Target(__site_cvt_int_942_101, __pyx_t_17);
+  __pyx_t_197 = __site_cvt_cvt_int_942_101->Target(__site_cvt_cvt_int_942_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erfc_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9251,7 +9892,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ndtri = np.PyUFunc_FromFuncAndData(cephes1_functions, ndtri_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ndtri", ndtri_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_199 = __site_cvt_int_943_103->Target(__site_cvt_int_943_103, __pyx_t_17);
+  __pyx_t_199 = __site_cvt_cvt_int_943_103->Target(__site_cvt_cvt_int_943_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "erf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9270,7 +9911,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * rgamma = np.PyUFunc_FromFuncAndData(cephes1rc_functions, rgamma_data, cephes_1rc_types, 4, 1, 1, PyUFunc_None, "rgamma", rgamma_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_201 = __site_cvt_int_945_103->Target(__site_cvt_int_945_103, __pyx_t_17);
+  __pyx_t_201 = __site_cvt_cvt_int_945_103->Target(__site_cvt_cvt_int_945_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ndtri_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9289,7 +9930,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * round = np.PyUFunc_FromFuncAndData(cephes1_functions, round_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "round", round_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_203 = __site_cvt_int_946_103->Target(__site_cvt_int_946_103, __pyx_t_17);
+  __pyx_t_203 = __site_cvt_cvt_int_946_103->Target(__site_cvt_cvt_int_946_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "psi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9308,7 +9949,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_205 = __site_cvt_int_947_109->Target(__site_cvt_int_947_109, __pyx_t_17);
+  __pyx_t_205 = __site_cvt_cvt_int_947_109->Target(__site_cvt_cvt_int_947_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "rgamma_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9327,7 +9968,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * sindg = np.PyUFunc_FromFuncAndData(cephes1_functions, sindg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "sindg", sindg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_207 = __site_cvt_int_948_103->Target(__site_cvt_int_948_103, __pyx_t_17);
+  __pyx_t_207 = __site_cvt_cvt_int_948_103->Target(__site_cvt_cvt_int_948_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "round_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9346,7 +9987,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * radian = np.PyUFunc_FromFuncAndData(cephes3_functions, radian_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "radian", radian_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_209 = __site_cvt_int_950_103->Target(__site_cvt_int_950_103, __pyx_t_17);
+  __pyx_t_209 = __site_cvt_cvt_int_950_103->Target(__site_cvt_cvt_int_950_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "sindg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9365,7 +10006,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tandg = np.PyUFunc_FromFuncAndData(cephes1_functions, tandg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "tandg", tandg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_211 = __site_cvt_int_951_103->Target(__site_cvt_int_951_103, __pyx_t_17);
+  __pyx_t_211 = __site_cvt_cvt_int_951_103->Target(__site_cvt_cvt_int_951_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9384,7 +10025,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cotdg = np.PyUFunc_FromFuncAndData(cephes1_functions, cotdg_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cotdg", cotdg_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_213 = __site_cvt_int_952_105->Target(__site_cvt_int_952_105, __pyx_t_17);
+  __pyx_t_213 = __site_cvt_cvt_int_952_105->Target(__site_cvt_cvt_int_952_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "radian_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9403,7 +10044,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * log1p = np.PyUFunc_FromFuncAndData(cephes1_functions, log1p_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "log1p", log1p_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_215 = __site_cvt_int_953_103->Target(__site_cvt_int_953_103, __pyx_t_17);
+  __pyx_t_215 = __site_cvt_cvt_int_953_103->Target(__site_cvt_cvt_int_953_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "tandg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9422,7 +10063,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * expm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, expm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "expm1", expm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_217 = __site_cvt_int_954_103->Target(__site_cvt_int_954_103, __pyx_t_17);
+  __pyx_t_217 = __site_cvt_cvt_int_954_103->Target(__site_cvt_cvt_int_954_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cotdg_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9441,7 +10082,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * cosm1 = np.PyUFunc_FromFuncAndData(cephes1_functions, cosm1_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "cosm1", cosm1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_219 = __site_cvt_int_955_103->Target(__site_cvt_int_955_103, __pyx_t_17);
+  __pyx_t_219 = __site_cvt_cvt_int_955_103->Target(__site_cvt_cvt_int_955_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "log1p_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9460,7 +10101,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_221 = __site_cvt_int_956_103->Target(__site_cvt_int_956_103, __pyx_t_17);
+  __pyx_t_221 = __site_cvt_cvt_int_956_103->Target(__site_cvt_cvt_int_956_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "expm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9479,7 +10120,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * spence = np.PyUFunc_FromFuncAndData(cephes1_functions, spence_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "spence", spence_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_223 = __site_cvt_int_957_103->Target(__site_cvt_int_957_103, __pyx_t_17);
+  __pyx_t_223 = __site_cvt_cvt_int_957_103->Target(__site_cvt_cvt_int_957_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "cosm1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9498,7 +10139,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_225 = __site_cvt_int_959_105->Target(__site_cvt_int_959_105, __pyx_t_17);
+  __pyx_t_225 = __site_cvt_cvt_int_959_105->Target(__site_cvt_cvt_int_959_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "spence_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9517,7 +10158,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * struve = np.PyUFunc_FromFuncAndData(cephes2_functions, struve_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "struve", struve_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_227 = __site_cvt_int_960_103->Target(__site_cvt_int_960_103, __pyx_t_17);
+  __pyx_t_227 = __site_cvt_cvt_int_960_103->Target(__site_cvt_cvt_int_960_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zetac_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9536,7 +10177,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itstruve0", itstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_229 = __site_cvt_int_962_105->Target(__site_cvt_int_962_105, __pyx_t_17);
+  __pyx_t_229 = __site_cvt_cvt_int_962_105->Target(__site_cvt_cvt_int_962_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "struve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9555,7 +10196,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * it2struve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, it2struve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "it2struve0", it2struve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_231 = __site_cvt_int_963_111->Target(__site_cvt_int_963_111, __pyx_t_17);
+  __pyx_t_231 = __site_cvt_cvt_int_963_111->Target(__site_cvt_cvt_int_963_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modstruve_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9574,7 +10215,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * itmodstruve0 = np.PyUFunc_FromFuncAndData(cephes1_functions, itmodstruve0_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "itmodstruve0", itmodstruve0_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_233 = __site_cvt_int_964_111->Target(__site_cvt_int_964_111, __pyx_t_17);
+  __pyx_t_233 = __site_cvt_cvt_int_964_111->Target(__site_cvt_cvt_int_964_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9593,7 +10234,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_235 = __site_cvt_int_965_113->Target(__site_cvt_int_965_113, __pyx_t_17);
+  __pyx_t_235 = __site_cvt_cvt_int_965_113->Target(__site_cvt_cvt_int_965_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "it2struve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9612,7 +10253,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kelvin = np.PyUFunc_FromFuncAndData(cephes1cpb_4_functions, kelvin_data, cephes_5b2_types, 2, 1, 4, PyUFunc_None, "kelvin", kelvin_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_237 = __site_cvt_int_966_117->Target(__site_cvt_int_966_117, __pyx_t_17);
+  __pyx_t_237 = __site_cvt_cvt_int_966_117->Target(__site_cvt_cvt_int_966_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "itmodstruve0_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9631,7 +10272,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bei = np.PyUFunc_FromFuncAndData(cephes1_functions, bei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "bei", bei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_239 = __site_cvt_int_968_112->Target(__site_cvt_int_968_112, __pyx_t_17);
+  __pyx_t_239 = __site_cvt_cvt_int_968_112->Target(__site_cvt_cvt_int_968_112, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kelvin_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9650,7 +10291,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ker = np.PyUFunc_FromFuncAndData(cephes1_functions, ker_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "ker", ker_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_241 = __site_cvt_int_969_99->Target(__site_cvt_int_969_99, __pyx_t_17);
+  __pyx_t_241 = __site_cvt_cvt_int_969_99->Target(__site_cvt_cvt_int_969_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ber_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9669,7 +10310,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kei = np.PyUFunc_FromFuncAndData(cephes1_functions, kei_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kei", kei_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_243 = __site_cvt_int_970_99->Target(__site_cvt_int_970_99, __pyx_t_17);
+  __pyx_t_243 = __site_cvt_cvt_int_970_99->Target(__site_cvt_cvt_int_970_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "bei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9688,7 +10329,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * berp = np.PyUFunc_FromFuncAndData(cephes1_functions, berp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "berp", berp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_245 = __site_cvt_int_971_99->Target(__site_cvt_int_971_99, __pyx_t_17);
+  __pyx_t_245 = __site_cvt_cvt_int_971_99->Target(__site_cvt_cvt_int_971_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "ker_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9707,7 +10348,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * beip = np.PyUFunc_FromFuncAndData(cephes1_functions, beip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "beip", beip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_247 = __site_cvt_int_972_99->Target(__site_cvt_int_972_99, __pyx_t_17);
+  __pyx_t_247 = __site_cvt_cvt_int_972_99->Target(__site_cvt_cvt_int_972_99, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kei_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9726,7 +10367,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kerp = np.PyUFunc_FromFuncAndData(cephes1_functions, kerp_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kerp", kerp_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_249 = __site_cvt_int_973_101->Target(__site_cvt_int_973_101, __pyx_t_17);
+  __pyx_t_249 = __site_cvt_cvt_int_973_101->Target(__site_cvt_cvt_int_973_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "berp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9745,7 +10386,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * keip = np.PyUFunc_FromFuncAndData(cephes1_functions, keip_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "keip", keip_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_251 = __site_cvt_int_974_101->Target(__site_cvt_int_974_101, __pyx_t_17);
+  __pyx_t_251 = __site_cvt_cvt_int_974_101->Target(__site_cvt_cvt_int_974_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "beip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9764,7 +10405,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_253 = __site_cvt_int_975_101->Target(__site_cvt_int_975_101, __pyx_t_17);
+  __pyx_t_253 = __site_cvt_cvt_int_975_101->Target(__site_cvt_cvt_int_975_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kerp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9783,7 +10424,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_255 = __site_cvt_int_976_101->Target(__site_cvt_int_976_101, __pyx_t_17);
+  __pyx_t_255 = __site_cvt_cvt_int_976_101->Target(__site_cvt_cvt_int_976_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "keip_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9802,7 +10443,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogorov = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogorov_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogorov", kolmogorov_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_257 = __site_cvt_int_979_101->Target(__site_cvt_int_979_101, __pyx_t_17);
+  __pyx_t_257 = __site_cvt_cvt_int_979_101->Target(__site_cvt_cvt_int_979_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "zeta_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9821,7 +10462,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * kolmogi = np.PyUFunc_FromFuncAndData(cephes1_functions, kolmogi_data, cephes_2_types, 2, 1, 1, PyUFunc_None, "kolmogi", kolmogi_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_259 = __site_cvt_int_981_113->Target(__site_cvt_int_981_113, __pyx_t_17);
+  __pyx_t_259 = __site_cvt_cvt_int_981_113->Target(__site_cvt_cvt_int_981_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogorov_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9840,7 +10481,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * wofz = np.PyUFunc_FromFuncAndData(cephes1c_functions, wofz_data, cephes_1c_types, 2, 1, 1, PyUFunc_None, "wofz", wofz_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_261 = __site_cvt_int_983_107->Target(__site_cvt_int_983_107, __pyx_t_17);
+  __pyx_t_261 = __site_cvt_cvt_int_983_107->Target(__site_cvt_cvt_int_983_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "kolmogi_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9859,7 +10500,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * besselpoly = np.PyUFunc_FromFuncAndData(cephes3_functions, besselpoly_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "besselpoly", besselpoly_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_263 = __site_cvt_int_985_103->Target(__site_cvt_int_985_103, __pyx_t_17);
+  __pyx_t_263 = __site_cvt_cvt_int_985_103->Target(__site_cvt_cvt_int_985_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "wofz_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9878,7 +10519,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * btdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbet3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "btdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_265 = __site_cvt_int_987_113->Target(__site_cvt_int_987_113, __pyx_t_17);
+  __pyx_t_265 = __site_cvt_cvt_int_987_113->Target(__site_cvt_cvt_int_987_113, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "besselpoly_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -9897,7 +10538,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_267 = __site_cvt_int_989_107->Target(__site_cvt_int_989_107, __pyx_t_17);
+  __pyx_t_267 = __site_cvt_cvt_int_989_107->Target(__site_cvt_cvt_int_989_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_267, __pyx_k__btdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtria", __pyx_t_17);
@@ -9911,7 +10552,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * bdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfbin2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "bdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_268 = __site_cvt_int_990_107->Target(__site_cvt_int_990_107, __pyx_t_17);
+  __pyx_t_268 = __site_cvt_cvt_int_990_107->Target(__site_cvt_cvt_int_990_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbet4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_268, __pyx_k__btdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "btdtrib", __pyx_t_17);
@@ -9925,7 +10566,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_269 = __site_cvt_int_992_106->Target(__site_cvt_int_992_106, __pyx_t_17);
+  __pyx_t_269 = __site_cvt_cvt_int_992_106->Target(__site_cvt_cvt_int_992_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_269, __pyx_k__bdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrik", __pyx_t_17);
@@ -9939,7 +10580,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chdtriv = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfchi3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "chdtriv", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_270 = __site_cvt_int_993_106->Target(__site_cvt_int_993_106, __pyx_t_17);
+  __pyx_t_270 = __site_cvt_cvt_int_993_106->Target(__site_cvt_cvt_int_993_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfbin3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_270, __pyx_k__bdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "bdtrin", __pyx_t_17);
@@ -9953,7 +10594,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_271 = __site_cvt_int_995_107->Target(__site_cvt_int_995_107, __pyx_t_17);
+  __pyx_t_271 = __site_cvt_cvt_int_995_107->Target(__site_cvt_cvt_int_995_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfchi3_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_271, __pyx_k__chdtriv, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chdtriv", __pyx_t_17);
@@ -9967,7 +10608,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_272 = __site_cvt_int_998_106->Target(__site_cvt_int_998_106, __pyx_t_17);
+  __pyx_t_272 = __site_cvt_cvt_int_998_106->Target(__site_cvt_cvt_int_998_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_272, __pyx_k__chndtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtr", __pyx_t_17);
@@ -9981,7 +10622,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * chndtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfchn4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "chndtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_273 = __site_cvt_int_999_108->Target(__site_cvt_int_999_108, __pyx_t_17);
+  __pyx_t_273 = __site_cvt_cvt_int_999_108->Target(__site_cvt_cvt_int_999_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_273, __pyx_k__chndtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrix", __pyx_t_17);
@@ -9995,7 +10636,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_274 = __site_cvt_int_1000_109->Target(__site_cvt_int_1000_109, __pyx_t_17);
+  __pyx_t_274 = __site_cvt_cvt_int_1000_109->Target(__site_cvt_cvt_int_1000_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_274, __pyx_k__chndtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtridf", __pyx_t_17);
@@ -10009,7 +10650,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * fdtridfd = np.PyUFunc_FromFuncAndData(cephes3_functions, cdff4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "fdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_275 = __site_cvt_int_1001_109->Target(__site_cvt_int_1001_109, __pyx_t_17);
+  __pyx_t_275 = __site_cvt_cvt_int_1001_109->Target(__site_cvt_cvt_int_1001_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfchn4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_275, __pyx_k__chndtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "chndtrinc", __pyx_t_17);
@@ -10023,7 +10664,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtr = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc1_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_276 = __site_cvt_int_1003_106->Target(__site_cvt_int_1003_106, __pyx_t_17);
+  __pyx_t_276 = __site_cvt_cvt_int_1003_106->Target(__site_cvt_cvt_int_1003_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdff4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_276, __pyx_k__fdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "fdtridfd", __pyx_t_17);
@@ -10037,7 +10678,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfn = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc3_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_277 = __site_cvt_int_1005_106->Target(__site_cvt_int_1005_106, __pyx_t_17);
+  __pyx_t_277 = __site_cvt_cvt_int_1005_106->Target(__site_cvt_cvt_int_1005_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_277, __pyx_k__ncfdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtr", __pyx_t_17);
@@ -10051,7 +10692,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_278 = __site_cvt_int_1006_107->Target(__site_cvt_int_1006_107, __pyx_t_17);
+  __pyx_t_278 = __site_cvt_cvt_int_1006_107->Target(__site_cvt_cvt_int_1006_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_278, __pyx_k__ncfdtri, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtri", __pyx_t_17);
@@ -10065,7 +10706,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * ncfdtridfd = np.PyUFunc_FromFuncAndData(cephes4_functions, cdffnc4_data, cephes_5_types, 2, 4, 1, PyUFunc_None, "ncfdtridfd", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_279 = __site_cvt_int_1007_110->Target(__site_cvt_int_1007_110, __pyx_t_17);
+  __pyx_t_279 = __site_cvt_cvt_int_1007_110->Target(__site_cvt_cvt_int_1007_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_279, __pyx_k__ncfdtridfn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfn", __pyx_t_17);
@@ -10079,7 +10720,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_280 = __site_cvt_int_1009_110->Target(__site_cvt_int_1009_110, __pyx_t_17);
+  __pyx_t_280 = __site_cvt_cvt_int_1009_110->Target(__site_cvt_cvt_int_1009_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_280, __pyx_k__ncfdtridfd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtridfd", __pyx_t_17);
@@ -10093,7 +10734,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtrix = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtrix", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_281 = __site_cvt_int_1010_109->Target(__site_cvt_int_1010_109, __pyx_t_17);
+  __pyx_t_281 = __site_cvt_cvt_int_1010_109->Target(__site_cvt_cvt_int_1010_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes4_functions, __pyx_v_5scipy_7special_7_cephes_cdffnc5_data, __pyx_v_5scipy_7special_7_cephes_cephes_5_types, 2, 4, 1, __pyx_t_281, __pyx_k__ncfdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "ncfdtrinc", __pyx_t_17);
@@ -10107,7 +10748,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * gdtria = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfgam4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "gdtria", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_282 = __site_cvt_int_1012_106->Target(__site_cvt_int_1012_106, __pyx_t_17);
+  __pyx_t_282 = __site_cvt_cvt_int_1012_106->Target(__site_cvt_cvt_int_1012_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_282, __pyx_k__gdtrix, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrix", __pyx_t_17);
@@ -10121,7 +10762,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_283 = __site_cvt_int_1013_106->Target(__site_cvt_int_1013_106, __pyx_t_17);
+  __pyx_t_283 = __site_cvt_cvt_int_1013_106->Target(__site_cvt_cvt_int_1013_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_283, __pyx_k__gdtrib, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtrib", __pyx_t_17);
@@ -10135,7 +10776,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nbdtrik = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnbn2_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nbdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_284 = __site_cvt_int_1014_106->Target(__site_cvt_int_1014_106, __pyx_t_17);
+  __pyx_t_284 = __site_cvt_cvt_int_1014_106->Target(__site_cvt_cvt_int_1014_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfgam4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_284, __pyx_k__gdtria, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "gdtria", __pyx_t_17);
@@ -10149,7 +10790,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_285 = __site_cvt_int_1016_107->Target(__site_cvt_int_1016_107, __pyx_t_17);
+  __pyx_t_285 = __site_cvt_cvt_int_1016_107->Target(__site_cvt_cvt_int_1016_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_285, __pyx_k__nbdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrik", __pyx_t_17);
@@ -10163,7 +10804,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nrdtrimn = np.PyUFunc_FromFuncAndData(cephes3_functions, cdfnor3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nrdtrimn", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_286 = __site_cvt_int_1017_107->Target(__site_cvt_int_1017_107, __pyx_t_17);
+  __pyx_t_286 = __site_cvt_cvt_int_1017_107->Target(__site_cvt_cvt_int_1017_107, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnbn3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_286, __pyx_k__nbdtrin, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nbdtrin", __pyx_t_17);
@@ -10177,7 +10818,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_287 = __site_cvt_int_1019_108->Target(__site_cvt_int_1019_108, __pyx_t_17);
+  __pyx_t_287 = __site_cvt_cvt_int_1019_108->Target(__site_cvt_cvt_int_1019_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_287, __pyx_k__nrdtrimn, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrimn", __pyx_t_17);
@@ -10191,7 +10832,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pdtrik = np.PyUFunc_FromFuncAndData(cephes2_functions, cdfpoi2_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "pdtrik", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_288 = __site_cvt_int_1020_108->Target(__site_cvt_int_1020_108, __pyx_t_17);
+  __pyx_t_288 = __site_cvt_cvt_int_1020_108->Target(__site_cvt_cvt_int_1020_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdfnor4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_288, __pyx_k__nrdtrisd, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nrdtrisd", __pyx_t_17);
@@ -10205,7 +10846,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtr = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft1_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtr", stdtr_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_289 = __site_cvt_int_1022_106->Target(__site_cvt_int_1022_106, __pyx_t_17);
+  __pyx_t_289 = __site_cvt_cvt_int_1022_106->Target(__site_cvt_cvt_int_1022_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_cdfpoi2_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_289, __pyx_k__pdtrik, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "pdtrik", __pyx_t_17);
@@ -10219,7 +10860,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * stdtridf = np.PyUFunc_FromFuncAndData(cephes2_functions, cdft3_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "stdtridf", stdtridf_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_290 = __site_cvt_int_1024_103->Target(__site_cvt_int_1024_103, __pyx_t_17);
+  __pyx_t_290 = __site_cvt_cvt_int_1024_103->Target(__site_cvt_cvt_int_1024_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtr_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10238,7 +10879,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_292 = __site_cvt_int_1025_105->Target(__site_cvt_int_1025_105, __pyx_t_17);
+  __pyx_t_292 = __site_cvt_cvt_int_1025_105->Target(__site_cvt_cvt_int_1025_105, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtrit_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10257,7 +10898,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtr = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc1_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtr", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_294 = __site_cvt_int_1026_106->Target(__site_cvt_int_1026_106, __pyx_t_17);
+  __pyx_t_294 = __site_cvt_cvt_int_1026_106->Target(__site_cvt_cvt_int_1026_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "stdtridf_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10276,7 +10917,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtridf = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc3_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtridf", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_296 = __site_cvt_int_1028_106->Target(__site_cvt_int_1028_106, __pyx_t_17);
+  __pyx_t_296 = __site_cvt_cvt_int_1028_106->Target(__site_cvt_cvt_int_1028_106, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc1_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_296, __pyx_k__nctdtr, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtr", __pyx_t_17);
@@ -10290,7 +10931,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * nctdtrinc = np.PyUFunc_FromFuncAndData(cephes3_functions, cdftnc4_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "nctdtrinc", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_297 = __site_cvt_int_1029_108->Target(__site_cvt_int_1029_108, __pyx_t_17);
+  __pyx_t_297 = __site_cvt_cvt_int_1029_108->Target(__site_cvt_cvt_int_1029_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc2_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_297, __pyx_k__nctdtrit, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrit", __pyx_t_17);
@@ -10304,7 +10945,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_298 = __site_cvt_int_1030_109->Target(__site_cvt_int_1030_109, __pyx_t_17);
+  __pyx_t_298 = __site_cvt_cvt_int_1030_109->Target(__site_cvt_cvt_int_1030_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc3_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_298, __pyx_k__nctdtridf, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtridf", __pyx_t_17);
@@ -10318,7 +10959,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * tklmbda = np.PyUFunc_FromFuncAndData(cephes2_functions, tklambda_data, cephes_3_types, 2, 2, 1, PyUFunc_None, "tklmbda", "", 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_299 = __site_cvt_int_1031_109->Target(__site_cvt_int_1031_109, __pyx_t_17);
+  __pyx_t_299 = __site_cvt_cvt_int_1031_109->Target(__site_cvt_cvt_int_1031_109, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes3_functions, __pyx_v_5scipy_7special_7_cephes_cdftnc4_data, __pyx_v_5scipy_7special_7_cephes_cephes_4_types, 2, 3, 1, __pyx_t_299, __pyx_k__nctdtrinc, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "nctdtrinc", __pyx_t_17);
@@ -10332,7 +10973,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_300 = __site_cvt_int_1033_108->Target(__site_cvt_int_1033_108, __pyx_t_17);
+  __pyx_t_300 = __site_cvt_cvt_int_1033_108->Target(__site_cvt_cvt_int_1033_108, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PyUFunc_FromFuncAndData(__pyx_v_5scipy_7special_7_cephes_cephes2_functions, __pyx_v_5scipy_7special_7_cephes_tklambda_data, __pyx_v_5scipy_7special_7_cephes_cephes_3_types, 2, 2, 1, __pyx_t_300, __pyx_k__tklmbda, __pyx_k_1, 0); 
   PythonOps::SetGlobal(__pyx_context, "tklmbda", __pyx_t_17);
@@ -10346,7 +10987,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_cem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_cem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_cem", mathieu_cem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_301 = __site_cvt_int_1036_111->Target(__site_cvt_int_1036_111, __pyx_t_17);
+  __pyx_t_301 = __site_cvt_cvt_int_1036_111->Target(__site_cvt_cvt_int_1036_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_a_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10365,7 +11006,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_sem = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_sem_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_sem", mathieu_sem_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_303 = __site_cvt_int_1037_111->Target(__site_cvt_int_1037_111, __pyx_t_17);
+  __pyx_t_303 = __site_cvt_cvt_int_1037_111->Target(__site_cvt_cvt_int_1037_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_b_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10384,7 +11025,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem1", mathieu_modcem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_305 = __site_cvt_int_1038_117->Target(__site_cvt_int_1038_117, __pyx_t_17);
+  __pyx_t_305 = __site_cvt_cvt_int_1038_117->Target(__site_cvt_cvt_int_1038_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_cem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10403,7 +11044,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modcem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_mcem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modcem2", mathieu_modcem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_307 = __site_cvt_int_1039_117->Target(__site_cvt_int_1039_117, __pyx_t_17);
+  __pyx_t_307 = __site_cvt_cvt_int_1039_117->Target(__site_cvt_cvt_int_1039_117, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_sem_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10422,7 +11063,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem1 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem1_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem1", mathieu_modsem1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_309 = __site_cvt_int_1040_123->Target(__site_cvt_int_1040_123, __pyx_t_17);
+  __pyx_t_309 = __site_cvt_cvt_int_1040_123->Target(__site_cvt_cvt_int_1040_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10441,7 +11082,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * mathieu_modsem2 = np.PyUFunc_FromFuncAndData(cephes3_2_functions, mathieu_msem2_data, cephes_5_types, 2, 3, 2, PyUFunc_None, "mathieu_modsem2", mathieu_modsem2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_311 = __site_cvt_int_1041_123->Target(__site_cvt_int_1041_123, __pyx_t_17);
+  __pyx_t_311 = __site_cvt_cvt_int_1041_123->Target(__site_cvt_cvt_int_1041_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modcem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10460,7 +11101,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_313 = __site_cvt_int_1042_123->Target(__site_cvt_int_1042_123, __pyx_t_17);
+  __pyx_t_313 = __site_cvt_cvt_int_1042_123->Target(__site_cvt_cvt_int_1042_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10479,7 +11120,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * lpmv = np.PyUFunc_FromFuncAndData(cephes3_functions, lpmv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "lpmv", lpmv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_315 = __site_cvt_int_1043_123->Target(__site_cvt_int_1043_123, __pyx_t_17);
+  __pyx_t_315 = __site_cvt_cvt_int_1043_123->Target(__site_cvt_cvt_int_1043_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "mathieu_modsem2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10498,7 +11139,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbwa = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbwa_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbwa", pbwa_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_317 = __site_cvt_int_1045_101->Target(__site_cvt_int_1045_101, __pyx_t_17);
+  __pyx_t_317 = __site_cvt_cvt_int_1045_101->Target(__site_cvt_cvt_int_1045_101, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "lpmv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10517,7 +11158,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pbvv = np.PyUFunc_FromFuncAndData(cephes2_2_functions, pbvv_data, cephes_4_types, 2, 2, 2, PyUFunc_None, "pbvv", pbvv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_319 = __site_cvt_int_1047_103->Target(__site_cvt_int_1047_103, __pyx_t_17);
+  __pyx_t_319 = __site_cvt_cvt_int_1047_103->Target(__site_cvt_cvt_int_1047_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbwa_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10536,7 +11177,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_321 = __site_cvt_int_1048_103->Target(__site_cvt_int_1048_103, __pyx_t_17);
+  __pyx_t_321 = __site_cvt_cvt_int_1048_103->Target(__site_cvt_cvt_int_1048_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbdv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10555,7 +11196,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_cv = np.PyUFunc_FromFuncAndData(cephes3_functions, prolate_segv_data, cephes_4_types, 2, 3, 1, PyUFunc_None, "pro_cv", pro_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_323 = __site_cvt_int_1049_103->Target(__site_cvt_int_1049_103, __pyx_t_17);
+  __pyx_t_323 = __site_cvt_cvt_int_1049_103->Target(__site_cvt_cvt_int_1049_103, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pbvv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10574,7 +11215,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_ang1_cv", pro_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_325 = __site_cvt_int_1051_111->Target(__site_cvt_int_1051_111, __pyx_t_17);
+  __pyx_t_325 = __site_cvt_cvt_int_1051_111->Target(__site_cvt_cvt_int_1051_111, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10593,7 +11234,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad1_cv", pro_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_327 = __site_cvt_int_1052_110->Target(__site_cvt_int_1052_110, __pyx_t_17);
+  __pyx_t_327 = __site_cvt_cvt_int_1052_110->Target(__site_cvt_cvt_int_1052_110, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10612,7 +11253,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, prolate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "pro_rad2_cv", pro_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_329 = __site_cvt_int_1053_119->Target(__site_cvt_int_1053_119, __pyx_t_17);
+  __pyx_t_329 = __site_cvt_cvt_int_1053_119->Target(__site_cvt_cvt_int_1053_119, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10631,7 +11272,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_aswfa_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_ang1_cv", obl_ang1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_331 = __site_cvt_int_1054_121->Target(__site_cvt_int_1054_121, __pyx_t_17);
+  __pyx_t_331 = __site_cvt_cvt_int_1054_121->Target(__site_cvt_cvt_int_1054_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10650,7 +11291,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial1_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad1_cv", obl_rad1_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_333 = __site_cvt_int_1055_121->Target(__site_cvt_int_1055_121, __pyx_t_17);
+  __pyx_t_333 = __site_cvt_cvt_int_1055_121->Target(__site_cvt_cvt_int_1055_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10669,7 +11310,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2_cv = np.PyUFunc_FromFuncAndData(cephes5_2_functions, oblate_radial2_data, cephes_7_types, 2, 5, 2, PyUFunc_None, "obl_rad2_cv", obl_rad2_cv_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_335 = __site_cvt_int_1056_118->Target(__site_cvt_int_1056_118, __pyx_t_17);
+  __pyx_t_335 = __site_cvt_cvt_int_1056_118->Target(__site_cvt_cvt_int_1056_118, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10688,7 +11329,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_ang1", pro_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_337 = __site_cvt_int_1057_120->Target(__site_cvt_int_1057_120, __pyx_t_17);
+  __pyx_t_337 = __site_cvt_cvt_int_1057_120->Target(__site_cvt_cvt_int_1057_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10707,7 +11348,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad1", pro_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_339 = __site_cvt_int_1058_120->Target(__site_cvt_int_1058_120, __pyx_t_17);
+  __pyx_t_339 = __site_cvt_cvt_int_1058_120->Target(__site_cvt_cvt_int_1058_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_cv_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10726,7 +11367,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * pro_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, prolate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "pro_rad2", pro_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_341 = __site_cvt_int_1059_121->Target(__site_cvt_int_1059_121, __pyx_t_17);
+  __pyx_t_341 = __site_cvt_cvt_int_1059_121->Target(__site_cvt_cvt_int_1059_121, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10745,7 +11386,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_ang1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_aswfa_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_ang1", obl_ang1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_343 = __site_cvt_int_1060_123->Target(__site_cvt_int_1060_123, __pyx_t_17);
+  __pyx_t_343 = __site_cvt_cvt_int_1060_123->Target(__site_cvt_cvt_int_1060_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10764,7 +11405,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad1 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial1_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad1", obl_rad1_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_345 = __site_cvt_int_1061_123->Target(__site_cvt_int_1061_123, __pyx_t_17);
+  __pyx_t_345 = __site_cvt_cvt_int_1061_123->Target(__site_cvt_cvt_int_1061_123, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "pro_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10783,7 +11424,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * obl_rad2 = np.PyUFunc_FromFuncAndData(cephes4_2_functions, oblate_radial2_nocv_data, cephes_6_types, 2, 4, 2, PyUFunc_None, "obl_rad2", obl_rad2_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_347 = __site_cvt_int_1062_120->Target(__site_cvt_int_1062_120, __pyx_t_17);
+  __pyx_t_347 = __site_cvt_cvt_int_1062_120->Target(__site_cvt_cvt_int_1062_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_ang1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10802,7 +11443,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_349 = __site_cvt_int_1063_122->Target(__site_cvt_int_1063_122, __pyx_t_17);
+  __pyx_t_349 = __site_cvt_cvt_int_1063_122->Target(__site_cvt_cvt_int_1063_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad1_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10821,7 +11462,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * 
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_351 = __site_cvt_int_1064_122->Target(__site_cvt_int_1064_122, __pyx_t_17);
+  __pyx_t_351 = __site_cvt_cvt_int_1064_122->Target(__site_cvt_cvt_int_1064_122, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "obl_rad2_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10840,7 +11481,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_353 = __site_cvt_int_1068_120->Target(__site_cvt_int_1068_120, __pyx_t_17);
+  __pyx_t_353 = __site_cvt_cvt_int_1068_120->Target(__site_cvt_cvt_int_1068_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelp_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10857,7 +11498,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * modfresnelm = np.PyUFunc_FromFuncAndData(cephes1_2c_functions, modfresnelm_data, cephes_3cp_types, 2, 1, 2, PyUFunc_None, "modfresnelm", modfresnelm_doc, 0)             # <<<<<<<<<<<<<<
  */
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "PyUFunc_None");
-  __pyx_t_355 = __site_cvt_int_1070_120->Target(__site_cvt_int_1070_120, __pyx_t_17);
+  __pyx_t_355 = __site_cvt_cvt_int_1070_120->Target(__site_cvt_cvt_int_1070_120, __pyx_t_17);
   __pyx_t_17 = nullptr;
   __pyx_t_17 = PythonOps::GetGlobal(__pyx_context, "modfresnelm_doc");
   __pyx_t_24 = InteropServices::Marshal::StringToHGlobalAnsi(dynamic_cast<System::String^>(__pyx_t_17));
@@ -10877,11 +11518,12 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_357));
   __pyx_t_357 = nullptr;
 
-  /* "../cython/include\numpy.pxd":248
- *     return obj.ndim
- * 
- * cdef inline void import_array():             # <<<<<<<<<<<<<<
+  /* "../cython/include\numpy.pxd":357
  *     pass
+ * 
+ * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.ScalarGeneric
  */
 }
 /* Cython code section 'cleanup_globals' */
@@ -10893,26 +11535,26 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
 static Types::PythonType^ __pyx_ptype_5numpy_ndarray = nullptr;
 static Types::PythonType^ __pyx_ptype_5numpy_dtype = nullptr;
 
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_4_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2a_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2c_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3a_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions;
-static __pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1c_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1rc_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1_2c_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1c_4_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1cpb_4_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2_4_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2a_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2c_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes2cpp_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3a_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes3_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4a_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes4_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes5_2_functions;
+static NpyUFuncGenericFunction *__pyx_v_5scipy_7special_7_cephes_cephes1c_functions;
 static void **__pyx_v_5scipy_7special_7_cephes_airy_data;
 static void **__pyx_v_5scipy_7special_7_cephes_airye_data;
 static void **__pyx_v_5scipy_7special_7_cephes_itairy_data;
@@ -11182,6 +11824,81 @@ static char *__pyx_v_5scipy_7special_7_cephes_cephes_1c_types;
         return hypot(z.real, z.imag);
 #else
         return sqrt(z.real*z.real + z.imag*z.imag);
+#endif
+    }
+*/
+#endif
+
+#if CYTHON_CCOMPLEX
+  #ifdef __cplusplus
+    static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float x, float y) {
+      return ::std::complex< float >(x, y);
+    }
+  #else
+    static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float x, float y) {
+      return x + y*(__pyx_t_float_complex)_Complex_I;
+    }
+  #endif
+#else
+    static CYTHON_INLINE __pyx_t_float_complex __pyx_t_float_complex_from_parts(float x, float y) {
+      __pyx_t_float_complex z;
+      z.real = x;
+      z.imag = y;
+      return z;
+    }
+#endif
+
+#if CYTHON_CCOMPLEX
+#else
+    static CYTHON_INLINE int __Pyx_c_eqf(__pyx_t_float_complex a, __pyx_t_float_complex b) {
+       return (a.real == b.real) && (a.imag == b.imag);
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_sumf(__pyx_t_float_complex a, __pyx_t_float_complex b) {
+        __pyx_t_float_complex z;
+        z.real = a.real + b.real;
+        z.imag = a.imag + b.imag;
+        return z;
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_difff(__pyx_t_float_complex a, __pyx_t_float_complex b) {
+        __pyx_t_float_complex z;
+        z.real = a.real - b.real;
+        z.imag = a.imag - b.imag;
+        return z;
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_prodf(__pyx_t_float_complex a, __pyx_t_float_complex b) {
+        __pyx_t_float_complex z;
+        z.real = a.real * b.real - a.imag * b.imag;
+        z.imag = a.real * b.imag + a.imag * b.real;
+        return z;
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_quotf(__pyx_t_float_complex a, __pyx_t_float_complex b) {
+        __pyx_t_float_complex z;
+        float denom = b.real * b.real + b.imag * b.imag;
+        z.real = (a.real * b.real + a.imag * b.imag) / denom;
+        z.imag = (a.imag * b.real - a.real * b.imag) / denom;
+        return z;
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_negf(__pyx_t_float_complex a) {
+        __pyx_t_float_complex z;
+        z.real = -a.real;
+        z.imag = -a.imag;
+        return z;
+    }
+    static CYTHON_INLINE int __Pyx_c_is_zerof(__pyx_t_float_complex a) {
+       return (a.real == 0) && (a.imag == 0);
+    }
+    static CYTHON_INLINE __pyx_t_float_complex __Pyx_c_conjf(__pyx_t_float_complex a) {
+        __pyx_t_float_complex z;
+        z.real =  a.real;
+        z.imag = -a.imag;
+        return z;
+    }
+/*
+    static CYTHON_INLINE float __Pyx_c_absf(__pyx_t_float_complex z) {
+#if HAVE_HYPOT
+        return hypotf(z.real, z.imag);
+#else
+        return sqrtf(z.real*z.real + z.imag*z.imag);
 #endif
     }
 */

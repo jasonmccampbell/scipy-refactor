@@ -252,7 +252,7 @@ cdef inline object PyArray_DescrFromType(int typenum):
     return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))
 
 
-cdef inline object PyArray_ZEROS(int ndim, intp_t *shape, int typenum, int fortran):
+cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):
     shape_list = []
     cdef int i
     for i in range(ndim):

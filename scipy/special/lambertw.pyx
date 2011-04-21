@@ -164,8 +164,8 @@ cdef double complex lambertw_scalar(double complex z, long k, double tol): # XXX
 
 # cdef extern from "numpy/ufuncobject.h":
 #     void import_ufunc()
-#     ctypedef void (*PyUFuncGenericFunction)(char**, npy_intp*, npy_intp*, void*)
-#     object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,
+#     ctypedef void (*NpyUFuncGenericFunction)(char**, npy_intp*, npy_intp*, void*)
+#     object PyUFunc_FromFuncAndData(NpyUFuncGenericFunction* func, void** data,
 #         char* types, int ntypes, int nin, int nout,
 #         int identity, char* name, char* doc, int c)
 
@@ -180,7 +180,7 @@ cdef void _apply_func_to_1d_vec(char **args, npy_intp *dimensions, npy_intp *ste
             (<double complex*>ip1)[0], (<long*>ip2)[0], (<double*>ip3)[0])
         ip1 += steps[0]; ip2 += steps[1]; ip3 += steps[2]; op += steps[3]
 
-cdef np.PyUFuncGenericFunction *_loop_funcs = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction))
+cdef np.NpyUFuncGenericFunction *_loop_funcs = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction))
 _loop_funcs[0] = _apply_func_to_1d_vec
 
 cdef char *_inp_outp_types = <char *>malloc(4)

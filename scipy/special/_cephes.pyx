@@ -4,7 +4,7 @@ cdef extern from "stdlib.h" nogil:
 cimport numpy as np
 
 ctypedef double complex Py_complex
-ctypedef int intp
+ctypedef np.npy_intp intp
 
 PyUFunc_None = -1
 
@@ -351,26 +351,26 @@ cdef extern from "ufunc_extras.h":
     void NpyUFunc_dddd_dd_As_dddi_dd(char **args, intp *dimensions, intp *steps, void *func)
 
 
-cdef np.PyUFuncGenericFunction *cephes1_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes1rc_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes1_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes1_2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes1c_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes1cpb_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes2_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes2_4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes2a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes2c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes2cpp_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes3_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes3a_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes3_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes4_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*4)
-cdef np.PyUFuncGenericFunction *cephes4a_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes4_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes5_2_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
-cdef np.PyUFuncGenericFunction *cephes1c_functions = <np.PyUFuncGenericFunction*>malloc(sizeof(np.PyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes1_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes1rc_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes1_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes1_2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes1c_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes1cpb_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes2_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes2_4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes2a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes2c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes2cpp_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes3_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes3a_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes3_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes4_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*4)
+cdef np.NpyUFuncGenericFunction *cephes4a_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes4_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes5_2_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
+cdef np.NpyUFuncGenericFunction *cephes1c_functions = <np.NpyUFuncGenericFunction*>malloc(sizeof(np.NpyUFuncGenericFunction)*2)
 
 cdef void ** alloc_data_from_list(l):
     cdef void ** data = <void **>malloc(len(l) * sizeof(void*))
