@@ -51,7 +51,7 @@
       <MinimalRebuild>false</MinimalRebuild>
       <ExceptionHandling>Async</ExceptionHandling>
       <BasicRuntimeChecks>Default</BasicRuntimeChecks>
-      <MultiProcessorCompilation>true</MultiProcessorCompilation>
+      <MultiProcessorCompilation>false</MultiProcessorCompilation>
     </ClCompile>
     <Link>
       <TargetMachine>MachineX86</TargetMachine>
@@ -88,10 +88,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <Reference Include="IronPython, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython.Modules, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython.Modules, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.Modules.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
