@@ -28,7 +28,18 @@
 	#endif
 #endif
 
-void LSODA();
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+void LSODA(void *, int *, double *, double *, double *, int *, double *, double *, int *, int *, int *, double *, int *, int *, int *, void *, int *jt);
+
+#if defined(__cplusplus)
+}
+#endif
+
+
+#if !defined(CYTHON_INCLUDE)
 
 /*
 void ode_function(int *n, double *t, double *y, double *ydot)
@@ -404,3 +415,6 @@ static PyObject *odepack_odeint(PyObject *dummy, PyObject *args, PyObject *kwdic
   return NULL;
   
 }
+
+#endif
+

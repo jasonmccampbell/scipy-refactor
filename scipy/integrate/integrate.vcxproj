@@ -43,7 +43,7 @@
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;UPPERCASE_FORTRAN;NO_APPEND_FORTRAN;_DEBUG;_WINDOWS;_USRDLL;NO_CPYTHON;INTEGRATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;UPPERCASE_FORTRAN;NO_APPEND_FORTRAN;CYTHON_INCLUDE;_DEBUG;_WINDOWS;_USRDLL;NO_CPYTHON;INTEGRATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -58,8 +58,8 @@
       <TargetMachine>MachineX86</TargetMachine>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <SubSystem>Windows</SubSystem>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ndarray.lib;dop.lib;linpack_lite.lib;mach.lib;odepack.lib;quadpack.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug;c:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ndarray.lib;dop.lib;linpack_lite.lib;mach.lib;odepack.lib;quadpack.lib;mkl_core.lib;mkl_blas95.lib;mkl_lapack95.lib;mkl_intel_c.lib;mkl_intel_thread.lib;libiomp5md.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\$(ConfigurationName);C:\Program Files (x86)\Intel\ComposerXE-2011\mkl\lib\ia32;c:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <IgnoreAllDefaultLibraries>false</IgnoreAllDefaultLibraries>
       <IgnoreSpecificDefaultLibraries>
       </IgnoreSpecificDefaultLibraries>
@@ -70,7 +70,7 @@
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
-      <PreprocessorDefinitions>WIN32;UPPERCASE_FORTRAN;NO_APPEND_FORTRAN;NDEBUG;_WINDOWS;_USRDLL;INTEGRATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;UPPERCASE_FORTRAN;NO_APPEND_FORTRAN;CYTHON_INCLUDE;NDEBUG;_WINDOWS;_USRDLL;INTEGRATE_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
       <WarningLevel>Level3</WarningLevel>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
@@ -83,8 +83,8 @@
       <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ndarray.lib;dop.lib;linpack_lite.lib;mach.lib;odepack.lib;quadpack.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(OutDir);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug;C:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ndarray.lib;dop.lib;linpack_lite.lib;mach.lib;odepack.lib;quadpack.lib;mkl_core.lib;mkl_blas95.lib;mkl_lapack95.lib;mkl_intel_c.lib;mkl_intel_thread.lib;libiomp5md.lib;</AdditionalDependencies>
+      <AdditionalLibraryDirectories>$(OutDir);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\$(ConfigurationName);C:\Program Files (x86)\Intel\ComposerXE-2011\mkl\lib\ia32;C:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -99,16 +99,20 @@
     <None Include="setup.py" />
     <None Include="vode.pyf" />
     <None Include="vode.pyx" />
+    <None Include="vode_clr.py" />
     <None Include="vode_fc.pxd" />
     <None Include="_dop.pyx" />
+    <None Include="_dop_clr.py" />
     <None Include="_dop_fc.pxd" />
+    <None Include="_odepack.pyx" />
+    <None Include="_odepack_clr.py" />
     <None Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="IronPython, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.dll</HintPath>
     </Reference>
-    <Reference Include="IronPython.Modules, Version=2.7.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
+    <Reference Include="IronPython.Modules, Version=2.7.0.40, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
       <HintPath>..\..\..\IronPython\bin\Debug\IronPython.Modules.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Dynamic, Version=1.1.0.20, Culture=neutral, PublicKeyToken=7f709c5b713576e1">
@@ -132,6 +136,11 @@
     <ClInclude Include="__quadpack.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="vode.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="_dop.cpp" />
+    <ClCompile Include="_odepack.cpp" />
     <ClCompile Include="_odepackmodule.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>

@@ -46,8 +46,6 @@ cdef class fw_CallbackInfo(object):
 
 
 __all__ = ['dvode', 'zvode']
-cdef extern from "string.h":
-    void *memcpy(void *dest, void *src, size_t n)
 
 cdef fw_CallbackInfo dvode_f_cb_info
 cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
@@ -58,9 +56,9 @@ cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y
     info = dvode_f_cb_info
     try:
         y_shape[0] = n[0]
-        y_ = np.PyArray_New(&np.PyArray_Type, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
+        y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
         ydot_shape[0] = n[0]
-        ydot_ = np.PyArray_New(&np.PyArray_Type, 1, ydot_shape, fwr_dbl_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
+        ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwr_dbl_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
         if info.extra_args is None:
             ydot_ret = info.callback(t[0], y_)
         else:
@@ -92,9 +90,9 @@ cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t *
     info = dvode_jac_cb_info
     try:
         y_shape[0] = n[0]
-        y_ = np.PyArray_New(&np.PyArray_Type, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
+        y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
-        jac_ = np.PyArray_New(&np.PyArray_Type, 2, jac_shape, fwr_dbl_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
+        jac_ = np.PyArray_New(NULL, 2, jac_shape, fwr_dbl_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
         if info.extra_args is None:
             jac_ret = info.callback(t[0], y_)
         else:
@@ -206,9 +204,9 @@ cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_compl
     info = zvode_f_cb_info
     try:
         y_shape[0] = n[0]
-        y_ = np.PyArray_New(&np.PyArray_Type, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
+        y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
         ydot_shape[0] = n[0]
-        ydot_ = np.PyArray_New(&np.PyArray_Type, 1, ydot_shape, fwc_dbl_complex_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
+        ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwc_dbl_complex_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
         if info.extra_args is None:
             ydot_ret = info.callback(t[0], y_)
         else:
@@ -240,9 +238,9 @@ cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_com
     info = zvode_jac_cb_info
     try:
         y_shape[0] = n[0]
-        y_ = np.PyArray_New(&np.PyArray_Type, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
+        y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
-        jac_ = np.PyArray_New(&np.PyArray_Type, 2, jac_shape, fwc_dbl_complex_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
+        jac_ = np.PyArray_New(NULL, 2, jac_shape, fwc_dbl_complex_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
         if info.extra_args is None:
             jac_ret = info.callback(t[0], y_)
         else:
@@ -353,7 +351,7 @@ def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
 
 
 cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,
-                                  np.intp_t * coerced_shape,
+                                  np.npy_intp * coerced_shape,
                                   bint copy, bint create, int alignment=1):
     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST
     cdef np.ndarray result

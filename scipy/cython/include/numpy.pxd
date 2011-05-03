@@ -282,6 +282,9 @@ cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_n
     assert obj == NULL
     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
 
+cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
+    return Npy_INTERFACE_array(NpyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL))
+    
 cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
      # XXX "long long" is wrong type
     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
