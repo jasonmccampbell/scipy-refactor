@@ -20,15 +20,21 @@ class OdepackError(Exception): pass
 error = OdepackError
 __version__ = 1.9
 
+cdef int __multipack_jac_transpose
 
-cdef object multipack_python_function = None
-cdef object multipack_python_jacobian=None
-cdef object multipack_extra_arguments=None  # a tuple 
-cdef int multipack_jac_transpose=1
+__multipack_python_function = None
+__multipack_python_jacobian = None
+__multipack_extra_arguments= None
+__multipack_jac_transpose = -1
 
-cdef INIT_JAC_FUNC(fun, Dfun, arg, col_deriv, errobj):
-    cdef object globalStore = (multipack_python_function, multipack_extra_arguments, 
-                               multipack_python_jacobian, multipack_jac_transpose)
+cdef INIT_JAC_FUNC(fun, Dfun, arg, int col_deriv, errobj):
+    global __multipack_python_function
+    global __multipack_extra_arguments
+    global __multipack_python_jacobian
+    global __multipack_jac_transpose
+
+    globalStore = (__multipack_python_function, __multipack_extra_arguments, 
+                               __multipack_python_jacobian, __multipack_jac_transpose)
 
     if arg is None:
         arg = ()
@@ -37,15 +43,15 @@ cdef INIT_JAC_FUNC(fun, Dfun, arg, col_deriv, errobj):
 
     if not callable(fun) or (Dfun is not None and not callable(Dfun)):
         raise errobj("The function and its Jacobian must be callback functions.")
-    multipack_python_function = fun
-    multipack_extra_arguments = arg
-    multipack_python_jacobian = Dfun
-    multipack_jac_transpose = not col_deriv
+    __multipack_python_function = fun
+    __multipack_extra_arguments = arg
+    __multipack_python_jacobian = Dfun
+    __multipack_jac_transpose = not col_deriv
 
     return globalStore
 
 cdef RESTORE_JAC_FUNC(jacStore):
-    multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose = jacStore
+    __multipack_python_function, __multipack_extra_arguments, __multipack_python_jacobian, __multipack_jac_transpose = jacStore
 
 
 def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1, 
@@ -100,7 +106,7 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
         t = tout[0]
 
         # Setup array to hold the output evaluations
-        ap_yout = np.PyArray_Empty(2, dims, np.NPY_DOUBLE, False)
+        ap_yout = np.PyArray_EMPTY(2, dims, np.NPY_DOUBLE, False)
         yout = <double *>np.PyArray_DATA(ap_yout)
         # Copy initial vector into first row of output 
         memcpy(yout, y, neq*sizeof(double))     # copy intial value to output 
@@ -144,15 +150,15 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
         # If full output make some useful output arrays 
         if full_output:
             out_sz = ntimes-1
-            ap_hu = np.PyArray_Empty(1,&out_sz,np.NPY_DOUBLE, False)
-            ap_tcur = np.PyArray_Empty(1,&out_sz,np.NPY_DOUBLE, False)
-            ap_tolsf = np.PyArray_Empty(1,&out_sz,np.NPY_DOUBLE, False)
-            ap_tsw = np.PyArray_Empty(1,&out_sz,np.NPY_DOUBLE, False)
-            ap_nst = np.PyArray_Empty(1,&out_sz,np.NPY_INT, False)
-            ap_nfe = np.PyArray_Empty(1,&out_sz,np.NPY_INT, False)
-            ap_nje = np.PyArray_Empty(1,&out_sz,np.NPY_INT, False)
-            ap_nqu = np.PyArray_Empty(1,&out_sz,np.NPY_INT, False)
-            ap_mused = np.PyArray_Empty(1,&out_sz,np.NPY_INT, False)
+            ap_hu = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
+            ap_tcur = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
+            ap_tolsf = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
+            ap_tsw = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
+            ap_nst = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
+            ap_nfe = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
+            ap_nje = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
+            ap_nqu = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
+            ap_mused = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
             if ap_hu is None or ap_tcur is None or ap_tolsf is None or ap_tsw is None or ap_nst is None or ap_nfe is None or ap_nje is None or ap_nqu is None or ap_mused is None:
                 return NULL
   
@@ -221,13 +227,13 @@ cdef void ode_function(int *n, double *t, double *y, double *ydot):
 	    -- check for errors and return -1 if any
  	    -- otherwise place result of calculation in ydot
     """
-    cdef np.ndarray result_array = NULL
+    cdef np.ndarray result_array
     cdef object arg1, arglist
 
     # Append t to argument list
     arg1 = (t[0], )
-    arglist = arg1 + multipack_extra_arguments
-    result_array = <np.ndarray>call_python_function(multipack_python_function, n[0], y, arglist, 1, OdepackError)
+    arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
+    result_array = <np.ndarray>call_python_function(__multipack_python_function, n[0], y, arglist, 1, OdepackError)
     memcpy(ydot, np.PyArray_DATA(result_array), (n[0])*sizeof(double));
 
 
@@ -242,10 +248,11 @@ cdef int ode_jacobian_function(int *n, double *t, double *y, int *ml, int *mu, d
 
     cdef np.ndarray result_array
 
-    arglist = (t[0], ) + multipack_extra_arguments
-    result_array = call_python_function(multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)
+    arg1 = (t[0], )
+    arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
+    result_array = call_python_function(__multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)
 
-    if multipack_jac_transpose == 1:
+    if __multipack_jac_transpose == 1:
         MATRIXC2F(pd, <double *>np.PyArray_DATA(result_array), n[0], nrowpd[0])
     else:
         memcpy(pd, np.PyArray_DATA(result_array), (n[0])*(nrowpd[0])*sizeof(double))
@@ -274,7 +281,7 @@ cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int
     cdef np.npy_intp one = 1
 
     if o_rtol is None:
-        ap_rtol = np.PyArray_Empty(1, &one, np.NPY_DOUBLE, False)
+        ap_rtol = np.PyArray_EMPTY(1, &one, np.NPY_DOUBLE, False)
         (<double *>np.PyArray_DATA(ap_rtol))[0] = tol
     else:
         ap_rtol = np.PyArray_ContiguousFromObject(o_rtol,np.NPY_DOUBLE,0,1)
@@ -286,7 +293,7 @@ cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int
             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")
 
     if o_atol is None:
-        ap_atol = np.PyArray_Empty(1,&one,np.NPY_DOUBLE, False)
+        ap_atol = np.PyArray_EMPTY(1,&one,np.NPY_DOUBLE, False)
         (<double *>np.PyArray_DATA(ap_atol))[0] = tol
     else:
         ap_atol = np.PyArray_ContiguousFromObject(o_atol,np.NPY_DOUBLE,0,1)
@@ -329,6 +336,7 @@ cdef object call_python_function(func, np.npy_intp n, double *x, object args, in
         raise error_obj("Internal failure to make an array of doubles out of first\n                 argument to function call.")
 
     # Build argument list
+    if args is None: args = ()
     result = apply(func, (sequence, ) + args)
     if result is None:
         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)

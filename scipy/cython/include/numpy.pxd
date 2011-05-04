@@ -202,7 +202,8 @@ cdef extern from "npy_arrayobject.h":
     npy_intp *NpyArray_DIMS(NpyArray* obj)
     npy_intp NpyArray_DIM(NpyArray *obj, int i)
     npy_intp NpyArray_SIZE(NpyArray* obj)
-    
+    npy_intp NpyArray_NBYTES(NpyArray *obj)
+
 cdef extern from "npy_descriptor.h":
     ctypedef struct NpyArray_Descr:
         pass
@@ -306,6 +307,9 @@ cdef inline object PyArray_NDIM(ndarray obj):
 cdef inline intp_t PyArray_SIZE(ndarray n):
     # XXX "long long" is wrong type
     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+
+cdef inline npy_intp PyArray_NBYTES(ndarray n):
+    return NpyArray_NBYTES(<NpyArray *><long long>n.Array)
 
 cdef inline NpyArray *PyArray_ARRAY(ndarray n):
     # XXX "long long" is wrong type

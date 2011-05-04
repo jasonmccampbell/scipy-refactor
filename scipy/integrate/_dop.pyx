@@ -13,6 +13,7 @@ dopri5(...)
 """
 
 cimport numpy as np
+import numpy as np
 from fwrap_ktp cimport *
 cimport _dop_fc as fc
 
@@ -25,10 +26,7 @@ cdef extern from "string.h":
 class DopErrorCode(Exception):
     def __init__(self, callbackInfo):
         self.__cbInfo = callbackInfo
-
-    def callbackInfo(self):
-        return self.__cbInfo
-
+        self.exc = callbackInfo.exc
 
 cdef class fw_CallbackInfo(object):
     # Callable object to call

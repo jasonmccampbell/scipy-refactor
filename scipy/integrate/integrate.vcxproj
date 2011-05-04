@@ -106,6 +106,7 @@
     <None Include="_dop_fc.pxd" />
     <None Include="_odepack.pyx" />
     <None Include="_odepack_clr.py" />
+    <None Include="_quadpack.pyx" />
     <None Include="__init__.py" />
   </ItemGroup>
   <ItemGroup>

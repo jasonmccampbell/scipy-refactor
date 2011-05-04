@@ -224,7 +224,7 @@ typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
 typedef System::Object^ __pyx_t_5scipy_9integrate_9fwrap_ktp_fw_bytes;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":284
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":282
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -327,12 +327,14 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, npy_intp *, int, int); /
 static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, npy_intp *, int, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Empty(int, npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_New(void *, int, npy_intp *, int, npy_intp *, void *, int, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, npy_intp *, int, void *); /*proto*/
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *); /*proto*/
@@ -369,111 +371,108 @@ static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, npy_in
 namespace clr__dop {
   public ref class module__dop sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_set___cbInfo_27_12;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get___cbInfo_30_19;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_63_33;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_65_33;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_69_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_NBYTES_70_45;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_70_60;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_70_60;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_74_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_74_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_75_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_93_35;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_set___cbInfo_28_12;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_29_31;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_set_exc_29_12;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_61_33;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_63_33;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_67_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_72_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_72_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_73_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_91_35;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_91_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_ARGS_93_35;
 static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_93_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_ARGS_95_35;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_95_35;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_99_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_99_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_100_26;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_102_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_102_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_102_0;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_97_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_97_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_98_26;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_100_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_100_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_100_0;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_143_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_145_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_147_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_149_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_151_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_153_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_154_52;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_155_58;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_159_43;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_180_33;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_182_33;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_186_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_NBYTES_187_45;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_187_60;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_187_60;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_191_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_191_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_192_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_210_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_152_52;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_153_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_157_43;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_178_33;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_180_33;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_184_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_189_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_189_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_190_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_208_35;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_208_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_ARGS_210_35;
 static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_210_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call7_ARGS_212_35;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_212_35;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_216_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_216_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_217_26;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_220_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_220_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_220_0;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_214_22;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_214_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_215_26;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_218_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_218_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_218_0;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_260_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_262_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_264_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_266_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_268_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_270_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_271_52;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_272_58;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_276_43;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_296_27;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_301_59;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_308_29;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_310_60;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_310_24;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_259_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_259_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_261_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_261_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_267_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_267_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_269_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_269_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_275_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_275_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_277_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_277_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_287_54;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_287_54;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_291_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_291_49;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_269_52;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_270_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_274_43;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_294_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_299_59;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_306_29;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_308_60;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_308_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_260_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_260_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_262_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_262_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_268_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_268_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_270_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_270_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_276_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_276_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_278_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_278_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_291_54;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_291_54;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_295_49;
 static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_295_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_298_47;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_298_47;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_301_14;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_305_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_305_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_309_35;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_309_35;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Dtype_323_62;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_323_62;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_328_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_328_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_328_39;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_337_13;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_337_13;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_338_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_339_77;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_342_78;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_348_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CheckFromAny_348_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_348_44;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_352_29;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_352_21;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_360_45;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_360_73;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_299_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_299_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_302_47;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_302_47;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_305_14;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_309_49;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_309_49;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_312_51;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_312_51;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_316_35;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_316_35;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Dtype_330_62;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_330_62;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_335_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_335_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_335_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_344_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_344_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_345_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_346_77;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_349_78;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_355_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CheckFromAny_355_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_355_44;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_359_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_359_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_367_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_367_45;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_367_73;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_367_58;
 static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
@@ -482,67 +481,48 @@ static int^ __pyx_int_1;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":26
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":27
  * 
  * class DopErrorCode(Exception):
  *     def __init__(self, callbackInfo):             # <<<<<<<<<<<<<<
  *         self.__cbInfo = callbackInfo
- * 
+ *         self.exc = callbackInfo.exc
  */
 
 static System::Object^ __pyx_pf_5scipy_9integrate_4_dop_12DopErrorCode___init__(System::Object^ self, System::Object^ callbackInfo) {
   System::Object^ __pyx_v_self = nullptr;
   System::Object^ __pyx_v_callbackInfo = nullptr;
   System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
   __pyx_v_self = self;
   __pyx_v_callbackInfo = callbackInfo;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":27
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":28
  * class DopErrorCode(Exception):
  *     def __init__(self, callbackInfo):
  *         self.__cbInfo = callbackInfo             # <<<<<<<<<<<<<<
+ *         self.exc = callbackInfo.exc
  * 
- *     def callbackInfo(self):
  */
-  __site_set___cbInfo_27_12->Target(__site_set___cbInfo_27_12, __pyx_v_self, __pyx_v_callbackInfo);
+  __site_set___cbInfo_28_12->Target(__site_set___cbInfo_28_12, __pyx_v_self, __pyx_v_callbackInfo);
 
-  __pyx_r = nullptr;
-  return __pyx_r;
-}
-
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":29
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":29
+ *     def __init__(self, callbackInfo):
  *         self.__cbInfo = callbackInfo
+ *         self.exc = callbackInfo.exc             # <<<<<<<<<<<<<<
  * 
- *     def callbackInfo(self):             # <<<<<<<<<<<<<<
- *         return self.__cbInfo
- * 
+ * cdef class fw_CallbackInfo(object):
  */
-
-static System::Object^ __pyx_pf_5scipy_9integrate_4_dop_12DopErrorCode_callbackInfo(System::Object^ self) {
-  System::Object^ __pyx_v_self = nullptr;
-  System::Object^ __pyx_r = nullptr;
-  System::Object^ __pyx_t_1 = nullptr;
-  __pyx_v_self = self;
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":30
- * 
- *     def callbackInfo(self):
- *         return self.__cbInfo             # <<<<<<<<<<<<<<
- * 
- * 
- */
-  __pyx_t_1 = __site_get___cbInfo_30_19->Target(__site_get___cbInfo_30_19, __pyx_v_self, __pyx_context);
-  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = __site_get_exc_29_31->Target(__site_get_exc_29_31, __pyx_v_callbackInfo, __pyx_context);
+  __site_set_exc_29_12->Target(__site_set_exc_29_12, __pyx_v_self, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  goto __pyx_L0;
 
   __pyx_r = nullptr;
-  __pyx_L0:;
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":33
- * 
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":31
+ *         self.exc = callbackInfo.exc
  * 
  * cdef class fw_CallbackInfo(object):             # <<<<<<<<<<<<<<
  *     # Callable object to call
@@ -564,7 +544,7 @@ ref struct fw_CallbackInfo {
   System::Object^ arg8;
   System::Object^ arg9;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":43
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":41
  *     # simply passed through in Fortran (in particular NumPy arrays)
  *     cdef object arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9
  *     def __cinit__(self, object callback, object extra_args):             # <<<<<<<<<<<<<<
@@ -580,7 +560,7 @@ ref struct fw_CallbackInfo {
     __pyx_v_callback = callback;
     __pyx_v_extra_args = extra_args;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":44
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":42
  *     cdef object arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9
  *     def __cinit__(self, object callback, object extra_args):
  *         self.callback = callback             # <<<<<<<<<<<<<<
@@ -589,7 +569,7 @@ ref struct fw_CallbackInfo {
  */
     ((fw_CallbackInfo^)__pyx_v_self)->callback = __pyx_v_callback;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":45
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":43
  *     def __cinit__(self, object callback, object extra_args):
  *         self.callback = callback
  *         self.extra_args = extra_args             # <<<<<<<<<<<<<<
@@ -602,7 +582,7 @@ ref struct fw_CallbackInfo {
   }
 };
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":51
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":49
  * 
  * cdef fw_CallbackInfo dopri5_fcn_cb_info
  * cdef void dopri5_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
@@ -624,13 +604,12 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  int __pyx_t_7;
   __pyx_v_info = nullptr;
   __pyx_v_y_ = nullptr;
   __pyx_v_f_ = nullptr;
   __pyx_v_f_ret = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":56
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":54
  *     cdef np.ndarray y_, f_
  *     cdef np.npy_intp y_shape[1], f_shape[1]
  *     info = dopri5_fcn_cb_info             # <<<<<<<<<<<<<<
@@ -639,7 +618,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":57
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":55
  *     cdef np.npy_intp y_shape[1], f_shape[1]
  *     info = dopri5_fcn_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -648,7 +627,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":58
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":56
  *     info = dopri5_fcn_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -657,7 +636,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":59
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":57
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -671,7 +650,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":60
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":58
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         f_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -680,7 +659,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
     (__pyx_v_f_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":61
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":59
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         f_shape[0] = n[0]
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -694,7 +673,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_v_f_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":62
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":60
  *         f_shape[0] = n[0]
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -704,7 +683,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":63
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":61
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             f_ret = info.callback(x[0], y_)             # <<<<<<<<<<<<<<
@@ -712,7 +691,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_x[0]);
-      __pyx_t_5 = __site_call2_63_33->Target(__site_call2_63_33, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_61_33->Target(__site_call2_61_33, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_f_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -720,7 +699,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":65
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":63
  *             f_ret = info.callback(x[0], y_)
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -728,14 +707,14 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_x[0]);
-      __pyx_t_3 = __site_call2_ARGS_65_33->Target(__site_call2_ARGS_65_33, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_63_33->Target(__site_call2_ARGS_63_33, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_f_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":66
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":64
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:             # <<<<<<<<<<<<<<
@@ -745,7 +724,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_t_4 = (((System::Object^)__pyx_v_f_) != __pyx_v_f_ret);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":67
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":65
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -763,7 +742,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       __pyx_v_f_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":68
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":66
  *         if f_ is not f_ret:
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:             # <<<<<<<<<<<<<<
@@ -773,7 +752,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       __pyx_t_4 = ((__pyx_v_f_shape[0]) != (PyArray_DIMS(__pyx_v_f_)[0]));
       if (__pyx_t_4) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":69
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":67
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -781,7 +760,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *         dopri5_fcn_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_69_32->Target(__site_call1_69_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_67_32->Target(__site_call1_67_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -789,26 +768,19 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       }
       __pyx_L5:;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":70
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":68
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))             # <<<<<<<<<<<<<<
  *         dopri5_fcn_cb_info = info
  *     except:
  */
-      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "np");
-      __pyx_t_6 = __site_get_PyArray_NBYTES_70_45->Target(__site_get_PyArray_NBYTES_70_45, __pyx_t_5, __pyx_context);
-      __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call1_70_60->Target(__site_call1_70_60, __pyx_context, __pyx_t_6, ((System::Object^)__pyx_v_f_));
-      __pyx_t_6 = nullptr;
-      __pyx_t_7 = __site_cvt_cvt_int_70_60->Target(__site_cvt_cvt_int_70_60, __pyx_t_5);
-      __pyx_t_5 = nullptr;
-      memcpy(__pyx_v_f, PyArray_DATA(__pyx_v_f_), __pyx_t_7);
+      memcpy(__pyx_v_f, PyArray_DATA(__pyx_v_f_), PyArray_NBYTES(__pyx_v_f_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":71
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":69
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
  *         dopri5_fcn_cb_info = info             # <<<<<<<<<<<<<<
@@ -819,7 +791,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":72
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":70
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
  *         dopri5_fcn_cb_info = info
  *     except:             # <<<<<<<<<<<<<<
@@ -830,7 +802,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dopri5_fcn_cb_wrapper");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":73
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":71
  *         dopri5_fcn_cb_info = info
  *     except:
  *         dopri5_fcn_cb_info = info             # <<<<<<<<<<<<<<
@@ -839,7 +811,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
       __pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info = __pyx_v_info;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":74
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":72
  *     except:
  *         dopri5_fcn_cb_info = info
  *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
@@ -847,14 +819,14 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_74_22->Target(__site_get_exc_info_74_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_72_22->Target(__site_get_exc_info_72_22, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_74_31->Target(__site_call0_74_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_72_31->Target(__site_call0_72_31, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
       __pyx_v_info->exc = __pyx_t_5;
       __pyx_t_5 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":75
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":73
  *         dopri5_fcn_cb_info = info
  *         info.exc = sys.exc_info()
  *         raise DopErrorCode(dopri5_fcn_cb_info)             # <<<<<<<<<<<<<<
@@ -862,7 +834,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "DopErrorCode");
-      __pyx_t_6 = __site_call1_75_26->Target(__site_call1_75_26, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info));
+      __pyx_t_6 = __site_call1_73_26->Target(__site_call1_73_26, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info));
       __pyx_t_5 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
       __pyx_t_6 = nullptr;
@@ -872,7 +844,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":79
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":77
  * 
  * cdef fw_CallbackInfo dopri5_solout_cb_info
  * cdef void dopri5_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):             # <<<<<<<<<<<<<<
@@ -904,7 +876,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   __pyx_v_con_ = nullptr;
   __pyx_v_icomp_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":84
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":82
  *     cdef np.ndarray y_, con_, icomp_
  *     cdef np.npy_intp y_shape[1], con_shape[1], icomp_shape[1]
  *     info = dopri5_solout_cb_info             # <<<<<<<<<<<<<<
@@ -913,7 +885,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4_dop_dopri5_solout_cb_info;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":85
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":83
  *     cdef np.npy_intp y_shape[1], con_shape[1], icomp_shape[1]
  *     info = dopri5_solout_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -922,7 +894,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":86
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":84
  *     info = dopri5_solout_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -931,7 +903,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":87
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":85
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -945,7 +917,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":88
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":86
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         con_shape[0] = 5*nd[0]             # <<<<<<<<<<<<<<
@@ -954,7 +926,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_con_shape[0]) = (5 * (__pyx_v_nd[0]));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":89
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":87
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         con_shape[0] = 5*nd[0]
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -968,7 +940,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_con_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":90
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":88
  *         con_shape[0] = 5*nd[0]
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
  *         icomp_shape[0] = nd[0]             # <<<<<<<<<<<<<<
@@ -977,7 +949,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_icomp_shape[0]) = (__pyx_v_nd[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":91
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":89
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
  *         icomp_shape[0] = nd[0]
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -991,7 +963,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_icomp_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":92
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":90
  *         icomp_shape[0] = nd[0]
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -1001,7 +973,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":93
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":91
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0])             # <<<<<<<<<<<<<<
@@ -1012,19 +984,19 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       __pyx_t_5 = (__pyx_v_xold[0]);
       __pyx_t_6 = (__pyx_v_x[0]);
       __pyx_t_7 = (__pyx_v_nd[0]);
-      __pyx_t_8 = __site_call7_93_35->Target(__site_call7_93_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, __pyx_t_5, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_7);
+      __pyx_t_8 = __site_call7_91_35->Target(__site_call7_91_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, __pyx_t_5, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_7);
       __pyx_t_3 = nullptr;
       __pyx_t_5 = nullptr;
       __pyx_t_6 = nullptr;
       __pyx_t_7 = nullptr;
-      __pyx_t_9 = __site_cvt_cvt_fwi_integer_t_93_35->Target(__site_cvt_cvt_fwi_integer_t_93_35, __pyx_t_8);
+      __pyx_t_9 = __site_cvt_cvt_fwi_integer_t_91_35->Target(__site_cvt_cvt_fwi_integer_t_91_35, __pyx_t_8);
       __pyx_t_8 = nullptr;
       (__pyx_v_irtn[0]) = __pyx_t_9;
       goto __pyx_L3;
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":95
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":93
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0])
  *         else:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)             # <<<<<<<<<<<<<<
@@ -1035,18 +1007,18 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       __pyx_t_7 = (__pyx_v_xold[0]);
       __pyx_t_6 = (__pyx_v_x[0]);
       __pyx_t_5 = (__pyx_v_nd[0]);
-      __pyx_t_3 = __site_call7_ARGS_95_35->Target(__site_call7_ARGS_95_35, __pyx_context, __pyx_v_info->callback, __pyx_t_8, __pyx_t_7, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_5, __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call7_ARGS_93_35->Target(__site_call7_ARGS_93_35, __pyx_context, __pyx_v_info->callback, __pyx_t_8, __pyx_t_7, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_5, __pyx_v_info->extra_args);
       __pyx_t_8 = nullptr;
       __pyx_t_7 = nullptr;
       __pyx_t_6 = nullptr;
       __pyx_t_5 = nullptr;
-      __pyx_t_10 = __site_cvt_cvt_fwi_integer_t_95_35->Target(__site_cvt_cvt_fwi_integer_t_95_35, __pyx_t_3);
+      __pyx_t_10 = __site_cvt_cvt_fwi_integer_t_93_35->Target(__site_cvt_cvt_fwi_integer_t_93_35, __pyx_t_3);
       __pyx_t_3 = nullptr;
       (__pyx_v_irtn[0]) = __pyx_t_10;
     }
     __pyx_L3:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":96
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":94
  *         else:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)
  *         dopri5_solout_cb_info = info             # <<<<<<<<<<<<<<
@@ -1057,7 +1029,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":97
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":95
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)
  *         dopri5_solout_cb_info = info
  *     except:             # <<<<<<<<<<<<<<
@@ -1068,7 +1040,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dopri5_solout_cb_wrapper");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":98
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":96
  *         dopri5_solout_cb_info = info
  *     except:
  *         dopri5_solout_cb_info = info             # <<<<<<<<<<<<<<
@@ -1077,7 +1049,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
       __pyx_v_5scipy_9integrate_4_dop_dopri5_solout_cb_info = __pyx_v_info;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":99
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":97
  *     except:
  *         dopri5_solout_cb_info = info
  *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
@@ -1085,14 +1057,14 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  * 
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_5 = __site_get_exc_info_99_22->Target(__site_get_exc_info_99_22, __pyx_t_3, __pyx_context);
+      __pyx_t_5 = __site_get_exc_info_97_22->Target(__site_get_exc_info_97_22, __pyx_t_3, __pyx_context);
       __pyx_t_3 = nullptr;
-      __pyx_t_3 = __site_call0_99_31->Target(__site_call0_99_31, __pyx_context, __pyx_t_5);
+      __pyx_t_3 = __site_call0_97_31->Target(__site_call0_97_31, __pyx_context, __pyx_t_5);
       __pyx_t_5 = nullptr;
       __pyx_v_info->exc = __pyx_t_3;
       __pyx_t_3 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":100
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":98
  *         dopri5_solout_cb_info = info
  *         info.exc = sys.exc_info()
  *         raise DopErrorCode(dopri5_solout_cb_info)             # <<<<<<<<<<<<<<
@@ -1100,7 +1072,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  * def dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "DopErrorCode");
-      __pyx_t_5 = __site_call1_100_26->Target(__site_call1_100_26, __pyx_context, __pyx_t_3, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dopri5_solout_cb_info));
+      __pyx_t_5 = __site_call1_98_26->Target(__site_call1_98_26, __pyx_context, __pyx_t_3, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dopri5_solout_cb_info));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
@@ -1110,7 +1082,7 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":102
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":100
  *         raise DopErrorCode(dopri5_solout_cb_info)
  * 
  * def dopri5(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -1164,9 +1136,9 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   System::Object^ __pyx_t_10 = nullptr;
   System::Object^ __pyx_t_11 = nullptr;
   __pyx_v_fcn = fcn;
-  __pyx_v_x = __site_cvt_cvt_fwr_dbl_t_102_0->Target(__site_cvt_cvt_fwr_dbl_t_102_0, x);
+  __pyx_v_x = __site_cvt_cvt_fwr_dbl_t_100_0->Target(__site_cvt_cvt_fwr_dbl_t_100_0, x);
   __pyx_v_y = y;
-  __pyx_v_xend = __site_cvt_cvt_fwr_dbl_t_102_0_1->Target(__site_cvt_cvt_fwr_dbl_t_102_0_1, xend);
+  __pyx_v_xend = __site_cvt_cvt_fwr_dbl_t_100_0_1->Target(__site_cvt_cvt_fwr_dbl_t_100_0_1, xend);
   __pyx_v_rtol = rtol;
   __pyx_v_atol = atol;
   __pyx_v_solout = solout;
@@ -1183,7 +1155,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
     __pyx_v_solout_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_y) == nullptr) {
-    __pyx_v_overwrite_y = __site_cvt_cvt_int_102_0->Target(__site_cvt_cvt_int_102_0, overwrite_y);
+    __pyx_v_overwrite_y = __site_cvt_cvt_int_100_0->Target(__site_cvt_cvt_int_100_0, overwrite_y);
   } else {
     __pyx_v_overwrite_y = ((int)0);
   }
@@ -1199,7 +1171,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_fw_excval = nullptr;
   __pyx_v_fw_exctb = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":133
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":131
  *     cdef np.ndarray y_, rtol_, atol_, work_, iwork_
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1210,7 +1182,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_atol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":134
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":132
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 0 if (atol_shape[0] <= 1) else 1             # <<<<<<<<<<<<<<
@@ -1224,7 +1196,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_v_itol = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":135
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":133
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 0 if (atol_shape[0] <= 1) else 1
  *     iout = 0             # <<<<<<<<<<<<<<
@@ -1233,7 +1205,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_iout = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":136
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":134
  *     itol = 0 if (atol_shape[0] <= 1) else 1
  *     iout = 0
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1244,7 +1216,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":137
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":135
  *     iout = 0
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)
  *     lwork = work_shape[0]             # <<<<<<<<<<<<<<
@@ -1253,7 +1225,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_lwork = (__pyx_v_work_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":138
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":136
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)
  *     lwork = work_shape[0]
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1264,7 +1236,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":139
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":137
  *     lwork = work_shape[0]
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     liwork = iwork_shape[0]             # <<<<<<<<<<<<<<
@@ -1273,7 +1245,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_liwork = (__pyx_v_iwork_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":140
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":138
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     liwork = iwork_shape[0]
  *     idid = 0             # <<<<<<<<<<<<<<
@@ -1282,7 +1254,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_idid = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":141
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":139
  *     liwork = iwork_shape[0]
  *     idid = 0
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1293,7 +1265,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_rtol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":142
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":140
  *     idid = 0
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -1304,7 +1276,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":143
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":141
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -1313,7 +1285,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":144
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":142
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (rtol_shape[0] == atol_shape[0]):             # <<<<<<<<<<<<<<
@@ -1323,7 +1295,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_rtol_shape[0]) == (__pyx_v_atol_shape[0])));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":145
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":143
  *     n = y_shape[0]
  *     if not (rtol_shape[0] == atol_shape[0]):
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')             # <<<<<<<<<<<<<<
@@ -1331,7 +1303,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_145_24->Target(__site_call1_145_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]"));
+    __pyx_t_4 = __site_call1_143_24->Target(__site_call1_143_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -1339,7 +1311,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":146
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":144
  *     if not (rtol_shape[0] == atol_shape[0]):
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):             # <<<<<<<<<<<<<<
@@ -1356,7 +1328,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":147
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":145
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')             # <<<<<<<<<<<<<<
@@ -1364,7 +1336,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_147_24->Target(__site_call1_147_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)"));
+    __pyx_t_1 = __site_call1_145_24->Target(__site_call1_145_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1372,7 +1344,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":148
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":146
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  *     if not (work_shape[0] >= ((8 * n) + 21)):             # <<<<<<<<<<<<<<
@@ -1382,7 +1354,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_work_shape[0]) >= ((8 * __pyx_v_n) + 21)));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":149
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":147
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  *     if not (work_shape[0] >= ((8 * n) + 21)):
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')             # <<<<<<<<<<<<<<
@@ -1390,7 +1362,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_149_24->Target(__site_call1_149_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)"));
+    __pyx_t_4 = __site_call1_147_24->Target(__site_call1_147_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -1398,7 +1370,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":150
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":148
  *     if not (work_shape[0] >= ((8 * n) + 21)):
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  *     if not (iwork_shape[0] >= 21):             # <<<<<<<<<<<<<<
@@ -1408,7 +1380,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_iwork_shape[0]) >= 21));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":151
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":149
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  *     if not (iwork_shape[0] >= 21):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')             # <<<<<<<<<<<<<<
@@ -1416,7 +1388,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_151_24->Target(__site_call1_151_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= 21"));
+    __pyx_t_1 = __site_call1_149_24->Target(__site_call1_149_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= 21"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1424,7 +1396,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":152
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":150
  *     if not (iwork_shape[0] >= 21):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -1438,7 +1410,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_6 = (!__pyx_t_3);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":153
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":151
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1446,7 +1418,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
  *     dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_153_24->Target(__site_call1_153_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= y.shape[0]) not satisifed"));
+    __pyx_t_4 = __site_call1_151_24->Target(__site_call1_151_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= y.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -1454,31 +1426,31 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":154
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":152
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     dopri5_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)             # <<<<<<<<<<<<<<
  *     dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:
  */
-  __pyx_t_4 = __site_call2_154_52->Target(__site_call2_154_52, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_fcn, __pyx_v_fcn_extra_args);
+  __pyx_t_4 = __site_call2_152_52->Target(__site_call2_152_52, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_fcn, __pyx_v_fcn_extra_args);
   __pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_v_fw_fcn_cb = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":155
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":153
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     dopri5_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
  *     dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)             # <<<<<<<<<<<<<<
  *     try:
  *         fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  */
-  __pyx_t_4 = __site_call2_155_58->Target(__site_call2_155_58, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_solout, __pyx_v_solout_extra_args);
+  __pyx_t_4 = __site_call2_153_58->Target(__site_call2_153_58, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_solout, __pyx_v_solout_extra_args);
   __pyx_v_5scipy_9integrate_4_dop_dopri5_solout_cb_info = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_v_fw_solout_cb = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":156
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":154
  *     dopri5_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
  *     dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -1488,7 +1460,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   try {
     try {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":157
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":155
  *     dopri5_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:
  *         fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)             # <<<<<<<<<<<<<<
@@ -1499,7 +1471,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
     } catch (System::Exception^ __pyx_lt_7) {
       System::Object^ __pyx_lt_8 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_7);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":158
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":156
  *     try:
  *         fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  *     except DopErrorCode, e:             # <<<<<<<<<<<<<<
@@ -1513,14 +1485,14 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dopri5");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_7);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":159
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":157
  *         fc.dopri5(&n, &dopri5_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dopri5_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  *     except DopErrorCode, e:
  *         fw_exctype, fw_excval, fw_exctb = e.exc             # <<<<<<<<<<<<<<
  *         raise fw_exctype, fw_excval, fw_exctb
  *     finally:
  */
-        __pyx_t_4 = __site_get_exc_159_43->Target(__site_get_exc_159_43, __pyx_v_e, __pyx_context);
+        __pyx_t_4 = __site_get_exc_157_43->Target(__site_get_exc_157_43, __pyx_v_e, __pyx_context);
         __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_t_4, 3)));
         __pyx_t_1 = __pyx_t_9[0];
         __pyx_t_10 = __pyx_t_9[1];
@@ -1534,7 +1506,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
         __pyx_v_fw_exctb = __pyx_t_11;
         __pyx_t_11 = nullptr;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":160
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":158
  *     except DopErrorCode, e:
  *         fw_exctype, fw_excval, fw_exctb = e.exc
  *         raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
@@ -1551,7 +1523,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
     }
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":162
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":160
  *         raise fw_exctype, fw_excval, fw_exctb
  *     finally:
  *         dopri5_fcn_cb_info = None             # <<<<<<<<<<<<<<
@@ -1562,7 +1534,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
     __pyx_v_5scipy_9integrate_4_dop_dopri5_fcn_cb_info = ((fw_CallbackInfo^)nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":163
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":161
  *     finally:
  *         dopri5_fcn_cb_info = None
  *     return (x, y_, iwork_, idid,)             # <<<<<<<<<<<<<<
@@ -1583,7 +1555,7 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":168
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":166
  * 
  * cdef fw_CallbackInfo dop853_fcn_cb_info
  * cdef void dop853_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y, fwr_dbl_t * f, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
@@ -1605,13 +1577,12 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
-  int __pyx_t_7;
   __pyx_v_info = nullptr;
   __pyx_v_y_ = nullptr;
   __pyx_v_f_ = nullptr;
   __pyx_v_f_ret = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":173
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":171
  *     cdef np.ndarray y_, f_
  *     cdef np.npy_intp y_shape[1], f_shape[1]
  *     info = dop853_fcn_cb_info             # <<<<<<<<<<<<<<
@@ -1620,7 +1591,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":174
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":172
  *     cdef np.npy_intp y_shape[1], f_shape[1]
  *     info = dop853_fcn_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -1629,7 +1600,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":175
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":173
  *     info = dop853_fcn_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1638,7 +1609,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":176
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":174
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1652,7 +1623,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":177
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":175
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         f_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1661,7 +1632,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
     (__pyx_v_f_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":178
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":176
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         f_shape[0] = n[0]
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1675,7 +1646,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_v_f_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":179
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":177
  *         f_shape[0] = n[0]
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -1685,7 +1656,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":180
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":178
  *         f_ = np.PyArray_New(NULL, 1, f_shape, fwr_dbl_t_enum, NULL, <char*>f, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             f_ret = info.callback(x[0], y_)             # <<<<<<<<<<<<<<
@@ -1693,7 +1664,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_x[0]);
-      __pyx_t_5 = __site_call2_180_33->Target(__site_call2_180_33, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_178_33->Target(__site_call2_178_33, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_f_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -1701,7 +1672,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":182
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":180
  *             f_ret = info.callback(x[0], y_)
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -1709,14 +1680,14 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_x[0]);
-      __pyx_t_3 = __site_call2_ARGS_182_33->Target(__site_call2_ARGS_182_33, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_180_33->Target(__site_call2_ARGS_180_33, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_f_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":183
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":181
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:             # <<<<<<<<<<<<<<
@@ -1726,7 +1697,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
     __pyx_t_4 = (((System::Object^)__pyx_v_f_) != __pyx_v_f_ret);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":184
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":182
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1744,7 +1715,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       __pyx_v_f_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":185
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":183
  *         if f_ is not f_ret:
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:             # <<<<<<<<<<<<<<
@@ -1754,7 +1725,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       __pyx_t_4 = ((__pyx_v_f_shape[0]) != (PyArray_DIMS(__pyx_v_f_)[0]));
       if (__pyx_t_4) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":186
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":184
  *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -1762,7 +1733,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *         dop853_fcn_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_186_32->Target(__site_call1_186_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_184_32->Target(__site_call1_184_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -1770,26 +1741,19 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       }
       __pyx_L5:;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":187
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":185
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))             # <<<<<<<<<<<<<<
  *         dop853_fcn_cb_info = info
  *     except:
  */
-      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "np");
-      __pyx_t_6 = __site_get_PyArray_NBYTES_187_45->Target(__site_get_PyArray_NBYTES_187_45, __pyx_t_5, __pyx_context);
-      __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call1_187_60->Target(__site_call1_187_60, __pyx_context, __pyx_t_6, ((System::Object^)__pyx_v_f_));
-      __pyx_t_6 = nullptr;
-      __pyx_t_7 = __site_cvt_cvt_int_187_60->Target(__site_cvt_cvt_int_187_60, __pyx_t_5);
-      __pyx_t_5 = nullptr;
-      memcpy(__pyx_v_f, PyArray_DATA(__pyx_v_f_), __pyx_t_7);
+      memcpy(__pyx_v_f, PyArray_DATA(__pyx_v_f_), PyArray_NBYTES(__pyx_v_f_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":188
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":186
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
  *         dop853_fcn_cb_info = info             # <<<<<<<<<<<<<<
@@ -1800,7 +1764,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":189
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":187
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
  *         dop853_fcn_cb_info = info
  *     except:             # <<<<<<<<<<<<<<
@@ -1811,7 +1775,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dop853_fcn_cb_wrapper");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":190
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":188
  *         dop853_fcn_cb_info = info
  *     except:
  *         dop853_fcn_cb_info = info             # <<<<<<<<<<<<<<
@@ -1820,7 +1784,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  */
       __pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info = __pyx_v_info;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":191
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":189
  *     except:
  *         dop853_fcn_cb_info = info
  *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
@@ -1828,14 +1792,14 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_191_22->Target(__site_get_exc_info_191_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_189_22->Target(__site_get_exc_info_189_22, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_191_31->Target(__site_call0_191_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_189_31->Target(__site_call0_189_31, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
       __pyx_v_info->exc = __pyx_t_5;
       __pyx_t_5 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":192
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":190
  *         dop853_fcn_cb_info = info
  *         info.exc = sys.exc_info()
  *         raise DopErrorCode(dop853_fcn_cb_info)             # <<<<<<<<<<<<<<
@@ -1843,7 +1807,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "DopErrorCode");
-      __pyx_t_6 = __site_call1_192_26->Target(__site_call1_192_26, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info));
+      __pyx_t_6 = __site_call1_190_26->Target(__site_call1_190_26, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info));
       __pyx_t_5 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_6, nullptr, nullptr);
       __pyx_t_6 = nullptr;
@@ -1853,7 +1817,7 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":196
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":194
  * 
  * cdef fw_CallbackInfo dop853_solout_cb_info
  * cdef void dop853_solout_cb_wrapper(fwi_integer_t * nr, fwr_dbl_t * xold, fwr_dbl_t * x, fwr_dbl_t * y, fwi_integer_t * n, fwr_dbl_t * con, fwi_integer_t * icomp, fwi_integer_t * nd, void * rpar, void * ipar, fwi_integer_t * irtn):             # <<<<<<<<<<<<<<
@@ -1885,7 +1849,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   __pyx_v_con_ = nullptr;
   __pyx_v_icomp_ = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":201
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":199
  *     cdef np.ndarray y_, con_, icomp_
  *     cdef np.npy_intp y_shape[1], con_shape[1], icomp_shape[1]
  *     info = dop853_solout_cb_info             # <<<<<<<<<<<<<<
@@ -1894,7 +1858,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4_dop_dop853_solout_cb_info;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":202
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":200
  *     cdef np.npy_intp y_shape[1], con_shape[1], icomp_shape[1]
  *     info = dop853_solout_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -1903,7 +1867,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":203
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":201
  *     info = dop853_solout_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1912,7 +1876,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":204
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":202
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1926,7 +1890,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":205
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":203
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         con_shape[0] = 5*nd[0]             # <<<<<<<<<<<<<<
@@ -1935,7 +1899,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_con_shape[0]) = (5 * (__pyx_v_nd[0]));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":206
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":204
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         con_shape[0] = 5*nd[0]
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1949,7 +1913,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_con_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":207
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":205
  *         con_shape[0] = 5*nd[0]
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
  *         icomp_shape[0] = nd[0]             # <<<<<<<<<<<<<<
@@ -1958,7 +1922,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
     (__pyx_v_icomp_shape[0]) = (__pyx_v_nd[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":208
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":206
  *         con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
  *         icomp_shape[0] = nd[0]
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1972,7 +1936,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_v_icomp_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":209
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":207
  *         icomp_shape[0] = nd[0]
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -1982,7 +1946,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":210
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":208
  *         icomp_ = np.PyArray_New(NULL, 1, icomp_shape, fwi_integer_t_enum, NULL, <char*>icomp, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0])             # <<<<<<<<<<<<<<
@@ -1993,19 +1957,19 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       __pyx_t_5 = (__pyx_v_xold[0]);
       __pyx_t_6 = (__pyx_v_x[0]);
       __pyx_t_7 = (__pyx_v_nd[0]);
-      __pyx_t_8 = __site_call7_210_35->Target(__site_call7_210_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, __pyx_t_5, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_7);
+      __pyx_t_8 = __site_call7_208_35->Target(__site_call7_208_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, __pyx_t_5, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_7);
       __pyx_t_3 = nullptr;
       __pyx_t_5 = nullptr;
       __pyx_t_6 = nullptr;
       __pyx_t_7 = nullptr;
-      __pyx_t_9 = __site_cvt_cvt_fwi_integer_t_210_35->Target(__site_cvt_cvt_fwi_integer_t_210_35, __pyx_t_8);
+      __pyx_t_9 = __site_cvt_cvt_fwi_integer_t_208_35->Target(__site_cvt_cvt_fwi_integer_t_208_35, __pyx_t_8);
       __pyx_t_8 = nullptr;
       (__pyx_v_irtn[0]) = __pyx_t_9;
       goto __pyx_L3;
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":212
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":210
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0])
  *         else:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)             # <<<<<<<<<<<<<<
@@ -2016,18 +1980,18 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       __pyx_t_7 = (__pyx_v_xold[0]);
       __pyx_t_6 = (__pyx_v_x[0]);
       __pyx_t_5 = (__pyx_v_nd[0]);
-      __pyx_t_3 = __site_call7_ARGS_212_35->Target(__site_call7_ARGS_212_35, __pyx_context, __pyx_v_info->callback, __pyx_t_8, __pyx_t_7, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_5, __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call7_ARGS_210_35->Target(__site_call7_ARGS_210_35, __pyx_context, __pyx_v_info->callback, __pyx_t_8, __pyx_t_7, __pyx_t_6, ((System::Object^)__pyx_v_y_), ((System::Object^)__pyx_v_con_), ((System::Object^)__pyx_v_icomp_), __pyx_t_5, __pyx_v_info->extra_args);
       __pyx_t_8 = nullptr;
       __pyx_t_7 = nullptr;
       __pyx_t_6 = nullptr;
       __pyx_t_5 = nullptr;
-      __pyx_t_10 = __site_cvt_cvt_fwi_integer_t_212_35->Target(__site_cvt_cvt_fwi_integer_t_212_35, __pyx_t_3);
+      __pyx_t_10 = __site_cvt_cvt_fwi_integer_t_210_35->Target(__site_cvt_cvt_fwi_integer_t_210_35, __pyx_t_3);
       __pyx_t_3 = nullptr;
       (__pyx_v_irtn[0]) = __pyx_t_10;
     }
     __pyx_L3:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":213
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":211
  *         else:
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)
  *         dop853_solout_cb_info = info             # <<<<<<<<<<<<<<
@@ -2038,7 +2002,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":214
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":212
  *             irtn[0] = info.callback(nr[0], xold[0], x[0], y_, con_, icomp_, nd[0], *info.extra_args)
  *         dop853_solout_cb_info = info
  *     except:             # <<<<<<<<<<<<<<
@@ -2049,7 +2013,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dop853_solout_cb_wrapper");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":215
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":213
  *         dop853_solout_cb_info = info
  *     except:
  *         dop853_solout_cb_info = info             # <<<<<<<<<<<<<<
@@ -2058,7 +2022,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  */
       __pyx_v_5scipy_9integrate_4_dop_dop853_solout_cb_info = __pyx_v_info;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":216
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":214
  *     except:
  *         dop853_solout_cb_info = info
  *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
@@ -2066,14 +2030,14 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  * 
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_5 = __site_get_exc_info_216_22->Target(__site_get_exc_info_216_22, __pyx_t_3, __pyx_context);
+      __pyx_t_5 = __site_get_exc_info_214_22->Target(__site_get_exc_info_214_22, __pyx_t_3, __pyx_context);
       __pyx_t_3 = nullptr;
-      __pyx_t_3 = __site_call0_216_31->Target(__site_call0_216_31, __pyx_context, __pyx_t_5);
+      __pyx_t_3 = __site_call0_214_31->Target(__site_call0_214_31, __pyx_context, __pyx_t_5);
       __pyx_t_5 = nullptr;
       __pyx_v_info->exc = __pyx_t_3;
       __pyx_t_3 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":217
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":215
  *         dop853_solout_cb_info = info
  *         info.exc = sys.exc_info()
  *         raise DopErrorCode(dop853_solout_cb_info)             # <<<<<<<<<<<<<<
@@ -2081,7 +2045,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
  * 
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "DopErrorCode");
-      __pyx_t_5 = __site_call1_217_26->Target(__site_call1_217_26, __pyx_context, __pyx_t_3, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dop853_solout_cb_info));
+      __pyx_t_5 = __site_call1_215_26->Target(__site_call1_215_26, __pyx_context, __pyx_t_3, ((System::Object^)__pyx_v_5scipy_9integrate_4_dop_dop853_solout_cb_info));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
@@ -2091,7 +2055,7 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":220
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":218
  * 
  * 
  * def dop853(object fcn, fwr_dbl_t x, object y, fwr_dbl_t xend, object rtol, object atol, object solout, object work, object iwork, object fcn_extra_args=None, object solout_extra_args=None, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -2145,9 +2109,9 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   System::Object^ __pyx_t_10 = nullptr;
   System::Object^ __pyx_t_11 = nullptr;
   __pyx_v_fcn = fcn;
-  __pyx_v_x = __site_cvt_cvt_fwr_dbl_t_220_0->Target(__site_cvt_cvt_fwr_dbl_t_220_0, x);
+  __pyx_v_x = __site_cvt_cvt_fwr_dbl_t_218_0->Target(__site_cvt_cvt_fwr_dbl_t_218_0, x);
   __pyx_v_y = y;
-  __pyx_v_xend = __site_cvt_cvt_fwr_dbl_t_220_0_1->Target(__site_cvt_cvt_fwr_dbl_t_220_0_1, xend);
+  __pyx_v_xend = __site_cvt_cvt_fwr_dbl_t_218_0_1->Target(__site_cvt_cvt_fwr_dbl_t_218_0_1, xend);
   __pyx_v_rtol = rtol;
   __pyx_v_atol = atol;
   __pyx_v_solout = solout;
@@ -2164,7 +2128,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
     __pyx_v_solout_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_y) == nullptr) {
-    __pyx_v_overwrite_y = __site_cvt_cvt_int_220_0->Target(__site_cvt_cvt_int_220_0, overwrite_y);
+    __pyx_v_overwrite_y = __site_cvt_cvt_int_218_0->Target(__site_cvt_cvt_int_218_0, overwrite_y);
   } else {
     __pyx_v_overwrite_y = ((int)0);
   }
@@ -2180,7 +2144,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_fw_excval = nullptr;
   __pyx_v_fw_exctb = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":251
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":249
  *     cdef np.ndarray y_, rtol_, atol_, work_, iwork_
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2191,7 +2155,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_atol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":252
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":250
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], work_shape[1], iwork_shape[1]
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 0 if (atol_shape[0] <= 1) else 1             # <<<<<<<<<<<<<<
@@ -2205,7 +2169,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_v_itol = __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":253
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":251
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 0 if (atol_shape[0] <= 1) else 1
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2216,7 +2180,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_work_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":254
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":252
  *     itol = 0 if (atol_shape[0] <= 1) else 1
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)
  *     lwork = work_shape[0]             # <<<<<<<<<<<<<<
@@ -2225,7 +2189,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_lwork = (__pyx_v_work_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":255
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":253
  *     work_ = fw_asfortranarray(work, fwr_dbl_t_enum, 1, work_shape, False, False)
  *     lwork = work_shape[0]
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2236,7 +2200,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":256
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":254
  *     lwork = work_shape[0]
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     liwork = iwork_shape[0]             # <<<<<<<<<<<<<<
@@ -2245,7 +2209,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_liwork = (__pyx_v_iwork_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":257
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":255
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     liwork = iwork_shape[0]
  *     idid = 0             # <<<<<<<<<<<<<<
@@ -2254,7 +2218,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_idid = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":258
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":256
  *     liwork = iwork_shape[0]
  *     idid = 0
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2265,7 +2229,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_rtol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":259
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":257
  *     idid = 0
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -2276,7 +2240,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":260
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":258
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]             # <<<<<<<<<<<<<<
@@ -2285,7 +2249,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  */
   __pyx_v_n = (__pyx_v_y_shape[0]);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":261
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":259
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     n = y_shape[0]
  *     if not (rtol_shape[0] == atol_shape[0]):             # <<<<<<<<<<<<<<
@@ -2295,7 +2259,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_rtol_shape[0]) == (__pyx_v_atol_shape[0])));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":262
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":260
  *     n = y_shape[0]
  *     if not (rtol_shape[0] == atol_shape[0]):
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')             # <<<<<<<<<<<<<<
@@ -2303,7 +2267,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_262_24->Target(__site_call1_262_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]"));
+    __pyx_t_4 = __site_call1_260_24->Target(__site_call1_260_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -2311,7 +2275,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":263
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":261
  *     if not (rtol_shape[0] == atol_shape[0]):
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):             # <<<<<<<<<<<<<<
@@ -2328,7 +2292,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!__pyx_t_6);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":264
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":262
  *         raise ValueError('Condition on arguments not satisfied: rtol.shape[0] == atol.shape[0]')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')             # <<<<<<<<<<<<<<
@@ -2336,7 +2300,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_264_24->Target(__site_call1_264_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)"));
+    __pyx_t_1 = __site_call1_262_24->Target(__site_call1_262_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2344,7 +2308,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":265
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":263
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= n)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  *     if not (work_shape[0] >= ((8 * n) + 21)):             # <<<<<<<<<<<<<<
@@ -2354,7 +2318,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_work_shape[0]) >= ((8 * __pyx_v_n) + 21)));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":266
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":264
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= n)')
  *     if not (work_shape[0] >= ((8 * n) + 21)):
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')             # <<<<<<<<<<<<<<
@@ -2362,7 +2326,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_266_24->Target(__site_call1_266_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)"));
+    __pyx_t_4 = __site_call1_264_24->Target(__site_call1_264_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -2370,7 +2334,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":267
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":265
  *     if not (work_shape[0] >= ((8 * n) + 21)):
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  *     if not (iwork_shape[0] >= 21):             # <<<<<<<<<<<<<<
@@ -2380,7 +2344,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_3 = (!((__pyx_v_iwork_shape[0]) >= 21));
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":268
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":266
  *         raise ValueError('Condition on arguments not satisfied: work.shape[0] >= ((8 * n) + 21)')
  *     if not (iwork_shape[0] >= 21):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')             # <<<<<<<<<<<<<<
@@ -2388,7 +2352,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_268_24->Target(__site_call1_268_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= 21"));
+    __pyx_t_1 = __site_call1_266_24->Target(__site_call1_266_24, __pyx_context, __pyx_t_4, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= 21"));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2396,7 +2360,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":269
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":267
  *     if not (iwork_shape[0] >= 21):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  *     if not (0 <= n <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -2410,7 +2374,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   __pyx_t_6 = (!__pyx_t_3);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":270
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":268
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= 21')
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -2418,7 +2382,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *     dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_4 = __site_call1_270_24->Target(__site_call1_270_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= y.shape[0]) not satisifed"));
+    __pyx_t_4 = __site_call1_268_24->Target(__site_call1_268_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= n <= y.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -2426,31 +2390,31 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":271
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":269
  *     if not (0 <= n <= y_shape[0]):
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     dop853_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)             # <<<<<<<<<<<<<<
  *     dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:
  */
-  __pyx_t_4 = __site_call2_271_52->Target(__site_call2_271_52, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_fcn, __pyx_v_fcn_extra_args);
+  __pyx_t_4 = __site_call2_269_52->Target(__site_call2_269_52, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_fcn, __pyx_v_fcn_extra_args);
   __pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_v_fw_fcn_cb = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":272
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":270
  *         raise ValueError("(0 <= n <= y.shape[0]) not satisifed")
  *     dop853_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
  *     dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)             # <<<<<<<<<<<<<<
  *     try:
  *         fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  */
-  __pyx_t_4 = __site_call2_272_58->Target(__site_call2_272_58, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_solout, __pyx_v_solout_extra_args);
+  __pyx_t_4 = __site_call2_270_58->Target(__site_call2_270_58, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4_dop_fw_CallbackInfo)), __pyx_v_solout, __pyx_v_solout_extra_args);
   __pyx_v_5scipy_9integrate_4_dop_dop853_solout_cb_info = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_v_fw_solout_cb = ((fw_CallbackInfo^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":273
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":271
  *     dop853_fcn_cb_info = fw_fcn_cb = fw_CallbackInfo(fcn, fcn_extra_args)
  *     dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -2460,7 +2424,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   try {
     try {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":274
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":272
  *     dop853_solout_cb_info = fw_solout_cb = fw_CallbackInfo(solout, solout_extra_args)
  *     try:
  *         fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)             # <<<<<<<<<<<<<<
@@ -2471,7 +2435,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
     } catch (System::Exception^ __pyx_lt_7) {
       System::Object^ __pyx_lt_8 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_7);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":275
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":273
  *     try:
  *         fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  *     except DopErrorCode, e:             # <<<<<<<<<<<<<<
@@ -2485,14 +2449,14 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._dop.dop853");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_7);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":276
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":274
  *         fc.dop853(&n, &dop853_fcn_cb_wrapper, &x, <fwr_dbl_t*>np.PyArray_DATA(y_), &xend, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itol, &dop853_solout_cb_wrapper, &iout, <fwr_dbl_t*>np.PyArray_DATA(work_), &lwork, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liwork, NULL, NULL, &idid)
  *     except DopErrorCode, e:
  *         fw_exctype, fw_excval, fw_exctb = e.exc             # <<<<<<<<<<<<<<
  *         raise fw_exctype, fw_excval, fw_exctb
  *     finally:
  */
-        __pyx_t_4 = __site_get_exc_276_43->Target(__site_get_exc_276_43, __pyx_v_e, __pyx_context);
+        __pyx_t_4 = __site_get_exc_274_43->Target(__site_get_exc_274_43, __pyx_v_e, __pyx_context);
         __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_t_4, 3)));
         __pyx_t_1 = __pyx_t_9[0];
         __pyx_t_10 = __pyx_t_9[1];
@@ -2506,7 +2470,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
         __pyx_v_fw_exctb = __pyx_t_11;
         __pyx_t_11 = nullptr;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":277
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":275
  *     except DopErrorCode, e:
  *         fw_exctype, fw_excval, fw_exctb = e.exc
  *         raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
@@ -2523,7 +2487,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
     }
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":279
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":277
  *         raise fw_exctype, fw_excval, fw_exctb
  *     finally:
  *         dop853_fcn_cb_info = None             # <<<<<<<<<<<<<<
@@ -2534,7 +2498,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
     __pyx_v_5scipy_9integrate_4_dop_dop853_fcn_cb_info = ((fw_CallbackInfo^)nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":280
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":278
  *     finally:
  *         dop853_fcn_cb_info = None
  *     return (x, y_, iwork_, idid,)             # <<<<<<<<<<<<<<
@@ -2555,7 +2519,7 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":284
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":282
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -2589,7 +2553,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_v_result = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":287
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":285
  *                                   np.npy_intp * coerced_shape,
  *                                   bint copy, bint create, int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST             # <<<<<<<<<<<<<<
@@ -2598,7 +2562,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_flags = (NPY_F_CONTIGUOUS | NPY_FORCECAST);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":292
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":290
  *     cdef int in_ndim
  *     cdef int i
  *     if value is None:             # <<<<<<<<<<<<<<
@@ -2608,7 +2572,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_1 = (__pyx_v_value == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":293
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":291
  *     cdef int i
  *     if value is None:
  *         if create:             # <<<<<<<<<<<<<<
@@ -2617,7 +2581,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_create) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":294
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":292
  *     if value is None:
  *         if create:
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)             # <<<<<<<<<<<<<<
@@ -2634,7 +2598,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":296
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":294
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
  *         else:
  *             raise TypeError('Expected array but None provided')             # <<<<<<<<<<<<<<
@@ -2642,7 +2606,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         if ndim <= 1:
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-      __pyx_t_3 = __site_call1_296_27->Target(__site_call1_296_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
+      __pyx_t_3 = __site_call1_294_27->Target(__site_call1_294_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -2652,7 +2616,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":298
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":296
  *             raise TypeError('Expected array but None provided')
  *     else:
  *         if ndim <= 1:             # <<<<<<<<<<<<<<
@@ -2662,7 +2626,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     __pyx_t_1 = (__pyx_v_ndim <= 1);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":300
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":298
  *         if ndim <= 1:
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -2674,7 +2638,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L5:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":301
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":299
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and             # <<<<<<<<<<<<<<
@@ -2686,11 +2650,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
       __pyx_t_4 = (__pyx_v_alignment > 1);
       if (__pyx_t_4) {
         __pyx_t_3 = PyArray_Check(__pyx_v_value); 
-        __pyx_t_5 = __site_istrue_301_59->Target(__site_istrue_301_59, __pyx_t_3);
+        __pyx_t_5 = __site_istrue_299_59->Target(__site_istrue_299_59, __pyx_t_3);
         __pyx_t_3 = nullptr;
         if (__pyx_t_5) {
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":302
+          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":300
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):             # <<<<<<<<<<<<<<
@@ -2715,7 +2679,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":304
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":302
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
  *             # mis-aligned array
  *             copy = True             # <<<<<<<<<<<<<<
@@ -2727,7 +2691,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":305
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":303
  *             # mis-aligned array
  *             copy = True
  *         if copy:             # <<<<<<<<<<<<<<
@@ -2736,7 +2700,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_copy) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":306
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":304
  *             copy = True
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY             # <<<<<<<<<<<<<<
@@ -2748,7 +2712,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L7:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":307
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":305
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)             # <<<<<<<<<<<<<<
@@ -2768,7 +2732,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":308
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":306
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)             # <<<<<<<<<<<<<<
@@ -2776,11 +2740,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  */
   __pyx_t_8 = PyArray_NDIM(__pyx_v_result); 
-  __pyx_t_9 = __site_cvt_cvt_int_308_29->Target(__site_cvt_cvt_int_308_29, __pyx_t_8);
+  __pyx_t_9 = __site_cvt_cvt_int_306_29->Target(__site_cvt_cvt_int_306_29, __pyx_t_8);
   __pyx_t_8 = nullptr;
   __pyx_v_in_ndim = __pyx_t_9;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":309
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":307
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:             # <<<<<<<<<<<<<<
@@ -2790,7 +2754,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_4 = (__pyx_v_in_ndim > __pyx_v_ndim);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":310
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":308
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)             # <<<<<<<<<<<<<<
@@ -2799,9 +2763,9 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
     __pyx_t_2 = __pyx_v_ndim;
-    __pyx_t_3 = __site_op_mod_310_60->Target(__site_op_mod_310_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
+    __pyx_t_3 = __site_op_mod_308_60->Target(__site_op_mod_308_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
     __pyx_t_2 = nullptr;
-    __pyx_t_2 = __site_call1_310_24->Target(__site_call1_310_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
+    __pyx_t_2 = __site_call1_308_24->Target(__site_call1_308_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
     __pyx_t_8 = nullptr;
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
@@ -2810,7 +2774,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":311
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":309
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)             # <<<<<<<<<<<<<<
@@ -2819,7 +2783,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_in_shape = PyArray_DIMS(__pyx_v_result);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":312
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":310
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):             # <<<<<<<<<<<<<<
@@ -2830,7 +2794,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":313
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":311
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]             # <<<<<<<<<<<<<<
@@ -2840,7 +2804,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = (__pyx_v_in_shape[__pyx_v_i]);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":314
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":312
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]
  *     for i in range(in_ndim, ndim):             # <<<<<<<<<<<<<<
@@ -2851,7 +2815,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = __pyx_v_in_ndim; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":316
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":314
  *     for i in range(in_ndim, ndim):
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1             # <<<<<<<<<<<<<<
@@ -2861,7 +2825,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = 1;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":317
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":315
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1
  *     return result             # <<<<<<<<<<<<<<
@@ -2876,7 +2840,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":246
+/* "../cython/include\numpy.pxd":247
  * ctypedef npy_cdouble     complex_t
  * 
  * cdef inline object PyUFunc_FromFuncAndData(NpyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
@@ -2888,7 +2852,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunc
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":249
+  /* "../cython/include\numpy.pxd":250
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -2905,7 +2869,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunc
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":251
+/* "../cython/include\numpy.pxd":252
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_DescrFromType(int typenum):             # <<<<<<<<<<<<<<
@@ -2917,7 +2881,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":252
+  /* "../cython/include\numpy.pxd":253
  * 
  * cdef inline object PyArray_DescrFromType(int typenum):
  *     return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))             # <<<<<<<<<<<<<<
@@ -2934,7 +2898,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":255
+/* "../cython/include\numpy.pxd":256
  * 
  * 
  * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -2956,7 +2920,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":256
+  /* "../cython/include\numpy.pxd":257
  * 
  * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -2967,7 +2931,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":258
+  /* "../cython/include\numpy.pxd":259
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -2978,22 +2942,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":259
+    /* "../cython/include\numpy.pxd":260
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_259_18->Target(__site_get_append_259_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_260_18->Target(__site_get_append_260_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_259_25->Target(__site_call1_259_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_260_25->Target(__site_call1_260_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":260
+  /* "../cython/include\numpy.pxd":261
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -3004,21 +2968,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":261
+  /* "../cython/include\numpy.pxd":262
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_261_16->Target(__site_get_zeros_261_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_zeros_262_16->Target(__site_get_zeros_262_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_261_22->Target(__site_call3_261_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_262_22->Target(__site_call3_262_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -3031,7 +2995,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":263
+/* "../cython/include\numpy.pxd":264
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -3053,7 +3017,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":264
+  /* "../cython/include\numpy.pxd":265
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -3064,7 +3028,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":266
+  /* "../cython/include\numpy.pxd":267
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -3075,22 +3039,22 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":267
+    /* "../cython/include\numpy.pxd":268
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_267_18->Target(__site_get_append_267_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_268_18->Target(__site_get_append_268_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_267_25->Target(__site_call1_267_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_268_25->Target(__site_call1_268_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":268
+  /* "../cython/include\numpy.pxd":269
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -3101,21 +3065,21 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":269
+  /* "../cython/include\numpy.pxd":270
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
  */
-  __pyx_t_5 = __site_get_empty_269_16->Target(__site_get_empty_269_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_empty_270_16->Target(__site_get_empty_270_16, __pyx_v_numpy, __pyx_context);
   __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_269_22->Target(__site_call3_269_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_270_22->Target(__site_call3_270_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -3128,7 +3092,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":271
+/* "../cython/include\numpy.pxd":272
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):             # <<<<<<<<<<<<<<
@@ -3149,7 +3113,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":272
+  /* "../cython/include\numpy.pxd":273
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -3160,7 +3124,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":274
+  /* "../cython/include\numpy.pxd":275
  *     shape_list = []
  *     cdef int i
  *     for i in range(nd):             # <<<<<<<<<<<<<<
@@ -3171,22 +3135,22 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":275
+    /* "../cython/include\numpy.pxd":276
  *     cdef int i
  *     for i in range(nd):
  *         shape_list.append(dims[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_275_18->Target(__site_get_append_275_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_276_18->Target(__site_get_append_276_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_dims[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_275_25->Target(__site_call1_275_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_276_25->Target(__site_call1_276_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":276
+  /* "../cython/include\numpy.pxd":277
  *     for i in range(nd):
  *         shape_list.append(dims[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -3197,20 +3161,20 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":277
+  /* "../cython/include\numpy.pxd":278
  *         shape_list.append(dims[i])
  *     import numpy
  *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_5 = __site_get_empty_277_16->Target(__site_get_empty_277_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_empty_278_16->Target(__site_get_empty_278_16, __pyx_v_numpy, __pyx_context);
   if (__pyx_v_fortran) {
     __pyx_t_4 = "F";
   } else {
     __pyx_t_4 = "C";
   }
-  __pyx_t_1 = __site_call3_277_22->Target(__site_call3_277_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), ((System::Object^)__pyx_v_descr), ((System::Object^)__pyx_t_4));
+  __pyx_t_1 = __site_call3_278_22->Target(__site_call3_278_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), ((System::Object^)__pyx_v_descr), ((System::Object^)__pyx_t_4));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_r = __pyx_t_1;
@@ -3222,7 +3186,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":280
+/* "../cython/include\numpy.pxd":281
  * 
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
@@ -3234,7 +3198,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":281
+  /* "../cython/include\numpy.pxd":282
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -3247,7 +3211,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":282
+  /* "../cython/include\numpy.pxd":283
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -3260,12 +3224,12 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":283
+  /* "../cython/include\numpy.pxd":284
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
  * 
- * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
  */
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj)); 
   __pyx_r = __pyx_t_1;
@@ -3277,8 +3241,37 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":285
+/* "../cython/include\numpy.pxd":286
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
+ * 
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_array(NpyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL))
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":287
+ * 
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
+ *     return Npy_INTERFACE_array(NpyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL))             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ */
+  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(NULL, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, NULL, __pyx_v_data, 0, NPY_CARRAY, NULL)); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":289
+ *     return Npy_INTERFACE_array(NpyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL))
  * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
  *      # XXX "long long" is wrong type
@@ -3290,15 +3283,15 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":287
+  /* "../cython/include\numpy.pxd":291
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
  *      # XXX "long long" is wrong type
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
  * 
  * cdef inline void* PyArray_DATA(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_287_54->Target(__site_get_Array_287_54, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_287_54->Target(__site_cvt_cvt_PY_LONG_LONG_287_54, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_291_54->Target(__site_get_Array_291_54, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_291_54->Target(__site_cvt_cvt_PY_LONG_LONG_291_54, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
   goto __pyx_L0;
@@ -3308,7 +3301,7 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":289
+/* "../cython/include\numpy.pxd":293
  *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n) nogil:             # <<<<<<<<<<<<<<
@@ -3321,15 +3314,15 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":291
+  /* "../cython/include\numpy.pxd":295
  * cdef inline void* PyArray_DATA(ndarray n) nogil:
  *     # XXX "long long" is wrong type
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_291_49->Target(__site_get_Array_291_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_291_49->Target(__site_cvt_cvt_PY_LONG_LONG_291_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_295_49->Target(__site_get_Array_295_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_295_49->Target(__site_cvt_cvt_PY_LONG_LONG_295_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -3339,7 +3332,7 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":293
+/* "../cython/include\numpy.pxd":297
  *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:             # <<<<<<<<<<<<<<
@@ -3352,15 +3345,15 @@ static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":295
+  /* "../cython/include\numpy.pxd":299
  * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
  *     # XXX "long long" is wrong type
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  */
-  __pyx_t_1 = __site_get_Array_295_49->Target(__site_get_Array_295_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_295_49->Target(__site_cvt_cvt_PY_LONG_LONG_295_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_299_49->Target(__site_get_Array_299_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_299_49->Target(__site_cvt_cvt_PY_LONG_LONG_299_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -3370,7 +3363,7 @@ static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":297
+/* "../cython/include\numpy.pxd":301
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):             # <<<<<<<<<<<<<<
@@ -3383,15 +3376,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^ __p
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":298
+  /* "../cython/include\numpy.pxd":302
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):
  */
-  __pyx_t_1 = __site_get_Array_298_47->Target(__site_get_Array_298_47, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_298_47->Target(__site_cvt_cvt_PY_LONG_LONG_298_47, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_302_47->Target(__site_get_Array_302_47, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_302_47->Target(__site_cvt_cvt_PY_LONG_LONG_302_47, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIM(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_dim);
   goto __pyx_L0;
@@ -3401,7 +3394,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^ __p
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":300
+/* "../cython/include\numpy.pxd":304
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):             # <<<<<<<<<<<<<<
@@ -3413,14 +3406,14 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^ __pyx_v_
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":301
+  /* "../cython/include\numpy.pxd":305
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  */
-  __pyx_t_1 = __site_get_ndim_301_14->Target(__site_get_ndim_301_14, ((System::Object^)__pyx_v_obj), __pyx_context);
+  __pyx_t_1 = __site_get_ndim_305_14->Target(__site_get_ndim_305_14, ((System::Object^)__pyx_v_obj), __pyx_context);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -3430,7 +3423,7 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^ __pyx_v_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":303
+/* "../cython/include\numpy.pxd":307
  *     return obj.ndim
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
@@ -3443,15 +3436,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":305
+  /* "../cython/include\numpy.pxd":309
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  *     # XXX "long long" is wrong type
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
  * 
- * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_305_49->Target(__site_get_Array_305_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_305_49->Target(__site_cvt_cvt_PY_LONG_LONG_305_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_309_49->Target(__site_get_Array_309_49, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_309_49->Target(__site_cvt_cvt_PY_LONG_LONG_309_49, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -3461,8 +3454,39 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":307
+/* "../cython/include\numpy.pxd":311
  *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ * 
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)
+ * 
+ */
+
+static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
+  npy_intp __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "../cython/include\numpy.pxd":312
+ * 
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_312_51->Target(__site_get_Array_312_51, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_312_51->Target(__site_cvt_cvt_PY_LONG_LONG_312_51, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_NBYTES(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":314
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)
  * 
  * cdef inline NpyArray *PyArray_ARRAY(ndarray n):             # <<<<<<<<<<<<<<
  *     # XXX "long long" is wrong type
@@ -3474,15 +3498,15 @@ static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^ __pyx_v_n) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":309
+  /* "../cython/include\numpy.pxd":316
  * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
  *     # XXX "long long" is wrong type
  *     return <NpyArray*> <long long>n.Array             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Return(ndarray arr):
  */
-  __pyx_t_1 = __site_get_Array_309_35->Target(__site_get_Array_309_35, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_309_35->Target(__site_cvt_cvt_PY_LONG_LONG_309_35, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_316_35->Target(__site_get_Array_316_35, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_316_35->Target(__site_cvt_cvt_PY_LONG_LONG_316_35, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = ((NpyArray *)((PY_LONG_LONG)__pyx_t_2));
   goto __pyx_L0;
@@ -3492,7 +3516,7 @@ static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":311
+/* "../cython/include\numpy.pxd":318
  *     return <NpyArray*> <long long>n.Array
  * 
  * cdef inline object PyArray_Return(ndarray arr):             # <<<<<<<<<<<<<<
@@ -3507,7 +3531,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
   int __pyx_t_2;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":312
+  /* "../cython/include\numpy.pxd":319
  * 
  * cdef inline object PyArray_Return(ndarray arr):
  *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
@@ -3518,7 +3542,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":313
+  /* "../cython/include\numpy.pxd":320
  * cdef inline object PyArray_Return(ndarray arr):
  *     import NumpyDotNet.ndarray
  *     if arr is None:             # <<<<<<<<<<<<<<
@@ -3528,7 +3552,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
   __pyx_t_2 = (((System::Object^)__pyx_v_arr) == nullptr);
   if (__pyx_t_2) {
 
-    /* "../cython/include\numpy.pxd":314
+    /* "../cython/include\numpy.pxd":321
  *     import NumpyDotNet.ndarray
  *     if arr is None:
  *         return None             # <<<<<<<<<<<<<<
@@ -3541,7 +3565,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":315
+  /* "../cython/include\numpy.pxd":322
  *     if arr is None:
  *         return None
  *     return ArrayReturn(arr)             # <<<<<<<<<<<<<<
@@ -3558,7 +3582,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":317
+/* "../cython/include\numpy.pxd":324
  *     return ArrayReturn(arr)
  * 
  * cdef inline object NpyArray_Return(NpyArray *arr):             # <<<<<<<<<<<<<<
@@ -3572,7 +3596,7 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_v_ret = nullptr;
 
-  /* "../cython/include\numpy.pxd":318
+  /* "../cython/include\numpy.pxd":325
  * 
  * cdef inline object NpyArray_Return(NpyArray *arr):
  *     ret = Npy_INTERFACE_array(arr)             # <<<<<<<<<<<<<<
@@ -3583,7 +3607,7 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
   __pyx_v_ret = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":319
+  /* "../cython/include\numpy.pxd":326
  * cdef inline object NpyArray_Return(NpyArray *arr):
  *     ret = Npy_INTERFACE_array(arr)
  *     Npy_DECREF(arr)             # <<<<<<<<<<<<<<
@@ -3592,7 +3616,7 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
  */
   Npy_DECREF(__pyx_v_arr);
 
-  /* "../cython/include\numpy.pxd":320
+  /* "../cython/include\numpy.pxd":327
  *     ret = Npy_INTERFACE_array(arr)
  *     Npy_DECREF(arr)
  *     return ret             # <<<<<<<<<<<<<<
@@ -3607,7 +3631,7 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":322
+/* "../cython/include\numpy.pxd":329
  *     return ret
  * 
  * cdef inline int PyDataType_TYPE_NUM(dtype t):             # <<<<<<<<<<<<<<
@@ -3620,15 +3644,15 @@ static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^ __pyx_v_t) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":323
+  /* "../cython/include\numpy.pxd":330
  * 
  * cdef inline int PyDataType_TYPE_NUM(dtype t):
  *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  */
-  __pyx_t_1 = __site_get_Dtype_323_62->Target(__site_get_Dtype_323_62, ((System::Object^)__pyx_v_t), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_323_62->Target(__site_cvt_cvt_PY_LONG_LONG_323_62, __pyx_t_1);
+  __pyx_t_1 = __site_get_Dtype_330_62->Target(__site_get_Dtype_330_62, ((System::Object^)__pyx_v_t), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_330_62->Target(__site_cvt_cvt_PY_LONG_LONG_330_62, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyDataType_TYPE_NUM(((NpyArray_Descr *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -3638,7 +3662,7 @@ static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^ __pyx_v_t) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":325
+/* "../cython/include\numpy.pxd":332
  *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -3655,7 +3679,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":326
+  /* "../cython/include\numpy.pxd":333
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -3666,7 +3690,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":327
+  /* "../cython/include\numpy.pxd":334
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -3677,17 +3701,17 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":328
+  /* "../cython/include\numpy.pxd":335
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __site_get_NpyArray_328_22->Target(__site_get_NpyArray_328_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_FromAny_328_31->Target(__site_get_FromAny_328_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_335_22->Target(__site_get_NpyArray_335_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_335_31->Target(__site_get_FromAny_335_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_328_39->Target(__site_call6_328_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_335_39->Target(__site_call6_335_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -3698,7 +3722,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":331
+/* "../cython/include\numpy.pxd":338
  * 
  * 
  * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):             # <<<<<<<<<<<<<<
@@ -3712,7 +3736,7 @@ static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^ __py
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
 
-  /* "../cython/include\numpy.pxd":333
+  /* "../cython/include\numpy.pxd":340
  * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):
  *     return PyArray_FromAny(op, descr, min_depth, max_depth,
  *                            NPY_ENSURECOPY | NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -3733,7 +3757,7 @@ static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^ __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":336
+/* "../cython/include\numpy.pxd":343
  * 
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -3748,7 +3772,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":337
+  /* "../cython/include\numpy.pxd":344
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -3756,13 +3780,13 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
-  __pyx_t_2 = __site_op_and_337_13->Target(__site_op_and_337_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_2 = __site_op_and_344_13->Target(__site_op_and_344_13, __pyx_v_flags, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_337_13->Target(__site_istrue_337_13, __pyx_t_2);
+  __pyx_t_3 = __site_istrue_344_13->Target(__site_istrue_344_13, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":338
+    /* "../cython/include\numpy.pxd":345
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -3770,7 +3794,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  * 
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
-    __pyx_t_1 = __site_op_ior_338_14->Target(__site_op_ior_338_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_1 = __site_op_ior_345_14->Target(__site_op_ior_345_14, __pyx_v_flags, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_flags = __pyx_t_1;
     __pyx_t_1 = nullptr;
@@ -3778,14 +3802,14 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":339
+  /* "../cython/include\numpy.pxd":346
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  */
-  __pyx_t_4 = __site_cvt_cvt_int_339_77->Target(__site_cvt_cvt_int_339_77, __pyx_v_type);
+  __pyx_t_4 = __site_cvt_cvt_int_346_77->Target(__site_cvt_cvt_int_346_77, __pyx_v_type);
   __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
   __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
   __pyx_t_1 = nullptr;
@@ -3798,7 +3822,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":341
+/* "../cython/include\numpy.pxd":348
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):             # <<<<<<<<<<<<<<
@@ -3814,17 +3838,17 @@ static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":342
+  /* "../cython/include\numpy.pxd":349
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,             # <<<<<<<<<<<<<<
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
  */
-  __pyx_t_1 = __site_cvt_cvt_int_342_78->Target(__site_cvt_cvt_int_342_78, __pyx_v_type);
+  __pyx_t_1 = __site_cvt_cvt_int_349_78->Target(__site_cvt_cvt_int_349_78, __pyx_v_type);
   __pyx_t_2 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_1)); 
 
-  /* "../cython/include\numpy.pxd":343
+  /* "../cython/include\numpy.pxd":350
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -3846,7 +3870,7 @@ static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":345
+/* "../cython/include\numpy.pxd":352
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -3863,7 +3887,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":346
+  /* "../cython/include\numpy.pxd":353
  * 
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -3874,7 +3898,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":347
+  /* "../cython/include\numpy.pxd":354
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -3885,17 +3909,17 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":348
+  /* "../cython/include\numpy.pxd":355
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Check(obj):
  */
-  __pyx_t_1 = __site_get_NpyArray_348_22->Target(__site_get_NpyArray_348_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_CheckFromAny_348_31->Target(__site_get_CheckFromAny_348_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_355_22->Target(__site_get_NpyArray_355_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_CheckFromAny_355_31->Target(__site_get_CheckFromAny_355_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_348_44->Target(__site_call6_348_44, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_355_44->Target(__site_call6_355_44, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -3906,7 +3930,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":350
+/* "../cython/include\numpy.pxd":357
  *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -3922,7 +3946,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_3 = nullptr;
   __pyx_v_np = nullptr;
 
-  /* "../cython/include\numpy.pxd":351
+  /* "../cython/include\numpy.pxd":358
  * 
  * cdef inline object PyArray_Check(obj):
  *     import numpy as np             # <<<<<<<<<<<<<<
@@ -3933,7 +3957,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   __pyx_v_np = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":352
+  /* "../cython/include\numpy.pxd":359
  * cdef inline object PyArray_Check(obj):
  *     import numpy as np
  *     return isinstance(obj, np.ndarray)             # <<<<<<<<<<<<<<
@@ -3941,8 +3965,8 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline void import_array():
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_get_ndarray_352_29->Target(__site_get_ndarray_352_29, __pyx_v_np, __pyx_context);
-  __pyx_t_3 = __site_call2_352_21->Target(__site_call2_352_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
+  __pyx_t_2 = __site_get_ndarray_359_29->Target(__site_get_ndarray_359_29, __pyx_v_np, __pyx_context);
+  __pyx_t_3 = __site_call2_359_21->Target(__site_call2_359_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_3;
@@ -3954,7 +3978,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":354
+/* "../cython/include\numpy.pxd":361
  *     return isinstance(obj, np.ndarray)
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -3966,7 +3990,7 @@ static CYTHON_INLINE void import_array(void) {
 
 }
 
-/* "../cython/include\numpy.pxd":357
+/* "../cython/include\numpy.pxd":364
  *     pass
  * 
  * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
@@ -3987,7 +4011,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":358
+  /* "../cython/include\numpy.pxd":365
  * 
  * cdef inline PyNumber_Check(o):
  *     import clr             # <<<<<<<<<<<<<<
@@ -3998,7 +4022,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":359
+  /* "../cython/include\numpy.pxd":366
  * cdef inline PyNumber_Check(o):
  *     import clr
  *     import NumpyDotNet.ScalarGeneric             # <<<<<<<<<<<<<<
@@ -4008,7 +4032,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":360
+  /* "../cython/include\numpy.pxd":367
  *     import clr
  *     import NumpyDotNet.ScalarGeneric
  *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)             # <<<<<<<<<<<<<<
@@ -4021,15 +4045,15 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
   __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_call2_360_21->Target(__site_call2_360_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
+  __pyx_t_4 = __site_call2_367_21->Target(__site_call2_367_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
   __pyx_t_1 = nullptr;
   __pyx_t_5 = nullptr;
-  __pyx_t_6 = __site_cvt_bool_360_45->Target(__site_cvt_bool_360_45, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_bool_367_45->Target(__site_cvt_bool_367_45, __pyx_t_4);
   if (!__pyx_t_6) {
     __pyx_t_4 = nullptr;
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-    __pyx_t_1 = __site_get_ScalarGeneric_360_73->Target(__site_get_ScalarGeneric_360_73, __pyx_v_NumpyDotNet, __pyx_context);
-    __pyx_t_3 = __site_call2_360_58->Target(__site_call2_360_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
+    __pyx_t_1 = __site_get_ScalarGeneric_367_73->Target(__site_get_ScalarGeneric_367_73, __pyx_v_NumpyDotNet, __pyx_context);
+    __pyx_t_3 = __site_call2_367_58->Target(__site_call2_367_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
     __pyx_t_5 = nullptr;
     __pyx_t_1 = nullptr;
     __pyx_t_1 = __pyx_t_3;
@@ -4065,111 +4089,108 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_set___cbInfo_27_12 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeSetAction(__pyx_context, "__cbInfo"));
-  __site_get___cbInfo_30_19 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "__cbInfo", false));
-  __site_call2_63_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_65_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_69_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_PyArray_NBYTES_70_45 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_NBYTES", false));
-  __site_call1_70_60 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_int_70_60 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_exc_info_74_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_74_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call1_75_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call7_93_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(7)));
+  __site_set___cbInfo_28_12 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeSetAction(__pyx_context, "__cbInfo"));
+  __site_get_exc_29_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc", false));
+  __site_set_exc_29_12 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeSetAction(__pyx_context, "exc"));
+  __site_call2_61_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_63_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_67_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_72_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_72_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call1_73_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call7_91_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(7)));
+  __site_cvt_cvt_fwi_integer_t_91_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call7_ARGS_93_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
   __site_cvt_cvt_fwi_integer_t_93_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call7_ARGS_95_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_cvt_cvt_fwi_integer_t_95_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_exc_info_99_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_99_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call1_100_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_fwr_dbl_t_102_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwr_dbl_t_102_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_102_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_exc_info_97_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_97_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call1_98_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_fwr_dbl_t_100_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwr_dbl_t_100_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_100_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_143_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_145_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_147_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_149_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_151_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_153_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_154_52 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_155_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_exc_159_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc", false));
-  __site_call2_180_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_182_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_186_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_PyArray_NBYTES_187_45 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_NBYTES", false));
-  __site_call1_187_60 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_int_187_60 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_exc_info_191_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_191_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call1_192_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call7_210_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(7)));
+  __site_call2_152_52 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_153_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_exc_157_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc", false));
+  __site_call2_178_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_180_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_184_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_189_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_189_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call1_190_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call7_208_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(7)));
+  __site_cvt_cvt_fwi_integer_t_208_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_call7_ARGS_210_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
   __site_cvt_cvt_fwi_integer_t_210_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_call7_ARGS_212_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_cvt_cvt_fwi_integer_t_212_35 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_exc_info_216_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_216_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call1_217_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_fwr_dbl_t_220_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwr_dbl_t_220_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_220_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_exc_info_214_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_214_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call1_215_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_fwr_dbl_t_218_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwr_dbl_t_218_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_218_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_260_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_262_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_264_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_266_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_268_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_270_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_271_52 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_272_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_exc_276_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc", false));
-  __site_call1_296_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_301_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_308_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mod_310_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_310_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_append_259_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_259_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_261_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_261_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_append_267_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_267_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_empty_269_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
-  __site_call3_269_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_append_275_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_275_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_empty_277_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
-  __site_call3_277_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_287_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_287_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_291_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_291_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_call2_269_52 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_270_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_exc_274_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc", false));
+  __site_call1_294_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_299_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_306_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_308_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_308_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_append_260_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_260_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_262_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_262_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_268_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_268_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_270_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_270_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_276_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_276_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_278_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_278_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_291_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_291_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
   __site_get_Array_295_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
   __site_cvt_cvt_PY_LONG_LONG_295_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_298_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_298_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_ndim_301_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
-  __site_get_Array_305_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_305_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_309_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_309_35 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Dtype_323_62 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Dtype", false));
-  __site_cvt_cvt_PY_LONG_LONG_323_62 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_328_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_FromAny_328_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
-  __site_call6_328_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_op_and_337_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_istrue_337_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ior_338_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
-  __site_cvt_cvt_int_339_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_342_78 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_348_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_CheckFromAny_348_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CheckFromAny", false));
-  __site_call6_348_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_get_ndarray_352_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
-  __site_call2_352_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_360_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_cvt_bool_360_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_ScalarGeneric_360_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
-  __site_call2_360_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_Array_299_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_299_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_302_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_302_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ndim_305_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_get_Array_309_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_309_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_312_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_312_51 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_316_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_316_35 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Dtype_330_62 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Dtype", false));
+  __site_cvt_cvt_PY_LONG_LONG_330_62 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_335_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_335_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_335_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_344_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_344_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_345_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_cvt_int_346_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_349_78 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_355_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_CheckFromAny_355_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CheckFromAny", false));
+  __site_call6_355_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_get_ndarray_359_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_call2_359_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_367_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_cvt_bool_367_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ScalarGeneric_367_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
+  __site_call2_367_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -4197,7 +4218,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_3 = nullptr;
   System::Object^ __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":19
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":16
+ * 
+ * cimport numpy as np
+ * import numpy as np             # <<<<<<<<<<<<<<
+ * from fwrap_ktp cimport *
+ * cimport _dop_fc as fc
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "numpy", -1));
+  PythonOps::SetGlobal(__pyx_context, "np", __pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":20
  * cimport _dop_fc as fc
  * 
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -4206,7 +4238,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":20
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":21
  * 
  * np.import_array()
  * import sys             # <<<<<<<<<<<<<<
@@ -4217,7 +4249,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "sys", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":25
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":26
  *     void *memcpy(void *dest, void *src, int n)
  * 
  * class DopErrorCode(Exception):             # <<<<<<<<<<<<<<
@@ -4235,36 +4267,23 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_t_1 = PythonOps::MakeClass(func_code_DopErrorCode, nullptr, __pyx_context, "DopErrorCode", bases_DopErrorCode, "");
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":26
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":27
  * 
  * class DopErrorCode(Exception):
  *     def __init__(self, callbackInfo):             # <<<<<<<<<<<<<<
  *         self.__cbInfo = callbackInfo
- * 
+ *         self.exc = callbackInfo.exc
  */
   __pyx_t_3 = dict["__pyx_pf_5scipy_9integrate_4_dop_12DopErrorCode___init__"];
   __pyx_t_4 = gcnew Method(__pyx_t_3, nullptr, __pyx_t_1);
   __pyx_t_3 = nullptr;
   PythonOps::SetAttr(__pyx_context, __pyx_t_1, "__init__", __pyx_t_4);
   __pyx_t_4 = nullptr;
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":29
- *         self.__cbInfo = callbackInfo
- * 
- *     def callbackInfo(self):             # <<<<<<<<<<<<<<
- *         return self.__cbInfo
- * 
- */
-  __pyx_t_4 = dict["__pyx_pf_5scipy_9integrate_4_dop_12DopErrorCode_callbackInfo"];
-  __pyx_t_3 = gcnew Method(__pyx_t_4, nullptr, __pyx_t_1);
-  __pyx_t_4 = nullptr;
-  PythonOps::SetAttr(__pyx_context, __pyx_t_1, "callbackInfo", __pyx_t_3);
-  __pyx_t_3 = nullptr;
   PythonOps::SetGlobal(__pyx_context, "DopErrorCode", __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":48
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":46
  * 
  * 
  * __all__ = ['dopri5', 'dop853']             # <<<<<<<<<<<<<<
@@ -4284,7 +4303,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
   __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":357
+  /* "../cython/include\numpy.pxd":364
  *     pass
  * 
  * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
