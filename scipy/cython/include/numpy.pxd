@@ -24,6 +24,7 @@ ctypedef npy_float32    float32_t
 ctypedef npy_float64    float64_t
 
 ctypedef void (*NpyUFuncGenericFunction) (char **, npy_intp *, npy_intp *, void *)
+ctypedef NpyUFuncGenericFunction PyUFuncGenericFunction
 
 cdef extern from "":
     ctypedef class numpy.ndarray [clr "NumpyDotNet::ndarray"]:
@@ -185,7 +186,6 @@ cdef extern from "npy_defs.h":
     cdef enum:
         NPY_MAXDIMS
 
-    ctypedef Py_ssize_t npy_intp
     ctypedef struct NpyArray:
         pass
 
