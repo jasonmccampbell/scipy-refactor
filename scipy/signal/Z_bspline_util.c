@@ -1,11 +1,11 @@
-#include "Python.h"
 #include <math.h>
 #include <stddef.h>
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+
 #define NO_IMPORT_ARRAY
-#include "numpy/arrayobject.h"
+#include "npy_defs.h"
 
 void compute_root_from_lambda(double, double *, double *);
 

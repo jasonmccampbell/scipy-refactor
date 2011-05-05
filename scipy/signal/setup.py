@@ -8,9 +8,9 @@ def configuration(parent_package='',top_path=None):
     config.add_data_dir('tests')
 
     config.add_extension('sigtools',
-                         sources=['sigtoolsmodule.c',
-                                  'firfilter.c','medianfilter.c', 'lfilter.c.src',
-                                  'correlate_nd.c.src'],
+                         sources=['sigtoolsmodule.c', 'sigtools.c',
+                                  'firfilter.c','medianfilter.c',
+                                  'lfilter.c.src', 'correlate_nd.c.src'],
                          depends = ['sigtools.h'],
                          include_dirs=['.']
     )

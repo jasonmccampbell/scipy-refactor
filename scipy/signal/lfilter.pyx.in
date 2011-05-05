@@ -1,0 +1,405 @@
+
+# if PY_VERSION_HEX >= 0x03000000
+# define PyNumber_Divide PyNumber_TrueDivide
+# endif
+
+cimport numpy as np
+np.import_array()
+
+cdef extern from "stdlib.h":
+    void free(void *ptr)
+    void *malloc(size_t size)
+
+cdef extern from "string.h":
+    int memcmp(void *s1, void *s2, size_t n)
+    void *memset(void *b, int c, size_t len)
+
+cdef extern from "sigtools.h":
+    np.PyArray_CopySwapFunc ARRAY_COPYSWAP_FUNC(np.NpyArray *arr)
+
+cdef extern from "iterhelper.h":
+     ctypedef void *PYOBJPTRPTR
+     object READOBJECT(PYOBJPTRPTR ptr)
+     void ASSIGNOBJECT(PYOBJPTRPTR ptr, obj)
+
+ctypedef void (*BasicFilterFunction) (char *, char *,  char *, char *, char *,
+                                      np.npy_intp, np.npy_uintp, np.npy_intp,
+                                      np.npy_intp)
+
+cdef BasicFilterFunction get_filter_function(int typenum):
+    if typenum == np.npy_NPY_FLOAT:
+        return <BasicFilterFunction>FLOAT_filt
+    elif typenum == np.npy_NPY_DOUBLE:
+        return <BasicFilterFunction>DOUBLE_filt
+    elif typenum == np.npy_NPY_LONGDOUBLE:
+        return <BasicFilterFunction>EXTENDED_filt
+    elif typenum == np.npy_NPY_CFLOAT:
+        return <BasicFilterFunction>CFLOAT_filt
+    elif typenum == np.npy_NPY_CDOUBLE:
+        return <BasicFilterFunction>CDOUBLE_filt
+    elif typenum == np.npy_NPY_CLONGDOUBLE:
+        return <BasicFilterFunction>CEXTENDED_filt
+    #elif typenum == np.npy_NPY_OBJECT:
+    #    return <BasicFilterFunction>OBJECT_filt
+    
+    return NULL
+
+
+# XXX: Error checking not done yet
+def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
+                                        np.ndarray X, int axis=-1,
+                                        np.ndarray Vi=None):
+    cdef np.ndarray ara, arb, arX, arY, arVf, arVi
+    cdef int theaxis, st
+    cdef char *ara_ptr, input_flag = 0, *azero
+    cdef np.npy_intp na, nb, nal
+    cdef BasicFilterFunction basic_filter
+    cdef np.dtype type
+
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))
+    type = np.NpyArray_FindArrayType_2args(a, type)
+    type = np.NpyArray_FindArrayType_2args(X, type)
+    if Vi is not None:
+        type = np.NpyArray_FindArrayType_2args(Vi, type)
+
+    ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+
+    if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
+        raise ValueError("selected axis is out of range")
+
+    if axis < 0:
+        theaxis = np.PyArray_NDIM(arX) + axis
+    else:
+        theaxis = axis
+
+    if Vi is not None:
+        arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+        input_flag = 1
+
+    cdef int typenum = type.num
+
+    arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)
+
+    if input_flag:
+        arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)
+
+    basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+    if basic_filter == NULL:
+        raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+
+    # Skip over leading zeros in vector representing denominator (a)
+    # XXX: handle this correctly
+    azero = <char *>np.PyArray_Zero(ara)
+    ara_ptr = <char *>np.PyArray_DATA(ara)
+    nal = np.PyArray_ITEMSIZE(ara);
+    if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
+        raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
+    
+    np.PyDataMem_FREE(azero)
+
+    na = np.PyArray_SIZE(ara)
+    nb = np.PyArray_SIZE(arb)
+    if input_flag:
+        if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:
+            raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")
+
+    st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
+    if st:
+        raise SystemError # RawFilter raised an exception
+
+    if not input_flag:
+        return np.PyArray_Return(arY)
+    else:
+        return (arY, arVf)
+
+
+## Copy the first nxzfilled items of x into xzfilled , and fill the rest with 0s
+cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfilled):
+    cdef char *xzero
+    cdef np.npy_intp i, nxl
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(x)
+
+    nxl = np.NpyArray_ITEMSIZE(x)
+    xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))
+
+    if nx > 0:
+        for i in range(nx):
+            copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
+
+    for i in range(nx, nxzfilled):
+        copyswap(xzfilled + i * nxl, xzero, 0, NULL)
+
+    np.PyDataMem_FREE(xzero)
+
+    return 0
+
+
+# a and b assumed to be contiguous
+#
+# XXX: this code is very conservative, and could be considerably sped up for
+# the usual cases (like contiguity).
+#
+# XXX: the code should be refactored (at least with/without initial
+# condition), some code is wasteful here
+cdef int RawFilter(np.ndarray b, np.ndarray a,
+          np.ndarray x, np.ndarray zi,
+          np.ndarray zf, np.ndarray y, int axis,
+          BasicFilterFunction filter_func):
+    cdef np.NpyArrayIterObject *itx, *ity, *itzi=NULL, *itzf=NULL
+    cdef np.npy_intp nitx, i, nxl, nzfl, j
+    cdef np.npy_intp na, nb, nal, nbl
+    cdef np.npy_intp nfilt
+    cdef char *azfilled, *bzfilled, *zfzfilled, *yoyo
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(np.PyArray_ARRAY(x))
+
+    itx = np.PyArray_IterAllButAxis(x, &axis)
+    if itx == NULL:
+        raise MemoryError("Could not create itx")
+    nitx = itx.size
+
+    ity = np.PyArray_IterAllButAxis(y, &axis)
+    if ity == NULL:
+        raise MemoryError("Could not create ity")
+
+    if zi is not None:
+        itzi = np.PyArray_IterAllButAxis(zi, &axis)
+        if itzi == NULL:
+            raise MemoryError("Could not create itzi")
+
+        itzf = np.PyArray_IterAllButAxis(zf, &axis)
+        if itzf == NULL:
+            raise MemoryError("Could not create itzf")
+
+    na = np.PyArray_SIZE(a)
+    nal = np.PyArray_ITEMSIZE(a)
+    nb = np.PyArray_SIZE(b)
+    nbl = np.PyArray_ITEMSIZE(b)
+
+    nfilt = na if na > nb else nb
+
+    azfilled = <char *>malloc(nal * nfilt)
+    if azfilled == NULL:
+        raise MemoryError("Could not create azfilled")
+    
+    bzfilled = <char *>malloc(nbl * nfilt)
+    if bzfilled == NULL:
+        raise MemoryError("Could not create bzfilled")
+
+    nxl = np.PyArray_ITEMSIZE(x)
+    zfzfilled = <char *>malloc(nxl * (nfilt - 1))
+    if zfzfilled == NULL:
+        raise MemoryError("Could not create zfzfilled")
+
+    # Initialize zero filled buffers to 0, so that we can use
+    # Py_XINCREF/Py_XDECREF on it for object arrays (necessary for
+    # copyswap to work correctly). Stricly speaking, it is not needed for
+    # fundamental types (as values are copied instead of pointers, without
+    # refcounts), but oh well...
+    
+    memset(<void *>azfilled, 0, nal * nfilt)
+    memset(<void *>bzfilled, 0, nbl * nfilt)
+    memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
+
+    zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)
+    zfill(np.PyArray_ARRAY(b), nb, bzfilled, nfilt)
+
+    # XXX: Check that zf and zi have same type ?
+    if zf is not None:
+        nzfl = np.PyArray_ITEMSIZE(zf)
+    else:
+        nzfl = 0
+
+    # Iterate over the input array
+    for i in range(nitx):
+        if zi is not None:
+            yoyo = itzi.dataptr
+            # Copy initial conditions zi in zfzfilled buffer
+            for j in range(nfilt - 1):
+                copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
+                yoyo += itzi.strides[axis]
+            
+            np.PyArray_ITER_NEXT(itzi)
+        else:
+            zfill(np.PyArray_ARRAY(x), 0, zfzfilled, nfilt - 1)
+
+        filter_func(bzfilled, azfilled,
+                    itx.dataptr, ity.dataptr, zfzfilled,
+                    nfilt, np.PyArray_DIMS(x)[axis], itx.strides[axis],
+                    ity.strides[axis]);
+        np.PyArray_ITER_NEXT(itx)
+        np.PyArray_ITER_NEXT(ity)
+
+        # Copy tmp buffer fo final values back into zf output array
+        if zi is not None:
+            yoyo = itzf.dataptr
+            for j in range(nfilt - 1):
+                copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+                yoyo += itzf.strides[axis]
+            np.PyArray_ITER_NEXT(itzf);
+
+    # Free up allocated memory
+    free(zfzfilled)
+    free(bzfilled)
+    free(azfilled)
+
+    return 0
+
+#################################################################
+#   This is code for a 1-D linear-filter along an arbitrary     #
+#   dimension of an N-D array.                                  #
+#################################################################
+{{for type, NAME
+      in zip(['float', 'double', 'np.npy_longdouble'],
+             ['FLOAT', 'DOUBLE', 'EXTENDED'])}}
+cdef {{NAME}}_filt(char *b, char *a, char *x, char *y, char *Z,
+                   np.npy_intp len_b, np.npy_uintp len_x,
+                   np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef {{type}} *ptr_Z, *ptr_b
+    cdef {{type}} *ptr_a
+    cdef {{type}} *xn, *yn
+    cdef {{type}} a0 = (<{{type}} *> a)[0]
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    for k in range(len_x):
+        ptr_b = <{{type}} *>b   # Reset a and b pointers */
+        ptr_a = <{{type}} *>a
+        xn = <{{type}} *>ptr_x
+        yn = <{{type}} *>ptr_y
+        if len_b > 1:
+            ptr_Z = <{{type}} *>Z
+            yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+            ptr_b += 1
+            ptr_a += 1
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+                ptr_b += 1
+                ptr_a += 1
+                ptr_Z += 1
+            # Calculate last delay
+            ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+        else:
+            yn[0] = xn[0] * (ptr_b[0] / a0)
+
+        ptr_y += stride_Y      # Move to next input/output point
+        ptr_x += stride_X
+
+
+cdef C{{NAME}}_filt(char *b, char *a, char *x, char *y, char *Z,
+                    np.npy_intp len_b, np.npy_uintp len_x,
+                    np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef {{type}} *ptr_Z, *ptr_b
+    cdef {{type}} *ptr_a
+    cdef {{type}} *xn, *yn
+    cdef {{type}} a0r = (<{{type}} *>a)[0]
+    cdef {{type}} a0i = (<{{type}} *>a)[1]
+    cdef {{type}} a0_mag, tmpr, tmpi
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    a0_mag = a0r * a0r + a0i * a0i
+    for k in range(len_x):
+        ptr_b = <{{type}} *>b   # Reset a and b pointers
+        ptr_a = <{{type}} *>a
+        xn = <{{type}} *>ptr_x
+        yn = <{{type}} *>ptr_y
+        if len_b > 1:
+            ptr_Z = <{{type}} *>Z
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            # Calculate first delay (output)
+            yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+            ptr_b += 2
+            ptr_a += 2
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+                tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+                ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+                ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+                tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+                tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+                ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+                ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+                ptr_b += 2
+                ptr_a += 2
+                ptr_Z += 2
+            
+            # Calculate last delay
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+            tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+            tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+            ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+            ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+        else:
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+
+        ptr_y += stride_Y     # Move to next input/output point
+        ptr_x += stride_X
+
+{{endfor}}
+
+cdef OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,
+                 np.npy_intp len_b, np.npy_uintp len_x,
+                 np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef PYOBJPTRPTR ptr_Z, ptr_b
+    cdef PYOBJPTRPTR ptr_a
+    cdef PYOBJPTRPTR xn, yn
+    cdef PYOBJPTRPTR a0 = <PYOBJPTRPTR> a
+    cdef object tmp1, tmp2, tmp3
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    # My reference counting might not be right
+    for k in range(len_x):
+        ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+        ptr_a = <PYOBJPTRPTR> a
+        xn = <PYOBJPTRPTR> ptr_x
+        yn = <PYOBJPTRPTR> ptr_y
+        if len_b > 1:
+            ptr_Z = (<PYOBJPTRPTR> Z)
+            # Calculate first delay (output)
+            tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+            tmp2 = tmp1 / READOBJECT(a0)
+            tmp3 = tmp2 + READOBJECT(ptr_Z)
+            ASSIGNOBJECT(yn, tmp3)
+            ptr_b += 1
+            ptr_a += 1
+
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+                tmp2 = tmp1 / READOBJECT(a0)
+                tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+                tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+                tmp2 = tmp1 / READOBJECT(a0)
+                ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+                ptr_b += 1
+                ptr_a += 1
+                ptr_Z += 1
+            
+            # Calculate last delay
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            tmp3 = tmp1 / READOBJECT(a0)
+            tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+            tmp2 = tmp1 / READOBJECT(a0)
+            ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+        else:
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))
+
+        ptr_y += stride_Y      # Move to next input/output point
+        ptr_x += stride_X
