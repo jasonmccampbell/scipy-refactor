@@ -209,6 +209,8 @@ typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
 typedef void (*__pyx_t_5numpy_NpyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
 
+typedef __pyx_t_5numpy_NpyUFuncGenericFunction __pyx_t_5numpy_PyUFuncGenericFunction;
+
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
@@ -303,18 +305,18 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 /* Module declarations from numpy */
 static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_Empty(int, npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, npy_intp *, int, npy_intp *, void *, int, int, void *); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, npy_intp *, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Empty(int, __pyx_t_5numpy_npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, __pyx_t_5numpy_npy_intp *, int, void *); /*proto*/
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *); /*proto*/
@@ -338,7 +340,7 @@ public delegate int __pyx_delegate_t_5scipy_9integrate_8_odepack_ode_jacobian_fu
 static int ode_jacobian_function(int *, double *, double *, int *, int *, double *, int *); /*proto*/
 static void MATRIXC2F(double *, double *, int, int); /*proto*/
 static System::Object^ setup_extra_inputs(System::Object^, System::Object^, System::Object^, int, int *); /*proto*/
-static System::Object^ call_python_function(System::Object^, npy_intp, double *, System::Object^, int, System::Object^); /*proto*/
+static System::Object^ call_python_function(System::Object^, __pyx_t_5numpy_npy_intp, double *, System::Object^, int, System::Object^); /*proto*/
 static int compute_lrw_liw(int *, int *, int, int, int, int, int, int); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
@@ -749,11 +751,11 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   int __pyx_v_k;
   int __pyx_v_crit_ind;
   int *__pyx_v_iwork;
-  npy_intp __pyx_v_dims[2];
+  __pyx_t_5numpy_npy_intp __pyx_v_dims[2];
   System::Object^ __pyx_v_ap_tout;
   double __pyx_v_t;
   int __pyx_v_numcrit;
-  npy_intp __pyx_v_out_sz;
+  __pyx_t_5numpy_npy_intp __pyx_v_out_sz;
   System::Object^ __pyx_v_ap_y;
   System::Object^ __pyx_v_ap_yout;
   System::Object^ __pyx_v_ap_rtol;
@@ -2661,7 +2663,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   System::Object^ __pyx_v_ap_tcrit;
   int __pyx_v_itol;
   double __pyx_v_tol;
-  npy_intp __pyx_v_one;
+  __pyx_t_5numpy_npy_intp __pyx_v_one;
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
@@ -2991,7 +2993,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  *     This is a generic function to call a python function that takes a 1-D
  */
 
-static  System::Object^ call_python_function(System::Object^ __pyx_v_func, npy_intp __pyx_v_n, double *__pyx_v_x, System::Object^ __pyx_v_args, int __pyx_v_dim, System::Object^ __pyx_v_error_obj) {
+static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx_t_5numpy_npy_intp __pyx_v_n, double *__pyx_v_x, System::Object^ __pyx_v_args, int __pyx_v_dim, System::Object^ __pyx_v_error_obj) {
   NumpyDotNet::ndarray^ __pyx_v_sequence;
   System::Object^ __pyx_v_result;
   System::Object^ __pyx_r = nullptr;
@@ -3378,7 +3380,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3475,7 +3477,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3572,7 +3574,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3666,7 +3668,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
@@ -3721,7 +3723,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
  * 
  */
 
-static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
@@ -3812,8 +3814,8 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  npy_intp *__pyx_r;
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
@@ -3934,8 +3936,8 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
  * 
  */
 
-static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
-  npy_intp __pyx_r;
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 

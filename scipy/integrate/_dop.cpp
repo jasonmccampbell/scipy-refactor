@@ -214,6 +214,8 @@ typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
 typedef void (*__pyx_t_5numpy_NpyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
 
+typedef __pyx_t_5numpy_NpyUFuncGenericFunction __pyx_t_5numpy_PyUFuncGenericFunction;
+
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
@@ -323,18 +325,18 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 /* Module declarations from numpy */
 static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_Empty(int, npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, npy_intp *, int, npy_intp *, void *, int, int, void *); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, npy_intp *, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Empty(int, __pyx_t_5numpy_npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, __pyx_t_5numpy_npy_intp *, int, void *); /*proto*/
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *); /*proto*/
@@ -362,7 +364,7 @@ static void dop853_fcn_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate void __pyx_delegate_t_5scipy_9integrate_4_dop_dop853_solout_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, void *, void *, fwi_integer_t *);
 static void dop853_solout_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, void *, void *, fwi_integer_t *); /*proto*/
-static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, npy_intp *, int, int, ref struct __pyx_opt_args_5scipy_9integrate_4_dop_fw_asfortranarray ^__pyx_optional_args); /*proto*/
+static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_npy_intp *, int, int, ref struct __pyx_opt_args_5scipy_9integrate_4_dop_fw_asfortranarray ^__pyx_optional_args); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
 #define __Pyx_MODULE_NAME "scipy.integrate._dop"
@@ -597,8 +599,8 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_f_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_f_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_f_shape[1];
   System::Object^ __pyx_v_f_ret;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
@@ -704,7 +706,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
  *         if f_ is not f_ret:
- *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
+ *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_x[0]);
       __pyx_t_3 = __site_call2_ARGS_63_33->Target(__site_call2_ARGS_63_33, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
@@ -718,7 +720,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
  *         else:
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:             # <<<<<<<<<<<<<<
- *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
+ *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  */
     __pyx_t_4 = (((System::Object^)__pyx_v_f_) != __pyx_v_f_ret);
@@ -727,12 +729,12 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":65
  *             f_ret = info.callback(x[0], y_, *info.extra_args)
  *         if f_ is not f_ret:
- *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
+ *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  */
       __pyx_t_3 = (System::Object^)(long long)(NPY_DOUBLE);
-      __pyx_t_5 = (System::Object^)(long long)((NPY_C_CONTIGUOUS | NPY_F_CONTIGUOUS));
+      __pyx_t_5 = (System::Object^)(long long)(((NPY_FORCECAST | NPY_C_CONTIGUOUS) | NPY_F_CONTIGUOUS));
       __pyx_t_6 = PyArray_FROMANY(__pyx_v_f_ret, __pyx_t_3, __pyx_int_1, __pyx_int_1, __pyx_t_5); 
       __pyx_t_3 = nullptr;
       __pyx_t_5 = nullptr;
@@ -744,7 +746,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
 
       /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":66
  *         if f_ is not f_ret:
- *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
+ *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:             # <<<<<<<<<<<<<<
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
@@ -753,7 +755,7 @@ static  void dopri5_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
       if (__pyx_t_4) {
 
         /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_dop.pyx":67
- *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
+ *             f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
  *             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
@@ -860,9 +862,9 @@ static  void dopri5_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_con_;
   NumpyDotNet::ndarray^ __pyx_v_icomp_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_con_shape[1];
-  npy_intp __pyx_v_icomp_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_con_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_icomp_shape[1];
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -1116,11 +1118,11 @@ static System::Object^ dopri5(System::Object^ fcn, System::Object^ x, System::Ob
   NumpyDotNet::ndarray^ __pyx_v_atol_;
   NumpyDotNet::ndarray^ __pyx_v_work_;
   NumpyDotNet::ndarray^ __pyx_v_iwork_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_rtol_shape[1];
-  npy_intp __pyx_v_atol_shape[1];
-  npy_intp __pyx_v_work_shape[1];
-  npy_intp __pyx_v_iwork_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_rtol_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_atol_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_work_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_iwork_shape[1];
   System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_fw_exctype;
   System::Object^ __pyx_v_fw_excval;
@@ -1570,8 +1572,8 @@ static  void dop853_fcn_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_f_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_f_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_f_shape[1];
   System::Object^ __pyx_v_f_ret;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
@@ -1833,9 +1835,9 @@ static  void dop853_solout_cb_wrapper(fwi_integer_t *__pyx_v_nr, fwr_dbl_t *__py
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_con_;
   NumpyDotNet::ndarray^ __pyx_v_icomp_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_con_shape[1];
-  npy_intp __pyx_v_icomp_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_con_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_icomp_shape[1];
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -2089,11 +2091,11 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
   NumpyDotNet::ndarray^ __pyx_v_atol_;
   NumpyDotNet::ndarray^ __pyx_v_work_;
   NumpyDotNet::ndarray^ __pyx_v_iwork_;
-  npy_intp __pyx_v_y_shape[1];
-  npy_intp __pyx_v_rtol_shape[1];
-  npy_intp __pyx_v_atol_shape[1];
-  npy_intp __pyx_v_work_shape[1];
-  npy_intp __pyx_v_iwork_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_rtol_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_atol_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_work_shape[1];
+  __pyx_t_5numpy_npy_intp __pyx_v_iwork_shape[1];
   System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_fw_exctype;
   System::Object^ __pyx_v_fw_excval;
@@ -2527,11 +2529,11 @@ static System::Object^ dop853(System::Object^ fcn, System::Object^ x, System::Ob
  *                                   bint copy, bint create, int alignment=1):
  */
 
-static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, int __pyx_v_typenum, int __pyx_v_ndim, npy_intp *__pyx_v_coerced_shape, int __pyx_v_copy, int __pyx_v_create, ref struct __pyx_opt_args_5scipy_9integrate_4_dop_fw_asfortranarray ^__pyx_optional_args) {
+static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, int __pyx_v_typenum, int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_coerced_shape, int __pyx_v_copy, int __pyx_v_create, ref struct __pyx_opt_args_5scipy_9integrate_4_dop_fw_asfortranarray ^__pyx_optional_args) {
   int __pyx_v_alignment = ((int)1);
   int __pyx_v_flags;
   NumpyDotNet::ndarray^ __pyx_v_result;
-  npy_intp *__pyx_v_in_shape;
+  __pyx_t_5numpy_npy_intp *__pyx_v_in_shape;
   int __pyx_v_in_ndim;
   int __pyx_v_i;
   NumpyDotNet::ndarray^ __pyx_r = nullptr;
@@ -2906,7 +2908,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3003,7 +3005,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3100,7 +3102,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -3194,7 +3196,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
@@ -3249,7 +3251,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
  * 
  */
 
-static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
@@ -3340,8 +3342,8 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
  *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
  */
 
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  npy_intp *__pyx_r;
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
@@ -3462,8 +3464,8 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
  * 
  */
 
-static CYTHON_INLINE npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
-  npy_intp __pyx_r;
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 

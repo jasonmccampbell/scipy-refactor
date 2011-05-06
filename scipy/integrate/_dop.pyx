@@ -62,7 +62,7 @@ cdef void dopri5_fcn_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * x, fwr_dbl_t * y,
         else:
             f_ret = info.callback(x[0], y_, *info.extra_args)
         if f_ is not f_ret:
-            f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
+            f_ = np.PyArray_FROMANY(f_ret, fwr_dbl_t_enum, 1, 1, np.NPY_FORCECAST | np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
             if f_shape[0] != np.PyArray_DIMS(f_)[0]:
                 raise ValueError("Array returned from callback has illegal shape")
             memcpy(f, np.PyArray_DATA(f_), np.PyArray_NBYTES(f_))
