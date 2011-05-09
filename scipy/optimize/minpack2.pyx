@@ -59,7 +59,7 @@ def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gt
     if not (0 <= 13 <= dsave_shape[0]):
         raise ValueError("(0 <= 13 <= dsave.shape[0]) not satisifed")
     fw_task_len = 60
-    fw_task = PyBytes_FromStringAndSize(NULL, fw_task_len)
+    fw_task = b'x' * fw_task_len
     fw_task_buf = <char*>fw_task
     memcpy(fw_task_buf, <char*>task, fw_task_len+1)
     fc.dcsrch(&stp, &f, &g, &ftol, &gtol, &xtol, fw_task_buf, &stpmin, &stpmax, <fwi_integer_t*>np.PyArray_DATA(isave_), <fwr_dbl_t*>np.PyArray_DATA(dsave_), fw_task_len)
