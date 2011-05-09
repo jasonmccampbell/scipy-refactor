@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual C++ Express 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "optimize", "optimize.vcxproj", "{74003683-2659-DB48-FFF2-AF752FC72412}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "optimizeCython", "optimizeCython.vcxproj", "{D5AD68F6-BA90-48DF-8694-077235F77A1A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{74003683-2659-DB48-FFF2-AF752FC72412}.Debug|Win32.ActiveCfg = Debug|Win32
+		{74003683-2659-DB48-FFF2-AF752FC72412}.Debug|Win32.Build.0 = Debug|Win32
+		{74003683-2659-DB48-FFF2-AF752FC72412}.Release|Win32.ActiveCfg = Release|Win32
+		{74003683-2659-DB48-FFF2-AF752FC72412}.Release|Win32.Build.0 = Release|Win32
+		{D5AD68F6-BA90-48DF-8694-077235F77A1A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{D5AD68F6-BA90-48DF-8694-077235F77A1A}.Debug|Win32.Build.0 = Debug|Win32
+		{D5AD68F6-BA90-48DF-8694-077235F77A1A}.Release|Win32.ActiveCfg = Release|Win32
+		{D5AD68F6-BA90-48DF-8694-077235F77A1A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

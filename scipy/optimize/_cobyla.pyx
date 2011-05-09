@@ -57,9 +57,9 @@ cdef int minimize_calcfc_cb_wrapper_core(fwi_integer_t * n, fwi_integer_t * m, f
     info = minimize_calcfc_cb_info
     try:
         x_shape[0] = n[0]
-        x_ = np.PyArray_New(&np.PyArray_Type, 1, x_shape, fwr_dbl_t_enum, NULL, <char*>x, 0, np.NPY_FARRAY, NULL)
+        x_ = np.PyArray_New(NULL, 1, x_shape, fwr_dbl_t_enum, NULL, <char*>x, 0, np.NPY_FARRAY, NULL)
         con_shape[0] = m[0]
-        con_ = np.PyArray_New(&np.PyArray_Type, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
+        con_ = np.PyArray_New(NULL, 1, con_shape, fwr_dbl_t_enum, NULL, <char*>con, 0, np.NPY_FARRAY, NULL)
         if info.extra_args is None:
             f[0] = info.callback(x_, con_)
         else:

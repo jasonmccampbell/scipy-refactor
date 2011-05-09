@@ -1,14 +1,14 @@
 #ifndef _SCIPY_PRIVATE_SIGNAL_SIGTOOLS_H_
 #define _SCIPY_PRIVATE_SIGNAL_SIGTOOLS_H_
 
-#include "Python.h"
-
 #if PY_VERSION_HEX >= 0x03000000
     #define PyString_AsString PyBytes_AsString
     #define PyString_FromFormat PyBytes_FromFormat
 #endif
 
-#include "numpy/noprefix.h"
+#include <npy_arrayobject.h>
+#include <npy_defs.h>
+#include <npy_descriptor.h>
 
 #define BOUNDARY_MASK 12
 #define OUTSIZE_MASK 3
@@ -22,10 +22,17 @@
 
 #define CIRCULAR 8
 #define REFLECT  4
-#define PAD      0 
+#define PAD      0
+
+#define BANDPASS       1
+#define DIFFERENTIATOR 2
+#define HILBERT        3
 
 #define MAXTYPES 21
 
+#define COMPARE_CONST_HELPER(x) ((int (*)(const void*, const void*))(x))
+
+#define ARRAY_COPYSWAP_FUNC(x) (x->descr->f->copyswap)
 
 /* Generally useful structures for passing data into and out of
    subroutines.  Used in the generic routines instead of the
@@ -39,7 +46,7 @@ typedef struct {
 
 typedef struct {
   char *data;
-  intp numels;
+  npy_intp numels;
   int elsize;
   char *zero;        /* Pointer to Representation of zero */
 } Generic_Vector;
@@ -47,22 +54,28 @@ typedef struct {
 typedef struct {
   char *data;
   int  nd;
-  intp  *dimensions;
+  npy_intp  *dimensions;
   int  elsize;
-  intp  *strides;
+  npy_intp  *strides;
   char *zero;         /* Pointer to Representation of zero */
 } Generic_Array;
 
-typedef void (MultAddFunction) (char *, intp, char *, intp, char *, intp *, intp *, int, intp, int, intp *, intp *, uintp *);
+typedef void (MultAddFunction) (char *, npy_intp, char *, npy_intp, char *, npy_intp *, npy_intp *, int, npy_intp, int, npy_intp *, npy_intp *, npy_uintp *);
 
-PyObject*
-scipy_signal_sigtools_linear_filter(PyObject * NPY_UNUSED(dummy), PyObject * args);
+#if defined(__cplusplus)
+extern "C" {
+#endif
 
-PyObject*
-scipy_signal_sigtools_correlateND(PyObject *NPY_UNUSED(dummy), PyObject *args);
-
-void
-scipy_signal_sigtools_linear_filter_module_init();
+NpyArray_CopySwapFunc *array_get_copyswap_func(NpyArray *);
+int index_out_of_bounds(npy_intp *indices, npy_intp *max_indices, int ndims);
+npy_intp compute_offsets(npy_uintp *offsets, npy_intp *offsets2, npy_intp *dim1, npy_intp *dim2, npy_intp *dim3, npy_intp *mode_dep, int nd);
+int increment(npy_intp *ret_ind, int nd, npy_intp *max_ind);
+int pre_remez(double *h2, int numtaps, int numbands, double *bands, double *response, double *weight, int type, int maxiter, int grid_density);
+int pylab_convolve_2d(char*,npy_intp*,char*,npy_intp*,char*,npy_intp*,npy_intp*,npy_intp*,int,char*);
+void f_medfilt2(float*,float*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void d_medfilt2(double*,double*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void b_medfilt2(unsigned char*,unsigned char*,npy_intp*,npy_intp*, char* (*alloc_fn)(int));
+void scipy_signal_sigtools_linear_filter_module_init();
 
 /*
 static int index_out_of_bounds(int *, int *, int );
@@ -71,5 +84,10 @@ static int increment(int *, int, int *);
 static void convolveND(Generic_Array *, Generic_Array *, Generic_Array *, MultAddFunction *, int);
 static void RawFilter(Generic_Vector, Generic_Vector, Generic_Array, Generic_Array, Generic_Array *, Generic_Array *, BasicFilterFunction *, int);
 */
+
+#if defined(__cplusplus)
+}
+#endif
+
 
 #endif
