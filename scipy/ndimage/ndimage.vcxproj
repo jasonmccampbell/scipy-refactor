@@ -90,18 +90,10 @@
     <ClCompile Include="_nd_image.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="IronPython">
-      <HintPath>..\..\..\IronPython\bin\Debug\IronPython.dll</HintPath>
-    </Reference>
-    <Reference Include="IronPython.Modules">
-      <HintPath>..\..\..\IronPython\bin\Debug\IronPython.Modules.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Dynamic">
-      <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Dynamic.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Scripting">
-      <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Scripting.dll</HintPath>
-    </Reference>
+    <Reference Include="IronPython" />
+    <Reference Include="IronPython.Modules" />
+    <Reference Include="Microsoft.Dynamic" />
+    <Reference Include="Microsoft.Scripting" />
     <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
       <HintPath>..\..\..\IronPython\bin\Debug\DLLs\NumpyDotNet.dll</HintPath>
     </Reference>
