@@ -25,5 +25,9 @@
 		<Filter Name="Header Files" Filter="fi;fd"/>
 		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
 		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
-		<File RelativePath=".\src\calc_lwork.f"/></Filter></Files>
+		<File RelativePath=".\src\calc_lwork.f">
+			<FileConfiguration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" ObjectFile="$(IntDir)\calc_lwork_f.obj"/></FileConfiguration>
+			<FileConfiguration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" ObjectFile="$(IntDir)\calc_lwork_f.obj"/></FileConfiguration></File></Filter></Files>
 	<Globals/></VisualStudioProject>
