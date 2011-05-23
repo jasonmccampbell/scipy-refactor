@@ -2,6 +2,7 @@ import os
 import sys
 from os.path import join
 
+projects = ["cluster", "fftpack", "linalg", "ndimage", "odr", "special", "stats"]
 
 if sys.platform != 'cli':
     print "ERROR: This setup script only works under IronPython"
@@ -38,5 +39,5 @@ def build_subproject(subproject):
 
 
 if __name__ == '__main__':
-    for subproject in ["linalg", "stats", "special"]:
+    for subproject in projects:
         build_subproject(subproject)
