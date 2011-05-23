@@ -82,7 +82,7 @@
     <Reference Include="Microsoft.Dynamic" />
     <Reference Include="Microsoft.Scripting" />
     <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\IronPython\bin\Debug\DLLs\NumpyDotNet.dll</HintPath>
+      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug\NumpyDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
   </ItemGroup>

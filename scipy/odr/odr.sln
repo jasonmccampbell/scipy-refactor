@@ -8,8 +8,6 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "odr", "odr.vcxproj", "{2FA0
 EndProject
 Project("{6989167D-11E4-40FE-8C1A-2192A86A7E90}") = "odrpack", "odrpack\odrpack.vfproj", "{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}"
 EndProject
-Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "Tests1", "Tests1\Tests1.pyproj", "{5C7BBD51-6801-4E6C-81F8-6C21140745DE}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -40,12 +38,6 @@ Global
 		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Release|Mixed Platforms.Build.0 = Release|Win32
 		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Release|Win32.ActiveCfg = Release|Win32
 		{BD3DE756-BE24-4B13-8AED-349F33F5EBA2}.Release|Win32.Build.0 = Release|Win32
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{5C7BBD51-6801-4E6C-81F8-6C21140745DE}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

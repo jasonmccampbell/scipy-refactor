@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "special", "special.vcxproj", "{E77F9E70-D09E-B627-12CE-F54126DB4E45}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "special", "special.vcxproj", "{61BD1ADF-33B7-F539-7FF6-1557950CE217}"
 	ProjectSection(ProjectDependencies) = postProject
 		{0A8F1D0A-4795-4369-99E6-8F5ACC53D1C3} = {0A8F1D0A-4795-4369-99E6-8F5ACC53D1C3}
 		{CD80DF1D-0B0F-4C14-94FA-3BA563E6DFB1} = {CD80DF1D-0B0F-4C14-94FA-3BA563E6DFB1}
@@ -32,10 +32,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E77F9E70-D09E-B627-12CE-F54126DB4E45}.Debug|Win32.ActiveCfg = Debug|Win32
-		{E77F9E70-D09E-B627-12CE-F54126DB4E45}.Debug|Win32.Build.0 = Debug|Win32
-		{E77F9E70-D09E-B627-12CE-F54126DB4E45}.Release|Win32.ActiveCfg = Release|Win32
-		{E77F9E70-D09E-B627-12CE-F54126DB4E45}.Release|Win32.Build.0 = Release|Win32
+		{61BD1ADF-33B7-F539-7FF6-1557950CE217}.Debug|Win32.ActiveCfg = Debug|Win32
+		{61BD1ADF-33B7-F539-7FF6-1557950CE217}.Debug|Win32.Build.0 = Debug|Win32
+		{61BD1ADF-33B7-F539-7FF6-1557950CE217}.Release|Win32.ActiveCfg = Release|Win32
+		{61BD1ADF-33B7-F539-7FF6-1557950CE217}.Release|Win32.Build.0 = Release|Win32
 		{3B7AF75A-0B14-4A9A-AA33-7AD752BCFB8A}.Debug|Win32.ActiveCfg = Debug|Win32
 		{3B7AF75A-0B14-4A9A-AA33-7AD752BCFB8A}.Debug|Win32.Build.0 = Debug|Win32
 		{3B7AF75A-0B14-4A9A-AA33-7AD752BCFB8A}.Release|Win32.ActiveCfg = Release|Win32
