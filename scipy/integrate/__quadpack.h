@@ -51,7 +51,11 @@
 	#endif
 #endif
 
-void DQAGSE();
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
+void DQAGSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
 void DQAGIE();
 void DQAGPE();
 void DQAWOE();
@@ -59,6 +63,11 @@ void DQAWFE();
 void DQAWSE();
 void DQAWCE();
 
+#if defined(__cplusplus)
+}
+#endif
+
+#if !defined(CYTHON_INCLUDE)
 
 static int already_printed_python_error = 0;
 
@@ -760,6 +769,6 @@ static PyObject *quadpack_qawse(PyObject *dummy, PyObject *args) {
   return NULL;
 }
 
-
+#endif
 
 

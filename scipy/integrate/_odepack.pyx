@@ -51,6 +51,11 @@ cdef INIT_JAC_FUNC(fun, Dfun, arg, int col_deriv, errobj):
     return globalStore
 
 cdef RESTORE_JAC_FUNC(jacStore):
+    global __multipack_python_function
+    global __multipack_extra_arguments
+    global __multipack_python_jacobian
+    global __multipack_jac_transpose
+
     __multipack_python_function, __multipack_extra_arguments, __multipack_python_jacobian, __multipack_jac_transpose = jacStore
 
 
@@ -227,6 +232,8 @@ cdef void ode_function(int *n, double *t, double *y, double *ydot):
 	    -- check for errors and return -1 if any
  	    -- otherwise place result of calculation in ydot
     """
+    global __multipack_extra_arguments
+
     cdef np.ndarray result_array
     cdef object arg1, arglist
 
@@ -245,6 +252,10 @@ cdef int ode_jacobian_function(int *n, double *t, double *y, int *ml, int *mu, d
 	     by calling program).
 	  -- otherwise place result of calculation in pd
     """
+    global __multipack_python_function
+    global __multipack_extra_arguments
+    global __multipack_python_jacobian
+    global __multipack_jac_transpose
 
     cdef np.ndarray result_array
 

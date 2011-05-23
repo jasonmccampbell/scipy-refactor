@@ -358,43 +358,44 @@ static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_is
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_44_62;
 static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_44_62;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_45_20;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_57_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_57_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_57_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_4;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_5;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_6;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_7;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_57_0_8;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_115_8;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_128_27;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_167_28;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_167_28;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_172_51;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_172_62;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_172_42;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_172_42;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_235_19;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_252_19;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_288_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_288_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_293_30;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_300_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_300_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_305_30;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_336_23;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_340_38;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_340_18;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_342_89;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_342_83;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_342_23;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_354_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_357_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_359_26;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_59_4;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_62_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_62_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_62_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_5;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_6;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_7;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_8;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_120_8;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_133_27;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_172_28;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_172_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_177_51;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_177_62;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_177_42;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_177_42;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_242_19;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_263_19;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_299_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_299_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_304_30;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_311_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_311_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_316_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_347_23;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_351_38;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_351_18;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_353_89;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_353_83;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_353_23;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_365_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_368_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_370_26;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_260_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_260_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_262_16;
@@ -654,29 +655,22 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  *     return globalStore
  * 
  * cdef RESTORE_JAC_FUNC(jacStore):             # <<<<<<<<<<<<<<
- *     __multipack_python_function, __multipack_extra_arguments, __multipack_python_jacobian, __multipack_jac_transpose = jacStore
- * 
+ *     global __multipack_python_function
+ *     global __multipack_extra_arguments
  */
 
 static  System::Object^ RESTORE_JAC_FUNC(System::Object^ __pyx_v_jacStore) {
-  System::Object^ __pyx_v___multipack_python_function;
-  System::Object^ __pyx_v___multipack_extra_arguments;
-  System::Object^ __pyx_v___multipack_python_jacobian;
-  System::Object^ __pyx_v___multipack_jac_transpose;
   System::Object^ __pyx_r = nullptr;
   array<System::Object^>^ __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
-  __pyx_v___multipack_python_function = nullptr;
-  __pyx_v___multipack_extra_arguments = nullptr;
-  __pyx_v___multipack_python_jacobian = nullptr;
-  __pyx_v___multipack_jac_transpose = nullptr;
+  int __pyx_t_6;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":54
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":59
+ *     global __multipack_jac_transpose
  * 
- * cdef RESTORE_JAC_FUNC(jacStore):
  *     __multipack_python_function, __multipack_extra_arguments, __multipack_python_jacobian, __multipack_jac_transpose = jacStore             # <<<<<<<<<<<<<<
  * 
  * 
@@ -686,21 +680,22 @@ static  System::Object^ RESTORE_JAC_FUNC(System::Object^ __pyx_v_jacStore) {
   __pyx_t_3 = __pyx_t_1[1];
   __pyx_t_4 = __pyx_t_1[2];
   __pyx_t_5 = __pyx_t_1[3];
-  __pyx_t_1 = nullptr;
-  __pyx_v___multipack_python_function = __pyx_t_2;
-  __pyx_t_2 = nullptr;
-  __pyx_v___multipack_extra_arguments = __pyx_t_3;
-  __pyx_t_3 = nullptr;
-  __pyx_v___multipack_python_jacobian = __pyx_t_4;
-  __pyx_t_4 = nullptr;
-  __pyx_v___multipack_jac_transpose = __pyx_t_5;
+  __pyx_t_6 = __site_cvt_cvt_int_59_4->Target(__site_cvt_cvt_int_59_4, __pyx_t_5);
   __pyx_t_5 = nullptr;
+  __pyx_t_1 = nullptr;
+  PythonOps::SetGlobal(__pyx_context, "__multipack_python_function", __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  PythonOps::SetGlobal(__pyx_context, "__multipack_extra_arguments", __pyx_t_3);
+  __pyx_t_3 = nullptr;
+  PythonOps::SetGlobal(__pyx_context, "__multipack_python_jacobian", __pyx_t_4);
+  __pyx_t_4 = nullptr;
+  __pyx_v_5scipy_9integrate_8_odepack___multipack_jac_transpose = __pyx_t_6;
 
   __pyx_r = nullptr;
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":57
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":62
  * 
  * 
  * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,             # <<<<<<<<<<<<<<
@@ -810,22 +805,22 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_Dfun = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(col_deriv) == nullptr) {
-    __pyx_v_col_deriv = __site_cvt_cvt_int_57_0->Target(__site_cvt_cvt_int_57_0, col_deriv);
+    __pyx_v_col_deriv = __site_cvt_cvt_int_62_0->Target(__site_cvt_cvt_int_62_0, col_deriv);
   } else {
     __pyx_v_col_deriv = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ml) == nullptr) {
-    __pyx_v_ml = __site_cvt_cvt_int_57_0_1->Target(__site_cvt_cvt_int_57_0_1, ml);
+    __pyx_v_ml = __site_cvt_cvt_int_62_0_1->Target(__site_cvt_cvt_int_62_0_1, ml);
   } else {
     __pyx_v_ml = ((int)-1);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mu) == nullptr) {
-    __pyx_v_mu = __site_cvt_cvt_int_57_0_2->Target(__site_cvt_cvt_int_57_0_2, mu);
+    __pyx_v_mu = __site_cvt_cvt_int_62_0_2->Target(__site_cvt_cvt_int_62_0_2, mu);
   } else {
     __pyx_v_mu = ((int)-1);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_57_0_3->Target(__site_cvt_cvt_int_57_0_3, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_62_0_3->Target(__site_cvt_cvt_int_62_0_3, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
@@ -833,7 +828,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_rtol = rtol;
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":58
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":63
  * 
  * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
  *             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0,             # <<<<<<<<<<<<<<
@@ -853,15 +848,15 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_tcrit = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(h0) == nullptr) {
-    __pyx_v_h0 = __site_cvt_cvt_double_57_0->Target(__site_cvt_cvt_double_57_0, h0);
+    __pyx_v_h0 = __site_cvt_cvt_double_62_0->Target(__site_cvt_cvt_double_62_0, h0);
   } else {
     __pyx_v_h0 = ((double)0.0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(hmax) == nullptr) {
-    __pyx_v_hmax = __site_cvt_cvt_double_57_0_1->Target(__site_cvt_cvt_double_57_0_1, hmax);
+    __pyx_v_hmax = __site_cvt_cvt_double_62_0_1->Target(__site_cvt_cvt_double_62_0_1, hmax);
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":59
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":64
  * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
  *             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0,
  *             double hmax=0.0, double hmin=0.0, int ixpr=0, int mxstep=0, int mxhnil=0, int mxordn=12,             # <<<<<<<<<<<<<<
@@ -871,32 +866,32 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_hmax = ((double)0.0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(hmin) == nullptr) {
-    __pyx_v_hmin = __site_cvt_cvt_double_57_0_2->Target(__site_cvt_cvt_double_57_0_2, hmin);
+    __pyx_v_hmin = __site_cvt_cvt_double_62_0_2->Target(__site_cvt_cvt_double_62_0_2, hmin);
   } else {
     __pyx_v_hmin = ((double)0.0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ixpr) == nullptr) {
-    __pyx_v_ixpr = __site_cvt_cvt_int_57_0_4->Target(__site_cvt_cvt_int_57_0_4, ixpr);
+    __pyx_v_ixpr = __site_cvt_cvt_int_62_0_4->Target(__site_cvt_cvt_int_62_0_4, ixpr);
   } else {
     __pyx_v_ixpr = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mxstep) == nullptr) {
-    __pyx_v_mxstep = __site_cvt_cvt_int_57_0_5->Target(__site_cvt_cvt_int_57_0_5, mxstep);
+    __pyx_v_mxstep = __site_cvt_cvt_int_62_0_5->Target(__site_cvt_cvt_int_62_0_5, mxstep);
   } else {
     __pyx_v_mxstep = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mxhnil) == nullptr) {
-    __pyx_v_mxhnil = __site_cvt_cvt_int_57_0_6->Target(__site_cvt_cvt_int_57_0_6, mxhnil);
+    __pyx_v_mxhnil = __site_cvt_cvt_int_62_0_6->Target(__site_cvt_cvt_int_62_0_6, mxhnil);
   } else {
     __pyx_v_mxhnil = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mxordn) == nullptr) {
-    __pyx_v_mxordn = __site_cvt_cvt_int_57_0_7->Target(__site_cvt_cvt_int_57_0_7, mxordn);
+    __pyx_v_mxordn = __site_cvt_cvt_int_62_0_7->Target(__site_cvt_cvt_int_62_0_7, mxordn);
   } else {
     __pyx_v_mxordn = ((int)12);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mxords) == nullptr) {
-    __pyx_v_mxords = __site_cvt_cvt_int_57_0_8->Target(__site_cvt_cvt_int_57_0_8, mxords);
+    __pyx_v_mxords = __site_cvt_cvt_int_62_0_8->Target(__site_cvt_cvt_int_62_0_8, mxords);
   } else {
     __pyx_v_mxords = ((int)5);
   }
@@ -918,7 +913,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   __pyx_v_ap_mused = nullptr;
   __pyx_v_props = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":68
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":73
  *     cdef object store_multipack_globals     # 4-tuple of objects
  *     cdef int store_multipack_globals3
  *     cdef int jt=4             # <<<<<<<<<<<<<<
@@ -927,7 +922,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   __pyx_v_jt = 4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":71
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":76
  *     cdef double *y, *tout, *yout, *yout_ptr, *tout_ptr
  *     cdef double *rtol_ptr, *atol_ptr, *tcrit_ptr, *rwork
  *     cdef int neq, ntimes, lrw, liw, itol, itask=1, istate=1, iopt=0, k             # <<<<<<<<<<<<<<
@@ -938,7 +933,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   __pyx_v_istate = 1;
   __pyx_v_iopt = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":72
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":77
  *     cdef double *rtol_ptr, *atol_ptr, *tcrit_ptr, *rwork
  *     cdef int neq, ntimes, lrw, liw, itol, itask=1, istate=1, iopt=0, k
  *     cdef int crit_ind=0             # <<<<<<<<<<<<<<
@@ -947,7 +942,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   __pyx_v_crit_ind = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":79
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":84
  *     cdef double *dCythonHack
  *     cdef int *iCythonHack
  *     cdef int numcrit=0             # <<<<<<<<<<<<<<
@@ -956,7 +951,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   __pyx_v_numcrit = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":82
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":87
  *     cdef np.npy_intp out_sz
  * 
  *     store_multipack_globals = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv, OdepackError)             # <<<<<<<<<<<<<<
@@ -969,7 +964,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   __pyx_v_store_multipack_globals = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":83
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":88
  * 
  *     store_multipack_globals = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv, OdepackError)
  *     try:             # <<<<<<<<<<<<<<
@@ -978,7 +973,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":86
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":91
  * 
  *         # Set up jt, ml, and mu
  *         if Dfun is None:             # <<<<<<<<<<<<<<
@@ -988,7 +983,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_3 = (__pyx_v_Dfun == nullptr);
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":87
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":92
  *         # Set up jt, ml, and mu
  *         if Dfun is None:
  *             jt += 1    # set jt for internally generated             # <<<<<<<<<<<<<<
@@ -1000,7 +995,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L5:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":88
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":93
  *         if Dfun is None:
  *             jt += 1    # set jt for internally generated
  *         if ml < 0 and mu < 0:             # <<<<<<<<<<<<<<
@@ -1016,7 +1011,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":89
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":94
  *             jt += 1    # set jt for internally generated
  *         if ml < 0 and mu < 0:
  *             jt -= 3     # Neither ml nor mu given, market jt for full jacobian             # <<<<<<<<<<<<<<
@@ -1028,7 +1023,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":90
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":95
  *         if ml < 0 and mu < 0:
  *             jt -= 3     # Neither ml nor mu given, market jt for full jacobian
  *         if ml < 0:             # <<<<<<<<<<<<<<
@@ -1038,7 +1033,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_ml < 0);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":91
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":96
  *             jt -= 3     # Neither ml nor mu given, market jt for full jacobian
  *         if ml < 0:
  *             ml = 0      # if one but not both are given             # <<<<<<<<<<<<<<
@@ -1050,7 +1045,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L7:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":92
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":97
  *         if ml < 0:
  *             ml = 0      # if one but not both are given
  *         if mu < 0:             # <<<<<<<<<<<<<<
@@ -1060,7 +1055,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_mu < 0);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":93
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":98
  *             ml = 0      # if one but not both are given
  *         if mu < 0:
  *             mu = 0             # <<<<<<<<<<<<<<
@@ -1072,7 +1067,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L8:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":96
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":101
  * 
  *         # Initial input vector
  *         ap_y = np.PyArray_ContiguousFromObject(y0, np.NPY_DOUBLE, 0, 1)             # <<<<<<<<<<<<<<
@@ -1085,7 +1080,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_ap_y = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":97
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":102
  *         # Initial input vector
  *         ap_y = np.PyArray_ContiguousFromObject(y0, np.NPY_DOUBLE, 0, 1)
  *         y = <double *>np.PyArray_DATA(ap_y)             # <<<<<<<<<<<<<<
@@ -1097,7 +1092,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_y = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_y)));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":98
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":103
  *         ap_y = np.PyArray_ContiguousFromObject(y0, np.NPY_DOUBLE, 0, 1)
  *         y = <double *>np.PyArray_DATA(ap_y)
  *         neq = np.PyArray_SIZE(ap_y)             # <<<<<<<<<<<<<<
@@ -1109,7 +1104,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_neq = PyArray_SIZE(((NumpyDotNet::ndarray^)__pyx_v_ap_y));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":99
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":104
  *         y = <double *>np.PyArray_DATA(ap_y)
  *         neq = np.PyArray_SIZE(ap_y)
  *         dims[1] = neq             # <<<<<<<<<<<<<<
@@ -1118,7 +1113,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     (__pyx_v_dims[1]) = __pyx_v_neq;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":102
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":107
  * 
  *         # Set of output times for integration
  *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)             # <<<<<<<<<<<<<<
@@ -1131,7 +1126,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_ap_tout = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":103
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":108
  *         # Set of output times for integration
  *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)
  *         tout = <double *>np.PyArray_DATA(ap_tout)             # <<<<<<<<<<<<<<
@@ -1143,7 +1138,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_tout = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tout)));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":104
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":109
  *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)
  *         tout = <double *>np.PyArray_DATA(ap_tout)
  *         ntimes = np.PyArray_SIZE(ap_tout)             # <<<<<<<<<<<<<<
@@ -1155,7 +1150,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_ntimes = PyArray_SIZE(((NumpyDotNet::ndarray^)__pyx_v_ap_tout));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":105
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":110
  *         tout = <double *>np.PyArray_DATA(ap_tout)
  *         ntimes = np.PyArray_SIZE(ap_tout)
  *         dims[0] = ntimes             # <<<<<<<<<<<<<<
@@ -1164,7 +1159,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     (__pyx_v_dims[0]) = __pyx_v_ntimes;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":106
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":111
  *         ntimes = np.PyArray_SIZE(ap_tout)
  *         dims[0] = ntimes
  *         t = tout[0]             # <<<<<<<<<<<<<<
@@ -1173,7 +1168,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_t = (__pyx_v_tout[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":109
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":114
  * 
  *         # Setup array to hold the output evaluations
  *         ap_yout = np.PyArray_EMPTY(2, dims, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1184,7 +1179,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_ap_yout = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":110
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":115
  *         # Setup array to hold the output evaluations
  *         ap_yout = np.PyArray_EMPTY(2, dims, np.NPY_DOUBLE, False)
  *         yout = <double *>np.PyArray_DATA(ap_yout)             # <<<<<<<<<<<<<<
@@ -1196,7 +1191,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_yout = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_yout)));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":112
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":117
  *         yout = <double *>np.PyArray_DATA(ap_yout)
  *         # Copy initial vector into first row of output
  *         memcpy(yout, y, neq*sizeof(double))     # copy intial value to output             # <<<<<<<<<<<<<<
@@ -1205,7 +1200,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     memcpy(__pyx_v_yout, __pyx_v_y, (__pyx_v_neq * (sizeof(double))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":113
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":118
  *         # Copy initial vector into first row of output
  *         memcpy(yout, y, neq*sizeof(double))     # copy intial value to output
  *         yout_ptr = yout + neq;                  # set output pointer to next position             # <<<<<<<<<<<<<<
@@ -1214,7 +1209,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_yout_ptr = (__pyx_v_yout + __pyx_v_neq);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":115
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":120
  *         yout_ptr = yout + neq;                  # set output pointer to next position
  * 
  *         itol, ap_rtol, ap_atol, ap_tcrit = setup_extra_inputs(rtol, atol, tcrit, neq, &numcrit)             # <<<<<<<<<<<<<<
@@ -1224,7 +1219,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_2 = setup_extra_inputs(__pyx_v_rtol, __pyx_v_atol, __pyx_v_tcrit, __pyx_v_neq, (&__pyx_v_numcrit)); 
     __pyx_t_6 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_t_2, 4)));
     __pyx_t_1 = __pyx_t_6[0];
-    __pyx_t_10 = __site_cvt_cvt_int_115_8->Target(__site_cvt_cvt_int_115_8, __pyx_t_1);
+    __pyx_t_10 = __site_cvt_cvt_int_120_8->Target(__site_cvt_cvt_int_120_8, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_7 = __pyx_t_6[1];
     __pyx_t_8 = __pyx_t_6[2];
@@ -1239,7 +1234,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_ap_tcrit = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":116
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":121
  * 
  *         itol, ap_rtol, ap_atol, ap_tcrit = setup_extra_inputs(rtol, atol, tcrit, neq, &numcrit)
  *         if itol < 0:             # <<<<<<<<<<<<<<
@@ -1249,7 +1244,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_itol < 0);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":117
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":122
  *         itol, ap_rtol, ap_atol, ap_tcrit = setup_extra_inputs(rtol, atol, tcrit, neq, &numcrit)
  *         if itol < 0:
  *             return None # Fail             # <<<<<<<<<<<<<<
@@ -1262,7 +1257,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L9:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":119
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":124
  *             return None # Fail
  * 
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)             # <<<<<<<<<<<<<<
@@ -1274,7 +1269,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_rtol_ptr = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_rtol)));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":120
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":125
  * 
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)             # <<<<<<<<<<<<<<
@@ -1286,7 +1281,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_v_atol_ptr = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_atol)));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":121
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":126
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
  *         if tcrit is not None:             # <<<<<<<<<<<<<<
@@ -1296,7 +1291,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_tcrit != nullptr);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":122
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":127
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
  *         if tcrit is not None:
  *             tcrit_ptr = <double *>np.PyArray_DATA(ap_tcrit)             # <<<<<<<<<<<<<<
@@ -1311,7 +1306,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L10:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":125
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":130
  * 
  *         # Find size of working arrays
  *         compute_lrw_liw(&lrw, &liw, neq, jt, ml, mu, mxordn, mxords)             # <<<<<<<<<<<<<<
@@ -1320,7 +1315,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     compute_lrw_liw((&__pyx_v_lrw), (&__pyx_v_liw), __pyx_v_neq, __pyx_v_jt, __pyx_v_ml, __pyx_v_mu, __pyx_v_mxordn, __pyx_v_mxords);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":126
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":131
  *         # Find size of working arrays
  *         compute_lrw_liw(&lrw, &liw, neq, jt, ml, mu, mxordn, mxords)
  *         wa = <double *>malloc(lrw*sizeof(double) + liw*sizeof(int))             # <<<<<<<<<<<<<<
@@ -1329,7 +1324,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_wa = ((double *)malloc(((__pyx_v_lrw * (sizeof(double))) + (__pyx_v_liw * (sizeof(int))))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":127
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":132
  *         compute_lrw_liw(&lrw, &liw, neq, jt, ml, mu, mxordn, mxords)
  *         wa = <double *>malloc(lrw*sizeof(double) + liw*sizeof(int))
  *         if wa == NULL:             # <<<<<<<<<<<<<<
@@ -1339,7 +1334,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_wa == NULL);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":128
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":133
  *         wa = <double *>malloc(lrw*sizeof(double) + liw*sizeof(int))
  *         if wa == NULL:
  *             raise Exception("Insufficent memory")             # <<<<<<<<<<<<<<
@@ -1347,7 +1342,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *         rwork = wa;
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "Exception");
-      __pyx_t_9 = __site_call1_128_27->Target(__site_call1_128_27, __pyx_context, __pyx_t_2, ((System::Object^)"Insufficent memory"));
+      __pyx_t_9 = __site_call1_133_27->Target(__site_call1_133_27, __pyx_context, __pyx_t_2, ((System::Object^)"Insufficent memory"));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_9, nullptr, nullptr);
       __pyx_t_9 = nullptr;
@@ -1355,7 +1350,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L11:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":129
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":134
  *         if wa == NULL:
  *             raise Exception("Insufficent memory")
  *         allocated = 1;             # <<<<<<<<<<<<<<
@@ -1364,7 +1359,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_allocated = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":130
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":135
  *             raise Exception("Insufficent memory")
  *         allocated = 1;
  *         rwork = wa;             # <<<<<<<<<<<<<<
@@ -1373,7 +1368,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_rwork = __pyx_v_wa;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":131
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":136
  *         allocated = 1;
  *         rwork = wa;
  *         iwork = <int *>(wa + lrw)             # <<<<<<<<<<<<<<
@@ -1382,7 +1377,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_iwork = ((int *)(__pyx_v_wa + __pyx_v_lrw));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":133
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":138
  *         iwork = <int *>(wa + lrw)
  * 
  *         iwork[0] = ml             # <<<<<<<<<<<<<<
@@ -1391,7 +1386,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     (__pyx_v_iwork[0]) = __pyx_v_ml;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":134
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":139
  * 
  *         iwork[0] = ml
  *         iwork[1] = mu      # ignored if not needed             # <<<<<<<<<<<<<<
@@ -1400,7 +1395,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     (__pyx_v_iwork[1]) = __pyx_v_mu;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":136
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":141
  *         iwork[1] = mu      # ignored if not needed
  * 
  *         if h0 != 0.0 or hmax != 0.0 or hmin != 0.0 or ixpr != 0 or mxstep != 0 or mxhnil != 0 or mxordn != 0 or mxords != 0:             # <<<<<<<<<<<<<<
@@ -1452,7 +1447,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":137
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":142
  * 
  *         if h0 != 0.0 or hmax != 0.0 or hmin != 0.0 or ixpr != 0 or mxstep != 0 or mxhnil != 0 or mxordn != 0 or mxords != 0:
  *             rwork[4] = h0             # <<<<<<<<<<<<<<
@@ -1461,7 +1456,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_rwork[4]) = __pyx_v_h0;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":138
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":143
  *         if h0 != 0.0 or hmax != 0.0 or hmin != 0.0 or ixpr != 0 or mxstep != 0 or mxhnil != 0 or mxordn != 0 or mxords != 0:
  *             rwork[4] = h0
  *             rwork[5] = hmax             # <<<<<<<<<<<<<<
@@ -1470,7 +1465,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_rwork[5]) = __pyx_v_hmax;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":139
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":144
  *             rwork[4] = h0
  *             rwork[5] = hmax
  *             rwork[6] = hmin             # <<<<<<<<<<<<<<
@@ -1479,7 +1474,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_rwork[6]) = __pyx_v_hmin;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":140
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":145
  *             rwork[5] = hmax
  *             rwork[6] = hmin
  *             iwork[4] = ixpr             # <<<<<<<<<<<<<<
@@ -1488,7 +1483,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_iwork[4]) = __pyx_v_ixpr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":141
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":146
  *             rwork[6] = hmin
  *             iwork[4] = ixpr
  *             iwork[5] = mxstep             # <<<<<<<<<<<<<<
@@ -1497,7 +1492,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_iwork[5]) = __pyx_v_mxstep;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":142
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":147
  *             iwork[4] = ixpr
  *             iwork[5] = mxstep
  *             iwork[6] = mxhnil             # <<<<<<<<<<<<<<
@@ -1506,7 +1501,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_iwork[6]) = __pyx_v_mxhnil;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":143
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":148
  *             iwork[5] = mxstep
  *             iwork[6] = mxhnil
  *             iwork[7] = mxordn             # <<<<<<<<<<<<<<
@@ -1515,7 +1510,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_iwork[7]) = __pyx_v_mxordn;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":144
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":149
  *             iwork[6] = mxhnil
  *             iwork[7] = mxordn
  *             iwork[8] = mxords             # <<<<<<<<<<<<<<
@@ -1524,7 +1519,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       (__pyx_v_iwork[8]) = __pyx_v_mxords;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":145
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":150
  *             iwork[7] = mxordn
  *             iwork[8] = mxords
  *             iopt = 1             # <<<<<<<<<<<<<<
@@ -1536,7 +1531,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L12:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":147
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":152
  *             iopt = 1
  * 
  *         istate = 1             # <<<<<<<<<<<<<<
@@ -1545,7 +1540,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_istate = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":148
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":153
  * 
  *         istate = 1
  *         k = 1             # <<<<<<<<<<<<<<
@@ -1554,7 +1549,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     __pyx_v_k = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":151
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":156
  * 
  *         # If full output make some useful output arrays
  *         if full_output:             # <<<<<<<<<<<<<<
@@ -1563,7 +1558,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
     if (__pyx_v_full_output) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":152
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":157
  *         # If full output make some useful output arrays
  *         if full_output:
  *             out_sz = ntimes-1             # <<<<<<<<<<<<<<
@@ -1572,7 +1567,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       __pyx_v_out_sz = (__pyx_v_ntimes - 1);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":153
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":158
  *         if full_output:
  *             out_sz = ntimes-1
  *             ap_hu = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1583,7 +1578,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_hu = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":154
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":159
  *             out_sz = ntimes-1
  *             ap_hu = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tcur = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1594,7 +1589,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_tcur = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":155
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":160
  *             ap_hu = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tcur = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tolsf = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1605,7 +1600,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_tolsf = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":156
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":161
  *             ap_tcur = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tolsf = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tsw = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1616,7 +1611,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_tsw = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":157
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":162
  *             ap_tolsf = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_tsw = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_nst = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1627,7 +1622,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_nst = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":158
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":163
  *             ap_tsw = np.PyArray_EMPTY(1,&out_sz,np.NPY_DOUBLE, False)
  *             ap_nst = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nfe = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1638,7 +1633,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_nfe = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":159
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":164
  *             ap_nst = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nfe = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nje = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1649,7 +1644,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_nje = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":160
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":165
  *             ap_nfe = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nje = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nqu = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1660,7 +1655,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_nqu = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":161
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":166
  *             ap_nje = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_nqu = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_mused = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1671,7 +1666,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_ap_mused = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":162
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":167
  *             ap_nqu = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             ap_mused = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             if ap_hu is None or ap_tcur is None or ap_tolsf is None or ap_tsw is None or ap_nst is None or ap_nfe is None or ap_nje is None or ap_nqu is None or ap_mused is None:             # <<<<<<<<<<<<<<
@@ -1729,7 +1724,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       if (__pyx_t_5) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":163
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":168
  *             ap_mused = np.PyArray_EMPTY(1,&out_sz,np.NPY_INT, False)
  *             if ap_hu is None or ap_tcur is None or ap_tolsf is None or ap_tsw is None or ap_nst is None or ap_nfe is None or ap_nje is None or ap_nqu is None or ap_mused is None:
  *                 return NULL             # <<<<<<<<<<<<<<
@@ -1747,7 +1742,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     }
     __pyx_L13:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":165
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":170
  *                 return NULL
  * 
  *         if tcrit_ptr != NULL:             # <<<<<<<<<<<<<<
@@ -1757,7 +1752,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_5 = (__pyx_v_tcrit_ptr != NULL);
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":166
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":171
  * 
  *         if tcrit_ptr != NULL:
  *             itask = 4             # <<<<<<<<<<<<<<
@@ -1766,22 +1761,22 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       __pyx_v_itask = 4;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":167
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":172
  *         if tcrit_ptr != NULL:
  *             itask = 4
  *             rwork[0] = tcrit[0]  # There are critical points             # <<<<<<<<<<<<<<
  * 
  *         while (k < ntimes and istate > 0):  # loop over desired times
  */
-      __pyx_t_9 = __site_getindex_167_28->Target(__site_getindex_167_28, __pyx_v_tcrit, ((System::Object^)0));
-      __pyx_t_18 = __site_cvt_cvt_double_167_28->Target(__site_cvt_cvt_double_167_28, __pyx_t_9);
+      __pyx_t_9 = __site_getindex_172_28->Target(__site_getindex_172_28, __pyx_v_tcrit, ((System::Object^)0));
+      __pyx_t_18 = __site_cvt_cvt_double_172_28->Target(__site_cvt_cvt_double_172_28, __pyx_t_9);
       __pyx_t_9 = nullptr;
       (__pyx_v_rwork[0]) = __pyx_t_18;
       goto __pyx_L15;
     }
     __pyx_L15:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":169
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":174
  *             rwork[0] = tcrit[0]  # There are critical points
  * 
  *         while (k < ntimes and istate > 0):  # loop over desired times             # <<<<<<<<<<<<<<
@@ -1798,7 +1793,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       if (!__pyx_t_4) break;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":170
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":175
  * 
  *         while (k < ntimes and istate > 0):  # loop over desired times
  *             tout_ptr = tout + k             # <<<<<<<<<<<<<<
@@ -1807,7 +1802,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       __pyx_v_tout_ptr = (__pyx_v_tout + __pyx_v_k);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":172
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":177
  *             tout_ptr = tout + k
  *             # Use tcrit if relevant
  *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:             # <<<<<<<<<<<<<<
@@ -1818,14 +1813,14 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       if (__pyx_t_4) {
         __pyx_t_9 = (__pyx_v_tout_ptr[0]);
         __pyx_t_2 = __pyx_v_crit_ind;
-        __pyx_t_8 = __site_op_add_172_51->Target(__site_op_add_172_51, __pyx_v_tcrit, __pyx_t_2);
+        __pyx_t_8 = __site_op_add_177_51->Target(__site_op_add_177_51, __pyx_v_tcrit, __pyx_t_2);
         __pyx_t_2 = nullptr;
-        __pyx_t_2 = __site_getindex_172_62->Target(__site_getindex_172_62, __pyx_t_8, ((System::Object^)0));
+        __pyx_t_2 = __site_getindex_177_62->Target(__site_getindex_177_62, __pyx_t_8, ((System::Object^)0));
         __pyx_t_8 = nullptr;
-        __pyx_t_8 = __site_op_gt_172_42->Target(__site_op_gt_172_42, __pyx_t_9, __pyx_t_2);
+        __pyx_t_8 = __site_op_gt_177_42->Target(__site_op_gt_177_42, __pyx_t_9, __pyx_t_2);
         __pyx_t_9 = nullptr;
         __pyx_t_2 = nullptr;
-        __pyx_t_5 = __site_istrue_172_42->Target(__site_istrue_172_42, __pyx_t_8);
+        __pyx_t_5 = __site_istrue_177_42->Target(__site_istrue_177_42, __pyx_t_8);
         __pyx_t_8 = nullptr;
         __pyx_t_3 = __pyx_t_5;
       } else {
@@ -1833,7 +1828,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       if (__pyx_t_3) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":173
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":178
  *             # Use tcrit if relevant
  *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
  *                 crit_ind += 1             # <<<<<<<<<<<<<<
@@ -1842,7 +1837,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
         __pyx_v_crit_ind += 1;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":174
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":179
  *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
  *                 crit_ind += 1
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]             # <<<<<<<<<<<<<<
@@ -1854,7 +1849,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       __pyx_L18:;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":175
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":180
  *                 crit_ind += 1
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]
  *             if crit_ind >= numcrit:             # <<<<<<<<<<<<<<
@@ -1864,7 +1859,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_t_3 = (__pyx_v_crit_ind >= __pyx_v_numcrit);
       if (__pyx_t_3) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":176
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":181
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]
  *             if crit_ind >= numcrit:
  *                 itask = 1  # No more critical values             # <<<<<<<<<<<<<<
@@ -1876,7 +1871,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       __pyx_L19:;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":178
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":183
  *                 itask = 1  # No more critical values
  * 
  *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);             # <<<<<<<<<<<<<<
@@ -1885,7 +1880,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       LSODA(((void *)__pyx_function_pointer_ode_function), (&__pyx_v_neq), __pyx_v_y, (&__pyx_v_t), __pyx_v_tout_ptr, (&__pyx_v_itol), __pyx_v_rtol_ptr, __pyx_v_atol_ptr, (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), __pyx_v_rwork, (&__pyx_v_lrw), __pyx_v_iwork, (&__pyx_v_liw), ((void *)__pyx_function_pointer_ode_jacobian_function), (&__pyx_v_jt));
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":179
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":184
  * 
  *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
  *             if full_output:             # <<<<<<<<<<<<<<
@@ -1894,7 +1889,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       if (__pyx_v_full_output) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":180
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":185
  *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
  *             if full_output:
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]             # <<<<<<<<<<<<<<
@@ -1906,7 +1901,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_hu)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[10]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":181
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":186
  *             if full_output:
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]             # <<<<<<<<<<<<<<
@@ -1918,7 +1913,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tcur)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[12]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":182
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":187
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]             # <<<<<<<<<<<<<<
@@ -1930,7 +1925,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tolsf)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[13]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":183
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":188
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]             # <<<<<<<<<<<<<<
@@ -1942,7 +1937,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tsw)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[14]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":184
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":189
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]             # <<<<<<<<<<<<<<
@@ -1954,7 +1949,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nst)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[10]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":185
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":190
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]             # <<<<<<<<<<<<<<
@@ -1966,7 +1961,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nfe)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[11]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":186
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":191
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]             # <<<<<<<<<<<<<<
@@ -1978,7 +1973,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nje)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[12]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":187
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":192
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]             # <<<<<<<<<<<<<<
@@ -1990,7 +1985,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nqu)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[13]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":188
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":193
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]
  *                 if istate == -5 or istate == -4:             # <<<<<<<<<<<<<<
@@ -2001,7 +1996,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           case -5:
           case -4:
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":189
+          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":194
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]
  *                 if istate == -5 or istate == -4:
  *                   imxer = iwork[15]             # <<<<<<<<<<<<<<
@@ -2012,7 +2007,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           break;
           default:
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":191
+          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":196
  *                   imxer = iwork[15]
  *                 else:
  *                   imxer = -1             # <<<<<<<<<<<<<<
@@ -2023,7 +2018,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           break;
         }
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":193
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":198
  *                   imxer = -1
  * 
  *                 lenrw = iwork[16]             # <<<<<<<<<<<<<<
@@ -2032,7 +2027,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
         __pyx_v_lenrw = (__pyx_v_iwork[16]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":194
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":199
  * 
  *                 lenrw = iwork[16]
  *                 leniw = iwork[17]             # <<<<<<<<<<<<<<
@@ -2041,7 +2036,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
         __pyx_v_leniw = (__pyx_v_iwork[17]);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":195
+        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":200
  *                 lenrw = iwork[16]
  *                 leniw = iwork[17]
  *                 (<int *>np.PyArray_DATA(ap_mused))[k-1] = iwork[18]             # <<<<<<<<<<<<<<
@@ -2056,7 +2051,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       __pyx_L20:;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":197
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":202
  *                 (<int *>np.PyArray_DATA(ap_mused))[k-1] = iwork[18]
  * 
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output             # <<<<<<<<<<<<<<
@@ -2065,7 +2060,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       memcpy(__pyx_v_yout_ptr, __pyx_v_y, (__pyx_v_neq * (sizeof(double))));
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":198
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":203
  * 
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output
  *             yout_ptr += neq             # <<<<<<<<<<<<<<
@@ -2074,7 +2069,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       __pyx_v_yout_ptr += __pyx_v_neq;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":199
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":204
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output
  *             yout_ptr += neq
  *             k += 1             # <<<<<<<<<<<<<<
@@ -2084,7 +2079,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_k += 1;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":200
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":205
  *             yout_ptr += neq
  *             k += 1
  *         free(wa);             # <<<<<<<<<<<<<<
@@ -2094,7 +2089,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     free(__pyx_v_wa);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":202
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":207
  *         free(wa);
  *     finally:
  *         RESTORE_JAC_FUNC(store_multipack_globals)             # <<<<<<<<<<<<<<
@@ -2106,7 +2101,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_8 = nullptr;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":204
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":209
  *         RESTORE_JAC_FUNC(store_multipack_globals)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -2115,7 +2110,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   if (__pyx_v_full_output) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":205
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":210
  * 
  *     if full_output:
  *         props = { "hu" : np.PyArray_Return(ap_hu),             # <<<<<<<<<<<<<<
@@ -2130,7 +2125,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"hu")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":206
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":211
  *     if full_output:
  *         props = { "hu" : np.PyArray_Return(ap_hu),
  *                   "tcur" : np.PyArray_Return(ap_tcur),             # <<<<<<<<<<<<<<
@@ -2144,7 +2139,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"tcur")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":207
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":212
  *         props = { "hu" : np.PyArray_Return(ap_hu),
  *                   "tcur" : np.PyArray_Return(ap_tcur),
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),             # <<<<<<<<<<<<<<
@@ -2158,7 +2153,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"tolsf")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":208
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":213
  *                   "tcur" : np.PyArray_Return(ap_tcur),
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  *                   "tsw" : np.PyArray_Return(ap_tsw),             # <<<<<<<<<<<<<<
@@ -2172,7 +2167,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"tsw")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":209
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":214
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  *                   "nst" : np.PyArray_Return(ap_nst),             # <<<<<<<<<<<<<<
@@ -2186,7 +2181,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"nst")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":210
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":215
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  *                   "nst" : np.PyArray_Return(ap_nst),
  *                   "nfe" : np.PyArray_Return(ap_nfe),             # <<<<<<<<<<<<<<
@@ -2200,7 +2195,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"nfe")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":211
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":216
  *                   "nst" : np.PyArray_Return(ap_nst),
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  *                   "nje" : np.PyArray_Return(ap_nje),             # <<<<<<<<<<<<<<
@@ -2214,7 +2209,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"nje")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":212
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":217
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  *                   "nje" : np.PyArray_Return(ap_nje),
  *                   "nqu" : np.PyArray_Return(ap_nqu),             # <<<<<<<<<<<<<<
@@ -2228,7 +2223,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"nqu")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":213
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":218
  *                   "nje" : np.PyArray_Return(ap_nje),
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  *                   "imxer" : imxer,             # <<<<<<<<<<<<<<
@@ -2239,7 +2234,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"imxer")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":214
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":219
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  *                   "imxer" : imxer,
  *                   "lenrw" : lenrw,             # <<<<<<<<<<<<<<
@@ -2250,7 +2245,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"lenrw")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":215
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":220
  *                   "imxer" : imxer,
  *                   "lenrw" : lenrw,
  *                   "leniw" : leniw,             # <<<<<<<<<<<<<<
@@ -2261,7 +2256,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_t_19[((System::Object^)"leniw")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":216
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":221
  *                   "lenrw" : lenrw,
  *                   "leniw" : leniw,
  *                   "mused" : np.PyArray_Return(ap_mused) }             # <<<<<<<<<<<<<<
@@ -2277,7 +2272,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_props = __pyx_t_19;
     __pyx_t_19 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":217
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":222
  *                   "leniw" : leniw,
  *                   "mused" : np.PyArray_Return(ap_mused) }
  *         return (np.PyArray_Return(ap_yout), props, istate)             # <<<<<<<<<<<<<<
@@ -2299,7 +2294,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":219
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":224
  *         return (np.PyArray_Return(ap_yout), props, istate)
  *     else:
  *         return (np.PyArray_Return(ap_yout), istate)             # <<<<<<<<<<<<<<
@@ -2325,7 +2320,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":224
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":229
  * 
  * 
  * cdef void ode_function(int *n, double *t, double *y, double *ydot):             # <<<<<<<<<<<<<<
@@ -2348,7 +2343,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arg1 = nullptr;
   __pyx_v_arglist = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":234
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":241
  * 
  *     # Append t to argument list
  *     arg1 = (t[0], )             # <<<<<<<<<<<<<<
@@ -2361,7 +2356,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arg1 = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":235
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":242
  *     # Append t to argument list
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1             # <<<<<<<<<<<<<<
@@ -2373,7 +2368,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_t_1 = nullptr;
   if (__pyx_t_3) {
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "__multipack_extra_arguments");
-    __pyx_t_4 = __site_op_add_235_19->Target(__site_op_add_235_19, __pyx_v_arg1, __pyx_t_1);
+    __pyx_t_4 = __site_op_add_242_19->Target(__site_op_add_242_19, __pyx_v_arg1, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_2 = __pyx_t_4;
     __pyx_t_4 = nullptr;
@@ -2383,7 +2378,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arglist = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":236
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":243
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = <np.ndarray>call_python_function(__multipack_python_function, n[0], y, arglist, 1, OdepackError)             # <<<<<<<<<<<<<<
@@ -2398,7 +2393,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_result_array = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":237
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":244
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = <np.ndarray>call_python_function(__multipack_python_function, n[0], y, arglist, 1, OdepackError)
  *     memcpy(ydot, np.PyArray_DATA(result_array), (n[0])*sizeof(double));             # <<<<<<<<<<<<<<
@@ -2409,7 +2404,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":240
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":247
  * 
  * 
  * cdef int ode_jacobian_function(int *n, double *t, double *y, int *ml, int *mu, double *pd, int *nrowpd):             # <<<<<<<<<<<<<<
@@ -2433,7 +2428,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arg1 = nullptr;
   __pyx_v_arglist = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":251
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":262
  *     cdef np.ndarray result_array
  * 
  *     arg1 = (t[0], )             # <<<<<<<<<<<<<<
@@ -2449,7 +2444,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arg1 = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":252
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":263
  * 
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1             # <<<<<<<<<<<<<<
@@ -2461,7 +2456,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_t_1 = nullptr;
   if (__pyx_t_3) {
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "__multipack_extra_arguments");
-    __pyx_t_4 = __site_op_add_252_19->Target(__site_op_add_252_19, ((System::Object^)__pyx_v_arg1), __pyx_t_1);
+    __pyx_t_4 = __site_op_add_263_19->Target(__site_op_add_263_19, ((System::Object^)__pyx_v_arg1), __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_2 = __pyx_t_4;
     __pyx_t_4 = nullptr;
@@ -2471,7 +2466,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arglist = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":253
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":264
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = call_python_function(__multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)             # <<<<<<<<<<<<<<
@@ -2489,7 +2484,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_result_array = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":255
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":266
  *     result_array = call_python_function(__multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)
  * 
  *     if __multipack_jac_transpose == 1:             # <<<<<<<<<<<<<<
@@ -2499,7 +2494,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_t_3 = (__pyx_v_5scipy_9integrate_8_odepack___multipack_jac_transpose == 1);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":256
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":267
  * 
  *     if __multipack_jac_transpose == 1:
  *         MATRIXC2F(pd, <double *>np.PyArray_DATA(result_array), n[0], nrowpd[0])             # <<<<<<<<<<<<<<
@@ -2511,7 +2506,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":258
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":269
  *         MATRIXC2F(pd, <double *>np.PyArray_DATA(result_array), n[0], nrowpd[0])
  *     else:
  *         memcpy(pd, np.PyArray_DATA(result_array), (n[0])*(nrowpd[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2522,7 +2517,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":260
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":271
  *         memcpy(pd, np.PyArray_DATA(result_array), (n[0])*(nrowpd[0])*sizeof(double))
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -2537,7 +2532,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":262
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":273
  *     return 0
  * 
  * cdef void MATRIXC2F(double *p1, double *p3, int n, int m):             # <<<<<<<<<<<<<<
@@ -2551,7 +2546,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
   int __pyx_v_j;
   int __pyx_t_1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":266
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":277
  *     cdef int i,j
  * 
  *     j=0             # <<<<<<<<<<<<<<
@@ -2560,7 +2555,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
   __pyx_v_j = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":267
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":278
  * 
  *     j=0
  *     while j < m:             # <<<<<<<<<<<<<<
@@ -2571,7 +2566,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
     __pyx_t_1 = (__pyx_v_j < __pyx_v_m);
     if (!__pyx_t_1) break;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":268
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":279
  *     j=0
  *     while j < m:
  *         p2=p3             # <<<<<<<<<<<<<<
@@ -2580,7 +2575,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_p2 = __pyx_v_p3;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":269
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":280
  *     while j < m:
  *         p2=p3
  *         i=0             # <<<<<<<<<<<<<<
@@ -2589,7 +2584,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_i = 0;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":270
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":281
  *         p2=p3
  *         i=0
  *         while i < n:             # <<<<<<<<<<<<<<
@@ -2600,7 +2595,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
       __pyx_t_1 = (__pyx_v_i < __pyx_v_n);
       if (!__pyx_t_1) break;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":271
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":282
  *         i=0
  *         while i < n:
  *             p1[0] = p2[0]             # <<<<<<<<<<<<<<
@@ -2609,7 +2604,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
       (__pyx_v_p1[0]) = (__pyx_v_p2[0]);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":272
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":283
  *         while i < n:
  *             p1[0] = p2[0]
  *             p2 += m             # <<<<<<<<<<<<<<
@@ -2618,7 +2613,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
       __pyx_v_p2 += __pyx_v_m;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":273
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":284
  *             p1[0] = p2[0]
  *             p2 += m
  *             p1 += 1             # <<<<<<<<<<<<<<
@@ -2628,7 +2623,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
       __pyx_v_p1 += 1;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":274
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":285
  *             p2 += m
  *             p1 += 1
  *         p3 += 1             # <<<<<<<<<<<<<<
@@ -2637,7 +2632,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_p3 += 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":275
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":286
  *             p1 += 1
  *         p3 += 1
  *         j += 1             # <<<<<<<<<<<<<<
@@ -2649,7 +2644,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":277
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":288
  *         j += 1
  * 
  * cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int neq, int *numcrit):             # <<<<<<<<<<<<<<
@@ -2672,7 +2667,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_v_ap_atol = nullptr;
   __pyx_v_ap_tcrit = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":279
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":290
  * cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int neq, int *numcrit):
  *     cdef object ap_rtol, ap_atol, ap_tcrit      # Outputs
  *     cdef int itol = 0             # <<<<<<<<<<<<<<
@@ -2681,7 +2676,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_itol = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":280
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":291
  *     cdef object ap_rtol, ap_atol, ap_tcrit      # Outputs
  *     cdef int itol = 0
  *     cdef double tol=1.49012e-8             # <<<<<<<<<<<<<<
@@ -2690,7 +2685,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_tol = 1.49012e-8;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":281
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":292
  *     cdef int itol = 0
  *     cdef double tol=1.49012e-8
  *     cdef np.npy_intp one = 1             # <<<<<<<<<<<<<<
@@ -2699,7 +2694,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_one = 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":283
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":294
  *     cdef np.npy_intp one = 1
  * 
  *     if o_rtol is None:             # <<<<<<<<<<<<<<
@@ -2709,7 +2704,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_t_1 = (__pyx_v_o_rtol == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":284
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":295
  * 
  *     if o_rtol is None:
  *         ap_rtol = np.PyArray_EMPTY(1, &one, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2720,7 +2715,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_rtol = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":285
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":296
  *     if o_rtol is None:
  *         ap_rtol = np.PyArray_EMPTY(1, &one, np.NPY_DOUBLE, False)
  *         (<double *>np.PyArray_DATA(ap_rtol))[0] = tol             # <<<<<<<<<<<<<<
@@ -2735,7 +2730,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":287
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":298
  *         (<double *>np.PyArray_DATA(ap_rtol))[0] = tol
  *     else:
  *         ap_rtol = np.PyArray_ContiguousFromObject(o_rtol,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
@@ -2748,7 +2743,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_rtol = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":288
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":299
  *     else:
  *         ap_rtol = np.PyArray_ContiguousFromObject(o_rtol,np.NPY_DOUBLE,0,1)
  *         if np.PyArray_NDIM(ap_rtol) == 0:             # <<<<<<<<<<<<<<
@@ -2759,15 +2754,15 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
     __pyx_t_3 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_v_ap_rtol)); 
-    __pyx_t_2 = __site_op_eq_288_36->Target(__site_op_eq_288_36, __pyx_t_3, __pyx_int_0);
+    __pyx_t_2 = __site_op_eq_299_36->Target(__site_op_eq_299_36, __pyx_t_3, __pyx_int_0);
     __pyx_t_3 = nullptr;
-    __pyx_t_1 = __site_istrue_288_36->Target(__site_istrue_288_36, __pyx_t_2);
+    __pyx_t_1 = __site_istrue_299_36->Target(__site_istrue_299_36, __pyx_t_2);
     __pyx_t_2 = nullptr;
     if (__pyx_t_1) {
       goto __pyx_L4;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":290
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":301
  *         if np.PyArray_NDIM(ap_rtol) == 0:
  *             pass
  *         elif np.PyArray_DIMS(ap_rtol)[0] == neq:             # <<<<<<<<<<<<<<
@@ -2780,7 +2775,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_t_1 = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_rtol))[0]) == __pyx_v_neq);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":291
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":302
  *             pass
  *         elif np.PyArray_DIMS(ap_rtol)[0] == neq:
  *             itol |= 2             # <<<<<<<<<<<<<<
@@ -2792,7 +2787,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":293
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":304
  *             itol |= 2
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")             # <<<<<<<<<<<<<<
@@ -2800,7 +2795,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  *     if o_atol is None:
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-      __pyx_t_3 = __site_call1_293_30->Target(__site_call1_293_30, __pyx_context, __pyx_t_2, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
+      __pyx_t_3 = __site_call1_304_30->Target(__site_call1_304_30, __pyx_context, __pyx_t_2, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -2809,7 +2804,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":295
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":306
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")
  * 
  *     if o_atol is None:             # <<<<<<<<<<<<<<
@@ -2819,7 +2814,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_t_1 = (__pyx_v_o_atol == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":296
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":307
  * 
  *     if o_atol is None:
  *         ap_atol = np.PyArray_EMPTY(1,&one,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2830,7 +2825,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_atol = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":297
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":308
  *     if o_atol is None:
  *         ap_atol = np.PyArray_EMPTY(1,&one,np.NPY_DOUBLE, False)
  *         (<double *>np.PyArray_DATA(ap_atol))[0] = tol             # <<<<<<<<<<<<<<
@@ -2845,7 +2840,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":299
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":310
  *         (<double *>np.PyArray_DATA(ap_atol))[0] = tol
  *     else:
  *         ap_atol = np.PyArray_ContiguousFromObject(o_atol,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
@@ -2858,7 +2853,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_atol = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":300
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":311
  *     else:
  *         ap_atol = np.PyArray_ContiguousFromObject(o_atol,np.NPY_DOUBLE,0,1)
  *         if np.PyArray_NDIM(ap_atol) == 0:   # atol is scalar             # <<<<<<<<<<<<<<
@@ -2869,15 +2864,15 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
     __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_v_ap_atol)); 
-    __pyx_t_3 = __site_op_eq_300_36->Target(__site_op_eq_300_36, __pyx_t_2, __pyx_int_0);
+    __pyx_t_3 = __site_op_eq_311_36->Target(__site_op_eq_311_36, __pyx_t_2, __pyx_int_0);
     __pyx_t_2 = nullptr;
-    __pyx_t_1 = __site_istrue_300_36->Target(__site_istrue_300_36, __pyx_t_3);
+    __pyx_t_1 = __site_istrue_311_36->Target(__site_istrue_311_36, __pyx_t_3);
     __pyx_t_3 = nullptr;
     if (__pyx_t_1) {
       goto __pyx_L6;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":302
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":313
  *         if np.PyArray_NDIM(ap_atol) == 0:   # atol is scalar
  *             pass
  *         elif np.PyArray_DIMS(ap_atol)[0] == neq:             # <<<<<<<<<<<<<<
@@ -2890,7 +2885,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_t_1 = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_atol))[0]) == __pyx_v_neq);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":303
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":314
  *             pass
  *         elif np.PyArray_DIMS(ap_atol)[0] == neq:
  *             itol |= 1   # Set atol array flag             # <<<<<<<<<<<<<<
@@ -2902,7 +2897,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":305
+      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":316
  *             itol |= 1   # Set atol array flag
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")             # <<<<<<<<<<<<<<
@@ -2910,7 +2905,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  * 
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-      __pyx_t_2 = __site_call1_305_30->Target(__site_call1_305_30, __pyx_context, __pyx_t_3, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
+      __pyx_t_2 = __site_call1_316_30->Target(__site_call1_316_30, __pyx_context, __pyx_t_3, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
       __pyx_t_2 = nullptr;
@@ -2919,7 +2914,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":306
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":317
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")
  *     itol += 1             # increment to get correct value             # <<<<<<<<<<<<<<
@@ -2928,7 +2923,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_itol += 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":309
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":320
  * 
  *     # Setup t-critical
  *     if o_tcrit is None:             # <<<<<<<<<<<<<<
@@ -2938,7 +2933,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_t_1 = (__pyx_v_o_tcrit == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":310
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":321
  *     # Setup t-critical
  *     if o_tcrit is None:
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
@@ -2951,7 +2946,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_tcrit = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":311
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":322
  *     if o_tcrit is None:
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
  *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)             # <<<<<<<<<<<<<<
@@ -2966,7 +2961,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":312
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":323
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
  *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
  *     return itol, ap_rtol, ap_atol, ap_tcrit             # <<<<<<<<<<<<<<
@@ -2985,7 +2980,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":315
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":326
  * 
  * 
  * cdef object call_python_function(func, np.npy_intp n, double *x, object args, int dim, object error_obj):             # <<<<<<<<<<<<<<
@@ -3005,7 +3000,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = nullptr;
   __pyx_v_result = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":334
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":345
  * 
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)             # <<<<<<<<<<<<<<
@@ -3016,7 +3011,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":335
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":346
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:             # <<<<<<<<<<<<<<
@@ -3026,21 +3021,21 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (((System::Object^)__pyx_v_sequence) == nullptr);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":336
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":347
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:
  *         raise error_obj("Internal failure to make an array of doubles out of first\n                 argument to function call.")             # <<<<<<<<<<<<<<
  * 
  *     # Build argument list
  */
-    __pyx_t_1 = __site_call1_336_23->Target(__site_call1_336_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
+    __pyx_t_1 = __site_call1_347_23->Target(__site_call1_347_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":339
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":350
  * 
  *     # Build argument list
  *     if args is None: args = ()             # <<<<<<<<<<<<<<
@@ -3054,7 +3049,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L4:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":340
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":351
  *     # Build argument list
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)             # <<<<<<<<<<<<<<
@@ -3063,15 +3058,15 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "apply");
   __pyx_t_3 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_sequence)});
-  __pyx_t_4 = __site_op_add_340_38->Target(__site_op_add_340_38, __pyx_t_3, __pyx_v_args);
+  __pyx_t_4 = __site_op_add_351_38->Target(__site_op_add_351_38, __pyx_t_3, __pyx_v_args);
   __pyx_t_3 = nullptr;
-  __pyx_t_3 = __site_call2_340_18->Target(__site_call2_340_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
+  __pyx_t_3 = __site_call2_351_18->Target(__site_call2_351_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
   __pyx_t_1 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_v_result = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":341
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":352
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:             # <<<<<<<<<<<<<<
@@ -3081,17 +3076,17 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (__pyx_v_result == nullptr);
   if (__pyx_t_2) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":342
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":353
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)             # <<<<<<<<<<<<<<
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)
  * 
  */
-    __pyx_t_3 = __site_get_func_name_342_89->Target(__site_get_func_name_342_89, __pyx_v_func, __pyx_context);
-    __pyx_t_4 = __site_op_mod_342_83->Target(__site_op_mod_342_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
+    __pyx_t_3 = __site_get_func_name_353_89->Target(__site_get_func_name_353_89, __pyx_v_func, __pyx_context);
+    __pyx_t_4 = __site_op_mod_353_83->Target(__site_op_mod_353_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
     __pyx_t_3 = nullptr;
-    __pyx_t_3 = __site_call1_342_23->Target(__site_call1_342_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
+    __pyx_t_3 = __site_call1_353_23->Target(__site_call1_353_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3099,7 +3094,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":343
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":354
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)             # <<<<<<<<<<<<<<
@@ -3122,7 +3117,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":346
+/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":357
  * 
  * 
  * cdef int compute_lrw_liw(int *lrw, int *liw, int neq, int jt, int ml, int mu, int mxordn, int mxords):             # <<<<<<<<<<<<<<
@@ -3141,7 +3136,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":349
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":360
  *     cdef int lrn, lrs, nyh, lmat
  * 
  *     if jt == 1 or jt == 2:             # <<<<<<<<<<<<<<
@@ -3152,7 +3147,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     case 1:
     case 2:
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":350
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":361
  * 
  *     if jt == 1 or jt == 2:
  *         lmat = neq*neq + 2             # <<<<<<<<<<<<<<
@@ -3162,7 +3157,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     __pyx_v_lmat = ((__pyx_v_neq * __pyx_v_neq) + 2);
     break;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":351
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":362
  *     if jt == 1 or jt == 2:
  *         lmat = neq*neq + 2
  *     elif jt == 4 or jt == 5:             # <<<<<<<<<<<<<<
@@ -3172,7 +3167,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     case 4:
     case 5:
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":352
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":363
  *         lmat = neq*neq + 2
  *     elif jt == 4 or jt == 5:
  *         lmat = (2*ml + mu + 1)*neq + 2             # <<<<<<<<<<<<<<
@@ -3183,7 +3178,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     break;
     default:
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":354
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":365
  *         lmat = (2*ml + mu + 1)*neq + 2
  *     else:
  *         raise OdepackError("Incorrect value for jt")             # <<<<<<<<<<<<<<
@@ -3191,14 +3186,14 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  *     if mxordn < 0:
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_2 = __site_call1_354_26->Target(__site_call1_354_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for jt"));
+    __pyx_t_2 = __site_call1_365_26->Target(__site_call1_365_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for jt"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     break;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":356
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":367
  *         raise OdepackError("Incorrect value for jt")
  * 
  *     if mxordn < 0:             # <<<<<<<<<<<<<<
@@ -3208,7 +3203,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   __pyx_t_3 = (__pyx_v_mxordn < 0);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":357
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":368
  * 
  *     if mxordn < 0:
  *         raise OdepackError("Incorrect value for mxordn")             # <<<<<<<<<<<<<<
@@ -3216,7 +3211,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  *         raise OdepackError("Incorrect value for mxords")
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_1 = __site_call1_357_26->Target(__site_call1_357_26, __pyx_context, __pyx_t_2, ((System::Object^)"Incorrect value for mxordn"));
+    __pyx_t_1 = __site_call1_368_26->Target(__site_call1_368_26, __pyx_context, __pyx_t_2, ((System::Object^)"Incorrect value for mxordn"));
     __pyx_t_2 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3224,7 +3219,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":358
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":369
  *     if mxordn < 0:
  *         raise OdepackError("Incorrect value for mxordn")
  *     if mxords < 0:             # <<<<<<<<<<<<<<
@@ -3234,7 +3229,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   __pyx_t_3 = (__pyx_v_mxords < 0);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":359
+    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":370
  *         raise OdepackError("Incorrect value for mxordn")
  *     if mxords < 0:
  *         raise OdepackError("Incorrect value for mxords")             # <<<<<<<<<<<<<<
@@ -3242,7 +3237,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  * 
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_2 = __site_call1_359_26->Target(__site_call1_359_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for mxords"));
+    __pyx_t_2 = __site_call1_370_26->Target(__site_call1_370_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for mxords"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
@@ -3250,7 +3245,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   __pyx_L4:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":360
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":371
  *     if mxords < 0:
  *         raise OdepackError("Incorrect value for mxords")
  *     nyh = neq             # <<<<<<<<<<<<<<
@@ -3259,7 +3254,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_nyh = __pyx_v_neq;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":362
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":373
  *     nyh = neq
  * 
  *     lrn = 20 + nyh*(mxordn+1) + 3*neq             # <<<<<<<<<<<<<<
@@ -3268,7 +3263,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_lrn = ((20 + (__pyx_v_nyh * (__pyx_v_mxordn + 1))) + (3 * __pyx_v_neq));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":363
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":374
  * 
  *     lrn = 20 + nyh*(mxordn+1) + 3*neq
  *     lrs = 20 + nyh*(mxords+1) + 3*neq + lmat             # <<<<<<<<<<<<<<
@@ -3277,7 +3272,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_lrs = (((20 + (__pyx_v_nyh * (__pyx_v_mxords + 1))) + (3 * __pyx_v_neq)) + __pyx_v_lmat);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":365
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":376
  *     lrs = 20 + nyh*(mxords+1) + 3*neq + lmat
  * 
  *     lrw[0] = lrn if lrn > lrs else lrs             # <<<<<<<<<<<<<<
@@ -3291,7 +3286,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   (__pyx_v_lrw[0]) = __pyx_t_4;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":366
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":377
  * 
  *     lrw[0] = lrn if lrn > lrs else lrs
  *     liw[0] = <int>(20 + neq)             # <<<<<<<<<<<<<<
@@ -3300,7 +3295,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   (__pyx_v_liw[0]) = ((int)(20 + __pyx_v_neq));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":367
+  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\integrate\_odepack.pyx":378
  *     lrw[0] = lrn if lrn > lrs else lrs
  *     liw[0] = <int>(20 + neq)
  *     return 0             # <<<<<<<<<<<<<<
@@ -4571,43 +4566,44 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_call1_44_62 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_istrue_44_62 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_45_20 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_int_57_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_57_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_57_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_57_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_5 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_6 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_7 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_57_0_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_115_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_128_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_getindex_167_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_cvt_double_167_28 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_add_172_51 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_getindex_172_62 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_op_gt_172_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
-  __site_istrue_172_42 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_add_235_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_op_add_252_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_op_eq_288_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_288_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_293_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_eq_300_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_300_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_305_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_336_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_add_340_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_call2_340_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_func_name_342_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
-  __site_op_mod_342_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_342_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_354_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_357_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_359_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_int_59_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_62_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_62_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_62_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_5 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_6 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_7 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_62_0_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_120_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_133_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_getindex_172_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_cvt_cvt_double_172_28 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_add_177_51 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_getindex_177_62 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
+  __site_op_gt_177_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
+  __site_istrue_177_42 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_add_242_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_add_263_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_eq_299_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_299_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_304_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_311_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_311_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_316_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_347_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_351_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_call2_351_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_func_name_353_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
+  __site_op_mod_353_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_353_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_365_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_368_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_370_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_260_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_260_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_262_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
