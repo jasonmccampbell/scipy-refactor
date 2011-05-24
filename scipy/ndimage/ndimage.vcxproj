@@ -55,7 +55,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ndarray.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin</AdditionalLibraryDirectories>
     </Link>
     <ProjectReference>
       <LinkLibraryDependencies>true</LinkLibraryDependencies>
@@ -70,7 +70,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ndarray.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -95,7 +95,7 @@
     <Reference Include="Microsoft.Dynamic" />
     <Reference Include="Microsoft.Scripting" />
     <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
-      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug\NumpyDotNet.dll</HintPath>
+      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\NumpyDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
   </ItemGroup>

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -58,7 +58,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ndarray.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -71,7 +71,7 @@
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalDependencies>ndarray.lib</AdditionalDependencies>
-      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -140,8 +140,8 @@
     <Reference Include="Microsoft.Scripting">
       <HintPath>..\..\..\IronPython\bin\Debug\Microsoft.Scripting.dll</HintPath>
     </Reference>
-    <Reference Include="NumpyDotNet">
-      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\Debug\NumpyDotNet.dll</HintPath>
+    <Reference Include="NumpyDotNet, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null">
+      <HintPath>..\..\..\numpy-refactor\numpy\NumpyDotNet\bin\NumpyDotNet.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics" />
   </ItemGroup>

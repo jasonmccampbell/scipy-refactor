@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "integrate", "integrate.vcxproj", "{3DE4817F-06BD-FF6B-C971-0162051244D7}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "integrate", "integrate.vcxproj", "{A031ECA9-BA78-9E57-3325-A7CFFDCF2D80}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4A00C867-5C1D-483D-A7BA-0BD8CDDEE037} = {4A00C867-5C1D-483D-A7BA-0BD8CDDEE037}
 		{4BB85A70-F638-47C7-A084-333E2DCC7B4A} = {4BB85A70-F638-47C7-A084-333E2DCC7B4A}
@@ -26,10 +26,10 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3DE4817F-06BD-FF6B-C971-0162051244D7}.Debug|Win32.ActiveCfg = Debug|Win32
-		{3DE4817F-06BD-FF6B-C971-0162051244D7}.Debug|Win32.Build.0 = Debug|Win32
-		{3DE4817F-06BD-FF6B-C971-0162051244D7}.Release|Win32.ActiveCfg = Release|Win32
-		{3DE4817F-06BD-FF6B-C971-0162051244D7}.Release|Win32.Build.0 = Release|Win32
+		{A031ECA9-BA78-9E57-3325-A7CFFDCF2D80}.Debug|Win32.ActiveCfg = Debug|Win32
+		{A031ECA9-BA78-9E57-3325-A7CFFDCF2D80}.Debug|Win32.Build.0 = Debug|Win32
+		{A031ECA9-BA78-9E57-3325-A7CFFDCF2D80}.Release|Win32.ActiveCfg = Release|Win32
+		{A031ECA9-BA78-9E57-3325-A7CFFDCF2D80}.Release|Win32.Build.0 = Release|Win32
 		{4A00C867-5C1D-483D-A7BA-0BD8CDDEE037}.Debug|Win32.ActiveCfg = Debug|Win32
 		{4A00C867-5C1D-483D-A7BA-0BD8CDDEE037}.Debug|Win32.Build.0 = Debug|Win32
 		{4A00C867-5C1D-483D-A7BA-0BD8CDDEE037}.Release|Win32.ActiveCfg = Release|Win32
