@@ -378,11 +378,16 @@ cdef void ** alloc_data_from_list(l):
         data[i] = <void *><long long>(l[i])
     return data
 
-cdef int errprint(self, int flag=-37):
-    oldFlag = scipy_special_print_error_messages;
+def errprint(int flag=-37):
+    global scipy_special_print_error_messages
+
+    cdef int oldFlag = scipy_special_print_error_messages
     if flag != -37:
         scipy_special_print_error_messages = (flag != 0)
     return oldFlag
+
+class SpecialFunctionWarning(Warning):
+    pass
 
 
 cdef void ** airy_data = alloc_data_from_list([ <int> <void *>airy_, <int> <void *>airy_, <int> <void *>cairy_wrap, <int> <void *>cairy_wrap,])

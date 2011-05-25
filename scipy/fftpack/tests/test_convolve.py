@@ -50,6 +50,7 @@ class TestCallback(TestCase):
                                       '<1 <2 (3) (3) 2> <2 (3) (3) 2> 1>')
         assert_array_almost_equal(omega, [ 0.25,  0.25, -0.25,  0.  ])
 
+    @dec.knownfailureif(sys.platform == "cli", "Exception handling is different under .NET")
     def test_exception(self):
         n = 4
 

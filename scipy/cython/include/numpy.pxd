@@ -371,8 +371,8 @@ cdef inline object PyArray_Return(arr):
     if arr is None:
         return None
     import clr
-    import NumpyDotNet.NpyArray
-    return NumpyDotNet.NpyArray.ArrayReturn(arr)
+    import NumpyDotNet.ndarray
+    return NumpyDotNet.ndarray.ArrayReturn(arr)
 
 cdef inline intp_t PyArray_DIM(ndarray n, int dim):
     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)

@@ -21,6 +21,7 @@ from numpy import arange, add, array, asarray, zeros, dot, exp, pi,\
      swapaxes, double, cdouble
 import numpy as np
 import numpy.fft
+import sys
 
 # "large" composite numbers supported by FFTPACK
 LARGE_COMPOSITE_SIZES = [
@@ -706,6 +707,7 @@ class TestOverwrite(object):
                             overwrite_x=overwrite_x,
                             should_overwrite=should_overwrite)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_fft(self):
         overwritable = (np.complex128, np.complex64)
         for dtype in self.dtypes:
@@ -713,6 +715,7 @@ class TestOverwrite(object):
             self._check_1d(fft, dtype, (16, 2), 0, overwritable)
             self._check_1d(fft, dtype, (2, 16), 1, overwritable)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_ifft(self):
         overwritable = (np.complex128, np.complex64)
         for dtype in self.dtypes:
@@ -720,6 +723,7 @@ class TestOverwrite(object):
             self._check_1d(ifft, dtype, (16, 2), 0, overwritable)
             self._check_1d(ifft, dtype, (2, 16), 1, overwritable)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_rfft(self):
         overwritable = self.real_dtypes
         for dtype in self.real_dtypes:
@@ -727,6 +731,7 @@ class TestOverwrite(object):
             self._check_1d(rfft, dtype, (16, 2), 0, overwritable)
             self._check_1d(rfft, dtype, (2, 16), 1, overwritable)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_irfft(self):
         overwritable = self.real_dtypes
         for dtype in self.real_dtypes:
@@ -785,11 +790,13 @@ class TestOverwrite(object):
         self._check_nd_one(routine, dtype, (8, 16, 2), None, overwritable)
         self._check_nd_one(routine, dtype, (8, 16, 2), (0,1,2), overwritable)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_fftn(self):
         overwritable = (np.complex128, np.complex64)
         for dtype in self.dtypes:
             self._check_nd(fftn, dtype, overwritable)
 
+    @dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
     def test_ifftn(self):
         overwritable = (np.complex128, np.complex64)
         for dtype in self.dtypes:

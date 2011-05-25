@@ -1,7 +1,8 @@
 from numpy.testing import assert_, assert_array_almost_equal, assert_equal, \
                           assert_almost_equal, assert_array_equal, \
-                          run_module_suite, TestCase
+                          run_module_suite, TestCase, dec
 import numpy as np
+import sys
 
 import scipy.ndimage as ndimage
 
@@ -380,6 +381,7 @@ def test_sum08():
         output = ndimage.sum(input, labels=labels)
         assert_equal(output, 1.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_sum09():
     "sum 9"
     labels = np.array([1, 0], bool)
@@ -388,6 +390,7 @@ def test_sum09():
         output = ndimage.sum(input, labels=labels)
         assert_almost_equal(output, 4.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_sum10():
     "sum 10"
     labels = np.array([1, 0], bool)
@@ -395,6 +398,7 @@ def test_sum10():
     output = ndimage.sum(input, labels=labels)
     assert_almost_equal(output, 2.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_sum11():
     "sum 11"
     labels = np.array([1, 2], np.int8)
@@ -413,6 +417,7 @@ def test_sum12():
                                         index=[4, 8, 2])
         assert_array_almost_equal(output, [4.0, 0.0, 5.0])
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_mean01():
     "mean 1"
     labels = np.array([1, 0], bool)
@@ -421,6 +426,7 @@ def test_mean01():
         output = ndimage.mean(input, labels=labels)
         assert_almost_equal(output, 2.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_mean02():
     "mean 2"
     labels = np.array([1, 0], bool)
@@ -428,6 +434,7 @@ def test_mean02():
     output = ndimage.mean(input, labels=labels)
     assert_almost_equal(output, 1.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_mean03():
     "mean 3"
     labels = np.array([1, 2])
@@ -451,6 +458,7 @@ def test_mean04():
     finally:
         np.seterr(**olderr)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum01():
     "minimum 1"
     labels = np.array([1, 0], bool)
@@ -459,6 +467,7 @@ def test_minimum01():
         output = ndimage.minimum(input, labels=labels)
         assert_almost_equal(output, 1.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum02():
     "minimum 2"
     labels = np.array([1, 0], bool)
@@ -466,6 +475,7 @@ def test_minimum02():
     output = ndimage.minimum(input, labels=labels)
     assert_almost_equal(output, 1.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum03():
     "minimum 3"
     labels = np.array([1, 2])
@@ -484,6 +494,7 @@ def test_minimum04():
                                            index=[2, 3, 8])
         assert_array_almost_equal(output, [2.0, 4.0, 0.0])
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum01():
     "maximum 1"
     labels = np.array([1, 0], bool)
@@ -492,6 +503,7 @@ def test_maximum01():
         output = ndimage.maximum(input, labels=labels)
         assert_almost_equal(output, 3.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum02():
     "maximum 2"
     labels = np.array([1, 0], bool)
@@ -499,6 +511,7 @@ def test_maximum02():
     output = ndimage.maximum(input, labels=labels)
     assert_almost_equal(output, 1.0)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum03():
     "maximum 3"
     labels = np.array([1, 2])
@@ -636,6 +649,7 @@ def test_standard_deviation07():
     finally:
         np.seterr(**olderr)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum_position01():
     "minimum position 1"
     labels = np.array([1, 0], bool)
@@ -669,6 +683,7 @@ def test_minimum_position04():
     output = ndimage.minimum_position(input)
     assert_equal(output, (0, 0))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum_position05():
     "minimum position 5"
     labels = [1, 2, 0, 4]
@@ -679,6 +694,7 @@ def test_minimum_position05():
         output = ndimage.minimum_position(input, labels)
         assert_equal(output, (2, 0))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum_position06():
     "minimum position 6"
     labels = [1, 2, 3, 4]
@@ -689,6 +705,7 @@ def test_minimum_position06():
         output = ndimage.minimum_position(input, labels, 2)
         assert_equal(output, (0, 1))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_minimum_position07():
     "minimum position 7"
     labels = [1, 2, 3, 4]
@@ -701,6 +718,7 @@ def test_minimum_position07():
         assert_equal(output[0], (0, 1))
         assert_equal(output[1], (1, 2))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum_position01():
     "maximum position 1"
     labels = np.array([1, 0], bool)
@@ -727,6 +745,7 @@ def test_maximum_position03():
     output = ndimage.maximum_position(input)
     assert_equal(output, (0, 0))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum_position04():
     "maximum position 4"
     labels = [1, 2, 0, 4]
@@ -737,6 +756,7 @@ def test_maximum_position04():
         output = ndimage.maximum_position(input, labels)
         assert_equal(output, (1, 1))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum_position05():
     "maximum position 5"
     labels = [1, 2, 0, 4]
@@ -747,6 +767,7 @@ def test_maximum_position05():
         output = ndimage.maximum_position(input, labels, 1)
         assert_equal(output, (0, 0))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_maximum_position06():
     "maximum position 6"
     labels = [1, 2, 0, 4]
@@ -759,6 +780,7 @@ def test_maximum_position06():
         assert_equal(output[0], (0, 0))
         assert_equal(output[1], (1, 1))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_extrema01():
     "extrema 1"
     labels = np.array([1, 0], bool)
@@ -773,6 +795,7 @@ def test_extrema01():
                                                      labels=labels)
         assert_equal(output1, (output2, output3, output4, output5))
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_extrema02():
     "extrema 2"
     labels = np.array([1, 2])
@@ -810,6 +833,7 @@ def test_extrema03():
         assert_array_almost_equal(output1[2], output4)
         assert_array_almost_equal(output1[3], output5)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_extrema04():
     "extrema 4"
     labels = [1, 2, 0, 4]
@@ -876,6 +900,7 @@ def test_center_of_mass06():
     output = ndimage.center_of_mass(input)
     assert_array_almost_equal(output, expected)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_center_of_mass07():
     "center of mass 7"
     labels = [1, 0]
@@ -884,6 +909,7 @@ def test_center_of_mass07():
     output = ndimage.center_of_mass(input, labels)
     assert_array_almost_equal(output, expected)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_center_of_mass08():
     "center of mass 8"
     labels = [1, 2]
@@ -892,6 +918,7 @@ def test_center_of_mass08():
     output = ndimage.center_of_mass(input, labels, 2)
     assert_array_almost_equal(output, expected)
 
+@dec.knownfailureif(sys.platform == "cli", "__array_interface__ is not implemented for .NET yet")
 def test_center_of_mass09():
     "center of mass 9"
     labels = [1, 2]

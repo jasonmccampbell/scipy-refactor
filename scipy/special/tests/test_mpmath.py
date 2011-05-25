@@ -2,6 +2,7 @@
 Test Scipy functions versus mpmath, if available.
 
 """
+import sys
 import re
 import numpy as np
 from numpy.testing import dec
@@ -9,13 +10,16 @@ import scipy.special as sc
 
 from scipy.special._testutils import FuncData, assert_func_equal
 
-try:
-    import mpmath
-except ImportError:
+if sys.platform == 'cli':
+    mpmath = None
+else:
     try:
-        import sympy.mpmath as mpmath
+        import mpmath
     except ImportError:
-        mpmath = None
+        try:
+            import sympy.mpmath as mpmath
+        except ImportError:
+            mpmath = None
 
 def mpmath_check(min_ver):
     if mpmath is None:

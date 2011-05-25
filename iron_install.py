@@ -37,8 +37,6 @@ def install():
     elif os.environ.has_key("ProgramFiles"):
         vs_dir = join(os.environ["ProgramFiles"], "Microsoft Visual Studio 10.0")
     
-    print "vs_dir = %s" % vs_dir
-
     if vs_dir is None or not os.path.exists(vs_dir):
         print "Unable to determine Visual Studio installation directory."
         exit(1)
@@ -50,7 +48,6 @@ def install():
         if not os.path.exists(ifort_dir):
             pf = os.environ["ProgramFiles(x86)"] if os.environ.has_key("ProgramFiles(x86)") else os.environ["ProgramFiles"]
             ifort_dir = join(pf, "Intel/ComposerXE-2011")
-    print "ifort_dir = %s" % ifort_dir
 
     if not os.path.exists(ifort_dir):
         print "Unable to determine Intel Fortran Composer installation directory."

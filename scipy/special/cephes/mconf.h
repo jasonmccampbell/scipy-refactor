@@ -83,13 +83,34 @@ extern int scipy_special_print_error_messages;
 /* Constant definitions for math error conditions
  */
 
+#if !defined(DOMAIN)
 #define DOMAIN		1	/* argument domain error */
+#endif
+
+#if !defined(SING)
 #define SING		2	/* argument singularity */
+#endif
+
+#if !defined(OVERFLOW)
 #define OVERFLOW	3	/* overflow range error */
+#endif
+
+#if !defined(UNDERFLOW)
 #define UNDERFLOW	4	/* underflow range error */
+#endif
+
+#if !defined(TLOSS)
 #define TLOSS		5	/* total loss of precision */
+#endif
+
+#if !defined(PLOSS)
 #define PLOSS		6	/* partial loss of precision */
+#endif
+
+#if !defined(TOOMANY)
 #define TOOMANY         7       /* too many iterations */
+#endif
+
 #define MAXITER        500
 
 #define EDOM		33

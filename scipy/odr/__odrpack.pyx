@@ -230,9 +230,9 @@ cdef object gen_output(int n, int m, int npx, int nq, int ldwe, int ld2we,
     wrk7-=1
 
     dim1[0] = np.NpyArray_DIM(beta, 0);
-    sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)
+    sd_beta = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
     dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);
-    cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)
+    cov_beta = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
 
     memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),
         npx * sizeof(double));
@@ -704,7 +704,6 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
         <double *>np.PyArray_DATA(work), &lwork, <int *>np.PyArray_DATA(iwork), &liwork,
         &info);
 
-    print "before output: beta = %s" % beta
     result = gen_output(n, m, npx, nq, ldwe, ld2we,
         np.PyArray_ARRAY(beta), np.PyArray_ARRAY(work), 
         np.PyArray_ARRAY(iwork), isodr, info, full_output);

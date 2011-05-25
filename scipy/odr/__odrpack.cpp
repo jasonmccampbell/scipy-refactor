@@ -79,10 +79,11 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #define __PYX_HAVE_API__scipy__odr____odrpack
 #include "npy_common.h"
 #include "npy_defs.h"
-#include "npy_arrayobject.h"
 #include "npy_descriptor.h"
+#include "npy_arrayobject.h"
 #include "npy_ufunc_object.h"
 #include "npy_api.h"
+#include "npy_iterators.h"
 #include "npy_ironpython.h"
 #include "string.h"
 #include "odrpack.h"
@@ -134,31 +135,57 @@ static const char *__pyx_f[] = {
 /* Cython code section 'utility_code_proto_before_types' */
 /* Cython code section 'numeric_typedefs' */
 
-typedef int __pyx_t_5numpy_npy_int;
+typedef signed char __pyx_t_5numpy_npy_byte;
+
+typedef signed short __pyx_t_5numpy_npy_short;
+
+typedef signed int __pyx_t_5numpy_npy_int;
+
+typedef signed long __pyx_t_5numpy_npy_long;
+
+typedef signed PY_LONG_LONG __pyx_t_5numpy_npy_longlong;
+
+typedef unsigned char __pyx_t_5numpy_npy_ubyte;
+
+typedef unsigned short __pyx_t_5numpy_npy_ushort;
+
+typedef unsigned int __pyx_t_5numpy_npy_uint;
+
+typedef unsigned long __pyx_t_5numpy_npy_ulong;
+
+typedef unsigned PY_LONG_LONG __pyx_t_5numpy_npy_ulonglong;
+
+typedef float __pyx_t_5numpy_npy_float;
+
+typedef double __pyx_t_5numpy_npy_double;
+
+typedef long double __pyx_t_5numpy_npy_longdouble;
 
 typedef double __pyx_t_5numpy_double_t;
 
 typedef int __pyx_t_5numpy_npy_intp;
 
-typedef signed char __pyx_t_5numpy_npy_int8;
+typedef unsigned int __pyx_t_5numpy_npy_uintp;
 
-typedef signed short __pyx_t_5numpy_npy_int16;
+typedef __pyx_t_5numpy_npy_byte __pyx_t_5numpy_npy_int8;
 
-typedef signed int __pyx_t_5numpy_npy_int32;
+typedef __pyx_t_5numpy_npy_short __pyx_t_5numpy_npy_int16;
 
-typedef signed PY_LONG_LONG __pyx_t_5numpy_npy_int64;
+typedef __pyx_t_5numpy_npy_int __pyx_t_5numpy_npy_int32;
 
-typedef unsigned char __pyx_t_5numpy_npy_uint8;
+typedef __pyx_t_5numpy_npy_longlong __pyx_t_5numpy_npy_int64;
 
-typedef unsigned short __pyx_t_5numpy_npy_uint16;
+typedef __pyx_t_5numpy_npy_ubyte __pyx_t_5numpy_npy_uint8;
 
-typedef unsigned int __pyx_t_5numpy_npy_uint32;
+typedef __pyx_t_5numpy_npy_ushort __pyx_t_5numpy_npy_uint16;
 
-typedef unsigned PY_LONG_LONG __pyx_t_5numpy_npy_uint64;
+typedef __pyx_t_5numpy_npy_uint __pyx_t_5numpy_npy_uint32;
 
-typedef float __pyx_t_5numpy_npy_float32;
+typedef __pyx_t_5numpy_npy_ulonglong __pyx_t_5numpy_npy_uint64;
 
-typedef double __pyx_t_5numpy_npy_float64;
+typedef __pyx_t_5numpy_npy_float __pyx_t_5numpy_npy_float32;
+
+typedef __pyx_t_5numpy_npy_double __pyx_t_5numpy_npy_float64;
 
 typedef __pyx_t_5numpy_npy_intp __pyx_t_5numpy_intp_t;
 
@@ -208,6 +235,8 @@ typedef __pyx_t_5numpy_npy_float64 __pyx_t_5numpy_float64_t;
 
 typedef void (*__pyx_t_5numpy_NpyUFuncGenericFunction)(char **, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, void *);
 
+typedef __pyx_t_5numpy_NpyUFuncGenericFunction __pyx_t_5numpy_PyUFuncGenericFunction;
+
 typedef npy_cfloat __pyx_t_5numpy_cfloat_t;
 
 typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
@@ -215,6 +244,8 @@ typedef npy_cdouble __pyx_t_5numpy_cdouble_t;
 typedef npy_clongdouble __pyx_t_5numpy_clongdouble_t;
 
 typedef npy_cdouble __pyx_t_5numpy_complex_t;
+
+typedef void (*__pyx_t_5numpy_PyArray_CopySwapFunc)(void *, void *, int, NpyArray *);
 /* Cython code section 'utility_code_proto' */
 
 static CYTHON_INLINE long __Pyx_mod_long(long, long); /* proto */
@@ -304,20 +335,29 @@ static CYTHON_INLINE __pyx_t_double_complex __pyx_t_double_complex_from_parts(do
 /* Cython code section 'module_declarations' */
 /* Module declarations from numpy */
 /* Module declarations from numpy */
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
+static CYTHON_INLINE NumpyDotNet::dtype^ NpyArray_FindArrayType_2args(System::Object^, NumpyDotNet::dtype^); /*proto*/
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *, void **, char *, int, int, int, int, char *, char *, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, npy_intp *, int, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_Empty(int, npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_New(void *, int, npy_intp *, int, npy_intp *, void *, int, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Empty(int, __pyx_t_5numpy_npy_intp *, NumpyDotNet::dtype^, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_New(void *, int, __pyx_t_5numpy_npy_intp *, int, __pyx_t_5numpy_npy_intp *, void *, int, int, void *); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_SimpleNew(int, __pyx_t_5numpy_npy_intp *, int); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int, __pyx_t_5numpy_npy_intp *, int, void *); /*proto*/
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_DESCR(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE int PyArray_ITEMSIZE(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^, int); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_STRIDES(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^); /*proto*/
-static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE int PyArray_TYPE(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE void *PyArray_Zero(System::Object^); /*proto*/
 static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *); /*proto*/
 static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
@@ -328,6 +368,15 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^, Syste
 static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
 static CYTHON_INLINE void import_array(void); /*proto*/
 static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^); /*proto*/
+static CYTHON_INLINE NpyArrayIterObject *PyArray_IterNew(NumpyDotNet::ndarray^); /*proto*/
+static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::ndarray^, int *); /*proto*/
+static CYTHON_INLINE void PyArray_ITER_NEXT(NpyArrayIterObject *); /*proto*/
+static CYTHON_INLINE void PyArray_ITER_RESET(NpyArrayIterObject *); /*proto*/
+static CYTHON_INLINE void *PyArray_ITER_DATA(NpyArrayIterObject *); /*proto*/
+static CYTHON_INLINE NpyArrayNeighborhoodIterObject *PyArray_NeighborhoodIterNew(NpyArrayIterObject *, __pyx_t_5numpy_npy_intp *, int, void *, npy_free_func); /*proto*/
+static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject *); /*proto*/
+static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject *); /*proto*/
+static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *); /*proto*/
 /* Module declarations from scipy.odr.__odrpack */
 static NpyArray *NpyArray_SimpleNew(int, npy_intp *, NumpyDotNet::dtype^); /*proto*/
 static System::Object^ __evalArrayGenFunc(System::Object^, System::Object^, int *); /*proto*/
@@ -669,54 +718,74 @@ static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, Sys
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_setindex_691_14;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_setindex_692_14;
 static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_694_32;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_707_37;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_712_14;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_712_14;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_713_26;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_259_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_259_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_261_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_261_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_267_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_267_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_269_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_269_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_275_18;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_275_25;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_277_16;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_277_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_287_54;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_287_54;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_291_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_291_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_295_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_295_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_298_47;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_298_47;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_301_14;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_305_49;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_305_49;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_309_35;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_309_35;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Dtype_323_62;
-static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_323_62;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_328_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_328_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_328_39;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_337_13;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_337_13;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_338_14;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_339_77;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_342_78;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_348_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CheckFromAny_348_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_348_44;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_352_29;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_352_21;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_360_45;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_360_73;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_360_58;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_711_14;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_711_14;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_712_26;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_325_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_331_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_331_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_333_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_333_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_339_18;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_339_25;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_empty_341_16;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_341_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_356_53;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_356_53;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_359_48;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_359_48;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_362_48;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_362_48;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_365_69;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_368_52;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_375_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ArrayReturn_375_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_375_42;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_378_47;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_378_47;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_381_14;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_384_48;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_384_48;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_387_51;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_387_51;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_390_51;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_390_51;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_393_34;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_393_34;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_396_48;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_396_48;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_401_40;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Zero_401_49;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_401_54;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_401_54;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Dtype_409_62;
+static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_409_62;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_414_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_FromAny_414_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_414_39;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_423_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_423_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ior_424_14;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_425_77;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_428_78;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_434_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CheckFromAny_434_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call6_434_44;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_438_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_438_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_446_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_446_45;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_446_73;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_446_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_449_51;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_449_51;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_452_58;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_452_58;
 static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
@@ -730,7 +799,7 @@ static double __pyx_k_2;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":46
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":46
  * 
  * 
  * cdef NpyArray *NpyArray_SimpleNew(int nd, npy_intp *dims, np.dtype descr):             # <<<<<<<<<<<<<<
@@ -743,7 +812,7 @@ static  NpyArray *NpyArray_SimpleNew(int __pyx_v_nd, npy_intp *__pyx_v_dims, Num
   System::Object^ __pyx_t_1 = nullptr;
   int __pyx_t_2;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":47
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":47
  * 
  * cdef NpyArray *NpyArray_SimpleNew(int nd, npy_intp *dims, np.dtype descr):
  *     return np.NpyArray_New(NULL, nd, dims, np.PyDataType_TYPE_NUM(descr), NULL, NULL, descr.itemsize, 0, NULL)             # <<<<<<<<<<<<<<
@@ -753,7 +822,7 @@ static  NpyArray *NpyArray_SimpleNew(int __pyx_v_nd, npy_intp *__pyx_v_dims, Num
   __pyx_t_1 = __site_get_itemsize_47_91->Target(__site_get_itemsize_47_91, ((System::Object^)__pyx_v_descr), __pyx_context);
   __pyx_t_2 = __site_cvt_cvt_int_47_91->Target(__site_cvt_cvt_int_47_91, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_r = NpyArray_New(NULL, __pyx_v_nd, __pyx_v_dims, PyDataType_TYPE_NUM(__pyx_v_descr), NULL, NULL, __pyx_t_2, 0, NULL);
+  __pyx_r = NpyArray_New(NULL, __pyx_v_nd, ((__pyx_t_5numpy_npy_intp *)__pyx_v_dims), PyDataType_TYPE_NUM(__pyx_v_descr), NULL, NULL, __pyx_t_2, 0, NULL);
   goto __pyx_L0;
 
   __pyx_r = 0;
@@ -761,7 +830,7 @@ static  NpyArray *NpyArray_SimpleNew(int __pyx_v_nd, npy_intp *__pyx_v_dims, Num
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":59
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":59
  * 
  * 
  * cdef object __evalArrayGenFunc(func, arglist, int *istop):             # <<<<<<<<<<<<<<
@@ -785,7 +854,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   __pyx_v_msg = nullptr;
   __pyx_v_result_array = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":60
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":60
  * 
  * cdef object __evalArrayGenFunc(func, arglist, int *istop):
  *     if func is None:             # <<<<<<<<<<<<<<
@@ -795,7 +864,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   __pyx_t_1 = (__pyx_v_func == nullptr);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":61
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":61
  * cdef object __evalArrayGenFunc(func, arglist, int *istop):
  *     if func is None:
  *         raise odr_error("Function has not been initialized")             # <<<<<<<<<<<<<<
@@ -811,7 +880,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":63
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":63
  *         raise odr_error("Function has not been initialized")
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -820,7 +889,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":64
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":64
  * 
  *     try:
  *         result = apply(func, arglist)             # <<<<<<<<<<<<<<
@@ -835,7 +904,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   } catch (System::Exception^ __pyx_lt_4) {
     System::Object^ __pyx_lt_5 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_4);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":65
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":65
  *     try:
  *         result = apply(func, arglist)
  *     except odr_stop, e:             # <<<<<<<<<<<<<<
@@ -849,7 +918,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
       // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.__evalArrayGenFunc");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_4);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":66
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":66
  *         result = apply(func, arglist)
  *     except odr_stop, e:
  *         istop[0] = 1             # <<<<<<<<<<<<<<
@@ -858,7 +927,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
       (__pyx_v_istop[0]) = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":67
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":67
  *     except odr_stop, e:
  *         istop[0] = 1
  *         return             # <<<<<<<<<<<<<<
@@ -870,7 +939,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
     }
     else {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":68
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":68
  *         istop[0] = 1
  *         return
  *     except Exception, e:             # <<<<<<<<<<<<<<
@@ -884,7 +953,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
         // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.__evalArrayGenFunc");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_4);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":69
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":69
  *         return
  *     except Exception, e:
  *         istop[0] = -1             # <<<<<<<<<<<<<<
@@ -893,7 +962,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
         (__pyx_v_istop[0]) = -1;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":70
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":70
  *     except Exception, e:
  *         istop[0] = -1
  *         name = func.func_name             # <<<<<<<<<<<<<<
@@ -904,7 +973,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
         __pyx_v_name = __pyx_t_2;
         __pyx_t_2 = nullptr;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":71
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":71
  *         istop[0] = -1
  *         name = func.func_name
  *         msg = "Error occured while calling Python function"             # <<<<<<<<<<<<<<
@@ -913,7 +982,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
         __pyx_v_msg = ((System::Object^)"Error occured while calling Python function");
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":72
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":72
  *         name = func.func_name
  *         msg = "Error occured while calling Python function"
  *         if name is not None:             # <<<<<<<<<<<<<<
@@ -923,7 +992,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
         __pyx_t_1 = (__pyx_v_name != nullptr);
         if (__pyx_t_1) {
 
-          /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":73
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":73
  *         msg = "Error occured while calling Python function"
  *         if name is not None:
  *             msg += " '%s'" % name             # <<<<<<<<<<<<<<
@@ -939,7 +1008,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
         }
         __pyx_L4:;
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":74
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":74
  *         if name is not None:
  *             msg += " '%s'" % name
  *         raise odr_error(msg)             # <<<<<<<<<<<<<<
@@ -960,7 +1029,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":76
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":76
  *         raise odr_error(msg)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -969,7 +1038,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
   try {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":77
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":77
  * 
  *     try:
  *         result_array = np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, 0, 2)             # <<<<<<<<<<<<<<
@@ -984,7 +1053,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   } catch (System::Exception^ __pyx_lt_6) {
     System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":78
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":78
  *     try:
  *         result_array = np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, 0, 2)
  *     except Exception, e:             # <<<<<<<<<<<<<<
@@ -998,7 +1067,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
       // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.__evalArrayGenFunc");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":79
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":79
  *         result_array = np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, 0, 2)
  *     except Exception, e:
  *         istop[0] = -1             # <<<<<<<<<<<<<<
@@ -1007,7 +1076,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
  */
       (__pyx_v_istop[0]) = -1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":80
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":80
  *     except Exception, e:
  *         istop[0] = -1
  *         raise odr_error("Result from function call is not a proper array of floats.")             # <<<<<<<<<<<<<<
@@ -1027,7 +1096,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":81
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":81
  *         istop[0] = -1
  *         raise odr_error("Result from function call is not a proper array of floats.")
  *     return result_array             # <<<<<<<<<<<<<<
@@ -1042,7 +1111,7 @@ static  System::Object^ __evalArrayGenFunc(System::Object^ __pyx_v_func, System:
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":84
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":84
  * 
  * 
  * cdef void fcn_callback(int *n, int *m, int *npx, int *nq, int *ldn, int *ldm,             # <<<<<<<<<<<<<<
@@ -1073,7 +1142,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_v_extra_args = nullptr;
   __pyx_v_arglist = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":93
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":93
  *     cdef npy_intp dim1[1], dim2[2]
  * 
  *     if m[0] != 1:             # <<<<<<<<<<<<<<
@@ -1083,7 +1152,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_t_1 = ((__pyx_v_m[0]) != 1);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":94
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":94
  * 
  *     if m[0] != 1:
  *         dim2[0] = m[0]             # <<<<<<<<<<<<<<
@@ -1092,7 +1161,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
  */
     (__pyx_v_dim2[0]) = (__pyx_v_m[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":95
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":95
  *     if m[0] != 1:
  *         dim2[0] = m[0]
  *         dim2[1] = n[0]             # <<<<<<<<<<<<<<
@@ -1101,18 +1170,18 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
  */
     (__pyx_v_dim2[1]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":96
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":96
  *         dim2[0] = m[0]
  *         dim2[1] = n[0]
  *         pyXplusD = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, m[0] * n[0] * sizeof(double))
  *     else:
  */
-    __pyx_t_2 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+    __pyx_t_2 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
     __pyx_v_pyXplusD = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":97
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":97
  *         dim2[1] = n[0]
  *         pyXplusD = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, m[0] * n[0] * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1127,7 +1196,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":99
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":99
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, m[0] * n[0] * sizeof(double))
  *     else:
  *         dim1[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1136,18 +1205,18 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
  */
     (__pyx_v_dim1[0]) = (__pyx_v_n[0]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":100
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":100
  *     else:
  *         dim1[0] = n[0]
  *         pyXplusD = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, n[0] * sizeof(double))
  * 
  */
-    __pyx_t_2 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_2 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_pyXplusD = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":101
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":101
  *         dim1[0] = n[0]
  *         pyXplusD = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, n[0] * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1161,7 +1230,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":103
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":103
  *         memcpy(np.PyArray_DATA(pyXplusD), xplusd, n[0] * sizeof(double))
  * 
  *     arg01 = (odr_global["pyBeta"], pyXplusD)             # <<<<<<<<<<<<<<
@@ -1179,7 +1248,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_v_arg01 = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":105
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":105
  *     arg01 = (odr_global["pyBeta"], pyXplusD)
  * 
  *     extra_args = odr_global["extra_args"]             # <<<<<<<<<<<<<<
@@ -1192,7 +1261,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_v_extra_args = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":106
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":106
  * 
  *     extra_args = odr_global["extra_args"]
  *     arglist = arg01 + (extra_args, ) if extra_args is not None else arg01             # <<<<<<<<<<<<<<
@@ -1215,7 +1284,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_v_arglist = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":108
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":108
  *     arglist = arg01 + (extra_args, ) if extra_args is not None else arg01
  * 
  *     istop[0] = 0             # <<<<<<<<<<<<<<
@@ -1224,7 +1293,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
  */
   (__pyx_v_istop[0]) = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":110
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":110
  *     istop[0] = 0
  * 
  *     memcpy(np.PyArray_DATA(odr_global["pyBeta"]), beta, npx[0] * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1240,7 +1309,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_t_4)), __pyx_v_beta, ((__pyx_v_npx[0]) * (sizeof(double))));
   __pyx_t_4 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":111
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":111
  * 
  *     memcpy(np.PyArray_DATA(odr_global["pyBeta"]), beta, npx[0] * sizeof(double))
  *     if (ideval[0] % 10) >= 1:             # <<<<<<<<<<<<<<
@@ -1250,7 +1319,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_t_1 = (__Pyx_mod_long((__pyx_v_ideval[0]), 10) >= 1);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":113
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":113
  *     if (ideval[0] % 10) >= 1:
  *         # Compute f with odr_global.fcn
  *         result_array = __evalArrayGenFunc(odr_global["fcn"], arglist, istop)             # <<<<<<<<<<<<<<
@@ -1265,7 +1334,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     __pyx_v_result_array = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":114
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":114
  *         # Compute f with odr_global.fcn
  *         result_array = __evalArrayGenFunc(odr_global["fcn"], arglist, istop)
  *         memcpy(f, np.PyArray_DATA(result_array), n[0] * nq[0] * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1280,7 +1349,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   }
   __pyx_L4:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":116
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":116
  *         memcpy(f, np.PyArray_DATA(result_array), n[0] * nq[0] * sizeof(double))
  * 
  *     if ((ideval[0] / 10) % 10) >= 1:             # <<<<<<<<<<<<<<
@@ -1290,7 +1359,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_t_1 = (__Pyx_mod_long(__Pyx_div_long((__pyx_v_ideval[0]), 10), 10) >= 1);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":118
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":118
  *     if ((ideval[0] / 10) % 10) >= 1:
  *         # Compute fjacb with odr_globals.fjacb
  *         result_array = __evalArrayGenFunc(odr_global["fjacb"], arglist, istop)             # <<<<<<<<<<<<<<
@@ -1305,7 +1374,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     __pyx_v_result_array = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":120
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":120
  *         result_array = __evalArrayGenFunc(odr_global["fjacb"], arglist, istop)
  * 
  *         if nq[0] != 1 and npx[0] != 1:             # <<<<<<<<<<<<<<
@@ -1321,7 +1390,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     if (__pyx_t_6) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":122
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":122
  *         if nq[0] != 1 and npx[0] != 1:
  *             # result_array should be rank-3
  *             if np.PyArray_NDIM(result_array) != 3:             # <<<<<<<<<<<<<<
@@ -1338,7 +1407,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       __pyx_t_3 = nullptr;
       if (__pyx_t_6) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":123
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":123
  *             # result_array should be rank-3
  *             if np.PyArray_NDIM(result_array) != 3:
  *                 raise odr_error("Beta Jacobian is not rank-3")             # <<<<<<<<<<<<<<
@@ -1356,7 +1425,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       goto __pyx_L6;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":124
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":124
  *             if np.PyArray_NDIM(result_array) != 3:
  *                 raise odr_error("Beta Jacobian is not rank-3")
  *         elif nq[0] == 1:             # <<<<<<<<<<<<<<
@@ -1366,7 +1435,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     __pyx_t_6 = ((__pyx_v_nq[0]) == 1);
     if (__pyx_t_6) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":126
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":126
  *         elif nq[0] == 1:
  *             # result_array should be rank-2
  *             if np.PyArray_NDIM(result_array) != 2:             # <<<<<<<<<<<<<<
@@ -1383,7 +1452,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       __pyx_t_3 = nullptr;
       if (__pyx_t_6) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":127
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":127
  *             # result_array should be rank-2
  *             if np.PyArray_NDIM(result_array) != 2:
  *                 raise odr_error("Beta Jacobian is not rank-2")             # <<<<<<<<<<<<<<
@@ -1402,7 +1471,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":128
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":128
  *             if np.PyArray_NDIM(result_array) != 2:
  *                 raise odr_error("Beta Jacobian is not rank-2")
  *         memcpy(fjacb, np.PyArray_DATA(result_array), n[0] * nq[0] * npx[0] * sizeof(double));             # <<<<<<<<<<<<<<
@@ -1417,7 +1486,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":130
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":130
  *         memcpy(fjacb, np.PyArray_DATA(result_array), n[0] * nq[0] * npx[0] * sizeof(double));
  * 
  *     if ((ideval[0] / 100) % 10) >= 1:             # <<<<<<<<<<<<<<
@@ -1427,7 +1496,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
   __pyx_t_6 = (__Pyx_mod_long(__Pyx_div_long((__pyx_v_ideval[0]), 100), 10) >= 1);
   if (__pyx_t_6) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":132
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":132
  *     if ((ideval[0] / 100) % 10) >= 1:
  *         # compute fjacd with odr_global.fjacd
  *         result_array = __evalArrayGenFunc(odr_global["fjacd"], arglist, istop)             # <<<<<<<<<<<<<<
@@ -1442,7 +1511,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     __pyx_v_result_array = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":134
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":134
  *         result_array = __evalArrayGenFunc(odr_global["fjacd"], arglist, istop)
  * 
  *         if nq[0] != 1 and m[0] != 1:             # <<<<<<<<<<<<<<
@@ -1458,7 +1527,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     if (__pyx_t_5) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":136
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":136
  *         if nq[0] != 1 and m[0] != 1:
  *             # result_array should be rank-3
  *             if np.PyArray_NDIM(result_array) != 3:             # <<<<<<<<<<<<<<
@@ -1475,7 +1544,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       __pyx_t_3 = nullptr;
       if (__pyx_t_5) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":137
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":137
  *             # result_array should be rank-3
  *             if np.PyArray_NDIM(result_array) != 3:
  *                 raise odr_error("xplusd Jacobian is not rank-3")             # <<<<<<<<<<<<<<
@@ -1493,7 +1562,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       goto __pyx_L10;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":138
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":138
  *             if np.PyArray_NDIM(result_array) != 3:
  *                 raise odr_error("xplusd Jacobian is not rank-3")
  *         elif nq[0] == 1 and m[0] != 1:             # <<<<<<<<<<<<<<
@@ -1509,7 +1578,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":140
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":140
  *         elif nq[0] == 1 and m[0] != 1:
  *             # result_array should be rank-2
  *             if np.PyArray_NDIM(result_array) != 2:             # <<<<<<<<<<<<<<
@@ -1526,7 +1595,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       __pyx_t_3 = nullptr;
       if (__pyx_t_1) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":141
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":141
  *             # result_array should be rank-2
  *             if np.PyArray_NDIM(result_array) != 2:
  *                 raise odr_error("xplusd Jacobian is not rank-2")             # <<<<<<<<<<<<<<
@@ -1544,7 +1613,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       goto __pyx_L10;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":142
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":142
  *             if np.PyArray_NDIM(result_array) != 2:
  *                 raise odr_error("xplusd Jacobian is not rank-2")
  *         elif nq[0] == 1 and m[0] == 1:             # <<<<<<<<<<<<<<
@@ -1560,7 +1629,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     if (__pyx_t_6) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":144
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":144
  *         elif nq[0] == 1 and m[0] == 1:
  *             # result_array should be rank-1
  *             if np.PyArray_NDIM(result_array) != 1:             # <<<<<<<<<<<<<<
@@ -1577,7 +1646,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
       __pyx_t_3 = nullptr;
       if (__pyx_t_6) {
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":145
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":145
  *             # result_array should be rank-1
  *             if np.PyArray_NDIM(result_array) != 1:
  *                 raise odr_error("xplusd Jacobian is not rank-1")             # <<<<<<<<<<<<<<
@@ -1596,7 +1665,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
     }
     __pyx_L10:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":147
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":147
  *                 raise odr_error("xplusd Jacobian is not rank-1")
  * 
  *         memcpy(fjacd, np.PyArray_DATA(result_array), n[0] * nq[0] * m[0] * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1613,7 +1682,7 @@ static  void fcn_callback(int *__pyx_v_n, int *__pyx_v_m, int *__pyx_v_npx, int 
 
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":151
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":151
  * 
  * 
  * cdef object gen_output(int n, int m, int npx, int nq, int ldwe, int ld2we,             # <<<<<<<<<<<<<<
@@ -1691,7 +1760,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
-  npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
   System::Object^ __pyx_t_6 = nullptr;
@@ -1706,7 +1775,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   __pyx_v_work_ind = nullptr;
   __pyx_v_retobj = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":168
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":168
  *     cdef npy_intp dim1[1], dim2[2]
  * 
  *     if info == 50005:             # <<<<<<<<<<<<<<
@@ -1716,7 +1785,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   __pyx_t_1 = (__pyx_v_info == 50005);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":169
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":169
  * 
  *     if info == 50005:
  *         return NULL             # <<<<<<<<<<<<<<
@@ -1731,7 +1800,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   }
   __pyx_L3:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":171
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":171
  *         return NULL
  * 
  *     lwkmn = np.NpyArray_DIM(work, 0);             # <<<<<<<<<<<<<<
@@ -1740,7 +1809,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_lwkmn = NpyArray_DIM(__pyx_v_work, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":179
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":179
  *         &betas, &betan, &s, &ss, &ssf, &qraux, &u, &fs, &fjacb, &we1,
  *         &diff, &delts, &deltn, &t, &tt, &omega, &fjacd, &wrk1, &wrk2,
  *         &wrk3, &wrk4, &wrk5, &wrk6, &wrk7, &lwkmn);             # <<<<<<<<<<<<<<
@@ -1749,7 +1818,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   F_FUNC(dwinf,DWINF)((&__pyx_v_n), (&__pyx_v_m), (&__pyx_v_npx), (&__pyx_v_nq), (&__pyx_v_ldwe), (&__pyx_v_ld2we), (&__pyx_v_isodr), (&__pyx_v_delta), (&__pyx_v_eps), (&__pyx_v_xplus), (&__pyx_v_fn), (&__pyx_v_sd), (&__pyx_v_vcv), (&__pyx_v_rvar), (&__pyx_v_wss), (&__pyx_v_wssde), (&__pyx_v_wssep), (&__pyx_v_rcond), (&__pyx_v_eta), (&__pyx_v_olmav), (&__pyx_v_tau), (&__pyx_v_alpha), (&__pyx_v_actrs), (&__pyx_v_pnorm), (&__pyx_v_rnors), (&__pyx_v_prers), (&__pyx_v_partl), (&__pyx_v_sstol), (&__pyx_v_taufc), (&__pyx_v_apsma), (&__pyx_v_betao), (&__pyx_v_betac), (&__pyx_v_betas), (&__pyx_v_betan), (&__pyx_v_s), (&__pyx_v_ss), (&__pyx_v_ssf), (&__pyx_v_qraux), (&__pyx_v_u), (&__pyx_v_fs), (&__pyx_v_fjacb), (&__pyx_v_we1), (&__pyx_v_diff), (&__pyx_v_delts), (&__pyx_v_deltn), (&__pyx_v_t), (&__pyx_v_tt), (&__pyx_v_omega), (&__pyx_v_fjacd), (&__pyx_v_wrk1), (&__pyx_v_wrk2), (&__pyx_v_wrk3), (&__pyx_v_wrk4), (&__pyx_v_wrk5), (&__pyx_v_wrk6), (&__pyx_v_wrk7), (&__pyx_v_lwkmn));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":182
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":182
  * 
  *     # convert FORTRAN indices to C indices
  *     delta-=1             # <<<<<<<<<<<<<<
@@ -1758,7 +1827,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_delta -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":183
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":183
  *     # convert FORTRAN indices to C indices
  *     delta-=1
  *     eps-=1             # <<<<<<<<<<<<<<
@@ -1767,7 +1836,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_eps -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":184
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":184
  *     delta-=1
  *     eps-=1
  *     xplus-=1             # <<<<<<<<<<<<<<
@@ -1776,7 +1845,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_xplus -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":185
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":185
  *     eps-=1
  *     xplus-=1
  *     fn-=1             # <<<<<<<<<<<<<<
@@ -1785,7 +1854,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_fn -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":186
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":186
  *     xplus-=1
  *     fn-=1
  *     sd-=1             # <<<<<<<<<<<<<<
@@ -1794,7 +1863,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_sd -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":187
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":187
  *     fn-=1
  *     sd-=1
  *     vcv-=1             # <<<<<<<<<<<<<<
@@ -1803,7 +1872,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_vcv -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":188
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":188
  *     sd-=1
  *     vcv-=1
  *     rvar-=1             # <<<<<<<<<<<<<<
@@ -1812,7 +1881,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_rvar -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":189
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":189
  *     vcv-=1
  *     rvar-=1
  *     wss-=1             # <<<<<<<<<<<<<<
@@ -1821,7 +1890,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wss -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":190
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":190
  *     rvar-=1
  *     wss-=1
  *     wssde-=1             # <<<<<<<<<<<<<<
@@ -1830,7 +1899,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wssde -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":191
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":191
  *     wss-=1
  *     wssde-=1
  *     wssep-=1             # <<<<<<<<<<<<<<
@@ -1839,7 +1908,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wssep -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":192
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":192
  *     wssde-=1
  *     wssep-=1
  *     rcond-=1             # <<<<<<<<<<<<<<
@@ -1848,7 +1917,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_rcond -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":193
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":193
  *     wssep-=1
  *     rcond-=1
  *     eta-=1             # <<<<<<<<<<<<<<
@@ -1857,7 +1926,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_eta -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":194
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":194
  *     rcond-=1
  *     eta-=1
  *     olmav-=1             # <<<<<<<<<<<<<<
@@ -1866,7 +1935,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_olmav -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":195
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":195
  *     eta-=1
  *     olmav-=1
  *     tau-=1             # <<<<<<<<<<<<<<
@@ -1875,7 +1944,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_tau -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":196
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":196
  *     olmav-=1
  *     tau-=1
  *     alpha-=1             # <<<<<<<<<<<<<<
@@ -1884,7 +1953,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_alpha -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":197
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":197
  *     tau-=1
  *     alpha-=1
  *     actrs-=1             # <<<<<<<<<<<<<<
@@ -1893,7 +1962,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_actrs -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":198
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":198
  *     alpha-=1
  *     actrs-=1
  *     pnorm-=1             # <<<<<<<<<<<<<<
@@ -1902,7 +1971,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_pnorm -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":199
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":199
  *     actrs-=1
  *     pnorm-=1
  *     rnors-=1             # <<<<<<<<<<<<<<
@@ -1911,7 +1980,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_rnors -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":200
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":200
  *     pnorm-=1
  *     rnors-=1
  *     prers-=1             # <<<<<<<<<<<<<<
@@ -1920,7 +1989,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_prers -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":201
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":201
  *     rnors-=1
  *     prers-=1
  *     partl-=1             # <<<<<<<<<<<<<<
@@ -1929,7 +1998,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_partl -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":202
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":202
  *     prers-=1
  *     partl-=1
  *     sstol-=1             # <<<<<<<<<<<<<<
@@ -1938,7 +2007,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_sstol -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":203
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":203
  *     partl-=1
  *     sstol-=1
  *     taufc-=1             # <<<<<<<<<<<<<<
@@ -1947,7 +2016,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_taufc -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":204
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":204
  *     sstol-=1
  *     taufc-=1
  *     apsma-=1             # <<<<<<<<<<<<<<
@@ -1956,7 +2025,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_apsma -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":205
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":205
  *     taufc-=1
  *     apsma-=1
  *     betao-=1             # <<<<<<<<<<<<<<
@@ -1965,7 +2034,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_betao -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":206
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":206
  *     apsma-=1
  *     betao-=1
  *     betac-=1             # <<<<<<<<<<<<<<
@@ -1974,7 +2043,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_betac -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":207
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":207
  *     betao-=1
  *     betac-=1
  *     betas-=1             # <<<<<<<<<<<<<<
@@ -1983,7 +2052,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_betas -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":208
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":208
  *     betac-=1
  *     betas-=1
  *     betan-=1             # <<<<<<<<<<<<<<
@@ -1992,7 +2061,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_betan -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":209
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":209
  *     betas-=1
  *     betan-=1
  *     s-=1             # <<<<<<<<<<<<<<
@@ -2001,7 +2070,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_s -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":210
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":210
  *     betan-=1
  *     s-=1
  *     ss-=1             # <<<<<<<<<<<<<<
@@ -2010,7 +2079,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_ss -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":211
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":211
  *     s-=1
  *     ss-=1
  *     ssf-=1             # <<<<<<<<<<<<<<
@@ -2019,7 +2088,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_ssf -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":212
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":212
  *     ss-=1
  *     ssf-=1
  *     qraux-=1             # <<<<<<<<<<<<<<
@@ -2028,7 +2097,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_qraux -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":213
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":213
  *     ssf-=1
  *     qraux-=1
  *     u-=1             # <<<<<<<<<<<<<<
@@ -2037,7 +2106,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_u -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":214
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":214
  *     qraux-=1
  *     u-=1
  *     fs-=1             # <<<<<<<<<<<<<<
@@ -2046,7 +2115,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_fs -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":215
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":215
  *     u-=1
  *     fs-=1
  *     fjacb-=1             # <<<<<<<<<<<<<<
@@ -2055,7 +2124,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_fjacb -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":216
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":216
  *     fs-=1
  *     fjacb-=1
  *     we1-=1             # <<<<<<<<<<<<<<
@@ -2064,7 +2133,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_we1 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":217
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":217
  *     fjacb-=1
  *     we1-=1
  *     diff-=1             # <<<<<<<<<<<<<<
@@ -2073,7 +2142,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_diff -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":218
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":218
  *     we1-=1
  *     diff-=1
  *     delts-=1             # <<<<<<<<<<<<<<
@@ -2082,7 +2151,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_delts -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":219
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":219
  *     diff-=1
  *     delts-=1
  *     deltn-=1             # <<<<<<<<<<<<<<
@@ -2091,7 +2160,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_deltn -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":220
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":220
  *     delts-=1
  *     deltn-=1
  *     t-=1             # <<<<<<<<<<<<<<
@@ -2100,7 +2169,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_t -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":221
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":221
  *     deltn-=1
  *     t-=1
  *     tt-=1             # <<<<<<<<<<<<<<
@@ -2109,7 +2178,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_tt -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":222
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":222
  *     t-=1
  *     tt-=1
  *     omega-=1             # <<<<<<<<<<<<<<
@@ -2118,7 +2187,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_omega -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":223
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":223
  *     tt-=1
  *     omega-=1
  *     fjacd-=1             # <<<<<<<<<<<<<<
@@ -2127,7 +2196,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_fjacd -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":224
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":224
  *     omega-=1
  *     fjacd-=1
  *     wrk1-=1             # <<<<<<<<<<<<<<
@@ -2136,7 +2205,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk1 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":225
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":225
  *     fjacd-=1
  *     wrk1-=1
  *     wrk2-=1             # <<<<<<<<<<<<<<
@@ -2145,7 +2214,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk2 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":226
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":226
  *     wrk1-=1
  *     wrk2-=1
  *     wrk3-=1             # <<<<<<<<<<<<<<
@@ -2154,7 +2223,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk3 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":227
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":227
  *     wrk2-=1
  *     wrk3-=1
  *     wrk4-=1             # <<<<<<<<<<<<<<
@@ -2163,7 +2232,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk4 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":228
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":228
  *     wrk3-=1
  *     wrk4-=1
  *     wrk5-=1             # <<<<<<<<<<<<<<
@@ -2172,7 +2241,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk5 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":229
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":229
  *     wrk4-=1
  *     wrk5-=1
  *     wrk6-=1             # <<<<<<<<<<<<<<
@@ -2181,7 +2250,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk6 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":230
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":230
  *     wrk5-=1
  *     wrk6-=1
  *     wrk7-=1             # <<<<<<<<<<<<<<
@@ -2190,50 +2259,50 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_wrk7 -= 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":232
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":232
  *     wrk7-=1
  * 
  *     dim1[0] = np.NpyArray_DIM(beta, 0);             # <<<<<<<<<<<<<<
- *     sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)
+ *     sd_beta = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *     dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);
  */
   (__pyx_v_dim1[0]) = NpyArray_DIM(__pyx_v_beta, 0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":233
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":233
  * 
  *     dim1[0] = np.NpyArray_DIM(beta, 0);
- *     sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
+ *     sd_beta = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *     dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);
- *     cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)
+ *     cov_beta = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  */
-  __pyx_t_2 = PyArray_EMPTY(1, __pyx_v_dim1, NPY_DOUBLE, 0); 
+  __pyx_t_2 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
   __pyx_v_sd_beta = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":234
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":234
  *     dim1[0] = np.NpyArray_DIM(beta, 0);
- *     sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)
+ *     sd_beta = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *     dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);             # <<<<<<<<<<<<<<
- *     cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)
+ *     cov_beta = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  */
   __pyx_t_3 = NpyArray_DIM(__pyx_v_beta, 0);
   (__pyx_v_dim2[0]) = __pyx_t_3;
   (__pyx_v_dim2[1]) = __pyx_t_3;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":235
- *     sd_beta = np.PyArray_EMPTY(1, dim1, np.NPY_DOUBLE, False)
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":235
+ *     sd_beta = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *     dim2[0] = dim2[1] = np.NpyArray_DIM(beta, 0);
- *     cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
+ *     cov_beta = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  * 
  *     memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),
  */
-  __pyx_t_2 = PyArray_EMPTY(2, __pyx_v_dim2, NPY_DOUBLE, 0); 
+  __pyx_t_2 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
   __pyx_v_cov_beta = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":237
- *     cov_beta = np.PyArray_EMPTY(2, dim2, np.NPY_DOUBLE, False)
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":237
+ *     cov_beta = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  *     memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),             # <<<<<<<<<<<<<<
  *         npx * sizeof(double));
@@ -2243,7 +2312,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":238
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":238
  * 
  *     memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),
  *         npx * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2252,7 +2321,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_sd_beta)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_sd)), (__pyx_v_npx * (sizeof(double))));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":239
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":239
  *     memcpy(np.PyArray_DATA(sd_beta), <void *>(<double *>np.NpyArray_DATA(work) + sd),
  *         npx * sizeof(double));
  *     memcpy(np.PyArray_DATA(cov_beta), <void *>(<double *>np.NpyArray_DATA(work) + vcv),             # <<<<<<<<<<<<<<
@@ -2263,7 +2332,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":240
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":240
  *         npx * sizeof(double));
  *     memcpy(np.PyArray_DATA(cov_beta), <void *>(<double *>np.NpyArray_DATA(work) + vcv),
  *         npx * npx * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2272,7 +2341,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_cov_beta)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_vcv)), ((__pyx_v_npx * __pyx_v_npx) * (sizeof(double))));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":242
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":242
  *         npx * npx * sizeof(double));
  * 
  *     retobj = None             # <<<<<<<<<<<<<<
@@ -2281,7 +2350,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
   __pyx_v_retobj = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":243
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":243
  * 
  *     retobj = None
  *     if not full_output:             # <<<<<<<<<<<<<<
@@ -2291,43 +2360,34 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   __pyx_t_1 = (!__pyx_v_full_output);
   if (__pyx_t_1) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":244
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":244
  *     retobj = None
  *     if not full_output:
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),             # <<<<<<<<<<<<<<
  *                   np.PyArray_Return(sd_beta),
  *                   np.PyArray_Return(cov_beta))
  */
-    __pyx_t_2 = Npy_INTERFACE_OBJECT(__pyx_v_beta); 
-    if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_t_2)); 
+    __pyx_t_2 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_beta)); 
+    __pyx_t_4 = PyArray_Return(__pyx_t_2); 
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":245
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":245
  *     if not full_output:
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),
  *                   np.PyArray_Return(sd_beta),             # <<<<<<<<<<<<<<
  *                   np.PyArray_Return(cov_beta))
  * 
  */
-    if (__pyx_v_sd_beta != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_sd_beta) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_2 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_sd_beta)); 
+    __pyx_t_2 = PyArray_Return(__pyx_v_sd_beta); 
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":246
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":246
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),
  *                   np.PyArray_Return(sd_beta),
  *                   np.PyArray_Return(cov_beta))             # <<<<<<<<<<<<<<
  * 
  *     else:
  */
-    if (__pyx_v_cov_beta != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_cov_beta) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_5 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_cov_beta)); 
+    __pyx_t_5 = PyArray_Return(__pyx_v_cov_beta); 
     __pyx_t_6 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_4, __pyx_t_2, __pyx_t_5});
     __pyx_t_4 = nullptr;
     __pyx_t_2 = nullptr;
@@ -2338,7 +2398,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":249
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":249
  * 
  *     else:
  *         work_ind = {             # <<<<<<<<<<<<<<
@@ -2347,7 +2407,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_t_7 = PythonOps::MakeEmptyDict();
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":250
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":250
  *     else:
  *         work_ind = {
  *             "delta" : delta,             "eps" : eps,             # <<<<<<<<<<<<<<
@@ -2361,7 +2421,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"eps")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":251
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":251
  *         work_ind = {
  *             "delta" : delta,             "eps" : eps,
  *             "xplus" : xplus,             "fn" : fn,             # <<<<<<<<<<<<<<
@@ -2375,7 +2435,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"fn")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":252
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":252
  *             "delta" : delta,             "eps" : eps,
  *             "xplus" : xplus,             "fn" : fn,
  *             "sd" : sd,                   "vcv" : vcv,             # <<<<<<<<<<<<<<
@@ -2389,7 +2449,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"vcv")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":253
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":253
  *             "xplus" : xplus,             "fn" : fn,
  *             "sd" : sd,                   "vcv" : vcv,
  *             "rvar" : rvar,               "wss" : wss,             # <<<<<<<<<<<<<<
@@ -2403,7 +2463,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"wss")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":254
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":254
  *             "sd" : sd,                   "vcv" : vcv,
  *             "rvar" : rvar,               "wss" : wss,
  *             "wssde" : wssde,             "wssep" : wssep,             # <<<<<<<<<<<<<<
@@ -2417,7 +2477,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"wssep")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":255
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":255
  *             "rvar" : rvar,               "wss" : wss,
  *             "wssde" : wssde,             "wssep" : wssep,
  *             "rcond" : rcond,             "eta" : eta,             # <<<<<<<<<<<<<<
@@ -2431,7 +2491,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"eta")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":256
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":256
  *             "wssde" : wssde,             "wssep" : wssep,
  *             "rcond" : rcond,             "eta" : eta,
  *             "olmav" : olmav,             "tau" : tau,             # <<<<<<<<<<<<<<
@@ -2445,7 +2505,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"tau")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":257
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":257
  *             "rcond" : rcond,             "eta" : eta,
  *             "olmav" : olmav,             "tau" : tau,
  *             "alpha" : alpha,             "actrs" : actrs,             # <<<<<<<<<<<<<<
@@ -2459,7 +2519,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"actrs")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":258
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":258
  *             "olmav" : olmav,             "tau" : tau,
  *             "alpha" : alpha,             "actrs" : actrs,
  *             "pnorm" : pnorm,             "rnors" : rnors,             # <<<<<<<<<<<<<<
@@ -2473,7 +2533,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"rnors")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":259
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":259
  *             "alpha" : alpha,             "actrs" : actrs,
  *             "pnorm" : pnorm,             "rnors" : rnors,
  *             "prers" : prers,             "partl" : partl,             # <<<<<<<<<<<<<<
@@ -2487,7 +2547,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"partl")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":260
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":260
  *             "pnorm" : pnorm,             "rnors" : rnors,
  *             "prers" : prers,             "partl" : partl,
  *             "sstol" : sstol,             "taufc" : taufc,             # <<<<<<<<<<<<<<
@@ -2501,7 +2561,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"taufc")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":261
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":261
  *             "prers" : prers,             "partl" : partl,
  *             "sstol" : sstol,             "taufc" : taufc,
  *             "apsma" : apsma,             "betao" : betao,             # <<<<<<<<<<<<<<
@@ -2515,7 +2575,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"betao")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":262
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":262
  *             "sstol" : sstol,             "taufc" : taufc,
  *             "apsma" : apsma,             "betao" : betao,
  *             "betac" : betac,             "betas" : betas,             # <<<<<<<<<<<<<<
@@ -2529,7 +2589,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"betas")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":263
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":263
  *             "apsma" : apsma,             "betao" : betao,
  *             "betac" : betac,             "betas" : betas,
  *             "betan" : betan,             "s" : s,             # <<<<<<<<<<<<<<
@@ -2543,7 +2603,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"s")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":264
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":264
  *             "betac" : betac,             "betas" : betas,
  *             "betan" : betan,             "s" : s,
  *             "ss" : ss,                   "ssf" : ssf,             # <<<<<<<<<<<<<<
@@ -2557,7 +2617,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"ssf")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":265
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":265
  *             "betan" : betan,             "s" : s,
  *             "ss" : ss,                   "ssf" : ssf,
  *             "qraux" : qraux,             "u" : u,             # <<<<<<<<<<<<<<
@@ -2571,7 +2631,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"u")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":266
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":266
  *             "ss" : ss,                   "ssf" : ssf,
  *             "qraux" : qraux,             "u" : u,
  *             "fs" : fs,                   "fjacb" : fjacb,             # <<<<<<<<<<<<<<
@@ -2585,7 +2645,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"fjacb")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":267
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":267
  *             "qraux" : qraux,             "u" : u,
  *             "fs" : fs,                   "fjacb" : fjacb,
  *             "we1" : we1,                 "diff" : diff,             # <<<<<<<<<<<<<<
@@ -2599,7 +2659,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"diff")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":268
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":268
  *             "fs" : fs,                   "fjacb" : fjacb,
  *             "we1" : we1,                 "diff" : diff,
  *             "delts" : delts,             "deltn" : deltn,             # <<<<<<<<<<<<<<
@@ -2613,7 +2673,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"deltn")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":269
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":269
  *             "we1" : we1,                 "diff" : diff,
  *             "delts" : delts,             "deltn" : deltn,
  *             "t" : t,                     "tt" : tt,             # <<<<<<<<<<<<<<
@@ -2627,7 +2687,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"tt")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":270
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":270
  *             "delts" : delts,             "deltn" : deltn,
  *             "t" : t,                     "tt" : tt,
  *             "omega" : omega,             "fjacd" : fjacd,             # <<<<<<<<<<<<<<
@@ -2641,7 +2701,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"fjacd")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":271
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":271
  *             "t" : t,                     "tt" : tt,
  *             "omega" : omega,             "fjacd" : fjacd,
  *             "wrk1" : wrk1,               "wrk2" : wrk2,             # <<<<<<<<<<<<<<
@@ -2655,7 +2715,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"wrk2")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":272
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":272
  *             "omega" : omega,             "fjacd" : fjacd,
  *             "wrk1" : wrk1,               "wrk2" : wrk2,
  *             "wrk3" : wrk3,               "wrk4" : wrk4,             # <<<<<<<<<<<<<<
@@ -2669,7 +2729,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"wrk4")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":273
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":273
  *             "wrk1" : wrk1,               "wrk2" : wrk2,
  *             "wrk3" : wrk3,               "wrk4" : wrk4,
  *             "wrk5" : wrk5,               "wrk6" : wrk6,             # <<<<<<<<<<<<<<
@@ -2683,7 +2743,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"wrk6")] = __pyx_t_6;
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":274
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":274
  *             "wrk3" : wrk3,               "wrk4" : wrk4,
  *             "wrk5" : wrk5,               "wrk6" : wrk6,
  *             "wrk7" : wrk7 }             # <<<<<<<<<<<<<<
@@ -2696,7 +2756,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_v_work_ind = ((System::Object^)__pyx_t_7);
     __pyx_t_7 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":276
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":276
  *             "wrk7" : wrk7 }
  * 
  *         if m == 1:             # <<<<<<<<<<<<<<
@@ -2706,7 +2766,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_1 = (__pyx_v_m == 1);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":277
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":277
  * 
  *         if m == 1:
  *             dim1[0] = n;             # <<<<<<<<<<<<<<
@@ -2715,32 +2775,32 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim1[0]) = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":278
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":278
  *         if m == 1:
  *             dim1[0] = n;
  *             deltaA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             xplusA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         else:
  */
-      __pyx_t_6 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
       __pyx_v_deltaA = __pyx_t_6;
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":279
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":279
  *             dim1[0] = n;
  *             deltaA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *             xplusA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         else:
  *             dim2[0] = m;
  */
-      __pyx_t_6 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
       __pyx_v_xplusA = __pyx_t_6;
       __pyx_t_6 = nullptr;
       goto __pyx_L5;
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":281
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":281
  *             xplusA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         else:
  *             dim2[0] = m;             # <<<<<<<<<<<<<<
@@ -2749,7 +2809,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim2[0]) = __pyx_v_m;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":282
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":282
  *         else:
  *             dim2[0] = m;
  *             dim2[1] = n;             # <<<<<<<<<<<<<<
@@ -2758,31 +2818,31 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim2[1]) = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":283
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":283
  *             dim2[0] = m;
  *             dim2[1] = n;
  *             deltaA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             xplusA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  */
-      __pyx_t_6 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
       __pyx_v_deltaA = __pyx_t_6;
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":284
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":284
  *             dim2[1] = n;
  *             deltaA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *             xplusA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  * 
  *         if nq == 1:
  */
-      __pyx_t_6 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
       __pyx_v_xplusA = __pyx_t_6;
       __pyx_t_6 = nullptr;
     }
     __pyx_L5:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":286
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":286
  *             xplusA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  *         if nq == 1:             # <<<<<<<<<<<<<<
@@ -2792,7 +2852,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_1 = (__pyx_v_nq == 1);
     if (__pyx_t_1) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":287
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":287
  * 
  *         if nq == 1:
  *             dim1[0] = n;             # <<<<<<<<<<<<<<
@@ -2801,32 +2861,32 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim1[0]) = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":288
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":288
  *         if nq == 1:
  *             dim1[0] = n;
  *             epsA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             fnA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         else:
  */
-      __pyx_t_6 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
       __pyx_v_epsA = __pyx_t_6;
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":289
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":289
  *             dim1[0] = n;
  *             epsA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *             fnA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         else:
  *             dim2[0] = nq;
  */
-      __pyx_t_6 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
       __pyx_v_fnA = __pyx_t_6;
       __pyx_t_6 = nullptr;
       goto __pyx_L6;
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":291
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":291
  *             fnA = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         else:
  *             dim2[0] = nq;             # <<<<<<<<<<<<<<
@@ -2835,7 +2895,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim2[0]) = __pyx_v_nq;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":292
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":292
  *         else:
  *             dim2[0] = nq;
  *             dim2[1] = n;             # <<<<<<<<<<<<<<
@@ -2844,31 +2904,31 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
       (__pyx_v_dim2[1]) = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":293
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":293
  *             dim2[0] = nq;
  *             dim2[1] = n;
  *             epsA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             fnA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  */
-      __pyx_t_6 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
       __pyx_v_epsA = __pyx_t_6;
       __pyx_t_6 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":294
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":294
  *             dim2[1] = n;
  *             epsA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *             fnA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  * 
  *         memcpy(np.PyArray_DATA(deltaA), <void *>(<double *>np.NpyArray_DATA(work) + delta),
  */
-      __pyx_t_6 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+      __pyx_t_6 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
       __pyx_v_fnA = __pyx_t_6;
       __pyx_t_6 = nullptr;
     }
     __pyx_L6:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":296
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":296
  *             fnA = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  * 
  *         memcpy(np.PyArray_DATA(deltaA), <void *>(<double *>np.NpyArray_DATA(work) + delta),             # <<<<<<<<<<<<<<
@@ -2879,7 +2939,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":297
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":297
  * 
  *         memcpy(np.PyArray_DATA(deltaA), <void *>(<double *>np.NpyArray_DATA(work) + delta),
  *             m * n * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2888,7 +2948,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_deltaA)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_delta)), ((__pyx_v_m * __pyx_v_n) * (sizeof(double))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":298
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":298
  *         memcpy(np.PyArray_DATA(deltaA), <void *>(<double *>np.NpyArray_DATA(work) + delta),
  *             m * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(epsA), <void *>(<double *>np.NpyArray_DATA(work) + eps),             # <<<<<<<<<<<<<<
@@ -2899,7 +2959,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":299
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":299
  *             m * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(epsA), <void *>(<double *>np.NpyArray_DATA(work) + eps),
  *             nq * n * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2908,7 +2968,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_epsA)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_eps)), ((__pyx_v_nq * __pyx_v_n) * (sizeof(double))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":300
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":300
  *         memcpy(np.PyArray_DATA(epsA), <void *>(<double *>np.NpyArray_DATA(work) + eps),
  *             nq * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(xplusA), <void *>(<double *>np.NpyArray_DATA(work) + xplus),             # <<<<<<<<<<<<<<
@@ -2919,7 +2979,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":301
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":301
  *             nq * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(xplusA), <void *>(<double *>np.NpyArray_DATA(work) + xplus),
  *             m * n * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2928,7 +2988,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_xplusA)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_xplus)), ((__pyx_v_m * __pyx_v_n) * (sizeof(double))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":302
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":302
  *         memcpy(np.PyArray_DATA(xplusA), <void *>(<double *>np.NpyArray_DATA(work) + xplus),
  *             m * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(fnA), <void *>(<double *>np.NpyArray_DATA(work) + fn),             # <<<<<<<<<<<<<<
@@ -2939,7 +2999,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":303
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":303
  *             m * n * sizeof(double));
  *         memcpy(np.PyArray_DATA(fnA), <void *>(<double *>np.NpyArray_DATA(work) + fn),
  *             nq * n * sizeof(double));             # <<<<<<<<<<<<<<
@@ -2948,7 +3008,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     memcpy(PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_fnA)), ((void *)(((double *)NpyArray_DATA(__pyx_v_work)) + __pyx_v_fn)), ((__pyx_v_nq * __pyx_v_n) * (sizeof(double))));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":305
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":305
  *             nq * n * sizeof(double));
  * 
  *         res_var = (<double *>np.NpyArray_DATA(work))[rvar];             # <<<<<<<<<<<<<<
@@ -2957,7 +3017,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_res_var = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_rvar]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":306
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":306
  * 
  *         res_var = (<double *>np.NpyArray_DATA(work))[rvar];
  *         sum_square = (<double *>np.NpyArray_DATA(work))[wss]             # <<<<<<<<<<<<<<
@@ -2966,7 +3026,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_sum_square = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_wss]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":307
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":307
  *         res_var = (<double *>np.NpyArray_DATA(work))[rvar];
  *         sum_square = (<double *>np.NpyArray_DATA(work))[wss]
  *         sum_square_delta = (<double *>np.NpyArray_DATA(work))[wssde];             # <<<<<<<<<<<<<<
@@ -2975,7 +3035,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_sum_square_delta = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_wssde]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":308
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":308
  *         sum_square = (<double *>np.NpyArray_DATA(work))[wss]
  *         sum_square_delta = (<double *>np.NpyArray_DATA(work))[wssde];
  *         sum_square_eps = (<double *>np.NpyArray_DATA(work))[wssep];             # <<<<<<<<<<<<<<
@@ -2984,7 +3044,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_sum_square_eps = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_wssep]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":309
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":309
  *         sum_square_delta = (<double *>np.NpyArray_DATA(work))[wssde];
  *         sum_square_eps = (<double *>np.NpyArray_DATA(work))[wssep];
  *         inv_condnum = (<double *>np.NpyArray_DATA(work))[rcond];             # <<<<<<<<<<<<<<
@@ -2993,7 +3053,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_inv_condnum = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_rcond]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":310
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":310
  *         sum_square_eps = (<double *>np.NpyArray_DATA(work))[wssep];
  *         inv_condnum = (<double *>np.NpyArray_DATA(work))[rcond];
  *         rel_error = (<double *>np.NpyArray_DATA(work))[eta];             # <<<<<<<<<<<<<<
@@ -3002,45 +3062,36 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_v_rel_error = (((double *)NpyArray_DATA(__pyx_v_work))[__pyx_v_eta]);
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":312
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":312
  *         rel_error = (<double *>np.NpyArray_DATA(work))[eta];
  * 
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),             # <<<<<<<<<<<<<<
  *                   np.PyArray_Return(sd_beta),
  *                   np.PyArray_Return(cov_beta),
  */
-    __pyx_t_6 = Npy_INTERFACE_OBJECT(__pyx_v_beta); 
-    if (__pyx_t_6 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_6) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_5 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_t_6)); 
+    __pyx_t_6 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_beta)); 
+    __pyx_t_5 = PyArray_Return(__pyx_t_6); 
     __pyx_t_6 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":313
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":313
  * 
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),
  *                   np.PyArray_Return(sd_beta),             # <<<<<<<<<<<<<<
  *                   np.PyArray_Return(cov_beta),
  *                   { "delta" : np.PyArray_Return(deltaA),
  */
-    if (__pyx_v_sd_beta != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_sd_beta) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_6 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_sd_beta)); 
+    __pyx_t_6 = PyArray_Return(__pyx_v_sd_beta); 
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":314
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":314
  *         retobj = (np.PyArray_Return(np.Npy_INTERFACE_array(beta)),
  *                   np.PyArray_Return(sd_beta),
  *                   np.PyArray_Return(cov_beta),             # <<<<<<<<<<<<<<
  *                   { "delta" : np.PyArray_Return(deltaA),
  *                     "eps" : np.PyArray_Return(epsA),
  */
-    if (__pyx_v_cov_beta != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_cov_beta) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_2 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_cov_beta)); 
+    __pyx_t_2 = PyArray_Return(__pyx_v_cov_beta); 
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":315
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":315
  *                   np.PyArray_Return(sd_beta),
  *                   np.PyArray_Return(cov_beta),
  *                   { "delta" : np.PyArray_Return(deltaA),             # <<<<<<<<<<<<<<
@@ -3048,56 +3099,44 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  *                     "xplus" : np.PyArray_Return(xplusA),
  */
     __pyx_t_7 = PythonOps::MakeEmptyDict();
-    if (__pyx_v_deltaA != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_deltaA) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_deltaA)); 
+    __pyx_t_4 = PyArray_Return(__pyx_v_deltaA); 
     __pyx_t_7[((System::Object^)"delta")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":316
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":316
  *                   np.PyArray_Return(cov_beta),
  *                   { "delta" : np.PyArray_Return(deltaA),
  *                     "eps" : np.PyArray_Return(epsA),             # <<<<<<<<<<<<<<
  *                     "xplus" : np.PyArray_Return(xplusA),
  *                     "y" : np.PyArray_Return(fnA),
  */
-    if (__pyx_v_epsA != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_epsA) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_epsA)); 
+    __pyx_t_4 = PyArray_Return(__pyx_v_epsA); 
     __pyx_t_7[((System::Object^)"eps")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":317
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":317
  *                   { "delta" : np.PyArray_Return(deltaA),
  *                     "eps" : np.PyArray_Return(epsA),
  *                     "xplus" : np.PyArray_Return(xplusA),             # <<<<<<<<<<<<<<
  *                     "y" : np.PyArray_Return(fnA),
  *                     "res_var" : res_var,
  */
-    if (__pyx_v_xplusA != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_xplusA) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_xplusA)); 
+    __pyx_t_4 = PyArray_Return(__pyx_v_xplusA); 
     __pyx_t_7[((System::Object^)"xplus")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":318
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":318
  *                     "eps" : np.PyArray_Return(epsA),
  *                     "xplus" : np.PyArray_Return(xplusA),
  *                     "y" : np.PyArray_Return(fnA),             # <<<<<<<<<<<<<<
  *                     "res_var" : res_var,
  *                     "sum_square" : sum_square,
  */
-    if (__pyx_v_fnA != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_fnA) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_v_fnA)); 
+    __pyx_t_4 = PyArray_Return(__pyx_v_fnA); 
     __pyx_t_7[((System::Object^)"y")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":319
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":319
  *                     "xplus" : np.PyArray_Return(xplusA),
  *                     "y" : np.PyArray_Return(fnA),
  *                     "res_var" : res_var,             # <<<<<<<<<<<<<<
@@ -3108,7 +3147,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"res_var")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":320
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":320
  *                     "y" : np.PyArray_Return(fnA),
  *                     "res_var" : res_var,
  *                     "sum_square" : sum_square,             # <<<<<<<<<<<<<<
@@ -3119,7 +3158,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"sum_square")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":321
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":321
  *                     "res_var" : res_var,
  *                     "sum_square" : sum_square,
  *                     "sum_square_delta" : sum_square_delta,             # <<<<<<<<<<<<<<
@@ -3130,7 +3169,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"sum_square_delta")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":322
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":322
  *                     "sum_square" : sum_square,
  *                     "sum_square_delta" : sum_square_delta,
  *                     "sum_square_eps" : sum_square_eps,             # <<<<<<<<<<<<<<
@@ -3141,7 +3180,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"sum_square_eps")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":323
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":323
  *                     "sum_square_delta" : sum_square_delta,
  *                     "sum_square_eps" : sum_square_eps,
  *                     "inv_condnum" : inv_condnum,             # <<<<<<<<<<<<<<
@@ -3152,7 +3191,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"inv_condnum")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":324
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":324
  *                     "sum_square_eps" : sum_square_eps,
  *                     "inv_condnum" : inv_condnum,
  *                     "rel_error" : rel_error,             # <<<<<<<<<<<<<<
@@ -3163,23 +3202,20 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
     __pyx_t_7[((System::Object^)"rel_error")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":325
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":325
  *                     "inv_condnum" : inv_condnum,
  *                     "rel_error" : rel_error,
  *                     "work" : np.PyArray_Return(np.Npy_INTERFACE_array(work)),             # <<<<<<<<<<<<<<
  *                     "work_ind" : work_ind,
  *                     "iwork" : np.PyArray_Return(np.Npy_INTERFACE_array(iwork)),
  */
-    __pyx_t_4 = Npy_INTERFACE_OBJECT(__pyx_v_work); 
-    if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_8 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_t_4)); 
+    __pyx_t_4 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_work)); 
+    __pyx_t_8 = PyArray_Return(__pyx_t_4); 
     __pyx_t_4 = nullptr;
     __pyx_t_7[((System::Object^)"work")] = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":326
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":326
  *                     "rel_error" : rel_error,
  *                     "work" : np.PyArray_Return(np.Npy_INTERFACE_array(work)),
  *                     "work_ind" : work_ind,             # <<<<<<<<<<<<<<
@@ -3188,23 +3224,20 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
  */
     __pyx_t_7[((System::Object^)"work_ind")] = __pyx_v_work_ind;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":327
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":327
  *                     "work" : np.PyArray_Return(np.Npy_INTERFACE_array(work)),
  *                     "work_ind" : work_ind,
  *                     "iwork" : np.PyArray_Return(np.Npy_INTERFACE_array(iwork)),             # <<<<<<<<<<<<<<
  *                     "info" : info })
  * 
  */
-    __pyx_t_8 = Npy_INTERFACE_OBJECT(__pyx_v_iwork); 
-    if (__pyx_t_8 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_8) == nullptr) {
-      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
-    }
-    __pyx_t_4 = PyArray_Return(((NumpyDotNet::ndarray^)__pyx_t_8)); 
+    __pyx_t_8 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_iwork)); 
+    __pyx_t_4 = PyArray_Return(__pyx_t_8); 
     __pyx_t_8 = nullptr;
     __pyx_t_7[((System::Object^)"iwork")] = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":328
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":328
  *                     "work_ind" : work_ind,
  *                     "iwork" : np.PyArray_Return(np.Npy_INTERFACE_array(iwork)),
  *                     "info" : info })             # <<<<<<<<<<<<<<
@@ -3224,7 +3257,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   }
   __pyx_L4:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":330
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":330
  *                     "info" : info })
  * 
  *     return retobj;             # <<<<<<<<<<<<<<
@@ -3239,7 +3272,7 @@ static  System::Object^ gen_output(int __pyx_v_n, int __pyx_v_m, int __pyx_v_npx
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":332
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":332
  *     return retobj;
  * 
  * def __mustBeSeq(name, v):             # <<<<<<<<<<<<<<
@@ -3260,7 +3293,7 @@ static System::Object^ __mustBeSeq(System::Object^ name, System::Object^ v) {
   __pyx_v_name = name;
   __pyx_v_v = v;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":333
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":333
  * 
  * def __mustBeSeq(name, v):
  *     if v is not None and not operator.isSequenceType(v):             # <<<<<<<<<<<<<<
@@ -3283,7 +3316,7 @@ static System::Object^ __mustBeSeq(System::Object^ name, System::Object^ v) {
   }
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":334
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":334
  * def __mustBeSeq(name, v):
  *     if v is not None and not operator.isSequenceType(v):
  *         raise TypeError("%s must be a sequence" % name)             # <<<<<<<<<<<<<<
@@ -3305,7 +3338,7 @@ static System::Object^ __mustBeSeq(System::Object^ name, System::Object^ v) {
   return __pyx_r;
 }
 
-/* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":337
+/* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":337
  * 
  * 
  * def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_args=None,             # <<<<<<<<<<<<<<
@@ -3425,7 +3458,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_ifixb = ifixb;
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":338
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":338
  * 
  * def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_args=None,
  *     ifixb=None, ifixx=None, int job=0, int iprint=0, errfile=None, rptfile=None,             # <<<<<<<<<<<<<<
@@ -3468,7 +3501,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_taufac = __site_cvt_cvt_double_337_0->Target(__site_cvt_cvt_double_337_0, taufac);
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":339
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":339
  * def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_args=None,
  *     ifixb=None, ifixx=None, int job=0, int iprint=0, errfile=None, rptfile=None,
  *     int ndigit=0, double taufac=0.0, double sstol=-1.0, double partol=-1.0,             # <<<<<<<<<<<<<<
@@ -3496,7 +3529,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_stpb = stpb;
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":340
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":340
  *     ifixb=None, ifixx=None, int job=0, int iprint=0, errfile=None, rptfile=None,
  *     int ndigit=0, double taufac=0.0, double sstol=-1.0, double partol=-1.0,
  *     int maxit=-1, stpb=None,             # <<<<<<<<<<<<<<
@@ -3509,7 +3542,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_stpd = stpd;
   } else {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":341
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":341
  *     int ndigit=0, double taufac=0.0, double sstol=-1.0, double partol=-1.0,
  *     int maxit=-1, stpb=None,
  *     stpd=None, sclb=None, scld=None, work=None, iwork=None, int full_output=0):             # <<<<<<<<<<<<<<
@@ -3547,7 +3580,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_v_beta = nullptr;
   __pyx_v_result = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":353
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":353
  *     """
  *     cdef int n, m, npx, nq, ldy, ldx, ldwe, ld2we, ldwd, ld2wd, ldifx
  *     cdef int lunerr = -1             # <<<<<<<<<<<<<<
@@ -3556,7 +3589,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_lunerr = -1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":354
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":354
  *     cdef int n, m, npx, nq, ldy, ldx, ldwe, ld2we, ldwd, ld2wd, ldifx
  *     cdef int lunerr = -1
  *     cdef int lunrpt = -1             # <<<<<<<<<<<<<<
@@ -3565,7 +3598,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_lunrpt = -1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":355
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":355
  *     cdef int lunerr = -1
  *     cdef int lunrpt = -1
  *     cdef int ldstpd, ldscld, lwork, liwork, info=0             # <<<<<<<<<<<<<<
@@ -3574,7 +3607,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_info = 0;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":356
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":356
  *     cdef int lunrpt = -1
  *     cdef int ldstpd, ldscld, lwork, liwork, info=0
  *     cdef int isodr = 1             # <<<<<<<<<<<<<<
@@ -3583,7 +3616,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_isodr = 1;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":362
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":362
  * 
  * 
  *     if not callable(fcn): raise TypeError("fcn must be callable")             # <<<<<<<<<<<<<<
@@ -3606,7 +3639,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L5:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":363
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":363
  * 
  *     if not callable(fcn): raise TypeError("fcn must be callable")
  *     if not operator.isSequenceType(initbeta): raise TypeError("initbeta must be a sequence")             # <<<<<<<<<<<<<<
@@ -3631,7 +3664,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L6:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":364
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":364
  *     if not callable(fcn): raise TypeError("fcn must be callable")
  *     if not operator.isSequenceType(initbeta): raise TypeError("initbeta must be a sequence")
  *     if not operator.isSequenceType(y):             # <<<<<<<<<<<<<<
@@ -3648,7 +3681,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (!__pyx_t_3);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":365
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":365
  *     if not operator.isSequenceType(initbeta): raise TypeError("initbeta must be a sequence")
  *     if not operator.isSequenceType(y):
  *         try:             # <<<<<<<<<<<<<<
@@ -3657,7 +3690,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     try {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":366
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":366
  *     if not operator.isSequenceType(y):
  *         try:
  *             val = int(y)             # <<<<<<<<<<<<<<
@@ -3673,7 +3706,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     } catch (System::Exception^ __pyx_lt_5) {
       System::Object^ __pyx_lt_6 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_5);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":367
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":367
  *         try:
  *             val = int(y)
  *         except ValueError, e:             # <<<<<<<<<<<<<<
@@ -3687,7 +3720,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
         // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.odr");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_5);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":368
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":368
  *             val = int(y)
  *         except ValueError, e:
  *             raise TypeError("y must be a sequence or integer(if model is implicit)")             # <<<<<<<<<<<<<<
@@ -3710,7 +3743,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L7:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":369
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":369
  *         except ValueError, e:
  *             raise TypeError("y must be a sequence or integer(if model is implicit)")
  *     if not operator.isSequenceType(x):             # <<<<<<<<<<<<<<
@@ -3727,7 +3760,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_3 = (!__pyx_t_4);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":370
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":370
  *             raise TypeError("y must be a sequence or integer(if model is implicit)")
  *     if not operator.isSequenceType(x):
  *         raise TypeError("x must be a sequence")             # <<<<<<<<<<<<<<
@@ -3743,7 +3776,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L8:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":372
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":372
  *         raise TypeError("x must be a sequence")
  * 
  *     if we is not None and not operator.isSequenceType(we) and not isinstance(we, (int, long, float)):             # <<<<<<<<<<<<<<
@@ -3785,7 +3818,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":373
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":373
  * 
  *     if we is not None and not operator.isSequenceType(we) and not isinstance(we, (int, long, float)):
  *         raise TypeError("we must be a sequence or a number")             # <<<<<<<<<<<<<<
@@ -3801,7 +3834,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L9:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":374
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":374
  *     if we is not None and not operator.isSequenceType(we) and not isinstance(we, (int, long, float)):
  *         raise TypeError("we must be a sequence or a number")
  *     if wd is not None and not operator.isSequenceType(wd) and not isinstance(wd, (int, long, float)):             # <<<<<<<<<<<<<<
@@ -3843,7 +3876,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":375
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":375
  *         raise TypeError("we must be a sequence or a number")
  *     if wd is not None and not operator.isSequenceType(wd) and not isinstance(wd, (int, long, float)):
  *         raise TypeError("wd must be a sequence or a number")             # <<<<<<<<<<<<<<
@@ -3859,7 +3892,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L10:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":377
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":377
  *         raise TypeError("wd must be a sequence or a number")
  * 
  *     if fjacb is not None and not callable(fjacb):             # <<<<<<<<<<<<<<
@@ -3880,7 +3913,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":378
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":378
  * 
  *     if fjacb is not None and not callable(fjacb):
  *         raise TypeError("fjacb must be callable")             # <<<<<<<<<<<<<<
@@ -3896,7 +3929,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L11:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":379
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":379
  *     if fjacb is not None and not callable(fjacb):
  *         raise TypeError("fjacb must be callable")
  *     if fjacd is not None and not callable(fjacd):             # <<<<<<<<<<<<<<
@@ -3917,7 +3950,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":380
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":380
  *         raise TypeError("fjacb must be callable")
  *     if fjacd is not None and not callable(fjacd):
  *         raise TypeError("fjacd must be callable")             # <<<<<<<<<<<<<<
@@ -3933,7 +3966,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L12:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":385
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":385
  *     # function, we just get the context of the calling function which doesn't have these variables
  *     # defined in the dict.
  *     __mustBeSeq("extra_args", extra_args)             # <<<<<<<<<<<<<<
@@ -3945,7 +3978,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_2 = nullptr;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":386
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":386
  *     # defined in the dict.
  *     __mustBeSeq("extra_args", extra_args)
  *     __mustBeSeq("ifixx", ifixx)             # <<<<<<<<<<<<<<
@@ -3957,7 +3990,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":387
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":387
  *     __mustBeSeq("extra_args", extra_args)
  *     __mustBeSeq("ifixx", ifixx)
  *     __mustBeSeq("ifixb", ifixb)             # <<<<<<<<<<<<<<
@@ -3969,7 +4002,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_2 = nullptr;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":388
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":388
  *     __mustBeSeq("ifixx", ifixx)
  *     __mustBeSeq("ifixb", ifixb)
  *     __mustBeSeq("stpb", stpb)             # <<<<<<<<<<<<<<
@@ -3981,7 +4014,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":389
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":389
  *     __mustBeSeq("ifixb", ifixb)
  *     __mustBeSeq("stpb", stpb)
  *     __mustBeSeq("stpd", stpd)             # <<<<<<<<<<<<<<
@@ -3993,7 +4026,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_2 = nullptr;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":390
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":390
  *     __mustBeSeq("stpb", stpb)
  *     __mustBeSeq("stpd", stpd)
  *     __mustBeSeq("sclb", sclb)             # <<<<<<<<<<<<<<
@@ -4005,7 +4038,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":391
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":391
  *     __mustBeSeq("stpd", stpd)
  *     __mustBeSeq("sclb", sclb)
  *     __mustBeSeq("scld", scld)             # <<<<<<<<<<<<<<
@@ -4017,7 +4050,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_2 = nullptr;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":392
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":392
  *     __mustBeSeq("sclb", sclb)
  *     __mustBeSeq("scld", scld)
  *     __mustBeSeq("work", work)             # <<<<<<<<<<<<<<
@@ -4029,7 +4062,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":393
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":393
  *     __mustBeSeq("scld", scld)
  *     __mustBeSeq("work", work)
  *     __mustBeSeq("iwork", iwork)             # <<<<<<<<<<<<<<
@@ -4041,7 +4074,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_2 = nullptr;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":395
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":395
  *     __mustBeSeq("iwork", iwork)
  * 
  *     if work is not None and not np.PyArray_Check(work):             # <<<<<<<<<<<<<<
@@ -4060,7 +4093,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":396
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":396
  * 
  *     if work is not None and not np.PyArray_Check(work):
  *         raise TypeError("work must be an array")             # <<<<<<<<<<<<<<
@@ -4076,7 +4109,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L13:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":397
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":397
  *     if work is not None and not np.PyArray_Check(work):
  *         raise TypeError("work must be an array")
  *     if iwork is not None and not np.PyArray_Check(work):             # <<<<<<<<<<<<<<
@@ -4095,7 +4128,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":398
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":398
  *         raise TypeError("work must be an array")
  *     if iwork is not None and not np.PyArray_Check(work):
  *         raise TypeError("iwork must be an array")             # <<<<<<<<<<<<<<
@@ -4111,7 +4144,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L14:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":400
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":400
  *         raise TypeError("iwork must be an array")
  * 
  *     implicit = (job % 10 == 1)             # <<<<<<<<<<<<<<
@@ -4120,7 +4153,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_implicit = (__Pyx_mod_long(__pyx_v_job, 10) == 1);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":401
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":401
  * 
  *     implicit = (job % 10 == 1)
  *     if not implicit:             # <<<<<<<<<<<<<<
@@ -4130,7 +4163,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (!__pyx_v_implicit);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":402
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":402
  *     implicit = (job % 10 == 1)
  *     if not implicit:
  *         y = np.PyArray_CopyFromObject(y, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)             # <<<<<<<<<<<<<<
@@ -4143,7 +4176,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_y = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":403
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":403
  *     if not implicit:
  *         y = np.PyArray_CopyFromObject(y, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if y is None:             # <<<<<<<<<<<<<<
@@ -4153,7 +4186,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_4 = (__pyx_v_y == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":404
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":404
  *         y = np.PyArray_CopyFromObject(y, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if y is None:
  *             raise ValueError("y could not be made into a suitable array")             # <<<<<<<<<<<<<<
@@ -4169,7 +4202,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L16:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":405
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":405
  *         if y is None:
  *             raise ValueError("y could not be made into a suitable array")
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)             # <<<<<<<<<<<<<<
@@ -4182,7 +4215,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_x = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":406
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":406
  *             raise ValueError("y could not be made into a suitable array")
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if x is None:             # <<<<<<<<<<<<<<
@@ -4192,7 +4225,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_4 = (__pyx_v_x == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":407
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":407
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if x is None:
  *             raise ValueError("x could not be made into a suitable array")             # <<<<<<<<<<<<<<
@@ -4208,7 +4241,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L17:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":409
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":409
  *             raise ValueError("x could not be made into a suitable array")
  * 
  *         n = y.shape[-1]             # <<<<<<<<<<<<<<
@@ -4222,7 +4255,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_2 = nullptr;
     __pyx_v_n = __pyx_t_13;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":410
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":410
  * 
  *         n = y.shape[-1]
  *         if n != x.shape[-1]:             # <<<<<<<<<<<<<<
@@ -4240,7 +4273,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_9 = nullptr;
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":411
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":411
  *         n = y.shape[-1]
  *         if n != x.shape[-1]:
  *             raise ValueError("x and y don't have matching numbers of observations")             # <<<<<<<<<<<<<<
@@ -4256,7 +4289,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L18:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":412
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":412
  *         if n != x.shape[-1]:
  *             raise ValueError("x and y don't have matching numbers of observations")
  *         nq = 1 if y.ndim == 1 else y.shape[0]             # <<<<<<<<<<<<<<
@@ -4281,7 +4314,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_11 = nullptr;
     __pyx_v_nq = __pyx_t_14;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":413
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":413
  *             raise ValueError("x and y don't have matching numbers of observations")
  *         nq = 1 if y.ndim == 1 else y.shape[0]
  *         ldx = ldy = n             # <<<<<<<<<<<<<<
@@ -4294,7 +4327,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":415
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":415
  *         ldx = ldy = n
  *     else:
  *         ldy = 1             # <<<<<<<<<<<<<<
@@ -4303,7 +4336,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     __pyx_v_ldy = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":416
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":416
  *     else:
  *         ldy = 1
  *         nq = int(y)             # <<<<<<<<<<<<<<
@@ -4317,7 +4350,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_9 = nullptr;
     __pyx_v_nq = __pyx_t_15;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":417
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":417
  *         ldy = 1
  *         nq = int(y)
  *         dim1[0] = 1             # <<<<<<<<<<<<<<
@@ -4326,18 +4359,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":420
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":420
  * 
  *         # Initialize y to a dummy array; never referenced
  *         y = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if x is None:
  */
-    __pyx_t_9 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_9 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_y = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":421
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":421
  *         # Initialize y to a dummy array; never referenced
  *         y = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)             # <<<<<<<<<<<<<<
@@ -4350,7 +4383,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_x = __pyx_t_11;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":422
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":422
  *         y = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if x is None:             # <<<<<<<<<<<<<<
@@ -4360,7 +4393,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_4 = (__pyx_v_x == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":423
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":423
  *         x = np.PyArray_CopyFromObject(x, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if x is None:
  *             raise ValueError("x could not be made into a suitable array")             # <<<<<<<<<<<<<<
@@ -4376,7 +4409,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L19:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":424
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":424
  *         if x is None:
  *             raise ValueError("x could not be made into a suitable array")
  *         n = x.shape[-1]             # <<<<<<<<<<<<<<
@@ -4390,7 +4423,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_11 = nullptr;
     __pyx_v_n = __pyx_t_16;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":425
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":425
  *             raise ValueError("x could not be made into a suitable array")
  *         n = x.shape[-1]
  *         ldx = n             # <<<<<<<<<<<<<<
@@ -4401,7 +4434,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L15:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":427
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":427
  *         ldx = n
  * 
  *     m = 1 if x.ndim == 1 else x.shape[0]             # <<<<<<<<<<<<<<
@@ -4426,7 +4459,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_11 = nullptr;
   __pyx_v_m = __pyx_t_17;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":428
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":428
  * 
  *     m = 1 if x.ndim == 1 else x.shape[0]
  *     beta = np.PyArray_CopyFromObject(initbeta, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)             # <<<<<<<<<<<<<<
@@ -4439,7 +4472,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_v_beta = __pyx_t_9;
   __pyx_t_9 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":429
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":429
  *     m = 1 if x.ndim == 1 else x.shape[0]
  *     beta = np.PyArray_CopyFromObject(initbeta, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *     if beta is None:             # <<<<<<<<<<<<<<
@@ -4449,7 +4482,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (__pyx_v_beta == nullptr);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":430
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":430
  *     beta = np.PyArray_CopyFromObject(initbeta, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *     if beta is None:
  *         raise ValueError("initbeta could not be made into a suitable array")             # <<<<<<<<<<<<<<
@@ -4465,7 +4498,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L20:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":431
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":431
  *     if beta is None:
  *         raise ValueError("initbeta could not be made into a suitable array")
  *     npx = beta.shape[0]             # <<<<<<<<<<<<<<
@@ -4479,7 +4512,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   __pyx_v_npx = __pyx_t_18;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":433
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":433
  *     npx = beta.shape[0]
  * 
  *     if we is None:             # <<<<<<<<<<<<<<
@@ -4489,7 +4522,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (__pyx_v_we == nullptr);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":434
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":434
  * 
  *     if we is None:
  *         ldwe = ld2we = 1             # <<<<<<<<<<<<<<
@@ -4499,7 +4532,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_ldwe = 1;
     __pyx_v_ld2we = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":435
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":435
  *     if we is None:
  *         ldwe = ld2we = 1
  *         dim1[0] = n             # <<<<<<<<<<<<<<
@@ -4508,18 +4541,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_n;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":436
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":436
  *         ldwe = ld2we = 1
  *         dim1[0] = n
  *         we = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         we[0] = -1.0
  *     elif np.PyNumber_Check(we):
  */
-    __pyx_t_9 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_9 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_we = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":437
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":437
  *         dim1[0] = n
  *         we = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         we[0] = -1.0             # <<<<<<<<<<<<<<
@@ -4532,7 +4565,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     goto __pyx_L21;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":438
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":438
  *         we = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         we[0] = -1.0
  *     elif np.PyNumber_Check(we):             # <<<<<<<<<<<<<<
@@ -4544,7 +4577,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":439
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":439
  *         we[0] = -1.0
  *     elif np.PyNumber_Check(we):
  *         try:             # <<<<<<<<<<<<<<
@@ -4553,7 +4586,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     try {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":440
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":440
  *     elif np.PyNumber_Check(we):
  *         try:
  *             val = float(we)             # <<<<<<<<<<<<<<
@@ -4567,7 +4600,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       __pyx_t_11 = nullptr;
       __pyx_v_val = __pyx_t_21;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":441
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":441
  *         try:
  *             val = float(we)
  *             dim3[0] = nq             # <<<<<<<<<<<<<<
@@ -4576,7 +4609,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[0]) = __pyx_v_nq;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":442
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":442
  *             val = float(we)
  *             dim3[0] = nq
  *             dim3[1] = 1             # <<<<<<<<<<<<<<
@@ -4585,7 +4618,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[1]) = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":443
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":443
  *             dim3[0] = nq
  *             dim3[1] = 1
  *             dim3[2] = 1             # <<<<<<<<<<<<<<
@@ -4594,18 +4627,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[2]) = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":444
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":444
  *             dim3[1] = 1
  *             dim3[2] = 1
  *             we = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             we[0,0,0] = val if implicit else -val
  *             ldwe = ld2we = 1
  */
-      __pyx_t_11 = PyArray_EMPTY(3, (&(__pyx_v_dim3[0])), NPY_DOUBLE, 0); 
+      __pyx_t_11 = PyArray_EMPTY(3, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim3[0]))), NPY_DOUBLE, 0); 
       __pyx_v_we = __pyx_t_11;
       __pyx_t_11 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":445
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":445
  *             dim3[2] = 1
  *             we = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
  *             we[0,0,0] = val if implicit else -val             # <<<<<<<<<<<<<<
@@ -4623,7 +4656,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       __pyx_t_9 = nullptr;
       __pyx_t_11 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":446
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":446
  *             we = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
  *             we[0,0,0] = val if implicit else -val
  *             ldwe = ld2we = 1             # <<<<<<<<<<<<<<
@@ -4635,7 +4668,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     } catch (System::Exception^ __pyx_lt_19) {
       System::Object^ __pyx_lt_20 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_19);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":447
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":447
  *             we[0,0,0] = val if implicit else -val
  *             ldwe = ld2we = 1
  *         except ValueError, e:             # <<<<<<<<<<<<<<
@@ -4649,7 +4682,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
         // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.odr");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_19);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":448
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":448
  *             ldwe = ld2we = 1
  *         except ValueError, e:
  *             raise ValueError("could not convert we to a suitable array")             # <<<<<<<<<<<<<<
@@ -4671,7 +4704,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     goto __pyx_L21;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":449
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":449
  *         except ValueError, e:
  *             raise ValueError("could not convert we to a suitable array")
  *     elif operator.isSequenceType(we):             # <<<<<<<<<<<<<<
@@ -4687,7 +4720,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_9 = nullptr;
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":450
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":450
  *             raise ValueError("could not convert we to a suitable array")
  *     elif operator.isSequenceType(we):
  *         we = np.PyArray_CopyFromObject(we, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)             # <<<<<<<<<<<<<<
@@ -4700,7 +4733,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_we = __pyx_t_11;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":451
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":451
  *     elif operator.isSequenceType(we):
  *         we = np.PyArray_CopyFromObject(we, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
  *         if we is None:             # <<<<<<<<<<<<<<
@@ -4710,7 +4743,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_4 = (__pyx_v_we == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":452
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":452
  *         we = np.PyArray_CopyFromObject(we, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
  *         if we is None:
  *             raise ValueError("could not convert we to a suitable array")             # <<<<<<<<<<<<<<
@@ -4726,7 +4759,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L22:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":454
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":454
  *             raise ValueError("could not convert we to a suitable array")
  * 
  *         if we.ndim == 1 and nq == 1:             # <<<<<<<<<<<<<<
@@ -4746,7 +4779,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":455
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":455
  * 
  *         if we.ndim == 1 and nq == 1:
  *             ldwe = n             # <<<<<<<<<<<<<<
@@ -4755,7 +4788,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":456
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":456
  *         if we.ndim == 1 and nq == 1:
  *             ldwe = n
  *             ld2we = 1             # <<<<<<<<<<<<<<
@@ -4766,7 +4799,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L23;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":457
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":457
  *             ldwe = n
  *             ld2we = 1
  *         elif we.ndim == 1 and we.shape[0] == nq:             # <<<<<<<<<<<<<<
@@ -4794,7 +4827,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":460
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":460
  *             # we is a rank-1 array with diagonal weightings to be broadcast
  *             # to all observations
  *             ldwe = 1             # <<<<<<<<<<<<<<
@@ -4803,7 +4836,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":461
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":461
  *             # to all observations
  *             ldwe = 1
  *             ld2we = 1             # <<<<<<<<<<<<<<
@@ -4814,7 +4847,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L23;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":462
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":462
  *             ldwe = 1
  *             ld2we = 1
  *         elif we.ndim == 3 and we.shape == (nq, nq, 1):             # <<<<<<<<<<<<<<
@@ -4844,7 +4877,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":465
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":465
  *             # we is a rank-3 array with the covariant weightings to be broadcast
  *             # to all observations
  *             ldwe = 1             # <<<<<<<<<<<<<<
@@ -4853,7 +4886,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":466
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":466
  *             # to all observations
  *             ldwe = 1
  *             ld2we = nq             # <<<<<<<<<<<<<<
@@ -4864,7 +4897,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L23;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":467
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":467
  *             ldwe = 1
  *             ld2we = nq
  *         elif we.ndim == 2 and we.shape == (nq, nq):             # <<<<<<<<<<<<<<
@@ -4894,7 +4927,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":470
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":470
  *             # we is a rank-2 array with the full covariant weightings to be
  *             # broadcast to all observations.
  *             ldwe = 1             # <<<<<<<<<<<<<<
@@ -4903,7 +4936,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":471
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":471
  *             # broadcast to all observations.
  *             ldwe = 1
  *             ld2we = nq             # <<<<<<<<<<<<<<
@@ -4914,7 +4947,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L23;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":472
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":472
  *             ldwe = 1
  *             ld2we = nq
  *         elif we.ndim == 2 and we.shape == (nq, n):             # <<<<<<<<<<<<<<
@@ -4944,7 +4977,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":475
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":475
  *             # we is a rank-2 array with the diagonal elements of the covariant
  *             # weightings for each observations
  *             ldwe = n             # <<<<<<<<<<<<<<
@@ -4953,7 +4986,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":476
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":476
  *             # weightings for each observations
  *             ldwe = n
  *             ld2we = 1             # <<<<<<<<<<<<<<
@@ -4964,7 +4997,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L23;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":477
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":477
  *             ldwe = n
  *             ld2we = 1
  *         elif we.ndim == 3 and we.shape == (nq, nq, n):             # <<<<<<<<<<<<<<
@@ -4996,7 +5029,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":479
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":479
  *         elif we.ndim == 3 and we.shape == (nq, nq, n):
  *             # we is the full specification of the covariant weights for each observation
  *             ldwe = n             # <<<<<<<<<<<<<<
@@ -5005,7 +5038,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwe = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":480
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":480
  *             # we is the full specification of the covariant weights for each observation
  *             ldwe = n
  *             ld2we = nq             # <<<<<<<<<<<<<<
@@ -5017,7 +5050,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":482
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":482
  *             ld2we = nq
  *         else:
  *             raise ValueError("could not convert we to a suitable array")             # <<<<<<<<<<<<<<
@@ -5035,7 +5068,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L21:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":484
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":484
  *             raise ValueError("could not convert we to a suitable array")
  * 
  *     if wd is None:             # <<<<<<<<<<<<<<
@@ -5045,7 +5078,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (__pyx_v_wd == nullptr);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":485
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":485
  * 
  *     if wd is None:
  *         ldwd = ld2wd = 1             # <<<<<<<<<<<<<<
@@ -5055,7 +5088,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_ldwd = 1;
     __pyx_v_ld2wd = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":486
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":486
  *     if wd is None:
  *         ldwd = ld2wd = 1
  *         dim1[0]= m             # <<<<<<<<<<<<<<
@@ -5064,18 +5097,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_m;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":487
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":487
  *         ldwd = ld2wd = 1
  *         dim1[0]= m
  *         wd = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         wd[0] = -1.0
  *     elif np.PyNumber_Check(wd):
  */
-    __pyx_t_10 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_10 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_wd = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":488
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":488
  *         dim1[0]= m
  *         wd = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         wd[0] = -1.0             # <<<<<<<<<<<<<<
@@ -5088,7 +5121,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     goto __pyx_L24;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":489
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":489
  *         wd = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         wd[0] = -1.0
  *     elif np.PyNumber_Check(wd):             # <<<<<<<<<<<<<<
@@ -5100,7 +5133,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_10 = nullptr;
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":490
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":490
  *         wd[0] = -1.0
  *     elif np.PyNumber_Check(wd):
  *         try:             # <<<<<<<<<<<<<<
@@ -5109,7 +5142,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     try {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":491
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":491
  *     elif np.PyNumber_Check(wd):
  *         try:
  *             val = float(wd)             # <<<<<<<<<<<<<<
@@ -5123,7 +5156,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       __pyx_t_9 = nullptr;
       __pyx_v_val = __pyx_t_22;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":492
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":492
  *         try:
  *             val = float(wd)
  *             dim3[0] = 1             # <<<<<<<<<<<<<<
@@ -5132,7 +5165,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[0]) = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":493
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":493
  *             val = float(wd)
  *             dim3[0] = 1
  *             dim3[1] = 1             # <<<<<<<<<<<<<<
@@ -5141,7 +5174,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[1]) = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":494
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":494
  *             dim3[0] = 1
  *             dim3[1] = 1
  *             dim3[2] = m             # <<<<<<<<<<<<<<
@@ -5150,18 +5183,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       (__pyx_v_dim3[2]) = __pyx_v_m;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":495
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":495
  *             dim3[1] = 1
  *             dim3[2] = m
  *             wd = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *             wd[0,0,0] = -val
  *             ldwd = 1
  */
-      __pyx_t_9 = PyArray_EMPTY(3, (&(__pyx_v_dim3[0])), NPY_DOUBLE, 0); 
+      __pyx_t_9 = PyArray_EMPTY(3, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim3[0]))), NPY_DOUBLE, 0); 
       __pyx_v_wd = __pyx_t_9;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":496
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":496
  *             dim3[2] = m
  *             wd = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
  *             wd[0,0,0] = -val             # <<<<<<<<<<<<<<
@@ -5174,7 +5207,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       __pyx_t_10 = nullptr;
       __pyx_t_9 = nullptr;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":497
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":497
  *             wd = np.PyArray_EMPTY(3, &dim3[0], np.NPY_DOUBLE, False)
  *             wd[0,0,0] = -val
  *             ldwd = 1             # <<<<<<<<<<<<<<
@@ -5183,7 +5216,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":498
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":498
  *             wd[0,0,0] = -val
  *             ldwd = 1
  *             ld2wd = 1             # <<<<<<<<<<<<<<
@@ -5194,7 +5227,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     } catch (System::Exception^ __pyx_lt_23) {
       System::Object^ __pyx_lt_24 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_23);
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":499
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":499
  *             ldwd = 1
  *             ld2wd = 1
  *         except ValueError, e:             # <<<<<<<<<<<<<<
@@ -5208,7 +5241,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
         // XXX should update traceback here __Pyx_AddTraceback("scipy.odr.__odrpack.odr");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_23);
 
-        /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":500
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":500
  *             ld2wd = 1
  *         except ValueError, e:
  *             raise ValueError("could not convert wd to a suitable array")             # <<<<<<<<<<<<<<
@@ -5230,7 +5263,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     goto __pyx_L24;
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":501
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":501
  *         except ValueError, e:
  *             raise ValueError("could not convert wd to a suitable array")
  *     elif operator.isSequenceType(wd):             # <<<<<<<<<<<<<<
@@ -5246,7 +5279,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_10 = nullptr;
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":502
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":502
  *             raise ValueError("could not convert wd to a suitable array")
  *     elif operator.isSequenceType(wd):
  *         wd = np.PyArray_CopyFromObject(wd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)             # <<<<<<<<<<<<<<
@@ -5259,7 +5292,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_wd = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":503
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":503
  *     elif operator.isSequenceType(wd):
  *         wd = np.PyArray_CopyFromObject(wd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
  *         if wd is None:             # <<<<<<<<<<<<<<
@@ -5269,7 +5302,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_4 = (__pyx_v_wd == nullptr);
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":504
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":504
  *         wd = np.PyArray_CopyFromObject(wd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 3)
  *         if wd is None:
  *             raise ValueError("could not convert wd to a suitable array")             # <<<<<<<<<<<<<<
@@ -5285,7 +5318,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L25:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":506
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":506
  *             raise ValueError("could not convert wd to a suitable array")
  * 
  *         if wd.ndim == 1 and m == 1:             # <<<<<<<<<<<<<<
@@ -5305,7 +5338,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":507
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":507
  * 
  *         if wd.ndim == 1 and m == 1:
  *             ldwd = n             # <<<<<<<<<<<<<<
@@ -5314,7 +5347,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":508
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":508
  *         if wd.ndim == 1 and m == 1:
  *             ldwd = n
  *             ld2wd = 1             # <<<<<<<<<<<<<<
@@ -5325,7 +5358,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L26;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":509
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":509
  *             ldwd = n
  *             ld2wd = 1
  *         elif wd.ndim == 1 and wd.shape[0] == m:             # <<<<<<<<<<<<<<
@@ -5353,7 +5386,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":512
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":512
  *             # wd is a rank-1 array with diagonal weightings to be broadcast
  *             # to all observations
  *             ldwd = 1             # <<<<<<<<<<<<<<
@@ -5362,7 +5395,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":513
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":513
  *             # to all observations
  *             ldwd = 1
  *             ld2wd = 1             # <<<<<<<<<<<<<<
@@ -5373,7 +5406,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L26;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":514
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":514
  *             ldwd = 1
  *             ld2wd = 1
  *         elif wd.ndim == 3 and wd.shape == (m, m, 1):             # <<<<<<<<<<<<<<
@@ -5403,7 +5436,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":517
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":517
  *             # wd is a rank-3 array with the covariant weightings to be
  *             # broadcast to all observations
  *             ldwd = 1             # <<<<<<<<<<<<<<
@@ -5412,7 +5445,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":518
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":518
  *             # broadcast to all observations
  *             ldwd = 1
  *             ld2wd = m             # <<<<<<<<<<<<<<
@@ -5423,7 +5456,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L26;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":519
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":519
  *             ldwd = 1
  *             ld2wd = m
  *         elif wd.ndim == 2 and wd.shape == (m, m):             # <<<<<<<<<<<<<<
@@ -5453,7 +5486,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":522
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":522
  *             # wd is a rank-2 array wth the full covariant weightings to be
  *             # broadcast to all observations
  *             ldwd = 1             # <<<<<<<<<<<<<<
@@ -5462,7 +5495,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = 1;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":523
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":523
  *             # broadcast to all observations
  *             ldwd = 1
  *             ld2wd = m             # <<<<<<<<<<<<<<
@@ -5473,7 +5506,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L26;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":524
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":524
  *             ldwd = 1
  *             ld2wd = m
  *         elif wd.ndim == 2 and wd.shape == (m, n):             # <<<<<<<<<<<<<<
@@ -5503,7 +5536,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":527
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":527
  *             # wd is a rank-2 array with the diagonal element of the covariant
  *             # weightings for each observation.
  *             ldwd = n             # <<<<<<<<<<<<<<
@@ -5512,7 +5545,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":528
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":528
  *             # weightings for each observation.
  *             ldwd = n
  *             ld2wd = 1             # <<<<<<<<<<<<<<
@@ -5523,7 +5556,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L26;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":529
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":529
  *             ldwd = n
  *             ld2wd = 1
  *         elif wd.ndim == 3 and wd.shape == (m, m, n):             # <<<<<<<<<<<<<<
@@ -5555,7 +5588,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":530
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":530
  *             ld2wd = 1
  *         elif wd.ndim == 3 and wd.shape == (m, m, n):
  *             ldwd = n             # <<<<<<<<<<<<<<
@@ -5564,7 +5597,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
       __pyx_v_ldwd = __pyx_v_n;
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":531
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":531
  *         elif wd.ndim == 3 and wd.shape == (m, m, n):
  *             ldwd = n
  *             ld2wd = m             # <<<<<<<<<<<<<<
@@ -5576,7 +5609,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":533
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":533
  *             ld2wd = m
  *         else:
  *             raise ValueError("could not convert wd to a suitable array")             # <<<<<<<<<<<<<<
@@ -5594,7 +5627,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L24:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":535
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":535
  *             raise ValueError("could not convert wd to a suitable array")
  * 
  *     if ifixb is None:             # <<<<<<<<<<<<<<
@@ -5604,7 +5637,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (__pyx_v_ifixb == nullptr);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":536
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":536
  * 
  *     if ifixb is None:
  *         dim1[0] = npx             # <<<<<<<<<<<<<<
@@ -5613,18 +5646,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_npx;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":537
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":537
  *     if ifixb is None:
  *         dim1[0] = npx
  *         ifixb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_INT, False)             # <<<<<<<<<<<<<<
  *         ifixb[0] = -1
  *     else:
  */
-    __pyx_t_1 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_INT, 0); 
+    __pyx_t_1 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_INT, 0); 
     __pyx_v_ifixb = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":538
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":538
  *         dim1[0] = npx
  *         ifixb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_INT, False)
  *         ifixb[0] = -1             # <<<<<<<<<<<<<<
@@ -5636,7 +5669,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":540
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":540
  *         ifixb[0] = -1
  *     else:
  *         ifixb = np.PyArray_CopyFromObject(ifixb, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)             # <<<<<<<<<<<<<<
@@ -5649,7 +5682,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_ifixb = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":541
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":541
  *     else:
  *         ifixb = np.PyArray_CopyFromObject(ifixb, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
  *         if ifixb is None or ifixb.shape[0] != npx:             # <<<<<<<<<<<<<<
@@ -5673,7 +5706,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":542
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":542
  *         ifixb = np.PyArray_CopyFromObject(ifixb, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
  *         if ifixb is None or ifixb.shape[0] != npx:
  *             raise ValueError("could not convert ifixb to a suitable array")             # <<<<<<<<<<<<<<
@@ -5691,7 +5724,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L27:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":544
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":544
  *             raise ValueError("could not convert ifixb to a suitable array")
  * 
  *     if ifixx is None:             # <<<<<<<<<<<<<<
@@ -5701,7 +5734,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_3 = (__pyx_v_ifixx == nullptr);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":545
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":545
  * 
  *     if ifixx is None:
  *         dim2[0] = m             # <<<<<<<<<<<<<<
@@ -5710,7 +5743,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[0]) = __pyx_v_m;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":546
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":546
  *     if ifixx is None:
  *         dim2[0] = m
  *         dim2[1] = 1             # <<<<<<<<<<<<<<
@@ -5719,18 +5752,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[1]) = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":547
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":547
  *         dim2[0] = m
  *         dim2[1] = 1
  *         ifixx = np.PyArray_EMPTY(2, &dim2[0], np.NPY_INT, False)             # <<<<<<<<<<<<<<
  *         ifixx[0,0] = -1
  *         ldifx = 1
  */
-    __pyx_t_10 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_INT, 0); 
+    __pyx_t_10 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_INT, 0); 
     __pyx_v_ifixx = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":548
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":548
  *         dim2[1] = 1
  *         ifixx = np.PyArray_EMPTY(2, &dim2[0], np.NPY_INT, False)
  *         ifixx[0,0] = -1             # <<<<<<<<<<<<<<
@@ -5741,7 +5774,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __site_setindex_548_13->Target(__site_setindex_548_13, __pyx_v_ifixx, __pyx_t_10, __pyx_int_neg_1);
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":549
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":549
  *         ifixx = np.PyArray_EMPTY(2, &dim2[0], np.NPY_INT, False)
  *         ifixx[0,0] = -1
  *         ldifx = 1             # <<<<<<<<<<<<<<
@@ -5753,7 +5786,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":551
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":551
  *         ldifx = 1
  *     else:
  *         ifixx = np.PyArray_CopyFromObject(ifixx, np.PyArray_DescrFromType(np.NPY_INT), 1, 2)             # <<<<<<<<<<<<<<
@@ -5766,7 +5799,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_ifixx = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":552
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":552
  *     else:
  *         ifixx = np.PyArray_CopyFromObject(ifixx, np.PyArray_DescrFromType(np.NPY_INT), 1, 2)
  *         if ifixx is None:             # <<<<<<<<<<<<<<
@@ -5776,7 +5809,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_3 = (__pyx_v_ifixx == nullptr);
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":553
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":553
  *         ifixx = np.PyArray_CopyFromObject(ifixx, np.PyArray_DescrFromType(np.NPY_INT), 1, 2)
  *         if ifixx is None:
  *             raise ValueError("could not convert ifixx to a suitable array")             # <<<<<<<<<<<<<<
@@ -5792,7 +5825,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L30:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":555
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":555
  *             raise ValueError("could not convert ifixx to a suitable array")
  * 
  *         if ifixx.ndim == 1 and ifixx.shape[0] == m:             # <<<<<<<<<<<<<<
@@ -5820,7 +5853,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":556
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":556
  * 
  *         if ifixx.ndim == 1 and ifixx.shape[0] == m:
  *             ldifx = 1             # <<<<<<<<<<<<<<
@@ -5831,7 +5864,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L31;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":557
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":557
  *         if ifixx.ndim == 1 and ifixx.shape[0] == m:
  *             ldifx = 1
  *         elif ifixx.ndim == 1 and ifixx.shape[0] == n and m == 1:             # <<<<<<<<<<<<<<
@@ -5865,7 +5898,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":558
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":558
  *             ldifx = 1
  *         elif ifixx.ndim == 1 and ifixx.shape[0] == n and m == 1:
  *             ldifx = n             # <<<<<<<<<<<<<<
@@ -5876,7 +5909,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L31;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":559
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":559
  *         elif ifixx.ndim == 1 and ifixx.shape[0] == n and m == 1:
  *             ldifx = n
  *         elif ifixx.ndim == 2 and ifixx.shape == (m, n):             # <<<<<<<<<<<<<<
@@ -5906,7 +5939,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_12) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":560
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":560
  *             ldifx = n
  *         elif ifixx.ndim == 2 and ifixx.shape == (m, n):
  *             ldifx = n             # <<<<<<<<<<<<<<
@@ -5918,7 +5951,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":562
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":562
  *             ldifx = n
  *         else:
  *             raise ValueError("could not convert ifixx to a suitable array")             # <<<<<<<<<<<<<<
@@ -5935,7 +5968,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L29:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":564
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":564
  *             raise ValueError("could not convert ifixx to a suitable array")
  * 
  *     if errfile is not None:             # <<<<<<<<<<<<<<
@@ -5945,7 +5978,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_12 = (__pyx_v_errfile != nullptr);
   if (__pyx_t_12) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":566
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":566
  *     if errfile is not None:
  *         # Call Fortran's OPEN to open the file with a logical unit of 18.
  *         lunerr = 18;             # <<<<<<<<<<<<<<
@@ -5954,7 +5987,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     __pyx_v_lunerr = 18;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":567
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":567
  *         # Call Fortran's OPEN to open the file with a logical unit of 18.
  *         lunerr = 18;
  *         dluno(&lunerr, errfile, len(errfile))             # <<<<<<<<<<<<<<
@@ -5974,7 +6007,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L32:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":569
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":569
  *         dluno(&lunerr, errfile, len(errfile))
  * 
  *     if rptfile is not None:             # <<<<<<<<<<<<<<
@@ -5984,7 +6017,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_12 = (__pyx_v_rptfile != nullptr);
   if (__pyx_t_12) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":570
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":570
  * 
  *     if rptfile is not None:
  *         lunrpt = 19             # <<<<<<<<<<<<<<
@@ -5993,7 +6026,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     __pyx_v_lunrpt = 19;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":571
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":571
  *     if rptfile is not None:
  *         lunrpt = 19
  *         dluno(&lunrpt, rptfile, len(rptfile))             # <<<<<<<<<<<<<<
@@ -6013,7 +6046,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L33:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":573
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":573
  *         dluno(&lunrpt, rptfile, len(rptfile))
  * 
  *     if stpb is None:             # <<<<<<<<<<<<<<
@@ -6023,7 +6056,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_12 = (__pyx_v_stpb == nullptr);
   if (__pyx_t_12) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":574
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":574
  * 
  *     if stpb is None:
  *         dim1[0] = npx             # <<<<<<<<<<<<<<
@@ -6032,18 +6065,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_npx;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":575
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":575
  *     if stpb is None:
  *         dim1[0] = npx
  *         stpb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         stpb[0] = 0.0
  *     else:
  */
-    __pyx_t_11 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_11 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_stpb = __pyx_t_11;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":576
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":576
  *         dim1[0] = npx
  *         stpb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         stpb[0] = 0.0             # <<<<<<<<<<<<<<
@@ -6057,7 +6090,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":578
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":578
  *         stpb[0] = 0.0
  *     else:
  *         stpb = np.PyArray_CopyFromObject(stpb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)             # <<<<<<<<<<<<<<
@@ -6070,7 +6103,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_stpb = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":579
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":579
  *     else:
  *         stpb = np.PyArray_CopyFromObject(stpb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if stpb is None or stpb.shape[0] != npx:             # <<<<<<<<<<<<<<
@@ -6094,7 +6127,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":580
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":580
  *         stpb = np.PyArray_CopyFromObject(stpb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if stpb is None or stpb.shape[0] != npx:
  *             raise ValueError("could not convert stpb to a suitable array")             # <<<<<<<<<<<<<<
@@ -6112,7 +6145,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L34:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":582
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":582
  *             raise ValueError("could not convert stpb to a suitable array")
  * 
  *     if stpd is None:             # <<<<<<<<<<<<<<
@@ -6122,7 +6155,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_8 = (__pyx_v_stpd == nullptr);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":583
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":583
  * 
  *     if stpd is None:
  *         dim2[0] = 1             # <<<<<<<<<<<<<<
@@ -6131,7 +6164,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[0]) = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":584
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":584
  *     if stpd is None:
  *         dim2[0] = 1
  *         dim2[1] = m             # <<<<<<<<<<<<<<
@@ -6140,18 +6173,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[1]) = __pyx_v_m;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":585
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":585
  *         dim2[0] = 1
  *         dim2[1] = m
  *         stpd = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         stpd[0,0] = 0.0
  *         ldstpd = 1
  */
-    __pyx_t_1 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+    __pyx_t_1 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
     __pyx_v_stpd = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":586
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":586
  *         dim2[1] = m
  *         stpd = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *         stpd[0,0] = 0.0             # <<<<<<<<<<<<<<
@@ -6164,7 +6197,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_9 = nullptr;
     __pyx_t_1 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":587
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":587
  *         stpd = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *         stpd[0,0] = 0.0
  *         ldstpd = 1             # <<<<<<<<<<<<<<
@@ -6176,7 +6209,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":589
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":589
  *         ldstpd = 1
  *     else:
  *         stpd = np.PyArray_CopyFromObject(stpd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)             # <<<<<<<<<<<<<<
@@ -6189,7 +6222,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_stpd = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":590
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":590
  *     else:
  *         stpd = np.PyArray_CopyFromObject(stpd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if stpd is None:             # <<<<<<<<<<<<<<
@@ -6199,7 +6232,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_8 = (__pyx_v_stpd == nullptr);
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":591
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":591
  *         stpd = np.PyArray_CopyFromObject(stpd, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if stpd is None:
  *             raise ValueError("could not convert stpd to a suitable array")             # <<<<<<<<<<<<<<
@@ -6215,7 +6248,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L37:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":593
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":593
  *             raise ValueError("could not convert stpd to a suitable array")
  * 
  *         if stpd.ndim == 1 and stpd.shape[0] == m:             # <<<<<<<<<<<<<<
@@ -6243,7 +6276,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":594
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":594
  * 
  *         if stpd.ndim == 1 and stpd.shape[0] == m:
  *             ldstpd = 1             # <<<<<<<<<<<<<<
@@ -6254,7 +6287,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L38;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":595
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":595
  *         if stpd.ndim == 1 and stpd.shape[0] == m:
  *             ldstpd = 1
  *         elif stpd.ndim == 1 and stpd.shape[0] == n and m == 1:             # <<<<<<<<<<<<<<
@@ -6288,7 +6321,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":596
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":596
  *             ldstpd = 1
  *         elif stpd.ndim == 1 and stpd.shape[0] == n and m == 1:
  *             ldstpd = n             # <<<<<<<<<<<<<<
@@ -6299,7 +6332,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L38;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":597
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":597
  *         elif stpd.ndim == 1 and stpd.shape[0] == n and m == 1:
  *             ldstpd = n
  *         elif stpd.ndim == 2 and stpd.shape == (n, m):             # <<<<<<<<<<<<<<
@@ -6329,7 +6362,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_4) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":598
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":598
  *             ldstpd = n
  *         elif stpd.ndim == 2 and stpd.shape == (n, m):
  *             ldstpd = n             # <<<<<<<<<<<<<<
@@ -6341,7 +6374,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":600
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":600
  *             ldstpd = n
  *         else:
  *             raise ValueError("could not convert stpd to a suitable array")             # <<<<<<<<<<<<<<
@@ -6358,7 +6391,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L36:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":602
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":602
  *             raise ValueError("could not convert stpd to a suitable array")
  * 
  *     if sclb is None:             # <<<<<<<<<<<<<<
@@ -6368,7 +6401,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_4 = (__pyx_v_sclb == nullptr);
   if (__pyx_t_4) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":603
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":603
  * 
  *     if sclb is None:
  *         dim1[0] = npx             # <<<<<<<<<<<<<<
@@ -6377,18 +6410,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_npx;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":604
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":604
  *     if sclb is None:
  *         dim1[0] = npx
  *         sclb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         sclb[0] = 0.0
  *     else:
  */
-    __pyx_t_10 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_10 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_sclb = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":605
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":605
  *         dim1[0] = npx
  *         sclb = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  *         sclb[0] = 0.0             # <<<<<<<<<<<<<<
@@ -6402,7 +6435,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":607
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":607
  *         sclb[0] = 0.0
  *     else:
  *         sclb = np.PyArray_CopyFromObject(sclb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)             # <<<<<<<<<<<<<<
@@ -6415,7 +6448,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_sclb = __pyx_t_11;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":608
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":608
  *     else:
  *         sclb = np.PyArray_CopyFromObject(sclb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if sclb is None or sclb.shape[0] != npx:             # <<<<<<<<<<<<<<
@@ -6439,7 +6472,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":609
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":609
  *         sclb = np.PyArray_CopyFromObject(sclb, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if sclb is None or sclb.shape[0] != npx:
  *             raise ValueError("could not convert sclb to a suitable array")             # <<<<<<<<<<<<<<
@@ -6457,7 +6490,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L39:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":611
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":611
  *             raise ValueError("could not convert sclb to a suitable array")
  * 
  *     if scld is None:             # <<<<<<<<<<<<<<
@@ -6467,7 +6500,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_3 = (__pyx_v_scld == nullptr);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":612
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":612
  * 
  *     if scld is None:
  *         dim2[0] = 1             # <<<<<<<<<<<<<<
@@ -6476,7 +6509,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[0]) = 1;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":613
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":613
  *     if scld is None:
  *         dim2[0] = 1
  *         dim2[1] = n             # <<<<<<<<<<<<<<
@@ -6485,18 +6518,18 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim2[1]) = __pyx_v_n;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":614
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":614
  *         dim2[0] = 1
  *         dim2[1] = n
  *         scld = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         scld[0,0] = 0.0
  *         ldscld = 1
  */
-    __pyx_t_11 = PyArray_EMPTY(2, (&(__pyx_v_dim2[0])), NPY_DOUBLE, 0); 
+    __pyx_t_11 = PyArray_EMPTY(2, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim2[0]))), NPY_DOUBLE, 0); 
     __pyx_v_scld = __pyx_t_11;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":615
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":615
  *         dim2[1] = n
  *         scld = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *         scld[0,0] = 0.0             # <<<<<<<<<<<<<<
@@ -6509,7 +6542,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_9 = nullptr;
     __pyx_t_11 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":616
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":616
  *         scld = np.PyArray_EMPTY(2, &dim2[0], np.NPY_DOUBLE, False)
  *         scld[0,0] = 0.0
  *         ldscld = 1             # <<<<<<<<<<<<<<
@@ -6521,7 +6554,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":618
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":618
  *         ldscld = 1
  *     else:
  *         scld = np.PyArray_CopyFromObject(scld, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)             # <<<<<<<<<<<<<<
@@ -6534,7 +6567,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_scld = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":619
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":619
  *     else:
  *         scld = np.PyArray_CopyFromObject(scld, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if scld is None:             # <<<<<<<<<<<<<<
@@ -6544,7 +6577,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_3 = (__pyx_v_scld == nullptr);
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":620
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":620
  *         scld = np.PyArray_CopyFromObject(scld, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 2)
  *         if scld is None:
  *             raise ValueError("could not convert scld to a suitable array")             # <<<<<<<<<<<<<<
@@ -6560,7 +6593,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L42:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":622
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":622
  *             raise ValueError("could not convert scld to a suitable array")
  * 
  *         if scld.ndim == 1 and scld.shape[0] == m:             # <<<<<<<<<<<<<<
@@ -6588,7 +6621,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":623
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":623
  * 
  *         if scld.ndim == 1 and scld.shape[0] == m:
  *             ldscld = 1             # <<<<<<<<<<<<<<
@@ -6599,7 +6632,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L43;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":624
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":624
  *         if scld.ndim == 1 and scld.shape[0] == m:
  *             ldscld = 1
  *         elif scld.ndim == 1 and scld.shape[0] == n and m == 1:             # <<<<<<<<<<<<<<
@@ -6633,7 +6666,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":625
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":625
  *             ldscld = 1
  *         elif scld.ndim == 1 and scld.shape[0] == n and m == 1:
  *             ldscld = n             # <<<<<<<<<<<<<<
@@ -6644,7 +6677,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
       goto __pyx_L43;
     }
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":626
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":626
  *         elif scld.ndim == 1 and scld.shape[0] == n and m == 1:
  *             ldscld = n
  *         elif scld.ndim == 2 and scld.shape == (n, m):             # <<<<<<<<<<<<<<
@@ -6674,7 +6707,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_12) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":627
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":627
  *             ldscld = n
  *         elif scld.ndim == 2 and scld.shape == (n, m):
  *             ldscld = n             # <<<<<<<<<<<<<<
@@ -6686,7 +6719,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     /*else*/ {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":629
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":629
  *             ldscld = n
  *         else:
  *             raise ValueError("could not convert scld to a suitable array")             # <<<<<<<<<<<<<<
@@ -6703,7 +6736,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L41:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":631
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":631
  *             raise ValueError("could not convert scld to a suitable array")
  * 
  *     if job % 10 < 2:             # <<<<<<<<<<<<<<
@@ -6713,7 +6746,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_12 = (__Pyx_mod_long(__pyx_v_job, 10) < 2);
   if (__pyx_t_12) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":636
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":636
  *             18 + 11 * npx + npx * npx + m + m * m + 4 * n * nq + 6 * n * m + \
  *             2 * n * nq * npx + 2 * n * nq * m + nq * nq + 5 * nq + nq * (npx + m) + \
  *             ldwe * ld2we * nq             # <<<<<<<<<<<<<<
@@ -6722,7 +6755,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     __pyx_v_lwork = ((((((((((((18 + (11 * __pyx_v_npx)) + (__pyx_v_npx * __pyx_v_npx)) + __pyx_v_m) + (__pyx_v_m * __pyx_v_m)) + ((4 * __pyx_v_n) * __pyx_v_nq)) + ((6 * __pyx_v_n) * __pyx_v_m)) + (((2 * __pyx_v_n) * __pyx_v_nq) * __pyx_v_npx)) + (((2 * __pyx_v_n) * __pyx_v_nq) * __pyx_v_m)) + (__pyx_v_nq * __pyx_v_nq)) + (5 * __pyx_v_nq)) + (__pyx_v_nq * (__pyx_v_npx + __pyx_v_m))) + ((__pyx_v_ldwe * __pyx_v_ld2we) * __pyx_v_nq));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":637
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":637
  *             2 * n * nq * npx + 2 * n * nq * m + nq * nq + 5 * nq + nq * (npx + m) + \
  *             ldwe * ld2we * nq
  *         isodr = 1             # <<<<<<<<<<<<<<
@@ -6734,7 +6767,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":642
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":642
  *         lwork = \
  *             18 + 11 * npx + npx * npx + m + m * m + 4 * n * nq + 2 * n * m + \
  *             2 * n * nq * npx + 5 * nq + nq * (npx + m) + ldwe * ld2we * nq             # <<<<<<<<<<<<<<
@@ -6743,7 +6776,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     __pyx_v_lwork = ((((((((((18 + (11 * __pyx_v_npx)) + (__pyx_v_npx * __pyx_v_npx)) + __pyx_v_m) + (__pyx_v_m * __pyx_v_m)) + ((4 * __pyx_v_n) * __pyx_v_nq)) + ((2 * __pyx_v_n) * __pyx_v_m)) + (((2 * __pyx_v_n) * __pyx_v_nq) * __pyx_v_npx)) + (5 * __pyx_v_nq)) + (__pyx_v_nq * (__pyx_v_npx + __pyx_v_m))) + ((__pyx_v_ldwe * __pyx_v_ld2we) * __pyx_v_nq));
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":643
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":643
  *             18 + 11 * npx + npx * npx + m + m * m + 4 * n * nq + 2 * n * m + \
  *             2 * n * nq * npx + 5 * nq + nq * (npx + m) + ldwe * ld2we * nq
  *         isodr = 0             # <<<<<<<<<<<<<<
@@ -6754,7 +6787,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L44:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":645
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":645
  *         isodr = 0
  * 
  *     liwork = 20 + npx + nq * (npx + m)             # <<<<<<<<<<<<<<
@@ -6763,7 +6796,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
   __pyx_v_liwork = ((20 + __pyx_v_npx) + (__pyx_v_nq * (__pyx_v_npx + __pyx_v_m)));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":647
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":647
  *     liwork = 20 + npx + nq * (npx + m)
  * 
  *     if (job / 10000) % 10 >= 1:             # <<<<<<<<<<<<<<
@@ -6773,7 +6806,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_12 = (__Pyx_mod_long(__Pyx_div_long(__pyx_v_job, 10000), 10) >= 1);
   if (__pyx_t_12) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":649
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":649
  *     if (job / 10000) % 10 >= 1:
  *         # Fit is a restart, make sure work and iwork are input
  *         if work is None or iwork is None:             # <<<<<<<<<<<<<<
@@ -6789,7 +6822,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":650
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":650
  *         # Fit is a restart, make sure work and iwork are input
  *         if work is None or iwork is None:
  *             raise ValueError("need to input work and iwork arrays to restart")             # <<<<<<<<<<<<<<
@@ -6808,7 +6841,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L45:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":652
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":652
  *             raise ValueError("need to input work and iwork arrays to restart")
  * 
  *     if (job / 1000) % 10 >= 1:             # <<<<<<<<<<<<<<
@@ -6818,7 +6851,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_8 = (__Pyx_mod_long(__Pyx_div_long(__pyx_v_job, 1000), 10) >= 1);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":654
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":654
  *     if (job / 1000) % 10 >= 1:
  *         # delta should be supplied, make sure the user does
  *         if work is None:             # <<<<<<<<<<<<<<
@@ -6828,7 +6861,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_8 = (__pyx_v_work == nullptr);
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":655
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":655
  *         # delta should be supplied, make sure the user does
  *         if work is None:
  *             raise ValueError("need to input work array for delta initialization")             # <<<<<<<<<<<<<<
@@ -6847,7 +6880,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L47:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":657
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":657
  *             raise ValueError("need to input work array for delta initialization")
  * 
  *     if work is not None:             # <<<<<<<<<<<<<<
@@ -6857,7 +6890,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_8 = (__pyx_v_work != nullptr);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":658
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":658
  * 
  *     if work is not None:
  *         work = np.PyArray_CopyFromObject(work, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)             # <<<<<<<<<<<<<<
@@ -6870,7 +6903,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_work = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":659
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":659
  *     if work is not None:
  *         work = np.PyArray_CopyFromObject(work, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if work is None:             # <<<<<<<<<<<<<<
@@ -6880,7 +6913,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_8 = (__pyx_v_work == nullptr);
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":660
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":660
  *         work = np.PyArray_CopyFromObject(work, np.PyArray_DescrFromType(np.NPY_DOUBLE), 1, 1)
  *         if work is None:
  *             raise ValueError("could not convert work to a suitable array")             # <<<<<<<<<<<<<<
@@ -6896,7 +6929,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L50:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":662
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":662
  *             raise ValueError("could not convert work to a suitable array")
  * 
  *         if work.shape[0] < lwork:             # <<<<<<<<<<<<<<
@@ -6914,7 +6947,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_9 = nullptr;
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":663
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":663
  * 
  *         if work.shape[0] < lwork:
  *             raise ValueError("work is too small")             # <<<<<<<<<<<<<<
@@ -6933,7 +6966,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":666
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":666
  * 
  *     else:
  *         dim1[0] = lwork             # <<<<<<<<<<<<<<
@@ -6942,20 +6975,20 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_lwork;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":667
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":667
  *     else:
  *         dim1[0] = lwork
  *         work = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  * 
  *     if iwork is not None:
  */
-    __pyx_t_1 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_DOUBLE, 0); 
+    __pyx_t_1 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_DOUBLE, 0); 
     __pyx_v_work = __pyx_t_1;
     __pyx_t_1 = nullptr;
   }
   __pyx_L49:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":669
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":669
  *         work = np.PyArray_EMPTY(1, &dim1[0], np.NPY_DOUBLE, False)
  * 
  *     if iwork is not None:             # <<<<<<<<<<<<<<
@@ -6965,7 +6998,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_8 = (__pyx_v_iwork != nullptr);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":670
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":670
  * 
  *     if iwork is not None:
  *         iwork = np.PyArray_CopyFromObject(iwork, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)             # <<<<<<<<<<<<<<
@@ -6978,7 +7011,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_v_iwork = __pyx_t_9;
     __pyx_t_9 = nullptr;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":671
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":671
  *     if iwork is not None:
  *         iwork = np.PyArray_CopyFromObject(iwork, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
  *         if iwork is None:             # <<<<<<<<<<<<<<
@@ -6988,7 +7021,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_8 = (__pyx_v_iwork == nullptr);
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":672
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":672
  *         iwork = np.PyArray_CopyFromObject(iwork, np.PyArray_DescrFromType(np.NPY_INT), 1, 1)
  *         if iwork is None:
  *             raise ValueError("could not convert iwork to a suitable array")             # <<<<<<<<<<<<<<
@@ -7004,7 +7037,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     __pyx_L53:;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":674
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":674
  *             raise ValueError("could not convert iwork to a suitable array")
  * 
  *         if iwork.shape[0] < liwork:             # <<<<<<<<<<<<<<
@@ -7022,7 +7055,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     __pyx_t_10 = nullptr;
     if (__pyx_t_8) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":675
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":675
  * 
  *         if iwork.shape[0] < liwork:
  *             raise ValueError("iwork is too small")             # <<<<<<<<<<<<<<
@@ -7041,7 +7074,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   /*else*/ {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":677
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":677
  *             raise ValueError("iwork is too small")
  *     else:
  *         dim1[0] = liwork             # <<<<<<<<<<<<<<
@@ -7050,20 +7083,20 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  */
     (__pyx_v_dim1[0]) = __pyx_v_liwork;
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":678
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":678
  *     else:
  *         dim1[0] = liwork
  *         iwork = np.PyArray_EMPTY(1, &dim1[0], np.NPY_INT, False)             # <<<<<<<<<<<<<<
  * 
  *     # check if what job requests can be done with what the user has input
  */
-    __pyx_t_1 = PyArray_EMPTY(1, (&(__pyx_v_dim1[0])), NPY_INT, 0); 
+    __pyx_t_1 = PyArray_EMPTY(1, ((__pyx_t_5numpy_npy_intp *)(&(__pyx_v_dim1[0]))), NPY_INT, 0); 
     __pyx_v_iwork = __pyx_t_1;
     __pyx_t_1 = nullptr;
   }
   __pyx_L52:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":682
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":682
  *     # check if what job requests can be done with what the user has input
  *     # into the function.
  *     if (job / 10) % 10 >= 2:             # <<<<<<<<<<<<<<
@@ -7073,7 +7106,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_8 = (__Pyx_mod_long(__Pyx_div_long(__pyx_v_job, 10), 10) >= 2);
   if (__pyx_t_8) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":684
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":684
  *     if (job / 10) % 10 >= 2:
  *         # derivatives are supported to be supplied.
  *         if fjacb is None or fjacd is None:             # <<<<<<<<<<<<<<
@@ -7089,7 +7122,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     }
     if (__pyx_t_3) {
 
-      /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":685
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":685
  *         # derivatives are supported to be supplied.
  *         if fjacb is None or fjacd is None:
  *             raise ValueError("need fjacb and fjacd to calculate derivatives")             # <<<<<<<<<<<<<<
@@ -7108,7 +7141,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L55:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":688
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":688
  * 
  *     # Setup the global data for the callback.
  *     odr_global["fcn"] = fcn             # <<<<<<<<<<<<<<
@@ -7119,7 +7152,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __site_setindex_688_14->Target(__site_setindex_688_14, __pyx_t_10, ((System::Object^)"fcn"), __pyx_v_fcn);
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":689
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":689
  *     # Setup the global data for the callback.
  *     odr_global["fcn"] = fcn
  *     odr_global["fjacb"] = fjacb             # <<<<<<<<<<<<<<
@@ -7130,7 +7163,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __site_setindex_689_14->Target(__site_setindex_689_14, __pyx_t_10, ((System::Object^)"fjacb"), __pyx_v_fjacb);
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":690
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":690
  *     odr_global["fcn"] = fcn
  *     odr_global["fjacb"] = fjacb
  *     odr_global["fjacd"] = fjacd             # <<<<<<<<<<<<<<
@@ -7141,7 +7174,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __site_setindex_690_14->Target(__site_setindex_690_14, __pyx_t_10, ((System::Object^)"fjacd"), __pyx_v_fjacd);
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":691
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":691
  *     odr_global["fjacb"] = fjacb
  *     odr_global["fjacd"] = fjacd
  *     odr_global["pyBeta"] = beta             # <<<<<<<<<<<<<<
@@ -7152,7 +7185,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __site_setindex_691_14->Target(__site_setindex_691_14, __pyx_t_10, ((System::Object^)"pyBeta"), __pyx_v_beta);
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":692
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":692
  *     odr_global["fjacd"] = fjacd
  *     odr_global["pyBeta"] = beta
  *     odr_global["extra_args"] = extra_args             # <<<<<<<<<<<<<<
@@ -7163,7 +7196,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __site_setindex_692_14->Target(__site_setindex_692_14, __pyx_t_10, ((System::Object^)"extra_args"), __pyx_v_extra_args);
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":694
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":694
  *     odr_global["extra_args"] = extra_args
  * 
  *     print "going in: beta = %s" % beta             # <<<<<<<<<<<<<<
@@ -7174,7 +7207,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_10));
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":695
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":695
  * 
  *     print "going in: beta = %s" % beta
  *     dodrc(fcn_callback, &n, &m, &npx, &nq, <double *>np.PyArray_DATA(beta),             # <<<<<<<<<<<<<<
@@ -7185,7 +7218,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":696
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":696
  *     print "going in: beta = %s" % beta
  *     dodrc(fcn_callback, &n, &m, &npx, &nq, <double *>np.PyArray_DATA(beta),
  *         <double *>np.PyArray_DATA(y), &ldy, <double *>np.PyArray_DATA(x), &ldx,             # <<<<<<<<<<<<<<
@@ -7199,7 +7232,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":697
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":697
  *     dodrc(fcn_callback, &n, &m, &npx, &nq, <double *>np.PyArray_DATA(beta),
  *         <double *>np.PyArray_DATA(y), &ldy, <double *>np.PyArray_DATA(x), &ldx,
  *         <double *>np.PyArray_DATA(we), &ldwe, &ld2we,             # <<<<<<<<<<<<<<
@@ -7210,7 +7243,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":698
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":698
  *         <double *>np.PyArray_DATA(y), &ldy, <double *>np.PyArray_DATA(x), &ldx,
  *         <double *>np.PyArray_DATA(we), &ldwe, &ld2we,
  *         <double *>np.PyArray_DATA(wd), &ldwd, &ld2wd,             # <<<<<<<<<<<<<<
@@ -7221,7 +7254,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":699
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":699
  *         <double *>np.PyArray_DATA(we), &ldwe, &ld2we,
  *         <double *>np.PyArray_DATA(wd), &ldwd, &ld2wd,
  *         <int *>np.PyArray_DATA(ifixb), <int *>np.PyArray_DATA(ifixx), &ldifx,             # <<<<<<<<<<<<<<
@@ -7235,7 +7268,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":702
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":702
  *         &job, &ndigit, &taufac, &sstol, &partol, &maxit,
  *         &iprint, &lunerr, &lunrpt,
  *         <double *>np.PyArray_DATA(stpb), <double *>np.PyArray_DATA(stpd), &ldstpd,             # <<<<<<<<<<<<<<
@@ -7249,7 +7282,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":703
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":703
  *         &iprint, &lunerr, &lunrpt,
  *         <double *>np.PyArray_DATA(stpb), <double *>np.PyArray_DATA(stpd), &ldstpd,
  *         <double *>np.PyArray_DATA(sclb), <double *>np.PyArray_DATA(scld), &ldscld,             # <<<<<<<<<<<<<<
@@ -7263,7 +7296,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":704
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":704
  *         <double *>np.PyArray_DATA(stpb), <double *>np.PyArray_DATA(stpd), &ldstpd,
  *         <double *>np.PyArray_DATA(sclb), <double *>np.PyArray_DATA(scld), &ldscld,
  *         <double *>np.PyArray_DATA(work), &lwork, <int *>np.PyArray_DATA(iwork), &liwork,             # <<<<<<<<<<<<<<
@@ -7277,28 +7310,17 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":705
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":705
  *         <double *>np.PyArray_DATA(sclb), <double *>np.PyArray_DATA(scld), &ldscld,
  *         <double *>np.PyArray_DATA(work), &lwork, <int *>np.PyArray_DATA(iwork), &liwork,
  *         &info);             # <<<<<<<<<<<<<<
  * 
- *     print "before output: beta = %s" % beta
+ *     result = gen_output(n, m, npx, nq, ldwe, ld2we,
  */
   F_FUNC(dodrc,DODRC)(__pyx_function_pointer_fcn_callback, (&__pyx_v_n), (&__pyx_v_m), (&__pyx_v_npx), (&__pyx_v_nq), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_beta))), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_y))), (&__pyx_v_ldy), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_x))), (&__pyx_v_ldx), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_we))), (&__pyx_v_ldwe), (&__pyx_v_ld2we), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_wd))), (&__pyx_v_ldwd), (&__pyx_v_ld2wd), ((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ifixb))), ((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ifixx))), (&__pyx_v_ldifx), (&__pyx_v_job), (&__pyx_v_ndigit), (&__pyx_v_taufac), (&__pyx_v_sstol), (&__pyx_v_partol), (&__pyx_v_maxit), (&__pyx_v_iprint), (&__pyx_v_lunerr), (&__pyx_v_lunrpt), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_stpb))), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_stpd))), (&__pyx_v_ldstpd), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_sclb))), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_scld))), (&__pyx_v_ldscld), ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_work))), (&__pyx_v_lwork), ((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_iwork))), (&__pyx_v_liwork), (&__pyx_v_info));
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":707
- *         &info);
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":708
  * 
- *     print "before output: beta = %s" % beta             # <<<<<<<<<<<<<<
- *     result = gen_output(n, m, npx, nq, ldwe, ld2we,
- *         np.PyArray_ARRAY(beta), np.PyArray_ARRAY(work),
- */
-  __pyx_t_10 = __site_op_mod_707_37->Target(__site_op_mod_707_37, ((System::Object^)"before output: beta = %s"), __pyx_v_beta);
-  PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_10));
-  __pyx_t_10 = nullptr;
-
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":709
- *     print "before output: beta = %s" % beta
  *     result = gen_output(n, m, npx, nq, ldwe, ld2we,
  *         np.PyArray_ARRAY(beta), np.PyArray_ARRAY(work),             # <<<<<<<<<<<<<<
  *         np.PyArray_ARRAY(iwork), isodr, info, full_output);
@@ -7311,7 +7333,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
   }
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":710
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":709
  *     result = gen_output(n, m, npx, nq, ldwe, ld2we,
  *         np.PyArray_ARRAY(beta), np.PyArray_ARRAY(work),
  *         np.PyArray_ARRAY(iwork), isodr, info, full_output);             # <<<<<<<<<<<<<<
@@ -7325,19 +7347,19 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_v_result = __pyx_t_10;
   __pyx_t_10 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":712
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":711
  *         np.PyArray_ARRAY(iwork), isodr, info, full_output);
  * 
  *     if result == None:             # <<<<<<<<<<<<<<
  *         raise RuntimeError("could not generate output")
  *     if lunerr != -1:
  */
-  __pyx_t_10 = __site_op_eq_712_14->Target(__site_op_eq_712_14, __pyx_v_result, nullptr);
-  __pyx_t_3 = __site_istrue_712_14->Target(__site_istrue_712_14, __pyx_t_10);
+  __pyx_t_10 = __site_op_eq_711_14->Target(__site_op_eq_711_14, __pyx_v_result, nullptr);
+  __pyx_t_3 = __site_istrue_711_14->Target(__site_istrue_711_14, __pyx_t_10);
   __pyx_t_10 = nullptr;
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":713
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":712
  * 
  *     if result == None:
  *         raise RuntimeError("could not generate output")             # <<<<<<<<<<<<<<
@@ -7345,7 +7367,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
  *         dlunc(&lunerr)
  */
     __pyx_t_10 = PythonOps::GetGlobal(__pyx_context, "RuntimeError");
-    __pyx_t_1 = __site_call1_713_26->Target(__site_call1_713_26, __pyx_context, __pyx_t_10, ((System::Object^)"could not generate output"));
+    __pyx_t_1 = __site_call1_712_26->Target(__site_call1_712_26, __pyx_context, __pyx_t_10, ((System::Object^)"could not generate output"));
     __pyx_t_10 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -7353,7 +7375,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L57:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":714
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":713
  *     if result == None:
  *         raise RuntimeError("could not generate output")
  *     if lunerr != -1:             # <<<<<<<<<<<<<<
@@ -7363,7 +7385,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_3 = (__pyx_v_lunerr != -1);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":715
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":714
  *         raise RuntimeError("could not generate output")
  *     if lunerr != -1:
  *         dlunc(&lunerr)             # <<<<<<<<<<<<<<
@@ -7375,7 +7397,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L58:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":716
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":715
  *     if lunerr != -1:
  *         dlunc(&lunerr)
  *     if lunrpt != -1:             # <<<<<<<<<<<<<<
@@ -7385,7 +7407,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   __pyx_t_3 = (__pyx_v_lunrpt != -1);
   if (__pyx_t_3) {
 
-    /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":717
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":716
  *         dlunc(&lunerr)
  *     if lunrpt != -1:
  *         dlunc(&lunrpt)             # <<<<<<<<<<<<<<
@@ -7397,7 +7419,7 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   }
   __pyx_L59:;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":719
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":718
  *         dlunc(&lunrpt)
  * 
  *     return result             # <<<<<<<<<<<<<<
@@ -7412,19 +7434,48 @@ static System::Object^ odr(System::Object^ fcn, System::Object^ initbeta, System
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":246
- * ctypedef npy_cdouble     complex_t
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":290
+ *     dtype NpyArray_FindArrayType_3args "NumpyDotNet::NpyArray::FindArrayType" (object src, dtype minitype, int max)
  * 
- * cdef inline object PyUFunc_FromFuncAndData(NpyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
+ * cdef inline dtype NpyArray_FindArrayType_2args(object src, dtype minitype):             # <<<<<<<<<<<<<<
+ *     return NpyArray_FindArrayType_3args(src, minitype, NPY_MAXDIMS)
+ * 
+ */
+
+static CYTHON_INLINE NumpyDotNet::dtype^ NpyArray_FindArrayType_2args(System::Object^ __pyx_v_src, NumpyDotNet::dtype^ __pyx_v_minitype) {
+  NumpyDotNet::dtype^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":291
+ * 
+ * cdef inline dtype NpyArray_FindArrayType_2args(object src, dtype minitype):
+ *     return NpyArray_FindArrayType_3args(src, minitype, NPY_MAXDIMS)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = ((System::Object^)NumpyDotNet::NpyArray::FindArrayType(__pyx_v_src, __pyx_v_minitype, NPY_MAXDIMS)); 
+  __pyx_r = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":310
+ * ctypedef void (*PyArray_CopySwapFunc)(void *, void *, int, NpyArray *)
+ * 
+ * cdef inline object PyUFunc_FromFuncAndData(PyUFuncGenericFunction* func, void** data,             # <<<<<<<<<<<<<<
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  */
 
-static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
+static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(__pyx_t_5numpy_PyUFuncGenericFunction *__pyx_v_func, void **__pyx_v_data, char *__pyx_v_types, int __pyx_v_ntypes, int __pyx_v_nin, int __pyx_v_nout, int __pyx_v_identity, char *__pyx_v_name, char *__pyx_v_doc, int __pyx_v_c) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":249
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":313
  *         char* types, int ntypes, int nin, int nout,
  *         int identity, char* name, char* doc, int c):
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))             # <<<<<<<<<<<<<<
@@ -7441,7 +7492,7 @@ static CYTHON_INLINE System::Object^ PyUFunc_FromFuncAndData(NpyUFuncGenericFunc
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":251
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":315
  *    return Npy_INTERFACE_ufunc(NpyUFunc_FromFuncAndDataAndSignature(func, data, types, ntypes, nin, nout, identity, name, doc, c, NULL))
  * 
  * cdef inline object PyArray_DescrFromType(int typenum):             # <<<<<<<<<<<<<<
@@ -7453,14 +7504,14 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":252
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":316
  * 
  * cdef inline object PyArray_DescrFromType(int typenum):
  *     return Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum))             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum))); 
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -7470,7 +7521,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":255
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":319
  * 
  * 
  * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -7478,7 +7529,7 @@ static CYTHON_INLINE System::Object^ PyArray_DescrFromType(int __pyx_v_typenum) 
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -7492,7 +7543,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":256
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":320
  * 
  * cdef inline object PyArray_ZEROS(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -7503,7 +7554,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":258
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":322
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -7514,22 +7565,22 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":259
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":323
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_259_18->Target(__site_get_append_259_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_323_18->Target(__site_get_append_323_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_259_25->Target(__site_call1_259_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_323_25->Target(__site_call1_323_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":260
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":324
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -7540,21 +7591,21 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":261
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":325
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  */
-  __pyx_t_5 = __site_get_zeros_261_16->Target(__site_get_zeros_261_16, __pyx_v_numpy, __pyx_context);
-  __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  __pyx_t_5 = __site_get_zeros_325_16->Target(__site_get_zeros_325_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_4 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum))); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_261_22->Target(__site_call3_261_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_325_22->Target(__site_call3_325_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -7567,7 +7618,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":263
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":327
  *     return numpy.zeros(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):             # <<<<<<<<<<<<<<
@@ -7575,7 +7626,7 @@ static CYTHON_INLINE System::Object^ PyArray_ZEROS(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, __pyx_t_5numpy_npy_intp *__pyx_v_shape, int __pyx_v_typenum, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -7589,7 +7640,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":264
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":328
  * 
  * cdef inline object PyArray_EMPTY(int ndim, npy_intp *shape, int typenum, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -7600,7 +7651,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":266
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":330
  *     shape_list = []
  *     cdef int i
  *     for i in range(ndim):             # <<<<<<<<<<<<<<
@@ -7611,22 +7662,22 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":267
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":331
  *     cdef int i
  *     for i in range(ndim):
  *         shape_list.append(shape[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_267_18->Target(__site_get_append_267_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_331_18->Target(__site_get_append_331_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_shape[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_267_25->Target(__site_call1_267_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_331_25->Target(__site_call1_331_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":268
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":332
  *     for i in range(ndim):
  *         shape_list.append(shape[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -7637,21 +7688,21 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":269
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":333
  *         shape_list.append(shape[i])
  *     import numpy
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
  */
-  __pyx_t_5 = __site_get_empty_269_16->Target(__site_get_empty_269_16, __pyx_v_numpy, __pyx_context);
-  __pyx_t_4 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum)); 
+  __pyx_t_5 = __site_get_empty_333_16->Target(__site_get_empty_333_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_4 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_v_typenum))); 
   if (__pyx_v_fortran) {
     __pyx_t_1 = "F";
   } else {
     __pyx_t_1 = "C";
   }
-  __pyx_t_6 = __site_call3_269_22->Target(__site_call3_269_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_6 = __site_call3_333_22->Target(__site_call3_333_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), __pyx_t_4, ((System::Object^)__pyx_t_1));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_t_1 = nullptr;
@@ -7664,7 +7715,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":271
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":335
  *     return numpy.empty(shape_list, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), 'F' if fortran else 'C')
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):             # <<<<<<<<<<<<<<
@@ -7672,7 +7723,7 @@ static CYTHON_INLINE System::Object^ PyArray_EMPTY(int __pyx_v_ndim, npy_intp *_
  *     cdef int i
  */
 
-static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
+static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, NumpyDotNet::dtype^ __pyx_v_descr, int __pyx_v_fortran) {
   System::Object^ __pyx_v_shape_list;
   int __pyx_v_i;
   System::Object^ __pyx_v_numpy;
@@ -7685,7 +7736,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_shape_list = nullptr;
   __pyx_v_numpy = nullptr;
 
-  /* "../cython/include\numpy.pxd":272
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":336
  * 
  * cdef inline object PyArray_Empty(int nd, npy_intp *dims, dtype descr, int fortran):
  *     shape_list = []             # <<<<<<<<<<<<<<
@@ -7696,7 +7747,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_shape_list = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":274
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":338
  *     shape_list = []
  *     cdef int i
  *     for i in range(nd):             # <<<<<<<<<<<<<<
@@ -7707,22 +7758,22 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
     __pyx_v_i = __pyx_t_3;
 
-    /* "../cython/include\numpy.pxd":275
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":339
  *     cdef int i
  *     for i in range(nd):
  *         shape_list.append(dims[i])             # <<<<<<<<<<<<<<
  *     import numpy
  *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')
  */
-    __pyx_t_1 = __site_get_append_275_18->Target(__site_get_append_275_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
+    __pyx_t_1 = __site_get_append_339_18->Target(__site_get_append_339_18, ((System::Object^)__pyx_v_shape_list), __pyx_context);
     __pyx_t_4 = (__pyx_v_dims[__pyx_v_i]);
-    __pyx_t_5 = __site_call1_275_25->Target(__site_call1_275_25, __pyx_context, __pyx_t_1, __pyx_t_4);
+    __pyx_t_5 = __site_call1_339_25->Target(__site_call1_339_25, __pyx_context, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
   }
 
-  /* "../cython/include\numpy.pxd":276
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":340
  *     for i in range(nd):
  *         shape_list.append(dims[i])
  *     import numpy             # <<<<<<<<<<<<<<
@@ -7733,20 +7784,20 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   __pyx_v_numpy = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":277
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":341
  *         shape_list.append(dims[i])
  *     import numpy
  *     return numpy.empty(shape_list, descr, 'F' if fortran else 'C')             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_5 = __site_get_empty_277_16->Target(__site_get_empty_277_16, __pyx_v_numpy, __pyx_context);
+  __pyx_t_5 = __site_get_empty_341_16->Target(__site_get_empty_341_16, __pyx_v_numpy, __pyx_context);
   if (__pyx_v_fortran) {
     __pyx_t_4 = "F";
   } else {
     __pyx_t_4 = "C";
   }
-  __pyx_t_1 = __site_call3_277_22->Target(__site_call3_277_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), ((System::Object^)__pyx_v_descr), ((System::Object^)__pyx_t_4));
+  __pyx_t_1 = __site_call3_341_22->Target(__site_call3_341_22, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_v_shape_list), ((System::Object^)__pyx_v_descr), ((System::Object^)__pyx_t_4));
   __pyx_t_5 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_r = __pyx_t_1;
@@ -7758,7 +7809,7 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":280
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":344
  * 
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):             # <<<<<<<<<<<<<<
@@ -7766,11 +7817,11 @@ static CYTHON_INLINE System::Object^ PyArray_Empty(int __pyx_v_nd, npy_intp *__p
  *     assert obj == NULL
  */
 
-static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, npy_intp *__pyx_v_dims, int __pyx_v_type_num, npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
+static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, __pyx_t_5numpy_npy_intp *__pyx_v_strides, void *__pyx_v_data, int __pyx_v_itemsize, int __pyx_v_flags, void *__pyx_v_obj) {
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":281
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":345
  * 
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL             # <<<<<<<<<<<<<<
@@ -7783,7 +7834,7 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":282
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":346
  * cdef inline object PyArray_New(void *subtype, int nd, npy_intp *dims, int type_num, npy_intp *strides, void *data, int itemsize, int flags, void *obj):
  *     assert subtype == NULL
  *     assert obj == NULL             # <<<<<<<<<<<<<<
@@ -7796,14 +7847,14 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   }
   #endif
 
-  /* "../cython/include\numpy.pxd":283
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":347
  *     assert subtype == NULL
  *     assert obj == NULL
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))             # <<<<<<<<<<<<<<
  * 
- * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ * cdef inline object PyArray_SimpleNew(int nd, npy_intp *dims, int type_num):
  */
-  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj)); 
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_New(__pyx_v_subtype, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, __pyx_v_strides, __pyx_v_data, __pyx_v_itemsize, __pyx_v_flags, __pyx_v_obj))); 
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -7813,30 +7864,88 @@ static CYTHON_INLINE System::Object^ PyArray_New(void *__pyx_v_subtype, int __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":285
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":349
  *     return Npy_INTERFACE_array(NpyArray_New(subtype, nd, dims, type_num, strides, data, itemsize, flags, obj))
  * 
+ * cdef inline object PyArray_SimpleNew(int nd, npy_intp *dims, int type_num):             # <<<<<<<<<<<<<<
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, NULL, 0, NPY_CARRAY, NULL)
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_SimpleNew(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":350
+ * 
+ * cdef inline object PyArray_SimpleNew(int nd, npy_intp *dims, int type_num):
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, NULL, 0, NPY_CARRAY, NULL)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
+ */
+  __pyx_t_1 = PyArray_New(NULL, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, NULL, NULL, 0, NPY_CARRAY, NULL); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":352
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, NULL, 0, NPY_CARRAY, NULL)
+ * 
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):             # <<<<<<<<<<<<<<
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL)
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_SimpleNewFromData(int __pyx_v_nd, __pyx_t_5numpy_npy_intp *__pyx_v_dims, int __pyx_v_type_num, void *__pyx_v_data) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":353
+ * 
+ * cdef inline object PyArray_SimpleNewFromData(int nd, npy_intp *dims, int type_num, void *data):
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
+ */
+  __pyx_t_1 = PyArray_New(NULL, __pyx_v_nd, __pyx_v_dims, __pyx_v_type_num, NULL, __pyx_v_data, 0, NPY_CARRAY, NULL); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":355
+ *     return PyArray_New(NULL, nd, dims, type_num, NULL, data, 0, NPY_CARRAY, NULL)
+ * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):             # <<<<<<<<<<<<<<
- *      # XXX "long long" is wrong type
- *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <npy_intp>n.Array, flags)
+ * 
  */
 
 static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int __pyx_v_flags) {
   int __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  PY_LONG_LONG __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":287
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":356
+ * 
  * cdef inline bint PyArray_CHKFLAGS(ndarray n, int flags):
- *      # XXX "long long" is wrong type
- *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)             # <<<<<<<<<<<<<<
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <npy_intp>n.Array, flags)             # <<<<<<<<<<<<<<
  * 
  * cdef inline void* PyArray_DATA(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_287_54->Target(__site_get_Array_287_54, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_287_54->Target(__site_cvt_cvt_PY_LONG_LONG_287_54, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_356_53->Target(__site_get_Array_356_53, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_356_53->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_356_53, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_flags);
+  __pyx_r = NpyArray_CHKFLAGS(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)), __pyx_v_flags);
   goto __pyx_L0;
 
   __pyx_r = 0;
@@ -7844,30 +7953,30 @@ static CYTHON_INLINE int PyArray_CHKFLAGS(NumpyDotNet::ndarray^ __pyx_v_n, int _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":289
- *     return  NpyArray_CHKFLAGS(<NpyArray*> <long long>n.Array, flags)
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":358
+ *     return  NpyArray_CHKFLAGS(<NpyArray*> <npy_intp>n.Array, flags)
  * 
  * cdef inline void* PyArray_DATA(ndarray n) nogil:             # <<<<<<<<<<<<<<
- *     # XXX "long long" is wrong type
- *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
+ *     return NpyArray_DATA(<NpyArray*> <npy_intp>n.Array)
+ * 
  */
 
 static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   void *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  PY_LONG_LONG __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":291
- * cdef inline void* PyArray_DATA(ndarray n) nogil:
- *     # XXX "long long" is wrong type
- *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":359
  * 
- * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
+ * cdef inline void* PyArray_DATA(ndarray n) nogil:
+ *     return NpyArray_DATA(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
  */
-  __pyx_t_1 = __site_get_Array_291_49->Target(__site_get_Array_291_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_291_49->Target(__site_cvt_cvt_PY_LONG_LONG_291_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_359_48->Target(__site_get_Array_359_48, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_359_48->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_359_48, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_r = NpyArray_DATA(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  __pyx_r = NpyArray_DATA(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
   goto __pyx_L0;
 
   __pyx_r = 0;
@@ -7875,39 +7984,187 @@ static CYTHON_INLINE void *PyArray_DATA(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":293
- *     return NpyArray_DATA(<NpyArray*> <long long>n.Array)
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":361
+ *     return NpyArray_DATA(<NpyArray*> <npy_intp>n.Array)
  * 
- * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:             # <<<<<<<<<<<<<<
- *     # XXX "long long" is wrong type
- *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+ * cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:             # <<<<<<<<<<<<<<
+ *     return NpyArray_DIMS(<NpyArray*> <npy_intp>n.Array)
+ * 
  */
 
-static CYTHON_INLINE npy_intp *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
-  npy_intp *__pyx_r;
+static CYTHON_INLINE __pyx_t_5numpy_intp_t *PyArray_DIMS(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_intp_t *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  PY_LONG_LONG __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":295
- * cdef inline npy_intp* PyArray_DIMS(ndarray n) nogil:
- *     # XXX "long long" is wrong type
- *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":362
+ * 
+ * cdef inline intp_t* PyArray_DIMS(ndarray n) nogil:
+ *     return NpyArray_DIMS(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_DESCR(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_362_48->Target(__site_get_Array_362_48, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_362_48->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_362_48, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_DIMS(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":364
+ *     return NpyArray_DIMS(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline object PyArray_DESCR(ndarray n):             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_descr(NpyArray_DESCR(<NpyArray*> <npy_intp>n.Array))
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_DESCR(NumpyDotNet::ndarray^ __pyx_v_n) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":365
+ * 
+ * cdef inline object PyArray_DESCR(ndarray n):
+ *     return Npy_INTERFACE_descr(NpyArray_DESCR(<NpyArray*> <npy_intp>n.Array))             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline int PyArray_ITEMSIZE(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_365_69->Target(__site_get_Array_365_69, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DESCR(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2))))); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":367
+ *     return Npy_INTERFACE_descr(NpyArray_DESCR(<NpyArray*> <npy_intp>n.Array))
+ * 
+ * cdef inline int PyArray_ITEMSIZE(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_ITEMSIZE(<NpyArray*> <npy_intp>n.Array)
+ * 
+ */
+
+static CYTHON_INLINE int PyArray_ITEMSIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":368
+ * 
+ * cdef inline int PyArray_ITEMSIZE(ndarray n):
+ *     return NpyArray_ITEMSIZE(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object PyArray_Return(arr):
+ */
+  __pyx_t_1 = __site_get_Array_368_52->Target(__site_get_Array_368_52, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_ITEMSIZE(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":370
+ *     return NpyArray_ITEMSIZE(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline object PyArray_Return(arr):             # <<<<<<<<<<<<<<
+ *     if arr is None:
+ *         return None
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
+  System::Object^ __pyx_r = nullptr;
+  int __pyx_t_1;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":371
+ * 
+ * cdef inline object PyArray_Return(arr):
+ *     if arr is None:             # <<<<<<<<<<<<<<
+ *         return None
+ *     import clr
+ */
+  __pyx_t_1 = (__pyx_v_arr == nullptr);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":372
+ * cdef inline object PyArray_Return(arr):
+ *     if arr is None:
+ *         return None             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.ndarray
+ */
+    __pyx_r = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":373
+ *     if arr is None:
+ *         return None
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
+ */
+  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_2;
+  __pyx_t_2 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":374
+ *         return None
+ *     import clr
+ *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
+ * 
+ */
+  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ndarray", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_2;
+  __pyx_t_2 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":375
+ *     import clr
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  */
-  __pyx_t_1 = __site_get_Array_295_49->Target(__site_get_Array_295_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_295_49->Target(__site_cvt_cvt_PY_LONG_LONG_295_49, __pyx_t_1);
-  __pyx_t_1 = nullptr;
-  __pyx_r = NpyArray_DIMS(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  __pyx_t_2 = __site_get_ndarray_375_22->Target(__site_get_ndarray_375_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_3 = __site_get_ArrayReturn_375_30->Target(__site_get_ArrayReturn_375_30, __pyx_t_2, __pyx_context);
+  __pyx_t_2 = nullptr;
+  __pyx_t_2 = __site_call1_375_42->Target(__site_call1_375_42, __pyx_context, __pyx_t_3, __pyx_v_arr);
+  __pyx_t_3 = nullptr;
+  __pyx_r = __pyx_t_2;
+  __pyx_t_2 = nullptr;
   goto __pyx_L0;
 
-  __pyx_r = 0;
+  __pyx_r = nullptr;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":297
- *     return NpyArray_DIMS(<NpyArray*> <long long>n.Array)
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":377
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):             # <<<<<<<<<<<<<<
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
@@ -7919,15 +8176,15 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^ __p
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":298
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":378
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):
  */
-  __pyx_t_1 = __site_get_Array_298_47->Target(__site_get_Array_298_47, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_298_47->Target(__site_cvt_cvt_PY_LONG_LONG_298_47, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_378_47->Target(__site_get_Array_378_47, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_378_47->Target(__site_cvt_cvt_PY_LONG_LONG_378_47, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_DIM(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)), __pyx_v_dim);
   goto __pyx_L0;
@@ -7937,7 +8194,7 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_DIM(NumpyDotNet::ndarray^ __p
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":300
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":380
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):             # <<<<<<<<<<<<<<
@@ -7949,14 +8206,14 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^ __pyx_v_
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":301
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":381
  * 
  * cdef inline object PyArray_NDIM(ndarray obj):
  *     return obj.ndim             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):
  */
-  __pyx_t_1 = __site_get_ndim_301_14->Target(__site_get_ndim_301_14, ((System::Object^)__pyx_v_obj), __pyx_context);
+  __pyx_t_1 = __site_get_ndim_381_14->Target(__site_get_ndim_381_14, ((System::Object^)__pyx_v_obj), __pyx_context);
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
@@ -7966,30 +8223,30 @@ static CYTHON_INLINE System::Object^ PyArray_NDIM(NumpyDotNet::ndarray^ __pyx_v_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":303
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":383
  *     return obj.ndim
  * 
  * cdef inline intp_t PyArray_SIZE(ndarray n):             # <<<<<<<<<<<<<<
- *     # XXX "long long" is wrong type
- *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+ *     return NpyArray_SIZE(<NpyArray*> <npy_intp>n.Array)
+ * 
  */
 
 static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __pyx_v_n) {
   __pyx_t_5numpy_intp_t __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  PY_LONG_LONG __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":305
- * cdef inline intp_t PyArray_SIZE(ndarray n):
- *     # XXX "long long" is wrong type
- *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)             # <<<<<<<<<<<<<<
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":384
  * 
- * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ * cdef inline intp_t PyArray_SIZE(ndarray n):
+ *     return NpyArray_SIZE(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline npy_intp* PyArray_STRIDES(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_305_49->Target(__site_get_Array_305_49, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_305_49->Target(__site_cvt_cvt_PY_LONG_LONG_305_49, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_384_48->Target(__site_get_Array_384_48, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_384_48->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_384_48, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_r = NpyArray_SIZE(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  __pyx_r = NpyArray_SIZE(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
   goto __pyx_L0;
 
   __pyx_r = 0;
@@ -7997,30 +8254,92 @@ static CYTHON_INLINE __pyx_t_5numpy_intp_t PyArray_SIZE(NumpyDotNet::ndarray^ __
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":307
- *     return NpyArray_SIZE(<NpyArray*> <long long>n.Array)
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":386
+ *     return NpyArray_SIZE(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline npy_intp* PyArray_STRIDES(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_STRIDES(<NpyArray*> <npy_intp>n.Array)
+ * 
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp *PyArray_STRIDES(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp *__pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":387
+ * 
+ * cdef inline npy_intp* PyArray_STRIDES(ndarray n):
+ *     return NpyArray_STRIDES(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_387_51->Target(__site_get_Array_387_51, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_387_51->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_387_51, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_STRIDES(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":389
+ *     return NpyArray_STRIDES(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)
+ * 
+ */
+
+static CYTHON_INLINE __pyx_t_5numpy_npy_intp PyArray_NBYTES(NumpyDotNet::ndarray^ __pyx_v_n) {
+  __pyx_t_5numpy_npy_intp __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  PY_LONG_LONG __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":390
+ * 
+ * cdef inline npy_intp PyArray_NBYTES(ndarray n):
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ */
+  __pyx_t_1 = __site_get_Array_390_51->Target(__site_get_Array_390_51, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_390_51->Target(__site_cvt_cvt_PY_LONG_LONG_390_51, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_NBYTES(((NpyArray *)((PY_LONG_LONG)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":392
+ *     return NpyArray_NBYTES(<NpyArray *><long long>n.Array)
  * 
  * cdef inline NpyArray *PyArray_ARRAY(ndarray n):             # <<<<<<<<<<<<<<
- *     # XXX "long long" is wrong type
- *     return <NpyArray*> <long long>n.Array
+ *     return <NpyArray*> <npy_intp>n.Array
+ * 
  */
 
 static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^ __pyx_v_n) {
   NpyArray *__pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  PY_LONG_LONG __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":309
- * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
- *     # XXX "long long" is wrong type
- *     return <NpyArray*> <long long>n.Array             # <<<<<<<<<<<<<<
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":393
  * 
- * cdef inline object PyArray_Return(ndarray arr):
+ * cdef inline NpyArray *PyArray_ARRAY(ndarray n):
+ *     return <NpyArray*> <npy_intp>n.Array             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline int PyArray_TYPE(ndarray n):
  */
-  __pyx_t_1 = __site_get_Array_309_35->Target(__site_get_Array_309_35, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_309_35->Target(__site_cvt_cvt_PY_LONG_LONG_309_35, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_393_34->Target(__site_get_Array_393_34, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_393_34->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_393_34, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_r = ((NpyArray *)((PY_LONG_LONG)__pyx_t_2));
+  __pyx_r = ((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2));
   goto __pyx_L0;
 
   __pyx_r = 0;
@@ -8028,74 +8347,101 @@ static CYTHON_INLINE NpyArray *PyArray_ARRAY(NumpyDotNet::ndarray^ __pyx_v_n) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":311
- *     return <NpyArray*> <long long>n.Array
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":395
+ *     return <NpyArray*> <npy_intp>n.Array
  * 
- * cdef inline object PyArray_Return(ndarray arr):             # <<<<<<<<<<<<<<
- *     import NumpyDotNet.ndarray
- *     if arr is None:
+ * cdef inline int PyArray_TYPE(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_TYPE(<NpyArray*> <npy_intp>n.Array)
+ * 
  */
 
-static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_v_arr) {
-  System::Object^ __pyx_v_NumpyDotNet;
-  System::Object^ __pyx_r = nullptr;
+static CYTHON_INLINE int PyArray_TYPE(NumpyDotNet::ndarray^ __pyx_v_n) {
+  int __pyx_r;
   System::Object^ __pyx_t_1 = nullptr;
-  int __pyx_t_2;
-  __pyx_v_NumpyDotNet = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":312
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":396
  * 
- * cdef inline object PyArray_Return(ndarray arr):
- *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
- *     if arr is None:
- *         return None
+ * cdef inline int PyArray_TYPE(ndarray n):
+ *     return NpyArray_TYPE(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void *PyArray_Zero(arr):
  */
-  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ndarray", -1));
-  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = __site_get_Array_396_48->Target(__site_get_Array_396_48, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_396_48->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_396_48, __pyx_t_1);
   __pyx_t_1 = nullptr;
-
-  /* "../cython/include\numpy.pxd":313
- * cdef inline object PyArray_Return(ndarray arr):
- *     import NumpyDotNet.ndarray
- *     if arr is None:             # <<<<<<<<<<<<<<
- *         return None
- *     return ArrayReturn(arr)
- */
-  __pyx_t_2 = (((System::Object^)__pyx_v_arr) == nullptr);
-  if (__pyx_t_2) {
-
-    /* "../cython/include\numpy.pxd":314
- *     import NumpyDotNet.ndarray
- *     if arr is None:
- *         return None             # <<<<<<<<<<<<<<
- *     return ArrayReturn(arr)
- * 
- */
-    __pyx_r = nullptr;
-    goto __pyx_L0;
-    goto __pyx_L3;
-  }
-  __pyx_L3:;
-
-  /* "../cython/include\numpy.pxd":315
- *     if arr is None:
- *         return None
- *     return ArrayReturn(arr)             # <<<<<<<<<<<<<<
- * 
- * cdef inline object NpyArray_Return(NpyArray *arr):
- */
-  __pyx_t_1 = ((System::Object^)NumpyDotNet::ndarray::ArrayReturn(__pyx_v_arr)); 
-  __pyx_r = __pyx_t_1;
-  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_TYPE(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
   goto __pyx_L0;
 
-  __pyx_r = nullptr;
+  __pyx_r = 0;
   __pyx_L0:;
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":317
- *     return ArrayReturn(arr)
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":398
+ *     return NpyArray_TYPE(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline void *PyArray_Zero(arr):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.NpyArray
+ */
+
+static CYTHON_INLINE void *PyArray_Zero(System::Object^ __pyx_v_arr) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
+  void *__pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":399
+ * 
+ * cdef inline void *PyArray_Zero(arr):
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.NpyArray
+ *     return <void *><npy_intp>NumpyDotNet.NpyArray.Zero(arr)
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":400
+ * cdef inline void *PyArray_Zero(arr):
+ *     import clr
+ *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
+ *     return <void *><npy_intp>NumpyDotNet.NpyArray.Zero(arr)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyArray", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":401
+ *     import clr
+ *     import NumpyDotNet.NpyArray
+ *     return <void *><npy_intp>NumpyDotNet.NpyArray.Zero(arr)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline object NpyArray_Return(NpyArray *arr):
+ */
+  __pyx_t_1 = __site_get_NpyArray_401_40->Target(__site_get_NpyArray_401_40, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_Zero_401_49->Target(__site_get_Zero_401_49, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_call1_401_54->Target(__site_call1_401_54, __pyx_context, __pyx_t_2, __pyx_v_arr);
+  __pyx_t_2 = nullptr;
+  __pyx_t_3 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_401_54->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_401_54, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = ((void *)((__pyx_t_5numpy_npy_intp)__pyx_t_3));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":403
+ *     return <void *><npy_intp>NumpyDotNet.NpyArray.Zero(arr)
  * 
  * cdef inline object NpyArray_Return(NpyArray *arr):             # <<<<<<<<<<<<<<
  *     ret = Npy_INTERFACE_array(arr)
@@ -8103,23 +8449,23 @@ static CYTHON_INLINE System::Object^ PyArray_Return(NumpyDotNet::ndarray^ __pyx_
  */
 
 static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
-  System::Object^ __pyx_v_ret;
+  NumpyDotNet::ndarray^ __pyx_v_ret;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_v_ret = nullptr;
 
-  /* "../cython/include\numpy.pxd":318
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":404
  * 
  * cdef inline object NpyArray_Return(NpyArray *arr):
  *     ret = Npy_INTERFACE_array(arr)             # <<<<<<<<<<<<<<
  *     Npy_DECREF(arr)
  *     return ret
  */
-  __pyx_t_1 = Npy_INTERFACE_OBJECT(__pyx_v_arr); 
-  __pyx_v_ret = __pyx_t_1;
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_arr)); 
+  __pyx_v_ret = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":319
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":405
  * cdef inline object NpyArray_Return(NpyArray *arr):
  *     ret = Npy_INTERFACE_array(arr)
  *     Npy_DECREF(arr)             # <<<<<<<<<<<<<<
@@ -8128,14 +8474,14 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
  */
   Npy_DECREF(__pyx_v_arr);
 
-  /* "../cython/include\numpy.pxd":320
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":406
  *     ret = Npy_INTERFACE_array(arr)
  *     Npy_DECREF(arr)
  *     return ret             # <<<<<<<<<<<<<<
  * 
  * cdef inline int PyDataType_TYPE_NUM(dtype t):
  */
-  __pyx_r = __pyx_v_ret;
+  __pyx_r = ((System::Object^)__pyx_v_ret);
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -8143,7 +8489,7 @@ static CYTHON_INLINE System::Object^ NpyArray_Return(NpyArray *__pyx_v_arr) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":322
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":408
  *     return ret
  * 
  * cdef inline int PyDataType_TYPE_NUM(dtype t):             # <<<<<<<<<<<<<<
@@ -8156,15 +8502,15 @@ static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^ __pyx_v_t) {
   System::Object^ __pyx_t_1 = nullptr;
   PY_LONG_LONG __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":323
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":409
  * 
  * cdef inline int PyDataType_TYPE_NUM(dtype t):
  *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  */
-  __pyx_t_1 = __site_get_Dtype_323_62->Target(__site_get_Dtype_323_62, ((System::Object^)__pyx_v_t), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_323_62->Target(__site_cvt_cvt_PY_LONG_LONG_323_62, __pyx_t_1);
+  __pyx_t_1 = __site_get_Dtype_409_62->Target(__site_get_Dtype_409_62, ((System::Object^)__pyx_v_t), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_PY_LONG_LONG_409_62->Target(__site_cvt_cvt_PY_LONG_LONG_409_62, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyDataType_TYPE_NUM(((NpyArray_Descr *)((PY_LONG_LONG)__pyx_t_2)));
   goto __pyx_L0;
@@ -8174,7 +8520,7 @@ static CYTHON_INLINE int PyDataType_TYPE_NUM(NumpyDotNet::dtype^ __pyx_v_t) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":325
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":411
  *     return NpyDataType_TYPE_NUM(<NpyArray_Descr *><long long>t.Dtype)
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -8191,7 +8537,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":326
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":412
  * 
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -8202,7 +8548,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":327
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":413
  * cdef inline object PyArray_FromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -8213,17 +8559,17 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":328
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":414
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.FromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-  __pyx_t_1 = __site_get_NpyArray_328_22->Target(__site_get_NpyArray_328_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_FromAny_328_31->Target(__site_get_FromAny_328_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_414_22->Target(__site_get_NpyArray_414_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_FromAny_414_31->Target(__site_get_FromAny_414_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_328_39->Target(__site_call6_328_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_414_39->Target(__site_call6_414_39, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -8234,7 +8580,7 @@ static CYTHON_INLINE System::Object^ PyArray_FromAny(System::Object^ __pyx_v_op,
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":331
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":417
  * 
  * 
  * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):             # <<<<<<<<<<<<<<
@@ -8248,7 +8594,7 @@ static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^ __py
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
 
-  /* "../cython/include\numpy.pxd":333
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":419
  * cdef inline object PyArray_CopyFromObject(op, descr, min_depth, max_depth):
  *     return PyArray_FromAny(op, descr, min_depth, max_depth,
  *                            NPY_ENSURECOPY | NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -8269,7 +8615,7 @@ static CYTHON_INLINE System::Object^ PyArray_CopyFromObject(System::Object^ __py
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":336
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":422
  * 
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):             # <<<<<<<<<<<<<<
@@ -8284,7 +8630,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "../cython/include\numpy.pxd":337
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":423
  * 
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:             # <<<<<<<<<<<<<<
@@ -8292,13 +8638,13 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(NPY_ENSURECOPY);
-  __pyx_t_2 = __site_op_and_337_13->Target(__site_op_and_337_13, __pyx_v_flags, __pyx_t_1);
+  __pyx_t_2 = __site_op_and_423_13->Target(__site_op_and_423_13, __pyx_v_flags, __pyx_t_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_istrue_337_13->Target(__site_istrue_337_13, __pyx_t_2);
+  __pyx_t_3 = __site_istrue_423_13->Target(__site_istrue_423_13, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_3) {
 
-    /* "../cython/include\numpy.pxd":338
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":424
  * cdef inline object PyArray_FROMANY(m, type, min, max, flags):
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT             # <<<<<<<<<<<<<<
@@ -8306,7 +8652,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
  * 
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DEFAULT);
-    __pyx_t_1 = __site_op_ior_338_14->Target(__site_op_ior_338_14, __pyx_v_flags, __pyx_t_2);
+    __pyx_t_1 = __site_op_ior_424_14->Target(__site_op_ior_424_14, __pyx_v_flags, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_flags = __pyx_t_1;
     __pyx_t_1 = nullptr;
@@ -8314,15 +8660,15 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   }
   __pyx_L3:;
 
-  /* "../cython/include\numpy.pxd":339
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":425
  *     if flags & NPY_ENSURECOPY:
  *         flags |= NPY_DEFAULT
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  */
-  __pyx_t_4 = __site_cvt_cvt_int_339_77->Target(__site_cvt_cvt_int_339_77, __pyx_v_type);
-  __pyx_t_1 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4)); 
+  __pyx_t_4 = __site_cvt_cvt_int_425_77->Target(__site_cvt_cvt_int_425_77, __pyx_v_type);
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_4))); 
   __pyx_t_2 = PyArray_FromAny(__pyx_v_m, __pyx_t_1, __pyx_v_min, __pyx_v_max, __pyx_v_flags, nullptr); 
   __pyx_t_1 = nullptr;
   __pyx_r = __pyx_t_2;
@@ -8334,7 +8680,7 @@ static CYTHON_INLINE System::Object^ PyArray_FROMANY(System::Object^ __pyx_v_m, 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":341
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":427
  *     return PyArray_FromAny(m, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), min, max, flags, None)
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):             # <<<<<<<<<<<<<<
@@ -8350,17 +8696,17 @@ static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
 
-  /* "../cython/include\numpy.pxd":342
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":428
  * 
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,             # <<<<<<<<<<<<<<
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
  */
-  __pyx_t_1 = __site_cvt_cvt_int_342_78->Target(__site_cvt_cvt_int_342_78, __pyx_v_type);
-  __pyx_t_2 = Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_1)); 
+  __pyx_t_1 = __site_cvt_cvt_int_428_78->Target(__site_cvt_cvt_int_428_78, __pyx_v_type);
+  __pyx_t_2 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(__pyx_t_1))); 
 
-  /* "../cython/include\numpy.pxd":343
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":429
  * cdef inline object PyArray_ContiguousFromObject(op, type, minDepth, maxDepth):
  *     return PyArray_FromAny(op, Npy_INTERFACE_descr(NpyArray_DescrFromType(type)), minDepth, maxDepth,
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -8382,7 +8728,7 @@ static CYTHON_INLINE System::Object^ PyArray_ContiguousFromObject(System::Object
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":345
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":431
  *                            NPY_DEFAULT | NPY_ENSUREARRAY, NULL)
  * 
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):             # <<<<<<<<<<<<<<
@@ -8399,7 +8745,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":346
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":432
  * 
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr             # <<<<<<<<<<<<<<
@@ -8410,7 +8756,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":347
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":433
  * cdef inline object PyArray_CheckFromAny(op, newtype, min_depth, max_depth, flags, context):
  *     import clr
  *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
@@ -8421,17 +8767,17 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":348
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":434
  *     import clr
  *     import NumpyDotNet.NpyArray
  *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)             # <<<<<<<<<<<<<<
  * 
  * cdef inline object PyArray_Check(obj):
  */
-  __pyx_t_1 = __site_get_NpyArray_348_22->Target(__site_get_NpyArray_348_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_2 = __site_get_CheckFromAny_348_31->Target(__site_get_CheckFromAny_348_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = __site_get_NpyArray_434_22->Target(__site_get_NpyArray_434_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_CheckFromAny_434_31->Target(__site_get_CheckFromAny_434_31, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_1 = __site_call6_348_44->Target(__site_call6_348_44, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
+  __pyx_t_1 = __site_call6_434_44->Target(__site_call6_434_44, __pyx_context, __pyx_t_2, __pyx_v_op, __pyx_v_newtype, __pyx_v_min_depth, __pyx_v_max_depth, __pyx_v_flags, __pyx_v_context);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_1;
   __pyx_t_1 = nullptr;
@@ -8442,7 +8788,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^ __pyx_
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":350
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":436
  *     return NumpyDotNet.NpyArray.CheckFromAny(op, newtype, min_depth, max_depth, flags, context)
  * 
  * cdef inline object PyArray_Check(obj):             # <<<<<<<<<<<<<<
@@ -8458,7 +8804,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   System::Object^ __pyx_t_3 = nullptr;
   __pyx_v_np = nullptr;
 
-  /* "../cython/include\numpy.pxd":351
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":437
  * 
  * cdef inline object PyArray_Check(obj):
  *     import numpy as np             # <<<<<<<<<<<<<<
@@ -8469,7 +8815,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   __pyx_v_np = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":352
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":438
  * cdef inline object PyArray_Check(obj):
  *     import numpy as np
  *     return isinstance(obj, np.ndarray)             # <<<<<<<<<<<<<<
@@ -8477,8 +8823,8 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
  * cdef inline void import_array():
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-  __pyx_t_2 = __site_get_ndarray_352_29->Target(__site_get_ndarray_352_29, __pyx_v_np, __pyx_context);
-  __pyx_t_3 = __site_call2_352_21->Target(__site_call2_352_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
+  __pyx_t_2 = __site_get_ndarray_438_29->Target(__site_get_ndarray_438_29, __pyx_v_np, __pyx_context);
+  __pyx_t_3 = __site_call2_438_21->Target(__site_call2_438_21, __pyx_context, __pyx_t_1, __pyx_v_obj, __pyx_t_2);
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_3;
@@ -8490,7 +8836,7 @@ static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^ __pyx_v_obj) 
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":354
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":440
  *     return isinstance(obj, np.ndarray)
  * 
  * cdef inline void import_array():             # <<<<<<<<<<<<<<
@@ -8502,7 +8848,7 @@ static CYTHON_INLINE void import_array(void) {
 
 }
 
-/* "../cython/include\numpy.pxd":357
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":443
  *     pass
  * 
  * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
@@ -8523,7 +8869,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":358
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":444
  * 
  * cdef inline PyNumber_Check(o):
  *     import clr             # <<<<<<<<<<<<<<
@@ -8534,20 +8880,23 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":359
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":445
  * cdef inline PyNumber_Check(o):
  *     import clr
  *     import NumpyDotNet.ScalarGeneric             # <<<<<<<<<<<<<<
  *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
+ * 
  */
   __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ScalarGeneric", -1));
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":360
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":446
  *     import clr
  *     import NumpyDotNet.ScalarGeneric
  *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "isinstance");
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "int");
@@ -8557,15 +8906,15 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
   __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_call2_360_21->Target(__site_call2_360_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
+  __pyx_t_4 = __site_call2_446_21->Target(__site_call2_446_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
   __pyx_t_1 = nullptr;
   __pyx_t_5 = nullptr;
-  __pyx_t_6 = __site_cvt_bool_360_45->Target(__site_cvt_bool_360_45, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_bool_446_45->Target(__site_cvt_bool_446_45, __pyx_t_4);
   if (!__pyx_t_6) {
     __pyx_t_4 = nullptr;
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-    __pyx_t_1 = __site_get_ScalarGeneric_360_73->Target(__site_get_ScalarGeneric_360_73, __pyx_v_NumpyDotNet, __pyx_context);
-    __pyx_t_3 = __site_call2_360_58->Target(__site_call2_360_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
+    __pyx_t_1 = __site_get_ScalarGeneric_446_73->Target(__site_get_ScalarGeneric_446_73, __pyx_v_NumpyDotNet, __pyx_context);
+    __pyx_t_3 = __site_call2_446_58->Target(__site_call2_446_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
     __pyx_t_5 = nullptr;
     __pyx_t_1 = nullptr;
     __pyx_t_1 = __pyx_t_3;
@@ -8575,6 +8924,240 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
     __pyx_t_4 = nullptr;
   }
   __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":448
+ *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):             # <<<<<<<<<<<<<<
+ *     return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)
+ * 
+ */
+
+static CYTHON_INLINE NpyArrayIterObject *PyArray_IterNew(NumpyDotNet::ndarray^ __pyx_v_n) {
+  NpyArrayIterObject *__pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":449
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
+ *     return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
+ */
+  __pyx_t_1 = __site_get_Array_449_51->Target(__site_get_Array_449_51, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_449_51->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_449_51, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_IterNew(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":451
+ *     return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):             # <<<<<<<<<<<<<<
+ *     return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)
+ * 
+ */
+
+static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::ndarray^ __pyx_v_n, int *__pyx_v_inaxis) {
+  NpyArrayIterObject *__pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":452
+ * 
+ * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
+ *     return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
+ */
+  __pyx_t_1 = __site_get_Array_452_58->Target(__site_get_Array_452_58, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_452_58->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_452_58, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_r = NpyArray_IterAllButAxis(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)), __pyx_v_inaxis);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":454
+ *     return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)
+ * 
+ * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
+ *     NpyArray_ITER_NEXT(obj)
+ * 
+ */
+
+static CYTHON_INLINE void PyArray_ITER_NEXT(NpyArrayIterObject *__pyx_v_obj) {
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":455
+ * 
+ * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
+ *     NpyArray_ITER_NEXT(obj)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):
+ */
+  NpyArray_ITER_NEXT(__pyx_v_obj);
+
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":457
+ *     NpyArray_ITER_NEXT(obj)
+ * 
+ * cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
+ *     NpyArray_ITER_RESET(obj)
+ * 
+ */
+
+static CYTHON_INLINE void PyArray_ITER_RESET(NpyArrayIterObject *__pyx_v_obj) {
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":458
+ * 
+ * cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):
+ *     NpyArray_ITER_RESET(obj)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):
+ */
+  NpyArray_ITER_RESET(__pyx_v_obj);
+
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":460
+ *     NpyArray_ITER_RESET(obj)
+ * 
+ * cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
+ *     return NpyArray_ITER_DATA(obj)
+ * 
+ */
+
+static CYTHON_INLINE void *PyArray_ITER_DATA(NpyArrayIterObject *__pyx_v_obj) {
+  void *__pyx_r;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":461
+ * 
+ * cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):
+ *     return NpyArray_ITER_DATA(obj)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline NpyArrayNeighborhoodIterObject* PyArray_NeighborhoodIterNew(NpyArrayIterObject *obj,
+ */
+  __pyx_r = NpyArray_ITER_DATA(__pyx_v_obj);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":463
+ *     return NpyArray_ITER_DATA(obj)
+ * 
+ * cdef inline NpyArrayNeighborhoodIterObject* PyArray_NeighborhoodIterNew(NpyArrayIterObject *obj,             # <<<<<<<<<<<<<<
+ *                                                                         npy_intp *bounds,
+ *                                                                         int mode,
+ */
+
+static CYTHON_INLINE NpyArrayNeighborhoodIterObject *PyArray_NeighborhoodIterNew(NpyArrayIterObject *__pyx_v_obj, __pyx_t_5numpy_npy_intp *__pyx_v_bounds, int __pyx_v_mode, void *__pyx_v_fill, npy_free_func __pyx_v_fillfree) {
+  NpyArrayNeighborhoodIterObject *__pyx_r;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":468
+ *                                                                         void *fill,
+ *                                                                         npy_free_func fillfree):
+ *     return NpyArray_NeighborhoodIterNew(obj, bounds, mode, fill, fillfree)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):
+ */
+  __pyx_r = NpyArray_NeighborhoodIterNew(__pyx_v_obj, __pyx_v_bounds, __pyx_v_mode, __pyx_v_fill, __pyx_v_fillfree);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":470
+ *     return NpyArray_NeighborhoodIterNew(obj, bounds, mode, fill, fillfree)
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):             # <<<<<<<<<<<<<<
+ *     return NpyArrayNeighborhoodIter_Reset(iter)
+ * 
+ */
+
+static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject *__pyx_v_iter) {
+  int __pyx_r;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":471
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):
+ *     return NpyArrayNeighborhoodIter_Reset(iter)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):
+ */
+  __pyx_r = NpyArrayNeighborhoodIter_Reset(__pyx_v_iter);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":473
+ *     return NpyArrayNeighborhoodIter_Reset(iter)
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):             # <<<<<<<<<<<<<<
+ *     return NpyArrayNeighborhoodIter_Next(iter)
+ * 
+ */
+
+static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject *__pyx_v_iter) {
+  int __pyx_r;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":474
+ * 
+ * cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):
+ *     return NpyArrayNeighborhoodIter_Next(iter)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):
+ */
+  __pyx_r = NpyArrayNeighborhoodIter_Next(__pyx_v_iter);
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":476
+ *     return NpyArrayNeighborhoodIter_Next(iter)
+ * 
+ * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_array(iter.ao)
+ */
+
+static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *__pyx_v_iter) {
+  NumpyDotNet::ndarray^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":477
+ * 
+ * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):
+ *     return Npy_INTERFACE_array(iter.ao)             # <<<<<<<<<<<<<<
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_iter->ao)); 
+  __pyx_r = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
   goto __pyx_L0;
 
@@ -8930,54 +9513,74 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_setindex_691_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeSetIndexAction(__pyx_context, 2));
   __site_setindex_692_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeSetIndexAction(__pyx_context, 2));
   __site_op_mod_694_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_op_mod_707_37 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_op_eq_712_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_712_14 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_713_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_append_259_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_259_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_zeros_261_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
-  __site_call3_261_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_append_267_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_267_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_empty_269_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
-  __site_call3_269_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_append_275_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
-  __site_call1_275_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_empty_277_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
-  __site_call3_277_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_get_Array_287_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_287_54 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_291_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_291_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_295_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_295_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_298_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_298_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_ndim_301_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
-  __site_get_Array_305_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_305_49 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_309_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt_PY_LONG_LONG_309_35 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Dtype_323_62 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Dtype", false));
-  __site_cvt_cvt_PY_LONG_LONG_323_62 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_328_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_FromAny_328_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
-  __site_call6_328_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_op_and_337_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_istrue_337_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ior_338_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
-  __site_cvt_cvt_int_339_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_342_78 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_348_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_CheckFromAny_348_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CheckFromAny", false));
-  __site_call6_348_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
-  __site_get_ndarray_352_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
-  __site_call2_352_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_360_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_cvt_bool_360_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_ScalarGeneric_360_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
-  __site_call2_360_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_op_eq_711_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_711_14 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_712_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
+  __site_call3_325_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_331_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_331_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_333_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_333_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_append_339_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
+  __site_call1_339_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_empty_341_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "empty", false));
+  __site_call3_341_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
+  __site_get_Array_356_53 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_356_53 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_359_48 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_359_48 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_362_48 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_362_48 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_365_69 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_368_52 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ndarray_375_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_get_ArrayReturn_375_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ArrayReturn", false));
+  __site_call1_375_42 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_Array_378_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_378_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ndim_381_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
+  __site_get_Array_384_48 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_384_48 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_387_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_387_51 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_390_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt_PY_LONG_LONG_390_51 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_393_34 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_393_34 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_396_48 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_396_48 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_401_40 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_Zero_401_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Zero", false));
+  __site_call1_401_54 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_401_54 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Dtype_409_62 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Dtype", false));
+  __site_cvt_cvt_PY_LONG_LONG_409_62 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_414_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_FromAny_414_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "FromAny", false));
+  __site_call6_414_39 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_op_and_423_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_istrue_423_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ior_424_14 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::OrAssign));
+  __site_cvt_cvt_int_425_77 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_428_78 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyArray_434_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
+  __site_get_CheckFromAny_434_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CheckFromAny", false));
+  __site_call6_434_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(6)));
+  __site_get_ndarray_438_29 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_call2_438_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_446_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_cvt_bool_446_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ScalarGeneric_446_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
+  __site_call2_446_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_Array_449_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_449_51 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_452_58 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_452_58 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -8997,7 +9600,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonDictionary^ __pyx_t_2;
   System::Object^ __pyx_t_3 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":2
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":2
  * 
  * import operator             # <<<<<<<<<<<<<<
  * cimport numpy as np
@@ -9007,7 +9610,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "operator", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":4
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":4
  * import operator
  * cimport numpy as np
  * import numpy as np             # <<<<<<<<<<<<<<
@@ -9018,7 +9621,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "np", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":5
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":5
  * cimport numpy as np
  * import numpy as np
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -9027,7 +9630,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":49
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":49
  *     return np.NpyArray_New(NULL, nd, dims, np.PyDataType_TYPE_NUM(descr), NULL, NULL, descr.itemsize, 0, NULL)
  * 
  * class odr_stop(Exception):             # <<<<<<<<<<<<<<
@@ -9048,7 +9651,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":52
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":52
  *     pass
  * 
  * class odr_error(Exception):             # <<<<<<<<<<<<<<
@@ -9069,7 +9672,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":56
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":56
  * 
  * # Danger, global.  Used to pass data from odr to fcn_callback through intervening Fortran.
  * odr_global = { "fcn" : None, "fjacb" : None, "fjacd" : None, "pyBeta" : None, "extra_args" : None }             # <<<<<<<<<<<<<<
@@ -9085,7 +9688,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "odr_global", ((System::Object^)__pyx_t_2));
   __pyx_t_2 = nullptr;
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":339
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":339
  * def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_args=None,
  *     ifixb=None, ifixx=None, int job=0, int iprint=0, errfile=None, rptfile=None,
  *     int ndigit=0, double taufac=0.0, double sstol=-1.0, double partol=-1.0,             # <<<<<<<<<<<<<<
@@ -9095,7 +9698,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_k_1 = (-1.0);
   __pyx_k_2 = (-1.0);
 
-  /* "C:\Documents and Settings\Jason\Documents\Visual Studio 2010\Projects\scipy-refactor\scipy\odr\__odrpack.pyx":2
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/odr/__odrpack.pyx":2
  * 
  * import operator             # <<<<<<<<<<<<<<
  * cimport numpy as np
@@ -9105,12 +9708,11 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
   __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":357
- *     pass
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/cython/include/numpy.pxd":476
+ *     return NpyArrayNeighborhoodIter_Next(iter)
  * 
- * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
- *     import clr
- *     import NumpyDotNet.ScalarGeneric
+ * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):             # <<<<<<<<<<<<<<
+ *     return Npy_INTERFACE_array(iter.ao)
  */
 }
 /* Cython code section 'cleanup_globals' */
