@@ -87,6 +87,7 @@ static CodeContext^ mk_empty_context(CodeContext^ ctx) {
 #include "npy_ironpython.h"
 #include "stdlib.h"
 #include "string.h"
+#include "iterhelper.h"
 #include "sigtools.h"
 
 #ifdef __GNUC__
@@ -249,7 +250,27 @@ typedef npy_cdouble __pyx_t_5numpy_complex_t;
 typedef void (*__pyx_t_5numpy_PyArray_CopySwapFunc)(void *, void *, int, NpyArray *);
 
 typedef int (*__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)(void *, void *);
+
+typedef void (*__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":651
+ * 
+ * 
+ * cdef enum:             # <<<<<<<<<<<<<<
+ *     CORR_MODE_VALID = 0
+ *     CORR_MODE_SAME  = 1
+ */
+
+public enum  {
+  __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_VALID = 0,
+  __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_SAME = 1,
+  __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_FULL = 2
+};
 /* Cython code section 'utility_code_proto' */
+
+static CYTHON_INLINE long __Pyx_mod_long(long, long); /* proto */
+
+static CYTHON_INLINE long __Pyx_div_long(long, long); /* proto */
 
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus
@@ -380,6 +401,46 @@ static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *); 
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate char *__pyx_delegate_t_5scipy_6signal_11sigtoolsmod_check_malloc(int);
 static char *check_malloc(int); /*proto*/
+static __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction get_filter_function(int); /*proto*/
+static int zfill(NpyArray *, __pyx_t_5numpy_npy_intp, char *, __pyx_t_5numpy_npy_intp); /*proto*/
+static int RawFilter(NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, int, __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_FLOAT_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int FLOAT_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CFLOAT_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int CFLOAT_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_DOUBLE_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int DOUBLE_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CDOUBLE_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int CDOUBLE_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_EXTENDED_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int EXTENDED_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CEXTENDED_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static int CEXTENDED_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+static System::Object^ OBJECT_filt(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp); /*proto*/
+static int _imp_correlate_nd_ubyte(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_byte(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_ushort(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_short(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_uint(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_int(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_ulong(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_long(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_ulonglong(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_longlong(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_float(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_double(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_longdouble(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_cfloat(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_cdouble(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_clongdouble(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static int _imp_correlate_nd_object(NpyArrayNeighborhoodIterObject *, NpyArrayNeighborhoodIterObject *, NpyArrayIterObject *, NpyArrayIterObject *); /*proto*/
+static System::Object^ _correlate_nd_imp(NpyArrayIterObject *, NpyArrayIterObject *, NpyArrayIterObject *, int, int); /*proto*/
 static System::Object^ fill_buffer(char *, NumpyDotNet::ndarray^, NumpyDotNet::ndarray^, char *, int, int, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_uintp *); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate int __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_DOUBLE_compare(double *, double *);
@@ -431,110 +492,193 @@ static int OBJECT_compare(System::Object^, System::Object^); /*proto*/
 namespace clr_sigtoolsmod {
   public ref class module_sigtoolsmod sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_418_82;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_63_56;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_76_36;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_82_43;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_82_43;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_99_54;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_99_54;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_99_22;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_149_16;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_149_24;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_149_24;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_167_0;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_191_32;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_191_32;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_192_28;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_205_68;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_205_68;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_206_49;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_206_49;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_209_28;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_211_22;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_211_22;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_213_50;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_217_28;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_219_35;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_219_35;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_225_34;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_225_34;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_227_45;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_227_45;
-static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_229_38;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_239_61;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_239_61;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_240_61;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_240_61;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_243_79;
-static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_269_38;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_273_34;
-static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_cvt_Py_ssize_t_273_34;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_282_37;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_282_37;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_lt_293_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_293_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_294_30;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_294_30;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_301_53;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_325_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_325_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_325_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_338_18;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_338_18;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_344_20;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_344_20;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_344_40;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_344_40;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_344_64;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_344_64;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_345_28;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_347_20;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_347_20;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_Cast_354_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_354_41;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_366_65;
-static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_366_65;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_367_27;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_367_27;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_369_23;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_369_23;
-static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_370_42;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_373_36;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_374_25;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_374_25;
-static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_375_42;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_377_25;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_377_25;
-static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_378_42;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_381_28;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_383_51;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_lshift_387_42;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_387_31;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_387_71;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_387_57;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_387_57;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >^ __site_contains_403_17;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_404_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_408_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_410_28;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_418_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_418_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_418_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_418_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_418_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >^ __site_contains_434_12;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_435_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_438_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_446_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_455_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_457_28;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_471_108;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_471_28;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_490_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_490_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_491_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_513_24;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1553_82;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_76_56;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_FLOAT_82_20;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_82_15;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_82_15;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_DOUBLE_84_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_84_17;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_84_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_LONGDOUBLE_86_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_86_17;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_86_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_CFLOAT_88_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_88_17;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_88_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_CDOUBLE_90_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_90_17;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_90_17;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_npy_NPY_CLONGDOUBLE_92_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_92_17;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_92_17;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_101_0;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^ >^ >^ __site_Negate_121_15;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_lt_121_13;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_121_13;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_121_70;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_121_47;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_121_47;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_122_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_125_39;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_125_39;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_133_27;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_133_27;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_135_46;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_138_51;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_142_72;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_142_33;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_150_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyDataMem_FREE_152_6;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_152_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_158_28;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyDataMem_FREE_186_6;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_186_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_211_25;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_216_25;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_221_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_225_29;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_236_25;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_240_25;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_245_25;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_618_37;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_619_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_620_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_627_38;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_628_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_629_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_630_38;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_631_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_632_41;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_638_34;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_639_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_640_34;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_641_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_642_37;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_644_34;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_div_645_34;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_656_0;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_669_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_669_27;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_670_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_672_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_672_27;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_673_24;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_679_27;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_679_27;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_681_26;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1097_48;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_1096_42;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyDataMem_FREE_1109_6;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1109_21;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1125_38;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1131_38;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1142_38;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1151_25;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1155_34;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1200_24;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1211_36;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1217_43;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1217_43;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1234_54;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_1234_54;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1234_22;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_1284_16;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1284_24;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1284_24;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1302_0;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1326_32;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1326_32;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1327_28;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1340_68;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_1340_68;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1341_49;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1341_49;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1344_28;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_1346_22;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1346_22;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1348_50;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1352_28;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1354_35;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1354_35;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_elsize_1360_34;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1360_34;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1362_45;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1362_45;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1364_38;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1374_61;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_1374_61;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1375_61;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_1375_61;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1378_79;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1404_38;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_1408_34;
+static  CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >^ __site_cvt_cvt_Py_ssize_t_1408_34;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_sub_1417_37;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1417_37;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_lt_1428_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1428_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_1429_30;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1429_30;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1436_53;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1460_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1460_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1460_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_num_1473_18;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1473_18;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1479_20;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1479_20;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1479_40;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1479_40;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1479_64;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1479_64;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1480_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_1482_20;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1482_20;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_Cast_1489_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_1489_41;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1501_65;
+static  CallSite< System::Func< CallSite^, System::Object^, size_t >^ >^ __site_cvt_cvt_size_t_1501_65;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_and_1502_27;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1502_27;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_1504_23;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1504_23;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1505_42;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1508_36;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_1509_25;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1509_25;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1510_42;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_1512_25;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1512_25;
+static  CallSite< System::Func< CallSite^, System::Object^, long >^ >^ __site_cvt_cvt_long_1513_42;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1516_28;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1518_51;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_lshift_1522_42;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_1522_31;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mul_1522_71;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_1522_57;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1522_57;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >^ __site_contains_1538_17;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1539_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1543_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1545_28;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1553_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1553_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_1553_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1553_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_1553_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >^ __site_contains_1569_12;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1570_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1573_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1581_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1590_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1592_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_1606_108;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1606_28;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_ne_1625_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_1625_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1626_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_1648_24;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
@@ -557,9 +701,9 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_368_52;
 static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_375_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ArrayReturn_375_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_375_43;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_375_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ArrayReturn_375_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_375_42;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_378_47;
 static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_378_47;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_381_14;
@@ -617,7 +761,7 @@ static int __pyx_k_1;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":60
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":73
  * # A memory allocator which raises a python exception.
  * # Used by median filter
  * cdef char *check_malloc(int size):             # <<<<<<<<<<<<<<
@@ -635,7 +779,7 @@ static  char *check_malloc(int __pyx_v_size) {
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":61
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":74
  * # Used by median filter
  * cdef char *check_malloc(int size):
  *     cdef char *the_block = <char *>malloc(size)             # <<<<<<<<<<<<<<
@@ -644,7 +788,7 @@ static  char *check_malloc(int __pyx_v_size) {
  */
   __pyx_v_the_block = ((char *)malloc(__pyx_v_size));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":62
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":75
  * cdef char *check_malloc(int size):
  *     cdef char *the_block = <char *>malloc(size)
  *     if the_block == NULL:             # <<<<<<<<<<<<<<
@@ -654,7 +798,7 @@ static  char *check_malloc(int __pyx_v_size) {
   __pyx_t_1 = (__pyx_v_the_block == NULL);
   if (__pyx_t_1) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":63
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":76
  *     cdef char *the_block = <char *>malloc(size)
  *     if the_block == NULL:
  *         print "\nERROR: unable to allocate %d bytes!\n" % size             # <<<<<<<<<<<<<<
@@ -662,12 +806,12 @@ static  char *check_malloc(int __pyx_v_size) {
  * 
  */
     __pyx_t_2 = __pyx_v_size;
-    __pyx_t_3 = __site_op_mod_63_56->Target(__site_op_mod_63_56, ((System::Object^)"\nERROR: unable to allocate %d bytes!\n"), __pyx_t_2);
+    __pyx_t_3 = __site_op_mod_76_56->Target(__site_op_mod_76_56, ((System::Object^)"\nERROR: unable to allocate %d bytes!\n"), __pyx_t_2);
     __pyx_t_2 = nullptr;
     PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_3));
     __pyx_t_3 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":64
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":77
  *     if the_block == NULL:
  *         print "\nERROR: unable to allocate %d bytes!\n" % size
  *         raise MemoryError             # <<<<<<<<<<<<<<
@@ -681,12 +825,12 @@ static  char *check_malloc(int __pyx_v_size) {
   }
   __pyx_L3:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":66
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":79
  *         raise MemoryError
  * 
  *     return the_block             # <<<<<<<<<<<<<<
  * 
- * 
+ * cdef BasicFilterFunction get_filter_function(int typenum):
  */
   __pyx_r = __pyx_v_the_block;
   goto __pyx_L0;
@@ -696,7 +840,7916 @@ static  char *check_malloc(int __pyx_v_size) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":72
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":81
+ *     return the_block
+ * 
+ * cdef BasicFilterFunction get_filter_function(int typenum):             # <<<<<<<<<<<<<<
+ *     if typenum == np.npy_NPY_FLOAT:
+ *         return <BasicFilterFunction>FLOAT_filt
+ */
+
+static  __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction get_filter_function(int __pyx_v_typenum) {
+  __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  int __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":82
+ * 
+ * cdef BasicFilterFunction get_filter_function(int typenum):
+ *     if typenum == np.npy_NPY_FLOAT:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>FLOAT_filt
+ *     elif typenum == np.npy_NPY_DOUBLE:
+ */
+  __pyx_t_1 = __pyx_v_typenum;
+  __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_3 = __site_get_npy_NPY_FLOAT_82_20->Target(__site_get_npy_NPY_FLOAT_82_20, __pyx_t_2, __pyx_context);
+  __pyx_t_2 = nullptr;
+  __pyx_t_2 = __site_op_eq_82_15->Target(__site_op_eq_82_15, __pyx_t_1, __pyx_t_3);
+  __pyx_t_1 = nullptr;
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = __site_istrue_82_15->Target(__site_istrue_82_15, __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":83
+ * cdef BasicFilterFunction get_filter_function(int typenum):
+ *     if typenum == np.npy_NPY_FLOAT:
+ *         return <BasicFilterFunction>FLOAT_filt             # <<<<<<<<<<<<<<
+ *     elif typenum == np.npy_NPY_DOUBLE:
+ *         return <BasicFilterFunction>DOUBLE_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_FLOAT_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":84
+ *     if typenum == np.npy_NPY_FLOAT:
+ *         return <BasicFilterFunction>FLOAT_filt
+ *     elif typenum == np.npy_NPY_DOUBLE:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>DOUBLE_filt
+ *     elif typenum == np.npy_NPY_LONGDOUBLE:
+ */
+  __pyx_t_2 = __pyx_v_typenum;
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_1 = __site_get_npy_NPY_DOUBLE_84_22->Target(__site_get_npy_NPY_DOUBLE_84_22, __pyx_t_3, __pyx_context);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_eq_84_17->Target(__site_op_eq_84_17, __pyx_t_2, __pyx_t_1);
+  __pyx_t_2 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_t_4 = __site_istrue_84_17->Target(__site_istrue_84_17, __pyx_t_3);
+  __pyx_t_3 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":85
+ *         return <BasicFilterFunction>FLOAT_filt
+ *     elif typenum == np.npy_NPY_DOUBLE:
+ *         return <BasicFilterFunction>DOUBLE_filt             # <<<<<<<<<<<<<<
+ *     elif typenum == np.npy_NPY_LONGDOUBLE:
+ *         return <BasicFilterFunction>EXTENDED_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_DOUBLE_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":86
+ *     elif typenum == np.npy_NPY_DOUBLE:
+ *         return <BasicFilterFunction>DOUBLE_filt
+ *     elif typenum == np.npy_NPY_LONGDOUBLE:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>EXTENDED_filt
+ *     elif typenum == np.npy_NPY_CFLOAT:
+ */
+  __pyx_t_3 = __pyx_v_typenum;
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_2 = __site_get_npy_NPY_LONGDOUBLE_86_22->Target(__site_get_npy_NPY_LONGDOUBLE_86_22, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_op_eq_86_17->Target(__site_op_eq_86_17, __pyx_t_3, __pyx_t_2);
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = nullptr;
+  __pyx_t_4 = __site_istrue_86_17->Target(__site_istrue_86_17, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":87
+ *         return <BasicFilterFunction>DOUBLE_filt
+ *     elif typenum == np.npy_NPY_LONGDOUBLE:
+ *         return <BasicFilterFunction>EXTENDED_filt             # <<<<<<<<<<<<<<
+ *     elif typenum == np.npy_NPY_CFLOAT:
+ *         return <BasicFilterFunction>CFLOAT_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_EXTENDED_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":88
+ *     elif typenum == np.npy_NPY_LONGDOUBLE:
+ *         return <BasicFilterFunction>EXTENDED_filt
+ *     elif typenum == np.npy_NPY_CFLOAT:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>CFLOAT_filt
+ *     elif typenum == np.npy_NPY_CDOUBLE:
+ */
+  __pyx_t_1 = __pyx_v_typenum;
+  __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_3 = __site_get_npy_NPY_CFLOAT_88_22->Target(__site_get_npy_NPY_CFLOAT_88_22, __pyx_t_2, __pyx_context);
+  __pyx_t_2 = nullptr;
+  __pyx_t_2 = __site_op_eq_88_17->Target(__site_op_eq_88_17, __pyx_t_1, __pyx_t_3);
+  __pyx_t_1 = nullptr;
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = __site_istrue_88_17->Target(__site_istrue_88_17, __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":89
+ *         return <BasicFilterFunction>EXTENDED_filt
+ *     elif typenum == np.npy_NPY_CFLOAT:
+ *         return <BasicFilterFunction>CFLOAT_filt             # <<<<<<<<<<<<<<
+ *     elif typenum == np.npy_NPY_CDOUBLE:
+ *         return <BasicFilterFunction>CDOUBLE_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_CFLOAT_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":90
+ *     elif typenum == np.npy_NPY_CFLOAT:
+ *         return <BasicFilterFunction>CFLOAT_filt
+ *     elif typenum == np.npy_NPY_CDOUBLE:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>CDOUBLE_filt
+ *     elif typenum == np.npy_NPY_CLONGDOUBLE:
+ */
+  __pyx_t_2 = __pyx_v_typenum;
+  __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_1 = __site_get_npy_NPY_CDOUBLE_90_22->Target(__site_get_npy_NPY_CDOUBLE_90_22, __pyx_t_3, __pyx_context);
+  __pyx_t_3 = nullptr;
+  __pyx_t_3 = __site_op_eq_90_17->Target(__site_op_eq_90_17, __pyx_t_2, __pyx_t_1);
+  __pyx_t_2 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_t_4 = __site_istrue_90_17->Target(__site_istrue_90_17, __pyx_t_3);
+  __pyx_t_3 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":91
+ *         return <BasicFilterFunction>CFLOAT_filt
+ *     elif typenum == np.npy_NPY_CDOUBLE:
+ *         return <BasicFilterFunction>CDOUBLE_filt             # <<<<<<<<<<<<<<
+ *     elif typenum == np.npy_NPY_CLONGDOUBLE:
+ *         return <BasicFilterFunction>CEXTENDED_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_CDOUBLE_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":92
+ *     elif typenum == np.npy_NPY_CDOUBLE:
+ *         return <BasicFilterFunction>CDOUBLE_filt
+ *     elif typenum == np.npy_NPY_CLONGDOUBLE:             # <<<<<<<<<<<<<<
+ *         return <BasicFilterFunction>CEXTENDED_filt
+ *     #elif typenum == np.npy_NPY_OBJECT:
+ */
+  __pyx_t_3 = __pyx_v_typenum;
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_2 = __site_get_npy_NPY_CLONGDOUBLE_92_22->Target(__site_get_npy_NPY_CLONGDOUBLE_92_22, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_op_eq_92_17->Target(__site_op_eq_92_17, __pyx_t_3, __pyx_t_2);
+  __pyx_t_3 = nullptr;
+  __pyx_t_2 = nullptr;
+  __pyx_t_4 = __site_istrue_92_17->Target(__site_istrue_92_17, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":93
+ *         return <BasicFilterFunction>CDOUBLE_filt
+ *     elif typenum == np.npy_NPY_CLONGDOUBLE:
+ *         return <BasicFilterFunction>CEXTENDED_filt             # <<<<<<<<<<<<<<
+ *     #elif typenum == np.npy_NPY_OBJECT:
+ *     #    return <BasicFilterFunction>OBJECT_filt
+ */
+    __pyx_r = ((__pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction)__pyx_function_pointer_CEXTENDED_filt);
+    goto __pyx_L0;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":97
+ *     #    return <BasicFilterFunction>OBJECT_filt
+ * 
+ *     return NULL             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = NULL;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":101
+ * 
+ * # XXX: Error checking not done yet
+ * def _linear_filter(np.ndarray b, np.ndarray a,             # <<<<<<<<<<<<<<
+ *                    np.ndarray X, int axis=-1,
+ *                    np.ndarray Vi=None):
+ */
+
+static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, System::Object^ X, [InteropServices::Optional]System::Object^ axis, [InteropServices::Optional]System::Object^ Vi) {
+  NumpyDotNet::ndarray^ __pyx_v_b = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_a = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_X = nullptr;
+  int __pyx_v_axis;
+  NumpyDotNet::ndarray^ __pyx_v_Vi = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_ara;
+  NumpyDotNet::ndarray^ __pyx_v_arb;
+  NumpyDotNet::ndarray^ __pyx_v_arX;
+  NumpyDotNet::ndarray^ __pyx_v_arY;
+  NumpyDotNet::ndarray^ __pyx_v_arVf;
+  NumpyDotNet::ndarray^ __pyx_v_arVi;
+  int __pyx_v_theaxis;
+  int __pyx_v_st;
+  char *__pyx_v_ara_ptr;
+  char __pyx_v_input_flag;
+  char *__pyx_v_azero;
+  __pyx_t_5numpy_npy_intp __pyx_v_na;
+  __pyx_t_5numpy_npy_intp __pyx_v_nb;
+  __pyx_t_5numpy_npy_intp __pyx_v_nal;
+  __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction __pyx_v_basic_filter;
+  NumpyDotNet::dtype^ __pyx_v_type;
+  int __pyx_v_typenum;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  System::Object^ __pyx_t_3 = nullptr;
+  System::Object^ __pyx_t_4 = nullptr;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  int __pyx_t_7;
+  System::Object^ __pyx_t_8 = nullptr;
+  int __pyx_t_9;
+  int __pyx_t_10;
+  int __pyx_t_11;
+  __pyx_t_5numpy_npy_intp __pyx_t_12;
+  __pyx_v_b = ((NumpyDotNet::ndarray^)b);
+  __pyx_v_a = ((NumpyDotNet::ndarray^)a);
+  __pyx_v_X = ((NumpyDotNet::ndarray^)X);
+  if (dynamic_cast<System::Reflection::Missing^>(axis) == nullptr) {
+    __pyx_v_axis = __site_cvt_cvt_int_101_0->Target(__site_cvt_cvt_int_101_0, axis);
+  } else {
+    __pyx_v_axis = ((int)-1);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(Vi) == nullptr) {
+    __pyx_v_Vi = ((NumpyDotNet::ndarray^)Vi);
+  } else {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":103
+ * def _linear_filter(np.ndarray b, np.ndarray a,
+ *                    np.ndarray X, int axis=-1,
+ *                    np.ndarray Vi=None):             # <<<<<<<<<<<<<<
+ *     cdef np.ndarray ara, arb, arX, arY, arVf, arVi
+ *     cdef int theaxis, st
+ */
+    __pyx_v_Vi = ((NumpyDotNet::ndarray^)nullptr);
+  }
+  __pyx_v_ara = nullptr;
+  __pyx_v_arb = nullptr;
+  __pyx_v_arX = nullptr;
+  __pyx_v_arY = nullptr;
+  __pyx_v_arVf = nullptr;
+  __pyx_v_arVi = nullptr;
+  __pyx_v_type = nullptr;
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_b) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'b' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_a) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'a' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_X) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'X' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_Vi) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'Vi' has incorrect type");
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":106
+ *     cdef np.ndarray ara, arb, arX, arY, arVf, arVi
+ *     cdef int theaxis, st
+ *     cdef char *ara_ptr, input_flag = 0, *azero             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp na, nb, nal
+ *     cdef BasicFilterFunction basic_filter
+ */
+  __pyx_v_input_flag = 0;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":111
+ *     cdef np.dtype type
+ * 
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))             # <<<<<<<<<<<<<<
+ *     type = np.NpyArray_FindArrayType_2args(a, type)
+ *     type = np.NpyArray_FindArrayType_2args(X, type)
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(PyArray_TYPE(__pyx_v_b)))); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":112
+ * 
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))
+ *     type = np.NpyArray_FindArrayType_2args(a, type)             # <<<<<<<<<<<<<<
+ *     type = np.NpyArray_FindArrayType_2args(X, type)
+ *     if Vi is not None:
+ */
+  __pyx_t_1 = ((System::Object^)NpyArray_FindArrayType_2args(((System::Object^)__pyx_v_a), __pyx_v_type)); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":113
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))
+ *     type = np.NpyArray_FindArrayType_2args(a, type)
+ *     type = np.NpyArray_FindArrayType_2args(X, type)             # <<<<<<<<<<<<<<
+ *     if Vi is not None:
+ *         type = np.NpyArray_FindArrayType_2args(Vi, type)
+ */
+  __pyx_t_1 = ((System::Object^)NpyArray_FindArrayType_2args(((System::Object^)__pyx_v_X), __pyx_v_type)); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":114
+ *     type = np.NpyArray_FindArrayType_2args(a, type)
+ *     type = np.NpyArray_FindArrayType_2args(X, type)
+ *     if Vi is not None:             # <<<<<<<<<<<<<<
+ *         type = np.NpyArray_FindArrayType_2args(Vi, type)
+ * 
+ */
+  __pyx_t_2 = (((System::Object^)__pyx_v_Vi) != nullptr);
+  if (__pyx_t_2) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":115
+ *     type = np.NpyArray_FindArrayType_2args(X, type)
+ *     if Vi is not None:
+ *         type = np.NpyArray_FindArrayType_2args(Vi, type)             # <<<<<<<<<<<<<<
+ * 
+ *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ */
+    __pyx_t_1 = ((System::Object^)NpyArray_FindArrayType_2args(((System::Object^)__pyx_v_Vi), __pyx_v_type)); 
+    __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L5;
+  }
+  __pyx_L5:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":117
+ *         type = np.NpyArray_FindArrayType_2args(Vi, type)
+ * 
+ *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
+ *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ */
+  __pyx_t_1 = (System::Object^)(long long)(((NPY_CONTIGUOUS | NPY_BEHAVED) | NPY_ENSUREARRAY));
+  __pyx_t_3 = PyArray_FromAny(((System::Object^)__pyx_v_a), ((System::Object^)__pyx_v_type), __pyx_int_1, __pyx_int_1, __pyx_t_1, nullptr); 
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_ara = ((NumpyDotNet::ndarray^)__pyx_t_3);
+  __pyx_t_3 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":118
+ * 
+ *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
+ *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ * 
+ */
+  __pyx_t_3 = (System::Object^)(long long)(((NPY_CONTIGUOUS | NPY_BEHAVED) | NPY_ENSUREARRAY));
+  __pyx_t_1 = PyArray_FromAny(((System::Object^)__pyx_v_a), ((System::Object^)__pyx_v_type), __pyx_int_1, __pyx_int_1, __pyx_t_3, nullptr); 
+  __pyx_t_3 = nullptr;
+  if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_arb = ((NumpyDotNet::ndarray^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":119
+ *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
+ * 
+ *     if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
+ */
+  __pyx_t_1 = (System::Object^)(long long)((NPY_BEHAVED | NPY_ENSUREARRAY));
+  __pyx_t_3 = PyArray_FromAny(((System::Object^)__pyx_v_X), ((System::Object^)__pyx_v_type), __pyx_int_0, __pyx_int_0, __pyx_t_1, nullptr); 
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_arX = ((NumpyDotNet::ndarray^)__pyx_t_3);
+  __pyx_t_3 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":121
+ *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ * 
+ *     if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):             # <<<<<<<<<<<<<<
+ *         raise ValueError("selected axis is out of range")
+ * 
+ */
+  __pyx_t_3 = __pyx_v_axis;
+  __pyx_t_1 = PyArray_NDIM(__pyx_v_arX); 
+  __pyx_t_4 = __site_Negate_121_15->Target(__site_Negate_121_15, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_op_lt_121_13->Target(__site_op_lt_121_13, __pyx_t_3, __pyx_t_4);
+  __pyx_t_3 = nullptr;
+  __pyx_t_4 = nullptr;
+  __pyx_t_2 = __site_istrue_121_13->Target(__site_istrue_121_13, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  if (!__pyx_t_2) {
+    __pyx_t_1 = __pyx_v_axis;
+    __pyx_t_4 = PyArray_NDIM(__pyx_v_arX); 
+    __pyx_t_3 = __site_op_sub_121_70->Target(__site_op_sub_121_70, __pyx_t_4, __pyx_int_1);
+    __pyx_t_4 = nullptr;
+    __pyx_t_4 = __site_op_gt_121_47->Target(__site_op_gt_121_47, __pyx_t_1, __pyx_t_3);
+    __pyx_t_1 = nullptr;
+    __pyx_t_3 = nullptr;
+    __pyx_t_5 = __site_istrue_121_47->Target(__site_istrue_121_47, __pyx_t_4);
+    __pyx_t_4 = nullptr;
+    __pyx_t_6 = __pyx_t_5;
+  } else {
+    __pyx_t_6 = __pyx_t_2;
+  }
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":122
+ * 
+ *     if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
+ *         raise ValueError("selected axis is out of range")             # <<<<<<<<<<<<<<
+ * 
+ *     if axis < 0:
+ */
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_3 = __site_call1_122_24->Target(__site_call1_122_24, __pyx_context, __pyx_t_4, ((System::Object^)"selected axis is out of range"));
+    __pyx_t_4 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
+    goto __pyx_L6;
+  }
+  __pyx_L6:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":124
+ *         raise ValueError("selected axis is out of range")
+ * 
+ *     if axis < 0:             # <<<<<<<<<<<<<<
+ *         theaxis = np.PyArray_NDIM(arX) + axis
+ *     else:
+ */
+  __pyx_t_6 = (__pyx_v_axis < 0);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":125
+ * 
+ *     if axis < 0:
+ *         theaxis = np.PyArray_NDIM(arX) + axis             # <<<<<<<<<<<<<<
+ *     else:
+ *         theaxis = axis
+ */
+    __pyx_t_3 = PyArray_NDIM(__pyx_v_arX); 
+    __pyx_t_4 = __pyx_v_axis;
+    __pyx_t_1 = __site_op_add_125_39->Target(__site_op_add_125_39, __pyx_t_3, __pyx_t_4);
+    __pyx_t_3 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_7 = __site_cvt_cvt_int_125_39->Target(__site_cvt_cvt_int_125_39, __pyx_t_1);
+    __pyx_t_1 = nullptr;
+    __pyx_v_theaxis = __pyx_t_7;
+    goto __pyx_L7;
+  }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":127
+ *         theaxis = np.PyArray_NDIM(arX) + axis
+ *     else:
+ *         theaxis = axis             # <<<<<<<<<<<<<<
+ * 
+ *     if Vi is not None:
+ */
+    __pyx_v_theaxis = __pyx_v_axis;
+  }
+  __pyx_L7:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":129
+ *         theaxis = axis
+ * 
+ *     if Vi is not None:             # <<<<<<<<<<<<<<
+ *         arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *         input_flag = 1
+ */
+  __pyx_t_6 = (((System::Object^)__pyx_v_Vi) != nullptr);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":130
+ * 
+ *     if Vi is not None:
+ *         arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
+ *         input_flag = 1
+ * 
+ */
+    __pyx_t_1 = PyArray_NDIM(__pyx_v_arX); 
+    __pyx_t_4 = PyArray_NDIM(__pyx_v_arX); 
+    __pyx_t_3 = (System::Object^)(long long)((NPY_BEHAVED | NPY_ENSUREARRAY));
+    __pyx_t_8 = PyArray_FromAny(((System::Object^)__pyx_v_Vi), ((System::Object^)__pyx_v_type), __pyx_t_1, __pyx_t_4, __pyx_t_3, nullptr); 
+    __pyx_t_1 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_3 = nullptr;
+    if (__pyx_t_8 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_8) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_arVi = ((NumpyDotNet::ndarray^)__pyx_t_8);
+    __pyx_t_8 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":131
+ *     if Vi is not None:
+ *         arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *         input_flag = 1             # <<<<<<<<<<<<<<
+ * 
+ *     cdef int typenum = type.num
+ */
+    __pyx_v_input_flag = 1;
+    goto __pyx_L8;
+  }
+  __pyx_L8:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":133
+ *         input_flag = 1
+ * 
+ *     cdef int typenum = type.num             # <<<<<<<<<<<<<<
+ * 
+ *     arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)
+ */
+  __pyx_t_8 = __site_get_num_133_27->Target(__site_get_num_133_27, ((System::Object^)__pyx_v_type), __pyx_context);
+  __pyx_t_9 = __site_cvt_cvt_int_133_27->Target(__site_cvt_cvt_int_133_27, __pyx_t_8);
+  __pyx_t_8 = nullptr;
+  __pyx_v_typenum = __pyx_t_9;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":135
+ *     cdef int typenum = type.num
+ * 
+ *     arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)             # <<<<<<<<<<<<<<
+ * 
+ *     if input_flag:
+ */
+  __pyx_t_8 = PyArray_NDIM(__pyx_v_arX); 
+  __pyx_t_10 = __site_cvt_cvt_int_135_46->Target(__site_cvt_cvt_int_135_46, __pyx_t_8);
+  __pyx_t_8 = nullptr;
+  __pyx_t_8 = PyArray_SimpleNew(__pyx_t_10, PyArray_DIMS(__pyx_v_arX), __pyx_v_typenum); 
+  if (__pyx_t_8 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_8) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_arY = ((NumpyDotNet::ndarray^)__pyx_t_8);
+  __pyx_t_8 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":137
+ *     arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)
+ * 
+ *     if input_flag:             # <<<<<<<<<<<<<<
+ *         arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)
+ * 
+ */
+  if (__pyx_v_input_flag) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":138
+ * 
+ *     if input_flag:
+ *         arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)             # <<<<<<<<<<<<<<
+ * 
+ *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+ */
+    __pyx_t_8 = PyArray_NDIM(__pyx_v_arVi); 
+    __pyx_t_11 = __site_cvt_cvt_int_138_51->Target(__site_cvt_cvt_int_138_51, __pyx_t_8);
+    __pyx_t_8 = nullptr;
+    __pyx_t_8 = PyArray_SimpleNew(__pyx_t_11, PyArray_DIMS(__pyx_v_arVi), __pyx_v_typenum); 
+    if (__pyx_t_8 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_8) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_arVf = ((NumpyDotNet::ndarray^)__pyx_t_8);
+    __pyx_t_8 = nullptr;
+    goto __pyx_L9;
+  }
+  __pyx_L9:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":140
+ *         arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)
+ * 
+ *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))             # <<<<<<<<<<<<<<
+ *     if basic_filter == NULL:
+ *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+ */
+  __pyx_v_basic_filter = get_filter_function(((int)PyArray_TYPE(__pyx_v_arX)));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":141
+ * 
+ *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+ *     if basic_filter == NULL:             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+ * 
+ */
+  __pyx_t_6 = (__pyx_v_basic_filter == NULL);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":142
+ *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+ *     if basic_filter == NULL:
+ *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))             # <<<<<<<<<<<<<<
+ * 
+ *     # Skip over leading zeros in vector representing denominator (a)
+ */
+    __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "NotImplementedError");
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "str");
+    __pyx_t_4 = PyArray_DESCR(__pyx_v_arX); 
+    __pyx_t_1 = __site_call1_142_72->Target(__site_call1_142_72, __pyx_context, ((System::Object^)__pyx_t_3), __pyx_t_4);
+    __pyx_t_3 = nullptr;
+    __pyx_t_4 = nullptr;
+    __pyx_t_4 = __site_call2_142_33->Target(__site_call2_142_33, __pyx_context, __pyx_t_8, ((System::Object^)"input type '%s' not supported\n"), __pyx_t_1);
+    __pyx_t_8 = nullptr;
+    __pyx_t_1 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+    __pyx_t_4 = nullptr;
+    goto __pyx_L10;
+  }
+  __pyx_L10:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":146
+ *     # Skip over leading zeros in vector representing denominator (a)
+ *     # XXX: handle this correctly
+ *     azero = <char *>np.PyArray_Zero(ara)             # <<<<<<<<<<<<<<
+ *     ara_ptr = <char *>np.PyArray_DATA(ara)
+ *     nal = np.PyArray_ITEMSIZE(ara);
+ */
+  __pyx_v_azero = ((char *)PyArray_Zero(((System::Object^)__pyx_v_ara)));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":147
+ *     # XXX: handle this correctly
+ *     azero = <char *>np.PyArray_Zero(ara)
+ *     ara_ptr = <char *>np.PyArray_DATA(ara)             # <<<<<<<<<<<<<<
+ *     nal = np.PyArray_ITEMSIZE(ara);
+ *     if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
+ */
+  __pyx_v_ara_ptr = ((char *)PyArray_DATA(__pyx_v_ara));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":148
+ *     azero = <char *>np.PyArray_Zero(ara)
+ *     ara_ptr = <char *>np.PyArray_DATA(ara)
+ *     nal = np.PyArray_ITEMSIZE(ara);             # <<<<<<<<<<<<<<
+ *     if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
+ *         raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
+ */
+  __pyx_v_nal = PyArray_ITEMSIZE(__pyx_v_ara);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":149
+ *     ara_ptr = <char *>np.PyArray_DATA(ara)
+ *     nal = np.PyArray_ITEMSIZE(ara);
+ *     if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:             # <<<<<<<<<<<<<<
+ *         raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
+ * 
+ */
+  __pyx_t_6 = (memcmp(((void *)__pyx_v_ara_ptr), ((void *)__pyx_v_azero), __pyx_v_nal) == 0);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":150
+ *     nal = np.PyArray_ITEMSIZE(ara);
+ *     if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
+ *         raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")             # <<<<<<<<<<<<<<
+ * 
+ *     np.PyDataMem_FREE(azero)
+ */
+    __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_1 = __site_call1_150_24->Target(__site_call1_150_24, __pyx_context, __pyx_t_4, ((System::Object^)"BUG: filter coefficient a[0] == 0 not supported yet"));
+    __pyx_t_4 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L11;
+  }
+  __pyx_L11:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":152
+ *         raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
+ * 
+ *     np.PyDataMem_FREE(azero)             # <<<<<<<<<<<<<<
+ * 
+ *     na = np.PyArray_SIZE(ara)
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_4 = __site_get_PyDataMem_FREE_152_6->Target(__site_get_PyDataMem_FREE_152_6, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = gcnew System::String(__pyx_v_azero);
+  __pyx_t_8 = __site_call1_152_21->Target(__site_call1_152_21, __pyx_context, __pyx_t_4, ((System::Object^)__pyx_t_1));
+  __pyx_t_4 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_t_8 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":154
+ *     np.PyDataMem_FREE(azero)
+ * 
+ *     na = np.PyArray_SIZE(ara)             # <<<<<<<<<<<<<<
+ *     nb = np.PyArray_SIZE(arb)
+ *     if input_flag:
+ */
+  __pyx_v_na = PyArray_SIZE(__pyx_v_ara);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":155
+ * 
+ *     na = np.PyArray_SIZE(ara)
+ *     nb = np.PyArray_SIZE(arb)             # <<<<<<<<<<<<<<
+ *     if input_flag:
+ *         if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:
+ */
+  __pyx_v_nb = PyArray_SIZE(__pyx_v_arb);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":156
+ *     na = np.PyArray_SIZE(ara)
+ *     nb = np.PyArray_SIZE(arb)
+ *     if input_flag:             # <<<<<<<<<<<<<<
+ *         if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:
+ *             raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")
+ */
+  if (__pyx_v_input_flag) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":157
+ *     nb = np.PyArray_SIZE(arb)
+ *     if input_flag:
+ *         if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:             # <<<<<<<<<<<<<<
+ *             raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")
+ * 
+ */
+    if ((__pyx_v_na > __pyx_v_nb)) {
+      __pyx_t_12 = __pyx_v_na;
+    } else {
+      __pyx_t_12 = __pyx_v_nb;
+    }
+    __pyx_t_6 = ((PyArray_DIMS(__pyx_v_arVi)[__pyx_v_theaxis]) != (__pyx_t_12 - 1));
+    if (__pyx_t_6) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":158
+ *     if input_flag:
+ *         if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:
+ *             raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")             # <<<<<<<<<<<<<<
+ * 
+ *     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
+ */
+      __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+      __pyx_t_1 = __site_call1_158_28->Target(__site_call1_158_28, __pyx_context, __pyx_t_8, ((System::Object^)"The number of initial conditions must be max([len(a),len(b)]) - 1"));
+      __pyx_t_8 = nullptr;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+      __pyx_t_1 = nullptr;
+      goto __pyx_L13;
+    }
+    __pyx_L13:;
+    goto __pyx_L12;
+  }
+  __pyx_L12:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":160
+ *             raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")
+ * 
+ *     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)             # <<<<<<<<<<<<<<
+ *     if st:
+ *         raise SystemError # RawFilter raised an exception
+ */
+  __pyx_v_st = RawFilter(__pyx_v_arb, __pyx_v_ara, __pyx_v_arX, __pyx_v_arVi, __pyx_v_arVf, __pyx_v_arY, __pyx_v_theaxis, __pyx_v_basic_filter);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":161
+ * 
+ *     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
+ *     if st:             # <<<<<<<<<<<<<<
+ *         raise SystemError # RawFilter raised an exception
+ * 
+ */
+  if (__pyx_v_st) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":162
+ *     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
+ *     if st:
+ *         raise SystemError # RawFilter raised an exception             # <<<<<<<<<<<<<<
+ * 
+ *     if not input_flag:
+ */
+    __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "SystemError");
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L14;
+  }
+  __pyx_L14:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":164
+ *         raise SystemError # RawFilter raised an exception
+ * 
+ *     if not input_flag:             # <<<<<<<<<<<<<<
+ *         return np.PyArray_Return(arY)
+ *     else:
+ */
+  __pyx_t_6 = (!__pyx_v_input_flag);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":165
+ * 
+ *     if not input_flag:
+ *         return np.PyArray_Return(arY)             # <<<<<<<<<<<<<<
+ *     else:
+ *         return (arY, arVf)
+ */
+    __pyx_t_1 = PyArray_Return(((System::Object^)__pyx_v_arY)); 
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L15;
+  }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":167
+ *         return np.PyArray_Return(arY)
+ *     else:
+ *         return (arY, arVf)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_t_1 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_arY), ((System::Object^)__pyx_v_arVf)});
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+    goto __pyx_L0;
+  }
+  __pyx_L15:;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":171
+ * 
+ * ## Copy the first nxzfilled items of x into xzfilled , and fill the rest with 0s
+ * cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfilled):             # <<<<<<<<<<<<<<
+ *     cdef char *xzero
+ *     cdef np.npy_intp i, nxl
+ */
+
+static  int zfill(NpyArray *__pyx_v_x, __pyx_t_5numpy_npy_intp __pyx_v_nx, char *__pyx_v_xzfilled, __pyx_t_5numpy_npy_intp __pyx_v_nxzfilled) {
+  char *__pyx_v_xzero;
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_nxl;
+  __pyx_t_5numpy_PyArray_CopySwapFunc __pyx_v_copyswap;
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  int __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+  System::Object^ __pyx_t_5 = nullptr;
+  System::Object^ __pyx_t_6 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":174
+ *     cdef char *xzero
+ *     cdef np.npy_intp i, nxl
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(x)             # <<<<<<<<<<<<<<
+ * 
+ *     nxl = np.NpyArray_ITEMSIZE(x)
+ */
+  __pyx_v_copyswap = ARRAY_COPYSWAP_FUNC(__pyx_v_x);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":176
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(x)
+ * 
+ *     nxl = np.NpyArray_ITEMSIZE(x)             # <<<<<<<<<<<<<<
+ *     xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))
+ * 
+ */
+  __pyx_v_nxl = NpyArray_ITEMSIZE(__pyx_v_x);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":177
+ * 
+ *     nxl = np.NpyArray_ITEMSIZE(x)
+ *     xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))             # <<<<<<<<<<<<<<
+ * 
+ *     if nx > 0:
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_x)); 
+  __pyx_v_xzero = ((char *)PyArray_Zero(__pyx_t_1));
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":179
+ *     xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))
+ * 
+ *     if nx > 0:             # <<<<<<<<<<<<<<
+ *         for i in range(nx):
+ *             copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
+ */
+  __pyx_t_2 = (__pyx_v_nx > 0);
+  if (__pyx_t_2) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":180
+ * 
+ *     if nx > 0:
+ *         for i in range(nx):             # <<<<<<<<<<<<<<
+ *             copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
+ * 
+ */
+    __pyx_t_3 = __pyx_v_nx;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_i = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":181
+ *     if nx > 0:
+ *         for i in range(nx):
+ *             copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(nx, nxzfilled):
+ */
+      __pyx_v_copyswap((__pyx_v_xzfilled + (__pyx_v_i * __pyx_v_nxl)), (((char *)NpyArray_DATA(__pyx_v_x)) + (__pyx_v_i * __pyx_v_nxl)), 0, NULL);
+    }
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":183
+ *             copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
+ * 
+ *     for i in range(nx, nxzfilled):             # <<<<<<<<<<<<<<
+ *         copyswap(xzfilled + i * nxl, xzero, 0, NULL)
+ * 
+ */
+  __pyx_t_3 = __pyx_v_nxzfilled;
+  for (__pyx_t_4 = __pyx_v_nx; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":184
+ * 
+ *     for i in range(nx, nxzfilled):
+ *         copyswap(xzfilled + i * nxl, xzero, 0, NULL)             # <<<<<<<<<<<<<<
+ * 
+ *     np.PyDataMem_FREE(xzero)
+ */
+    __pyx_v_copyswap((__pyx_v_xzfilled + (__pyx_v_i * __pyx_v_nxl)), __pyx_v_xzero, 0, NULL);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":186
+ *         copyswap(xzfilled + i * nxl, xzero, 0, NULL)
+ * 
+ *     np.PyDataMem_FREE(xzero)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_5 = __site_get_PyDataMem_FREE_186_6->Target(__site_get_PyDataMem_FREE_186_6, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = gcnew System::String(__pyx_v_xzero);
+  __pyx_t_6 = __site_call1_186_21->Target(__site_call1_186_21, __pyx_context, __pyx_t_5, ((System::Object^)__pyx_t_1));
+  __pyx_t_5 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_t_6 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":188
+ *     np.PyDataMem_FREE(xzero)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":198
+ * # XXX: the code should be refactored (at least with/without initial
+ * # condition), some code is wasteful here
+ * cdef int RawFilter(np.ndarray b, np.ndarray a,             # <<<<<<<<<<<<<<
+ *           np.ndarray x, np.ndarray zi,
+ *           np.ndarray zf, np.ndarray y, int axis,
+ */
+
+static  int RawFilter(NumpyDotNet::ndarray^ __pyx_v_b, NumpyDotNet::ndarray^ __pyx_v_a, NumpyDotNet::ndarray^ __pyx_v_x, NumpyDotNet::ndarray^ __pyx_v_zi, NumpyDotNet::ndarray^ __pyx_v_zf, NumpyDotNet::ndarray^ __pyx_v_y, int __pyx_v_axis, __pyx_t_5scipy_6signal_11sigtoolsmod_BasicFilterFunction __pyx_v_filter_func) {
+  NpyArrayIterObject *__pyx_v_itx;
+  NpyArrayIterObject *__pyx_v_ity;
+  NpyArrayIterObject *__pyx_v_itzi;
+  NpyArrayIterObject *__pyx_v_itzf;
+  __pyx_t_5numpy_npy_intp __pyx_v_nitx;
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_nxl;
+  __pyx_t_5numpy_npy_intp __pyx_v_nzfl;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_intp __pyx_v_na;
+  __pyx_t_5numpy_npy_intp __pyx_v_nb;
+  __pyx_t_5numpy_npy_intp __pyx_v_nal;
+  __pyx_t_5numpy_npy_intp __pyx_v_nbl;
+  __pyx_t_5numpy_npy_intp __pyx_v_nfilt;
+  char *__pyx_v_azfilled;
+  char *__pyx_v_bzfilled;
+  char *__pyx_v_zfzfilled;
+  char *__pyx_v_yoyo;
+  __pyx_t_5numpy_PyArray_CopySwapFunc __pyx_v_copyswap;
+  int __pyx_r;
+  int __pyx_t_1;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+  __pyx_t_5numpy_npy_intp __pyx_t_5;
+  long __pyx_t_6;
+  __pyx_t_5numpy_npy_intp __pyx_t_7;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":202
+ *           np.ndarray zf, np.ndarray y, int axis,
+ *           BasicFilterFunction filter_func):
+ *     cdef np.NpyArrayIterObject *itx, *ity, *itzi=NULL, *itzf=NULL             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp nitx, i, nxl, nzfl, j
+ *     cdef np.npy_intp na, nb, nal, nbl
+ */
+  __pyx_v_itzi = NULL;
+  __pyx_v_itzf = NULL;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":207
+ *     cdef np.npy_intp nfilt
+ *     cdef char *azfilled, *bzfilled, *zfzfilled, *yoyo
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(np.PyArray_ARRAY(x))             # <<<<<<<<<<<<<<
+ * 
+ *     itx = np.PyArray_IterAllButAxis(x, &axis)
+ */
+  __pyx_v_copyswap = ARRAY_COPYSWAP_FUNC(PyArray_ARRAY(__pyx_v_x));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":209
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(np.PyArray_ARRAY(x))
+ * 
+ *     itx = np.PyArray_IterAllButAxis(x, &axis)             # <<<<<<<<<<<<<<
+ *     if itx == NULL:
+ *         raise MemoryError("Could not create itx")
+ */
+  __pyx_v_itx = PyArray_IterAllButAxis(__pyx_v_x, (&__pyx_v_axis));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":210
+ * 
+ *     itx = np.PyArray_IterAllButAxis(x, &axis)
+ *     if itx == NULL:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Could not create itx")
+ *     nitx = itx.size
+ */
+  __pyx_t_1 = (__pyx_v_itx == NULL);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":211
+ *     itx = np.PyArray_IterAllButAxis(x, &axis)
+ *     if itx == NULL:
+ *         raise MemoryError("Could not create itx")             # <<<<<<<<<<<<<<
+ *     nitx = itx.size
+ * 
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+    __pyx_t_3 = __site_call1_211_25->Target(__site_call1_211_25, __pyx_context, __pyx_t_2, ((System::Object^)"Could not create itx"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
+    goto __pyx_L3;
+  }
+  __pyx_L3:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":212
+ *     if itx == NULL:
+ *         raise MemoryError("Could not create itx")
+ *     nitx = itx.size             # <<<<<<<<<<<<<<
+ * 
+ *     ity = np.PyArray_IterAllButAxis(y, &axis)
+ */
+  __pyx_v_nitx = __pyx_v_itx->size;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":214
+ *     nitx = itx.size
+ * 
+ *     ity = np.PyArray_IterAllButAxis(y, &axis)             # <<<<<<<<<<<<<<
+ *     if ity == NULL:
+ *         raise MemoryError("Could not create ity")
+ */
+  __pyx_v_ity = PyArray_IterAllButAxis(__pyx_v_y, (&__pyx_v_axis));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":215
+ * 
+ *     ity = np.PyArray_IterAllButAxis(y, &axis)
+ *     if ity == NULL:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Could not create ity")
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_ity == NULL);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":216
+ *     ity = np.PyArray_IterAllButAxis(y, &axis)
+ *     if ity == NULL:
+ *         raise MemoryError("Could not create ity")             # <<<<<<<<<<<<<<
+ * 
+ *     if zi is not None:
+ */
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+    __pyx_t_2 = __site_call1_216_25->Target(__site_call1_216_25, __pyx_context, __pyx_t_3, ((System::Object^)"Could not create ity"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+    __pyx_t_2 = nullptr;
+    goto __pyx_L4;
+  }
+  __pyx_L4:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":218
+ *         raise MemoryError("Could not create ity")
+ * 
+ *     if zi is not None:             # <<<<<<<<<<<<<<
+ *         itzi = np.PyArray_IterAllButAxis(zi, &axis)
+ *         if itzi == NULL:
+ */
+  __pyx_t_1 = (((System::Object^)__pyx_v_zi) != nullptr);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":219
+ * 
+ *     if zi is not None:
+ *         itzi = np.PyArray_IterAllButAxis(zi, &axis)             # <<<<<<<<<<<<<<
+ *         if itzi == NULL:
+ *             raise MemoryError("Could not create itzi")
+ */
+    __pyx_v_itzi = PyArray_IterAllButAxis(__pyx_v_zi, (&__pyx_v_axis));
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":220
+ *     if zi is not None:
+ *         itzi = np.PyArray_IterAllButAxis(zi, &axis)
+ *         if itzi == NULL:             # <<<<<<<<<<<<<<
+ *             raise MemoryError("Could not create itzi")
+ * 
+ */
+    __pyx_t_1 = (__pyx_v_itzi == NULL);
+    if (__pyx_t_1) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":221
+ *         itzi = np.PyArray_IterAllButAxis(zi, &axis)
+ *         if itzi == NULL:
+ *             raise MemoryError("Could not create itzi")             # <<<<<<<<<<<<<<
+ * 
+ *         itzf = np.PyArray_IterAllButAxis(zf, &axis)
+ */
+      __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+      __pyx_t_3 = __site_call1_221_29->Target(__site_call1_221_29, __pyx_context, __pyx_t_2, ((System::Object^)"Could not create itzi"));
+      __pyx_t_2 = nullptr;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+      __pyx_t_3 = nullptr;
+      goto __pyx_L6;
+    }
+    __pyx_L6:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":223
+ *             raise MemoryError("Could not create itzi")
+ * 
+ *         itzf = np.PyArray_IterAllButAxis(zf, &axis)             # <<<<<<<<<<<<<<
+ *         if itzf == NULL:
+ *             raise MemoryError("Could not create itzf")
+ */
+    __pyx_v_itzf = PyArray_IterAllButAxis(__pyx_v_zf, (&__pyx_v_axis));
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":224
+ * 
+ *         itzf = np.PyArray_IterAllButAxis(zf, &axis)
+ *         if itzf == NULL:             # <<<<<<<<<<<<<<
+ *             raise MemoryError("Could not create itzf")
+ * 
+ */
+    __pyx_t_1 = (__pyx_v_itzf == NULL);
+    if (__pyx_t_1) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":225
+ *         itzf = np.PyArray_IterAllButAxis(zf, &axis)
+ *         if itzf == NULL:
+ *             raise MemoryError("Could not create itzf")             # <<<<<<<<<<<<<<
+ * 
+ *     na = np.PyArray_SIZE(a)
+ */
+      __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+      __pyx_t_2 = __site_call1_225_29->Target(__site_call1_225_29, __pyx_context, __pyx_t_3, ((System::Object^)"Could not create itzf"));
+      __pyx_t_3 = nullptr;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+      __pyx_t_2 = nullptr;
+      goto __pyx_L7;
+    }
+    __pyx_L7:;
+    goto __pyx_L5;
+  }
+  __pyx_L5:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":227
+ *             raise MemoryError("Could not create itzf")
+ * 
+ *     na = np.PyArray_SIZE(a)             # <<<<<<<<<<<<<<
+ *     nal = np.PyArray_ITEMSIZE(a)
+ *     nb = np.PyArray_SIZE(b)
+ */
+  __pyx_v_na = PyArray_SIZE(__pyx_v_a);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":228
+ * 
+ *     na = np.PyArray_SIZE(a)
+ *     nal = np.PyArray_ITEMSIZE(a)             # <<<<<<<<<<<<<<
+ *     nb = np.PyArray_SIZE(b)
+ *     nbl = np.PyArray_ITEMSIZE(b)
+ */
+  __pyx_v_nal = PyArray_ITEMSIZE(__pyx_v_a);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":229
+ *     na = np.PyArray_SIZE(a)
+ *     nal = np.PyArray_ITEMSIZE(a)
+ *     nb = np.PyArray_SIZE(b)             # <<<<<<<<<<<<<<
+ *     nbl = np.PyArray_ITEMSIZE(b)
+ * 
+ */
+  __pyx_v_nb = PyArray_SIZE(__pyx_v_b);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":230
+ *     nal = np.PyArray_ITEMSIZE(a)
+ *     nb = np.PyArray_SIZE(b)
+ *     nbl = np.PyArray_ITEMSIZE(b)             # <<<<<<<<<<<<<<
+ * 
+ *     nfilt = na if na > nb else nb
+ */
+  __pyx_v_nbl = PyArray_ITEMSIZE(__pyx_v_b);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":232
+ *     nbl = np.PyArray_ITEMSIZE(b)
+ * 
+ *     nfilt = na if na > nb else nb             # <<<<<<<<<<<<<<
+ * 
+ *     azfilled = <char *>malloc(nal * nfilt)
+ */
+  if ((__pyx_v_na > __pyx_v_nb)) {
+    __pyx_t_4 = __pyx_v_na;
+  } else {
+    __pyx_t_4 = __pyx_v_nb;
+  }
+  __pyx_v_nfilt = __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":234
+ *     nfilt = na if na > nb else nb
+ * 
+ *     azfilled = <char *>malloc(nal * nfilt)             # <<<<<<<<<<<<<<
+ *     if azfilled == NULL:
+ *         raise MemoryError("Could not create azfilled")
+ */
+  __pyx_v_azfilled = ((char *)malloc((__pyx_v_nal * __pyx_v_nfilt)));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":235
+ * 
+ *     azfilled = <char *>malloc(nal * nfilt)
+ *     if azfilled == NULL:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Could not create azfilled")
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_azfilled == NULL);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":236
+ *     azfilled = <char *>malloc(nal * nfilt)
+ *     if azfilled == NULL:
+ *         raise MemoryError("Could not create azfilled")             # <<<<<<<<<<<<<<
+ * 
+ *     bzfilled = <char *>malloc(nbl * nfilt)
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+    __pyx_t_3 = __site_call1_236_25->Target(__site_call1_236_25, __pyx_context, __pyx_t_2, ((System::Object^)"Could not create azfilled"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
+    goto __pyx_L8;
+  }
+  __pyx_L8:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":238
+ *         raise MemoryError("Could not create azfilled")
+ * 
+ *     bzfilled = <char *>malloc(nbl * nfilt)             # <<<<<<<<<<<<<<
+ *     if bzfilled == NULL:
+ *         raise MemoryError("Could not create bzfilled")
+ */
+  __pyx_v_bzfilled = ((char *)malloc((__pyx_v_nbl * __pyx_v_nfilt)));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":239
+ * 
+ *     bzfilled = <char *>malloc(nbl * nfilt)
+ *     if bzfilled == NULL:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Could not create bzfilled")
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_bzfilled == NULL);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":240
+ *     bzfilled = <char *>malloc(nbl * nfilt)
+ *     if bzfilled == NULL:
+ *         raise MemoryError("Could not create bzfilled")             # <<<<<<<<<<<<<<
+ * 
+ *     nxl = np.PyArray_ITEMSIZE(x)
+ */
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+    __pyx_t_2 = __site_call1_240_25->Target(__site_call1_240_25, __pyx_context, __pyx_t_3, ((System::Object^)"Could not create bzfilled"));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+    __pyx_t_2 = nullptr;
+    goto __pyx_L9;
+  }
+  __pyx_L9:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":242
+ *         raise MemoryError("Could not create bzfilled")
+ * 
+ *     nxl = np.PyArray_ITEMSIZE(x)             # <<<<<<<<<<<<<<
+ *     zfzfilled = <char *>malloc(nxl * (nfilt - 1))
+ *     if zfzfilled == NULL:
+ */
+  __pyx_v_nxl = PyArray_ITEMSIZE(__pyx_v_x);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":243
+ * 
+ *     nxl = np.PyArray_ITEMSIZE(x)
+ *     zfzfilled = <char *>malloc(nxl * (nfilt - 1))             # <<<<<<<<<<<<<<
+ *     if zfzfilled == NULL:
+ *         raise MemoryError("Could not create zfzfilled")
+ */
+  __pyx_v_zfzfilled = ((char *)malloc((__pyx_v_nxl * (__pyx_v_nfilt - 1))));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":244
+ *     nxl = np.PyArray_ITEMSIZE(x)
+ *     zfzfilled = <char *>malloc(nxl * (nfilt - 1))
+ *     if zfzfilled == NULL:             # <<<<<<<<<<<<<<
+ *         raise MemoryError("Could not create zfzfilled")
+ * 
+ */
+  __pyx_t_1 = (__pyx_v_zfzfilled == NULL);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":245
+ *     zfzfilled = <char *>malloc(nxl * (nfilt - 1))
+ *     if zfzfilled == NULL:
+ *         raise MemoryError("Could not create zfzfilled")             # <<<<<<<<<<<<<<
+ * 
+ *     # Initialize zero filled buffers to 0, so that we can use
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "MemoryError");
+    __pyx_t_3 = __site_call1_245_25->Target(__site_call1_245_25, __pyx_context, __pyx_t_2, ((System::Object^)"Could not create zfzfilled"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
+    goto __pyx_L10;
+  }
+  __pyx_L10:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":253
+ *     # refcounts), but oh well...
+ * 
+ *     memset(<void *>azfilled, 0, nal * nfilt)             # <<<<<<<<<<<<<<
+ *     memset(<void *>bzfilled, 0, nbl * nfilt)
+ *     memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
+ */
+  memset(((void *)__pyx_v_azfilled), 0, (__pyx_v_nal * __pyx_v_nfilt));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":254
+ * 
+ *     memset(<void *>azfilled, 0, nal * nfilt)
+ *     memset(<void *>bzfilled, 0, nbl * nfilt)             # <<<<<<<<<<<<<<
+ *     memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
+ * 
+ */
+  memset(((void *)__pyx_v_bzfilled), 0, (__pyx_v_nbl * __pyx_v_nfilt));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":255
+ *     memset(<void *>azfilled, 0, nal * nfilt)
+ *     memset(<void *>bzfilled, 0, nbl * nfilt)
+ *     memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))             # <<<<<<<<<<<<<<
+ * 
+ *     zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)
+ */
+  memset(((void *)__pyx_v_zfzfilled), 0, (__pyx_v_nxl * (__pyx_v_nfilt - 1)));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":257
+ *     memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
+ * 
+ *     zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)             # <<<<<<<<<<<<<<
+ *     zfill(np.PyArray_ARRAY(b), nb, bzfilled, nfilt)
+ * 
+ */
+  zfill(PyArray_ARRAY(__pyx_v_a), __pyx_v_na, __pyx_v_azfilled, __pyx_v_nfilt);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":258
+ * 
+ *     zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)
+ *     zfill(np.PyArray_ARRAY(b), nb, bzfilled, nfilt)             # <<<<<<<<<<<<<<
+ * 
+ *     # XXX: Check that zf and zi have same type ?
+ */
+  zfill(PyArray_ARRAY(__pyx_v_b), __pyx_v_nb, __pyx_v_bzfilled, __pyx_v_nfilt);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":261
+ * 
+ *     # XXX: Check that zf and zi have same type ?
+ *     if zf is not None:             # <<<<<<<<<<<<<<
+ *         nzfl = np.PyArray_ITEMSIZE(zf)
+ *     else:
+ */
+  __pyx_t_1 = (((System::Object^)__pyx_v_zf) != nullptr);
+  if (__pyx_t_1) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":262
+ *     # XXX: Check that zf and zi have same type ?
+ *     if zf is not None:
+ *         nzfl = np.PyArray_ITEMSIZE(zf)             # <<<<<<<<<<<<<<
+ *     else:
+ *         nzfl = 0
+ */
+    __pyx_v_nzfl = PyArray_ITEMSIZE(__pyx_v_zf);
+    goto __pyx_L11;
+  }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":264
+ *         nzfl = np.PyArray_ITEMSIZE(zf)
+ *     else:
+ *         nzfl = 0             # <<<<<<<<<<<<<<
+ * 
+ *     # Iterate over the input array
+ */
+    __pyx_v_nzfl = 0;
+  }
+  __pyx_L11:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":267
+ * 
+ *     # Iterate over the input array
+ *     for i in range(nitx):             # <<<<<<<<<<<<<<
+ *         if zi is not None:
+ *             yoyo = itzi.dataptr
+ */
+  __pyx_t_4 = __pyx_v_nitx;
+  for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+    __pyx_v_i = __pyx_t_5;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":268
+ *     # Iterate over the input array
+ *     for i in range(nitx):
+ *         if zi is not None:             # <<<<<<<<<<<<<<
+ *             yoyo = itzi.dataptr
+ *             # Copy initial conditions zi in zfzfilled buffer
+ */
+    __pyx_t_1 = (((System::Object^)__pyx_v_zi) != nullptr);
+    if (__pyx_t_1) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":269
+ *     for i in range(nitx):
+ *         if zi is not None:
+ *             yoyo = itzi.dataptr             # <<<<<<<<<<<<<<
+ *             # Copy initial conditions zi in zfzfilled buffer
+ *             for j in range(nfilt - 1):
+ */
+      __pyx_v_yoyo = __pyx_v_itzi->dataptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":271
+ *             yoyo = itzi.dataptr
+ *             # Copy initial conditions zi in zfzfilled buffer
+ *             for j in range(nfilt - 1):             # <<<<<<<<<<<<<<
+ *                 copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
+ *                 yoyo += itzi.strides[axis]
+ */
+      __pyx_t_6 = (__pyx_v_nfilt - 1);
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":272
+ *             # Copy initial conditions zi in zfzfilled buffer
+ *             for j in range(nfilt - 1):
+ *                 copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)             # <<<<<<<<<<<<<<
+ *                 yoyo += itzi.strides[axis]
+ * 
+ */
+        __pyx_v_copyswap((__pyx_v_zfzfilled + (__pyx_v_j * __pyx_v_nzfl)), __pyx_v_yoyo, 0, NULL);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":273
+ *             for j in range(nfilt - 1):
+ *                 copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
+ *                 yoyo += itzi.strides[axis]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArray_ITER_NEXT(itzi)
+ */
+        __pyx_v_yoyo += (__pyx_v_itzi->strides[__pyx_v_axis]);
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":275
+ *                 yoyo += itzi.strides[axis]
+ * 
+ *             np.PyArray_ITER_NEXT(itzi)             # <<<<<<<<<<<<<<
+ *         else:
+ *             zfill(np.PyArray_ARRAY(x), 0, zfzfilled, nfilt - 1)
+ */
+      PyArray_ITER_NEXT(__pyx_v_itzi);
+      goto __pyx_L14;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":277
+ *             np.PyArray_ITER_NEXT(itzi)
+ *         else:
+ *             zfill(np.PyArray_ARRAY(x), 0, zfzfilled, nfilt - 1)             # <<<<<<<<<<<<<<
+ * 
+ *         filter_func(bzfilled, azfilled,
+ */
+      zfill(PyArray_ARRAY(__pyx_v_x), 0, __pyx_v_zfzfilled, (__pyx_v_nfilt - 1));
+    }
+    __pyx_L14:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":282
+ *                     itx.dataptr, ity.dataptr, zfzfilled,
+ *                     nfilt, np.PyArray_DIMS(x)[axis], itx.strides[axis],
+ *                     ity.strides[axis]);             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_NEXT(itx)
+ *         np.PyArray_ITER_NEXT(ity)
+ */
+    __pyx_v_filter_func(__pyx_v_bzfilled, __pyx_v_azfilled, __pyx_v_itx->dataptr, __pyx_v_ity->dataptr, __pyx_v_zfzfilled, __pyx_v_nfilt, (PyArray_DIMS(__pyx_v_x)[__pyx_v_axis]), (__pyx_v_itx->strides[__pyx_v_axis]), (__pyx_v_ity->strides[__pyx_v_axis]));
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":283
+ *                     nfilt, np.PyArray_DIMS(x)[axis], itx.strides[axis],
+ *                     ity.strides[axis]);
+ *         np.PyArray_ITER_NEXT(itx)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":284
+ *                     ity.strides[axis]);
+ *         np.PyArray_ITER_NEXT(itx)
+ *         np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         # Copy tmp buffer fo final values back into zf output array
+ */
+    PyArray_ITER_NEXT(__pyx_v_ity);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":287
+ * 
+ *         # Copy tmp buffer fo final values back into zf output array
+ *         if zi is not None:             # <<<<<<<<<<<<<<
+ *             yoyo = itzf.dataptr
+ *             for j in range(nfilt - 1):
+ */
+    __pyx_t_1 = (((System::Object^)__pyx_v_zi) != nullptr);
+    if (__pyx_t_1) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":288
+ *         # Copy tmp buffer fo final values back into zf output array
+ *         if zi is not None:
+ *             yoyo = itzf.dataptr             # <<<<<<<<<<<<<<
+ *             for j in range(nfilt - 1):
+ *                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+ */
+      __pyx_v_yoyo = __pyx_v_itzf->dataptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":289
+ *         if zi is not None:
+ *             yoyo = itzf.dataptr
+ *             for j in range(nfilt - 1):             # <<<<<<<<<<<<<<
+ *                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+ *                 yoyo += itzf.strides[axis]
+ */
+      __pyx_t_6 = (__pyx_v_nfilt - 1);
+      for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
+        __pyx_v_j = __pyx_t_7;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":290
+ *             yoyo = itzf.dataptr
+ *             for j in range(nfilt - 1):
+ *                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)             # <<<<<<<<<<<<<<
+ *                 yoyo += itzf.strides[axis]
+ *             np.PyArray_ITER_NEXT(itzf);
+ */
+        __pyx_v_copyswap(__pyx_v_yoyo, (__pyx_v_zfzfilled + (__pyx_v_j * __pyx_v_nzfl)), 0, NULL);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":291
+ *             for j in range(nfilt - 1):
+ *                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+ *                 yoyo += itzf.strides[axis]             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(itzf);
+ * 
+ */
+        __pyx_v_yoyo += (__pyx_v_itzf->strides[__pyx_v_axis]);
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":292
+ *                 copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+ *                 yoyo += itzf.strides[axis]
+ *             np.PyArray_ITER_NEXT(itzf);             # <<<<<<<<<<<<<<
+ * 
+ *     # Free up allocated memory
+ */
+      PyArray_ITER_NEXT(__pyx_v_itzf);
+      goto __pyx_L17;
+    }
+    __pyx_L17:;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":295
+ * 
+ *     # Free up allocated memory
+ *     free(zfzfilled)             # <<<<<<<<<<<<<<
+ *     free(bzfilled)
+ *     free(azfilled)
+ */
+  free(__pyx_v_zfzfilled);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":296
+ *     # Free up allocated memory
+ *     free(zfzfilled)
+ *     free(bzfilled)             # <<<<<<<<<<<<<<
+ *     free(azfilled)
+ * 
+ */
+  free(__pyx_v_bzfilled);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":297
+ *     free(zfzfilled)
+ *     free(bzfilled)
+ *     free(azfilled)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+  free(__pyx_v_azfilled);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":299
+ *     free(azfilled)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * #################################################################
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":305
+ * #   dimension of an N-D array.                                  #
+ * #################################################################
+ * cdef int FLOAT_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_FLOAT_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_FLOAT_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_FLOAT_filt^ __pyx_delegate_val_FLOAT_filt;
+static  int FLOAT_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  float *__pyx_v_ptr_Z;
+  float *__pyx_v_ptr_b;
+  float *__pyx_v_ptr_a;
+  float *__pyx_v_xn;
+  float *__pyx_v_yn;
+  float __pyx_v_a0;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  float __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  float __pyx_t_7;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":308
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef float *ptr_Z, *ptr_b
+ *     cdef float *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":312
+ *     cdef float *ptr_a
+ *     cdef float *xn, *yn
+ *     cdef float a0 = (<float *> a)[0]             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp n
+ *     cdef np.npy_uintp k
+ */
+  __pyx_v_a0 = (((float *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":316
+ *     cdef np.npy_uintp k
+ * 
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <float *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <float *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":317
+ * 
+ *     for k in range(len_x):
+ *         ptr_b = <float *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/             # <<<<<<<<<<<<<<
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x
+ */
+    __pyx_v_ptr_b = ((float *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":318
+ *     for k in range(len_x):
+ *         ptr_b = <float *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <float *>a             # <<<<<<<<<<<<<<
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y
+ */
+    __pyx_v_ptr_a = ((float *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":319
+ *         ptr_b = <float *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((float *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":320
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z
+ */
+    __pyx_v_yn = ((float *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":321
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <float *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":322
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z             # <<<<<<<<<<<<<<
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ */
+      __pyx_v_ptr_Z = ((float *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":323
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)             # <<<<<<<<<<<<<<
+ *             ptr_b += 1
+ *             ptr_a += 1
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + ((__pyx_t_4 / __pyx_v_a0) * (__pyx_v_xn[0])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":324
+ *             ptr_Z = <float *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1             # <<<<<<<<<<<<<<
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":325
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ *             ptr_a += 1             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":327
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":328
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ */
+        __pyx_t_4 = (__pyx_v_ptr_b[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        __pyx_t_7 = (__pyx_v_ptr_a[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = (((__pyx_v_ptr_Z[1]) + ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0))) - ((__pyx_v_yn[0]) * (__pyx_t_7 / __pyx_v_a0)));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":329
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1             # <<<<<<<<<<<<<<
+ *                 ptr_a += 1
+ *                 ptr_Z += 1
+ */
+        __pyx_v_ptr_b += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":330
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ *                 ptr_a += 1             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_a += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":331
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ *                 ptr_Z += 1             # <<<<<<<<<<<<<<
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ */
+        __pyx_v_ptr_Z += 1;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":333
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ */
+      __pyx_t_7 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      __pyx_t_4 = (__pyx_v_ptr_a[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (((__pyx_v_xn[0]) * (__pyx_t_7 / __pyx_v_a0)) - ((__pyx_v_yn[0]) * (__pyx_t_4 / __pyx_v_a0)));
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":335
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0));
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":337
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":338
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * 
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":339
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":342
+ * 
+ * 
+ * cdef int CFLOAT_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_CFLOAT_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_CFLOAT_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CFLOAT_filt^ __pyx_delegate_val_CFLOAT_filt;
+static  int CFLOAT_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  float *__pyx_v_ptr_Z;
+  float *__pyx_v_ptr_b;
+  float *__pyx_v_ptr_a;
+  float *__pyx_v_xn;
+  float *__pyx_v_yn;
+  float __pyx_v_a0r;
+  float __pyx_v_a0i;
+  float __pyx_v_a0_mag;
+  float __pyx_v_tmpr;
+  float __pyx_v_tmpi;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  float __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":345
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef float *ptr_Z, *ptr_b
+ *     cdef float *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":349
+ *     cdef float *ptr_a
+ *     cdef float *xn, *yn
+ *     cdef float a0r = (<float *>a)[0]             # <<<<<<<<<<<<<<
+ *     cdef float a0i = (<float *>a)[1]
+ *     cdef float a0_mag, tmpr, tmpi
+ */
+  __pyx_v_a0r = (((float *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":350
+ *     cdef float *xn, *yn
+ *     cdef float a0r = (<float *>a)[0]
+ *     cdef float a0i = (<float *>a)[1]             # <<<<<<<<<<<<<<
+ *     cdef float a0_mag, tmpr, tmpi
+ *     cdef np.npy_intp n
+ */
+  __pyx_v_a0i = (((float *)__pyx_v_a)[1]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":355
+ *     cdef np.npy_uintp k
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i             # <<<<<<<<<<<<<<
+ *     for k in range(len_x):
+ *         ptr_b = <float *>b   # Reset a and b pointers
+ */
+  __pyx_v_a0_mag = ((__pyx_v_a0r * __pyx_v_a0r) + (__pyx_v_a0i * __pyx_v_a0i));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":356
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <float *>b   # Reset a and b pointers
+ *         ptr_a = <float *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":357
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):
+ *         ptr_b = <float *>b   # Reset a and b pointers             # <<<<<<<<<<<<<<
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x
+ */
+    __pyx_v_ptr_b = ((float *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":358
+ *     for k in range(len_x):
+ *         ptr_b = <float *>b   # Reset a and b pointers
+ *         ptr_a = <float *>a             # <<<<<<<<<<<<<<
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y
+ */
+    __pyx_v_ptr_a = ((float *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":359
+ *         ptr_b = <float *>b   # Reset a and b pointers
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((float *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":360
+ *         ptr_a = <float *>a
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z
+ */
+    __pyx_v_yn = ((float *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":361
+ *         xn = <float *>ptr_x
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <float *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":362
+ *         yn = <float *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_v_ptr_Z = ((float *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":363
+ *         if len_b > 1:
+ *             ptr_Z = <float *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":364
+ *             ptr_Z = <float *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":366
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":367
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_b += 2
+ *             ptr_a += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = ((__pyx_v_ptr_Z[1]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":368
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2             # <<<<<<<<<<<<<<
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":369
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ *             ptr_a += 2             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":371
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":372
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":373
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":374
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = ((__pyx_v_ptr_Z[2]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":375
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) = ((__pyx_v_ptr_Z[3]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":376
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":377
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":378
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":379
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":380
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2             # <<<<<<<<<<<<<<
+ *                 ptr_a += 2
+ *                 ptr_Z += 2
+ */
+        __pyx_v_ptr_b += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":381
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ *                 ptr_a += 2             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 2
+ * 
+ */
+        __pyx_v_ptr_a += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":382
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ *                 ptr_Z += 2             # <<<<<<<<<<<<<<
+ * 
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_Z += 2;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":385
+ * 
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":386
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":387
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":388
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":389
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":390
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":391
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":392
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":394
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":395
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":396
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":397
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":399
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":400
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * cdef int DOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":401
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int DOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":402
+ *         ptr_x += stride_X
+ *     return 0
+ * cdef int DOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_DOUBLE_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_DOUBLE_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_DOUBLE_filt^ __pyx_delegate_val_DOUBLE_filt;
+static  int DOUBLE_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  double *__pyx_v_ptr_Z;
+  double *__pyx_v_ptr_b;
+  double *__pyx_v_ptr_a;
+  double *__pyx_v_xn;
+  double *__pyx_v_yn;
+  double __pyx_v_a0;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  double __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  double __pyx_t_7;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":405
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef double *ptr_Z, *ptr_b
+ *     cdef double *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":409
+ *     cdef double *ptr_a
+ *     cdef double *xn, *yn
+ *     cdef double a0 = (<double *> a)[0]             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp n
+ *     cdef np.npy_uintp k
+ */
+  __pyx_v_a0 = (((double *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":413
+ *     cdef np.npy_uintp k
+ * 
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <double *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <double *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":414
+ * 
+ *     for k in range(len_x):
+ *         ptr_b = <double *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/             # <<<<<<<<<<<<<<
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x
+ */
+    __pyx_v_ptr_b = ((double *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":415
+ *     for k in range(len_x):
+ *         ptr_b = <double *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <double *>a             # <<<<<<<<<<<<<<
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y
+ */
+    __pyx_v_ptr_a = ((double *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":416
+ *         ptr_b = <double *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((double *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":417
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z
+ */
+    __pyx_v_yn = ((double *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":418
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <double *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":419
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z             # <<<<<<<<<<<<<<
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ */
+      __pyx_v_ptr_Z = ((double *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":420
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)             # <<<<<<<<<<<<<<
+ *             ptr_b += 1
+ *             ptr_a += 1
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + ((__pyx_t_4 / __pyx_v_a0) * (__pyx_v_xn[0])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":421
+ *             ptr_Z = <double *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1             # <<<<<<<<<<<<<<
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":422
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ *             ptr_a += 1             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":424
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":425
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ */
+        __pyx_t_4 = (__pyx_v_ptr_b[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        __pyx_t_7 = (__pyx_v_ptr_a[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = (((__pyx_v_ptr_Z[1]) + ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0))) - ((__pyx_v_yn[0]) * (__pyx_t_7 / __pyx_v_a0)));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":426
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1             # <<<<<<<<<<<<<<
+ *                 ptr_a += 1
+ *                 ptr_Z += 1
+ */
+        __pyx_v_ptr_b += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":427
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ *                 ptr_a += 1             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_a += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":428
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ *                 ptr_Z += 1             # <<<<<<<<<<<<<<
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ */
+        __pyx_v_ptr_Z += 1;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":430
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ */
+      __pyx_t_7 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      __pyx_t_4 = (__pyx_v_ptr_a[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (((__pyx_v_xn[0]) * (__pyx_t_7 / __pyx_v_a0)) - ((__pyx_v_yn[0]) * (__pyx_t_4 / __pyx_v_a0)));
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":432
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0));
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":434
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":435
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * 
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":436
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":439
+ * 
+ * 
+ * cdef int CDOUBLE_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_CDOUBLE_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_CDOUBLE_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CDOUBLE_filt^ __pyx_delegate_val_CDOUBLE_filt;
+static  int CDOUBLE_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  double *__pyx_v_ptr_Z;
+  double *__pyx_v_ptr_b;
+  double *__pyx_v_ptr_a;
+  double *__pyx_v_xn;
+  double *__pyx_v_yn;
+  double __pyx_v_a0r;
+  double __pyx_v_a0i;
+  double __pyx_v_a0_mag;
+  double __pyx_v_tmpr;
+  double __pyx_v_tmpi;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  double __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":442
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef double *ptr_Z, *ptr_b
+ *     cdef double *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":446
+ *     cdef double *ptr_a
+ *     cdef double *xn, *yn
+ *     cdef double a0r = (<double *>a)[0]             # <<<<<<<<<<<<<<
+ *     cdef double a0i = (<double *>a)[1]
+ *     cdef double a0_mag, tmpr, tmpi
+ */
+  __pyx_v_a0r = (((double *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":447
+ *     cdef double *xn, *yn
+ *     cdef double a0r = (<double *>a)[0]
+ *     cdef double a0i = (<double *>a)[1]             # <<<<<<<<<<<<<<
+ *     cdef double a0_mag, tmpr, tmpi
+ *     cdef np.npy_intp n
+ */
+  __pyx_v_a0i = (((double *)__pyx_v_a)[1]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":452
+ *     cdef np.npy_uintp k
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i             # <<<<<<<<<<<<<<
+ *     for k in range(len_x):
+ *         ptr_b = <double *>b   # Reset a and b pointers
+ */
+  __pyx_v_a0_mag = ((__pyx_v_a0r * __pyx_v_a0r) + (__pyx_v_a0i * __pyx_v_a0i));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":453
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <double *>b   # Reset a and b pointers
+ *         ptr_a = <double *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":454
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):
+ *         ptr_b = <double *>b   # Reset a and b pointers             # <<<<<<<<<<<<<<
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x
+ */
+    __pyx_v_ptr_b = ((double *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":455
+ *     for k in range(len_x):
+ *         ptr_b = <double *>b   # Reset a and b pointers
+ *         ptr_a = <double *>a             # <<<<<<<<<<<<<<
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y
+ */
+    __pyx_v_ptr_a = ((double *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":456
+ *         ptr_b = <double *>b   # Reset a and b pointers
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((double *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":457
+ *         ptr_a = <double *>a
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z
+ */
+    __pyx_v_yn = ((double *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":458
+ *         xn = <double *>ptr_x
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <double *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":459
+ *         yn = <double *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_v_ptr_Z = ((double *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":460
+ *         if len_b > 1:
+ *             ptr_Z = <double *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":461
+ *             ptr_Z = <double *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":463
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":464
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_b += 2
+ *             ptr_a += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = ((__pyx_v_ptr_Z[1]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":465
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2             # <<<<<<<<<<<<<<
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":466
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ *             ptr_a += 2             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":468
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":469
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":470
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":471
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = ((__pyx_v_ptr_Z[2]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":472
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) = ((__pyx_v_ptr_Z[3]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":473
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":474
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":475
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":476
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":477
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2             # <<<<<<<<<<<<<<
+ *                 ptr_a += 2
+ *                 ptr_Z += 2
+ */
+        __pyx_v_ptr_b += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":478
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ *                 ptr_a += 2             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 2
+ * 
+ */
+        __pyx_v_ptr_a += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":479
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ *                 ptr_Z += 2             # <<<<<<<<<<<<<<
+ * 
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_Z += 2;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":482
+ * 
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":483
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":484
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":485
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":486
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":487
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":488
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":489
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":491
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":492
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":493
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":494
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":496
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":497
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * cdef int EXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":498
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int EXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":499
+ *         ptr_x += stride_X
+ *     return 0
+ * cdef int EXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_EXTENDED_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_EXTENDED_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_EXTENDED_filt^ __pyx_delegate_val_EXTENDED_filt;
+static  int EXTENDED_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_Z;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_b;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_a;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_xn;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_yn;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_a0;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  __pyx_t_5numpy_npy_longdouble __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+  __pyx_t_5numpy_npy_longdouble __pyx_t_7;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":502
+ *                    np.npy_intp len_b, np.npy_uintp len_x,
+ *                    np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef np.npy_longdouble *ptr_Z, *ptr_b
+ *     cdef np.npy_longdouble *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":506
+ *     cdef np.npy_longdouble *ptr_a
+ *     cdef np.npy_longdouble *xn, *yn
+ *     cdef np.npy_longdouble a0 = (<np.npy_longdouble *> a)[0]             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp n
+ *     cdef np.npy_uintp k
+ */
+  __pyx_v_a0 = (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":510
+ *     cdef np.npy_uintp k
+ * 
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <np.npy_longdouble *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":511
+ * 
+ *     for k in range(len_x):
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/             # <<<<<<<<<<<<<<
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x
+ */
+    __pyx_v_ptr_b = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":512
+ *     for k in range(len_x):
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <np.npy_longdouble *>a             # <<<<<<<<<<<<<<
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y
+ */
+    __pyx_v_ptr_a = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":513
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers *[inserted by cython to avoid comment closer]/
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":514
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z
+ */
+    __pyx_v_yn = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":515
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":516
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z             # <<<<<<<<<<<<<<
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ */
+      __pyx_v_ptr_Z = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":517
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)             # <<<<<<<<<<<<<<
+ *             ptr_b += 1
+ *             ptr_a += 1
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + ((__pyx_t_4 / __pyx_v_a0) * (__pyx_v_xn[0])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":518
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1             # <<<<<<<<<<<<<<
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":519
+ *             yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+ *             ptr_b += 1
+ *             ptr_a += 1             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":521
+ *             ptr_a += 1
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":522
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ */
+        __pyx_t_4 = (__pyx_v_ptr_b[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        __pyx_t_7 = (__pyx_v_ptr_a[0]);
+        if (unlikely(__pyx_v_a0 == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = (((__pyx_v_ptr_Z[1]) + ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0))) - ((__pyx_v_yn[0]) * (__pyx_t_7 / __pyx_v_a0)));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":523
+ *             for n in range(len_b - 2):
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1             # <<<<<<<<<<<<<<
+ *                 ptr_a += 1
+ *                 ptr_Z += 1
+ */
+        __pyx_v_ptr_b += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":524
+ *                 ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *                 ptr_b += 1
+ *                 ptr_a += 1             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_a += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":525
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ *                 ptr_Z += 1             # <<<<<<<<<<<<<<
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ */
+        __pyx_v_ptr_Z += 1;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":527
+ *                 ptr_Z += 1
+ *             # Calculate last delay
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)             # <<<<<<<<<<<<<<
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ */
+      __pyx_t_7 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      __pyx_t_4 = (__pyx_v_ptr_a[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (((__pyx_v_xn[0]) * (__pyx_t_7 / __pyx_v_a0)) - ((__pyx_v_yn[0]) * (__pyx_t_4 / __pyx_v_a0)));
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":529
+ *             ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+ *         else:
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ */
+      __pyx_t_4 = (__pyx_v_ptr_b[0]);
+      if (unlikely(__pyx_v_a0 == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_xn[0]) * (__pyx_t_4 / __pyx_v_a0));
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":531
+ *             yn[0] = xn[0] * (ptr_b[0] / a0)
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":532
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * 
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":533
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":536
+ * 
+ * 
+ * cdef int CEXTENDED_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static int (*__pyx_function_pointer_CEXTENDED_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+typedef int (*__pyx_fp_t_CEXTENDED_filt)(char *, char *, char *, char *, char *, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_uintp, __pyx_t_5numpy_npy_intp, __pyx_t_5numpy_npy_intp);
+static __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CEXTENDED_filt^ __pyx_delegate_val_CEXTENDED_filt;
+static  int CEXTENDED_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_Z;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_b;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr_a;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_xn;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_yn;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_a0r;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_a0i;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_a0_mag;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_tmpr;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_tmpi;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  __pyx_t_5numpy_npy_longdouble __pyx_t_4;
+  long __pyx_t_5;
+  __pyx_t_5numpy_npy_intp __pyx_t_6;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":539
+ *                     np.npy_intp len_b, np.npy_uintp len_x,
+ *                     np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef np.npy_longdouble *ptr_Z, *ptr_b
+ *     cdef np.npy_longdouble *ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":543
+ *     cdef np.npy_longdouble *ptr_a
+ *     cdef np.npy_longdouble *xn, *yn
+ *     cdef np.npy_longdouble a0r = (<np.npy_longdouble *>a)[0]             # <<<<<<<<<<<<<<
+ *     cdef np.npy_longdouble a0i = (<np.npy_longdouble *>a)[1]
+ *     cdef np.npy_longdouble a0_mag, tmpr, tmpi
+ */
+  __pyx_v_a0r = (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_a)[0]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":544
+ *     cdef np.npy_longdouble *xn, *yn
+ *     cdef np.npy_longdouble a0r = (<np.npy_longdouble *>a)[0]
+ *     cdef np.npy_longdouble a0i = (<np.npy_longdouble *>a)[1]             # <<<<<<<<<<<<<<
+ *     cdef np.npy_longdouble a0_mag, tmpr, tmpi
+ *     cdef np.npy_intp n
+ */
+  __pyx_v_a0i = (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_a)[1]);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":549
+ *     cdef np.npy_uintp k
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i             # <<<<<<<<<<<<<<
+ *     for k in range(len_x):
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers
+ */
+  __pyx_v_a0_mag = ((__pyx_v_a0r * __pyx_v_a0r) + (__pyx_v_a0i * __pyx_v_a0i));
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":550
+ * 
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers
+ *         ptr_a = <np.npy_longdouble *>a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":551
+ *     a0_mag = a0r * a0r + a0i * a0i
+ *     for k in range(len_x):
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers             # <<<<<<<<<<<<<<
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x
+ */
+    __pyx_v_ptr_b = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":552
+ *     for k in range(len_x):
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers
+ *         ptr_a = <np.npy_longdouble *>a             # <<<<<<<<<<<<<<
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y
+ */
+    __pyx_v_ptr_a = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":553
+ *         ptr_b = <np.npy_longdouble *>b   # Reset a and b pointers
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":554
+ *         ptr_a = <np.npy_longdouble *>a
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z
+ */
+    __pyx_v_yn = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":555
+ *         xn = <np.npy_longdouble *>ptr_x
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":556
+ *         yn = <np.npy_longdouble *>ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_v_ptr_Z = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":557
+ *         if len_b > 1:
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":558
+ *             ptr_Z = <np.npy_longdouble *>Z
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":560
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = ((__pyx_v_ptr_Z[0]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":561
+ *             # Calculate first delay (output)
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_b += 2
+ *             ptr_a += 2
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = ((__pyx_v_ptr_Z[1]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":562
+ *             yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2             # <<<<<<<<<<<<<<
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_b += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":563
+ *             yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             ptr_b += 2
+ *             ptr_a += 2             # <<<<<<<<<<<<<<
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ */
+      __pyx_v_ptr_a += 2;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":565
+ *             ptr_a += 2
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ */
+      __pyx_t_5 = (__pyx_v_len_b - 2);
+      for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
+        __pyx_v_n = __pyx_t_6;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":566
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":567
+ *             for n in range(len_b - 2):
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":568
+ *                 tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) = ((__pyx_v_ptr_Z[2]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":569
+ *                 tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) = ((__pyx_v_ptr_Z[3]) + (__pyx_t_4 / __pyx_v_a0_mag));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":570
+ *                 ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":571
+ *                 ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+        __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":572
+ *                 tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":573
+ *                 tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ */
+        __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+        if (unlikely(__pyx_v_a0_mag == 0)) {
+          throw PythonOps::ZeroDivisionError("float division");
+        }
+        (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":574
+ *                 ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2             # <<<<<<<<<<<<<<
+ *                 ptr_a += 2
+ *                 ptr_Z += 2
+ */
+        __pyx_v_ptr_b += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":575
+ *                 ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *                 ptr_b += 2
+ *                 ptr_a += 2             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 2
+ * 
+ */
+        __pyx_v_ptr_a += 2;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":576
+ *                 ptr_b += 2
+ *                 ptr_a += 2
+ *                 ptr_Z += 2             # <<<<<<<<<<<<<<
+ * 
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_Z += 2;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":579
+ * 
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":580
+ *             # Calculate last delay
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":581
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":582
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":583
+ *             ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_a[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_a[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":584
+ *             ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i             # <<<<<<<<<<<<<<
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_a[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_a[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":585
+ *             tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_yn[0])) - (__pyx_v_tmpi * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[0]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":586
+ *             tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+ *             ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_yn[0])) + (__pyx_v_tmpr * (__pyx_v_yn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_ptr_Z[1]) -= (__pyx_t_4 / __pyx_v_a0_mag);
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":588
+ *             ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i             # <<<<<<<<<<<<<<
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpr = (((__pyx_v_ptr_b[0]) * __pyx_v_a0r) + ((__pyx_v_ptr_b[1]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":589
+ *         else:
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i             # <<<<<<<<<<<<<<
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ */
+      __pyx_v_tmpi = (((__pyx_v_ptr_b[1]) * __pyx_v_a0r) - ((__pyx_v_ptr_b[0]) * __pyx_v_a0i));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":590
+ *             tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ */
+      __pyx_t_4 = ((__pyx_v_tmpr * (__pyx_v_xn[0])) - (__pyx_v_tmpi * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[0]) = (__pyx_t_4 / __pyx_v_a0_mag);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":591
+ *             tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+ *             yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ */
+      __pyx_t_4 = ((__pyx_v_tmpi * (__pyx_v_xn[0])) + (__pyx_v_tmpr * (__pyx_v_xn[1])));
+      if (unlikely(__pyx_v_a0_mag == 0)) {
+        throw PythonOps::ZeroDivisionError("float division");
+      }
+      (__pyx_v_yn[1]) = (__pyx_t_4 / __pyx_v_a0_mag);
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":593
+ *             yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ *     return 0
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":594
+ * 
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ *     return 0
+ * 
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":595
+ *         ptr_y += stride_Y     # Move to next input/output point
+ *         ptr_x += stride_X
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * cdef OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":597
+ *     return 0
+ * 
+ * cdef OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,             # <<<<<<<<<<<<<<
+ *                  np.npy_intp len_b, np.npy_uintp len_x,
+ *                  np.npy_intp stride_X, np.npy_intp stride_Y):
+ */
+
+static  System::Object^ OBJECT_filt(char *__pyx_v_b, char *__pyx_v_a, char *__pyx_v_x, char *__pyx_v_y, char *__pyx_v_Z, __pyx_t_5numpy_npy_intp __pyx_v_len_b, __pyx_t_5numpy_npy_uintp __pyx_v_len_x, __pyx_t_5numpy_npy_intp __pyx_v_stride_X, __pyx_t_5numpy_npy_intp __pyx_v_stride_Y) {
+  char *__pyx_v_ptr_x;
+  char *__pyx_v_ptr_y;
+  PYOBJPTRPTR __pyx_v_ptr_Z;
+  PYOBJPTRPTR __pyx_v_ptr_b;
+  PYOBJPTRPTR __pyx_v_ptr_a;
+  PYOBJPTRPTR __pyx_v_xn;
+  PYOBJPTRPTR __pyx_v_yn;
+  PYOBJPTRPTR __pyx_v_a0;
+  System::Object^ __pyx_v_tmp1;
+  System::Object^ __pyx_v_tmp2;
+  System::Object^ __pyx_v_tmp3;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  __pyx_t_5numpy_npy_uintp __pyx_v_k;
+  System::Object^ __pyx_r = nullptr;
+  __pyx_t_5numpy_npy_uintp __pyx_t_1;
+  __pyx_t_5numpy_npy_uintp __pyx_t_2;
+  int __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  System::Object^ __pyx_t_6 = nullptr;
+  long __pyx_t_7;
+  __pyx_t_5numpy_npy_intp __pyx_t_8;
+  __pyx_v_tmp1 = nullptr;
+  __pyx_v_tmp2 = nullptr;
+  __pyx_v_tmp3 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":600
+ *                  np.npy_intp len_b, np.npy_uintp len_x,
+ *                  np.npy_intp stride_X, np.npy_intp stride_Y):
+ *     cdef char *ptr_x = x, *ptr_y = y             # <<<<<<<<<<<<<<
+ *     cdef PYOBJPTRPTR ptr_Z, ptr_b
+ *     cdef PYOBJPTRPTR ptr_a
+ */
+  __pyx_v_ptr_x = __pyx_v_x;
+  __pyx_v_ptr_y = __pyx_v_y;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":604
+ *     cdef PYOBJPTRPTR ptr_a
+ *     cdef PYOBJPTRPTR xn, yn
+ *     cdef PYOBJPTRPTR a0 = <PYOBJPTRPTR> a             # <<<<<<<<<<<<<<
+ *     cdef object tmp1, tmp2, tmp3
+ *     cdef np.npy_intp n
+ */
+  __pyx_v_a0 = ((PYOBJPTRPTR)__pyx_v_a);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":610
+ * 
+ *     # My reference counting might not be right
+ *     for k in range(len_x):             # <<<<<<<<<<<<<<
+ *         ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+ *         ptr_a = <PYOBJPTRPTR> a
+ */
+  __pyx_t_1 = __pyx_v_len_x;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_k = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":611
+ *     # My reference counting might not be right
+ *     for k in range(len_x):
+ *         ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers             # <<<<<<<<<<<<<<
+ *         ptr_a = <PYOBJPTRPTR> a
+ *         xn = <PYOBJPTRPTR> ptr_x
+ */
+    __pyx_v_ptr_b = ((PYOBJPTRPTR)__pyx_v_b);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":612
+ *     for k in range(len_x):
+ *         ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+ *         ptr_a = <PYOBJPTRPTR> a             # <<<<<<<<<<<<<<
+ *         xn = <PYOBJPTRPTR> ptr_x
+ *         yn = <PYOBJPTRPTR> ptr_y
+ */
+    __pyx_v_ptr_a = ((PYOBJPTRPTR)__pyx_v_a);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":613
+ *         ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+ *         ptr_a = <PYOBJPTRPTR> a
+ *         xn = <PYOBJPTRPTR> ptr_x             # <<<<<<<<<<<<<<
+ *         yn = <PYOBJPTRPTR> ptr_y
+ *         if len_b > 1:
+ */
+    __pyx_v_xn = ((PYOBJPTRPTR)__pyx_v_ptr_x);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":614
+ *         ptr_a = <PYOBJPTRPTR> a
+ *         xn = <PYOBJPTRPTR> ptr_x
+ *         yn = <PYOBJPTRPTR> ptr_y             # <<<<<<<<<<<<<<
+ *         if len_b > 1:
+ *             ptr_Z = (<PYOBJPTRPTR> Z)
+ */
+    __pyx_v_yn = ((PYOBJPTRPTR)__pyx_v_ptr_y);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":615
+ *         xn = <PYOBJPTRPTR> ptr_x
+ *         yn = <PYOBJPTRPTR> ptr_y
+ *         if len_b > 1:             # <<<<<<<<<<<<<<
+ *             ptr_Z = (<PYOBJPTRPTR> Z)
+ *             # Calculate first delay (output)
+ */
+    __pyx_t_3 = (__pyx_v_len_b > 1);
+    if (__pyx_t_3) {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":616
+ *         yn = <PYOBJPTRPTR> ptr_y
+ *         if len_b > 1:
+ *             ptr_Z = (<PYOBJPTRPTR> Z)             # <<<<<<<<<<<<<<
+ *             # Calculate first delay (output)
+ *             tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+ */
+      __pyx_v_ptr_Z = ((PYOBJPTRPTR)__pyx_v_Z);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":618
+ *             ptr_Z = (<PYOBJPTRPTR> Z)
+ *             # Calculate first delay (output)
+ *             tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)             # <<<<<<<<<<<<<<
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ *             tmp3 = tmp2 + READOBJECT(ptr_Z)
+ */
+      __pyx_t_4 = READOBJECT(__pyx_v_ptr_b); 
+      __pyx_t_5 = READOBJECT(__pyx_v_xn); 
+      __pyx_t_6 = __site_op_mul_618_37->Target(__site_op_mul_618_37, __pyx_t_4, __pyx_t_5);
+      __pyx_t_4 = nullptr;
+      __pyx_t_5 = nullptr;
+      __pyx_v_tmp1 = __pyx_t_6;
+      __pyx_t_6 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":619
+ *             # Calculate first delay (output)
+ *             tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+ *             tmp2 = tmp1 / READOBJECT(a0)             # <<<<<<<<<<<<<<
+ *             tmp3 = tmp2 + READOBJECT(ptr_Z)
+ *             ASSIGNOBJECT(yn, tmp3)
+ */
+      __pyx_t_6 = READOBJECT(__pyx_v_a0); 
+      __pyx_t_5 = __site_op_div_619_24->Target(__site_op_div_619_24, __pyx_v_tmp1, __pyx_t_6);
+      __pyx_t_6 = nullptr;
+      __pyx_v_tmp2 = __pyx_t_5;
+      __pyx_t_5 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":620
+ *             tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ *             tmp3 = tmp2 + READOBJECT(ptr_Z)             # <<<<<<<<<<<<<<
+ *             ASSIGNOBJECT(yn, tmp3)
+ *             ptr_b += 1
+ */
+      __pyx_t_5 = READOBJECT(__pyx_v_ptr_Z); 
+      __pyx_t_6 = __site_op_add_620_24->Target(__site_op_add_620_24, __pyx_v_tmp2, __pyx_t_5);
+      __pyx_t_5 = nullptr;
+      __pyx_v_tmp3 = __pyx_t_6;
+      __pyx_t_6 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":621
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ *             tmp3 = tmp2 + READOBJECT(ptr_Z)
+ *             ASSIGNOBJECT(yn, tmp3)             # <<<<<<<<<<<<<<
+ *             ptr_b += 1
+ *             ptr_a += 1
+ */
+      ASSIGNOBJECT(__pyx_v_yn, __pyx_v_tmp3);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":622
+ *             tmp3 = tmp2 + READOBJECT(ptr_Z)
+ *             ASSIGNOBJECT(yn, tmp3)
+ *             ptr_b += 1             # <<<<<<<<<<<<<<
+ *             ptr_a += 1
+ * 
+ */
+      __pyx_v_ptr_b += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":623
+ *             ASSIGNOBJECT(yn, tmp3)
+ *             ptr_b += 1
+ *             ptr_a += 1             # <<<<<<<<<<<<<<
+ * 
+ *             # Fill in middle delays
+ */
+      __pyx_v_ptr_a += 1;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":626
+ * 
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):             # <<<<<<<<<<<<<<
+ *                 tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ */
+      __pyx_t_7 = (__pyx_v_len_b - 2);
+      for (__pyx_t_8 = 0; __pyx_t_8 < __pyx_t_7; __pyx_t_8+=1) {
+        __pyx_v_n = __pyx_t_8;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":627
+ *             # Fill in middle delays
+ *             for n in range(len_b - 2):
+ *                 tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)             # <<<<<<<<<<<<<<
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+ */
+        __pyx_t_6 = READOBJECT(__pyx_v_xn); 
+        __pyx_t_5 = READOBJECT(__pyx_v_ptr_b); 
+        __pyx_t_4 = __site_op_mul_627_38->Target(__site_op_mul_627_38, __pyx_t_6, __pyx_t_5);
+        __pyx_t_6 = nullptr;
+        __pyx_t_5 = nullptr;
+        __pyx_v_tmp1 = __pyx_t_4;
+        __pyx_t_4 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":628
+ *             for n in range(len_b - 2):
+ *                 tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *                 tmp2 = tmp1 / READOBJECT(a0)             # <<<<<<<<<<<<<<
+ *                 tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+ *                 tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ */
+        __pyx_t_4 = READOBJECT(__pyx_v_a0); 
+        __pyx_t_5 = __site_op_div_628_28->Target(__site_op_div_628_28, __pyx_v_tmp1, __pyx_t_4);
+        __pyx_t_4 = nullptr;
+        __pyx_v_tmp2 = __pyx_t_5;
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":629
+ *                 tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 tmp3 = tmp2 / READOBJECT(ptr_Z + 1)             # <<<<<<<<<<<<<<
+ *                 tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ */
+        __pyx_t_5 = READOBJECT((__pyx_v_ptr_Z + 1)); 
+        __pyx_t_4 = __site_op_div_629_28->Target(__site_op_div_629_28, __pyx_v_tmp2, __pyx_t_5);
+        __pyx_t_5 = nullptr;
+        __pyx_v_tmp3 = __pyx_t_4;
+        __pyx_t_4 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":630
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+ *                 tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)             # <<<<<<<<<<<<<<
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ */
+        __pyx_t_4 = READOBJECT(__pyx_v_yn); 
+        __pyx_t_5 = READOBJECT(__pyx_v_ptr_a); 
+        __pyx_t_6 = __site_op_mul_630_38->Target(__site_op_mul_630_38, __pyx_t_4, __pyx_t_5);
+        __pyx_t_4 = nullptr;
+        __pyx_t_5 = nullptr;
+        __pyx_v_tmp1 = __pyx_t_6;
+        __pyx_t_6 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":631
+ *                 tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+ *                 tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *                 tmp2 = tmp1 / READOBJECT(a0)             # <<<<<<<<<<<<<<
+ *                 ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ *                 ptr_b += 1
+ */
+        __pyx_t_6 = READOBJECT(__pyx_v_a0); 
+        __pyx_t_5 = __site_op_div_631_28->Target(__site_op_div_631_28, __pyx_v_tmp1, __pyx_t_6);
+        __pyx_t_6 = nullptr;
+        __pyx_v_tmp2 = __pyx_t_5;
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":632
+ *                 tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)             # <<<<<<<<<<<<<<
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ */
+        __pyx_t_5 = __site_op_sub_632_41->Target(__site_op_sub_632_41, __pyx_v_tmp3, __pyx_v_tmp2);
+        ASSIGNOBJECT(__pyx_v_ptr_Z, __pyx_t_5);
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":633
+ *                 tmp2 = tmp1 / READOBJECT(a0)
+ *                 ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ *                 ptr_b += 1             # <<<<<<<<<<<<<<
+ *                 ptr_a += 1
+ *                 ptr_Z += 1
+ */
+        __pyx_v_ptr_b += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":634
+ *                 ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ *                 ptr_b += 1
+ *                 ptr_a += 1             # <<<<<<<<<<<<<<
+ *                 ptr_Z += 1
+ * 
+ */
+        __pyx_v_ptr_a += 1;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":635
+ *                 ptr_b += 1
+ *                 ptr_a += 1
+ *                 ptr_Z += 1             # <<<<<<<<<<<<<<
+ * 
+ *             # Calculate last delay
+ */
+        __pyx_v_ptr_Z += 1;
+      }
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":638
+ * 
+ *             # Calculate last delay
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)             # <<<<<<<<<<<<<<
+ *             tmp3 = tmp1 / READOBJECT(a0)
+ *             tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ */
+      __pyx_t_5 = READOBJECT(__pyx_v_xn); 
+      __pyx_t_6 = READOBJECT(__pyx_v_ptr_b); 
+      __pyx_t_4 = __site_op_mul_638_34->Target(__site_op_mul_638_34, __pyx_t_5, __pyx_t_6);
+      __pyx_t_5 = nullptr;
+      __pyx_t_6 = nullptr;
+      __pyx_v_tmp1 = __pyx_t_4;
+      __pyx_t_4 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":639
+ *             # Calculate last delay
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *             tmp3 = tmp1 / READOBJECT(a0)             # <<<<<<<<<<<<<<
+ *             tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ */
+      __pyx_t_4 = READOBJECT(__pyx_v_a0); 
+      __pyx_t_6 = __site_op_div_639_24->Target(__site_op_div_639_24, __pyx_v_tmp1, __pyx_t_4);
+      __pyx_t_4 = nullptr;
+      __pyx_v_tmp3 = __pyx_t_6;
+      __pyx_t_6 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":640
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *             tmp3 = tmp1 / READOBJECT(a0)
+ *             tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)             # <<<<<<<<<<<<<<
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ *             ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ */
+      __pyx_t_6 = READOBJECT(__pyx_v_yn); 
+      __pyx_t_4 = READOBJECT(__pyx_v_ptr_a); 
+      __pyx_t_5 = __site_op_mul_640_34->Target(__site_op_mul_640_34, __pyx_t_6, __pyx_t_4);
+      __pyx_t_6 = nullptr;
+      __pyx_t_4 = nullptr;
+      __pyx_v_tmp1 = __pyx_t_5;
+      __pyx_t_5 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":641
+ *             tmp3 = tmp1 / READOBJECT(a0)
+ *             tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *             tmp2 = tmp1 / READOBJECT(a0)             # <<<<<<<<<<<<<<
+ *             ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ *         else:
+ */
+      __pyx_t_5 = READOBJECT(__pyx_v_a0); 
+      __pyx_t_4 = __site_op_div_641_24->Target(__site_op_div_641_24, __pyx_v_tmp1, __pyx_t_5);
+      __pyx_t_5 = nullptr;
+      __pyx_v_tmp2 = __pyx_t_4;
+      __pyx_t_4 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":642
+ *             tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+ *             tmp2 = tmp1 / READOBJECT(a0)
+ *             ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)             # <<<<<<<<<<<<<<
+ *         else:
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ */
+      __pyx_t_4 = __site_op_sub_642_37->Target(__site_op_sub_642_37, __pyx_v_tmp3, __pyx_v_tmp2);
+      ASSIGNOBJECT(__pyx_v_ptr_Z, __pyx_t_4);
+      __pyx_t_4 = nullptr;
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":644
+ *             ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+ *         else:
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)             # <<<<<<<<<<<<<<
+ *             ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))
+ * 
+ */
+      __pyx_t_4 = READOBJECT(__pyx_v_xn); 
+      __pyx_t_5 = READOBJECT(__pyx_v_ptr_b); 
+      __pyx_t_6 = __site_op_mul_644_34->Target(__site_op_mul_644_34, __pyx_t_4, __pyx_t_5);
+      __pyx_t_4 = nullptr;
+      __pyx_t_5 = nullptr;
+      __pyx_v_tmp1 = __pyx_t_6;
+      __pyx_t_6 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":645
+ *         else:
+ *             tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+ *             ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))             # <<<<<<<<<<<<<<
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ */
+      __pyx_t_6 = READOBJECT(__pyx_v_a0); 
+      __pyx_t_5 = __site_op_div_645_34->Target(__site_op_div_645_34, __pyx_v_tmp1, __pyx_t_6);
+      __pyx_t_6 = nullptr;
+      ASSIGNOBJECT(__pyx_v_yn, __pyx_t_5);
+      __pyx_t_5 = nullptr;
+    }
+    __pyx_L5:;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":647
+ *             ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point             # <<<<<<<<<<<<<<
+ *         ptr_x += stride_X
+ * 
+ */
+    __pyx_v_ptr_y += __pyx_v_stride_Y;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":648
+ * 
+ *         ptr_y += stride_Y      # Move to next input/output point
+ *         ptr_x += stride_X             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_v_ptr_x += __pyx_v_stride_X;
+  }
+
+  __pyx_r = nullptr;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":656
+ *     CORR_MODE_FULL  = 2
+ * 
+ * def correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):             # <<<<<<<<<<<<<<
+ *     cdef np.NpyArrayIterObject *itx, *ity, *itz
+ *     cdef int st
+ */
+
+static System::Object^ correlateND(System::Object^ ax, System::Object^ ay, System::Object^ aout, System::Object^ mode) {
+  NumpyDotNet::ndarray^ __pyx_v_ax = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_ay = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_aout = nullptr;
+  int __pyx_v_mode;
+  NpyArrayIterObject *__pyx_v_itx;
+  NpyArrayIterObject *__pyx_v_ity;
+  NpyArrayIterObject *__pyx_v_itz;
+  int __pyx_v_st;
+  NumpyDotNet::dtype^ __pyx_v_type;
+  int __pyx_v_typenum;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  int __pyx_t_6;
+  __pyx_v_ax = ((NumpyDotNet::ndarray^)ax);
+  __pyx_v_ay = ((NumpyDotNet::ndarray^)ay);
+  __pyx_v_aout = ((NumpyDotNet::ndarray^)aout);
+  __pyx_v_mode = __site_cvt_cvt_int_656_0->Target(__site_cvt_cvt_int_656_0, mode);
+  __pyx_v_type = nullptr;
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ax) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'ax' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ay) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'ay' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_aout) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'aout' has incorrect type");
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":661
+ *     cdef np.dtype type
+ * 
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(ax)))             # <<<<<<<<<<<<<<
+ *     type = np.NpyArray_FindArrayType_2args(ay, type)
+ *     type = np.NpyArray_FindArrayType_2args(aout, type)
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(NpyArray_DescrFromType(PyArray_TYPE(__pyx_v_ax)))); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":662
+ * 
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(ax)))
+ *     type = np.NpyArray_FindArrayType_2args(ay, type)             # <<<<<<<<<<<<<<
+ *     type = np.NpyArray_FindArrayType_2args(aout, type)
+ * 
+ */
+  __pyx_t_1 = ((System::Object^)NpyArray_FindArrayType_2args(((System::Object^)__pyx_v_ay), __pyx_v_type)); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":663
+ *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(ax)))
+ *     type = np.NpyArray_FindArrayType_2args(ay, type)
+ *     type = np.NpyArray_FindArrayType_2args(aout, type)             # <<<<<<<<<<<<<<
+ * 
+ *     ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ */
+  __pyx_t_1 = ((System::Object^)NpyArray_FindArrayType_2args(((System::Object^)__pyx_v_aout), __pyx_v_type)); 
+  __pyx_v_type = ((NumpyDotNet::dtype^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":665
+ *     type = np.NpyArray_FindArrayType_2args(aout, type)
+ * 
+ *     ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);             # <<<<<<<<<<<<<<
+ *     ay = np.PyArray_FromAny(ay, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ *     aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ */
+  __pyx_t_1 = (System::Object^)(long long)((NPY_BEHAVED | NPY_ENSUREARRAY));
+  __pyx_t_2 = PyArray_FromAny(((System::Object^)__pyx_v_ax), ((System::Object^)__pyx_v_type), __pyx_int_0, __pyx_int_0, __pyx_t_1, nullptr); 
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_ax = ((NumpyDotNet::ndarray^)__pyx_t_2);
+  __pyx_t_2 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":666
+ * 
+ *     ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ *     ay = np.PyArray_FromAny(ay, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);             # <<<<<<<<<<<<<<
+ *     aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ * 
+ */
+  __pyx_t_2 = (System::Object^)(long long)((NPY_BEHAVED | NPY_ENSUREARRAY));
+  __pyx_t_1 = PyArray_FromAny(((System::Object^)__pyx_v_ay), ((System::Object^)__pyx_v_type), __pyx_int_0, __pyx_int_0, __pyx_t_2, nullptr); 
+  __pyx_t_2 = nullptr;
+  if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_ay = ((NumpyDotNet::ndarray^)__pyx_t_1);
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":667
+ *     ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ *     ay = np.PyArray_FromAny(ay, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ *     aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);             # <<<<<<<<<<<<<<
+ * 
+ *     if np.PyArray_NDIM(ax) != np.PyArray_NDIM(ay):
+ */
+  __pyx_t_1 = (System::Object^)(long long)((NPY_BEHAVED | NPY_ENSUREARRAY));
+  __pyx_t_2 = PyArray_FromAny(((System::Object^)__pyx_v_aout), ((System::Object^)__pyx_v_type), __pyx_int_0, __pyx_int_0, __pyx_t_1, nullptr); 
+  __pyx_t_1 = nullptr;
+  if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+    throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+  }
+  __pyx_v_aout = ((NumpyDotNet::ndarray^)__pyx_t_2);
+  __pyx_t_2 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":669
+ *     aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+ * 
+ *     if np.PyArray_NDIM(ax) != np.PyArray_NDIM(ay):             # <<<<<<<<<<<<<<
+ *         raise ValueError("Arrays must have the same number of dimensions.")
+ * 
+ */
+  __pyx_t_2 = PyArray_NDIM(__pyx_v_ax); 
+  __pyx_t_1 = PyArray_NDIM(__pyx_v_ay); 
+  __pyx_t_3 = __site_op_ne_669_27->Target(__site_op_ne_669_27, __pyx_t_2, __pyx_t_1);
+  __pyx_t_2 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_t_4 = __site_istrue_669_27->Target(__site_istrue_669_27, __pyx_t_3);
+  __pyx_t_3 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":670
+ * 
+ *     if np.PyArray_NDIM(ax) != np.PyArray_NDIM(ay):
+ *         raise ValueError("Arrays must have the same number of dimensions.")             # <<<<<<<<<<<<<<
+ * 
+ *     if np.PyArray_NDIM(ax) == 0:
+ */
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_1 = __site_call1_670_24->Target(__site_call1_670_24, __pyx_context, __pyx_t_3, ((System::Object^)"Arrays must have the same number of dimensions."));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L5;
+  }
+  __pyx_L5:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":672
+ *         raise ValueError("Arrays must have the same number of dimensions.")
+ * 
+ *     if np.PyArray_NDIM(ax) == 0:             # <<<<<<<<<<<<<<
+ *         raise ValueError("Cannot convolve zero-dimensional arrays.")
+ * 
+ */
+  __pyx_t_1 = PyArray_NDIM(__pyx_v_ax); 
+  __pyx_t_3 = __site_op_eq_672_27->Target(__site_op_eq_672_27, __pyx_t_1, __pyx_int_0);
+  __pyx_t_1 = nullptr;
+  __pyx_t_4 = __site_istrue_672_27->Target(__site_istrue_672_27, __pyx_t_3);
+  __pyx_t_3 = nullptr;
+  if (__pyx_t_4) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":673
+ * 
+ *     if np.PyArray_NDIM(ax) == 0:
+ *         raise ValueError("Cannot convolve zero-dimensional arrays.")             # <<<<<<<<<<<<<<
+ * 
+ *     itx = np.PyArray_IterNew(ax)
+ */
+    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_1 = __site_call1_673_24->Target(__site_call1_673_24, __pyx_context, __pyx_t_3, ((System::Object^)"Cannot convolve zero-dimensional arrays."));
+    __pyx_t_3 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L6;
+  }
+  __pyx_L6:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":675
+ *         raise ValueError("Cannot convolve zero-dimensional arrays.")
+ * 
+ *     itx = np.PyArray_IterNew(ax)             # <<<<<<<<<<<<<<
+ *     ity = np.PyArray_IterNew(ay)
+ *     itz = np.PyArray_IterNew(aout)
+ */
+  __pyx_v_itx = PyArray_IterNew(__pyx_v_ax);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":676
+ * 
+ *     itx = np.PyArray_IterNew(ax)
+ *     ity = np.PyArray_IterNew(ay)             # <<<<<<<<<<<<<<
+ *     itz = np.PyArray_IterNew(aout)
+ * 
+ */
+  __pyx_v_ity = PyArray_IterNew(__pyx_v_ay);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":677
+ *     itx = np.PyArray_IterNew(ax)
+ *     ity = np.PyArray_IterNew(ay)
+ *     itz = np.PyArray_IterNew(aout)             # <<<<<<<<<<<<<<
+ * 
+ *     cdef int typenum = type.num
+ */
+  __pyx_v_itz = PyArray_IterNew(__pyx_v_aout);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":679
+ *     itz = np.PyArray_IterNew(aout)
+ * 
+ *     cdef int typenum = type.num             # <<<<<<<<<<<<<<
+ * 
+ *     st = _correlate_nd_imp(itx, ity, itz, typenum, mode);
+ */
+  __pyx_t_1 = __site_get_num_679_27->Target(__site_get_num_679_27, ((System::Object^)__pyx_v_type), __pyx_context);
+  __pyx_t_5 = __site_cvt_cvt_int_679_27->Target(__site_cvt_cvt_int_679_27, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_v_typenum = __pyx_t_5;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":681
+ *     cdef int typenum = type.num
+ * 
+ *     st = _correlate_nd_imp(itx, ity, itz, typenum, mode);             # <<<<<<<<<<<<<<
+ *     if st:
+ *         return None
+ */
+  __pyx_t_1 = _correlate_nd_imp(__pyx_v_itx, __pyx_v_ity, __pyx_v_itz, __pyx_v_typenum, __pyx_v_mode); 
+  __pyx_t_6 = __site_cvt_cvt_int_681_26->Target(__site_cvt_cvt_int_681_26, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_v_st = __pyx_t_6;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":682
+ * 
+ *     st = _correlate_nd_imp(itx, ity, itz, typenum, mode);
+ *     if st:             # <<<<<<<<<<<<<<
+ *         return None
+ * 
+ */
+  if (__pyx_v_st) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":683
+ *     st = _correlate_nd_imp(itx, ity, itz, typenum, mode);
+ *     if st:
+ *         return None             # <<<<<<<<<<<<<<
+ * 
+ *     return np.PyArray_Return(aout)
+ */
+    __pyx_r = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L7;
+  }
+  __pyx_L7:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":685
+ *         return None
+ * 
+ *     return np.PyArray_Return(aout)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_t_1 = PyArray_Return(((System::Object^)__pyx_v_aout)); 
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":691
+ * # Implementation of the type-specific correlation 'kernels'
+ * #
+ * cdef int _imp_correlate_nd_ubyte(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_ubyte(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_ubyte __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":697
+ *     cdef np.npy_ubyte acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":698
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":699
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ubyte*>curneighx.dataptr)[0] * (<np.npy_ubyte*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":700
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_ubyte*>curneighx.dataptr)[0] * (<np.npy_ubyte*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":701
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ubyte*>curneighx.dataptr)[0] * (<np.npy_ubyte*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_ubyte *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_ubyte *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":703
+ *             acc += (<np.npy_ubyte*>curneighx.dataptr)[0] * (<np.npy_ubyte*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":704
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":706
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_ubyte*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":708
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_ubyte*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_ubyte *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":710
+ *         (<np.npy_ubyte*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":711
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":713
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_byte(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":714
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_byte(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_byte(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_byte __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":720
+ *     cdef np.npy_byte acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":721
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":722
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_byte*>curneighx.dataptr)[0] * (<np.npy_byte*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":723
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_byte*>curneighx.dataptr)[0] * (<np.npy_byte*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":724
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_byte*>curneighx.dataptr)[0] * (<np.npy_byte*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_byte *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_byte *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":726
+ *             acc += (<np.npy_byte*>curneighx.dataptr)[0] * (<np.npy_byte*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":727
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":729
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_byte*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":731
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_byte*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_byte *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":733
+ *         (<np.npy_byte*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":734
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":736
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_ushort(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":737
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_ushort(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_ushort(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_ushort __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":743
+ *     cdef np.npy_ushort acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":744
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":745
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ushort*>curneighx.dataptr)[0] * (<np.npy_ushort*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":746
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_ushort*>curneighx.dataptr)[0] * (<np.npy_ushort*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":747
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ushort*>curneighx.dataptr)[0] * (<np.npy_ushort*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_ushort *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_ushort *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":749
+ *             acc += (<np.npy_ushort*>curneighx.dataptr)[0] * (<np.npy_ushort*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":750
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":752
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_ushort*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":754
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_ushort*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_ushort *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":756
+ *         (<np.npy_ushort*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":757
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":759
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_short(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":760
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_short(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_short(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  short __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":766
+ *     cdef short acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":767
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":768
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<short*>curneighx.dataptr)[0] * (<short*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":769
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<short*>curneighx.dataptr)[0] * (<short*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":770
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<short*>curneighx.dataptr)[0] * (<short*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((short *)__pyx_v_curneighx->dataptr)[0]) * (((short *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":772
+ *             acc += (<short*>curneighx.dataptr)[0] * (<short*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":773
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":775
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<short*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":777
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<short*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((short *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":779
+ *         (<short*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":780
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":782
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_uint(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":783
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_uint(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_uint(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_uint __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":789
+ *     cdef np.npy_uint acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":790
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":791
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_uint*>curneighx.dataptr)[0] * (<np.npy_uint*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":792
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_uint*>curneighx.dataptr)[0] * (<np.npy_uint*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":793
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_uint*>curneighx.dataptr)[0] * (<np.npy_uint*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_uint *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_uint *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":795
+ *             acc += (<np.npy_uint*>curneighx.dataptr)[0] * (<np.npy_uint*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":796
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":798
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_uint*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":800
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_uint*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_uint *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":802
+ *         (<np.npy_uint*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":803
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":805
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_int(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":806
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_int(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_int(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  int __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":812
+ *     cdef int acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":813
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":814
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<int*>curneighx.dataptr)[0] * (<int*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":815
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<int*>curneighx.dataptr)[0] * (<int*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":816
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<int*>curneighx.dataptr)[0] * (<int*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((int *)__pyx_v_curneighx->dataptr)[0]) * (((int *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":818
+ *             acc += (<int*>curneighx.dataptr)[0] * (<int*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":819
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":821
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<int*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":823
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<int*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((int *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":825
+ *         (<int*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":826
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":828
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_ulong(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":829
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_ulong(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_ulong(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_ulong __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":835
+ *     cdef np.npy_ulong acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":836
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":837
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ulong*>curneighx.dataptr)[0] * (<np.npy_ulong*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":838
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_ulong*>curneighx.dataptr)[0] * (<np.npy_ulong*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":839
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ulong*>curneighx.dataptr)[0] * (<np.npy_ulong*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_ulong *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_ulong *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":841
+ *             acc += (<np.npy_ulong*>curneighx.dataptr)[0] * (<np.npy_ulong*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":842
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":844
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_ulong*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":846
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_ulong*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_ulong *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":848
+ *         (<np.npy_ulong*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":849
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":851
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_long(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":852
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_long(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_long(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  long __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":858
+ *     cdef long acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":859
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":860
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<long*>curneighx.dataptr)[0] * (<long*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":861
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<long*>curneighx.dataptr)[0] * (<long*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":862
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<long*>curneighx.dataptr)[0] * (<long*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((long *)__pyx_v_curneighx->dataptr)[0]) * (((long *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":864
+ *             acc += (<long*>curneighx.dataptr)[0] * (<long*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":865
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":867
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<long*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":869
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<long*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((long *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":871
+ *         (<long*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":872
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":874
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_ulonglong(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":875
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_ulonglong(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_ulonglong(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_ulonglong __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":881
+ *     cdef np.npy_ulonglong acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":882
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":883
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ulonglong*>curneighx.dataptr)[0] * (<np.npy_ulonglong*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":884
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_ulonglong*>curneighx.dataptr)[0] * (<np.npy_ulonglong*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":885
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_ulonglong*>curneighx.dataptr)[0] * (<np.npy_ulonglong*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_ulonglong *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_ulonglong *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":887
+ *             acc += (<np.npy_ulonglong*>curneighx.dataptr)[0] * (<np.npy_ulonglong*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":888
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":890
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_ulonglong*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":892
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_ulonglong*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_ulonglong *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":894
+ *         (<np.npy_ulonglong*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":895
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":897
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_longlong(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":898
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_longlong(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_longlong(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_longlong __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":904
+ *     cdef np.npy_longlong acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":905
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":906
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_longlong*>curneighx.dataptr)[0] * (<np.npy_longlong*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":907
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_longlong*>curneighx.dataptr)[0] * (<np.npy_longlong*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":908
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_longlong*>curneighx.dataptr)[0] * (<np.npy_longlong*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_longlong *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_longlong *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":910
+ *             acc += (<np.npy_longlong*>curneighx.dataptr)[0] * (<np.npy_longlong*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":911
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":913
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_longlong*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":915
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_longlong*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_longlong *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":917
+ *         (<np.npy_longlong*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":918
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":920
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_float(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":921
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_float(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_float(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  float __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":927
+ *     cdef float acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":928
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":929
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<float*>curneighx.dataptr)[0] * (<float*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":930
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<float*>curneighx.dataptr)[0] * (<float*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":931
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<float*>curneighx.dataptr)[0] * (<float*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((float *)__pyx_v_curneighx->dataptr)[0]) * (((float *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":933
+ *             acc += (<float*>curneighx.dataptr)[0] * (<float*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":934
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":936
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<float*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":938
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<float*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((float *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":940
+ *         (<float*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":941
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":943
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_double(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":944
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_double(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_double(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  double __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":950
+ *     cdef double acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":951
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":952
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<double*>curneighx.dataptr)[0] * (<double*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":953
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<double*>curneighx.dataptr)[0] * (<double*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":954
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<double*>curneighx.dataptr)[0] * (<double*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((double *)__pyx_v_curneighx->dataptr)[0]) * (((double *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":956
+ *             acc += (<double*>curneighx.dataptr)[0] * (<double*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":957
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":959
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<double*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":961
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<double*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((double *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":963
+ *         (<double*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":964
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":966
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_longdouble(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":967
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_longdouble(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_longdouble(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_j;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_acc;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":973
+ *     cdef np.npy_longdouble acc
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":974
+ * 
+ *     for i in range(curx.size):
+ *         acc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_acc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":975
+ *     for i in range(curx.size):
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_longdouble*>curneighx.dataptr)[0] * (<np.npy_longdouble*>ity.dataptr)[0]
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":976
+ *         acc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             acc += (<np.npy_longdouble*>curneighx.dataptr)[0] * (<np.npy_longdouble*>ity.dataptr)[0]
+ * 
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":977
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             acc += (<np.npy_longdouble*>curneighx.dataptr)[0] * (<np.npy_longdouble*>ity.dataptr)[0]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_acc += ((((__pyx_t_5numpy_npy_longdouble *)__pyx_v_curneighx->dataptr)[0]) * (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ity->dataptr)[0]));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":979
+ *             acc += (<np.npy_longdouble*>curneighx.dataptr)[0] * (<np.npy_longdouble*>ity.dataptr)[0]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":980
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":982
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = acc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":984
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = acc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_itz->dataptr)[0]) = __pyx_v_acc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":986
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = acc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":987
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":989
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * cdef int _imp_correlate_nd_cfloat(np.NpyArrayNeighborhoodIterObject *curx,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":991
+ *     return 0
+ * 
+ * cdef int _imp_correlate_nd_cfloat(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_cfloat(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  int __pyx_v_i;
+  int __pyx_v_j;
+  float __pyx_v_racc;
+  float __pyx_v_iacc;
+  float *__pyx_v_ptr1;
+  float *__pyx_v_ptr2;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  int __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  int __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":998
+ *     cdef float *ptr1, *ptr2
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         racc = 0
+ *         iacc = 0
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":999
+ * 
+ *     for i in range(curx.size):
+ *         racc = 0             # <<<<<<<<<<<<<<
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+    __pyx_v_racc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1000
+ *     for i in range(curx.size):
+ *         racc = 0
+ *         iacc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_iacc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1001
+ *         racc = 0
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             ptr1 = <float*>curneighx.dataptr
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1002
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             ptr1 = <float*>curneighx.dataptr
+ *             ptr2 = <float*>ity.dataptr
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1003
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             ptr1 = <float*>curneighx.dataptr             # <<<<<<<<<<<<<<
+ *             ptr2 = <float*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ */
+      __pyx_v_ptr1 = ((float *)__pyx_v_curneighx->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1004
+ *         for j in range(curneighx.size):
+ *             ptr1 = <float*>curneighx.dataptr
+ *             ptr2 = <float*>ity.dataptr             # <<<<<<<<<<<<<<
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ */
+      __pyx_v_ptr2 = ((float *)__pyx_v_ity->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1005
+ *             ptr1 = <float*>curneighx.dataptr
+ *             ptr2 = <float*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]             # <<<<<<<<<<<<<<
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ */
+      __pyx_v_racc += (((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[0])) + ((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1006
+ *             ptr2 = <float*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_iacc += (((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[0])) - ((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1008
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1009
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1011
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<float*>itz.dataptr)[0] = racc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1013
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<float*>itz.dataptr)[0] = racc             # <<<<<<<<<<<<<<
+ *         (<float*>itz.dataptr)[1] = iacc
+ * 
+ */
+    (((float *)__pyx_v_itz->dataptr)[0]) = __pyx_v_racc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1014
+ * 
+ *         (<float*>itz.dataptr)[0] = racc
+ *         (<float*>itz.dataptr)[1] = iacc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((float *)__pyx_v_itz->dataptr)[1]) = __pyx_v_iacc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1016
+ *         (<float*>itz.dataptr)[1] = iacc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1017
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1019
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_cdouble(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1020
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_cdouble(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_cdouble(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  int __pyx_v_i;
+  int __pyx_v_j;
+  double __pyx_v_racc;
+  double __pyx_v_iacc;
+  double *__pyx_v_ptr1;
+  double *__pyx_v_ptr2;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  int __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  int __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1027
+ *     cdef double *ptr1, *ptr2
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         racc = 0
+ *         iacc = 0
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1028
+ * 
+ *     for i in range(curx.size):
+ *         racc = 0             # <<<<<<<<<<<<<<
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+    __pyx_v_racc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1029
+ *     for i in range(curx.size):
+ *         racc = 0
+ *         iacc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_iacc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1030
+ *         racc = 0
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             ptr1 = <double*>curneighx.dataptr
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1031
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             ptr1 = <double*>curneighx.dataptr
+ *             ptr2 = <double*>ity.dataptr
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1032
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             ptr1 = <double*>curneighx.dataptr             # <<<<<<<<<<<<<<
+ *             ptr2 = <double*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ */
+      __pyx_v_ptr1 = ((double *)__pyx_v_curneighx->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1033
+ *         for j in range(curneighx.size):
+ *             ptr1 = <double*>curneighx.dataptr
+ *             ptr2 = <double*>ity.dataptr             # <<<<<<<<<<<<<<
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ */
+      __pyx_v_ptr2 = ((double *)__pyx_v_ity->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1034
+ *             ptr1 = <double*>curneighx.dataptr
+ *             ptr2 = <double*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]             # <<<<<<<<<<<<<<
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ */
+      __pyx_v_racc += (((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[0])) + ((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1035
+ *             ptr2 = <double*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_iacc += (((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[0])) - ((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1037
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1038
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1040
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<double*>itz.dataptr)[0] = racc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1042
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<double*>itz.dataptr)[0] = racc             # <<<<<<<<<<<<<<
+ *         (<double*>itz.dataptr)[1] = iacc
+ * 
+ */
+    (((double *)__pyx_v_itz->dataptr)[0]) = __pyx_v_racc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1043
+ * 
+ *         (<double*>itz.dataptr)[0] = racc
+ *         (<double*>itz.dataptr)[1] = iacc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((double *)__pyx_v_itz->dataptr)[1]) = __pyx_v_iacc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1045
+ *         (<double*>itz.dataptr)[1] = iacc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1046
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1048
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * cdef int _imp_correlate_nd_clongdouble(np.NpyArrayNeighborhoodIterObject *curx,
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1049
+ * 
+ *     return 0
+ * cdef int _imp_correlate_nd_clongdouble(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_clongdouble(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  int __pyx_v_i;
+  int __pyx_v_j;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_racc;
+  __pyx_t_5numpy_npy_longdouble __pyx_v_iacc;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr1;
+  __pyx_t_5numpy_npy_longdouble *__pyx_v_ptr2;
+  int __pyx_r;
+  __pyx_t_5numpy_npy_intp __pyx_t_1;
+  int __pyx_t_2;
+  __pyx_t_5numpy_npy_intp __pyx_t_3;
+  int __pyx_t_4;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1056
+ *     cdef np.npy_longdouble *ptr1, *ptr2
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         racc = 0
+ *         iacc = 0
+ */
+  __pyx_t_1 = __pyx_v_curx->size;
+  for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
+    __pyx_v_i = __pyx_t_2;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1057
+ * 
+ *     for i in range(curx.size):
+ *         racc = 0             # <<<<<<<<<<<<<<
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ */
+    __pyx_v_racc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1058
+ *     for i in range(curx.size):
+ *         racc = 0
+ *         iacc = 0             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_iacc = 0.0;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1059
+ *         racc = 0
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         for j in range(curneighx.size):
+ *             ptr1 = <np.npy_longdouble*>curneighx.dataptr
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1060
+ *         iacc = 0
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             ptr1 = <np.npy_longdouble*>curneighx.dataptr
+ *             ptr2 = <np.npy_longdouble*>ity.dataptr
+ */
+    __pyx_t_3 = __pyx_v_curneighx->size;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_j = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1061
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         for j in range(curneighx.size):
+ *             ptr1 = <np.npy_longdouble*>curneighx.dataptr             # <<<<<<<<<<<<<<
+ *             ptr2 = <np.npy_longdouble*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ */
+      __pyx_v_ptr1 = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_curneighx->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1062
+ *         for j in range(curneighx.size):
+ *             ptr1 = <np.npy_longdouble*>curneighx.dataptr
+ *             ptr2 = <np.npy_longdouble*>ity.dataptr             # <<<<<<<<<<<<<<
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ */
+      __pyx_v_ptr2 = ((__pyx_t_5numpy_npy_longdouble *)__pyx_v_ity->dataptr);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1063
+ *             ptr1 = <np.npy_longdouble*>curneighx.dataptr
+ *             ptr2 = <np.npy_longdouble*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]             # <<<<<<<<<<<<<<
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ */
+      __pyx_v_racc += (((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[0])) + ((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1064
+ *             ptr2 = <np.npy_longdouble*>ity.dataptr
+ *             racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      __pyx_v_iacc += (((__pyx_v_ptr1[1]) * (__pyx_v_ptr2[0])) - ((__pyx_v_ptr1[0]) * (__pyx_v_ptr2[1])));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1066
+ *             iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1067
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1069
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = racc
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1071
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = racc             # <<<<<<<<<<<<<<
+ *         (<np.npy_longdouble*>itz.dataptr)[1] = iacc
+ * 
+ */
+    (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_itz->dataptr)[0]) = __pyx_v_racc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1072
+ * 
+ *         (<np.npy_longdouble*>itz.dataptr)[0] = racc
+ *         (<np.npy_longdouble*>itz.dataptr)[1] = iacc             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    (((__pyx_t_5numpy_npy_longdouble *)__pyx_v_itz->dataptr)[1]) = __pyx_v_iacc;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1074
+ *         (<np.npy_longdouble*>itz.dataptr)[1] = iacc
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1075
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1077
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1079
+ *     return 0
+ * 
+ * cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+ *         np.NpyArrayIterObject *itz):
+ */
+
+static  int _imp_correlate_nd_object(NpyArrayNeighborhoodIterObject *__pyx_v_curx, NpyArrayNeighborhoodIterObject *__pyx_v_curneighx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz) {
+  int __pyx_v_i;
+  int __pyx_v_j;
+  char *__pyx_v_zero;
+  __pyx_t_5numpy_PyArray_CopySwapFunc __pyx_v_copyswap;
+  System::Object^ __pyx_v_tmp;
+  int __pyx_r;
+  System::Object^ __pyx_t_1 = nullptr;
+  __pyx_t_5numpy_npy_intp __pyx_t_2;
+  int __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+  int __pyx_t_5;
+  System::Object^ __pyx_t_6 = nullptr;
+  System::Object^ __pyx_t_7 = nullptr;
+  System::Object^ __pyx_t_8 = nullptr;
+  __pyx_v_tmp = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1084
+ *     cdef int i, j
+ *     cdef char *zero
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(curx.ao)             # <<<<<<<<<<<<<<
+ * 
+ *     zero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(curx.ao))
+ */
+  __pyx_v_copyswap = ARRAY_COPYSWAP_FUNC(__pyx_v_curx->ao);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1086
+ *     cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(curx.ao)
+ * 
+ *     zero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(curx.ao))             # <<<<<<<<<<<<<<
+ * 
+ *     for i in range(curx.size):
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_curx->ao)); 
+  __pyx_v_zero = ((char *)PyArray_Zero(__pyx_t_1));
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1088
+ *     zero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(curx.ao))
+ * 
+ *     for i in range(curx.size):             # <<<<<<<<<<<<<<
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         copyswap(<void *>itz.dataptr, <void *>zero, 0, NULL)
+ */
+  __pyx_t_2 = __pyx_v_curx->size;
+  for (__pyx_t_3 = 0; __pyx_t_3 < __pyx_t_2; __pyx_t_3+=1) {
+    __pyx_v_i = __pyx_t_3;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1089
+ * 
+ *     for i in range(curx.size):
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)             # <<<<<<<<<<<<<<
+ *         copyswap(<void *>itz.dataptr, <void *>zero, 0, NULL)
+ * 
+ */
+    PyArrayNeighborhoodIter_Reset(__pyx_v_curneighx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1090
+ *     for i in range(curx.size):
+ *         np.PyArrayNeighborhoodIter_Reset(curneighx)
+ *         copyswap(<void *>itz.dataptr, <void *>zero, 0, NULL)             # <<<<<<<<<<<<<<
+ * 
+ *         for j in range(curneighx.size):
+ */
+    __pyx_v_copyswap(((void *)__pyx_v_itz->dataptr), ((void *)__pyx_v_zero), 0, NULL);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1092
+ *         copyswap(<void *>itz.dataptr, <void *>zero, 0, NULL)
+ * 
+ *         for j in range(curneighx.size):             # <<<<<<<<<<<<<<
+ *             # compute tmp = acc + x * y. Not all objects supporting the
+ *             # number protocol support inplace operations, so we do it the most
+ */
+    __pyx_t_4 = __pyx_v_curneighx->size;
+    for (__pyx_t_5 = 0; __pyx_t_5 < __pyx_t_4; __pyx_t_5+=1) {
+      __pyx_v_j = __pyx_t_5;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1096
+ *             # number protocol support inplace operations, so we do it the most
+ *             # straightfoward way.
+ *             tmp = NpyIter_READOBJECT(itz) + \             # <<<<<<<<<<<<<<
+ *                   NpyIter_READOBJECT(curneighx) * NpyIter_READOBJECT(ity)
+ * 
+ */
+      __pyx_t_1 = NpyIter_READOBJECT(__pyx_v_itz); 
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1097
+ *             # straightfoward way.
+ *             tmp = NpyIter_READOBJECT(itz) + \
+ *                   NpyIter_READOBJECT(curneighx) * NpyIter_READOBJECT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *             NpyIter_ASSIGNOBJECT(itz, tmp)
+ */
+      __pyx_t_6 = NpyIter_READOBJECT(__pyx_v_curneighx); 
+      __pyx_t_7 = NpyIter_READOBJECT(__pyx_v_ity); 
+      __pyx_t_8 = __site_op_mul_1097_48->Target(__site_op_mul_1097_48, __pyx_t_6, __pyx_t_7);
+      __pyx_t_6 = nullptr;
+      __pyx_t_7 = nullptr;
+      __pyx_t_7 = __site_op_add_1096_42->Target(__site_op_add_1096_42, __pyx_t_1, __pyx_t_8);
+      __pyx_t_1 = nullptr;
+      __pyx_t_8 = nullptr;
+      __pyx_v_tmp = __pyx_t_7;
+      __pyx_t_7 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1099
+ *                   NpyIter_READOBJECT(curneighx) * NpyIter_READOBJECT(ity)
+ * 
+ *             NpyIter_ASSIGNOBJECT(itz, tmp)             # <<<<<<<<<<<<<<
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ */
+      NpyIter_ASSIGNOBJECT(__pyx_v_itz, __pyx_v_tmp);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1101
+ *             NpyIter_ASSIGNOBJECT(itz, tmp)
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)             # <<<<<<<<<<<<<<
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ */
+      PyArrayNeighborhoodIter_Next(__pyx_v_curneighx);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1102
+ * 
+ *             np.PyArrayNeighborhoodIter_Next(curneighx)
+ *             np.PyArray_ITER_NEXT(ity)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ */
+      PyArray_ITER_NEXT(__pyx_v_ity);
+    }
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1104
+ *             np.PyArray_ITER_NEXT(ity)
+ * 
+ *         np.PyArrayNeighborhoodIter_Next(curx)             # <<<<<<<<<<<<<<
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ */
+    PyArrayNeighborhoodIter_Next(__pyx_v_curx);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1106
+ *         np.PyArrayNeighborhoodIter_Next(curx)
+ * 
+ *         np.PyArray_ITER_NEXT(itz)             # <<<<<<<<<<<<<<
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ */
+    PyArray_ITER_NEXT(__pyx_v_itz);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1107
+ * 
+ *         np.PyArray_ITER_NEXT(itz)
+ *         np.PyArray_ITER_RESET(ity)             # <<<<<<<<<<<<<<
+ * 
+ *     np.PyDataMem_FREE(zero)
+ */
+    PyArray_ITER_RESET(__pyx_v_ity);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1109
+ *         np.PyArray_ITER_RESET(ity)
+ * 
+ *     np.PyDataMem_FREE(zero)             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+  __pyx_t_7 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_8 = __site_get_PyDataMem_FREE_1109_6->Target(__site_get_PyDataMem_FREE_1109_6, __pyx_t_7, __pyx_context);
+  __pyx_t_7 = nullptr;
+  __pyx_t_7 = gcnew System::String(__pyx_v_zero);
+  __pyx_t_1 = __site_call1_1109_21->Target(__site_call1_1109_21, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_7));
+  __pyx_t_8 = nullptr;
+  __pyx_t_7 = nullptr;
+  __pyx_t_1 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1111
+ *     np.PyDataMem_FREE(zero)
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
+ */
+  __pyx_r = 0;
+  goto __pyx_L0;
+
+  __pyx_r = 0;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1113
+ *     return 0
+ * 
+ * cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,             # <<<<<<<<<<<<<<
+ *         np.NpyArrayIterObject *itz, int typenum, int mode):
+ *     cdef np.NpyArrayNeighborhoodIterObject *curneighx, *curx
+ */
+
+static  System::Object^ _correlate_nd_imp(NpyArrayIterObject *__pyx_v_itx, NpyArrayIterObject *__pyx_v_ity, NpyArrayIterObject *__pyx_v_itz, int __pyx_v_typenum, int __pyx_v_mode) {
+  NpyArrayNeighborhoodIterObject *__pyx_v_curneighx;
+  NpyArrayNeighborhoodIterObject *__pyx_v_curx;
+  __pyx_t_5numpy_npy_intp __pyx_v_i;
+  __pyx_t_5numpy_npy_intp __pyx_v_nz;
+  __pyx_t_5numpy_npy_intp __pyx_v_nx;
+  __pyx_t_5numpy_npy_intp __pyx_v_bounds[(NPY_MAXDIMS * 2)];
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  long __pyx_t_3;
+  __pyx_t_5numpy_npy_intp __pyx_t_4;
+  long __pyx_t_5;
+  int __pyx_t_6;
+  long __pyx_t_7;
+  long __pyx_t_8;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1122
+ *     # traverse x directly, such as each point of the output is the
+ *     # innerproduct of y with the neighborhood around curx *[inserted by cython to avoid comment closer]/
+ *     if mode == CORR_MODE_VALID:             # <<<<<<<<<<<<<<
+ *         # Only walk through the input points such as the correponding
+ *         # output will not depend on 0 padding
+ */
+  switch (__pyx_v_mode) {
+    case __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_VALID:
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1125
+ *         # Only walk through the input points such as the correponding
+ *         # output will not depend on 0 padding
+ *         for i in range(np.PyArray_NDIM(np.NpyIter_ARRAY(itx))):             # <<<<<<<<<<<<<<
+ *             bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1
+ */
+    __pyx_t_1 = ((System::Object^)NpyIter_ARRAY(__pyx_v_itx)); 
+    __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_t_1)); 
+    __pyx_t_1 = nullptr;
+    __pyx_t_3 = __site_cvt_cvt_long_1125_38->Target(__site_cvt_cvt_long_1125_38, __pyx_t_2);
+    __pyx_t_2 = nullptr;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_3; __pyx_t_4+=1) {
+      __pyx_v_i = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1126
+ *         # output will not depend on 0 padding
+ *         for i in range(np.PyArray_NDIM(np.NpyIter_ARRAY(itx))):
+ *             bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1             # <<<<<<<<<<<<<<
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1
+ *     elif mode == CORR_MODE_SAME:
+ */
+      __pyx_t_2 = ((System::Object^)NpyIter_ARRAY(__pyx_v_ity)); 
+      (__pyx_v_bounds[(2 * __pyx_v_i)]) = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_2))[__pyx_v_i]) - 1);
+      __pyx_t_2 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1127
+ *         for i in range(np.PyArray_NDIM(np.NpyIter_ARRAY(itx))):
+ *             bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1             # <<<<<<<<<<<<<<
+ *     elif mode == CORR_MODE_SAME:
+ *         # Only walk through the input such as the output will be centered
+ */
+      __pyx_t_2 = ((System::Object^)NpyIter_ARRAY(__pyx_v_itx)); 
+      (__pyx_v_bounds[((2 * __pyx_v_i) + 1)]) = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_2))[__pyx_v_i]) - 1);
+      __pyx_t_2 = nullptr;
+    }
+    break;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1128
+ *             bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1
+ *     elif mode == CORR_MODE_SAME:             # <<<<<<<<<<<<<<
+ *         # Only walk through the input such as the output will be centered
+ *         # relatively to the output as computed in the full mode
+ */
+    case __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_SAME:
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1131
+ *         # Only walk through the input such as the output will be centered
+ *         # relatively to the output as computed in the full mode
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):             # <<<<<<<<<<<<<<
+ *             nz = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i]
+ *             # Recover 'original' nx, before it was zero-padded *[inserted by cython to avoid comment closer]/
+ */
+    __pyx_t_2 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_itx->ao)); 
+    __pyx_t_1 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_t_2)); 
+    __pyx_t_2 = nullptr;
+    __pyx_t_5 = __site_cvt_cvt_long_1131_38->Target(__site_cvt_cvt_long_1131_38, __pyx_t_1);
+    __pyx_t_1 = nullptr;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_5; __pyx_t_4+=1) {
+      __pyx_v_i = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1132
+ *         # relatively to the output as computed in the full mode
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+ *             nz = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i]             # <<<<<<<<<<<<<<
+ *             # Recover 'original' nx, before it was zero-padded *[inserted by cython to avoid comment closer]/
+ *             nx = nz - np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+ */
+      __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_itx->ao)); 
+      __pyx_v_nz = (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_1))[__pyx_v_i]);
+      __pyx_t_1 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1134
+ *             nz = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i]
+ *             # Recover 'original' nx, before it was zero-padded *[inserted by cython to avoid comment closer]/
+ *             nx = nz - np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1             # <<<<<<<<<<<<<<
+ *             if (nz - nx) % 2 == 0:
+ *                 bounds[2*i] = (nz - nx) / 2
+ */
+      __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_ity->ao)); 
+      __pyx_v_nx = ((__pyx_v_nz - (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_1))[__pyx_v_i])) + 1);
+      __pyx_t_1 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1135
+ *             # Recover 'original' nx, before it was zero-padded *[inserted by cython to avoid comment closer]/
+ *             nx = nz - np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+ *             if (nz - nx) % 2 == 0:             # <<<<<<<<<<<<<<
+ *                 bounds[2*i] = (nz - nx) / 2
+ *             else:
+ */
+      __pyx_t_6 = (__Pyx_mod_long((__pyx_v_nz - __pyx_v_nx), 2) == 0);
+      if (__pyx_t_6) {
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1136
+ *             nx = nz - np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+ *             if (nz - nx) % 2 == 0:
+ *                 bounds[2*i] = (nz - nx) / 2             # <<<<<<<<<<<<<<
+ *             else:
+ *                 bounds[2*i] = (nz - nx - 1) / 2
+ */
+        (__pyx_v_bounds[(2 * __pyx_v_i)]) = __Pyx_div_long((__pyx_v_nz - __pyx_v_nx), 2);
+        goto __pyx_L7;
+      }
+      /*else*/ {
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1138
+ *                 bounds[2*i] = (nz - nx) / 2
+ *             else:
+ *                 bounds[2*i] = (nz - nx - 1) / 2             # <<<<<<<<<<<<<<
+ * 
+ *             bounds[2*i+1] = bounds[2*i] + nx - 1
+ */
+        (__pyx_v_bounds[(2 * __pyx_v_i)]) = __Pyx_div_long(((__pyx_v_nz - __pyx_v_nx) - 1), 2);
+      }
+      __pyx_L7:;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1140
+ *                 bounds[2*i] = (nz - nx - 1) / 2
+ * 
+ *             bounds[2*i+1] = bounds[2*i] + nx - 1             # <<<<<<<<<<<<<<
+ *     elif mode == CORR_MODE_FULL:
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+ */
+      (__pyx_v_bounds[((2 * __pyx_v_i) + 1)]) = (((__pyx_v_bounds[(2 * __pyx_v_i)]) + __pyx_v_nx) - 1);
+    }
+    break;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1141
+ * 
+ *             bounds[2*i+1] = bounds[2*i] + nx - 1
+ *     elif mode == CORR_MODE_FULL:             # <<<<<<<<<<<<<<
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+ *             bounds[2*i] = 0;
+ */
+    case __pyx_e_5scipy_6signal_11sigtoolsmod_CORR_MODE_FULL:
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1142
+ *             bounds[2*i+1] = bounds[2*i] + nx - 1
+ *     elif mode == CORR_MODE_FULL:
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):             # <<<<<<<<<<<<<<
+ *             bounds[2*i] = 0;
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i] - 1
+ */
+    __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_itx->ao)); 
+    __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_t_1)); 
+    __pyx_t_1 = nullptr;
+    __pyx_t_7 = __site_cvt_cvt_long_1142_38->Target(__site_cvt_cvt_long_1142_38, __pyx_t_2);
+    __pyx_t_2 = nullptr;
+    for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_7; __pyx_t_4+=1) {
+      __pyx_v_i = __pyx_t_4;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1143
+ *     elif mode == CORR_MODE_FULL:
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+ *             bounds[2*i] = 0;             # <<<<<<<<<<<<<<
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i] - 1
+ *     else:
+ */
+      (__pyx_v_bounds[(2 * __pyx_v_i)]) = 0;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1144
+ *         for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+ *             bounds[2*i] = 0;
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i] - 1             # <<<<<<<<<<<<<<
+ *     else:
+ *         raise SystemError
+ */
+      __pyx_t_2 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_itx->ao)); 
+      (__pyx_v_bounds[((2 * __pyx_v_i) + 1)]) = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_2))[__pyx_v_i]) - 1);
+      __pyx_t_2 = nullptr;
+    }
+    break;
+    default:
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1146
+ *             bounds[2*i+1] = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i] - 1
+ *     else:
+ *         raise SystemError             # <<<<<<<<<<<<<<
+ * 
+ *     curx = np.PyArray_NeighborhoodIterNew(itx, bounds,
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "SystemError");
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+    __pyx_t_2 = nullptr;
+    break;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1149
+ * 
+ *     curx = np.PyArray_NeighborhoodIterNew(itx, bounds,
+ *                                 np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)             # <<<<<<<<<<<<<<
+ *     if (curx == NULL):
+ *         raise SystemError("Could not create curx ?")
+ */
+  __pyx_v_curx = PyArray_NeighborhoodIterNew(__pyx_v_itx, __pyx_v_bounds, NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1150
+ *     curx = np.PyArray_NeighborhoodIterNew(itx, bounds,
+ *                                 np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
+ *     if (curx == NULL):             # <<<<<<<<<<<<<<
+ *         raise SystemError("Could not create curx ?")
+ * 
+ */
+  __pyx_t_6 = (__pyx_v_curx == NULL);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1151
+ *                                 np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
+ *     if (curx == NULL):
+ *         raise SystemError("Could not create curx ?")             # <<<<<<<<<<<<<<
+ * 
+ *     # Compute boundaries for the neighborhood iterator: the neighborhood for x
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "SystemError");
+    __pyx_t_1 = __site_call1_1151_25->Target(__site_call1_1151_25, __pyx_context, __pyx_t_2, ((System::Object^)"Could not create curx ?"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L10;
+  }
+  __pyx_L10:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1155
+ *     # Compute boundaries for the neighborhood iterator: the neighborhood for x
+ *     #   should have the same dimensions as y
+ *     for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(ity.ao))):             # <<<<<<<<<<<<<<
+ *         bounds[2*i] = -np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+ *         bounds[2*i+1] = 0
+ */
+  __pyx_t_1 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_ity->ao)); 
+  __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_t_1)); 
+  __pyx_t_1 = nullptr;
+  __pyx_t_8 = __site_cvt_cvt_long_1155_34->Target(__site_cvt_cvt_long_1155_34, __pyx_t_2);
+  __pyx_t_2 = nullptr;
+  for (__pyx_t_4 = 0; __pyx_t_4 < __pyx_t_8; __pyx_t_4+=1) {
+    __pyx_v_i = __pyx_t_4;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1156
+ *     #   should have the same dimensions as y
+ *     for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(ity.ao))):
+ *         bounds[2*i] = -np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1             # <<<<<<<<<<<<<<
+ *         bounds[2*i+1] = 0
+ * 
+ */
+    __pyx_t_2 = ((System::Object^)Npy_INTERFACE_OBJECT(__pyx_v_ity->ao)); 
+    (__pyx_v_bounds[(2 * __pyx_v_i)]) = ((-(PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_t_2))[__pyx_v_i])) + 1);
+    __pyx_t_2 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1157
+ *     for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(ity.ao))):
+ *         bounds[2*i] = -np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+ *         bounds[2*i+1] = 0             # <<<<<<<<<<<<<<
+ * 
+ *     curneighx = np.PyArray_NeighborhoodIterNew(<np.NpyArrayIterObject *>curx,
+ */
+    (__pyx_v_bounds[((2 * __pyx_v_i) + 1)]) = 0;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1160
+ * 
+ *     curneighx = np.PyArray_NeighborhoodIterNew(<np.NpyArrayIterObject *>curx,
+ *                         bounds, np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)             # <<<<<<<<<<<<<<
+ * 
+ *     if typenum == np.NPY_OBJECT:
+ */
+  __pyx_v_curneighx = PyArray_NeighborhoodIterNew(((NpyArrayIterObject *)__pyx_v_curx), __pyx_v_bounds, NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free);
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1162
+ *                         bounds, np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
+ * 
+ *     if typenum == np.NPY_OBJECT:             # <<<<<<<<<<<<<<
+ *         # The object array case does not worth being optimized, since most of
+ *     	# the cost is numerical operations, not iterators moving in this case ?
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_OBJECT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1165
+ *         # The object array case does not worth being optimized, since most of
+ *     	# the cost is numerical operations, not iterators moving in this case ?
+ *         _imp_correlate_nd_object(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_UBYTE:
+ *         _imp_correlate_nd_ubyte(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_object(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1166
+ *     	# the cost is numerical operations, not iterators moving in this case ?
+ *         _imp_correlate_nd_object(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_UBYTE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_ubyte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_BYTE:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_UBYTE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1167
+ *         _imp_correlate_nd_object(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_UBYTE:
+ *         _imp_correlate_nd_ubyte(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_BYTE:
+ *         _imp_correlate_nd_byte(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_ubyte(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1168
+ *     elif typenum == np.NPY_UBYTE:
+ *         _imp_correlate_nd_ubyte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_BYTE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_byte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_USHORT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_BYTE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1169
+ *         _imp_correlate_nd_ubyte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_BYTE:
+ *         _imp_correlate_nd_byte(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_USHORT:
+ *         _imp_correlate_nd_ushort(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_byte(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1170
+ *     elif typenum == np.NPY_BYTE:
+ *         _imp_correlate_nd_byte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_USHORT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_ushort(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_SHORT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_USHORT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1171
+ *         _imp_correlate_nd_byte(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_USHORT:
+ *         _imp_correlate_nd_ushort(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_SHORT:
+ *         _imp_correlate_nd_short(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_ushort(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1172
+ *     elif typenum == np.NPY_USHORT:
+ *         _imp_correlate_nd_ushort(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_SHORT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_short(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_UINT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_SHORT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1173
+ *         _imp_correlate_nd_ushort(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_SHORT:
+ *         _imp_correlate_nd_short(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_UINT:
+ *         _imp_correlate_nd_uint(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_short(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1174
+ *     elif typenum == np.NPY_SHORT:
+ *         _imp_correlate_nd_short(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_UINT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_uint(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_INT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_UINT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1175
+ *         _imp_correlate_nd_short(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_UINT:
+ *         _imp_correlate_nd_uint(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_INT:
+ *         _imp_correlate_nd_int(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_uint(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1176
+ *     elif typenum == np.NPY_UINT:
+ *         _imp_correlate_nd_uint(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_INT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_int(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONG:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_INT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1177
+ *         _imp_correlate_nd_uint(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_INT:
+ *         _imp_correlate_nd_int(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_ULONG:
+ *         _imp_correlate_nd_ulong(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_int(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1178
+ *     elif typenum == np.NPY_INT:
+ *         _imp_correlate_nd_int(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONG:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_ulong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONG:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_ULONG);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1179
+ *         _imp_correlate_nd_int(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONG:
+ *         _imp_correlate_nd_ulong(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_LONG:
+ *         _imp_correlate_nd_long(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_ulong(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1180
+ *     elif typenum == np.NPY_ULONG:
+ *         _imp_correlate_nd_ulong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONG:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_long(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONGLONG:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_LONG);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1181
+ *         _imp_correlate_nd_ulong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONG:
+ *         _imp_correlate_nd_long(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_ULONGLONG:
+ *         _imp_correlate_nd_ulonglong(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_long(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1182
+ *     elif typenum == np.NPY_LONG:
+ *         _imp_correlate_nd_long(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONGLONG:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_ulonglong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGLONG:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_ULONGLONG);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1183
+ *         _imp_correlate_nd_long(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_ULONGLONG:
+ *         _imp_correlate_nd_ulonglong(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_LONGLONG:
+ *         _imp_correlate_nd_longlong(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_ulonglong(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1184
+ *     elif typenum == np.NPY_ULONGLONG:
+ *         _imp_correlate_nd_ulonglong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGLONG:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_longlong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_FLOAT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_LONGLONG);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1185
+ *         _imp_correlate_nd_ulonglong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGLONG:
+ *         _imp_correlate_nd_longlong(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_FLOAT:
+ *         _imp_correlate_nd_float(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_longlong(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1186
+ *     elif typenum == np.NPY_LONGLONG:
+ *         _imp_correlate_nd_longlong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_float(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_DOUBLE:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_FLOAT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1187
+ *         _imp_correlate_nd_longlong(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_FLOAT:
+ *         _imp_correlate_nd_float(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_DOUBLE:
+ *         _imp_correlate_nd_double(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_float(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1188
+ *     elif typenum == np.NPY_FLOAT:
+ *         _imp_correlate_nd_float(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_double(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGDOUBLE:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_DOUBLE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1189
+ *         _imp_correlate_nd_float(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_DOUBLE:
+ *         _imp_correlate_nd_double(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_LONGDOUBLE:
+ *         _imp_correlate_nd_longdouble(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_double(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1190
+ *     elif typenum == np.NPY_DOUBLE:
+ *         _imp_correlate_nd_double(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGDOUBLE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_longdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CFLOAT:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_LONGDOUBLE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1191
+ *         _imp_correlate_nd_double(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_LONGDOUBLE:
+ *         _imp_correlate_nd_longdouble(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_CFLOAT:
+ *         _imp_correlate_nd_cfloat(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_longdouble(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1192
+ *     elif typenum == np.NPY_LONGDOUBLE:
+ *         _imp_correlate_nd_longdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CFLOAT:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_cfloat(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CDOUBLE:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_CFLOAT);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1193
+ *         _imp_correlate_nd_longdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CFLOAT:
+ *         _imp_correlate_nd_cfloat(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_CDOUBLE:
+ *         _imp_correlate_nd_cdouble(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_cfloat(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1194
+ *     elif typenum == np.NPY_CFLOAT:
+ *         _imp_correlate_nd_cfloat(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CDOUBLE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_cdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CLONGDOUBLE:
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_CDOUBLE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1195
+ *         _imp_correlate_nd_cfloat(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CDOUBLE:
+ *         _imp_correlate_nd_cdouble(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ *     elif typenum == np.NPY_CLONGDOUBLE:
+ *         _imp_correlate_nd_clongdouble(curx, curneighx, ity, itz)
+ */
+    _imp_correlate_nd_cdouble(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1196
+ *     elif typenum == np.NPY_CDOUBLE:
+ *         _imp_correlate_nd_cdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CLONGDOUBLE:             # <<<<<<<<<<<<<<
+ *         _imp_correlate_nd_clongdouble(curx, curneighx, ity, itz)
+ * 
+ */
+  __pyx_t_6 = (__pyx_v_typenum == NPY_CLONGDOUBLE);
+  if (__pyx_t_6) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1197
+ *         _imp_correlate_nd_cdouble(curx, curneighx, ity, itz)
+ *     elif typenum == np.NPY_CLONGDOUBLE:
+ *         _imp_correlate_nd_clongdouble(curx, curneighx, ity, itz)             # <<<<<<<<<<<<<<
+ * 
+ *     else:
+ */
+    _imp_correlate_nd_clongdouble(__pyx_v_curx, __pyx_v_curneighx, __pyx_v_ity, __pyx_v_itz);
+    goto __pyx_L13;
+  }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1200
+ * 
+ *     else:
+ *         raise ValueError("Unsupported type")             # <<<<<<<<<<<<<<
+ * 
+ *     return 0
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+    __pyx_t_1 = __site_call1_1200_24->Target(__site_call1_1200_24, __pyx_context, __pyx_t_2, ((System::Object^)"Unsupported type"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+  }
+  __pyx_L13:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1202
+ *         raise ValueError("Unsupported type")
+ * 
+ *     return 0             # <<<<<<<<<<<<<<
+ * 
+ * ##########################
+ */
+  __pyx_r = __pyx_int_0;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1207
  * #  N-D Order Filtering.  #
  * 
  * cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,             # <<<<<<<<<<<<<<
@@ -730,7 +8783,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
   size_t __pyx_t_10;
   int __pyx_t_11;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":75
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1210
  *                  char *sort_buffer, int nels2, int check, np.npy_intp *loop_ind,
  *                  np.npy_intp *temp_ind, np.npy_uintp *offset):
  *     cdef int i, j, k, incr = 1             # <<<<<<<<<<<<<<
@@ -739,7 +8792,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_incr = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":76
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1211
  *                  np.npy_intp *temp_ind, np.npy_uintp *offset):
  *     cdef int i, j, k, incr = 1
  *     cdef int ndims = np.PyArray_NDIM(ap1)             # <<<<<<<<<<<<<<
@@ -747,11 +8800,11 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  *     cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)
  */
   __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
-  __pyx_t_2 = __site_cvt_cvt_int_76_36->Target(__site_cvt_cvt_int_76_36, __pyx_t_1);
+  __pyx_t_2 = __site_cvt_cvt_int_1211_36->Target(__site_cvt_cvt_int_1211_36, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_ndims = __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":77
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1212
  *     cdef int i, j, k, incr = 1
  *     cdef int ndims = np.PyArray_NDIM(ap1)
  *     cdef np.npy_intp *dims2 = np.PyArray_DIMS(ap2)             # <<<<<<<<<<<<<<
@@ -760,7 +8813,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_dims2 = PyArray_DIMS(__pyx_v_ap2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":78
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1213
  *     cdef int ndims = np.PyArray_NDIM(ap1)
  *     cdef np.npy_intp *dims2 = np.PyArray_DIMS(ap2)
  *     cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)             # <<<<<<<<<<<<<<
@@ -769,7 +8822,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_dims1 = PyArray_DIMS(__pyx_v_ap1);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":79
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1214
  *     cdef np.npy_intp *dims2 = np.PyArray_DIMS(ap2)
  *     cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)
  *     cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]             # <<<<<<<<<<<<<<
@@ -778,7 +8831,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_is1 = (PyArray_STRIDES(__pyx_v_ap1)[(__pyx_v_ndims - 1)]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":80
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1215
  *     cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)
  *     cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]
  *     cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]             # <<<<<<<<<<<<<<
@@ -787,7 +8840,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_is2 = (PyArray_STRIDES(__pyx_v_ap2)[(__pyx_v_ndims - 1)]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":81
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1216
  *     cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]
  *     cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]
  *     cdef char *ip2 = <char *>np.PyArray_DATA(ap2)             # <<<<<<<<<<<<<<
@@ -796,7 +8849,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_ip2 = ((char *)PyArray_DATA(__pyx_v_ap2));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":82
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1217
  *     cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]
  *     cdef char *ip2 = <char *>np.PyArray_DATA(ap2)
  *     cdef int elsize = np.PyArray_DESCR(ap1).elsize             # <<<<<<<<<<<<<<
@@ -804,13 +8857,13 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  * 
  */
   __pyx_t_1 = PyArray_DESCR(__pyx_v_ap1); 
-  __pyx_t_3 = __site_get_elsize_82_43->Target(__site_get_elsize_82_43, __pyx_t_1, __pyx_context);
+  __pyx_t_3 = __site_get_elsize_1217_43->Target(__site_get_elsize_1217_43, __pyx_t_1, __pyx_context);
   __pyx_t_1 = nullptr;
-  __pyx_t_4 = __site_cvt_cvt_int_82_43->Target(__site_cvt_cvt_int_82_43, __pyx_t_3);
+  __pyx_t_4 = __site_cvt_cvt_int_1217_43->Target(__site_cvt_cvt_int_1217_43, __pyx_t_3);
   __pyx_t_3 = nullptr;
   __pyx_v_elsize = __pyx_t_4;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":85
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1220
  *     cdef char *ptr
  * 
  *     ptr = <char *>np.PyArray_Zero(ap2)             # <<<<<<<<<<<<<<
@@ -819,7 +8872,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   __pyx_v_ptr = ((char *)PyArray_Zero(((System::Object^)__pyx_v_ap2)));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":86
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1221
  * 
  *     ptr = <char *>np.PyArray_Zero(ap2)
  *     temp_ind[ndims-1] -= 1             # <<<<<<<<<<<<<<
@@ -828,7 +8881,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   (__pyx_v_temp_ind[(__pyx_v_ndims - 1)]) -= 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":88
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1223
  *     temp_ind[ndims-1] -= 1
  * 
  *     for i in range(nels2 - 1, -1, -1):             # <<<<<<<<<<<<<<
@@ -838,7 +8891,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
   for (__pyx_t_5 = (__pyx_v_nels2 - 1); __pyx_t_5 > -1; __pyx_t_5-=1) {
     __pyx_v_i = __pyx_t_5;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":90
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1225
  *     for i in range(nels2 - 1, -1, -1):
  *         # Adjust index array and move ptr1 to right place
  *         k = ndims - 1             # <<<<<<<<<<<<<<
@@ -847,7 +8900,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
     __pyx_v_k = (__pyx_v_ndims - 1);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":91
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1226
  *         # Adjust index array and move ptr1 to right place
  *         k = ndims - 1
  *         for j in range(incr):             # <<<<<<<<<<<<<<
@@ -858,7 +8911,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
     for (__pyx_t_7 = 0; __pyx_t_7 < __pyx_t_6; __pyx_t_7+=1) {
       __pyx_v_j = __pyx_t_7;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":92
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1227
  *         k = ndims - 1
  *         for j in range(incr):
  *             temp_ind[k] -= dims2[k] - 1  # Return to start for these dimensions             # <<<<<<<<<<<<<<
@@ -867,7 +8920,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
       (__pyx_v_temp_ind[__pyx_v_k]) -= ((__pyx_v_dims2[__pyx_v_k]) - 1);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":93
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1228
  *         for j in range(incr):
  *             temp_ind[k] -= dims2[k] - 1  # Return to start for these dimensions
  *             k -= 1             # <<<<<<<<<<<<<<
@@ -877,7 +8930,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
       __pyx_v_k -= 1;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":95
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1230
  *             k -= 1
  * 
  *         ip1 += offset[k] * is1           # Precomputed offset array             # <<<<<<<<<<<<<<
@@ -886,7 +8939,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
     __pyx_v_ip1 += ((__pyx_v_offset[__pyx_v_k]) * __pyx_v_is1);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":96
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1231
  * 
  *         ip1 += offset[k] * is1           # Precomputed offset array
  *         temp_ind[k] += 1             # <<<<<<<<<<<<<<
@@ -895,7 +8948,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
     (__pyx_v_temp_ind[__pyx_v_k]) += 1;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":98
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1233
  *         temp_ind[k] += 1
  * 
  *         if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and             # <<<<<<<<<<<<<<
@@ -911,7 +8964,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
     __pyx_t_9 = (!__pyx_t_8);
     if (__pyx_t_9) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":99
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1234
  * 
  *         if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and
  *                 memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):             # <<<<<<<<<<<<<<
@@ -919,12 +8972,12 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  *             sort_buffer += elsize
  */
       __pyx_t_3 = PyArray_DESCR(__pyx_v_ap2); 
-      __pyx_t_1 = __site_get_elsize_99_54->Target(__site_get_elsize_99_54, __pyx_t_3, __pyx_context);
+      __pyx_t_1 = __site_get_elsize_1234_54->Target(__site_get_elsize_1234_54, __pyx_t_3, __pyx_context);
       __pyx_t_3 = nullptr;
-      __pyx_t_10 = __site_cvt_cvt_size_t_99_54->Target(__site_cvt_cvt_size_t_99_54, __pyx_t_1);
+      __pyx_t_10 = __site_cvt_cvt_size_t_1234_54->Target(__site_cvt_cvt_size_t_1234_54, __pyx_t_1);
       __pyx_t_1 = nullptr;
       __pyx_t_1 = memcmp(__pyx_v_ip2, __pyx_v_ptr, __pyx_t_10);
-      __pyx_t_8 = __site_istrue_99_22->Target(__site_istrue_99_22, __pyx_t_1);
+      __pyx_t_8 = __site_istrue_1234_22->Target(__site_istrue_1234_22, __pyx_t_1);
       __pyx_t_1 = nullptr;
       __pyx_t_11 = __pyx_t_8;
     } else {
@@ -932,7 +8985,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
     }
     if (__pyx_t_11) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":100
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1235
  *         if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and
  *                 memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):
  *             memcpy(sort_buffer, ip1, elsize)             # <<<<<<<<<<<<<<
@@ -941,7 +8994,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
       memcpy(__pyx_v_sort_buffer, __pyx_v_ip1, __pyx_v_elsize);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":101
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1236
  *                 memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):
  *             memcpy(sort_buffer, ip1, elsize)
  *             sort_buffer += elsize             # <<<<<<<<<<<<<<
@@ -953,7 +9006,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
     }
     __pyx_L7:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":103
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1238
  *             sort_buffer += elsize
  * 
  *         incr = increment(loop_ind, ndims, dims2)   # Returns number of N-D indices incremented.             # <<<<<<<<<<<<<<
@@ -962,7 +9015,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
     __pyx_v_incr = increment(__pyx_v_loop_ind, __pyx_v_ndims, __pyx_v_dims2);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":104
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1239
  * 
  *         incr = increment(loop_ind, ndims, dims2)   # Returns number of N-D indices incremented.
  *         ip2 += is2             # <<<<<<<<<<<<<<
@@ -972,7 +9025,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
     __pyx_v_ip2 += __pyx_v_is2;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":106
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1241
  *         ip2 += is2
  * 
  *     np.NpyDataMem_FREE(ptr)             # <<<<<<<<<<<<<<
@@ -981,7 +9034,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
  */
   NpyDataMem_FREE(__pyx_v_ptr);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":107
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1242
  * 
  *     np.NpyDataMem_FREE(ptr)
  *     return             # <<<<<<<<<<<<<<
@@ -996,7 +9049,7 @@ static  System::Object^ fill_buffer(char *__pyx_v_ip1, NumpyDotNet::ndarray^ __p
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":109
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1244
  *     return
  * 
  * cdef int DOUBLE_compare(double *ip1, double *ip2):             # <<<<<<<<<<<<<<
@@ -1012,7 +9065,7 @@ static  int DOUBLE_compare(double *__pyx_v_ip1, double *__pyx_v_ip2) {
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":110
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1245
  * 
  * cdef int DOUBLE_compare(double *ip1, double *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1037,7 +9090,7 @@ static  int DOUBLE_compare(double *__pyx_v_ip1, double *__pyx_v_ip2) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":112
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1247
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int FLOAT_compare(float *ip1, float *ip2):             # <<<<<<<<<<<<<<
@@ -1053,7 +9106,7 @@ static  int FLOAT_compare(float *__pyx_v_ip1, float *__pyx_v_ip2) {
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":113
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1248
  * 
  * cdef int FLOAT_compare(float *ip1, float *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1078,7 +9131,7 @@ static  int FLOAT_compare(float *__pyx_v_ip1, float *__pyx_v_ip2) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":115
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1250
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int LONGDOUBLE_compare(np.npy_longdouble *ip1, np.npy_longdouble *ip2):             # <<<<<<<<<<<<<<
@@ -1094,7 +9147,7 @@ static  int LONGDOUBLE_compare(__pyx_t_5numpy_npy_longdouble *__pyx_v_ip1, __pyx
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":116
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1251
  * 
  * cdef int LONGDOUBLE_compare(np.npy_longdouble *ip1, np.npy_longdouble *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1119,7 +9172,7 @@ static  int LONGDOUBLE_compare(__pyx_t_5numpy_npy_longdouble *__pyx_v_ip1, __pyx
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":118
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1253
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int BYTE_compare(np.npy_byte *ip1, np.npy_byte *ip2):             # <<<<<<<<<<<<<<
@@ -1135,7 +9188,7 @@ static  int BYTE_compare(__pyx_t_5numpy_npy_byte *__pyx_v_ip1, __pyx_t_5numpy_np
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":119
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1254
  * 
  * cdef int BYTE_compare(np.npy_byte *ip1, np.npy_byte *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1160,7 +9213,7 @@ static  int BYTE_compare(__pyx_t_5numpy_npy_byte *__pyx_v_ip1, __pyx_t_5numpy_np
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":121
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1256
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int SHORT_compare(short *ip1, short *ip2):             # <<<<<<<<<<<<<<
@@ -1176,7 +9229,7 @@ static  int SHORT_compare(short *__pyx_v_ip1, short *__pyx_v_ip2) {
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":122
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1257
  * 
  * cdef int SHORT_compare(short *ip1, short *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1201,7 +9254,7 @@ static  int SHORT_compare(short *__pyx_v_ip1, short *__pyx_v_ip2) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":124
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1259
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int INT_compare(int *ip1, int *ip2):             # <<<<<<<<<<<<<<
@@ -1217,7 +9270,7 @@ static  int INT_compare(int *__pyx_v_ip1, int *__pyx_v_ip2) {
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":125
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1260
  * 
  * cdef int INT_compare(int *ip1, int *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1242,7 +9295,7 @@ static  int INT_compare(int *__pyx_v_ip1, int *__pyx_v_ip2) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":127
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1262
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int LONG_compare(long *ip1, long *ip2):             # <<<<<<<<<<<<<<
@@ -1258,7 +9311,7 @@ static  int LONG_compare(long *__pyx_v_ip1, long *__pyx_v_ip2) {
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":128
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1263
  * 
  * cdef int LONG_compare(long *ip1, long *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1283,7 +9336,7 @@ static  int LONG_compare(long *__pyx_v_ip1, long *__pyx_v_ip2) {
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":130
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1265
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int LONGLONG_compare(np.npy_longlong *ip1, np.npy_longlong *ip2):             # <<<<<<<<<<<<<<
@@ -1299,7 +9352,7 @@ static  int LONGLONG_compare(__pyx_t_5numpy_npy_longlong *__pyx_v_ip1, __pyx_t_5
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":131
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1266
  * 
  * cdef int LONGLONG_compare(np.npy_longlong *ip1, np.npy_longlong *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1324,7 +9377,7 @@ static  int LONGLONG_compare(__pyx_t_5numpy_npy_longlong *__pyx_v_ip1, __pyx_t_5
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":133
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1268
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int UBYTE_compare(np.npy_ubyte *ip1, np.npy_ubyte *ip2):             # <<<<<<<<<<<<<<
@@ -1340,7 +9393,7 @@ static  int UBYTE_compare(__pyx_t_5numpy_npy_ubyte *__pyx_v_ip1, __pyx_t_5numpy_
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":134
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1269
  * 
  * cdef int UBYTE_compare(np.npy_ubyte *ip1, np.npy_ubyte *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1365,7 +9418,7 @@ static  int UBYTE_compare(__pyx_t_5numpy_npy_ubyte *__pyx_v_ip1, __pyx_t_5numpy_
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":136
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1271
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int USHORT_compare(np.npy_ushort *ip1, np.npy_ushort *ip2):             # <<<<<<<<<<<<<<
@@ -1381,7 +9434,7 @@ static  int USHORT_compare(__pyx_t_5numpy_npy_ushort *__pyx_v_ip1, __pyx_t_5nump
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":137
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1272
  * 
  * cdef int USHORT_compare(np.npy_ushort *ip1, np.npy_ushort *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1406,7 +9459,7 @@ static  int USHORT_compare(__pyx_t_5numpy_npy_ushort *__pyx_v_ip1, __pyx_t_5nump
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":139
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1274
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int UINT_compare(np.npy_uint *ip1, np.npy_uint *ip2):             # <<<<<<<<<<<<<<
@@ -1422,7 +9475,7 @@ static  int UINT_compare(__pyx_t_5numpy_npy_uint *__pyx_v_ip1, __pyx_t_5numpy_np
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":140
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1275
  * 
  * cdef int UINT_compare(np.npy_uint *ip1, np.npy_uint *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1447,7 +9500,7 @@ static  int UINT_compare(__pyx_t_5numpy_npy_uint *__pyx_v_ip1, __pyx_t_5numpy_np
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":142
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1277
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int ULONG_compare(np.npy_ulong *ip1, np.npy_ulong *ip2):             # <<<<<<<<<<<<<<
@@ -1463,7 +9516,7 @@ static  int ULONG_compare(__pyx_t_5numpy_npy_ulong *__pyx_v_ip1, __pyx_t_5numpy_
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":143
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1278
  * 
  * cdef int ULONG_compare(np.npy_ulong *ip1, np.npy_ulong *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1488,7 +9541,7 @@ static  int ULONG_compare(__pyx_t_5numpy_npy_ulong *__pyx_v_ip1, __pyx_t_5numpy_
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":145
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1280
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int ULONGLONG_compare(np.npy_ulonglong *ip1, np.npy_ulonglong *ip2):             # <<<<<<<<<<<<<<
@@ -1504,7 +9557,7 @@ static  int ULONGLONG_compare(__pyx_t_5numpy_npy_ulonglong *__pyx_v_ip1, __pyx_t
   long __pyx_t_1;
   long __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":146
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1281
  * 
  * cdef int ULONGLONG_compare(np.npy_ulonglong *ip1, np.npy_ulonglong *ip2):
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)             # <<<<<<<<<<<<<<
@@ -1529,7 +9582,7 @@ static  int ULONGLONG_compare(__pyx_t_5numpy_npy_ulonglong *__pyx_v_ip1, __pyx_t
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":148
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1283
  *     return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
  * 
  * cdef int OBJECT_compare(object ip1, object ip2):             # <<<<<<<<<<<<<<
@@ -1546,17 +9599,17 @@ static  int OBJECT_compare(System::Object^ __pyx_v_ip1, System::Object^ __pyx_v_
   System::Object^ __pyx_t_2 = nullptr;
   int __pyx_t_3;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":149
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1284
  * 
  * cdef int OBJECT_compare(object ip1, object ip2):
  *     return (ip1 == ip2) != 1             # <<<<<<<<<<<<<<
  * 
  * cdef CompareFunction compare_functions[21]
  */
-  __pyx_t_1 = __site_op_eq_149_16->Target(__site_op_eq_149_16, __pyx_v_ip1, __pyx_v_ip2);
-  __pyx_t_2 = __site_op_ne_149_24->Target(__site_op_ne_149_24, __pyx_t_1, __pyx_int_1);
+  __pyx_t_1 = __site_op_eq_1284_16->Target(__site_op_eq_1284_16, __pyx_v_ip1, __pyx_v_ip2);
+  __pyx_t_2 = __site_op_ne_1284_24->Target(__site_op_ne_1284_24, __pyx_t_1, __pyx_int_1);
   __pyx_t_1 = nullptr;
-  __pyx_t_3 = __site_cvt_cvt_int_149_24->Target(__site_cvt_cvt_int_149_24, __pyx_t_2);
+  __pyx_t_3 = __site_cvt_cvt_int_1284_24->Target(__site_cvt_cvt_int_1284_24, __pyx_t_2);
   __pyx_t_2 = nullptr;
   __pyx_r = __pyx_t_3;
   goto __pyx_L0;
@@ -1566,7 +9619,7 @@ static  int OBJECT_compare(System::Object^ __pyx_v_ip1, System::Object^ __pyx_v_
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":167
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1302
  * compare_functions[17] = <CompareFunction>OBJECT_compare
  * 
  * def _order_filterND(a0, domain, int order=0):             # <<<<<<<<<<<<<<
@@ -1636,7 +9689,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
   __pyx_v_a0 = a0;
   __pyx_v_domain = domain;
   if (dynamic_cast<System::Reflection::Missing^>(order) == nullptr) {
-    __pyx_v_order = __site_cvt_cvt_int_167_0->Target(__site_cvt_cvt_int_167_0, order);
+    __pyx_v_order = __site_cvt_cvt_int_1302_0->Target(__site_cvt_cvt_int_1302_0, order);
   } else {
     __pyx_v_order = ((int)0);
   }
@@ -1645,7 +9698,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
   __pyx_v_ret = nullptr;
   __pyx_v_type = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":175
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1310
  *     cdef np.npy_intp *offsets2
  *     cdef np.npy_intp *ret_ind
  *     cdef int i, j, n2, n2_nonzero, k, check, incr = 1             # <<<<<<<<<<<<<<
@@ -1654,7 +9707,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
   __pyx_v_incr = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":181
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1316
  *     cdef char *op, *ap1_ptr, *ap2_ptr, *sort_buffer
  *     cdef CompareFunction compare_func
  *     cdef char *zptr=NULL             # <<<<<<<<<<<<<<
@@ -1663,7 +9716,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
   __pyx_v_zptr = NULL;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":184
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1319
  * 
  *     # Get Array objects from input
  *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(a0)))             # <<<<<<<<<<<<<<
@@ -1677,7 +9730,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
   __pyx_v_type = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":185
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1320
  *     # Get Array objects from input
  *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(a0)))
  *     type = np.NpyArray_FindArrayType_2args(domain, type)             # <<<<<<<<<<<<<<
@@ -1691,7 +9744,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
   __pyx_v_type = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":187
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1322
  *     type = np.NpyArray_FindArrayType_2args(domain, type)
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -1700,7 +9753,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
   try {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":188
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1323
  * 
  *     try:
  *         ap1 = np.PyArray_FromAny(a0, type, 0, 0, np.NPY_CONTIGUOUS, None)             # <<<<<<<<<<<<<<
@@ -1716,7 +9769,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_v_ap1 = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":189
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1324
  *     try:
  *         ap1 = np.PyArray_FromAny(a0, type, 0, 0, np.NPY_CONTIGUOUS, None)
  *         ap2 = np.PyArray_FromAny(domain, type, 0, 0, np.NPY_CONTIGUOUS, None)             # <<<<<<<<<<<<<<
@@ -1732,7 +9785,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_v_ap2 = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":191
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1326
  *         ap2 = np.PyArray_FromAny(domain, type, 0, 0, np.NPY_CONTIGUOUS, None)
  * 
  *         if np.PyArray_NDIM(ap1) != np.PyArray_NDIM(ap2):             # <<<<<<<<<<<<<<
@@ -1741,14 +9794,14 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
     __pyx_t_2 = PyArray_NDIM(__pyx_v_ap2); 
-    __pyx_t_3 = __site_op_ne_191_32->Target(__site_op_ne_191_32, __pyx_t_1, __pyx_t_2);
+    __pyx_t_3 = __site_op_ne_1326_32->Target(__site_op_ne_1326_32, __pyx_t_1, __pyx_t_2);
     __pyx_t_1 = nullptr;
     __pyx_t_2 = nullptr;
-    __pyx_t_4 = __site_istrue_191_32->Target(__site_istrue_191_32, __pyx_t_3);
+    __pyx_t_4 = __site_istrue_1326_32->Target(__site_istrue_1326_32, __pyx_t_3);
     __pyx_t_3 = nullptr;
     if (__pyx_t_4) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":192
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1327
  * 
  *         if np.PyArray_NDIM(ap1) != np.PyArray_NDIM(ap2):
  *             raise ValueError("All input arrays must have the same number of dimensions.")             # <<<<<<<<<<<<<<
@@ -1756,7 +9809,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         n2 = np.PyArray_SIZE(ap2)
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_2 = __site_call1_192_28->Target(__site_call1_192_28, __pyx_context, __pyx_t_3, ((System::Object^)"All input arrays must have the same number of dimensions."));
+      __pyx_t_2 = __site_call1_1327_28->Target(__site_call1_1327_28, __pyx_context, __pyx_t_3, ((System::Object^)"All input arrays must have the same number of dimensions."));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
       __pyx_t_2 = nullptr;
@@ -1764,7 +9817,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L5:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":194
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1329
  *             raise ValueError("All input arrays must have the same number of dimensions.")
  * 
  *         n2 = np.PyArray_SIZE(ap2)             # <<<<<<<<<<<<<<
@@ -1773,7 +9826,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_n2 = PyArray_SIZE(__pyx_v_ap2);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":195
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1330
  * 
  *         n2 = np.PyArray_SIZE(ap2)
  *         n2_nonzero = 0             # <<<<<<<<<<<<<<
@@ -1782,7 +9835,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_n2_nonzero = 0;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":196
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1331
  *         n2 = np.PyArray_SIZE(ap2)
  *         n2_nonzero = 0
  *         ap2_ptr = <char *>np.PyArray_DATA(ap2)             # <<<<<<<<<<<<<<
@@ -1791,7 +9844,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_ap2_ptr = ((char *)PyArray_DATA(__pyx_v_ap2));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":200
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1335
  *         # Find out the number of non-zero entries in domain (allows for
  *         # different shapped rank-filters to be used besides just rectangles)
  *         zptr = <char *>np.PyArray_Zero(ap2)             # <<<<<<<<<<<<<<
@@ -1800,7 +9853,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_zptr = ((char *)PyArray_Zero(((System::Object^)__pyx_v_ap2)));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":201
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1336
  *         # different shapped rank-filters to be used besides just rectangles)
  *         zptr = <char *>np.PyArray_Zero(ap2)
  *         if zptr == NULL:             # <<<<<<<<<<<<<<
@@ -1810,7 +9863,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_t_4 = (__pyx_v_zptr == NULL);
     if (__pyx_t_4) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":202
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1337
  *         zptr = <char *>np.PyArray_Zero(ap2)
  *         if zptr == NULL:
  *             return None             # <<<<<<<<<<<<<<
@@ -1823,7 +9876,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L6:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":204
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1339
  *             return None
  * 
  *         for k in range(n2):             # <<<<<<<<<<<<<<
@@ -1834,7 +9887,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     for (__pyx_t_6 = 0; __pyx_t_6 < __pyx_t_5; __pyx_t_6+=1) {
       __pyx_v_k = __pyx_t_6;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":205
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1340
  * 
  *         for k in range(n2):
  *             n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).elsize) != 0)             # <<<<<<<<<<<<<<
@@ -1842,13 +9895,13 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  * 
  */
       __pyx_t_2 = PyArray_DESCR(__pyx_v_ap2); 
-      __pyx_t_3 = __site_get_elsize_205_68->Target(__site_get_elsize_205_68, __pyx_t_2, __pyx_context);
+      __pyx_t_3 = __site_get_elsize_1340_68->Target(__site_get_elsize_1340_68, __pyx_t_2, __pyx_context);
       __pyx_t_2 = nullptr;
-      __pyx_t_7 = __site_cvt_cvt_size_t_205_68->Target(__site_cvt_cvt_size_t_205_68, __pyx_t_3);
+      __pyx_t_7 = __site_cvt_cvt_size_t_1340_68->Target(__site_cvt_cvt_size_t_1340_68, __pyx_t_3);
       __pyx_t_3 = nullptr;
       __pyx_v_n2_nonzero += (memcmp(__pyx_v_ap2_ptr, __pyx_v_zptr, __pyx_t_7) != 0);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":206
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1341
  *         for k in range(n2):
  *             n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).elsize) != 0)
  *             ap2_ptr += <int>np.PyArray_DESCR(ap2).elsize             # <<<<<<<<<<<<<<
@@ -1856,14 +9909,14 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         if (order >= n2_nonzero) or (order < 0):
  */
       __pyx_t_3 = PyArray_DESCR(__pyx_v_ap2); 
-      __pyx_t_2 = __site_get_elsize_206_49->Target(__site_get_elsize_206_49, __pyx_t_3, __pyx_context);
+      __pyx_t_2 = __site_get_elsize_1341_49->Target(__site_get_elsize_1341_49, __pyx_t_3, __pyx_context);
       __pyx_t_3 = nullptr;
-      __pyx_t_8 = __site_cvt_cvt_int_206_49->Target(__site_cvt_cvt_int_206_49, __pyx_t_2);
+      __pyx_t_8 = __site_cvt_cvt_int_1341_49->Target(__site_cvt_cvt_int_1341_49, __pyx_t_2);
       __pyx_t_2 = nullptr;
       __pyx_v_ap2_ptr += ((int)__pyx_t_8);
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":208
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1343
  *             ap2_ptr += <int>np.PyArray_DESCR(ap2).elsize
  * 
  *         if (order >= n2_nonzero) or (order < 0):             # <<<<<<<<<<<<<<
@@ -1879,7 +9932,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     if (__pyx_t_10) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":209
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1344
  * 
  *         if (order >= n2_nonzero) or (order < 0):
  *             raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")             # <<<<<<<<<<<<<<
@@ -1887,7 +9940,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         typenum = type.num
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_3 = __site_call1_209_28->Target(__site_call1_209_28, __pyx_context, __pyx_t_2, ((System::Object^)"Order must be non-negative and less than number of nonzero elements in domain."));
+      __pyx_t_3 = __site_call1_1344_28->Target(__site_call1_1344_28, __pyx_context, __pyx_t_2, ((System::Object^)"Order must be non-negative and less than number of nonzero elements in domain."));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -1895,19 +9948,19 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L9:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":211
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1346
  *             raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")
  * 
  *         typenum = type.num             # <<<<<<<<<<<<<<
  * 
  *         ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)
  */
-    __pyx_t_3 = __site_get_num_211_22->Target(__site_get_num_211_22, __pyx_v_type, __pyx_context);
-    __pyx_t_5 = __site_cvt_cvt_int_211_22->Target(__site_cvt_cvt_int_211_22, __pyx_t_3);
+    __pyx_t_3 = __site_get_num_1346_22->Target(__site_get_num_1346_22, __pyx_v_type, __pyx_context);
+    __pyx_t_5 = __site_cvt_cvt_int_1346_22->Target(__site_cvt_cvt_int_1346_22, __pyx_t_3);
     __pyx_t_3 = nullptr;
     __pyx_v_typenum = __pyx_t_5;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":213
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1348
  *         typenum = type.num
  * 
  *         ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)             # <<<<<<<<<<<<<<
@@ -1915,7 +9968,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         compare_func = compare_functions[np.PyArray_TYPE(ap1)]
  */
     __pyx_t_3 = PyArray_NDIM(__pyx_v_ap1); 
-    __pyx_t_6 = __site_cvt_cvt_int_213_50->Target(__site_cvt_cvt_int_213_50, __pyx_t_3);
+    __pyx_t_6 = __site_cvt_cvt_int_1348_50->Target(__site_cvt_cvt_int_1348_50, __pyx_t_3);
     __pyx_t_3 = nullptr;
     __pyx_t_3 = PyArray_SimpleNew(__pyx_t_6, PyArray_DIMS(__pyx_v_ap1), __pyx_v_typenum); 
     if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
@@ -1924,7 +9977,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_v_ret = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":215
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1350
  *         ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)
  * 
  *         compare_func = compare_functions[np.PyArray_TYPE(ap1)]             # <<<<<<<<<<<<<<
@@ -1933,7 +9986,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_compare_func = (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[PyArray_TYPE(__pyx_v_ap1)]);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":216
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1351
  * 
  *         compare_func = compare_functions[np.PyArray_TYPE(ap1)]
  *         if compare_func == NULL:             # <<<<<<<<<<<<<<
@@ -1943,7 +9996,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_t_10 = (__pyx_v_compare_func == NULL);
     if (__pyx_t_10) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":217
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1352
  *         compare_func = compare_functions[np.PyArray_TYPE(ap1)]
  *         if compare_func == NULL:
  *             raise ValueError("order_filterND not available for this type")             # <<<<<<<<<<<<<<
@@ -1951,7 +10004,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         is1 = np.PyArray_DESCR(ap1).elsize
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_2 = __site_call1_217_28->Target(__site_call1_217_28, __pyx_context, __pyx_t_3, ((System::Object^)"order_filterND not available for this type"));
+      __pyx_t_2 = __site_call1_1352_28->Target(__site_call1_1352_28, __pyx_context, __pyx_t_3, ((System::Object^)"order_filterND not available for this type"));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
       __pyx_t_2 = nullptr;
@@ -1959,7 +10012,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L10:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":219
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1354
  *             raise ValueError("order_filterND not available for this type")
  * 
  *         is1 = np.PyArray_DESCR(ap1).elsize             # <<<<<<<<<<<<<<
@@ -1967,13 +10020,13 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         if sort_buffer == NULL:
  */
     __pyx_t_2 = PyArray_DESCR(__pyx_v_ap1); 
-    __pyx_t_3 = __site_get_elsize_219_35->Target(__site_get_elsize_219_35, __pyx_t_2, __pyx_context);
+    __pyx_t_3 = __site_get_elsize_1354_35->Target(__site_get_elsize_1354_35, __pyx_t_2, __pyx_context);
     __pyx_t_2 = nullptr;
-    __pyx_t_11 = __site_cvt_cvt_int_219_35->Target(__site_cvt_cvt_int_219_35, __pyx_t_3);
+    __pyx_t_11 = __site_cvt_cvt_int_1354_35->Target(__site_cvt_cvt_int_1354_35, __pyx_t_3);
     __pyx_t_3 = nullptr;
     __pyx_v_is1 = __pyx_t_11;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":220
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1355
  * 
  *         is1 = np.PyArray_DESCR(ap1).elsize
  *         sort_buffer = <char *>malloc(n2_nonzero*is1)             # <<<<<<<<<<<<<<
@@ -1982,7 +10035,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_sort_buffer = ((char *)malloc((__pyx_v_n2_nonzero * __pyx_v_is1)));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":221
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1356
  *         is1 = np.PyArray_DESCR(ap1).elsize
  *         sort_buffer = <char *>malloc(n2_nonzero*is1)
  *         if sort_buffer == NULL:             # <<<<<<<<<<<<<<
@@ -1992,7 +10045,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_t_10 = (__pyx_v_sort_buffer == NULL);
     if (__pyx_t_10) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":222
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1357
  *         sort_buffer = <char *>malloc(n2_nonzero*is1)
  *         if sort_buffer == NULL:
  *             return None             # <<<<<<<<<<<<<<
@@ -2005,7 +10058,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L11:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":224
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1359
  *             return None
  * 
  *         op = <char *>np.PyArray_DATA(ret)             # <<<<<<<<<<<<<<
@@ -2014,7 +10067,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_op = ((char *)PyArray_DATA(__pyx_v_ret));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":225
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1360
  * 
  *         op = <char *>np.PyArray_DATA(ret)
  *         os = np.PyArray_DESCR(ret).elsize             # <<<<<<<<<<<<<<
@@ -2022,13 +10075,13 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
  */
     __pyx_t_3 = PyArray_DESCR(__pyx_v_ret); 
-    __pyx_t_2 = __site_get_elsize_225_34->Target(__site_get_elsize_225_34, __pyx_t_3, __pyx_context);
+    __pyx_t_2 = __site_get_elsize_1360_34->Target(__site_get_elsize_1360_34, __pyx_t_3, __pyx_context);
     __pyx_t_3 = nullptr;
-    __pyx_t_12 = __site_cvt_cvt_int_225_34->Target(__site_cvt_cvt_int_225_34, __pyx_t_2);
+    __pyx_t_12 = __site_cvt_cvt_int_1360_34->Target(__site_cvt_cvt_int_1360_34, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_os = __pyx_t_12;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":227
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1362
  *         os = np.PyArray_DESCR(ret).elsize
  * 
  *         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)             # <<<<<<<<<<<<<<
@@ -2037,14 +10090,14 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_t_2 = PyArray_NDIM(__pyx_v_ap1); 
     __pyx_t_3 = (sizeof(__pyx_t_5numpy_npy_intp));
-    __pyx_t_1 = __site_op_mul_227_45->Target(__site_op_mul_227_45, __pyx_t_2, __pyx_t_3);
+    __pyx_t_1 = __site_op_mul_1362_45->Target(__site_op_mul_1362_45, __pyx_t_2, __pyx_t_3);
     __pyx_t_2 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_13 = __site_cvt_cvt_int_227_45->Target(__site_cvt_cvt_int_227_45, __pyx_t_1);
+    __pyx_t_13 = __site_cvt_cvt_int_1362_45->Target(__site_cvt_cvt_int_1362_45, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_v_bytes_in_array = __pyx_t_13;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":228
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1363
  * 
  *         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
  *         mode_dep = <np.npy_intp *>malloc(bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2053,7 +10106,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_mode_dep = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":229
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1364
  *         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
  *         mode_dep = <np.npy_intp *>malloc(bytes_in_array)
  *         for k in range(np.PyArray_NDIM(ap1)):             # <<<<<<<<<<<<<<
@@ -2061,12 +10114,12 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  * 
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
-    __pyx_t_14 = __site_cvt_cvt_long_229_38->Target(__site_cvt_cvt_long_229_38, __pyx_t_1);
+    __pyx_t_14 = __site_cvt_cvt_long_1364_38->Target(__site_cvt_cvt_long_1364_38, __pyx_t_1);
     __pyx_t_1 = nullptr;
     for (__pyx_t_15 = 0; __pyx_t_15 < __pyx_t_14; __pyx_t_15+=1) {
       __pyx_v_k = __pyx_t_15;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":230
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1365
  *         mode_dep = <np.npy_intp *>malloc(bytes_in_array)
  *         for k in range(np.PyArray_NDIM(ap1)):
  *             mode_dep[k] = -((np.PyArray_DIMS(ap2)[k]-1) >> 1)             # <<<<<<<<<<<<<<
@@ -2076,7 +10129,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       (__pyx_v_mode_dep[__pyx_v_k]) = (-(((PyArray_DIMS(__pyx_v_ap2)[__pyx_v_k]) - 1) >> 1));
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":232
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1367
  *             mode_dep[k] = -((np.PyArray_DIMS(ap2)[k]-1) >> 1)
  * 
  *         b_ind = <np.npy_intp *>malloc(bytes_in_array)  # loop variables             # <<<<<<<<<<<<<<
@@ -2085,7 +10138,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_b_ind = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":233
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1368
  * 
  *         b_ind = <np.npy_intp *>malloc(bytes_in_array)  # loop variables
  *         memset(b_ind,0,bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2094,7 +10147,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     memset(__pyx_v_b_ind, 0, __pyx_v_bytes_in_array);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":234
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1369
  *         b_ind = <np.npy_intp *>malloc(bytes_in_array)  # loop variables
  *         memset(b_ind,0,bytes_in_array)
  *         a_ind = <np.npy_intp *>malloc(bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2103,7 +10156,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_a_ind = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":235
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1370
  *         memset(b_ind,0,bytes_in_array)
  *         a_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         ret_ind = <np.npy_intp *>malloc(bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2112,7 +10165,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_ret_ind = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":236
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1371
  *         a_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         ret_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         memset(ret_ind,0,bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2121,7 +10174,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     memset(__pyx_v_ret_ind, 0, __pyx_v_bytes_in_array);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":237
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1372
  *         ret_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         memset(ret_ind,0,bytes_in_array)
  *         temp_ind = <np.npy_intp *>malloc(bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2130,7 +10183,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_temp_ind = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":238
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1373
  *         memset(ret_ind,0,bytes_in_array)
  *         temp_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         check_ind = <np.npy_intp *>malloc(bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2139,7 +10192,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_check_ind = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_v_bytes_in_array));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":239
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1374
  *         temp_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         check_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         offsets = <np.npy_uintp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_uintp))             # <<<<<<<<<<<<<<
@@ -2148,14 +10201,14 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
     __pyx_t_3 = (sizeof(__pyx_t_5numpy_npy_uintp));
-    __pyx_t_2 = __site_op_mul_239_61->Target(__site_op_mul_239_61, __pyx_t_1, __pyx_t_3);
+    __pyx_t_2 = __site_op_mul_1374_61->Target(__site_op_mul_1374_61, __pyx_t_1, __pyx_t_3);
     __pyx_t_1 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_16 = __site_cvt_cvt_size_t_239_61->Target(__site_cvt_cvt_size_t_239_61, __pyx_t_2);
+    __pyx_t_16 = __site_cvt_cvt_size_t_1374_61->Target(__site_cvt_cvt_size_t_1374_61, __pyx_t_2);
     __pyx_t_2 = nullptr;
     __pyx_v_offsets = ((__pyx_t_5numpy_npy_uintp *)malloc(__pyx_t_16));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":240
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1375
  *         check_ind = <np.npy_intp *>malloc(bytes_in_array)
  *         offsets = <np.npy_uintp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_uintp))
  *         offsets2 = <np.npy_intp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_intp))             # <<<<<<<<<<<<<<
@@ -2164,14 +10217,14 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_t_2 = PyArray_NDIM(__pyx_v_ap1); 
     __pyx_t_3 = (sizeof(__pyx_t_5numpy_npy_intp));
-    __pyx_t_1 = __site_op_mul_240_61->Target(__site_op_mul_240_61, __pyx_t_2, __pyx_t_3);
+    __pyx_t_1 = __site_op_mul_1375_61->Target(__site_op_mul_1375_61, __pyx_t_2, __pyx_t_3);
     __pyx_t_2 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_17 = __site_cvt_cvt_size_t_240_61->Target(__site_cvt_cvt_size_t_240_61, __pyx_t_1);
+    __pyx_t_17 = __site_cvt_cvt_size_t_1375_61->Target(__site_cvt_cvt_size_t_1375_61, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_v_offsets2 = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_t_17));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":243
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1378
  *         offset1 = compute_offsets(offsets,offsets2,
  *                                   np.PyArray_DIMS(ap1),np.PyArray_DIMS(ap2),
  *                                   np.PyArray_DIMS(ret),mode_dep,np.PyArray_NDIM(ap1))             # <<<<<<<<<<<<<<
@@ -2179,11 +10232,11 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *         # The filtering proceeds by looping through the output array
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
-    __pyx_t_15 = __site_cvt_cvt_int_243_79->Target(__site_cvt_cvt_int_243_79, __pyx_t_1);
+    __pyx_t_15 = __site_cvt_cvt_int_1378_79->Target(__site_cvt_cvt_int_1378_79, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_v_offset1 = compute_offsets(__pyx_v_offsets, __pyx_v_offsets2, PyArray_DIMS(__pyx_v_ap1), PyArray_DIMS(__pyx_v_ap2), PyArray_DIMS(__pyx_v_ret), __pyx_v_mode_dep, __pyx_t_15);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":263
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1398
  * 
  *         # Calculate it once and the just move it around appropriately
  *         np.NpyDataMem_FREE(zptr)             # <<<<<<<<<<<<<<
@@ -2192,7 +10245,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     NpyDataMem_FREE(__pyx_v_zptr);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":264
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1399
  *         # Calculate it once and the just move it around appropriately
  *         np.NpyDataMem_FREE(zptr)
  *         zptr = <char *>np.PyArray_Zero(ap1)             # <<<<<<<<<<<<<<
@@ -2201,7 +10254,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_zptr = ((char *)PyArray_Zero(((System::Object^)__pyx_v_ap1)));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":265
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1400
  *         np.NpyDataMem_FREE(zptr)
  *         zptr = <char *>np.PyArray_Zero(ap1)
  *         if zptr == NULL:             # <<<<<<<<<<<<<<
@@ -2211,7 +10264,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_t_10 = (__pyx_v_zptr == NULL);
     if (__pyx_t_10) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":266
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1401
  *         zptr = <char *>np.PyArray_Zero(ap1)
  *         if zptr == NULL:
  *             return None             # <<<<<<<<<<<<<<
@@ -2224,7 +10277,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     }
     __pyx_L14:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":268
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1403
  *             return None
  * 
  *         ap1_ptr = <char *>np.PyArray_DATA(ap1) + offset1*is1             # <<<<<<<<<<<<<<
@@ -2233,7 +10286,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     __pyx_v_ap1_ptr = (((char *)PyArray_DATA(__pyx_v_ap1)) + (__pyx_v_offset1 * __pyx_v_is1));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":269
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1404
  * 
  *         ap1_ptr = <char *>np.PyArray_DATA(ap1) + offset1*is1
  *         for k in range(np.PyArray_NDIM(ap1)):             # <<<<<<<<<<<<<<
@@ -2241,12 +10294,12 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *             check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
-    __pyx_t_18 = __site_cvt_cvt_long_269_38->Target(__site_cvt_cvt_long_269_38, __pyx_t_1);
+    __pyx_t_18 = __site_cvt_cvt_long_1404_38->Target(__site_cvt_cvt_long_1404_38, __pyx_t_1);
     __pyx_t_1 = nullptr;
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_18; __pyx_t_19+=1) {
       __pyx_v_k = __pyx_t_19;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":270
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1405
  *         ap1_ptr = <char *>np.PyArray_DATA(ap1) + offset1*is1
  *         for k in range(np.PyArray_NDIM(ap1)):
  *             a_ind[k] = mode_dep[k]             # <<<<<<<<<<<<<<
@@ -2255,7 +10308,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       (__pyx_v_a_ind[__pyx_v_k]) = (__pyx_v_mode_dep[__pyx_v_k]);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":271
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1406
  *         for k in range(np.PyArray_NDIM(ap1)):
  *             a_ind[k] = mode_dep[k]
  *             check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1             # <<<<<<<<<<<<<<
@@ -2265,7 +10318,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       (__pyx_v_check_ind[__pyx_v_k]) = (((PyArray_DIM(__pyx_v_ap1, __pyx_v_k) - PyArray_DIM(__pyx_v_ap2, __pyx_v_k)) - (__pyx_v_mode_dep[__pyx_v_k])) - 1);
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":273
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1408
  *             check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1
  * 
  *         a_ind[np.PyArray_NDIM(ap1)-1] -= 1             # <<<<<<<<<<<<<<
@@ -2273,13 +10326,13 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *             # Zero out the sort_buffer (has effect of zero-padding on boundaries).
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap1); 
-    __pyx_t_3 = __site_op_sub_273_34->Target(__site_op_sub_273_34, __pyx_t_1, __pyx_int_1);
+    __pyx_t_3 = __site_op_sub_1408_34->Target(__site_op_sub_1408_34, __pyx_t_1, __pyx_int_1);
     __pyx_t_1 = nullptr;
-    __pyx_t_20 = __site_cvt_cvt_Py_ssize_t_273_34->Target(__site_cvt_cvt_Py_ssize_t_273_34, __pyx_t_3);
+    __pyx_t_20 = __site_cvt_cvt_Py_ssize_t_1408_34->Target(__site_cvt_cvt_Py_ssize_t_1408_34, __pyx_t_3);
     __pyx_t_3 = nullptr;
     (__pyx_v_a_ind[__pyx_t_20]) -= 1;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":274
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1409
  * 
  *         a_ind[np.PyArray_NDIM(ap1)-1] -= 1
  *         for i in range(np.PyArray_SIZE(ret)):             # <<<<<<<<<<<<<<
@@ -2290,7 +10343,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     for (__pyx_t_19 = 0; __pyx_t_19 < __pyx_t_21; __pyx_t_19+=1) {
       __pyx_v_i = __pyx_t_19;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":277
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1412
  *             # Zero out the sort_buffer (has effect of zero-padding on boundaries).
  *             # Treat object arrays right.
  *             ap2_ptr = sort_buffer             # <<<<<<<<<<<<<<
@@ -2299,7 +10352,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       __pyx_v_ap2_ptr = __pyx_v_sort_buffer;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":278
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1413
  *             # Treat object arrays right.
  *             ap2_ptr = sort_buffer
  *             for k in range(n2_nonzero):             # <<<<<<<<<<<<<<
@@ -2310,7 +10363,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       for (__pyx_t_23 = 0; __pyx_t_23 < __pyx_t_22; __pyx_t_23+=1) {
         __pyx_v_k = __pyx_t_23;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":279
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1414
  *             ap2_ptr = sort_buffer
  *             for k in range(n2_nonzero):
  *                 memcpy(ap2_ptr,zptr,is1)             # <<<<<<<<<<<<<<
@@ -2319,7 +10372,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
         memcpy(__pyx_v_ap2_ptr, __pyx_v_zptr, __pyx_v_is1);
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":280
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1415
  *             for k in range(n2_nonzero):
  *                 memcpy(ap2_ptr,zptr,is1)
  *                 ap2_ptr += is1             # <<<<<<<<<<<<<<
@@ -2329,7 +10382,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
         __pyx_v_ap2_ptr += __pyx_v_is1;
       }
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":282
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1417
  *                 ap2_ptr += is1
  * 
  *             k = np.PyArray_NDIM(ap1) - 1             # <<<<<<<<<<<<<<
@@ -2337,13 +10390,13 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  *                 a_ind[k] -= np.PyArray_DIM(ret, k) - 1  # Return to start
  */
       __pyx_t_3 = PyArray_NDIM(__pyx_v_ap1); 
-      __pyx_t_1 = __site_op_sub_282_37->Target(__site_op_sub_282_37, __pyx_t_3, __pyx_int_1);
+      __pyx_t_1 = __site_op_sub_1417_37->Target(__site_op_sub_1417_37, __pyx_t_3, __pyx_int_1);
       __pyx_t_3 = nullptr;
-      __pyx_t_22 = __site_cvt_cvt_int_282_37->Target(__site_cvt_cvt_int_282_37, __pyx_t_1);
+      __pyx_t_22 = __site_cvt_cvt_int_1417_37->Target(__site_cvt_cvt_int_1417_37, __pyx_t_1);
       __pyx_t_1 = nullptr;
       __pyx_v_k = __pyx_t_22;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":283
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1418
  * 
  *             k = np.PyArray_NDIM(ap1) - 1
  *             for j in range(incr):             # <<<<<<<<<<<<<<
@@ -2354,7 +10407,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       for (__pyx_t_24 = 0; __pyx_t_24 < __pyx_t_23; __pyx_t_24+=1) {
         __pyx_v_j = __pyx_t_24;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":284
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1419
  *             k = np.PyArray_NDIM(ap1) - 1
  *             for j in range(incr):
  *                 a_ind[k] -= np.PyArray_DIM(ret, k) - 1  # Return to start             # <<<<<<<<<<<<<<
@@ -2363,7 +10416,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
         (__pyx_v_a_ind[__pyx_v_k]) -= (PyArray_DIM(__pyx_v_ret, __pyx_v_k) - 1);
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":285
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1420
  *             for j in range(incr):
  *                 a_ind[k] -= np.PyArray_DIM(ret, k) - 1  # Return to start
  *                 k -= 1             # <<<<<<<<<<<<<<
@@ -2373,7 +10426,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
         __pyx_v_k -= 1;
       }
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":287
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1422
  *                 k -= 1
  * 
  *             ap1_ptr += offsets2[k]*is1             # <<<<<<<<<<<<<<
@@ -2382,7 +10435,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       __pyx_v_ap1_ptr += ((__pyx_v_offsets2[__pyx_v_k]) * __pyx_v_is1);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":288
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1423
  * 
  *             ap1_ptr += offsets2[k]*is1
  *             a_ind[k] += 1             # <<<<<<<<<<<<<<
@@ -2391,7 +10444,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       (__pyx_v_a_ind[__pyx_v_k]) += 1;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":289
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1424
  *             ap1_ptr += offsets2[k]*is1
  *             a_ind[k] += 1
  *             memcpy(temp_ind, a_ind, bytes_in_array)             # <<<<<<<<<<<<<<
@@ -2400,7 +10453,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       memcpy(__pyx_v_temp_ind, __pyx_v_a_ind, __pyx_v_bytes_in_array);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":291
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1426
  *             memcpy(temp_ind, a_ind, bytes_in_array)
  * 
  *             check = 0             # <<<<<<<<<<<<<<
@@ -2409,7 +10462,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       __pyx_v_check = 0;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":292
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1427
  * 
  *             check = 0
  *             k = 0             # <<<<<<<<<<<<<<
@@ -2418,7 +10471,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       __pyx_v_k = 0;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":293
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1428
  *             check = 0
  *             k = 0
  *             while (not check and (k < np.PyArray_NDIM(ap1))):             # <<<<<<<<<<<<<<
@@ -2430,10 +10483,10 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
         if (__pyx_t_10) {
           __pyx_t_1 = __pyx_v_k;
           __pyx_t_3 = PyArray_NDIM(__pyx_v_ap1); 
-          __pyx_t_2 = __site_op_lt_293_36->Target(__site_op_lt_293_36, __pyx_t_1, __pyx_t_3);
+          __pyx_t_2 = __site_op_lt_1428_36->Target(__site_op_lt_1428_36, __pyx_t_1, __pyx_t_3);
           __pyx_t_1 = nullptr;
           __pyx_t_3 = nullptr;
-          __pyx_t_4 = __site_istrue_293_36->Target(__site_istrue_293_36, __pyx_t_2);
+          __pyx_t_4 = __site_istrue_1428_36->Target(__site_istrue_1428_36, __pyx_t_2);
           __pyx_t_2 = nullptr;
           __pyx_t_9 = __pyx_t_4;
         } else {
@@ -2441,7 +10494,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
         }
         if (!__pyx_t_9) break;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":294
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1429
  *             k = 0
  *             while (not check and (k < np.PyArray_NDIM(ap1))):
  *                 check = check or (ret_ind[k] < -mode_dep[k]) or (ret_ind[k] > check_ind[k])             # <<<<<<<<<<<<<<
@@ -2449,7 +10502,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  * 
  */
         __pyx_t_2 = __pyx_v_check;
-        __pyx_t_9 = __site_cvt_bool_294_30->Target(__site_cvt_bool_294_30, __pyx_t_2);
+        __pyx_t_9 = __site_cvt_bool_1429_30->Target(__site_cvt_bool_1429_30, __pyx_t_2);
         if (!__pyx_t_9) {
           __pyx_t_2 = nullptr;
           __pyx_t_9 = ((__pyx_v_ret_ind[__pyx_v_k]) < (-(__pyx_v_mode_dep[__pyx_v_k])));
@@ -2466,11 +10519,11 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
           __pyx_t_1 = __pyx_t_2;
           __pyx_t_2 = nullptr;
         }
-        __pyx_t_23 = __site_cvt_cvt_int_294_30->Target(__site_cvt_cvt_int_294_30, __pyx_t_1);
+        __pyx_t_23 = __site_cvt_cvt_int_1429_30->Target(__site_cvt_cvt_int_1429_30, __pyx_t_1);
         __pyx_t_1 = nullptr;
         __pyx_v_check = __pyx_t_23;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":295
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1430
  *             while (not check and (k < np.PyArray_NDIM(ap1))):
  *                 check = check or (ret_ind[k] < -mode_dep[k]) or (ret_ind[k] > check_ind[k])
  *                 k += 1             # <<<<<<<<<<<<<<
@@ -2480,7 +10533,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
         __pyx_v_k += 1;
       }
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":297
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1432
  *                 k += 1
  * 
  *             fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)             # <<<<<<<<<<<<<<
@@ -2490,7 +10543,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       __pyx_t_1 = fill_buffer(__pyx_v_ap1_ptr, __pyx_v_ap1, __pyx_v_ap2, __pyx_v_sort_buffer, __pyx_v_n2, __pyx_v_check, __pyx_v_b_ind, __pyx_v_temp_ind, __pyx_v_offsets); 
       __pyx_t_1 = nullptr;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":298
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1433
  * 
  *             fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)
  *             qsort(<void *>sort_buffer, n2_nonzero, is1, COMPARE_CONST_HELPER(compare_func))             # <<<<<<<<<<<<<<
@@ -2499,7 +10552,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       qsort(((void *)__pyx_v_sort_buffer), __pyx_v_n2_nonzero, __pyx_v_is1, COMPARE_CONST_HELPER(__pyx_v_compare_func));
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":299
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1434
  *             fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)
  *             qsort(<void *>sort_buffer, n2_nonzero, is1, COMPARE_CONST_HELPER(compare_func))
  *             memcpy(op, sort_buffer + order*is1, os)             # <<<<<<<<<<<<<<
@@ -2508,7 +10561,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
       memcpy(__pyx_v_op, (__pyx_v_sort_buffer + (__pyx_v_order * __pyx_v_is1)), __pyx_v_os);
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":301
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1436
  *             memcpy(op, sort_buffer + order*is1, os)
  * 
  *             incr = increment(ret_ind, np.PyArray_NDIM(ret), np.PyArray_DIMS(ret)) # increment index counter             # <<<<<<<<<<<<<<
@@ -2516,11 +10569,11 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  * 
  */
       __pyx_t_1 = PyArray_NDIM(__pyx_v_ret); 
-      __pyx_t_24 = __site_cvt_cvt_int_301_53->Target(__site_cvt_cvt_int_301_53, __pyx_t_1);
+      __pyx_t_24 = __site_cvt_cvt_int_1436_53->Target(__site_cvt_cvt_int_1436_53, __pyx_t_1);
       __pyx_t_1 = nullptr;
       __pyx_v_incr = increment(__pyx_v_ret_ind, __pyx_t_24, PyArray_DIMS(__pyx_v_ret));
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":302
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1437
  * 
  *             incr = increment(ret_ind, np.PyArray_NDIM(ret), np.PyArray_DIMS(ret)) # increment index counter
  *             op += os   # increment to next output index             # <<<<<<<<<<<<<<
@@ -2530,7 +10583,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
       __pyx_v_op += __pyx_v_os;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":305
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1440
  * 
  * 
  *         free(b_ind)             # <<<<<<<<<<<<<<
@@ -2539,7 +10592,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_b_ind);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":306
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1441
  * 
  *         free(b_ind)
  *         free(a_ind)             # <<<<<<<<<<<<<<
@@ -2548,7 +10601,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_a_ind);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":307
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1442
  *         free(b_ind)
  *         free(a_ind)
  *         free(ret_ind)             # <<<<<<<<<<<<<<
@@ -2557,7 +10610,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_ret_ind);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":308
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1443
  *         free(a_ind)
  *         free(ret_ind)
  *         free(offsets)             # <<<<<<<<<<<<<<
@@ -2566,7 +10619,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_offsets);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":309
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1444
  *         free(ret_ind)
  *         free(offsets)
  *         free(offsets2)             # <<<<<<<<<<<<<<
@@ -2575,7 +10628,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_offsets2);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":310
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1445
  *         free(offsets)
  *         free(offsets2)
  *         free(temp_ind)             # <<<<<<<<<<<<<<
@@ -2584,7 +10637,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_temp_ind);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":311
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1446
  *         free(offsets2)
  *         free(temp_ind)
  *         free(check_ind)             # <<<<<<<<<<<<<<
@@ -2593,7 +10646,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_check_ind);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":312
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1447
  *         free(temp_ind)
  *         free(check_ind)
  *         free(mode_dep)             # <<<<<<<<<<<<<<
@@ -2602,7 +10655,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_mode_dep);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":313
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1448
  *         free(check_ind)
  *         free(mode_dep)
  *         free(sort_buffer)             # <<<<<<<<<<<<<<
@@ -2611,7 +10664,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
  */
     free(__pyx_v_sort_buffer);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":315
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1450
  *         free(sort_buffer)
  * 
  *         return np.PyArray_Return(ret)             # <<<<<<<<<<<<<<
@@ -2624,7 +10677,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     goto __pyx_L0;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":319
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1454
  *     finally:
  *         # clean up after PyArray_Zero()
  *         if zptr != NULL:             # <<<<<<<<<<<<<<
@@ -2635,7 +10688,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_t_4 = (__pyx_v_zptr != NULL);
     if (__pyx_t_4) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":320
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1455
  *         # clean up after PyArray_Zero()
  *         if zptr != NULL:
  *             np.NpyDataMem_FREE(zptr)             # <<<<<<<<<<<<<<
@@ -2648,7 +10701,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
     __pyx_L25:;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":322
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1457
  *             np.NpyDataMem_FREE(zptr)
  * 
  *     return None             # <<<<<<<<<<<<<<
@@ -2663,7 +10716,7 @@ static System::Object^ _order_filterND(System::Object^ a0, System::Object^ domai
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":325
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1460
  * 
  * 
  * def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=None):             # <<<<<<<<<<<<<<
@@ -2714,17 +10767,17 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   __pyx_v_in1 = in1;
   __pyx_v_in2 = in2;
   if (dynamic_cast<System::Reflection::Missing^>(flip) == nullptr) {
-    __pyx_v_flip = __site_cvt_cvt_int_325_0->Target(__site_cvt_cvt_int_325_0, flip);
+    __pyx_v_flip = __site_cvt_cvt_int_1460_0->Target(__site_cvt_cvt_int_1460_0, flip);
   } else {
     __pyx_v_flip = ((int)1);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mode) == nullptr) {
-    __pyx_v_mode = __site_cvt_cvt_int_325_0_1->Target(__site_cvt_cvt_int_325_0_1, mode);
+    __pyx_v_mode = __site_cvt_cvt_int_1460_0_1->Target(__site_cvt_cvt_int_1460_0_1, mode);
   } else {
     __pyx_v_mode = ((int)2);
   }
   if (dynamic_cast<System::Reflection::Missing^>(boundary) == nullptr) {
-    __pyx_v_boundary = __site_cvt_cvt_int_325_0_2->Target(__site_cvt_cvt_int_325_0_2, boundary);
+    __pyx_v_boundary = __site_cvt_cvt_int_1460_0_2->Target(__site_cvt_cvt_int_1460_0_2, boundary);
   } else {
     __pyx_v_boundary = ((int)0);
   }
@@ -2740,7 +10793,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   __pyx_v_newfill = nullptr;
   __pyx_v_type = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":329
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1464
  *     """
  *     cdef int flag, ret
  *     cdef np.npy_intp *aout_dimens=NULL, *dims=NULL             # <<<<<<<<<<<<<<
@@ -2750,7 +10803,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   __pyx_v_aout_dimens = NULL;
   __pyx_v_dims = NULL;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":335
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1470
  *     cdef np.ndarray afill, newfill
  * 
  *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(in1)))             # <<<<<<<<<<<<<<
@@ -2764,7 +10817,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   __pyx_v_type = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":336
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1471
  * 
  *     type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(in1)))
  *     type = np.NpyArray_FindArrayType_2args(in2, type)             # <<<<<<<<<<<<<<
@@ -2778,19 +10831,19 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   __pyx_v_type = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":338
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1473
  *     type = np.NpyArray_FindArrayType_2args(in2, type)
  * 
  *     typenum = type.num             # <<<<<<<<<<<<<<
  * 
  *     try:
  */
-  __pyx_t_1 = __site_get_num_338_18->Target(__site_get_num_338_18, __pyx_v_type, __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt_int_338_18->Target(__site_cvt_cvt_int_338_18, __pyx_t_1);
+  __pyx_t_1 = __site_get_num_1473_18->Target(__site_get_num_1473_18, __pyx_v_type, __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt_int_1473_18->Target(__site_cvt_cvt_int_1473_18, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_v_typenum = __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":340
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1475
  *     typenum = type.num
  * 
  *     try:             # <<<<<<<<<<<<<<
@@ -2799,7 +10852,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
   try {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":341
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1476
  * 
  *     try:
  *         ain1 = np.PyArray_FromAny(in1, type, 2, 2, np.NPY_CONTIGUOUS, None)             # <<<<<<<<<<<<<<
@@ -2815,7 +10868,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_v_ain1 = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":342
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1477
  *     try:
  *         ain1 = np.PyArray_FromAny(in1, type, 2, 2, np.NPY_CONTIGUOUS, None)
  *         ain2 = np.PyArray_FromAny(in2, type, 2, 2, np.NPY_CONTIGUOUS, None)             # <<<<<<<<<<<<<<
@@ -2831,7 +10884,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_v_ain2 = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":344
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1479
  *         ain2 = np.PyArray_FromAny(in2, type, 2, 2, np.NPY_CONTIGUOUS, None)
  * 
  *         if boundary != PAD and boundary != REFLECT and boundary != CIRCULAR:             # <<<<<<<<<<<<<<
@@ -2840,26 +10893,26 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_1 = __pyx_v_boundary;
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "PAD");
-    __pyx_t_4 = __site_op_ne_344_20->Target(__site_op_ne_344_20, __pyx_t_1, __pyx_t_3);
+    __pyx_t_4 = __site_op_ne_1479_20->Target(__site_op_ne_1479_20, __pyx_t_1, __pyx_t_3);
     __pyx_t_1 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_5 = __site_istrue_344_20->Target(__site_istrue_344_20, __pyx_t_4);
+    __pyx_t_5 = __site_istrue_1479_20->Target(__site_istrue_1479_20, __pyx_t_4);
     __pyx_t_4 = nullptr;
     if (__pyx_t_5) {
       __pyx_t_4 = __pyx_v_boundary;
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "REFLECT");
-      __pyx_t_1 = __site_op_ne_344_40->Target(__site_op_ne_344_40, __pyx_t_4, __pyx_t_3);
+      __pyx_t_1 = __site_op_ne_1479_40->Target(__site_op_ne_1479_40, __pyx_t_4, __pyx_t_3);
       __pyx_t_4 = nullptr;
       __pyx_t_3 = nullptr;
-      __pyx_t_6 = __site_istrue_344_40->Target(__site_istrue_344_40, __pyx_t_1);
+      __pyx_t_6 = __site_istrue_1479_40->Target(__site_istrue_1479_40, __pyx_t_1);
       __pyx_t_1 = nullptr;
       if (__pyx_t_6) {
         __pyx_t_1 = __pyx_v_boundary;
         __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "CIRCULAR");
-        __pyx_t_4 = __site_op_ne_344_64->Target(__site_op_ne_344_64, __pyx_t_1, __pyx_t_3);
+        __pyx_t_4 = __site_op_ne_1479_64->Target(__site_op_ne_1479_64, __pyx_t_1, __pyx_t_3);
         __pyx_t_1 = nullptr;
         __pyx_t_3 = nullptr;
-        __pyx_t_7 = __site_istrue_344_64->Target(__site_istrue_344_64, __pyx_t_4);
+        __pyx_t_7 = __site_istrue_1479_64->Target(__site_istrue_1479_64, __pyx_t_4);
         __pyx_t_4 = nullptr;
         __pyx_t_8 = __pyx_t_7;
       } else {
@@ -2871,7 +10924,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":345
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1480
  * 
  *         if boundary != PAD and boundary != REFLECT and boundary != CIRCULAR:
  *             raise ValueError("Incorrect boundary value.")             # <<<<<<<<<<<<<<
@@ -2879,7 +10932,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *         if boundary == PAD:
  */
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_3 = __site_call1_345_28->Target(__site_call1_345_28, __pyx_context, __pyx_t_4, ((System::Object^)"Incorrect boundary value."));
+      __pyx_t_3 = __site_call1_1480_28->Target(__site_call1_1480_28, __pyx_context, __pyx_t_4, ((System::Object^)"Incorrect boundary value."));
       __pyx_t_4 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -2887,7 +10940,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     __pyx_L5:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":347
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1482
  *             raise ValueError("Incorrect boundary value.")
  * 
  *         if boundary == PAD:             # <<<<<<<<<<<<<<
@@ -2896,14 +10949,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_3 = __pyx_v_boundary;
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "PAD");
-    __pyx_t_1 = __site_op_eq_347_20->Target(__site_op_eq_347_20, __pyx_t_3, __pyx_t_4);
+    __pyx_t_1 = __site_op_eq_1482_20->Target(__site_op_eq_1482_20, __pyx_t_3, __pyx_t_4);
     __pyx_t_3 = nullptr;
     __pyx_t_4 = nullptr;
-    __pyx_t_6 = __site_istrue_347_20->Target(__site_istrue_347_20, __pyx_t_1);
+    __pyx_t_6 = __site_istrue_1482_20->Target(__site_istrue_1482_20, __pyx_t_1);
     __pyx_t_1 = nullptr;
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":348
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1483
  * 
  *         if boundary == PAD:
  *             if fill_value is None:             # <<<<<<<<<<<<<<
@@ -2913,7 +10966,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       __pyx_t_6 = (__pyx_v_fill_value == nullptr);
       if (__pyx_t_6) {
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":349
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1484
  *         if boundary == PAD:
  *             if fill_value is None:
  *                 newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)             # <<<<<<<<<<<<<<
@@ -2930,7 +10983,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       }
       /*else*/ {
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":351
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1486
  *                 newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
  *             else:
  *                 afill = np.PyArray_FROMANY(fill_value, np.NPY_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -2948,7 +11001,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
         __pyx_v_afill = ((NumpyDotNet::ndarray^)__pyx_t_3);
         __pyx_t_3 = nullptr;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":352
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1487
  *             else:
  *                 afill = np.PyArray_FROMANY(fill_value, np.NPY_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)
  *                 if afill is None:             # <<<<<<<<<<<<<<
@@ -2958,7 +11011,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
         __pyx_t_6 = (((System::Object^)__pyx_v_afill) == nullptr);
         if (__pyx_t_6) {
 
-          /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":353
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1488
  *                 afill = np.PyArray_FROMANY(fill_value, np.NPY_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)
  *                 if afill is None:
  *                     return None             # <<<<<<<<<<<<<<
@@ -2971,7 +11024,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
         }
         __pyx_L8:;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":354
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1489
  *                 if afill is None:
  *                     return None
  *                 newfill = np.PyArray_Cast(afill, typenum)             # <<<<<<<<<<<<<<
@@ -2979,10 +11032,10 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *             if newfill is None:
  */
         __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "np");
-        __pyx_t_4 = __site_get_PyArray_Cast_354_28->Target(__site_get_PyArray_Cast_354_28, __pyx_t_3, __pyx_context);
+        __pyx_t_4 = __site_get_PyArray_Cast_1489_28->Target(__site_get_PyArray_Cast_1489_28, __pyx_t_3, __pyx_context);
         __pyx_t_3 = nullptr;
         __pyx_t_3 = __pyx_v_typenum;
-        __pyx_t_1 = __site_call2_354_41->Target(__site_call2_354_41, __pyx_context, __pyx_t_4, ((System::Object^)__pyx_v_afill), __pyx_t_3);
+        __pyx_t_1 = __site_call2_1489_41->Target(__site_call2_1489_41, __pyx_context, __pyx_t_4, ((System::Object^)__pyx_v_afill), __pyx_t_3);
         __pyx_t_4 = nullptr;
         __pyx_t_3 = nullptr;
         if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
@@ -2993,7 +11046,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       }
       __pyx_L7:;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":356
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1491
  *                 newfill = np.PyArray_Cast(afill, typenum)
  * 
  *             if newfill is None:             # <<<<<<<<<<<<<<
@@ -3003,7 +11056,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       __pyx_t_6 = (((System::Object^)__pyx_v_newfill) == nullptr);
       if (__pyx_t_6) {
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":357
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1492
  * 
  *             if newfill is None:
  *                 return None             # <<<<<<<<<<<<<<
@@ -3019,7 +11072,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     /*else*/ {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":359
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1494
  *                 return None
  *         else:
  *             newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)             # <<<<<<<<<<<<<<
@@ -3033,7 +11086,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       __pyx_v_newfill = ((NumpyDotNet::ndarray^)__pyx_t_1);
       __pyx_t_1 = nullptr;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":360
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1495
  *         else:
  *             newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
  *             if newfill is None:             # <<<<<<<<<<<<<<
@@ -3043,7 +11096,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       __pyx_t_6 = (((System::Object^)__pyx_v_newfill) == nullptr);
       if (__pyx_t_6) {
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":361
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1496
  *             newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
  *             if newfill is None:
  *                 return None             # <<<<<<<<<<<<<<
@@ -3058,7 +11111,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     __pyx_L6:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":363
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1498
  *                 return None
  * 
  *         n1 = np.PyArray_SIZE(ain1)             # <<<<<<<<<<<<<<
@@ -3067,7 +11120,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_v_n1 = PyArray_SIZE(__pyx_v_ain1);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":364
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1499
  * 
  *         n1 = np.PyArray_SIZE(ain1)
  *         n2 = np.PyArray_SIZE(ain2)             # <<<<<<<<<<<<<<
@@ -3076,7 +11129,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_v_n2 = PyArray_SIZE(__pyx_v_ain2);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":366
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1501
  *         n2 = np.PyArray_SIZE(ain2)
  * 
  *         aout_dimens = <np.npy_intp *>malloc(np.PyArray_NDIM(ain1)*sizeof(np.npy_intp))             # <<<<<<<<<<<<<<
@@ -3085,14 +11138,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ain1); 
     __pyx_t_3 = (sizeof(__pyx_t_5numpy_npy_intp));
-    __pyx_t_4 = __site_op_mul_366_65->Target(__site_op_mul_366_65, __pyx_t_1, __pyx_t_3);
+    __pyx_t_4 = __site_op_mul_1501_65->Target(__site_op_mul_1501_65, __pyx_t_1, __pyx_t_3);
     __pyx_t_1 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_9 = __site_cvt_cvt_size_t_366_65->Target(__site_cvt_cvt_size_t_366_65, __pyx_t_4);
+    __pyx_t_9 = __site_cvt_cvt_size_t_1501_65->Target(__site_cvt_cvt_size_t_1501_65, __pyx_t_4);
     __pyx_t_4 = nullptr;
     __pyx_v_aout_dimens = ((__pyx_t_5numpy_npy_intp *)malloc(__pyx_t_9));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":367
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1502
  * 
  *         aout_dimens = <np.npy_intp *>malloc(np.PyArray_NDIM(ain1)*sizeof(np.npy_intp))
  *         masked_mode = mode & OUTSIZE_MASK             # <<<<<<<<<<<<<<
@@ -3101,14 +11154,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_4 = __pyx_v_mode;
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "OUTSIZE_MASK");
-    __pyx_t_1 = __site_op_and_367_27->Target(__site_op_and_367_27, __pyx_t_4, __pyx_t_3);
+    __pyx_t_1 = __site_op_and_1502_27->Target(__site_op_and_1502_27, __pyx_t_4, __pyx_t_3);
     __pyx_t_4 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_10 = __site_cvt_cvt_int_367_27->Target(__site_cvt_cvt_int_367_27, __pyx_t_1);
+    __pyx_t_10 = __site_cvt_cvt_int_1502_27->Target(__site_cvt_cvt_int_1502_27, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_v_masked_mode = __pyx_t_10;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":369
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1504
  *         masked_mode = mode & OUTSIZE_MASK
  * 
  *         if masked_mode == VALID:             # <<<<<<<<<<<<<<
@@ -3117,14 +11170,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_1 = __pyx_v_masked_mode;
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "VALID");
-    __pyx_t_4 = __site_op_eq_369_23->Target(__site_op_eq_369_23, __pyx_t_1, __pyx_t_3);
+    __pyx_t_4 = __site_op_eq_1504_23->Target(__site_op_eq_1504_23, __pyx_t_1, __pyx_t_3);
     __pyx_t_1 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_6 = __site_istrue_369_23->Target(__site_istrue_369_23, __pyx_t_4);
+    __pyx_t_6 = __site_istrue_1504_23->Target(__site_istrue_1504_23, __pyx_t_4);
     __pyx_t_4 = nullptr;
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":370
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1505
  * 
  *         if masked_mode == VALID:
  *             for i in range(np.PyArray_NDIM(ain1)):             # <<<<<<<<<<<<<<
@@ -3132,12 +11185,12 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *                 if aout_dimens[i] < 0:
  */
       __pyx_t_4 = PyArray_NDIM(__pyx_v_ain1); 
-      __pyx_t_11 = __site_cvt_cvt_long_370_42->Target(__site_cvt_cvt_long_370_42, __pyx_t_4);
+      __pyx_t_11 = __site_cvt_cvt_long_1505_42->Target(__site_cvt_cvt_long_1505_42, __pyx_t_4);
       __pyx_t_4 = nullptr;
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_11; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":371
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1506
  *         if masked_mode == VALID:
  *             for i in range(np.PyArray_NDIM(ain1)):
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i] - np.PyArray_DIMS(ain2)[i] + 1             # <<<<<<<<<<<<<<
@@ -3146,7 +11199,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
         (__pyx_v_aout_dimens[__pyx_v_i]) = (((PyArray_DIMS(__pyx_v_ain1)[__pyx_v_i]) - (PyArray_DIMS(__pyx_v_ain2)[__pyx_v_i])) + 1);
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":372
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1507
  *             for i in range(np.PyArray_NDIM(ain1)):
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i] - np.PyArray_DIMS(ain2)[i] + 1
  *                 if aout_dimens[i] < 0:             # <<<<<<<<<<<<<<
@@ -3156,7 +11209,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
         __pyx_t_6 = ((__pyx_v_aout_dimens[__pyx_v_i]) < 0);
         if (__pyx_t_6) {
 
-          /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":373
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1508
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i] - np.PyArray_DIMS(ain2)[i] + 1
  *                 if aout_dimens[i] < 0:
  *                     raise ValueError("no part of the output is valid, use option 1 (same) or 2 (full) for third argument")             # <<<<<<<<<<<<<<
@@ -3164,7 +11217,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *             for i in range(np.PyArray_NDIM(ain1)):
  */
           __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-          __pyx_t_3 = __site_call1_373_36->Target(__site_call1_373_36, __pyx_context, __pyx_t_4, ((System::Object^)"no part of the output is valid, use option 1 (same) or 2 (full) for third argument"));
+          __pyx_t_3 = __site_call1_1508_36->Target(__site_call1_1508_36, __pyx_context, __pyx_t_4, ((System::Object^)"no part of the output is valid, use option 1 (same) or 2 (full) for third argument"));
           __pyx_t_4 = nullptr;
           throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
           __pyx_t_3 = nullptr;
@@ -3175,7 +11228,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       goto __pyx_L11;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":374
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1509
  *                 if aout_dimens[i] < 0:
  *                     raise ValueError("no part of the output is valid, use option 1 (same) or 2 (full) for third argument")
  *         elif masked_mode == SAME:             # <<<<<<<<<<<<<<
@@ -3184,14 +11237,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_3 = __pyx_v_masked_mode;
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "SAME");
-    __pyx_t_1 = __site_op_eq_374_25->Target(__site_op_eq_374_25, __pyx_t_3, __pyx_t_4);
+    __pyx_t_1 = __site_op_eq_1509_25->Target(__site_op_eq_1509_25, __pyx_t_3, __pyx_t_4);
     __pyx_t_3 = nullptr;
     __pyx_t_4 = nullptr;
-    __pyx_t_6 = __site_istrue_374_25->Target(__site_istrue_374_25, __pyx_t_1);
+    __pyx_t_6 = __site_istrue_1509_25->Target(__site_istrue_1509_25, __pyx_t_1);
     __pyx_t_1 = nullptr;
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":375
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1510
  *                     raise ValueError("no part of the output is valid, use option 1 (same) or 2 (full) for third argument")
  *         elif masked_mode == SAME:
  *             for i in range(np.PyArray_NDIM(ain1)):             # <<<<<<<<<<<<<<
@@ -3199,12 +11252,12 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *         elif masked_mode == FULL:
  */
       __pyx_t_1 = PyArray_NDIM(__pyx_v_ain1); 
-      __pyx_t_13 = __site_cvt_cvt_long_375_42->Target(__site_cvt_cvt_long_375_42, __pyx_t_1);
+      __pyx_t_13 = __site_cvt_cvt_long_1510_42->Target(__site_cvt_cvt_long_1510_42, __pyx_t_1);
       __pyx_t_1 = nullptr;
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_13; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":376
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1511
  *         elif masked_mode == SAME:
  *             for i in range(np.PyArray_NDIM(ain1)):
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i]             # <<<<<<<<<<<<<<
@@ -3216,7 +11269,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       goto __pyx_L11;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":377
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1512
  *             for i in range(np.PyArray_NDIM(ain1)):
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i]
  *         elif masked_mode == FULL:             # <<<<<<<<<<<<<<
@@ -3225,14 +11278,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_1 = __pyx_v_masked_mode;
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "FULL");
-    __pyx_t_3 = __site_op_eq_377_25->Target(__site_op_eq_377_25, __pyx_t_1, __pyx_t_4);
+    __pyx_t_3 = __site_op_eq_1512_25->Target(__site_op_eq_1512_25, __pyx_t_1, __pyx_t_4);
     __pyx_t_1 = nullptr;
     __pyx_t_4 = nullptr;
-    __pyx_t_6 = __site_istrue_377_25->Target(__site_istrue_377_25, __pyx_t_3);
+    __pyx_t_6 = __site_istrue_1512_25->Target(__site_istrue_1512_25, __pyx_t_3);
     __pyx_t_3 = nullptr;
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":378
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1513
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i]
  *         elif masked_mode == FULL:
  *             for i in range(np.PyArray_NDIM(ain1)):             # <<<<<<<<<<<<<<
@@ -3240,12 +11293,12 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *         else:
  */
       __pyx_t_3 = PyArray_NDIM(__pyx_v_ain1); 
-      __pyx_t_14 = __site_cvt_cvt_long_378_42->Target(__site_cvt_cvt_long_378_42, __pyx_t_3);
+      __pyx_t_14 = __site_cvt_cvt_long_1513_42->Target(__site_cvt_cvt_long_1513_42, __pyx_t_3);
       __pyx_t_3 = nullptr;
       for (__pyx_t_12 = 0; __pyx_t_12 < __pyx_t_14; __pyx_t_12+=1) {
         __pyx_v_i = __pyx_t_12;
 
-        /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":379
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1514
  *         elif masked_mode == FULL:
  *             for i in range(np.PyArray_NDIM(ain1)):
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i] + np.PyArray_DIMS(ain2)[i] - 1             # <<<<<<<<<<<<<<
@@ -3258,7 +11311,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     /*else*/ {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":381
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1516
  *                 aout_dimens[i] = np.PyArray_DIMS(ain1)[i] + np.PyArray_DIMS(ain2)[i] - 1
  *         else:
  *             raise ValueError("mode must be 0 (valid), 1 (same), or 2 (full)")             # <<<<<<<<<<<<<<
@@ -3266,14 +11319,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *         aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_4 = __site_call1_381_28->Target(__site_call1_381_28, __pyx_context, __pyx_t_3, ((System::Object^)"mode must be 0 (valid), 1 (same), or 2 (full)"));
+      __pyx_t_4 = __site_call1_1516_28->Target(__site_call1_1516_28, __pyx_context, __pyx_t_3, ((System::Object^)"mode must be 0 (valid), 1 (same), or 2 (full)"));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
     }
     __pyx_L11:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":383
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1518
  *             raise ValueError("mode must be 0 (valid), 1 (same), or 2 (full)")
  * 
  *         aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)             # <<<<<<<<<<<<<<
@@ -3281,7 +11334,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *             return None
  */
     __pyx_t_4 = PyArray_NDIM(__pyx_v_ain1); 
-    __pyx_t_12 = __site_cvt_cvt_int_383_51->Target(__site_cvt_cvt_int_383_51, __pyx_t_4);
+    __pyx_t_12 = __site_cvt_cvt_int_1518_51->Target(__site_cvt_cvt_int_1518_51, __pyx_t_4);
     __pyx_t_4 = nullptr;
     __pyx_t_4 = PyArray_SimpleNew(__pyx_t_12, __pyx_v_aout_dimens, __pyx_v_typenum); 
     if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
@@ -3290,7 +11343,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_v_aout = ((NumpyDotNet::ndarray^)__pyx_t_4);
     __pyx_t_4 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":384
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1519
  * 
  *         aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)
  *         if aout is None:             # <<<<<<<<<<<<<<
@@ -3300,7 +11353,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_t_6 = (((System::Object^)__pyx_v_aout) == nullptr);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":385
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1520
  *         aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)
  *         if aout is None:
  *             return None             # <<<<<<<<<<<<<<
@@ -3313,7 +11366,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     __pyx_L19:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":387
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1522
  *             return None
  * 
  *         flag = mode + boundary + (typenum << TYPE_SHIFT) + (flip != 0) * FLIP_MASK             # <<<<<<<<<<<<<<
@@ -3323,25 +11376,25 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_t_4 = (__pyx_v_mode + __pyx_v_boundary);
     __pyx_t_3 = __pyx_v_typenum;
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "TYPE_SHIFT");
-    __pyx_t_15 = __site_op_lshift_387_42->Target(__site_op_lshift_387_42, __pyx_t_3, __pyx_t_1);
+    __pyx_t_15 = __site_op_lshift_1522_42->Target(__site_op_lshift_1522_42, __pyx_t_3, __pyx_t_1);
     __pyx_t_3 = nullptr;
     __pyx_t_1 = nullptr;
-    __pyx_t_1 = __site_op_add_387_31->Target(__site_op_add_387_31, __pyx_t_4, __pyx_t_15);
+    __pyx_t_1 = __site_op_add_1522_31->Target(__site_op_add_1522_31, __pyx_t_4, __pyx_t_15);
     __pyx_t_4 = nullptr;
     __pyx_t_15 = nullptr;
     __pyx_t_15 = (__pyx_v_flip != 0);
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "FLIP_MASK");
-    __pyx_t_3 = __site_op_mul_387_71->Target(__site_op_mul_387_71, __pyx_t_15, __pyx_t_4);
+    __pyx_t_3 = __site_op_mul_1522_71->Target(__site_op_mul_1522_71, __pyx_t_15, __pyx_t_4);
     __pyx_t_15 = nullptr;
     __pyx_t_4 = nullptr;
-    __pyx_t_4 = __site_op_add_387_57->Target(__site_op_add_387_57, __pyx_t_1, __pyx_t_3);
+    __pyx_t_4 = __site_op_add_1522_57->Target(__site_op_add_1522_57, __pyx_t_1, __pyx_t_3);
     __pyx_t_1 = nullptr;
     __pyx_t_3 = nullptr;
-    __pyx_t_16 = __site_cvt_cvt_int_387_57->Target(__site_cvt_cvt_int_387_57, __pyx_t_4);
+    __pyx_t_16 = __site_cvt_cvt_int_1522_57->Target(__site_cvt_cvt_int_1522_57, __pyx_t_4);
     __pyx_t_4 = nullptr;
     __pyx_v_flag = __pyx_t_16;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":398
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1533
  *                                 np.PyArray_DIMS(ain1),     # Size of image Ns[0] x Ns[1]
  *                                 flag,                      # convolution parameters
  *                                 <char *>np.PyArray_DATA(newfill))  # fill value             # <<<<<<<<<<<<<<
@@ -3350,7 +11403,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_v_ret = pylab_convolve_2d(((char *)PyArray_DATA(__pyx_v_ain1)), PyArray_STRIDES(__pyx_v_ain1), ((char *)PyArray_DATA(__pyx_v_aout)), PyArray_STRIDES(__pyx_v_aout), ((char *)PyArray_DATA(__pyx_v_ain2)), PyArray_STRIDES(__pyx_v_ain2), PyArray_DIMS(__pyx_v_ain2), PyArray_DIMS(__pyx_v_ain1), __pyx_v_flag, ((char *)PyArray_DATA(__pyx_v_newfill)));
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":401
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1536
  * 
  * 
  *         if ret == 0:             # <<<<<<<<<<<<<<
@@ -3360,7 +11413,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_t_6 = (__pyx_v_ret == 0);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":402
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1537
  * 
  *         if ret == 0:
  *             return aout             # <<<<<<<<<<<<<<
@@ -3372,7 +11425,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       goto __pyx_L20;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":403
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1538
  *         if ret == 0:
  *             return aout
  *         elif ret in [-5, -4]:             # <<<<<<<<<<<<<<
@@ -3381,12 +11434,12 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  */
     __pyx_t_4 = __pyx_v_ret;
     __pyx_t_3 = PythonOps::MakeListNoCopy(gcnew array<System::Object^>{__pyx_int_neg_5, __pyx_int_neg_4});
-    __pyx_t_6 = ((__site_contains_403_17->Target(__site_contains_403_17, __pyx_t_4, ((System::Object^)__pyx_t_3))));
+    __pyx_t_6 = ((__site_contains_1538_17->Target(__site_contains_1538_17, __pyx_t_4, ((System::Object^)__pyx_t_3))));
     __pyx_t_4 = nullptr;
     __pyx_t_3 = nullptr;
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":404
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1539
  *             return aout
  *         elif ret in [-5, -4]:
  *             raise ValueError("convolve2d not available for this type.")             # <<<<<<<<<<<<<<
@@ -3394,14 +11447,14 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *             raise MemoryError
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_4 = __site_call1_404_28->Target(__site_call1_404_28, __pyx_context, __pyx_t_3, ((System::Object^)"convolve2d not available for this type."));
+      __pyx_t_4 = __site_call1_1539_28->Target(__site_call1_1539_28, __pyx_context, __pyx_t_3, ((System::Object^)"convolve2d not available for this type."));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
       goto __pyx_L20;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":405
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1540
  *         elif ret in [-5, -4]:
  *             raise ValueError("convolve2d not available for this type.")
  *         elif ret == -3:             # <<<<<<<<<<<<<<
@@ -3411,7 +11464,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_t_6 = (__pyx_v_ret == -3);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":406
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1541
  *             raise ValueError("convolve2d not available for this type.")
  *         elif ret == -3:
  *             raise MemoryError             # <<<<<<<<<<<<<<
@@ -3424,7 +11477,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
       goto __pyx_L20;
     }
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":407
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1542
  *         elif ret == -3:
  *             raise MemoryError
  *         elif ret == -2:             # <<<<<<<<<<<<<<
@@ -3434,7 +11487,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_t_6 = (__pyx_v_ret == -2);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":408
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1543
  *             raise MemoryError
  *         elif ret == -2:
  *             raise ValueError("Invalid boundary type.")             # <<<<<<<<<<<<<<
@@ -3442,7 +11495,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *             raise ValueError("Invalid output flag.")
  */
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_3 = __site_call1_408_28->Target(__site_call1_408_28, __pyx_context, __pyx_t_4, ((System::Object^)"Invalid boundary type."));
+      __pyx_t_3 = __site_call1_1543_28->Target(__site_call1_1543_28, __pyx_context, __pyx_t_4, ((System::Object^)"Invalid boundary type."));
       __pyx_t_4 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -3450,7 +11503,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     }
     /*else*/ {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":410
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1545
  *             raise ValueError("Invalid boundary type.")
  *         elif -1:
  *             raise ValueError("Invalid output flag.")             # <<<<<<<<<<<<<<
@@ -3458,7 +11511,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
  *     finally:
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_4 = __site_call1_410_28->Target(__site_call1_410_28, __pyx_context, __pyx_t_3, ((System::Object^)"Invalid output flag."));
+      __pyx_t_4 = __site_call1_1545_28->Target(__site_call1_1545_28, __pyx_context, __pyx_t_3, ((System::Object^)"Invalid output flag."));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
@@ -3466,7 +11519,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     __pyx_L20:;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":413
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1548
  * 
  *     finally:
  *         free(aout_dimens)             # <<<<<<<<<<<<<<
@@ -3477,7 +11530,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
     free(__pyx_v_aout_dimens);
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":415
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1550
  *         free(aout_dimens)
  * 
  *     return None             # <<<<<<<<<<<<<<
@@ -3492,7 +11545,7 @@ static System::Object^ _convolve2d(System::Object^ in1, System::Object^ in2, [In
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":418
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1553
  * 
  * 
  * def _remez(int numtaps, object bands, object des, object weight, int type=BANDPASS,             # <<<<<<<<<<<<<<
@@ -3530,20 +11583,20 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   int __pyx_t_8;
   long __pyx_t_9;
   int __pyx_t_10;
-  __pyx_v_numtaps = __site_cvt_cvt_int_418_0->Target(__site_cvt_cvt_int_418_0, numtaps);
+  __pyx_v_numtaps = __site_cvt_cvt_int_1553_0->Target(__site_cvt_cvt_int_1553_0, numtaps);
   __pyx_v_bands = bands;
   __pyx_v_des = des;
   __pyx_v_weight = weight;
   if (dynamic_cast<System::Reflection::Missing^>(type) == nullptr) {
-    __pyx_v_type = __site_cvt_cvt_int_418_0_1->Target(__site_cvt_cvt_int_418_0_1, type);
+    __pyx_v_type = __site_cvt_cvt_int_1553_0_1->Target(__site_cvt_cvt_int_1553_0_1, type);
   } else {
     __pyx_v_type = __pyx_k_1;
   }
   if (dynamic_cast<System::Reflection::Missing^>(Hz) == nullptr) {
-    __pyx_v_Hz = __site_cvt_cvt_double_418_0->Target(__site_cvt_cvt_double_418_0, Hz);
+    __pyx_v_Hz = __site_cvt_cvt_double_1553_0->Target(__site_cvt_cvt_double_1553_0, Hz);
   } else {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":419
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1554
  * 
  * def _remez(int numtaps, object bands, object des, object weight, int type=BANDPASS,
  *            double Hz=1.0, int maxiter=25, int grid_density=16):             # <<<<<<<<<<<<<<
@@ -3553,12 +11606,12 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     __pyx_v_Hz = ((double)1.0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(maxiter) == nullptr) {
-    __pyx_v_maxiter = __site_cvt_cvt_int_418_0_2->Target(__site_cvt_cvt_int_418_0_2, maxiter);
+    __pyx_v_maxiter = __site_cvt_cvt_int_1553_0_2->Target(__site_cvt_cvt_int_1553_0_2, maxiter);
   } else {
     __pyx_v_maxiter = ((int)25);
   }
   if (dynamic_cast<System::Reflection::Missing^>(grid_density) == nullptr) {
-    __pyx_v_grid_density = __site_cvt_cvt_int_418_0_3->Target(__site_cvt_cvt_int_418_0_3, grid_density);
+    __pyx_v_grid_density = __site_cvt_cvt_int_1553_0_3->Target(__site_cvt_cvt_int_1553_0_3, grid_density);
   } else {
     __pyx_v_grid_density = ((int)16);
   }
@@ -3567,7 +11620,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_v_a_weight = nullptr;
   __pyx_v_h = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":434
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1569
  *     cdef double oldvalue, *dptr
  * 
  *     if type not in [BANDPASS, DIFFERENTIATOR, HILBERT]:             # <<<<<<<<<<<<<<
@@ -3582,12 +11635,12 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
   __pyx_t_4 = nullptr;
-  __pyx_t_6 = (!(__site_contains_434_12->Target(__site_contains_434_12, __pyx_t_1, ((System::Object^)__pyx_t_5))));
+  __pyx_t_6 = (!(__site_contains_1569_12->Target(__site_contains_1569_12, __pyx_t_1, ((System::Object^)__pyx_t_5))));
   __pyx_t_1 = nullptr;
   __pyx_t_5 = nullptr;
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":435
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1570
  * 
  *     if type not in [BANDPASS, DIFFERENTIATOR, HILBERT]:
  *         raise ValueError("The type must be BANDPASS, DIFFERENTIATOR, or HILBERT.")             # <<<<<<<<<<<<<<
@@ -3595,7 +11648,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  *     if numtaps < 2:
  */
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_435_24->Target(__site_call1_435_24, __pyx_context, __pyx_t_5, ((System::Object^)"The type must be BANDPASS, DIFFERENTIATOR, or HILBERT."));
+    __pyx_t_1 = __site_call1_1570_24->Target(__site_call1_1570_24, __pyx_context, __pyx_t_5, ((System::Object^)"The type must be BANDPASS, DIFFERENTIATOR, or HILBERT."));
     __pyx_t_5 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3603,7 +11656,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":437
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1572
  *         raise ValueError("The type must be BANDPASS, DIFFERENTIATOR, or HILBERT.")
  * 
  *     if numtaps < 2:             # <<<<<<<<<<<<<<
@@ -3613,7 +11666,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_t_6 = (__pyx_v_numtaps < 2);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":438
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1573
  * 
  *     if numtaps < 2:
  *         raise ValueError("The number of taps must be greater than 1.")             # <<<<<<<<<<<<<<
@@ -3621,7 +11674,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  *     a_bands = np.PyArray_FROMANY(bands, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_5 = __site_call1_438_24->Target(__site_call1_438_24, __pyx_context, __pyx_t_1, ((System::Object^)"The number of taps must be greater than 1."));
+    __pyx_t_5 = __site_call1_1573_24->Target(__site_call1_1573_24, __pyx_context, __pyx_t_1, ((System::Object^)"The number of taps must be greater than 1."));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
     __pyx_t_5 = nullptr;
@@ -3629,7 +11682,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   }
   __pyx_L6:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":440
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1575
  *         raise ValueError("The number of taps must be greater than 1.")
  * 
  *     a_bands = np.PyArray_FROMANY(bands, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3647,7 +11700,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_v_a_bands = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":441
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1576
  * 
  *     a_bands = np.PyArray_FROMANY(bands, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
  *     a_des = np.PyArray_FROMANY(des, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3665,7 +11718,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_v_a_des = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":442
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1577
  *     a_bands = np.PyArray_FROMANY(bands, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
  *     a_des = np.PyArray_FROMANY(des, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
  *     a_weight = np.PyArray_FROMANY(weight, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -3683,7 +11736,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_v_a_weight = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":444
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1579
  *     a_weight = np.PyArray_FROMANY(weight, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
  * 
  *     numbands = np.PyArray_DIMS(a_des)[0]             # <<<<<<<<<<<<<<
@@ -3692,7 +11745,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
   __pyx_v_numbands = (PyArray_DIMS(__pyx_v_a_des)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":445
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1580
  * 
  *     numbands = np.PyArray_DIMS(a_des)[0]
  *     if (np.PyArray_DIMS(a_bands)[0] != 2*numbands) or (np.PyArray_DIMS(a_weight)[0] != numbands):             # <<<<<<<<<<<<<<
@@ -3708,7 +11761,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   }
   if (__pyx_t_8) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":446
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1581
  *     numbands = np.PyArray_DIMS(a_des)[0]
  *     if (np.PyArray_DIMS(a_bands)[0] != 2*numbands) or (np.PyArray_DIMS(a_weight)[0] != numbands):
  *         raise ValueError("The inputs desired and weight must have same length.\n  The input bands must have twice this length.")             # <<<<<<<<<<<<<<
@@ -3716,7 +11769,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  *     # Check the bands input to see if it is monotonic, divide by
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_446_24->Target(__site_call1_446_24, __pyx_context, __pyx_t_4, ((System::Object^)"The inputs desired and weight must have same length.\n  The input bands must have twice this length."));
+    __pyx_t_1 = __site_call1_1581_24->Target(__site_call1_1581_24, __pyx_context, __pyx_t_4, ((System::Object^)"The inputs desired and weight must have same length.\n  The input bands must have twice this length."));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3724,7 +11777,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   }
   __pyx_L7:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":451
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1586
  *     # Hz to take from range 0 to 0.5 and check to see if in that range.
  * 
  *     dptr = <double *>np.PyArray_DATA(a_bands)             # <<<<<<<<<<<<<<
@@ -3733,7 +11786,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
   __pyx_v_dptr = ((double *)PyArray_DATA(__pyx_v_a_bands));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":452
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1587
  * 
  *     dptr = <double *>np.PyArray_DATA(a_bands)
  *     oldvalue = 0             # <<<<<<<<<<<<<<
@@ -3742,7 +11795,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
   __pyx_v_oldvalue = 0.0;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":453
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1588
  *     dptr = <double *>np.PyArray_DATA(a_bands)
  *     oldvalue = 0
  *     for k in range(2*numbands):             # <<<<<<<<<<<<<<
@@ -3753,7 +11806,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   for (__pyx_t_10 = 0; __pyx_t_10 < __pyx_t_9; __pyx_t_10+=1) {
     __pyx_v_k = __pyx_t_10;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":454
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1589
  *     oldvalue = 0
  *     for k in range(2*numbands):
  *         if dptr[0] < oldvalue:             # <<<<<<<<<<<<<<
@@ -3763,7 +11816,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     __pyx_t_8 = ((__pyx_v_dptr[0]) < __pyx_v_oldvalue);
     if (__pyx_t_8) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":455
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1590
  *     for k in range(2*numbands):
  *         if dptr[0] < oldvalue:
  *             raise ValueError("Bands must be monotonic starting at zero.")             # <<<<<<<<<<<<<<
@@ -3771,7 +11824,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  *             raise ValueError("Band edges should be less than 1/2 the sampling frequency")
  */
       __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_4 = __site_call1_455_28->Target(__site_call1_455_28, __pyx_context, __pyx_t_1, ((System::Object^)"Bands must be monotonic starting at zero."));
+      __pyx_t_4 = __site_call1_1590_28->Target(__site_call1_1590_28, __pyx_context, __pyx_t_1, ((System::Object^)"Bands must be monotonic starting at zero."));
       __pyx_t_1 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
@@ -3779,7 +11832,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     }
     __pyx_L10:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":456
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1591
  *         if dptr[0] < oldvalue:
  *             raise ValueError("Bands must be monotonic starting at zero.")
  *         if (dptr[0] * 2.0) > Hz:             # <<<<<<<<<<<<<<
@@ -3789,7 +11842,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     __pyx_t_8 = (((__pyx_v_dptr[0]) * 2.0) > __pyx_v_Hz);
     if (__pyx_t_8) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":457
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1592
  *             raise ValueError("Bands must be monotonic starting at zero.")
  *         if (dptr[0] * 2.0) > Hz:
  *             raise ValueError("Band edges should be less than 1/2 the sampling frequency")             # <<<<<<<<<<<<<<
@@ -3797,7 +11850,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  *         oldvalue = dptr[0]
  */
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_1 = __site_call1_457_28->Target(__site_call1_457_28, __pyx_context, __pyx_t_4, ((System::Object^)"Band edges should be less than 1/2 the sampling frequency"));
+      __pyx_t_1 = __site_call1_1592_28->Target(__site_call1_1592_28, __pyx_context, __pyx_t_4, ((System::Object^)"Band edges should be less than 1/2 the sampling frequency"));
       __pyx_t_4 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
       __pyx_t_1 = nullptr;
@@ -3805,7 +11858,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     }
     __pyx_L11:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":459
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1594
  *             raise ValueError("Band edges should be less than 1/2 the sampling frequency")
  * 
  *         oldvalue = dptr[0]             # <<<<<<<<<<<<<<
@@ -3814,7 +11867,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
     __pyx_v_oldvalue = (__pyx_v_dptr[0]);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":460
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1595
  * 
  *         oldvalue = dptr[0]
  *         dptr[0] = oldvalue / Hz # Change so that sampling frequency is 1.0             # <<<<<<<<<<<<<<
@@ -3826,7 +11879,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     }
     (__pyx_v_dptr[0]) = (__pyx_v_oldvalue / __pyx_v_Hz);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":461
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1596
  *         oldvalue = dptr[0]
  *         dptr[0] = oldvalue / Hz # Change so that sampling frequency is 1.0
  *         dptr += 1             # <<<<<<<<<<<<<<
@@ -3836,7 +11889,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     __pyx_v_dptr += 1;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":463
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1598
  *         dptr += 1
  * 
  *     ret_dimens = numtaps             # <<<<<<<<<<<<<<
@@ -3845,7 +11898,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
   __pyx_v_ret_dimens = __pyx_v_numtaps;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":464
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1599
  * 
  *     ret_dimens = numtaps
  *     h = np.PyArray_SimpleNew(1, &ret_dimens, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3859,7 +11912,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_v_h = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":468
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1603
  *     err = pre_remez(<double *>np.PyArray_DATA(h), numtaps, numbands,
  *                     <double *>np.PyArray_DATA(a_bands), <double *>np.PyArray_DATA(a_des),
  *                     <double *>np.PyArray_DATA(a_weight), type, maxiter, grid_density)             # <<<<<<<<<<<<<<
@@ -3868,7 +11921,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
   __pyx_v_err = pre_remez(((double *)PyArray_DATA(__pyx_v_h)), __pyx_v_numtaps, __pyx_v_numbands, ((double *)PyArray_DATA(__pyx_v_a_bands)), ((double *)PyArray_DATA(__pyx_v_a_des)), ((double *)PyArray_DATA(__pyx_v_a_weight)), __pyx_v_type, __pyx_v_maxiter, __pyx_v_grid_density);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":469
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1604
  *                     <double *>np.PyArray_DATA(a_bands), <double *>np.PyArray_DATA(a_des),
  *                     <double *>np.PyArray_DATA(a_weight), type, maxiter, grid_density)
  *     if err < 0:             # <<<<<<<<<<<<<<
@@ -3878,7 +11931,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   __pyx_t_8 = (__pyx_v_err < 0);
   if (__pyx_t_8) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":470
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1605
  *                     <double *>np.PyArray_DATA(a_weight), type, maxiter, grid_density)
  *     if err < 0:
  *         if err == -1:             # <<<<<<<<<<<<<<
@@ -3888,7 +11941,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
     switch (__pyx_v_err) {
       case -1:
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":471
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1606
  *     if err < 0:
  *         if err == -1:
  *             raise ValueError("Failure to converge after %d iterations.\n      Design may still be correct." % maxiter)             # <<<<<<<<<<<<<<
@@ -3897,16 +11950,16 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
       __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
       __pyx_t_4 = __pyx_v_maxiter;
-      __pyx_t_5 = __site_op_mod_471_108->Target(__site_op_mod_471_108, ((System::Object^)"Failure to converge after %d iterations.\n      Design may still be correct."), __pyx_t_4);
+      __pyx_t_5 = __site_op_mod_1606_108->Target(__site_op_mod_1606_108, ((System::Object^)"Failure to converge after %d iterations.\n      Design may still be correct."), __pyx_t_4);
       __pyx_t_4 = nullptr;
-      __pyx_t_4 = __site_call1_471_28->Target(__site_call1_471_28, __pyx_context, __pyx_t_1, ((System::Object^)__pyx_t_5));
+      __pyx_t_4 = __site_call1_1606_28->Target(__site_call1_1606_28, __pyx_context, __pyx_t_1, ((System::Object^)__pyx_t_5));
       __pyx_t_1 = nullptr;
       __pyx_t_5 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
       break;
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":472
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1607
  *         if err == -1:
  *             raise ValueError("Failure to converge after %d iterations.\n      Design may still be correct." % maxiter)
  *         elif err == -2:             # <<<<<<<<<<<<<<
@@ -3915,7 +11968,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
  */
       case -2:
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":473
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1608
  *             raise ValueError("Failure to converge after %d iterations.\n      Design may still be correct." % maxiter)
  *         elif err == -2:
  *             raise MemoryError             # <<<<<<<<<<<<<<
@@ -3931,7 +11984,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   }
   __pyx_L12:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":475
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1610
  *             raise MemoryError
  * 
  *     return np.PyArray_Return(h)             # <<<<<<<<<<<<<<
@@ -3948,7 +12001,7 @@ static System::Object^ _remez(System::Object^ numtaps, System::Object^ bands, Sy
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":478
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1613
  * 
  * 
  * def _median2d(image, size=None):             # <<<<<<<<<<<<<<
@@ -3982,7 +12035,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_v_a_size = nullptr;
   __pyx_v_a_out = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":483
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1618
  *     cdef int typenum
  *     cdef np.ndarray a_image, a_size, a_out
  *     cdef np.npy_intp *Nwin = [3,3]             # <<<<<<<<<<<<<<
@@ -3993,7 +12046,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1[1] = 3;
   __pyx_v_Nwin = __pyx_t_1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":485
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1620
  *     cdef np.npy_intp *Nwin = [3,3]
  * 
  *     typenum = np.PyArray_TYPE(image)             # <<<<<<<<<<<<<<
@@ -4005,7 +12058,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_v_typenum = PyArray_TYPE(((NumpyDotNet::ndarray^)__pyx_v_image));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":486
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1621
  * 
  *     typenum = np.PyArray_TYPE(image)
  *     a_image = np.PyArray_FROMANY(image, typenum, 2, 2, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -4023,7 +12076,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_v_a_image = ((NumpyDotNet::ndarray^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":488
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1623
  *     a_image = np.PyArray_FROMANY(image, typenum, 2, 2, np.NPY_CONTIGUOUS)
  * 
  *     if size is not None:             # <<<<<<<<<<<<<<
@@ -4033,7 +12086,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_t_5 = (__pyx_v_size != nullptr);
   if (__pyx_t_5) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":489
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1624
  * 
  *     if size is not None:
  *         a_size = np.PyArray_FROMANY(size, np.NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -4051,7 +12104,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
     __pyx_v_a_size = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":490
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1625
  *     if size is not None:
  *         a_size = np.PyArray_FROMANY(size, np.NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)
  *         if (np.PyArray_NDIM(a_size) != 1) or (np.PyArray_DIMS(a_size)[0] < 2):             # <<<<<<<<<<<<<<
@@ -4059,9 +12112,9 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
  *         Nwin[0] = (<np.npy_intp *>np.PyArray_DATA(a_size))[0]
  */
     __pyx_t_2 = PyArray_NDIM(__pyx_v_a_size); 
-    __pyx_t_3 = __site_op_ne_490_36->Target(__site_op_ne_490_36, __pyx_t_2, __pyx_int_1);
+    __pyx_t_3 = __site_op_ne_1625_36->Target(__site_op_ne_1625_36, __pyx_t_2, __pyx_int_1);
     __pyx_t_2 = nullptr;
-    __pyx_t_5 = __site_istrue_490_36->Target(__site_istrue_490_36, __pyx_t_3);
+    __pyx_t_5 = __site_istrue_1625_36->Target(__site_istrue_1625_36, __pyx_t_3);
     __pyx_t_3 = nullptr;
     if (!__pyx_t_5) {
       __pyx_t_6 = ((PyArray_DIMS(__pyx_v_a_size)[0]) < 2);
@@ -4071,7 +12124,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
     }
     if (__pyx_t_7) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":491
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1626
  *         a_size = np.PyArray_FROMANY(size, np.NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)
  *         if (np.PyArray_NDIM(a_size) != 1) or (np.PyArray_DIMS(a_size)[0] < 2):
  *             raise ValueError("Size must be a length two sequence")             # <<<<<<<<<<<<<<
@@ -4079,7 +12132,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
  *         Nwin[1] = (<np.npy_intp *>np.PyArray_DATA(a_size))[1]
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_2 = __site_call1_491_28->Target(__site_call1_491_28, __pyx_context, __pyx_t_3, ((System::Object^)"Size must be a length two sequence"));
+      __pyx_t_2 = __site_call1_1626_28->Target(__site_call1_1626_28, __pyx_context, __pyx_t_3, ((System::Object^)"Size must be a length two sequence"));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
       __pyx_t_2 = nullptr;
@@ -4087,7 +12140,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
     }
     __pyx_L6:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":492
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1627
  *         if (np.PyArray_NDIM(a_size) != 1) or (np.PyArray_DIMS(a_size)[0] < 2):
  *             raise ValueError("Size must be a length two sequence")
  *         Nwin[0] = (<np.npy_intp *>np.PyArray_DATA(a_size))[0]             # <<<<<<<<<<<<<<
@@ -4096,7 +12149,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
  */
     (__pyx_v_Nwin[0]) = (((__pyx_t_5numpy_npy_intp *)PyArray_DATA(__pyx_v_a_size))[0]);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":493
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1628
  *             raise ValueError("Size must be a length two sequence")
  *         Nwin[0] = (<np.npy_intp *>np.PyArray_DATA(a_size))[0]
  *         Nwin[1] = (<np.npy_intp *>np.PyArray_DATA(a_size))[1]             # <<<<<<<<<<<<<<
@@ -4108,7 +12161,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":495
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1630
  *         Nwin[1] = (<np.npy_intp *>np.PyArray_DATA(a_size))[1]
  * 
  *     a_out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), typenum)             # <<<<<<<<<<<<<<
@@ -4122,7 +12175,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_v_a_out = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":497
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1632
  *     a_out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), typenum)
  * 
  *     if typenum == np.NPY_UBYTE:             # <<<<<<<<<<<<<<
@@ -4132,7 +12185,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_t_7 = (__pyx_v_typenum == NPY_UBYTE);
   if (__pyx_t_7) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":501
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1636
  *                    <unsigned char *>np.PyArray_DATA(a_out),
  *                    Nwin, np.PyArray_DIMS(a_image),
  *                    check_malloc)             # <<<<<<<<<<<<<<
@@ -4143,7 +12196,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
     goto __pyx_L7;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":502
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1637
  *                    Nwin, np.PyArray_DIMS(a_image),
  *                    check_malloc)
  *     elif typenum == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -4153,7 +12206,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_t_7 = (__pyx_v_typenum == NPY_FLOAT);
   if (__pyx_t_7) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":506
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1641
  *                    <float *>np.PyArray_DATA(a_out),
  *                    Nwin, np.PyArray_DIMS(a_image),
  *                    check_malloc)             # <<<<<<<<<<<<<<
@@ -4164,7 +12217,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
     goto __pyx_L7;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":507
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1642
  *                    Nwin, np.PyArray_DIMS(a_image),
  *                    check_malloc)
  *     elif typenum == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -4174,7 +12227,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   __pyx_t_7 = (__pyx_v_typenum == NPY_DOUBLE);
   if (__pyx_t_7) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":511
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1646
  *                    <double *>np.PyArray_DATA(a_out),
  *                    Nwin, np.PyArray_DIMS(a_image),
  *                    check_malloc)             # <<<<<<<<<<<<<<
@@ -4186,7 +12239,7 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
   }
   /*else*/ {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":513
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1648
  *                    check_malloc)
  *     else:
  *         raise ValueError("2D median filter only supports Int8, Float32, and Float64.")             # <<<<<<<<<<<<<<
@@ -4194,14 +12247,14 @@ static System::Object^ _median2d(System::Object^ image, [InteropServices::Option
  *     return np.PyArray_Return(a_out);
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_3 = __site_call1_513_24->Target(__site_call1_513_24, __pyx_context, __pyx_t_2, ((System::Object^)"2D median filter only supports Int8, Float32, and Float64."));
+    __pyx_t_3 = __site_call1_1648_24->Target(__site_call1_1648_24, __pyx_context, __pyx_t_2, ((System::Object^)"2D median filter only supports Int8, Float32, and Float64."));
     __pyx_t_2 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
   }
   __pyx_L7:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":515
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1650
  *         raise ValueError("2D median filter only supports Int8, Float32, and Float64.")
  * 
  *     return np.PyArray_Return(a_out);             # <<<<<<<<<<<<<<
@@ -4896,7 +12949,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
  *     if arr is None:
  *         return None             # <<<<<<<<<<<<<<
  *     import clr
- *     import NumpyDotNet.NpyArray
+ *     import NumpyDotNet.ndarray
  */
     __pyx_r = nullptr;
     goto __pyx_L0;
@@ -4908,8 +12961,8 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
  *     if arr is None:
  *         return None
  *     import clr             # <<<<<<<<<<<<<<
- *     import NumpyDotNet.NpyArray
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  */
   __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
   __pyx_v_clr = __pyx_t_2;
@@ -4918,25 +12971,25 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
   /* "../cython/include/numpy.pxd":374
  *         return None
  *     import clr
- *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  * 
  */
-  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyArray", -1));
+  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ndarray", -1));
   __pyx_v_NumpyDotNet = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
   /* "../cython/include/numpy.pxd":375
  *     import clr
- *     import NumpyDotNet.NpyArray
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  */
-  __pyx_t_2 = __site_get_NpyArray_375_22->Target(__site_get_NpyArray_375_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_3 = __site_get_ArrayReturn_375_31->Target(__site_get_ArrayReturn_375_31, __pyx_t_2, __pyx_context);
+  __pyx_t_2 = __site_get_ndarray_375_22->Target(__site_get_ndarray_375_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_3 = __site_get_ArrayReturn_375_30->Target(__site_get_ArrayReturn_375_30, __pyx_t_2, __pyx_context);
   __pyx_t_2 = nullptr;
-  __pyx_t_2 = __site_call1_375_43->Target(__site_call1_375_43, __pyx_context, __pyx_t_3, __pyx_v_arr);
+  __pyx_t_2 = __site_call1_375_42->Target(__site_call1_375_42, __pyx_context, __pyx_t_3, __pyx_v_arr);
   __pyx_t_3 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -4948,7 +13001,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
 }
 
 /* "../cython/include/numpy.pxd":377
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):             # <<<<<<<<<<<<<<
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
@@ -5976,110 +14029,193 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_cvt_cvt_int_418_82 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mod_63_56 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_cvt_cvt_int_76_36 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_elsize_82_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_int_82_43 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_elsize_99_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_size_t_99_54 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_istrue_99_22 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_149_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_op_ne_149_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_cvt_cvt_int_149_24 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_167_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ne_191_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_istrue_191_32 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_192_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_elsize_205_68 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_size_t_205_68 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_elsize_206_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_int_206_49 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_209_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_num_211_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
-  __site_cvt_cvt_int_211_22 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_213_50 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_217_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_elsize_219_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_int_219_35 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_elsize_225_34 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
-  __site_cvt_cvt_int_225_34 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mul_227_45 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_cvt_int_227_45 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_long_229_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mul_239_61 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_cvt_size_t_239_61 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mul_240_61 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_cvt_size_t_240_61 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_243_79 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_long_269_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_sub_273_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
-  __site_cvt_cvt_Py_ssize_t_273_34 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_sub_282_37 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
-  __site_cvt_cvt_int_282_37 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_lt_293_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::LessThan));
-  __site_istrue_293_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_bool_294_30 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_294_30 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_301_53 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_325_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_325_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_325_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_num_338_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
-  __site_cvt_cvt_int_338_18 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ne_344_20 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_istrue_344_20 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ne_344_40 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_istrue_344_40 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_ne_344_64 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_istrue_344_64 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_345_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_eq_347_20 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_347_20 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_PyArray_Cast_354_28 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_Cast", false));
-  __site_call2_354_41 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_op_mul_366_65 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_cvt_cvt_size_t_366_65 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_and_367_27 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
-  __site_cvt_cvt_int_367_27 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_369_23 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_369_23 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_long_370_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_373_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_eq_374_25 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_374_25 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_long_375_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_377_25 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_377_25 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_long_378_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_381_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_int_383_51 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_lshift_387_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::LeftShift));
-  __site_op_add_387_31 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_op_mul_387_71 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
-  __site_op_add_387_57 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_cvt_cvt_int_387_57 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_contains_403_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_Contains));
-  __site_call1_404_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_408_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_410_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_int_418_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_418_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_418_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_418_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_418_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_contains_434_12 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_Contains));
-  __site_call1_435_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_438_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_446_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_455_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_457_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_mod_471_108 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_471_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_ne_490_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
-  __site_istrue_490_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_491_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_513_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_int_1553_82 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_76_56 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_get_npy_NPY_FLOAT_82_20 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_FLOAT", false));
+  __site_op_eq_82_15 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_82_15 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_npy_NPY_DOUBLE_84_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_DOUBLE", false));
+  __site_op_eq_84_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_84_17 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_npy_NPY_LONGDOUBLE_86_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_LONGDOUBLE", false));
+  __site_op_eq_86_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_86_17 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_npy_NPY_CFLOAT_88_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_CFLOAT", false));
+  __site_op_eq_88_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_88_17 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_npy_NPY_CDOUBLE_90_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_CDOUBLE", false));
+  __site_op_eq_90_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_90_17 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_npy_NPY_CLONGDOUBLE_92_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "npy_NPY_CLONGDOUBLE", false));
+  __site_op_eq_92_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_92_17 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_101_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_Negate_121_15 = CallSite< System::Func< CallSite^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeUnaryOperationAction(__pyx_context, ExpressionType::Negate));
+  __site_op_lt_121_13 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::LessThan));
+  __site_istrue_121_13 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_sub_121_70 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
+  __site_op_gt_121_47 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
+  __site_istrue_121_47 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_122_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_125_39 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_cvt_cvt_int_125_39 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_num_133_27 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
+  __site_cvt_cvt_int_133_27 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_135_46 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_138_51 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_142_72 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_142_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call1_150_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_PyDataMem_FREE_152_6 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyDataMem_FREE", false));
+  __site_call1_152_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_158_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_PyDataMem_FREE_186_6 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyDataMem_FREE", false));
+  __site_call1_186_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_211_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_216_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_221_29 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_225_29 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_236_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_240_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_245_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_mul_618_37 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_619_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_add_620_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_mul_627_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_628_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_div_629_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_mul_630_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_631_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_sub_632_41 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
+  __site_op_mul_638_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_639_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_mul_640_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_641_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_op_sub_642_37 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
+  __site_op_mul_644_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_div_645_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Divide));
+  __site_cvt_cvt_int_656_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ne_669_27 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_669_27 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_670_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_672_27 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_672_27 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_673_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_num_679_27 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
+  __site_cvt_cvt_int_679_27 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_681_26 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mul_1097_48 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_add_1096_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_get_PyDataMem_FREE_1109_6 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyDataMem_FREE", false));
+  __site_call1_1109_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_long_1125_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1131_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1142_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1151_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_long_1155_34 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1200_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_int_1211_36 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_elsize_1217_43 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_int_1217_43 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_elsize_1234_54 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_size_t_1234_54 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_istrue_1234_22 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_1284_16 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_op_ne_1284_24 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_cvt_cvt_int_1284_24 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1302_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ne_1326_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_1326_32 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1327_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_elsize_1340_68 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_size_t_1340_68 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_elsize_1341_49 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_int_1341_49 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1344_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_num_1346_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
+  __site_cvt_cvt_int_1346_22 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1348_50 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1352_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_elsize_1354_35 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_int_1354_35 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_elsize_1360_34 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "elsize", false));
+  __site_cvt_cvt_int_1360_34 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mul_1362_45 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_cvt_cvt_int_1362_45 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1364_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mul_1374_61 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_cvt_cvt_size_t_1374_61 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mul_1375_61 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_cvt_cvt_size_t_1375_61 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1378_79 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1404_38 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_sub_1408_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
+  __site_cvt_cvt_Py_ssize_t_1408_34 = CallSite< System::Func< CallSite^, System::Object^, Py_ssize_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, Py_ssize_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_sub_1417_37 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Subtract));
+  __site_cvt_cvt_int_1417_37 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_lt_1428_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::LessThan));
+  __site_istrue_1428_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_bool_1429_30 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1429_30 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1436_53 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1460_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1460_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1460_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_num_1473_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "num", false));
+  __site_cvt_cvt_int_1473_18 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ne_1479_20 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_1479_20 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ne_1479_40 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_1479_40 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_ne_1479_64 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_1479_64 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1480_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_1482_20 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_1482_20 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_PyArray_Cast_1489_28 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_Cast", false));
+  __site_call2_1489_41 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_op_mul_1501_65 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_cvt_cvt_size_t_1501_65 = CallSite< System::Func< CallSite^, System::Object^, size_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, size_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_and_1502_27 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::And));
+  __site_cvt_cvt_int_1502_27 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_1504_23 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_1504_23 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1505_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1508_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_1509_25 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_1509_25 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1510_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_1512_25 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_1512_25 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_long_1513_42 = CallSite< System::Func< CallSite^, System::Object^, long >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, long::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1516_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_int_1518_51 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_lshift_1522_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::LeftShift));
+  __site_op_add_1522_31 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_mul_1522_71 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Multiply));
+  __site_op_add_1522_57 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_cvt_cvt_int_1522_57 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_contains_1538_17 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_Contains));
+  __site_call1_1539_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1543_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1545_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_int_1553_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1553_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_1553_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1553_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_1553_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_contains_1569_12 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, bool >^ >::Create(PythonOps::MakeOperationAction(__pyx_context, PythonOperationKind_Contains));
+  __site_call1_1570_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1573_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1581_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1590_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1592_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_mod_1606_108 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_1606_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_ne_1625_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::NotEqual));
+  __site_istrue_1625_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_1626_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_1648_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -6102,9 +14238,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
   __site_get_Array_368_52 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
   __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_375_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_ArrayReturn_375_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ArrayReturn", false));
-  __site_call1_375_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_ndarray_375_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_get_ArrayReturn_375_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ArrayReturn", false));
+  __site_call1_375_42 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_Array_378_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
   __site_cvt_cvt_PY_LONG_LONG_378_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
   __site_get_ndim_381_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
@@ -6159,6 +14295,18 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   /*--- Create function pointers ---*/
   __pyx_delegate_val_check_malloc = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_check_malloc(check_malloc);
   __pyx_function_pointer_check_malloc = (__pyx_fp_t_check_malloc)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_check_malloc).ToPointer());
+  __pyx_delegate_val_FLOAT_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_FLOAT_filt(FLOAT_filt);
+  __pyx_function_pointer_FLOAT_filt = (__pyx_fp_t_FLOAT_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_FLOAT_filt).ToPointer());
+  __pyx_delegate_val_CFLOAT_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CFLOAT_filt(CFLOAT_filt);
+  __pyx_function_pointer_CFLOAT_filt = (__pyx_fp_t_CFLOAT_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_CFLOAT_filt).ToPointer());
+  __pyx_delegate_val_DOUBLE_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_DOUBLE_filt(DOUBLE_filt);
+  __pyx_function_pointer_DOUBLE_filt = (__pyx_fp_t_DOUBLE_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_DOUBLE_filt).ToPointer());
+  __pyx_delegate_val_CDOUBLE_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CDOUBLE_filt(CDOUBLE_filt);
+  __pyx_function_pointer_CDOUBLE_filt = (__pyx_fp_t_CDOUBLE_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_CDOUBLE_filt).ToPointer());
+  __pyx_delegate_val_EXTENDED_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_EXTENDED_filt(EXTENDED_filt);
+  __pyx_function_pointer_EXTENDED_filt = (__pyx_fp_t_EXTENDED_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_EXTENDED_filt).ToPointer());
+  __pyx_delegate_val_CEXTENDED_filt = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_CEXTENDED_filt(CEXTENDED_filt);
+  __pyx_function_pointer_CEXTENDED_filt = (__pyx_fp_t_CEXTENDED_filt)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_CEXTENDED_filt).ToPointer());
   __pyx_delegate_val_DOUBLE_compare = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_DOUBLE_compare(DOUBLE_compare);
   __pyx_function_pointer_DOUBLE_compare = (__pyx_fp_t_DOUBLE_compare)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_DOUBLE_compare).ToPointer());
   __pyx_delegate_val_FLOAT_compare = gcnew __pyx_delegate_t_5scipy_6signal_11sigtoolsmod_FLOAT_compare(FLOAT_compare);
@@ -6192,7 +14340,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   int __pyx_t_2;
   PythonDictionary^ __pyx_t_3;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":9
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":9
  * 
  * cimport numpy as np
  * np.import_array()             # <<<<<<<<<<<<<<
@@ -6201,7 +14349,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":42
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":55
  * 
  * # define some constants
  * OUTSIZE_MASK = 3             # <<<<<<<<<<<<<<
@@ -6210,7 +14358,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "OUTSIZE_MASK", __pyx_int_3);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":43
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":56
  * # define some constants
  * OUTSIZE_MASK = 3
  * FLIP_MASK    = 16             # <<<<<<<<<<<<<<
@@ -6219,7 +14367,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "FLIP_MASK", __pyx_int_16);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":44
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":57
  * OUTSIZE_MASK = 3
  * FLIP_MASK    = 16
  * TYPE_SHIFT   = 5             # <<<<<<<<<<<<<<
@@ -6228,7 +14376,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "TYPE_SHIFT", __pyx_int_5);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":46
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":59
  * TYPE_SHIFT   = 5
  * 
  * FULL  = 2             # <<<<<<<<<<<<<<
@@ -6237,7 +14385,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "FULL", __pyx_int_2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":47
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":60
  * 
  * FULL  = 2
  * SAME  = 1             # <<<<<<<<<<<<<<
@@ -6246,7 +14394,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "SAME", __pyx_int_1);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":48
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":61
  * FULL  = 2
  * SAME  = 1
  * VALID = 0             # <<<<<<<<<<<<<<
@@ -6255,7 +14403,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "VALID", __pyx_int_0);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":50
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":63
  * VALID = 0
  * 
  * CIRCULAR = 8             # <<<<<<<<<<<<<<
@@ -6264,7 +14412,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "CIRCULAR", __pyx_int_8);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":51
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":64
  * 
  * CIRCULAR = 8
  * REFLECT  = 4             # <<<<<<<<<<<<<<
@@ -6273,7 +14421,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "REFLECT", __pyx_int_4);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":52
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":65
  * CIRCULAR = 8
  * REFLECT  = 4
  * PAD      = 0             # <<<<<<<<<<<<<<
@@ -6282,7 +14430,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "PAD", __pyx_int_0);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":54
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":67
  * PAD      = 0
  * 
  * BANDPASS       = 1             # <<<<<<<<<<<<<<
@@ -6291,7 +14439,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "BANDPASS", __pyx_int_1);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":55
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":68
  * 
  * BANDPASS       = 1
  * DIFFERENTIATOR = 2             # <<<<<<<<<<<<<<
@@ -6300,7 +14448,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "DIFFERENTIATOR", __pyx_int_2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":56
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":69
  * BANDPASS       = 1
  * DIFFERENTIATOR = 2
  * HILBERT        = 3             # <<<<<<<<<<<<<<
@@ -6309,7 +14457,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   PythonOps::SetGlobal(__pyx_context, "HILBERT", __pyx_int_3);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":152
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1287
  * 
  * cdef CompareFunction compare_functions[21]
  * compare_functions[1] = <CompareFunction>BYTE_compare             # <<<<<<<<<<<<<<
@@ -6318,7 +14466,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[1]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_BYTE_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":153
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1288
  * cdef CompareFunction compare_functions[21]
  * compare_functions[1] = <CompareFunction>BYTE_compare
  * compare_functions[2] = <CompareFunction>UBYTE_compare             # <<<<<<<<<<<<<<
@@ -6327,7 +14475,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[2]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_UBYTE_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":154
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1289
  * compare_functions[1] = <CompareFunction>BYTE_compare
  * compare_functions[2] = <CompareFunction>UBYTE_compare
  * compare_functions[3] = <CompareFunction>SHORT_compare             # <<<<<<<<<<<<<<
@@ -6336,7 +14484,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[3]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_SHORT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":155
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1290
  * compare_functions[2] = <CompareFunction>UBYTE_compare
  * compare_functions[3] = <CompareFunction>SHORT_compare
  * compare_functions[4] = <CompareFunction>USHORT_compare             # <<<<<<<<<<<<<<
@@ -6345,7 +14493,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[4]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_USHORT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":156
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1291
  * compare_functions[3] = <CompareFunction>SHORT_compare
  * compare_functions[4] = <CompareFunction>USHORT_compare
  * compare_functions[5] = <CompareFunction>INT_compare             # <<<<<<<<<<<<<<
@@ -6354,7 +14502,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[5]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_INT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":157
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1292
  * compare_functions[4] = <CompareFunction>USHORT_compare
  * compare_functions[5] = <CompareFunction>INT_compare
  * compare_functions[6] = <CompareFunction>UINT_compare             # <<<<<<<<<<<<<<
@@ -6363,7 +14511,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[6]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_UINT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":158
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1293
  * compare_functions[5] = <CompareFunction>INT_compare
  * compare_functions[6] = <CompareFunction>UINT_compare
  * compare_functions[7] = <CompareFunction>LONG_compare             # <<<<<<<<<<<<<<
@@ -6372,7 +14520,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[7]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_LONG_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":159
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1294
  * compare_functions[6] = <CompareFunction>UINT_compare
  * compare_functions[7] = <CompareFunction>LONG_compare
  * compare_functions[8] = <CompareFunction>ULONG_compare             # <<<<<<<<<<<<<<
@@ -6381,7 +14529,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[8]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_ULONG_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":160
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1295
  * compare_functions[7] = <CompareFunction>LONG_compare
  * compare_functions[8] = <CompareFunction>ULONG_compare
  * compare_functions[9] = <CompareFunction>LONGLONG_compare             # <<<<<<<<<<<<<<
@@ -6390,7 +14538,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[9]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_LONGLONG_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":161
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1296
  * compare_functions[8] = <CompareFunction>ULONG_compare
  * compare_functions[9] = <CompareFunction>LONGLONG_compare
  * compare_functions[10] = <CompareFunction>ULONGLONG_compare             # <<<<<<<<<<<<<<
@@ -6399,7 +14547,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[10]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_ULONGLONG_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":162
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1297
  * compare_functions[9] = <CompareFunction>LONGLONG_compare
  * compare_functions[10] = <CompareFunction>ULONGLONG_compare
  * compare_functions[11] = <CompareFunction>FLOAT_compare             # <<<<<<<<<<<<<<
@@ -6408,7 +14556,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[11]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_FLOAT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":163
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1298
  * compare_functions[10] = <CompareFunction>ULONGLONG_compare
  * compare_functions[11] = <CompareFunction>FLOAT_compare
  * compare_functions[12] = <CompareFunction>DOUBLE_compare             # <<<<<<<<<<<<<<
@@ -6417,7 +14565,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[12]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_DOUBLE_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":164
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1299
  * compare_functions[11] = <CompareFunction>FLOAT_compare
  * compare_functions[12] = <CompareFunction>DOUBLE_compare
  * compare_functions[13] = <CompareFunction>LONGDOUBLE_compare             # <<<<<<<<<<<<<<
@@ -6426,7 +14574,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[13]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_LONGDOUBLE_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":165
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1300
  * compare_functions[12] = <CompareFunction>DOUBLE_compare
  * compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
  * compare_functions[17] = <CompareFunction>OBJECT_compare             # <<<<<<<<<<<<<<
@@ -6435,7 +14583,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   (__pyx_v_5scipy_6signal_11sigtoolsmod_compare_functions[17]) = ((__pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction)__pyx_function_pointer_OBJECT_compare);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":418
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1553
  * 
  * 
  * def _remez(int numtaps, object bands, object des, object weight, int type=BANDPASS,             # <<<<<<<<<<<<<<
@@ -6443,11 +14591,11 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  *     """
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "BANDPASS");
-  __pyx_t_2 = __site_cvt_cvt_int_418_82->Target(__site_cvt_cvt_int_418_82, __pyx_t_1);
+  __pyx_t_2 = __site_cvt_cvt_int_1553_82->Target(__site_cvt_cvt_int_1553_82, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_k_1 = __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":1
  * # SIGTOOLS module by Travis Oliphant             # <<<<<<<<<<<<<<
  * #
  * # Copyright 2005 Travis Oliphant
@@ -6476,6 +14624,19 @@ static __pyx_t_5scipy_6signal_11sigtoolsmod_CompareFunction *__pyx_v_5scipy_6sig
 /* Cython code section 'utility_code_def' */
 
 /* Runtime support code */
+
+static CYTHON_INLINE long __Pyx_mod_long(long a, long b) {
+    long r = a % b;
+    r += ((r != 0) & ((r ^ b) < 0)) * b;
+    return r;
+}
+
+static CYTHON_INLINE long __Pyx_div_long(long a, long b) {
+    long q = a / b;
+    long r = a - q*b;
+    q -= ((r != 0) & ((r ^ b) < 0));
+    return q;
+}
 
 #if CYTHON_CCOMPLEX
   #ifdef __cplusplus

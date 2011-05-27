@@ -4,4 +4,4 @@ if sys.platform == 'cli':
     import clr
     clr.AddReference("signal")
 
-    from scipy__signal__splinemodule import *
+    from scipy__signal__spline import *

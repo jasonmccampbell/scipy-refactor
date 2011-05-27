@@ -1,0 +1,1136 @@
+# SIGTOOLS module by Travis Oliphant
+#
+# Copyright 2005 Travis Oliphant
+# Permission to use, copy, modify, and distribute this software without fee
+# is granted under the SciPy License.
+#
+
+cimport numpy as np
+np.import_array()
+
+ctypedef int (*CompareFunction) (void *, void *)
+
+cdef extern from "stdlib.h":
+    void free(void *ptr)
+    void * malloc(size_t size)
+    void qsort(void *base, size_t nel, size_t width, int (*compar)(void *, void *))
+
+cdef extern from "string.h":
+    int memcmp(void *s1, void *s2, size_t n)
+    void * memcpy(void *s1, void *s2, size_t n)
+    void * memset(void *b, int c, size_t n)
+
+cdef extern from "iterhelper.h":
+    object NpyIter_READOBJECT(void *iter)
+    void NpyIter_ASSIGNOBJECT(void *iter, object obj)
+
+cdef extern from "sigtools.h":
+    CompareFunction COMPARE_CONST_HELPER(CompareFunction)
+
+    int index_out_of_bounds(np.npy_intp *indices, np.npy_intp *max_indices, int ndims)
+    np.npy_intp compute_offsets(np.npy_uintp *offsets, np.npy_intp *offsets2, np.npy_intp *dim1, np.npy_intp *dim2, np.npy_intp *dim3, np.npy_intp *mode_dep, int nd)
+    int increment(np.npy_intp *ret_ind, int nd, np.npy_intp *max_ind)
+    int pre_remez(double *h2, int numtaps, int numbands, double *bands, double *response, double *weight, int type, int maxiter, int grid_density)
+    int pylab_convolve_2d(char*,np.npy_intp*,char*,np.npy_intp*,char*,np.npy_intp*,np.npy_intp*,np.npy_intp*,int,char*)
+    void f_medfilt2(float*,float*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void d_medfilt2(double*,double*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void b_medfilt2(unsigned char*,unsigned char*,np.npy_intp*,np.npy_intp*, char* (*alloc_fn)(int))
+    void scipy_signal_sigtools_linear_filter_module_init()
+    np.PyArray_CopySwapFunc ARRAY_COPYSWAP_FUNC(np.NpyArray *arr)
+
+cdef extern from "iterhelper.h":
+     ctypedef void *PYOBJPTRPTR
+     object READOBJECT(PYOBJPTRPTR ptr)
+     void ASSIGNOBJECT(PYOBJPTRPTR ptr, obj)
+
+ctypedef void (*BasicFilterFunction) (char *, char *,  char *, char *, char *,
+                                      np.npy_intp, np.npy_uintp, np.npy_intp,
+                                      np.npy_intp)
+
+# init the linear filter module
+# (doesn't work -- and isn't needed -- with IronPython; FIXME)
+#scipy_signal_sigtools_linear_filter_module_init()
+
+# define some constants
+OUTSIZE_MASK = 3
+FLIP_MASK    = 16
+TYPE_SHIFT   = 5
+
+FULL  = 2
+SAME  = 1
+VALID = 0
+
+CIRCULAR = 8
+REFLECT  = 4
+PAD      = 0
+
+BANDPASS       = 1
+DIFFERENTIATOR = 2
+HILBERT        = 3
+
+# A memory allocator which raises a python exception.
+# Used by median filter
+cdef char *check_malloc(int size):
+    cdef char *the_block = <char *>malloc(size)
+    if the_block == NULL:
+        print "\nERROR: unable to allocate %d bytes!\n" % size
+        raise MemoryError
+
+    return the_block
+
+cdef BasicFilterFunction get_filter_function(int typenum):
+    if typenum == np.npy_NPY_FLOAT:
+        return <BasicFilterFunction>FLOAT_filt
+    elif typenum == np.npy_NPY_DOUBLE:
+        return <BasicFilterFunction>DOUBLE_filt
+    elif typenum == np.npy_NPY_LONGDOUBLE:
+        return <BasicFilterFunction>EXTENDED_filt
+    elif typenum == np.npy_NPY_CFLOAT:
+        return <BasicFilterFunction>CFLOAT_filt
+    elif typenum == np.npy_NPY_CDOUBLE:
+        return <BasicFilterFunction>CDOUBLE_filt
+    elif typenum == np.npy_NPY_CLONGDOUBLE:
+        return <BasicFilterFunction>CEXTENDED_filt
+    #elif typenum == np.npy_NPY_OBJECT:
+    #    return <BasicFilterFunction>OBJECT_filt
+    
+    return NULL
+
+
+# XXX: Error checking not done yet
+def _linear_filter(np.ndarray b, np.ndarray a,
+                   np.ndarray X, int axis=-1,
+                   np.ndarray Vi=None):
+    cdef np.ndarray ara, arb, arX, arY, arVf, arVi
+    cdef int theaxis, st
+    cdef char *ara_ptr, input_flag = 0, *azero
+    cdef np.npy_intp na, nb, nal
+    cdef BasicFilterFunction basic_filter
+    cdef np.dtype type
+
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(b)))
+    type = np.NpyArray_FindArrayType_2args(a, type)
+    type = np.NpyArray_FindArrayType_2args(X, type)
+    if Vi is not None:
+        type = np.NpyArray_FindArrayType_2args(Vi, type)
+
+    ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+    arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+
+    if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
+        raise ValueError("selected axis is out of range")
+
+    if axis < 0:
+        theaxis = np.PyArray_NDIM(arX) + axis
+    else:
+        theaxis = axis
+
+    if Vi is not None:
+        arVi = np.PyArray_FromAny(Vi, type, np.PyArray_NDIM(arX), np.PyArray_NDIM(arX), np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+        input_flag = 1
+
+    cdef int typenum = type.num
+
+    arY = np.PyArray_SimpleNew(np.PyArray_NDIM(arX), np.PyArray_DIMS(arX), typenum)
+
+    if input_flag:
+        arVf = np.PyArray_SimpleNew(np.PyArray_NDIM(arVi), np.PyArray_DIMS(arVi), typenum)
+
+    basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
+    if basic_filter == NULL:
+        raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+
+    # Skip over leading zeros in vector representing denominator (a)
+    # XXX: handle this correctly
+    azero = <char *>np.PyArray_Zero(ara)
+    ara_ptr = <char *>np.PyArray_DATA(ara)
+    nal = np.PyArray_ITEMSIZE(ara);
+    if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
+        raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
+    
+    np.PyDataMem_FREE(azero)
+
+    na = np.PyArray_SIZE(ara)
+    nb = np.PyArray_SIZE(arb)
+    if input_flag:
+        if np.PyArray_DIMS(arVi)[theaxis] != (na if na > nb else nb) - 1:
+            raise ValueError("The number of initial conditions must be max([len(a),len(b)]) - 1")
+
+    st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
+    if st:
+        raise SystemError # RawFilter raised an exception
+
+    if not input_flag:
+        return np.PyArray_Return(arY)
+    else:
+        return (arY, arVf)
+
+
+## Copy the first nxzfilled items of x into xzfilled , and fill the rest with 0s
+cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfilled):
+    cdef char *xzero
+    cdef np.npy_intp i, nxl
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(x)
+
+    nxl = np.NpyArray_ITEMSIZE(x)
+    xzero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(x))
+
+    if nx > 0:
+        for i in range(nx):
+            copyswap(xzfilled + i * nxl, <char*>np.NpyArray_DATA(x) + i * nxl, 0, NULL)
+
+    for i in range(nx, nxzfilled):
+        copyswap(xzfilled + i * nxl, xzero, 0, NULL)
+
+    np.PyDataMem_FREE(xzero)
+
+    return 0
+
+
+# a and b assumed to be contiguous
+#
+# XXX: this code is very conservative, and could be considerably sped up for
+# the usual cases (like contiguity).
+#
+# XXX: the code should be refactored (at least with/without initial
+# condition), some code is wasteful here
+cdef int RawFilter(np.ndarray b, np.ndarray a,
+          np.ndarray x, np.ndarray zi,
+          np.ndarray zf, np.ndarray y, int axis,
+          BasicFilterFunction filter_func):
+    cdef np.NpyArrayIterObject *itx, *ity, *itzi=NULL, *itzf=NULL
+    cdef np.npy_intp nitx, i, nxl, nzfl, j
+    cdef np.npy_intp na, nb, nal, nbl
+    cdef np.npy_intp nfilt
+    cdef char *azfilled, *bzfilled, *zfzfilled, *yoyo
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(np.PyArray_ARRAY(x))
+
+    itx = np.PyArray_IterAllButAxis(x, &axis)
+    if itx == NULL:
+        raise MemoryError("Could not create itx")
+    nitx = itx.size
+
+    ity = np.PyArray_IterAllButAxis(y, &axis)
+    if ity == NULL:
+        raise MemoryError("Could not create ity")
+
+    if zi is not None:
+        itzi = np.PyArray_IterAllButAxis(zi, &axis)
+        if itzi == NULL:
+            raise MemoryError("Could not create itzi")
+
+        itzf = np.PyArray_IterAllButAxis(zf, &axis)
+        if itzf == NULL:
+            raise MemoryError("Could not create itzf")
+
+    na = np.PyArray_SIZE(a)
+    nal = np.PyArray_ITEMSIZE(a)
+    nb = np.PyArray_SIZE(b)
+    nbl = np.PyArray_ITEMSIZE(b)
+
+    nfilt = na if na > nb else nb
+
+    azfilled = <char *>malloc(nal * nfilt)
+    if azfilled == NULL:
+        raise MemoryError("Could not create azfilled")
+    
+    bzfilled = <char *>malloc(nbl * nfilt)
+    if bzfilled == NULL:
+        raise MemoryError("Could not create bzfilled")
+
+    nxl = np.PyArray_ITEMSIZE(x)
+    zfzfilled = <char *>malloc(nxl * (nfilt - 1))
+    if zfzfilled == NULL:
+        raise MemoryError("Could not create zfzfilled")
+
+    # Initialize zero filled buffers to 0, so that we can use
+    # Py_XINCREF/Py_XDECREF on it for object arrays (necessary for
+    # copyswap to work correctly). Stricly speaking, it is not needed for
+    # fundamental types (as values are copied instead of pointers, without
+    # refcounts), but oh well...
+    
+    memset(<void *>azfilled, 0, nal * nfilt)
+    memset(<void *>bzfilled, 0, nbl * nfilt)
+    memset(<void *>zfzfilled, 0, nxl * (nfilt - 1))
+
+    zfill(np.PyArray_ARRAY(a), na, azfilled, nfilt)
+    zfill(np.PyArray_ARRAY(b), nb, bzfilled, nfilt)
+
+    # XXX: Check that zf and zi have same type ?
+    if zf is not None:
+        nzfl = np.PyArray_ITEMSIZE(zf)
+    else:
+        nzfl = 0
+
+    # Iterate over the input array
+    for i in range(nitx):
+        if zi is not None:
+            yoyo = itzi.dataptr
+            # Copy initial conditions zi in zfzfilled buffer
+            for j in range(nfilt - 1):
+                copyswap(zfzfilled + j * nzfl, yoyo, 0, NULL)
+                yoyo += itzi.strides[axis]
+            
+            np.PyArray_ITER_NEXT(itzi)
+        else:
+            zfill(np.PyArray_ARRAY(x), 0, zfzfilled, nfilt - 1)
+
+        filter_func(bzfilled, azfilled,
+                    itx.dataptr, ity.dataptr, zfzfilled,
+                    nfilt, np.PyArray_DIMS(x)[axis], itx.strides[axis],
+                    ity.strides[axis]);
+        np.PyArray_ITER_NEXT(itx)
+        np.PyArray_ITER_NEXT(ity)
+
+        # Copy tmp buffer fo final values back into zf output array
+        if zi is not None:
+            yoyo = itzf.dataptr
+            for j in range(nfilt - 1):
+                copyswap(yoyo, zfzfilled + j * nzfl, 0, NULL)
+                yoyo += itzf.strides[axis]
+            np.PyArray_ITER_NEXT(itzf);
+
+    # Free up allocated memory
+    free(zfzfilled)
+    free(bzfilled)
+    free(azfilled)
+
+    return 0
+
+#################################################################
+#   This is code for a 1-D linear-filter along an arbitrary     #
+#   dimension of an N-D array.                                  #
+#################################################################
+{{for type, NAME
+      in zip(['float', 'double', 'np.npy_longdouble'],
+             ['FLOAT', 'DOUBLE', 'EXTENDED'])}}
+cdef int {{NAME}}_filt(char *b, char *a, char *x, char *y, char *Z,
+                   np.npy_intp len_b, np.npy_uintp len_x,
+                   np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef {{type}} *ptr_Z, *ptr_b
+    cdef {{type}} *ptr_a
+    cdef {{type}} *xn, *yn
+    cdef {{type}} a0 = (<{{type}} *> a)[0]
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    for k in range(len_x):
+        ptr_b = <{{type}} *>b   # Reset a and b pointers */
+        ptr_a = <{{type}} *>a
+        xn = <{{type}} *>ptr_x
+        yn = <{{type}} *>ptr_y
+        if len_b > 1:
+            ptr_Z = <{{type}} *>Z
+            yn[0] = ptr_Z[0] + ptr_b[0] / a0 * xn[0] # Calculate first delay (output)
+            ptr_b += 1
+            ptr_a += 1
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                ptr_Z[0] = ptr_Z[1] + xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+                ptr_b += 1
+                ptr_a += 1
+                ptr_Z += 1
+            # Calculate last delay
+            ptr_Z[0] = xn[0] * (ptr_b[0] / a0) - yn[0] * (ptr_a[0] / a0)
+        else:
+            yn[0] = xn[0] * (ptr_b[0] / a0)
+
+        ptr_y += stride_Y      # Move to next input/output point
+        ptr_x += stride_X
+    return 0
+
+
+cdef int C{{NAME}}_filt(char *b, char *a, char *x, char *y, char *Z,
+                    np.npy_intp len_b, np.npy_uintp len_x,
+                    np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef {{type}} *ptr_Z, *ptr_b
+    cdef {{type}} *ptr_a
+    cdef {{type}} *xn, *yn
+    cdef {{type}} a0r = (<{{type}} *>a)[0]
+    cdef {{type}} a0i = (<{{type}} *>a)[1]
+    cdef {{type}} a0_mag, tmpr, tmpi
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    a0_mag = a0r * a0r + a0i * a0i
+    for k in range(len_x):
+        ptr_b = <{{type}} *>b   # Reset a and b pointers
+        ptr_a = <{{type}} *>a
+        xn = <{{type}} *>ptr_x
+        yn = <{{type}} *>ptr_y
+        if len_b > 1:
+            ptr_Z = <{{type}} *>Z
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            # Calculate first delay (output)
+            yn[0] = ptr_Z[0] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            yn[1] = ptr_Z[1] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+            ptr_b += 2
+            ptr_a += 2
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+                tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+                ptr_Z[0] = ptr_Z[2] + (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+                ptr_Z[1] = ptr_Z[3] + (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+                tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+                tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+                ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+                ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+                ptr_b += 2
+                ptr_a += 2
+                ptr_Z += 2
+            
+            # Calculate last delay
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            ptr_Z[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            ptr_Z[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+            tmpr = ptr_a[0] * a0r + ptr_a[1] * a0i
+            tmpi = ptr_a[1] * a0r - ptr_a[0] * a0i
+            ptr_Z[0] -= (tmpr * yn[0] - tmpi * yn[1]) / a0_mag
+            ptr_Z[1] -= (tmpi * yn[0] + tmpr * yn[1]) / a0_mag
+        else:
+            tmpr = ptr_b[0] * a0r + ptr_b[1] * a0i
+            tmpi = ptr_b[1] * a0r - ptr_b[0] * a0i
+            yn[0] = (tmpr * xn[0] - tmpi * xn[1]) / a0_mag
+            yn[1] = (tmpi * xn[0] + tmpr * xn[1]) / a0_mag
+
+        ptr_y += stride_Y     # Move to next input/output point
+        ptr_x += stride_X
+    return 0
+
+{{endfor}}
+
+cdef OBJECT_filt(char *b, char *a, char *x, char *y, char *Z,
+                 np.npy_intp len_b, np.npy_uintp len_x,
+                 np.npy_intp stride_X, np.npy_intp stride_Y):
+    cdef char *ptr_x = x, *ptr_y = y
+    cdef PYOBJPTRPTR ptr_Z, ptr_b
+    cdef PYOBJPTRPTR ptr_a
+    cdef PYOBJPTRPTR xn, yn
+    cdef PYOBJPTRPTR a0 = <PYOBJPTRPTR> a
+    cdef object tmp1, tmp2, tmp3
+    cdef np.npy_intp n
+    cdef np.npy_uintp k
+
+    # My reference counting might not be right
+    for k in range(len_x):
+        ptr_b = <PYOBJPTRPTR> b        # Reset a and b pointers
+        ptr_a = <PYOBJPTRPTR> a
+        xn = <PYOBJPTRPTR> ptr_x
+        yn = <PYOBJPTRPTR> ptr_y
+        if len_b > 1:
+            ptr_Z = (<PYOBJPTRPTR> Z)
+            # Calculate first delay (output)
+            tmp1 = READOBJECT(ptr_b) * READOBJECT(xn)
+            tmp2 = tmp1 / READOBJECT(a0)
+            tmp3 = tmp2 + READOBJECT(ptr_Z)
+            ASSIGNOBJECT(yn, tmp3)
+            ptr_b += 1
+            ptr_a += 1
+
+            # Fill in middle delays
+            for n in range(len_b - 2):
+                tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+                tmp2 = tmp1 / READOBJECT(a0)
+                tmp3 = tmp2 / READOBJECT(ptr_Z + 1)
+                tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+                tmp2 = tmp1 / READOBJECT(a0)
+                ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+                ptr_b += 1
+                ptr_a += 1
+                ptr_Z += 1
+            
+            # Calculate last delay
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            tmp3 = tmp1 / READOBJECT(a0)
+            tmp1 = READOBJECT(yn) * READOBJECT(ptr_a)
+            tmp2 = tmp1 / READOBJECT(a0)
+            ASSIGNOBJECT(ptr_Z, tmp3 - tmp2)
+        else:
+            tmp1 = READOBJECT(xn) * READOBJECT(ptr_b)
+            ASSIGNOBJECT(yn, tmp1 / READOBJECT(a0))
+
+        ptr_y += stride_Y      # Move to next input/output point
+        ptr_x += stride_X
+
+
+cdef enum:
+    CORR_MODE_VALID = 0
+    CORR_MODE_SAME  = 1
+    CORR_MODE_FULL  = 2
+
+def correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
+    cdef np.NpyArrayIterObject *itx, *ity, *itz
+    cdef int st
+    cdef np.dtype type
+
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(ax)))
+    type = np.NpyArray_FindArrayType_2args(ay, type)
+    type = np.NpyArray_FindArrayType_2args(aout, type)
+
+    ax = np.PyArray_FromAny(ax, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+    ay = np.PyArray_FromAny(ay, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+    aout = np.PyArray_FromAny(aout, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None);
+
+    if np.PyArray_NDIM(ax) != np.PyArray_NDIM(ay):
+        raise ValueError("Arrays must have the same number of dimensions.")
+
+    if np.PyArray_NDIM(ax) == 0:
+        raise ValueError("Cannot convolve zero-dimensional arrays.")
+
+    itx = np.PyArray_IterNew(ax)
+    ity = np.PyArray_IterNew(ay)
+    itz = np.PyArray_IterNew(aout)
+
+    cdef int typenum = type.num
+
+    st = _correlate_nd_imp(itx, ity, itz, typenum, mode);
+    if st:
+        return None
+
+    return np.PyArray_Return(aout)
+
+
+############################################################
+# Implementation of the type-specific correlation 'kernels'
+#
+{{for fsuf, type
+      in zip(['ubyte', 'byte', 'ushort', 'short', 'uint', 'int', 'ulong',
+              'long', 'ulonglong', 'longlong', 'float', 'double', 'longdouble'],
+             ['np.npy_ubyte', 'np.npy_byte', 'np.npy_ushort', 'short', 'np.npy_uint',
+              'int', 'np.npy_ulong', 'long', 'np.npy_ulonglong', 'np.npy_longlong',
+              'float', 'double', 'np.npy_longdouble'])}}
+cdef int _imp_correlate_nd_{{fsuf}}(np.NpyArrayNeighborhoodIterObject *curx,
+        np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+        np.NpyArrayIterObject *itz):
+    cdef np.npy_intp i, j
+    cdef {{type}} acc
+
+    for i in range(curx.size):
+        acc = 0
+        np.PyArrayNeighborhoodIter_Reset(curneighx)
+        for j in range(curneighx.size):
+            acc += (<{{type}}*>curneighx.dataptr)[0] * (<{{type}}*>ity.dataptr)[0]
+
+            np.PyArrayNeighborhoodIter_Next(curneighx)
+            np.PyArray_ITER_NEXT(ity)
+        
+        np.PyArrayNeighborhoodIter_Next(curx)
+
+        (<{{type}}*>itz.dataptr)[0] = acc
+
+        np.PyArray_ITER_NEXT(itz)
+        np.PyArray_ITER_RESET(ity)
+
+    return 0
+{{endfor}}
+
+{{for fsuf, type
+      in zip(['float', 'double', 'longdouble'],
+             ['float', 'double', 'np.npy_longdouble'])}}
+cdef int _imp_correlate_nd_c{{fsuf}}(np.NpyArrayNeighborhoodIterObject *curx,
+        np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+        np.NpyArrayIterObject *itz):
+    cdef int i, j
+    cdef {{type}} racc, iacc
+    cdef {{type}} *ptr1, *ptr2
+
+    for i in range(curx.size):
+        racc = 0
+        iacc = 0
+        np.PyArrayNeighborhoodIter_Reset(curneighx)
+        for j in range(curneighx.size):
+            ptr1 = <{{type}}*>curneighx.dataptr
+            ptr2 = <{{type}}*>ity.dataptr
+            racc += ptr1[0] * ptr2[0] + ptr1[1] * ptr2[1]
+            iacc += ptr1[1] * ptr2[0] - ptr1[0] * ptr2[1]
+
+            np.PyArrayNeighborhoodIter_Next(curneighx)
+            np.PyArray_ITER_NEXT(ity)
+        
+        np.PyArrayNeighborhoodIter_Next(curx)
+
+        (<{{type}}*>itz.dataptr)[0] = racc
+        (<{{type}}*>itz.dataptr)[1] = iacc
+
+        np.PyArray_ITER_NEXT(itz)
+        np.PyArray_ITER_RESET(ity)
+
+    return 0
+{{endfor}}
+
+cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
+        np.NpyArrayNeighborhoodIterObject *curneighx, np.NpyArrayIterObject *ity,
+        np.NpyArrayIterObject *itz):
+    cdef int i, j
+    cdef char *zero
+    cdef np.PyArray_CopySwapFunc copyswap = ARRAY_COPYSWAP_FUNC(curx.ao)
+
+    zero = <char *>np.PyArray_Zero(np.Npy_INTERFACE_array(curx.ao))
+
+    for i in range(curx.size):
+        np.PyArrayNeighborhoodIter_Reset(curneighx)
+        copyswap(<void *>itz.dataptr, <void *>zero, 0, NULL)
+
+        for j in range(curneighx.size):
+            # compute tmp = acc + x * y. Not all objects supporting the
+            # number protocol support inplace operations, so we do it the most
+            # straightfoward way.
+            tmp = NpyIter_READOBJECT(itz) + \
+                  NpyIter_READOBJECT(curneighx) * NpyIter_READOBJECT(ity)
+            
+            NpyIter_ASSIGNOBJECT(itz, tmp)
+
+            np.PyArrayNeighborhoodIter_Next(curneighx)
+            np.PyArray_ITER_NEXT(ity)
+
+        np.PyArrayNeighborhoodIter_Next(curx)
+
+        np.PyArray_ITER_NEXT(itz)
+        np.PyArray_ITER_RESET(ity)
+
+    np.PyDataMem_FREE(zero)
+
+    return 0
+
+cdef _correlate_nd_imp(np.NpyArrayIterObject* itx, np.NpyArrayIterObject *ity,
+        np.NpyArrayIterObject *itz, int typenum, int mode):
+    cdef np.NpyArrayNeighborhoodIterObject *curneighx, *curx
+    cdef np.npy_intp i, nz, nx
+    cdef np.npy_intp bounds[np.NPY_MAXDIMS*2]
+
+    # Compute boundaries for the neighborhood iterator curx: curx is used to
+    # traverse x directly, such as each point of the output is the
+    # innerproduct of y with the neighborhood around curx */
+    if mode == CORR_MODE_VALID:
+        # Only walk through the input points such as the correponding
+        # output will not depend on 0 padding
+        for i in range(np.PyArray_NDIM(np.NpyIter_ARRAY(itx))):
+            bounds[2*i] = np.PyArray_DIMS(np.NpyIter_ARRAY(ity))[i] - 1
+            bounds[2*i+1] = np.PyArray_DIMS(np.NpyIter_ARRAY(itx))[i] - 1
+    elif mode == CORR_MODE_SAME:
+        # Only walk through the input such as the output will be centered
+        # relatively to the output as computed in the full mode
+        for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+            nz = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i]
+            # Recover 'original' nx, before it was zero-padded */
+            nx = nz - np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+            if (nz - nx) % 2 == 0:
+                bounds[2*i] = (nz - nx) / 2
+            else:
+                bounds[2*i] = (nz - nx - 1) / 2
+                
+            bounds[2*i+1] = bounds[2*i] + nx - 1
+    elif mode == CORR_MODE_FULL:
+        for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(itx.ao))):
+            bounds[2*i] = 0;
+            bounds[2*i+1] = np.PyArray_DIMS(np.Npy_INTERFACE_array(itx.ao))[i] - 1
+    else:
+        raise SystemError
+
+    curx = np.PyArray_NeighborhoodIterNew(itx, bounds,
+                                np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
+    if (curx == NULL):
+        raise SystemError("Could not create curx ?")
+
+    # Compute boundaries for the neighborhood iterator: the neighborhood for x
+    #   should have the same dimensions as y
+    for i in range(np.PyArray_NDIM(np.Npy_INTERFACE_array(ity.ao))):
+        bounds[2*i] = -np.PyArray_DIMS(np.Npy_INTERFACE_array(ity.ao))[i] + 1
+        bounds[2*i+1] = 0
+
+    curneighx = np.PyArray_NeighborhoodIterNew(<np.NpyArrayIterObject *>curx,
+                        bounds, np.NPY_NEIGHBORHOOD_ITER_ZERO_PADDING, NULL, free)
+
+    if typenum == np.NPY_OBJECT:
+        # The object array case does not worth being optimized, since most of
+    	# the cost is numerical operations, not iterators moving in this case ?
+        _imp_correlate_nd_object(curx, curneighx, ity, itz)
+{{for TYPE, type
+      in zip(['UBYTE', 'BYTE', 'USHORT', 'SHORT', 'UINT', 'INT', 'ULONG',
+              'LONG', 'ULONGLONG', 'LONGLONG', 'FLOAT', 'DOUBLE', 'LONGDOUBLE',
+              'CFLOAT', 'CDOUBLE', 'CLONGDOUBLE'],
+             ['ubyte', 'byte', 'ushort', 'short', 'uint', 'int', 'ulong',
+              'long', 'ulonglong', 'longlong', 'float', 'double', 'longdouble',
+              'cfloat', 'cdouble', 'clongdouble'])}}
+    elif typenum == np.NPY_{{TYPE}}:
+        _imp_correlate_nd_{{type}}(curx, curneighx, ity, itz)
+{{endfor}}
+
+    else:
+        raise ValueError("Unsupported type")
+
+    return 0
+
+##########################
+#  N-D Order Filtering.  #
+
+cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
+                 char *sort_buffer, int nels2, int check, np.npy_intp *loop_ind,
+                 np.npy_intp *temp_ind, np.npy_uintp *offset):
+    cdef int i, j, k, incr = 1
+    cdef int ndims = np.PyArray_NDIM(ap1)
+    cdef np.npy_intp *dims2 = np.PyArray_DIMS(ap2)
+    cdef np.npy_intp *dims1 = np.PyArray_DIMS(ap1)
+    cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]
+    cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]
+    cdef char *ip2 = <char *>np.PyArray_DATA(ap2)
+    cdef int elsize = np.PyArray_DESCR(ap1).elsize
+    cdef char *ptr
+    
+    ptr = <char *>np.PyArray_Zero(ap2)
+    temp_ind[ndims-1] -= 1
+    
+    for i in range(nels2 - 1, -1, -1):
+        # Adjust index array and move ptr1 to right place
+        k = ndims - 1
+        for j in range(incr):
+            temp_ind[k] -= dims2[k] - 1  # Return to start for these dimensions
+            k -= 1
+
+        ip1 += offset[k] * is1           # Precomputed offset array
+        temp_ind[k] += 1
+        
+        if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and
+                memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):
+            memcpy(sort_buffer, ip1, elsize)
+            sort_buffer += elsize
+        
+        incr = increment(loop_ind, ndims, dims2)   # Returns number of N-D indices incremented.
+        ip2 += is2
+        
+    np.NpyDataMem_FREE(ptr)
+    return
+
+cdef int DOUBLE_compare(double *ip1, double *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int FLOAT_compare(float *ip1, float *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int LONGDOUBLE_compare(np.npy_longdouble *ip1, np.npy_longdouble *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int BYTE_compare(np.npy_byte *ip1, np.npy_byte *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int SHORT_compare(short *ip1, short *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int INT_compare(int *ip1, int *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int LONG_compare(long *ip1, long *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int LONGLONG_compare(np.npy_longlong *ip1, np.npy_longlong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int UBYTE_compare(np.npy_ubyte *ip1, np.npy_ubyte *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int USHORT_compare(np.npy_ushort *ip1, np.npy_ushort *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int UINT_compare(np.npy_uint *ip1, np.npy_uint *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int ULONG_compare(np.npy_ulong *ip1, np.npy_ulong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int ULONGLONG_compare(np.npy_ulonglong *ip1, np.npy_ulonglong *ip2):
+    return -1 if ip1[0] < ip2[0] else (0 if ip1[0] == ip2[0] else 1)
+
+cdef int OBJECT_compare(object ip1, object ip2):
+    return (ip1 == ip2) != 1
+
+cdef CompareFunction compare_functions[21]
+compare_functions[1] = <CompareFunction>BYTE_compare
+compare_functions[2] = <CompareFunction>UBYTE_compare
+compare_functions[3] = <CompareFunction>SHORT_compare
+compare_functions[4] = <CompareFunction>USHORT_compare
+compare_functions[5] = <CompareFunction>INT_compare
+compare_functions[6] = <CompareFunction>UINT_compare
+compare_functions[7] = <CompareFunction>LONG_compare
+compare_functions[8] = <CompareFunction>ULONG_compare
+compare_functions[9] = <CompareFunction>LONGLONG_compare
+compare_functions[10] = <CompareFunction>ULONGLONG_compare
+compare_functions[11] = <CompareFunction>FLOAT_compare
+compare_functions[12] = <CompareFunction>DOUBLE_compare
+compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
+compare_functions[17] = <CompareFunction>OBJECT_compare
+
+def _order_filterND(a0, domain, int order=0):
+    """ out = _order_filterND(a,domain,order)
+    """ 
+    cdef np.ndarray ap1, ap2, ret
+    cdef np.npy_intp *a_ind, *b_ind, *temp_ind, *mode_dep, *check_ind
+    cdef np.npy_uintp *offsets, offset1
+    cdef np.npy_intp *offsets2
+    cdef np.npy_intp *ret_ind
+    cdef int i, j, n2, n2_nonzero, k, check, incr = 1
+    cdef int bytes_in_array
+    cdef int is1, os
+    cdef int typenum
+    cdef char *op, *ap1_ptr, *ap2_ptr, *sort_buffer
+    cdef CompareFunction compare_func
+    cdef char *zptr=NULL
+
+    # Get Array objects from input
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(a0)))
+    type = np.NpyArray_FindArrayType_2args(domain, type)
+
+    try:
+        ap1 = np.PyArray_FromAny(a0, type, 0, 0, np.NPY_CONTIGUOUS, None)
+        ap2 = np.PyArray_FromAny(domain, type, 0, 0, np.NPY_CONTIGUOUS, None)
+
+        if np.PyArray_NDIM(ap1) != np.PyArray_NDIM(ap2):
+            raise ValueError("All input arrays must have the same number of dimensions.")
+
+        n2 = np.PyArray_SIZE(ap2)
+        n2_nonzero = 0
+        ap2_ptr = <char *>np.PyArray_DATA(ap2)
+        
+        # Find out the number of non-zero entries in domain (allows for
+        # different shapped rank-filters to be used besides just rectangles)
+        zptr = <char *>np.PyArray_Zero(ap2)
+        if zptr == NULL:
+            return None
+        
+        for k in range(n2):
+            n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).elsize) != 0)
+            ap2_ptr += <int>np.PyArray_DESCR(ap2).elsize
+
+        if (order >= n2_nonzero) or (order < 0):
+            raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")
+        
+        typenum = type.num
+
+        ret = np.PyArray_SimpleNew(np.PyArray_NDIM(ap1), np.PyArray_DIMS(ap1), typenum)
+        
+        compare_func = compare_functions[np.PyArray_TYPE(ap1)]
+        if compare_func == NULL:
+            raise ValueError("order_filterND not available for this type")
+        
+        is1 = np.PyArray_DESCR(ap1).elsize
+        sort_buffer = <char *>malloc(n2_nonzero*is1)
+        if sort_buffer == NULL:
+            return None
+
+        op = <char *>np.PyArray_DATA(ret)
+        os = np.PyArray_DESCR(ret).elsize
+
+        bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
+        mode_dep = <np.npy_intp *>malloc(bytes_in_array)
+        for k in range(np.PyArray_NDIM(ap1)):
+            mode_dep[k] = -((np.PyArray_DIMS(ap2)[k]-1) >> 1)
+
+        b_ind = <np.npy_intp *>malloc(bytes_in_array)  # loop variables
+        memset(b_ind,0,bytes_in_array)
+        a_ind = <np.npy_intp *>malloc(bytes_in_array)
+        ret_ind = <np.npy_intp *>malloc(bytes_in_array)
+        memset(ret_ind,0,bytes_in_array)
+        temp_ind = <np.npy_intp *>malloc(bytes_in_array)
+        check_ind = <np.npy_intp *>malloc(bytes_in_array)
+        offsets = <np.npy_uintp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_uintp))
+        offsets2 = <np.npy_intp *>malloc(np.PyArray_NDIM(ap1)*sizeof(np.npy_intp))
+        offset1 = compute_offsets(offsets,offsets2,
+                                  np.PyArray_DIMS(ap1),np.PyArray_DIMS(ap2),
+                                  np.PyArray_DIMS(ret),mode_dep,np.PyArray_NDIM(ap1))
+        
+        # The filtering proceeds by looping through the output array
+        # and for each value filling a buffer from the 
+        # element-by-element product of the two input arrays.  The buffer
+        # is then sorted and the order_th element is kept as output. Index
+        # counters are used for book-keeping in the area so that we 
+        # can tell where we are in all of the arrays and be sure that 
+        # we are not trying to access areas outside the arrays definition.
+        #
+        # The inner loop is implemented separately but equivalently for each
+        # datatype. The outer loop is similar in structure and form to
+        # to the inner loop.
+        
+        # Need to keep track of a ptr to place in big (first) input
+        # array where we start the multiplication (we pass over it in the
+        # inner loop (and not dereferenced) 
+        # if it is pointing outside dataspace)
+        
+        # Calculate it once and the just move it around appropriately
+        np.NpyDataMem_FREE(zptr)
+        zptr = <char *>np.PyArray_Zero(ap1)
+        if zptr == NULL:
+            return None
+        
+        ap1_ptr = <char *>np.PyArray_DATA(ap1) + offset1*is1
+        for k in range(np.PyArray_NDIM(ap1)):
+            a_ind[k] = mode_dep[k]
+            check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1
+
+        a_ind[np.PyArray_NDIM(ap1)-1] -= 1
+        for i in range(np.PyArray_SIZE(ret)):
+            # Zero out the sort_buffer (has effect of zero-padding on boundaries).
+            # Treat object arrays right.
+            ap2_ptr = sort_buffer
+            for k in range(n2_nonzero):
+                memcpy(ap2_ptr,zptr,is1)
+                ap2_ptr += is1
+
+            k = np.PyArray_NDIM(ap1) - 1
+            for j in range(incr):
+                a_ind[k] -= np.PyArray_DIM(ret, k) - 1  # Return to start
+                k -= 1
+
+            ap1_ptr += offsets2[k]*is1
+            a_ind[k] += 1
+            memcpy(temp_ind, a_ind, bytes_in_array)
+
+            check = 0
+            k = 0
+            while (not check and (k < np.PyArray_NDIM(ap1))):
+                check = check or (ret_ind[k] < -mode_dep[k]) or (ret_ind[k] > check_ind[k])
+                k += 1
+
+            fill_buffer(ap1_ptr,ap1,ap2,sort_buffer,n2,check,b_ind,temp_ind,offsets)
+            qsort(<void *>sort_buffer, n2_nonzero, is1, COMPARE_CONST_HELPER(compare_func))
+            memcpy(op, sort_buffer + order*is1, os)
+
+            incr = increment(ret_ind, np.PyArray_NDIM(ret), np.PyArray_DIMS(ret)) # increment index counter
+            op += os   # increment to next output index
+
+        
+        free(b_ind)
+        free(a_ind)
+        free(ret_ind)
+        free(offsets)
+        free(offsets2)
+        free(temp_ind)
+        free(check_ind)
+        free(mode_dep)
+        free(sort_buffer)
+        
+        return np.PyArray_Return(ret)
+
+    finally:
+        # clean up after PyArray_Zero()
+        if zptr != NULL:
+            np.NpyDataMem_FREE(zptr)
+        
+    return None
+
+
+def _convolve2d(in1, in2, int flip=1, int mode=2, int boundary=0, fill_value=None):
+    """ out = _convolve2d(in1, in2, flip, mode, boundary, fillvalue)
+    """
+    cdef int flag, ret
+    cdef np.npy_intp *aout_dimens=NULL, *dims=NULL
+    cdef char zeros[32] # Zeros
+    cdef int n1, n2, i, masked_mode, typenum
+    cdef np.ndarray ain1, ain2, aout
+    cdef np.ndarray afill, newfill
+
+    type = np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.PyArray_TYPE(in1)))
+    type = np.NpyArray_FindArrayType_2args(in2, type)
+
+    typenum = type.num
+
+    try:
+        ain1 = np.PyArray_FromAny(in1, type, 2, 2, np.NPY_CONTIGUOUS, None)
+        ain2 = np.PyArray_FromAny(in2, type, 2, 2, np.NPY_CONTIGUOUS, None)
+
+        if boundary != PAD and boundary != REFLECT and boundary != CIRCULAR:
+            raise ValueError("Incorrect boundary value.")
+        
+        if boundary == PAD:
+            if fill_value is None:
+                newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
+            else:
+                afill = np.PyArray_FROMANY(fill_value, np.NPY_CDOUBLE, 0, 0, np.NPY_CONTIGUOUS)
+                if afill is None:
+                    return None
+                newfill = np.PyArray_Cast(afill, typenum)
+
+            if newfill is None:
+                return None
+        else:
+            newfill = np.PyArray_SimpleNewFromData(0, dims, typenum, zeros)
+            if newfill is None:
+                return None
+        
+        n1 = np.PyArray_SIZE(ain1)
+        n2 = np.PyArray_SIZE(ain2)
+        
+        aout_dimens = <np.npy_intp *>malloc(np.PyArray_NDIM(ain1)*sizeof(np.npy_intp))
+        masked_mode = mode & OUTSIZE_MASK
+        
+        if masked_mode == VALID:
+            for i in range(np.PyArray_NDIM(ain1)):
+                aout_dimens[i] = np.PyArray_DIMS(ain1)[i] - np.PyArray_DIMS(ain2)[i] + 1
+                if aout_dimens[i] < 0:
+                    raise ValueError("no part of the output is valid, use option 1 (same) or 2 (full) for third argument")
+        elif masked_mode == SAME:
+            for i in range(np.PyArray_NDIM(ain1)):
+                aout_dimens[i] = np.PyArray_DIMS(ain1)[i]
+        elif masked_mode == FULL:
+            for i in range(np.PyArray_NDIM(ain1)):
+                aout_dimens[i] = np.PyArray_DIMS(ain1)[i] + np.PyArray_DIMS(ain2)[i] - 1
+        else: 
+            raise ValueError("mode must be 0 (valid), 1 (same), or 2 (full)")
+            
+        aout = np.PyArray_SimpleNew(np.PyArray_NDIM(ain1), aout_dimens, typenum)
+        if aout is None:
+            return None
+
+        flag = mode + boundary + (typenum << TYPE_SHIFT) + (flip != 0) * FLIP_MASK
+        
+        ret = pylab_convolve_2d(<char *>np.PyArray_DATA(ain1),     # Input data Ns[0] x Ns[1]
+                                np.PyArray_STRIDES(ain1),  # Input strides
+                                <char *>np.PyArray_DATA(aout),     # Output data
+                                np.PyArray_STRIDES(aout),  # Ouput strides
+                                <char *>np.PyArray_DATA(ain2),     # coefficients in filter
+                                np.PyArray_STRIDES(ain2),  # coefficients strides
+                                np.PyArray_DIMS(ain2),     # Size of kernel Nwin[2]
+                                np.PyArray_DIMS(ain1),     # Size of image Ns[0] x Ns[1]
+                                flag,                      # convolution parameters
+                                <char *>np.PyArray_DATA(newfill))  # fill value
+
+
+        if ret == 0:
+            return aout
+        elif ret in [-5, -4]:
+            raise ValueError("convolve2d not available for this type.")
+        elif ret == -3:
+            raise MemoryError
+        elif ret == -2:
+            raise ValueError("Invalid boundary type.")
+        elif -1:
+            raise ValueError("Invalid output flag.")
+    
+    finally:
+        free(aout_dimens)
+    
+    return None
+
+ 
+def _remez(int numtaps, object bands, object des, object weight, int type=BANDPASS,
+           double Hz=1.0, int maxiter=25, int grid_density=16):
+    """
+        h = _remez(numtaps, bands, des, weight, type, Hz, maxiter, grid_density)
+        
+          Returns the optimal (in the Chebyshev/minimax sense) FIR filter impulse
+          response given a set of band edges, the desired response on those bands,
+          and the weight given to the error in those bands.  Bands is a monotonic
+          vector with band edges given in frequency domain where Hz is the sampling
+          frequency.
+    """
+    cdef int k, numbands, err 
+    cdef np.ndarray a_bands, a_des, a_weight, h
+    cdef np.npy_intp ret_dimens
+    cdef double oldvalue, *dptr
+
+    if type not in [BANDPASS, DIFFERENTIATOR, HILBERT]:
+        raise ValueError("The type must be BANDPASS, DIFFERENTIATOR, or HILBERT.")
+    
+    if numtaps < 2:
+        raise ValueError("The number of taps must be greater than 1.")
+    
+    a_bands = np.PyArray_FROMANY(bands, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
+    a_des = np.PyArray_FROMANY(des, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
+    a_weight = np.PyArray_FROMANY(weight, np.NPY_DOUBLE, 1, 1, np.NPY_CONTIGUOUS)
+
+    numbands = np.PyArray_DIMS(a_des)[0]
+    if (np.PyArray_DIMS(a_bands)[0] != 2*numbands) or (np.PyArray_DIMS(a_weight)[0] != numbands):
+        raise ValueError("The inputs desired and weight must have same length.\n  The input bands must have twice this length.")
+
+    # Check the bands input to see if it is monotonic, divide by 
+    # Hz to take from range 0 to 0.5 and check to see if in that range.
+
+    dptr = <double *>np.PyArray_DATA(a_bands)
+    oldvalue = 0
+    for k in range(2*numbands):
+        if dptr[0] < oldvalue:
+            raise ValueError("Bands must be monotonic starting at zero.")
+        if (dptr[0] * 2.0) > Hz:
+            raise ValueError("Band edges should be less than 1/2 the sampling frequency")
+
+        oldvalue = dptr[0]
+        dptr[0] = oldvalue / Hz # Change so that sampling frequency is 1.0
+        dptr += 1
+
+    ret_dimens = numtaps
+    h = np.PyArray_SimpleNew(1, &ret_dimens, np.NPY_DOUBLE)
+
+    err = pre_remez(<double *>np.PyArray_DATA(h), numtaps, numbands,
+                    <double *>np.PyArray_DATA(a_bands), <double *>np.PyArray_DATA(a_des),
+                    <double *>np.PyArray_DATA(a_weight), type, maxiter, grid_density)
+    if err < 0:
+        if err == -1:
+            raise ValueError("Failure to converge after %d iterations.\n      Design may still be correct." % maxiter)
+        elif err == -2:
+            raise MemoryError
+
+    return np.PyArray_Return(h)
+
+
+def _median2d(image, size=None):
+    """ filt = _median2d(data, size)
+    """
+    cdef int typenum
+    cdef np.ndarray a_image, a_size, a_out
+    cdef np.npy_intp *Nwin = [3,3]
+
+    typenum = np.PyArray_TYPE(image)
+    a_image = np.PyArray_FROMANY(image, typenum, 2, 2, np.NPY_CONTIGUOUS)
+
+    if size is not None:
+        a_size = np.PyArray_FROMANY(size, np.NPY_INTP, 1, 1, np.NPY_CONTIGUOUS)
+        if (np.PyArray_NDIM(a_size) != 1) or (np.PyArray_DIMS(a_size)[0] < 2):
+            raise ValueError("Size must be a length two sequence")
+        Nwin[0] = (<np.npy_intp *>np.PyArray_DATA(a_size))[0]
+        Nwin[1] = (<np.npy_intp *>np.PyArray_DATA(a_size))[1]
+
+    a_out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), typenum)
+
+    if typenum == np.NPY_UBYTE:
+        b_medfilt2(<unsigned char *>np.PyArray_DATA(a_image),
+                   <unsigned char *>np.PyArray_DATA(a_out),
+                   Nwin, np.PyArray_DIMS(a_image),
+                   check_malloc)
+    elif typenum == np.NPY_FLOAT:
+        f_medfilt2(<float *>np.PyArray_DATA(a_image),
+                   <float *>np.PyArray_DATA(a_out),
+                   Nwin, np.PyArray_DIMS(a_image),
+                   check_malloc)
+    elif typenum == np.NPY_DOUBLE:
+        d_medfilt2(<double *>np.PyArray_DATA(a_image),
+                   <double *>np.PyArray_DATA(a_out),
+                   Nwin, np.PyArray_DIMS(a_image),
+                   check_malloc)
+    else:
+        raise ValueError("2D median filter only supports Int8, Float32, and Float64.")
+
+    return np.PyArray_Return(a_out);
+
+
+# static char doc_correlateND[] =
+#    "out = _correlateND(a,kernel,mode) \n\n" \
+#    "   mode = 0 - 'valid', 1 - 'same', \n  2 - 'full' (default)";
+
+#static char doc_linear_filter[] =
+#    "(y,Vf) = _linear_filter(b,a,X,Dim=-1,Vi=None)  " \
+#    "implemented using Direct Form II transposed flow " \
+#    "diagram. If Vi is not given, Vf is not returned.";
+
+#static struct PyMethodDef toolbox_module_methods[] = {
+#        {"_correlateND", scipy_signal_sigtools_correlateND, METH_VARARGS, doc_correlateND},
+#        {"_convolve2d", sigtools_convolve2d, METH_VARARGS, doc_convolve2d},
+#        {"_order_filterND", sigtools_order_filterND, METH_VARARGS, doc_order_filterND},
+#        {"_linear_filter", scipy_signal_sigtools_linear_filter, METH_VARARGS, doc_linear_filter},
+#        {"_remez",sigtools_remez, METH_VARARGS, doc_remez},
+#        {"_medfilt2d", sigtools_median2d, METH_VARARGS, doc_median2d},
+#        {NULL, NULL, 0, NULL}           /* sentinel */
+#};

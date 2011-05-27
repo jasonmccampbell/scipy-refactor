@@ -247,15 +247,15 @@ typedef npy_cdouble __pyx_t_5numpy_complex_t;
 
 typedef void (*__pyx_t_5numpy_PyArray_CopySwapFunc)(void *, void *, int, NpyArray *);
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":207
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":207
  * 
  * 
- * cpdef IIRsymorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
+ * cpdef symiirorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
  *     """symiirorder1(input, c0, z1 {, precision}) -> output
  * 
  */
 
-public ref struct __pyx_opt_args_5scipy_6signal_6spline_IIRsymorder1 {
+public ref struct __pyx_opt_args_5scipy_6signal_6spline_symiirorder1 {
   int __pyx_n;
   double precision;
 };
@@ -388,7 +388,7 @@ static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterOb
 static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *); /*proto*/
 /* Module declarations from scipy.signal.spline */
 static void convert_strides(__pyx_t_5numpy_npy_intp *, __pyx_t_5numpy_npy_intp *, int, int); /*proto*/
-static System::Object^ IIRsymorder1(NumpyDotNet::ndarray^, __pyx_t_double_complex, __pyx_t_double_complex, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_6signal_6spline_IIRsymorder1 ^__pyx_optional_args); /*proto*/
+static System::Object^ symiirorder1(NumpyDotNet::ndarray^, __pyx_t_double_complex, __pyx_t_double_complex, int __pyx_skip_dispatch, ref struct __pyx_opt_args_5scipy_6signal_6spline_symiirorder1 ^__pyx_optional_args); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
 #define __Pyx_MODULE_NAME "scipy.signal.spline"
@@ -476,9 +476,9 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_368_52;
 static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyArray_375_22;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ArrayReturn_375_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_375_43;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndarray_375_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ArrayReturn_375_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_375_42;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_378_47;
 static  CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >^ __site_cvt_cvt_PY_LONG_LONG_378_47;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ndim_381_14;
@@ -531,7 +531,7 @@ static double __pyx_k_4;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":28
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":28
  * ctypedef double complex Py_complex
  * 
  * cdef void convert_strides(np.npy_intp* instrides, np.npy_intp* convstrides, int size, int num):             # <<<<<<<<<<<<<<
@@ -545,7 +545,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
   int __pyx_t_1;
   int __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":32
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":32
  *     cdef np.npy_intp bitshift
  * 
  *     bitshift = -1             # <<<<<<<<<<<<<<
@@ -554,7 +554,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
  */
   __pyx_v_bitshift = -1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":33
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":33
  * 
  *     bitshift = -1
  *     while size != 0:             # <<<<<<<<<<<<<<
@@ -565,7 +565,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
     __pyx_t_1 = (__pyx_v_size != 0);
     if (!__pyx_t_1) break;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":34
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":34
  *     bitshift = -1
  *     while size != 0:
  *         size >>= 1             # <<<<<<<<<<<<<<
@@ -574,7 +574,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
  */
     __pyx_v_size >>= 1;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":35
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":35
  *     while size != 0:
  *         size >>= 1
  *         bitshift += 1             # <<<<<<<<<<<<<<
@@ -584,7 +584,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
     __pyx_v_bitshift += 1;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":37
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":37
  *         bitshift += 1
  * 
  *     for n from 0 <= n < num:             # <<<<<<<<<<<<<<
@@ -594,7 +594,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
   __pyx_t_2 = __pyx_v_num;
   for (__pyx_v_n = 0; __pyx_v_n < __pyx_t_2; __pyx_v_n++) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":38
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":38
  * 
  *     for n from 0 <= n < num:
  *         convstrides[n] = instrides[n] >> bitshift             # <<<<<<<<<<<<<<
@@ -606,7 +606,7 @@ static  void convert_strides(__pyx_t_5numpy_npy_intp *__pyx_v_instrides, __pyx_t
 
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":41
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":41
  * 
  * 
  * def cspline2d(np.ndarray image, double lambda_=0.0, double precision=-1.0):             # <<<<<<<<<<<<<<
@@ -655,7 +655,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     throw PythonOps::TypeError("Argument 'image' has incorrect type");
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":52
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":52
  *     symmetric boundary conditions.
  *     """
  *     cdef int thetype, M, N, retval=0             # <<<<<<<<<<<<<<
@@ -664,7 +664,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_retval = 0;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":56
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":56
  *     cdef np.ndarray a_image, ck
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))             # <<<<<<<<<<<<<<
@@ -677,7 +677,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_type = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":57
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":57
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -703,7 +703,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1 = nullptr;
   __pyx_v_thetype = __pyx_t_7;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":58
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":58
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -721,7 +721,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_a_image = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":61
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":61
  * 
  *     ck = np.PyArray_New(NULL, 2, np.PyArray_DIMS(a_image), thetype, NULL, NULL, 0,
  *                         np.NPY_CONTIGUOUS, NULL)             # <<<<<<<<<<<<<<
@@ -735,7 +735,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_ck = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":62
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":62
  *     ck = np.PyArray_New(NULL, 2, np.PyArray_DIMS(a_image), thetype, NULL, NULL, 0,
  *                         np.NPY_CONTIGUOUS, NULL)
  *     M = np.PyArray_DIMS(a_image)[0]             # <<<<<<<<<<<<<<
@@ -744,7 +744,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_M = (PyArray_DIMS(__pyx_v_a_image)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":63
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":63
  *                         np.NPY_CONTIGUOUS, NULL)
  *     M = np.PyArray_DIMS(a_image)[0]
  *     N = np.PyArray_DIMS(a_image)[1]             # <<<<<<<<<<<<<<
@@ -753,7 +753,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_N = (PyArray_DIMS(__pyx_v_a_image)[1]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":66
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":66
  * 
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)             # <<<<<<<<<<<<<<
@@ -767,7 +767,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_2 = nullptr;
   convert_strides(PyArray_STRIDES(__pyx_v_a_image), __pyx_v_instrides, __pyx_t_8, 2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":67
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":67
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N             # <<<<<<<<<<<<<<
@@ -776,7 +776,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
  */
   (__pyx_v_outstrides[0]) = __pyx_v_N;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":68
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":68
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N
  *     outstrides[1] = 1             # <<<<<<<<<<<<<<
@@ -785,7 +785,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
  */
   (__pyx_v_outstrides[1]) = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":70
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":70
  *     outstrides[1] = 1
  * 
  *     if thetype == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -795,7 +795,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_6 = (__pyx_v_thetype == NPY_FLOAT);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":71
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":71
  * 
  *     if thetype == np.NPY_FLOAT:
  *         if not (0.0 < precision <= 1.0):             # <<<<<<<<<<<<<<
@@ -809,7 +809,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     __pyx_t_9 = (!__pyx_t_6);
     if (__pyx_t_9) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":72
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":72
  *     if thetype == np.NPY_FLOAT:
  *         if not (0.0 < precision <= 1.0):
  *             precision = 1e-3             # <<<<<<<<<<<<<<
@@ -821,7 +821,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     }
     __pyx_L6:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":76
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":76
  *                                   <float *> np.PyArray_DATA(ck),
  *                                   M, N, lambda_, instrides, outstrides,
  *                                   precision)             # <<<<<<<<<<<<<<
@@ -832,7 +832,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     goto __pyx_L5;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":78
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":78
  *                                   precision)
  * 
  *     elif thetype == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -842,7 +842,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_9 = (__pyx_v_thetype == NPY_DOUBLE);
   if (__pyx_t_9) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":79
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":79
  * 
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -856,7 +856,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     __pyx_t_6 = (!__pyx_t_9);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":80
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":80
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-6             # <<<<<<<<<<<<<<
@@ -868,7 +868,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
     }
     __pyx_L7:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":84
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":84
  *                                   <double *> np.PyArray_DATA(ck),
  *                                   M, N, lambda_, instrides, outstrides,
  *                                   precision)             # <<<<<<<<<<<<<<
@@ -880,7 +880,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":86
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":86
  *                                   precision)
  * 
  *     if retval == -3:             # <<<<<<<<<<<<<<
@@ -890,7 +890,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_6 = (__pyx_v_retval == -3);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":87
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":87
  * 
  *     if retval == -3:
  *         raise Exception("Precision too high.  Error did not converge.")             # <<<<<<<<<<<<<<
@@ -906,7 +906,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L8:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":89
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":89
  *         raise Exception("Precision too high.  Error did not converge.")
  * 
  *     if retval < 0:             # <<<<<<<<<<<<<<
@@ -916,7 +916,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_6 = (__pyx_v_retval < 0);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":90
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":90
  * 
  *     if retval < 0:
  *         raise Exception("Problem occurred inside routine")             # <<<<<<<<<<<<<<
@@ -932,7 +932,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L9:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":92
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":92
  *         raise Exception("Problem occurred inside routine")
  * 
  *     return np.PyArray_Return(ck)             # <<<<<<<<<<<<<<
@@ -949,7 +949,7 @@ static System::Object^ cspline2d(System::Object^ image, [InteropServices::Option
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":95
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":95
  * 
  * 
  * def qspline2d(np.ndarray image, double lambda_=0.0, precision=-1.0):             # <<<<<<<<<<<<<<
@@ -1000,7 +1000,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     throw PythonOps::TypeError("Argument 'image' has incorrect type");
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":106
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":106
  *     symmetric boundary conditions.
  *     """
  *     cdef int thetype, M, N, retval=0             # <<<<<<<<<<<<<<
@@ -1009,7 +1009,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_retval = 0;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":110
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":110
  *     cdef np.ndarray a_image, ck
  * 
  *     if lambda_ != 0.0:             # <<<<<<<<<<<<<<
@@ -1019,7 +1019,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1 = (__pyx_v_lambda_ != 0.0);
   if (__pyx_t_1) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":111
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":111
  * 
  *     if lambda_ != 0.0:
  *         raise Exception("Smoothing spline not yet implemented.")             # <<<<<<<<<<<<<<
@@ -1035,7 +1035,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":113
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":113
  *         raise Exception("Smoothing spline not yet implemented.")
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))             # <<<<<<<<<<<<<<
@@ -1048,7 +1048,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_type = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":114
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":114
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1074,7 +1074,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_3 = nullptr;
   __pyx_v_thetype = __pyx_t_7;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":115
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":115
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1092,7 +1092,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_a_image = ((NumpyDotNet::ndarray^)__pyx_t_6);
   __pyx_t_6 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":117
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":117
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)
  * 
  *     ck = np.PyArray_FROMANY(a_image, thetype, 2, 2, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1110,7 +1110,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_v_ck = ((NumpyDotNet::ndarray^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":118
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":118
  * 
  *     ck = np.PyArray_FROMANY(a_image, thetype, 2, 2, np.NPY_CONTIGUOUS)
  *     M = np.PyArray_DIMS(a_image)[0]             # <<<<<<<<<<<<<<
@@ -1119,7 +1119,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_M = (PyArray_DIMS(__pyx_v_a_image)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":119
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":119
  *     ck = np.PyArray_FROMANY(a_image, thetype, 2, 2, np.NPY_CONTIGUOUS)
  *     M = np.PyArray_DIMS(a_image)[0]
  *     N = np.PyArray_DIMS(a_image)[1]             # <<<<<<<<<<<<<<
@@ -1128,7 +1128,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
  */
   __pyx_v_N = (PyArray_DIMS(__pyx_v_a_image)[1]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":122
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":122
  * 
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)             # <<<<<<<<<<<<<<
@@ -1142,7 +1142,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_2 = nullptr;
   convert_strides(PyArray_STRIDES(__pyx_v_a_image), __pyx_v_instrides, __pyx_t_8, 2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":123
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":123
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N             # <<<<<<<<<<<<<<
@@ -1151,7 +1151,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
  */
   (__pyx_v_outstrides[0]) = __pyx_v_N;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":124
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":124
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N
  *     outstrides[1] = 1             # <<<<<<<<<<<<<<
@@ -1160,7 +1160,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
  */
   (__pyx_v_outstrides[1]) = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":126
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":126
  *     outstrides[1] = 1
  * 
  *     if thetype == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -1170,7 +1170,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1 = (__pyx_v_thetype == NPY_FLOAT);
   if (__pyx_t_1) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":127
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":127
  * 
  *     if thetype == np.NPY_FLOAT:
  *          if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -1190,7 +1190,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     __pyx_t_9 = (!__pyx_t_1);
     if (__pyx_t_9) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":128
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":128
  *     if thetype == np.NPY_FLOAT:
  *          if not (0.0 <= precision < 1.0):
  *             precision = 1e-3             # <<<<<<<<<<<<<<
@@ -1204,7 +1204,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     }
     __pyx_L7:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":132
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":132
  *                                        <float *> np.PyArray_DATA(ck),
  *                                        M, N, lambda_, instrides, outstrides,
  *                                        precision)             # <<<<<<<<<<<<<<
@@ -1216,7 +1216,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     goto __pyx_L6;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":134
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":134
  *                                        precision)
  * 
  *     elif thetype == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -1226,7 +1226,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_9 = (__pyx_v_thetype == NPY_DOUBLE);
   if (__pyx_t_9) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":135
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":135
  * 
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -1246,7 +1246,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     __pyx_t_1 = (!__pyx_t_9);
     if (__pyx_t_1) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":136
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":136
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-6             # <<<<<<<<<<<<<<
@@ -1260,7 +1260,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
     }
     __pyx_L8:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":140
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":140
  *                                       <double *> np.PyArray_DATA(ck),
  *                                       M, N, lambda_, instrides, outstrides,
  *                                       precision)             # <<<<<<<<<<<<<<
@@ -1273,7 +1273,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L6:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":142
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":142
  *                                       precision)
  * 
  *     if retval == -3:             # <<<<<<<<<<<<<<
@@ -1283,7 +1283,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1 = (__pyx_v_retval == -3);
   if (__pyx_t_1) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":143
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":143
  * 
  *     if retval == -3:
  *         raise Exception("Precision too high.  Error did not converge.")             # <<<<<<<<<<<<<<
@@ -1299,7 +1299,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L9:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":145
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":145
  *         raise Exception("Precision too high.  Error did not converge.")
  * 
  *     if retval < 0:             # <<<<<<<<<<<<<<
@@ -1309,7 +1309,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   __pyx_t_1 = (__pyx_v_retval < 0);
   if (__pyx_t_1) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":146
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":146
  * 
  *     if retval < 0:
  *         raise Exception("Problem occurred inside routine")             # <<<<<<<<<<<<<<
@@ -1325,7 +1325,7 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   }
   __pyx_L10:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":148
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":148
  *         raise Exception("Problem occurred inside routine")
  * 
  *     return np.PyArray_Return(ck)             # <<<<<<<<<<<<<<
@@ -1342,15 +1342,15 @@ static System::Object^ qspline2d(System::Object^ image, [InteropServices::Option
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":151
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":151
  * 
  * 
- * def FIRsepsym2d(np.ndarray image, np.ndarray hrow, np.ndarray hcol):             # <<<<<<<<<<<<<<
+ * def sepfir2d(np.ndarray image, np.ndarray hrow, np.ndarray hcol):             # <<<<<<<<<<<<<<
  *     """sepfir2d(input, hrow, hcol) -> output
  * 
  */
 
-static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, System::Object^ hcol) {
+static System::Object^ sepfir2d(System::Object^ image, System::Object^ hrow, System::Object^ hcol) {
   NumpyDotNet::ndarray^ __pyx_v_image = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_hrow = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_hcol = nullptr;
@@ -1392,7 +1392,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
     throw PythonOps::TypeError("Argument 'hcol' has incorrect type");
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":165
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":165
  *     cdef np.ndarray a_image, a_hrow, a_hcol, out
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))             # <<<<<<<<<<<<<<
@@ -1405,7 +1405,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_v_type = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":166
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":166
  * 
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1431,7 +1431,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_t_1 = nullptr;
   __pyx_v_thetype = __pyx_t_7;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":167
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":167
  *     type = np.NpyArray_FindArrayType_2args(image, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1449,7 +1449,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_v_a_image = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":168
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":168
  *     thetype = min(type.type, np.NPY_DOUBLE)
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)
  *     a_hrow = np.PyArray_FROMANY(hrow, thetype, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1467,7 +1467,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_v_a_hrow = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":169
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":169
  *     a_image = np.PyArray_FROMANY(image, thetype, 2, 2, np.NPY_CONTIGUOUS)
  *     a_hrow = np.PyArray_FROMANY(hrow, thetype, 1, 1, np.NPY_CONTIGUOUS)
  *     a_hcol = np.PyArray_FROMANY(hcol, thetype, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1485,7 +1485,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_v_a_hcol = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":171
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":171
  *     a_hcol = np.PyArray_FROMANY(hcol, thetype, 1, 1, np.NPY_CONTIGUOUS)
  * 
  *     out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), thetype)             # <<<<<<<<<<<<<<
@@ -1499,7 +1499,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_v_out = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":172
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":172
  * 
  *     out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), thetype)
  *     M = np.PyArray_DIMS(a_image)[0]             # <<<<<<<<<<<<<<
@@ -1508,7 +1508,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
  */
   __pyx_v_M = (PyArray_DIMS(__pyx_v_a_image)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":173
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":173
  *     out = np.PyArray_SimpleNew(2, np.PyArray_DIMS(a_image), thetype)
  *     M = np.PyArray_DIMS(a_image)[0]
  *     N = np.PyArray_DIMS(a_image)[1]             # <<<<<<<<<<<<<<
@@ -1517,7 +1517,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
  */
   __pyx_v_N = (PyArray_DIMS(__pyx_v_a_image)[1]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":176
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":176
  * 
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)             # <<<<<<<<<<<<<<
@@ -1531,7 +1531,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_t_2 = nullptr;
   convert_strides(PyArray_STRIDES(__pyx_v_a_image), __pyx_v_instrides, __pyx_t_8, 2);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":177
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":177
  *     convert_strides(np.PyArray_STRIDES(a_image), instrides,
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N             # <<<<<<<<<<<<<<
@@ -1540,7 +1540,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
  */
   (__pyx_v_outstrides[0]) = __pyx_v_N;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":178
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":178
  *                     np.PyArray_DESCR(a_image).elsize, 2)
  *     outstrides[0] = N
  *     outstrides[1] = 1             # <<<<<<<<<<<<<<
@@ -1549,7 +1549,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
  */
   (__pyx_v_outstrides[1]) = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":180
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":180
  *     outstrides[1] = 1
  * 
  *     if thetype == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -1559,7 +1559,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_t_6 = (__pyx_v_thetype == NPY_FLOAT);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":187
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":187
  *             <float *> np.PyArray_DATA(a_hcol),
  *             np.PyArray_DIMS(a_hrow)[0], np.PyArray_DIMS(a_hcol)[0],
  *             instrides, outstrides)             # <<<<<<<<<<<<<<
@@ -1570,7 +1570,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
     goto __pyx_L5;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":189
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":189
  *             instrides, outstrides)
  * 
  *     elif thetype == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -1580,7 +1580,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_t_6 = (__pyx_v_thetype == NPY_DOUBLE);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":196
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":196
  *             <double *> np.PyArray_DATA(a_hcol),
  *             np.PyArray_DIMS(a_hrow)[0],np.PyArray_DIMS(a_hcol)[0],
  *             instrides, outstrides)             # <<<<<<<<<<<<<<
@@ -1592,7 +1592,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   }
   /*else*/ {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":199
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":199
  * 
  *     else:
  *         raise Exception("Incorrect type.")             # <<<<<<<<<<<<<<
@@ -1607,7 +1607,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":201
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":201
  *         raise Exception("Incorrect type.")
  * 
  *     if ret < 0:             # <<<<<<<<<<<<<<
@@ -1617,7 +1617,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   __pyx_t_6 = (__pyx_v_ret < 0);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":202
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":202
  * 
  *     if ret < 0:
  *         raise Exception("Problem occurred inside routine.")             # <<<<<<<<<<<<<<
@@ -1633,7 +1633,7 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   }
   __pyx_L6:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":204
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":204
  *         raise Exception("Problem occurred inside routine.")
  * 
  *     return np.PyArray_Return(out)             # <<<<<<<<<<<<<<
@@ -1650,15 +1650,15 @@ static System::Object^ FIRsepsym2d(System::Object^ image, System::Object^ hrow, 
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":207
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":207
  * 
  * 
- * cpdef IIRsymorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
+ * cpdef symiirorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
  *     """symiirorder1(input, c0, z1 {, precision}) -> output
  * 
  */
 
-static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_double_complex __pyx_v_c0, __pyx_t_double_complex __pyx_v_z1, ref struct __pyx_opt_args_5scipy_6signal_6spline_IIRsymorder1 ^__pyx_optional_args) {
+static  System::Object^ symiirorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_double_complex __pyx_v_c0, __pyx_t_double_complex __pyx_v_z1, ref struct __pyx_opt_args_5scipy_6signal_6spline_symiirorder1 ^__pyx_optional_args) {
   double __pyx_v_precision = __pyx_k_3;
   int __pyx_v_thetype;
   int __pyx_v_N;
@@ -1689,7 +1689,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_v_out = nullptr;
   __pyx_v_type = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":239
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":239
  *     cdef np.ndarray a_sig, out
  * 
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))             # <<<<<<<<<<<<<<
@@ -1702,7 +1702,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_v_type = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":240
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":240
  * 
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_CDOUBLE)             # <<<<<<<<<<<<<<
@@ -1728,7 +1728,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_1 = nullptr;
   __pyx_v_thetype = __pyx_t_7;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":241
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":241
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_CDOUBLE)
  *     a_sig = np.PyArray_FROMANY(sig, thetype, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1746,7 +1746,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_v_a_sig = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":243
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":243
  *     a_sig = np.PyArray_FROMANY(sig, thetype, 1, 1, np.NPY_CONTIGUOUS)
  * 
  *     out = np.PyArray_SimpleNew(1, np.PyArray_DIMS(a_sig), thetype)             # <<<<<<<<<<<<<<
@@ -1760,7 +1760,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_v_out = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":244
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":244
  * 
  *     out = np.PyArray_SimpleNew(1, np.PyArray_DIMS(a_sig), thetype)
  *     N = np.PyArray_DIMS(a_sig)[0]             # <<<<<<<<<<<<<<
@@ -1769,7 +1769,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
   __pyx_v_N = (PyArray_DIMS(__pyx_v_a_sig)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":247
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":247
  * 
  *     convert_strides(np.PyArray_STRIDES(a_sig), &instrides,
  *                     np.PyArray_DESCR(a_sig).elsize, 1)             # <<<<<<<<<<<<<<
@@ -1783,7 +1783,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_2 = nullptr;
   convert_strides(PyArray_STRIDES(__pyx_v_a_sig), (&__pyx_v_instrides), __pyx_t_8, 1);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":248
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":248
  *     convert_strides(np.PyArray_STRIDES(a_sig), &instrides,
  *                     np.PyArray_DESCR(a_sig).elsize, 1)
  *     outstrides = 1             # <<<<<<<<<<<<<<
@@ -1792,7 +1792,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
   __pyx_v_outstrides = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":250
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":250
  *     outstrides = 1
  * 
  *     if thetype == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -1802,7 +1802,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_6 = (__pyx_v_thetype == NPY_FLOAT);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":251
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":251
  * 
  *     if thetype == np.NPY_FLOAT:
  *         rc0 = c0.real             # <<<<<<<<<<<<<<
@@ -1811,7 +1811,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
     __pyx_v_rc0 = __Pyx_CREAL(__pyx_v_c0);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":252
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":252
  *     if thetype == np.NPY_FLOAT:
  *         rc0 = c0.real
  *         rz1 = z1.real             # <<<<<<<<<<<<<<
@@ -1820,7 +1820,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
     __pyx_v_rz1 = __Pyx_CREAL(__pyx_v_z1);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":253
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":253
  *         rc0 = c0.real
  *         rz1 = z1.real
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -1834,7 +1834,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
     __pyx_t_9 = (!__pyx_t_6);
     if (__pyx_t_9) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":254
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":254
  *         rz1 = z1.real
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-6             # <<<<<<<<<<<<<<
@@ -1846,7 +1846,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
     }
     __pyx_L4:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":258
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":258
  *                              <float *> np.PyArray_DATA(a_sig),
  *                              <float *> np.PyArray_DATA(out), N,
  *                              instrides, outstrides, <float> precision)             # <<<<<<<<<<<<<<
@@ -1857,7 +1857,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
     goto __pyx_L3;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":260
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":260
  *                              instrides, outstrides, <float> precision)
  * 
  *     elif thetype == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -1867,7 +1867,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_9 = (__pyx_v_thetype == NPY_DOUBLE);
   if (__pyx_t_9) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":261
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":261
  * 
  *     elif thetype == np.NPY_DOUBLE:
  *         rc0 = c0.real             # <<<<<<<<<<<<<<
@@ -1876,7 +1876,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
     __pyx_v_rc0 = __Pyx_CREAL(__pyx_v_c0);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":262
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":262
  *     elif thetype == np.NPY_DOUBLE:
  *         rc0 = c0.real
  *         rz1 = z1.real             # <<<<<<<<<<<<<<
@@ -1885,7 +1885,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
  */
     __pyx_v_rz1 = __Pyx_CREAL(__pyx_v_z1);
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":263
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":263
  *         rc0 = c0.real
  *         rz1 = z1.real
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -1899,7 +1899,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
     __pyx_t_6 = (!__pyx_t_9);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":264
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":264
  *         rz1 = z1.real
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-11             # <<<<<<<<<<<<<<
@@ -1911,7 +1911,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
     }
     __pyx_L5:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":268
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":268
  *                              <double *> np.PyArray_DATA(a_sig),
  *                              <double *> np.PyArray_DATA(out), N,
  *                              instrides, outstrides, precision)             # <<<<<<<<<<<<<<
@@ -1923,7 +1923,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   }
   /*else*/ {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":271
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":271
  * 
  *     else:
  *         raise Exception("Incorrect type.")             # <<<<<<<<<<<<<<
@@ -1938,7 +1938,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   }
   __pyx_L3:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":273
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":273
  *         raise Exception("Incorrect type.")
  * 
  *     if ret == -1:             # <<<<<<<<<<<<<<
@@ -1948,7 +1948,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_6 = (__pyx_v_ret == -1);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":274
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":274
  * 
  *     if ret == -1:
  *         raise Exception("Could not allocate enough memory.")             # <<<<<<<<<<<<<<
@@ -1964,7 +1964,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   }
   __pyx_L6:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":275
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":275
  *     if ret == -1:
  *         raise Exception("Could not allocate enough memory.")
  *     if ret == -2:             # <<<<<<<<<<<<<<
@@ -1974,7 +1974,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_6 = (__pyx_v_ret == -2);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":276
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":276
  *         raise Exception("Could not allocate enough memory.")
  *     if ret == -2:
  *         raise Exception("|z1| must be less than 1.0")             # <<<<<<<<<<<<<<
@@ -1990,7 +1990,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   }
   __pyx_L7:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":277
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":277
  *     if ret == -2:
  *         raise Exception("|z1| must be less than 1.0")
  *     if ret == -3:             # <<<<<<<<<<<<<<
@@ -2000,7 +2000,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   __pyx_t_6 = (__pyx_v_ret == -3);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":278
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":278
  *         raise Exception("|z1| must be less than 1.0")
  *     if ret == -3:
  *         raise Exception("Sum to find symmetric boundary conditions did not "             # <<<<<<<<<<<<<<
@@ -2016,7 +2016,7 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   }
   __pyx_L8:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":281
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":281
  *                         "converge.")
  * 
  *     return np.PyArray_Return(out)             # <<<<<<<<<<<<<<
@@ -2033,15 +2033,15 @@ static  System::Object^ IIRsymorder1(NumpyDotNet::ndarray^ __pyx_v_sig, __pyx_t_
   return __pyx_r;
 }
 
-/* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":284
+/* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":284
  * 
  * 
- * def IIRsymorder2(np.ndarray sig, double r, double omega, double precision=-1.0):             # <<<<<<<<<<<<<<
+ * def symiirorder2(np.ndarray sig, double r, double omega, double precision=-1.0):             # <<<<<<<<<<<<<<
  *     """symiirorder2(input, r, omega {, precision}) -> output
  * 
  */
 
-static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, System::Object^ omega, [InteropServices::Optional]System::Object^ precision) {
+static System::Object^ symiirorder2(System::Object^ sig, System::Object^ r, System::Object^ omega, [InteropServices::Optional]System::Object^ precision) {
   NumpyDotNet::ndarray^ __pyx_v_sig = nullptr;
   double __pyx_v_r;
   double __pyx_v_omega;
@@ -2079,7 +2079,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     throw PythonOps::TypeError("Argument 'sig' has incorrect type");
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":316
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":316
  *     cdef np.ndarray a_sig, out
  * 
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))             # <<<<<<<<<<<<<<
@@ -2092,7 +2092,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_v_type = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":317
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":317
  * 
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -2118,7 +2118,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_t_1 = nullptr;
   __pyx_v_thetype = __pyx_t_7;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":318
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":318
  *     type = np.NpyArray_FindArrayType_2args(sig, np.Npy_INTERFACE_descr(np.NpyArray_DescrFromType(np.NPY_FLOAT)))
  *     thetype = min(type.type, np.NPY_DOUBLE)
  *     a_sig = np.PyArray_FROMANY(sig, thetype, 1, 1, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -2136,7 +2136,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_v_a_sig = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":320
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":320
  *     a_sig = np.PyArray_FROMANY(sig, thetype, 1, 1, np.NPY_CONTIGUOUS)
  * 
  *     out = np.PyArray_SimpleNew(1, np.PyArray_DIMS(a_sig),thetype)             # <<<<<<<<<<<<<<
@@ -2150,7 +2150,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_v_out = ((NumpyDotNet::ndarray^)__pyx_t_5);
   __pyx_t_5 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":321
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":321
  * 
  *     out = np.PyArray_SimpleNew(1, np.PyArray_DIMS(a_sig),thetype)
  *     N = np.PyArray_DIMS(a_sig)[0]             # <<<<<<<<<<<<<<
@@ -2159,7 +2159,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
  */
   __pyx_v_N = (PyArray_DIMS(__pyx_v_a_sig)[0]);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":324
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":324
  * 
  *     convert_strides(np.PyArray_STRIDES(a_sig), &instrides,
  *                     np.PyArray_DESCR(a_sig).elsize, 1)             # <<<<<<<<<<<<<<
@@ -2173,7 +2173,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_t_2 = nullptr;
   convert_strides(PyArray_STRIDES(__pyx_v_a_sig), (&__pyx_v_instrides), __pyx_t_8, 1);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":325
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":325
  *     convert_strides(np.PyArray_STRIDES(a_sig), &instrides,
  *                     np.PyArray_DESCR(a_sig).elsize, 1)
  *     outstrides = 1             # <<<<<<<<<<<<<<
@@ -2182,7 +2182,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
  */
   __pyx_v_outstrides = 1;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":327
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":327
  *     outstrides = 1
  * 
  *     if thetype == np.NPY_FLOAT:             # <<<<<<<<<<<<<<
@@ -2192,7 +2192,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_t_6 = (__pyx_v_thetype == NPY_FLOAT);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":328
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":328
  * 
  *     if thetype == np.NPY_FLOAT:
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -2206,7 +2206,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     __pyx_t_9 = (!__pyx_t_6);
     if (__pyx_t_9) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":329
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":329
  *     if thetype == np.NPY_FLOAT:
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-6             # <<<<<<<<<<<<<<
@@ -2218,7 +2218,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     }
     __pyx_L6:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":332
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":332
  *         ret = S_IIR_forback2(r, omega, <float *> np.PyArray_DATA(a_sig),
  *                              <float *> np.PyArray_DATA(out), N,
  *                              instrides, outstrides, precision)             # <<<<<<<<<<<<<<
@@ -2229,7 +2229,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     goto __pyx_L5;
   }
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":334
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":334
  *                              instrides, outstrides, precision)
  * 
  *     elif thetype == np.NPY_DOUBLE:             # <<<<<<<<<<<<<<
@@ -2239,7 +2239,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_t_9 = (__pyx_v_thetype == NPY_DOUBLE);
   if (__pyx_t_9) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":335
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":335
  * 
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):             # <<<<<<<<<<<<<<
@@ -2253,7 +2253,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     __pyx_t_6 = (!__pyx_t_9);
     if (__pyx_t_6) {
 
-      /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":336
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":336
  *     elif thetype == np.NPY_DOUBLE:
  *         if not (0.0 <= precision < 1.0):
  *             precision = 1e-11             # <<<<<<<<<<<<<<
@@ -2265,7 +2265,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
     }
     __pyx_L7:;
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":339
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":339
  *         ret = D_IIR_forback2(r, omega, <double *> np.PyArray_DATA(a_sig),
  *                              <double *> np.PyArray_DATA(out), N,
  *                              instrides, outstrides, precision)             # <<<<<<<<<<<<<<
@@ -2277,7 +2277,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   }
   /*else*/ {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":342
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":342
  * 
  *     else:
  *         raise Exception("Incorrect type.")             # <<<<<<<<<<<<<<
@@ -2292,7 +2292,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   }
   __pyx_L5:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":344
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":344
  *         raise Exception("Incorrect type.")
  * 
  *     if ret < 0:             # <<<<<<<<<<<<<<
@@ -2302,7 +2302,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   __pyx_t_6 = (__pyx_v_ret < 0);
   if (__pyx_t_6) {
 
-    /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":345
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":345
  * 
  *     if ret < 0:
  *         raise Exception("Problem occurred inside routine.")             # <<<<<<<<<<<<<<
@@ -2318,7 +2318,7 @@ static System::Object^ IIRsymorder2(System::Object^ sig, System::Object^ r, Syst
   }
   __pyx_L8:;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":347
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":347
  *         raise Exception("Problem occurred inside routine.")
  * 
  *     return np.PyArray_Return(out)             # <<<<<<<<<<<<<<
@@ -3011,7 +3011,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
  *     if arr is None:
  *         return None             # <<<<<<<<<<<<<<
  *     import clr
- *     import NumpyDotNet.NpyArray
+ *     import NumpyDotNet.ndarray
  */
     __pyx_r = nullptr;
     goto __pyx_L0;
@@ -3023,8 +3023,8 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
  *     if arr is None:
  *         return None
  *     import clr             # <<<<<<<<<<<<<<
- *     import NumpyDotNet.NpyArray
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  */
   __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
   __pyx_v_clr = __pyx_t_2;
@@ -3033,25 +3033,25 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
   /* "../cython/include/numpy.pxd":374
  *         return None
  *     import clr
- *     import NumpyDotNet.NpyArray             # <<<<<<<<<<<<<<
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     import NumpyDotNet.ndarray             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  * 
  */
-  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyArray", -1));
+  __pyx_t_2 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.ndarray", -1));
   __pyx_v_NumpyDotNet = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
   /* "../cython/include/numpy.pxd":375
  *     import clr
- *     import NumpyDotNet.NpyArray
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.ndarray
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)             # <<<<<<<<<<<<<<
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):
  */
-  __pyx_t_2 = __site_get_NpyArray_375_22->Target(__site_get_NpyArray_375_22, __pyx_v_NumpyDotNet, __pyx_context);
-  __pyx_t_3 = __site_get_ArrayReturn_375_31->Target(__site_get_ArrayReturn_375_31, __pyx_t_2, __pyx_context);
+  __pyx_t_2 = __site_get_ndarray_375_22->Target(__site_get_ndarray_375_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_3 = __site_get_ArrayReturn_375_30->Target(__site_get_ArrayReturn_375_30, __pyx_t_2, __pyx_context);
   __pyx_t_2 = nullptr;
-  __pyx_t_2 = __site_call1_375_43->Target(__site_call1_375_43, __pyx_context, __pyx_t_3, __pyx_v_arr);
+  __pyx_t_2 = __site_call1_375_42->Target(__site_call1_375_42, __pyx_context, __pyx_t_3, __pyx_v_arr);
   __pyx_t_3 = nullptr;
   __pyx_r = __pyx_t_2;
   __pyx_t_2 = nullptr;
@@ -3063,7 +3063,7 @@ static CYTHON_INLINE System::Object^ PyArray_Return(System::Object^ __pyx_v_arr)
 }
 
 /* "../cython/include/numpy.pxd":377
- *     return NumpyDotNet.NpyArray.ArrayReturn(arr)
+ *     return NumpyDotNet.ndarray.ArrayReturn(arr)
  * 
  * cdef inline intp_t PyArray_DIM(ndarray n, int dim):             # <<<<<<<<<<<<<<
  *     return NpyArray_DIM(<NpyArray*><long long>n.Array, dim)
@@ -4162,9 +4162,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_cvt___pyx_t_5numpy_npy_intp_365_69 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
   __site_get_Array_368_52 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
   __site_cvt_cvt___pyx_t_5numpy_npy_intp_368_52 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_NpyArray_375_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyArray", false));
-  __site_get_ArrayReturn_375_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ArrayReturn", false));
-  __site_call1_375_43 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_ndarray_375_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndarray", false));
+  __site_get_ArrayReturn_375_30 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ArrayReturn", false));
+  __site_call1_375_42 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_Array_378_47 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
   __site_cvt_cvt_PY_LONG_LONG_378_47 = CallSite< System::Func< CallSite^, System::Object^, PY_LONG_LONG >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, PY_LONG_LONG::typeid, ConversionResultKind::ExplicitCast));
   __site_get_ndim_381_14 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ndim", false));
@@ -4221,14 +4221,14 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   System::Object^ __pyx_t_1 = nullptr;
   PythonDictionary^ __pyx_t_2;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":1
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":1
  * __version__ = '0.2'             # <<<<<<<<<<<<<<
  * 
  * cimport numpy as np
  */
   PythonOps::SetGlobal(__pyx_context, "__version__", ((System::Object^)"0.2"));
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":41
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":41
  * 
  * 
  * def cspline2d(np.ndarray image, double lambda_=0.0, double precision=-1.0):             # <<<<<<<<<<<<<<
@@ -4237,7 +4237,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   __pyx_k_1 = (-1.0);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":95
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":95
  * 
  * 
  * def qspline2d(np.ndarray image, double lambda_=0.0, precision=-1.0):             # <<<<<<<<<<<<<<
@@ -4248,25 +4248,25 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_k_2 = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":207
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":207
  * 
  * 
- * cpdef IIRsymorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
+ * cpdef symiirorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):             # <<<<<<<<<<<<<<
  *     """symiirorder1(input, c0, z1 {, precision}) -> output
  * 
  */
   __pyx_k_3 = (-1.0);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":284
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":284
  * 
  * 
- * def IIRsymorder2(np.ndarray sig, double r, double omega, double precision=-1.0):             # <<<<<<<<<<<<<<
+ * def symiirorder2(np.ndarray sig, double r, double omega, double precision=-1.0):             # <<<<<<<<<<<<<<
  *     """symiirorder2(input, r, omega {, precision}) -> output
  * 
  */
   __pyx_k_4 = (-1.0);
 
-  /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/spline.pyx":1
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/spline.pyx":1
  * __version__ = '0.2'             # <<<<<<<<<<<<<<
  * 
  * cimport numpy as np

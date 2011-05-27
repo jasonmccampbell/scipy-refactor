@@ -148,7 +148,7 @@ def qspline2d(np.ndarray image, double lambda_=0.0, precision=-1.0):
     return np.PyArray_Return(ck)
 
 
-def FIRsepsym2d(np.ndarray image, np.ndarray hrow, np.ndarray hcol):
+def sepfir2d(np.ndarray image, np.ndarray hrow, np.ndarray hcol):
     """sepfir2d(input, hrow, hcol) -> output
 
     Description:
@@ -204,7 +204,7 @@ def FIRsepsym2d(np.ndarray image, np.ndarray hrow, np.ndarray hcol):
     return np.PyArray_Return(out)
 
 
-cpdef IIRsymorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):
+cpdef symiirorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precision=-1.0):
     """symiirorder1(input, c0, z1 {, precision}) -> output
 
     Description:
@@ -281,7 +281,7 @@ cpdef IIRsymorder1(np.ndarray sig, Py_complex c0, Py_complex z1, double precisio
     return np.PyArray_Return(out)
 
 
-def IIRsymorder2(np.ndarray sig, double r, double omega, double precision=-1.0):
+def symiirorder2(np.ndarray sig, double r, double omega, double precision=-1.0):
     """symiirorder2(input, r, omega {, precision}) -> output
 
     Description:
