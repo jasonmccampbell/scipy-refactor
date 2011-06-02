@@ -79,19 +79,19 @@ cdef char *check_malloc(int size):
     return the_block
 
 cdef BasicFilterFunction get_filter_function(int typenum):
-    if typenum == np.npy_NPY_FLOAT:
+    if typenum == np.NPY_FLOAT:
         return <BasicFilterFunction>FLOAT_filt
-    elif typenum == np.npy_NPY_DOUBLE:
+    elif typenum == np.NPY_DOUBLE:
         return <BasicFilterFunction>DOUBLE_filt
-    elif typenum == np.npy_NPY_LONGDOUBLE:
+    elif typenum == np.NPY_LONGDOUBLE:
         return <BasicFilterFunction>EXTENDED_filt
-    elif typenum == np.npy_NPY_CFLOAT:
+    elif typenum == np.NPY_CFLOAT:
         return <BasicFilterFunction>CFLOAT_filt
-    elif typenum == np.npy_NPY_CDOUBLE:
+    elif typenum == np.NPY_CDOUBLE:
         return <BasicFilterFunction>CDOUBLE_filt
-    elif typenum == np.npy_NPY_CLONGDOUBLE:
+    elif typenum == np.NPY_CLONGDOUBLE:
         return <BasicFilterFunction>CEXTENDED_filt
-    #elif typenum == np.npy_NPY_OBJECT:
+    #elif typenum == np.NPY_OBJECT:
     #    return <BasicFilterFunction>OBJECT_filt
     
     return NULL
@@ -149,7 +149,7 @@ def _linear_filter(np.ndarray b, np.ndarray a,
     if memcmp(<void *>ara_ptr, <void *>azero, nal) == 0:
         raise ValueError("BUG: filter coefficient a[0] == 0 not supported yet")
     
-    np.PyDataMem_FREE(azero)
+    np.NpyDataMem_FREE(azero)
 
     na = np.PyArray_SIZE(ara)
     nb = np.PyArray_SIZE(arb)
@@ -183,7 +183,7 @@ cdef int zfill(np.NpyArray *x, np.npy_intp nx, char *xzfilled, np.npy_intp nxzfi
     for i in range(nx, nxzfilled):
         copyswap(xzfilled + i * nxl, xzero, 0, NULL)
 
-    np.PyDataMem_FREE(xzero)
+    np.NpyDataMem_FREE(xzero)
 
     return 0
 
@@ -594,7 +594,7 @@ cdef int _imp_correlate_nd_object(np.NpyArrayNeighborhoodIterObject *curx,
         np.PyArray_ITER_NEXT(itz)
         np.PyArray_ITER_RESET(ity)
 
-    np.PyDataMem_FREE(zero)
+    np.NpyDataMem_FREE(zero)
 
     return 0
 

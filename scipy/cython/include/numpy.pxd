@@ -437,6 +437,11 @@ cdef inline object PyArray_Check(obj):
     import numpy as np
     return isinstance(obj, np.ndarray)
 
+cdef inline object PyArray_Cast(arr, typenum):
+    import clr
+    import NumpyDotNet.NpyCoreApi
+    return NumpyDotNet.NpyCoreApi.CastToType(arr, Npy_INTERFACE_descr(NpyArray_DescrFromType(typenum)), False)
+
 cdef inline void import_array():
     pass
 
