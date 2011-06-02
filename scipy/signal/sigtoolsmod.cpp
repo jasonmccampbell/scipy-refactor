@@ -1134,7 +1134,7 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
  *         type = np.NpyArray_FindArrayType_2args(Vi, type)
  * 
  *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
- *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arb = np.PyArray_FromAny(b, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
  *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
  */
   __pyx_t_1 = (System::Object^)(long long)(((NPY_CONTIGUOUS | NPY_BEHAVED) | NPY_ENSUREARRAY));
@@ -1149,12 +1149,12 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
   /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":118
  * 
  *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
- *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
+ *     arb = np.PyArray_FromAny(b, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
  *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
  * 
  */
   __pyx_t_3 = (System::Object^)(long long)(((NPY_CONTIGUOUS | NPY_BEHAVED) | NPY_ENSUREARRAY));
-  __pyx_t_1 = PyArray_FromAny(((System::Object^)__pyx_v_a), ((System::Object^)__pyx_v_type), __pyx_int_1, __pyx_int_1, __pyx_t_3, nullptr); 
+  __pyx_t_1 = PyArray_FromAny(((System::Object^)__pyx_v_b), ((System::Object^)__pyx_v_type), __pyx_int_1, __pyx_int_1, __pyx_t_3, nullptr); 
   __pyx_t_3 = nullptr;
   if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
     throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
@@ -1164,7 +1164,7 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
 
   /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":119
  *     ara = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
- *     arb = np.PyArray_FromAny(a, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
+ *     arb = np.PyArray_FromAny(b, type, 1, 1, np.NPY_CONTIGUOUS | np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)
  *     arX = np.PyArray_FromAny(X, type, 0, 0, np.NPY_BEHAVED | np.NPY_ENSUREARRAY, None)             # <<<<<<<<<<<<<<
  * 
  *     if (axis < -np.PyArray_NDIM(arX)) or (axis > np.PyArray_NDIM(arX) - 1):
