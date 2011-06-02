@@ -98,9 +98,7 @@ cdef BasicFilterFunction get_filter_function(int typenum):
 
 
 # XXX: Error checking not done yet
-def _linear_filter(np.ndarray b, np.ndarray a,
-                   np.ndarray X, int axis=-1,
-                   np.ndarray Vi=None):
+def _linear_filter(b, a, X, int axis=-1, Vi=None):
     cdef np.ndarray ara, arb, arX, arY, arVf, arVi
     cdef int theaxis, st
     cdef char *ara_ptr, input_flag = 0, *azero
