@@ -17,7 +17,7 @@ cdef enum:
     CORR_MODE_SAME  = 1
     CORR_MODE_FULL  = 2
 
-def scipy_signal_sigtools_correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
+def _correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
     cdef np.NpyArrayIterObject *itx, *ity, *itz
     cdef int st
     cdef np.dtype type

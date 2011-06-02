@@ -76,13 +76,16 @@ def build_egg():
     # Recursively walk the scipy tree and all files to the egg
     for root, dirs, files in os.walk("scipy"):
         if root.startswith((
-                r'scipy\cluster',     r'scipy\cython',
-                r'scipy\fftpack',     r'scipy\integrate',
-                r'scipy\interpolate', r'scipy\io',
-                r'scipy\maxentropy',  r'scipy\ndimage',
-                r'scipy\odr',         r'scipy\optimize',
-                r'scipy\signal',      r'scipy\sparse',
-                r'scipy\spatial',     r'scipy\weave',
+                r'scipy\cython',
+                r'scipy\integrate',
+                r'scipy\interpolate', 
+                r'scipy\io',
+                r'scipy\maxentropy',  
+                r'scipy\optimize',
+                r'scipy\signal',      
+                r'scipy\sparse',
+                r'scipy\spatial',     
+                r'scipy\weave',
                 )):
             continue
 

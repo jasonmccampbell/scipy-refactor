@@ -758,12 +758,12 @@ static  __pyx_t_5scipy_6signal_7lfilter_BasicFilterFunction get_filter_function(
 /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/lfilter.pyx":49
  * 
  * # XXX: Error checking not done yet
- * def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,             # <<<<<<<<<<<<<<
+ * def _linear_filter(np.ndarray b, np.ndarray a,             # <<<<<<<<<<<<<<
  *                                         np.ndarray X, int axis=-1,
  *                                         np.ndarray Vi=None):
  */
 
-static System::Object^ scipy_signal_sigtools_linear_filter(System::Object^ b, System::Object^ a, System::Object^ X, [InteropServices::Optional]System::Object^ axis, [InteropServices::Optional]System::Object^ Vi) {
+static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, System::Object^ X, [InteropServices::Optional]System::Object^ axis, [InteropServices::Optional]System::Object^ Vi) {
   NumpyDotNet::ndarray^ __pyx_v_b = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_a = nullptr;
   NumpyDotNet::ndarray^ __pyx_v_X = nullptr;
@@ -812,7 +812,7 @@ static System::Object^ scipy_signal_sigtools_linear_filter(System::Object^ b, Sy
   } else {
 
     /* "/home/cwitty/git-scipy/scipy-refactor/scipy/signal/lfilter.pyx":51
- * def scipy_signal_sigtools_linear_filter(np.ndarray b, np.ndarray a,
+ * def _linear_filter(np.ndarray b, np.ndarray a,
  *                                         np.ndarray X, int axis=-1,
  *                                         np.ndarray Vi=None):             # <<<<<<<<<<<<<<
  *     cdef np.ndarray ara, arb, arX, arY, arVf, arVi

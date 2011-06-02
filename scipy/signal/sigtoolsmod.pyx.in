@@ -464,7 +464,7 @@ cdef enum:
     CORR_MODE_SAME  = 1
     CORR_MODE_FULL  = 2
 
-def correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
+def _correlateND(np.ndarray ax, np.ndarray ay, np.ndarray aout, int mode):
     cdef np.NpyArrayIterObject *itx, *ity, *itz
     cdef int st
     cdef np.dtype type
@@ -680,7 +680,7 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
     cdef np.npy_intp is1 = np.PyArray_STRIDES(ap1)[ndims-1]
     cdef np.npy_intp is2 = np.PyArray_STRIDES(ap2)[ndims-1]
     cdef char *ip2 = <char *>np.PyArray_DATA(ap2)
-    cdef int elsize = np.PyArray_DESCR(ap1).elsize
+    cdef int elsize = np.PyArray_DESCR(ap1).ElementSize
     cdef char *ptr
     
     ptr = <char *>np.PyArray_Zero(ap2)
@@ -689,7 +689,7 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
     for i in range(nels2 - 1, -1, -1):
         # Adjust index array and move ptr1 to right place
         k = ndims - 1
-        for j in range(incr):
+        for j in range(incr-1):
             temp_ind[k] -= dims2[k] - 1  # Return to start for these dimensions
             k -= 1
 
@@ -697,7 +697,7 @@ cdef fill_buffer(char *ip1, np.ndarray ap1, np.ndarray ap2,
         temp_ind[k] += 1
         
         if (not (check and index_out_of_bounds(temp_ind,dims1,ndims)) and
-                memcmp(ip2, ptr, np.PyArray_DESCR(ap2).elsize)):
+                memcmp(ip2, ptr, np.PyArray_DESCR(ap2).ElementSize)):
             memcpy(sort_buffer, ip1, elsize)
             sort_buffer += elsize
         
@@ -770,7 +770,8 @@ def _order_filterND(a0, domain, int order=0):
     """ 
     cdef np.ndarray ap1, ap2, ret
     cdef np.npy_intp *a_ind, *b_ind, *temp_ind, *mode_dep, *check_ind
-    cdef np.npy_uintp *offsets, offset1
+    cdef np.npy_uintp *offsets
+    cdef np.npy_intp offset1
     cdef np.npy_intp *offsets2
     cdef np.npy_intp *ret_ind
     cdef int i, j, n2, n2_nonzero, k, check, incr = 1
@@ -803,8 +804,8 @@ def _order_filterND(a0, domain, int order=0):
             return None
         
         for k in range(n2):
-            n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).elsize) != 0)
-            ap2_ptr += <int>np.PyArray_DESCR(ap2).elsize
+            n2_nonzero += (memcmp(ap2_ptr,zptr,np.PyArray_DESCR(ap2).ElementSize) != 0)
+            ap2_ptr += <int>np.PyArray_DESCR(ap2).ElementSize
 
         if (order >= n2_nonzero) or (order < 0):
             raise ValueError("Order must be non-negative and less than number of nonzero elements in domain.")
@@ -817,13 +818,13 @@ def _order_filterND(a0, domain, int order=0):
         if compare_func == NULL:
             raise ValueError("order_filterND not available for this type")
         
-        is1 = np.PyArray_DESCR(ap1).elsize
+        is1 = np.PyArray_DESCR(ap1).ElementSize
         sort_buffer = <char *>malloc(n2_nonzero*is1)
         if sort_buffer == NULL:
             return None
 
         op = <char *>np.PyArray_DATA(ret)
-        os = np.PyArray_DESCR(ret).elsize
+        os = np.PyArray_DESCR(ret).ElementSize
 
         bytes_in_array = np.PyArray_NDIM(ap1)*sizeof(np.npy_intp)
         mode_dep = <np.npy_intp *>malloc(bytes_in_array)
@@ -862,6 +863,7 @@ def _order_filterND(a0, domain, int order=0):
         
         # Calculate it once and the just move it around appropriately
         np.NpyDataMem_FREE(zptr)
+        zptr = NULL
         zptr = <char *>np.PyArray_Zero(ap1)
         if zptr == NULL:
             return None
@@ -872,7 +874,7 @@ def _order_filterND(a0, domain, int order=0):
             check_ind[k] = np.PyArray_DIM(ap1,k) - np.PyArray_DIM(ap2,k) - mode_dep[k] - 1
 
         a_ind[np.PyArray_NDIM(ap1)-1] -= 1
-        for i in range(np.PyArray_SIZE(ret)):
+        for i in range(np.PyArray_SIZE(ret)-1, -1, -1):
             # Zero out the sort_buffer (has effect of zero-padding on boundaries).
             # Treat object arrays right.
             ap2_ptr = sort_buffer
@@ -881,7 +883,7 @@ def _order_filterND(a0, domain, int order=0):
                 ap2_ptr += is1
 
             k = np.PyArray_NDIM(ap1) - 1
-            for j in range(incr):
+            for j in range(incr-1):
                 a_ind[k] -= np.PyArray_DIM(ret, k) - 1  # Return to start
                 k -= 1
 
@@ -914,7 +916,9 @@ def _order_filterND(a0, domain, int order=0):
         free(sort_buffer)
         
         return np.PyArray_Return(ret)
-
+    #except Exception, e:
+    #    print "Oops! %s" % e
+    #    raise e
     finally:
         # clean up after PyArray_Zero()
         if zptr != NULL:
@@ -1076,7 +1080,7 @@ def _remez(int numtaps, object bands, object des, object weight, int type=BANDPA
     return np.PyArray_Return(h)
 
 
-def _median2d(image, size=None):
+def _medfilt2d(image, size=None):
     """ filt = _median2d(data, size)
     """
     cdef int typenum
