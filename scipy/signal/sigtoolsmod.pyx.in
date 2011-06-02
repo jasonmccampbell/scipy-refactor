@@ -750,20 +750,20 @@ cdef int OBJECT_compare(object ip1, object ip2):
     return (ip1 == ip2) != 1
 
 cdef CompareFunction compare_functions[21]
-compare_functions[1] = <CompareFunction>BYTE_compare
-compare_functions[2] = <CompareFunction>UBYTE_compare
-compare_functions[3] = <CompareFunction>SHORT_compare
-compare_functions[4] = <CompareFunction>USHORT_compare
-compare_functions[5] = <CompareFunction>INT_compare
-compare_functions[6] = <CompareFunction>UINT_compare
-compare_functions[7] = <CompareFunction>LONG_compare
-compare_functions[8] = <CompareFunction>ULONG_compare
-compare_functions[9] = <CompareFunction>LONGLONG_compare
-compare_functions[10] = <CompareFunction>ULONGLONG_compare
-compare_functions[11] = <CompareFunction>FLOAT_compare
-compare_functions[12] = <CompareFunction>DOUBLE_compare
-compare_functions[13] = <CompareFunction>LONGDOUBLE_compare
-compare_functions[17] = <CompareFunction>OBJECT_compare
+compare_functions[<int>np.NPY_BYTE] = <CompareFunction>BYTE_compare
+compare_functions[<int>np.NPY_UBYTE] = <CompareFunction>UBYTE_compare
+compare_functions[<int>np.NPY_SHORT] = <CompareFunction>SHORT_compare
+compare_functions[<int>np.NPY_USHORT] = <CompareFunction>USHORT_compare
+compare_functions[<int>np.NPY_INT] = <CompareFunction>INT_compare
+compare_functions[<int>np.NPY_UINT] = <CompareFunction>UINT_compare
+compare_functions[<int>np.NPY_LONG] = <CompareFunction>LONG_compare
+compare_functions[<int>np.NPY_ULONG] = <CompareFunction>ULONG_compare
+compare_functions[<int>np.NPY_LONGLONG] = <CompareFunction>LONGLONG_compare
+compare_functions[<int>np.NPY_ULONGLONG] = <CompareFunction>ULONGLONG_compare
+compare_functions[<int>np.NPY_FLOAT] = <CompareFunction>FLOAT_compare
+compare_functions[<int>np.NPY_DOUBLE] = <CompareFunction>DOUBLE_compare
+compare_functions[<int>np.NPY_LONGDOUBLE] = <CompareFunction>LONGDOUBLE_compare
+compare_functions[<int>np.NPY_OBJECT] = <CompareFunction>OBJECT_compare
 
 def _order_filterND(a0, domain, int order=0):
     """ out = _order_filterND(a,domain,order)
