@@ -10,6 +10,8 @@ cdef extern from "__quadpack.h":
     void DQAGPE(void *, double *, double *, int *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, double *, int *, int *, int *, int *)
     void DQAWOE(void *, double *, double *, double *, int *, double *, double *, int *, int *, int *, double *, double *, int *, int *, int *, double *, double *, double *, double *, int *, int *, int *, double *)
     void DQAGIE(void *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
+    void DQAWFE(void *, double *, double *, int *, double *, int *, int *, int *, double *, double *, int *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *, double *)
+    void DQAWCE(void *, double *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
 
 
 cdef extern from "string.h":
@@ -68,8 +70,8 @@ cdef double quad_function(double *x):
     return d_result
 
 
-def quadpack_qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
-                   double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
+           double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagse(fun, a, b, | args, full_output, epsabs, epsrel, limit)"""
 
     cdef np.ndarray ap_alist, ap_iord
@@ -125,7 +127,7 @@ def quadpack_qagse(dummy, fcn, double a, double b, extra_args=None, int full_out
 
 
 
-cdef qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagie(fun, bound, inf, | args, full_output, epsabs, epsrel, limit)"""
     cdef np.ndarray ap_alist, ap_iord
     cdef np.ndarray ap_blist, ap_elist, ap_rlist
@@ -170,7 +172,7 @@ cdef qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
         return (result, abserr, ier)
 
 
-cdef quadpack_qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagpe(fun, a, b, points, | args, full_output, epsabs, epsrel, limit)"""
     cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist
     cdef np.ndarray ap_r_list, ap_points, ap_pts, ap_level, ap_ndin
@@ -235,9 +237,9 @@ cdef quadpack_qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, i
         return (result, abserr, ier)
 
 
-cdef quadpack_qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None, 
-                    int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50, 
-                    int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):
+def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None, 
+            int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50, 
+            int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):
     """[result,abserr,infodict,ier] = _qawoe(fun, a, b, omega, integr, | args, full_output, epsabs, epsrel, limit, maxp1, icall, momcom, chebmo)"""
     cdef np.ndarray ap_alist, ap_irod, ap_blist, ap_elist, ap_rlist, ap_nnlog, ap_chebmo
 
@@ -298,6 +300,128 @@ cdef quadpack_qawoe(dummpy, fcn, double a, double b, double omega, int integr, e
                  "nnlog" : np.PyArray_Return(ap_nnlog), 
                  "momcom" : momcom, 
                  "chebmo" : np.PyArray_Return(ap_chebmo) }
+        return (result, abserr, dict, ier)
+    else:
+        return (result, abserr, ier)
+
+
+
+
+
+def _qawfe(fcn, double a, double omega, int integr, extra_args=None, int full_output=0, double epsabs=1.49e-8, int limlst=50, int limit=50, int maxp1=50):
+    """[result,abserr,infodict,ier] = _qawfe(fcn, a, omega, integr, | args, full_output, epsabs, limlst, limit, maxp1)"""
+    cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist, ap_rlist, ap_nnlog, ap_chebmo, ap_rslst, ap_erlst, ap_ierlst
+
+
+    cdef np.npy_intp limlst_shape[1], limit_shape[1], sz[2]
+    cdef int      neval=0, ier=6, *iord
+    cdef int      lst, *nnlog, *ierlst
+    cdef double   *chebmo, *rslst, *erlst
+    cdef double   result=0.0, abserr=0.0
+    cdef double   *alist, *blist, *rlist, *elist
+
+    limit_shape[0] = limit
+    limlst_shape[0] = limlst
+
+    # Need to check that limit is bigger than 1 
+    if limit < 1:
+        return (result, abserr, ier)
+
+    savedSettings = QUAD_INIT_FUNC(fcn, extra_args)
+    try:
+        sz[0] = 25
+        sz[1] = maxp1
+        ap_chebmo = <np.ndarray>np.PyArray_SimpleNew(2, sz, np.NPY_DOUBLE)
+        chebmo = <double *>np.PyArray_DATA(ap_chebmo)
+
+        # Setup iwork and work arrays 
+        ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
+        ap_nnlog = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
+        ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
+        ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
+        ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
+        ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
+        ap_rslst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
+        ap_erlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
+        ap_ierlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_INT);
+        if (ap_iord is None or ap_nnlog is None or ap_alist is None or ap_blist is None or ap_rlist is None or 
+            ap_elist is None or ap_rslst is None or ap_erlst is None or ap_ierlst is None):
+            return NULL
+
+        iord = <int *>np.PyArray_DATA(ap_iord)
+        nnlog = <int *>np.PyArray_DATA(ap_nnlog)
+        alist = <double *>np.PyArray_DATA(ap_alist)
+        blist = <double *>np.PyArray_DATA(ap_blist)
+        rlist = <double *>np.PyArray_DATA(ap_rlist)
+        elist = <double *>np.PyArray_DATA(ap_elist)
+        rslst = <double *>np.PyArray_DATA(ap_rslst)
+        erlst = <double *>np.PyArray_DATA(ap_erlst)
+        ierlst = <int *>np.PyArray_DATA(ap_ierlst)
+
+        DQAWFE(<void *>quad_function, &a, &omega, &integr, &epsabs, &limlst, &limit, &maxp1, &result, &abserr, &neval, &ier, rslst, erlst, ierlst, &lst, alist, blist, rlist, elist, iord, nnlog, chebmo)
+    except:
+        ier = 80
+    finally:
+        QUAD_RESTORE_FUNC(savedSettings)
+
+    if full_output:
+        dict = { 
+            "neval" : neval, 
+            "lst" : lst, 
+            "rslst" : np.PyArray_Return(ap_rslst), 
+            "erlst" : np.PyArray_Return(ap_erlst), 
+            "ierlst" : np.PyArray_Return(ap_ierlst) }
+        return (result, abserr, dict, ier)
+    else:
+        return (result, abserr, ier)
+
+
+def _qawce(fcn, double a, double b, double c, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+    """[result,abserr,infodict,ier] = _qawce(fun, a, b, c, | args, full_output, epsabs, epsrel, limit)"""
+    cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist, ap_rlist
+
+    cdef np.npy_intp limit_shape[1]
+    cdef int      neval=0, ier=6, last=0, *iord
+    cdef double   result=0.0, abserr=0.0
+    cdef double   *alist, *blist, *rlist, *elist
+
+    limit_shape[0] = limit
+
+    # Need to check that limit is bigger than 1 
+    if limit < 1:
+        return (result, abserr, ier)
+
+    savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+    try:
+        # Setup iwork and work arrays 
+        ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
+        ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
+            return NULL
+
+        iord = <int *>np.PyArray_DATA(ap_iord)
+        alist = <double *>np.PyArray_DATA(ap_alist)
+        blist = <double *>np.PyArray_DATA(ap_blist)
+        rlist = <double *>np.PyArray_DATA(ap_rlist)
+        elist = <double *>np.PyArray_DATA(ap_elist)
+        DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+    except:
+        ier = 80
+    finally:
+        QUAD_RESTORE_FUNC(savedSettings)
+
+    if full_output:
+        dict = {
+            "neval" : neval, 
+            "last" : last, 
+            "iord" : np.PyArray_Return(ap_iord), 
+            "alist" : np.PyArray_Return(ap_alist), 
+            "blist" : np.PyArray_Return(ap_blist), 
+            "rlist" : np.PyArray_Return(ap_rlist), 
+            "elist" : np.PyArray_Return(ap_elist) }
         return (result, abserr, dict, ier)
     else:
         return (result, abserr, ier)
