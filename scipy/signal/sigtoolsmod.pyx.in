@@ -137,7 +137,7 @@ def _linear_filter(b, a, X, int axis=-1, Vi=None):
 
     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
     if basic_filter == NULL:
-        raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+        raise NotImplementedError("input type '%s' not supported\n" % np.PyArray_DESCR(arX).name)
 
     # Skip over leading zeros in vector representing denominator (a)
     # XXX: handle this correctly

@@ -509,8 +509,9 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_131_27;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_133_46;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_136_51;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_140_72;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_140_33;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_name_140_91;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_140_68;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_140_33;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_148_24;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_156_28;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_209_25;
@@ -1354,7 +1355,7 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
  * 
  *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))             # <<<<<<<<<<<<<<
  *     if basic_filter == NULL:
- *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+ *         raise NotImplementedError("input type '%s' not supported\n" % np.PyArray_DESCR(arX).name)
  */
   __pyx_v_basic_filter = get_filter_function(((int)PyArray_TYPE(__pyx_v_arX)));
 
@@ -1362,7 +1363,7 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
  * 
  *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
  *     if basic_filter == NULL:             # <<<<<<<<<<<<<<
- *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))
+ *         raise NotImplementedError("input type '%s' not supported\n" % np.PyArray_DESCR(arX).name)
  * 
  */
   __pyx_t_6 = (__pyx_v_basic_filter == NULL);
@@ -1371,19 +1372,19 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
     /* "/cygdrive/z/dev/scipy-refactor/scipy/signal/sigtoolsmod.pyx":140
  *     basic_filter = get_filter_function(<int>np.PyArray_TYPE(arX))
  *     if basic_filter == NULL:
- *         raise NotImplementedError("input type '%s' not supported\n", str(np.PyArray_DESCR(arX)))             # <<<<<<<<<<<<<<
+ *         raise NotImplementedError("input type '%s' not supported\n" % np.PyArray_DESCR(arX).name)             # <<<<<<<<<<<<<<
  * 
  *     # Skip over leading zeros in vector representing denominator (a)
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "NotImplementedError");
-    __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "str");
-    __pyx_t_4 = PyArray_DESCR(__pyx_v_arX); 
-    __pyx_t_1 = __site_call1_140_72->Target(__site_call1_140_72, __pyx_context, ((System::Object^)__pyx_t_3), __pyx_t_4);
+    __pyx_t_3 = PyArray_DESCR(__pyx_v_arX); 
+    __pyx_t_4 = __site_get_name_140_91->Target(__site_get_name_140_91, __pyx_t_3, __pyx_context);
     __pyx_t_3 = nullptr;
+    __pyx_t_3 = __site_op_mod_140_68->Target(__site_op_mod_140_68, ((System::Object^)"input type '%s' not supported\n"), __pyx_t_4);
     __pyx_t_4 = nullptr;
-    __pyx_t_4 = __site_call2_140_33->Target(__site_call2_140_33, __pyx_context, __pyx_t_8, ((System::Object^)"input type '%s' not supported\n"), __pyx_t_1);
+    __pyx_t_4 = __site_call1_140_33->Target(__site_call1_140_33, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
     __pyx_t_8 = nullptr;
-    __pyx_t_1 = nullptr;
+    __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
     goto __pyx_L10;
@@ -1435,10 +1436,10 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
  *     np.NpyDataMem_FREE(azero)
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_148_24->Target(__site_call1_148_24, __pyx_context, __pyx_t_4, ((System::Object^)"BUG: filter coefficient a[0] == 0 not supported yet"));
+    __pyx_t_3 = __site_call1_148_24->Target(__site_call1_148_24, __pyx_context, __pyx_t_4, ((System::Object^)"BUG: filter coefficient a[0] == 0 not supported yet"));
     __pyx_t_4 = nullptr;
-    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
-    __pyx_t_1 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
+    __pyx_t_3 = nullptr;
     goto __pyx_L11;
   }
   __pyx_L11:;
@@ -1501,9 +1502,9 @@ static System::Object^ _linear_filter(System::Object^ b, System::Object^ a, Syst
  * 
  *     st = RawFilter(arb, ara, arX, arVi, arVf, arY, theaxis, basic_filter)
  */
-      __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-      __pyx_t_4 = __site_call1_156_28->Target(__site_call1_156_28, __pyx_context, __pyx_t_1, ((System::Object^)"The number of initial conditions must be max([len(a),len(b)]) - 1"));
-      __pyx_t_1 = nullptr;
+      __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "ValueError");
+      __pyx_t_4 = __site_call1_156_28->Target(__site_call1_156_28, __pyx_context, __pyx_t_3, ((System::Object^)"The number of initial conditions must be max([len(a),len(b)]) - 1"));
+      __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
       __pyx_t_4 = nullptr;
       goto __pyx_L13;
@@ -14005,8 +14006,9 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_cvt_int_131_27 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_cvt_int_133_46 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_cvt_int_136_51 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_140_72 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_140_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_name_140_91 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "name", false));
+  __site_op_mod_140_68 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_140_33 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_148_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_156_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_call1_209_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
