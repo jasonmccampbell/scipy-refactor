@@ -126,7 +126,6 @@
     <None Include="lfilter.pyx.in" />
     <None Include="ltisys.py" />
     <None Include="signaltools.py" />
-    <None Include="sigtoolsmod.pyx" />
     <None Include="sigtoolsmod.pyx.in" />
     <None Include="sigtools_clr.py" />
     <None Include="spectral.pyx" />
