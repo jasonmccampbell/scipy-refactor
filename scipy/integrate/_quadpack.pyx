@@ -7,8 +7,9 @@ np.import_array()
 
 cdef extern from "__quadpack.h":
     void DQAGSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
-    svoid DQAGPE(void *, double *, double *, int *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, double *, int *, int *, int *, int *, int *)
+    void DQAGPE(void *, double *, double *, int *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, double *, int *, int *, int *, int *)
     void DQAWOE(void *, double *, double *, double *, int *, double *, double *, int *, int *, int *, double *, double *, int *, int *, int *, double *, double *, double *, double *, int *, int *, int *, double *)
+    void DQAGIE(void *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
 
 
 cdef extern from "string.h":
@@ -130,7 +131,6 @@ cdef qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
     cdef np.ndarray ap_blist, ap_elist, ap_rlist
 
     cdef np.npy_intp limit_shape[1]
-    cdef double   bound
     cdef int      neval=0, ier=6, last=0, *iord
     cdef double   result=0.0, abserr=0.0
     cdef double   *alist, *blist, *rlist, *elist
@@ -151,20 +151,20 @@ cdef qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
             return None
 
-        DQAGIE(quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+        DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
     except Exception:
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
 
     if full_output:
-        dict = { "neval", neval, 
-                 "last", last, 
-                 "iord", np.PyArray_Return(ap_iord), 
-                 "alist", np.PyArray_Return(ap_alist), 
-                 "blist", np.PyArray_Return(ap_blist), 
-                 "rlist", np.PyArray_Return(ap_rlist), 
-                 "elist", np.PyArray_Return(ap_elist) }
+        dict = { "neval" : neval, 
+                 "last" : last, 
+                 "iord" : np.PyArray_Return(ap_iord), 
+                 "alist" : np.PyArray_Return(ap_alist), 
+                 "blist" : np.PyArray_Return(ap_blist), 
+                 "rlist" : np.PyArray_Return(ap_rlist), 
+                 "elist" : np.PyArray_Return(ap_elist) }
         return (result, abserr, dict, ier)
     else:
         return (result, abserr, ier)
@@ -212,11 +212,11 @@ cdef quadpack_qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, i
         level = <int *>np.PyArray_DATA(ap_level)
         ndin = <int *>np.PyArray_DATA(ap_level)
 
-        DQAGPE(quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)
+        DQAGPE(<void *>quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)
     except Exception, e:
         ier = 80
     finally:
-        RESTORE_FUNC(savedSettings)
+        QUAD_RESTORE_FUNC(savedSettings)
 
     if full_output:
         dict = { "neval" : neval, 
@@ -263,16 +263,16 @@ cdef quadpack_qawoe(dummpy, fcn, double a, double b, double omega, int integr, e
         else:
             sz[0] = 25
             sz[1] = maxp1
-            ap_chebmo = np.PyArray_ENPTY(2, sz, np.NPY_DOUBLE)
+            ap_chebmo = np.PyArray_EMPTY(2, sz, np.NPY_DOUBLE, False)
         chebmo = <double *>np.PyArray_DATA(ap_chebmo)
 
         # Setup iwork and work arrays 
-        ap_iord = <PyArrayObject *>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT)
-        ap_nnlog = <PyArrayObject *>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT)
-        ap_alist = <PyArrayObject *>np.PyArray_EMPY(1,limit_shape,np.NPY_DOUBLE)
-        ap_blist = <PyArrayObject *>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE)
-        ap_rlist = <PyArrayObject *>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE)
-        ap_elist = <PyArrayObject *>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE)
+        ap_iord = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
+        ap_nnlog = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
+        ap_alist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
+        ap_blist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
+        ap_rlist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
+        ap_elist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
 
         iord = <int *>np.PyArray_DATA(ap_iord)
         nnlog = <int *>np.PyArray_DATA(ap_nnlog)
@@ -281,11 +281,11 @@ cdef quadpack_qawoe(dummpy, fcn, double a, double b, double omega, int integr, e
         rlist = <double *>np.PyArray_DATA(ap_rlist)
         elist = <double *>np.PyArray_DATA(ap_elist)
 
-        DQAWOE(quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)
+        DQAWOE(<void *>quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)
     except Exception, e:
         ier = 80
     finally:
-        RESTORE_FUNC(savedSettings)
+        QUAD_RESTORE_FUNC(savedSettings)
 
     if full_output:
         dict = { "neval" : neval, 
