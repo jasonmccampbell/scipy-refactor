@@ -418,7 +418,7 @@ def get_window(window, Nx, fftbins=True):
     sym = not fftbins
     try:
         beta = float(window)
-    except (TypeError, ValueError):
+    except (TypeError, ValueError, AttributeError):
         args = ()
         if isinstance(window, tuple):
             winstr = window[0]
