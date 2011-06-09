@@ -256,7 +256,7 @@ typedef void (*__pyx_t_5numpy_PyArray_CopySwapFunc)(void *, void *, int, NpyArra
 
 typedef System::Object^ __pyx_t_5scipy_9integrate_9fwrap_ktp_fw_bytes;
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":353
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":306
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -399,22 +399,18 @@ static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *); 
 /* Module declarations from scipy.integrate.fwrap_ktp */
 /* Module declarations from scipy.integrate.vode_fc */
 /* Module declarations from scipy.integrate.vode */
-static int dvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
-static void dvode_f_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *); /*proto*/
-static int dvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *); /*proto*/
+public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
+static void dvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
-static void dvode_jac_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *); /*proto*/
-static int zvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *); /*proto*/
+public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
+static void dvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
-static void zvode_f_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *); /*proto*/
-static int zvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *); /*proto*/
+public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
+static void zvode_f_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *); /*proto*/
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
-public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
-static void zvode_jac_cb_wrapper(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *); /*proto*/
+public delegate void __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
+static void zvode_jac_cb_wrapper_core(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *); /*proto*/
 static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, __pyx_t_5numpy_npy_intp *, int, int, ref struct __pyx_opt_args_5scipy_9integrate_4vode_fw_asfortranarray ^__pyx_optional_args); /*proto*/
 /* Cython code section 'typeinfo' */
 /* Cython code section 'before_global_var' */
@@ -424,67 +420,67 @@ static NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^, int, int, __pyx_
 namespace clr_vode {
   public ref class module_vode sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_63_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_65_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_69_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_75_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_75_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_97_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_99_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_103_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_109_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_109_31;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_117_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_117_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_117_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_117_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_117_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_117_0;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_161_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_163_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_165_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_167_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_169_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_171_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_173_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_175_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_177_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_178_47;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_179_51;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_211_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_213_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_217_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_223_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_223_31;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_245_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_247_35;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_251_32;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_257_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_257_31;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_265_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_265_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_265_0;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_265_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_265_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_265_0;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_312_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_314_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_316_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_318_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_320_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_322_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_324_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_326_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_328_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_330_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_62_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_64_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_68_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_73_17;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_73_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_90_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_92_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_96_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_101_17;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_101_26;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_104_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_104_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_104_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_104_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_104_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_104_0;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_148_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_150_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_152_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_154_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_156_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_158_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_160_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_162_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_164_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_165_47;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_166_51;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_188_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_190_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_194_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_199_17;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_199_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_215_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_ARGS_217_35;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_221_32;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_exc_info_226_17;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >^ __site_call0_226_26;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_228_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >^ __site_cvt_cvt_fwr_dbl_t_228_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_228_0;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_228_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >^ __site_cvt_cvt_fwi_integer_t_228_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_228_0;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_275_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_277_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_279_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_281_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_283_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_285_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_287_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_289_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_291_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_293_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_295_24;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_296_47;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_297_51;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_318_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_323_59;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_330_29;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_332_60;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_332_24;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_333_47;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_334_51;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_365_27;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_370_59;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_377_29;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_379_60;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_379_24;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
@@ -567,8 +563,8 @@ static System::String^ __module__ = __Pyx_MODULE_NAME;
  *     void *memcpy(void *dest, void *src, int n)
  * 
  * cdef class fw_CallbackInfo(object):             # <<<<<<<<<<<<<<
- *     # Callable object to call
- *     cdef object callback
+ *     def __init__(self, callback, extra_args):
+ *         self.callback = callback
  */
 [PythonType]
 ref struct fw_CallbackInfo {
@@ -585,17 +581,17 @@ ref struct fw_CallbackInfo {
   System::Object^ arg7;
   System::Object^ arg8;
   System::Object^ arg9;
-  jmp_buf (&jmp);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":43
- *     # For use by longjmp
- *     cdef jmp_buf jmp
- *     def __cinit__(self, object callback, object extra_args):             # <<<<<<<<<<<<<<
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":32
+ * 
+ * cdef class fw_CallbackInfo(object):
+ *     def __init__(self, callback, extra_args):             # <<<<<<<<<<<<<<
  *         self.callback = callback
  *         self.extra_args = extra_args
  */
 
-  fw_CallbackInfo(System::Object^ callback, System::Object^ extra_args) : jmp(*(new jmp_buf)) {
+  [SpecialName]
+  virtual int __init__(System::Object^ callback, System::Object^ extra_args) {
     System::Object^ __pyx_v_callback = nullptr;
     System::Object^ __pyx_v_extra_args = nullptr;
     int __pyx_r;
@@ -603,47 +599,47 @@ ref struct fw_CallbackInfo {
     __pyx_v_callback = callback;
     __pyx_v_extra_args = extra_args;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":44
- *     cdef jmp_buf jmp
- *     def __cinit__(self, object callback, object extra_args):
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":33
+ * cdef class fw_CallbackInfo(object):
+ *     def __init__(self, callback, extra_args):
  *         self.callback = callback             # <<<<<<<<<<<<<<
  *         self.extra_args = extra_args
  * 
  */
     ((fw_CallbackInfo^)__pyx_v_self)->callback = __pyx_v_callback;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":45
- *     def __cinit__(self, object callback, object extra_args):
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":34
+ *     def __init__(self, callback, extra_args):
  *         self.callback = callback
  *         self.extra_args = extra_args             # <<<<<<<<<<<<<<
  * 
- * 
+ *     # Callable object to call
  */
     ((fw_CallbackInfo^)__pyx_v_self)->extra_args = __pyx_v_extra_args;
 
     __pyx_r = 0;
-  }
-  !fw_CallbackInfo() {
-    delete &jmp;
+    return __pyx_r;
   }
 };
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":51
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":50
  * 
  * cdef fw_CallbackInfo dvode_f_cb_info
- * cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
+ * cdef void dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
  *     global dvode_f_cb_info;
  *     cdef fw_CallbackInfo info
  */
 
-static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwr_dbl_t *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
+static void (*__pyx_function_pointer_dvode_f_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
+typedef void (*__pyx_fp_t_dvode_f_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
+static __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper_core^ __pyx_delegate_val_dvode_f_cb_wrapper_core;
+static  void dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwr_dbl_t *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_ydot_;
   __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_ydot_shape[1];
   System::Object^ __pyx_v_ydot_ret;
-  int __pyx_r;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -653,7 +649,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
   __pyx_v_ydot_ = nullptr;
   __pyx_v_ydot_ret = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":56
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":55
  *     cdef np.ndarray y_, ydot_
  *     cdef np.npy_intp y_shape[1], ydot_shape[1]
  *     info = dvode_f_cb_info             # <<<<<<<<<<<<<<
@@ -662,7 +658,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":57
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":56
  *     cdef np.npy_intp y_shape[1], ydot_shape[1]
  *     info = dvode_f_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -671,7 +667,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":58
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":57
  *     info = dvode_f_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -680,7 +676,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":59
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":58
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -694,7 +690,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":60
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":59
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         ydot_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -703,7 +699,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
     (__pyx_v_ydot_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":61
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":60
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         ydot_shape[0] = n[0]
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwr_dbl_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -717,7 +713,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_v_ydot_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":62
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":61
  *         ydot_shape[0] = n[0]
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwr_dbl_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -727,7 +723,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":63
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":62
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwr_dbl_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             ydot_ret = info.callback(t[0], y_)             # <<<<<<<<<<<<<<
@@ -735,7 +731,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_t[0]);
-      __pyx_t_5 = __site_call2_63_36->Target(__site_call2_63_36, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_62_36->Target(__site_call2_62_36, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_ydot_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -743,7 +739,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":65
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":64
  *             ydot_ret = info.callback(t[0], y_)
  *         else:
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -751,14 +747,14 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_t[0]);
-      __pyx_t_3 = __site_call2_ARGS_65_36->Target(__site_call2_ARGS_65_36, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_64_36->Target(__site_call2_ARGS_64_36, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_ydot_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":66
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":65
  *         else:
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  *         if ydot_ is not ydot_ret:             # <<<<<<<<<<<<<<
@@ -768,7 +764,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_t_4 = (((System::Object^)__pyx_v_ydot_) != __pyx_v_ydot_ret);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":67
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":66
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  *         if ydot_ is not ydot_ret:
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -786,7 +782,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       __pyx_v_ydot_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":68
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":67
  *         if ydot_ is not ydot_ret:
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:             # <<<<<<<<<<<<<<
@@ -796,7 +792,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       __pyx_t_4 = ((__pyx_v_ydot_shape[0]) != (PyArray_DIMS(__pyx_v_ydot_)[0]));
       if (__pyx_t_4) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":69
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":68
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwr_dbl_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -804,7 +800,7 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *         dvode_f_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_69_32->Target(__site_call1_69_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_68_32->Target(__site_call1_68_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -812,146 +808,87 @@ static  int dvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       }
       __pyx_L5:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":70
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":69
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))             # <<<<<<<<<<<<<<
  *         dvode_f_cb_info = info
- *         return 0
+ *     except:
  */
       memcpy(__pyx_v_ydot, PyArray_DATA(__pyx_v_ydot_), PyArray_NBYTES(__pyx_v_ydot_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":71
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":70
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
  *         dvode_f_cb_info = info             # <<<<<<<<<<<<<<
- *         return 0
  *     except:
+ *         dvode_f_cb_info = info
  */
     __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info = __pyx_v_info;
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":72
- *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
- *         dvode_f_cb_info = info
- *         return 0             # <<<<<<<<<<<<<<
- *     except:
- *         dvode_f_cb_info = info
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":73
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":71
+ *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
  *         dvode_f_cb_info = info
- *         return 0
  *     except:             # <<<<<<<<<<<<<<
  *         dvode_f_cb_info = info
- *         info.exc = sys.exc_info()
+ *         raise sys.exc_info()
  */
     /*except:*/ {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate.vode.dvode_f_cb_wrapper_core");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":74
- *         return 0
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":72
+ *         dvode_f_cb_info = info
  *     except:
  *         dvode_f_cb_info = info             # <<<<<<<<<<<<<<
- *         info.exc = sys.exc_info()
- *         return -1
+ *         raise sys.exc_info()
+ * 
  */
       __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info = __pyx_v_info;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":75
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":73
  *     except:
  *         dvode_f_cb_info = info
- *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
- *         return -1
+ *         raise sys.exc_info()             # <<<<<<<<<<<<<<
+ * 
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_75_22->Target(__site_get_exc_info_75_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_73_17->Target(__site_get_exc_info_73_17, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_75_31->Target(__site_call0_75_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_73_26->Target(__site_call0_73_26, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
-      __pyx_v_info->exc = __pyx_t_5;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":76
- *         dvode_f_cb_info = info
- *         info.exc = sys.exc_info()
- *         return -1             # <<<<<<<<<<<<<<
- * 
- * cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
- */
-      __pyx_r = -1;
-      goto __pyx_L0;
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
 }
 
 /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":78
- *         return -1
- * 
- * cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
- *     if dvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
- *         longjmp(dvode_f_cb_info.jmp, 1)
- */
-
-static void (*__pyx_function_pointer_dvode_f_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
-typedef void (*__pyx_fp_t_dvode_f_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwr_dbl_t *, void *, void *);
-static __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper^ __pyx_delegate_val_dvode_f_cb_wrapper;
-static  void dvode_f_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwr_dbl_t *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
-  int __pyx_t_1;
-
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":79
- * 
- * cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
- *     if dvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:             # <<<<<<<<<<<<<<
- *         longjmp(dvode_f_cb_info.jmp, 1)
- * 
- */
-  __pyx_t_1 = (dvode_f_cb_wrapper_core(__pyx_v_n, __pyx_v_t, __pyx_v_y, __pyx_v_ydot, __pyx_v_rpar, __pyx_v_ipar) != 0);
-  if (__pyx_t_1) {
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":80
- * cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
- *     if dvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
- *         longjmp(dvode_f_cb_info.jmp, 1)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    longjmp(__pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info->jmp, 1);
-    goto __pyx_L3;
-  }
-  __pyx_L3:;
-
-}
-
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":85
  * 
  * cdef fw_CallbackInfo dvode_jac_cb_info
- * cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
+ * cdef void dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
  *     global dvode_jac_cb_info;
  *     cdef fw_CallbackInfo info
  */
 
-static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, fwr_dbl_t *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
+static void (*__pyx_function_pointer_dvode_jac_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
+typedef void (*__pyx_fp_t_dvode_jac_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
+static __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper_core^ __pyx_delegate_val_dvode_jac_cb_wrapper_core;
+static  void dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, fwr_dbl_t *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_jac_;
   __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_jac_shape[2];
   System::Object^ __pyx_v_jac_ret;
-  int __pyx_r;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -963,7 +900,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
   __pyx_v_jac_ = nullptr;
   __pyx_v_jac_ret = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":90
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":83
  *     cdef np.ndarray y_, jac_
  *     cdef np.npy_intp y_shape[1], jac_shape[2]
  *     info = dvode_jac_cb_info             # <<<<<<<<<<<<<<
@@ -972,7 +909,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":91
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":84
  *     cdef np.npy_intp y_shape[1], jac_shape[2]
  *     info = dvode_jac_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -981,7 +918,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":92
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":85
  *     info = dvode_jac_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -990,7 +927,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":93
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":86
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1004,7 +941,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":94
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":87
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]             # <<<<<<<<<<<<<<
@@ -1014,7 +951,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     (__pyx_v_jac_shape[0]) = (__pyx_v_nrowpd[0]);
     (__pyx_v_jac_shape[1]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":95
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":88
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwr_dbl_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwr_dbl_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1028,7 +965,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_v_jac_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":96
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":89
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwr_dbl_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -1038,7 +975,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":97
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":90
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwr_dbl_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             jac_ret = info.callback(t[0], y_)             # <<<<<<<<<<<<<<
@@ -1046,7 +983,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_t[0]);
-      __pyx_t_5 = __site_call2_97_35->Target(__site_call2_97_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_90_35->Target(__site_call2_90_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_jac_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -1054,7 +991,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":99
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":92
  *             jac_ret = info.callback(t[0], y_)
  *         else:
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -1062,14 +999,14 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwr_dbl_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_t[0]);
-      __pyx_t_3 = __site_call2_ARGS_99_35->Target(__site_call2_ARGS_99_35, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_92_35->Target(__site_call2_ARGS_92_35, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_jac_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":100
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":93
  *         else:
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  *         if jac_ is not jac_ret:             # <<<<<<<<<<<<<<
@@ -1079,7 +1016,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_t_4 = (((System::Object^)__pyx_v_jac_) != __pyx_v_jac_ret);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":101
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":94
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  *         if jac_ is not jac_ret:
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwr_dbl_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -1097,7 +1034,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       __pyx_v_jac_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":102
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":95
  *         if jac_ is not jac_ret:
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwr_dbl_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:             # <<<<<<<<<<<<<<
@@ -1113,7 +1050,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":103
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":96
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwr_dbl_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -1121,7 +1058,7 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *         dvode_jac_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_103_32->Target(__site_call1_103_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_96_32->Target(__site_call1_96_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -1129,131 +1066,70 @@ static  int dvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       }
       __pyx_L5:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":104
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":97
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))             # <<<<<<<<<<<<<<
  *         dvode_jac_cb_info = info
- *         return 0
+ *     except:
  */
       memcpy(__pyx_v_jac, PyArray_DATA(__pyx_v_jac_), PyArray_NBYTES(__pyx_v_jac_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":105
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":98
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
  *         dvode_jac_cb_info = info             # <<<<<<<<<<<<<<
- *         return 0
  *     except:
+ *         dvode_jac_cb_info = info
  */
     __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info = __pyx_v_info;
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":106
- *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
- *         dvode_jac_cb_info = info
- *         return 0             # <<<<<<<<<<<<<<
- *     except:
- *         dvode_jac_cb_info = info
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":107
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":99
+ *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
  *         dvode_jac_cb_info = info
- *         return 0
  *     except:             # <<<<<<<<<<<<<<
  *         dvode_jac_cb_info = info
- *         info.exc = sys.exc_info()
+ *         raise sys.exc_info()
  */
     /*except:*/ {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate.vode.dvode_jac_cb_wrapper_core");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":108
- *         return 0
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":100
+ *         dvode_jac_cb_info = info
  *     except:
  *         dvode_jac_cb_info = info             # <<<<<<<<<<<<<<
- *         info.exc = sys.exc_info()
- *         return -1
+ *         raise sys.exc_info()
+ * 
  */
       __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info = __pyx_v_info;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":109
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":101
  *     except:
  *         dvode_jac_cb_info = info
- *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
- *         return -1
+ *         raise sys.exc_info()             # <<<<<<<<<<<<<<
+ * 
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_109_22->Target(__site_get_exc_info_109_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_101_17->Target(__site_get_exc_info_101_17, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_109_31->Target(__site_call0_109_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_101_26->Target(__site_call0_101_26, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
-      __pyx_v_info->exc = __pyx_t_5;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":110
- *         dvode_jac_cb_info = info
- *         info.exc = sys.exc_info()
- *         return -1             # <<<<<<<<<<<<<<
- * 
- * cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- */
-      __pyx_r = -1;
-      goto __pyx_L0;
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":112
- *         return -1
- * 
- * cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
- *     if dvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
- *         longjmp(dvode_jac_cb_info.jmp, 1)
- */
-
-static void (*__pyx_function_pointer_dvode_jac_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
-typedef void (*__pyx_fp_t_dvode_jac_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, fwr_dbl_t *, fwi_integer_t *, fwi_integer_t *, fwr_dbl_t *, fwi_integer_t *, void *, void *);
-static __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper^ __pyx_delegate_val_dvode_jac_cb_wrapper;
-static  void dvode_jac_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, fwr_dbl_t *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, fwr_dbl_t *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
-  int __pyx_t_1;
-
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":113
- * 
- * cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- *     if dvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:             # <<<<<<<<<<<<<<
- *         longjmp(dvode_jac_cb_info.jmp, 1)
- * 
- */
-  __pyx_t_1 = (dvode_jac_cb_wrapper_core(__pyx_v_n, __pyx_v_t, __pyx_v_y, __pyx_v_ml, __pyx_v_mu, __pyx_v_jac, __pyx_v_nrowpd, __pyx_v_rpar, __pyx_v_ipar) != 0);
-  if (__pyx_t_1) {
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":114
- * cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- *     if dvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
- *         longjmp(dvode_jac_cb_info.jmp, 1)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    longjmp(__pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info->jmp, 1);
-    goto __pyx_L3;
-  }
-  __pyx_L3:;
-
-}
-
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":117
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":104
  * 
  * 
  * def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):             # <<<<<<<<<<<<<<
@@ -1294,9 +1170,6 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5numpy_npy_intp __pyx_v_atol_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_rwork_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_iwork_shape[1];
-  System::Object^ __pyx_v_fw_exctype;
-  System::Object^ __pyx_v_fw_excval;
-  System::Object^ __pyx_v_fw_exctb;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   long __pyx_t_2;
@@ -1306,20 +1179,19 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   long __pyx_t_6;
   long __pyx_t_7;
   System::Object^ __pyx_t_8 = nullptr;
-  array<System::Object^>^ __pyx_t_9;
-  System::Object^ __pyx_t_10 = nullptr;
+  System::Object^ __pyx_t_9 = nullptr;
   __pyx_v_f = f;
   __pyx_v_jac = jac;
   __pyx_v_y = y;
-  __pyx_v_t = __site_cvt_cvt_fwr_dbl_t_117_0->Target(__site_cvt_cvt_fwr_dbl_t_117_0, t);
-  __pyx_v_tout = __site_cvt_cvt_fwr_dbl_t_117_0_1->Target(__site_cvt_cvt_fwr_dbl_t_117_0_1, tout);
+  __pyx_v_t = __site_cvt_cvt_fwr_dbl_t_104_0->Target(__site_cvt_cvt_fwr_dbl_t_104_0, t);
+  __pyx_v_tout = __site_cvt_cvt_fwr_dbl_t_104_0_1->Target(__site_cvt_cvt_fwr_dbl_t_104_0_1, tout);
   __pyx_v_rtol = rtol;
   __pyx_v_atol = atol;
-  __pyx_v_itask = __site_cvt_cvt_fwi_integer_t_117_0->Target(__site_cvt_cvt_fwi_integer_t_117_0, itask);
-  __pyx_v_istate = __site_cvt_cvt_fwi_integer_t_117_0_1->Target(__site_cvt_cvt_fwi_integer_t_117_0_1, istate);
+  __pyx_v_itask = __site_cvt_cvt_fwi_integer_t_104_0->Target(__site_cvt_cvt_fwi_integer_t_104_0, itask);
+  __pyx_v_istate = __site_cvt_cvt_fwi_integer_t_104_0_1->Target(__site_cvt_cvt_fwi_integer_t_104_0_1, istate);
   __pyx_v_rwork = rwork;
   __pyx_v_iwork = iwork;
-  __pyx_v_mf = __site_cvt_cvt_fwi_integer_t_117_0_2->Target(__site_cvt_cvt_fwi_integer_t_117_0_2, mf);
+  __pyx_v_mf = __site_cvt_cvt_fwi_integer_t_104_0_2->Target(__site_cvt_cvt_fwi_integer_t_104_0_2, mf);
   if (dynamic_cast<System::Reflection::Missing^>(f_extra_args) == nullptr) {
     __pyx_v_f_extra_args = f_extra_args;
   } else {
@@ -1331,7 +1203,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
     __pyx_v_jac_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_y) == nullptr) {
-    __pyx_v_overwrite_y = __site_cvt_cvt_int_117_0->Target(__site_cvt_cvt_int_117_0, overwrite_y);
+    __pyx_v_overwrite_y = __site_cvt_cvt_int_104_0->Target(__site_cvt_cvt_int_104_0, overwrite_y);
   } else {
     __pyx_v_overwrite_y = ((int)0);
   }
@@ -1342,11 +1214,8 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_atol_ = nullptr;
   __pyx_v_rwork_ = nullptr;
   __pyx_v_iwork_ = nullptr;
-  __pyx_v_fw_exctype = nullptr;
-  __pyx_v_fw_excval = nullptr;
-  __pyx_v_fw_exctb = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":150
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":137
  *     cdef np.ndarray y_, rtol_, atol_, rwork_, iwork_
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], rwork_shape[1], iwork_shape[1]
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1357,7 +1226,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_rtol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":151
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":138
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], rwork_shape[1], iwork_shape[1]
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1368,7 +1237,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_atol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":152
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":139
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))             # <<<<<<<<<<<<<<
@@ -1399,7 +1268,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_v_itol = __pyx_t_2;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":153
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":140
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
  *     iopt = 1             # <<<<<<<<<<<<<<
@@ -1408,7 +1277,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_iopt = 1;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":154
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":141
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
  *     iopt = 1
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1419,7 +1288,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":155
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":142
  *     iopt = 1
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -1430,7 +1299,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":156
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":143
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -1441,7 +1310,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":157
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":144
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     neq = y_shape[0]             # <<<<<<<<<<<<<<
@@ -1450,7 +1319,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_neq = (__pyx_v_y_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":158
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":145
  *     y_ = fw_asfortranarray(y, fwr_dbl_t_enum, 1, y_shape, not overwrite_y, False)
  *     neq = y_shape[0]
  *     lrw = rwork_shape[0]             # <<<<<<<<<<<<<<
@@ -1459,7 +1328,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_lrw = (__pyx_v_rwork_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":159
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":146
  *     neq = y_shape[0]
  *     lrw = rwork_shape[0]
  *     liw = iwork_shape[0]             # <<<<<<<<<<<<<<
@@ -1468,7 +1337,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_liw = (__pyx_v_iwork_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":160
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":147
  *     lrw = rwork_shape[0]
  *     liw = iwork_shape[0]
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):             # <<<<<<<<<<<<<<
@@ -1485,7 +1354,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_4);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":161
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":148
  *     liw = iwork_shape[0]
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')             # <<<<<<<<<<<<<<
@@ -1493,7 +1362,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_161_24->Target(__site_call1_161_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)"));
+    __pyx_t_8 = __site_call1_148_24->Target(__site_call1_148_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -1501,7 +1370,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":162
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":149
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):             # <<<<<<<<<<<<<<
@@ -1518,7 +1387,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":163
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":150
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')             # <<<<<<<<<<<<<<
@@ -1526,7 +1395,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_163_24->Target(__site_call1_163_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)"));
+    __pyx_t_1 = __site_call1_150_24->Target(__site_call1_150_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1534,7 +1403,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L6:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":164
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":151
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  *     if not ((itask > 0) and (itask < 6)):             # <<<<<<<<<<<<<<
@@ -1551,7 +1420,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_4);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":165
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":152
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  *     if not ((itask > 0) and (itask < 6)):
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')             # <<<<<<<<<<<<<<
@@ -1559,7 +1428,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_165_24->Target(__site_call1_165_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (itask > 0) and (itask < 6)"));
+    __pyx_t_8 = __site_call1_152_24->Target(__site_call1_152_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (itask > 0) and (itask < 6)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -1567,7 +1436,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L7:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":166
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":153
  *     if not ((itask > 0) and (itask < 6)):
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  *     if not ((istate > 0) and (istate < 4)):             # <<<<<<<<<<<<<<
@@ -1584,7 +1453,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":167
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":154
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  *     if not ((istate > 0) and (istate < 4)):
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')             # <<<<<<<<<<<<<<
@@ -1592,7 +1461,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_167_24->Target(__site_call1_167_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (istate > 0) and (istate < 4)"));
+    __pyx_t_1 = __site_call1_154_24->Target(__site_call1_154_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (istate > 0) and (istate < 4)"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1600,7 +1469,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L8:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":168
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":155
  *     if not ((istate > 0) and (istate < 4)):
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  *     if not (rwork_shape[0] >= lrw):             # <<<<<<<<<<<<<<
@@ -1610,7 +1479,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!((__pyx_v_rwork_shape[0]) >= __pyx_v_lrw));
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":169
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":156
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  *     if not (rwork_shape[0] >= lrw):
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')             # <<<<<<<<<<<<<<
@@ -1618,7 +1487,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_169_24->Target(__site_call1_169_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rwork.shape[0] >= lrw"));
+    __pyx_t_8 = __site_call1_156_24->Target(__site_call1_156_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: rwork.shape[0] >= lrw"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -1626,7 +1495,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L9:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":170
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":157
  *     if not (rwork_shape[0] >= lrw):
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  *     if not (iwork_shape[0] >= liw):             # <<<<<<<<<<<<<<
@@ -1636,7 +1505,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!((__pyx_v_iwork_shape[0]) >= __pyx_v_liw));
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":171
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":158
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  *     if not (iwork_shape[0] >= liw):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')             # <<<<<<<<<<<<<<
@@ -1644,7 +1513,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_171_24->Target(__site_call1_171_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= liw"));
+    __pyx_t_1 = __site_call1_158_24->Target(__site_call1_158_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= liw"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1652,7 +1521,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L10:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":172
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":159
  *     if not (iwork_shape[0] >= liw):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  *     if not (0 <= neq <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -1666,7 +1535,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":173
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":160
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  *     if not (0 <= neq <= y_shape[0]):
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1674,7 +1543,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_173_24->Target(__site_call1_173_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= neq <= y.shape[0]) not satisifed"));
+    __pyx_t_8 = __site_call1_160_24->Target(__site_call1_160_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= neq <= y.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -1682,7 +1551,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L11:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":174
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":161
  *     if not (0 <= neq <= y_shape[0]):
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  *     if not (0 <= lrw <= rwork_shape[0]):             # <<<<<<<<<<<<<<
@@ -1696,7 +1565,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":175
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":162
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  *     if not (0 <= lrw <= rwork_shape[0]):
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1704,7 +1573,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_175_24->Target(__site_call1_175_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= lrw <= rwork.shape[0]) not satisifed"));
+    __pyx_t_1 = __site_call1_162_24->Target(__site_call1_162_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= lrw <= rwork.shape[0]) not satisifed"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -1712,7 +1581,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L12:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":176
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":163
  *     if not (0 <= lrw <= rwork_shape[0]):
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  *     if not (0 <= liw <= iwork_shape[0]):             # <<<<<<<<<<<<<<
@@ -1726,7 +1595,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":177
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":164
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  *     if not (0 <= liw <= iwork_shape[0]):
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -1734,7 +1603,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  *     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_177_24->Target(__site_call1_177_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= liw <= iwork.shape[0]) not satisifed"));
+    __pyx_t_8 = __site_call1_164_24->Target(__site_call1_164_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= liw <= iwork.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -1742,155 +1611,51 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L13:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":178
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":165
  *     if not (0 <= liw <= iwork_shape[0]):
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  *     dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)             # <<<<<<<<<<<<<<
  *     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:
  */
-  __pyx_t_8 = __site_call2_178_47->Target(__site_call2_178_47, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_f, __pyx_v_f_extra_args);
+  __pyx_t_8 = __site_call2_165_47->Target(__site_call2_165_47, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_f, __pyx_v_f_extra_args);
   __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_v_fw_f_cb = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":179
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":166
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  *     dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
  *     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)             # <<<<<<<<<<<<<<
  *     try:
- *         if setjmp(dvode_f_cb_info.jmp) == 0:
+ *         fc.dvode(dvode_f_cb_wrapper_core, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper_core, &mf, NULL, NULL)
  */
-  __pyx_t_8 = __site_call2_179_51->Target(__site_call2_179_51, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_jac, __pyx_v_jac_extra_args);
+  __pyx_t_8 = __site_call2_166_51->Target(__site_call2_166_51, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_jac, __pyx_v_jac_extra_args);
   __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_v_fw_jac_cb = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":180
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":167
  *     dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
  *     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:             # <<<<<<<<<<<<<<
- *         if setjmp(dvode_f_cb_info.jmp) == 0:
- *             if setjmp(dvode_jac_cb_info.jmp) == 0:
+ *         fc.dvode(dvode_f_cb_wrapper_core, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper_core, &mf, NULL, NULL)
+ *     finally:
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":181
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":168
  *     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:
- *         if setjmp(dvode_f_cb_info.jmp) == 0:             # <<<<<<<<<<<<<<
- *             if setjmp(dvode_jac_cb_info.jmp) == 0:
- *                 fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)
- */
-    __pyx_t_3 = (setjmp(__pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info->jmp) == 0);
-    if (__pyx_t_3) {
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":182
- *     try:
- *         if setjmp(dvode_f_cb_info.jmp) == 0:
- *             if setjmp(dvode_jac_cb_info.jmp) == 0:             # <<<<<<<<<<<<<<
- *                 fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)
- *             else:
- */
-      __pyx_t_3 = (setjmp(__pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info->jmp) == 0);
-      if (__pyx_t_3) {
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":183
- *         if setjmp(dvode_f_cb_info.jmp) == 0:
- *             if setjmp(dvode_jac_cb_info.jmp) == 0:
- *                 fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)             # <<<<<<<<<<<<<<
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc
- */
-        F_FUNC(dvode,DVODE)(__pyx_function_pointer_dvode_f_cb_wrapper, (&__pyx_v_neq), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_t), (&__pyx_v_tout), (&__pyx_v_itol), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rtol_)), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_atol_)), (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rwork_)), (&__pyx_v_lrw), ((fwi_integer_t *)PyArray_DATA(__pyx_v_iwork_)), (&__pyx_v_liw), __pyx_function_pointer_dvode_jac_cb_wrapper, (&__pyx_v_mf), NULL, NULL);
-        goto __pyx_L15;
-      }
-      /*else*/ {
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":185
- *                 fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc             # <<<<<<<<<<<<<<
- *                 dvode_jac_cb_info.exc = None
- *                 raise fw_exctype, fw_excval, fw_exctb
- */
-        __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info->exc, 3)));
-        __pyx_t_8 = __pyx_t_9[0];
-        __pyx_t_1 = __pyx_t_9[1];
-        __pyx_t_10 = __pyx_t_9[2];
-        __pyx_t_9 = nullptr;
-        __pyx_v_fw_exctype = __pyx_t_8;
-        __pyx_t_8 = nullptr;
-        __pyx_v_fw_excval = __pyx_t_1;
-        __pyx_t_1 = nullptr;
-        __pyx_v_fw_exctb = __pyx_t_10;
-        __pyx_t_10 = nullptr;
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":186
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc
- *                 dvode_jac_cb_info.exc = None             # <<<<<<<<<<<<<<
- *                 raise fw_exctype, fw_excval, fw_exctb
- *         else:
- */
-        __pyx_v_5scipy_9integrate_4vode_dvode_jac_cb_info->exc = nullptr;
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":187
- *                 fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc
- *                 dvode_jac_cb_info.exc = None
- *                 raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = dvode_f_cb_info.exc
- */
-        throw PythonOps::MakeException(__pyx_context, __pyx_v_fw_exctype, __pyx_v_fw_excval, __pyx_v_fw_exctb);
-      }
-      __pyx_L15:;
-      goto __pyx_L14;
-    }
-    /*else*/ {
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":189
- *                 raise fw_exctype, fw_excval, fw_exctb
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = dvode_f_cb_info.exc             # <<<<<<<<<<<<<<
- *             dvode_f_cb_info.exc = None
- *             raise fw_exctype, fw_excval, fw_exctb
- */
-      __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info->exc, 3)));
-      __pyx_t_10 = __pyx_t_9[0];
-      __pyx_t_1 = __pyx_t_9[1];
-      __pyx_t_8 = __pyx_t_9[2];
-      __pyx_t_9 = nullptr;
-      __pyx_v_fw_exctype = __pyx_t_10;
-      __pyx_t_10 = nullptr;
-      __pyx_v_fw_excval = __pyx_t_1;
-      __pyx_t_1 = nullptr;
-      __pyx_v_fw_exctb = __pyx_t_8;
-      __pyx_t_8 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":190
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = dvode_f_cb_info.exc
- *             dvode_f_cb_info.exc = None             # <<<<<<<<<<<<<<
- *             raise fw_exctype, fw_excval, fw_exctb
- *     finally:
- */
-      __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info->exc = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":191
- *             fw_exctype, fw_excval, fw_exctb = dvode_f_cb_info.exc
- *             dvode_f_cb_info.exc = None
- *             raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
+ *         fc.dvode(dvode_f_cb_wrapper_core, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper_core, &mf, NULL, NULL)             # <<<<<<<<<<<<<<
  *     finally:
  *         dvode_f_cb_info = None
  */
-      throw PythonOps::MakeException(__pyx_context, __pyx_v_fw_exctype, __pyx_v_fw_excval, __pyx_v_fw_exctb);
-    }
-    __pyx_L14:;
+    F_FUNC(dvode,DVODE)(__pyx_function_pointer_dvode_f_cb_wrapper_core, (&__pyx_v_neq), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_t), (&__pyx_v_tout), (&__pyx_v_itol), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rtol_)), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_atol_)), (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rwork_)), (&__pyx_v_lrw), ((fwi_integer_t *)PyArray_DATA(__pyx_v_iwork_)), (&__pyx_v_liw), __pyx_function_pointer_dvode_jac_cb_wrapper_core, (&__pyx_v_mf), NULL, NULL);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":193
- *             raise fw_exctype, fw_excval, fw_exctb
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":170
+ *         fc.dvode(dvode_f_cb_wrapper_core, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper_core, &mf, NULL, NULL)
  *     finally:
  *         dvode_f_cb_info = None             # <<<<<<<<<<<<<<
  *     return (y_, t, istate,)
@@ -1900,7 +1665,7 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
     __pyx_v_5scipy_9integrate_4vode_dvode_f_cb_info = ((fw_CallbackInfo^)nullptr);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":194
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":171
  *     finally:
  *         dvode_f_cb_info = None
  *     return (y_, t, istate,)             # <<<<<<<<<<<<<<
@@ -1909,11 +1674,11 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_t_8 = __pyx_v_t;
   __pyx_t_1 = __pyx_v_istate;
-  __pyx_t_10 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_y_), __pyx_t_8, __pyx_t_1});
+  __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_y_), __pyx_t_8, __pyx_t_1});
   __pyx_t_8 = nullptr;
   __pyx_t_1 = nullptr;
-  __pyx_r = __pyx_t_10;
-  __pyx_t_10 = nullptr;
+  __pyx_r = __pyx_t_9;
+  __pyx_t_9 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -1921,22 +1686,24 @@ static System::Object^ dvode(System::Object^ f, System::Object^ jac, System::Obj
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":199
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":176
  * 
  * cdef fw_CallbackInfo zvode_f_cb_info
- * cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
+ * cdef void zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
  *     global zvode_f_cb_info;
  *     cdef fw_CallbackInfo info
  */
 
-static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, __pyx_t_double_complex *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
+static void (*__pyx_function_pointer_zvode_f_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
+typedef void (*__pyx_fp_t_zvode_f_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
+static __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper_core^ __pyx_delegate_val_zvode_f_cb_wrapper_core;
+static  void zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, __pyx_t_double_complex *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_ydot_;
   __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_ydot_shape[1];
   System::Object^ __pyx_v_ydot_ret;
-  int __pyx_r;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -1946,7 +1713,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
   __pyx_v_ydot_ = nullptr;
   __pyx_v_ydot_ret = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":204
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":181
  *     cdef np.ndarray y_, ydot_
  *     cdef np.npy_intp y_shape[1], ydot_shape[1]
  *     info = zvode_f_cb_info             # <<<<<<<<<<<<<<
@@ -1955,7 +1722,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":205
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":182
  *     cdef np.npy_intp y_shape[1], ydot_shape[1]
  *     info = zvode_f_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -1964,7 +1731,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":206
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":183
  *     info = zvode_f_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1973,7 +1740,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":207
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":184
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -1987,7 +1754,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":208
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":185
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         ydot_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -1996,7 +1763,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  */
     (__pyx_v_ydot_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":209
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":186
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         ydot_shape[0] = n[0]
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwc_dbl_complex_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -2010,7 +1777,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_v_ydot_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":210
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":187
  *         ydot_shape[0] = n[0]
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwc_dbl_complex_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -2020,7 +1787,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":211
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":188
  *         ydot_ = np.PyArray_New(NULL, 1, ydot_shape, fwc_dbl_complex_t_enum, NULL, <char*>ydot, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             ydot_ret = info.callback(t[0], y_)             # <<<<<<<<<<<<<<
@@ -2028,7 +1795,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_t[0]);
-      __pyx_t_5 = __site_call2_211_36->Target(__site_call2_211_36, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_188_36->Target(__site_call2_188_36, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_ydot_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -2036,7 +1803,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":213
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":190
  *             ydot_ret = info.callback(t[0], y_)
  *         else:
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -2044,14 +1811,14 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwc_dbl_complex_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_t[0]);
-      __pyx_t_3 = __site_call2_ARGS_213_36->Target(__site_call2_ARGS_213_36, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_190_36->Target(__site_call2_ARGS_190_36, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_ydot_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":214
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":191
  *         else:
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  *         if ydot_ is not ydot_ret:             # <<<<<<<<<<<<<<
@@ -2061,7 +1828,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
     __pyx_t_4 = (((System::Object^)__pyx_v_ydot_) != __pyx_v_ydot_ret);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":215
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":192
  *             ydot_ret = info.callback(t[0], y_, *info.extra_args)
  *         if ydot_ is not ydot_ret:
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwc_dbl_complex_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -2079,7 +1846,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       __pyx_v_ydot_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":216
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":193
  *         if ydot_ is not ydot_ret:
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwc_dbl_complex_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:             # <<<<<<<<<<<<<<
@@ -2089,7 +1856,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       __pyx_t_4 = ((__pyx_v_ydot_shape[0]) != (PyArray_DIMS(__pyx_v_ydot_)[0]));
       if (__pyx_t_4) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":217
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":194
  *             ydot_ = np.PyArray_FROMANY(ydot_ret, fwc_dbl_complex_t_enum, 1, 1, np.NPY_C_CONTIGUOUS|np.NPY_F_CONTIGUOUS)
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -2097,7 +1864,7 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
  *         zvode_f_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_217_32->Target(__site_call1_217_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_194_32->Target(__site_call1_194_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -2105,146 +1872,87 @@ static  int zvode_f_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v
       }
       __pyx_L5:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":218
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":195
  *             if ydot_shape[0] != np.PyArray_DIMS(ydot_)[0]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))             # <<<<<<<<<<<<<<
  *         zvode_f_cb_info = info
- *         return 0
+ *     except:
  */
       memcpy(__pyx_v_ydot, PyArray_DATA(__pyx_v_ydot_), PyArray_NBYTES(__pyx_v_ydot_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":219
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":196
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
  *         zvode_f_cb_info = info             # <<<<<<<<<<<<<<
- *         return 0
  *     except:
+ *         zvode_f_cb_info = info
  */
     __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info = __pyx_v_info;
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":220
- *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
- *         zvode_f_cb_info = info
- *         return 0             # <<<<<<<<<<<<<<
- *     except:
- *         zvode_f_cb_info = info
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":221
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":197
+ *             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
  *         zvode_f_cb_info = info
- *         return 0
  *     except:             # <<<<<<<<<<<<<<
  *         zvode_f_cb_info = info
- *         info.exc = sys.exc_info()
+ *         raise sys.exc_info()
  */
     /*except:*/ {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate.vode.zvode_f_cb_wrapper_core");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":222
- *         return 0
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":198
+ *         zvode_f_cb_info = info
  *     except:
  *         zvode_f_cb_info = info             # <<<<<<<<<<<<<<
- *         info.exc = sys.exc_info()
- *         return -1
+ *         raise sys.exc_info()
+ * 
  */
       __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info = __pyx_v_info;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":223
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":199
  *     except:
  *         zvode_f_cb_info = info
- *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
- *         return -1
+ *         raise sys.exc_info()             # <<<<<<<<<<<<<<
+ * 
  * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_223_22->Target(__site_get_exc_info_223_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_199_17->Target(__site_get_exc_info_199_17, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_223_31->Target(__site_call0_223_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_199_26->Target(__site_call0_199_26, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
-      __pyx_v_info->exc = __pyx_t_5;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":224
- *         zvode_f_cb_info = info
- *         info.exc = sys.exc_info()
- *         return -1             # <<<<<<<<<<<<<<
- * 
- * cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
- */
-      __pyx_r = -1;
-      goto __pyx_L0;
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":226
- *         return -1
- * 
- * cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
- *     if zvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
- *         longjmp(zvode_f_cb_info.jmp, 1)
- */
-
-static void (*__pyx_function_pointer_zvode_f_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
-typedef void (*__pyx_fp_t_zvode_f_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, __pyx_t_double_complex *, void *, void *);
-static __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper^ __pyx_delegate_val_zvode_f_cb_wrapper;
-static  void zvode_f_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, __pyx_t_double_complex *__pyx_v_ydot, void *__pyx_v_rpar, void *__pyx_v_ipar) {
-  int __pyx_t_1;
-
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":227
- * 
- * cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
- *     if zvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:             # <<<<<<<<<<<<<<
- *         longjmp(zvode_f_cb_info.jmp, 1)
- * 
- */
-  __pyx_t_1 = (zvode_f_cb_wrapper_core(__pyx_v_n, __pyx_v_t, __pyx_v_y, __pyx_v_ydot, __pyx_v_rpar, __pyx_v_ipar) != 0);
-  if (__pyx_t_1) {
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":228
- * cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
- *     if zvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
- *         longjmp(zvode_f_cb_info.jmp, 1)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    longjmp(__pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info->jmp, 1);
-    goto __pyx_L3;
-  }
-  __pyx_L3:;
-
-}
-
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":233
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":203
  * 
  * cdef fw_CallbackInfo zvode_jac_cb_info
- * cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
+ * cdef void zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
  *     global zvode_jac_cb_info;
  *     cdef fw_CallbackInfo info
  */
 
-static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, __pyx_t_double_complex *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
+static void (*__pyx_function_pointer_zvode_jac_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
+typedef void (*__pyx_fp_t_zvode_jac_cb_wrapper_core)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
+static __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper_core^ __pyx_delegate_val_zvode_jac_cb_wrapper_core;
+static  void zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, __pyx_t_double_complex *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
   fw_CallbackInfo^ __pyx_v_info;
   NumpyDotNet::ndarray^ __pyx_v_y_;
   NumpyDotNet::ndarray^ __pyx_v_jac_;
   __pyx_t_5numpy_npy_intp __pyx_v_y_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_jac_shape[2];
   System::Object^ __pyx_v_jac_ret;
-  int __pyx_r;
   System::Object^ __pyx_t_3 = nullptr;
   int __pyx_t_4;
   System::Object^ __pyx_t_5 = nullptr;
@@ -2256,7 +1964,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
   __pyx_v_jac_ = nullptr;
   __pyx_v_jac_ret = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":238
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":208
  *     cdef np.ndarray y_, jac_
  *     cdef np.npy_intp y_shape[1], jac_shape[2]
  *     info = zvode_jac_cb_info             # <<<<<<<<<<<<<<
@@ -2265,7 +1973,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
   __pyx_v_info = __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":239
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":209
  *     cdef np.npy_intp y_shape[1], jac_shape[2]
  *     info = zvode_jac_cb_info
  *     try:             # <<<<<<<<<<<<<<
@@ -2274,7 +1982,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":240
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":210
  *     info = zvode_jac_cb_info
  *     try:
  *         y_shape[0] = n[0]             # <<<<<<<<<<<<<<
@@ -2283,7 +1991,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  */
     (__pyx_v_y_shape[0]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":241
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":211
  *     try:
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -2297,7 +2005,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":242
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":212
  *         y_shape[0] = n[0]
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]             # <<<<<<<<<<<<<<
@@ -2307,7 +2015,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     (__pyx_v_jac_shape[0]) = (__pyx_v_nrowpd[0]);
     (__pyx_v_jac_shape[1]) = (__pyx_v_n[0]);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":243
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":213
  *         y_ = np.PyArray_New(NULL, 1, y_shape, fwc_dbl_complex_t_enum, NULL, <char*>y, 0, np.NPY_FARRAY, NULL)
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwc_dbl_complex_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)             # <<<<<<<<<<<<<<
@@ -2321,7 +2029,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_v_jac_ = ((NumpyDotNet::ndarray^)__pyx_t_3);
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":244
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":214
  *         jac_shape[0] = nrowpd[0]; jac_shape[1] = n[0]
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwc_dbl_complex_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:             # <<<<<<<<<<<<<<
@@ -2331,7 +2039,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_t_4 = (__pyx_v_info->extra_args == nullptr);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":245
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":215
  *         jac_ = np.PyArray_New(NULL, 2, jac_shape, fwc_dbl_complex_t_enum, NULL, <char*>jac, 0, np.NPY_FARRAY, NULL)
  *         if info.extra_args is None:
  *             jac_ret = info.callback(t[0], y_)             # <<<<<<<<<<<<<<
@@ -2339,7 +2047,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  */
       __pyx_t_3 = (__pyx_v_t[0]);
-      __pyx_t_5 = __site_call2_245_35->Target(__site_call2_245_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
+      __pyx_t_5 = __site_call2_215_35->Target(__site_call2_215_35, __pyx_context, __pyx_v_info->callback, __pyx_t_3, ((System::Object^)__pyx_v_y_));
       __pyx_t_3 = nullptr;
       __pyx_v_jac_ret = __pyx_t_5;
       __pyx_t_5 = nullptr;
@@ -2347,7 +2055,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":247
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":217
  *             jac_ret = info.callback(t[0], y_)
  *         else:
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)             # <<<<<<<<<<<<<<
@@ -2355,14 +2063,14 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwc_dbl_complex_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  */
       __pyx_t_5 = (__pyx_v_t[0]);
-      __pyx_t_3 = __site_call2_ARGS_247_35->Target(__site_call2_ARGS_247_35, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
+      __pyx_t_3 = __site_call2_ARGS_217_35->Target(__site_call2_ARGS_217_35, __pyx_context, __pyx_v_info->callback, __pyx_t_5, ((System::Object^)__pyx_v_y_), __pyx_v_info->extra_args);
       __pyx_t_5 = nullptr;
       __pyx_v_jac_ret = __pyx_t_3;
       __pyx_t_3 = nullptr;
     }
     __pyx_L3:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":248
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":218
  *         else:
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  *         if jac_ is not jac_ret:             # <<<<<<<<<<<<<<
@@ -2372,7 +2080,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
     __pyx_t_4 = (((System::Object^)__pyx_v_jac_) != __pyx_v_jac_ret);
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":249
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":219
  *             jac_ret = info.callback(t[0], y_, *info.extra_args)
  *         if jac_ is not jac_ret:
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwc_dbl_complex_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)             # <<<<<<<<<<<<<<
@@ -2390,7 +2098,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       __pyx_v_jac_ = ((NumpyDotNet::ndarray^)__pyx_t_6);
       __pyx_t_6 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":250
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":220
  *         if jac_ is not jac_ret:
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwc_dbl_complex_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:             # <<<<<<<<<<<<<<
@@ -2406,7 +2114,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":251
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":221
  *             jac_ = np.PyArray_FROMANY(jac_ret, fwc_dbl_complex_t_enum, 2, 2, np.NPY_F_CONTIGUOUS)
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:
  *                 raise ValueError("Array returned from callback has illegal shape")             # <<<<<<<<<<<<<<
@@ -2414,7 +2122,7 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
  *         zvode_jac_cb_info = info
  */
         __pyx_t_6 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-        __pyx_t_5 = __site_call1_251_32->Target(__site_call1_251_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
+        __pyx_t_5 = __site_call1_221_32->Target(__site_call1_221_32, __pyx_context, __pyx_t_6, ((System::Object^)"Array returned from callback has illegal shape"));
         __pyx_t_6 = nullptr;
         throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
         __pyx_t_5 = nullptr;
@@ -2422,132 +2130,71 @@ static  int zvode_jac_cb_wrapper_core(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx
       }
       __pyx_L5:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":252
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":222
  *             if jac_shape[0] != np.PyArray_DIMS(jac_)[0] or jac_shape[1] != np.PyArray_DIMS(jac_)[1]:
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))             # <<<<<<<<<<<<<<
  *         zvode_jac_cb_info = info
- *         return 0
+ *     except:
  */
       memcpy(__pyx_v_jac, PyArray_DATA(__pyx_v_jac_), PyArray_NBYTES(__pyx_v_jac_));
       goto __pyx_L4;
     }
     __pyx_L4:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":253
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":223
  *                 raise ValueError("Array returned from callback has illegal shape")
  *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
  *         zvode_jac_cb_info = info             # <<<<<<<<<<<<<<
- *         return 0
  *     except:
+ *         zvode_jac_cb_info = info
  */
     __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info = __pyx_v_info;
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":254
- *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
- *         zvode_jac_cb_info = info
- *         return 0             # <<<<<<<<<<<<<<
- *     except:
- *         zvode_jac_cb_info = info
- */
-    __pyx_r = 0;
-    goto __pyx_L0;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":255
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":224
+ *             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
  *         zvode_jac_cb_info = info
- *         return 0
  *     except:             # <<<<<<<<<<<<<<
  *         zvode_jac_cb_info = info
- *         info.exc = sys.exc_info()
+ *         raise sys.exc_info()
  */
     /*except:*/ {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate.vode.zvode_jac_cb_wrapper_core");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":256
- *         return 0
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":225
+ *         zvode_jac_cb_info = info
  *     except:
  *         zvode_jac_cb_info = info             # <<<<<<<<<<<<<<
- *         info.exc = sys.exc_info()
- *         return -1
+ *         raise sys.exc_info()
+ * 
  */
       __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info = __pyx_v_info;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":257
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":226
  *     except:
  *         zvode_jac_cb_info = info
- *         info.exc = sys.exc_info()             # <<<<<<<<<<<<<<
- *         return -1
+ *         raise sys.exc_info()             # <<<<<<<<<<<<<<
  * 
+ * def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "sys");
-      __pyx_t_6 = __site_get_exc_info_257_22->Target(__site_get_exc_info_257_22, __pyx_t_5, __pyx_context);
+      __pyx_t_6 = __site_get_exc_info_226_17->Target(__site_get_exc_info_226_17, __pyx_t_5, __pyx_context);
       __pyx_t_5 = nullptr;
-      __pyx_t_5 = __site_call0_257_31->Target(__site_call0_257_31, __pyx_context, __pyx_t_6);
+      __pyx_t_5 = __site_call0_226_26->Target(__site_call0_226_26, __pyx_context, __pyx_t_6);
       __pyx_t_6 = nullptr;
-      __pyx_v_info->exc = __pyx_t_5;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":258
- *         zvode_jac_cb_info = info
- *         info.exc = sys.exc_info()
- *         return -1             # <<<<<<<<<<<<<<
- * 
- * cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- */
-      __pyx_r = -1;
-      goto __pyx_L0;
     }
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  __pyx_r = 0;
-  __pyx_L0:;
-  return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":260
- *         return -1
- * 
- * cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):             # <<<<<<<<<<<<<<
- *     if zvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
- *         longjmp(zvode_jac_cb_info.jmp, 1)
- */
-
-static void (*__pyx_function_pointer_zvode_jac_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
-typedef void (*__pyx_fp_t_zvode_jac_cb_wrapper)(fwi_integer_t *, fwr_dbl_t *, __pyx_t_double_complex *, fwi_integer_t *, fwi_integer_t *, __pyx_t_double_complex *, fwi_integer_t *, void *, void *);
-static __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper^ __pyx_delegate_val_zvode_jac_cb_wrapper;
-static  void zvode_jac_cb_wrapper(fwi_integer_t *__pyx_v_n, fwr_dbl_t *__pyx_v_t, __pyx_t_double_complex *__pyx_v_y, fwi_integer_t *__pyx_v_ml, fwi_integer_t *__pyx_v_mu, __pyx_t_double_complex *__pyx_v_jac, fwi_integer_t *__pyx_v_nrowpd, void *__pyx_v_rpar, void *__pyx_v_ipar) {
-  int __pyx_t_1;
-
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":261
- * 
- * cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- *     if zvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:             # <<<<<<<<<<<<<<
- *         longjmp(zvode_jac_cb_info.jmp, 1)
- * 
- */
-  __pyx_t_1 = (zvode_jac_cb_wrapper_core(__pyx_v_n, __pyx_v_t, __pyx_v_y, __pyx_v_ml, __pyx_v_mu, __pyx_v_jac, __pyx_v_nrowpd, __pyx_v_rpar, __pyx_v_ipar) != 0);
-  if (__pyx_t_1) {
-
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":262
- * cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
- *     if zvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
- *         longjmp(zvode_jac_cb_info.jmp, 1)             # <<<<<<<<<<<<<<
- * 
- * 
- */
-    longjmp(__pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info->jmp, 1);
-    goto __pyx_L3;
-  }
-  __pyx_L3:;
-
-}
-
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":265
- * 
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":228
+ *         raise sys.exc_info()
  * 
  * def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):             # <<<<<<<<<<<<<<
  *     """zvode(f, jac, y, t, tout, rtol, atol, itask, istate, zwork, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
@@ -2591,9 +2238,6 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5numpy_npy_intp __pyx_v_zwork_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_rwork_shape[1];
   __pyx_t_5numpy_npy_intp __pyx_v_iwork_shape[1];
-  System::Object^ __pyx_v_fw_exctype;
-  System::Object^ __pyx_v_fw_excval;
-  System::Object^ __pyx_v_fw_exctb;
   System::Object^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
   long __pyx_t_2;
@@ -2603,21 +2247,20 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   long __pyx_t_6;
   long __pyx_t_7;
   System::Object^ __pyx_t_8 = nullptr;
-  array<System::Object^>^ __pyx_t_9;
-  System::Object^ __pyx_t_10 = nullptr;
+  System::Object^ __pyx_t_9 = nullptr;
   __pyx_v_f = f;
   __pyx_v_jac = jac;
   __pyx_v_y = y;
-  __pyx_v_t = __site_cvt_cvt_fwr_dbl_t_265_0->Target(__site_cvt_cvt_fwr_dbl_t_265_0, t);
-  __pyx_v_tout = __site_cvt_cvt_fwr_dbl_t_265_0_1->Target(__site_cvt_cvt_fwr_dbl_t_265_0_1, tout);
+  __pyx_v_t = __site_cvt_cvt_fwr_dbl_t_228_0->Target(__site_cvt_cvt_fwr_dbl_t_228_0, t);
+  __pyx_v_tout = __site_cvt_cvt_fwr_dbl_t_228_0_1->Target(__site_cvt_cvt_fwr_dbl_t_228_0_1, tout);
   __pyx_v_rtol = rtol;
   __pyx_v_atol = atol;
-  __pyx_v_itask = __site_cvt_cvt_fwi_integer_t_265_0->Target(__site_cvt_cvt_fwi_integer_t_265_0, itask);
-  __pyx_v_istate = __site_cvt_cvt_fwi_integer_t_265_0_1->Target(__site_cvt_cvt_fwi_integer_t_265_0_1, istate);
+  __pyx_v_itask = __site_cvt_cvt_fwi_integer_t_228_0->Target(__site_cvt_cvt_fwi_integer_t_228_0, itask);
+  __pyx_v_istate = __site_cvt_cvt_fwi_integer_t_228_0_1->Target(__site_cvt_cvt_fwi_integer_t_228_0_1, istate);
   __pyx_v_zwork = zwork;
   __pyx_v_rwork = rwork;
   __pyx_v_iwork = iwork;
-  __pyx_v_mf = __site_cvt_cvt_fwi_integer_t_265_0_2->Target(__site_cvt_cvt_fwi_integer_t_265_0_2, mf);
+  __pyx_v_mf = __site_cvt_cvt_fwi_integer_t_228_0_2->Target(__site_cvt_cvt_fwi_integer_t_228_0_2, mf);
   if (dynamic_cast<System::Reflection::Missing^>(f_extra_args) == nullptr) {
     __pyx_v_f_extra_args = f_extra_args;
   } else {
@@ -2629,7 +2272,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
     __pyx_v_jac_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(overwrite_y) == nullptr) {
-    __pyx_v_overwrite_y = __site_cvt_cvt_int_265_0->Target(__site_cvt_cvt_int_265_0, overwrite_y);
+    __pyx_v_overwrite_y = __site_cvt_cvt_int_228_0->Target(__site_cvt_cvt_int_228_0, overwrite_y);
   } else {
     __pyx_v_overwrite_y = ((int)0);
   }
@@ -2641,11 +2284,8 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_zwork_ = nullptr;
   __pyx_v_rwork_ = nullptr;
   __pyx_v_iwork_ = nullptr;
-  __pyx_v_fw_exctype = nullptr;
-  __pyx_v_fw_excval = nullptr;
-  __pyx_v_fw_exctb = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":299
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":262
  *     cdef np.ndarray y_, rtol_, atol_, zwork_, rwork_, iwork_
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], zwork_shape[1], rwork_shape[1], iwork_shape[1]
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2656,7 +2296,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_rtol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":300
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":263
  *     cdef np.npy_intp y_shape[1], rtol_shape[1], atol_shape[1], zwork_shape[1], rwork_shape[1], iwork_shape[1]
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2667,7 +2307,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_atol_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":301
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":264
  *     rtol_ = fw_asfortranarray(rtol, fwr_dbl_t_enum, 1, rtol_shape, False, False)
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))             # <<<<<<<<<<<<<<
@@ -2698,7 +2338,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_v_itol = __pyx_t_2;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":302
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":265
  *     atol_ = fw_asfortranarray(atol, fwr_dbl_t_enum, 1, atol_shape, False, False)
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
  *     iopt = 1             # <<<<<<<<<<<<<<
@@ -2707,7 +2347,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_iopt = 1;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":303
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":266
  *     itol = 1 if ((atol_shape[0] <= 1) and (rtol_shape[0] <= 1)) else (2 if (rtol_shape[0] <= 1) else (3 if (atol_shape[0] <= 1) else 4))
  *     iopt = 1
  *     zwork_ = fw_asfortranarray(zwork, fwc_dbl_complex_t_enum, 1, zwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2718,7 +2358,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_zwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":304
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":267
  *     iopt = 1
  *     zwork_ = fw_asfortranarray(zwork, fwc_dbl_complex_t_enum, 1, zwork_shape, False, False)
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2729,7 +2369,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_rwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":305
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":268
  *     zwork_ = fw_asfortranarray(zwork, fwc_dbl_complex_t_enum, 1, zwork_shape, False, False)
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)             # <<<<<<<<<<<<<<
@@ -2740,7 +2380,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_iwork_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":306
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":269
  *     rwork_ = fw_asfortranarray(rwork, fwr_dbl_t_enum, 1, rwork_shape, False, False)
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)             # <<<<<<<<<<<<<<
@@ -2751,7 +2391,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_v_y_ = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":307
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":270
  *     iwork_ = fw_asfortranarray(iwork, fwi_integer_t_enum, 1, iwork_shape, False, False)
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     neq = y_shape[0]             # <<<<<<<<<<<<<<
@@ -2760,7 +2400,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_neq = (__pyx_v_y_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":308
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":271
  *     y_ = fw_asfortranarray(y, fwc_dbl_complex_t_enum, 1, y_shape, not overwrite_y, False)
  *     neq = y_shape[0]
  *     lzw = zwork_shape[0]             # <<<<<<<<<<<<<<
@@ -2769,7 +2409,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_lzw = (__pyx_v_zwork_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":309
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":272
  *     neq = y_shape[0]
  *     lzw = zwork_shape[0]
  *     lrw = rwork_shape[0]             # <<<<<<<<<<<<<<
@@ -2778,7 +2418,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_lrw = (__pyx_v_rwork_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":310
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":273
  *     lzw = zwork_shape[0]
  *     lrw = rwork_shape[0]
  *     liw = iwork_shape[0]             # <<<<<<<<<<<<<<
@@ -2787,7 +2427,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_v_liw = (__pyx_v_iwork_shape[0]);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":311
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":274
  *     lrw = rwork_shape[0]
  *     liw = iwork_shape[0]
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):             # <<<<<<<<<<<<<<
@@ -2804,7 +2444,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_4);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":312
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":275
  *     liw = iwork_shape[0]
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')             # <<<<<<<<<<<<<<
@@ -2812,7 +2452,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_312_24->Target(__site_call1_312_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)"));
+    __pyx_t_8 = __site_call1_275_24->Target(__site_call1_275_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -2820,7 +2460,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":313
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":276
  *     if not ((rtol_shape[0] <= 1) or (rtol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):             # <<<<<<<<<<<<<<
@@ -2837,7 +2477,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":314
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":277
  *         raise ValueError('Condition on arguments not satisfied: (rtol.shape[0] <= 1) or (rtol.shape[0] >= neq)')
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')             # <<<<<<<<<<<<<<
@@ -2845,7 +2485,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_314_24->Target(__site_call1_314_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)"));
+    __pyx_t_1 = __site_call1_277_24->Target(__site_call1_277_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2853,7 +2493,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L6:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":315
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":278
  *     if not ((atol_shape[0] <= 1) or (atol_shape[0] >= neq)):
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  *     if not ((itask > 0) and (itask < 6)):             # <<<<<<<<<<<<<<
@@ -2870,7 +2510,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_4);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":316
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":279
  *         raise ValueError('Condition on arguments not satisfied: (atol.shape[0] <= 1) or (atol.shape[0] >= neq)')
  *     if not ((itask > 0) and (itask < 6)):
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')             # <<<<<<<<<<<<<<
@@ -2878,7 +2518,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_316_24->Target(__site_call1_316_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (itask > 0) and (itask < 6)"));
+    __pyx_t_8 = __site_call1_279_24->Target(__site_call1_279_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: (itask > 0) and (itask < 6)"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -2886,7 +2526,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L7:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":317
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":280
  *     if not ((itask > 0) and (itask < 6)):
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  *     if not ((istate > 0) and (istate < 4)):             # <<<<<<<<<<<<<<
@@ -2903,7 +2543,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":318
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":281
  *         raise ValueError('Condition on arguments not satisfied: (itask > 0) and (itask < 6)')
  *     if not ((istate > 0) and (istate < 4)):
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')             # <<<<<<<<<<<<<<
@@ -2911,7 +2551,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: zwork.shape[0] >= lzw')
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_318_24->Target(__site_call1_318_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (istate > 0) and (istate < 4)"));
+    __pyx_t_1 = __site_call1_281_24->Target(__site_call1_281_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: (istate > 0) and (istate < 4)"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2919,7 +2559,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L8:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":319
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":282
  *     if not ((istate > 0) and (istate < 4)):
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  *     if not (zwork_shape[0] >= lzw):             # <<<<<<<<<<<<<<
@@ -2929,7 +2569,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!((__pyx_v_zwork_shape[0]) >= __pyx_v_lzw));
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":320
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":283
  *         raise ValueError('Condition on arguments not satisfied: (istate > 0) and (istate < 4)')
  *     if not (zwork_shape[0] >= lzw):
  *         raise ValueError('Condition on arguments not satisfied: zwork.shape[0] >= lzw')             # <<<<<<<<<<<<<<
@@ -2937,7 +2577,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_320_24->Target(__site_call1_320_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: zwork.shape[0] >= lzw"));
+    __pyx_t_8 = __site_call1_283_24->Target(__site_call1_283_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: zwork.shape[0] >= lzw"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -2945,7 +2585,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L9:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":321
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":284
  *     if not (zwork_shape[0] >= lzw):
  *         raise ValueError('Condition on arguments not satisfied: zwork.shape[0] >= lzw')
  *     if not (rwork_shape[0] >= lrw):             # <<<<<<<<<<<<<<
@@ -2955,7 +2595,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!((__pyx_v_rwork_shape[0]) >= __pyx_v_lrw));
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":322
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":285
  *         raise ValueError('Condition on arguments not satisfied: zwork.shape[0] >= lzw')
  *     if not (rwork_shape[0] >= lrw):
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')             # <<<<<<<<<<<<<<
@@ -2963,7 +2603,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_322_24->Target(__site_call1_322_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: rwork.shape[0] >= lrw"));
+    __pyx_t_1 = __site_call1_285_24->Target(__site_call1_285_24, __pyx_context, __pyx_t_8, ((System::Object^)"Condition on arguments not satisfied: rwork.shape[0] >= lrw"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -2971,7 +2611,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L10:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":323
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":286
  *     if not (rwork_shape[0] >= lrw):
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  *     if not (iwork_shape[0] >= liw):             # <<<<<<<<<<<<<<
@@ -2981,7 +2621,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!((__pyx_v_iwork_shape[0]) >= __pyx_v_liw));
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":324
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":287
  *         raise ValueError('Condition on arguments not satisfied: rwork.shape[0] >= lrw')
  *     if not (iwork_shape[0] >= liw):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')             # <<<<<<<<<<<<<<
@@ -2989,7 +2629,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_324_24->Target(__site_call1_324_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= liw"));
+    __pyx_t_8 = __site_call1_287_24->Target(__site_call1_287_24, __pyx_context, __pyx_t_1, ((System::Object^)"Condition on arguments not satisfied: iwork.shape[0] >= liw"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -2997,7 +2637,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L11:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":325
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":288
  *     if not (iwork_shape[0] >= liw):
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  *     if not (0 <= neq <= y_shape[0]):             # <<<<<<<<<<<<<<
@@ -3011,7 +2651,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":326
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":289
  *         raise ValueError('Condition on arguments not satisfied: iwork.shape[0] >= liw')
  *     if not (0 <= neq <= y_shape[0]):
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -3019,7 +2659,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= lzw <= zwork.shape[0]) not satisifed")
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_326_24->Target(__site_call1_326_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= neq <= y.shape[0]) not satisifed"));
+    __pyx_t_1 = __site_call1_289_24->Target(__site_call1_289_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= neq <= y.shape[0]) not satisifed"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3027,7 +2667,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L12:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":327
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":290
  *     if not (0 <= neq <= y_shape[0]):
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  *     if not (0 <= lzw <= zwork_shape[0]):             # <<<<<<<<<<<<<<
@@ -3041,7 +2681,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":328
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":291
  *         raise ValueError("(0 <= neq <= y.shape[0]) not satisifed")
  *     if not (0 <= lzw <= zwork_shape[0]):
  *         raise ValueError("(0 <= lzw <= zwork.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -3049,7 +2689,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_328_24->Target(__site_call1_328_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= lzw <= zwork.shape[0]) not satisifed"));
+    __pyx_t_8 = __site_call1_291_24->Target(__site_call1_291_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= lzw <= zwork.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -3057,7 +2697,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L13:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":329
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":292
  *     if not (0 <= lzw <= zwork_shape[0]):
  *         raise ValueError("(0 <= lzw <= zwork.shape[0]) not satisifed")
  *     if not (0 <= lrw <= rwork_shape[0]):             # <<<<<<<<<<<<<<
@@ -3071,7 +2711,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_3 = (!__pyx_t_5);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":330
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":293
  *         raise ValueError("(0 <= lzw <= zwork.shape[0]) not satisifed")
  *     if not (0 <= lrw <= rwork_shape[0]):
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -3079,7 +2719,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_1 = __site_call1_330_24->Target(__site_call1_330_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= lrw <= rwork.shape[0]) not satisifed"));
+    __pyx_t_1 = __site_call1_293_24->Target(__site_call1_293_24, __pyx_context, __pyx_t_8, ((System::Object^)"(0 <= lrw <= rwork.shape[0]) not satisifed"));
     __pyx_t_8 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3087,7 +2727,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L14:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":331
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":294
  *     if not (0 <= lrw <= rwork_shape[0]):
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  *     if not (0 <= liw <= iwork_shape[0]):             # <<<<<<<<<<<<<<
@@ -3101,7 +2741,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   __pyx_t_5 = (!__pyx_t_3);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":332
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":295
  *         raise ValueError("(0 <= lrw <= rwork.shape[0]) not satisifed")
  *     if not (0 <= liw <= iwork_shape[0]):
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")             # <<<<<<<<<<<<<<
@@ -3109,7 +2749,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  *     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "ValueError");
-    __pyx_t_8 = __site_call1_332_24->Target(__site_call1_332_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= liw <= iwork.shape[0]) not satisifed"));
+    __pyx_t_8 = __site_call1_295_24->Target(__site_call1_295_24, __pyx_context, __pyx_t_1, ((System::Object^)"(0 <= liw <= iwork.shape[0]) not satisifed"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_8, nullptr, nullptr);
     __pyx_t_8 = nullptr;
@@ -3117,155 +2757,51 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   }
   __pyx_L15:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":333
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":296
  *     if not (0 <= liw <= iwork_shape[0]):
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  *     zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)             # <<<<<<<<<<<<<<
  *     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:
  */
-  __pyx_t_8 = __site_call2_333_47->Target(__site_call2_333_47, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_f, __pyx_v_f_extra_args);
+  __pyx_t_8 = __site_call2_296_47->Target(__site_call2_296_47, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_f, __pyx_v_f_extra_args);
   __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_v_fw_f_cb = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":334
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":297
  *         raise ValueError("(0 <= liw <= iwork.shape[0]) not satisifed")
  *     zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
  *     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)             # <<<<<<<<<<<<<<
  *     try:
- *         if setjmp(zvode_f_cb_info.jmp) == 0:
+ *         fc.zvode(&zvode_f_cb_wrapper_core, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper_core, &mf, NULL, NULL)
  */
-  __pyx_t_8 = __site_call2_334_51->Target(__site_call2_334_51, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_jac, __pyx_v_jac_extra_args);
+  __pyx_t_8 = __site_call2_297_51->Target(__site_call2_297_51, __pyx_context, ((System::Object^)((System::Object^)__pyx_ptype_5scipy_9integrate_4vode_fw_CallbackInfo)), __pyx_v_jac, __pyx_v_jac_extra_args);
   __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_v_fw_jac_cb = ((fw_CallbackInfo^)__pyx_t_8);
   __pyx_t_8 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":335
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":298
  *     zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
  *     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:             # <<<<<<<<<<<<<<
- *         if setjmp(zvode_f_cb_info.jmp) == 0:
- *             if setjmp(zvode_jac_cb_info.jmp) == 0:
+ *         fc.zvode(&zvode_f_cb_wrapper_core, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper_core, &mf, NULL, NULL)
+ *     finally:
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":336
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":299
  *     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
  *     try:
- *         if setjmp(zvode_f_cb_info.jmp) == 0:             # <<<<<<<<<<<<<<
- *             if setjmp(zvode_jac_cb_info.jmp) == 0:
- *                 fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)
- */
-    __pyx_t_5 = (setjmp(__pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info->jmp) == 0);
-    if (__pyx_t_5) {
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":337
- *     try:
- *         if setjmp(zvode_f_cb_info.jmp) == 0:
- *             if setjmp(zvode_jac_cb_info.jmp) == 0:             # <<<<<<<<<<<<<<
- *                 fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)
- *             else:
- */
-      __pyx_t_5 = (setjmp(__pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info->jmp) == 0);
-      if (__pyx_t_5) {
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":338
- *         if setjmp(zvode_f_cb_info.jmp) == 0:
- *             if setjmp(zvode_jac_cb_info.jmp) == 0:
- *                 fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)             # <<<<<<<<<<<<<<
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc
- */
-        F_FUNC(zvode,ZVODE)(__pyx_function_pointer_zvode_f_cb_wrapper, (&__pyx_v_neq), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_t), (&__pyx_v_tout), (&__pyx_v_itol), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rtol_)), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_atol_)), (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_zwork_)), (&__pyx_v_lzw), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rwork_)), (&__pyx_v_lrw), ((fwi_integer_t *)PyArray_DATA(__pyx_v_iwork_)), (&__pyx_v_liw), __pyx_function_pointer_zvode_jac_cb_wrapper, (&__pyx_v_mf), NULL, NULL);
-        goto __pyx_L17;
-      }
-      /*else*/ {
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":340
- *                 fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc             # <<<<<<<<<<<<<<
- *                 zvode_jac_cb_info.exc = None
- *                 raise fw_exctype, fw_excval, fw_exctb
- */
-        __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info->exc, 3)));
-        __pyx_t_8 = __pyx_t_9[0];
-        __pyx_t_1 = __pyx_t_9[1];
-        __pyx_t_10 = __pyx_t_9[2];
-        __pyx_t_9 = nullptr;
-        __pyx_v_fw_exctype = __pyx_t_8;
-        __pyx_t_8 = nullptr;
-        __pyx_v_fw_excval = __pyx_t_1;
-        __pyx_t_1 = nullptr;
-        __pyx_v_fw_exctb = __pyx_t_10;
-        __pyx_t_10 = nullptr;
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":341
- *             else:
- *                 fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc
- *                 zvode_jac_cb_info.exc = None             # <<<<<<<<<<<<<<
- *                 raise fw_exctype, fw_excval, fw_exctb
- *         else:
- */
-        __pyx_v_5scipy_9integrate_4vode_zvode_jac_cb_info->exc = nullptr;
-
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":342
- *                 fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc
- *                 zvode_jac_cb_info.exc = None
- *                 raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = zvode_f_cb_info.exc
- */
-        throw PythonOps::MakeException(__pyx_context, __pyx_v_fw_exctype, __pyx_v_fw_excval, __pyx_v_fw_exctb);
-      }
-      __pyx_L17:;
-      goto __pyx_L16;
-    }
-    /*else*/ {
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":344
- *                 raise fw_exctype, fw_excval, fw_exctb
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = zvode_f_cb_info.exc             # <<<<<<<<<<<<<<
- *             zvode_f_cb_info.exc = None
- *             raise fw_exctype, fw_excval, fw_exctb
- */
-      __pyx_t_9 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info->exc, 3)));
-      __pyx_t_10 = __pyx_t_9[0];
-      __pyx_t_1 = __pyx_t_9[1];
-      __pyx_t_8 = __pyx_t_9[2];
-      __pyx_t_9 = nullptr;
-      __pyx_v_fw_exctype = __pyx_t_10;
-      __pyx_t_10 = nullptr;
-      __pyx_v_fw_excval = __pyx_t_1;
-      __pyx_t_1 = nullptr;
-      __pyx_v_fw_exctb = __pyx_t_8;
-      __pyx_t_8 = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":345
- *         else:
- *             fw_exctype, fw_excval, fw_exctb = zvode_f_cb_info.exc
- *             zvode_f_cb_info.exc = None             # <<<<<<<<<<<<<<
- *             raise fw_exctype, fw_excval, fw_exctb
- *     finally:
- */
-      __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info->exc = nullptr;
-
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":346
- *             fw_exctype, fw_excval, fw_exctb = zvode_f_cb_info.exc
- *             zvode_f_cb_info.exc = None
- *             raise fw_exctype, fw_excval, fw_exctb             # <<<<<<<<<<<<<<
+ *         fc.zvode(&zvode_f_cb_wrapper_core, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper_core, &mf, NULL, NULL)             # <<<<<<<<<<<<<<
  *     finally:
  *         zvode_f_cb_info = None
  */
-      throw PythonOps::MakeException(__pyx_context, __pyx_v_fw_exctype, __pyx_v_fw_excval, __pyx_v_fw_exctb);
-    }
-    __pyx_L16:;
+    F_FUNC(zvode,ZVODE)(__pyx_function_pointer_zvode_f_cb_wrapper_core, (&__pyx_v_neq), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_y_)), (&__pyx_v_t), (&__pyx_v_tout), (&__pyx_v_itol), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rtol_)), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_atol_)), (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), ((__pyx_t_double_complex *)PyArray_DATA(__pyx_v_zwork_)), (&__pyx_v_lzw), ((fwr_dbl_t *)PyArray_DATA(__pyx_v_rwork_)), (&__pyx_v_lrw), ((fwi_integer_t *)PyArray_DATA(__pyx_v_iwork_)), (&__pyx_v_liw), __pyx_function_pointer_zvode_jac_cb_wrapper_core, (&__pyx_v_mf), NULL, NULL);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":348
- *             raise fw_exctype, fw_excval, fw_exctb
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":301
+ *         fc.zvode(&zvode_f_cb_wrapper_core, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper_core, &mf, NULL, NULL)
  *     finally:
  *         zvode_f_cb_info = None             # <<<<<<<<<<<<<<
  *     return (y_, t, istate,)
@@ -3275,7 +2811,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
     __pyx_v_5scipy_9integrate_4vode_zvode_f_cb_info = ((fw_CallbackInfo^)nullptr);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":349
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":302
  *     finally:
  *         zvode_f_cb_info = None
  *     return (y_, t, istate,)             # <<<<<<<<<<<<<<
@@ -3284,11 +2820,11 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
  */
   __pyx_t_8 = __pyx_v_t;
   __pyx_t_1 = __pyx_v_istate;
-  __pyx_t_10 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_y_), __pyx_t_8, __pyx_t_1});
+  __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_y_), __pyx_t_8, __pyx_t_1});
   __pyx_t_8 = nullptr;
   __pyx_t_1 = nullptr;
-  __pyx_r = __pyx_t_10;
-  __pyx_t_10 = nullptr;
+  __pyx_r = __pyx_t_9;
+  __pyx_t_9 = nullptr;
   goto __pyx_L0;
 
   __pyx_r = nullptr;
@@ -3296,7 +2832,7 @@ static System::Object^ zvode(System::Object^ f, System::Object^ jac, System::Obj
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":353
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":306
  * 
  * 
  * cdef np.ndarray fw_asfortranarray(object value, int typenum, int ndim,             # <<<<<<<<<<<<<<
@@ -3330,7 +2866,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_v_result = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":356
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":309
  *                                   np.npy_intp * coerced_shape,
  *                                   bint copy, bint create, int alignment=1):
  *     cdef int flags = np.NPY_F_CONTIGUOUS | np.NPY_FORCECAST             # <<<<<<<<<<<<<<
@@ -3339,7 +2875,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_flags = (NPY_F_CONTIGUOUS | NPY_FORCECAST);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":361
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":314
  *     cdef int in_ndim
  *     cdef int i
  *     if value is None:             # <<<<<<<<<<<<<<
@@ -3349,7 +2885,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_1 = (__pyx_v_value == nullptr);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":362
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":315
  *     cdef int i
  *     if value is None:
  *         if create:             # <<<<<<<<<<<<<<
@@ -3358,7 +2894,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_create) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":363
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":316
  *     if value is None:
  *         if create:
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)             # <<<<<<<<<<<<<<
@@ -3375,7 +2911,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":365
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":318
  *             result = np.PyArray_ZEROS(ndim, coerced_shape, typenum, 1)
  *         else:
  *             raise TypeError('Expected array but None provided')             # <<<<<<<<<<<<<<
@@ -3383,7 +2919,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         if ndim <= 1:
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "TypeError");
-      __pyx_t_3 = __site_call1_365_27->Target(__site_call1_365_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
+      __pyx_t_3 = __site_call1_318_27->Target(__site_call1_318_27, __pyx_context, __pyx_t_2, ((System::Object^)"Expected array but None provided"));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -3393,7 +2929,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":367
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":320
  *             raise TypeError('Expected array but None provided')
  *     else:
  *         if ndim <= 1:             # <<<<<<<<<<<<<<
@@ -3403,7 +2939,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     __pyx_t_1 = (__pyx_v_ndim <= 1);
     if (__pyx_t_1) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":369
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":322
  *         if ndim <= 1:
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS             # <<<<<<<<<<<<<<
@@ -3415,7 +2951,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L5:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":370
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":323
  *             # See http://projects.scipy.org/numpy/ticket/1691 for why this is needed
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and             # <<<<<<<<<<<<<<
@@ -3427,11 +2963,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
       __pyx_t_4 = (__pyx_v_alignment > 1);
       if (__pyx_t_4) {
         __pyx_t_3 = PyArray_Check(__pyx_v_value); 
-        __pyx_t_5 = __site_istrue_370_59->Target(__site_istrue_370_59, __pyx_t_3);
+        __pyx_t_5 = __site_istrue_323_59->Target(__site_istrue_323_59, __pyx_t_3);
         __pyx_t_3 = nullptr;
         if (__pyx_t_5) {
 
-          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":371
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":324
  *             flags |= np.NPY_C_CONTIGUOUS
  *         if (not copy and alignment > 1 and np.PyArray_Check(value) and
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):             # <<<<<<<<<<<<<<
@@ -3456,7 +2992,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     if (__pyx_t_4) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":373
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":326
  *             (<Py_ssize_t>np.PyArray_DATA(value) & (alignment - 1) != 0)):
  *             # mis-aligned array
  *             copy = True             # <<<<<<<<<<<<<<
@@ -3468,7 +3004,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L6:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":374
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":327
  *             # mis-aligned array
  *             copy = True
  *         if copy:             # <<<<<<<<<<<<<<
@@ -3477,7 +3013,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     if (__pyx_v_copy) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":375
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":328
  *             copy = True
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY             # <<<<<<<<<<<<<<
@@ -3489,7 +3025,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     }
     __pyx_L7:;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":376
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":329
  *         if copy:
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)             # <<<<<<<<<<<<<<
@@ -3509,7 +3045,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":377
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":330
  *             flags |= np.NPY_ENSURECOPY
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)             # <<<<<<<<<<<<<<
@@ -3517,11 +3053,11 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  */
   __pyx_t_8 = PyArray_NDIM(__pyx_v_result); 
-  __pyx_t_9 = __site_cvt_cvt_int_377_29->Target(__site_cvt_cvt_int_377_29, __pyx_t_8);
+  __pyx_t_9 = __site_cvt_cvt_int_330_29->Target(__site_cvt_cvt_int_330_29, __pyx_t_8);
   __pyx_t_8 = nullptr;
   __pyx_v_in_ndim = __pyx_t_9;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":378
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":331
  *         result = np.PyArray_FROMANY(value, typenum, 0, 0, flags)
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:             # <<<<<<<<<<<<<<
@@ -3531,7 +3067,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   __pyx_t_4 = (__pyx_v_in_ndim > __pyx_v_ndim);
   if (__pyx_t_4) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":379
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":332
  *     in_ndim = np.PyArray_NDIM(result)
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)             # <<<<<<<<<<<<<<
@@ -3540,9 +3076,9 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
     __pyx_t_8 = PythonOps::GetGlobal(__pyx_context, "ValueError");
     __pyx_t_2 = __pyx_v_ndim;
-    __pyx_t_3 = __site_op_mod_379_60->Target(__site_op_mod_379_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
+    __pyx_t_3 = __site_op_mod_332_60->Target(__site_op_mod_332_60, ((System::Object^)"Dimension of array must be <= %d"), __pyx_t_2);
     __pyx_t_2 = nullptr;
-    __pyx_t_2 = __site_call1_379_24->Target(__site_call1_379_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
+    __pyx_t_2 = __site_call1_332_24->Target(__site_call1_332_24, __pyx_context, __pyx_t_8, ((System::Object^)__pyx_t_3));
     __pyx_t_8 = nullptr;
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
@@ -3551,7 +3087,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   }
   __pyx_L8:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":380
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":333
  *     if in_ndim > ndim:
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)             # <<<<<<<<<<<<<<
@@ -3560,7 +3096,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
  */
   __pyx_v_in_shape = PyArray_DIMS(__pyx_v_result);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":381
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":334
  *         raise ValueError("Dimension of array must be <= %d" % ndim)
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):             # <<<<<<<<<<<<<<
@@ -3571,7 +3107,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = 0; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":382
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":335
  *     in_shape = np.PyArray_DIMS(result)
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]             # <<<<<<<<<<<<<<
@@ -3581,7 +3117,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = (__pyx_v_in_shape[__pyx_v_i]);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":383
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":336
  *     for i in range(in_ndim):
  *         coerced_shape[i] = in_shape[i]
  *     for i in range(in_ndim, ndim):             # <<<<<<<<<<<<<<
@@ -3592,7 +3128,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
   for (__pyx_t_11 = __pyx_v_in_ndim; __pyx_t_11 < __pyx_t_10; __pyx_t_11+=1) {
     __pyx_v_i = __pyx_t_11;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":385
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":338
  *     for i in range(in_ndim, ndim):
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1             # <<<<<<<<<<<<<<
@@ -3602,7 +3138,7 @@ static  NumpyDotNet::ndarray^ fw_asfortranarray(System::Object^ __pyx_v_value, i
     (__pyx_v_coerced_shape[__pyx_v_i]) = 1;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":386
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":339
  *         # Pad shape with ones on right side if necessarry
  *         coerced_shape[i] = 1
  *     return result             # <<<<<<<<<<<<<<
@@ -5436,67 +4972,67 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_call2_63_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_65_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_69_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_exc_info_75_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_75_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call2_97_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_99_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_103_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_exc_info_109_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_109_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_cvt_cvt_fwr_dbl_t_117_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwr_dbl_t_117_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_117_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_117_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_117_0_2 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_117_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_161_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_163_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_165_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_167_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_169_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_171_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_173_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_175_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_177_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_178_47 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_179_51 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_211_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_213_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_217_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_exc_info_223_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_223_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_call2_245_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_ARGS_247_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
-  __site_call1_251_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_get_exc_info_257_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
-  __site_call0_257_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
-  __site_cvt_cvt_fwr_dbl_t_265_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwr_dbl_t_265_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_265_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_265_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_fwi_integer_t_265_0_2 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_265_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_312_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_314_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_316_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_318_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_320_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_322_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_324_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_326_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_328_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_330_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_62_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_64_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_68_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_73_17 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_73_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call2_90_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_92_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_96_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_101_17 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_101_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_cvt_cvt_fwr_dbl_t_104_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwr_dbl_t_104_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_104_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_104_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_104_0_2 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_104_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_148_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_150_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_152_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_154_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_156_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_158_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_160_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_162_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_164_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_165_47 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_166_51 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_188_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_190_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_194_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_199_17 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_199_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_call2_215_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_ARGS_217_35 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(gcnew array<Argument>{Argument::Simple, Argument::Simple, Argument(ArgumentType::List)})));
+  __site_call1_221_32 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_exc_info_226_17 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "exc_info", false));
+  __site_call0_226_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(0)));
+  __site_cvt_cvt_fwr_dbl_t_228_0 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwr_dbl_t_228_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwr_dbl_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwr_dbl_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_228_0 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_228_0_1 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_fwi_integer_t_228_0_2 = CallSite< System::Func< CallSite^, System::Object^, fwi_integer_t >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, fwi_integer_t::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_228_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_275_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_277_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_279_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_281_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_283_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_285_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_287_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_289_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_291_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_293_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_295_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_296_47 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_297_51 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call1_318_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_323_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_330_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_332_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
   __site_call1_332_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_333_47 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call2_334_51 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_call1_365_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_370_59 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_377_29 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_mod_379_60 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_379_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -5579,14 +5115,14 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   // XXX skipping type ptr assignment for NumpyDotNet::ndarray
   // XXX skipping type ptr assignment for NumpyDotNet::dtype
   /*--- Create function pointers ---*/
-  __pyx_delegate_val_dvode_f_cb_wrapper = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper(dvode_f_cb_wrapper);
-  __pyx_function_pointer_dvode_f_cb_wrapper = (__pyx_fp_t_dvode_f_cb_wrapper)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_dvode_f_cb_wrapper).ToPointer());
-  __pyx_delegate_val_dvode_jac_cb_wrapper = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper(dvode_jac_cb_wrapper);
-  __pyx_function_pointer_dvode_jac_cb_wrapper = (__pyx_fp_t_dvode_jac_cb_wrapper)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_dvode_jac_cb_wrapper).ToPointer());
-  __pyx_delegate_val_zvode_f_cb_wrapper = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper(zvode_f_cb_wrapper);
-  __pyx_function_pointer_zvode_f_cb_wrapper = (__pyx_fp_t_zvode_f_cb_wrapper)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_zvode_f_cb_wrapper).ToPointer());
-  __pyx_delegate_val_zvode_jac_cb_wrapper = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper(zvode_jac_cb_wrapper);
-  __pyx_function_pointer_zvode_jac_cb_wrapper = (__pyx_fp_t_zvode_jac_cb_wrapper)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_zvode_jac_cb_wrapper).ToPointer());
+  __pyx_delegate_val_dvode_f_cb_wrapper_core = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_dvode_f_cb_wrapper_core(dvode_f_cb_wrapper_core);
+  __pyx_function_pointer_dvode_f_cb_wrapper_core = (__pyx_fp_t_dvode_f_cb_wrapper_core)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_dvode_f_cb_wrapper_core).ToPointer());
+  __pyx_delegate_val_dvode_jac_cb_wrapper_core = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_dvode_jac_cb_wrapper_core(dvode_jac_cb_wrapper_core);
+  __pyx_function_pointer_dvode_jac_cb_wrapper_core = (__pyx_fp_t_dvode_jac_cb_wrapper_core)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_dvode_jac_cb_wrapper_core).ToPointer());
+  __pyx_delegate_val_zvode_f_cb_wrapper_core = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_zvode_f_cb_wrapper_core(zvode_f_cb_wrapper_core);
+  __pyx_function_pointer_zvode_f_cb_wrapper_core = (__pyx_fp_t_zvode_f_cb_wrapper_core)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_zvode_f_cb_wrapper_core).ToPointer());
+  __pyx_delegate_val_zvode_jac_cb_wrapper_core = gcnew __pyx_delegate_t_5scipy_9integrate_4vode_zvode_jac_cb_wrapper_core(zvode_jac_cb_wrapper_core);
+  __pyx_function_pointer_zvode_jac_cb_wrapper_core = (__pyx_fp_t_zvode_jac_cb_wrapper_core)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_zvode_jac_cb_wrapper_core).ToPointer());
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
   PythonDictionary^ __pyx_t_2;
@@ -5611,7 +5147,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "sys", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":48
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/vode.pyx":47
  * 
  * 
  * __all__ = ['dvode', 'zvode']             # <<<<<<<<<<<<<<

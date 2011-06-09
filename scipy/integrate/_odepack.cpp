@@ -419,29 +419,23 @@ static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_62_0_8;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_120_8;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_133_27;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_172_28;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_172_28;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_177_51;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_getindex_177_62;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_177_42;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_177_42;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_242_19;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_263_19;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_299_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_299_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_304_30;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_311_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_311_36;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_316_30;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_347_23;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_351_38;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_351_18;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_353_89;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_353_83;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_353_23;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_365_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_368_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_370_26;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_243_19;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_264_19;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_300_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_300_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_305_30;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_312_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_312_36;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_317_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_351_23;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_355_38;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_355_18;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_357_89;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_357_83;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_357_23;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_369_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_372_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_374_26;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
@@ -767,15 +761,15 @@ static  System::Object^ RESTORE_JAC_FUNC(System::Object^ __pyx_v_jacStore) {
 /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":62
  * 
  * 
- * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,             # <<<<<<<<<<<<<<
+ * def odeint(fun, y0, t, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,             # <<<<<<<<<<<<<<
  *             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0,
  *             double hmax=0.0, double hmin=0.0, int ixpr=0, int mxstep=0, int mxhnil=0, int mxordn=12,
  */
 
-static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::Object^ p_tout, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ Dfun, [InteropServices::Optional]System::Object^ col_deriv, [InteropServices::Optional]System::Object^ ml, [InteropServices::Optional]System::Object^ mu, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ rtol, [InteropServices::Optional]System::Object^ atol, [InteropServices::Optional]System::Object^ tcrit, [InteropServices::Optional]System::Object^ h0, [InteropServices::Optional]System::Object^ hmax, [InteropServices::Optional]System::Object^ hmin, [InteropServices::Optional]System::Object^ ixpr, [InteropServices::Optional]System::Object^ mxstep, [InteropServices::Optional]System::Object^ mxhnil, [InteropServices::Optional]System::Object^ mxordn, [InteropServices::Optional]System::Object^ mxords) {
-  System::Object^ __pyx_v_fcn = nullptr;
+static System::Object^ odeint(System::Object^ fun, System::Object^ y0, System::Object^ t, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ Dfun, [InteropServices::Optional]System::Object^ col_deriv, [InteropServices::Optional]System::Object^ ml, [InteropServices::Optional]System::Object^ mu, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ rtol, [InteropServices::Optional]System::Object^ atol, [InteropServices::Optional]System::Object^ tcrit, [InteropServices::Optional]System::Object^ h0, [InteropServices::Optional]System::Object^ hmax, [InteropServices::Optional]System::Object^ hmin, [InteropServices::Optional]System::Object^ ixpr, [InteropServices::Optional]System::Object^ mxstep, [InteropServices::Optional]System::Object^ mxhnil, [InteropServices::Optional]System::Object^ mxordn, [InteropServices::Optional]System::Object^ mxords) {
+  System::Object^ __pyx_v_fun = nullptr;
   System::Object^ __pyx_v_y0 = nullptr;
-  System::Object^ __pyx_v_p_tout = nullptr;
+  System::Object^ __pyx_v_t = nullptr;
   System::Object^ __pyx_v_extra_args = nullptr;
   System::Object^ __pyx_v_Dfun = nullptr;
   int __pyx_v_col_deriv;
@@ -817,9 +811,9 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   int *__pyx_v_iwork;
   __pyx_t_5numpy_npy_intp __pyx_v_dims[2];
   System::Object^ __pyx_v_ap_tout;
-  double __pyx_v_t;
   int __pyx_v_numcrit;
   __pyx_t_5numpy_npy_intp __pyx_v_out_sz;
+  double __pyx_v_t0;
   System::Object^ __pyx_v_ap_y;
   System::Object^ __pyx_v_ap_yout;
   System::Object^ __pyx_v_ap_rtol;
@@ -858,11 +852,10 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   int __pyx_t_15;
   int __pyx_t_16;
   int __pyx_t_17;
-  double __pyx_t_18;
-  PythonDictionary^ __pyx_t_19;
-  __pyx_v_fcn = fcn;
+  PythonDictionary^ __pyx_t_18;
+  __pyx_v_fun = fun;
   __pyx_v_y0 = y0;
-  __pyx_v_p_tout = p_tout;
+  __pyx_v_t = t;
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
@@ -899,7 +892,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":63
  * 
- * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
+ * def odeint(fun, y0, t, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
  *             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0,             # <<<<<<<<<<<<<<
  *             double hmax=0.0, double hmin=0.0, int ixpr=0, int mxstep=0, int mxhnil=0, int mxordn=12,
  *             int mxords=5):
@@ -926,7 +919,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   } else {
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":64
- * def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
+ * def odeint(fun, y0, t, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1,
  *             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0,
  *             double hmax=0.0, double hmin=0.0, int ixpr=0, int mxstep=0, int mxhnil=0, int mxordn=12,             # <<<<<<<<<<<<<<
  *             int mxords=5):
@@ -1011,31 +1004,31 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   __pyx_v_crit_ind = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":84
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":83
  *     cdef double *dCythonHack
  *     cdef int *iCythonHack
  *     cdef int numcrit=0             # <<<<<<<<<<<<<<
  *     cdef np.npy_intp out_sz
- * 
+ *     cdef double t0
  */
   __pyx_v_numcrit = 0;
 
   /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":87
- *     cdef np.npy_intp out_sz
+ *     cdef double t0
  * 
- *     store_multipack_globals = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv, OdepackError)             # <<<<<<<<<<<<<<
+ *     store_multipack_globals = INIT_JAC_FUNC(fun,Dfun,extra_args,col_deriv, OdepackError)             # <<<<<<<<<<<<<<
  *     try:
  * 
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-  __pyx_t_2 = INIT_JAC_FUNC(__pyx_v_fcn, __pyx_v_Dfun, __pyx_v_extra_args, __pyx_v_col_deriv, __pyx_t_1); 
+  __pyx_t_2 = INIT_JAC_FUNC(__pyx_v_fun, __pyx_v_Dfun, __pyx_v_extra_args, __pyx_v_col_deriv, __pyx_t_1); 
   __pyx_t_1 = nullptr;
   __pyx_v_store_multipack_globals = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
   /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":88
  * 
- *     store_multipack_globals = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv, OdepackError)
+ *     store_multipack_globals = INIT_JAC_FUNC(fun,Dfun,extra_args,col_deriv, OdepackError)
  *     try:             # <<<<<<<<<<<<<<
  * 
  *         # Set up jt, ml, and mu
@@ -1185,19 +1178,19 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":107
  * 
  *         # Set of output times for integration
- *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)             # <<<<<<<<<<<<<<
+ *         ap_tout = np.PyArray_ContiguousFromObject(t, np.NPY_DOUBLE, 0, 1)             # <<<<<<<<<<<<<<
  *         tout = <double *>np.PyArray_DATA(ap_tout)
  *         ntimes = np.PyArray_SIZE(ap_tout)
  */
     __pyx_t_1 = (System::Object^)(long long)(NPY_DOUBLE);
-    __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_p_tout, __pyx_t_1, __pyx_int_0, __pyx_int_1); 
+    __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_t, __pyx_t_1, __pyx_int_0, __pyx_int_1); 
     __pyx_t_1 = nullptr;
     __pyx_v_ap_tout = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":108
  *         # Set of output times for integration
- *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)
+ *         ap_tout = np.PyArray_ContiguousFromObject(t, np.NPY_DOUBLE, 0, 1)
  *         tout = <double *>np.PyArray_DATA(ap_tout)             # <<<<<<<<<<<<<<
  *         ntimes = np.PyArray_SIZE(ap_tout)
  *         dims[0] = ntimes
@@ -1208,11 +1201,11 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     __pyx_v_tout = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tout)));
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":109
- *         ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)
+ *         ap_tout = np.PyArray_ContiguousFromObject(t, np.NPY_DOUBLE, 0, 1)
  *         tout = <double *>np.PyArray_DATA(ap_tout)
  *         ntimes = np.PyArray_SIZE(ap_tout)             # <<<<<<<<<<<<<<
  *         dims[0] = ntimes
- *         t = tout[0]
+ *         t0 = tout[0]
  */
     if (__pyx_v_ap_tout != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_tout) == nullptr) {
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
@@ -1223,7 +1216,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *         tout = <double *>np.PyArray_DATA(ap_tout)
  *         ntimes = np.PyArray_SIZE(ap_tout)
  *         dims[0] = ntimes             # <<<<<<<<<<<<<<
- *         t = tout[0]
+ *         t0 = tout[0]
  * 
  */
     (__pyx_v_dims[0]) = __pyx_v_ntimes;
@@ -1231,11 +1224,11 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":111
  *         ntimes = np.PyArray_SIZE(ap_tout)
  *         dims[0] = ntimes
- *         t = tout[0]             # <<<<<<<<<<<<<<
+ *         t0 = tout[0]             # <<<<<<<<<<<<<<
  * 
  *         # Setup array to hold the output evaluations
  */
-    __pyx_v_t = (__pyx_v_tout[0]);
+    __pyx_v_t0 = (__pyx_v_tout[0]);
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":114
  * 
@@ -1331,7 +1324,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  * 
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)             # <<<<<<<<<<<<<<
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
- *         if tcrit is not None:
+ *         if ap_tcrit is not None:
  */
     if (__pyx_v_ap_rtol != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_rtol) == nullptr) {
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
@@ -1342,7 +1335,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  * 
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)             # <<<<<<<<<<<<<<
- *         if tcrit is not None:
+ *         if ap_tcrit is not None:
  *             tcrit_ptr = <double *>np.PyArray_DATA(ap_tcrit)
  */
     if (__pyx_v_ap_atol != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_atol) == nullptr) {
@@ -1353,16 +1346,16 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":126
  *         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
- *         if tcrit is not None:             # <<<<<<<<<<<<<<
+ *         if ap_tcrit is not None:             # <<<<<<<<<<<<<<
  *             tcrit_ptr = <double *>np.PyArray_DATA(ap_tcrit)
  * 
  */
-    __pyx_t_5 = (__pyx_v_tcrit != nullptr);
+    __pyx_t_5 = (__pyx_v_ap_tcrit != nullptr);
     if (__pyx_t_5) {
 
       /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":127
  *         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
- *         if tcrit is not None:
+ *         if ap_tcrit is not None:
  *             tcrit_ptr = <double *>np.PyArray_DATA(ap_tcrit)             # <<<<<<<<<<<<<<
  * 
  *         # Find size of working arrays
@@ -1798,7 +1791,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *             if ap_hu is None or ap_tcur is None or ap_tolsf is None or ap_tsw is None or ap_nst is None or ap_nfe is None or ap_nje is None or ap_nqu is None or ap_mused is None:
  *                 return NULL             # <<<<<<<<<<<<<<
  * 
- *         if tcrit_ptr != NULL:
+ *         if ap_tcrit is not None:
  */
         __pyx_t_9 = NULL;
         __pyx_r = __pyx_t_9;
@@ -1814,39 +1807,36 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":170
  *                 return NULL
  * 
- *         if tcrit_ptr != NULL:             # <<<<<<<<<<<<<<
+ *         if ap_tcrit is not None:             # <<<<<<<<<<<<<<
  *             itask = 4
- *             rwork[0] = tcrit[0]  # There are critical points
+ *             rwork[0] = tcrit_ptr[0]  # There are critical points
  */
-    __pyx_t_5 = (__pyx_v_tcrit_ptr != NULL);
+    __pyx_t_5 = (__pyx_v_ap_tcrit != nullptr);
     if (__pyx_t_5) {
 
       /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":171
  * 
- *         if tcrit_ptr != NULL:
+ *         if ap_tcrit is not None:
  *             itask = 4             # <<<<<<<<<<<<<<
- *             rwork[0] = tcrit[0]  # There are critical points
+ *             rwork[0] = tcrit_ptr[0]  # There are critical points
  * 
  */
       __pyx_v_itask = 4;
 
       /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":172
- *         if tcrit_ptr != NULL:
+ *         if ap_tcrit is not None:
  *             itask = 4
- *             rwork[0] = tcrit[0]  # There are critical points             # <<<<<<<<<<<<<<
+ *             rwork[0] = tcrit_ptr[0]  # There are critical points             # <<<<<<<<<<<<<<
  * 
  *         while (k < ntimes and istate > 0):  # loop over desired times
  */
-      __pyx_t_9 = __site_getindex_172_28->Target(__site_getindex_172_28, __pyx_v_tcrit, ((System::Object^)0));
-      __pyx_t_18 = __site_cvt_cvt_double_172_28->Target(__site_cvt_cvt_double_172_28, __pyx_t_9);
-      __pyx_t_9 = nullptr;
-      (__pyx_v_rwork[0]) = __pyx_t_18;
+      (__pyx_v_rwork[0]) = (__pyx_v_tcrit_ptr[0]);
       goto __pyx_L15;
     }
     __pyx_L15:;
 
     /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":174
- *             rwork[0] = tcrit[0]  # There are critical points
+ *             rwork[0] = tcrit_ptr[0]  # There are critical points
  * 
  *         while (k < ntimes and istate > 0):  # loop over desired times             # <<<<<<<<<<<<<<
  *             tout_ptr = tout + k
@@ -1867,30 +1857,20 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *         while (k < ntimes and istate > 0):  # loop over desired times
  *             tout_ptr = tout + k             # <<<<<<<<<<<<<<
  *             # Use tcrit if relevant
- *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
+ *             if itask == 4 and tout_ptr[0] > (tcrit_ptr + crit_ind)[0]:
  */
       __pyx_v_tout_ptr = (__pyx_v_tout + __pyx_v_k);
 
       /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":177
  *             tout_ptr = tout + k
  *             # Use tcrit if relevant
- *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:             # <<<<<<<<<<<<<<
+ *             if itask == 4 and tout_ptr[0] > (tcrit_ptr + crit_ind)[0]:             # <<<<<<<<<<<<<<
  *                 crit_ind += 1
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]
  */
       __pyx_t_4 = (__pyx_v_itask == 4);
       if (__pyx_t_4) {
-        __pyx_t_9 = (__pyx_v_tout_ptr[0]);
-        __pyx_t_2 = __pyx_v_crit_ind;
-        __pyx_t_8 = __site_op_add_177_51->Target(__site_op_add_177_51, __pyx_v_tcrit, __pyx_t_2);
-        __pyx_t_2 = nullptr;
-        __pyx_t_2 = __site_getindex_177_62->Target(__site_getindex_177_62, __pyx_t_8, ((System::Object^)0));
-        __pyx_t_8 = nullptr;
-        __pyx_t_8 = __site_op_gt_177_42->Target(__site_op_gt_177_42, __pyx_t_9, __pyx_t_2);
-        __pyx_t_9 = nullptr;
-        __pyx_t_2 = nullptr;
-        __pyx_t_5 = __site_istrue_177_42->Target(__site_istrue_177_42, __pyx_t_8);
-        __pyx_t_8 = nullptr;
+        __pyx_t_5 = ((__pyx_v_tout_ptr[0]) > ((__pyx_v_tcrit_ptr + __pyx_v_crit_ind)[0]));
         __pyx_t_3 = __pyx_t_5;
       } else {
         __pyx_t_3 = __pyx_t_4;
@@ -1899,7 +1879,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
 
         /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":178
  *             # Use tcrit if relevant
- *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
+ *             if itask == 4 and tout_ptr[0] > (tcrit_ptr + crit_ind)[0]:
  *                 crit_ind += 1             # <<<<<<<<<<<<<<
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]
  *             if crit_ind >= numcrit:
@@ -1907,7 +1887,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         __pyx_v_crit_ind += 1;
 
         /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":179
- *             if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
+ *             if itask == 4 and tout_ptr[0] > (tcrit_ptr + crit_ind)[0]:
  *                 crit_ind += 1
  *                 rwork[0] = (tcrit_ptr + crit_ind)[0]             # <<<<<<<<<<<<<<
  *             if crit_ind >= numcrit:
@@ -1933,33 +1913,33 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *             if crit_ind >= numcrit:
  *                 itask = 1  # No more critical values             # <<<<<<<<<<<<<<
  * 
- *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
+ *             lsoda(<void *>ode_function, &neq, y, &t0, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask,
  */
         __pyx_v_itask = 1;
         goto __pyx_L19;
       }
       __pyx_L19:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":183
- *                 itask = 1  # No more critical values
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":184
  * 
- *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);             # <<<<<<<<<<<<<<
+ *             lsoda(<void *>ode_function, &neq, y, &t0, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask,
+ *                   &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);             # <<<<<<<<<<<<<<
  *             if full_output:
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  */
-      LSODA(((void *)__pyx_function_pointer_ode_function), (&__pyx_v_neq), __pyx_v_y, (&__pyx_v_t), __pyx_v_tout_ptr, (&__pyx_v_itol), __pyx_v_rtol_ptr, __pyx_v_atol_ptr, (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), __pyx_v_rwork, (&__pyx_v_lrw), __pyx_v_iwork, (&__pyx_v_liw), ((void *)__pyx_function_pointer_ode_jacobian_function), (&__pyx_v_jt));
+      LSODA(((void *)__pyx_function_pointer_ode_function), (&__pyx_v_neq), __pyx_v_y, (&__pyx_v_t0), __pyx_v_tout_ptr, (&__pyx_v_itol), __pyx_v_rtol_ptr, __pyx_v_atol_ptr, (&__pyx_v_itask), (&__pyx_v_istate), (&__pyx_v_iopt), __pyx_v_rwork, (&__pyx_v_lrw), __pyx_v_iwork, (&__pyx_v_liw), ((void *)__pyx_function_pointer_ode_jacobian_function), (&__pyx_v_jt));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":184
- * 
- *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":185
+ *             lsoda(<void *>ode_function, &neq, y, &t0, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask,
+ *                   &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
  *             if full_output:             # <<<<<<<<<<<<<<
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
  */
       if (__pyx_v_full_output) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":185
- *             lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":186
+ *                   &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
  *             if full_output:
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]             # <<<<<<<<<<<<<<
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
@@ -1970,7 +1950,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_hu)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[10]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":186
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":187
  *             if full_output:
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]             # <<<<<<<<<<<<<<
@@ -1982,7 +1962,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tcur)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[12]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":187
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":188
  *                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]             # <<<<<<<<<<<<<<
@@ -1994,7 +1974,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tolsf)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[13]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":188
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":189
  *                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]             # <<<<<<<<<<<<<<
@@ -2006,7 +1986,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_tsw)))[(__pyx_v_k - 1)]) = (__pyx_v_rwork[14]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":189
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":190
  *                 (<double *>np.PyArray_DATA(ap_tolsf))[k-1] = rwork[13]
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]             # <<<<<<<<<<<<<<
@@ -2018,7 +1998,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nst)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[10]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":190
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":191
  *                 (<double *>np.PyArray_DATA(ap_tsw))[k-1] = rwork[14]
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]             # <<<<<<<<<<<<<<
@@ -2030,7 +2010,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nfe)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[11]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":191
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":192
  *                 (<int *>np.PyArray_DATA(ap_nst))[k-1] = iwork[10]
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]             # <<<<<<<<<<<<<<
@@ -2042,7 +2022,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nje)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[12]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":192
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":193
  *                 (<int *>np.PyArray_DATA(ap_nfe))[k-1] = iwork[11]
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]             # <<<<<<<<<<<<<<
@@ -2054,7 +2034,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
         }
         (((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_nqu)))[(__pyx_v_k - 1)]) = (__pyx_v_iwork[13]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":193
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":194
  *                 (<int *>np.PyArray_DATA(ap_nje))[k-1] = iwork[12]
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]
  *                 if istate == -5 or istate == -4:             # <<<<<<<<<<<<<<
@@ -2065,7 +2045,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           case -5:
           case -4:
 
-          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":194
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":195
  *                 (<int *>np.PyArray_DATA(ap_nqu))[k-1] = iwork[13]
  *                 if istate == -5 or istate == -4:
  *                   imxer = iwork[15]             # <<<<<<<<<<<<<<
@@ -2076,7 +2056,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           break;
           default:
 
-          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":196
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":197
  *                   imxer = iwork[15]
  *                 else:
  *                   imxer = -1             # <<<<<<<<<<<<<<
@@ -2087,7 +2067,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
           break;
         }
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":198
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":199
  *                   imxer = -1
  * 
  *                 lenrw = iwork[16]             # <<<<<<<<<<<<<<
@@ -2096,7 +2076,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
         __pyx_v_lenrw = (__pyx_v_iwork[16]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":199
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":200
  * 
  *                 lenrw = iwork[16]
  *                 leniw = iwork[17]             # <<<<<<<<<<<<<<
@@ -2105,7 +2085,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
         __pyx_v_leniw = (__pyx_v_iwork[17]);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":200
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":201
  *                 lenrw = iwork[16]
  *                 leniw = iwork[17]
  *                 (<int *>np.PyArray_DATA(ap_mused))[k-1] = iwork[18]             # <<<<<<<<<<<<<<
@@ -2120,7 +2100,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       }
       __pyx_L20:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":202
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":203
  *                 (<int *>np.PyArray_DATA(ap_mused))[k-1] = iwork[18]
  * 
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output             # <<<<<<<<<<<<<<
@@ -2129,7 +2109,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       memcpy(__pyx_v_yout_ptr, __pyx_v_y, (__pyx_v_neq * (sizeof(double))));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":203
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":204
  * 
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output
  *             yout_ptr += neq             # <<<<<<<<<<<<<<
@@ -2138,7 +2118,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
       __pyx_v_yout_ptr += __pyx_v_neq;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":204
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":205
  *             memcpy(yout_ptr, y, neq*sizeof(double))   # copy integration result to output
  *             yout_ptr += neq
  *             k += 1             # <<<<<<<<<<<<<<
@@ -2148,7 +2128,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
       __pyx_v_k += 1;
     }
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":205
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":206
  *             yout_ptr += neq
  *             k += 1
  *         free(wa);             # <<<<<<<<<<<<<<
@@ -2158,7 +2138,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
     free(__pyx_v_wa);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":207
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":208
  *         free(wa);
  *     finally:
  *         RESTORE_JAC_FUNC(store_multipack_globals)             # <<<<<<<<<<<<<<
@@ -2166,11 +2146,11 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  *     if full_output:
  */
   finally {
-    __pyx_t_8 = RESTORE_JAC_FUNC(__pyx_v_store_multipack_globals); 
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = RESTORE_JAC_FUNC(__pyx_v_store_multipack_globals); 
+    __pyx_t_9 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":209
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":210
  *         RESTORE_JAC_FUNC(store_multipack_globals)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -2179,174 +2159,174 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":210
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":211
  * 
  *     if full_output:
  *         props = { "hu" : np.PyArray_Return(ap_hu),             # <<<<<<<<<<<<<<
  *                   "tcur" : np.PyArray_Return(ap_tcur),
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  */
-    __pyx_t_19 = PythonOps::MakeEmptyDict();
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_hu); 
-    __pyx_t_19[((System::Object^)"hu")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_18 = PythonOps::MakeEmptyDict();
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_hu); 
+    __pyx_t_18[((System::Object^)"hu")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":211
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":212
  *     if full_output:
  *         props = { "hu" : np.PyArray_Return(ap_hu),
  *                   "tcur" : np.PyArray_Return(ap_tcur),             # <<<<<<<<<<<<<<
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_tcur); 
-    __pyx_t_19[((System::Object^)"tcur")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_tcur); 
+    __pyx_t_18[((System::Object^)"tcur")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":212
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":213
  *         props = { "hu" : np.PyArray_Return(ap_hu),
  *                   "tcur" : np.PyArray_Return(ap_tcur),
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),             # <<<<<<<<<<<<<<
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  *                   "nst" : np.PyArray_Return(ap_nst),
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_tolsf); 
-    __pyx_t_19[((System::Object^)"tolsf")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_tolsf); 
+    __pyx_t_18[((System::Object^)"tolsf")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":213
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":214
  *                   "tcur" : np.PyArray_Return(ap_tcur),
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  *                   "tsw" : np.PyArray_Return(ap_tsw),             # <<<<<<<<<<<<<<
  *                   "nst" : np.PyArray_Return(ap_nst),
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_tsw); 
-    __pyx_t_19[((System::Object^)"tsw")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_tsw); 
+    __pyx_t_18[((System::Object^)"tsw")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":214
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":215
  *                   "tolsf" : np.PyArray_Return(ap_tolsf),
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  *                   "nst" : np.PyArray_Return(ap_nst),             # <<<<<<<<<<<<<<
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  *                   "nje" : np.PyArray_Return(ap_nje),
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_nst); 
-    __pyx_t_19[((System::Object^)"nst")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_nst); 
+    __pyx_t_18[((System::Object^)"nst")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":215
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":216
  *                   "tsw" : np.PyArray_Return(ap_tsw),
  *                   "nst" : np.PyArray_Return(ap_nst),
  *                   "nfe" : np.PyArray_Return(ap_nfe),             # <<<<<<<<<<<<<<
  *                   "nje" : np.PyArray_Return(ap_nje),
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_nfe); 
-    __pyx_t_19[((System::Object^)"nfe")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_nfe); 
+    __pyx_t_18[((System::Object^)"nfe")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":216
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":217
  *                   "nst" : np.PyArray_Return(ap_nst),
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  *                   "nje" : np.PyArray_Return(ap_nje),             # <<<<<<<<<<<<<<
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  *                   "imxer" : imxer,
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_nje); 
-    __pyx_t_19[((System::Object^)"nje")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_nje); 
+    __pyx_t_18[((System::Object^)"nje")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":217
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":218
  *                   "nfe" : np.PyArray_Return(ap_nfe),
  *                   "nje" : np.PyArray_Return(ap_nje),
  *                   "nqu" : np.PyArray_Return(ap_nqu),             # <<<<<<<<<<<<<<
  *                   "imxer" : imxer,
  *                   "lenrw" : lenrw,
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_nqu); 
-    __pyx_t_19[((System::Object^)"nqu")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_nqu); 
+    __pyx_t_18[((System::Object^)"nqu")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":218
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":219
  *                   "nje" : np.PyArray_Return(ap_nje),
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  *                   "imxer" : imxer,             # <<<<<<<<<<<<<<
  *                   "lenrw" : lenrw,
  *                   "leniw" : leniw,
  */
-    __pyx_t_8 = __pyx_v_imxer;
-    __pyx_t_19[((System::Object^)"imxer")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = __pyx_v_imxer;
+    __pyx_t_18[((System::Object^)"imxer")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":219
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":220
  *                   "nqu" : np.PyArray_Return(ap_nqu),
  *                   "imxer" : imxer,
  *                   "lenrw" : lenrw,             # <<<<<<<<<<<<<<
  *                   "leniw" : leniw,
  *                   "mused" : np.PyArray_Return(ap_mused) }
  */
-    __pyx_t_8 = __pyx_v_lenrw;
-    __pyx_t_19[((System::Object^)"lenrw")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = __pyx_v_lenrw;
+    __pyx_t_18[((System::Object^)"lenrw")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":220
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":221
  *                   "imxer" : imxer,
  *                   "lenrw" : lenrw,
  *                   "leniw" : leniw,             # <<<<<<<<<<<<<<
  *                   "mused" : np.PyArray_Return(ap_mused) }
  *         return (np.PyArray_Return(ap_yout), props, istate)
  */
-    __pyx_t_8 = __pyx_v_leniw;
-    __pyx_t_19[((System::Object^)"leniw")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
+    __pyx_t_9 = __pyx_v_leniw;
+    __pyx_t_18[((System::Object^)"leniw")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":221
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":222
  *                   "lenrw" : lenrw,
  *                   "leniw" : leniw,
  *                   "mused" : np.PyArray_Return(ap_mused) }             # <<<<<<<<<<<<<<
  *         return (np.PyArray_Return(ap_yout), props, istate)
  *     else:
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_mused); 
-    __pyx_t_19[((System::Object^)"mused")] = __pyx_t_8;
-    __pyx_t_8 = nullptr;
-    __pyx_v_props = __pyx_t_19;
-    __pyx_t_19 = nullptr;
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_mused); 
+    __pyx_t_18[((System::Object^)"mused")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+    __pyx_v_props = __pyx_t_18;
+    __pyx_t_18 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":222
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":223
  *                   "leniw" : leniw,
  *                   "mused" : np.PyArray_Return(ap_mused) }
  *         return (np.PyArray_Return(ap_yout), props, istate)             # <<<<<<<<<<<<<<
  *     else:
  *         return (np.PyArray_Return(ap_yout), istate)
  */
-    __pyx_t_8 = PyArray_Return(__pyx_v_ap_yout); 
+    __pyx_t_9 = PyArray_Return(__pyx_v_ap_yout); 
     __pyx_t_2 = __pyx_v_istate;
-    __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_8, ((System::Object^)__pyx_v_props), __pyx_t_2});
-    __pyx_t_8 = nullptr;
-    __pyx_t_2 = nullptr;
-    __pyx_r = __pyx_t_9;
+    __pyx_t_8 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_9, ((System::Object^)__pyx_v_props), __pyx_t_2});
     __pyx_t_9 = nullptr;
+    __pyx_t_2 = nullptr;
+    __pyx_r = __pyx_t_8;
+    __pyx_t_8 = nullptr;
     goto __pyx_L0;
     goto __pyx_L21;
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":224
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":225
  *         return (np.PyArray_Return(ap_yout), props, istate)
  *     else:
  *         return (np.PyArray_Return(ap_yout), istate)             # <<<<<<<<<<<<<<
  * 
  * 
  */
-    __pyx_t_9 = PyArray_Return(__pyx_v_ap_yout); 
+    __pyx_t_8 = PyArray_Return(__pyx_v_ap_yout); 
     __pyx_t_2 = __pyx_v_istate;
-    __pyx_t_8 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_9, __pyx_t_2});
-    __pyx_t_9 = nullptr;
-    __pyx_t_2 = nullptr;
-    __pyx_r = __pyx_t_8;
+    __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_8, __pyx_t_2});
     __pyx_t_8 = nullptr;
+    __pyx_t_2 = nullptr;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = nullptr;
     goto __pyx_L0;
   }
   __pyx_L21:;
@@ -2356,7 +2336,7 @@ static System::Object^ odeint(System::Object^ fcn, System::Object^ y0, System::O
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":229
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":230
  * 
  * 
  * cdef void ode_function(int *n, double *t, double *y, double *ydot):             # <<<<<<<<<<<<<<
@@ -2379,7 +2359,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arg1 = nullptr;
   __pyx_v_arglist = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":241
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":242
  * 
  *     # Append t to argument list
  *     arg1 = (t[0], )             # <<<<<<<<<<<<<<
@@ -2392,7 +2372,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arg1 = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":242
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":243
  *     # Append t to argument list
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1             # <<<<<<<<<<<<<<
@@ -2404,7 +2384,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_t_1 = nullptr;
   if (__pyx_t_3) {
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "__multipack_extra_arguments");
-    __pyx_t_4 = __site_op_add_242_19->Target(__site_op_add_242_19, __pyx_v_arg1, __pyx_t_1);
+    __pyx_t_4 = __site_op_add_243_19->Target(__site_op_add_243_19, __pyx_v_arg1, __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_2 = __pyx_t_4;
     __pyx_t_4 = nullptr;
@@ -2414,7 +2394,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_arglist = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":243
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":244
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = <np.ndarray>call_python_function(__multipack_python_function, n[0], y, arglist, 1, OdepackError)             # <<<<<<<<<<<<<<
@@ -2429,7 +2409,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
   __pyx_v_result_array = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":244
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":245
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = <np.ndarray>call_python_function(__multipack_python_function, n[0], y, arglist, 1, OdepackError)
  *     memcpy(ydot, np.PyArray_DATA(result_array), (n[0])*sizeof(double));             # <<<<<<<<<<<<<<
@@ -2440,7 +2420,7 @@ static  void ode_function(int *__pyx_v_n, double *__pyx_v_t, double *__pyx_v_y, 
 
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":247
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":248
  * 
  * 
  * cdef int ode_jacobian_function(int *n, double *t, double *y, int *ml, int *mu, double *pd, int *nrowpd):             # <<<<<<<<<<<<<<
@@ -2464,7 +2444,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arg1 = nullptr;
   __pyx_v_arglist = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":262
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":263
  *     cdef np.ndarray result_array
  * 
  *     arg1 = (t[0], )             # <<<<<<<<<<<<<<
@@ -2480,7 +2460,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arg1 = ((System::Object^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":263
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":264
  * 
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1             # <<<<<<<<<<<<<<
@@ -2492,7 +2472,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_t_1 = nullptr;
   if (__pyx_t_3) {
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "__multipack_extra_arguments");
-    __pyx_t_4 = __site_op_add_263_19->Target(__site_op_add_263_19, ((System::Object^)__pyx_v_arg1), __pyx_t_1);
+    __pyx_t_4 = __site_op_add_264_19->Target(__site_op_add_264_19, ((System::Object^)__pyx_v_arg1), __pyx_t_1);
     __pyx_t_1 = nullptr;
     __pyx_t_2 = __pyx_t_4;
     __pyx_t_4 = nullptr;
@@ -2502,7 +2482,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_arglist = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":264
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":265
  *     arg1 = (t[0], )
  *     arglist = arg1 + __multipack_extra_arguments if __multipack_extra_arguments is not None else arg1
  *     result_array = call_python_function(__multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)             # <<<<<<<<<<<<<<
@@ -2520,7 +2500,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_v_result_array = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":266
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":267
  *     result_array = call_python_function(__multipack_python_jacobian, n[0], y, arglist, 2, OdepackError)
  * 
  *     if __multipack_jac_transpose == 1:             # <<<<<<<<<<<<<<
@@ -2530,7 +2510,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   __pyx_t_3 = (__pyx_v_5scipy_9integrate_8_odepack___multipack_jac_transpose == 1);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":267
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":268
  * 
  *     if __multipack_jac_transpose == 1:
  *         MATRIXC2F(pd, <double *>np.PyArray_DATA(result_array), n[0], nrowpd[0])             # <<<<<<<<<<<<<<
@@ -2542,7 +2522,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":269
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":270
  *         MATRIXC2F(pd, <double *>np.PyArray_DATA(result_array), n[0], nrowpd[0])
  *     else:
  *         memcpy(pd, np.PyArray_DATA(result_array), (n[0])*(nrowpd[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2553,7 +2533,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":271
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":272
  *         memcpy(pd, np.PyArray_DATA(result_array), (n[0])*(nrowpd[0])*sizeof(double))
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -2568,7 +2548,7 @@ static  int ode_jacobian_function(int *__pyx_v_n, double *__pyx_v_t, double *__p
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":273
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":274
  *     return 0
  * 
  * cdef void MATRIXC2F(double *p1, double *p3, int n, int m):             # <<<<<<<<<<<<<<
@@ -2582,7 +2562,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
   int __pyx_v_j;
   int __pyx_t_1;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":277
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":278
  *     cdef int i,j
  * 
  *     j=0             # <<<<<<<<<<<<<<
@@ -2591,7 +2571,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
   __pyx_v_j = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":278
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":279
  * 
  *     j=0
  *     while j < m:             # <<<<<<<<<<<<<<
@@ -2602,7 +2582,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
     __pyx_t_1 = (__pyx_v_j < __pyx_v_m);
     if (!__pyx_t_1) break;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":279
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":280
  *     j=0
  *     while j < m:
  *         p2=p3             # <<<<<<<<<<<<<<
@@ -2611,7 +2591,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_p2 = __pyx_v_p3;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":280
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":281
  *     while j < m:
  *         p2=p3
  *         i=0             # <<<<<<<<<<<<<<
@@ -2620,7 +2600,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_i = 0;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":281
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":282
  *         p2=p3
  *         i=0
  *         while i < n:             # <<<<<<<<<<<<<<
@@ -2631,7 +2611,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
       __pyx_t_1 = (__pyx_v_i < __pyx_v_n);
       if (!__pyx_t_1) break;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":282
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":283
  *         i=0
  *         while i < n:
  *             p1[0] = p2[0]             # <<<<<<<<<<<<<<
@@ -2640,7 +2620,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
       (__pyx_v_p1[0]) = (__pyx_v_p2[0]);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":283
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":284
  *         while i < n:
  *             p1[0] = p2[0]
  *             p2 += m             # <<<<<<<<<<<<<<
@@ -2649,7 +2629,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
       __pyx_v_p2 += __pyx_v_m;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":284
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":285
  *             p1[0] = p2[0]
  *             p2 += m
  *             p1 += 1             # <<<<<<<<<<<<<<
@@ -2659,7 +2639,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
       __pyx_v_p1 += 1;
     }
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":285
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":286
  *             p2 += m
  *             p1 += 1
  *         p3 += 1             # <<<<<<<<<<<<<<
@@ -2668,7 +2648,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
  */
     __pyx_v_p3 += 1;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":286
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":287
  *             p1 += 1
  *         p3 += 1
  *         j += 1             # <<<<<<<<<<<<<<
@@ -2680,7 +2660,7 @@ static  void MATRIXC2F(double *__pyx_v_p1, double *__pyx_v_p3, int __pyx_v_n, in
 
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":288
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":289
  *         j += 1
  * 
  * cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int neq, int *numcrit):             # <<<<<<<<<<<<<<
@@ -2703,7 +2683,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_v_ap_atol = nullptr;
   __pyx_v_ap_tcrit = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":290
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":291
  * cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int neq, int *numcrit):
  *     cdef object ap_rtol, ap_atol, ap_tcrit      # Outputs
  *     cdef int itol = 0             # <<<<<<<<<<<<<<
@@ -2712,7 +2692,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_itol = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":291
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":292
  *     cdef object ap_rtol, ap_atol, ap_tcrit      # Outputs
  *     cdef int itol = 0
  *     cdef double tol=1.49012e-8             # <<<<<<<<<<<<<<
@@ -2721,7 +2701,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_tol = 1.49012e-8;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":292
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":293
  *     cdef int itol = 0
  *     cdef double tol=1.49012e-8
  *     cdef np.npy_intp one = 1             # <<<<<<<<<<<<<<
@@ -2730,7 +2710,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_one = 1;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":294
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":295
  *     cdef np.npy_intp one = 1
  * 
  *     if o_rtol is None:             # <<<<<<<<<<<<<<
@@ -2740,7 +2720,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_t_1 = (__pyx_v_o_rtol == nullptr);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":295
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":296
  * 
  *     if o_rtol is None:
  *         ap_rtol = np.PyArray_EMPTY(1, &one, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2751,7 +2731,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_rtol = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":296
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":297
  *     if o_rtol is None:
  *         ap_rtol = np.PyArray_EMPTY(1, &one, np.NPY_DOUBLE, False)
  *         (<double *>np.PyArray_DATA(ap_rtol))[0] = tol             # <<<<<<<<<<<<<<
@@ -2766,7 +2746,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":298
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":299
  *         (<double *>np.PyArray_DATA(ap_rtol))[0] = tol
  *     else:
  *         ap_rtol = np.PyArray_ContiguousFromObject(o_rtol,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
@@ -2779,7 +2759,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_rtol = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":299
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":300
  *     else:
  *         ap_rtol = np.PyArray_ContiguousFromObject(o_rtol,np.NPY_DOUBLE,0,1)
  *         if np.PyArray_NDIM(ap_rtol) == 0:             # <<<<<<<<<<<<<<
@@ -2790,15 +2770,15 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
     __pyx_t_3 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_v_ap_rtol)); 
-    __pyx_t_2 = __site_op_eq_299_36->Target(__site_op_eq_299_36, __pyx_t_3, __pyx_int_0);
+    __pyx_t_2 = __site_op_eq_300_36->Target(__site_op_eq_300_36, __pyx_t_3, __pyx_int_0);
     __pyx_t_3 = nullptr;
-    __pyx_t_1 = __site_istrue_299_36->Target(__site_istrue_299_36, __pyx_t_2);
+    __pyx_t_1 = __site_istrue_300_36->Target(__site_istrue_300_36, __pyx_t_2);
     __pyx_t_2 = nullptr;
     if (__pyx_t_1) {
       goto __pyx_L4;
     }
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":301
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":302
  *         if np.PyArray_NDIM(ap_rtol) == 0:
  *             pass
  *         elif np.PyArray_DIMS(ap_rtol)[0] == neq:             # <<<<<<<<<<<<<<
@@ -2811,7 +2791,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_t_1 = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_rtol))[0]) == __pyx_v_neq);
     if (__pyx_t_1) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":302
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":303
  *             pass
  *         elif np.PyArray_DIMS(ap_rtol)[0] == neq:
  *             itol |= 2             # <<<<<<<<<<<<<<
@@ -2823,7 +2803,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":304
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":305
  *             itol |= 2
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")             # <<<<<<<<<<<<<<
@@ -2831,7 +2811,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  *     if o_atol is None:
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-      __pyx_t_3 = __site_call1_304_30->Target(__site_call1_304_30, __pyx_context, __pyx_t_2, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
+      __pyx_t_3 = __site_call1_305_30->Target(__site_call1_305_30, __pyx_context, __pyx_t_2, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
       __pyx_t_2 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
       __pyx_t_3 = nullptr;
@@ -2840,7 +2820,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":306
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":307
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")
  * 
  *     if o_atol is None:             # <<<<<<<<<<<<<<
@@ -2850,7 +2830,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   __pyx_t_1 = (__pyx_v_o_atol == nullptr);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":307
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":308
  * 
  *     if o_atol is None:
  *         ap_atol = np.PyArray_EMPTY(1,&one,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2861,7 +2841,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_atol = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":308
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":309
  *     if o_atol is None:
  *         ap_atol = np.PyArray_EMPTY(1,&one,np.NPY_DOUBLE, False)
  *         (<double *>np.PyArray_DATA(ap_atol))[0] = tol             # <<<<<<<<<<<<<<
@@ -2876,7 +2856,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":310
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":311
  *         (<double *>np.PyArray_DATA(ap_atol))[0] = tol
  *     else:
  *         ap_atol = np.PyArray_ContiguousFromObject(o_atol,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
@@ -2889,7 +2869,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_atol = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":311
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":312
  *     else:
  *         ap_atol = np.PyArray_ContiguousFromObject(o_atol,np.NPY_DOUBLE,0,1)
  *         if np.PyArray_NDIM(ap_atol) == 0:   # atol is scalar             # <<<<<<<<<<<<<<
@@ -2900,15 +2880,15 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
     }
     __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_v_ap_atol)); 
-    __pyx_t_3 = __site_op_eq_311_36->Target(__site_op_eq_311_36, __pyx_t_2, __pyx_int_0);
+    __pyx_t_3 = __site_op_eq_312_36->Target(__site_op_eq_312_36, __pyx_t_2, __pyx_int_0);
     __pyx_t_2 = nullptr;
-    __pyx_t_1 = __site_istrue_311_36->Target(__site_istrue_311_36, __pyx_t_3);
+    __pyx_t_1 = __site_istrue_312_36->Target(__site_istrue_312_36, __pyx_t_3);
     __pyx_t_3 = nullptr;
     if (__pyx_t_1) {
       goto __pyx_L6;
     }
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":313
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":314
  *         if np.PyArray_NDIM(ap_atol) == 0:   # atol is scalar
  *             pass
  *         elif np.PyArray_DIMS(ap_atol)[0] == neq:             # <<<<<<<<<<<<<<
@@ -2921,7 +2901,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_t_1 = ((PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_atol))[0]) == __pyx_v_neq);
     if (__pyx_t_1) {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":314
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":315
  *             pass
  *         elif np.PyArray_DIMS(ap_atol)[0] == neq:
  *             itol |= 1   # Set atol array flag             # <<<<<<<<<<<<<<
@@ -2933,7 +2913,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     }
     /*else*/ {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":316
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":317
  *             itol |= 1   # Set atol array flag
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")             # <<<<<<<<<<<<<<
@@ -2941,7 +2921,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  * 
  */
       __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-      __pyx_t_2 = __site_call1_316_30->Target(__site_call1_316_30, __pyx_context, __pyx_t_3, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
+      __pyx_t_2 = __site_call1_317_30->Target(__site_call1_317_30, __pyx_context, __pyx_t_3, ((System::Object^)"Tolerances must be an array of the same length as the\n     number of equations or a scalar."));
       __pyx_t_3 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
       __pyx_t_2 = nullptr;
@@ -2950,7 +2930,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":317
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":318
  *         else:
  *             raise OdepackError("Tolerances must be an array of the same length as the\n     number of equations or a scalar.")
  *     itol += 1             # increment to get correct value             # <<<<<<<<<<<<<<
@@ -2959,22 +2939,22 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
  */
   __pyx_v_itol += 1;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":320
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":321
  * 
  *     # Setup t-critical
- *     if o_tcrit is None:             # <<<<<<<<<<<<<<
+ *     if o_tcrit is not None:             # <<<<<<<<<<<<<<
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
  *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
  */
-  __pyx_t_1 = (__pyx_v_o_tcrit == nullptr);
+  __pyx_t_1 = (__pyx_v_o_tcrit != nullptr);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":321
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":322
  *     # Setup t-critical
- *     if o_tcrit is None:
+ *     if o_tcrit is not None:
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)             # <<<<<<<<<<<<<<
  *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
- *     return itol, ap_rtol, ap_atol, ap_tcrit
+ *     else:
  */
     __pyx_t_2 = (System::Object^)(long long)(NPY_DOUBLE);
     __pyx_t_3 = PyArray_ContiguousFromObject(__pyx_v_o_tcrit, __pyx_t_2, __pyx_int_0, __pyx_int_1); 
@@ -2982,12 +2962,12 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     __pyx_v_ap_tcrit = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":322
- *     if o_tcrit is None:
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":323
+ *     if o_tcrit is not None:
  *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
  *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)             # <<<<<<<<<<<<<<
- *     return itol, ap_rtol, ap_atol, ap_tcrit
- * 
+ *     else:
+ *         ap_tcrit = None
  */
     if (__pyx_v_ap_tcrit != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_tcrit) == nullptr) {
       throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
@@ -2995,11 +2975,22 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
     (__pyx_v_numcrit[0]) = PyArray_SIZE(((NumpyDotNet::ndarray^)__pyx_v_ap_tcrit));
     goto __pyx_L7;
   }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":325
+ *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
+ *     else:
+ *         ap_tcrit = None             # <<<<<<<<<<<<<<
+ * 
+ *     return itol, ap_rtol, ap_atol, ap_tcrit
+ */
+    __pyx_v_ap_tcrit = nullptr;
+  }
   __pyx_L7:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":323
- *         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
- *         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":327
+ *         ap_tcrit = None
+ * 
  *     return itol, ap_rtol, ap_atol, ap_tcrit             # <<<<<<<<<<<<<<
  * 
  * 
@@ -3016,7 +3007,7 @@ static  System::Object^ setup_extra_inputs(System::Object^ __pyx_v_o_rtol, Syste
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":326
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":330
  * 
  * 
  * cdef object call_python_function(func, np.npy_intp n, double *x, object args, int dim, object error_obj):             # <<<<<<<<<<<<<<
@@ -3036,7 +3027,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = nullptr;
   __pyx_v_result = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":345
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":349
  * 
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)             # <<<<<<<<<<<<<<
@@ -3047,7 +3038,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":346
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":350
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:             # <<<<<<<<<<<<<<
@@ -3057,21 +3048,21 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (((System::Object^)__pyx_v_sequence) == nullptr);
   if (__pyx_t_2) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":347
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":351
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:
  *         raise error_obj("Internal failure to make an array of doubles out of first\n                 argument to function call.")             # <<<<<<<<<<<<<<
  * 
  *     # Build argument list
  */
-    __pyx_t_1 = __site_call1_347_23->Target(__site_call1_347_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
+    __pyx_t_1 = __site_call1_351_23->Target(__site_call1_351_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":350
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":354
  * 
  *     # Build argument list
  *     if args is None: args = ()             # <<<<<<<<<<<<<<
@@ -3085,7 +3076,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L4:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":351
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":355
  *     # Build argument list
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)             # <<<<<<<<<<<<<<
@@ -3094,15 +3085,15 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "apply");
   __pyx_t_3 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_sequence)});
-  __pyx_t_4 = __site_op_add_351_38->Target(__site_op_add_351_38, __pyx_t_3, __pyx_v_args);
+  __pyx_t_4 = __site_op_add_355_38->Target(__site_op_add_355_38, __pyx_t_3, __pyx_v_args);
   __pyx_t_3 = nullptr;
-  __pyx_t_3 = __site_call2_351_18->Target(__site_call2_351_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
+  __pyx_t_3 = __site_call2_355_18->Target(__site_call2_355_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
   __pyx_t_1 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_v_result = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":352
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":356
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:             # <<<<<<<<<<<<<<
@@ -3112,17 +3103,17 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (__pyx_v_result == nullptr);
   if (__pyx_t_2) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":353
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":357
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)             # <<<<<<<<<<<<<<
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)
  * 
  */
-    __pyx_t_3 = __site_get_func_name_353_89->Target(__site_get_func_name_353_89, __pyx_v_func, __pyx_context);
-    __pyx_t_4 = __site_op_mod_353_83->Target(__site_op_mod_353_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
+    __pyx_t_3 = __site_get_func_name_357_89->Target(__site_get_func_name_357_89, __pyx_v_func, __pyx_context);
+    __pyx_t_4 = __site_op_mod_357_83->Target(__site_op_mod_357_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
     __pyx_t_3 = nullptr;
-    __pyx_t_3 = __site_call1_353_23->Target(__site_call1_353_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
+    __pyx_t_3 = __site_call1_357_23->Target(__site_call1_357_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3130,7 +3121,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":354
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":358
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)             # <<<<<<<<<<<<<<
@@ -3153,7 +3144,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":357
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":361
  * 
  * 
  * cdef int compute_lrw_liw(int *lrw, int *liw, int neq, int jt, int ml, int mu, int mxordn, int mxords):             # <<<<<<<<<<<<<<
@@ -3172,7 +3163,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   int __pyx_t_3;
   int __pyx_t_4;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":360
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":364
  *     cdef int lrn, lrs, nyh, lmat
  * 
  *     if jt == 1 or jt == 2:             # <<<<<<<<<<<<<<
@@ -3183,7 +3174,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     case 1:
     case 2:
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":361
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":365
  * 
  *     if jt == 1 or jt == 2:
  *         lmat = neq*neq + 2             # <<<<<<<<<<<<<<
@@ -3193,7 +3184,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     __pyx_v_lmat = ((__pyx_v_neq * __pyx_v_neq) + 2);
     break;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":362
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":366
  *     if jt == 1 or jt == 2:
  *         lmat = neq*neq + 2
  *     elif jt == 4 or jt == 5:             # <<<<<<<<<<<<<<
@@ -3203,7 +3194,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     case 4:
     case 5:
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":363
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":367
  *         lmat = neq*neq + 2
  *     elif jt == 4 or jt == 5:
  *         lmat = (2*ml + mu + 1)*neq + 2             # <<<<<<<<<<<<<<
@@ -3214,7 +3205,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
     break;
     default:
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":365
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":369
  *         lmat = (2*ml + mu + 1)*neq + 2
  *     else:
  *         raise OdepackError("Incorrect value for jt")             # <<<<<<<<<<<<<<
@@ -3222,14 +3213,14 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  *     if mxordn < 0:
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_2 = __site_call1_365_26->Target(__site_call1_365_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for jt"));
+    __pyx_t_2 = __site_call1_369_26->Target(__site_call1_369_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for jt"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
     break;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":367
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":371
  *         raise OdepackError("Incorrect value for jt")
  * 
  *     if mxordn < 0:             # <<<<<<<<<<<<<<
@@ -3239,7 +3230,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   __pyx_t_3 = (__pyx_v_mxordn < 0);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":368
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":372
  * 
  *     if mxordn < 0:
  *         raise OdepackError("Incorrect value for mxordn")             # <<<<<<<<<<<<<<
@@ -3247,7 +3238,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  *         raise OdepackError("Incorrect value for mxords")
  */
     __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_1 = __site_call1_368_26->Target(__site_call1_368_26, __pyx_context, __pyx_t_2, ((System::Object^)"Incorrect value for mxordn"));
+    __pyx_t_1 = __site_call1_372_26->Target(__site_call1_372_26, __pyx_context, __pyx_t_2, ((System::Object^)"Incorrect value for mxordn"));
     __pyx_t_2 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
@@ -3255,7 +3246,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":369
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":373
  *     if mxordn < 0:
  *         raise OdepackError("Incorrect value for mxordn")
  *     if mxords < 0:             # <<<<<<<<<<<<<<
@@ -3265,7 +3256,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   __pyx_t_3 = (__pyx_v_mxords < 0);
   if (__pyx_t_3) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":370
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":374
  *         raise OdepackError("Incorrect value for mxordn")
  *     if mxords < 0:
  *         raise OdepackError("Incorrect value for mxords")             # <<<<<<<<<<<<<<
@@ -3273,7 +3264,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  * 
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "OdepackError");
-    __pyx_t_2 = __site_call1_370_26->Target(__site_call1_370_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for mxords"));
+    __pyx_t_2 = __site_call1_374_26->Target(__site_call1_374_26, __pyx_context, __pyx_t_1, ((System::Object^)"Incorrect value for mxords"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
@@ -3281,7 +3272,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   __pyx_L4:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":371
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":375
  *     if mxords < 0:
  *         raise OdepackError("Incorrect value for mxords")
  *     nyh = neq             # <<<<<<<<<<<<<<
@@ -3290,7 +3281,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_nyh = __pyx_v_neq;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":373
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":377
  *     nyh = neq
  * 
  *     lrn = 20 + nyh*(mxordn+1) + 3*neq             # <<<<<<<<<<<<<<
@@ -3299,7 +3290,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_lrn = ((20 + (__pyx_v_nyh * (__pyx_v_mxordn + 1))) + (3 * __pyx_v_neq));
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":374
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":378
  * 
  *     lrn = 20 + nyh*(mxordn+1) + 3*neq
  *     lrs = 20 + nyh*(mxords+1) + 3*neq + lmat             # <<<<<<<<<<<<<<
@@ -3308,7 +3299,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   __pyx_v_lrs = (((20 + (__pyx_v_nyh * (__pyx_v_mxords + 1))) + (3 * __pyx_v_neq)) + __pyx_v_lmat);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":376
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":380
  *     lrs = 20 + nyh*(mxords+1) + 3*neq + lmat
  * 
  *     lrw[0] = lrn if lrn > lrs else lrs             # <<<<<<<<<<<<<<
@@ -3322,7 +3313,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
   }
   (__pyx_v_lrw[0]) = __pyx_t_4;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":377
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":381
  * 
  *     lrw[0] = lrn if lrn > lrs else lrs
  *     liw[0] = <int>(20 + neq)             # <<<<<<<<<<<<<<
@@ -3331,7 +3322,7 @@ static  int compute_lrw_liw(int *__pyx_v_lrw, int *__pyx_v_liw, int __pyx_v_neq,
  */
   (__pyx_v_liw[0]) = ((int)(20 + __pyx_v_neq));
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":378
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_odepack.pyx":382
  *     lrw[0] = lrn if lrn > lrs else lrs
  *     liw[0] = <int>(20 + neq)
  *     return 0             # <<<<<<<<<<<<<<
@@ -5186,29 +5177,23 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_cvt_cvt_int_62_0_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_cvt_cvt_int_120_8 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call1_133_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_getindex_172_28 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_cvt_cvt_double_172_28 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_add_177_51 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_getindex_177_62 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeGetIndexAction(__pyx_context, 2));
-  __site_op_gt_177_42 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
-  __site_istrue_177_42 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_add_242_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_op_add_263_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_op_eq_299_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_299_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_304_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_eq_311_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_311_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_316_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_347_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_add_351_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_call2_351_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_func_name_353_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
-  __site_op_mod_353_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_353_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_365_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_368_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_370_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_243_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_add_264_19 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_op_eq_300_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_300_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_305_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_312_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_312_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_317_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_351_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_355_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_call2_355_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_func_name_357_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
+  __site_op_mod_357_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_357_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_369_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_372_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_374_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));

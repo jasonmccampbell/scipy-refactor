@@ -80,7 +80,11 @@
 		<File RelativePath=".\odepack\stodi.f"/>
 		<File RelativePath=".\odepack\vmnorm.f"/>
 		<File RelativePath=".\odepack\vnorm.f"/>
-		<File RelativePath=".\odepack\vode.f"/>
+		<File RelativePath=".\odepack\vode.f">
+			<FileConfiguration Name="Debug|Win32">
+				<Tool Name="VFFortranCompilerTool" ObjectFile="$(IntDir)\vode_f.obj"/></FileConfiguration>
+			<FileConfiguration Name="Release|Win32">
+				<Tool Name="VFFortranCompilerTool" ObjectFile="$(IntDir)\vode_f.obj"/></FileConfiguration></File>
 		<File RelativePath=".\odepack\xerrwv.f"/>
 		<File RelativePath=".\odepack\xsetf.f"/>
 		<File RelativePath=".\odepack\xsetun.f"/>

@@ -12,6 +12,7 @@ cdef extern from "__quadpack.h":
     void DQAGIE(void *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
     void DQAWFE(void *, double *, double *, int *, double *, int *, int *, int *, double *, double *, int *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *, double *)
     void DQAWCE(void *, double *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
+    void DQAWSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *)
 
 
 cdef extern from "string.h":
@@ -24,7 +25,7 @@ cdef extern from "stdlib.h" nogil:
 class QuadpackError(Exception): pass
 
 quadpack_error = error = QuadpackError
-quadpack_python_funtion = None
+quadpack_python_function = None
 quadpack_extra_arguments = ()
 
 __version__ = 1.13
@@ -48,7 +49,7 @@ cdef QUAD_RESTORE_FUNC(prev_values):
     global quadpack_python_function
     global quadpack_extra_arguments
 
-    quadpack_pythonfunction, quadpack_extra_arguments = prev_values
+    quadpack_python_function, quadpack_extra_arguments = prev_values
 
 
 cdef double quad_function(double *x):
@@ -70,7 +71,7 @@ cdef double quad_function(double *x):
     return d_result
 
 
-def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
+def _qagse(fcn, double a, double b, extra_args=None, int full_output=0,
            double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagse(fun, a, b, | args, full_output, epsabs, epsrel, limit)"""
 
@@ -107,7 +108,8 @@ def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
         elist = <double *>np.PyArray_DATA(ap_elist)
 
         DQAGSE(<void *>quad_function, &a, &b, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
-    except Exception:
+    except Exception, e:
+        print "_qagse failed: %s" % e
         ier = 80
 
     finally:
@@ -127,7 +129,7 @@ def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
 
 
 
-def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+def _qagie(fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagie(fun, bound, inf, | args, full_output, epsabs, epsrel, limit)"""
     cdef np.ndarray ap_alist, ap_iord
     cdef np.ndarray ap_blist, ap_elist, ap_rlist
@@ -140,6 +142,7 @@ def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
     # Need to check that limit is bigger than 1
     if limit < 1:
         return (result, abserr, ier)
+    limit_shape[0] = limit
 
     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
     try:
@@ -148,13 +151,20 @@ def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
-        ap_e_list = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
+        ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
 
         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
             return None
 
+        iord = <int *>np.PyArray_DATA(ap_iord)
+        alist = <double *>np.PyArray_DATA(ap_alist)
+        blist = <double *>np.PyArray_DATA(ap_blist)
+        rlist = <double *>np.PyArray_DATA(ap_rlist)
+        elist = <double *>np.PyArray_DATA(ap_elist)
+
         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
-    except Exception:
+    except Exception, e:
+        print "_qaqie failed: %s" % e
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
@@ -172,7 +182,7 @@ def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_o
         return (result, abserr, ier)
 
 
-def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
+def _qagpe(fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
     """[result,abserr,infodict,ier] = _qagpe(fun, a, b, points, | args, full_output, epsabs, epsrel, limit)"""
     cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist
     cdef np.ndarray ap_r_list, ap_points, ap_pts, ap_level, ap_ndin
@@ -188,10 +198,11 @@ def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_o
     # Need to check that limit is bigger than 1
     if limit < 1:
         return (result, abserr, ier)
+    limit_shape[0] = limit
 
     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
     try:
-        ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
+        ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
         npts2 = np.PyArray_DIMS(ap_points)[0]
         points = <double *>np.PyArray_DATA(ap_points);
 
@@ -216,6 +227,7 @@ def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_o
 
         DQAGPE(<void *>quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)
     except Exception, e:
+        print "_qagpe failed: %s" % e
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
@@ -237,7 +249,7 @@ def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_o
         return (result, abserr, ier)
 
 
-def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None, 
+def _qawoe(fcn, double a, double b, double omega, int integr, extra_args=None, 
             int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50, 
             int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):
     """[result,abserr,infodict,ier] = _qawoe(fun, a, b, omega, integr, | args, full_output, epsabs, epsrel, limit, maxp1, icall, momcom, chebmo)"""
@@ -285,6 +297,7 @@ def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args
 
         DQAWOE(<void *>quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)
     except Exception, e:
+        print "_qawoe failed: %s" % e
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
@@ -359,7 +372,8 @@ def _qawfe(fcn, double a, double omega, int integr, extra_args=None, int full_ou
         ierlst = <int *>np.PyArray_DATA(ap_ierlst)
 
         DQAWFE(<void *>quad_function, &a, &omega, &integr, &epsabs, &limlst, &limit, &maxp1, &result, &abserr, &neval, &ier, rslst, erlst, ierlst, &lst, alist, blist, rlist, elist, iord, nnlog, chebmo)
-    except:
+    except Exception, e:
+        print "_qawfe failed: %s" % e
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
@@ -408,7 +422,8 @@ def _qawce(fcn, double a, double b, double c, extra_args=None, int full_output=0
         rlist = <double *>np.PyArray_DATA(ap_rlist)
         elist = <double *>np.PyArray_DATA(ap_elist)
         DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
-    except:
+    except Exception, e:
+        print "_qawce failed: %s" % e
         ier = 80
     finally:
         QUAD_RESTORE_FUNC(savedSettings)
@@ -422,6 +437,65 @@ def _qawce(fcn, double a, double b, double c, extra_args=None, int full_output=0
             "blist" : np.PyArray_Return(ap_blist), 
             "rlist" : np.PyArray_Return(ap_rlist), 
             "elist" : np.PyArray_Return(ap_elist) }
+        return (result, abserr, dict, ier)
+    else:
+        return (result, abserr, ier)
+
+
+def _qawse(fcn, double a, double b, abTuple, int integr, extra_args=None, int full_output=0, double epsabs=1.49e-8,
+           double epsrel=1.49e-8, int limit=50):
+    """[result,abserr,infodict,ier] = _qawse(fun, a, b, (alpha, beta), integr, | args, full_output, epsabs, epsrel, limit)"""
+    cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist, ap_rlist
+    cdef np.npy_intp limit_shape[1]
+    cdef double   alfa, beta
+    cdef int      neval=0, ier=6, last=0, *iord
+    cdef double   result=0.0, abserr=0.0
+    cdef double   *alist, *blist, *rlist, *elist
+
+    # abTuple is a sequence of two double values, alpha and beta.
+    try:
+        alpha, beta = abTuple
+    except:
+        raise TypeError("alpha and beta must be provided as a pair of doubles (tuple, list, etc).")
+
+    # Need to check that limit is bigger than 1 
+    if limit < 1:
+        return (result, abserr, ier)
+    limit_shape[0] = limit
+
+    savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+    try:
+        # Setup iwork and work arrays 
+        ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
+        ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+        if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
+            return NULL
+
+        iord = <int *>np.PyArray_DATA(ap_iord)
+        alist = <double *>np.PyArray_DATA(ap_alist)
+        blist = <double *>np.PyArray_DATA(ap_blist)
+        rlist = <double *>np.PyArray_DATA(ap_rlist)
+        elist = <double *>np.PyArray_DATA(ap_elist)
+        DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+    except Exception, e:
+        print "_qawse failed: %s" % e
+        ier = 80
+    finally:
+        QUAD_RESTORE_FUNC(savedSettings)
+
+    if full_output:
+        dict = {
+            "neval" : neval, 
+            "last" : last, 
+            "iord" : np.PyArray_Return(ap_iord), 
+            "alist" : np.PyArray_Return(ap_alist), 
+            "blist" : np.PyArray_Return(ap_blist), 
+            "rlist" : np.PyArray_Return(ap_rlist), 
+            "elist" : np.PyArray_Return(ap_elist)
+        }
         return (result, abserr, dict, ier)
     else:
         return (result, abserr, ier)

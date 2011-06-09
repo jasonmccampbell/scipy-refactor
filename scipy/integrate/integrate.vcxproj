@@ -130,9 +130,7 @@
     <ClInclude Include="__quadpack.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="vode.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
-    </ClCompile>
+    <ClCompile Include="vode.cpp" />
     <ClCompile Include="_dop.cpp" />
     <ClCompile Include="_odepack.cpp" />
     <ClCompile Include="_odepackmodule.c">

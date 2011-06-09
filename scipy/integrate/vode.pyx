@@ -29,6 +29,10 @@ cdef extern from "string.h":
     void *memcpy(void *dest, void *src, int n)
 
 cdef class fw_CallbackInfo(object):
+    def __init__(self, callback, extra_args):
+        self.callback = callback
+        self.extra_args = extra_args
+        
     # Callable object to call
     cdef object callback
     # Pass *extra_args to callback (can be None)
@@ -38,17 +42,12 @@ cdef class fw_CallbackInfo(object):
     # Some times, one may want to communicate objects directly that are
     # simply passed through in Fortran (in particular NumPy arrays)
     cdef object arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9
-    # For use by longjmp
-    cdef jmp_buf jmp
-    def __cinit__(self, object callback, object extra_args):
-        self.callback = callback
-        self.extra_args = extra_args
 
 
 __all__ = ['dvode', 'zvode']
 
 cdef fw_CallbackInfo dvode_f_cb_info
-cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
+cdef void dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
     global dvode_f_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, ydot_
@@ -69,20 +68,14 @@ cdef int dvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y
                 raise ValueError("Array returned from callback has illegal shape")
             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
         dvode_f_cb_info = info
-        return 0
     except:
         dvode_f_cb_info = info
-        info.exc = sys.exc_info()
-        return -1
-
-cdef void dvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwr_dbl_t * ydot, void * rpar, void * ipar):
-    if dvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
-        longjmp(dvode_f_cb_info.jmp, 1)
+        raise sys.exc_info()
 
 
 
 cdef fw_CallbackInfo dvode_jac_cb_info
-cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef void dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
     global dvode_jac_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, jac_
@@ -103,15 +96,9 @@ cdef int dvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t *
                 raise ValueError("Array returned from callback has illegal shape")
             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
         dvode_jac_cb_info = info
-        return 0
     except:
         dvode_jac_cb_info = info
-        info.exc = sys.exc_info()
-        return -1
-
-cdef void dvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwr_dbl_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwr_dbl_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
-    if dvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
-        longjmp(dvode_jac_cb_info.jmp, 1)
+        raise sys.exc_info()
 
 
 def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
@@ -178,17 +165,7 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     dvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
     dvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
     try:
-        if setjmp(dvode_f_cb_info.jmp) == 0:
-            if setjmp(dvode_jac_cb_info.jmp) == 0:
-                fc.dvode(&dvode_f_cb_wrapper, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper, &mf, NULL, NULL)
-            else:
-                fw_exctype, fw_excval, fw_exctb = dvode_jac_cb_info.exc
-                dvode_jac_cb_info.exc = None
-                raise fw_exctype, fw_excval, fw_exctb
-        else:
-            fw_exctype, fw_excval, fw_exctb = dvode_f_cb_info.exc
-            dvode_f_cb_info.exc = None
-            raise fw_exctype, fw_excval, fw_exctb
+        fc.dvode(dvode_f_cb_wrapper_core, &neq, <fwr_dbl_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &dvode_jac_cb_wrapper_core, &mf, NULL, NULL)
     finally:
         dvode_f_cb_info = None
     return (y_, t, istate,)
@@ -196,7 +173,7 @@ def dvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
 
 
 cdef fw_CallbackInfo zvode_f_cb_info
-cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
+cdef void zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
     global zvode_f_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, ydot_
@@ -217,20 +194,13 @@ cdef int zvode_f_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_compl
                 raise ValueError("Array returned from callback has illegal shape")
             memcpy(ydot, np.PyArray_DATA(ydot_), np.PyArray_NBYTES(ydot_))
         zvode_f_cb_info = info
-        return 0
     except:
         zvode_f_cb_info = info
-        info.exc = sys.exc_info()
-        return -1
-
-cdef void zvode_f_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwc_dbl_complex_t * ydot, void * rpar, void * ipar):
-    if zvode_f_cb_wrapper_core(n, t, y, ydot, rpar, ipar) != 0:
-        longjmp(zvode_f_cb_info.jmp, 1)
-
+        raise sys.exc_info()
 
 
 cdef fw_CallbackInfo zvode_jac_cb_info
-cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
+cdef void zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
     global zvode_jac_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray y_, jac_
@@ -251,16 +221,9 @@ cdef int zvode_jac_cb_wrapper_core(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_com
                 raise ValueError("Array returned from callback has illegal shape")
             memcpy(jac, np.PyArray_DATA(jac_), np.PyArray_NBYTES(jac_))
         zvode_jac_cb_info = info
-        return 0
     except:
         zvode_jac_cb_info = info
-        info.exc = sys.exc_info()
-        return -1
-
-cdef void zvode_jac_cb_wrapper(fwi_integer_t * n, fwr_dbl_t * t, fwc_dbl_complex_t * y, fwi_integer_t * ml, fwi_integer_t * mu, fwc_dbl_complex_t * jac, fwi_integer_t * nrowpd, void * rpar, void * ipar):
-    if zvode_jac_cb_wrapper_core(n, t, y, ml, mu, jac, nrowpd, rpar, ipar) != 0:
-        longjmp(zvode_jac_cb_info.jmp, 1)
-
+        raise sys.exc_info()
 
 def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rtol, object atol, fwi_integer_t itask, fwi_integer_t istate, object zwork, object rwork, object iwork, fwi_integer_t mf, object f_extra_args=None, object jac_extra_args=None, bint overwrite_y=False):
     """zvode(f, jac, y, t, tout, rtol, atol, itask, istate, zwork, rwork, iwork, mf[, overwrite_y]) -> (y, t, istate)
@@ -333,17 +296,7 @@ def zvode(object f, object jac, object y, fwr_dbl_t t, fwr_dbl_t tout, object rt
     zvode_f_cb_info = fw_f_cb = fw_CallbackInfo(f, f_extra_args)
     zvode_jac_cb_info = fw_jac_cb = fw_CallbackInfo(jac, jac_extra_args)
     try:
-        if setjmp(zvode_f_cb_info.jmp) == 0:
-            if setjmp(zvode_jac_cb_info.jmp) == 0:
-                fc.zvode(&zvode_f_cb_wrapper, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper, &mf, NULL, NULL)
-            else:
-                fw_exctype, fw_excval, fw_exctb = zvode_jac_cb_info.exc
-                zvode_jac_cb_info.exc = None
-                raise fw_exctype, fw_excval, fw_exctb
-        else:
-            fw_exctype, fw_excval, fw_exctb = zvode_f_cb_info.exc
-            zvode_f_cb_info.exc = None
-            raise fw_exctype, fw_excval, fw_exctb
+        fc.zvode(&zvode_f_cb_wrapper_core, &neq, <fwc_dbl_complex_t*>np.PyArray_DATA(y_), &t, &tout, &itol, <fwr_dbl_t*>np.PyArray_DATA(rtol_), <fwr_dbl_t*>np.PyArray_DATA(atol_), &itask, &istate, &iopt, <fwc_dbl_complex_t*>np.PyArray_DATA(zwork_), &lzw, <fwr_dbl_t*>np.PyArray_DATA(rwork_), &lrw, <fwi_integer_t*>np.PyArray_DATA(iwork_), &liw, &zvode_jac_cb_wrapper_core, &mf, NULL, NULL)
     finally:
         zvode_f_cb_info = None
     return (y_, t, istate,)

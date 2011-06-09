@@ -389,64 +389,78 @@ static double quad_function(double *); /*proto*/
 namespace clr__quadpack {
   public ref class module__quadpack sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_38_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_38_21;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_39_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_40_19;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_40_19;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_41_28;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_63_24;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_63_34;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_64_22;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_66_25;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_68_28;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_73_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_73_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_73_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_73_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_73_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_73_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_130_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_130_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_130_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_130_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_130_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_130_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_175_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_175_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_175_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_175_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_175_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_175_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyPyArray_ContiguousFromObject_194_22;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call4_194_53;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_240_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_240_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_240_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_240_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_240_0_4;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0_4;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_240_0_5;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_264_36;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_311_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_311_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_311_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_311_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_311_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_311_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_311_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_311_0_4;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_379_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_379_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_379_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_379_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_379_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_379_0_4;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_379_0_1;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_39_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_39_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_40_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_41_19;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_41_19;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_42_28;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_64_24;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_64_34;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_65_22;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_67_25;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_69_28;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_74_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_74_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_74_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_74_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_74_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_74_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_112_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_132_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_132_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_132_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_132_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_132_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_132_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_167_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_185_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_185_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_185_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_185_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_185_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_185_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_230_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_252_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_252_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_252_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_252_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_252_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_252_0_5;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_276_36;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_300_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_324_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_324_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_324_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_324_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_324_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_324_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_324_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_324_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_376_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_393_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_393_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_393_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_393_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_393_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_393_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_393_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_426_34;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_445_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_445_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_445_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_445_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_445_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_445_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_445_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_457_8;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_459_23;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_484_34;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
@@ -524,7 +538,7 @@ static int^ __pyx_int_2;
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":32
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":33
  * __version__ = 1.13
  * 
  * cdef QUAD_INIT_FUNC(fun, arg):             # <<<<<<<<<<<<<<
@@ -542,7 +556,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
   int __pyx_t_5;
   __pyx_v_prev_values = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":36
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":37
  *     global quadpack_extra_arguments
  * 
  *     prev_values = (quadpack_python_function, quadpack_extra_arguments)             # <<<<<<<<<<<<<<
@@ -560,7 +574,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
   __pyx_v_prev_values = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":38
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":39
  *     prev_values = (quadpack_python_function, quadpack_extra_arguments)
  * 
  *     if not isinstance(arg, tuple):             # <<<<<<<<<<<<<<
@@ -569,15 +583,15 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  */
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "isinstance");
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "tuple");
-  __pyx_t_1 = __site_call2_38_21->Target(__site_call2_38_21, __pyx_context, __pyx_t_3, __pyx_v_arg, ((System::Object^)__pyx_t_2));
+  __pyx_t_1 = __site_call2_39_21->Target(__site_call2_39_21, __pyx_context, __pyx_t_3, __pyx_v_arg, ((System::Object^)__pyx_t_2));
   __pyx_t_3 = nullptr;
   __pyx_t_2 = nullptr;
-  __pyx_t_4 = __site_istrue_38_21->Target(__site_istrue_38_21, __pyx_t_1);
+  __pyx_t_4 = __site_istrue_39_21->Target(__site_istrue_39_21, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_t_5 = (!__pyx_t_4);
   if (__pyx_t_5) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":39
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":40
  * 
  *     if not isinstance(arg, tuple):
  *         raise quadpack_error("Exra arguments must be in a tuple")             # <<<<<<<<<<<<<<
@@ -585,7 +599,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  *         raise quadpack_error("First argument must be a callback function")
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "quadpack_error");
-    __pyx_t_2 = __site_call1_39_28->Target(__site_call1_39_28, __pyx_context, __pyx_t_1, ((System::Object^)"Exra arguments must be in a tuple"));
+    __pyx_t_2 = __site_call1_40_28->Target(__site_call1_40_28, __pyx_context, __pyx_t_1, ((System::Object^)"Exra arguments must be in a tuple"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
@@ -593,7 +607,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
   }
   __pyx_L3:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":40
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":41
  *     if not isinstance(arg, tuple):
  *         raise quadpack_error("Exra arguments must be in a tuple")
  *     if not callable(fun):             # <<<<<<<<<<<<<<
@@ -601,14 +615,14 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  * 
  */
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "callable");
-  __pyx_t_1 = __site_call1_40_19->Target(__site_call1_40_19, __pyx_context, __pyx_t_2, __pyx_v_fun);
+  __pyx_t_1 = __site_call1_41_19->Target(__site_call1_41_19, __pyx_context, __pyx_t_2, __pyx_v_fun);
   __pyx_t_2 = nullptr;
-  __pyx_t_5 = __site_istrue_40_19->Target(__site_istrue_40_19, __pyx_t_1);
+  __pyx_t_5 = __site_istrue_41_19->Target(__site_istrue_41_19, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_t_4 = (!__pyx_t_5);
   if (__pyx_t_4) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":41
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":42
  *         raise quadpack_error("Exra arguments must be in a tuple")
  *     if not callable(fun):
  *         raise quadpack_error("First argument must be a callback function")             # <<<<<<<<<<<<<<
@@ -616,7 +630,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  *     quadpack_python_function = fun
  */
     __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "quadpack_error");
-    __pyx_t_2 = __site_call1_41_28->Target(__site_call1_41_28, __pyx_context, __pyx_t_1, ((System::Object^)"First argument must be a callback function"));
+    __pyx_t_2 = __site_call1_42_28->Target(__site_call1_42_28, __pyx_context, __pyx_t_1, ((System::Object^)"First argument must be a callback function"));
     __pyx_t_1 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
     __pyx_t_2 = nullptr;
@@ -624,7 +638,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
   }
   __pyx_L4:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":43
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":44
  *         raise quadpack_error("First argument must be a callback function")
  * 
  *     quadpack_python_function = fun             # <<<<<<<<<<<<<<
@@ -633,7 +647,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  */
   PythonOps::SetGlobal(__pyx_context, "quadpack_python_function", __pyx_v_fun);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":44
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":45
  * 
  *     quadpack_python_function = fun
  *     quadpack_extra_arguments = arg             # <<<<<<<<<<<<<<
@@ -642,7 +656,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  */
   PythonOps::SetGlobal(__pyx_context, "quadpack_extra_arguments", __pyx_v_arg);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":45
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":46
  *     quadpack_python_function = fun
  *     quadpack_extra_arguments = arg
  *     return prev_values             # <<<<<<<<<<<<<<
@@ -657,7 +671,7 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":47
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":48
  *     return prev_values
  * 
  * cdef QUAD_RESTORE_FUNC(prev_values):             # <<<<<<<<<<<<<<
@@ -666,17 +680,15 @@ static  System::Object^ QUAD_INIT_FUNC(System::Object^ __pyx_v_fun, System::Obje
  */
 
 static  System::Object^ QUAD_RESTORE_FUNC(System::Object^ __pyx_v_prev_values) {
-  System::Object^ __pyx_v_quadpack_pythonfunction;
   System::Object^ __pyx_r = nullptr;
   array<System::Object^>^ __pyx_t_1;
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
-  __pyx_v_quadpack_pythonfunction = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":51
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":52
  *     global quadpack_extra_arguments
  * 
- *     quadpack_pythonfunction, quadpack_extra_arguments = prev_values             # <<<<<<<<<<<<<<
+ *     quadpack_python_function, quadpack_extra_arguments = prev_values             # <<<<<<<<<<<<<<
  * 
  * 
  */
@@ -684,7 +696,7 @@ static  System::Object^ QUAD_RESTORE_FUNC(System::Object^ __pyx_v_prev_values) {
   __pyx_t_2 = __pyx_t_1[0];
   __pyx_t_3 = __pyx_t_1[1];
   __pyx_t_1 = nullptr;
-  __pyx_v_quadpack_pythonfunction = __pyx_t_2;
+  PythonOps::SetGlobal(__pyx_context, "quadpack_python_function", __pyx_t_2);
   __pyx_t_2 = nullptr;
   PythonOps::SetGlobal(__pyx_context, "quadpack_extra_arguments", __pyx_t_3);
   __pyx_t_3 = nullptr;
@@ -693,7 +705,7 @@ static  System::Object^ QUAD_RESTORE_FUNC(System::Object^ __pyx_v_prev_values) {
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":54
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":55
  * 
  * 
  * cdef double quad_function(double *x):             # <<<<<<<<<<<<<<
@@ -716,7 +728,7 @@ static  double quad_function(double *__pyx_v_x) {
   __pyx_v_arglist = nullptr;
   __pyx_v_result = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":62
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":63
  *     # Call function object --- stored as a global variable.  Extra
  *     #        arguments are in another global variable.
  *     try:             # <<<<<<<<<<<<<<
@@ -725,7 +737,7 @@ static  double quad_function(double *__pyx_v_x) {
  */
   try {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":63
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":64
  *     #        arguments are in another global variable.
  *     try:
  *         arglist = (float(x[0]), ) + quadpack_extra_arguments             # <<<<<<<<<<<<<<
@@ -734,19 +746,19 @@ static  double quad_function(double *__pyx_v_x) {
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "float");
     __pyx_t_4 = (__pyx_v_x[0]);
-    __pyx_t_5 = __site_call1_63_24->Target(__site_call1_63_24, __pyx_context, ((System::Object^)__pyx_t_3), __pyx_t_4);
+    __pyx_t_5 = __site_call1_64_24->Target(__site_call1_64_24, __pyx_context, ((System::Object^)__pyx_t_3), __pyx_t_4);
     __pyx_t_3 = nullptr;
     __pyx_t_4 = nullptr;
     __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_5});
     __pyx_t_5 = nullptr;
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "quadpack_extra_arguments");
-    __pyx_t_3 = __site_op_add_63_34->Target(__site_op_add_63_34, __pyx_t_4, __pyx_t_5);
+    __pyx_t_3 = __site_op_add_64_34->Target(__site_op_add_64_34, __pyx_t_4, __pyx_t_5);
     __pyx_t_4 = nullptr;
     __pyx_t_5 = nullptr;
     __pyx_v_arglist = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":64
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":65
  *     try:
  *         arglist = (float(x[0]), ) + quadpack_extra_arguments
  *         result = apply(quadpack_python_function, arglist)             # <<<<<<<<<<<<<<
@@ -755,25 +767,25 @@ static  double quad_function(double *__pyx_v_x) {
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "apply");
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "quadpack_python_function");
-    __pyx_t_4 = __site_call2_64_22->Target(__site_call2_64_22, __pyx_context, __pyx_t_3, __pyx_t_5, __pyx_v_arglist);
+    __pyx_t_4 = __site_call2_65_22->Target(__site_call2_65_22, __pyx_context, __pyx_t_3, __pyx_t_5, __pyx_v_arglist);
     __pyx_t_3 = nullptr;
     __pyx_t_5 = nullptr;
     __pyx_v_result = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":66
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":67
  *         result = apply(quadpack_python_function, arglist)
  * 
  *         d_result = result             # <<<<<<<<<<<<<<
  *     except Exception:
  *         raise quadpack_error("Supplied function does not return a valid float")
  */
-    __pyx_t_6 = __site_cvt_cvt_double_66_25->Target(__site_cvt_cvt_double_66_25, __pyx_v_result);
+    __pyx_t_6 = __site_cvt_cvt_double_67_25->Target(__site_cvt_cvt_double_67_25, __pyx_v_result);
     __pyx_v_d_result = __pyx_t_6;
   } catch (System::Exception^ __pyx_lt_1) {
     System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":67
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":68
  * 
  *         d_result = result
  *     except Exception:             # <<<<<<<<<<<<<<
@@ -788,7 +800,7 @@ static  double quad_function(double *__pyx_v_x) {
       // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack.quad_function");
       PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":68
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":69
  *         d_result = result
  *     except Exception:
  *         raise quadpack_error("Supplied function does not return a valid float")             # <<<<<<<<<<<<<<
@@ -796,7 +808,7 @@ static  double quad_function(double *__pyx_v_x) {
  *     return d_result
  */
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "quadpack_error");
-      __pyx_t_5 = __site_call1_68_28->Target(__site_call1_68_28, __pyx_context, __pyx_t_4, ((System::Object^)"Supplied function does not return a valid float"));
+      __pyx_t_5 = __site_call1_69_28->Target(__site_call1_69_28, __pyx_context, __pyx_t_4, ((System::Object^)"Supplied function does not return a valid float"));
       __pyx_t_4 = nullptr;
       throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
       __pyx_t_5 = nullptr;
@@ -808,7 +820,7 @@ static  double quad_function(double *__pyx_v_x) {
     PythonOps::ExceptionHandled(__pyx_context);
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":70
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":71
  *         raise quadpack_error("Supplied function does not return a valid float")
  * 
  *     return d_result             # <<<<<<<<<<<<<<
@@ -823,16 +835,15 @@ static  double quad_function(double *__pyx_v_x) {
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":73
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":74
  * 
  * 
- * def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,             # <<<<<<<<<<<<<<
+ * def _qagse(fcn, double a, double b, extra_args=None, int full_output=0,             # <<<<<<<<<<<<<<
  *            double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):
  *     """[result,abserr,infodict,ier] = _qagse(fun, a, b, | args, full_output, epsabs, epsrel, limit)"""
  */
 
-static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System::Object^ a, System::Object^ b, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
-  System::Object^ __pyx_v_dummy = nullptr;
+static System::Object^ _qagse(System::Object^ fcn, System::Object^ a, System::Object^ b, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
   System::Object^ __pyx_v_fcn = nullptr;
   double __pyx_v_a;
   double __pyx_v_b;
@@ -858,6 +869,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   double *__pyx_v_rlist;
   double *__pyx_v_elist;
   System::Object^ __pyx_v_savedValues;
+  System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_dict;
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
@@ -870,28 +882,27 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   int __pyx_t_10;
   int __pyx_t_11;
   int __pyx_t_12;
-  PythonDictionary^ __pyx_t_14;
-  __pyx_v_dummy = dummy;
+  PythonDictionary^ __pyx_t_13;
   __pyx_v_fcn = fcn;
-  __pyx_v_a = __site_cvt_cvt_double_73_0->Target(__site_cvt_cvt_double_73_0, a);
-  __pyx_v_b = __site_cvt_cvt_double_73_0_1->Target(__site_cvt_cvt_double_73_0_1, b);
+  __pyx_v_a = __site_cvt_cvt_double_74_0->Target(__site_cvt_cvt_double_74_0, a);
+  __pyx_v_b = __site_cvt_cvt_double_74_0_1->Target(__site_cvt_cvt_double_74_0_1, b);
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_73_0->Target(__site_cvt_cvt_int_73_0, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_74_0->Target(__site_cvt_cvt_int_74_0, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_73_0_2->Target(__site_cvt_cvt_double_73_0_2, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_74_0_2->Target(__site_cvt_cvt_double_74_0_2, epsabs);
   } else {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":74
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":75
  * 
- * def _qagse(dummy, fcn, double a, double b, extra_args=None, int full_output=0,
+ * def _qagse(fcn, double a, double b, extra_args=None, int full_output=0,
  *            double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
  *     """[result,abserr,infodict,ier] = _qagse(fun, a, b, | args, full_output, epsabs, epsrel, limit)"""
  * 
@@ -899,12 +910,12 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
-    __pyx_v_epsrel = __site_cvt_cvt_double_73_0_3->Target(__site_cvt_cvt_double_73_0_3, epsrel);
+    __pyx_v_epsrel = __site_cvt_cvt_double_74_0_3->Target(__site_cvt_cvt_double_74_0_3, epsrel);
   } else {
     __pyx_v_epsrel = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_73_0_1->Target(__site_cvt_cvt_int_73_0_1, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_74_0_1->Target(__site_cvt_cvt_int_74_0_1, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
@@ -914,9 +925,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_ap_elist = nullptr;
   __pyx_v_ap_rlist = nullptr;
   __pyx_v_savedValues = nullptr;
+  __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":82
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":83
  * 
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
@@ -927,7 +939,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_ier = 6;
   __pyx_v_last = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":83
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":84
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int neval=0, ier=6, last=0, *iord
  *     cdef double result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -937,7 +949,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":86
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":87
  *     cdef double *alist, *blist, *rlist, *elist
  * 
  *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
@@ -946,7 +958,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
   (__pyx_v_limit_shape[0]) = __pyx_v_limit;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":88
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":89
  *     limit_shape[0] = limit
  * 
  *     if limit < 1:             # <<<<<<<<<<<<<<
@@ -956,7 +968,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":89
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":90
  * 
  *     if limit < 1:
  *         return result, abserr, ier             # <<<<<<<<<<<<<<
@@ -977,7 +989,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":91
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":92
  *         return result, abserr, ier
  * 
  *     savedValues = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
@@ -988,7 +1000,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_savedValues = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":92
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":93
  * 
  *     savedValues = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -998,7 +1010,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":94
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":95
  *     try:
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1012,7 +1024,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":95
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":96
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1026,7 +1038,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":96
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":97
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1040,7 +1052,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":97
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":98
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  *         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1054,7 +1066,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":98
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":99
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  *         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -1068,7 +1080,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":100
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":101
  *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_DOUBLE, False)
  * 
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:             # <<<<<<<<<<<<<<
@@ -1102,7 +1114,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":101
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":102
  * 
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
  *             return None             # <<<<<<<<<<<<<<
@@ -1115,7 +1127,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
       }
       __pyx_L6:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":103
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":104
  *             return None
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
@@ -1124,7 +1136,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":104
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":105
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
@@ -1133,7 +1145,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":105
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":106
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
@@ -1142,7 +1154,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":106
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":107
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
@@ -1151,7 +1163,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":107
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":108
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
@@ -1160,35 +1172,45 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":109
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":110
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  * 
  *         DQAGSE(<void *>quad_function, &a, &b, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)             # <<<<<<<<<<<<<<
- *     except Exception:
- *         ier = 80
+ *     except Exception, e:
+ *         print "_qagse failed: %s" % e
  */
       DQAGSE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, (&__pyx_v_last));
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":110
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":111
  * 
  *         DQAGSE(<void *>quad_function, &a, &b, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except Exception:             # <<<<<<<<<<<<<<
+ *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qagse failed: %s" % e
  *         ier = 80
- * 
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "Exception");
-      System::Object^ __pyx_lt_13;
-      __pyx_lt_13 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
       __pyx_t_5 = nullptr;
-      if (__pyx_lt_13 != nullptr) {
+      if (__pyx_v_e != nullptr) {
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qagse");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":111
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":112
  *         DQAGSE(<void *>quad_function, &a, &b, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except Exception:
+ *     except Exception, e:
+ *         print "_qagse failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ * 
+ */
+        __pyx_t_5 = __site_op_mod_112_34->Target(__site_op_mod_112_34, ((System::Object^)"_qagse failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_5));
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":113
+ *     except Exception, e:
+ *         print "_qagse failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  * 
  *     finally:
@@ -1203,7 +1225,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":114
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":116
  * 
  *     finally:
  *         QUAD_RESTORE_FUNC(savedValues)             # <<<<<<<<<<<<<<
@@ -1215,7 +1237,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
     __pyx_t_5 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":116
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":118
  *         QUAD_RESTORE_FUNC(savedValues)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -1224,19 +1246,19 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":117
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":119
  * 
  *     if full_output:
  *         dict = { "neval" : neval,             # <<<<<<<<<<<<<<
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  */
-    __pyx_t_14 = PythonOps::MakeEmptyDict();
+    __pyx_t_13 = PythonOps::MakeEmptyDict();
     __pyx_t_5 = __pyx_v_neval;
-    __pyx_t_14[((System::Object^)"neval")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"neval")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":118
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":120
  *     if full_output:
  *         dict = { "neval" : neval,
  *                  "last" : last,             # <<<<<<<<<<<<<<
@@ -1244,10 +1266,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *                  "alist" : np.PyArray_Return(ap_alist),
  */
     __pyx_t_5 = __pyx_v_last;
-    __pyx_t_14[((System::Object^)"last")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"last")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":119
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":121
  *         dict = { "neval" : neval,
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
@@ -1255,10 +1277,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *                  "blist" : np.PyArray_Return(ap_blist),
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_iord)); 
-    __pyx_t_14[((System::Object^)"iord")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"iord")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":120
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":122
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
@@ -1266,10 +1288,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_alist)); 
-    __pyx_t_14[((System::Object^)"alist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"alist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":121
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":123
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
@@ -1277,10 +1299,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *                  "elist" : np.PyArray_Return(ap_elist) }
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_blist)); 
-    __pyx_t_14[((System::Object^)"blist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"blist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":122
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":124
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
@@ -1288,10 +1310,10 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *         return (result, abserr, dict,ier)
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_rlist)); 
-    __pyx_t_14[((System::Object^)"rlist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"rlist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":123
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":125
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist) }             # <<<<<<<<<<<<<<
@@ -1299,12 +1321,12 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
  *     else:
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_elist)); 
-    __pyx_t_14[((System::Object^)"elist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"elist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
-    __pyx_v_dict = __pyx_t_14;
-    __pyx_t_14 = nullptr;
+    __pyx_v_dict = __pyx_t_13;
+    __pyx_t_13 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":124
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":126
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist) }
  *         return (result, abserr, dict,ier)             # <<<<<<<<<<<<<<
@@ -1325,7 +1347,7 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":126
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":128
  *         return (result, abserr, dict,ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -1350,16 +1372,15 @@ static System::Object^ _qagse(System::Object^ dummy, System::Object^ fcn, System
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":130
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":132
  * 
  * 
- * def _qagie(dummy, fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
+ * def _qagie(fcn, double bound, int inf, object extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
  *     """[result,abserr,infodict,ier] = _qagie(fun, bound, inf, | args, full_output, epsabs, epsrel, limit)"""
  *     cdef np.ndarray ap_alist, ap_iord
  */
 
-static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System::Object^ bound, System::Object^ inf, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
-  System::Object^ __pyx_v_dummy = nullptr;
+static System::Object^ _qagie(System::Object^ fcn, System::Object^ bound, System::Object^ inf, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
   System::Object^ __pyx_v_fcn = nullptr;
   double __pyx_v_bound;
   int __pyx_v_inf;
@@ -1385,7 +1406,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   double *__pyx_v_rlist;
   double *__pyx_v_elist;
   System::Object^ __pyx_v_savedSettings;
-  System::Object^ __pyx_v_ap_e_list;
+  System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_dict;
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
@@ -1398,33 +1419,32 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   int __pyx_t_10;
   int __pyx_t_11;
   int __pyx_t_12;
-  PythonDictionary^ __pyx_t_14;
-  __pyx_v_dummy = dummy;
+  PythonDictionary^ __pyx_t_13;
   __pyx_v_fcn = fcn;
-  __pyx_v_bound = __site_cvt_cvt_double_130_0->Target(__site_cvt_cvt_double_130_0, bound);
-  __pyx_v_inf = __site_cvt_cvt_int_130_0->Target(__site_cvt_cvt_int_130_0, inf);
+  __pyx_v_bound = __site_cvt_cvt_double_132_0->Target(__site_cvt_cvt_double_132_0, bound);
+  __pyx_v_inf = __site_cvt_cvt_int_132_0->Target(__site_cvt_cvt_int_132_0, inf);
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_130_0_1->Target(__site_cvt_cvt_int_130_0_1, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_132_0_1->Target(__site_cvt_cvt_int_132_0_1, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_130_0_1->Target(__site_cvt_cvt_double_130_0_1, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_132_0_1->Target(__site_cvt_cvt_double_132_0_1, epsabs);
   } else {
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
-    __pyx_v_epsrel = __site_cvt_cvt_double_130_0_2->Target(__site_cvt_cvt_double_130_0_2, epsrel);
+    __pyx_v_epsrel = __site_cvt_cvt_double_132_0_2->Target(__site_cvt_cvt_double_132_0_2, epsrel);
   } else {
     __pyx_v_epsrel = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_130_0_2->Target(__site_cvt_cvt_int_130_0_2, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_132_0_2->Target(__site_cvt_cvt_int_132_0_2, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
@@ -1434,10 +1454,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_ap_elist = nullptr;
   __pyx_v_ap_rlist = nullptr;
   __pyx_v_savedSettings = nullptr;
-  __pyx_v_ap_e_list = nullptr;
+  __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":136
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":138
  * 
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int      neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
@@ -1448,7 +1468,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_ier = 6;
   __pyx_v_last = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":137
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":139
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int      neval=0, ier=6, last=0, *iord
  *     cdef double   result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -1458,22 +1478,22 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":141
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":143
  * 
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:             # <<<<<<<<<<<<<<
  *         return (result, abserr, ier)
- * 
+ *     limit_shape[0] = limit
  */
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":142
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":144
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
+ *     limit_shape[0] = limit
  * 
- *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  */
     __pyx_t_2 = __pyx_v_result;
     __pyx_t_3 = __pyx_v_abserr;
@@ -1489,8 +1509,17 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":144
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":145
+ *     if limit < 1:
  *         return (result, abserr, ier)
+ *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
+ * 
+ *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+ */
+  (__pyx_v_limit_shape[0]) = __pyx_v_limit;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":147
+ *     limit_shape[0] = limit
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
  *     try:
@@ -1500,7 +1529,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_savedSettings = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":145
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":148
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -1510,7 +1539,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":147
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":150
  *     try:
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1524,7 +1553,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":148
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":151
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -1538,12 +1567,12 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":149
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":152
  *         ap_iord = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
  *         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
- *         ap_e_list = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
+ *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  */
       __pyx_t_5 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_INT, 0); 
       if (__pyx_t_5 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_5) == nullptr) {
@@ -1552,11 +1581,11 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":150
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":153
  *         ap_alist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
- *         ap_e_list = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
+ *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  * 
  */
       __pyx_t_5 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_INT, 0); 
@@ -1566,19 +1595,22 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":151
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":154
  *         ap_blist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  *         ap_rlist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
- *         ap_e_list = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
+ *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
  * 
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
  */
       __pyx_t_5 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_INT, 0); 
-      __pyx_v_ap_e_list = __pyx_t_5;
+      if (__pyx_t_5 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_5) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":153
- *         ap_e_list = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":156
+ *         ap_elist = np.PyArray_EMPTY(1, limit_shape, np.NPY_INT, False)
  * 
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:             # <<<<<<<<<<<<<<
  *             return None
@@ -1611,12 +1643,12 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":154
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":157
  * 
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
  *             return None             # <<<<<<<<<<<<<<
  * 
- *         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
  */
         __pyx_r = nullptr;
         goto __pyx_L0;
@@ -1624,35 +1656,90 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
       }
       __pyx_L6:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":156
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":159
  *             return None
  * 
+ *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ */
+      __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":160
+ * 
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
+ *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ */
+      __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":161
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ */
+      __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":162
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ * 
+ */
+      __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":163
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
+ * 
+ *         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ */
+      __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":165
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ * 
  *         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)             # <<<<<<<<<<<<<<
- *     except Exception:
- *         ier = 80
+ *     except Exception, e:
+ *         print "_qaqie failed: %s" % e
  */
       DQAGIE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_bound), (&__pyx_v_inf), (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, (&__pyx_v_last));
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":157
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":166
  * 
  *         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except Exception:             # <<<<<<<<<<<<<<
+ *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qaqie failed: %s" % e
  *         ier = 80
- *     finally:
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "Exception");
-      System::Object^ __pyx_lt_13;
-      __pyx_lt_13 = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
       __pyx_t_5 = nullptr;
-      if (__pyx_lt_13 != nullptr) {
+      if (__pyx_v_e != nullptr) {
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qagie");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":158
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":167
  *         DQAGIE(<void *>quad_function, &bound, &inf, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except Exception:
+ *     except Exception, e:
+ *         print "_qaqie failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_5 = __site_op_mod_167_34->Target(__site_op_mod_167_34, ((System::Object^)"_qaqie failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_5));
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":168
+ *     except Exception, e:
+ *         print "_qaqie failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)
@@ -1667,7 +1754,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":160
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":170
  *         ier = 80
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
@@ -1679,7 +1766,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
     __pyx_t_5 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":162
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":172
  *         QUAD_RESTORE_FUNC(savedSettings)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -1688,19 +1775,19 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":163
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":173
  * 
  *     if full_output:
  *         dict = { "neval" : neval,             # <<<<<<<<<<<<<<
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  */
-    __pyx_t_14 = PythonOps::MakeEmptyDict();
+    __pyx_t_13 = PythonOps::MakeEmptyDict();
     __pyx_t_5 = __pyx_v_neval;
-    __pyx_t_14[((System::Object^)"neval")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"neval")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":164
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":174
  *     if full_output:
  *         dict = { "neval" : neval,
  *                  "last" : last,             # <<<<<<<<<<<<<<
@@ -1708,10 +1795,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *                  "alist" : np.PyArray_Return(ap_alist),
  */
     __pyx_t_5 = __pyx_v_last;
-    __pyx_t_14[((System::Object^)"last")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"last")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":165
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":175
  *         dict = { "neval" : neval,
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
@@ -1719,10 +1806,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *                  "blist" : np.PyArray_Return(ap_blist),
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_iord)); 
-    __pyx_t_14[((System::Object^)"iord")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"iord")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":166
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":176
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
@@ -1730,10 +1817,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_alist)); 
-    __pyx_t_14[((System::Object^)"alist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"alist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":167
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":177
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
@@ -1741,10 +1828,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *                  "elist" : np.PyArray_Return(ap_elist) }
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_blist)); 
-    __pyx_t_14[((System::Object^)"blist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"blist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":168
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":178
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
@@ -1752,10 +1839,10 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *         return (result, abserr, dict, ier)
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_rlist)); 
-    __pyx_t_14[((System::Object^)"rlist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"rlist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":169
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":179
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist) }             # <<<<<<<<<<<<<<
@@ -1763,12 +1850,12 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
  *     else:
  */
     __pyx_t_5 = PyArray_Return(((System::Object^)__pyx_v_ap_elist)); 
-    __pyx_t_14[((System::Object^)"elist")] = __pyx_t_5;
+    __pyx_t_13[((System::Object^)"elist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
-    __pyx_v_dict = __pyx_t_14;
-    __pyx_t_14 = nullptr;
+    __pyx_v_dict = __pyx_t_13;
+    __pyx_t_13 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":170
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":180
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist) }
  *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
@@ -1789,7 +1876,7 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":172
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":182
  *         return (result, abserr, dict, ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -1814,16 +1901,15 @@ static System::Object^ _qagie(System::Object^ dummy, System::Object^ fcn, System
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":175
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":185
  * 
  * 
- * def _qagpe(dummy, fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
+ * def _qagpe(fcn, double a, double b, o_points, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
  *     """[result,abserr,infodict,ier] = _qagpe(fun, a, b, points, | args, full_output, epsabs, epsrel, limit)"""
  *     cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist
  */
 
-static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System::Object^ a, System::Object^ b, System::Object^ o_points, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
-  System::Object^ __pyx_v_dummy = nullptr;
+static System::Object^ _qagpe(System::Object^ fcn, System::Object^ a, System::Object^ b, System::Object^ o_points, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
   System::Object^ __pyx_v_fcn = nullptr;
   double __pyx_v_a;
   double __pyx_v_b;
@@ -1869,10 +1955,9 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
   PythonDictionary^ __pyx_t_8;
-  __pyx_v_dummy = dummy;
   __pyx_v_fcn = fcn;
-  __pyx_v_a = __site_cvt_cvt_double_175_0->Target(__site_cvt_cvt_double_175_0, a);
-  __pyx_v_b = __site_cvt_cvt_double_175_0_1->Target(__site_cvt_cvt_double_175_0_1, b);
+  __pyx_v_a = __site_cvt_cvt_double_185_0->Target(__site_cvt_cvt_double_185_0, a);
+  __pyx_v_b = __site_cvt_cvt_double_185_0_1->Target(__site_cvt_cvt_double_185_0_1, b);
   __pyx_v_o_points = o_points;
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
@@ -1880,22 +1965,22 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_175_0->Target(__site_cvt_cvt_int_175_0, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_185_0->Target(__site_cvt_cvt_int_185_0, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_175_0_2->Target(__site_cvt_cvt_double_175_0_2, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_185_0_2->Target(__site_cvt_cvt_double_185_0_2, epsabs);
   } else {
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
-    __pyx_v_epsrel = __site_cvt_cvt_double_175_0_3->Target(__site_cvt_cvt_double_175_0_3, epsrel);
+    __pyx_v_epsrel = __site_cvt_cvt_double_185_0_3->Target(__site_cvt_cvt_double_185_0_3, epsrel);
   } else {
     __pyx_v_epsrel = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_175_0_1->Target(__site_cvt_cvt_int_175_0_1, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_185_0_1->Target(__site_cvt_cvt_int_185_0_1, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
@@ -1912,7 +1997,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":182
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":192
  *     cdef int npts2
  *     cdef np.npy_intp limit_shape[1], npts2_shape[1]
  *     cdef int neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
@@ -1923,7 +2008,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_ier = 6;
   __pyx_v_last = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":184
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":194
  *     cdef int neval=0, ier=6, last=0, *iord
  *     cdef int *level, *ndin
  *     cdef double result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -1933,22 +2018,22 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":189
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":199
  * 
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:             # <<<<<<<<<<<<<<
  *         return (result, abserr, ier)
- * 
+ *     limit_shape[0] = limit
  */
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":190
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":200
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
+ *     limit_shape[0] = limit
  * 
- *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  */
     __pyx_t_2 = __pyx_v_result;
     __pyx_t_3 = __pyx_v_abserr;
@@ -1964,58 +2049,63 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":192
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":201
+ *     if limit < 1:
  *         return (result, abserr, ier)
+ *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
+ * 
+ *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+ */
+  (__pyx_v_limit_shape[0]) = __pyx_v_limit;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":203
+ *     limit_shape[0] = limit
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
  *     try:
- *         ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
+ *         ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
  */
   __pyx_t_5 = QUAD_INIT_FUNC(__pyx_v_fcn, __pyx_v_extra_args); 
   __pyx_v_savedSettings = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":193
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":204
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:             # <<<<<<<<<<<<<<
- *         ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
+ *         ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
  *         npts2 = np.PyArray_DIMS(ap_points)[0]
  */
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":194
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":205
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:
- *         ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
+ *         ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
  *         npts2 = np.PyArray_DIMS(ap_points)[0]
  *         points = <double *>np.PyArray_DATA(ap_points);
  */
-      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "np");
-      __pyx_t_4 = __site_get_PyPyArray_ContiguousFromObject_194_22->Target(__site_get_PyPyArray_ContiguousFromObject_194_22, __pyx_t_5, __pyx_context);
-      __pyx_t_5 = nullptr;
       __pyx_t_5 = (System::Object^)(long long)(NPY_DOUBLE);
-      __pyx_t_3 = __site_call4_194_53->Target(__site_call4_194_53, __pyx_context, __pyx_t_4, __pyx_v_o_points, __pyx_t_5, __pyx_int_1, __pyx_int_1);
-      __pyx_t_4 = nullptr;
+      __pyx_t_4 = PyArray_ContiguousFromObject(__pyx_v_o_points, __pyx_t_5, __pyx_int_1, __pyx_int_1); 
       __pyx_t_5 = nullptr;
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_points = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_points = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":195
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":206
  *     try:
- *         ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
+ *         ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
  *         npts2 = np.PyArray_DIMS(ap_points)[0]             # <<<<<<<<<<<<<<
  *         points = <double *>np.PyArray_DATA(ap_points);
  * 
  */
       __pyx_v_npts2 = (PyArray_DIMS(__pyx_v_ap_points)[0]);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":196
- *         ap_points = np.PyPyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":207
+ *         ap_points = np.PyArray_ContiguousFromObject(o_points, np.NPY_DOUBLE, 1, 1)
  *         npts2 = np.PyArray_DIMS(ap_points)[0]
  *         points = <double *>np.PyArray_DATA(ap_points);             # <<<<<<<<<<<<<<
  * 
@@ -2023,116 +2113,116 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_points = ((double *)PyArray_DATA(__pyx_v_ap_points));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":199
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":210
  * 
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1,limit_shape, np.NPY_INT, False)             # <<<<<<<<<<<<<<
  *         ap_alist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_blist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_INT, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_INT, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":200
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":211
  *         # Setup iwork and work arrays
  *         ap_iord = np.PyArray_EMPTY(1,limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_blist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_rlist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":201
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":212
  *         ap_iord = np.PyArray_EMPTY(1,limit_shape, np.NPY_INT, False)
  *         ap_alist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_blist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_rlist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_elist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":202
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":213
  *         ap_alist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_blist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_rlist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_elist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_pts = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
-      __pyx_v_ap_rlist = __pyx_t_3;
-      __pyx_t_3 = nullptr;
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
+      __pyx_v_ap_rlist = __pyx_t_4;
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":203
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":214
  *         ap_blist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_rlist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_elist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_pts = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  *         ap_level = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":204
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":215
  *         ap_rlist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_elist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_pts = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_level = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_ndin = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_npts2_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_npts2_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_pts = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_pts = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":205
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":216
  *         ap_elist = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_pts = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  *         ap_level = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  *         ap_ndin = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  * 
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_limit_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_level = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_level = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":206
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":217
  *         ap_pts = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  *         ap_level = np.PyArray_EMPTY(1,limit_shape, np.NPY_DOUBLE, False)
  *         ap_ndin = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  */
-      __pyx_t_3 = PyArray_EMPTY(1, __pyx_v_npts2_shape, NPY_DOUBLE, 0); 
-      if (__pyx_t_3 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_3) == nullptr) {
+      __pyx_t_4 = PyArray_EMPTY(1, __pyx_v_npts2_shape, NPY_DOUBLE, 0); 
+      if (__pyx_t_4 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_4) == nullptr) {
         throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
       }
-      __pyx_v_ap_ndin = ((NumpyDotNet::ndarray^)__pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_v_ap_ndin = ((NumpyDotNet::ndarray^)__pyx_t_4);
+      __pyx_t_4 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":208
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":219
  *         ap_ndin = np.PyArray_EMPTY(1,npts2_shape, np.NPY_DOUBLE, False)
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
@@ -2141,7 +2231,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":209
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":220
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
@@ -2150,7 +2240,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":210
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":221
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
@@ -2159,7 +2249,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":211
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":222
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
@@ -2171,7 +2261,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
       }
       __pyx_v_rlist = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_rlist)));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":212
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":223
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
@@ -2180,7 +2270,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":213
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":224
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         pts = <double *>np.PyArray_DATA(ap_pts)             # <<<<<<<<<<<<<<
@@ -2189,7 +2279,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_pts = ((double *)PyArray_DATA(__pyx_v_ap_pts));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":214
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":225
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         pts = <double *>np.PyArray_DATA(ap_pts)
  *         level = <int *>np.PyArray_DATA(ap_level)             # <<<<<<<<<<<<<<
@@ -2198,7 +2288,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_level = ((int *)PyArray_DATA(__pyx_v_ap_level));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":215
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":226
  *         pts = <double *>np.PyArray_DATA(ap_pts)
  *         level = <int *>np.PyArray_DATA(ap_level)
  *         ndin = <int *>np.PyArray_DATA(ap_level)             # <<<<<<<<<<<<<<
@@ -2207,34 +2297,45 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
       __pyx_v_ndin = ((int *)PyArray_DATA(__pyx_v_ap_level));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":217
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":228
  *         ndin = <int *>np.PyArray_DATA(ap_level)
  * 
  *         DQAGPE(<void *>quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)             # <<<<<<<<<<<<<<
  *     except Exception, e:
- *         ier = 80
+ *         print "_qagpe failed: %s" % e
  */
       DQAGPE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_npts2), __pyx_v_points, (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_pts, __pyx_v_iord, __pyx_v_level, __pyx_v_ndin, (&__pyx_v_last));
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":218
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":229
  * 
  *         DQAGPE(<void *>quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)
  *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qagpe failed: %s" % e
  *         ier = 80
- *     finally:
  */
-      __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "Exception");
-      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_3);
-      __pyx_t_3 = nullptr;
+      __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "Exception");
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_4);
+      __pyx_t_4 = nullptr;
       if (__pyx_v_e != nullptr) {
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qagpe");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":219
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":230
  *         DQAGPE(<void *>quad_function, &a, &b, &npts2, points, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, pts, iord, level, ndin, &last)
  *     except Exception, e:
+ *         print "_qagpe failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_4 = __site_op_mod_230_34->Target(__site_op_mod_230_34, ((System::Object^)"_qagpe failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_4));
+        __pyx_t_4 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":231
+ *     except Exception, e:
+ *         print "_qagpe failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)
@@ -2249,7 +2350,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":221
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":233
  *         ier = 80
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
@@ -2257,11 +2358,11 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  *     if full_output:
  */
   finally {
-    __pyx_t_3 = QUAD_RESTORE_FUNC(__pyx_v_savedSettings); 
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = QUAD_RESTORE_FUNC(__pyx_v_savedSettings); 
+    __pyx_t_4 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":223
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":235
  *         QUAD_RESTORE_FUNC(savedSettings)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -2270,7 +2371,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":224
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":236
  * 
  *     if full_output:
  *         dict = { "neval" : neval,             # <<<<<<<<<<<<<<
@@ -2278,125 +2379,125 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  *                  "iord" : np.PyArray_Return(ap_iord),
  */
     __pyx_t_8 = PythonOps::MakeEmptyDict();
-    __pyx_t_3 = __pyx_v_neval;
-    __pyx_t_8[((System::Object^)"neval")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = __pyx_v_neval;
+    __pyx_t_8[((System::Object^)"neval")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":225
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":237
  *     if full_output:
  *         dict = { "neval" : neval,
  *                  "last" : last,             # <<<<<<<<<<<<<<
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),
  */
-    __pyx_t_3 = __pyx_v_last;
-    __pyx_t_8[((System::Object^)"last")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = __pyx_v_last;
+    __pyx_t_8[((System::Object^)"last")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":226
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":238
  *         dict = { "neval" : neval,
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_iord)); 
-    __pyx_t_8[((System::Object^)"iord")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_iord)); 
+    __pyx_t_8[((System::Object^)"iord")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":227
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":239
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_alist)); 
-    __pyx_t_8[((System::Object^)"alist")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_alist)); 
+    __pyx_t_8[((System::Object^)"alist")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":228
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":240
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist),
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_blist)); 
-    __pyx_t_8[((System::Object^)"blist")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_blist)); 
+    __pyx_t_8[((System::Object^)"blist")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":229
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":241
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
  *                  "elist" : np.PyArray_Return(ap_elist),
  *                  "pts" : np.PyArray_Return(ap_pts),
  */
-    __pyx_t_3 = PyArray_Return(__pyx_v_ap_rlist); 
-    __pyx_t_8[((System::Object^)"rlist")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(__pyx_v_ap_rlist); 
+    __pyx_t_8[((System::Object^)"rlist")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":230
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":242
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist),             # <<<<<<<<<<<<<<
  *                  "pts" : np.PyArray_Return(ap_pts),
  *                  "level" : np.PyArray_Return(ap_level),
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_elist)); 
-    __pyx_t_8[((System::Object^)"elist")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_elist)); 
+    __pyx_t_8[((System::Object^)"elist")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":231
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":243
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist),
  *                  "pts" : np.PyArray_Return(ap_pts),             # <<<<<<<<<<<<<<
  *                  "level" : np.PyArray_Return(ap_level),
  *                  "ndin" : np.PyArray_Return(ap_ndin) }
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_pts)); 
-    __pyx_t_8[((System::Object^)"pts")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_pts)); 
+    __pyx_t_8[((System::Object^)"pts")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":232
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":244
  *                  "elist" : np.PyArray_Return(ap_elist),
  *                  "pts" : np.PyArray_Return(ap_pts),
  *                  "level" : np.PyArray_Return(ap_level),             # <<<<<<<<<<<<<<
  *                  "ndin" : np.PyArray_Return(ap_ndin) }
  * 
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_level)); 
-    __pyx_t_8[((System::Object^)"level")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_level)); 
+    __pyx_t_8[((System::Object^)"level")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":233
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":245
  *                  "pts" : np.PyArray_Return(ap_pts),
  *                  "level" : np.PyArray_Return(ap_level),
  *                  "ndin" : np.PyArray_Return(ap_ndin) }             # <<<<<<<<<<<<<<
  * 
  *         return (result, abserr, dict, ier)
  */
-    __pyx_t_3 = PyArray_Return(((System::Object^)__pyx_v_ap_ndin)); 
-    __pyx_t_8[((System::Object^)"ndin")] = __pyx_t_3;
-    __pyx_t_3 = nullptr;
+    __pyx_t_4 = PyArray_Return(((System::Object^)__pyx_v_ap_ndin)); 
+    __pyx_t_8[((System::Object^)"ndin")] = __pyx_t_4;
+    __pyx_t_4 = nullptr;
     __pyx_v_dict = __pyx_t_8;
     __pyx_t_8 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":235
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":247
  *                  "ndin" : np.PyArray_Return(ap_ndin) }
  * 
  *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
  *     else:
  *         return (result, abserr, ier)
  */
-    __pyx_t_3 = __pyx_v_result;
+    __pyx_t_4 = __pyx_v_result;
     __pyx_t_5 = __pyx_v_abserr;
-    __pyx_t_4 = __pyx_v_ier;
-    __pyx_t_2 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_3, __pyx_t_5, ((System::Object^)__pyx_v_dict), __pyx_t_4});
-    __pyx_t_3 = nullptr;
-    __pyx_t_5 = nullptr;
+    __pyx_t_3 = __pyx_v_ier;
+    __pyx_t_2 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_4, __pyx_t_5, ((System::Object^)__pyx_v_dict), __pyx_t_3});
     __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+    __pyx_t_3 = nullptr;
     __pyx_r = __pyx_t_2;
     __pyx_t_2 = nullptr;
     goto __pyx_L0;
@@ -2404,7 +2505,7 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":237
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":249
  *         return (result, abserr, dict, ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -2412,14 +2513,14 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
  * 
  */
     __pyx_t_2 = __pyx_v_result;
-    __pyx_t_4 = __pyx_v_abserr;
+    __pyx_t_3 = __pyx_v_abserr;
     __pyx_t_5 = __pyx_v_ier;
-    __pyx_t_3 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_2, __pyx_t_4, __pyx_t_5});
+    __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_2, __pyx_t_3, __pyx_t_5});
     __pyx_t_2 = nullptr;
-    __pyx_t_4 = nullptr;
-    __pyx_t_5 = nullptr;
-    __pyx_r = __pyx_t_3;
     __pyx_t_3 = nullptr;
+    __pyx_t_5 = nullptr;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = nullptr;
     goto __pyx_L0;
   }
   __pyx_L6:;
@@ -2429,16 +2530,15 @@ static System::Object^ _qagpe(System::Object^ dummy, System::Object^ fcn, System
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":240
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":252
  * 
  * 
- * def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None,             # <<<<<<<<<<<<<<
+ * def _qawoe(fcn, double a, double b, double omega, int integr, extra_args=None,             # <<<<<<<<<<<<<<
  *             int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50,
  *             int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):
  */
 
-static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, System::Object^ a, System::Object^ b, System::Object^ omega, System::Object^ integr, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit, [InteropServices::Optional]System::Object^ maxp1, [InteropServices::Optional]System::Object^ icall, [InteropServices::Optional]System::Object^ momcom, [InteropServices::Optional]System::Object^ o_chebmo) {
-  System::Object^ __pyx_v_dummpy = nullptr;
+static System::Object^ _qawoe(System::Object^ fcn, System::Object^ a, System::Object^ b, System::Object^ omega, System::Object^ integr, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit, [InteropServices::Optional]System::Object^ maxp1, [InteropServices::Optional]System::Object^ icall, [InteropServices::Optional]System::Object^ momcom, [InteropServices::Optional]System::Object^ o_chebmo) {
   System::Object^ __pyx_v_fcn = nullptr;
   double __pyx_v_a;
   double __pyx_v_b;
@@ -2486,29 +2586,28 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   int __pyx_t_8;
   int __pyx_t_9;
   PythonDictionary^ __pyx_t_10;
-  __pyx_v_dummpy = dummpy;
   __pyx_v_fcn = fcn;
-  __pyx_v_a = __site_cvt_cvt_double_240_0->Target(__site_cvt_cvt_double_240_0, a);
-  __pyx_v_b = __site_cvt_cvt_double_240_0_1->Target(__site_cvt_cvt_double_240_0_1, b);
-  __pyx_v_omega = __site_cvt_cvt_double_240_0_2->Target(__site_cvt_cvt_double_240_0_2, omega);
-  __pyx_v_integr = __site_cvt_cvt_int_240_0->Target(__site_cvt_cvt_int_240_0, integr);
+  __pyx_v_a = __site_cvt_cvt_double_252_0->Target(__site_cvt_cvt_double_252_0, a);
+  __pyx_v_b = __site_cvt_cvt_double_252_0_1->Target(__site_cvt_cvt_double_252_0_1, b);
+  __pyx_v_omega = __site_cvt_cvt_double_252_0_2->Target(__site_cvt_cvt_double_252_0_2, omega);
+  __pyx_v_integr = __site_cvt_cvt_int_252_0->Target(__site_cvt_cvt_int_252_0, integr);
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_240_0_1->Target(__site_cvt_cvt_int_240_0_1, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_252_0_1->Target(__site_cvt_cvt_int_252_0_1, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_240_0_3->Target(__site_cvt_cvt_double_240_0_3, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_252_0_3->Target(__site_cvt_cvt_double_252_0_3, epsabs);
   } else {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":241
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":253
  * 
- * def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None,
+ * def _qawoe(fcn, double a, double b, double omega, int integr, extra_args=None,
  *             int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50,             # <<<<<<<<<<<<<<
  *             int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):
  *     """[result,abserr,infodict,ier] = _qawoe(fun, a, b, omega, integr, | args, full_output, epsabs, epsrel, limit, maxp1, icall, momcom, chebmo)"""
@@ -2516,27 +2615,27 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
-    __pyx_v_epsrel = __site_cvt_cvt_double_240_0_4->Target(__site_cvt_cvt_double_240_0_4, epsrel);
+    __pyx_v_epsrel = __site_cvt_cvt_double_252_0_4->Target(__site_cvt_cvt_double_252_0_4, epsrel);
   } else {
     __pyx_v_epsrel = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_240_0_2->Target(__site_cvt_cvt_int_240_0_2, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_252_0_2->Target(__site_cvt_cvt_int_252_0_2, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
   if (dynamic_cast<System::Reflection::Missing^>(maxp1) == nullptr) {
-    __pyx_v_maxp1 = __site_cvt_cvt_int_240_0_3->Target(__site_cvt_cvt_int_240_0_3, maxp1);
+    __pyx_v_maxp1 = __site_cvt_cvt_int_252_0_3->Target(__site_cvt_cvt_int_252_0_3, maxp1);
   } else {
     __pyx_v_maxp1 = ((int)50);
   }
   if (dynamic_cast<System::Reflection::Missing^>(icall) == nullptr) {
-    __pyx_v_icall = __site_cvt_cvt_int_240_0_4->Target(__site_cvt_cvt_int_240_0_4, icall);
+    __pyx_v_icall = __site_cvt_cvt_int_252_0_4->Target(__site_cvt_cvt_int_252_0_4, icall);
   } else {
     __pyx_v_icall = ((int)1);
   }
   if (dynamic_cast<System::Reflection::Missing^>(momcom) == nullptr) {
-    __pyx_v_momcom = __site_cvt_cvt_int_240_0_5->Target(__site_cvt_cvt_int_240_0_5, momcom);
+    __pyx_v_momcom = __site_cvt_cvt_int_252_0_5->Target(__site_cvt_cvt_int_252_0_5, momcom);
   } else {
     __pyx_v_momcom = ((int)50);
   }
@@ -2544,8 +2643,8 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_v_o_chebmo = o_chebmo;
   } else {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":242
- * def _qawoe(dummpy, fcn, double a, double b, double omega, int integr, extra_args=None,
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":254
+ * def _qawoe(fcn, double a, double b, double omega, int integr, extra_args=None,
  *             int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50,
  *             int maxp1=50, int icall=1, int momcom=50, o_chebmo=None):             # <<<<<<<<<<<<<<
  *     """[result,abserr,infodict,ier] = _qawoe(fun, a, b, omega, integr, | args, full_output, epsabs, epsrel, limit, maxp1, icall, momcom, chebmo)"""
@@ -2564,7 +2663,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":247
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":259
  * 
  *     cdef np.npy_intp limit_shape[1], sz[2]
  *     cdef int      neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
@@ -2575,7 +2674,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   __pyx_v_ier = 6;
   __pyx_v_last = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":249
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":261
  *     cdef int      neval=0, ier=6, last=0, *iord
  *     cdef int      *nnlog
  *     cdef double   result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -2585,7 +2684,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":253
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":265
  *     cdef double   *alist, *blist, *rlist, *elist
  * 
  *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
@@ -2594,7 +2693,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
   (__pyx_v_limit_shape[0]) = __pyx_v_limit;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":256
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":268
  * 
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:             # <<<<<<<<<<<<<<
@@ -2604,7 +2703,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":257
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":269
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -2625,7 +2724,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":259
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":271
  *         return (result, abserr, ier)
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
@@ -2636,7 +2735,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   __pyx_v_savedSettings = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":260
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":272
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -2646,7 +2745,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":261
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":273
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:
  *         if o_chebmo is not None:             # <<<<<<<<<<<<<<
@@ -2656,7 +2755,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_t_1 = (__pyx_v_o_chebmo != nullptr);
       if (__pyx_t_1) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":262
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":274
  *     try:
  *         if o_chebmo is not None:
  *             ap_chebmo = np.PyArray_ContiguousFromObject(o_chebmo, np.NPY_DOUBLE, 2, 2)             # <<<<<<<<<<<<<<
@@ -2672,7 +2771,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
         __pyx_v_ap_chebmo = ((NumpyDotNet::ndarray^)__pyx_t_4);
         __pyx_t_4 = nullptr;
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":263
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":275
  *         if o_chebmo is not None:
  *             ap_chebmo = np.PyArray_ContiguousFromObject(o_chebmo, np.NPY_DOUBLE, 2, 2)
  *             if np.PyArray_DIMS(ap_chebmo)[1] != maxp1 or np.PyArray_DIMS(ap_chebmo)[0] != 25:             # <<<<<<<<<<<<<<
@@ -2688,7 +2787,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
         }
         if (__pyx_t_9) {
 
-          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":264
+          /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":276
  *             ap_chebmo = np.PyArray_ContiguousFromObject(o_chebmo, np.NPY_DOUBLE, 2, 2)
  *             if np.PyArray_DIMS(ap_chebmo)[1] != maxp1 or np.PyArray_DIMS(ap_chebmo)[0] != 25:
  *                 raise quadpack_error("Chebyshev moment array has the wrong size.")             # <<<<<<<<<<<<<<
@@ -2696,7 +2795,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  *             sz[0] = 25
  */
           __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "quadpack_error");
-          __pyx_t_5 = __site_call1_264_36->Target(__site_call1_264_36, __pyx_context, __pyx_t_4, ((System::Object^)"Chebyshev moment array has the wrong size."));
+          __pyx_t_5 = __site_call1_276_36->Target(__site_call1_276_36, __pyx_context, __pyx_t_4, ((System::Object^)"Chebyshev moment array has the wrong size."));
           __pyx_t_4 = nullptr;
           throw PythonOps::MakeException(__pyx_context, __pyx_t_5, nullptr, nullptr);
           __pyx_t_5 = nullptr;
@@ -2707,7 +2806,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       }
       /*else*/ {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":266
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":278
  *                 raise quadpack_error("Chebyshev moment array has the wrong size.")
  *         else:
  *             sz[0] = 25             # <<<<<<<<<<<<<<
@@ -2716,7 +2815,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
         (__pyx_v_sz[0]) = 25;
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":267
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":279
  *         else:
  *             sz[0] = 25
  *             sz[1] = maxp1             # <<<<<<<<<<<<<<
@@ -2725,7 +2824,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
         (__pyx_v_sz[1]) = __pyx_v_maxp1;
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":268
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":280
  *             sz[0] = 25
  *             sz[1] = maxp1
  *             ap_chebmo = np.PyArray_EMPTY(2, sz, np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2741,7 +2840,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       }
       __pyx_L6:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":269
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":281
  *             sz[1] = maxp1
  *             ap_chebmo = np.PyArray_EMPTY(2, sz, np.NPY_DOUBLE, False)
  *         chebmo = <double *>np.PyArray_DATA(ap_chebmo)             # <<<<<<<<<<<<<<
@@ -2750,7 +2849,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_chebmo = ((double *)PyArray_DATA(__pyx_v_ap_chebmo));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":272
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":284
  * 
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -2761,7 +2860,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":273
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":285
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
  *         ap_nnlog = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)             # <<<<<<<<<<<<<<
@@ -2772,7 +2871,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_nnlog = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":274
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":286
  *         ap_iord = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
  *         ap_nnlog = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
  *         ap_alist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2783,7 +2882,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":275
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":287
  *         ap_nnlog = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_INT, False)
  *         ap_alist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  *         ap_blist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2794,7 +2893,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":276
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":288
  *         ap_alist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  *         ap_blist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  *         ap_rlist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2805,7 +2904,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":277
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":289
  *         ap_blist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  *         ap_rlist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  *         ap_elist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)             # <<<<<<<<<<<<<<
@@ -2816,7 +2915,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
       __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":279
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":291
  *         ap_elist = <np.ndarray>np.PyArray_EMPTY(1,limit_shape,np.NPY_DOUBLE, False)
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
@@ -2825,7 +2924,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":280
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":292
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)             # <<<<<<<<<<<<<<
@@ -2834,7 +2933,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_nnlog = ((int *)PyArray_DATA(__pyx_v_ap_nnlog));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":281
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":293
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)
  *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
@@ -2843,7 +2942,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":282
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":294
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
@@ -2852,7 +2951,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":283
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":295
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
@@ -2861,7 +2960,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":284
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":296
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
@@ -2870,23 +2969,23 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
       __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":286
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":298
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  * 
  *         DQAWOE(<void *>quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)             # <<<<<<<<<<<<<<
  *     except Exception, e:
- *         ier = 80
+ *         print "_qawoe failed: %s" % e
  */
       DQAWOE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_omega), (&__pyx_v_integr), (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_icall), (&__pyx_v_maxp1), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), (&__pyx_v_last), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, __pyx_v_nnlog, (&__pyx_v_momcom), __pyx_v_chebmo);
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":287
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":299
  * 
  *         DQAWOE(<void *>quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)
  *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qawoe failed: %s" % e
  *         ier = 80
- *     finally:
  */
       __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "Exception");
       __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
@@ -2895,9 +2994,20 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qawoe");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":288
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":300
  *         DQAWOE(<void *>quad_function, &a, &b, &omega, &integr, &epsabs, &epsrel, &limit, &icall, &maxp1, &result, &abserr, &neval, &ier, &last, alist, blist, rlist, elist, iord, nnlog, &momcom, chebmo)
  *     except Exception, e:
+ *         print "_qawoe failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_5 = __site_op_mod_300_34->Target(__site_op_mod_300_34, ((System::Object^)"_qawoe failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_5));
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":301
+ *     except Exception, e:
+ *         print "_qawoe failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)
@@ -2912,7 +3022,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":290
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":303
  *         ier = 80
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
@@ -2924,7 +3034,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_5 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":292
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":305
  *         QUAD_RESTORE_FUNC(savedSettings)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -2933,7 +3043,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":293
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":306
  * 
  *     if full_output:
  *         dict = { "neval" : neval,             # <<<<<<<<<<<<<<
@@ -2945,7 +3055,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"neval")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":294
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":307
  *     if full_output:
  *         dict = { "neval" : neval,
  *                  "last" : last,             # <<<<<<<<<<<<<<
@@ -2956,7 +3066,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"last")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":295
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":308
  *         dict = { "neval" : neval,
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
@@ -2967,7 +3077,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"iord")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":296
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":309
  *                  "last" : last,
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
@@ -2978,7 +3088,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"alist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":297
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":310
  *                  "iord" : np.PyArray_Return(ap_iord),
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
@@ -2989,7 +3099,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"blist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":298
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":311
  *                  "alist" : np.PyArray_Return(ap_alist),
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
@@ -3000,7 +3110,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"rlist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":299
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":312
  *                  "blist" : np.PyArray_Return(ap_blist),
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist),             # <<<<<<<<<<<<<<
@@ -3011,7 +3121,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"elist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":300
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":313
  *                  "rlist" : np.PyArray_Return(ap_rlist),
  *                  "elist" : np.PyArray_Return(ap_elist),
  *                  "nnlog" : np.PyArray_Return(ap_nnlog),             # <<<<<<<<<<<<<<
@@ -3022,7 +3132,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"nnlog")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":301
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":314
  *                  "elist" : np.PyArray_Return(ap_elist),
  *                  "nnlog" : np.PyArray_Return(ap_nnlog),
  *                  "momcom" : momcom,             # <<<<<<<<<<<<<<
@@ -3033,7 +3143,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_t_10[((System::Object^)"momcom")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":302
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":315
  *                  "nnlog" : np.PyArray_Return(ap_nnlog),
  *                  "momcom" : momcom,
  *                  "chebmo" : np.PyArray_Return(ap_chebmo) }             # <<<<<<<<<<<<<<
@@ -3046,7 +3156,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
     __pyx_v_dict = __pyx_t_10;
     __pyx_t_10 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":303
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":316
  *                  "momcom" : momcom,
  *                  "chebmo" : np.PyArray_Return(ap_chebmo) }
  *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
@@ -3067,7 +3177,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":305
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":318
  *         return (result, abserr, dict, ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -3092,7 +3202,7 @@ static System::Object^ _qawoe(System::Object^ dummpy, System::Object^ fcn, Syste
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":311
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":324
  * 
  * 
  * def _qawfe(fcn, double a, double omega, int integr, extra_args=None, int full_output=0, double epsabs=1.49e-8, int limlst=50, int limit=50, int maxp1=50):             # <<<<<<<<<<<<<<
@@ -3140,6 +3250,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   double *__pyx_v_rlist;
   double *__pyx_v_elist;
   System::Object^ __pyx_v_savedSettings;
+  System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_dict;
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
@@ -3158,36 +3269,36 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   int __pyx_t_16;
   PythonDictionary^ __pyx_t_17;
   __pyx_v_fcn = fcn;
-  __pyx_v_a = __site_cvt_cvt_double_311_0->Target(__site_cvt_cvt_double_311_0, a);
-  __pyx_v_omega = __site_cvt_cvt_double_311_0_1->Target(__site_cvt_cvt_double_311_0_1, omega);
-  __pyx_v_integr = __site_cvt_cvt_int_311_0->Target(__site_cvt_cvt_int_311_0, integr);
+  __pyx_v_a = __site_cvt_cvt_double_324_0->Target(__site_cvt_cvt_double_324_0, a);
+  __pyx_v_omega = __site_cvt_cvt_double_324_0_1->Target(__site_cvt_cvt_double_324_0_1, omega);
+  __pyx_v_integr = __site_cvt_cvt_int_324_0->Target(__site_cvt_cvt_int_324_0, integr);
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_311_0_1->Target(__site_cvt_cvt_int_311_0_1, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_324_0_1->Target(__site_cvt_cvt_int_324_0_1, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_311_0_2->Target(__site_cvt_cvt_double_311_0_2, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_324_0_2->Target(__site_cvt_cvt_double_324_0_2, epsabs);
   } else {
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limlst) == nullptr) {
-    __pyx_v_limlst = __site_cvt_cvt_int_311_0_2->Target(__site_cvt_cvt_int_311_0_2, limlst);
+    __pyx_v_limlst = __site_cvt_cvt_int_324_0_2->Target(__site_cvt_cvt_int_324_0_2, limlst);
   } else {
     __pyx_v_limlst = ((int)50);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_311_0_3->Target(__site_cvt_cvt_int_311_0_3, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_324_0_3->Target(__site_cvt_cvt_int_324_0_3, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
   if (dynamic_cast<System::Reflection::Missing^>(maxp1) == nullptr) {
-    __pyx_v_maxp1 = __site_cvt_cvt_int_311_0_4->Target(__site_cvt_cvt_int_311_0_4, maxp1);
+    __pyx_v_maxp1 = __site_cvt_cvt_int_324_0_4->Target(__site_cvt_cvt_int_324_0_4, maxp1);
   } else {
     __pyx_v_maxp1 = ((int)50);
   }
@@ -3202,9 +3313,10 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_ap_erlst = nullptr;
   __pyx_v_ap_ierlst = nullptr;
   __pyx_v_savedSettings = nullptr;
+  __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":317
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":330
  * 
  *     cdef np.npy_intp limlst_shape[1], limit_shape[1], sz[2]
  *     cdef int      neval=0, ier=6, *iord             # <<<<<<<<<<<<<<
@@ -3214,7 +3326,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_neval = 0;
   __pyx_v_ier = 6;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":320
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":333
  *     cdef int      lst, *nnlog, *ierlst
  *     cdef double   *chebmo, *rslst, *erlst
  *     cdef double   result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -3224,7 +3336,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":323
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":336
  *     cdef double   *alist, *blist, *rlist, *elist
  * 
  *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
@@ -3233,7 +3345,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
   (__pyx_v_limit_shape[0]) = __pyx_v_limit;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":324
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":337
  * 
  *     limit_shape[0] = limit
  *     limlst_shape[0] = limlst             # <<<<<<<<<<<<<<
@@ -3242,7 +3354,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
   (__pyx_v_limlst_shape[0]) = __pyx_v_limlst;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":327
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":340
  * 
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:             # <<<<<<<<<<<<<<
@@ -3252,7 +3364,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":328
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":341
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -3273,7 +3385,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":330
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":343
  *         return (result, abserr, ier)
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn, extra_args)             # <<<<<<<<<<<<<<
@@ -3284,7 +3396,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_savedSettings = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":331
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":344
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn, extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -3294,7 +3406,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":332
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":345
  *     savedSettings = QUAD_INIT_FUNC(fcn, extra_args)
  *     try:
  *         sz[0] = 25             # <<<<<<<<<<<<<<
@@ -3303,7 +3415,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       (__pyx_v_sz[0]) = 25;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":333
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":346
  *     try:
  *         sz[0] = 25
  *         sz[1] = maxp1             # <<<<<<<<<<<<<<
@@ -3312,7 +3424,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       (__pyx_v_sz[1]) = __pyx_v_maxp1;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":334
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":347
  *         sz[0] = 25
  *         sz[1] = maxp1
  *         ap_chebmo = <np.ndarray>np.PyArray_SimpleNew(2, sz, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3323,7 +3435,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_chebmo = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":335
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":348
  *         sz[1] = maxp1
  *         ap_chebmo = <np.ndarray>np.PyArray_SimpleNew(2, sz, np.NPY_DOUBLE)
  *         chebmo = <double *>np.PyArray_DATA(ap_chebmo)             # <<<<<<<<<<<<<<
@@ -3332,7 +3444,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_chebmo = ((double *)PyArray_DATA(__pyx_v_ap_chebmo));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":338
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":351
  * 
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);             # <<<<<<<<<<<<<<
@@ -3343,7 +3455,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":339
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":352
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
  *         ap_nnlog = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);             # <<<<<<<<<<<<<<
@@ -3354,7 +3466,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_nnlog = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":340
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":353
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
  *         ap_nnlog = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3365,7 +3477,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":341
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":354
  *         ap_nnlog = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT);
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3376,7 +3488,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":342
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":355
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3387,7 +3499,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":343
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":356
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3398,7 +3510,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":344
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":357
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_rslst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3409,7 +3521,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_rslst = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":345
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":358
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE);
  *         ap_rslst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
  *         ap_erlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);             # <<<<<<<<<<<<<<
@@ -3420,7 +3532,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_erlst = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":346
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":359
  *         ap_rslst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
  *         ap_erlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
  *         ap_ierlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_INT);             # <<<<<<<<<<<<<<
@@ -3431,7 +3543,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_ierlst = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":347
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":360
  *         ap_erlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_DOUBLE);
  *         ap_ierlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_INT);
  *         if (ap_iord is None or ap_nnlog is None or ap_alist is None or ap_blist is None or ap_rlist is None or             # <<<<<<<<<<<<<<
@@ -3449,7 +3561,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
               __pyx_t_11 = (((System::Object^)__pyx_v_ap_rlist) == nullptr);
               if (!__pyx_t_11) {
 
-                /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":348
+                /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":361
  *         ap_ierlst = <np.ndarray>np.PyArray_SimpleNew(1,limlst_shape,np.NPY_INT);
  *         if (ap_iord is None or ap_nnlog is None or ap_alist is None or ap_blist is None or ap_rlist is None or
  *             ap_elist is None or ap_rslst is None or ap_erlst is None or ap_ierlst is None):             # <<<<<<<<<<<<<<
@@ -3497,7 +3609,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":349
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":362
  *         if (ap_iord is None or ap_nnlog is None or ap_alist is None or ap_blist is None or ap_rlist is None or
  *             ap_elist is None or ap_rslst is None or ap_erlst is None or ap_ierlst is None):
  *             return NULL             # <<<<<<<<<<<<<<
@@ -3512,7 +3624,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
       }
       __pyx_L6:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":351
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":364
  *             return NULL
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
@@ -3521,7 +3633,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":352
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":365
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)             # <<<<<<<<<<<<<<
@@ -3530,7 +3642,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_nnlog = ((int *)PyArray_DATA(__pyx_v_ap_nnlog));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":353
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":366
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)
  *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
@@ -3539,7 +3651,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":354
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":367
  *         nnlog = <int *>np.PyArray_DATA(ap_nnlog)
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
@@ -3548,7 +3660,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":355
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":368
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
@@ -3557,7 +3669,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":356
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":369
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
@@ -3566,7 +3678,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":357
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":370
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         rslst = <double *>np.PyArray_DATA(ap_rslst)             # <<<<<<<<<<<<<<
@@ -3575,7 +3687,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_rslst = ((double *)PyArray_DATA(__pyx_v_ap_rslst));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":358
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":371
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         rslst = <double *>np.PyArray_DATA(ap_rslst)
  *         erlst = <double *>np.PyArray_DATA(ap_erlst)             # <<<<<<<<<<<<<<
@@ -3584,7 +3696,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_erlst = ((double *)PyArray_DATA(__pyx_v_ap_erlst));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":359
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":372
  *         rslst = <double *>np.PyArray_DATA(ap_rslst)
  *         erlst = <double *>np.PyArray_DATA(ap_erlst)
  *         ierlst = <int *>np.PyArray_DATA(ap_ierlst)             # <<<<<<<<<<<<<<
@@ -3593,42 +3705,60 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_ierlst = ((int *)PyArray_DATA(__pyx_v_ap_ierlst));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":361
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":374
  *         ierlst = <int *>np.PyArray_DATA(ap_ierlst)
  * 
  *         DQAWFE(<void *>quad_function, &a, &omega, &integr, &epsabs, &limlst, &limit, &maxp1, &result, &abserr, &neval, &ier, rslst, erlst, ierlst, &lst, alist, blist, rlist, elist, iord, nnlog, chebmo)             # <<<<<<<<<<<<<<
- *     except:
- *         ier = 80
+ *     except Exception, e:
+ *         print "_qawfe failed: %s" % e
  */
       DQAWFE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_omega), (&__pyx_v_integr), (&__pyx_v_epsabs), (&__pyx_v_limlst), (&__pyx_v_limit), (&__pyx_v_maxp1), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_rslst, __pyx_v_erlst, __pyx_v_ierlst, (&__pyx_v_lst), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, __pyx_v_nnlog, __pyx_v_chebmo);
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":362
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":375
  * 
  *         DQAWFE(<void *>quad_function, &a, &omega, &integr, &epsabs, &limlst, &limit, &maxp1, &result, &abserr, &neval, &ier, rslst, erlst, ierlst, &lst, alist, blist, rlist, elist, iord, nnlog, chebmo)
- *     except:             # <<<<<<<<<<<<<<
+ *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qawfe failed: %s" % e
  *         ier = 80
- *     finally:
  */
-      /*except:*/ {
+      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "Exception");
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
+      __pyx_t_5 = nullptr;
+      if (__pyx_v_e != nullptr) {
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qawfe");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":363
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":376
  *         DQAWFE(<void *>quad_function, &a, &omega, &integr, &epsabs, &limlst, &limit, &maxp1, &result, &abserr, &neval, &ier, rslst, erlst, ierlst, &lst, alist, blist, rlist, elist, iord, nnlog, chebmo)
- *     except:
+ *     except Exception, e:
+ *         print "_qawfe failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_5 = __site_op_mod_376_34->Target(__site_op_mod_376_34, ((System::Object^)"_qawfe failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_5));
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":377
+ *     except Exception, e:
+ *         print "_qawfe failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)
  */
         __pyx_v_ier = 80;
       }
+      else {
+        // XXX we should set traceback here
+        throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
+      }
       PythonOps::ExceptionHandled(__pyx_context);
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":365
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":379
  *         ier = 80
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
@@ -3640,7 +3770,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_5 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":367
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":381
  *         QUAD_RESTORE_FUNC(savedSettings)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -3649,7 +3779,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":368
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":382
  * 
  *     if full_output:
  *         dict = {             # <<<<<<<<<<<<<<
@@ -3658,7 +3788,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
  */
     __pyx_t_17 = PythonOps::MakeEmptyDict();
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":369
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":383
  *     if full_output:
  *         dict = {
  *             "neval" : neval,             # <<<<<<<<<<<<<<
@@ -3669,7 +3799,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_17[((System::Object^)"neval")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":370
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":384
  *         dict = {
  *             "neval" : neval,
  *             "lst" : lst,             # <<<<<<<<<<<<<<
@@ -3680,7 +3810,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_17[((System::Object^)"lst")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":371
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":385
  *             "neval" : neval,
  *             "lst" : lst,
  *             "rslst" : np.PyArray_Return(ap_rslst),             # <<<<<<<<<<<<<<
@@ -3691,7 +3821,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_17[((System::Object^)"rslst")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":372
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":386
  *             "lst" : lst,
  *             "rslst" : np.PyArray_Return(ap_rslst),
  *             "erlst" : np.PyArray_Return(ap_erlst),             # <<<<<<<<<<<<<<
@@ -3702,7 +3832,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_17[((System::Object^)"erlst")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":373
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":387
  *             "rslst" : np.PyArray_Return(ap_rslst),
  *             "erlst" : np.PyArray_Return(ap_erlst),
  *             "ierlst" : np.PyArray_Return(ap_ierlst) }             # <<<<<<<<<<<<<<
@@ -3715,7 +3845,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_v_dict = __pyx_t_17;
     __pyx_t_17 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":374
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":388
  *             "erlst" : np.PyArray_Return(ap_erlst),
  *             "ierlst" : np.PyArray_Return(ap_ierlst) }
  *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
@@ -3736,7 +3866,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":376
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":390
  *         return (result, abserr, dict, ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -3761,7 +3891,7 @@ static System::Object^ _qawfe(System::Object^ fcn, System::Object^ a, System::Ob
   return __pyx_r;
 }
 
-/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":379
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":393
  * 
  * 
  * def _qawce(fcn, double a, double b, double c, extra_args=None, int full_output=0, double epsabs=1.49e-8, double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
@@ -3796,6 +3926,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   double *__pyx_v_rlist;
   double *__pyx_v_elist;
   System::Object^ __pyx_v_savedSettings;
+  System::Object^ __pyx_v_e;
   System::Object^ __pyx_v_dict;
   System::Object^ __pyx_r = nullptr;
   int __pyx_t_1;
@@ -3810,31 +3941,31 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   int __pyx_t_12;
   PythonDictionary^ __pyx_t_13;
   __pyx_v_fcn = fcn;
-  __pyx_v_a = __site_cvt_cvt_double_379_0->Target(__site_cvt_cvt_double_379_0, a);
-  __pyx_v_b = __site_cvt_cvt_double_379_0_1->Target(__site_cvt_cvt_double_379_0_1, b);
-  __pyx_v_c = __site_cvt_cvt_double_379_0_2->Target(__site_cvt_cvt_double_379_0_2, c);
+  __pyx_v_a = __site_cvt_cvt_double_393_0->Target(__site_cvt_cvt_double_393_0, a);
+  __pyx_v_b = __site_cvt_cvt_double_393_0_1->Target(__site_cvt_cvt_double_393_0_1, b);
+  __pyx_v_c = __site_cvt_cvt_double_393_0_2->Target(__site_cvt_cvt_double_393_0_2, c);
   if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
     __pyx_v_extra_args = extra_args;
   } else {
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_379_0->Target(__site_cvt_cvt_int_379_0, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_393_0->Target(__site_cvt_cvt_int_393_0, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
-    __pyx_v_epsabs = __site_cvt_cvt_double_379_0_3->Target(__site_cvt_cvt_double_379_0_3, epsabs);
+    __pyx_v_epsabs = __site_cvt_cvt_double_393_0_3->Target(__site_cvt_cvt_double_393_0_3, epsabs);
   } else {
     __pyx_v_epsabs = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
-    __pyx_v_epsrel = __site_cvt_cvt_double_379_0_4->Target(__site_cvt_cvt_double_379_0_4, epsrel);
+    __pyx_v_epsrel = __site_cvt_cvt_double_393_0_4->Target(__site_cvt_cvt_double_393_0_4, epsrel);
   } else {
     __pyx_v_epsrel = ((double)1.49e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
-    __pyx_v_limit = __site_cvt_cvt_int_379_0_1->Target(__site_cvt_cvt_int_379_0_1, limit);
+    __pyx_v_limit = __site_cvt_cvt_int_393_0_1->Target(__site_cvt_cvt_int_393_0_1, limit);
   } else {
     __pyx_v_limit = ((int)50);
   }
@@ -3844,9 +3975,10 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_ap_elist = nullptr;
   __pyx_v_ap_rlist = nullptr;
   __pyx_v_savedSettings = nullptr;
+  __pyx_v_e = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":384
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":398
  * 
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int      neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
@@ -3857,7 +3989,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_ier = 6;
   __pyx_v_last = 0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":385
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":399
  *     cdef np.npy_intp limit_shape[1]
  *     cdef int      neval=0, ier=6, last=0, *iord
  *     cdef double   result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
@@ -3867,7 +3999,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_result = 0.0;
   __pyx_v_abserr = 0.0;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":388
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":402
  *     cdef double   *alist, *blist, *rlist, *elist
  * 
  *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
@@ -3876,7 +4008,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
   (__pyx_v_limit_shape[0]) = __pyx_v_limit;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":391
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":405
  * 
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:             # <<<<<<<<<<<<<<
@@ -3886,7 +4018,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_t_1 = (__pyx_v_limit < 1);
   if (__pyx_t_1) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":392
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":406
  *     # Need to check that limit is bigger than 1
  *     if limit < 1:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
@@ -3907,7 +4039,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   }
   __pyx_L5:;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":394
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":408
  *         return (result, abserr, ier)
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
@@ -3918,7 +4050,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   __pyx_v_savedSettings = __pyx_t_5;
   __pyx_t_5 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":395
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":409
  * 
  *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -3928,7 +4060,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   try {
     try {
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":397
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":411
  *     try:
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)             # <<<<<<<<<<<<<<
@@ -3939,7 +4071,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":398
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":412
  *         # Setup iwork and work arrays
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3950,7 +4082,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":399
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":413
  *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3961,7 +4093,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":400
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":414
  *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3972,7 +4104,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":401
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":415
  *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -3983,7 +4115,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_5);
       __pyx_t_5 = nullptr;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":402
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":416
  *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:             # <<<<<<<<<<<<<<
@@ -4017,7 +4149,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       }
       if (__pyx_t_8) {
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":403
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":417
  *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
  *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
  *             return NULL             # <<<<<<<<<<<<<<
@@ -4032,7 +4164,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
       }
       __pyx_L6:;
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":405
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":419
  *             return NULL
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
@@ -4041,7 +4173,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":406
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":420
  * 
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
@@ -4050,7 +4182,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":407
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":421
  *         iord = <int *>np.PyArray_DATA(ap_iord)
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
@@ -4059,7 +4191,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":408
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":422
  *         alist = <double *>np.PyArray_DATA(ap_alist)
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
@@ -4068,51 +4200,69 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
       __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":409
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":423
  *         blist = <double *>np.PyArray_DATA(ap_blist)
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
  *         DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except:
+ *     except Exception, e:
  */
       __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":410
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":424
  *         rlist = <double *>np.PyArray_DATA(ap_rlist)
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)             # <<<<<<<<<<<<<<
- *     except:
- *         ier = 80
+ *     except Exception, e:
+ *         print "_qawce failed: %s" % e
  */
       DQAWCE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_c), (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, (&__pyx_v_last));
     } catch (System::Exception^ __pyx_lt_6) {
       System::Object^ __pyx_lt_7 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_6);
 
-      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":411
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":425
  *         elist = <double *>np.PyArray_DATA(ap_elist)
  *         DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except:             # <<<<<<<<<<<<<<
+ *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qawce failed: %s" % e
  *         ier = 80
- *     finally:
  */
-      /*except:*/ {
+      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "Exception");
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_7, __pyx_t_5);
+      __pyx_t_5 = nullptr;
+      if (__pyx_v_e != nullptr) {
         // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qawce");
         PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_6);
 
-        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":412
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":426
  *         DQAWCE(<void *>quad_function, &a, &b, &c, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
- *     except:
+ *     except Exception, e:
+ *         print "_qawce failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_5 = __site_op_mod_426_34->Target(__site_op_mod_426_34, ((System::Object^)"_qawce failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_5));
+        __pyx_t_5 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":427
+ *     except Exception, e:
+ *         print "_qawce failed: %s" % e
  *         ier = 80             # <<<<<<<<<<<<<<
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)
  */
         __pyx_v_ier = 80;
       }
+      else {
+        // XXX we should set traceback here
+        throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_6);
+      }
       PythonOps::ExceptionHandled(__pyx_context);
     }
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":414
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":429
  *         ier = 80
  *     finally:
  *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
@@ -4124,7 +4274,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_5 = nullptr;
   }
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":416
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":431
  *         QUAD_RESTORE_FUNC(savedSettings)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -4133,7 +4283,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
   if (__pyx_v_full_output) {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":417
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":432
  * 
  *     if full_output:
  *         dict = {             # <<<<<<<<<<<<<<
@@ -4142,7 +4292,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
  */
     __pyx_t_13 = PythonOps::MakeEmptyDict();
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":418
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":433
  *     if full_output:
  *         dict = {
  *             "neval" : neval,             # <<<<<<<<<<<<<<
@@ -4153,7 +4303,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"neval")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":419
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":434
  *         dict = {
  *             "neval" : neval,
  *             "last" : last,             # <<<<<<<<<<<<<<
@@ -4164,7 +4314,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"last")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":420
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":435
  *             "neval" : neval,
  *             "last" : last,
  *             "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
@@ -4175,7 +4325,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"iord")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":421
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":436
  *             "last" : last,
  *             "iord" : np.PyArray_Return(ap_iord),
  *             "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
@@ -4186,7 +4336,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"alist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":422
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":437
  *             "iord" : np.PyArray_Return(ap_iord),
  *             "alist" : np.PyArray_Return(ap_alist),
  *             "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
@@ -4197,7 +4347,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"blist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":423
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":438
  *             "alist" : np.PyArray_Return(ap_alist),
  *             "blist" : np.PyArray_Return(ap_blist),
  *             "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
@@ -4208,7 +4358,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_13[((System::Object^)"rlist")] = __pyx_t_5;
     __pyx_t_5 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":424
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":439
  *             "blist" : np.PyArray_Return(ap_blist),
  *             "rlist" : np.PyArray_Return(ap_rlist),
  *             "elist" : np.PyArray_Return(ap_elist) }             # <<<<<<<<<<<<<<
@@ -4221,7 +4371,7 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_v_dict = __pyx_t_13;
     __pyx_t_13 = nullptr;
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":425
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":440
  *             "rlist" : np.PyArray_Return(ap_rlist),
  *             "elist" : np.PyArray_Return(ap_elist) }
  *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
@@ -4242,10 +4392,12 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
   }
   /*else*/ {
 
-    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":427
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":442
  *         return (result, abserr, dict, ier)
  *     else:
  *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
+ * 
+ * 
  */
     __pyx_t_2 = __pyx_v_result;
     __pyx_t_3 = __pyx_v_abserr;
@@ -4256,6 +4408,601 @@ static System::Object^ _qawce(System::Object^ fcn, System::Object^ a, System::Ob
     __pyx_t_4 = nullptr;
     __pyx_r = __pyx_t_5;
     __pyx_t_5 = nullptr;
+    goto __pyx_L0;
+  }
+  __pyx_L7:;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":445
+ * 
+ * 
+ * def _qawse(fcn, double a, double b, abTuple, int integr, extra_args=None, int full_output=0, double epsabs=1.49e-8,             # <<<<<<<<<<<<<<
+ *            double epsrel=1.49e-8, int limit=50):
+ *     """[result,abserr,infodict,ier] = _qawse(fun, a, b, (alpha, beta), integr, | args, full_output, epsabs, epsrel, limit)"""
+ */
+
+static System::Object^ _qawse(System::Object^ fcn, System::Object^ a, System::Object^ b, System::Object^ abTuple, System::Object^ integr, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ epsabs, [InteropServices::Optional]System::Object^ epsrel, [InteropServices::Optional]System::Object^ limit) {
+  System::Object^ __pyx_v_fcn = nullptr;
+  double __pyx_v_a;
+  double __pyx_v_b;
+  System::Object^ __pyx_v_abTuple = nullptr;
+  int __pyx_v_integr;
+  System::Object^ __pyx_v_extra_args = nullptr;
+  int __pyx_v_full_output;
+  double __pyx_v_epsabs;
+  double __pyx_v_epsrel;
+  int __pyx_v_limit;
+  NumpyDotNet::ndarray^ __pyx_v_ap_alist;
+  NumpyDotNet::ndarray^ __pyx_v_ap_iord;
+  NumpyDotNet::ndarray^ __pyx_v_ap_blist;
+  NumpyDotNet::ndarray^ __pyx_v_ap_elist;
+  NumpyDotNet::ndarray^ __pyx_v_ap_rlist;
+  __pyx_t_5numpy_npy_intp __pyx_v_limit_shape[1];
+  double __pyx_v_alfa;
+  double __pyx_v_beta;
+  int __pyx_v_neval;
+  int __pyx_v_ier;
+  int __pyx_v_last;
+  int *__pyx_v_iord;
+  double __pyx_v_result;
+  double __pyx_v_abserr;
+  double *__pyx_v_alist;
+  double *__pyx_v_blist;
+  double *__pyx_v_rlist;
+  double *__pyx_v_elist;
+  System::Object^ __pyx_v_alpha;
+  System::Object^ __pyx_v_savedSettings;
+  System::Object^ __pyx_v_e;
+  System::Object^ __pyx_v_dict;
+  System::Object^ __pyx_r = nullptr;
+  array<System::Object^>^ __pyx_t_3;
+  System::Object^ __pyx_t_4 = nullptr;
+  System::Object^ __pyx_t_5 = nullptr;
+  double __pyx_t_6;
+  int __pyx_t_7;
+  System::Object^ __pyx_t_8 = nullptr;
+  System::Object^ __pyx_t_9 = nullptr;
+  int __pyx_t_12;
+  int __pyx_t_13;
+  int __pyx_t_14;
+  int __pyx_t_15;
+  int __pyx_t_16;
+  PythonDictionary^ __pyx_t_17;
+  __pyx_v_fcn = fcn;
+  __pyx_v_a = __site_cvt_cvt_double_445_0->Target(__site_cvt_cvt_double_445_0, a);
+  __pyx_v_b = __site_cvt_cvt_double_445_0_1->Target(__site_cvt_cvt_double_445_0_1, b);
+  __pyx_v_abTuple = abTuple;
+  __pyx_v_integr = __site_cvt_cvt_int_445_0->Target(__site_cvt_cvt_int_445_0, integr);
+  if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
+    __pyx_v_extra_args = extra_args;
+  } else {
+    __pyx_v_extra_args = ((System::Object^)nullptr);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
+    __pyx_v_full_output = __site_cvt_cvt_int_445_0_1->Target(__site_cvt_cvt_int_445_0_1, full_output);
+  } else {
+    __pyx_v_full_output = ((int)0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(epsabs) == nullptr) {
+    __pyx_v_epsabs = __site_cvt_cvt_double_445_0_2->Target(__site_cvt_cvt_double_445_0_2, epsabs);
+  } else {
+    __pyx_v_epsabs = ((double)1.49e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(epsrel) == nullptr) {
+    __pyx_v_epsrel = __site_cvt_cvt_double_445_0_3->Target(__site_cvt_cvt_double_445_0_3, epsrel);
+  } else {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":446
+ * 
+ * def _qawse(fcn, double a, double b, abTuple, int integr, extra_args=None, int full_output=0, double epsabs=1.49e-8,
+ *            double epsrel=1.49e-8, int limit=50):             # <<<<<<<<<<<<<<
+ *     """[result,abserr,infodict,ier] = _qawse(fun, a, b, (alpha, beta), integr, | args, full_output, epsabs, epsrel, limit)"""
+ *     cdef np.ndarray ap_alist, ap_iord, ap_blist, ap_elist, ap_rlist
+ */
+    __pyx_v_epsrel = ((double)1.49e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(limit) == nullptr) {
+    __pyx_v_limit = __site_cvt_cvt_int_445_0_2->Target(__site_cvt_cvt_int_445_0_2, limit);
+  } else {
+    __pyx_v_limit = ((int)50);
+  }
+  __pyx_v_ap_alist = nullptr;
+  __pyx_v_ap_iord = nullptr;
+  __pyx_v_ap_blist = nullptr;
+  __pyx_v_ap_elist = nullptr;
+  __pyx_v_ap_rlist = nullptr;
+  __pyx_v_alpha = nullptr;
+  __pyx_v_savedSettings = nullptr;
+  __pyx_v_e = nullptr;
+  __pyx_v_dict = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":451
+ *     cdef np.npy_intp limit_shape[1]
+ *     cdef double   alfa, beta
+ *     cdef int      neval=0, ier=6, last=0, *iord             # <<<<<<<<<<<<<<
+ *     cdef double   result=0.0, abserr=0.0
+ *     cdef double   *alist, *blist, *rlist, *elist
+ */
+  __pyx_v_neval = 0;
+  __pyx_v_ier = 6;
+  __pyx_v_last = 0;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":452
+ *     cdef double   alfa, beta
+ *     cdef int      neval=0, ier=6, last=0, *iord
+ *     cdef double   result=0.0, abserr=0.0             # <<<<<<<<<<<<<<
+ *     cdef double   *alist, *blist, *rlist, *elist
+ * 
+ */
+  __pyx_v_result = 0.0;
+  __pyx_v_abserr = 0.0;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":456
+ * 
+ *     # abTuple is a sequence of two double values, alpha and beta.
+ *     try:             # <<<<<<<<<<<<<<
+ *         alpha, beta = abTuple
+ *     except:
+ */
+  try {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":457
+ *     # abTuple is a sequence of two double values, alpha and beta.
+ *     try:
+ *         alpha, beta = abTuple             # <<<<<<<<<<<<<<
+ *     except:
+ *         raise TypeError("alpha and beta must be provided as a pair of doubles (tuple, list, etc).")
+ */
+    __pyx_t_3 = safe_cast< array<System::Object^>^ >(LightExceptions::CheckAndThrow(PythonOps::GetEnumeratorValuesNoComplexSets(__pyx_context, __pyx_v_abTuple, 2)));
+    __pyx_t_4 = __pyx_t_3[0];
+    __pyx_t_5 = __pyx_t_3[1];
+    __pyx_t_6 = __site_cvt_cvt_double_457_8->Target(__site_cvt_cvt_double_457_8, __pyx_t_5);
+    __pyx_t_5 = nullptr;
+    __pyx_t_3 = nullptr;
+    __pyx_v_alpha = __pyx_t_4;
+    __pyx_t_4 = nullptr;
+    __pyx_v_beta = __pyx_t_6;
+  } catch (System::Exception^ __pyx_lt_1) {
+    System::Object^ __pyx_lt_2 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_1);
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":458
+ *     try:
+ *         alpha, beta = abTuple
+ *     except:             # <<<<<<<<<<<<<<
+ *         raise TypeError("alpha and beta must be provided as a pair of doubles (tuple, list, etc).")
+ * 
+ */
+    /*except:*/ {
+      // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qawse");
+      PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_1);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":459
+ *         alpha, beta = abTuple
+ *     except:
+ *         raise TypeError("alpha and beta must be provided as a pair of doubles (tuple, list, etc).")             # <<<<<<<<<<<<<<
+ * 
+ *     # Need to check that limit is bigger than 1
+ */
+      __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "TypeError");
+      __pyx_t_4 = __site_call1_459_23->Target(__site_call1_459_23, __pyx_context, __pyx_t_5, ((System::Object^)"alpha and beta must be provided as a pair of doubles (tuple, list, etc)."));
+      __pyx_t_5 = nullptr;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
+      __pyx_t_4 = nullptr;
+    }
+    PythonOps::ExceptionHandled(__pyx_context);
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":462
+ * 
+ *     # Need to check that limit is bigger than 1
+ *     if limit < 1:             # <<<<<<<<<<<<<<
+ *         return (result, abserr, ier)
+ *     limit_shape[0] = limit
+ */
+  __pyx_t_7 = (__pyx_v_limit < 1);
+  if (__pyx_t_7) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":463
+ *     # Need to check that limit is bigger than 1
+ *     if limit < 1:
+ *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
+ *     limit_shape[0] = limit
+ * 
+ */
+    __pyx_t_4 = __pyx_v_result;
+    __pyx_t_5 = __pyx_v_abserr;
+    __pyx_t_8 = __pyx_v_ier;
+    __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_4, __pyx_t_5, __pyx_t_8});
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+    __pyx_t_8 = nullptr;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L5;
+  }
+  __pyx_L5:;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":464
+ *     if limit < 1:
+ *         return (result, abserr, ier)
+ *     limit_shape[0] = limit             # <<<<<<<<<<<<<<
+ * 
+ *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+ */
+  (__pyx_v_limit_shape[0]) = __pyx_v_limit;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":466
+ *     limit_shape[0] = limit
+ * 
+ *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
+ *     try:
+ *         # Setup iwork and work arrays
+ */
+  __pyx_t_9 = QUAD_INIT_FUNC(__pyx_v_fcn, __pyx_v_extra_args); 
+  __pyx_v_savedSettings = __pyx_t_9;
+  __pyx_t_9 = nullptr;
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":467
+ * 
+ *     savedSettings = QUAD_INIT_FUNC(fcn,extra_args)
+ *     try:             # <<<<<<<<<<<<<<
+ *         # Setup iwork and work arrays
+ *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
+ */
+  try {
+    try {
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":469
+ *     try:
+ *         # Setup iwork and work arrays
+ *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)             # <<<<<<<<<<<<<<
+ *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ */
+      __pyx_t_9 = PyArray_SimpleNew(1, __pyx_v_limit_shape, NPY_INT); 
+      __pyx_v_ap_iord = ((NumpyDotNet::ndarray^)__pyx_t_9);
+      __pyx_t_9 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":470
+ *         # Setup iwork and work arrays
+ *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
+ *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ */
+      __pyx_t_9 = PyArray_SimpleNew(1, __pyx_v_limit_shape, NPY_DOUBLE); 
+      __pyx_v_ap_alist = ((NumpyDotNet::ndarray^)__pyx_t_9);
+      __pyx_t_9 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":471
+ *         ap_iord = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_INT)
+ *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ */
+      __pyx_t_9 = PyArray_SimpleNew(1, __pyx_v_limit_shape, NPY_DOUBLE); 
+      __pyx_v_ap_blist = ((NumpyDotNet::ndarray^)__pyx_t_9);
+      __pyx_t_9 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":472
+ *         ap_alist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
+ */
+      __pyx_t_9 = PyArray_SimpleNew(1, __pyx_v_limit_shape, NPY_DOUBLE); 
+      __pyx_v_ap_rlist = ((NumpyDotNet::ndarray^)__pyx_t_9);
+      __pyx_t_9 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":473
+ *         ap_blist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
+ *             return NULL
+ */
+      __pyx_t_9 = PyArray_SimpleNew(1, __pyx_v_limit_shape, NPY_DOUBLE); 
+      __pyx_v_ap_elist = ((NumpyDotNet::ndarray^)__pyx_t_9);
+      __pyx_t_9 = nullptr;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":474
+ *         ap_rlist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:             # <<<<<<<<<<<<<<
+ *             return NULL
+ * 
+ */
+      __pyx_t_7 = (((System::Object^)__pyx_v_ap_iord) == nullptr);
+      if (!__pyx_t_7) {
+        __pyx_t_12 = (((System::Object^)__pyx_v_ap_alist) == nullptr);
+        if (!__pyx_t_12) {
+          __pyx_t_13 = (((System::Object^)__pyx_v_ap_blist) == nullptr);
+          if (!__pyx_t_13) {
+            __pyx_t_14 = (((System::Object^)__pyx_v_ap_rlist) == nullptr);
+            if (!__pyx_t_14) {
+              __pyx_t_15 = (((System::Object^)__pyx_v_ap_elist) == nullptr);
+              __pyx_t_16 = __pyx_t_15;
+            } else {
+              __pyx_t_16 = __pyx_t_14;
+            }
+            __pyx_t_14 = __pyx_t_16;
+          } else {
+            __pyx_t_14 = __pyx_t_13;
+          }
+          __pyx_t_13 = __pyx_t_14;
+        } else {
+          __pyx_t_13 = __pyx_t_12;
+        }
+        __pyx_t_12 = __pyx_t_13;
+      } else {
+        __pyx_t_12 = __pyx_t_7;
+      }
+      if (__pyx_t_12) {
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":475
+ *         ap_elist = <np.ndarray>np.PyArray_SimpleNew(1,limit_shape,np.NPY_DOUBLE)
+ *         if ap_iord is None or ap_alist is None or ap_blist is None or ap_rlist is None or ap_elist is None:
+ *             return NULL             # <<<<<<<<<<<<<<
+ * 
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
+ */
+        __pyx_t_9 = NULL;
+        __pyx_r = __pyx_t_9;
+        __pyx_t_9 = nullptr;
+        goto __pyx_L0;
+        goto __pyx_L6;
+      }
+      __pyx_L6:;
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":477
+ *             return NULL
+ * 
+ *         iord = <int *>np.PyArray_DATA(ap_iord)             # <<<<<<<<<<<<<<
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ */
+      __pyx_v_iord = ((int *)PyArray_DATA(__pyx_v_ap_iord));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":478
+ * 
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
+ *         alist = <double *>np.PyArray_DATA(ap_alist)             # <<<<<<<<<<<<<<
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ */
+      __pyx_v_alist = ((double *)PyArray_DATA(__pyx_v_ap_alist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":479
+ *         iord = <int *>np.PyArray_DATA(ap_iord)
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)             # <<<<<<<<<<<<<<
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ */
+      __pyx_v_blist = ((double *)PyArray_DATA(__pyx_v_ap_blist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":480
+ *         alist = <double *>np.PyArray_DATA(ap_alist)
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)             # <<<<<<<<<<<<<<
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ *         DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ */
+      __pyx_v_rlist = ((double *)PyArray_DATA(__pyx_v_ap_rlist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":481
+ *         blist = <double *>np.PyArray_DATA(ap_blist)
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ *         elist = <double *>np.PyArray_DATA(ap_elist)             # <<<<<<<<<<<<<<
+ *         DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ *     except Exception, e:
+ */
+      __pyx_v_elist = ((double *)PyArray_DATA(__pyx_v_ap_elist));
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":482
+ *         rlist = <double *>np.PyArray_DATA(ap_rlist)
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ *         DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)             # <<<<<<<<<<<<<<
+ *     except Exception, e:
+ *         print "_qawse failed: %s" % e
+ */
+      DQAWSE(((void *)__pyx_function_pointer_quad_function), (&__pyx_v_a), (&__pyx_v_b), (&__pyx_v_alfa), (&__pyx_v_beta), (&__pyx_v_integr), (&__pyx_v_epsabs), (&__pyx_v_epsrel), (&__pyx_v_limit), (&__pyx_v_result), (&__pyx_v_abserr), (&__pyx_v_neval), (&__pyx_v_ier), __pyx_v_alist, __pyx_v_blist, __pyx_v_rlist, __pyx_v_elist, __pyx_v_iord, (&__pyx_v_last));
+    } catch (System::Exception^ __pyx_lt_10) {
+      System::Object^ __pyx_lt_11 = PythonOps::SetCurrentException(__pyx_context, __pyx_lt_10);
+
+      /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":483
+ *         elist = <double *>np.PyArray_DATA(ap_elist)
+ *         DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ *     except Exception, e:             # <<<<<<<<<<<<<<
+ *         print "_qawse failed: %s" % e
+ *         ier = 80
+ */
+      __pyx_t_9 = PythonOps::GetGlobal(__pyx_context, "Exception");
+      __pyx_v_e = PythonOps::CheckException(__pyx_context, __pyx_lt_11, __pyx_t_9);
+      __pyx_t_9 = nullptr;
+      if (__pyx_v_e != nullptr) {
+        // XXX should update traceback here __Pyx_AddTraceback("scipy.integrate._quadpack._qawse");
+        PythonOps::BuildExceptionInfo(__pyx_context, __pyx_lt_10);
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":484
+ *         DQAWSE(<void *>quad_function, &a, &b, &alfa, &beta, &integr, &epsabs, &epsrel, &limit, &result, &abserr, &neval, &ier, alist, blist, rlist, elist, iord, &last)
+ *     except Exception, e:
+ *         print "_qawse failed: %s" % e             # <<<<<<<<<<<<<<
+ *         ier = 80
+ *     finally:
+ */
+        __pyx_t_9 = __site_op_mod_484_34->Target(__site_op_mod_484_34, ((System::Object^)"_qawse failed: %s"), __pyx_v_e);
+        PythonOps::Print(__pyx_context, ((System::Object^)__pyx_t_9));
+        __pyx_t_9 = nullptr;
+
+        /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":485
+ *     except Exception, e:
+ *         print "_qawse failed: %s" % e
+ *         ier = 80             # <<<<<<<<<<<<<<
+ *     finally:
+ *         QUAD_RESTORE_FUNC(savedSettings)
+ */
+        __pyx_v_ier = 80;
+      }
+      else {
+        // XXX we should set traceback here
+        throw ExceptionHelpers::UpdateForRethrow(__pyx_lt_10);
+      }
+      PythonOps::ExceptionHandled(__pyx_context);
+    }
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":487
+ *         ier = 80
+ *     finally:
+ *         QUAD_RESTORE_FUNC(savedSettings)             # <<<<<<<<<<<<<<
+ * 
+ *     if full_output:
+ */
+  finally {
+    __pyx_t_9 = QUAD_RESTORE_FUNC(__pyx_v_savedSettings); 
+    __pyx_t_9 = nullptr;
+  }
+
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":489
+ *         QUAD_RESTORE_FUNC(savedSettings)
+ * 
+ *     if full_output:             # <<<<<<<<<<<<<<
+ *         dict = {
+ *             "neval" : neval,
+ */
+  if (__pyx_v_full_output) {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":490
+ * 
+ *     if full_output:
+ *         dict = {             # <<<<<<<<<<<<<<
+ *             "neval" : neval,
+ *             "last" : last,
+ */
+    __pyx_t_17 = PythonOps::MakeEmptyDict();
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":491
+ *     if full_output:
+ *         dict = {
+ *             "neval" : neval,             # <<<<<<<<<<<<<<
+ *             "last" : last,
+ *             "iord" : np.PyArray_Return(ap_iord),
+ */
+    __pyx_t_9 = __pyx_v_neval;
+    __pyx_t_17[((System::Object^)"neval")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":492
+ *         dict = {
+ *             "neval" : neval,
+ *             "last" : last,             # <<<<<<<<<<<<<<
+ *             "iord" : np.PyArray_Return(ap_iord),
+ *             "alist" : np.PyArray_Return(ap_alist),
+ */
+    __pyx_t_9 = __pyx_v_last;
+    __pyx_t_17[((System::Object^)"last")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":493
+ *             "neval" : neval,
+ *             "last" : last,
+ *             "iord" : np.PyArray_Return(ap_iord),             # <<<<<<<<<<<<<<
+ *             "alist" : np.PyArray_Return(ap_alist),
+ *             "blist" : np.PyArray_Return(ap_blist),
+ */
+    __pyx_t_9 = PyArray_Return(((System::Object^)__pyx_v_ap_iord)); 
+    __pyx_t_17[((System::Object^)"iord")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":494
+ *             "last" : last,
+ *             "iord" : np.PyArray_Return(ap_iord),
+ *             "alist" : np.PyArray_Return(ap_alist),             # <<<<<<<<<<<<<<
+ *             "blist" : np.PyArray_Return(ap_blist),
+ *             "rlist" : np.PyArray_Return(ap_rlist),
+ */
+    __pyx_t_9 = PyArray_Return(((System::Object^)__pyx_v_ap_alist)); 
+    __pyx_t_17[((System::Object^)"alist")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":495
+ *             "iord" : np.PyArray_Return(ap_iord),
+ *             "alist" : np.PyArray_Return(ap_alist),
+ *             "blist" : np.PyArray_Return(ap_blist),             # <<<<<<<<<<<<<<
+ *             "rlist" : np.PyArray_Return(ap_rlist),
+ *             "elist" : np.PyArray_Return(ap_elist)
+ */
+    __pyx_t_9 = PyArray_Return(((System::Object^)__pyx_v_ap_blist)); 
+    __pyx_t_17[((System::Object^)"blist")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":496
+ *             "alist" : np.PyArray_Return(ap_alist),
+ *             "blist" : np.PyArray_Return(ap_blist),
+ *             "rlist" : np.PyArray_Return(ap_rlist),             # <<<<<<<<<<<<<<
+ *             "elist" : np.PyArray_Return(ap_elist)
+ *         }
+ */
+    __pyx_t_9 = PyArray_Return(((System::Object^)__pyx_v_ap_rlist)); 
+    __pyx_t_17[((System::Object^)"rlist")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":497
+ *             "blist" : np.PyArray_Return(ap_blist),
+ *             "rlist" : np.PyArray_Return(ap_rlist),
+ *             "elist" : np.PyArray_Return(ap_elist)             # <<<<<<<<<<<<<<
+ *         }
+ *         return (result, abserr, dict, ier)
+ */
+    __pyx_t_9 = PyArray_Return(((System::Object^)__pyx_v_ap_elist)); 
+    __pyx_t_17[((System::Object^)"elist")] = __pyx_t_9;
+    __pyx_t_9 = nullptr;
+    __pyx_v_dict = __pyx_t_17;
+    __pyx_t_17 = nullptr;
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":499
+ *             "elist" : np.PyArray_Return(ap_elist)
+ *         }
+ *         return (result, abserr, dict, ier)             # <<<<<<<<<<<<<<
+ *     else:
+ *         return (result, abserr, ier)
+ */
+    __pyx_t_9 = __pyx_v_result;
+    __pyx_t_8 = __pyx_v_abserr;
+    __pyx_t_5 = __pyx_v_ier;
+    __pyx_t_4 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_9, __pyx_t_8, ((System::Object^)__pyx_v_dict), __pyx_t_5});
+    __pyx_t_9 = nullptr;
+    __pyx_t_8 = nullptr;
+    __pyx_t_5 = nullptr;
+    __pyx_r = __pyx_t_4;
+    __pyx_t_4 = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L7;
+  }
+  /*else*/ {
+
+    /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":501
+ *         return (result, abserr, dict, ier)
+ *     else:
+ *         return (result, abserr, ier)             # <<<<<<<<<<<<<<
+ */
+    __pyx_t_4 = __pyx_v_result;
+    __pyx_t_5 = __pyx_v_abserr;
+    __pyx_t_8 = __pyx_v_ier;
+    __pyx_t_9 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_4, __pyx_t_5, __pyx_t_8});
+    __pyx_t_4 = nullptr;
+    __pyx_t_5 = nullptr;
+    __pyx_t_8 = nullptr;
+    __pyx_r = __pyx_t_9;
+    __pyx_t_9 = nullptr;
     goto __pyx_L0;
   }
   __pyx_L7:;
@@ -6083,64 +6830,78 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_call2_38_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_istrue_38_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_39_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_40_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_40_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_41_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_63_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_add_63_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_call2_64_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_cvt_cvt_double_66_25 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_68_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_double_73_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_73_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_73_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_73_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_73_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_73_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_130_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_130_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_130_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_130_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_130_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_130_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_175_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_175_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_175_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_175_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_175_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_175_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_PyPyArray_ContiguousFromObject_194_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyPyArray_ContiguousFromObject", false));
-  __site_call4_194_53 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(4)));
-  __site_cvt_cvt_double_240_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_240_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_240_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_240_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_240_0_4 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_240_0_5 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_264_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_cvt_cvt_double_311_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_311_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_311_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_311_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_311_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_311_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_311_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_311_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_379_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_379_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_379_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_379_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_379_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_379_0_4 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_379_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call2_39_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_istrue_39_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_40_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_41_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_41_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_42_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_64_24 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_64_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_call2_65_22 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_cvt_cvt_double_67_25 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_69_28 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_cvt_cvt_double_74_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_74_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_74_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_74_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_74_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_74_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_112_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_132_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_132_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_132_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_132_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_132_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_132_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_167_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_185_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_185_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_185_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_185_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_185_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_185_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_230_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_252_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_252_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_252_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_252_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_252_0_4 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_252_0_5 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_276_36 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_mod_300_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_324_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_324_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_324_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_324_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_324_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_324_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_324_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_324_0_4 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_376_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_393_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_393_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_393_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_393_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_393_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_393_0_4 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_393_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_mod_426_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_cvt_cvt_double_445_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_445_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_445_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_445_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_445_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_445_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_445_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_457_8 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_459_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_mod_484_34 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
   __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -6249,7 +7010,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  */
   import_array();
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":24
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":25
  *     void free(void *)
  * 
  * class QuadpackError(Exception): pass             # <<<<<<<<<<<<<<
@@ -6270,11 +7031,11 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_t_1 = nullptr;
   __pyx_t_2 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":26
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":27
  * class QuadpackError(Exception): pass
  * 
  * quadpack_error = error = QuadpackError             # <<<<<<<<<<<<<<
- * quadpack_python_funtion = None
+ * quadpack_python_function = None
  * quadpack_extra_arguments = ()
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "QuadpackError");
@@ -6282,25 +7043,25 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "error", __pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":27
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":28
  * 
  * quadpack_error = error = QuadpackError
- * quadpack_python_funtion = None             # <<<<<<<<<<<<<<
+ * quadpack_python_function = None             # <<<<<<<<<<<<<<
  * quadpack_extra_arguments = ()
  * 
  */
-  PythonOps::SetGlobal(__pyx_context, "quadpack_python_funtion", nullptr);
+  PythonOps::SetGlobal(__pyx_context, "quadpack_python_function", nullptr);
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":28
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":29
  * quadpack_error = error = QuadpackError
- * quadpack_python_funtion = None
+ * quadpack_python_function = None
  * quadpack_extra_arguments = ()             # <<<<<<<<<<<<<<
  * 
  * __version__ = 1.13
  */
   PythonOps::SetGlobal(__pyx_context, "quadpack_extra_arguments", ((System::Object^)PythonOps::EmptyTuple));
 
-  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":30
+  /* "/cygdrive/z/dev/scipy-refactor/scipy/integrate/_quadpack.pyx":31
  * quadpack_extra_arguments = ()
  * 
  * __version__ = 1.13             # <<<<<<<<<<<<<<

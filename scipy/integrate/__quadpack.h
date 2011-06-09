@@ -56,14 +56,12 @@ extern "C" {
 #endif
 
 void DQAGSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
-void DQAWSE();
-
-void DQAGSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
 void DQAGPE(void *, double *, double *, int *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, double *, int *, int *, int *, int *);
 void DQAWOE(void *, double *, double *, double *, int *, double *, double *, int *, int *, int *, double *, double *, int *, int *, int *, double *, double *, double *, double *, int *, int *, int *, double *);
 void DQAGIE(void *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
 void DQAWFE(void *, double *, double *, int *, double *, int *, int *, int *, double *, double *, int *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *, double *);
 void DQAWCE(void *, double *, double *, double *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
+void DQAWSE(void *, double *, double *, double *, double *, int *, double *, double *, int *, double *, double *, int *, int *, double *, double *, double *, double *, int *, int *);
 
 
 #if defined(__cplusplus)

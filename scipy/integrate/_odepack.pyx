@@ -59,7 +59,7 @@ cdef RESTORE_JAC_FUNC(jacStore):
     __multipack_python_function, __multipack_extra_arguments, __multipack_python_jacobian, __multipack_jac_transpose = jacStore
 
 
-def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1, 
+def odeint(fun, y0, t, extra_args=None, Dfun=None, int col_deriv=0, int ml=-1, int mu=-1, 
             int full_output=0, rtol=None, atol=None, tcrit=None, double h0=0.0, 
             double hmax=0.0, double hmin=0.0, int ixpr=0, int mxstep=0, int mxhnil=0, int mxordn=12, 
             int mxords=5):
@@ -78,13 +78,13 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
     cdef int *iwork
     cdef np.npy_intp dims[2]
     cdef object ap_tout
-    cdef double t
     cdef double *dCythonHack
     cdef int *iCythonHack
     cdef int numcrit=0
     cdef np.npy_intp out_sz
+    cdef double t0
 
-    store_multipack_globals = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv, OdepackError)
+    store_multipack_globals = INIT_JAC_FUNC(fun,Dfun,extra_args,col_deriv, OdepackError)
     try:
 
         # Set up jt, ml, and mu
@@ -104,11 +104,11 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
         dims[1] = neq
 
         # Set of output times for integration
-        ap_tout = np.PyArray_ContiguousFromObject(p_tout, np.NPY_DOUBLE, 0, 1)
+        ap_tout = np.PyArray_ContiguousFromObject(t, np.NPY_DOUBLE, 0, 1)
         tout = <double *>np.PyArray_DATA(ap_tout)
         ntimes = np.PyArray_SIZE(ap_tout)
         dims[0] = ntimes
-        t = tout[0]
+        t0 = tout[0]
 
         # Setup array to hold the output evaluations
         ap_yout = np.PyArray_EMPTY(2, dims, np.NPY_DOUBLE, False)
@@ -123,7 +123,7 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
 
         rtol_ptr = <double *>np.PyArray_DATA(ap_rtol)
         atol_ptr = <double *>np.PyArray_DATA(ap_atol)
-        if tcrit is not None:
+        if ap_tcrit is not None:
             tcrit_ptr = <double *>np.PyArray_DATA(ap_tcrit)
 
         # Find size of working arrays
@@ -167,20 +167,21 @@ def odeint(fcn, y0, p_tout, extra_args=None, Dfun=None, int col_deriv=0, int ml=
             if ap_hu is None or ap_tcur is None or ap_tolsf is None or ap_tsw is None or ap_nst is None or ap_nfe is None or ap_nje is None or ap_nqu is None or ap_mused is None:
                 return NULL
   
-        if tcrit_ptr != NULL:
+        if ap_tcrit is not None:
             itask = 4
-            rwork[0] = tcrit[0]  # There are critical points 
+            rwork[0] = tcrit_ptr[0]  # There are critical points 
 
         while (k < ntimes and istate > 0):  # loop over desired times
             tout_ptr = tout + k
             # Use tcrit if relevant 
-            if itask == 4 and tout_ptr[0] > (tcrit + crit_ind)[0]:
+            if itask == 4 and tout_ptr[0] > (tcrit_ptr + crit_ind)[0]:
                 crit_ind += 1
                 rwork[0] = (tcrit_ptr + crit_ind)[0]
             if crit_ind >= numcrit: 
                 itask = 1  # No more critical values 
 
-            lsoda(<void *>ode_function, &neq, y, &t, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
+            lsoda(<void *>ode_function, &neq, y, &t0, tout_ptr, &itol, rtol_ptr, atol_ptr, &itask, 
+                  &istate, &iopt, rwork, &lrw, iwork, &liw, <void *>ode_jacobian_function, &jt);
             if full_output:
                 (<double *>np.PyArray_DATA(ap_hu))[k-1] = rwork[10]
                 (<double *>np.PyArray_DATA(ap_tcur))[k-1] = rwork[12]
@@ -317,9 +318,12 @@ cdef object setup_extra_inputs(object o_rtol, object o_atol, object o_tcrit, int
     itol += 1             # increment to get correct value 
 
     # Setup t-critical 
-    if o_tcrit is None:
+    if o_tcrit is not None:
         ap_tcrit = np.PyArray_ContiguousFromObject(o_tcrit,np.NPY_DOUBLE,0,1)
         numcrit[0] = np.PyArray_SIZE(ap_tcrit)
+    else:
+        ap_tcrit = None
+
     return itol, ap_rtol, ap_atol, ap_tcrit
 
 
