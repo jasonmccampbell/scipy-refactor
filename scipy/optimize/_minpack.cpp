@@ -383,6 +383,7 @@ static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterO
 static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject *); /*proto*/
 static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *); /*proto*/
 /* Module declarations from scipy.optimize._minpack */
+static CYTHON_INLINE System::Object^ ISCONTIGUOUS(NumpyDotNet::ndarray^); /*proto*/
 static System::Object^ INIT_FUNC(System::Object^, System::Object^); /*proto*/
 static System::Object^ RESTORE_FUNC(System::Object^); /*proto*/
 static System::Object^ INIT_JAC_FUNC(System::Object^, System::Object^, System::Object^, System::Object^); /*proto*/
@@ -393,7 +394,11 @@ static int raw_multipack_calling_function(int *, double *, double *, int *); /*p
 [InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
 public delegate int __pyx_delegate_t_5scipy_8optimize_8_minpack_jac_multipack_calling_function(int *, double *, double *, double *, int *, int *);
 static int jac_multipack_calling_function(int *, double *, double *, double *, int *, int *); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_8optimize_8_minpack_raw_multipack_lm_function(int *, int *, double *, double *, int *);
 static int raw_multipack_lm_function(int *, int *, double *, double *, int *); /*proto*/
+[InteropServices::UnmanagedFunctionPointer(InteropServices::CallingConvention::Cdecl)]
+public delegate int __pyx_delegate_t_5scipy_8optimize_8_minpack_jac_multipack_lm_function(int *, int *, double *, double *, double *, int *, int *);
 static int jac_multipack_lm_function(int *, int *, double *, double *, double *, int *, int *); /*proto*/
 static int smjac_multipack_lm_function(int *, int *, double *, double *, double *, int *); /*proto*/
 static System::Object^ call_python_function(System::Object^, __pyx_t_5numpy_npy_intp, double *, System::Object^, int, System::Object^); /*proto*/
@@ -406,50 +411,82 @@ static void MATRIXC2F(double *, double *, int, int); /*proto*/
 namespace clr__minpack {
   public ref class module__minpack sealed abstract {
 /* Cython code section 'global_var' */
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_42_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_42_21;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_43_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_44_19;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_44_19;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_45_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_69_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_69_21;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_70_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_71_19;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_71_19;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_71_62;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_71_62;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_72_26;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_79_43;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_91_0;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_91_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_91_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_91_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_91_0_3;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_91_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_91_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_121_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_121_36;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_131_64;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_170_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_170_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_170_0;
-static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_170_0_2;
-static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_170_0_1;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_198_36;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_198_36;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_208_64;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_293_35;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_293_35;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_339_32;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_339_32;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_369_26;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_398_23;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_402_38;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_402_18;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_404_89;
-static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_404_83;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_404_23;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_ChkFlags_37_13;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_37_30;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_45_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_45_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_46_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_47_19;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_47_19;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_48_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_72_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_72_21;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_73_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_74_19;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_74_19;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_74_62;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_74_62;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_75_26;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_82_43;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_94_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_94_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_94_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_94_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_94_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_94_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_94_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_124_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_124_36;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_134_64;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_173_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_173_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_173_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_173_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_173_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_201_36;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_201_36;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_211_64;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_256_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_256_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_256_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_256_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_256_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_256_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_256_0_4;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_282_64;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_291_68;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_291_68;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_327_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_327_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_327_0;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_327_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_327_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_327_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, double >^ >^ __site_cvt_cvt_double_327_0_3;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_PyArray_DOUBLE_359_64;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_gt_363_68;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_363_68;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_405_0;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_405_0_1;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_405_0_2;
+static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_405_0_3;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_414_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_416_23;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_417_27;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_427_27;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_428_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_442_27;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_487_35;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_487_35;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_eq_533_32;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_istrue_533_32;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_563_26;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_592_23;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_add_596_38;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_596_18;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_func_name_598_89;
+static  CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >^ __site_op_mod_598_83;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_598_23;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_append_323_18;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_323_25;
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_zeros_325_16;
@@ -523,12 +560,50 @@ static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
 static int^ __pyx_int_1;
+static int^ __pyx_int_2;
 /* Cython code section 'all_the_rest' */
 public:
 static System::String^ __module__ = __Pyx_MODULE_NAME;
 
 /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":36
  * error = MinpackError
+ * 
+ * cdef inline ISCONTIGUOUS(np.ndarray arr):             # <<<<<<<<<<<<<<
+ *     return np.PyArray_ChkFlags(arr, np.NPY_CONTIGUOUS)
+ * 
+ */
+
+static CYTHON_INLINE System::Object^ ISCONTIGUOUS(NumpyDotNet::ndarray^ __pyx_v_arr) {
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  System::Object^ __pyx_t_3 = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":37
+ * 
+ * cdef inline ISCONTIGUOUS(np.ndarray arr):
+ *     return np.PyArray_ChkFlags(arr, np.NPY_CONTIGUOUS)             # <<<<<<<<<<<<<<
+ * 
+ * cdef INIT_FUNC(fun, arg):
+ */
+  __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
+  __pyx_t_2 = __site_get_PyArray_ChkFlags_37_13->Target(__site_get_PyArray_ChkFlags_37_13, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = (System::Object^)(long long)(NPY_CONTIGUOUS);
+  __pyx_t_3 = __site_call2_37_30->Target(__site_call2_37_30, __pyx_context, __pyx_t_2, ((System::Object^)__pyx_v_arr), __pyx_t_1);
+  __pyx_t_2 = nullptr;
+  __pyx_t_1 = nullptr;
+  __pyx_r = __pyx_t_3;
+  __pyx_t_3 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":39
+ *     return np.PyArray_ChkFlags(arr, np.NPY_CONTIGUOUS)
  * 
  * cdef INIT_FUNC(fun, arg):             # <<<<<<<<<<<<<<
  *     global multipack_python_function
@@ -545,7 +620,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   int __pyx_t_5;
   __pyx_v_save = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":40
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":43
  *     global multipack_extra_arguments
  * 
  *     if arg is None:             # <<<<<<<<<<<<<<
@@ -555,7 +630,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   __pyx_t_1 = (__pyx_v_arg == nullptr);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":41
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":44
  * 
  *     if arg is None:
  *         arg = ()             # <<<<<<<<<<<<<<
@@ -567,7 +642,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":42
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":45
  *     if arg is None:
  *         arg = ()
  *     if not isinstance(arg, tuple):             # <<<<<<<<<<<<<<
@@ -576,15 +651,15 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  */
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "isinstance");
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "tuple");
-  __pyx_t_4 = __site_call2_42_21->Target(__site_call2_42_21, __pyx_context, __pyx_t_2, __pyx_v_arg, ((System::Object^)__pyx_t_3));
+  __pyx_t_4 = __site_call2_45_21->Target(__site_call2_45_21, __pyx_context, __pyx_t_2, __pyx_v_arg, ((System::Object^)__pyx_t_3));
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
-  __pyx_t_1 = __site_istrue_42_21->Target(__site_istrue_42_21, __pyx_t_4);
+  __pyx_t_1 = __site_istrue_45_21->Target(__site_istrue_45_21, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":43
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":46
  *         arg = ()
  *     if not isinstance(arg, tuple):
  *         raise MinpackError("Extra arguments must be in a tuple.")             # <<<<<<<<<<<<<<
@@ -592,7 +667,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  *         raise MinpackError("First argument must be a callable function.")
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "MinpackError");
-    __pyx_t_3 = __site_call1_43_26->Target(__site_call1_43_26, __pyx_context, __pyx_t_4, ((System::Object^)"Extra arguments must be in a tuple."));
+    __pyx_t_3 = __site_call1_46_26->Target(__site_call1_46_26, __pyx_context, __pyx_t_4, ((System::Object^)"Extra arguments must be in a tuple."));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -600,7 +675,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   }
   __pyx_L4:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":44
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":47
  *     if not isinstance(arg, tuple):
  *         raise MinpackError("Extra arguments must be in a tuple.")
  *     if not callable(fun):             # <<<<<<<<<<<<<<
@@ -608,14 +683,14 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  * 
  */
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "callable");
-  __pyx_t_4 = __site_call1_44_19->Target(__site_call1_44_19, __pyx_context, __pyx_t_3, __pyx_v_fun);
+  __pyx_t_4 = __site_call1_47_19->Target(__site_call1_47_19, __pyx_context, __pyx_t_3, __pyx_v_fun);
   __pyx_t_3 = nullptr;
-  __pyx_t_5 = __site_istrue_44_19->Target(__site_istrue_44_19, __pyx_t_4);
+  __pyx_t_5 = __site_istrue_47_19->Target(__site_istrue_47_19, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_t_1 = (!__pyx_t_5);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":45
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":48
  *         raise MinpackError("Extra arguments must be in a tuple.")
  *     if not callable(fun):
  *         raise MinpackError("First argument must be a callable function.")             # <<<<<<<<<<<<<<
@@ -623,7 +698,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  *     save = (multipack_python_function, multipack_extra_arguments)
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "MinpackError");
-    __pyx_t_3 = __site_call1_45_26->Target(__site_call1_45_26, __pyx_context, __pyx_t_4, ((System::Object^)"First argument must be a callable function."));
+    __pyx_t_3 = __site_call1_48_26->Target(__site_call1_48_26, __pyx_context, __pyx_t_4, ((System::Object^)"First argument must be a callable function."));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -631,7 +706,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   }
   __pyx_L5:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":47
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":50
  *         raise MinpackError("First argument must be a callable function.")
  * 
  *     save = (multipack_python_function, multipack_extra_arguments)             # <<<<<<<<<<<<<<
@@ -645,7 +720,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   __pyx_v_save = ((System::Object^)__pyx_t_3);
   __pyx_t_3 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":48
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":51
  * 
  *     save = (multipack_python_function, multipack_extra_arguments)
  *     multipack_python_function = fun             # <<<<<<<<<<<<<<
@@ -654,7 +729,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  */
   __pyx_v_5scipy_8optimize_8_minpack_multipack_python_function = __pyx_v_fun;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":49
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":52
  *     save = (multipack_python_function, multipack_extra_arguments)
  *     multipack_python_function = fun
  *     multipack_extra_arguments = arg             # <<<<<<<<<<<<<<
@@ -663,7 +738,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
  */
   __pyx_v_5scipy_8optimize_8_minpack_multipack_extra_arguments = __pyx_v_arg;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":50
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":53
  *     multipack_python_function = fun
  *     multipack_extra_arguments = arg
  *     return save             # <<<<<<<<<<<<<<
@@ -678,7 +753,7 @@ static  System::Object^ INIT_FUNC(System::Object^ __pyx_v_fun, System::Object^ _
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":53
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":56
  * 
  * 
  * cdef RESTORE_FUNC(savedArgs):             # <<<<<<<<<<<<<<
@@ -692,7 +767,7 @@ static  System::Object^ RESTORE_FUNC(System::Object^ __pyx_v_savedArgs) {
   System::Object^ __pyx_t_2 = nullptr;
   System::Object^ __pyx_t_3 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":57
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":60
  *     global multipack_extra_arguments
  * 
  *     multipack_python_function, multipack_extra_arguments = savedArgs             # <<<<<<<<<<<<<<
@@ -712,7 +787,7 @@ static  System::Object^ RESTORE_FUNC(System::Object^ __pyx_v_savedArgs) {
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":61
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":64
  * 
  * 
  * cdef INIT_JAC_FUNC(fun,Dfun,arg,col_deriv):             # <<<<<<<<<<<<<<
@@ -732,7 +807,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   int __pyx_t_7;
   __pyx_v_save = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":67
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":70
  *     global multipack_jac_transpose
  * 
  *     if arg is None:             # <<<<<<<<<<<<<<
@@ -742,7 +817,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   __pyx_t_1 = (__pyx_v_arg == nullptr);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":68
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":71
  * 
  *     if arg is None:
  *         arg = ()             # <<<<<<<<<<<<<<
@@ -754,7 +829,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":69
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":72
  *     if arg is None:
  *         arg = ()
  *     if not isinstance(arg, tuple):             # <<<<<<<<<<<<<<
@@ -763,15 +838,15 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  */
   __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "isinstance");
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "tuple");
-  __pyx_t_4 = __site_call2_69_21->Target(__site_call2_69_21, __pyx_context, __pyx_t_2, __pyx_v_arg, ((System::Object^)__pyx_t_3));
+  __pyx_t_4 = __site_call2_72_21->Target(__site_call2_72_21, __pyx_context, __pyx_t_2, __pyx_v_arg, ((System::Object^)__pyx_t_3));
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
-  __pyx_t_1 = __site_istrue_69_21->Target(__site_istrue_69_21, __pyx_t_4);
+  __pyx_t_1 = __site_istrue_72_21->Target(__site_istrue_72_21, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_t_5 = (!__pyx_t_1);
   if (__pyx_t_5) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":70
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":73
  *         arg = ()
  *     if not isinstance(arg, tuple):
  *         raise MinpackError("Extra arguments must be in a tuple.")             # <<<<<<<<<<<<<<
@@ -779,7 +854,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  *         raise MinpackError("The function and it's Jacobian must be callable functions.")
  */
     __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "MinpackError");
-    __pyx_t_3 = __site_call1_70_26->Target(__site_call1_70_26, __pyx_context, __pyx_t_4, ((System::Object^)"Extra arguments must be in a tuple."));
+    __pyx_t_3 = __site_call1_73_26->Target(__site_call1_73_26, __pyx_context, __pyx_t_4, ((System::Object^)"Extra arguments must be in a tuple."));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -787,7 +862,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   }
   __pyx_L4:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":71
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":74
  *     if not isinstance(arg, tuple):
  *         raise MinpackError("Extra arguments must be in a tuple.")
  *     if not callable(fun) or (Dfun is not None and not callable(Dfun)):             # <<<<<<<<<<<<<<
@@ -795,18 +870,18 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  * 
  */
   __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "callable");
-  __pyx_t_4 = __site_call1_71_19->Target(__site_call1_71_19, __pyx_context, __pyx_t_3, __pyx_v_fun);
+  __pyx_t_4 = __site_call1_74_19->Target(__site_call1_74_19, __pyx_context, __pyx_t_3, __pyx_v_fun);
   __pyx_t_3 = nullptr;
-  __pyx_t_5 = __site_istrue_71_19->Target(__site_istrue_71_19, __pyx_t_4);
+  __pyx_t_5 = __site_istrue_74_19->Target(__site_istrue_74_19, __pyx_t_4);
   __pyx_t_4 = nullptr;
   __pyx_t_1 = (!__pyx_t_5);
   if (!__pyx_t_1) {
     __pyx_t_5 = (__pyx_v_Dfun != nullptr);
     if (__pyx_t_5) {
       __pyx_t_4 = PythonOps::GetGlobal(__pyx_context, "callable");
-      __pyx_t_3 = __site_call1_71_62->Target(__site_call1_71_62, __pyx_context, __pyx_t_4, __pyx_v_Dfun);
+      __pyx_t_3 = __site_call1_74_62->Target(__site_call1_74_62, __pyx_context, __pyx_t_4, __pyx_v_Dfun);
       __pyx_t_4 = nullptr;
-      __pyx_t_6 = __site_istrue_71_62->Target(__site_istrue_71_62, __pyx_t_3);
+      __pyx_t_6 = __site_istrue_74_62->Target(__site_istrue_74_62, __pyx_t_3);
       __pyx_t_3 = nullptr;
       __pyx_t_7 = (!__pyx_t_6);
       __pyx_t_6 = __pyx_t_7;
@@ -819,7 +894,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   }
   if (__pyx_t_5) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":72
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":75
  *         raise MinpackError("Extra arguments must be in a tuple.")
  *     if not callable(fun) or (Dfun is not None and not callable(Dfun)):
  *         raise MinpackError("The function and it's Jacobian must be callable functions.")             # <<<<<<<<<<<<<<
@@ -827,7 +902,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  *     save = (multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose)
  */
     __pyx_t_3 = PythonOps::GetGlobal(__pyx_context, "MinpackError");
-    __pyx_t_4 = __site_call1_72_26->Target(__site_call1_72_26, __pyx_context, __pyx_t_3, ((System::Object^)"The function and it's Jacobian must be callable functions."));
+    __pyx_t_4 = __site_call1_75_26->Target(__site_call1_75_26, __pyx_context, __pyx_t_3, ((System::Object^)"The function and it's Jacobian must be callable functions."));
     __pyx_t_3 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_4, nullptr, nullptr);
     __pyx_t_4 = nullptr;
@@ -835,7 +910,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   }
   __pyx_L5:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":74
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":77
  *         raise MinpackError("The function and it's Jacobian must be callable functions.")
  * 
  *     save = (multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose)             # <<<<<<<<<<<<<<
@@ -849,7 +924,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   __pyx_v_save = ((System::Object^)__pyx_t_4);
   __pyx_t_4 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":76
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":79
  *     save = (multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose)
  * 
  *     multipack_python_function = fun             # <<<<<<<<<<<<<<
@@ -858,7 +933,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  */
   __pyx_v_5scipy_8optimize_8_minpack_multipack_python_function = __pyx_v_fun;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":77
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":80
  * 
  *     multipack_python_function = fun
  *     multipack_extra_arguments = arg             # <<<<<<<<<<<<<<
@@ -867,7 +942,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  */
   __pyx_v_5scipy_8optimize_8_minpack_multipack_extra_arguments = __pyx_v_arg;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":78
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":81
  *     multipack_python_function = fun
  *     multipack_extra_arguments = arg
  *     multipack_python_jacobian = Dfun             # <<<<<<<<<<<<<<
@@ -876,19 +951,19 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
  */
   __pyx_v_5scipy_8optimize_8_minpack_multipack_python_jacobian = __pyx_v_Dfun;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":79
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":82
  *     multipack_extra_arguments = arg
  *     multipack_python_jacobian = Dfun
  *     multipack_jac_transpose = not col_deriv             # <<<<<<<<<<<<<<
  *     return save
  * 
  */
-  __pyx_t_5 = __site_istrue_79_43->Target(__site_istrue_79_43, __pyx_v_col_deriv);
+  __pyx_t_5 = __site_istrue_82_43->Target(__site_istrue_82_43, __pyx_v_col_deriv);
   __pyx_t_4 = (!__pyx_t_5);
   __pyx_v_5scipy_8optimize_8_minpack_multipack_jac_transpose = __pyx_t_4;
   __pyx_t_4 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":80
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":83
  *     multipack_python_jacobian = Dfun
  *     multipack_jac_transpose = not col_deriv
  *     return save             # <<<<<<<<<<<<<<
@@ -903,7 +978,7 @@ static  System::Object^ INIT_JAC_FUNC(System::Object^ __pyx_v_fun, System::Objec
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":82
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":85
  *     return save
  * 
  * cdef RESTORE_JAC_FUNC(savedArgs):             # <<<<<<<<<<<<<<
@@ -919,7 +994,7 @@ static  System::Object^ RESTORE_JAC_FUNC(System::Object^ __pyx_v_savedArgs) {
   System::Object^ __pyx_t_4 = nullptr;
   System::Object^ __pyx_t_5 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":88
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":91
  *     global multipack_jac_transpose
  * 
  *     multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose = savedArgs             # <<<<<<<<<<<<<<
@@ -945,15 +1020,15 @@ static  System::Object^ RESTORE_JAC_FUNC(System::Object^ __pyx_v_savedArgs) {
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":91
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":94
  * 
  * 
- * def hybdr(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,             # <<<<<<<<<<<<<<
+ * def _hybrd(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,             # <<<<<<<<<<<<<<
  *           int mu=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):
  *     """[x,infodict,info] = _hybrd(fun, x0, args, full_output, xtol, maxfev, ml, mu, epsfcn, factor, diag)"""
  */
 
-static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ ml, [InteropServices::Optional]System::Object^ mu, [InteropServices::Optional]System::Object^ epsfcn, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
+static System::Object^ _hybrd(System::Object^ fun, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ ml, [InteropServices::Optional]System::Object^ mu, [InteropServices::Optional]System::Object^ epsfcn, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
   System::Object^ __pyx_v_fun = nullptr;
   System::Object^ __pyx_v_x0 = nullptr;
   System::Object^ __pyx_v_extra_args = nullptr;
@@ -1003,37 +1078,37 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_91_0->Target(__site_cvt_cvt_int_91_0, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_94_0->Target(__site_cvt_cvt_int_94_0, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(xtol) == nullptr) {
-    __pyx_v_xtol = __site_cvt_cvt_double_91_0->Target(__site_cvt_cvt_double_91_0, xtol);
+    __pyx_v_xtol = __site_cvt_cvt_double_94_0->Target(__site_cvt_cvt_double_94_0, xtol);
   } else {
     __pyx_v_xtol = ((double)1.49012e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(maxfev) == nullptr) {
-    __pyx_v_maxfev = __site_cvt_cvt_int_91_0_1->Target(__site_cvt_cvt_int_91_0_1, maxfev);
+    __pyx_v_maxfev = __site_cvt_cvt_int_94_0_1->Target(__site_cvt_cvt_int_94_0_1, maxfev);
   } else {
     __pyx_v_maxfev = ((int)-10);
   }
   if (dynamic_cast<System::Reflection::Missing^>(ml) == nullptr) {
-    __pyx_v_ml = __site_cvt_cvt_int_91_0_2->Target(__site_cvt_cvt_int_91_0_2, ml);
+    __pyx_v_ml = __site_cvt_cvt_int_94_0_2->Target(__site_cvt_cvt_int_94_0_2, ml);
   } else {
     __pyx_v_ml = ((int)-10);
   }
   if (dynamic_cast<System::Reflection::Missing^>(mu) == nullptr) {
-    __pyx_v_mu = __site_cvt_cvt_int_91_0_3->Target(__site_cvt_cvt_int_91_0_3, mu);
+    __pyx_v_mu = __site_cvt_cvt_int_94_0_3->Target(__site_cvt_cvt_int_94_0_3, mu);
   } else {
     __pyx_v_mu = ((int)-10);
   }
   if (dynamic_cast<System::Reflection::Missing^>(epsfcn) == nullptr) {
-    __pyx_v_epsfcn = __site_cvt_cvt_double_91_0_1->Target(__site_cvt_cvt_double_91_0_1, epsfcn);
+    __pyx_v_epsfcn = __site_cvt_cvt_double_94_0_1->Target(__site_cvt_cvt_double_94_0_1, epsfcn);
   } else {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":92
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":95
  * 
- * def hybdr(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,
+ * def _hybrd(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,
  *           int mu=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):             # <<<<<<<<<<<<<<
  *     """[x,infodict,info] = _hybrd(fun, x0, args, full_output, xtol, maxfev, ml, mu, epsfcn, factor, diag)"""
  * 
@@ -1041,7 +1116,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_epsfcn = ((double)0.0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(factor) == nullptr) {
-    __pyx_v_factor = __site_cvt_cvt_double_91_0_2->Target(__site_cvt_cvt_double_91_0_2, factor);
+    __pyx_v_factor = __site_cvt_cvt_double_94_0_2->Target(__site_cvt_cvt_double_94_0_2, factor);
   } else {
     __pyx_v_factor = ((double)1.0e2);
   }
@@ -1059,7 +1134,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
   __pyx_v_savedArgs = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":95
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":98
  *     """[x,infodict,info] = _hybrd(fun, x0, args, full_output, xtol, maxfev, ml, mu, epsfcn, factor, diag)"""
  * 
  *     cdef int      mode = 2, nprint = 0, info, nfev, ldfjac             # <<<<<<<<<<<<<<
@@ -1069,7 +1144,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
   __pyx_v_mode = 2;
   __pyx_v_nprint = 0;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":102
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":105
  * 
  *     cdef np.npy_intp dims[2]
  *     cdef int      allocated = 0             # <<<<<<<<<<<<<<
@@ -1078,7 +1153,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
   __pyx_v_allocated = 0;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":103
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":106
  *     cdef np.npy_intp dims[2]
  *     cdef int      allocated = 0
  *     cdef double   *wa = NULL             # <<<<<<<<<<<<<<
@@ -1087,7 +1162,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
   __pyx_v_wa = NULL;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":106
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":109
  * 
  * 
  *     savedArgs = INIT_FUNC(fun,extra_args)             # <<<<<<<<<<<<<<
@@ -1098,7 +1173,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
   __pyx_v_savedArgs = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":107
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":110
  * 
  *     savedArgs = INIT_FUNC(fun,extra_args)
  *     try:             # <<<<<<<<<<<<<<
@@ -1107,7 +1182,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
   try {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":109
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":112
  *     try:
  *         # Initial input vector
  *         ap_x = np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
@@ -1123,7 +1198,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_ap_x = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":110
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":113
  *         # Initial input vector
  *         ap_x = np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
  *         x = <double *>np.PyArray_DATA(ap_x)             # <<<<<<<<<<<<<<
@@ -1132,7 +1207,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_x = ((double *)PyArray_DATA(__pyx_v_ap_x));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":111
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":114
  *         ap_x = np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
  *         x = <double *>np.PyArray_DATA(ap_x)
  *         n = np.PyArray_DIMS(ap_x)[0]             # <<<<<<<<<<<<<<
@@ -1141,7 +1216,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_n = (PyArray_DIMS(__pyx_v_ap_x)[0]);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":113
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":116
  *         n = np.PyArray_DIMS(ap_x)[0]
  * 
  *         lr = n * (n + 1) / 2             # <<<<<<<<<<<<<<
@@ -1150,7 +1225,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_lr = __Pyx_div_long((__pyx_v_n * (__pyx_v_n + 1)), 2);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":114
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":117
  * 
  *         lr = n * (n + 1) / 2
  *         if (ml < 0): ml = n-1             # <<<<<<<<<<<<<<
@@ -1164,7 +1239,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     __pyx_L5:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":115
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":118
  *         lr = n * (n + 1) / 2
  *         if (ml < 0): ml = n-1
  *         if (mu < 0): mu = n-1             # <<<<<<<<<<<<<<
@@ -1178,7 +1253,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     __pyx_L6:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":116
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":119
  *         if (ml < 0): ml = n-1
  *         if (mu < 0): mu = n-1
  *         if (maxfev < 0): maxfev = 200*(n+1)             # <<<<<<<<<<<<<<
@@ -1192,7 +1267,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     __pyx_L7:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":119
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":122
  * 
  *         # Setup array to hold the function evaluations
  *         ap_fvec = call_python_function(fun, n, x, extra_args, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -1208,7 +1283,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_ap_fvec = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":120
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":123
  *         # Setup array to hold the function evaluations
  *         ap_fvec = call_python_function(fun, n, x, extra_args, 1, minpack_error)
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)             # <<<<<<<<<<<<<<
@@ -1217,7 +1292,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_fvec = ((double *)PyArray_DATA(__pyx_v_ap_fvec));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":121
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":124
  *         ap_fvec = call_python_function(fun, n, x, extra_args, 1, minpack_error)
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)
  *         if np.PyArray_NDIM(ap_fvec) == 0:             # <<<<<<<<<<<<<<
@@ -1225,13 +1300,13 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:
  */
     __pyx_t_1 = PyArray_NDIM(__pyx_v_ap_fvec); 
-    __pyx_t_2 = __site_op_eq_121_36->Target(__site_op_eq_121_36, __pyx_t_1, __pyx_int_0);
+    __pyx_t_2 = __site_op_eq_124_36->Target(__site_op_eq_124_36, __pyx_t_1, __pyx_int_0);
     __pyx_t_1 = nullptr;
-    __pyx_t_3 = __site_istrue_121_36->Target(__site_istrue_121_36, __pyx_t_2);
+    __pyx_t_3 = __site_istrue_124_36->Target(__site_istrue_124_36, __pyx_t_2);
     __pyx_t_2 = nullptr;
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":122
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":125
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)
  *         if np.PyArray_NDIM(ap_fvec) == 0:
  *             n = 1             # <<<<<<<<<<<<<<
@@ -1242,7 +1317,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
       goto __pyx_L8;
     }
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":123
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":126
  *         if np.PyArray_NDIM(ap_fvec) == 0:
  *             n = 1
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:             # <<<<<<<<<<<<<<
@@ -1252,7 +1327,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_3 = ((PyArray_DIMS(__pyx_v_ap_fvec)[0]) < __pyx_v_n);
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":124
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":127
  *             n = 1
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:
  *             n = np.PyArray_DIMS(ap_fvec)[0]             # <<<<<<<<<<<<<<
@@ -1264,7 +1339,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     __pyx_L8:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":126
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":129
  *             n = np.PyArray_DIMS(ap_fvec)[0]
  * 
  *         if o_diag is None:          # Set the diag vector from input             # <<<<<<<<<<<<<<
@@ -1274,7 +1349,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_3 = (__pyx_v_o_diag == nullptr);
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":127
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":130
  * 
  *         if o_diag is None:          # Set the diag vector from input
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1288,7 +1363,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
       __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_2);
       __pyx_t_2 = nullptr;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":128
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":131
  *         if o_diag is None:          # Set the diag vector from input
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
@@ -1297,7 +1372,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
       __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":129
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":132
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *             diag = <double *>np.PyArray_DATA(ap_diag)
  *             mode = 1             # <<<<<<<<<<<<<<
@@ -1309,7 +1384,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     /*else*/ {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":131
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":134
  *             mode = 1
  *         else:
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
@@ -1317,7 +1392,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  *             mode = 2
  */
       __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
-      __pyx_t_1 = __site_get_PyArray_DOUBLE_131_64->Target(__site_get_PyArray_DOUBLE_131_64, __pyx_t_2, __pyx_context);
+      __pyx_t_1 = __site_get_PyArray_DOUBLE_134_64->Target(__site_get_PyArray_DOUBLE_134_64, __pyx_t_2, __pyx_context);
       __pyx_t_2 = nullptr;
       __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_diag, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
       __pyx_t_1 = nullptr;
@@ -1327,7 +1402,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
       __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_2);
       __pyx_t_2 = nullptr;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":132
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":135
  *         else:
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
  *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
@@ -1336,7 +1411,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
       __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":133
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":136
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
  *             diag = <double *>np.PyArray_DATA(ap_diag)
  *             mode = 2             # <<<<<<<<<<<<<<
@@ -1347,7 +1422,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     }
     __pyx_L9:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":135
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":138
  *             mode = 2
  * 
  *         dims[0] = n             # <<<<<<<<<<<<<<
@@ -1356,7 +1431,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     (__pyx_v_dims[0]) = __pyx_v_n;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":136
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":139
  * 
  *         dims[0] = n
  *         dims[1] = n             # <<<<<<<<<<<<<<
@@ -1365,7 +1440,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     (__pyx_v_dims[1]) = __pyx_v_n;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":137
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":140
  *         dims[0] = n
  *         dims[1] = n
  *         ap_r = np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1379,7 +1454,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_ap_r = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":138
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":141
  *         dims[1] = n
  *         ap_r = np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)
  *         ap_qtf = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1393,7 +1468,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_ap_qtf = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":139
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":142
  *         ap_r = np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)
  *         ap_qtf = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *         ap_fjac = np.PyArray_SimpleNew(2, dims, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1407,7 +1482,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_ap_fjac = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":141
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":144
  *         ap_fjac = np.PyArray_SimpleNew(2, dims, np.NPY_DOUBLE)
  * 
  *         r = <double *>np.PyArray_DATA(ap_r)             # <<<<<<<<<<<<<<
@@ -1416,7 +1491,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_r = ((double *)PyArray_DATA(__pyx_v_ap_r));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":142
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":145
  * 
  *         r = <double *>np.PyArray_DATA(ap_r)
  *         qtf = <double *>np.PyArray_DATA(ap_qtf)             # <<<<<<<<<<<<<<
@@ -1425,7 +1500,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_qtf = ((double *)PyArray_DATA(__pyx_v_ap_qtf));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":143
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":146
  *         r = <double *>np.PyArray_DATA(ap_r)
  *         qtf = <double *>np.PyArray_DATA(ap_qtf)
  *         fjac = <double *>np.PyArray_DATA(ap_fjac)             # <<<<<<<<<<<<<<
@@ -1434,7 +1509,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_fjac = ((double *)PyArray_DATA(__pyx_v_ap_fjac));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":144
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":147
  *         qtf = <double *>np.PyArray_DATA(ap_qtf)
  *         fjac = <double *>np.PyArray_DATA(ap_fjac)
  *         ldfjac = dims[1]             # <<<<<<<<<<<<<<
@@ -1443,7 +1518,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_ldfjac = (__pyx_v_dims[1]);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":146
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":149
  *         ldfjac = dims[1]
  * 
  *         wa = <double *>malloc(4*n * sizeof(double))             # <<<<<<<<<<<<<<
@@ -1452,7 +1527,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_wa = ((double *)malloc(((4 * __pyx_v_n) * (sizeof(double)))));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":148
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":151
  *         wa = <double *>malloc(4*n * sizeof(double))
  * 
  *         allocated = 1             # <<<<<<<<<<<<<<
@@ -1461,7 +1536,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_v_allocated = 1;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":151
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":154
  * 
  *         # Call the underlying FORTRAN routines.
  *         HYBRD(<void *>raw_multipack_calling_function, &n, x, fvec, &xtol, &maxfev, &ml, &mu, &epsfcn, diag, &mode, &factor, &nprint, &info, &nfev, fjac, &ldfjac, r, &lr, qtf, wa, wa+n, wa+2*n, wa+3*n)             # <<<<<<<<<<<<<<
@@ -1471,7 +1546,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     HYBRD(((void *)__pyx_function_pointer_raw_multipack_calling_function), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, (&__pyx_v_xtol), (&__pyx_v_maxfev), (&__pyx_v_ml), (&__pyx_v_mu), (&__pyx_v_epsfcn), __pyx_v_diag, (&__pyx_v_mode), (&__pyx_v_factor), (&__pyx_v_nprint), (&__pyx_v_info), (&__pyx_v_nfev), __pyx_v_fjac, (&__pyx_v_ldfjac), __pyx_v_r, (&__pyx_v_lr), __pyx_v_qtf, __pyx_v_wa, (__pyx_v_wa + __pyx_v_n), (__pyx_v_wa + (2 * __pyx_v_n)), (__pyx_v_wa + (3 * __pyx_v_n)));
   }
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":153
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":156
  *         HYBRD(<void *>raw_multipack_calling_function, &n, x, fvec, &xtol, &maxfev, &ml, &mu, &epsfcn, diag, &mode, &factor, &nprint, &info, &nfev, fjac, &ldfjac, r, &lr, qtf, wa, wa+n, wa+2*n, wa+3*n)
  *     finally:
  *         RESTORE_FUNC(savedArgs)             # <<<<<<<<<<<<<<
@@ -1482,7 +1557,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_2 = RESTORE_FUNC(__pyx_v_savedArgs); 
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":154
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":157
  *     finally:
  *         RESTORE_FUNC(savedArgs)
  *         if allocated:             # <<<<<<<<<<<<<<
@@ -1491,7 +1566,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     if (__pyx_v_allocated) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":155
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":158
  *         RESTORE_FUNC(savedArgs)
  *         if allocated:
  *             free(wa)             # <<<<<<<<<<<<<<
@@ -1504,7 +1579,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_L10:;
   }
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":157
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":160
  *             free(wa)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -1513,7 +1588,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
   if (__pyx_v_full_output) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":158
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":161
  * 
  *     if full_output:
  *         dict = {             # <<<<<<<<<<<<<<
@@ -1522,7 +1597,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
  */
     __pyx_t_4 = PythonOps::MakeEmptyDict();
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":159
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":162
  *     if full_output:
  *         dict = {
  *             "fvec" : np.PyArray_Return(ap_fvec),             # <<<<<<<<<<<<<<
@@ -1533,7 +1608,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_4[((System::Object^)"fvec")] = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":160
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":163
  *         dict = {
  *             "fvec" : np.PyArray_Return(ap_fvec),
  *             "nfev" : nfev,             # <<<<<<<<<<<<<<
@@ -1544,7 +1619,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_4[((System::Object^)"nfev")] = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":161
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":164
  *             "fvec" : np.PyArray_Return(ap_fvec),
  *             "nfev" : nfev,
  *             "fjac" : np.PyArray_Return(ap_fjac),             # <<<<<<<<<<<<<<
@@ -1555,7 +1630,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_4[((System::Object^)"fjac")] = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":162
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":165
  *             "nfev" : nfev,
  *             "fjac" : np.PyArray_Return(ap_fjac),
  *             "r" : np.PyArray_Return(ap_r),             # <<<<<<<<<<<<<<
@@ -1566,7 +1641,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_t_4[((System::Object^)"r")] = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":163
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":166
  *             "fjac" : np.PyArray_Return(ap_fjac),
  *             "r" : np.PyArray_Return(ap_r),
  *             "qtf" : np.PyArray_Return(ap_qtf)             # <<<<<<<<<<<<<<
@@ -1579,7 +1654,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
     __pyx_v_dict = __pyx_t_4;
     __pyx_t_4 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":165
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":168
  *             "qtf" : np.PyArray_Return(ap_qtf)
  *         }
  *         return (np.PyArray_Return(ap_x), dict, info)             # <<<<<<<<<<<<<<
@@ -1598,7 +1673,7 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":167
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":170
  *         return (np.PyArray_Return(ap_x), dict, info)
  *     else:
  *         return (np.PyArray_Return(ap_x), info)             # <<<<<<<<<<<<<<
@@ -1621,15 +1696,15 @@ static System::Object^ hybdr(System::Object^ fun, System::Object^ x0, [InteropSe
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":170
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":173
  * 
  * 
- * def hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,             # <<<<<<<<<<<<<<
+ * def _hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,             # <<<<<<<<<<<<<<
  *           int maxfev = -10, double factor=1.0e2, o_diag=None):
  *     """[x,infodict,info] = _hybrj(fun, Dfun, x0, args, full_output, col_deriv, xtol, maxfev, factor, diag)"""
  */
 
-static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ col_deriv, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
+static System::Object^ _hybrj(System::Object^ fun, System::Object^ Dfun, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ col_deriv, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
   System::Object^ __pyx_v_fun = nullptr;
   System::Object^ __pyx_v_Dfun = nullptr;
   System::Object^ __pyx_v_x0 = nullptr;
@@ -1683,32 +1758,32 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_extra_args = ((System::Object^)nullptr);
   }
   if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
-    __pyx_v_full_output = __site_cvt_cvt_int_170_0->Target(__site_cvt_cvt_int_170_0, full_output);
+    __pyx_v_full_output = __site_cvt_cvt_int_173_0->Target(__site_cvt_cvt_int_173_0, full_output);
   } else {
     __pyx_v_full_output = ((int)0);
   }
   if (dynamic_cast<System::Reflection::Missing^>(col_deriv) == nullptr) {
-    __pyx_v_col_deriv = __site_cvt_cvt_int_170_0_1->Target(__site_cvt_cvt_int_170_0_1, col_deriv);
+    __pyx_v_col_deriv = __site_cvt_cvt_int_173_0_1->Target(__site_cvt_cvt_int_173_0_1, col_deriv);
   } else {
     __pyx_v_col_deriv = ((int)1);
   }
   if (dynamic_cast<System::Reflection::Missing^>(xtol) == nullptr) {
-    __pyx_v_xtol = __site_cvt_cvt_double_170_0->Target(__site_cvt_cvt_double_170_0, xtol);
+    __pyx_v_xtol = __site_cvt_cvt_double_173_0->Target(__site_cvt_cvt_double_173_0, xtol);
   } else {
     __pyx_v_xtol = ((double)1.49012e-8);
   }
   if (dynamic_cast<System::Reflection::Missing^>(maxfev) == nullptr) {
-    __pyx_v_maxfev = __site_cvt_cvt_int_170_0_2->Target(__site_cvt_cvt_int_170_0_2, maxfev);
+    __pyx_v_maxfev = __site_cvt_cvt_int_173_0_2->Target(__site_cvt_cvt_int_173_0_2, maxfev);
   } else {
     __pyx_v_maxfev = ((int)-10);
   }
   if (dynamic_cast<System::Reflection::Missing^>(factor) == nullptr) {
-    __pyx_v_factor = __site_cvt_cvt_double_170_0_1->Target(__site_cvt_cvt_double_170_0_1, factor);
+    __pyx_v_factor = __site_cvt_cvt_double_173_0_1->Target(__site_cvt_cvt_double_173_0_1, factor);
   } else {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":171
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":174
  * 
- * def hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,
+ * def _hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,
  *           int maxfev = -10, double factor=1.0e2, o_diag=None):             # <<<<<<<<<<<<<<
  *     """[x,infodict,info] = _hybrj(fun, Dfun, x0, args, full_output, col_deriv, xtol, maxfev, factor, diag)"""
  * 
@@ -1729,7 +1804,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
   __pyx_v_savedArgs = nullptr;
   __pyx_v_dict = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":174
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":177
  *     """[x,infodict,info] = _hybrj(fun, Dfun, x0, args, full_output, col_deriv, xtol, maxfev, factor, diag)"""
  * 
  *     cdef int      mode = 2, nprint = 0, info, nfev, njev, ldfjac             # <<<<<<<<<<<<<<
@@ -1739,7 +1814,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
   __pyx_v_mode = 2;
   __pyx_v_nprint = 0;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":180
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":183
  *     cdef np.ndarray ap_x, ap_fvec, ap_fjac, ap_r, ap_qtf, ap_diag
  *     cdef np.npy_intp dims[2]
  *     cdef int      allocated = 0             # <<<<<<<<<<<<<<
@@ -1748,7 +1823,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
   __pyx_v_allocated = 0;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":181
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":184
  *     cdef np.npy_intp dims[2]
  *     cdef int      allocated = 0
  *     cdef double   *wa = NULL             # <<<<<<<<<<<<<<
@@ -1757,7 +1832,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
   __pyx_v_wa = NULL;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":184
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":187
  * 
  * 
  *     savedArgs = INIT_JAC_FUNC(fun,Dfun,extra_args,col_deriv)             # <<<<<<<<<<<<<<
@@ -1770,7 +1845,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
   __pyx_v_savedArgs = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":185
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":188
  * 
  *     savedArgs = INIT_JAC_FUNC(fun,Dfun,extra_args,col_deriv)
  *     try:             # <<<<<<<<<<<<<<
@@ -1779,7 +1854,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
   try {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":187
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":190
  *     try:
  *         # Initial input vector
  *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
@@ -1792,7 +1867,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_ap_x = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":188
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":191
  *         # Initial input vector
  *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
  *         x = <double *>np.PyArray_DATA(ap_x)             # <<<<<<<<<<<<<<
@@ -1801,7 +1876,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_x = ((double *)PyArray_DATA(__pyx_v_ap_x));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":189
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":192
  *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
  *         x = <double *>np.PyArray_DATA(ap_x)
  *         n = np.PyArray_DIMS(ap_x)[0]             # <<<<<<<<<<<<<<
@@ -1810,7 +1885,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_n = (PyArray_DIMS(__pyx_v_ap_x)[0]);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":190
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":193
  *         x = <double *>np.PyArray_DATA(ap_x)
  *         n = np.PyArray_DIMS(ap_x)[0]
  *         lr = n * (n + 1) / 2;             # <<<<<<<<<<<<<<
@@ -1819,7 +1894,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_lr = __Pyx_div_long((__pyx_v_n * (__pyx_v_n + 1)), 2);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":192
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":195
  *         lr = n * (n + 1) / 2;
  * 
  *         if (maxfev < 0):             # <<<<<<<<<<<<<<
@@ -1829,7 +1904,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_3 = (__pyx_v_maxfev < 0);
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":193
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":196
  * 
  *         if (maxfev < 0):
  *             maxfev = 100*(n+1)             # <<<<<<<<<<<<<<
@@ -1841,7 +1916,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     __pyx_L5:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":196
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":199
  * 
  *         # Setup array to hold the function evaluations
  *         ap_fvec = <np.ndarray>call_python_function(fun, n, x, extra_args, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -1854,7 +1929,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_ap_fvec = ((NumpyDotNet::ndarray^)__pyx_t_2);
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":197
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":200
  *         # Setup array to hold the function evaluations
  *         ap_fvec = <np.ndarray>call_python_function(fun, n, x, extra_args, 1, minpack_error)
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)             # <<<<<<<<<<<<<<
@@ -1863,7 +1938,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_fvec = ((double *)PyArray_DATA(__pyx_v_ap_fvec));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":198
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":201
  *         ap_fvec = <np.ndarray>call_python_function(fun, n, x, extra_args, 1, minpack_error)
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)
  *         if np.PyArray_NDIM(ap_fvec) == 0:             # <<<<<<<<<<<<<<
@@ -1871,13 +1946,13 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:
  */
     __pyx_t_2 = PyArray_NDIM(__pyx_v_ap_fvec); 
-    __pyx_t_1 = __site_op_eq_198_36->Target(__site_op_eq_198_36, __pyx_t_2, __pyx_int_0);
+    __pyx_t_1 = __site_op_eq_201_36->Target(__site_op_eq_201_36, __pyx_t_2, __pyx_int_0);
     __pyx_t_2 = nullptr;
-    __pyx_t_3 = __site_istrue_198_36->Target(__site_istrue_198_36, __pyx_t_1);
+    __pyx_t_3 = __site_istrue_201_36->Target(__site_istrue_201_36, __pyx_t_1);
     __pyx_t_1 = nullptr;
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":199
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":202
  *         fvec = <double *>np.PyArray_DATA(ap_fvec)
  *         if np.PyArray_NDIM(ap_fvec) == 0:
  *             n = 1             # <<<<<<<<<<<<<<
@@ -1888,7 +1963,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
       goto __pyx_L6;
     }
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":200
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":203
  *         if np.PyArray_NDIM(ap_fvec) == 0:
  *             n = 1
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:             # <<<<<<<<<<<<<<
@@ -1898,7 +1973,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_3 = ((PyArray_DIMS(__pyx_v_ap_fvec)[0]) < __pyx_v_n);
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":201
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":204
  *             n = 1
  *         elif np.PyArray_DIMS(ap_fvec)[0] < n:
  *             n = np.PyArray_DIMS(ap_fvec)[0]             # <<<<<<<<<<<<<<
@@ -1910,7 +1985,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     __pyx_L6:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":203
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":206
  *             n = np.PyArray_DIMS(ap_fvec)[0]
  * 
  *         if o_diag is None:          # Set the diag vector from input             # <<<<<<<<<<<<<<
@@ -1920,7 +1995,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_3 = (__pyx_v_o_diag == nullptr);
     if (__pyx_t_3) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":204
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":207
  * 
  *         if o_diag is None:          # Set the diag vector from input
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -1934,7 +2009,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
       __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_1);
       __pyx_t_1 = nullptr;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":205
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":208
  *         if o_diag is None:          # Set the diag vector from input
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
@@ -1943,7 +2018,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
       __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":206
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":209
  *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *             diag = <double *>np.PyArray_DATA(ap_diag)
  *             mode = 1             # <<<<<<<<<<<<<<
@@ -1955,7 +2030,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     /*else*/ {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":208
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":211
  *             mode = 1
  *         else:
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
@@ -1963,7 +2038,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  *             mode = 2
  */
       __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "np");
-      __pyx_t_2 = __site_get_PyArray_DOUBLE_208_64->Target(__site_get_PyArray_DOUBLE_208_64, __pyx_t_1, __pyx_context);
+      __pyx_t_2 = __site_get_PyArray_DOUBLE_211_64->Target(__site_get_PyArray_DOUBLE_211_64, __pyx_t_1, __pyx_context);
       __pyx_t_1 = nullptr;
       __pyx_t_1 = PyArray_ContiguousFromObject(__pyx_v_o_diag, __pyx_t_2, __pyx_int_1, __pyx_int_1); 
       __pyx_t_2 = nullptr;
@@ -1973,7 +2048,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
       __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_1);
       __pyx_t_1 = nullptr;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":209
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":212
  *         else:
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
  *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
@@ -1982,7 +2057,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
       __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":210
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":213
  *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
  *             diag = <double *>np.PyArray_DATA(ap_diag)
  *             mode = 2             # <<<<<<<<<<<<<<
@@ -1993,7 +2068,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     __pyx_L7:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":212
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":215
  *             mode = 2
  * 
  *         dims[0] = n             # <<<<<<<<<<<<<<
@@ -2002,7 +2077,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     (__pyx_v_dims[0]) = __pyx_v_n;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":213
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":216
  * 
  *         dims[0] = n
  *         dims[1] = n             # <<<<<<<<<<<<<<
@@ -2011,7 +2086,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     (__pyx_v_dims[1]) = __pyx_v_n;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":214
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":217
  *         dims[0] = n
  *         dims[1] = n
  *         ap_r = <np.ndarray>np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -2022,7 +2097,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_ap_r = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":215
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":218
  *         dims[1] = n
  *         ap_r = <np.ndarray>np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)
  *         ap_qtf = <np.ndarray>np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -2033,7 +2108,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_ap_qtf = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":216
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":219
  *         ap_r = <np.ndarray>np.PyArray_SimpleNew(1, &lr, np.NPY_DOUBLE)
  *         ap_qtf = <np.ndarray>np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
  *         ap_fjac = <np.ndarray>np.PyArray_SimpleNew(2, dims, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
@@ -2044,7 +2119,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_ap_fjac = ((NumpyDotNet::ndarray^)__pyx_t_1);
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":218
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":221
  *         ap_fjac = <np.ndarray>np.PyArray_SimpleNew(2, dims, np.NPY_DOUBLE)
  * 
  *         if ap_r is None or ap_qtf is None or ap_fjac is None:             # <<<<<<<<<<<<<<
@@ -2066,7 +2141,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     if (__pyx_t_4) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":219
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":222
  * 
  *         if ap_r is None or ap_qtf is None or ap_fjac is None:
  *             return None             # <<<<<<<<<<<<<<
@@ -2079,7 +2154,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     }
     __pyx_L8:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":221
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":224
  *             return None
  * 
  *         r = <double *>np.PyArray_DATA(ap_r)             # <<<<<<<<<<<<<<
@@ -2088,7 +2163,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_r = ((double *)PyArray_DATA(__pyx_v_ap_r));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":222
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":225
  * 
  *         r = <double *>np.PyArray_DATA(ap_r)
  *         qtf = <double *>np.PyArray_DATA(ap_qtf)             # <<<<<<<<<<<<<<
@@ -2097,7 +2172,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_qtf = ((double *)PyArray_DATA(__pyx_v_ap_qtf));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":223
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":226
  *         r = <double *>np.PyArray_DATA(ap_r)
  *         qtf = <double *>np.PyArray_DATA(ap_qtf)
  *         fjac = <double *>np.PyArray_DATA(ap_fjac)             # <<<<<<<<<<<<<<
@@ -2106,34 +2181,34 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_v_fjac = ((double *)PyArray_DATA(__pyx_v_ap_fjac));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":225
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":228
  *         fjac = <double *>np.PyArray_DATA(ap_fjac)
  * 
  *         ldfjac = dims[1]             # <<<<<<<<<<<<<<
  * 
- *         wa = <double *>malloc(4*n + sizeof(double))
+ *         wa = <double *>malloc(4*n * sizeof(double))
  */
     __pyx_v_ldfjac = (__pyx_v_dims[1]);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":227
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":230
  *         ldfjac = dims[1]
  * 
- *         wa = <double *>malloc(4*n + sizeof(double))             # <<<<<<<<<<<<<<
+ *         wa = <double *>malloc(4*n * sizeof(double))             # <<<<<<<<<<<<<<
  *         allocated = 1
  * 
  */
-    __pyx_v_wa = ((double *)malloc(((4 * __pyx_v_n) + (sizeof(double)))));
+    __pyx_v_wa = ((double *)malloc(((4 * __pyx_v_n) * (sizeof(double)))));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":228
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":231
  * 
- *         wa = <double *>malloc(4*n + sizeof(double))
+ *         wa = <double *>malloc(4*n * sizeof(double))
  *         allocated = 1             # <<<<<<<<<<<<<<
  * 
  *         # Call the underlying FORTRAN routines.
  */
     __pyx_v_allocated = 1;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":231
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":234
  * 
  *         # Call the underlying FORTRAN routines.
  *         HYBRJ(<void *>jac_multipack_calling_function, &n, x, fvec, fjac, &ldfjac, &xtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, r, &lr, qtf, wa, wa+n, wa+2*n, wa+3*n)             # <<<<<<<<<<<<<<
@@ -2142,7 +2217,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     HYBRJ(((void *)__pyx_function_pointer_jac_multipack_calling_function), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, __pyx_v_fjac, (&__pyx_v_ldfjac), (&__pyx_v_xtol), (&__pyx_v_maxfev), __pyx_v_diag, (&__pyx_v_mode), (&__pyx_v_factor), (&__pyx_v_nprint), (&__pyx_v_info), (&__pyx_v_nfev), (&__pyx_v_njev), __pyx_v_r, (&__pyx_v_lr), __pyx_v_qtf, __pyx_v_wa, (__pyx_v_wa + __pyx_v_n), (__pyx_v_wa + (2 * __pyx_v_n)), (__pyx_v_wa + (3 * __pyx_v_n)));
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":232
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":235
  *         # Call the underlying FORTRAN routines.
  *         HYBRJ(<void *>jac_multipack_calling_function, &n, x, fvec, fjac, &ldfjac, &xtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, r, &lr, qtf, wa, wa+n, wa+2*n, wa+3*n)
  *         if (info < 0):             # <<<<<<<<<<<<<<
@@ -2152,7 +2227,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_4 = (__pyx_v_info < 0);
     if (__pyx_t_4) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":233
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":236
  *         HYBRJ(<void *>jac_multipack_calling_function, &n, x, fvec, fjac, &ldfjac, &xtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, r, &lr, qtf, wa, wa+n, wa+2*n, wa+3*n)
  *         if (info < 0):
  *             return NULL            # Python Terminated             # <<<<<<<<<<<<<<
@@ -2168,7 +2243,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_L9:;
   }
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":235
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":238
  *             return NULL            # Python Terminated
  *     finally:
  *         RESTORE_JAC_FUNC(savedArgs)             # <<<<<<<<<<<<<<
@@ -2179,7 +2254,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_1 = RESTORE_JAC_FUNC(__pyx_v_savedArgs); 
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":236
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":239
  *     finally:
  *         RESTORE_JAC_FUNC(savedArgs)
  *         if allocated:             # <<<<<<<<<<<<<<
@@ -2188,7 +2263,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     if (__pyx_v_allocated) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":237
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":240
  *         RESTORE_JAC_FUNC(savedArgs)
  *         if allocated:
  *             free(wa)             # <<<<<<<<<<<<<<
@@ -2201,7 +2276,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_L10:;
   }
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":239
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":242
  *             free(wa)
  * 
  *     if full_output:             # <<<<<<<<<<<<<<
@@ -2210,7 +2285,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
   if (__pyx_v_full_output) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":240
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":243
  * 
  *     if full_output:
  *         dict = {             # <<<<<<<<<<<<<<
@@ -2219,7 +2294,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
  */
     __pyx_t_7 = PythonOps::MakeEmptyDict();
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":241
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":244
  *     if full_output:
  *         dict = {
  *             "fvec" : np.PyArray_Return(ap_fvec),             # <<<<<<<<<<<<<<
@@ -2230,7 +2305,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_7[((System::Object^)"fvec")] = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":242
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":245
  *         dict = {
  *             "fvec" : np.PyArray_Return(ap_fvec),
  *             "nfev" : nfev,             # <<<<<<<<<<<<<<
@@ -2241,7 +2316,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_7[((System::Object^)"nfev")] = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":243
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":246
  *             "fvec" : np.PyArray_Return(ap_fvec),
  *             "nfev" : nfev,
  *             "njev" : njev,             # <<<<<<<<<<<<<<
@@ -2252,7 +2327,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_7[((System::Object^)"njev")] = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":244
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":247
  *             "nfev" : nfev,
  *             "njev" : njev,
  *             "fjac" : np.PyArray_Return(ap_fjac),             # <<<<<<<<<<<<<<
@@ -2263,7 +2338,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_7[((System::Object^)"fjac")] = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":245
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":248
  *             "njev" : njev,
  *             "fjac" : np.PyArray_Return(ap_fjac),
  *             "r" : np.PyArray_Return(ap_r),             # <<<<<<<<<<<<<<
@@ -2274,7 +2349,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_t_7[((System::Object^)"r")] = __pyx_t_1;
     __pyx_t_1 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":246
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":249
  *             "fjac" : np.PyArray_Return(ap_fjac),
  *             "r" : np.PyArray_Return(ap_r),
  *             "qtf" : np.PyArray_Return(ap_qtf)             # <<<<<<<<<<<<<<
@@ -2287,7 +2362,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
     __pyx_v_dict = __pyx_t_7;
     __pyx_t_7 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":248
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":251
  *             "qtf" : np.PyArray_Return(ap_qtf)
  *         }
  *         return (np.PyArray_Return(ap_x), dict, info)             # <<<<<<<<<<<<<<
@@ -2306,7 +2381,7 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":250
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":253
  *         return (np.PyArray_Return(ap_x), dict, info)
  *     else:
  *         return (np.PyArray_Return(ap_x), info)             # <<<<<<<<<<<<<<
@@ -2329,7 +2404,1659 @@ static System::Object^ hybrj(System::Object^ fun, System::Object^ Dfun, System::
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":254
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":256
+ * 
+ * 
+ * def _lmdif(fcn, x0, extra_args=None, int full_output=0, double ftol=1.49012e-8, double xtol=1.49012e-8,             # <<<<<<<<<<<<<<
+ *            double gtol=0.0, int maxfev=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):
+ *     cdef int m, mode = 2, nprint = 0, info, nfev, ldfjac, *ipvt
+ */
+
+static System::Object^ _lmdif(System::Object^ fcn, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ ftol, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ gtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ epsfcn, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
+  System::Object^ __pyx_v_fcn = nullptr;
+  System::Object^ __pyx_v_x0 = nullptr;
+  System::Object^ __pyx_v_extra_args = nullptr;
+  int __pyx_v_full_output;
+  double __pyx_v_ftol;
+  double __pyx_v_xtol;
+  double __pyx_v_gtol;
+  int __pyx_v_maxfev;
+  double __pyx_v_epsfcn;
+  double __pyx_v_factor;
+  System::Object^ __pyx_v_o_diag = nullptr;
+  int __pyx_v_m;
+  int __pyx_v_mode;
+  int __pyx_v_nprint;
+  int __pyx_v_info;
+  int __pyx_v_nfev;
+  int __pyx_v_ldfjac;
+  int *__pyx_v_ipvt;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  double *__pyx_v_x;
+  double *__pyx_v_fvec;
+  double *__pyx_v_diag;
+  double *__pyx_v_fjac;
+  double *__pyx_v_qtf;
+  NumpyDotNet::ndarray^ __pyx_v_ap_x;
+  NumpyDotNet::ndarray^ __pyx_v_ap_fvec;
+  NumpyDotNet::ndarray^ __pyx_v_ap_fjac;
+  NumpyDotNet::ndarray^ __pyx_v_ap_ipvt;
+  NumpyDotNet::ndarray^ __pyx_v_ap_diag;
+  __pyx_t_5numpy_npy_intp __pyx_v_dims[2];
+  int __pyx_v_allocated;
+  double *__pyx_v_wa;
+  System::Object^ __pyx_v_savedArgs;
+  System::Object^ __pyx_v_ap_qtf;
+  System::Object^ __pyx_v_dict;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  int __pyx_t_3;
+  long __pyx_t_4;
+  PythonDictionary^ __pyx_t_5;
+  System::Object^ __pyx_t_6 = nullptr;
+  __pyx_v_fcn = fcn;
+  __pyx_v_x0 = x0;
+  if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
+    __pyx_v_extra_args = extra_args;
+  } else {
+    __pyx_v_extra_args = ((System::Object^)nullptr);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
+    __pyx_v_full_output = __site_cvt_cvt_int_256_0->Target(__site_cvt_cvt_int_256_0, full_output);
+  } else {
+    __pyx_v_full_output = ((int)0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(ftol) == nullptr) {
+    __pyx_v_ftol = __site_cvt_cvt_double_256_0->Target(__site_cvt_cvt_double_256_0, ftol);
+  } else {
+    __pyx_v_ftol = ((double)1.49012e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(xtol) == nullptr) {
+    __pyx_v_xtol = __site_cvt_cvt_double_256_0_1->Target(__site_cvt_cvt_double_256_0_1, xtol);
+  } else {
+    __pyx_v_xtol = ((double)1.49012e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(gtol) == nullptr) {
+    __pyx_v_gtol = __site_cvt_cvt_double_256_0_2->Target(__site_cvt_cvt_double_256_0_2, gtol);
+  } else {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":257
+ * 
+ * def _lmdif(fcn, x0, extra_args=None, int full_output=0, double ftol=1.49012e-8, double xtol=1.49012e-8,
+ *            double gtol=0.0, int maxfev=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):             # <<<<<<<<<<<<<<
+ *     cdef int m, mode = 2, nprint = 0, info, nfev, ldfjac, *ipvt
+ *     cdef np.npy_intp n
+ */
+    __pyx_v_gtol = ((double)0.0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(maxfev) == nullptr) {
+    __pyx_v_maxfev = __site_cvt_cvt_int_256_0_1->Target(__site_cvt_cvt_int_256_0_1, maxfev);
+  } else {
+    __pyx_v_maxfev = ((int)-10);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(epsfcn) == nullptr) {
+    __pyx_v_epsfcn = __site_cvt_cvt_double_256_0_3->Target(__site_cvt_cvt_double_256_0_3, epsfcn);
+  } else {
+    __pyx_v_epsfcn = ((double)0.0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(factor) == nullptr) {
+    __pyx_v_factor = __site_cvt_cvt_double_256_0_4->Target(__site_cvt_cvt_double_256_0_4, factor);
+  } else {
+    __pyx_v_factor = ((double)1.0e2);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(o_diag) == nullptr) {
+    __pyx_v_o_diag = o_diag;
+  } else {
+    __pyx_v_o_diag = ((System::Object^)nullptr);
+  }
+  __pyx_v_ap_x = nullptr;
+  __pyx_v_ap_fvec = nullptr;
+  __pyx_v_ap_fjac = nullptr;
+  __pyx_v_ap_ipvt = nullptr;
+  __pyx_v_ap_diag = nullptr;
+  __pyx_v_savedArgs = nullptr;
+  __pyx_v_ap_qtf = nullptr;
+  __pyx_v_dict = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":258
+ * def _lmdif(fcn, x0, extra_args=None, int full_output=0, double ftol=1.49012e-8, double xtol=1.49012e-8,
+ *            double gtol=0.0, int maxfev=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):
+ *     cdef int m, mode = 2, nprint = 0, info, nfev, ldfjac, *ipvt             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp n
+ *     cdef double *x, *fvec, *diag, *fjac, *qtf
+ */
+  __pyx_v_mode = 2;
+  __pyx_v_nprint = 0;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":265
+ * 
+ *     cdef np.npy_intp dims[2]
+ *     cdef int      allocated = 0             # <<<<<<<<<<<<<<
+ *     cdef double   *wa = NULL
+ * 
+ */
+  __pyx_v_allocated = 0;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":266
+ *     cdef np.npy_intp dims[2]
+ *     cdef int      allocated = 0
+ *     cdef double   *wa = NULL             # <<<<<<<<<<<<<<
+ * 
+ *     savedArgs = INIT_FUNC(fcn,extra_args)
+ */
+  __pyx_v_wa = NULL;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":268
+ *     cdef double   *wa = NULL
+ * 
+ *     savedArgs = INIT_FUNC(fcn,extra_args)             # <<<<<<<<<<<<<<
+ *     try:
+ *         # Initial input vector
+ */
+  __pyx_t_1 = INIT_FUNC(__pyx_v_fcn, __pyx_v_extra_args); 
+  __pyx_v_savedArgs = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":269
+ * 
+ *     savedArgs = INIT_FUNC(fcn,extra_args)
+ *     try:             # <<<<<<<<<<<<<<
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ */
+  try {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":271
+ *     try:
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
+ *         x = <double *> np.PyArray_DATA(ap_x)
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ */
+    __pyx_t_1 = (System::Object^)(long long)(NPY_DOUBLE);
+    __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_x0, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+    __pyx_t_1 = nullptr;
+    __pyx_v_ap_x = ((NumpyDotNet::ndarray^)__pyx_t_2);
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":272
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ *         x = <double *> np.PyArray_DATA(ap_x)             # <<<<<<<<<<<<<<
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ *         dims[0] = n
+ */
+    __pyx_v_x = ((double *)PyArray_DATA(__pyx_v_ap_x));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":273
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ *         x = <double *> np.PyArray_DATA(ap_x)
+ *         n = np.PyArray_DIMS(ap_x)[0]             # <<<<<<<<<<<<<<
+ *         dims[0] = n
+ * 
+ */
+    __pyx_v_n = (PyArray_DIMS(__pyx_v_ap_x)[0]);
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":274
+ *         x = <double *> np.PyArray_DATA(ap_x)
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ *         dims[0] = n             # <<<<<<<<<<<<<<
+ * 
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ */
+    (__pyx_v_dims[0]) = __pyx_v_n;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":277
+ * 
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ *         if o_diag is None:          # Set the diag vector from input             # <<<<<<<<<<<<<<
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ */
+    __pyx_t_3 = (__pyx_v_o_diag == nullptr);
+    if (__pyx_t_3) {
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":278
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ *         if o_diag is None:          # Set the diag vector from input
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 1
+ */
+      __pyx_t_2 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_DOUBLE); 
+      if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_2);
+      __pyx_t_2 = nullptr;
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":279
+ *         if o_diag is None:          # Set the diag vector from input
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
+ *             mode = 1
+ *         else:
+ */
+      __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":280
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 1             # <<<<<<<<<<<<<<
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ */
+      __pyx_v_mode = 1;
+      goto __pyx_L5;
+    }
+    /*else*/ {
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":282
+ *             mode = 1
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 2
+ */
+      __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
+      __pyx_t_1 = __site_get_PyArray_DOUBLE_282_64->Target(__site_get_PyArray_DOUBLE_282_64, __pyx_t_2, __pyx_context);
+      __pyx_t_2 = nullptr;
+      __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_diag, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+      __pyx_t_1 = nullptr;
+      if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_v_ap_diag = ((NumpyDotNet::ndarray^)__pyx_t_2);
+      __pyx_t_2 = nullptr;
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":283
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
+ *             mode = 2
+ * 
+ */
+      __pyx_v_diag = ((double *)PyArray_DATA(__pyx_v_ap_diag));
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":284
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 2             # <<<<<<<<<<<<<<
+ * 
+ *         if (maxfev < 0): maxfev = 200*(n+1)
+ */
+      __pyx_v_mode = 2;
+    }
+    __pyx_L5:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":286
+ *             mode = 2
+ * 
+ *         if (maxfev < 0): maxfev = 200*(n+1)             # <<<<<<<<<<<<<<
+ * 
+ *         # Setup array to hold the function evaluations and find it's size
+ */
+    __pyx_t_3 = (__pyx_v_maxfev < 0);
+    if (__pyx_t_3) {
+      __pyx_v_maxfev = (200 * (__pyx_v_n + 1));
+      goto __pyx_L6;
+    }
+    __pyx_L6:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":289
+ * 
+ *         # Setup array to hold the function evaluations and find it's size
+ *         ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)             # <<<<<<<<<<<<<<
+ *         fvec = <double *> np.PyArray_DATA(ap_fvec)
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+    __pyx_t_1 = call_python_function(__pyx_v_fcn, __pyx_v_n, __pyx_v_x, __pyx_v_extra_args, 1, __pyx_t_2); 
+    __pyx_t_2 = nullptr;
+    if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_1) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_ap_fvec = ((NumpyDotNet::ndarray^)__pyx_t_1);
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":290
+ *         # Setup array to hold the function evaluations and find it's size
+ *         ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)
+ *         fvec = <double *> np.PyArray_DATA(ap_fvec)             # <<<<<<<<<<<<<<
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+ * 
+ */
+    __pyx_v_fvec = ((double *)PyArray_DATA(__pyx_v_ap_fvec));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":291
+ *         ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)
+ *         fvec = <double *> np.PyArray_DATA(ap_fvec)
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1             # <<<<<<<<<<<<<<
+ * 
+ *         dims[0] = n
+ */
+    __pyx_t_1 = PyArray_NDIM(__pyx_v_ap_fvec); 
+    __pyx_t_2 = __site_op_gt_291_68->Target(__site_op_gt_291_68, __pyx_t_1, __pyx_int_0);
+    __pyx_t_1 = nullptr;
+    __pyx_t_3 = __site_istrue_291_68->Target(__site_istrue_291_68, __pyx_t_2);
+    __pyx_t_2 = nullptr;
+    if (__pyx_t_3) {
+      __pyx_t_4 = (PyArray_DIMS(__pyx_v_ap_fvec)[0]);
+    } else {
+      __pyx_t_4 = 1;
+    }
+    __pyx_v_m = __pyx_t_4;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":293
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+ * 
+ *         dims[0] = n             # <<<<<<<<<<<<<<
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)
+ */
+    (__pyx_v_dims[0]) = __pyx_v_n;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":294
+ * 
+ *         dims[0] = n
+ *         dims[1] = m             # <<<<<<<<<<<<<<
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n, np.NPY_DOUBLE)
+ */
+    (__pyx_v_dims[1]) = __pyx_v_m;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":295
+ *         dims[0] = n
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)             # <<<<<<<<<<<<<<
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n, np.NPY_DOUBLE)
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims, np.NPY_DOUBLE)
+ */
+    __pyx_t_2 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_INT); 
+    if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_ap_ipvt = ((NumpyDotNet::ndarray^)__pyx_t_2);
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":296
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims, np.NPY_DOUBLE)
+ * 
+ */
+    __pyx_t_2 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_DOUBLE); 
+    __pyx_v_ap_qtf = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":297
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n, np.NPY_DOUBLE)
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ */
+    __pyx_t_2 = PyArray_SimpleNew(2, __pyx_v_dims, NPY_DOUBLE); 
+    if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_t_2) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_ap_fjac = ((NumpyDotNet::ndarray^)__pyx_t_2);
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":299
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims, np.NPY_DOUBLE)
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)             # <<<<<<<<<<<<<<
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ */
+    __pyx_v_ipvt = ((int *)PyArray_DATA(__pyx_v_ap_ipvt));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":300
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)             # <<<<<<<<<<<<<<
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]
+ */
+    if (__pyx_v_ap_qtf != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_qtf) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_qtf = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_qtf)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":301
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)             # <<<<<<<<<<<<<<
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ */
+    __pyx_v_fjac = ((double *)PyArray_DATA(__pyx_v_ap_fjac));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":302
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]             # <<<<<<<<<<<<<<
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ *         allocated = 1
+ */
+    __pyx_v_ldfjac = (__pyx_v_dims[1]);
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":303
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))             # <<<<<<<<<<<<<<
+ *         allocated = 1
+ * 
+ */
+    __pyx_v_wa = ((double *)malloc((((3 * __pyx_v_n) + __pyx_v_m) * (sizeof(double)))));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":304
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ *         allocated = 1             # <<<<<<<<<<<<<<
+ * 
+ *         # Call the underlying FORTRAN routines.
+ */
+    __pyx_v_allocated = 1;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":307
+ * 
+ *         # Call the underlying FORTRAN routines.
+ *         LMDIF(<void *>raw_multipack_lm_function, &m, &n, x, fvec, &ftol, &xtol, &gtol, &maxfev, &epsfcn, diag, &mode, &factor, &nprint, &info, &nfev, fjac, &ldfjac, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n);             # <<<<<<<<<<<<<<
+ *     finally:
+ *         if allocated: free(wa)
+ */
+    LMDIF(((void *)__pyx_function_pointer_raw_multipack_lm_function), (&__pyx_v_m), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, (&__pyx_v_ftol), (&__pyx_v_xtol), (&__pyx_v_gtol), (&__pyx_v_maxfev), (&__pyx_v_epsfcn), __pyx_v_diag, (&__pyx_v_mode), (&__pyx_v_factor), (&__pyx_v_nprint), (&__pyx_v_info), (&__pyx_v_nfev), __pyx_v_fjac, (&__pyx_v_ldfjac), __pyx_v_ipvt, __pyx_v_qtf, __pyx_v_wa, (__pyx_v_wa + __pyx_v_n), (__pyx_v_wa + (2 * __pyx_v_n)), (__pyx_v_wa + (3 * __pyx_v_n)));
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":309
+ *         LMDIF(<void *>raw_multipack_lm_function, &m, &n, x, fvec, &ftol, &xtol, &gtol, &maxfev, &epsfcn, diag, &mode, &factor, &nprint, &info, &nfev, fjac, &ldfjac, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n);
+ *     finally:
+ *         if allocated: free(wa)             # <<<<<<<<<<<<<<
+ *         RESTORE_FUNC(savedArgs)
+ * 
+ */
+  finally {
+    if (__pyx_v_allocated) {
+      free(__pyx_v_wa);
+      goto __pyx_L7;
+    }
+    __pyx_L7:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":310
+ *     finally:
+ *         if allocated: free(wa)
+ *         RESTORE_FUNC(savedArgs)             # <<<<<<<<<<<<<<
+ * 
+ *     if (info < 0): return None    # Python error
+ */
+    __pyx_t_2 = RESTORE_FUNC(__pyx_v_savedArgs); 
+    __pyx_t_2 = nullptr;
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":312
+ *         RESTORE_FUNC(savedArgs)
+ * 
+ *     if (info < 0): return None    # Python error             # <<<<<<<<<<<<<<
+ * 
+ *     if full_output:
+ */
+  __pyx_t_3 = (__pyx_v_info < 0);
+  if (__pyx_t_3) {
+    __pyx_r = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L8;
+  }
+  __pyx_L8:;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":314
+ *     if (info < 0): return None    # Python error
+ * 
+ *     if full_output:             # <<<<<<<<<<<<<<
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ */
+  if (__pyx_v_full_output) {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":315
+ * 
+ *     if full_output:
+ *         dict = {             # <<<<<<<<<<<<<<
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,
+ */
+    __pyx_t_5 = PythonOps::MakeEmptyDict();
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":316
+ *     if full_output:
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),             # <<<<<<<<<<<<<<
+ *             "nfev" : nfev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ */
+    __pyx_t_2 = PyArray_Return(((System::Object^)__pyx_v_ap_fvec)); 
+    __pyx_t_5[((System::Object^)"fvec")] = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":317
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,             # <<<<<<<<<<<<<<
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ */
+    __pyx_t_2 = __pyx_v_nfev;
+    __pyx_t_5[((System::Object^)"nfev")] = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":318
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),             # <<<<<<<<<<<<<<
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ */
+    __pyx_t_2 = PyArray_Return(((System::Object^)__pyx_v_ap_fjac)); 
+    __pyx_t_5[((System::Object^)"fjac")] = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":319
+ *             "nfev" : nfev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),             # <<<<<<<<<<<<<<
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ *         }
+ */
+    __pyx_t_2 = PyArray_Return(((System::Object^)__pyx_v_ap_ipvt)); 
+    __pyx_t_5[((System::Object^)"ipvt")] = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":320
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ *             "qtf" : np.PyArray_Return(ap_qtf)             # <<<<<<<<<<<<<<
+ *         }
+ *         return(np.PyArray_Return(ap_x), dict, info)
+ */
+    __pyx_t_2 = PyArray_Return(__pyx_v_ap_qtf); 
+    __pyx_t_5[((System::Object^)"qtf")] = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+    __pyx_v_dict = __pyx_t_5;
+    __pyx_t_5 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":322
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ *         }
+ *         return(np.PyArray_Return(ap_x), dict, info)             # <<<<<<<<<<<<<<
+ *     else:
+ *         return (np.PyArray_Return(ap_x), info)
+ */
+    __pyx_t_2 = PyArray_Return(((System::Object^)__pyx_v_ap_x)); 
+    __pyx_t_1 = __pyx_v_info;
+    __pyx_t_6 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_2, ((System::Object^)__pyx_v_dict), __pyx_t_1});
+    __pyx_t_2 = nullptr;
+    __pyx_t_1 = nullptr;
+    __pyx_r = __pyx_t_6;
+    __pyx_t_6 = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L9;
+  }
+  /*else*/ {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":324
+ *         return(np.PyArray_Return(ap_x), dict, info)
+ *     else:
+ *         return (np.PyArray_Return(ap_x), info)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_t_6 = PyArray_Return(((System::Object^)__pyx_v_ap_x)); 
+    __pyx_t_1 = __pyx_v_info;
+    __pyx_t_2 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_6, __pyx_t_1});
+    __pyx_t_6 = nullptr;
+    __pyx_t_1 = nullptr;
+    __pyx_r = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+    goto __pyx_L0;
+  }
+  __pyx_L9:;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":327
+ * 
+ * 
+ * def _lmder(fcn, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double ftol=1.49012e-8,             # <<<<<<<<<<<<<<
+ *            double xtol=1.49012e-8, double gtol=0.0, int maxfev=-10, double factor=1.0e2, o_diag=None):
+ *     """[x,infodict,info] = _lmder(fun, Dfun, x0, args, full_output, col_deriv, ftol, xtol, gtol, maxfev, factor, diag)"""
+ */
+
+static System::Object^ _lmder(System::Object^ fcn, System::Object^ Dfun, System::Object^ x0, [InteropServices::Optional]System::Object^ extra_args, [InteropServices::Optional]System::Object^ full_output, [InteropServices::Optional]System::Object^ col_deriv, [InteropServices::Optional]System::Object^ ftol, [InteropServices::Optional]System::Object^ xtol, [InteropServices::Optional]System::Object^ gtol, [InteropServices::Optional]System::Object^ maxfev, [InteropServices::Optional]System::Object^ factor, [InteropServices::Optional]System::Object^ o_diag) {
+  System::Object^ __pyx_v_fcn = nullptr;
+  System::Object^ __pyx_v_Dfun = nullptr;
+  System::Object^ __pyx_v_x0 = nullptr;
+  System::Object^ __pyx_v_extra_args = nullptr;
+  int __pyx_v_full_output;
+  int __pyx_v_col_deriv;
+  double __pyx_v_ftol;
+  double __pyx_v_xtol;
+  double __pyx_v_gtol;
+  int __pyx_v_maxfev;
+  double __pyx_v_factor;
+  System::Object^ __pyx_v_o_diag = nullptr;
+  int __pyx_v_m;
+  int __pyx_v_mode;
+  int __pyx_v_nprint;
+  int __pyx_v_info;
+  int __pyx_v_nfev;
+  int __pyx_v_njev;
+  int __pyx_v_ldfjac;
+  int *__pyx_v_ipvt;
+  __pyx_t_5numpy_npy_intp __pyx_v_n;
+  double *__pyx_v_x;
+  double *__pyx_v_fvec;
+  double *__pyx_v_diag;
+  double *__pyx_v_fjac;
+  double *__pyx_v_qtf;
+  System::Object^ __pyx_v_ap_x;
+  System::Object^ __pyx_v_ap_fvec;
+  System::Object^ __pyx_v_ap_fjac;
+  System::Object^ __pyx_v_ap_ipvt;
+  System::Object^ __pyx_v_ap_qtf;
+  System::Object^ __pyx_v_ap_diag;
+  __pyx_t_5numpy_npy_intp __pyx_v_dims[2];
+  int __pyx_v_allocated;
+  double *__pyx_v_wa;
+  System::Object^ __pyx_v_savedArgs;
+  System::Object^ __pyx_v_dict;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  int __pyx_t_3;
+  long __pyx_t_4;
+  PythonDictionary^ __pyx_t_5;
+  System::Object^ __pyx_t_6 = nullptr;
+  __pyx_v_fcn = fcn;
+  __pyx_v_Dfun = Dfun;
+  __pyx_v_x0 = x0;
+  if (dynamic_cast<System::Reflection::Missing^>(extra_args) == nullptr) {
+    __pyx_v_extra_args = extra_args;
+  } else {
+    __pyx_v_extra_args = ((System::Object^)nullptr);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(full_output) == nullptr) {
+    __pyx_v_full_output = __site_cvt_cvt_int_327_0->Target(__site_cvt_cvt_int_327_0, full_output);
+  } else {
+    __pyx_v_full_output = ((int)0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(col_deriv) == nullptr) {
+    __pyx_v_col_deriv = __site_cvt_cvt_int_327_0_1->Target(__site_cvt_cvt_int_327_0_1, col_deriv);
+  } else {
+    __pyx_v_col_deriv = ((int)1);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(ftol) == nullptr) {
+    __pyx_v_ftol = __site_cvt_cvt_double_327_0->Target(__site_cvt_cvt_double_327_0, ftol);
+  } else {
+    __pyx_v_ftol = ((double)1.49012e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(xtol) == nullptr) {
+    __pyx_v_xtol = __site_cvt_cvt_double_327_0_1->Target(__site_cvt_cvt_double_327_0_1, xtol);
+  } else {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":328
+ * 
+ * def _lmder(fcn, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double ftol=1.49012e-8,
+ *            double xtol=1.49012e-8, double gtol=0.0, int maxfev=-10, double factor=1.0e2, o_diag=None):             # <<<<<<<<<<<<<<
+ *     """[x,infodict,info] = _lmder(fun, Dfun, x0, args, full_output, col_deriv, ftol, xtol, gtol, maxfev, factor, diag)"""
+ *     cdef int m, mode = 2, nprint = 0, info, nfev, njev, ldfjac, *ipvt
+ */
+    __pyx_v_xtol = ((double)1.49012e-8);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(gtol) == nullptr) {
+    __pyx_v_gtol = __site_cvt_cvt_double_327_0_2->Target(__site_cvt_cvt_double_327_0_2, gtol);
+  } else {
+    __pyx_v_gtol = ((double)0.0);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(maxfev) == nullptr) {
+    __pyx_v_maxfev = __site_cvt_cvt_int_327_0_2->Target(__site_cvt_cvt_int_327_0_2, maxfev);
+  } else {
+    __pyx_v_maxfev = ((int)-10);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(factor) == nullptr) {
+    __pyx_v_factor = __site_cvt_cvt_double_327_0_3->Target(__site_cvt_cvt_double_327_0_3, factor);
+  } else {
+    __pyx_v_factor = ((double)1.0e2);
+  }
+  if (dynamic_cast<System::Reflection::Missing^>(o_diag) == nullptr) {
+    __pyx_v_o_diag = o_diag;
+  } else {
+    __pyx_v_o_diag = ((System::Object^)nullptr);
+  }
+  __pyx_v_ap_x = nullptr;
+  __pyx_v_ap_fvec = nullptr;
+  __pyx_v_ap_fjac = nullptr;
+  __pyx_v_ap_ipvt = nullptr;
+  __pyx_v_ap_qtf = nullptr;
+  __pyx_v_ap_diag = nullptr;
+  __pyx_v_savedArgs = nullptr;
+  __pyx_v_dict = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":330
+ *            double xtol=1.49012e-8, double gtol=0.0, int maxfev=-10, double factor=1.0e2, o_diag=None):
+ *     """[x,infodict,info] = _lmder(fun, Dfun, x0, args, full_output, col_deriv, ftol, xtol, gtol, maxfev, factor, diag)"""
+ *     cdef int m, mode = 2, nprint = 0, info, nfev, njev, ldfjac, *ipvt             # <<<<<<<<<<<<<<
+ *     cdef np.npy_intp n
+ *     cdef double   *x, *fvec, *diag, *fjac, *qtf
+ */
+  __pyx_v_mode = 2;
+  __pyx_v_nprint = 0;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":337
+ * 
+ *     cdef np.npy_intp dims[2]
+ *     cdef int      allocated = 0             # <<<<<<<<<<<<<<
+ *     cdef double   *wa = NULL
+ * 
+ */
+  __pyx_v_allocated = 0;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":338
+ *     cdef np.npy_intp dims[2]
+ *     cdef int      allocated = 0
+ *     cdef double   *wa = NULL             # <<<<<<<<<<<<<<
+ * 
+ *     savedArgs = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv)
+ */
+  __pyx_v_wa = NULL;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":340
+ *     cdef double   *wa = NULL
+ * 
+ *     savedArgs = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv)             # <<<<<<<<<<<<<<
+ *     try:
+ *         # Initial input vector
+ */
+  __pyx_t_1 = __pyx_v_col_deriv;
+  __pyx_t_2 = INIT_JAC_FUNC(__pyx_v_fcn, __pyx_v_Dfun, __pyx_v_extra_args, __pyx_t_1); 
+  __pyx_t_1 = nullptr;
+  __pyx_v_savedArgs = __pyx_t_2;
+  __pyx_t_2 = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":341
+ * 
+ *     savedArgs = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv)
+ *     try:             # <<<<<<<<<<<<<<
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ */
+  try {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":343
+ *     try:
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
+ *         x = <double *>np.PyArray_DATA(ap_x)
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ */
+    __pyx_t_2 = (System::Object^)(long long)(NPY_DOUBLE);
+    __pyx_t_1 = PyArray_ContiguousFromObject(__pyx_v_x0, __pyx_t_2, __pyx_int_1, __pyx_int_1); 
+    __pyx_t_2 = nullptr;
+    __pyx_v_ap_x = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":344
+ *         # Initial input vector
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ *         x = <double *>np.PyArray_DATA(ap_x)             # <<<<<<<<<<<<<<
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ * 
+ */
+    if (__pyx_v_ap_x != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_x) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_x = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_x)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":345
+ *         ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+ *         x = <double *>np.PyArray_DATA(ap_x)
+ *         n = np.PyArray_DIMS(ap_x)[0]             # <<<<<<<<<<<<<<
+ * 
+ *         if (maxfev < 0): maxfev = 100*(n+1)
+ */
+    if (__pyx_v_ap_x != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_x) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_n = (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_x))[0]);
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":347
+ *         n = np.PyArray_DIMS(ap_x)[0]
+ * 
+ *         if (maxfev < 0): maxfev = 100*(n+1)             # <<<<<<<<<<<<<<
+ * 
+ *         # Setup array to hold the function evaluations
+ */
+    __pyx_t_3 = (__pyx_v_maxfev < 0);
+    if (__pyx_t_3) {
+      __pyx_v_maxfev = (100 * (__pyx_v_n + 1));
+      goto __pyx_L5;
+    }
+    __pyx_L5:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":350
+ * 
+ *         # Setup array to hold the function evaluations
+ *         ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)             # <<<<<<<<<<<<<<
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)
+ * 
+ */
+    __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+    __pyx_t_2 = call_python_function(__pyx_v_fcn, __pyx_v_n, __pyx_v_x, __pyx_v_extra_args, 1, __pyx_t_1); 
+    __pyx_t_1 = nullptr;
+    __pyx_v_ap_fvec = __pyx_t_2;
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":351
+ *         # Setup array to hold the function evaluations
+ *         ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)             # <<<<<<<<<<<<<<
+ * 
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ */
+    if (__pyx_v_ap_fvec != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_fvec) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_fvec = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_fvec)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":354
+ * 
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ *         if o_diag is None:          # Set the diag vector from input             # <<<<<<<<<<<<<<
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ */
+    __pyx_t_3 = (__pyx_v_o_diag == nullptr);
+    if (__pyx_t_3) {
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":355
+ *         #SET_DIAG(ap_diag,o_diag,mode);
+ *         if o_diag is None:          # Set the diag vector from input
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 1
+ */
+      __pyx_t_2 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_DOUBLE); 
+      __pyx_v_ap_diag = __pyx_t_2;
+      __pyx_t_2 = nullptr;
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":356
+ *         if o_diag is None:          # Set the diag vector from input
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
+ *             mode = 1
+ *         else:
+ */
+      if (__pyx_v_ap_diag != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_diag) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_v_diag = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_diag)));
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":357
+ *             ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 1             # <<<<<<<<<<<<<<
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ */
+      __pyx_v_mode = 1;
+      goto __pyx_L6;
+    }
+    /*else*/ {
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":359
+ *             mode = 1
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)             # <<<<<<<<<<<<<<
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 2
+ */
+      __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "np");
+      __pyx_t_1 = __site_get_PyArray_DOUBLE_359_64->Target(__site_get_PyArray_DOUBLE_359_64, __pyx_t_2, __pyx_context);
+      __pyx_t_2 = nullptr;
+      __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_diag, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+      __pyx_t_1 = nullptr;
+      __pyx_v_ap_diag = __pyx_t_2;
+      __pyx_t_2 = nullptr;
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":360
+ *         else:
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)             # <<<<<<<<<<<<<<
+ *             mode = 2
+ * 
+ */
+      if (__pyx_v_ap_diag != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_diag) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_v_diag = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_diag)));
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":361
+ *             ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+ *             diag = <double *>np.PyArray_DATA(ap_diag)
+ *             mode = 2             # <<<<<<<<<<<<<<
+ * 
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+ */
+      __pyx_v_mode = 2;
+    }
+    __pyx_L6:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":363
+ *             mode = 2
+ * 
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1             # <<<<<<<<<<<<<<
+ * 
+ *         dims[0] = n
+ */
+    if (__pyx_v_ap_fvec != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_fvec) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_t_2 = PyArray_NDIM(((NumpyDotNet::ndarray^)__pyx_v_ap_fvec)); 
+    __pyx_t_1 = __site_op_gt_363_68->Target(__site_op_gt_363_68, __pyx_t_2, __pyx_int_0);
+    __pyx_t_2 = nullptr;
+    __pyx_t_3 = __site_istrue_363_68->Target(__site_istrue_363_68, __pyx_t_1);
+    __pyx_t_1 = nullptr;
+    if (__pyx_t_3) {
+      if (__pyx_v_ap_fvec != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_fvec) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_t_4 = (PyArray_DIMS(((NumpyDotNet::ndarray^)__pyx_v_ap_fvec))[0]);
+    } else {
+      __pyx_t_4 = 1;
+    }
+    __pyx_v_m = __pyx_t_4;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":365
+ *         m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+ * 
+ *         dims[0] = n             # <<<<<<<<<<<<<<
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)
+ */
+    (__pyx_v_dims[0]) = __pyx_v_n;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":366
+ * 
+ *         dims[0] = n
+ *         dims[1] = m             # <<<<<<<<<<<<<<
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n,np.NPY_DOUBLE)
+ */
+    (__pyx_v_dims[1]) = __pyx_v_m;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":367
+ *         dims[0] = n
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)             # <<<<<<<<<<<<<<
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n,np.NPY_DOUBLE)
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims,np.NPY_DOUBLE)
+ */
+    __pyx_t_1 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_INT); 
+    __pyx_v_ap_ipvt = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":368
+ *         dims[1] = m
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims,np.NPY_DOUBLE)
+ * 
+ */
+    __pyx_t_1 = PyArray_SimpleNew(1, (&__pyx_v_n), NPY_DOUBLE); 
+    __pyx_v_ap_qtf = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":369
+ *         ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)
+ *         ap_qtf = np.PyArray_SimpleNew(1,&n,np.NPY_DOUBLE)
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims,np.NPY_DOUBLE)             # <<<<<<<<<<<<<<
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ */
+    __pyx_t_1 = PyArray_SimpleNew(2, __pyx_v_dims, NPY_DOUBLE); 
+    __pyx_v_ap_fjac = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":371
+ *         ap_fjac = np.PyArray_SimpleNew(2,dims,np.NPY_DOUBLE)
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)             # <<<<<<<<<<<<<<
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ */
+    if (__pyx_v_ap_ipvt != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_ipvt) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_ipvt = ((int *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_ipvt)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":372
+ * 
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)             # <<<<<<<<<<<<<<
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]
+ */
+    if (__pyx_v_ap_qtf != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_qtf) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_qtf = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_qtf)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":373
+ *         ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)             # <<<<<<<<<<<<<<
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ */
+    if (__pyx_v_ap_fjac != nullptr && dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_fjac) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_v_fjac = ((double *)PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_ap_fjac)));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":374
+ *         qtf = <double *>np.PyArray_DATA(ap_qtf)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]             # <<<<<<<<<<<<<<
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ *         allocated = 1
+ */
+    __pyx_v_ldfjac = (__pyx_v_dims[1]);
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":375
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))             # <<<<<<<<<<<<<<
+ *         allocated = 1
+ * 
+ */
+    __pyx_v_wa = ((double *)malloc((((3 * __pyx_v_n) + __pyx_v_m) * (sizeof(double)))));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":376
+ *         ldfjac = dims[1]
+ *         wa = <double *>malloc((3*n + m)* sizeof(double))
+ *         allocated = 1             # <<<<<<<<<<<<<<
+ * 
+ *         # Call the underlying FORTRAN routines.
+ */
+    __pyx_v_allocated = 1;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":379
+ * 
+ *         # Call the underlying FORTRAN routines.
+ *         LMDER(<void *>jac_multipack_lm_function, &m, &n, x, fvec, fjac, &ldfjac, &ftol, &xtol, &gtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n)             # <<<<<<<<<<<<<<
+ *     finally:
+ *         if allocated: free(wa)
+ */
+    LMDER(((void *)__pyx_function_pointer_jac_multipack_lm_function), (&__pyx_v_m), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, __pyx_v_fjac, (&__pyx_v_ldfjac), (&__pyx_v_ftol), (&__pyx_v_xtol), (&__pyx_v_gtol), (&__pyx_v_maxfev), __pyx_v_diag, (&__pyx_v_mode), (&__pyx_v_factor), (&__pyx_v_nprint), (&__pyx_v_info), (&__pyx_v_nfev), (&__pyx_v_njev), __pyx_v_ipvt, __pyx_v_qtf, __pyx_v_wa, (__pyx_v_wa + __pyx_v_n), (__pyx_v_wa + (2 * __pyx_v_n)), (__pyx_v_wa + (3 * __pyx_v_n)));
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":381
+ *         LMDER(<void *>jac_multipack_lm_function, &m, &n, x, fvec, fjac, &ldfjac, &ftol, &xtol, &gtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n)
+ *     finally:
+ *         if allocated: free(wa)             # <<<<<<<<<<<<<<
+ *         RESTORE_JAC_FUNC(savedArgs)
+ * 
+ */
+  finally {
+    if (__pyx_v_allocated) {
+      free(__pyx_v_wa);
+      goto __pyx_L7;
+    }
+    __pyx_L7:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":382
+ *     finally:
+ *         if allocated: free(wa)
+ *         RESTORE_JAC_FUNC(savedArgs)             # <<<<<<<<<<<<<<
+ * 
+ *     if (info < 0): return None   # Python error
+ */
+    __pyx_t_1 = RESTORE_JAC_FUNC(__pyx_v_savedArgs); 
+    __pyx_t_1 = nullptr;
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":384
+ *         RESTORE_JAC_FUNC(savedArgs)
+ * 
+ *     if (info < 0): return None   # Python error             # <<<<<<<<<<<<<<
+ * 
+ *     if full_output:
+ */
+  __pyx_t_3 = (__pyx_v_info < 0);
+  if (__pyx_t_3) {
+    __pyx_r = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L8;
+  }
+  __pyx_L8:;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":386
+ *     if (info < 0): return None   # Python error
+ * 
+ *     if full_output:             # <<<<<<<<<<<<<<
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ */
+  if (__pyx_v_full_output) {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":387
+ * 
+ *     if full_output:
+ *         dict = {             # <<<<<<<<<<<<<<
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,
+ */
+    __pyx_t_5 = PythonOps::MakeEmptyDict();
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":388
+ *     if full_output:
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),             # <<<<<<<<<<<<<<
+ *             "nfev" : nfev,
+ *             "njev" : njev,
+ */
+    __pyx_t_1 = PyArray_Return(__pyx_v_ap_fvec); 
+    __pyx_t_5[((System::Object^)"fvec")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":389
+ *         dict = {
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,             # <<<<<<<<<<<<<<
+ *             "njev" : njev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ */
+    __pyx_t_1 = __pyx_v_nfev;
+    __pyx_t_5[((System::Object^)"nfev")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":390
+ *             "fvec" : np.PyArray_Return(ap_fvec),
+ *             "nfev" : nfev,
+ *             "njev" : njev,             # <<<<<<<<<<<<<<
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ */
+    __pyx_t_1 = __pyx_v_njev;
+    __pyx_t_5[((System::Object^)"njev")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":391
+ *             "nfev" : nfev,
+ *             "njev" : njev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),             # <<<<<<<<<<<<<<
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ */
+    __pyx_t_1 = PyArray_Return(__pyx_v_ap_fjac); 
+    __pyx_t_5[((System::Object^)"fjac")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":392
+ *             "njev" : njev,
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),             # <<<<<<<<<<<<<<
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ *         }
+ */
+    __pyx_t_1 = PyArray_Return(__pyx_v_ap_ipvt); 
+    __pyx_t_5[((System::Object^)"ipvt")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":393
+ *             "fjac" : np.PyArray_Return(ap_fjac),
+ *             "ipvt" : np.PyArray_Return(ap_ipvt),
+ *             "qtf" : np.PyArray_Return(ap_qtf)             # <<<<<<<<<<<<<<
+ *         }
+ *         return (np.PyArray_Return(ap_x), dict, info)
+ */
+    __pyx_t_1 = PyArray_Return(__pyx_v_ap_qtf); 
+    __pyx_t_5[((System::Object^)"qtf")] = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+    __pyx_v_dict = __pyx_t_5;
+    __pyx_t_5 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":395
+ *             "qtf" : np.PyArray_Return(ap_qtf)
+ *         }
+ *         return (np.PyArray_Return(ap_x), dict, info)             # <<<<<<<<<<<<<<
+ *     else:
+ *         return (np.PyArray_Return(ap_x), info)
+ */
+    __pyx_t_1 = PyArray_Return(__pyx_v_ap_x); 
+    __pyx_t_2 = __pyx_v_info;
+    __pyx_t_6 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_1, ((System::Object^)__pyx_v_dict), __pyx_t_2});
+    __pyx_t_1 = nullptr;
+    __pyx_t_2 = nullptr;
+    __pyx_r = __pyx_t_6;
+    __pyx_t_6 = nullptr;
+    goto __pyx_L0;
+    goto __pyx_L9;
+  }
+  /*else*/ {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":397
+ *         return (np.PyArray_Return(ap_x), dict, info)
+ *     else:
+ *         return (np.PyArray_Return(ap_x), info)             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+    __pyx_t_6 = PyArray_Return(__pyx_v_ap_x); 
+    __pyx_t_2 = __pyx_v_info;
+    __pyx_t_1 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_6, __pyx_t_2});
+    __pyx_t_6 = nullptr;
+    __pyx_t_2 = nullptr;
+    __pyx_r = __pyx_t_1;
+    __pyx_t_1 = nullptr;
+    goto __pyx_L0;
+  }
+  __pyx_L9:;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":405
+ * #
+ * 
+ * def _chkder(int m, int n, o_x, o_fvec, o_fjac, int ldfjac, np.ndarray ap_xp, o_fvecp,             # <<<<<<<<<<<<<<
+ *             int mode, np.ndarray ap_err):
+ *     """_chkder(m,n,x,fvec,fjac,ldfjac,xp,fvecp,mode,err)"""
+ */
+
+static System::Object^ _chkder(System::Object^ m, System::Object^ n, System::Object^ o_x, System::Object^ o_fvec, System::Object^ o_fjac, System::Object^ ldfjac, System::Object^ ap_xp, System::Object^ o_fvecp, System::Object^ mode, System::Object^ ap_err) {
+  int __pyx_v_m;
+  int __pyx_v_n;
+  System::Object^ __pyx_v_o_x = nullptr;
+  System::Object^ __pyx_v_o_fvec = nullptr;
+  System::Object^ __pyx_v_o_fjac = nullptr;
+  int __pyx_v_ldfjac;
+  NumpyDotNet::ndarray^ __pyx_v_ap_xp = nullptr;
+  System::Object^ __pyx_v_o_fvecp = nullptr;
+  int __pyx_v_mode;
+  NumpyDotNet::ndarray^ __pyx_v_ap_err = nullptr;
+  NumpyDotNet::ndarray^ __pyx_v_ap_fvecp;
+  NumpyDotNet::ndarray^ __pyx_v_ap_fjac;
+  NumpyDotNet::ndarray^ __pyx_v_ap_x;
+  NumpyDotNet::ndarray^ __pyx_v_ap_fvec;
+  double *__pyx_v_xp;
+  double *__pyx_v_fvecp;
+  double *__pyx_v_fjac;
+  double *__pyx_v_fvec;
+  double *__pyx_v_x;
+  double *__pyx_v_err;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  int __pyx_t_3;
+  int __pyx_t_4;
+  int __pyx_t_5;
+  __pyx_v_m = __site_cvt_cvt_int_405_0->Target(__site_cvt_cvt_int_405_0, m);
+  __pyx_v_n = __site_cvt_cvt_int_405_0_1->Target(__site_cvt_cvt_int_405_0_1, n);
+  __pyx_v_o_x = o_x;
+  __pyx_v_o_fvec = o_fvec;
+  __pyx_v_o_fjac = o_fjac;
+  __pyx_v_ldfjac = __site_cvt_cvt_int_405_0_2->Target(__site_cvt_cvt_int_405_0_2, ldfjac);
+  __pyx_v_ap_xp = ((NumpyDotNet::ndarray^)ap_xp);
+  __pyx_v_o_fvecp = o_fvecp;
+  __pyx_v_mode = __site_cvt_cvt_int_405_0_3->Target(__site_cvt_cvt_int_405_0_3, mode);
+  __pyx_v_ap_err = ((NumpyDotNet::ndarray^)ap_err);
+  __pyx_v_ap_fvecp = nullptr;
+  __pyx_v_ap_fjac = nullptr;
+  __pyx_v_ap_x = nullptr;
+  __pyx_v_ap_fvec = nullptr;
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_xp) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'ap_xp' has incorrect type");
+  }
+  if (unlikely(dynamic_cast<NumpyDotNet::ndarray^>(__pyx_v_ap_err) == nullptr)) {
+    throw PythonOps::TypeError("Argument 'ap_err' has incorrect type");
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":412
+ *     cdef double *err
+ * 
+ *     ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(o_x, np.NPY_DOUBLE,1,1)             # <<<<<<<<<<<<<<
+ *     if n != np.PyArray_DIMS(ap_x)[0]:
+ *         raise minpack_error("Input data array (x) must have length n")
+ */
+  __pyx_t_1 = (System::Object^)(long long)(NPY_DOUBLE);
+  __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_x, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+  __pyx_t_1 = nullptr;
+  __pyx_v_ap_x = ((NumpyDotNet::ndarray^)__pyx_t_2);
+  __pyx_t_2 = nullptr;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":413
+ * 
+ *     ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(o_x, np.NPY_DOUBLE,1,1)
+ *     if n != np.PyArray_DIMS(ap_x)[0]:             # <<<<<<<<<<<<<<
+ *         raise minpack_error("Input data array (x) must have length n")
+ *     x = <double *>np.PyArray_DATA(ap_x)
+ */
+  __pyx_t_3 = (__pyx_v_n != (PyArray_DIMS(__pyx_v_ap_x)[0]));
+  if (__pyx_t_3) {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":414
+ *     ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(o_x, np.NPY_DOUBLE,1,1)
+ *     if n != np.PyArray_DIMS(ap_x)[0]:
+ *         raise minpack_error("Input data array (x) must have length n")             # <<<<<<<<<<<<<<
+ *     x = <double *>np.PyArray_DATA(ap_x)
+ *     if not ISCONTIGUOUS(ap_xp) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_xp)) != np.NPY_DOUBLE):
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+    __pyx_t_1 = __site_call1_414_27->Target(__site_call1_414_27, __pyx_context, __pyx_t_2, ((System::Object^)"Input data array (x) must have length n"));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    goto __pyx_L5;
+  }
+  __pyx_L5:;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":415
+ *     if n != np.PyArray_DIMS(ap_x)[0]:
+ *         raise minpack_error("Input data array (x) must have length n")
+ *     x = <double *>np.PyArray_DATA(ap_x)             # <<<<<<<<<<<<<<
+ *     if not ISCONTIGUOUS(ap_xp) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_xp)) != np.NPY_DOUBLE):
+ *         raise minpack_error("Seventh argument (xp) must be contiguous array of type Float64.")
+ */
+  __pyx_v_x = ((double *)PyArray_DATA(__pyx_v_ap_x));
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":416
+ *         raise minpack_error("Input data array (x) must have length n")
+ *     x = <double *>np.PyArray_DATA(ap_x)
+ *     if not ISCONTIGUOUS(ap_xp) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_xp)) != np.NPY_DOUBLE):             # <<<<<<<<<<<<<<
+ *         raise minpack_error("Seventh argument (xp) must be contiguous array of type Float64.")
+ * 
+ */
+  __pyx_t_1 = ISCONTIGUOUS(__pyx_v_ap_xp); 
+  __pyx_t_3 = __site_istrue_416_23->Target(__site_istrue_416_23, __pyx_t_1);
+  __pyx_t_1 = nullptr;
+  __pyx_t_4 = (!__pyx_t_3);
+  if (!__pyx_t_4) {
+    __pyx_t_1 = PyArray_DESCR(__pyx_v_ap_xp); 
+    if (__pyx_t_1 != nullptr && dynamic_cast<NumpyDotNet::dtype^>(__pyx_t_1) == nullptr) {
+      throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+    }
+    __pyx_t_3 = (PyDataType_TYPE_NUM(((NumpyDotNet::dtype^)__pyx_t_1)) != NPY_DOUBLE);
+    __pyx_t_1 = nullptr;
+    __pyx_t_5 = __pyx_t_3;
+  } else {
+    __pyx_t_5 = __pyx_t_4;
+  }
+  if (__pyx_t_5) {
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":417
+ *     x = <double *>np.PyArray_DATA(ap_x)
+ *     if not ISCONTIGUOUS(ap_xp) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_xp)) != np.NPY_DOUBLE):
+ *         raise minpack_error("Seventh argument (xp) must be contiguous array of type Float64.")             # <<<<<<<<<<<<<<
+ * 
+ *     if mode == 1:
+ */
+    __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+    __pyx_t_2 = __site_call1_417_27->Target(__site_call1_417_27, __pyx_context, __pyx_t_1, ((System::Object^)"Seventh argument (xp) must be contiguous array of type Float64."));
+    __pyx_t_1 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_2, nullptr, nullptr);
+    __pyx_t_2 = nullptr;
+    goto __pyx_L6;
+  }
+  __pyx_L6:;
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":419
+ *         raise minpack_error("Seventh argument (xp) must be contiguous array of type Float64.")
+ * 
+ *     if mode == 1:             # <<<<<<<<<<<<<<
+ *         fvec = NULL
+ *         fjac = NULL
+ */
+  switch (__pyx_v_mode) {
+    case 1:
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":420
+ * 
+ *     if mode == 1:
+ *         fvec = NULL             # <<<<<<<<<<<<<<
+ *         fjac = NULL
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ */
+    __pyx_v_fvec = NULL;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":421
+ *     if mode == 1:
+ *         fvec = NULL
+ *         fjac = NULL             # <<<<<<<<<<<<<<
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = NULL
+ */
+    __pyx_v_fjac = NULL;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":422
+ *         fvec = NULL
+ *         fjac = NULL
+ *         xp = <double *>np.PyArray_DATA(ap_xp)             # <<<<<<<<<<<<<<
+ *         fvecp = NULL
+ *         err = NULL
+ */
+    __pyx_v_xp = ((double *)PyArray_DATA(__pyx_v_ap_xp));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":423
+ *         fjac = NULL
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = NULL             # <<<<<<<<<<<<<<
+ *         err = NULL
+ *         CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)
+ */
+    __pyx_v_fvecp = NULL;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":424
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = NULL
+ *         err = NULL             # <<<<<<<<<<<<<<
+ *         CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)
+ *     elif mode == 2:
+ */
+    __pyx_v_err = NULL;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":425
+ *         fvecp = NULL
+ *         err = NULL
+ *         CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)             # <<<<<<<<<<<<<<
+ *     elif mode == 2:
+ *         if not ISCONTIGUOUS(ap_err) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_err)) != np.NPY_DOUBLE):
+ */
+    CHKDER((&__pyx_v_m), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, __pyx_v_fjac, (&__pyx_v_ldfjac), __pyx_v_xp, __pyx_v_fvecp, (&__pyx_v_mode), __pyx_v_err);
+    break;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":426
+ *         err = NULL
+ *         CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)
+ *     elif mode == 2:             # <<<<<<<<<<<<<<
+ *         if not ISCONTIGUOUS(ap_err) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_err)) != np.NPY_DOUBLE):
+ *             raise minpack_error("Last argument (err) must be contiguous array of type Float64.")
+ */
+    case 2:
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":427
+ *         CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)
+ *     elif mode == 2:
+ *         if not ISCONTIGUOUS(ap_err) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_err)) != np.NPY_DOUBLE):             # <<<<<<<<<<<<<<
+ *             raise minpack_error("Last argument (err) must be contiguous array of type Float64.")
+ * 
+ */
+    __pyx_t_2 = ISCONTIGUOUS(__pyx_v_ap_err); 
+    __pyx_t_5 = __site_istrue_427_27->Target(__site_istrue_427_27, __pyx_t_2);
+    __pyx_t_2 = nullptr;
+    __pyx_t_4 = (!__pyx_t_5);
+    if (!__pyx_t_4) {
+      __pyx_t_2 = PyArray_DESCR(__pyx_v_ap_err); 
+      if (__pyx_t_2 != nullptr && dynamic_cast<NumpyDotNet::dtype^>(__pyx_t_2) == nullptr) {
+        throw PythonOps::MakeException(__pyx_context, PythonOps::GetGlobal(__pyx_context, "TypeError"), "type error", nullptr);
+      }
+      __pyx_t_5 = (PyDataType_TYPE_NUM(((NumpyDotNet::dtype^)__pyx_t_2)) != NPY_DOUBLE);
+      __pyx_t_2 = nullptr;
+      __pyx_t_3 = __pyx_t_5;
+    } else {
+      __pyx_t_3 = __pyx_t_4;
+    }
+    if (__pyx_t_3) {
+
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":428
+ *     elif mode == 2:
+ *         if not ISCONTIGUOUS(ap_err) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_err)) != np.NPY_DOUBLE):
+ *             raise minpack_error("Last argument (err) must be contiguous array of type Float64.")             # <<<<<<<<<<<<<<
+ * 
+ *         ap_fvec = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvec, np.NPY_DOUBLE,1,1)
+ */
+      __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+      __pyx_t_1 = __site_call1_428_31->Target(__site_call1_428_31, __pyx_context, __pyx_t_2, ((System::Object^)"Last argument (err) must be contiguous array of type Float64."));
+      __pyx_t_2 = nullptr;
+      throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+      __pyx_t_1 = nullptr;
+      goto __pyx_L7;
+    }
+    __pyx_L7:;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":430
+ *             raise minpack_error("Last argument (err) must be contiguous array of type Float64.")
+ * 
+ *         ap_fvec = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvec, np.NPY_DOUBLE,1,1)             # <<<<<<<<<<<<<<
+ *         ap_fjac = <np.ndarray>np.PyArray_ContiguousFromObject(o_fjac, np.NPY_DOUBLE,2,2)
+ *         ap_fvecp = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvecp, np.NPY_DOUBLE,1,1)
+ */
+    __pyx_t_1 = (System::Object^)(long long)(NPY_DOUBLE);
+    __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_fvec, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+    __pyx_t_1 = nullptr;
+    __pyx_v_ap_fvec = ((NumpyDotNet::ndarray^)__pyx_t_2);
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":431
+ * 
+ *         ap_fvec = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvec, np.NPY_DOUBLE,1,1)
+ *         ap_fjac = <np.ndarray>np.PyArray_ContiguousFromObject(o_fjac, np.NPY_DOUBLE,2,2)             # <<<<<<<<<<<<<<
+ *         ap_fvecp = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvecp, np.NPY_DOUBLE,1,1)
+ * 
+ */
+    __pyx_t_2 = (System::Object^)(long long)(NPY_DOUBLE);
+    __pyx_t_1 = PyArray_ContiguousFromObject(__pyx_v_o_fjac, __pyx_t_2, __pyx_int_2, __pyx_int_2); 
+    __pyx_t_2 = nullptr;
+    __pyx_v_ap_fjac = ((NumpyDotNet::ndarray^)__pyx_t_1);
+    __pyx_t_1 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":432
+ *         ap_fvec = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvec, np.NPY_DOUBLE,1,1)
+ *         ap_fjac = <np.ndarray>np.PyArray_ContiguousFromObject(o_fjac, np.NPY_DOUBLE,2,2)
+ *         ap_fvecp = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvecp, np.NPY_DOUBLE,1,1)             # <<<<<<<<<<<<<<
+ * 
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)
+ */
+    __pyx_t_1 = (System::Object^)(long long)(NPY_DOUBLE);
+    __pyx_t_2 = PyArray_ContiguousFromObject(__pyx_v_o_fvecp, __pyx_t_1, __pyx_int_1, __pyx_int_1); 
+    __pyx_t_1 = nullptr;
+    __pyx_v_ap_fvecp = ((NumpyDotNet::ndarray^)__pyx_t_2);
+    __pyx_t_2 = nullptr;
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":434
+ *         ap_fvecp = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvecp, np.NPY_DOUBLE,1,1)
+ * 
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)             # <<<<<<<<<<<<<<
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ */
+    __pyx_v_fvec = ((double *)PyArray_DATA(__pyx_v_ap_fvec));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":435
+ * 
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)             # <<<<<<<<<<<<<<
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = <double *>np.PyArray_DATA(ap_fvecp)
+ */
+    __pyx_v_fjac = ((double *)PyArray_DATA(__pyx_v_ap_fjac));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":436
+ *         fvec = <double *>np.PyArray_DATA(ap_fvec)
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         xp = <double *>np.PyArray_DATA(ap_xp)             # <<<<<<<<<<<<<<
+ *         fvecp = <double *>np.PyArray_DATA(ap_fvecp)
+ *         err = <double *>np.PyArray_DATA(ap_err)
+ */
+    __pyx_v_xp = ((double *)PyArray_DATA(__pyx_v_ap_xp));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":437
+ *         fjac = <double *>np.PyArray_DATA(ap_fjac)
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = <double *>np.PyArray_DATA(ap_fvecp)             # <<<<<<<<<<<<<<
+ *         err = <double *>np.PyArray_DATA(ap_err)
+ * 
+ */
+    __pyx_v_fvecp = ((double *)PyArray_DATA(__pyx_v_ap_fvecp));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":438
+ *         xp = <double *>np.PyArray_DATA(ap_xp)
+ *         fvecp = <double *>np.PyArray_DATA(ap_fvecp)
+ *         err = <double *>np.PyArray_DATA(ap_err)             # <<<<<<<<<<<<<<
+ * 
+ *         CHKDER(&m, &n, x, fvec, fjac, &m, xp, fvecp, &mode, err)
+ */
+    __pyx_v_err = ((double *)PyArray_DATA(__pyx_v_ap_err));
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":440
+ *         err = <double *>np.PyArray_DATA(ap_err)
+ * 
+ *         CHKDER(&m, &n, x, fvec, fjac, &m, xp, fvecp, &mode, err)             # <<<<<<<<<<<<<<
+ *     else:
+ *         raise minpack_error("Invalid mode, must be 1 or 2.")
+ */
+    CHKDER((&__pyx_v_m), (&__pyx_v_n), __pyx_v_x, __pyx_v_fvec, __pyx_v_fjac, (&__pyx_v_m), __pyx_v_xp, __pyx_v_fvecp, (&__pyx_v_mode), __pyx_v_err);
+    break;
+    default:
+
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":442
+ *         CHKDER(&m, &n, x, fvec, fjac, &m, xp, fvecp, &mode, err)
+ *     else:
+ *         raise minpack_error("Invalid mode, must be 1 or 2.")             # <<<<<<<<<<<<<<
+ * 
+ *     return None
+ */
+    __pyx_t_2 = PythonOps::GetGlobal(__pyx_context, "minpack_error");
+    __pyx_t_1 = __site_call1_442_27->Target(__site_call1_442_27, __pyx_context, __pyx_t_2, ((System::Object^)"Invalid mode, must be 1 or 2."));
+    __pyx_t_2 = nullptr;
+    throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
+    __pyx_t_1 = nullptr;
+    break;
+  }
+
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":444
+ *         raise minpack_error("Invalid mode, must be 1 or 2.")
+ * 
+ *     return None             # <<<<<<<<<<<<<<
+ * 
+ * 
+ */
+  __pyx_r = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":448
  * 
  * 
  * cdef int raw_multipack_calling_function(int *n, double *x, double *fvec, int *iflag):             # <<<<<<<<<<<<<<
@@ -2348,7 +4075,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   int __pyx_t_3;
   __pyx_v_result_array = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":263
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":457
  *     global multipack_extra_arguments
  * 
  *     result_array = <np.ndarray>call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -2361,7 +4088,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   __pyx_v_result_array = ((NumpyDotNet::ndarray^)__pyx_t_2);
   __pyx_t_2 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":264
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":458
  * 
  *     result_array = <np.ndarray>call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *     if result_array is None:             # <<<<<<<<<<<<<<
@@ -2371,7 +4098,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   __pyx_t_3 = (((System::Object^)__pyx_v_result_array) == nullptr);
   if (__pyx_t_3) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":265
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":459
  *     result_array = <np.ndarray>call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *     if result_array is None:
  *         iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2380,7 +4107,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
  */
     (__pyx_v_iflag[0]) = -1;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":266
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":460
  *     if result_array is None:
  *         iflag[0] = -1
  *         return -1             # <<<<<<<<<<<<<<
@@ -2393,7 +4120,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":268
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":462
  *         return -1
  * 
  *     memcpy(fvec, np.PyArray_DATA(result_array), (n[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2402,7 +4129,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
  */
   memcpy(__pyx_v_fvec, PyArray_DATA(__pyx_v_result_array), ((__pyx_v_n[0]) * (sizeof(double))));
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":269
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":463
  * 
  *     memcpy(fvec, np.PyArray_DATA(result_array), (n[0])*sizeof(double))
  *     return 0             # <<<<<<<<<<<<<<
@@ -2417,7 +4144,7 @@ static  int raw_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":272
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":466
  * 
  * 
  * cdef int jac_multipack_calling_function(int *n, double *x, double *fvec, double *fjac, int *ldfjac, int *iflag):             # <<<<<<<<<<<<<<
@@ -2436,7 +4163,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   System::Object^ __pyx_t_3 = nullptr;
   __pyx_v_result_array = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":282
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":476
  *     """
  * 
  *     if iflag[0] == 1:             # <<<<<<<<<<<<<<
@@ -2446,7 +4173,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   __pyx_t_1 = ((__pyx_v_iflag[0]) == 1);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":283
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":477
  * 
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -2459,7 +4186,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     __pyx_v_result_array = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":284
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":478
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if result_array is None:             # <<<<<<<<<<<<<<
@@ -2469,7 +4196,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     __pyx_t_1 = (__pyx_v_result_array == nullptr);
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":285
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":479
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if result_array is None:
  *             iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2478,7 +4205,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
  */
       (__pyx_v_iflag[0]) = -1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":286
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":480
  *         if result_array is None:
  *             iflag[0] = -1
  *             return -1             # <<<<<<<<<<<<<<
@@ -2491,7 +4218,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     }
     __pyx_L4:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":287
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":481
  *             iflag[0] = -1
  *             return -1
  *         memcpy(fvec, np.PyArray_DATA(result_array), (n[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2506,7 +4233,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":289
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":483
  *         memcpy(fvec, np.PyArray_DATA(result_array), (n[0])*sizeof(double))
  *     else:
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)             # <<<<<<<<<<<<<<
@@ -2519,7 +4246,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     __pyx_v_result_array = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":290
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":484
  *     else:
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)
  *         if result_array is None:             # <<<<<<<<<<<<<<
@@ -2529,7 +4256,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     __pyx_t_1 = (__pyx_v_result_array == nullptr);
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":291
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":485
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)
  *         if result_array is None:
  *             iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2538,7 +4265,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
  */
       (__pyx_v_iflag[0]) = -1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":292
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":486
  *         if result_array is None:
  *             iflag[0] = -1
  *             return -1             # <<<<<<<<<<<<<<
@@ -2551,19 +4278,19 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     }
     __pyx_L5:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":293
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":487
  *             iflag[0] = -1
  *             return -1
  *         if multipack_jac_transpose == 1:             # <<<<<<<<<<<<<<
  *             MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])
  *         else:
  */
-    __pyx_t_2 = __site_op_eq_293_35->Target(__site_op_eq_293_35, __pyx_v_5scipy_8optimize_8_minpack_multipack_jac_transpose, __pyx_int_1);
-    __pyx_t_1 = __site_istrue_293_35->Target(__site_istrue_293_35, __pyx_t_2);
+    __pyx_t_2 = __site_op_eq_487_35->Target(__site_op_eq_487_35, __pyx_v_5scipy_8optimize_8_minpack_multipack_jac_transpose, __pyx_int_1);
+    __pyx_t_1 = __site_istrue_487_35->Target(__site_istrue_487_35, __pyx_t_2);
     __pyx_t_2 = nullptr;
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":294
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":488
  *             return -1
  *         if multipack_jac_transpose == 1:
  *             MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])             # <<<<<<<<<<<<<<
@@ -2578,7 +4305,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
     }
     /*else*/ {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":296
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":490
  *             MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])
  *         else:
  *             memcpy(fjac, np.PyArray_DATA(result_array), (n[0])*(ldfjac[0])*sizeof(double));             # <<<<<<<<<<<<<<
@@ -2594,7 +4321,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":297
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":491
  *         else:
  *             memcpy(fjac, np.PyArray_DATA(result_array), (n[0])*(ldfjac[0])*sizeof(double));
  *     return 0             # <<<<<<<<<<<<<<
@@ -2609,7 +4336,7 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":300
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":494
  * 
  * 
  * cdef int raw_multipack_lm_function(int *m, int *n, double *x, double *fvec, int *iflag):             # <<<<<<<<<<<<<<
@@ -2617,6 +4344,9 @@ static  int jac_multipack_calling_function(int *__pyx_v_n, double *__pyx_v_x, do
  *         -- use call_python_function to get a multiarrayobject result
  */
 
+static int (*__pyx_function_pointer_raw_multipack_lm_function)(int *, int *, double *, double *, int *);
+typedef int (*__pyx_fp_t_raw_multipack_lm_function)(int *, int *, double *, double *, int *);
+static __pyx_delegate_t_5scipy_8optimize_8_minpack_raw_multipack_lm_function^ __pyx_delegate_val_raw_multipack_lm_function;
 static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__pyx_v_x, double *__pyx_v_fvec, int *__pyx_v_iflag) {
   System::Object^ __pyx_v_result_array;
   int __pyx_r;
@@ -2625,7 +4355,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   int __pyx_t_3;
   __pyx_v_result_array = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":307
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":501
  *     """
  * 
  *     result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -2638,7 +4368,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   __pyx_v_result_array = __pyx_t_2;
   __pyx_t_2 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":308
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":502
  * 
  *     result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *     if result_array is None:             # <<<<<<<<<<<<<<
@@ -2648,7 +4378,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   __pyx_t_3 = (__pyx_v_result_array == nullptr);
   if (__pyx_t_3) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":309
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":503
  *     result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *     if result_array is None:
  *         iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2657,7 +4387,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
  */
     (__pyx_v_iflag[0]) = -1;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":310
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":504
  *     if result_array is None:
  *         iflag[0] = -1
  *         return -1             # <<<<<<<<<<<<<<
@@ -2670,7 +4400,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":312
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":506
  *         return -1
  * 
  *     memcpy(fvec, np.PyArray_DATA(result_array), (m[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2682,7 +4412,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   memcpy(__pyx_v_fvec, PyArray_DATA(((NumpyDotNet::ndarray^)__pyx_v_result_array)), ((__pyx_v_m[0]) * (sizeof(double))));
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":313
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":507
  * 
  *     memcpy(fvec, np.PyArray_DATA(result_array), (m[0])*sizeof(double))
  *     return 0             # <<<<<<<<<<<<<<
@@ -2697,7 +4427,7 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":316
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":510
  * 
  * 
  * cdef int jac_multipack_lm_function(int *m, int *n, double *x, double *fvec, double *fjac, int *ldfjac, int *iflag):             # <<<<<<<<<<<<<<
@@ -2705,6 +4435,9 @@ static  int raw_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
  *         -- use call_python_function to get a multiarrayobject result
  */
 
+static int (*__pyx_function_pointer_jac_multipack_lm_function)(int *, int *, double *, double *, double *, int *, int *);
+typedef int (*__pyx_fp_t_jac_multipack_lm_function)(int *, int *, double *, double *, double *, int *, int *);
+static __pyx_delegate_t_5scipy_8optimize_8_minpack_jac_multipack_lm_function^ __pyx_delegate_val_jac_multipack_lm_function;
 static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__pyx_v_x, double *__pyx_v_fvec, double *__pyx_v_fjac, int *__pyx_v_ldfjac, int *__pyx_v_iflag) {
   System::Object^ __pyx_v_result_array;
   int __pyx_r;
@@ -2713,7 +4446,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   System::Object^ __pyx_t_3 = nullptr;
   __pyx_v_result_array = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":326
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":520
  *     """
  * 
  *     if iflag[0] == 1:             # <<<<<<<<<<<<<<
@@ -2723,7 +4456,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   __pyx_t_1 = ((__pyx_v_iflag[0]) == 1);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":327
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":521
  * 
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -2736,7 +4469,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
     __pyx_v_result_array = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":328
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":522
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if (result_array is None):             # <<<<<<<<<<<<<<
@@ -2746,7 +4479,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
     __pyx_t_1 = (__pyx_v_result_array == nullptr);
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":329
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":523
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if (result_array is None):
  *             iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2755,7 +4488,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
  */
       (__pyx_v_iflag[0]) = -1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":330
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":524
  *         if (result_array is None):
  *             iflag[0] = -1
  *             return -1             # <<<<<<<<<<<<<<
@@ -2768,7 +4501,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
     }
     __pyx_L4:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":332
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":526
  *             return -1
  * 
  *         memcpy(fvec, np.PyArray_DATA(result_array), (m[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2783,7 +4516,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":334
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":528
  *         memcpy(fvec, np.PyArray_DATA(result_array), (m[0])*sizeof(double))
  *     else:
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)             # <<<<<<<<<<<<<<
@@ -2796,7 +4529,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
     __pyx_v_result_array = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":335
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":529
  *     else:
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)
  *         if result_array is None:             # <<<<<<<<<<<<<<
@@ -2806,7 +4539,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
     __pyx_t_1 = (__pyx_v_result_array == nullptr);
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":336
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":530
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, multipack_extra_arguments, 2, minpack_error)
  *         if result_array is None:
  *             iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2815,7 +4548,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
  */
       (__pyx_v_iflag[0]) = -1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":337
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":531
  *         if result_array is None:
  *             iflag[0] = -1
  *             return -1             # <<<<<<<<<<<<<<
@@ -2830,19 +4563,19 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":339
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":533
  *             return -1
  * 
  *     if (multipack_jac_transpose == 1):             # <<<<<<<<<<<<<<
  *         MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])
  *     else:
  */
-  __pyx_t_2 = __site_op_eq_339_32->Target(__site_op_eq_339_32, __pyx_v_5scipy_8optimize_8_minpack_multipack_jac_transpose, __pyx_int_1);
-  __pyx_t_1 = __site_istrue_339_32->Target(__site_istrue_339_32, __pyx_t_2);
+  __pyx_t_2 = __site_op_eq_533_32->Target(__site_op_eq_533_32, __pyx_v_5scipy_8optimize_8_minpack_multipack_jac_transpose, __pyx_int_1);
+  __pyx_t_1 = __site_istrue_533_32->Target(__site_istrue_533_32, __pyx_t_2);
   __pyx_t_2 = nullptr;
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":340
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":534
  * 
  *     if (multipack_jac_transpose == 1):
  *         MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])             # <<<<<<<<<<<<<<
@@ -2857,7 +4590,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":342
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":536
  *         MATRIXC2F(fjac, <double *>np.PyArray_DATA(result_array), n[0], ldfjac[0])
  *     else:
  *         memcpy(fjac, np.PyArray_DATA(result_array), (n[0])*(ldfjac[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2871,7 +4604,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   }
   __pyx_L6:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":344
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":538
  *         memcpy(fjac, np.PyArray_DATA(result_array), (n[0])*(ldfjac[0])*sizeof(double))
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -2886,7 +4619,7 @@ static  int jac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *__
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":347
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":541
  * 
  * 
  * cdef int smjac_multipack_lm_function(int *m, int *n, double *x, double *fvec, double *fjrow, int *iflag):             # <<<<<<<<<<<<<<
@@ -2905,7 +4638,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
   __pyx_v_result_array = nullptr;
   __pyx_v_newargs = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":358
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":552
  *     cdef int row
  * 
  *     if iflag[0] == 1:             # <<<<<<<<<<<<<<
@@ -2915,7 +4648,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
   __pyx_t_1 = ((__pyx_v_iflag[0]) == 1);
   if (__pyx_t_1) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":359
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":553
  * 
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)             # <<<<<<<<<<<<<<
@@ -2928,7 +4661,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
     __pyx_v_result_array = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":360
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":554
  *     if iflag[0] == 1:
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if (result_array is None):             # <<<<<<<<<<<<<<
@@ -2938,7 +4671,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
     __pyx_t_1 = (__pyx_v_result_array == nullptr);
     if (__pyx_t_1) {
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":361
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":555
  *         result_array = call_python_function(multipack_python_function, n[0], x, multipack_extra_arguments, 1, minpack_error)
  *         if (result_array is None):
  *             iflag[0] = -1             # <<<<<<<<<<<<<<
@@ -2947,7 +4680,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
  */
       (__pyx_v_iflag[0]) = -1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":362
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":556
  *         if (result_array is None):
  *             iflag[0] = -1
  *             return -1             # <<<<<<<<<<<<<<
@@ -2960,7 +4693,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
     }
     __pyx_L4:;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":364
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":558
  *             return -1
  * 
  *         memcpy(fvec, np.PyArray_DATA(result_array), (m[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -2975,7 +4708,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
   }
   /*else*/ {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":367
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":561
  *     else:
  *         # append row number to argument list and call row-based jacobian
  *         row = iflag[0] - 2;             # <<<<<<<<<<<<<<
@@ -2984,7 +4717,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
  */
     __pyx_v_row = ((__pyx_v_iflag[0]) - 2);
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":369
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":563
  *         row = iflag[0] - 2;
  * 
  *         newargs = (row, ) + multipack_extra_arguments             # <<<<<<<<<<<<<<
@@ -2994,12 +4727,12 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
     __pyx_t_3 = __pyx_v_row;
     __pyx_t_2 = PythonOps::MakeTuple(gcnew array<System::Object^>{__pyx_t_3});
     __pyx_t_3 = nullptr;
-    __pyx_t_3 = __site_op_add_369_26->Target(__site_op_add_369_26, __pyx_t_2, __pyx_v_5scipy_8optimize_8_minpack_multipack_extra_arguments);
+    __pyx_t_3 = __site_op_add_563_26->Target(__site_op_add_563_26, __pyx_t_2, __pyx_v_5scipy_8optimize_8_minpack_multipack_extra_arguments);
     __pyx_t_2 = nullptr;
     __pyx_v_newargs = __pyx_t_3;
     __pyx_t_3 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":370
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":564
  * 
  *         newargs = (row, ) + multipack_extra_arguments
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, newargs, 2, minpack_error)             # <<<<<<<<<<<<<<
@@ -3012,7 +4745,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
     __pyx_v_result_array = __pyx_t_2;
     __pyx_t_2 = nullptr;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":371
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":565
  *         newargs = (row, ) + multipack_extra_arguments
  *         result_array = call_python_function(multipack_python_jacobian, n[0], x, newargs, 2, minpack_error)
  *         memcpy(fjrow, np.PyArray_DATA(result_array), (n[0])*sizeof(double))             # <<<<<<<<<<<<<<
@@ -3026,7 +4759,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":373
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":567
  *         memcpy(fjrow, np.PyArray_DATA(result_array), (n[0])*sizeof(double))
  * 
  *     return 0             # <<<<<<<<<<<<<<
@@ -3041,7 +4774,7 @@ static  int smjac_multipack_lm_function(int *__pyx_v_m, int *__pyx_v_n, double *
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":377
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":571
  * 
  * 
  * cdef object call_python_function(func, np.npy_intp n, double *x, object args, int dim, object error_obj):             # <<<<<<<<<<<<<<
@@ -3061,7 +4794,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = nullptr;
   __pyx_v_result = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":396
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":590
  * 
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)             # <<<<<<<<<<<<<<
@@ -3072,7 +4805,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_v_sequence = ((NumpyDotNet::ndarray^)__pyx_t_1);
   __pyx_t_1 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":397
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":591
  *     # Build sequence argument from inputs
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:             # <<<<<<<<<<<<<<
@@ -3082,21 +4815,21 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (((System::Object^)__pyx_v_sequence) == nullptr);
   if (__pyx_t_2) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":398
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":592
  *     sequence = <np.ndarray>np.PyArray_SimpleNewFromData(1, &n, np.NPY_DOUBLE, <char *>x)
  *     if sequence is None:
  *         raise error_obj("Internal failure to make an array of doubles out of first\n                 argument to function call.")             # <<<<<<<<<<<<<<
  * 
  *     # Build argument list
  */
-    __pyx_t_1 = __site_call1_398_23->Target(__site_call1_398_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
+    __pyx_t_1 = __site_call1_592_23->Target(__site_call1_592_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)"Internal failure to make an array of doubles out of first\n                 argument to function call."));
     throw PythonOps::MakeException(__pyx_context, __pyx_t_1, nullptr, nullptr);
     __pyx_t_1 = nullptr;
     goto __pyx_L3;
   }
   __pyx_L3:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":401
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":595
  * 
  *     # Build argument list
  *     if args is None: args = ()             # <<<<<<<<<<<<<<
@@ -3110,7 +4843,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L4:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":402
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":596
  *     # Build argument list
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)             # <<<<<<<<<<<<<<
@@ -3119,15 +4852,15 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "apply");
   __pyx_t_3 = PythonOps::MakeTuple(gcnew array<System::Object^>{((System::Object^)__pyx_v_sequence)});
-  __pyx_t_4 = __site_op_add_402_38->Target(__site_op_add_402_38, __pyx_t_3, __pyx_v_args);
+  __pyx_t_4 = __site_op_add_596_38->Target(__site_op_add_596_38, __pyx_t_3, __pyx_v_args);
   __pyx_t_3 = nullptr;
-  __pyx_t_3 = __site_call2_402_18->Target(__site_call2_402_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
+  __pyx_t_3 = __site_call2_596_18->Target(__site_call2_596_18, __pyx_context, __pyx_t_1, __pyx_v_func, __pyx_t_4);
   __pyx_t_1 = nullptr;
   __pyx_t_4 = nullptr;
   __pyx_v_result = __pyx_t_3;
   __pyx_t_3 = nullptr;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":403
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":597
  *     if args is None: args = ()
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:             # <<<<<<<<<<<<<<
@@ -3137,17 +4870,17 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   __pyx_t_2 = (__pyx_v_result == nullptr);
   if (__pyx_t_2) {
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":404
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":598
  *     result = apply(func, (sequence, ) + args)
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)             # <<<<<<<<<<<<<<
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)
  * 
  */
-    __pyx_t_3 = __site_get_func_name_404_89->Target(__site_get_func_name_404_89, __pyx_v_func, __pyx_context);
-    __pyx_t_4 = __site_op_mod_404_83->Target(__site_op_mod_404_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
+    __pyx_t_3 = __site_get_func_name_598_89->Target(__site_get_func_name_598_89, __pyx_v_func, __pyx_context);
+    __pyx_t_4 = __site_op_mod_598_83->Target(__site_op_mod_598_83, ((System::Object^)"Error occured while calling the Python function named %s"), __pyx_t_3);
     __pyx_t_3 = nullptr;
-    __pyx_t_3 = __site_call1_404_23->Target(__site_call1_404_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
+    __pyx_t_3 = __site_call1_598_23->Target(__site_call1_598_23, __pyx_context, __pyx_v_error_obj, ((System::Object^)__pyx_t_4));
     __pyx_t_4 = nullptr;
     throw PythonOps::MakeException(__pyx_context, __pyx_t_3, nullptr, nullptr);
     __pyx_t_3 = nullptr;
@@ -3155,7 +4888,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   }
   __pyx_L5:;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":405
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":599
  *     if result is None:
  *         raise error_obj("Error occured while calling the Python function named %s" % func.func_name)
  *     return np.PyArray_ContiguousFromObject(result, np.NPY_DOUBLE, dim-1, dim)             # <<<<<<<<<<<<<<
@@ -3178,7 +4911,7 @@ static  System::Object^ call_python_function(System::Object^ __pyx_v_func, __pyx
   return __pyx_r;
 }
 
-/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":408
+/* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":602
  * 
  * 
  * cdef void MATRIXC2F(double *jac, double *data, int m, int n):             # <<<<<<<<<<<<<<
@@ -3196,7 +4929,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
   int __pyx_t_2;
   int __pyx_t_3;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":410
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":604
  * cdef void MATRIXC2F(double *jac, double *data, int m, int n):
  *     cdef int i, j
  *     cdef double *p1 = jac             # <<<<<<<<<<<<<<
@@ -3205,7 +4938,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
   __pyx_v_p1 = __pyx_v_jac;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":412
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":606
  *     cdef double *p1 = jac
  *     cdef double *p2
  *     cdef double *p3 = data             # <<<<<<<<<<<<<<
@@ -3214,7 +4947,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
   __pyx_v_p3 = __pyx_v_data;
 
-  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":414
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":608
  *     cdef double *p3 = data
  * 
  *     for j in range(m):             # <<<<<<<<<<<<<<
@@ -3225,7 +4958,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
   for (__pyx_t_2 = 0; __pyx_t_2 < __pyx_t_1; __pyx_t_2+=1) {
     __pyx_v_j = __pyx_t_2;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":415
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":609
  * 
  *     for j in range(m):
  *         p2 = p3             # <<<<<<<<<<<<<<
@@ -3234,7 +4967,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
     __pyx_v_p2 = __pyx_v_p3;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":416
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":610
  *     for j in range(m):
  *         p2 = p3
  *         i = 0             # <<<<<<<<<<<<<<
@@ -3243,7 +4976,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
     __pyx_v_i = 0;
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":417
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":611
  *         p2 = p3
  *         i = 0
  *         while i < n:             # <<<<<<<<<<<<<<
@@ -3254,7 +4987,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
       __pyx_t_3 = (__pyx_v_i < __pyx_v_n);
       if (!__pyx_t_3) break;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":418
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":612
  *         i = 0
  *         while i < n:
  *             p1[0] = p2[0]             # <<<<<<<<<<<<<<
@@ -3263,7 +4996,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
       (__pyx_v_p1[0]) = (__pyx_v_p2[0]);
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":419
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":613
  *         while i < n:
  *             p1[0] = p2[0]
  *             p2 += m             # <<<<<<<<<<<<<<
@@ -3272,7 +5005,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
       __pyx_v_p2 += __pyx_v_m;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":420
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":614
  *             p1[0] = p2[0]
  *             p2 += m
  *             i += 1             # <<<<<<<<<<<<<<
@@ -3281,7 +5014,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
  */
       __pyx_v_i += 1;
 
-      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":421
+      /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":615
  *             p2 += m
  *             i += 1
  *             p1 += 1             # <<<<<<<<<<<<<<
@@ -3290,7 +5023,7 @@ static  void MATRIXC2F(double *__pyx_v_jac, double *__pyx_v_data, int __pyx_v_m,
       __pyx_v_p1 += 1;
     }
 
-    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":422
+    /* "Z:\dev\scipy-refactor\scipy\optimize\_minpack.pyx":616
  *             i += 1
  *             p1 += 1
  *         p3 += 1             # <<<<<<<<<<<<<<
@@ -5107,6 +6840,7 @@ static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *__p
 static int __Pyx_InitGlobals(void) {
   __pyx_int_0 = 0;
   __pyx_int_1 = 1;
+  __pyx_int_2 = 2;
 
   return 0;
 }
@@ -5118,50 +6852,82 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   const int PythonOperationKind_TrueDivide = 25;
   const int PythonOperationKind_InPlaceFloorDivide = 0x20000000 | 23;
   const int PythonOperationKind_InPlaceTrueDivide = 0x20000000 | 25;
-  __site_call2_42_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_istrue_42_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_43_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_44_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_44_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_45_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call2_69_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_istrue_69_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_70_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_call1_71_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_71_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_71_62 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_71_62 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_call1_72_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_istrue_79_43 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_91_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_91_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_91_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_91_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_91_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_91_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_91_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_121_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_121_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_PyArray_DOUBLE_131_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
-  __site_cvt_cvt_int_170_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_170_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_170_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_int_170_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
-  __site_cvt_cvt_double_170_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_198_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_198_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_PyArray_DOUBLE_208_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
-  __site_op_eq_293_35 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_293_35 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_eq_339_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
-  __site_istrue_339_32 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_op_add_369_26 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_call1_398_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
-  __site_op_add_402_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
-  __site_call2_402_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_func_name_404_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
-  __site_op_mod_404_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
-  __site_call1_404_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_get_PyArray_ChkFlags_37_13 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_ChkFlags", false));
+  __site_call2_37_30 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_call2_45_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_istrue_45_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_46_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_47_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_47_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_48_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_72_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_istrue_72_21 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_73_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_74_19 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_74_19 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_74_62 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_74_62 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_75_26 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_82_43 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_94_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_94_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_94_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_94_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_94_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_94_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_94_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_124_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_124_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_PyArray_DOUBLE_134_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
+  __site_cvt_cvt_int_173_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_173_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_173_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_173_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_173_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_201_36 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_201_36 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_PyArray_DOUBLE_211_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
+  __site_cvt_cvt_int_256_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_256_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_256_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_256_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_256_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_256_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_256_0_4 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_PyArray_DOUBLE_282_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
+  __site_op_gt_291_68 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
+  __site_istrue_291_68 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_327_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_327_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_327_0 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_327_0_1 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_327_0_2 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_327_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_double_327_0_3 = CallSite< System::Func< CallSite^, System::Object^, double >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, double::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_PyArray_DOUBLE_359_64 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "PyArray_DOUBLE", false));
+  __site_op_gt_363_68 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::GreaterThan));
+  __site_istrue_363_68 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_405_0 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_405_0_1 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_405_0_2 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_cvt_cvt_int_405_0_3 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_414_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_416_23 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_417_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_istrue_427_27 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_call1_428_31 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call1_442_27 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_eq_487_35 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_487_35 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_eq_533_32 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Equal));
+  __site_istrue_533_32 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_op_add_563_26 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_call1_592_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_op_add_596_38 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Add));
+  __site_call2_596_18 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_func_name_598_89 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "func_name", false));
+  __site_op_mod_598_83 = CallSite< System::Func< CallSite^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeBinaryOperationAction(__pyx_context, ExpressionType::Modulo));
+  __site_call1_598_23 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_append_323_18 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "append", false));
   __site_call1_323_25 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
   __site_get_zeros_325_16 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "zeros", false));
@@ -5247,6 +7013,10 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   __pyx_function_pointer_raw_multipack_calling_function = (__pyx_fp_t_raw_multipack_calling_function)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_raw_multipack_calling_function).ToPointer());
   __pyx_delegate_val_jac_multipack_calling_function = gcnew __pyx_delegate_t_5scipy_8optimize_8_minpack_jac_multipack_calling_function(jac_multipack_calling_function);
   __pyx_function_pointer_jac_multipack_calling_function = (__pyx_fp_t_jac_multipack_calling_function)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_jac_multipack_calling_function).ToPointer());
+  __pyx_delegate_val_raw_multipack_lm_function = gcnew __pyx_delegate_t_5scipy_8optimize_8_minpack_raw_multipack_lm_function(raw_multipack_lm_function);
+  __pyx_function_pointer_raw_multipack_lm_function = (__pyx_fp_t_raw_multipack_lm_function)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_raw_multipack_lm_function).ToPointer());
+  __pyx_delegate_val_jac_multipack_lm_function = gcnew __pyx_delegate_t_5scipy_8optimize_8_minpack_jac_multipack_lm_function(jac_multipack_lm_function);
+  __pyx_function_pointer_jac_multipack_lm_function = (__pyx_fp_t_jac_multipack_lm_function)(InteropServices::Marshal::GetFunctionPointerForDelegate(__pyx_delegate_val_jac_multipack_lm_function).ToPointer());
   /*--- Execution code ---*/
   System::Object^ __pyx_t_1 = nullptr;
   PythonDictionary^ __pyx_t_2;
@@ -5309,7 +7079,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * minpack_error = MinpackError
  * error = MinpackError             # <<<<<<<<<<<<<<
  * 
- * cdef INIT_FUNC(fun, arg):
+ * cdef inline ISCONTIGUOUS(np.ndarray arr):
  */
   __pyx_t_1 = PythonOps::GetGlobal(__pyx_context, "MinpackError");
   PythonOps::SetGlobal(__pyx_context, "error", __pyx_t_1);

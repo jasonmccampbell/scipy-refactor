@@ -2,7 +2,9 @@
 Tests for line search routines
 """
 
-from numpy.testing import assert_, assert_equal, \
+import sys
+
+from numpy.testing import assert_, assert_equal, dec, \
      assert_array_almost_equal, assert_array_almost_equal_nulp
 import scipy.optimize.linesearch as ls
 import numpy as np
@@ -124,6 +126,7 @@ class TestLineSearch(object):
 
     # -- Generic scalar searches
 
+    @dec.knownfailureif(sys.platform == 'cli', "Line search isn't supported on IronPython due to issues w/ bytes vs strings (strings are unicode by default)")
     def test_scalar_search_wolfe1(self):
         c = 0
         for name, phi, derphi, old_phi0 in self.scalar_iter():
@@ -154,6 +157,7 @@ class TestLineSearch(object):
 
     # -- Generic line searches
 
+    @dec.knownfailureif(sys.platform == 'cli', "Line search isn't supported on IronPython due to issues w/ bytes vs strings (strings are unicode by default)")
     def test_line_search_wolfe1(self):
         c = 0
         smax = 100
@@ -223,6 +227,7 @@ class TestLineSearch(object):
         assert_equal(count[0], 2)
         assert_armijo(s, phi)
 
+    @dec.knownfailureif(sys.platform == 'cli', "Line search isn't supported on IronPython due to issues w/ bytes vs strings (strings are unicode by default)")
     def test_wolfe_terminate(self):
         # wolfe1 and wolfe2 should also evaluate the function only a few
         # times if the trial step is already suitable

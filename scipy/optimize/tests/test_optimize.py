@@ -9,8 +9,9 @@ To run it in its simplest form::
   nosetests test_optimize.py
 
 """
+import sys
 
-from numpy.testing import assert_raises, assert_almost_equal, \
+from numpy.testing import assert_raises, assert_almost_equal, dec, \
         assert_equal, assert_, TestCase, run_module_suite
 
 from scipy import optimize
@@ -55,6 +56,7 @@ class TestOptimize(TestCase):
         return dot(self.F.transpose(), p) - self.K
 
 
+    @dec.knownfailureif(sys.platform == 'cli', "Fails on IronPython due to issues w/ bytes vs strings (strings are unicode by default)")
     def test_cg(self):
         """ conjugate gradient optimization routine
         """
@@ -80,6 +82,7 @@ class TestOptimize(TestCase):
                            atol=1e-14, rtol=1e-7), self.trace[2:4])
 
 
+    @dec.knownfailureif(sys.platform == 'cli', "Fails on IronPython due to issues w/ bytes vs strings (strings are unicode by default)")
     def test_bfgs(self):
         """ Broyden-Fletcher-Goldfarb-Shanno optimization routine
         """
@@ -340,6 +343,7 @@ class TestTnc(TestCase):
         self.tests.append((test45fg, [2]*5, [(0,1),(0,2),(0,3),(0,4),(0,5)],
                            [1,2,3,4,5]))
 
+    @dec.knownfailureif(sys.platform == 'cli', "Fails on IronPython, needs to be debugged.")
     def test_tnc(self):
         for fg, x, bounds, xopt in self.tests:
             x, nf, rc = optimize.fmin_tnc(fg, x, bounds=bounds,

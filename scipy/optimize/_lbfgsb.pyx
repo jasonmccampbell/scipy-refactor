@@ -19,7 +19,7 @@ np.import_array()
 __all__ = ['setulb']
 
 cdef _S60_dtype = None
-#_S60_dtype = np.dtype('|S60')
+_S60_dtype = np.PyArray_DescrConverter('|S60')
 import numpy as np
 
 

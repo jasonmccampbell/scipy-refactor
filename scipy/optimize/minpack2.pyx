@@ -20,7 +20,7 @@ np.import_array()
 __all__ = ['dcsrch', 'dcstep']
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
-def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gtol, fwr_dbl_t xtol, bytes task, fwr_dbl_t stpmin, fwr_dbl_t stpmax, object isave, object dsave, bint overwrite_isave=True, bint overwrite_dsave=True):
+def dcsrch(fwr_dbl_t stp, fwr_dbl_t f, fwr_dbl_t g, fwr_dbl_t ftol, fwr_dbl_t gtol, fwr_dbl_t xtol, string task, fwr_dbl_t stpmin, fwr_dbl_t stpmax, object isave, object dsave, bint overwrite_isave=True, bint overwrite_dsave=True):
     """dcsrch(stp, f, g, ftol, gtol, xtol, task, stpmin, stpmax, isave, dsave[, overwrite_isave, overwrite_dsave]) -> (stp, f, g, task, isave, dsave)
 
     Parameters

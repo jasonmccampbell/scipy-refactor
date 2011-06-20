@@ -33,6 +33,9 @@ class MinpackError(Exception):
 minpack_error = MinpackError
 error = MinpackError
 
+cdef inline ISCONTIGUOUS(np.ndarray arr):
+    return np.PyArray_ChkFlags(arr, np.NPY_CONTIGUOUS)
+
 cdef INIT_FUNC(fun, arg):
     global multipack_python_function
     global multipack_extra_arguments
@@ -88,7 +91,7 @@ cdef RESTORE_JAC_FUNC(savedArgs):
     multipack_python_function, multipack_extra_arguments, multipack_python_jacobian, multipack_jac_transpose = savedArgs
         
 
-def hybdr(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,
+def _hybrd(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, int maxfev=-10, int ml=-10,
           int mu=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):
     """[x,infodict,info] = _hybrd(fun, x0, args, full_output, xtol, maxfev, ml, mu, epsfcn, factor, diag)"""
 
@@ -167,7 +170,7 @@ def hybdr(fun, x0, extra_args=None, int full_output=0, double xtol=1.49012e-8, i
         return (np.PyArray_Return(ap_x), info)
 
 
-def hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,
+def _hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double xtol=1.49012e-8,
           int maxfev = -10, double factor=1.0e2, o_diag=None):
     """[x,infodict,info] = _hybrj(fun, Dfun, x0, args, full_output, col_deriv, xtol, maxfev, factor, diag)"""
 
@@ -224,7 +227,7 @@ def hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, do
 
         ldfjac = dims[1]
 
-        wa = <double *>malloc(4*n + sizeof(double))
+        wa = <double *>malloc(4*n * sizeof(double))
         allocated = 1
 
         # Call the underlying FORTRAN routines. 
@@ -248,6 +251,197 @@ def hybrj(fun, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, do
         return (np.PyArray_Return(ap_x), dict, info)
     else:
         return (np.PyArray_Return(ap_x), info)
+
+
+def _lmdif(fcn, x0, extra_args=None, int full_output=0, double ftol=1.49012e-8, double xtol=1.49012e-8,
+           double gtol=0.0, int maxfev=-10, double epsfcn=0.0, double factor=1.0e2, o_diag=None):
+    cdef int m, mode = 2, nprint = 0, info, nfev, ldfjac, *ipvt
+    cdef np.npy_intp n
+    cdef double *x, *fvec, *diag, *fjac, *qtf
+
+    cdef np.ndarray ap_x, ap_fvec, ap_fjac, ap_ipvt, ap_qft, ap_diag
+
+    cdef np.npy_intp dims[2]
+    cdef int      allocated = 0
+    cdef double   *wa = NULL
+
+    savedArgs = INIT_FUNC(fcn,extra_args)
+    try:
+        # Initial input vector 
+        ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+        x = <double *> np.PyArray_DATA(ap_x)
+        n = np.PyArray_DIMS(ap_x)[0]
+        dims[0] = n
+
+        #SET_DIAG(ap_diag,o_diag,mode);
+        if o_diag is None:          # Set the diag vector from input
+            ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+            diag = <double *>np.PyArray_DATA(ap_diag)
+            mode = 1
+        else:
+            ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+            diag = <double *>np.PyArray_DATA(ap_diag)
+            mode = 2
+
+        if (maxfev < 0): maxfev = 200*(n+1)
+
+        # Setup array to hold the function evaluations and find it's size
+        ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)
+        fvec = <double *> np.PyArray_DATA(ap_fvec)
+        m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+
+        dims[0] = n
+        dims[1] = m
+        ap_ipvt = np.PyArray_SimpleNew(1,&n, np.NPY_INT)
+        ap_qtf = np.PyArray_SimpleNew(1,&n, np.NPY_DOUBLE)
+        ap_fjac = np.PyArray_SimpleNew(2,dims, np.NPY_DOUBLE)
+
+        ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+        qtf = <double *>np.PyArray_DATA(ap_qtf)
+        fjac = <double *>np.PyArray_DATA(ap_fjac)
+        ldfjac = dims[1]
+        wa = <double *>malloc((3*n + m)* sizeof(double))
+        allocated = 1
+
+        # Call the underlying FORTRAN routines. 
+        LMDIF(<void *>raw_multipack_lm_function, &m, &n, x, fvec, &ftol, &xtol, &gtol, &maxfev, &epsfcn, diag, &mode, &factor, &nprint, &info, &nfev, fjac, &ldfjac, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n);
+    finally:
+        if allocated: free(wa)
+        RESTORE_FUNC(savedArgs)
+
+    if (info < 0): return None    # Python error
+
+    if full_output:
+        dict = {
+            "fvec" : np.PyArray_Return(ap_fvec),
+            "nfev" : nfev,
+            "fjac" : np.PyArray_Return(ap_fjac),
+            "ipvt" : np.PyArray_Return(ap_ipvt),
+            "qtf" : np.PyArray_Return(ap_qtf)
+        }
+        return(np.PyArray_Return(ap_x), dict, info)
+    else:
+        return (np.PyArray_Return(ap_x), info)
+
+
+def _lmder(fcn, Dfun, x0, extra_args=None, int full_output=0, int col_deriv=1, double ftol=1.49012e-8,
+           double xtol=1.49012e-8, double gtol=0.0, int maxfev=-10, double factor=1.0e2, o_diag=None):
+    """[x,infodict,info] = _lmder(fun, Dfun, x0, args, full_output, col_deriv, ftol, xtol, gtol, maxfev, factor, diag)"""
+    cdef int m, mode = 2, nprint = 0, info, nfev, njev, ldfjac, *ipvt
+    cdef np.npy_intp n
+    cdef double   *x, *fvec, *diag, *fjac, *qtf
+
+    cdef ap_x, ap_fvec, ap_fjac, ap_ipvt, ap_qtf, ap_diag
+
+    cdef np.npy_intp dims[2]
+    cdef int      allocated = 0
+    cdef double   *wa = NULL
+
+    savedArgs = INIT_JAC_FUNC(fcn,Dfun,extra_args,col_deriv)
+    try:
+        # Initial input vector 
+        ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(x0, np.NPY_DOUBLE, 1, 1)
+        x = <double *>np.PyArray_DATA(ap_x)
+        n = np.PyArray_DIMS(ap_x)[0]
+
+        if (maxfev < 0): maxfev = 100*(n+1)
+
+        # Setup array to hold the function evaluations 
+        ap_fvec = call_python_function(fcn, n, x, extra_args, 1, minpack_error)
+        fvec = <double *>np.PyArray_DATA(ap_fvec)
+
+        #SET_DIAG(ap_diag,o_diag,mode);
+        if o_diag is None:          # Set the diag vector from input
+            ap_diag = np.PyArray_SimpleNew(1, &n, np.NPY_DOUBLE)
+            diag = <double *>np.PyArray_DATA(ap_diag)
+            mode = 1
+        else:
+            ap_diag = np.PyArray_ContiguousFromObject(o_diag, np.PyArray_DOUBLE, 1, 1)
+            diag = <double *>np.PyArray_DATA(ap_diag)
+            mode = 2
+
+        m = np.PyArray_DIMS(ap_fvec)[0] if np.PyArray_NDIM(ap_fvec) > 0 else 1
+
+        dims[0] = n
+        dims[1] = m
+        ap_ipvt = np.PyArray_SimpleNew(1,&n,np.NPY_INT)
+        ap_qtf = np.PyArray_SimpleNew(1,&n,np.NPY_DOUBLE)
+        ap_fjac = np.PyArray_SimpleNew(2,dims,np.NPY_DOUBLE)
+
+        ipvt = <int *>np.PyArray_DATA(ap_ipvt)
+        qtf = <double *>np.PyArray_DATA(ap_qtf)
+        fjac = <double *>np.PyArray_DATA(ap_fjac)
+        ldfjac = dims[1]
+        wa = <double *>malloc((3*n + m)* sizeof(double))
+        allocated = 1
+
+        # Call the underlying FORTRAN routines. 
+        LMDER(<void *>jac_multipack_lm_function, &m, &n, x, fvec, fjac, &ldfjac, &ftol, &xtol, &gtol, &maxfev, diag, &mode, &factor, &nprint, &info, &nfev, &njev, ipvt, qtf, wa, wa+n, wa+2*n, wa+3*n)
+    finally:
+        if allocated: free(wa)
+        RESTORE_JAC_FUNC(savedArgs)
+
+    if (info < 0): return None   # Python error 
+
+    if full_output:
+        dict = {
+            "fvec" : np.PyArray_Return(ap_fvec),
+            "nfev" : nfev,
+            "njev" : njev,
+            "fjac" : np.PyArray_Return(ap_fjac),
+            "ipvt" : np.PyArray_Return(ap_ipvt),
+            "qtf" : np.PyArray_Return(ap_qtf)
+        }
+        return (np.PyArray_Return(ap_x), dict, info)
+    else:
+        return (np.PyArray_Return(ap_x), info)
+
+
+
+#
+# Check gradient function 
+#
+
+def _chkder(int m, int n, o_x, o_fvec, o_fjac, int ldfjac, np.ndarray ap_xp, o_fvecp, 
+            int mode, np.ndarray ap_err):
+    """_chkder(m,n,x,fvec,fjac,ldfjac,xp,fvecp,mode,err)"""
+    cdef np.ndarray ap_fvecp, ap_fjac, ap_x, ap_fvec
+    cdef double *xp, *fvecp, *fjac, *fvec, *x
+    cdef double *err
+
+    ap_x = <np.ndarray>np.PyArray_ContiguousFromObject(o_x, np.NPY_DOUBLE,1,1)
+    if n != np.PyArray_DIMS(ap_x)[0]:
+        raise minpack_error("Input data array (x) must have length n")
+    x = <double *>np.PyArray_DATA(ap_x)
+    if not ISCONTIGUOUS(ap_xp) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_xp)) != np.NPY_DOUBLE):
+        raise minpack_error("Seventh argument (xp) must be contiguous array of type Float64.")
+
+    if mode == 1:
+        fvec = NULL
+        fjac = NULL
+        xp = <double *>np.PyArray_DATA(ap_xp)
+        fvecp = NULL
+        err = NULL
+        CHKDER(&m, &n, x, fvec, fjac, &ldfjac, xp, fvecp, &mode, err)
+    elif mode == 2:
+        if not ISCONTIGUOUS(ap_err) or (np.PyDataType_TYPE_NUM(np.PyArray_DESCR(ap_err)) != np.NPY_DOUBLE):
+            raise minpack_error("Last argument (err) must be contiguous array of type Float64.")
+
+        ap_fvec = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvec, np.NPY_DOUBLE,1,1)
+        ap_fjac = <np.ndarray>np.PyArray_ContiguousFromObject(o_fjac, np.NPY_DOUBLE,2,2)
+        ap_fvecp = <np.ndarray>np.PyArray_ContiguousFromObject(o_fvecp, np.NPY_DOUBLE,1,1)
+
+        fvec = <double *>np.PyArray_DATA(ap_fvec)
+        fjac = <double *>np.PyArray_DATA(ap_fjac)
+        xp = <double *>np.PyArray_DATA(ap_xp)
+        fvecp = <double *>np.PyArray_DATA(ap_fvecp)
+        err = <double *>np.PyArray_DATA(ap_err)
+
+        CHKDER(&m, &n, x, fvec, fjac, &m, xp, fvecp, &mode, err)
+    else:
+        raise minpack_error("Invalid mode, must be 1 or 2.")
+
+    return None
 
 
 

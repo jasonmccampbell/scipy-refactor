@@ -85,6 +85,7 @@
     <None Include="minpack2.pyx" />
     <None Include="minpack2_clr.py" />
     <None Include="minpack2_fc.pxd" />
+    <None Include="moduleTNC_clr.py" />
     <None Include="nnls.py" />
     <None Include="nonlin.py" />
     <None Include="optimize.py" />
@@ -134,6 +135,7 @@
       <ExceptionHandling Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Async</ExceptionHandling>
       <BasicRuntimeChecks Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Default</BasicRuntimeChecks>
     </ClCompile>
+    <ClCompile Include="tnc\moduleTNC.cpp" />
     <ClCompile Include="tnc\tnc.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</CompileAsManaged>

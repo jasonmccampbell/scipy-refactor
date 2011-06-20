@@ -3,6 +3,8 @@ Author: Ondrej Certik
 May 2007
 """
 
+import sys
+
 from numpy.testing import assert_, dec, TestCase, run_module_suite
 
 from scipy.optimize import nonlin
@@ -86,6 +88,7 @@ class TestNonlin(object):
     def _check_func_fail(self, *a, **kw):
         pass
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_problem(self):
         for f in [F, F2, F3, F4_powell, F5, F6]:
             for func in SOLVERS:
@@ -130,12 +133,15 @@ class TestSecant(TestCase):
                 df = self.fs[j-npoints+1] - self.fs[j-npoints]
                 assert_(not np.allclose(dx, jac.solve(df)))
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden1(self):
         self._check_secant(nonlin.BroydenFirst)
         
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden2(self):
         self._check_secant(nonlin.BroydenSecond)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden1_update(self):
         # Check that BroydenFirst update works as for a dense matrix
         jac = nonlin.BroydenFirst(alpha=0.1)
@@ -150,6 +156,7 @@ class TestSecant(TestCase):
             jac.update(x, f)
             assert_(np.allclose(jac.todense(), B, rtol=1e-10, atol=1e-13))
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden2_update(self):
         # Check that BroydenSecond update works as for a dense matrix
         jac = nonlin.BroydenSecond(alpha=0.1)
@@ -164,6 +171,7 @@ class TestSecant(TestCase):
             jac.update(x, f)
             assert_(np.allclose(jac.todense(), inv(H), rtol=1e-10, atol=1e-13))
             
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_anderson(self):
         # Anderson mixing (with w0=0) satisfies secant conditions
         # for the last M iterates, see [Ey]_
@@ -192,21 +200,25 @@ class TestLinear(TestCase):
                                   f_tol=1e-6, line_search=None, verbose=0)
         assert_(np.allclose(dot(A, sol), b, atol=1e-6))
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden1(self):
         # Broyden methods solve linear systems exactly in 2*N steps
         self._check(nonlin.BroydenFirst(alpha=1.0), 20, 41, False)
         self._check(nonlin.BroydenFirst(alpha=1.0), 20, 41, True)
         
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden2(self):
         # Broyden methods solve linear systems exactly in 2*N steps
         self._check(nonlin.BroydenSecond(alpha=1.0), 20, 41, False)
         self._check(nonlin.BroydenSecond(alpha=1.0), 20, 41, True)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_anderson(self):
         # Anderson is rather similar to Broyden, if given enough storage space
         self._check(nonlin.Anderson(M=50, alpha=1.0), 20, 29, False)
         self._check(nonlin.Anderson(M=50, alpha=1.0), 20, 29, True)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_krylov(self):
         # Krylov methods solve linear systems exactly in N inner steps
         self._check(nonlin.KrylovJacobian, 20, 2, False, inner_m=10)
@@ -278,10 +290,12 @@ class TestJacobianDotSolve(object):
             x = rand(N)
             jac.update(x, self._func(x))
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden1(self):
         self._check_dot(nonlin.BroydenFirst, complex=False)
         self._check_dot(nonlin.BroydenFirst, complex=True)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden2(self):
         self._check_dot(nonlin.BroydenSecond, complex=False)
         self._check_dot(nonlin.BroydenSecond, complex=True)
@@ -302,6 +316,7 @@ class TestJacobianDotSolve(object):
         self._check_dot(nonlin.ExcitingMixing, complex=False)
         self._check_dot(nonlin.ExcitingMixing, complex=True)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_krylov(self):
         self._check_dot(nonlin.KrylovJacobian, complex=False, tol=1e-4)
         self._check_dot(nonlin.KrylovJacobian, complex=True, tol=1e-4)
@@ -312,30 +327,36 @@ class TestNonlinOldTests(TestCase):
     Computational Linguistics, vol 22, num 1, pp 39--72, 1996.)
     """
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden1(self):
         x= nonlin.broyden1(F,F.xin,iter=12,alpha=1)
         assert_(nonlin.norm(x) < 1e-9)
         assert_(nonlin.norm(F(x)) < 1e-9)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_broyden2(self):
         x= nonlin.broyden2(F,F.xin,iter=12,alpha=1)
         assert_(nonlin.norm(x) < 1e-9)
         assert_(nonlin.norm(F(x)) < 1e-9)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_anderson(self):
         x= nonlin.anderson(F,F.xin,iter=12,alpha=0.03,M=5)
         assert_(nonlin.norm(x) < 0.33)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_linearmixing(self):
         x = nonlin.linearmixing(F,F.xin,iter=60,alpha=0.5)
         assert_(nonlin.norm(x) < 1e-7)
         assert_(nonlin.norm(F(x)) < 1e-7)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_exciting(self):
         x= nonlin.excitingmixing(F,F.xin,iter=20,alpha=0.5)
         assert_(nonlin.norm(x) < 1e-5)
         assert_(nonlin.norm(F(x)) < 1e-5)
 
+    @dec.knownfailureif(sys.platform == 'cli', "scipy.optimize.nonlin is not supported on IronPython yet")
     def test_diagbroyden(self):
         x= nonlin.diagbroyden(F,F.xin,iter=11,alpha=1)
         assert_(nonlin.norm(x) < 1e-8)

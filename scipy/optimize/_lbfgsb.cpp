@@ -384,6 +384,7 @@ static CYTHON_INLINE System::Object^ PyArray_CheckFromAny(System::Object^, Syste
 static CYTHON_INLINE System::Object^ PyArray_Check(System::Object^); /*proto*/
 static CYTHON_INLINE System::Object^ PyArray_Cast(System::Object^, System::Object^); /*proto*/
 static CYTHON_INLINE void import_array(void); /*proto*/
+static CYTHON_INLINE System::Object^ PyArray_DescrConverter(System::Object^); /*proto*/
 static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^); /*proto*/
 static CYTHON_INLINE NpyArrayIterObject *PyArray_IterNew(NumpyDotNet::ndarray^); /*proto*/
 static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::ndarray^, int *); /*proto*/
@@ -509,14 +510,17 @@ static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System
 static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_CastToType_443_33;
 static  CallSite< System::Func< CallSite^, System::Object^, int >^ >^ __site_cvt_cvt_int_443_100;
 static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call3_443_44;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_451_21;
-static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_451_45;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_451_73;
-static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_451_58;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_454_51;
-static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_454_51;
-static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_457_58;
-static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_457_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_NpyDescr_451_22;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_DescrConverter_451_31;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call1_451_46;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_456_21;
+static  CallSite< System::Func< CallSite^, System::Object^, bool >^ >^ __site_cvt_bool_456_45;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_ScalarGeneric_456_73;
+static  CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >^ __site_call2_456_58;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_459_51;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_459_51;
+static  CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >^ __site_get_Array_462_58;
+static  CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >^ __site_cvt_cvt___pyx_t_5numpy_npy_intp_462_58;
 static CodeContext^ __pyx_context;
 /* Cython code section 'decls' */
 static int^ __pyx_int_0;
@@ -3026,6 +3030,66 @@ static CYTHON_INLINE void import_array(void) {
 /* "../cython/include\numpy.pxd":448
  *     pass
  * 
+ * cdef inline object PyArray_DescrConverter(obj):             # <<<<<<<<<<<<<<
+ *     import clr
+ *     import NumpyDotNet.NpyDescr
+ */
+
+static CYTHON_INLINE System::Object^ PyArray_DescrConverter(System::Object^ __pyx_v_obj) {
+  System::Object^ __pyx_v_clr;
+  System::Object^ __pyx_v_NumpyDotNet;
+  System::Object^ __pyx_r = nullptr;
+  System::Object^ __pyx_t_1 = nullptr;
+  System::Object^ __pyx_t_2 = nullptr;
+  __pyx_v_clr = nullptr;
+  __pyx_v_NumpyDotNet = nullptr;
+
+  /* "../cython/include\numpy.pxd":449
+ * 
+ * cdef inline object PyArray_DescrConverter(obj):
+ *     import clr             # <<<<<<<<<<<<<<
+ *     import NumpyDotNet.NpyDescr
+ *     return NumpyDotNet.NpyDescr.DescrConverter(obj)
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "clr", -1));
+  __pyx_v_clr = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":450
+ * cdef inline object PyArray_DescrConverter(obj):
+ *     import clr
+ *     import NumpyDotNet.NpyDescr             # <<<<<<<<<<<<<<
+ *     return NumpyDotNet.NpyDescr.DescrConverter(obj)
+ * 
+ */
+  __pyx_t_1 = LightExceptions::CheckAndThrow(PythonOps::ImportTop(__pyx_context, "NumpyDotNet.NpyDescr", -1));
+  __pyx_v_NumpyDotNet = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
+  /* "../cython/include\numpy.pxd":451
+ *     import clr
+ *     import NumpyDotNet.NpyDescr
+ *     return NumpyDotNet.NpyDescr.DescrConverter(obj)             # <<<<<<<<<<<<<<
+ * 
+ * cdef inline PyNumber_Check(o):
+ */
+  __pyx_t_1 = __site_get_NpyDescr_451_22->Target(__site_get_NpyDescr_451_22, __pyx_v_NumpyDotNet, __pyx_context);
+  __pyx_t_2 = __site_get_DescrConverter_451_31->Target(__site_get_DescrConverter_451_31, __pyx_t_1, __pyx_context);
+  __pyx_t_1 = nullptr;
+  __pyx_t_1 = __site_call1_451_46->Target(__site_call1_451_46, __pyx_context, __pyx_t_2, __pyx_v_obj);
+  __pyx_t_2 = nullptr;
+  __pyx_r = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+  goto __pyx_L0;
+
+  __pyx_r = nullptr;
+  __pyx_L0:;
+  return __pyx_r;
+}
+
+/* "../cython/include\numpy.pxd":453
+ *     return NumpyDotNet.NpyDescr.DescrConverter(obj)
+ * 
  * cdef inline PyNumber_Check(o):             # <<<<<<<<<<<<<<
  *     import clr
  *     import NumpyDotNet.ScalarGeneric
@@ -3044,7 +3108,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = nullptr;
   __pyx_v_NumpyDotNet = nullptr;
 
-  /* "../cython/include\numpy.pxd":449
+  /* "../cython/include\numpy.pxd":454
  * 
  * cdef inline PyNumber_Check(o):
  *     import clr             # <<<<<<<<<<<<<<
@@ -3055,7 +3119,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_clr = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":450
+  /* "../cython/include\numpy.pxd":455
  * cdef inline PyNumber_Check(o):
  *     import clr
  *     import NumpyDotNet.ScalarGeneric             # <<<<<<<<<<<<<<
@@ -3066,7 +3130,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_v_NumpyDotNet = __pyx_t_1;
   __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":451
+  /* "../cython/include\numpy.pxd":456
  *     import clr
  *     import NumpyDotNet.ScalarGeneric
  *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)             # <<<<<<<<<<<<<<
@@ -3081,15 +3145,15 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   __pyx_t_2 = nullptr;
   __pyx_t_3 = nullptr;
   __pyx_t_4 = nullptr;
-  __pyx_t_4 = __site_call2_451_21->Target(__site_call2_451_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
+  __pyx_t_4 = __site_call2_456_21->Target(__site_call2_456_21, __pyx_context, __pyx_t_1, __pyx_v_o, __pyx_t_5);
   __pyx_t_1 = nullptr;
   __pyx_t_5 = nullptr;
-  __pyx_t_6 = __site_cvt_bool_451_45->Target(__site_cvt_bool_451_45, __pyx_t_4);
+  __pyx_t_6 = __site_cvt_bool_456_45->Target(__site_cvt_bool_456_45, __pyx_t_4);
   if (!__pyx_t_6) {
     __pyx_t_4 = nullptr;
     __pyx_t_5 = PythonOps::GetGlobal(__pyx_context, "isinstance");
-    __pyx_t_1 = __site_get_ScalarGeneric_451_73->Target(__site_get_ScalarGeneric_451_73, __pyx_v_NumpyDotNet, __pyx_context);
-    __pyx_t_3 = __site_call2_451_58->Target(__site_call2_451_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
+    __pyx_t_1 = __site_get_ScalarGeneric_456_73->Target(__site_get_ScalarGeneric_456_73, __pyx_v_NumpyDotNet, __pyx_context);
+    __pyx_t_3 = __site_call2_456_58->Target(__site_call2_456_58, __pyx_context, __pyx_t_5, __pyx_v_o, __pyx_t_1);
     __pyx_t_5 = nullptr;
     __pyx_t_1 = nullptr;
     __pyx_t_1 = __pyx_t_3;
@@ -3107,7 +3171,7 @@ static CYTHON_INLINE System::Object^ PyNumber_Check(System::Object^ __pyx_v_o) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":453
+/* "../cython/include\numpy.pxd":458
  *     return isinstance(o, (int, long, float)) or isinstance(o, NumpyDotNet.ScalarGeneric)
  * 
  * cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):             # <<<<<<<<<<<<<<
@@ -3120,15 +3184,15 @@ static CYTHON_INLINE NpyArrayIterObject *PyArray_IterNew(NumpyDotNet::ndarray^ _
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":454
+  /* "../cython/include\numpy.pxd":459
  * 
  * cdef inline NpyArrayIterObject *PyArray_IterNew(ndarray n):
  *     return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)             # <<<<<<<<<<<<<<
  * 
  * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
  */
-  __pyx_t_1 = __site_get_Array_454_51->Target(__site_get_Array_454_51, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_454_51->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_454_51, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_459_51->Target(__site_get_Array_459_51, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_459_51->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_459_51, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_IterNew(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)));
   goto __pyx_L0;
@@ -3138,7 +3202,7 @@ static CYTHON_INLINE NpyArrayIterObject *PyArray_IterNew(NumpyDotNet::ndarray^ _
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":456
+/* "../cython/include\numpy.pxd":461
  *     return NpyArray_IterNew(<NpyArray*> <npy_intp>n.Array)
  * 
  * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):             # <<<<<<<<<<<<<<
@@ -3151,15 +3215,15 @@ static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::nda
   System::Object^ __pyx_t_1 = nullptr;
   __pyx_t_5numpy_npy_intp __pyx_t_2;
 
-  /* "../cython/include\numpy.pxd":457
+  /* "../cython/include\numpy.pxd":462
  * 
  * cdef inline NpyArrayIterObject *PyArray_IterAllButAxis(ndarray n, int *inaxis):
  *     return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)             # <<<<<<<<<<<<<<
  * 
  * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
  */
-  __pyx_t_1 = __site_get_Array_457_58->Target(__site_get_Array_457_58, ((System::Object^)__pyx_v_n), __pyx_context);
-  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_457_58->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_457_58, __pyx_t_1);
+  __pyx_t_1 = __site_get_Array_462_58->Target(__site_get_Array_462_58, ((System::Object^)__pyx_v_n), __pyx_context);
+  __pyx_t_2 = __site_cvt_cvt___pyx_t_5numpy_npy_intp_462_58->Target(__site_cvt_cvt___pyx_t_5numpy_npy_intp_462_58, __pyx_t_1);
   __pyx_t_1 = nullptr;
   __pyx_r = NpyArray_IterAllButAxis(((NpyArray *)((__pyx_t_5numpy_npy_intp)__pyx_t_2)), __pyx_v_inaxis);
   goto __pyx_L0;
@@ -3169,7 +3233,7 @@ static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::nda
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":459
+/* "../cython/include\numpy.pxd":464
  *     return NpyArray_IterAllButAxis(<NpyArray*> <npy_intp>n.Array, inaxis)
  * 
  * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
@@ -3179,7 +3243,7 @@ static CYTHON_INLINE NpyArrayIterObject *PyArray_IterAllButAxis(NumpyDotNet::nda
 
 static CYTHON_INLINE void PyArray_ITER_NEXT(NpyArrayIterObject *__pyx_v_obj) {
 
-  /* "../cython/include\numpy.pxd":460
+  /* "../cython/include\numpy.pxd":465
  * 
  * cdef inline void PyArray_ITER_NEXT(NpyArrayIterObject *obj):
  *     NpyArray_ITER_NEXT(obj)             # <<<<<<<<<<<<<<
@@ -3190,7 +3254,7 @@ static CYTHON_INLINE void PyArray_ITER_NEXT(NpyArrayIterObject *__pyx_v_obj) {
 
 }
 
-/* "../cython/include\numpy.pxd":462
+/* "../cython/include\numpy.pxd":467
  *     NpyArray_ITER_NEXT(obj)
  * 
  * cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
@@ -3200,7 +3264,7 @@ static CYTHON_INLINE void PyArray_ITER_NEXT(NpyArrayIterObject *__pyx_v_obj) {
 
 static CYTHON_INLINE void PyArray_ITER_RESET(NpyArrayIterObject *__pyx_v_obj) {
 
-  /* "../cython/include\numpy.pxd":463
+  /* "../cython/include\numpy.pxd":468
  * 
  * cdef inline void PyArray_ITER_RESET(NpyArrayIterObject *obj):
  *     NpyArray_ITER_RESET(obj)             # <<<<<<<<<<<<<<
@@ -3211,7 +3275,7 @@ static CYTHON_INLINE void PyArray_ITER_RESET(NpyArrayIterObject *__pyx_v_obj) {
 
 }
 
-/* "../cython/include\numpy.pxd":465
+/* "../cython/include\numpy.pxd":470
  *     NpyArray_ITER_RESET(obj)
  * 
  * cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):             # <<<<<<<<<<<<<<
@@ -3222,7 +3286,7 @@ static CYTHON_INLINE void PyArray_ITER_RESET(NpyArrayIterObject *__pyx_v_obj) {
 static CYTHON_INLINE void *PyArray_ITER_DATA(NpyArrayIterObject *__pyx_v_obj) {
   void *__pyx_r;
 
-  /* "../cython/include\numpy.pxd":466
+  /* "../cython/include\numpy.pxd":471
  * 
  * cdef inline void * PyArray_ITER_DATA(NpyArrayIterObject *obj):
  *     return NpyArray_ITER_DATA(obj)             # <<<<<<<<<<<<<<
@@ -3237,7 +3301,7 @@ static CYTHON_INLINE void *PyArray_ITER_DATA(NpyArrayIterObject *__pyx_v_obj) {
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":468
+/* "../cython/include\numpy.pxd":473
  *     return NpyArray_ITER_DATA(obj)
  * 
  * cdef inline NpyArrayNeighborhoodIterObject* PyArray_NeighborhoodIterNew(NpyArrayIterObject *obj,             # <<<<<<<<<<<<<<
@@ -3248,7 +3312,7 @@ static CYTHON_INLINE void *PyArray_ITER_DATA(NpyArrayIterObject *__pyx_v_obj) {
 static CYTHON_INLINE NpyArrayNeighborhoodIterObject *PyArray_NeighborhoodIterNew(NpyArrayIterObject *__pyx_v_obj, __pyx_t_5numpy_npy_intp *__pyx_v_bounds, int __pyx_v_mode, void *__pyx_v_fill, npy_free_func __pyx_v_fillfree) {
   NpyArrayNeighborhoodIterObject *__pyx_r;
 
-  /* "../cython/include\numpy.pxd":473
+  /* "../cython/include\numpy.pxd":478
  *                                                                         void *fill,
  *                                                                         npy_free_func fillfree):
  *     return NpyArray_NeighborhoodIterNew(obj, bounds, mode, fill, fillfree)             # <<<<<<<<<<<<<<
@@ -3263,7 +3327,7 @@ static CYTHON_INLINE NpyArrayNeighborhoodIterObject *PyArray_NeighborhoodIterNew
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":475
+/* "../cython/include\numpy.pxd":480
  *     return NpyArray_NeighborhoodIterNew(obj, bounds, mode, fill, fillfree)
  * 
  * cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):             # <<<<<<<<<<<<<<
@@ -3274,7 +3338,7 @@ static CYTHON_INLINE NpyArrayNeighborhoodIterObject *PyArray_NeighborhoodIterNew
 static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject *__pyx_v_iter) {
   int __pyx_r;
 
-  /* "../cython/include\numpy.pxd":476
+  /* "../cython/include\numpy.pxd":481
  * 
  * cdef inline int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterObject* iter):
  *     return NpyArrayNeighborhoodIter_Reset(iter)             # <<<<<<<<<<<<<<
@@ -3289,7 +3353,7 @@ static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterO
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":478
+/* "../cython/include\numpy.pxd":483
  *     return NpyArrayNeighborhoodIter_Reset(iter)
  * 
  * cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):             # <<<<<<<<<<<<<<
@@ -3300,7 +3364,7 @@ static CYTHON_INLINE int PyArrayNeighborhoodIter_Reset(NpyArrayNeighborhoodIterO
 static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject *__pyx_v_iter) {
   int __pyx_r;
 
-  /* "../cython/include\numpy.pxd":479
+  /* "../cython/include\numpy.pxd":484
  * 
  * cdef inline int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterObject* iter):
  *     return NpyArrayNeighborhoodIter_Next(iter)             # <<<<<<<<<<<<<<
@@ -3315,7 +3379,7 @@ static CYTHON_INLINE int PyArrayNeighborhoodIter_Next(NpyArrayNeighborhoodIterOb
   return __pyx_r;
 }
 
-/* "../cython/include\numpy.pxd":481
+/* "../cython/include\numpy.pxd":486
  *     return NpyArrayNeighborhoodIter_Next(iter)
  * 
  * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):             # <<<<<<<<<<<<<<
@@ -3326,7 +3390,7 @@ static CYTHON_INLINE NumpyDotNet::ndarray^ NpyIter_ARRAY(NpyArrayIterObject *__p
   NumpyDotNet::ndarray^ __pyx_r = nullptr;
   System::Object^ __pyx_t_1 = nullptr;
 
-  /* "../cython/include\numpy.pxd":482
+  /* "../cython/include\numpy.pxd":487
  * 
  * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):
  *     return Npy_INTERFACE_array(iter.ao)             # <<<<<<<<<<<<<<
@@ -3461,14 +3525,17 @@ static void __Pyx_InitSites(CodeContext^ __pyx_context) {
   __site_get_CastToType_443_33 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "CastToType", false));
   __site_cvt_cvt_int_443_100 = CallSite< System::Func< CallSite^, System::Object^, int >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, int::typeid, ConversionResultKind::ExplicitCast));
   __site_call3_443_44 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(3)));
-  __site_call2_451_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_cvt_bool_451_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_ScalarGeneric_451_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
-  __site_call2_451_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
-  __site_get_Array_454_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt___pyx_t_5numpy_npy_intp_454_51 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
-  __site_get_Array_457_58 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
-  __site_cvt_cvt___pyx_t_5numpy_npy_intp_457_58 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_NpyDescr_451_22 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "NpyDescr", false));
+  __site_get_DescrConverter_451_31 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "DescrConverter", false));
+  __site_call1_451_46 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(1)));
+  __site_call2_456_21 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_cvt_bool_456_45 = CallSite< System::Func< CallSite^, System::Object^, bool >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, bool::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_ScalarGeneric_456_73 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "ScalarGeneric", false));
+  __site_call2_456_58 = CallSite< System::Func< CallSite^, CodeContext^, System::Object^, System::Object^, System::Object^, System::Object^ >^ >::Create(PythonOps::MakeInvokeAction(__pyx_context, CallSignature(2)));
+  __site_get_Array_459_51 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_459_51 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
+  __site_get_Array_462_58 = CallSite< System::Func< CallSite^, System::Object^, CodeContext^, System::Object^ >^ >::Create(PythonOps::MakeGetAction(__pyx_context, "Array", false));
+  __site_cvt_cvt___pyx_t_5numpy_npy_intp_462_58 = CallSite< System::Func< CallSite^, System::Object^, __pyx_t_5numpy_npy_intp >^ >::Create(PythonOps::MakeConversionAction(__pyx_context, __pyx_t_5numpy_npy_intp::typeid, ConversionResultKind::ExplicitCast));
 }
 [SpecialName]
 static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) {
@@ -3509,14 +3576,25 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
  * __all__ = ['setulb']
  * 
  * cdef _S60_dtype = None             # <<<<<<<<<<<<<<
- * #_S60_dtype = np.dtype('|S60')
+ * _S60_dtype = np.PyArray_DescrConverter('|S60')
  * import numpy as np
  */
   __pyx_v_5scipy_8optimize_7_lbfgsb__S60_dtype = nullptr;
 
+  /* "Z:\dev\scipy-refactor\scipy\optimize\_lbfgsb.pyx":22
+ * 
+ * cdef _S60_dtype = None
+ * _S60_dtype = np.PyArray_DescrConverter('|S60')             # <<<<<<<<<<<<<<
+ * import numpy as np
+ * 
+ */
+  __pyx_t_1 = PyArray_DescrConverter(((System::Object^)"|S60")); 
+  __pyx_v_5scipy_8optimize_7_lbfgsb__S60_dtype = __pyx_t_1;
+  __pyx_t_1 = nullptr;
+
   /* "Z:\dev\scipy-refactor\scipy\optimize\_lbfgsb.pyx":23
  * cdef _S60_dtype = None
- * #_S60_dtype = np.dtype('|S60')
+ * _S60_dtype = np.PyArray_DescrConverter('|S60')
  * import numpy as np             # <<<<<<<<<<<<<<
  * 
  * 
@@ -3534,7 +3612,7 @@ static void PerformModuleReload(PythonContext^ context, PythonDictionary^ dict) 
   PythonOps::SetGlobal(__pyx_context, "__test__", ((System::Object^)__pyx_t_2));
   __pyx_t_2 = nullptr;
 
-  /* "../cython/include\numpy.pxd":481
+  /* "../cython/include\numpy.pxd":486
  *     return NpyArrayNeighborhoodIter_Next(iter)
  * 
  * cdef inline ndarray NpyIter_ARRAY(NpyArrayIterObject *iter):             # <<<<<<<<<<<<<<

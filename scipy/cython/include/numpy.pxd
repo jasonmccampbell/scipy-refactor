@@ -445,6 +445,11 @@ cdef inline object PyArray_Cast(arr, typenum):
 cdef inline void import_array():
     pass
 
+cdef inline object PyArray_DescrConverter(obj):
+    import clr
+    import NumpyDotNet.NpyDescr
+    return NumpyDotNet.NpyDescr.DescrConverter(obj)
+
 cdef inline PyNumber_Check(o):
     import clr
     import NumpyDotNet.ScalarGeneric
