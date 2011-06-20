@@ -47,12 +47,22 @@
 #endif
 #endif
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 extern void CHKDER(int*,int*,double*,double*,double*,int*,double*,double*,int*,double*);
 extern void HYBRD(void*,int*,double*,double*,double*,int*,int*,int*,double*,double*,int*,double*,int*,int*,int*,double*,int*,double*,int*,double*,double*,double*,double*,double*);
 extern void HYBRJ(void*,int*,double*,double*,double*,int*,double*,int*,double*,int*,double*,int*,int*,int*,int*,double*,int*,double*,double*,double*,double*,double*);
 extern void LMDIF(void*,int*,int*,double*,double*,double*,double*,double*,int*,double*,double*,int*,double*,int*,int*,int*,double*,int*,int*,double*,double*,double*,double*,double*);
 extern void LMDER(void*,int*,int*,double*,double*,double*,int*,double*,double*,double*,int*,double*,int*,double*,int*,int*,int*,int*,int*,double*,double*,double*,double*,double*);
 extern void LMSTR(void*,int*,int*,double*,double*,double*,int*,double*,double*,double*,int*,double*,int*,double*,int*,int*,int*,int*,int*,double*,double*,double*,double*,double*);
+
+#if defined(__cplusplus)
+}
+#endif
+
+#if !defined(CYTHON_INCLUDE)
 
 int raw_multipack_calling_function(int *n, double *x, double *fvec, int *iflag)
 {
@@ -684,7 +694,7 @@ static PyObject *minpack_chkder(PyObject *self, PyObject *args)
   return NULL;
 }
 
-
+#endif
 
 
 

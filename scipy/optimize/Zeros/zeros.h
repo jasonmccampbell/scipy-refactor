@@ -7,6 +7,10 @@
 #ifndef ZEROS_H
 #define ZEROS_H
 
+#if defined(__cplusplus)
+extern "C" {
+#endif
+
 #define ZEROS_PARAM_HEAD int funcalls; int iterations; int error_num
 
 typedef struct {
@@ -33,5 +37,9 @@ extern double brentq(callback_type f, double xa, double xb, double xtol, double 
 
 extern double fabs(double);
 extern double sqrt(double);
+
+#if defined(__cplusplus)
+}
+#endif
 
 #endif

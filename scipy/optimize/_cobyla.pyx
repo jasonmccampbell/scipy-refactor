@@ -18,11 +18,13 @@ cimport _cobyla_fc as fc
 np.import_array()
 import sys
 
+"""
 cdef extern from "setjmp.h":
     ctypedef struct jmp_buf:
         pass    
     int setjmp(jmp_buf env)
     void longjmp(jmp_buf env, int val)
+"""
 
 cdef extern from "string.h":
     void *memcpy(void *dest, void *src, int n)
@@ -38,10 +40,11 @@ cdef class fw_CallbackInfo(object):
     # simply passed through in Fortran (in particular NumPy arrays)
     cdef object arg0, arg1, arg2, arg3, arg4, arg5, arg6, arg7, arg8, arg9
     # For use by longjmp
-    cdef jmp_buf jmp
+    #cdef jmp_buf jmp
     def __cinit__(self, object callback, object extra_args):
         self.callback = callback
         self.extra_args = extra_args
+    
 
 
 __all__ = ['minimize']
@@ -49,7 +52,7 @@ cdef extern from "string.h":
     void *memcpy(void *dest, void *src, size_t n)
 
 cdef fw_CallbackInfo minimize_calcfc_cb_info
-cdef int minimize_calcfc_cb_wrapper_core(fwi_integer_t * n, fwi_integer_t * m, fwr_dbl_t * x, fwr_dbl_t * f, fwr_dbl_t * con):
+cdef void minimize_calcfc_cb_wrapper_core(fwi_integer_t * n, fwi_integer_t * m, fwr_dbl_t * x, fwr_dbl_t * f, fwr_dbl_t * con):
     global minimize_calcfc_cb_info;
     cdef fw_CallbackInfo info
     cdef np.ndarray x_, con_
@@ -65,16 +68,8 @@ cdef int minimize_calcfc_cb_wrapper_core(fwi_integer_t * n, fwi_integer_t * m, f
         else:
             f[0] = info.callback(x_, con_, *info.extra_args)
         minimize_calcfc_cb_info = info
-        return 0
     except:
-        minimize_calcfc_cb_info = info
-        info.exc = sys.exc_info()
-        return -1
-
-cdef void minimize_calcfc_cb_wrapper(fwi_integer_t * n, fwi_integer_t * m, fwr_dbl_t * x, fwr_dbl_t * f, fwr_dbl_t * con):
-    if minimize_calcfc_cb_wrapper_core(n, m, x, f, con) != 0:
-        longjmp(minimize_calcfc_cb_info.jmp, 1)
-
+        raise sys.exc_info()
 
 def minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl_t rhoend, fwi_integer_t iprint=1, fwi_integer_t maxfun=100):
     """minimize(calcfc, m, x, rhobeg, rhoend[, iprint, maxfun]) -> x
@@ -111,12 +106,7 @@ def minimize(object calcfc, fwi_integer_t m, object x, fwr_dbl_t rhobeg, fwr_dbl
         raise ValueError("(0 <= n <= x.shape[0]) not satisifed")
     minimize_calcfc_cb_info = fw_calcfc_cb = fw_CallbackInfo(calcfc, None)
     try:
-        if setjmp(minimize_calcfc_cb_info.jmp) == 0:
-            fc.cobyla(&minimize_calcfc_cb_wrapper, &n, &m, <fwr_dbl_t*>np.PyArray_DATA(x_), &rhobeg, &rhoend, &iprint, &maxfun, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwi_integer_t*>np.PyArray_DATA(iact_))
-        else:
-            fw_exctype, fw_excval, fw_exctb = minimize_calcfc_cb_info.exc
-            minimize_calcfc_cb_info.exc = None
-            raise fw_exctype, fw_excval, fw_exctb
+        fc.cobyla(&minimize_calcfc_cb_wrapper_core, &n, &m, <fwr_dbl_t*>np.PyArray_DATA(x_), &rhobeg, &rhoend, &iprint, &maxfun, <fwr_dbl_t*>np.PyArray_DATA(w_), <fwi_integer_t*>np.PyArray_DATA(iact_))
     finally:
         minimize_calcfc_cb_info = None
     return x_

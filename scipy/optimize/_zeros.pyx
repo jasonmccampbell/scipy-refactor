@@ -88,18 +88,19 @@ cdef call_solver(solver_type solver, object f,
             DEINITOBJECT(&params.exn_info)
             raise exn_info[0], exn_info[1], exn_info[2]
 
-        if params.error_num != 0:
-            if params.error_num == SIGNERR:
-                raise ValueError, "f(a) and f(b) must have different signs"
-            if params.error_num == CONVERR:
-                raise RuntimeError, "Failed to converge after %d iterations." % params.iterations
-            if fulloutput:
-                return (zero, params.funcalls, params.iterations, 0)
-            else:
-                return zero
     finally:
         DEINITOBJECT(&params.function)
         DEINITOBJECT(&params.args)
+
+    if params.error_num != 0:
+        if params.error_num == SIGNERR:
+            raise ValueError, "f(a) and f(b) must have different signs"
+        if params.error_num == CONVERR:
+            raise RuntimeError, "Failed to converge after %d iterations." % params.iterations
+    if fulloutput:
+        return (zero, params.funcalls, params.iterations, 0)
+    else:
+        return zero
 
 def _bisect(object f,
             double a, double b, double xtol, int iter,

@@ -112,10 +112,15 @@ import sys
 import numpy as np
 from scipy.linalg import norm, solve, inv, qr, svd, lstsq, LinAlgError
 from numpy import asarray, dot, vdot
-import scipy.sparse.linalg
-import scipy.sparse
-import scipy.lib.blas as blas
-import inspect
+
+if sys.platform != 'cli':
+    import scipy.sparse.linalg
+    import scipy.sparse
+    import scipy.lib.blas as blas
+    import inspect
+else:
+    print "Warning: scipy.optimize.nonlin package is not supported under IronPython yet."
+    
 from linesearch import scalar_search_wolfe1, scalar_search_armijo
 
 __all__ = [
