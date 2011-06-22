@@ -14,7 +14,7 @@ from filter_design import tf2zpk, zpk2tf, normalize
 import numpy
 from numpy import product, zeros, array, dot, transpose, ones, \
     nan_to_num, zeros_like, linspace
-import scipy.interpolate as interpolate
+#import scipy.interpolate as interpolate
 import scipy.integrate as integrate
 import scipy.linalg as linalg
 from numpy import r_, eye, real, atleast_1d, atleast_2d, poly, \

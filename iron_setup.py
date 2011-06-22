@@ -2,7 +2,8 @@ import os
 import sys
 from os.path import join
 
-projects = ["cluster", "fftpack", "linalg", "ndimage", "odr", "special", "stats"]
+projects = ["cluster", "fftpack", "integrate", "linalg", "ndimage", "odr", "optimize", 
+            "signal", "special", "stats"]
 
 if sys.platform != 'cli':
     print "ERROR: This setup script only works under IronPython"

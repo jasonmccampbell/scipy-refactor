@@ -691,7 +691,6 @@ def odr(fcn, initbeta, y, x, we=None, wd=None, fjacb=None, fjacd=None, extra_arg
     odr_global["pyBeta"] = beta
     odr_global["extra_args"] = extra_args
 
-    print "going in: beta = %s" % beta
     dodrc(fcn_callback, &n, &m, &npx, &nq, <double *>np.PyArray_DATA(beta),
         <double *>np.PyArray_DATA(y), &ldy, <double *>np.PyArray_DATA(x), &ldx,
         <double *>np.PyArray_DATA(we), &ldwe, &ld2we,

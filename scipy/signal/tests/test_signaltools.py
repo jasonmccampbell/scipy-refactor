@@ -1,4 +1,6 @@
 
+import sys
+
 from decimal import Decimal
 
 from numpy.testing import TestCase, run_module_suite, assert_equal, \
@@ -534,11 +536,13 @@ for datatype in [np.csingle, np.cdouble, np.clongdouble]:
 
 
 class TestFiltFilt:
+    @dec.knownfailureif(sys.platform == 'cli', "Fails on IronPython")
     def test_basic(self):
         out = signal.filtfilt([1,2,3], [1,2,3], np.arange(12))
         assert_equal(out, arange(12))
 
 class TestDecimate:
+    @dec.knownfailureif(sys.platform == 'cli', "Fails on IronPython")
     def test_basic(self):
         x = np.arange(6)
         assert_array_equal(signal.decimate(x, 2, n=1).round(), x[::2])

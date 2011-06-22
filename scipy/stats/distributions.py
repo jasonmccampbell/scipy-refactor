@@ -11,9 +11,8 @@ from copy import copy
 
 from scipy.misc import comb, derivative
 from scipy import special
-# TODO: import of optimize, integrate commented out until ported to .NET
-#from scipy import optimize
-#from scipy import integrate
+from scipy import optimize
+from scipy import integrate
 from scipy.special import gammaln as gamln
 
 import inspect

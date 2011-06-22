@@ -15,8 +15,7 @@ from numpy import zeros, arange, sort, amin, amax, any, where, \
 import scipy
 import numpy as np
 import types
-# TODO: import of scipy.optimize commented out until ported to .NET
-#import scipy.optimize as optimize
+import scipy.optimize as optimize
 import scipy.special as special
 import futil
 from numpy.testing.decorators import setastest
