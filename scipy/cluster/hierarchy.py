@@ -162,8 +162,9 @@ Copyright (C) Damian Eads, 2007-2008. New BSD License.
 import types
 
 import numpy as np
-import _hierarchy_wrap
-import scipy.spatial.distance as distance
+# TODO: _hierarchy_wrap and spatial have not been ported yet.
+#import _hierarchy_wrap
+#import scipy.spatial.distance as distance
 
 _cpy_non_euclid_methods = {'single': 0, 'complete': 1, 'average': 2,
                            'weighted': 6}
