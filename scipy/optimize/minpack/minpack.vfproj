@@ -25,6 +25,27 @@
 		<Filter Name="Header Files" Filter="fi;fd"/>
 		<Filter Name="Resource Files" Filter="rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe"/>
 		<Filter Name="Source Files" Filter="f90;for;f;fpp;ftn;def;odl;idl">
-		<File RelativePath=".\dcsrch.f"/>
-		<File RelativePath=".\dcstep.f"/></Filter></Files>
+		<File RelativePath=".\chkder.f"/>
+		<File RelativePath=".\dogleg.f"/>
+		<File RelativePath=".\dpmpar.f"/>
+		<File RelativePath=".\enorm.f"/>
+		<File RelativePath=".\fdjac1.f"/>
+		<File RelativePath=".\fdjac2.f"/>
+		<File RelativePath=".\hybrd.f"/>
+		<File RelativePath=".\hybrd1.f"/>
+		<File RelativePath=".\hybrj.f"/>
+		<File RelativePath=".\hybrj1.f"/>
+		<File RelativePath=".\lmder.f"/>
+		<File RelativePath=".\lmder1.f"/>
+		<File RelativePath=".\lmdif.f"/>
+		<File RelativePath=".\lmdif1.f"/>
+		<File RelativePath=".\lmpar.f"/>
+		<File RelativePath=".\lmstr.f"/>
+		<File RelativePath=".\lmstr1.f"/>
+		<File RelativePath=".\qform.f"/>
+		<File RelativePath=".\qrfac.f"/>
+		<File RelativePath=".\qrsolv.f"/>
+		<File RelativePath=".\r1mpyq.f"/>
+		<File RelativePath=".\r1updt.f"/>
+		<File RelativePath=".\rwupdt.f"/></Filter></Files>
 	<Globals/></VisualStudioProject>

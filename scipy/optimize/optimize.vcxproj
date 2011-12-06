@@ -71,7 +71,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;ndarray.lib;cobyla.lib;slsqp.lib;lbfgsb.lib;minpack.lib;minpack2.lib;nnls.lib;mkl_core.lib;mkl_blas95.lib;mkl_lapack95.lib;mkl_intel_c.lib;mkl_intel_thread.lib;libiomp5md.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(ConfigurationName);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin;C:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(ConfigurationName);..\..\..\numpy-refactor\numpy\NumpyDotNet\bin;C:\Program Files (x86)\Intel\ComposerXE-2011\compiler\lib\ia32;C:\Program Files (x86)\Intel\ComposerXE-2011\mkl\lib\ia32</AdditionalLibraryDirectories>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
@@ -142,6 +142,7 @@
     </ClCompile>
     <ClCompile Include="zeros.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Zeros\bisect.c">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
@@ -184,6 +185,7 @@
     <ClCompile Include="_minpack.cpp" />
     <ClCompile Include="_minpackmodule.c">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="_nnls.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">true</CompileAsManaged>

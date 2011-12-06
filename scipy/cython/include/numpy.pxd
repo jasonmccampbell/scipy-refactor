@@ -1,3 +1,5 @@
+from libc.stdint cimport intptr_t, uintptr_t
+
 ctypedef signed char      npy_byte
 ctypedef signed short     npy_short
 ctypedef signed int       npy_int
@@ -12,8 +14,8 @@ ctypedef float          npy_float
 ctypedef double         npy_double
 ctypedef long double    npy_longdouble
 ctypedef double         double_t
-ctypedef int            npy_intp
-ctypedef unsigned int   npy_uintp
+ctypedef intptr_t       npy_intp
+ctypedef uintptr_t      npy_uintp
 ctypedef npy_byte       npy_int8
 ctypedef npy_short      npy_int16
 ctypedef npy_int        npy_int32
